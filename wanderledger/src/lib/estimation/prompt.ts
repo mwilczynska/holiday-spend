@@ -8,7 +8,8 @@ All prices should be in AUD (Australian Dollars). The current exchange rate is 1
 Provide estimates for the following categories. Each is a DAILY cost for 2 people unless stated otherwise.
 
 ACCOMMODATION (per night, for 2 people sharing):
-- accomHostel: Hostel dorm bed x2, or private hostel room
+- accomHostel: Two dorm beds in a shared hostel room
+- accomPrivateRoom: Private hostel room or simple guesthouse room
 - accom1star: Basic 1-star hotel/guesthouse
 - accom2star: Standard 2-star hotel
 - accom3star: Comfortable 3-star hotel
@@ -43,7 +44,7 @@ TRANSPORT:
 
 Respond with ONLY a JSON object in this exact format (all values in AUD, numbers only):
 {
-  "accomHostel": 0, "accom1star": 0, "accom2star": 0, "accom3star": 0, "accom4star": 0,
+  "accomHostel": 0, "accomPrivateRoom": 0, "accom1star": 0, "accom2star": 0, "accom3star": 0, "accom4star": 0,
   "foodStreet": 0, "foodBudget": 0, "foodMid": 0, "foodHigh": 0,
   "drinkLocalBeer": 0, "drinkImportBeer": 0, "drinkWineGlass": 0, "drinkCocktail": 0, "drinkCoffee": 0,
   "drinksLight": 0, "drinksModerate": 0, "drinksHeavy": 0,

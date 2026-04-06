@@ -8,6 +8,7 @@ const createSchema = z.object({
   countryId: z.string().min(1),
   name: z.string().min(1),
   accomHostel: z.number().optional(),
+  accomPrivateRoom: z.number().optional(),
   accom1star: z.number().optional(),
   accom2star: z.number().optional(),
   accom3star: z.number().optional(),

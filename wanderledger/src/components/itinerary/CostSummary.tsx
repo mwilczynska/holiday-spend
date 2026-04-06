@@ -1,6 +1,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
 
 interface LegData {
   countryName: string;
@@ -37,6 +38,9 @@ export function CostSummary({ legs, fixedCostsTotal }: CostSummaryProps) {
       <Card>
         <CardHeader className="pb-2">
           <CardTitle className="text-sm">Trip Summary</CardTitle>
+          <p className="text-xs leading-4 text-muted-foreground">
+            {PLANNER_UI_LOGIC.tripSummary}
+          </p>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
           <div className="flex justify-between">

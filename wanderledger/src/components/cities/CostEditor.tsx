@@ -11,7 +11,8 @@ interface CostField {
 
 const COST_FIELDS: CostField[] = [
   // Accommodation
-  { key: 'accomHostel', label: 'Hostel', group: 'Accommodation (per night, 2 ppl)' },
+  { key: 'accomHostel', label: 'Shared Hostel Dorm', group: 'Accommodation (per night, 2 ppl)' },
+  { key: 'accomPrivateRoom', label: 'Private Room', group: 'Accommodation (per night, 2 ppl)' },
   { key: 'accom1star', label: '1-Star', group: 'Accommodation (per night, 2 ppl)' },
   { key: 'accom2star', label: '2-Star', group: 'Accommodation (per night, 2 ppl)' },
   { key: 'accom3star', label: '3-Star', group: 'Accommodation (per night, 2 ppl)' },

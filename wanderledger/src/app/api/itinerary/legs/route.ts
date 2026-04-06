@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { itineraryLegs } from '@/db/schema';
-import { success, handleError } from '@/lib/api-helpers';
+import { success, error, handleError } from '@/lib/api-helpers';
+import { validateLegDates } from '@/lib/itinerary-validation';
 import { z } from 'zod';
 import { sql } from 'drizzle-orm';
 
@@ -24,6 +25,8 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = createSchema.parse(body);
+    const dateError = validateLegDates(data);
+    if (dateError) return error(dateError, 400);
 
     // Get next sort order
     const maxOrder = await db

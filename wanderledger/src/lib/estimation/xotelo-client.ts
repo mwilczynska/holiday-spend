@@ -1,4 +1,5 @@
 import type { CityEstimateData } from '@/types';
+import { deriveSharedDormRate } from '../accommodation';
 
 const XOTELO_BASE = 'https://data.xotelo.com/api';
 
@@ -32,7 +33,7 @@ export async function getAccommodationPrices(
     }
 
     // Bucket by type and star rating
-    const hostels: number[] = [];
+    const hostelPrivateRooms: number[] = [];
     const hotels1: number[] = [];
     const hotels2: number[] = [];
     const hotels3: number[] = [];
@@ -43,7 +44,7 @@ export async function getAccommodationPrices(
       const priceAud = avgPrice * audRate;
 
       if (prop.accommodation_type === 'Hostel' || prop.accommodation_type === 'Guest house') {
-        hostels.push(priceAud);
+        hostelPrivateRooms.push(priceAud);
       } else if (prop.star_rating !== null) {
         if (prop.star_rating <= 1) hotels1.push(priceAud);
         else if (prop.star_rating <= 2) hotels2.push(priceAud);
@@ -59,8 +60,11 @@ export async function getAccommodationPrices(
       return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
     };
 
+    const privateRoomRate = median(hostelPrivateRooms);
+
     return {
-      accomHostel: median(hostels),
+      accomHostel: deriveSharedDormRate(privateRoomRate) ?? undefined,
+      accomPrivateRoom: privateRoomRate ?? undefined,
       accom1star: median(hotels1),
       accom2star: median(hotels2),
       accom3star: median(hotels3),

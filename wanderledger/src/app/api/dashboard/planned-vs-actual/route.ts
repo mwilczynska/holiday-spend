@@ -2,6 +2,9 @@ import { db } from '@/db';
 import { itineraryLegs, cities, countries, expenses } from '@/db/schema';
 import { asc } from 'drizzle-orm';
 import { getLegTotal, getDailyBreakdown } from '@/lib/cost-calculator';
+import { getExpenseAudAmount } from '@/lib/expense-aud';
+import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
+import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
 
@@ -14,6 +17,7 @@ export async function GET() {
 
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const countryMap = new Map(allCountries.map(c => [c.id, c]));
+    const { tripStart, tripEnd } = getTripWindow(allLegs);
 
     // Build planned totals per country
     const plannedByCountry = new Map<string, { name: string; planned: number; categories: Record<string, number> }>();
@@ -57,15 +61,20 @@ export async function GET() {
       let countryId = 'unassigned';
       let countryName = 'Unassigned';
 
-      if (exp.legId) {
-        const leg = legMap.get(exp.legId);
-        if (leg) {
-          const city = cityMap.get(leg.cityId);
-          if (city) {
-            countryId = city.countryId;
-            const country = countryMap.get(city.countryId);
-            countryName = country?.name ?? city.countryId;
-          }
+      const matchedLeg = exp.legId
+        ? legMap.get(exp.legId)
+        : findLegForExpenseDate(exp.date, allLegs);
+
+      if (!matchedLeg && !isWithinTripWindow(exp.date, tripStart, tripEnd)) {
+        continue;
+      }
+
+      if (matchedLeg) {
+        const city = cityMap.get(matchedLeg.cityId);
+        if (city) {
+          countryId = city.countryId;
+          const country = countryMap.get(city.countryId);
+          countryName = country?.name ?? city.countryId;
         }
       }
 
@@ -73,7 +82,7 @@ export async function GET() {
         actualByCountry.set(countryId, { name: countryName, actual: 0, categories: {} });
       }
       const entry = actualByCountry.get(countryId)!;
-      const audAmount = exp.amountAud ?? exp.amount;
+      const audAmount = getExpenseAudAmount(exp);
       entry.actual += audAmount;
       entry.categories[exp.category] = (entry.categories[exp.category] || 0) + audAmount;
     }
@@ -92,7 +101,7 @@ export async function GET() {
     // Category breakdown across all expenses
     const categoryTotals: Record<string, number> = {};
     for (const exp of activeExpenses) {
-      const audAmount = exp.amountAud ?? exp.amount;
+      const audAmount = getExpenseAudAmount(exp);
       categoryTotals[exp.category] = (categoryTotals[exp.category] || 0) + audAmount;
     }
 

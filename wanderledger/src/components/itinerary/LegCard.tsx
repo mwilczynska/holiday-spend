@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { TierSelector } from './TierSelector';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
+import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
 import { ChevronDown, ChevronUp, GripVertical, Trash2 } from 'lucide-react';
 
 interface LegCardProps {
@@ -165,24 +166,28 @@ export function LegCard({
             value={leg.accomTier}
             options={ACCOM_TIERS}
             onChange={(v) => handleTierChange('accomTier', v)}
+            helperText={PLANNER_UI_LOGIC.accommodation}
           />
           <TierSelector
             label="Food"
             value={leg.foodTier}
             options={FOOD_TIERS}
             onChange={(v) => handleTierChange('foodTier', v)}
+            helperText={PLANNER_UI_LOGIC.food}
           />
           <TierSelector
             label="Drinks"
             value={leg.drinksTier}
             options={DRINKS_TIERS}
             onChange={(v) => handleTierChange('drinksTier', v)}
+            helperText={PLANNER_UI_LOGIC.drinks}
           />
           <TierSelector
             label="Activities"
             value={leg.activitiesTier}
             options={ACTIVITIES_TIERS}
             onChange={(v) => handleTierChange('activitiesTier', v)}
+            helperText={PLANNER_UI_LOGIC.activities}
           />
         </div>
 

@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
+import { derivePrivateRoomRate } from '../lib/accommodation';
 
 const dbPath = path.join(process.cwd(), 'data', 'travel.db');
 const dataDir = path.dirname(dbPath);
@@ -26,6 +27,7 @@ CREATE TABLE IF NOT EXISTS cities (
   country_id      TEXT NOT NULL REFERENCES countries(id),
   name            TEXT NOT NULL,
   accom_hostel    REAL,
+  accom_private_room REAL,
   accom_1star     REAL,
   accom_2star     REAL,
   accom_3star     REAL,
@@ -153,13 +155,13 @@ const insertCountry = sqlite.prepare(
 const insertCity = sqlite.prepare(`
   INSERT OR IGNORE INTO cities (
     id, country_id, name,
-    accom_hostel, accom_1star, accom_2star, accom_3star, accom_4star,
+    accom_hostel, accom_private_room, accom_1star, accom_2star, accom_3star, accom_4star,
     food_street, food_budget, food_mid, food_high,
     drink_local_beer, drink_import_beer, drink_wine_glass, drink_cocktail, drink_coffee,
     drinks_light, drinks_moderate, drinks_heavy,
     activities_free, activities_budget, activities_mid, activities_high,
     transport_local, estimation_source, notes
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
 const seedAll = sqlite.transaction(() => {
@@ -169,7 +171,9 @@ const seedAll = sqlite.transaction(() => {
   for (const city of seedData.cities) {
     insertCity.run(
       city.id, city.countryId, city.name,
-      city.accomHostel, city.accom1star, city.accom2star, city.accom3star, city.accom4star,
+      city.accomHostel,
+      city.accomPrivateRoom ?? derivePrivateRoomRate(city.accomHostel, city.accom1star),
+      city.accom1star, city.accom2star, city.accom3star, city.accom4star,
       city.foodStreet, city.foodBudget, city.foodMid, city.foodHigh,
       city.drinkLocalBeer, city.drinkImportBeer, city.drinkWineGlass, city.drinkCocktail, city.drinkCoffee,
       city.drinksLight, city.drinksModerate, city.drinksHeavy,

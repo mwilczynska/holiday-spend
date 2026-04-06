@@ -1,7 +1,9 @@
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
+import { derivePrivateRoomRate } from './accommodation';
 
 interface CityData {
   accomHostel: number | null;
+  accomPrivateRoom: number | null;
   accom1star: number | null;
   accom2star: number | null;
   accom3star: number | null;
@@ -30,6 +32,7 @@ interface LegOverrides {
 
 const ACCOM_MAP: Record<AccomTier, keyof CityData> = {
   hostel: 'accomHostel',
+  privateRoom: 'accomPrivateRoom',
   '1star': 'accom1star',
   '2star': 'accom2star',
   '3star': 'accom3star',
@@ -64,7 +67,11 @@ export function getDailyCost(
   activitiesTier: ActivitiesTier,
   overrides?: LegOverrides
 ): number {
-  const accom = overrides?.accomOverride ?? city[ACCOM_MAP[accomTier]] ?? 0;
+  const computedAccommodation =
+    accomTier === 'privateRoom'
+      ? city.accomPrivateRoom ?? derivePrivateRoomRate(city.accomHostel, city.accom1star)
+      : city[ACCOM_MAP[accomTier]];
+  const accom = overrides?.accomOverride ?? computedAccommodation ?? 0;
   const food = overrides?.foodOverride ?? city[FOOD_MAP[foodTier]] ?? 0;
   const drinks = overrides?.drinksOverride ?? city[DRINKS_MAP[drinksTier]] ?? 0;
   const activities = overrides?.activitiesOverride ?? city[ACTIVITIES_MAP[activitiesTier]] ?? 0;
@@ -103,7 +110,11 @@ export function getDailyBreakdown(
   activitiesTier: ActivitiesTier,
   overrides?: LegOverrides
 ): CostBreakdown {
-  const accommodation = overrides?.accomOverride ?? city[ACCOM_MAP[accomTier]] ?? 0;
+  const computedAccommodation =
+    accomTier === 'privateRoom'
+      ? city.accomPrivateRoom ?? derivePrivateRoomRate(city.accomHostel, city.accom1star)
+      : city[ACCOM_MAP[accomTier]];
+  const accommodation = overrides?.accomOverride ?? computedAccommodation ?? 0;
   const food = overrides?.foodOverride ?? city[FOOD_MAP[foodTier]] ?? 0;
   const drinks = overrides?.drinksOverride ?? city[DRINKS_MAP[drinksTier]] ?? 0;
   const activities = overrides?.activitiesOverride ?? city[ACTIVITIES_MAP[activitiesTier]] ?? 0;

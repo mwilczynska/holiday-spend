@@ -15,6 +15,7 @@ export const cities = sqliteTable('cities', {
 
   // ACCOMMODATION: per night, for 2 people, in AUD
   accomHostel: real('accom_hostel'),
+  accomPrivateRoom: real('accom_private_room'),
   accom1star: real('accom_1star'),
   accom2star: real('accom_2star'),
   accom3star: real('accom_3star'),

@@ -3,6 +3,9 @@ import { itineraryLegs, cities, expenses, fixedCosts } from '@/db/schema';
 import { asc } from 'drizzle-orm';
 import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
 import { calcBurnRate, projectTotal } from '@/lib/burn-rate';
+import { getExpenseAudAmount } from '@/lib/expense-aud';
+import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
+import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
 
@@ -15,6 +18,8 @@ export async function GET() {
     const allFixed = await db.select().from(fixedCosts);
 
     const cityMap = new Map(allCities.map(c => [c.id, c]));
+    const legMap = new Map(allLegs.map(leg => [leg.id, leg]));
+    const { tripStart, tripEnd } = getTripWindow(allLegs);
 
     // Calculate planned budget from legs + fixed costs
     const legTotals = allLegs.map(leg => {
@@ -37,14 +42,14 @@ export async function GET() {
     const totalBudget = plannedLegsTotal + fixedTotal;
 
     // Calculate actual spend (non-excluded)
-    const activeExpenses = allExpenses.filter(e => !e.isExcluded);
-    const totalSpent = activeExpenses.reduce((s, e) => s + (e.amountAud ?? e.amount), 0);
-
-    // Trip dates
-    const legDates = allLegs.filter(l => l.startDate).map(l => l.startDate!).sort();
-    const legEndDates = allLegs.filter(l => l.endDate).map(l => l.endDate!).sort();
-    const tripStart = legDates[0] || null;
-    const tripEnd = legEndDates[legEndDates.length - 1] || null;
+    const activeExpenses = allExpenses.filter((expense) => {
+      if (expense.isExcluded) return false;
+      const matchedLeg = expense.legId
+        ? legMap.get(expense.legId)
+        : findLegForExpenseDate(expense.date, allLegs);
+      return Boolean(matchedLeg) || isWithinTripWindow(expense.date, tripStart, tripEnd);
+    });
+    const totalSpent = activeExpenses.reduce((s, e) => s + getExpenseAudAmount(e), 0);
 
     const today = new Date().toISOString().split('T')[0];
     const totalNights = allLegs.reduce((s, l) => s + l.nights, 0);
@@ -66,7 +71,7 @@ export async function GET() {
     // Burn rates
     const expenseData = activeExpenses.map(e => ({
       date: e.date,
-      amountAud: e.amountAud ?? e.amount,
+      amountAud: getExpenseAudAmount(e),
     }));
 
     const { tripAvg, windowAvg: sevenDayAvg } = calcBurnRate(totalSpent, daysElapsed, {
