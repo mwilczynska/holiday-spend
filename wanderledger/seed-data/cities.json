@@ -1,0 +1,655 @@
+{
+  "countries": [
+    { "id": "vietnam", "name": "Vietnam", "currencyCode": "VND", "region": "se_asia" },
+    { "id": "laos", "name": "Laos", "currencyCode": "LAK", "region": "se_asia" },
+    { "id": "cambodia", "name": "Cambodia", "currencyCode": "USD", "region": "se_asia" },
+    { "id": "philippines", "name": "Philippines", "currencyCode": "PHP", "region": "se_asia" },
+    { "id": "thailand", "name": "Thailand", "currencyCode": "THB", "region": "se_asia" },
+    { "id": "myanmar", "name": "Myanmar", "currencyCode": "MMK", "region": "se_asia" },
+    { "id": "malaysia", "name": "Malaysia", "currencyCode": "MYR", "region": "se_asia" },
+    { "id": "indonesia", "name": "Indonesia", "currencyCode": "IDR", "region": "se_asia" },
+    { "id": "singapore", "name": "Singapore", "currencyCode": "SGD", "region": "se_asia" },
+    { "id": "south-korea", "name": "South Korea", "currencyCode": "KRW", "region": "east_asia" },
+    { "id": "japan", "name": "Japan", "currencyCode": "JPY", "region": "east_asia" },
+    { "id": "china", "name": "China", "currencyCode": "CNY", "region": "east_asia" },
+    { "id": "taiwan", "name": "Taiwan", "currencyCode": "TWD", "region": "east_asia" },
+    { "id": "mongolia", "name": "Mongolia", "currencyCode": "MNT", "region": "east_asia" },
+    { "id": "india", "name": "India", "currencyCode": "INR", "region": "south_asia" },
+    { "id": "sri-lanka", "name": "Sri Lanka", "currencyCode": "LKR", "region": "south_asia" },
+    { "id": "nepal", "name": "Nepal", "currencyCode": "NPR", "region": "south_asia" },
+    { "id": "hungary", "name": "Hungary", "currencyCode": "HUF", "region": "europe" },
+    { "id": "uk", "name": "United Kingdom", "currencyCode": "GBP", "region": "europe" },
+    { "id": "mexico", "name": "Mexico", "currencyCode": "MXN", "region": "americas" }
+  ],
+  "cities": [
+    {
+      "id": "ho-chi-minh", "countryId": "vietnam", "name": "Ho Chi Minh City",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 12, "foodBudget": 20, "foodMid": 40, "foodHigh": 75,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3, "drinksModerate": 11, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 65,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "hanoi", "countryId": "vietnam", "name": "Hanoi",
+      "accomHostel": 12, "accom1star": 25, "accom2star": 40, "accom3star": 65, "accom4star": 110,
+      "foodStreet": 15, "foodBudget": 25, "foodMid": 45, "foodHigh": 80,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3.5, "drinkWineGlass": 6, "drinkCocktail": 8, "drinkCoffee": 2,
+      "drinksLight": 3, "drinksModerate": 12, "drinksHeavy": 30,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 10, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "can-tho", "countryId": "vietnam", "name": "Can Tho",
+      "accomHostel": 8, "accom1star": 15, "accom2star": 28, "accom3star": 45, "accom4star": 80,
+      "foodStreet": 10, "foodBudget": 16, "foodMid": 30, "foodHigh": 55,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 50,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "mui-ne", "countryId": "vietnam", "name": "Mui Ne",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 60, "accom4star": 110,
+      "foodStreet": 12, "foodBudget": 20, "foodMid": 38, "foodHigh": 70,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 1.8,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 26,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Beach town"
+    },
+    {
+      "id": "hue", "countryId": "vietnam", "name": "Hue",
+      "accomHostel": 8, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 90,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 32, "foodHigh": 60,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Imperial city"
+    },
+    {
+      "id": "hoi-an", "countryId": "vietnam", "name": "Hoi An",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 10, "drinksHeavy": 25,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Old town, tailoring"
+    },
+    {
+      "id": "cat-ba", "countryId": "vietnam", "name": "Cat Ba",
+      "accomHostel": 8, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 90,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 40, "activitiesHigh": 80,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Ha Long Bay gateway"
+    },
+    {
+      "id": "ninh-binh", "countryId": "vietnam", "name": "Ninh Binh",
+      "accomHostel": 8, "accom1star": 15, "accom2star": 28, "accom3star": 45, "accom4star": 85,
+      "foodStreet": 10, "foodBudget": 16, "foodMid": 30, "foodHigh": 55,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 55,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Tam Coc, Trang An"
+    },
+    {
+      "id": "pu-luong", "countryId": "vietnam", "name": "Pu Luong",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 90,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 32, "foodHigh": 55,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 50,
+      "transportLocal": 10, "estimationSource": "manual", "notes": "Nature reserve, homestays"
+    },
+    {
+      "id": "da-nang", "countryId": "vietnam", "name": "Da Nang",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 12, "foodBudget": 20, "foodMid": 38, "foodHigh": 70,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 10, "drinksHeavy": 25,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 65,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Beach city"
+    },
+    {
+      "id": "da-lat", "countryId": "vietnam", "name": "Da Lat",
+      "accomHostel": 8, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 90,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 32, "foodHigh": 60,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 28, "activitiesHigh": 55,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Highland city"
+    },
+    {
+      "id": "nha-trang", "countryId": "vietnam", "name": "Nha Trang",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 12, "foodBudget": 20, "foodMid": 38, "foodHigh": 70,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 10, "drinksHeavy": 25,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Beach resort city"
+    },
+    {
+      "id": "sapa", "countryId": "vietnam", "name": "Sapa",
+      "accomHostel": 8, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 90,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 32, "foodHigh": 55,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Trekking, rice terraces"
+    },
+    {
+      "id": "phu-quoc", "countryId": "vietnam", "name": "Phu Quoc",
+      "accomHostel": 12, "accom1star": 22, "accom2star": 40, "accom3star": 65, "accom4star": 120,
+      "foodStreet": 14, "foodBudget": 22, "foodMid": 42, "foodHigh": 80,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 3, "drinkWineGlass": 6, "drinkCocktail": 8, "drinkCoffee": 2,
+      "drinksLight": 3, "drinksModerate": 11, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 40, "activitiesHigh": 80,
+      "transportLocal": 10, "estimationSource": "manual", "notes": "Island"
+    },
+
+    {
+      "id": "luang-prabang", "countryId": "laos", "name": "Luang Prabang",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 60, "accom4star": 110,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3, "drinksModerate": 11, "drinksHeavy": 26,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "UNESCO town"
+    },
+    {
+      "id": "vientiane", "countryId": "laos", "name": "Vientiane",
+      "accomHostel": 8, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 90,
+      "foodStreet": 8, "foodBudget": 15, "foodMid": 28, "foodHigh": 55,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 22, "activitiesHigh": 45,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Capital"
+    },
+    {
+      "id": "don-det", "countryId": "laos", "name": "Don Det",
+      "accomHostel": 6, "accom1star": 12, "accom2star": 22, "accom3star": 38, "accom4star": 65,
+      "foodStreet": 7, "foodBudget": 12, "foodMid": 22, "foodHigh": 40,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2, "drinkWineGlass": 4, "drinkCocktail": 5, "drinkCoffee": 1.2,
+      "drinksLight": 2, "drinksModerate": 7, "drinksHeavy": 18,
+      "activitiesFree": 0, "activitiesBudget": 8, "activitiesMid": 18, "activitiesHigh": 35,
+      "transportLocal": 3, "estimationSource": "manual", "notes": "4000 Islands"
+    },
+    {
+      "id": "vang-vieng", "countryId": "laos", "name": "Vang Vieng",
+      "accomHostel": 8, "accom1star": 15, "accom2star": 28, "accom3star": 48, "accom4star": 85,
+      "foodStreet": 8, "foodBudget": 14, "foodMid": 26, "foodHigh": 50,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 4.5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 50,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Tubing, kayaking"
+    },
+
+    {
+      "id": "phnom-penh", "countryId": "cambodia", "name": "Phnom Penh",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 12, "foodBudget": 20, "foodMid": 38, "foodHigh": 70,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 2.5, "drinksModerate": 10, "drinksHeavy": 25,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "siem-reap", "countryId": "cambodia", "name": "Siem Reap",
+      "accomHostel": 8, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 95,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.8,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Angkor Wat"
+    },
+    {
+      "id": "kampot", "countryId": "cambodia", "name": "Kampot",
+      "accomHostel": 7, "accom1star": 15, "accom2star": 25, "accom3star": 42, "accom4star": 80,
+      "foodStreet": 8, "foodBudget": 15, "foodMid": 28, "foodHigh": 55,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 4.5, "drinkCocktail": 5.5, "drinkCoffee": 1.5,
+      "drinksLight": 2, "drinksModerate": 8, "drinksHeavy": 20,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 22, "activitiesHigh": 45,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Pepper country"
+    },
+    {
+      "id": "sihanoukville", "countryId": "cambodia", "name": "Sihanoukville",
+      "accomHostel": 8, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 95,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.8,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Beach/islands gateway"
+    },
+    {
+      "id": "battambang", "countryId": "cambodia", "name": "Battambang",
+      "accomHostel": 7, "accom1star": 14, "accom2star": 24, "accom3star": 40, "accom4star": 75,
+      "foodStreet": 8, "foodBudget": 14, "foodMid": 26, "foodHigh": 50,
+      "drinkLocalBeer": 1, "drinkImportBeer": 2, "drinkWineGlass": 4, "drinkCocktail": 5, "drinkCoffee": 1.2,
+      "drinksLight": 2, "drinksModerate": 7, "drinksHeavy": 18,
+      "activitiesFree": 0, "activitiesBudget": 8, "activitiesMid": 20, "activitiesHigh": 40,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Colonial charm"
+    },
+
+    {
+      "id": "santa-fe", "countryId": "philippines", "name": "Santa Fe (Bantayan)",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 95,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 32, "foodHigh": 60,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.8,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 50,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Bantayan Island"
+    },
+    {
+      "id": "manila", "countryId": "philippines", "name": "Manila",
+      "accomHostel": 12, "accom1star": 22, "accom2star": 40, "accom3star": 65, "accom4star": 120,
+      "foodStreet": 12, "foodBudget": 20, "foodMid": 40, "foodHigh": 75,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2.5,
+      "drinksLight": 3, "drinksModerate": 11, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Capital"
+    },
+    {
+      "id": "cebu", "countryId": "philippines", "name": "Cebu City",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 2,
+      "drinksLight": 2.5, "drinksModerate": 10, "drinksHeavy": 24,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 28, "activitiesHigh": 55,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Visayas hub"
+    },
+    {
+      "id": "el-nido", "countryId": "philippines", "name": "El Nido",
+      "accomHostel": 12, "accom1star": 25, "accom2star": 45, "accom3star": 75, "accom4star": 140,
+      "foodStreet": 12, "foodBudget": 22, "foodMid": 42, "foodHigh": 80,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3, "drinkWineGlass": 6, "drinkCocktail": 8, "drinkCoffee": 2.5,
+      "drinksLight": 3, "drinksModerate": 12, "drinksHeavy": 30,
+      "activitiesFree": 0, "activitiesBudget": 20, "activitiesMid": 50, "activitiesHigh": 100,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Palawan, island hopping"
+    },
+    {
+      "id": "siargao", "countryId": "philippines", "name": "Siargao",
+      "accomHostel": 12, "accom1star": 22, "accom2star": 40, "accom3star": 65, "accom4star": 120,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 25,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Surf island"
+    },
+    {
+      "id": "bohol", "countryId": "philippines", "name": "Bohol",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 32, "foodHigh": 60,
+      "drinkLocalBeer": 1.2, "drinkImportBeer": 2.5, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.8,
+      "drinksLight": 2.5, "drinksModerate": 9, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Chocolate Hills, tarsiers"
+    },
+    {
+      "id": "boracay", "countryId": "philippines", "name": "Boracay",
+      "accomHostel": 14, "accom1star": 28, "accom2star": 50, "accom3star": 85, "accom4star": 160,
+      "foodStreet": 14, "foodBudget": 24, "foodMid": 45, "foodHigh": 85,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3.5, "drinkWineGlass": 6, "drinkCocktail": 8, "drinkCoffee": 2.5,
+      "drinksLight": 3.5, "drinksModerate": 13, "drinksHeavy": 32,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 40, "activitiesHigh": 80,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Beach resort island"
+    },
+
+    {
+      "id": "bangkok", "countryId": "thailand", "name": "Bangkok",
+      "accomHostel": 15, "accom1star": 30, "accom2star": 50, "accom3star": 80, "accom4star": 140,
+      "foodStreet": 18, "foodBudget": 30, "foodMid": 55, "foodHigh": 100,
+      "drinkLocalBeer": 3, "drinkImportBeer": 5, "drinkWineGlass": 8, "drinkCocktail": 12, "drinkCoffee": 3.5,
+      "drinksLight": 6, "drinksModerate": 20, "drinksHeavy": 45,
+      "activitiesFree": 0, "activitiesBudget": 20, "activitiesMid": 45, "activitiesHigh": 90,
+      "transportLocal": 12, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "chiang-mai", "countryId": "thailand", "name": "Chiang Mai",
+      "accomHostel": 12, "accom1star": 22, "accom2star": 38, "accom3star": 60, "accom4star": 110,
+      "foodStreet": 14, "foodBudget": 22, "foodMid": 40, "foodHigh": 75,
+      "drinkLocalBeer": 2.5, "drinkImportBeer": 4.5, "drinkWineGlass": 7, "drinkCocktail": 10, "drinkCoffee": 3,
+      "drinksLight": 5, "drinksModerate": 16, "drinksHeavy": 38,
+      "activitiesFree": 0, "activitiesBudget": 18, "activitiesMid": 40, "activitiesHigh": 80,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Seed data"
+    },
+
+    {
+      "id": "seoul", "countryId": "south-korea", "name": "Seoul",
+      "accomHostel": 30, "accom1star": 55, "accom2star": 85, "accom3star": 130, "accom4star": 230,
+      "foodStreet": 25, "foodBudget": 40, "foodMid": 70, "foodHigh": 130,
+      "drinkLocalBeer": 5, "drinkImportBeer": 8, "drinkWineGlass": 10, "drinkCocktail": 15, "drinkCoffee": 5,
+      "drinksLight": 10, "drinksModerate": 30, "drinksHeavy": 60,
+      "activitiesFree": 0, "activitiesBudget": 20, "activitiesMid": 45, "activitiesHigh": 90,
+      "transportLocal": 12, "estimationSource": "manual", "notes": "Capital"
+    },
+    {
+      "id": "busan", "countryId": "south-korea", "name": "Busan",
+      "accomHostel": 25, "accom1star": 45, "accom2star": 70, "accom3star": 110, "accom4star": 200,
+      "foodStreet": 22, "foodBudget": 35, "foodMid": 60, "foodHigh": 110,
+      "drinkLocalBeer": 4.5, "drinkImportBeer": 7, "drinkWineGlass": 9, "drinkCocktail": 14, "drinkCoffee": 4.5,
+      "drinksLight": 9, "drinksModerate": 27, "drinksHeavy": 55,
+      "activitiesFree": 0, "activitiesBudget": 18, "activitiesMid": 40, "activitiesHigh": 80,
+      "transportLocal": 10, "estimationSource": "manual", "notes": "Coastal city"
+    },
+    {
+      "id": "jeju", "countryId": "south-korea", "name": "Jeju",
+      "accomHostel": 28, "accom1star": 50, "accom2star": 80, "accom3star": 120, "accom4star": 220,
+      "foodStreet": 24, "foodBudget": 38, "foodMid": 65, "foodHigh": 120,
+      "drinkLocalBeer": 5, "drinkImportBeer": 7.5, "drinkWineGlass": 10, "drinkCocktail": 14, "drinkCoffee": 5,
+      "drinksLight": 10, "drinksModerate": 28, "drinksHeavy": 58,
+      "activitiesFree": 0, "activitiesBudget": 20, "activitiesMid": 45, "activitiesHigh": 90,
+      "transportLocal": 15, "estimationSource": "manual", "notes": "Volcanic island"
+    },
+
+    {
+      "id": "tokyo", "countryId": "japan", "name": "Tokyo",
+      "accomHostel": 40, "accom1star": 70, "accom2star": 110, "accom3star": 170, "accom4star": 300,
+      "foodStreet": 30, "foodBudget": 50, "foodMid": 90, "foodHigh": 160,
+      "drinkLocalBeer": 6, "drinkImportBeer": 9, "drinkWineGlass": 12, "drinkCocktail": 18, "drinkCoffee": 5,
+      "drinksLight": 12, "drinksModerate": 35, "drinksHeavy": 70,
+      "activitiesFree": 0, "activitiesBudget": 30, "activitiesMid": 60, "activitiesHigh": 120,
+      "transportLocal": 20, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "kyoto", "countryId": "japan", "name": "Kyoto",
+      "accomHostel": 35, "accom1star": 60, "accom2star": 95, "accom3star": 150, "accom4star": 280,
+      "foodStreet": 28, "foodBudget": 45, "foodMid": 80, "foodHigh": 150,
+      "drinkLocalBeer": 6, "drinkImportBeer": 9, "drinkWineGlass": 12, "drinkCocktail": 17, "drinkCoffee": 5,
+      "drinksLight": 12, "drinksModerate": 33, "drinksHeavy": 65,
+      "activitiesFree": 0, "activitiesBudget": 25, "activitiesMid": 55, "activitiesHigh": 110,
+      "transportLocal": 18, "estimationSource": "manual", "notes": "Temples, traditional culture"
+    },
+    {
+      "id": "osaka", "countryId": "japan", "name": "Osaka",
+      "accomHostel": 35, "accom1star": 60, "accom2star": 100, "accom3star": 155, "accom4star": 270,
+      "foodStreet": 25, "foodBudget": 42, "foodMid": 75, "foodHigh": 140,
+      "drinkLocalBeer": 5.5, "drinkImportBeer": 8, "drinkWineGlass": 11, "drinkCocktail": 16, "drinkCoffee": 4.5,
+      "drinksLight": 11, "drinksModerate": 32, "drinksHeavy": 64,
+      "activitiesFree": 0, "activitiesBudget": 25, "activitiesMid": 50, "activitiesHigh": 100,
+      "transportLocal": 18, "estimationSource": "manual", "notes": "Street food capital"
+    },
+    {
+      "id": "hiroshima", "countryId": "japan", "name": "Hiroshima",
+      "accomHostel": 30, "accom1star": 55, "accom2star": 85, "accom3star": 130, "accom4star": 230,
+      "foodStreet": 24, "foodBudget": 40, "foodMid": 70, "foodHigh": 130,
+      "drinkLocalBeer": 5, "drinkImportBeer": 8, "drinkWineGlass": 10, "drinkCocktail": 15, "drinkCoffee": 4.5,
+      "drinksLight": 10, "drinksModerate": 30, "drinksHeavy": 60,
+      "activitiesFree": 0, "activitiesBudget": 20, "activitiesMid": 45, "activitiesHigh": 90,
+      "transportLocal": 15, "estimationSource": "manual", "notes": "Peace Memorial"
+    },
+
+    {
+      "id": "beijing", "countryId": "china", "name": "Beijing",
+      "accomHostel": 15, "accom1star": 30, "accom2star": 50, "accom3star": 85, "accom4star": 160,
+      "foodStreet": 15, "foodBudget": 25, "foodMid": 50, "foodHigh": 95,
+      "drinkLocalBeer": 2, "drinkImportBeer": 5, "drinkWineGlass": 7, "drinkCocktail": 12, "drinkCoffee": 4,
+      "drinksLight": 5, "drinksModerate": 18, "drinksHeavy": 42,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 75,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Capital, Great Wall"
+    },
+    {
+      "id": "shanghai", "countryId": "china", "name": "Shanghai",
+      "accomHostel": 18, "accom1star": 35, "accom2star": 55, "accom3star": 95, "accom4star": 180,
+      "foodStreet": 15, "foodBudget": 28, "foodMid": 55, "foodHigh": 105,
+      "drinkLocalBeer": 2.5, "drinkImportBeer": 5.5, "drinkWineGlass": 8, "drinkCocktail": 14, "drinkCoffee": 4.5,
+      "drinksLight": 6, "drinksModerate": 20, "drinksHeavy": 48,
+      "activitiesFree": 0, "activitiesBudget": 18, "activitiesMid": 40, "activitiesHigh": 85,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Financial hub"
+    },
+    {
+      "id": "chengdu", "countryId": "china", "name": "Chengdu",
+      "accomHostel": 12, "accom1star": 25, "accom2star": 42, "accom3star": 70, "accom4star": 130,
+      "foodStreet": 12, "foodBudget": 22, "foodMid": 42, "foodHigh": 80,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 4, "drinkWineGlass": 6, "drinkCocktail": 10, "drinkCoffee": 3.5,
+      "drinksLight": 4, "drinksModerate": 15, "drinksHeavy": 35,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Pandas, Sichuan food"
+    },
+    {
+      "id": "guilin", "countryId": "china", "name": "Guilin",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 60, "accom4star": 110,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 65,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3.5, "drinkWineGlass": 5, "drinkCocktail": 8, "drinkCoffee": 3,
+      "drinksLight": 3.5, "drinksModerate": 12, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Karst mountains, Li River"
+    },
+    {
+      "id": "xian", "countryId": "china", "name": "Xi'an",
+      "accomHostel": 12, "accom1star": 22, "accom2star": 38, "accom3star": 65, "accom4star": 120,
+      "foodStreet": 10, "foodBudget": 20, "foodMid": 38, "foodHigh": 70,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 4, "drinkWineGlass": 6, "drinkCocktail": 10, "drinkCoffee": 3,
+      "drinksLight": 4, "drinksModerate": 14, "drinksHeavy": 32,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Terracotta Warriors"
+    },
+
+    {
+      "id": "ulaanbaatar", "countryId": "mongolia", "name": "Ulaanbaatar",
+      "accomHostel": 12, "accom1star": 25, "accom2star": 45, "accom3star": 75, "accom4star": 140,
+      "foodStreet": 12, "foodBudget": 22, "foodMid": 40, "foodHigh": 75,
+      "drinkLocalBeer": 2.5, "drinkImportBeer": 5, "drinkWineGlass": 7, "drinkCocktail": 10, "drinkCoffee": 3.5,
+      "drinksLight": 5, "drinksModerate": 16, "drinksHeavy": 38,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 80,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Capital, gateway to steppe"
+    },
+
+    {
+      "id": "taipei", "countryId": "taiwan", "name": "Taipei",
+      "accomHostel": 25, "accom1star": 45, "accom2star": 70, "accom3star": 110, "accom4star": 200,
+      "foodStreet": 20, "foodBudget": 32, "foodMid": 55, "foodHigh": 100,
+      "drinkLocalBeer": 4, "drinkImportBeer": 6, "drinkWineGlass": 8, "drinkCocktail": 12, "drinkCoffee": 4,
+      "drinksLight": 8, "drinksModerate": 24, "drinksHeavy": 50,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 70,
+      "transportLocal": 10, "estimationSource": "manual", "notes": "Night markets"
+    },
+
+    {
+      "id": "delhi", "countryId": "india", "name": "Delhi",
+      "accomHostel": 8, "accom1star": 15, "accom2star": 28, "accom3star": 50, "accom4star": 100,
+      "foodStreet": 8, "foodBudget": 14, "foodMid": 28, "foodHigh": 55,
+      "drinkLocalBeer": 2.5, "drinkImportBeer": 4, "drinkWineGlass": 6, "drinkCocktail": 8, "drinkCoffee": 2.5,
+      "drinksLight": 4, "drinksModerate": 14, "drinksHeavy": 32,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 55,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Capital"
+    },
+    {
+      "id": "mumbai", "countryId": "india", "name": "Mumbai",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 60, "accom4star": 120,
+      "foodStreet": 8, "foodBudget": 15, "foodMid": 30, "foodHigh": 60,
+      "drinkLocalBeer": 3, "drinkImportBeer": 5, "drinkWineGlass": 7, "drinkCocktail": 10, "drinkCoffee": 2.5,
+      "drinksLight": 5, "drinksModerate": 16, "drinksHeavy": 38,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 28, "activitiesHigh": 60,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Financial capital"
+    },
+    {
+      "id": "jaipur", "countryId": "india", "name": "Jaipur",
+      "accomHostel": 7, "accom1star": 14, "accom2star": 25, "accom3star": 45, "accom4star": 90,
+      "foodStreet": 7, "foodBudget": 12, "foodMid": 24, "foodHigh": 48,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5.5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3.5, "drinksModerate": 12, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 50,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Pink city, forts"
+    },
+    {
+      "id": "varanasi", "countryId": "india", "name": "Varanasi",
+      "accomHostel": 6, "accom1star": 12, "accom2star": 22, "accom3star": 40, "accom4star": 80,
+      "foodStreet": 6, "foodBudget": 10, "foodMid": 20, "foodHigh": 40,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5, "drinkCocktail": 6.5, "drinkCoffee": 1.8,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 24,
+      "activitiesFree": 0, "activitiesBudget": 8, "activitiesMid": 20, "activitiesHigh": 40,
+      "transportLocal": 4, "estimationSource": "manual", "notes": "Holy city, Ganges"
+    },
+    {
+      "id": "goa", "countryId": "india", "name": "Goa",
+      "accomHostel": 8, "accom1star": 16, "accom2star": 28, "accom3star": 50, "accom4star": 100,
+      "foodStreet": 8, "foodBudget": 14, "foodMid": 28, "foodHigh": 55,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3.5, "drinksModerate": 12, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 50,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Beaches, parties"
+    },
+    {
+      "id": "kochi", "countryId": "india", "name": "Kochi",
+      "accomHostel": 7, "accom1star": 14, "accom2star": 25, "accom3star": 45, "accom4star": 90,
+      "foodStreet": 7, "foodBudget": 12, "foodMid": 24, "foodHigh": 48,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3.5, "drinksModerate": 12, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 24, "activitiesHigh": 48,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Kerala backwaters gateway"
+    },
+    {
+      "id": "rishikesh", "countryId": "india", "name": "Rishikesh",
+      "accomHostel": 6, "accom1star": 12, "accom2star": 22, "accom3star": 38, "accom4star": 75,
+      "foodStreet": 6, "foodBudget": 10, "foodMid": 20, "foodHigh": 38,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 1.5,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 22,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 55,
+      "transportLocal": 4, "estimationSource": "manual", "notes": "Yoga, rafting"
+    },
+    {
+      "id": "agra", "countryId": "india", "name": "Agra",
+      "accomHostel": 6, "accom1star": 12, "accom2star": 22, "accom3star": 40, "accom4star": 85,
+      "foodStreet": 6, "foodBudget": 10, "foodMid": 22, "foodHigh": 42,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 1.8,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 24,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 30, "activitiesHigh": 55,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Taj Mahal"
+    },
+    {
+      "id": "udaipur", "countryId": "india", "name": "Udaipur",
+      "accomHostel": 7, "accom1star": 14, "accom2star": 25, "accom3star": 48, "accom4star": 95,
+      "foodStreet": 7, "foodBudget": 12, "foodMid": 24, "foodHigh": 48,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5.5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3.5, "drinksModerate": 12, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 50,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Lake city, palaces"
+    },
+
+    {
+      "id": "colombo", "countryId": "sri-lanka", "name": "Colombo",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 35, "accom3star": 60, "accom4star": 110,
+      "foodStreet": 8, "foodBudget": 15, "foodMid": 30, "foodHigh": 58,
+      "drinkLocalBeer": 2, "drinkImportBeer": 4, "drinkWineGlass": 6, "drinkCocktail": 8, "drinkCoffee": 2.5,
+      "drinksLight": 4, "drinksModerate": 14, "drinksHeavy": 32,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 55,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Capital"
+    },
+    {
+      "id": "kandy", "countryId": "sri-lanka", "name": "Kandy",
+      "accomHostel": 8, "accom1star": 16, "accom2star": 28, "accom3star": 50, "accom4star": 95,
+      "foodStreet": 7, "foodBudget": 12, "foodMid": 24, "foodHigh": 48,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3.5, "drinksModerate": 12, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 22, "activitiesHigh": 45,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Temple of the Tooth"
+    },
+    {
+      "id": "ella", "countryId": "sri-lanka", "name": "Ella",
+      "accomHostel": 7, "accom1star": 14, "accom2star": 25, "accom3star": 45, "accom4star": 85,
+      "foodStreet": 6, "foodBudget": 10, "foodMid": 22, "foodHigh": 42,
+      "drinkLocalBeer": 1.8, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 6, "drinkCoffee": 2,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 24,
+      "activitiesFree": 0, "activitiesBudget": 8, "activitiesMid": 20, "activitiesHigh": 40,
+      "transportLocal": 4, "estimationSource": "manual", "notes": "Hill country, trains"
+    },
+    {
+      "id": "galle", "countryId": "sri-lanka", "name": "Galle",
+      "accomHostel": 8, "accom1star": 16, "accom2star": 30, "accom3star": 55, "accom4star": 100,
+      "foodStreet": 7, "foodBudget": 14, "foodMid": 28, "foodHigh": 52,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5.5, "drinkCocktail": 7.5, "drinkCoffee": 2.5,
+      "drinksLight": 4, "drinksModerate": 13, "drinksHeavy": 30,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 24, "activitiesHigh": 50,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Dutch fort, beaches"
+    },
+
+    {
+      "id": "kathmandu", "countryId": "nepal", "name": "Kathmandu",
+      "accomHostel": 8, "accom1star": 15, "accom2star": 28, "accom3star": 48, "accom4star": 90,
+      "foodStreet": 7, "foodBudget": 12, "foodMid": 24, "foodHigh": 48,
+      "drinkLocalBeer": 2, "drinkImportBeer": 3.5, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3.5, "drinksModerate": 12, "drinksHeavy": 28,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 25, "activitiesHigh": 55,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Temples, trekking gateway"
+    },
+    {
+      "id": "pokhara", "countryId": "nepal", "name": "Pokhara",
+      "accomHostel": 6, "accom1star": 12, "accom2star": 22, "accom3star": 40, "accom4star": 80,
+      "foodStreet": 6, "foodBudget": 10, "foodMid": 20, "foodHigh": 40,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3, "drinkWineGlass": 4.5, "drinkCocktail": 6, "drinkCoffee": 1.8,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 24,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 30, "activitiesHigh": 65,
+      "transportLocal": 4, "estimationSource": "manual", "notes": "Annapurna, lakeside"
+    },
+
+    {
+      "id": "kuala-lumpur", "countryId": "malaysia", "name": "Kuala Lumpur",
+      "accomHostel": 12, "accom1star": 22, "accom2star": 38, "accom3star": 65, "accom4star": 120,
+      "foodStreet": 12, "foodBudget": 20, "foodMid": 38, "foodHigh": 70,
+      "drinkLocalBeer": 4, "drinkImportBeer": 6, "drinkWineGlass": 8, "drinkCocktail": 12, "drinkCoffee": 3,
+      "drinksLight": 6, "drinksModerate": 20, "drinksHeavy": 45,
+      "activitiesFree": 0, "activitiesBudget": 12, "activitiesMid": 30, "activitiesHigh": 60,
+      "transportLocal": 6, "estimationSource": "manual", "notes": "Capital, Petronas"
+    },
+
+    {
+      "id": "bali", "countryId": "indonesia", "name": "Bali (Ubud/Canggu)",
+      "accomHostel": 10, "accom1star": 20, "accom2star": 38, "accom3star": 65, "accom4star": 130,
+      "foodStreet": 10, "foodBudget": 18, "foodMid": 35, "foodHigh": 70,
+      "drinkLocalBeer": 2.5, "drinkImportBeer": 4.5, "drinkWineGlass": 7, "drinkCocktail": 10, "drinkCoffee": 2.5,
+      "drinksLight": 5, "drinksModerate": 16, "drinksHeavy": 38,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 35, "activitiesHigh": 75,
+      "transportLocal": 10, "estimationSource": "manual", "notes": "Temples, rice terraces, surf"
+    },
+
+    {
+      "id": "singapore-city", "countryId": "singapore", "name": "Singapore",
+      "accomHostel": 30, "accom1star": 60, "accom2star": 95, "accom3star": 150, "accom4star": 280,
+      "foodStreet": 18, "foodBudget": 30, "foodMid": 60, "foodHigh": 120,
+      "drinkLocalBeer": 8, "drinkImportBeer": 12, "drinkWineGlass": 14, "drinkCocktail": 22, "drinkCoffee": 5,
+      "drinksLight": 14, "drinksModerate": 40, "drinksHeavy": 80,
+      "activitiesFree": 0, "activitiesBudget": 20, "activitiesMid": 45, "activitiesHigh": 90,
+      "transportLocal": 12, "estimationSource": "manual", "notes": "City-state, hawker centres"
+    },
+
+    {
+      "id": "yangon", "countryId": "myanmar", "name": "Yangon",
+      "accomHostel": 10, "accom1star": 18, "accom2star": 30, "accom3star": 50, "accom4star": 90,
+      "foodStreet": 8, "foodBudget": 14, "foodMid": 26, "foodHigh": 50,
+      "drinkLocalBeer": 1.5, "drinkImportBeer": 3, "drinkWineGlass": 5, "drinkCocktail": 7, "drinkCoffee": 2,
+      "drinksLight": 3, "drinksModerate": 10, "drinksHeavy": 24,
+      "activitiesFree": 0, "activitiesBudget": 10, "activitiesMid": 22, "activitiesHigh": 45,
+      "transportLocal": 5, "estimationSource": "manual", "notes": "Shwedagon Pagoda"
+    },
+
+    {
+      "id": "budapest", "countryId": "hungary", "name": "Budapest",
+      "accomHostel": 20, "accom1star": 40, "accom2star": 65, "accom3star": 100, "accom4star": 180,
+      "foodStreet": 20, "foodBudget": 35, "foodMid": 60, "foodHigh": 110,
+      "drinkLocalBeer": 3, "drinkImportBeer": 5, "drinkWineGlass": 6, "drinkCocktail": 12, "drinkCoffee": 3,
+      "drinksLight": 6, "drinksModerate": 20, "drinksHeavy": 45,
+      "activitiesFree": 0, "activitiesBudget": 20, "activitiesMid": 45, "activitiesHigh": 90,
+      "transportLocal": 10, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "london", "countryId": "uk", "name": "London",
+      "accomHostel": 45, "accom1star": 90, "accom2star": 150, "accom3star": 230, "accom4star": 400,
+      "foodStreet": 35, "foodBudget": 55, "foodMid": 100, "foodHigh": 180,
+      "drinkLocalBeer": 9, "drinkImportBeer": 12, "drinkWineGlass": 14, "drinkCocktail": 20, "drinkCoffee": 6,
+      "drinksLight": 18, "drinksModerate": 45, "drinksHeavy": 85,
+      "activitiesFree": 0, "activitiesBudget": 30, "activitiesMid": 65, "activitiesHigh": 130,
+      "transportLocal": 25, "estimationSource": "manual", "notes": "Seed data"
+    },
+    {
+      "id": "mexico-city", "countryId": "mexico", "name": "Mexico City",
+      "accomHostel": 15, "accom1star": 30, "accom2star": 50, "accom3star": 80, "accom4star": 150,
+      "foodStreet": 15, "foodBudget": 28, "foodMid": 50, "foodHigh": 95,
+      "drinkLocalBeer": 2.5, "drinkImportBeer": 4.5, "drinkWineGlass": 7, "drinkCocktail": 10, "drinkCoffee": 3,
+      "drinksLight": 5, "drinksModerate": 18, "drinksHeavy": 40,
+      "activitiesFree": 0, "activitiesBudget": 15, "activitiesMid": 40, "activitiesHigh": 80,
+      "transportLocal": 8, "estimationSource": "manual", "notes": "Seed data"
+    }
+  ]
+}

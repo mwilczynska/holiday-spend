@@ -1,0 +1,57 @@
+import type { LLMProvider, LLMEstimationRequest, LLMEstimationResponse } from '../llm-provider';
+import type { CityEstimateData } from '@/types';
+
+export class OpenAIProvider implements LLMProvider {
+  name = 'openai';
+  private apiKey: string;
+  private model: string;
+
+  constructor(apiKey: string, model?: string) {
+    this.apiKey = apiKey;
+    this.model = model || 'gpt-4o';
+  }
+
+  async estimate(req: LLMEstimationRequest, prompt: string): Promise<LLMEstimationResponse> {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.apiKey}`,
+      },
+      body: JSON.stringify({
+        model: this.model,
+        max_tokens: 2048,
+        messages: [{ role: 'user', content: prompt }],
+      }),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`OpenAI API error ${res.status}: ${errText}`);
+    }
+
+    const data = await res.json();
+    const text = data.choices?.[0]?.message?.content || '';
+
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error('No JSON found in LLM response');
+    }
+
+    const parsed = JSON.parse(jsonMatch[0]);
+    const { reasoning, confidence, ...costData } = parsed;
+
+    const cleaned: Partial<CityEstimateData> = {};
+    for (const [key, value] of Object.entries(costData)) {
+      if (typeof value === 'number' && value >= 0) {
+        (cleaned as Record<string, number>)[key] = Math.round(value * 100) / 100;
+      }
+    }
+
+    return {
+      data: cleaned,
+      reasoning: reasoning || undefined,
+      confidence: ['low', 'medium', 'high'].includes(confidence) ? confidence : 'medium',
+    };
+  }
+}
