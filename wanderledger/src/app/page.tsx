@@ -42,6 +42,7 @@ interface BurnRatePoint {
   plannedDaily: number;
   countryName: string | null;
   cityName: string | null;
+  legStatus: string | null;
 }
 
 interface CountryBand {
@@ -69,7 +70,7 @@ function BurnRateTooltip({
   label,
 }: {
   active?: boolean;
-  payload?: Array<{ color?: string; dataKey?: string; name?: string; value?: number; payload?: BurnRatePoint }>;
+  payload?: Array<{ payload?: BurnRatePoint }>;
   label?: string;
 }) {
   if (!active || !payload || payload.length === 0) return null;
@@ -86,16 +87,19 @@ function BurnRateTooltip({
           : point.countryName || 'Outside planned legs'}
       </div>
       <div className="mt-2 space-y-1">
-        {payload.map((entry) => (
-          <div key={entry.dataKey} className="flex items-center justify-between gap-4">
+        {[
+          { label: 'Spent', color: point.legStatus === 'planned' ? '#9ca3af' : '#16a34a', value: point.cumulative },
+          { label: 'Estimated', color: '#0f766e', value: point.plannedCumulative },
+        ].map((entry) => (
+          <div key={entry.label} className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <span
                 className="h-2.5 w-2.5 rounded-full"
-                style={{ backgroundColor: entry.color || '#94a3b8' }}
+                style={{ backgroundColor: entry.color }}
               />
-              <span>{entry.name}</span>
+              <span>{entry.label}</span>
             </div>
-            <span className="font-medium">{fmtAud(Number(entry.value || 0))}</span>
+            <span className="font-medium">{fmtAud(entry.value)}</span>
           </div>
         ))}
       </div>
@@ -161,6 +165,13 @@ export default function DashboardPage() {
       Planned: Math.round(c.planned),
       Actual: Math.round(c.actual),
     }));
+
+  const firstPlannedIndex = burnData.findIndex((point) => point.legStatus === 'planned');
+  const chartBurnData = burnData.map((point, index) => ({
+    ...point,
+    spentActual: firstPlannedIndex === -1 || index <= firstPlannedIndex ? point.cumulative : null,
+    spentPlannedTail: firstPlannedIndex !== -1 && index >= firstPlannedIndex ? point.cumulative : null,
+  }));
 
   return (
     <div className="space-y-6">
@@ -307,7 +318,7 @@ export default function DashboardPage() {
           <CardHeader className="pb-2"><CardTitle className="text-sm">Cumulative Spend Over Time</CardTitle></CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={burnData} margin={{ top: 24, right: 16, left: 0, bottom: 0 }}>
+              <LineChart data={chartBurnData} margin={{ top: 24, right: 16, left: 0, bottom: 0 }}>
                 <XAxis dataKey="date" tick={{ fontSize: 10 }} />
                 <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`} />
                 <Tooltip content={<BurnRateTooltip />} />
@@ -328,8 +339,9 @@ export default function DashboardPage() {
                     } : undefined}
                   />
                 ))}
-                <Line type="monotone" dataKey="cumulative" name="Spent" stroke="#3b82f6" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#6b7280" strokeWidth={2} strokeDasharray="6 4" dot={false} />
+                <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={2} dot={false} legendType="none" />
+                <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
                 {budgetCeiling > 0 && (
                   <ReferenceLine y={budgetCeiling} stroke="#ef4444" strokeDasharray="5 5" label={{ value: `Budget ${fmtAud(budgetCeiling)}`, position: 'right', fontSize: 10, fill: '#ef4444' }} />
                 )}

@@ -96,11 +96,13 @@ export async function GET() {
       }
     }
 
-    const metadataByDate = new Map<string, { countryName: string | null; cityName: string | null }>();
+    const metadataByDate = new Map<string, { countryName: string | null; cityName: string | null; legStatus: string | null }>();
     for (const date of enumerateDates(seriesStart, seriesEnd)) {
-      const matchedLeg = findLegForExpenseDate(date, allLegs);
+      const matchedLegRef = findLegForExpenseDate(date, allLegs);
+      const matchedLeg = matchedLegRef ? legMap.get(matchedLegRef.id) ?? null : null;
+
       if (!matchedLeg) {
-        metadataByDate.set(date, { countryName: null, cityName: null });
+        metadataByDate.set(date, { countryName: null, cityName: null, legStatus: null });
         continue;
       }
 
@@ -110,6 +112,7 @@ export async function GET() {
       metadataByDate.set(date, {
         countryName: country?.name ?? null,
         cityName: city?.name ?? null,
+        legStatus: matchedLeg.status ?? null,
       });
     }
 

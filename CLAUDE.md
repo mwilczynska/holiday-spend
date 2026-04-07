@@ -77,6 +77,7 @@
 - Dashboard actual-spend calculations now ignore raw non-AUD amounts if AUD conversion is missing, instead of treating local currency as AUD
 - Dashboard spend is now limited to the actual trip window instead of all historical Wise account activity
 - The cumulative spend chart now includes an estimated cumulative line based on planned daily leg costs, plus country/city hover context and subtle country shading across the trip timeline
+- The cumulative spend chart now renders the spent line in green for actual trip dates and fades it to grey once the chart enters planned dates, while keeping the estimated line distinct
 - The country comparison table now shows each country's trip status (`planned`, `active`, or `completed`) next to its name
 - Added itinerary date validation so a leg cannot be saved with `endDate < startDate`
 - Local data cleanup applied: `mui-ne` date range corrected so 2026-02-16 to 2026-02-18 Vietnam expenses no longer fall into `Unassigned`

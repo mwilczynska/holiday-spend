@@ -11,6 +11,7 @@ export interface BurnRatePoint {
   plannedDaily: number;
   countryName: string | null;
   cityName: string | null;
+  legStatus: string | null;
 }
 
 export interface CountryBand {
@@ -43,6 +44,7 @@ export function buildCumulativeSpend(expenses: DailyExpense[]): BurnRatePoint[] 
       plannedDaily: 0,
       countryName: null,
       cityName: null,
+      legStatus: null,
     };
   });
 }
@@ -70,7 +72,7 @@ export function buildBurnRateSeries(params: {
   endDate: string;
   actualByDate: Map<string, number>;
   plannedByDate: Map<string, number>;
-  metadataByDate: Map<string, { countryName: string | null; cityName: string | null }>;
+  metadataByDate: Map<string, { countryName: string | null; cityName: string | null; legStatus: string | null }>;
 }): BurnRatePoint[] {
   const { startDate, endDate, actualByDate, plannedByDate, metadataByDate } = params;
   let cumulative = 0;
@@ -79,7 +81,7 @@ export function buildBurnRateSeries(params: {
   return enumerateDates(startDate, endDate).map((date) => {
     const daily = actualByDate.get(date) || 0;
     const plannedDaily = plannedByDate.get(date) || 0;
-    const metadata = metadataByDate.get(date) || { countryName: null, cityName: null };
+    const metadata = metadataByDate.get(date) || { countryName: null, cityName: null, legStatus: null };
 
     cumulative += daily;
     plannedCumulative += plannedDaily;
@@ -92,6 +94,7 @@ export function buildBurnRateSeries(params: {
       plannedDaily,
       countryName: metadata.countryName,
       cityName: metadata.cityName,
+      legStatus: metadata.legStatus,
     };
   });
 }
