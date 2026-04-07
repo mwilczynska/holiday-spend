@@ -113,7 +113,7 @@
 - [x] Expenses CRUD API routes (GET with filters, POST, PUT, DELETE, PATCH exclude, bulk actions)
 - [x] Quick-add page (`/track/add`) â€” large amount, currency auto-detect from active leg, 6 emoji category buttons, split toggle, logged_by
 - [x] Expense list (`/track`) â€” filters (category, source, date range), checkboxes, bulk exclude/include, edit dialog, delete
-- [x] Expense table refresh (`/track`) â€” desktop table with persistent horizontal scroll when needed, mobile card layout, city/country columns from itinerary assignment, and editable leg reassignment for flights, tickets, and other pre-paid items
+- [x] Expense table refresh (`/track`) â€” compact desktop table focused on date/location/category/amount/assignment with expandable detail rows, mobile card layout, city/country columns from itinerary assignment, and editable leg reassignment for flights, tickets, and other pre-paid items
 
 ### 2b. Tagging System â€” DONE
 - [x] Tags CRUD API routes (GET with counts/sums, POST, PUT, DELETE)

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { Fragment, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { EXPENSE_CATEGORIES } from '@/types';
-import { Edit, Eye, EyeOff, Tags, Trash2, Upload, XCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Edit, Eye, EyeOff, Tags, Trash2, Upload, XCircle } from 'lucide-react';
 
 interface Expense {
   id: number;
@@ -81,6 +81,7 @@ export default function TrackPage() {
   const [filterFrom, setFilterFrom] = useState('');
   const [filterTo, setFilterTo] = useState('');
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+  const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set());
   const [editExpense, setEditExpense] = useState<Expense | null>(null);
   const [editForm, setEditForm] = useState<ExpenseEditForm | null>(null);
 
@@ -176,6 +177,16 @@ export default function TrackPage() {
       next.add(id);
     }
     setSelectedIds(next);
+  };
+
+  const toggleExpanded = (id: number) => {
+    const next = new Set(expandedIds);
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
+    setExpandedIds(next);
   };
 
   const handleBulkAction = async (action: string, extra?: Record<string, unknown>) => {
@@ -328,104 +339,139 @@ export default function TrackPage() {
         ))}
       </div>
 
-      <div className="hidden overflow-x-scroll rounded-lg border bg-background pb-2 lg:block">
-        <table className="w-full min-w-[1080px] table-fixed text-sm xl:min-w-0">
+      <div className="hidden rounded-lg border bg-background lg:block">
+        <table className="w-full table-fixed text-sm">
           <thead className="bg-muted/50 text-left">
             <tr className="border-b">
               <th className="w-10 px-3 py-2">
                 <span className="sr-only">Select</span>
               </th>
               <th className="w-[8rem] px-3 py-2 font-medium">Date</th>
-              <th className="w-[12rem] px-3 py-2 font-medium">Country</th>
-              <th className="w-[10rem] px-3 py-2 font-medium">City</th>
-              <th className="w-[9rem] px-3 py-2 font-medium">Category</th>
-              <th className="w-[14rem] px-3 py-2 font-medium">Description</th>
-              <th className="w-[12rem] px-3 py-2 font-medium">Merchant</th>
-              <th className="w-[8rem] px-3 py-2 font-medium">Source</th>
+              <th className="w-[18rem] px-3 py-2 font-medium">Location</th>
+              <th className="w-[10rem] px-3 py-2 font-medium">Category</th>
               <th className="w-[9rem] px-3 py-2 font-medium">Amount</th>
-              <th className="w-[7rem] px-3 py-2 font-medium">Status</th>
+              <th className="px-3 py-2 font-medium">Assignment</th>
               <th className="w-[8rem] px-3 py-2 text-right font-medium">Actions</th>
+              <th className="w-[4rem] px-3 py-2 text-right font-medium">More</th>
             </tr>
           </thead>
           <tbody>
             {expenses.length === 0 && (
               <tr>
-                <td colSpan={11} className="py-12 text-center text-muted-foreground">
+                <td colSpan={7} className="py-12 text-center text-muted-foreground">
                   No expenses yet.
                 </td>
               </tr>
             )}
-            {expenses.map((expense) => (
-              <tr key={expense.id} className={`border-b align-top ${expense.isExcluded ? 'bg-muted/20 text-muted-foreground' : ''}`}>
-                <td className="px-3 py-3">
-                  <input
-                    type="checkbox"
-                    checked={selectedIds.has(expense.id)}
-                    onChange={() => toggleSelect(expense.id)}
-                    className="h-4 w-4"
-                  />
-                </td>
-                <td className="whitespace-nowrap px-3 py-3">{expense.date}</td>
-                <td className="px-3 py-3">
-                  <div className="font-medium">{expense.countryName || 'Unassigned'}</div>
-                  <div className="text-xs text-muted-foreground">
-                    {expense.countryName ? formatLegRange(expense.assignmentStartDate, expense.assignmentEndDate) : 'No itinerary leg'}
-                  </div>
-                </td>
-                <td className="px-3 py-3">{expense.cityName || '-'}</td>
-                <td className="px-3 py-3">
-                  <Badge variant="outline">{categoryLabel(expense.category)}</Badge>
-                  {expense.subcategory && (
-                    <div className="mt-1 text-xs text-muted-foreground">{expense.subcategory}</div>
+            {expenses.map((expense) => {
+              const isExpanded = expandedIds.has(expense.id);
+
+              return (
+                <Fragment key={expense.id}>
+                  <tr className={`border-b align-top ${expense.isExcluded ? 'bg-muted/20 text-muted-foreground' : ''}`}>
+                    <td className="px-3 py-3">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(expense.id)}
+                        onChange={() => toggleSelect(expense.id)}
+                        className="h-4 w-4"
+                      />
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3">{expense.date}</td>
+                    <td className="px-3 py-3">
+                      <div className="font-medium">{expense.cityName ? `${expense.cityName}, ${expense.countryName}` : expense.countryName || 'Unassigned'}</div>
+                      <div className="truncate text-xs text-muted-foreground">
+                        {expense.countryName ? formatLegRange(expense.assignmentStartDate, expense.assignmentEndDate) : 'No itinerary leg'}
+                      </div>
+                    </td>
+                    <td className="px-3 py-3">
+                      <Badge variant="outline">{categoryLabel(expense.category)}</Badge>
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3">
+                      <div className="font-medium">
+                        {expense.amount.toFixed(2)} {expense.currency}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {expense.amountAud != null
+                          ? `$${expense.amountAud.toFixed(2)} AUD`
+                          : expense.currency === 'AUD'
+                            ? `$${expense.amount.toFixed(2)} AUD`
+                            : 'No AUD conversion'}
+                      </div>
+                    </td>
+                    <td className="px-3 py-3">
+                      <div className="text-sm font-medium">
+                        {expense.legId != null ? 'Assigned' : 'Unassigned'}
+                      </div>
+                      <div className="truncate text-xs text-muted-foreground">
+                        {expense.legId != null ? 'Counts against this itinerary leg' : 'Will not roll into a destination'}
+                      </div>
+                    </td>
+                    <td className="px-3 py-3">
+                      <div className="flex justify-end gap-1">
+                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
+                          {expense.isExcluded ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
+                        </Button>
+                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
+                          <Edit className="h-3 w-3" />
+                        </Button>
+                        <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </td>
+                    <td className="px-3 py-3">
+                      <div className="flex justify-end">
+                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => toggleExpanded(expense.id)}>
+                          {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                  {isExpanded && (
+                    <tr className={expense.isExcluded ? 'bg-muted/10 text-muted-foreground' : 'bg-muted/5'}>
+                      <td colSpan={7} className="px-3 py-3">
+                        <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+                          <div>
+                            <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Description</div>
+                            <div className="mt-1 text-sm">{displayText(expense.description)}</div>
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Merchant</div>
+                            <div className="mt-1 text-sm">{displayText(expense.merchant)}</div>
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Source</div>
+                            <div className="mt-1 flex items-center gap-2 text-sm">
+                              <span>{formatSource(expense.source)}</span>
+                              {expense.source === 'wise_csv' ? <Badge variant="secondary">Wise</Badge> : null}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Status</div>
+                            <div className="mt-1">
+                              {expense.isExcluded ? (
+                                <Badge variant="destructive">Excluded</Badge>
+                              ) : (
+                                <Badge variant="secondary">Included</Badge>
+                              )}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Subcategory</div>
+                            <div className="mt-1 text-sm">{displayText(expense.subcategory)}</div>
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Logged By</div>
+                            <div className="mt-1 text-sm">{displayText(expense.loggedBy)}</div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
                   )}
-                </td>
-                <td className="px-3 py-3">
-                  <div className="break-words">{displayText(expense.description)}</div>
-                </td>
-                <td className="px-3 py-3">
-                  <div className="break-words">{displayText(expense.merchant)}</div>
-                  {expense.loggedBy && (
-                    <div className="mt-1 text-xs text-muted-foreground">Logged by {expense.loggedBy}</div>
-                  )}
-                </td>
-                <td className="px-3 py-3">
-                  <div>{formatSource(expense.source)}</div>
-                  {expense.source === 'wise_csv' && <Badge variant="secondary" className="mt-1">Wise</Badge>}
-                </td>
-                <td className="whitespace-nowrap px-3 py-3">
-                  <div className="font-medium">
-                    {expense.amount.toFixed(2)} {expense.currency}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {expense.amountAud != null
-                      ? `$${expense.amountAud.toFixed(2)} AUD`
-                      : expense.currency === 'AUD'
-                        ? `$${expense.amount.toFixed(2)} AUD`
-                        : 'No AUD conversion'}
-                  </div>
-                </td>
-                <td className="px-3 py-3">
-                  {expense.isExcluded ? (
-                    <Badge variant="destructive">Excluded</Badge>
-                  ) : (
-                    <Badge variant="secondary">Included</Badge>
-                  )}
-                </td>
-                <td className="px-3 py-3">
-                  <div className="flex justify-end gap-1">
-                    <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => handleToggleExclude(expense.id)}>
-                      {expense.isExcluded ? <Eye className="h-3 w-3" /> : <EyeOff className="h-3 w-3" />}
-                    </Button>
-                    <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => openEdit(expense)}>
-                      <Edit className="h-3 w-3" />
-                    </Button>
-                    <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleDelete(expense.id)}>
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                </Fragment>
+              );
+            })}
           </tbody>
         </table>
       </div>
