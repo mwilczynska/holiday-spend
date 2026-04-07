@@ -55,7 +55,7 @@ export default function PlanPage() {
   const [fixedCosts, setFixedCosts] = useState<FixedCost[]>([]);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
-  const [newLegNights, setNewLegNights] = useState(7);
+  const [newLegNights, setNewLegNights] = useState('7');
 
   const fetchData = useCallback(async () => {
     const [legsRes, citiesRes, fixedRes] = await Promise.all([
@@ -76,18 +76,20 @@ export default function PlanPage() {
   }, [fetchData]);
 
   const handleAddLeg = async () => {
-    if (!newLegCity) return;
+    const parsedNights = Number.parseInt(newLegNights, 10);
+    if (!newLegCity || !Number.isInteger(parsedNights) || parsedNights < 1) return;
+
     await fetch('/api/itinerary/legs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         cityId: newLegCity,
-        nights: newLegNights,
+        nights: parsedNights,
       }),
     });
     setAddDialogOpen(false);
     setNewLegCity('');
-    setNewLegNights(7);
+    setNewLegNights('7');
     fetchData();
   };
 
@@ -162,11 +164,17 @@ export default function PlanPage() {
                 <Input
                   type="number"
                   min={1}
+                  step={1}
+                  inputMode="numeric"
                   value={newLegNights}
-                  onChange={(e) => setNewLegNights(parseInt(e.target.value) || 1)}
+                  onChange={(e) => setNewLegNights(e.target.value)}
                 />
               </div>
-              <Button onClick={handleAddLeg} disabled={!newLegCity} className="w-full">
+              <Button
+                onClick={handleAddLeg}
+                disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
+                className="w-full"
+              >
                 Add Leg
               </Button>
             </div>

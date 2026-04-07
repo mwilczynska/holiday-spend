@@ -55,6 +55,7 @@
 - Accommodation tiers expanded for planning/UI: shared hostel dorm, private room, then 1-star through 4-star
 - Added `accomPrivateRoom` to the city cost model, schema, seed flow, and runtime DB bootstrap backfill
 - Tier dropdowns now support richer option descriptions directly inside the menu
+- Add-leg nights input now supports direct typing, clearing/retyping, and native number-step scrolling
 - Added broad planner UI explanation copy in `src/lib/planner-ui-logic.ts` for later reuse in web/mobile UI
 - Trip summary now includes a short explanation of how totals and monthly burn are derived
 - Xotelo and LLM estimation inputs updated to support the new private-room tier
@@ -112,6 +113,7 @@
 - [x] Expenses CRUD API routes (GET with filters, POST, PUT, DELETE, PATCH exclude, bulk actions)
 - [x] Quick-add page (`/track/add`) â€” large amount, currency auto-detect from active leg, 6 emoji category buttons, split toggle, logged_by
 - [x] Expense list (`/track`) â€” filters (category, source, date range), checkboxes, bulk exclude/include, edit dialog, delete
+- [x] Expense table refresh (`/track`) â€” desktop table with persistent horizontal scroll when needed, mobile card layout, city/country columns from itinerary assignment, and editable leg reassignment for flights, tickets, and other pre-paid items
 
 ### 2b. Tagging System â€” DONE
 - [x] Tags CRUD API routes (GET with counts/sums, POST, PUT, DELETE)

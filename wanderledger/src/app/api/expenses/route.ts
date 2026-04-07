@@ -1,5 +1,5 @@
 import { db } from '@/db';
-import { expenses, expenseTags } from '@/db/schema';
+import { expenses, expenseTags, itineraryLegs, cities, countries } from '@/db/schema';
 import { eq, and, gte, lte, desc } from 'drizzle-orm';
 import { success, handleError } from '@/lib/api-helpers';
 import { z } from 'zod';
@@ -21,7 +21,33 @@ export async function GET(request: Request) {
     if (to) conditions.push(lte(expenses.date, to));
     if (source) conditions.push(eq(expenses.source, source));
 
-    let query = db.select().from(expenses).orderBy(desc(expenses.date));
+    let query = db
+      .select({
+        id: expenses.id,
+        date: expenses.date,
+        amount: expenses.amount,
+        currency: expenses.currency,
+        amountAud: expenses.amountAud,
+        category: expenses.category,
+        subcategory: expenses.subcategory,
+        description: expenses.description,
+        merchant: expenses.merchant,
+        legId: expenses.legId,
+        source: expenses.source,
+        loggedBy: expenses.loggedBy,
+        isExcluded: expenses.isExcluded,
+        cityId: itineraryLegs.cityId,
+        cityName: cities.name,
+        countryId: countries.id,
+        countryName: countries.name,
+        assignmentStartDate: itineraryLegs.startDate,
+        assignmentEndDate: itineraryLegs.endDate,
+      })
+      .from(expenses)
+      .leftJoin(itineraryLegs, eq(expenses.legId, itineraryLegs.id))
+      .leftJoin(cities, eq(itineraryLegs.cityId, cities.id))
+      .leftJoin(countries, eq(cities.countryId, countries.id))
+      .orderBy(desc(expenses.date), desc(expenses.id));
     if (conditions.length > 0) {
       query = query.where(and(...conditions)) as typeof query;
     }
