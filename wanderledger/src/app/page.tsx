@@ -329,7 +329,7 @@ export default function DashboardPage() {
                   />
                 ))}
                 <Line type="monotone" dataKey="cumulative" name="Spent" stroke="#3b82f6" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
+                <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#6b7280" strokeWidth={2} strokeDasharray="6 4" dot={false} />
                 {budgetCeiling > 0 && (
                   <ReferenceLine y={budgetCeiling} stroke="#ef4444" strokeDasharray="5 5" label={{ value: `Budget ${fmtAud(budgetCeiling)}`, position: 'right', fontSize: 10, fill: '#ef4444' }} />
                 )}
