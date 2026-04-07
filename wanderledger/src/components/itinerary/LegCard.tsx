@@ -75,7 +75,7 @@ export function LegCard({
       <CardContent className="p-4">
         {/* Header */}
         <div className="flex items-start gap-2">
-          <div className="flex flex-col gap-0.5 lg:hidden">
+          <div className="flex flex-col gap-0.5">
             <Button
               variant="ghost"
               size="icon"
@@ -95,7 +95,7 @@ export function LegCard({
               <ChevronDown className="h-3 w-3" />
             </Button>
           </div>
-          <div className="hidden lg:block cursor-grab">
+          <div className="hidden lg:block cursor-grab pt-1">
             <GripVertical className="h-5 w-5 text-muted-foreground" />
           </div>
           <div className="flex-1 min-w-0">

@@ -2,6 +2,7 @@
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { InfoPopover } from './InfoPopover';
 import type { TierOption } from '@/types';
 
 interface TierSelectorProps {
@@ -16,10 +17,17 @@ interface TierSelectorProps {
 export function TierSelector({ label, value, options, onChange, costPerDay, helperText }: TierSelectorProps) {
   return (
     <div className="space-y-1">
-      <div className="space-y-0.5">
+      <div className="flex items-center gap-1">
         <Label className="text-xs text-muted-foreground">{label}</Label>
         {helperText && (
-          <p className="text-[11px] leading-4 text-muted-foreground">{helperText}</p>
+          <InfoPopover
+            title={label}
+            summary={helperText}
+            items={options.map((option) => ({
+              label: option.label,
+              description: option.description,
+            }))}
+          />
         )}
       </div>
       <Select value={value} onValueChange={onChange}>

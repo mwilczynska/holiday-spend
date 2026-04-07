@@ -81,32 +81,32 @@ export const ACCOM_TIERS: TierOption<AccomTier>[] = [
   {
     value: 'hostel',
     label: 'Shared Hostel Dorm',
-    description: 'Two dorm beds in a shared hostel room.',
+    description: 'One night for two people in shared dorm beds, using the city hostel rate.',
   },
   {
     value: 'privateRoom',
     label: 'Private Room',
-    description: 'A private hostel or simple guesthouse room.',
+    description: 'One private hostel or simple guesthouse room for two people per night.',
   },
   {
     value: '1star',
     label: '1-Star',
-    description: 'Very basic hotel or guesthouse with minimal amenities.',
+    description: 'One very basic private hotel or guesthouse room for two people per night.',
   },
   {
     value: '2star',
     label: '2-Star',
-    description: 'Simple private hotel room with standard comforts.',
+    description: 'One simple private hotel room for two people per night with standard comforts.',
   },
   {
     value: '3star',
     label: '3-Star',
-    description: 'Comfortable mid-range stay with better amenities.',
+    description: 'One comfortable mid-range hotel room for two people per night.',
   },
   {
     value: '4star',
     label: '4-Star',
-    description: 'Upscale hotel with more service and facilities.',
+    description: 'One upscale hotel room for two people per night with better service and facilities.',
   },
 ];
 
@@ -114,22 +114,22 @@ export const FOOD_TIERS: TierOption<FoodTier>[] = [
   {
     value: 'street',
     label: 'Street Food',
-    description: 'Mostly stalls, markets, and simple local meals.',
+    description: 'Daily food budget for two built around cheap stalls, markets, and simple local meals for most meals.',
   },
   {
     value: 'budget',
     label: 'Budget',
-    description: 'Cheap cafes and casual restaurants most days.',
+    description: 'Daily food budget for two using a mix of street food, cheap cafes, and casual restaurants.',
   },
   {
     value: 'mid',
     label: 'Mid-Range',
-    description: 'A mix of casual meals and nicer sit-down spots.',
+    description: 'Daily food budget for two with casual meals plus some nicer sit-down meals and occasional treats.',
   },
   {
     value: 'high',
     label: 'High-End',
-    description: 'Frequent nicer restaurants, drinks, and treats.',
+    description: 'Daily food budget for two that assumes frequent nicer restaurants, bigger meals, and regular extras.',
   },
 ];
 
@@ -137,17 +137,17 @@ export const DRINKS_TIERS: TierOption<DrinksTier>[] = [
   {
     value: 'light',
     label: 'Light',
-    description: 'A couple of coffees and a few casual drinks.',
+    description: 'Uses the light drinks basket for two: 2 coffees total plus 2 beers total per day.',
   },
   {
     value: 'moderate',
     label: 'Moderate',
-    description: 'Daily coffees plus a steady bar budget.',
+    description: 'Uses the moderate drinks basket for two: 2 coffees total, 4 beers total, and 1 cocktail each per day.',
   },
   {
     value: 'heavy',
     label: 'Heavy',
-    description: 'Regular drinking, cocktails, and pricier nights out.',
+    description: 'Uses the heavy drinks basket for two: 2 coffees total, 6 beers total, 2 cocktails each, plus wine.',
   },
 ];
 

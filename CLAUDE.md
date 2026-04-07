@@ -56,6 +56,9 @@
 - Added `accomPrivateRoom` to the city cost model, schema, seed flow, and runtime DB bootstrap backfill
 - Tier dropdowns now support richer option descriptions directly inside the menu
 - Add-leg nights input now supports direct typing, clearing/retyping, and native number-step scrolling
+- Planner helper copy for accommodation/food/drinks/activities now sits behind an info icon, alongside the meaning of each tier option
+- Planner tier descriptions are now more explicit about the budgeting assumptions, including the exact drinks baskets used for light, moderate, and heavy drink profiles
+- Clicking a leg status now re-applies date ordering automatically, while manual card reordering remains available via the move arrows
 - Added broad planner UI explanation copy in `src/lib/planner-ui-logic.ts` for later reuse in web/mobile UI
 - Trip summary now includes a short explanation of how totals and monthly burn are derived
 - Xotelo and LLM estimation inputs updated to support the new private-room tier

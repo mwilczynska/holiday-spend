@@ -49,6 +49,27 @@ interface FixedCost {
   amountAud: number;
 }
 
+function compareLegDates(a: Leg, b: Leg) {
+  const aPrimaryDate = a.startDate || a.endDate;
+  const bPrimaryDate = b.startDate || b.endDate;
+
+  if (aPrimaryDate && bPrimaryDate && aPrimaryDate !== bPrimaryDate) {
+    return aPrimaryDate.localeCompare(bPrimaryDate);
+  }
+
+  if (aPrimaryDate && !bPrimaryDate) return -1;
+  if (!aPrimaryDate && bPrimaryDate) return 1;
+
+  const aSecondaryDate = a.endDate || a.startDate;
+  const bSecondaryDate = b.endDate || b.startDate;
+
+  if (aSecondaryDate && bSecondaryDate && aSecondaryDate !== bSecondaryDate) {
+    return aSecondaryDate.localeCompare(bSecondaryDate);
+  }
+
+  return (a.sortOrder ?? Number.MAX_SAFE_INTEGER) - (b.sortOrder ?? Number.MAX_SAFE_INTEGER);
+}
+
 export default function PlanPage() {
   const [legs, setLegs] = useState<Leg[]>([]);
   const [cities, setCities] = useState<City[]>([]);
@@ -94,11 +115,29 @@ export default function PlanPage() {
   };
 
   const handleUpdateLeg = async (id: number, data: Record<string, unknown>) => {
-    await fetch(`/api/itinerary/legs/${id}`, {
+    const response = await fetch(`/api/itinerary/legs/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
+
+    if (!response.ok) {
+      return;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(data, 'status')) {
+      const sortedLegIds = [...legs]
+        .map((leg) => (leg.id === id ? { ...leg, ...data } : leg))
+        .sort(compareLegDates)
+        .map((leg) => leg.id);
+
+      await fetch('/api/itinerary/reorder', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ legIds: sortedLegIds }),
+      });
+    }
+
     fetchData();
   };
 
@@ -130,6 +169,9 @@ export default function PlanPage() {
           <h1 className="text-2xl font-bold">Itinerary Planner</h1>
           <p className="text-sm text-muted-foreground">
             Build your trip leg by leg. Select tiers to estimate costs.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Status changes snap the list back to date order. Use the arrow controls on each card when you want to fine-tune the sequence manually.
           </p>
         </div>
         <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
