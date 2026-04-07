@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
@@ -51,7 +52,11 @@ export default function SettingsPage() {
     const costsData = await costsRes.json();
     const countriesData = await countriesRes.json();
     setCosts(costsData.data || []);
-    setCountries((countriesData.data || []).map((c: Country & { cities?: unknown[] }) => ({ id: c.id, name: c.name })));
+    setCountries(
+      (countriesData.data || [])
+        .map((c: Country & { cities?: unknown[] }) => ({ id: c.id, name: c.name }))
+        .sort((a: Country, b: Country) => a.name.localeCompare(b.name))
+    );
   }, []);
 
   useEffect(() => { fetchData(); }, [fetchData]);
@@ -136,12 +141,19 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <Label>Country (optional)</Label>
-                  <Select value={newCost.countryId} onValueChange={(v) => setNewCost(p => ({ ...p, countryId: v }))}>
-                    <SelectTrigger><SelectValue placeholder="General" /></SelectTrigger>
-                    <SelectContent>
-                      {countries.map(c => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
-                    </SelectContent>
-                  </Select>
+                  <SearchableSelect
+                    value={newCost.countryId}
+                    onValueChange={(value) => setNewCost(p => ({ ...p, countryId: value }))}
+                    placeholder="General"
+                    searchPlaceholder="Search countries..."
+                    options={[
+                      { value: '', label: 'General', description: 'Not tied to a specific country.' },
+                      ...countries.map((country) => ({
+                        value: country.id,
+                        label: country.name,
+                      })),
+                    ]}
+                  />
                 </div>
                 <div>
                   <Label>Date (optional)</Label>

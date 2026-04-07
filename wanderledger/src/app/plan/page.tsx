@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { SearchableSelect } from '@/components/ui/searchable-select';
 import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
 import { Plus } from 'lucide-react';
@@ -207,21 +207,18 @@ export default function PlanPage() {
               <div className="space-y-4">
                 <div>
                   <Label>City</Label>
-                  <Select value={newLegCity} onValueChange={setNewLegCity}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a city" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {cities.map((city) => (
-                        <SelectItem key={city.id} value={city.id} textValue={`${city.name}, ${city.countryName}`}>
-                          <div className="flex flex-col">
-                            <span>{city.name}</span>
-                            <span className="text-xs text-muted-foreground">{city.countryName}</span>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <SearchableSelect
+                    value={newLegCity}
+                    onValueChange={setNewLegCity}
+                    placeholder="Select a city"
+                    searchPlaceholder="Search cities..."
+                    options={cities.map((city) => ({
+                      value: city.id,
+                      label: `${city.name}, ${city.countryName}`,
+                      description: city.countryName,
+                      keywords: `${city.name} ${city.countryName}`,
+                    }))}
+                  />
                 </div>
                 <div>
                   <Label>Nights</Label>

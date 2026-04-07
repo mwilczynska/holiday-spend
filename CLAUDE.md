@@ -60,6 +60,7 @@
 - Planner tier descriptions are now more explicit about the budgeting assumptions, including the exact drinks baskets used for light, moderate, and heavy drink profiles
 - Clicking a leg status now re-applies date ordering automatically, while manual card reordering remains available via the move arrows
 - The planner header and Add Leg control now stay visible while scrolling, and each leg can change city/location inline instead of requiring delete-and-recreate
+- Country and city pickers now use searchable alphabetical selectors across the planner and settings flows, instead of fixed unsorted dropdown lists
 - Added broad planner UI explanation copy in `src/lib/planner-ui-logic.ts` for later reuse in web/mobile UI
 - Trip summary now includes a short explanation of how totals and monthly burn are derived
 - Xotelo and LLM estimation inputs updated to support the new private-room tier

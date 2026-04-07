@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { SearchableSelect } from '@/components/ui/searchable-select';
 import { TierSelector } from './TierSelector';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
@@ -138,25 +138,19 @@ export function LegCard({
         <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
           <div className="col-span-2 lg:col-span-1">
             <Label className="text-xs">Location</Label>
-            <Select value={leg.cityId} onValueChange={(value) => handleFieldChange('cityId', value)}>
-              <SelectTrigger className="h-8 text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {cities.map((city) => (
-                  <SelectItem
-                    key={city.id}
-                    value={city.id}
-                    textValue={`${city.name}, ${city.countryName}`}
-                  >
-                    <div className="flex flex-col">
-                      <span>{city.name}</span>
-                      <span className="text-xs text-muted-foreground">{city.countryName}</span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <SearchableSelect
+              value={leg.cityId}
+              onValueChange={(value) => handleFieldChange('cityId', value)}
+              placeholder="Select a city"
+              searchPlaceholder="Search cities..."
+              className="h-8 text-xs"
+              options={cities.map((city) => ({
+                value: city.id,
+                label: `${city.name}, ${city.countryName}`,
+                description: city.countryName,
+                keywords: `${city.name} ${city.countryName}`,
+              }))}
+            />
           </div>
           <div>
             <Label className="text-xs">Start</Label>

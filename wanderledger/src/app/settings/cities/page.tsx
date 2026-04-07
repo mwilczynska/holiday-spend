@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
@@ -37,16 +37,18 @@ export default function CitiesPage() {
   const fetchData = useCallback(async () => {
     const res = await fetch('/api/countries');
     const data = await res.json();
-    setCountries(data.data || []);
+    setCountries(
+      (data.data || []).sort((a: Country, b: Country) => a.name.localeCompare(b.name))
+    );
   }, []);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  const allCities = countries.flatMap(c =>
-    c.cities.map(city => ({ ...city, countryName: c.name, currencyCode: c.currencyCode }))
-  );
+  const allCities = countries
+    .flatMap(c => c.cities.map(city => ({ ...city, countryName: c.name, currencyCode: c.currencyCode })))
+    .sort((a, b) => a.name.localeCompare(b.name) || a.countryName.localeCompare(b.countryName));
 
   const handleCitySelect = (cityId: string) => {
     const city = allCities.find(c => c.id === cityId);
@@ -105,14 +107,16 @@ export default function CitiesPage() {
             <div className="space-y-4">
               <div>
                 <Label>Country</Label>
-                <Select value={newCity.countryId} onValueChange={(v) => setNewCity(p => ({ ...p, countryId: v }))}>
-                  <SelectTrigger><SelectValue placeholder="Select country" /></SelectTrigger>
-                  <SelectContent>
-                    {countries.map(c => (
-                      <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <SearchableSelect
+                  value={newCity.countryId}
+                  onValueChange={(value) => setNewCity(p => ({ ...p, countryId: value }))}
+                  placeholder="Select country"
+                  searchPlaceholder="Search countries..."
+                  options={countries.map((country) => ({
+                    value: country.id,
+                    label: country.name,
+                  }))}
+                />
               </div>
               <div>
                 <Label>City ID (slug)</Label>
@@ -129,22 +133,20 @@ export default function CitiesPage() {
       </div>
 
       {/* City selector */}
-      <div className="flex flex-wrap gap-2">
-        {allCities.map((city) => (
-          <Button
-            key={city.id}
-            variant={selectedCity?.id === city.id ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => handleCitySelect(city.id)}
-          >
-            {city.name}
-            {city.estimationSource && (
-              <Badge variant="secondary" className="ml-1 text-[10px]">
-                {city.estimationSource}
-              </Badge>
-            )}
-          </Button>
-        ))}
+      <div className="space-y-2">
+        <Label>Select City</Label>
+        <SearchableSelect
+          value={selectedCity?.id || ''}
+          onValueChange={handleCitySelect}
+          placeholder="Search for a city"
+          searchPlaceholder="Type a city or country..."
+          options={allCities.map((city) => ({
+            value: city.id,
+            label: `${city.name}, ${city.countryName}`,
+            description: city.estimationSource ? `Source: ${city.estimationSource}` : city.countryName,
+            keywords: `${city.name} ${city.countryName} ${city.estimationSource || ''}`,
+          }))}
+        />
       </div>
 
       {/* Selected city editor */}
