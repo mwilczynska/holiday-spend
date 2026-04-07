@@ -9,7 +9,7 @@ import { Map, Receipt, Plus, TrendingUp, TrendingDown, Minus } from 'lucide-reac
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell,
-  LineChart, Line, ReferenceLine,
+  LineChart, Line, ReferenceArea, ReferenceLine,
 } from 'recharts';
 
 interface Summary {
@@ -31,25 +31,84 @@ interface CountryComparison {
   countryName: string;
   planned: number;
   actual: number;
+  status: 'planned' | 'active' | 'completed' | null;
 }
 
 interface BurnRatePoint {
   date: string;
   cumulative: number;
   daily: number;
+  plannedCumulative: number;
+  plannedDaily: number;
+  countryName: string | null;
+  cityName: string | null;
+}
+
+interface CountryBand {
+  countryName: string;
+  startDate: string;
+  endDate: string;
+  pointCount: number;
 }
 
 const CHART_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'];
+const COUNTRY_BAND_COLORS = ['#dbeafe', '#dcfce7', '#fef3c7', '#fce7f3', '#e0e7ff', '#cffafe'];
+const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> = {
+  planned: 'bg-blue-100 text-blue-800',
+  active: 'bg-green-100 text-green-800',
+  completed: 'bg-gray-100 text-gray-800',
+};
 
 const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const tooltipFmt = (v: any) => fmtAud(Number(v));
+
+function BurnRateTooltip({
+  active,
+  payload,
+  label,
+}: {
+  active?: boolean;
+  payload?: Array<{ color?: string; dataKey?: string; name?: string; value?: number; payload?: BurnRatePoint }>;
+  label?: string;
+}) {
+  if (!active || !payload || payload.length === 0) return null;
+
+  const point = payload[0]?.payload;
+  if (!point) return null;
+
+  return (
+    <div className="rounded-md border bg-background p-3 text-sm shadow-md">
+      <div className="font-medium">{label}</div>
+      <div className="text-xs text-muted-foreground">
+        {point.cityName && point.countryName
+          ? `${point.cityName}, ${point.countryName}`
+          : point.countryName || 'Outside planned legs'}
+      </div>
+      <div className="mt-2 space-y-1">
+        {payload.map((entry) => (
+          <div key={entry.dataKey} className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <span
+                className="h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: entry.color || '#94a3b8' }}
+              />
+              <span>{entry.name}</span>
+            </div>
+            <span className="font-medium">{fmtAud(Number(entry.value || 0))}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function DashboardPage() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [comparison, setComparison] = useState<CountryComparison[]>([]);
   const [categoryTotals, setCategoryTotals] = useState<Record<string, number>>({});
   const [burnData, setBurnData] = useState<BurnRatePoint[]>([]);
+  const [countryBands, setCountryBands] = useState<CountryBand[]>([]);
   const [budgetCeiling, setBudgetCeiling] = useState(0);
 
   useEffect(() => {
@@ -70,6 +129,7 @@ export default function DashboardPage() {
       }
       if (burnRateData.data) {
         setBurnData(burnRateData.data.cumulative || []);
+        setCountryBands(burnRateData.data.countryBands || []);
       }
       if (summaryData.data) {
         setBudgetCeiling(summaryData.data.totalBudget);
@@ -247,12 +307,29 @@ export default function DashboardPage() {
           <CardHeader className="pb-2"><CardTitle className="text-sm">Cumulative Spend Over Time</CardTitle></CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={burnData}>
+              <LineChart data={burnData} margin={{ top: 24, right: 16, left: 0, bottom: 0 }}>
                 <XAxis dataKey="date" tick={{ fontSize: 10 }} />
                 <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`} />
-                <Tooltip formatter={tooltipFmt} />
+                <Tooltip content={<BurnRateTooltip />} />
                 <Legend />
+                {countryBands.map((band, index) => (
+                  <ReferenceArea
+                    key={`${band.countryName}-${band.startDate}-${band.endDate}`}
+                    x1={band.startDate}
+                    x2={band.endDate}
+                    fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
+                    fillOpacity={0.18}
+                    ifOverflow="extendDomain"
+                    label={band.pointCount >= 4 ? {
+                      value: band.countryName,
+                      position: 'insideTop',
+                      fill: '#64748b',
+                      fontSize: 10,
+                    } : undefined}
+                  />
+                ))}
                 <Line type="monotone" dataKey="cumulative" name="Spent" stroke="#3b82f6" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
                 {budgetCeiling > 0 && (
                   <ReferenceLine y={budgetCeiling} stroke="#ef4444" strokeDasharray="5 5" label={{ value: `Budget ${fmtAud(budgetCeiling)}`, position: 'right', fontSize: 10, fill: '#ef4444' }} />
                 )}
@@ -284,7 +361,16 @@ export default function DashboardPage() {
                     const isOver = diff > 0;
                     return (
                       <tr key={c.countryId} className="border-b last:border-0">
-                        <td className="p-2 font-medium">{c.countryName}</td>
+                        <td className="p-2">
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium">{c.countryName}</span>
+                            {c.status ? (
+                              <Badge variant="outline" className={`text-[10px] capitalize ${COUNTRY_STATUS_BADGE[c.status]}`}>
+                                {c.status}
+                              </Badge>
+                            ) : null}
+                          </div>
+                        </td>
                         <td className="p-2 text-right">{fmtAud(c.planned)}</td>
                         <td className="p-2 text-right">{fmtAud(c.actual)}</td>
                         <td className={`p-2 text-right ${isOver ? 'text-red-600' : 'text-green-600'}`}>

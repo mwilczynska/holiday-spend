@@ -6,7 +6,16 @@ import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { success, handleError } from '@/lib/api-helpers';
-import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
+import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier, LegStatus } from '@/types';
+
+function mergeCountryStatus(current: LegStatus | null, next: string | null): LegStatus | null {
+  if (next === 'active') return 'active';
+  if (current === 'active') return current;
+  if (next === 'planned') return current === 'completed' ? 'planned' : 'planned';
+  if (current === 'planned') return current;
+  if (next === 'completed') return 'completed';
+  return current;
+}
 
 export async function GET() {
   try {
@@ -18,6 +27,7 @@ export async function GET() {
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const countryMap = new Map(allCountries.map(c => [c.id, c]));
     const { tripStart, tripEnd } = getTripWindow(allLegs);
+    const statusByCountry = new Map<string, LegStatus>();
 
     // Build planned totals per country
     const plannedByCountry = new Map<string, { name: string; planned: number; categories: Record<string, number> }>();
@@ -44,6 +54,10 @@ export async function GET() {
       }
       const entry = plannedByCountry.get(city.countryId)!;
       entry.planned += legTotal;
+      statusByCountry.set(
+        city.countryId,
+        mergeCountryStatus(statusByCountry.get(city.countryId) ?? null, leg.status) ?? 'planned'
+      );
       entry.categories.accommodation = (entry.categories.accommodation || 0) + breakdown.accommodation * leg.nights;
       entry.categories.food = (entry.categories.food || 0) + breakdown.food * leg.nights;
       entry.categories.drinks = (entry.categories.drinks || 0) + breakdown.drinks * leg.nights;
@@ -94,6 +108,7 @@ export async function GET() {
       countryName: plannedByCountry.get(id)?.name ?? actualByCountry.get(id)?.name ?? id,
       planned: plannedByCountry.get(id)?.planned ?? 0,
       actual: actualByCountry.get(id)?.actual ?? 0,
+      status: statusByCountry.get(id) ?? null,
       plannedCategories: plannedByCountry.get(id)?.categories ?? {},
       actualCategories: actualByCountry.get(id)?.categories ?? {},
     }));
