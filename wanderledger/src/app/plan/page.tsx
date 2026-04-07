@@ -42,6 +42,12 @@ interface City {
   id: string;
   name: string;
   countryId: string;
+  countryName: string;
+}
+
+interface Country {
+  id: string;
+  name: string;
 }
 
 interface FixedCost {
@@ -79,16 +85,28 @@ export default function PlanPage() {
   const [newLegNights, setNewLegNights] = useState('7');
 
   const fetchData = useCallback(async () => {
-    const [legsRes, citiesRes, fixedRes] = await Promise.all([
+    const [legsRes, citiesRes, countriesRes, fixedRes] = await Promise.all([
       fetch('/api/itinerary'),
       fetch('/api/cities'),
+      fetch('/api/countries'),
       fetch('/api/fixed-costs'),
     ]);
     const legsData = await legsRes.json();
     const citiesData = await citiesRes.json();
+    const countriesData = await countriesRes.json();
     const fixedData = await fixedRes.json();
+    const countries = (countriesData.data || []) as Country[];
+    const countryMap = new Map(countries.map((country) => [country.id, country.name]));
+
     setLegs(legsData.data || []);
-    setCities(citiesData.data || []);
+    setCities(
+      ((citiesData.data || []) as Array<{ id: string; name: string; countryId: string }>)
+        .map((city) => ({
+          ...city,
+          countryName: countryMap.get(city.countryId) || 'Unknown',
+        }))
+        .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`))
+    );
     setFixedCosts(fixedData.data || []);
   }, []);
 
@@ -164,64 +182,69 @@ export default function PlanPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">Itinerary Planner</h1>
-          <p className="text-sm text-muted-foreground">
-            Build your trip leg by leg. Select tiers to estimate costs.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Status changes snap the list back to date order. Use the arrow controls on each card when you want to fine-tune the sequence manually.
-          </p>
-        </div>
-        <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Plus className="h-4 w-4 mr-2" />
-              Add Leg
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Add Itinerary Leg</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div>
-                <Label>City</Label>
-                <Select value={newLegCity} onValueChange={setNewLegCity}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a city" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {cities.map((city) => (
-                      <SelectItem key={city.id} value={city.id}>
-                        {city.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label>Nights</Label>
-                <Input
-                  type="number"
-                  min={1}
-                  step={1}
-                  inputMode="numeric"
-                  value={newLegNights}
-                  onChange={(e) => setNewLegNights(e.target.value)}
-                />
-              </div>
-              <Button
-                onClick={handleAddLeg}
-                disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
-                className="w-full"
-              >
+      <div className="sticky top-0 z-20 rounded-lg border bg-background/95 p-4 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/85">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold">Itinerary Planner</h1>
+            <p className="text-sm text-muted-foreground">
+              Build your trip leg by leg. Select tiers to estimate costs.
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Status changes snap the list back to date order. Use the arrow controls on each card when you want to fine-tune the sequence manually.
+            </p>
+          </div>
+          <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
+            <DialogTrigger asChild>
+              <Button>
+                <Plus className="mr-2 h-4 w-4" />
                 Add Leg
               </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add Itinerary Leg</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label>City</Label>
+                  <Select value={newLegCity} onValueChange={setNewLegCity}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a city" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {cities.map((city) => (
+                        <SelectItem key={city.id} value={city.id} textValue={`${city.name}, ${city.countryName}`}>
+                          <div className="flex flex-col">
+                            <span>{city.name}</span>
+                            <span className="text-xs text-muted-foreground">{city.countryName}</span>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Nights</Label>
+                  <Input
+                    type="number"
+                    min={1}
+                    step={1}
+                    inputMode="numeric"
+                    value={newLegNights}
+                    onChange={(e) => setNewLegNights(e.target.value)}
+                  />
+                </div>
+                <Button
+                  onClick={handleAddLeg}
+                  disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
+                  className="w-full"
+                >
+                  Add Leg
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-[1fr_300px] gap-6">
@@ -236,6 +259,7 @@ export default function PlanPage() {
             <LegCard
               key={leg.id}
               leg={leg}
+              cities={cities}
               onUpdate={handleUpdateLeg}
               onDelete={handleDeleteLeg}
               onMoveUp={() => handleReorder(i, -1)}

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { TierSelector } from './TierSelector';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import { PLANNER_UI_LOGIC } from '@/lib/planner-ui-logic';
@@ -37,6 +38,11 @@ interface LegCardProps {
     dailyCost: number;
     legTotal: number;
   };
+  cities: Array<{
+    id: string;
+    name: string;
+    countryName: string;
+  }>;
   onUpdate: (id: number, data: Record<string, unknown>) => void;
   onDelete: (id: number) => void;
   onMoveUp: () => void;
@@ -53,6 +59,7 @@ const STATUS_COLORS: Record<string, string> = {
 
 export function LegCard({
   leg,
+  cities,
   onUpdate,
   onDelete,
   onMoveUp,
@@ -127,8 +134,30 @@ export function LegCard({
           </Button>
         </div>
 
-        {/* Dates & Nights */}
-        <div className="grid grid-cols-3 gap-2 mt-3">
+        {/* Location, Dates & Nights */}
+        <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
+          <div className="col-span-2 lg:col-span-1">
+            <Label className="text-xs">Location</Label>
+            <Select value={leg.cityId} onValueChange={(value) => handleFieldChange('cityId', value)}>
+              <SelectTrigger className="h-8 text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {cities.map((city) => (
+                  <SelectItem
+                    key={city.id}
+                    value={city.id}
+                    textValue={`${city.name}, ${city.countryName}`}
+                  >
+                    <div className="flex flex-col">
+                      <span>{city.name}</span>
+                      <span className="text-xs text-muted-foreground">{city.countryName}</span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
           <div>
             <Label className="text-xs">Start</Label>
             <Input
