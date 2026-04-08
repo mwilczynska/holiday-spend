@@ -3,6 +3,7 @@ export type FoodTier = 'street' | 'budget' | 'mid' | 'high';
 export type DrinksTier = 'light' | 'moderate' | 'heavy';
 export type ActivitiesTier = 'free' | 'budget' | 'mid' | 'high';
 export type LegStatus = 'planned' | 'active' | 'completed';
+export type EstimateConfidence = 'low' | 'medium' | 'high';
 
 export interface TierOption<T extends string> {
   value: T;
@@ -47,7 +48,28 @@ export interface CityEstimateData {
   activitiesBudget?: number;
   activitiesMid?: number;
   activitiesHigh?: number;
-  transportLocal?: number;
+}
+
+export interface CityPriceInputData {
+  accomHostel?: number;
+  accomPrivateRoom?: number;
+  accom1star?: number;
+  accom2star?: number;
+  accom3star?: number;
+  accom4star?: number;
+  streetMeal?: number;
+  cheapRestaurantMeal?: number;
+  midRestaurantMeal?: number;
+  coffee?: number;
+  localBeer?: number;
+  importBeer?: number;
+  wineGlass?: number;
+  cocktail?: number;
+  publicTransitRide?: number;
+  taxiShort?: number;
+  activityBudget?: number;
+  activityMid?: number;
+  activityHigh?: number;
 }
 
 export interface LegWithCost {

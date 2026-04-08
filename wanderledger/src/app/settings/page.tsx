@@ -103,6 +103,9 @@ export default function SettingsPage() {
           <Link href="/settings/cities">
             <Button variant="outline">City Cost Editor</Button>
           </Link>
+          <Link href="/estimates">
+            <Button variant="outline">Estimate Logic</Button>
+          </Link>
           <a href="/api/export?format=json" download>
             <Button variant="outline" size="sm"><Download className="h-4 w-4 mr-1" />Export JSON</Button>
           </a>

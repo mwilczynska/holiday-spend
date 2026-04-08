@@ -3,6 +3,8 @@ import { countries, cities } from '@/db/schema';
 import { success, handleError } from '@/lib/api-helpers';
 import { z } from 'zod';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const allCountries = await db.select().from(countries);

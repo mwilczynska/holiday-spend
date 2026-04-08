@@ -75,7 +75,7 @@ export function getDailyCost(
   const food = overrides?.foodOverride ?? city[FOOD_MAP[foodTier]] ?? 0;
   const drinks = overrides?.drinksOverride ?? city[DRINKS_MAP[drinksTier]] ?? 0;
   const activities = overrides?.activitiesOverride ?? city[ACTIVITIES_MAP[activitiesTier]] ?? 0;
-  const transport = overrides?.transportOverride ?? city.transportLocal ?? 0;
+  const transport = overrides?.transportOverride ?? 0;
 
   return accom + food + drinks + activities + transport;
 }
@@ -118,7 +118,7 @@ export function getDailyBreakdown(
   const food = overrides?.foodOverride ?? city[FOOD_MAP[foodTier]] ?? 0;
   const drinks = overrides?.drinksOverride ?? city[DRINKS_MAP[drinksTier]] ?? 0;
   const activities = overrides?.activitiesOverride ?? city[ACTIVITIES_MAP[activitiesTier]] ?? 0;
-  const transport = overrides?.transportOverride ?? city.transportLocal ?? 0;
+  const transport = overrides?.transportOverride ?? 0;
 
   return {
     accommodation: accommodation as number,

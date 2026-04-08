@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { cities } from '@/db/schema';
-import { success, handleError } from '@/lib/api-helpers';
+import { error, success, handleError } from '@/lib/api-helpers';
+import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 
 const createSchema = z.object({
@@ -29,7 +30,6 @@ const createSchema = z.object({
   activitiesBudget: z.number().optional(),
   activitiesMid: z.number().optional(),
   activitiesHigh: z.number().optional(),
-  transportLocal: z.number().optional(),
   estimationSource: z.string().optional(),
   notes: z.string().optional(),
 });
@@ -47,6 +47,11 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = createSchema.parse(body);
+
+    const existingCity = await db.select({ id: cities.id }).from(cities).where(eq(cities.id, data.id)).get();
+    if (existingCity) {
+      return error(`City id "${data.id}" already exists. Choose a different id or update the existing city.`, 409);
+    }
 
     await db.insert(cities).values({
       ...data,

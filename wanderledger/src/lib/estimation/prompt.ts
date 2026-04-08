@@ -39,9 +39,6 @@ ACTIVITIES (per day, 2 people):
 - activitiesMid: Mid-range (day tours, cooking classes, shows)
 - activitiesHigh: Premium (private tours, adventure activities)
 
-TRANSPORT:
-- transportLocal: Daily local transport for 2 people (taxis, buses, metro)
-
 Respond with ONLY a JSON object in this exact format (all values in AUD, numbers only):
 {
   "accomHostel": 0, "accomPrivateRoom": 0, "accom1star": 0, "accom2star": 0, "accom3star": 0, "accom4star": 0,
@@ -49,7 +46,6 @@ Respond with ONLY a JSON object in this exact format (all values in AUD, numbers
   "drinkLocalBeer": 0, "drinkImportBeer": 0, "drinkWineGlass": 0, "drinkCocktail": 0, "drinkCoffee": 0,
   "drinksLight": 0, "drinksModerate": 0, "drinksHeavy": 0,
   "activitiesFree": 0, "activitiesBudget": 0, "activitiesMid": 0, "activitiesHigh": 0,
-  "transportLocal": 0,
   "reasoning": "Brief explanation of your estimates",
   "confidence": "low|medium|high"
 }`;

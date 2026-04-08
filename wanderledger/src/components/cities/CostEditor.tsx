@@ -9,7 +9,7 @@ interface CostField {
   group: string;
 }
 
-const COST_FIELDS: CostField[] = [
+export const COST_FIELDS: CostField[] = [
   // Accommodation
   { key: 'accomHostel', label: 'Shared Hostel Dorm', group: 'Accommodation (per night, 2 ppl)' },
   { key: 'accomPrivateRoom', label: 'Private Room', group: 'Accommodation (per night, 2 ppl)' },
@@ -37,9 +37,9 @@ const COST_FIELDS: CostField[] = [
   { key: 'activitiesBudget', label: 'Budget', group: 'Activities (per day, 2 ppl)' },
   { key: 'activitiesMid', label: 'Mid-Range', group: 'Activities (per day, 2 ppl)' },
   { key: 'activitiesHigh', label: 'High-End', group: 'Activities (per day, 2 ppl)' },
-  // Transport
-  { key: 'transportLocal', label: 'Local Transport', group: 'Transport (per day, 2 ppl)' },
 ];
+
+export const COST_FIELD_KEYS = COST_FIELDS.map((field) => field.key);
 
 interface CostEditorProps {
   values: Record<string, number | null>;

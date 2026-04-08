@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
+import { Calculator, LayoutDashboard, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/plan', label: 'Plan', icon: Map },
+  { href: '/estimates', label: 'Estimates', icon: Calculator },
   { href: '/track', label: 'Expenses', icon: Receipt },
   { href: '/track/add', label: 'Quick Add', icon: Plus },
   { href: '/track/tags', label: 'Tags', icon: Tags },

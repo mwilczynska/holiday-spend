@@ -17,7 +17,13 @@ interface CityEstimatorProps {
 export function CityEstimator({ cityId, cityName, country, currencyCode, onEstimated }: CityEstimatorProps) {
   const [loading, setLoading] = useState(false);
   const [xoteloKey, setXoteloKey] = useState('');
-  const [result, setResult] = useState<{ message: string; reasoning?: string; confidence?: string; sources?: Record<string, string> } | null>(null);
+  const [result, setResult] = useState<{
+    message: string;
+    reasoning?: string;
+    confidence?: string;
+    sources?: Record<string, string>;
+    fallbackLog?: string[];
+  } | null>(null);
 
   const handleEstimate = async (sources: string[]) => {
     setLoading(true);
@@ -44,6 +50,7 @@ export function CityEstimator({ cityId, cityName, country, currencyCode, onEstim
           reasoning: data.data?.reasoning,
           confidence: data.data?.confidence,
           sources: data.data?.sources,
+          fallbackLog: data.data?.fallbackLog,
         });
         onEstimated();
       } else {
@@ -58,7 +65,13 @@ export function CityEstimator({ cityId, cityName, country, currencyCode, onEstim
 
   return (
     <div className="space-y-3 p-3 border rounded-lg bg-muted/50">
-      <p className="text-sm font-medium">Estimate costs for {cityName}</p>
+      <div>
+        <p className="text-sm font-medium">Estimate costs for {cityName}</p>
+        <p className="text-xs text-muted-foreground">
+          Hybrid mode uses structured price anchors first, Xotelo as optional accommodation input,
+          then optionally fills remaining gaps with the LLM.
+        </p>
+      </div>
 
       <div>
         <Label className="text-xs">Xotelo Location Key (from TripAdvisor URL)</Label>
@@ -71,14 +84,17 @@ export function CityEstimator({ cityId, cityName, country, currencyCode, onEstim
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <Button size="sm" onClick={() => handleEstimate(['xotelo'])} disabled={loading}>
-          {loading ? 'Estimating...' : 'Xotelo Only'}
+        <Button size="sm" onClick={() => handleEstimate(['hybrid'])} disabled={loading}>
+          {loading ? 'Estimating...' : 'Hybrid'}
         </Button>
-        <Button size="sm" variant="outline" onClick={() => handleEstimate(['llm'])} disabled={loading}>
+        <Button size="sm" variant="outline" onClick={() => handleEstimate(['hybrid', 'xotelo'])} disabled={loading}>
+          {loading ? 'Estimating...' : 'Hybrid + Xotelo'}
+        </Button>
+        <Button size="sm" variant="default" onClick={() => handleEstimate(['hybrid', 'xotelo', 'llm'])} disabled={loading}>
+          {loading ? 'Estimating...' : 'Hybrid + Xotelo + LLM Fill'}
+        </Button>
+        <Button size="sm" variant="ghost" onClick={() => handleEstimate(['llm'])} disabled={loading}>
           {loading ? 'Estimating...' : 'LLM Only'}
-        </Button>
-        <Button size="sm" variant="default" onClick={() => handleEstimate(['xotelo', 'llm'])} disabled={loading}>
-          {loading ? 'Estimating...' : 'Xotelo + LLM'}
         </Button>
       </div>
 
@@ -92,6 +108,16 @@ export function CityEstimator({ cityId, cityName, country, currencyCode, onEstim
           )}
           {result.reasoning && (
             <p className="text-xs text-muted-foreground border-l-2 pl-2 mt-1">{result.reasoning}</p>
+          )}
+          {result.fallbackLog && result.fallbackLog.length > 0 && (
+            <div className="space-y-1 rounded border bg-background/70 p-2">
+              <p className="text-[11px] font-medium text-foreground">Fallback log</p>
+              {result.fallbackLog.map((entry) => (
+                <p key={entry} className="text-[11px] text-muted-foreground">
+                  {entry}
+                </p>
+              ))}
+            </div>
           )}
           {result.sources && Object.keys(result.sources).length > 0 && (
             <div className="flex flex-wrap gap-1 mt-1">

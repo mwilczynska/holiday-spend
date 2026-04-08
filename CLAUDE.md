@@ -1,205 +1,130 @@
-# Wanderledger â€” Build Progress & Notes
+# Wanderledger Build Memory
 
 ## Project Location
-- App code: `wanderledger/` subdirectory
-- Spec: `PLAN.md` (root)
-- DB: `wanderledger/data/travel.db` (SQLite, gitignored)
-- Dev PIN: `1234` (in `.env.local`)
+- App code: `wanderledger/`
+- Planning notes and data assets: repo root
+- Database: `wanderledger/data/travel.db` (SQLite, gitignored)
+- Dev PIN: `1234` in `.env.local`
 
-## Tech Stack (as implemented)
-- Next.js 14 (App Router) + TypeScript + Tailwind CSS v3 + tailwindcss-animate
-- shadcn/ui components (rewrote all to use @radix-ui â€” see fix notes below)
+## Current App State
+- Next.js 14 App Router + TypeScript + Tailwind CSS
 - Drizzle ORM + better-sqlite3
-- Zod v4 (note: uses `.issues` not `.errors` for validation errors)
-- Recharts (installed, not yet used)
-- SWR (installed, not yet used â€” pages currently use raw fetch)
+- Shadcn/Radix component stack
+- Build passes with `npm run build`
+- Known build note remains: `/api/export` is dynamic because it uses `request.url`
 
-## Important Fix Notes
+## Current City Cost Model
+- Canonical base dataset is now `city_costs_app_aud.csv` at the repo root
+- Dataset covers 121 cities across 58 countries
+- App-facing values are stored in AUD for 2 people
+- Transport estimation has been removed from the city methodology
+- Local transport is now manual-only through itinerary leg overrides
 
-### shadcn/ui v4 â†’ Radix v3 Component Rewrite
-- `npx shadcn@latest init` installed shadcn v4 which uses `@base-ui/react` (NOT `@radix-ui`)
-- **v4 components are INCOMPATIBLE** with standard Radix-style API (`asChild`, `data-[state=open]`, etc.)
-- v4 uses: `render` prop instead of `asChild`, `data-open`/`data-closed` instead of `data-[state=open]`, oklch colors
-- **Fix applied:** Rewrote ALL actively-used ui components to use `@radix-ui/react-*` primitives:
-  - `button.tsx` â€” Radix Slot for asChild
-  - `card.tsx` â€” plain HTML with cn()
-  - `input.tsx` â€” plain HTML input
-  - `label.tsx` â€” plain HTML label
-  - `badge.tsx` â€” cva variants, plain div
-  - `dialog.tsx` â€” @radix-ui/react-dialog
-  - `select.tsx` â€” @radix-ui/react-select
-  - `switch.tsx` â€” @radix-ui/react-switch
-  - `separator.tsx` â€” @radix-ui/react-separator
-  - `sheet.tsx` â€” @radix-ui/react-dialog (reused)
-  - `command.tsx` â€” cmdk + our new dialog
-- **Still v4 (unused, not imported):** `dropdown-menu.tsx`, `popover.tsx`, `scroll-area.tsx`, `tabs.tsx`, `tooltip.tsx`
-  - These will need rewriting when first used in Phase 2+
+## Methodology Files
+- Base methodology: `methodology.md`
+- New-city prompt template: `llm_prompt_new_cities_1.md`
+- The app methodology page now mirrors this newer anchor-based process instead of the older hybrid/Xotelo explanation
 
-### CSS/Tailwind
-- `globals.css` uses HSL color variables (NOT oklch)
-- `tailwind.config.ts` has full shadcn color theme via `hsl(var(--...))` format
-- `tailwindcss-animate` plugin installed for animations
+## Recent Major Changes
 
-### Font Setup
-- Next.js 14 doesn't have `Geist` in `next/font/google` â€” use `localFont` with bundled `GeistVF.woff`
+### Dataset And Seeding
+- Reworked `src/db/seed.ts` to import the new CSV instead of relying on the older small JSON seed set
+- Added `src/lib/country-metadata.ts` to map country ids, currency codes, and regions during seed
+- Seed/import now preserves legacy ids where possible and marks CSV-backed rows with `base_csv_apr_2026`
 
-### Zod v4
-- Installed version is Zod v4 which uses `.issues` not `.errors` on ZodError
+### Transport Removal
+- Removed city-level transport estimation from the planner cost calculation and generation flow
+- Planner still supports manual `transportOverride` and `intercityTransportCost`
+- Estimate/methodology UI now clearly states that transport is manual only
 
-### Database
-- Seed script: `npx tsx src/db/seed.ts` â€” creates tables + seeds 8 countries and 8 cities
-- DB already seeded at `wanderledger/data/travel.db`
-- Drizzle schema at src/db/schema.ts covers ALL tables from PLAN.md Â§4.1
+### Estimates And Settings UI
+- Replaced the older estimate logic page with a methodology-heavy page plus dataset and generation history tables
+- Simplified `/settings/cities` into a base city-cost library editor
+- Added edit and delete actions from the estimates table into the city library flow
+- Added guarded city deletion that blocks removal when a city is still used by itinerary legs
 
-### Current Planner Refinements
-- Accommodation tiers expanded for planning/UI: shared hostel dorm, private room, then 1-star through 4-star
-- Added `accomPrivateRoom` to the city cost model, schema, seed flow, and runtime DB bootstrap backfill
-- Tier dropdowns now support richer option descriptions directly inside the menu
-- Add-leg nights input now supports direct typing, clearing/retyping, and native number-step scrolling
-- Planner helper copy for accommodation/food/drinks/activities now sits behind an info icon, alongside the meaning of each tier option
-- Planner tier descriptions are now more explicit about the budgeting assumptions, including the exact drinks baskets used for light, moderate, and heavy drink profiles
-- Clicking a leg status now re-applies date ordering automatically, while manual card reordering remains available via the move arrows
-- The planner header and Add Leg control now stay visible while scrolling, and each leg can change city/location inline instead of requiring delete-and-recreate
-- Country and city pickers now use searchable alphabetical selectors across the planner and settings flows, instead of fixed unsorted dropdown lists
-- Added broad planner UI explanation copy in `src/lib/planner-ui-logic.ts` for later reuse in web/mobile UI
-- Trip summary now includes a short explanation of how totals and monthly burn are derived
-- Xotelo and LLM estimation inputs updated to support the new private-room tier
+### New City Generation Flow
+- Added `src/lib/city-generation.ts` and `src/lib/city-generation-config.ts`
+- Added `/api/cities/[id]/generate`
+- Generation now supports user-supplied provider, API key, and model from the UI
+- Supported providers:
+  - OpenAI
+  - Anthropic
+  - Google Gemini
+- Current default mid-tier models:
+  - OpenAI: `gpt-5.4-mini`
+  - Anthropic: `claude-sonnet-4-6`
+  - Gemini: `gemini-2.5-flash`
+- Keys entered in the UI are browser-only via `localStorage`; they are not written to the repo or DB
+- Generation stores:
+  - prompt version
+  - provider/model
+  - anchors JSON
+  - metadata JSON
+  - confidence notes
+  - estimate history row
+- Drink unit prices in the editable city model are now inferred from `anchors_usd` and converted into AUD using the implied AUD/USD rate from the generated tier outputs
 
-### Verification Status
-- `npx tsc --noEmit` - passes
-- `npm run build` - passes
-- Build still reports the existing Next.js dynamic server usage note for `/api/export` because that route uses `request.url`, but the production build completes successfully
+### LLM Reliability Fixes
+- OpenAI payload now switches between `max_tokens` and `max_completion_tokens` depending on model family
+- Gemini generation now disables thinking with `thinkingBudget: 0` to avoid truncated JSON outputs
+- Gemini truncation now returns a clearer error instead of a generic schema mismatch
+- Provider/model defaults were centralized so UI and server stay aligned
+- Older stored default models in browser storage are migrated forward automatically
 
-### Current Import / Dashboard Fixes
-- Wise CSV import now consolidates repeated rows that share the same Wise transaction ID before insert
-- Wise CSV import now assigns itinerary legs by transaction date during import
-- Existing imported expenses are also resolved by date in dashboard comparisons when needed
-- Dashboard actual-spend calculations now ignore raw non-AUD amounts if AUD conversion is missing, instead of treating local currency as AUD
-- Dashboard spend is now limited to the actual trip window instead of all historical Wise account activity
-- The cumulative spend chart now includes an estimated cumulative line based on planned daily leg costs, plus country/city hover context and subtle country shading across the trip timeline
-- The cumulative spend chart now renders the spent line in green for actual trip dates and fades it to grey once the chart enters planned dates, while keeping the estimated line distinct
-- The country comparison table now shows each country's trip status (`planned`, `active`, or `completed`) next to its name
-- Added itinerary date validation so a leg cannot be saved with `endDate < startDate`
-- Local data cleanup applied: `mui-ne` date range corrected so 2026-02-16 to 2026-02-18 Vietnam expenses no longer fall into `Unassigned`
+### City Editor Save Flow
+- Removed silent per-field autosave from `/settings/cities`
+- City values are now edited as a draft and saved explicitly with a `Save City` button
+- The page shows save state, unsaved changes, and save errors
+- Fixed a selection regression where the previous city from `?cityId=` deep links could overwrite the newly added city after refetch
 
----
+### Wise Import Improvements
+- `src/lib/wise-csv-parser.ts` now supports both transaction-history exports and balance-statement exports
+- Added stronger parsing for signed numbers, multiple date formats, and category inference for balance statements
+- Verified against:
+  - `transaction-history_2026-04-06.csv`
+  - `data/preeta_wise_balance_statement.csv`
+  - `data/statement_88001685_GBP_2026-02-01_2026-04-08.csv`
 
-## Phase 1: Core Planning â€” COMPLETE (build passes, dev server runs)
+## Database / Schema Notes
+- `city_estimates` now includes:
+  - `prompt_version`
+  - `anchors_json`
+  - `metadata_json`
+  - `sources_json`
+  - `input_snapshot_json`
+  - `fallback_log_json`
+- Runtime DB bootstrap in `src/db/index.ts` backfills missing columns on older local DBs
 
-### 1a. Project Scaffold â€” DONE
-- [x] Next.js 14 + TypeScript + Tailwind + shadcn/ui + Drizzle
-- [x] SQLite via better-sqlite3
-- [x] Full database schema (all tables from PLAN.md Â§4.1)
-- [x] `.env.example` and `.env.local` (PIN=1234)
-- [x] Seed data JSON + seed script (8 countries, 8 cities)
-- [x] PIN auth middleware + login page + `/api/auth/login`
-- [x] Responsive app shell: DesktopSidebar + MobileNav + root layout
-- [x] Types file with all tier types, constants, interfaces
+## Remaining Work / Known Gaps
+- Provider/model options can still go stale over time
+  - We now mitigate this with editable model fields and centralized defaults
+  - A future improvement would be provider model discovery or a validation button
+- `drinkImportBeer` is still not generated by the new methodology
+  - We now populate beer, wine, cocktail, and coffee unit prices from anchors
+  - `drinkImportBeer` remains blank until a rule is defined
+- There is no dedicated country-creation UI in settings yet
+  - Countries still need to exist before a city can be added through the city dialog
+- Some older estimation code remains in the repo for the legacy estimate API path
+  - The active city methodology now uses the new base dataset and generation route
+- Local data may contain duplicate manually-added city rows if ids were mistyped during testing
+  - Example found locally: both `dubbo` and `dubbbo`
+  - Use the estimates table delete action to clean these up
 
-### 1b. City Cost Data â€” DONE
-- [x] Xotelo client, estimation orchestrator (Xotelo-only)
-- [x] Exchange rate utility (frankfurter.app + DB caching)
-- [x] Cost calculator (tier â†’ daily AUD cost)
-- [x] Countries/Cities/Estimate API routes
-- [x] City cost editor page (`/settings/cities`)
+## Verification
+- `npm run build` passes
+- `/api/export` still emits the existing Next.js dynamic route note during build
+- Live provider checks performed during this phase:
+  - OpenAI request contract fixed for newer GPT-5 models
+  - Gemini live requests verified after disabling thinking to avoid truncated JSON
 
-### 1c. Itinerary Builder â€” DONE
-- [x] Itinerary/Legs/Reorder/Fixed-costs/Rates API routes
-- [x] LegCard, TierSelector, CostSummary components
-- [x] Plan page (`/plan`) â€” full builder with add, reorder, real-time totals
-- [x] Settings page (`/settings`) â€” fixed costs manager
-- [x] Dashboard (`/`) â€” summary cards + navigation
-
-### Placeholder Pages â€” DONE
-- [x] `/track`, `/track/add`, `/track/import`, `/track/tags`
-
----
-
-## Phase 2: Expense Tracking â€” COMPLETE (build passes)
-
-### 2a. Quick-Add & Expense CRUD â€” DONE
-- [x] Expenses CRUD API routes (GET with filters, POST, PUT, DELETE, PATCH exclude, bulk actions)
-- [x] Quick-add page (`/track/add`) â€” large amount, currency auto-detect from active leg, 6 emoji category buttons, split toggle, logged_by
-- [x] Expense list (`/track`) â€” filters (category, source, date range), checkboxes, bulk exclude/include, edit dialog, delete
-- [x] Expense table refresh (`/track`) â€” compact desktop table focused on date/location/category/amount/assignment with expandable detail rows, mobile card layout, city/country columns from itinerary assignment, and editable leg reassignment for flights, tickets, and other pre-paid items
-
-### 2b. Tagging System â€” DONE
-- [x] Tags CRUD API routes (GET with counts/sums, POST, PUT, DELETE)
-- [x] Expense-tag association (POST add, DELETE remove, GET tag expenses)
-- [x] Tag management page (`/track/tags`) â€” list, detail view, create/edit/delete, color picker
-
-### 2c. Wise CSV Import â€” DONE
-- [x] `src/lib/wise-csv-parser.ts` â€” auto-categorisation, skip transfers/conversions/top-ups
-- [x] CSV import API route â€” preview mode + confirm import, dedup by wise_txn_id
-- [x] Import page (`/track/import`) â€” upload, preview (importable/skipped/duplicates), category editing, confirm
-
-## Phase 3: Dashboard & Comparison â€” COMPLETE (build passes)
-
-### Dashboard API Routes â€” DONE
-- [x] `/api/dashboard/summary` â€” total budget, spent, projected, burn rates (trip/7d/30d), budget health, days elapsed/remaining
-- [x] `/api/dashboard/planned-vs-actual` â€” per-country planned vs actual + category totals
-- [x] `/api/dashboard/burn-rate` â€” cumulative spend data points over time
-
-### Dashboard Page â€” DONE
-- [x] Summary cards: budget, spent, projected total, remaining (with budget health indicator)
-- [x] Secondary stats: days elapsed, days left, daily avg, 7-day avg, 30-day avg
-- [x] Planned vs Actual stacked bar chart per country (Recharts)
-- [x] Category breakdown pie chart (Recharts)
-- [x] Cumulative spend line chart with budget ceiling reference line (Recharts)
-- [x] Country comparison table with planned/actual/difference/status
-
-### Utility â€” DONE
-- [x] `src/lib/burn-rate.ts` â€” buildCumulativeSpend, calcBurnRate, projectTotal
-
-## Phase 4: Polish & Deploy â€” COMPLETE (build passes)
-
-### Docker Deployment â€” DONE
-- [x] Dockerfile (multi-stage: deps â†’ build â†’ production with standalone output)
-- [x] docker-compose.yml (app + nginx reverse proxy)
-- [x] nginx.conf (HTTPâ†’HTTPS redirect, self-signed TLS)
-- [x] .dockerignore
-- [x] scripts/backup.sh (daily SQLite backup, 7-day retention)
-- [x] scripts/generate-certs.sh (self-signed cert generation)
-- [x] next.config.mjs updated with `output: 'standalone'`
-
-### LLM Estimation Engine â€” DONE
-- [x] `src/lib/estimation/llm-provider.ts` â€” provider interface + async factory (Anthropic > OpenAI)
-- [x] `src/lib/estimation/prompt.ts` â€” structured prompt template for all cost categories
-- [x] `src/lib/estimation/providers/anthropic.ts` â€” Anthropic Claude provider
-- [x] `src/lib/estimation/providers/openai.ts` â€” OpenAI GPT provider
-- [x] Updated orchestrator to merge LLM + Xotelo with priority
-- [x] Updated CityEstimator with Xotelo Only / LLM Only / Xotelo + LLM buttons
-- [x] Updated estimate API route with reasoning, confidence, llmProvider metadata
-- [x] Source badges and confidence display in estimation results
-
-### Data Export â€” DONE
-- [x] `/api/export?format=json` â€” full trip data (all tables)
-- [x] `/api/export?format=csv` â€” expenses as CSV
-- [x] Export buttons on settings page
-
----
-
-## File Structure
-```
-wanderledger/
-â”œâ”€â”€ .env.example, .env.local, drizzle.config.ts
-â”œâ”€â”€ seed-data/cities.json
-â”œâ”€â”€ data/travel.db (gitignored)
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ middleware.ts (PIN auth)
-â”‚   â”œâ”€â”€ types/index.ts
-â”‚   â”œâ”€â”€ db/ (schema.ts, index.ts, seed.ts)
-â”‚   â”œâ”€â”€ lib/ (api-helpers.ts, cost-calculator.ts, exchange-rates.ts, utils.ts)
-â”‚   â”‚   â””â”€â”€ estimation/ (orchestrator.ts, xotelo-client.ts)
-â”‚   â”œâ”€â”€ app/
-â”‚   â”‚   â”œâ”€â”€ layout.tsx, page.tsx (dashboard), login/page.tsx
-â”‚   â”‚   â”œâ”€â”€ plan/page.tsx (itinerary builder)
-â”‚   â”‚   â”œâ”€â”€ track/ (page.tsx, add/page.tsx, import/page.tsx, tags/page.tsx)
-â”‚   â”‚   â”œâ”€â”€ settings/ (page.tsx, cities/page.tsx)
-â”‚   â”‚   â””â”€â”€ api/ (auth, cities, countries, itinerary, fixed-costs, rates)
-â”‚   â””â”€â”€ components/
-â”‚       â”œâ”€â”€ ui/ (Radix-based shadcn components)
-â”‚       â”œâ”€â”€ layout/ (DesktopSidebar.tsx, MobileNav.tsx)
-â”‚       â”œâ”€â”€ itinerary/ (LegCard.tsx, TierSelector.tsx, CostSummary.tsx)
-â”‚       â””â”€â”€ cities/ (CostEditor.tsx, CityEstimator.tsx)
-```
+## Useful Files
+- `city_costs_app_aud.csv`
+- `methodology.md`
+- `llm_prompt_new_cities_1.md`
+- `wanderledger/src/lib/city-generation.ts`
+- `wanderledger/src/lib/city-generation-config.ts`
+- `wanderledger/src/app/api/cities/[id]/generate/route.ts`
+- `wanderledger/src/app/settings/cities/page.tsx`
+- `wanderledger/src/app/estimates/page.tsx`
+- `wanderledger/src/lib/wise-csv-parser.ts`

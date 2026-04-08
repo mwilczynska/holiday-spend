@@ -24,12 +24,72 @@ const tableNames = sqlite
 const hasCitiesTable = tableNames.some((table) => table.name === 'cities');
 const hasExpensesTable = tableNames.some((table) => table.name === 'expenses');
 const hasItineraryLegsTable = tableNames.some((table) => table.name === 'itinerary_legs');
+const hasCityEstimatesTable = tableNames.some((table) => table.name === 'city_estimates');
+const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_price_inputs');
 
 const cityColumns = sqlite.prepare("PRAGMA table_info(cities)").all() as Array<{ name: string }>;
 const hasPrivateRoomColumn = cityColumns.some((column) => column.name === 'accom_private_room');
 
 if (hasCitiesTable && !hasPrivateRoomColumn) {
   sqlite.exec('ALTER TABLE cities ADD COLUMN accom_private_room REAL');
+}
+
+if (!hasCityPriceInputsTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS city_price_inputs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      city_id TEXT NOT NULL REFERENCES cities(id),
+      captured_at TEXT NOT NULL,
+      source_type TEXT NOT NULL,
+      source_detail TEXT,
+      confidence TEXT,
+      accom_hostel REAL,
+      accom_private_room REAL,
+      accom_1star REAL,
+      accom_2star REAL,
+      accom_3star REAL,
+      accom_4star REAL,
+      street_meal REAL,
+      cheap_restaurant_meal REAL,
+      mid_restaurant_meal REAL,
+      coffee REAL,
+      local_beer REAL,
+      import_beer REAL,
+      wine_glass REAL,
+      cocktail REAL,
+      public_transit_ride REAL,
+      taxi_short REAL,
+      activity_budget REAL,
+      activity_mid REAL,
+      activity_high REAL,
+      notes TEXT,
+      is_active INTEGER DEFAULT 1
+    )
+  `);
+}
+
+if (hasCityEstimatesTable) {
+  const cityEstimateColumns = sqlite.prepare("PRAGMA table_info(city_estimates)").all() as Array<{ name: string }>;
+  const cityEstimateColumnNames = new Set(cityEstimateColumns.map((column) => column.name));
+
+  if (!cityEstimateColumnNames.has('prompt_version')) {
+    sqlite.exec('ALTER TABLE city_estimates ADD COLUMN prompt_version TEXT');
+  }
+  if (!cityEstimateColumnNames.has('anchors_json')) {
+    sqlite.exec('ALTER TABLE city_estimates ADD COLUMN anchors_json TEXT');
+  }
+  if (!cityEstimateColumnNames.has('metadata_json')) {
+    sqlite.exec('ALTER TABLE city_estimates ADD COLUMN metadata_json TEXT');
+  }
+  if (!cityEstimateColumnNames.has('sources_json')) {
+    sqlite.exec('ALTER TABLE city_estimates ADD COLUMN sources_json TEXT');
+  }
+  if (!cityEstimateColumnNames.has('input_snapshot_json')) {
+    sqlite.exec('ALTER TABLE city_estimates ADD COLUMN input_snapshot_json TEXT');
+  }
+  if (!cityEstimateColumnNames.has('fallback_log_json')) {
+    sqlite.exec('ALTER TABLE city_estimates ADD COLUMN fallback_log_json TEXT');
+  }
 }
 
 if (hasCitiesTable) {
