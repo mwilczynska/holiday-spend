@@ -1,12 +1,16 @@
 import { db } from '@/db';
-import { itineraryLegs, cities, countries, expenses } from '@/db/schema';
+import { itineraryLegs, itineraryLegTransports, cities, countries, expenses } from '@/db/schema';
 import { asc } from 'drizzle-orm';
-import { getLegTotal, getDailyBreakdown } from '@/lib/cost-calculator';
+import { getLegTotalFromTransports, getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
+import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
+import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier, LegStatus } from '@/types';
+
+export const dynamic = 'force-dynamic';
 
 function mergeCountryStatus(current: LegStatus | null, next: string | null): LegStatus | null {
   if (next === 'active') return 'active';
@@ -20,12 +24,15 @@ function mergeCountryStatus(current: LegStatus | null, next: string | null): Leg
 export async function GET() {
   try {
     const allLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
+    const allTransports = await db.select().from(itineraryLegTransports).orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);
     const allExpenses = await db.select().from(expenses);
+    const groupSize = await getPlannerGroupSize();
 
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const countryMap = new Map(allCountries.map(c => [c.id, c]));
+    const transportMap = groupIntercityTransportsByLegId(allTransports);
     const { tripStart, tripEnd } = getTripWindow(allLegs);
     const statusByCountry = new Map<string, LegStatus>();
 
@@ -44,10 +51,12 @@ export async function GET() {
         (leg.foodTier || 'mid') as FoodTier,
         (leg.drinksTier || 'moderate') as DrinksTier,
         (leg.activitiesTier || 'mid') as ActivitiesTier,
-        { accomOverride: leg.accomOverride, foodOverride: leg.foodOverride, drinksOverride: leg.drinksOverride, activitiesOverride: leg.activitiesOverride, transportOverride: leg.transportOverride }
+        { accomOverride: leg.accomOverride, foodOverride: leg.foodOverride, drinksOverride: leg.drinksOverride, activitiesOverride: leg.activitiesOverride, transportOverride: leg.transportOverride },
+        groupSize
       );
 
-      const legTotal = getLegTotal(breakdown.total, leg.nights, leg.intercityTransportCost ?? 0);
+      const intercityTransportTotal = getIntercityTransportTotal(transportMap.get(leg.id));
+      const legTotal = getLegTotalFromTransports(breakdown.total, leg.nights, transportMap.get(leg.id));
 
       if (!plannedByCountry.has(city.countryId)) {
         plannedByCountry.set(city.countryId, { name: countryName, planned: 0, categories: {} });
@@ -62,7 +71,7 @@ export async function GET() {
       entry.categories.food = (entry.categories.food || 0) + breakdown.food * leg.nights;
       entry.categories.drinks = (entry.categories.drinks || 0) + breakdown.drinks * leg.nights;
       entry.categories.activities = (entry.categories.activities || 0) + breakdown.activities * leg.nights;
-      entry.categories.transport = (entry.categories.transport || 0) + breakdown.transport * leg.nights + (leg.intercityTransportCost ?? 0);
+      entry.categories.transport = (entry.categories.transport || 0) + breakdown.transport * leg.nights + intercityTransportTotal;
     }
 
     // Build actual totals per country (join expense → leg → city → country)

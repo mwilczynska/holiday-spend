@@ -74,7 +74,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Transport estimation has been removed from the city methodology
 - Planner still supports manual:
   - `transportOverride`
-  - `intercityTransportCost`
+  - repeatable per-leg `intercityTransports`
 - City cost generation and methodology pages should continue to treat transport as manual-only
 
 ## Current LLM Generation System
@@ -119,6 +119,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Tier descriptions are explicit and planner helper copy explains category logic
 - Country and city pickers are searchable
 - Legs can be reordered, edited inline, and constrained by date validation
+- Intercity transport is now a repeatable per-leg list rather than a single always-open field
+- Planner supports saved snapshots plus JSON export/import for comparing alternate itineraries
+- Traveller count is configurable in `/plan` and persists in `app_settings.planner_group_size`
+- City base costs remain stored for 2 travellers and are scaled at runtime in planner/dashboard calculations
+- `splitPct` is "your share" of a leg total and does not control traveller count
 - Planner totals and summaries are stable and current
 
 ### Expense Tracking
@@ -132,6 +137,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Dashboard summary, country comparison, planned-vs-actual, and cumulative burn views are implemented
 - Actual-spend handling was tightened so missing AUD conversions do not pollute totals
 - Spend views are constrained to the trip window instead of entire historical account activity
+- Summary cards now use clearer planned-vs-actual terminology and include info popovers that explain each calculation
 
 ## Completed Work
 
@@ -203,13 +209,23 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `/estimates` is now a methodology-heavy page with dataset and generation history tables
 - `/settings/cities` is now the main city-cost library editor
 - The city library now supports explicit save, edit, delete, and deep-linking from the estimates table
+- The `/estimates` city-cost table sticky column overlap on horizontal scroll was fixed
 
 ### Wise Import Improvements
 - `src/lib/wise-csv-parser.ts` was upgraded to support both provided Wise CSV export formats
+- `src/lib/wise-import.ts` now does a second-pass AUD conversion lookup for merged non-AUD rows that still lack `amountAud`
 - Verified against:
   - `transaction-history_2026-04-06.csv`
   - `data/preeta_wise_balance_statement.csv`
   - `data/statement_88001685_GBP_2026-02-01_2026-04-08.csv`
+
+### Planner And Dashboard Refinements
+- Added `itinerary_leg_transports` plus runtime backfill from older single transport fields
+- Added `/api/itinerary/snapshot` for plan export/import and browser-saved snapshots
+- Added `/api/planner/settings` plus `app_settings` storage for planner traveller count
+- Planner tier popovers now show the live scaled per-option costs for the selected traveller count
+- Planner header/sidebar locking and transport input focus handling were tightened
+- Dashboard summary calculations and labels were rebuilt around planned-vs-actual clarity
 
 ## Useful Files
 - `CLAUDE.md`

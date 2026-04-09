@@ -1,4 +1,4 @@
-import { getExchangeRate } from './exchange-rates';
+import { convertToAud, getExchangeRate } from './exchange-rates';
 import type { ParsedExpense } from './wise-csv-parser';
 
 type ParsedWithAud = ParsedExpense & { amountAud: number | null };
@@ -137,6 +137,16 @@ export async function prepareWiseExpenses(parsed: ParsedExpense[]): Promise<Pars
       currency: currencies.length === 1 ? currencies[0] : 'AUD',
       amountAud: hasAud ? totalAud : null,
     });
+  }
+
+  for (const expense of aggregated) {
+    if (expense.amountAud != null || expense.currency === 'AUD' || !expense.date) continue;
+
+    try {
+      expense.amountAud = await convertToAud(expense.amount, expense.currency, expense.date);
+    } catch {
+      expense.amountAud = null;
+    }
   }
 
   return aggregated;

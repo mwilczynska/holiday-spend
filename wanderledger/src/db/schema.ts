@@ -8,6 +8,11 @@ export const countries = sqliteTable('countries', {
   region: text('region'), // 'se_asia', 'east_asia', 'europe', etc.
 });
 
+export const appSettings = sqliteTable('app_settings', {
+  key: text('key').primaryKey(),
+  value: text('value').notNull(),
+});
+
 export const cities = sqliteTable('cities', {
   id: text('id').primaryKey(), // e.g. 'hanoi', 'tokyo'
   countryId: text('country_id').notNull().references(() => countries.id),
@@ -82,6 +87,15 @@ export const itineraryLegs = sqliteTable('itinerary_legs', {
   sortOrder: integer('sort_order'),
   notes: text('notes'),
   status: text('status').default('planned'), // 'planned', 'active', 'completed'
+});
+
+export const itineraryLegTransports = sqliteTable('itinerary_leg_transports', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  legId: integer('leg_id').notNull().references(() => itineraryLegs.id, { onDelete: 'cascade' }),
+  mode: text('mode'),
+  note: text('note'),
+  cost: real('cost').notNull().default(0),
+  sortOrder: integer('sort_order'),
 });
 
 export const expenses = sqliteTable('expenses', {

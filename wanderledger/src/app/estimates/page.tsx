@@ -434,8 +434,8 @@ export default function EstimatesPage() {
             <table className="min-w-[1800px] text-sm">
               <thead className="bg-muted/50">
                 <tr className="border-b">
-                  <th className="sticky left-0 z-10 min-w-[180px] bg-muted/50 px-3 py-2 text-left font-medium">City</th>
-                  <th className="sticky left-[180px] z-10 min-w-[160px] bg-muted/50 px-3 py-2 text-left font-medium">Country</th>
+                  <th className="sticky left-0 z-30 min-w-[180px] bg-muted px-3 py-2 text-left font-medium shadow-[1px_0_0_0_hsl(var(--border))]">City</th>
+                  <th className="sticky left-[180px] z-20 min-w-[160px] bg-muted px-3 py-2 text-left font-medium shadow-[1px_0_0_0_hsl(var(--border))]">Country</th>
                   <th className="px-3 py-2 text-left font-medium">Source</th>
                   <th className="px-3 py-2 text-left font-medium">Updated</th>
                   <th className="px-3 py-2 text-left font-medium">Hostel</th>
@@ -462,10 +462,10 @@ export default function EstimatesPage() {
               <tbody>
                 {filteredRows.map((row) => (
                   <tr key={row.cityId} className="border-b align-top last:border-0">
-                    <td className="sticky left-0 z-10 min-w-[180px] bg-background px-3 py-2 font-medium">
+                    <td className="sticky left-0 z-20 min-w-[180px] bg-background px-3 py-2 font-medium shadow-[1px_0_0_0_hsl(var(--border))]">
                       {row.cityName}
                     </td>
-                    <td className="sticky left-[180px] z-10 min-w-[160px] bg-background px-3 py-2">
+                    <td className="sticky left-[180px] z-10 min-w-[160px] bg-background px-3 py-2 shadow-[1px_0_0_0_hsl(var(--border))]">
                       <div>{row.countryName || '-'}</div>
                       {row.region ? <div className="text-xs text-muted-foreground">{row.region}</div> : null}
                     </td>

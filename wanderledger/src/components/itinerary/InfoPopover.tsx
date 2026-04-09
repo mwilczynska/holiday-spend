@@ -9,6 +9,7 @@ interface InfoPopoverProps {
   summary: string;
   items?: Array<{
     label: string;
+    detail?: string;
     description: string;
   }>;
 }
@@ -61,7 +62,12 @@ export function InfoPopover({ title, summary, items = [] }: InfoPopoverProps) {
               <div className="space-y-2">
                 {items.map((item) => (
                   <div key={item.label} className="space-y-0.5">
-                    <p className="text-xs font-medium">{item.label}</p>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-xs font-medium">{item.label}</p>
+                      {item.detail ? (
+                        <p className="text-[11px] font-medium text-foreground">{item.detail}</p>
+                      ) : null}
+                    </div>
                     <p className="text-xs leading-4 text-muted-foreground">{item.description}</p>
                   </div>
                 ))}

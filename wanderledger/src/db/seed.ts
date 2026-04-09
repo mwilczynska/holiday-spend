@@ -95,6 +95,11 @@ CREATE TABLE IF NOT EXISTS countries (
   region        TEXT
 );
 
+CREATE TABLE IF NOT EXISTS app_settings (
+  key           TEXT PRIMARY KEY,
+  value         TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS cities (
   id              TEXT PRIMARY KEY,
   country_id      TEXT NOT NULL REFERENCES countries(id),
@@ -149,6 +154,15 @@ CREATE TABLE IF NOT EXISTS itinerary_legs (
   sort_order      INTEGER,
   notes           TEXT,
   status          TEXT DEFAULT 'planned'
+);
+
+CREATE TABLE IF NOT EXISTS itinerary_leg_transports (
+  id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  leg_id          INTEGER NOT NULL REFERENCES itinerary_legs(id) ON DELETE CASCADE,
+  mode            TEXT,
+  note            TEXT,
+  cost            REAL NOT NULL DEFAULT 0,
+  sort_order      INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS expenses (
@@ -219,6 +233,12 @@ CREATE TABLE IF NOT EXISTS city_estimates (
   is_active       INTEGER DEFAULT 1
 );
 `);
+
+sqlite.prepare(`
+  INSERT INTO app_settings (key, value)
+  VALUES ('planner_group_size', '2')
+  ON CONFLICT(key) DO NOTHING
+`).run();
 
 function findFile(candidates: string[]): string {
   for (const candidate of candidates) {

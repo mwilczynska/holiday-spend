@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { InfoPopover } from '@/components/itinerary/InfoPopover';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
-import { Map, Receipt, Plus, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { Map, Receipt, Plus, TrendingUp } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell,
@@ -14,15 +15,27 @@ import {
 
 interface Summary {
   totalBudget: number;
+  plannedLegsTotal: number;
+  fixedTotal: number;
   totalSpent: number;
+  plannedToDate: number;
+  varianceToDate: number;
   projectedTotal: number;
+  forecastVariance: number;
+  remainingLegBudget: number;
   remaining: number;
   daysElapsed: number;
   daysRemaining: number;
   totalNights: number;
   destinations: number;
   expenseCount: number;
-  burnRate: { tripAvg: number; sevenDayAvg: number | null; thirtyDayAvg: number | null };
+  burnRate: {
+    tripAvg: number;
+    plannedAvgSoFar: number;
+    sevenDayAvg: number | null;
+    thirtyDayAvg: number | null;
+    requiredDailyPace: number | null;
+  };
   budgetHealth: 'on_track' | 'warning' | 'over_budget';
 }
 
@@ -52,6 +65,14 @@ interface CountryBand {
   pointCount: number;
 }
 
+interface StatHelp {
+  summary: string;
+  items?: Array<{
+    label: string;
+    description: string;
+  }>;
+}
+
 const CHART_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'];
 const COUNTRY_BAND_COLORS = ['#dbeafe', '#dcfce7', '#fef3c7', '#fce7f3', '#e0e7ff', '#cffafe'];
 const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> = {
@@ -61,8 +82,131 @@ const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> =
 };
 
 const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
+const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const tooltipFmt = (v: any) => fmtAud(Number(v));
+
+const SUMMARY_HELP: Record<string, StatHelp> = {
+  plannedTotal: {
+    summary: 'All planned itinerary leg spend plus fixed costs.',
+    items: [
+      { label: 'Formula', description: 'planned leg totals + fixed costs' },
+      { label: 'Scope', description: 'This is the full planned trip amount shown as the top-level budget.' },
+    ],
+  },
+  actualSpentToDate: {
+    summary: 'Actual logged trip spend so far.',
+    items: [
+      { label: 'Included', description: 'Non-excluded expenses linked to a trip leg or dated inside the trip window.' },
+      { label: 'AUD Handling', description: 'A non-AUD expense without an AUD conversion contributes zero until converted.' },
+    ],
+  },
+  plannedSpendToDate: {
+    summary: 'How much the itinerary plan says you would have spent by today.',
+    items: [
+      { label: 'Formula', description: 'sum of planned daily leg costs up to today, including intercity transport on the first day of each leg' },
+      { label: 'Scope', description: 'This covers itinerary leg spend only. Fixed costs are shown separately.' },
+    ],
+  },
+  varianceToDate: {
+    summary: 'Difference between actual spend so far and planned spend so far.',
+    items: [
+      { label: 'Formula', description: 'actual spent to date - planned spend to date' },
+      { label: 'Reading', description: 'Positive means over plan so far. Negative means under plan so far.' },
+    ],
+  },
+  forecastFinalSpend: {
+    summary: 'Projected final actual spend by trip end if your current pace continues.',
+    items: [
+      { label: 'Formula', description: 'actual spent to date + forecast daily rate × days left' },
+      { label: 'Forecast Rate', description: 'Uses the 7-day average if available, otherwise the trip average.' },
+    ],
+  },
+  requiredDailyPace: {
+    summary: 'Daily spending pace available from here if you want to finish within planned leg spend.',
+    items: [
+      { label: 'Formula', description: 'max(planned leg total - actual spent to date, 0) / days left' },
+      { label: 'Scope', description: 'This pace compares actual spend to itinerary leg spend. Fixed costs are not included.' },
+    ],
+  },
+  plannedLegs: {
+    summary: 'Total planned spend across itinerary legs only.',
+    items: [
+      { label: 'Included', description: 'Daily leg costs plus intercity transport rows.' },
+    ],
+  },
+  fixedCosts: {
+    summary: 'Planned fixed costs tracked outside the leg-by-leg spend model.',
+    items: [
+      { label: 'Examples', description: 'Flights, visas, insurance, gear, and other one-off planned costs.' },
+    ],
+  },
+  daysElapsed: {
+    summary: 'Whole calendar days between the trip start date and today.',
+    items: [
+      { label: 'Formula', description: 'today - trip start date' },
+    ],
+  },
+  daysLeft: {
+    summary: 'Whole calendar days from today to the trip end date.',
+    items: [
+      { label: 'Formula', description: 'trip end date - today' },
+    ],
+  },
+  actualAvgSoFar: {
+    summary: 'Average actual spend per elapsed trip day so far.',
+    items: [
+      { label: 'Formula', description: 'actual spent to date / days elapsed' },
+    ],
+  },
+  plannedAvgSoFar: {
+    summary: 'Average planned leg spend per planned day that has passed so far.',
+    items: [
+      { label: 'Formula', description: 'planned spend to date / planned trip days elapsed' },
+    ],
+  },
+  sevenDayAvg: {
+    summary: 'Recent actual spend pace based on the last 7 calendar days.',
+    items: [
+      { label: 'Formula', description: 'actual spend in last 7 days / 7' },
+    ],
+  },
+  thirtyDayAvg: {
+    summary: 'Recent actual spend pace based on the last 30 calendar days.',
+    items: [
+      { label: 'Formula', description: 'actual spend in last 30 days / 30' },
+    ],
+  },
+};
+
+function SummaryStatCard({
+  label,
+  help,
+  value,
+  subtext,
+  valueClassName,
+}: {
+  label: string;
+  help: StatHelp;
+  value: string;
+  subtext?: string;
+  valueClassName?: string;
+}) {
+  return (
+    <Card>
+      <CardHeader className="pb-1">
+        <CardTitle className="flex items-center gap-1 text-xs text-muted-foreground">
+          <span>{label}</span>
+          <InfoPopover title={label} summary={help.summary} items={help.items} />
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className={`text-xl font-bold ${valueClassName || ''}`}>{value}</p>
+        {subtext ? <p className="text-xs text-muted-foreground">{subtext}</p> : null}
+      </CardContent>
+    </Card>
+  );
+}
 
 function BurnRateTooltip({
   active,
@@ -118,9 +262,9 @@ export default function DashboardPage() {
   useEffect(() => {
     async function load() {
       const [summaryRes, compRes, burnRes] = await Promise.all([
-        fetch('/api/dashboard/summary'),
-        fetch('/api/dashboard/planned-vs-actual'),
-        fetch('/api/dashboard/burn-rate'),
+        fetch('/api/dashboard/summary', { cache: 'no-store' }),
+        fetch('/api/dashboard/planned-vs-actual', { cache: 'no-store' }),
+        fetch('/api/dashboard/burn-rate', { cache: 'no-store' }),
       ]);
       const summaryData = await summaryRes.json();
       const compData = await compRes.json();
@@ -142,25 +286,17 @@ export default function DashboardPage() {
     load();
   }, []);
 
-  const healthColor = summary?.budgetHealth === 'on_track' ? 'text-green-600' :
-    summary?.budgetHealth === 'warning' ? 'text-yellow-600' : 'text-red-600';
-
-  const HealthIcon = summary?.budgetHealth === 'on_track' ? TrendingDown :
-    summary?.budgetHealth === 'warning' ? Minus : TrendingUp;
-
-  // Pie chart data
   const pieData = Object.entries(categoryTotals)
     .filter(([, v]) => v > 0)
     .map(([key, value]) => ({
-      name: EXPENSE_CATEGORIES.find(c => c.value === key)?.label ?? key,
+      name: EXPENSE_CATEGORIES.find((c) => c.value === key)?.label ?? key,
       value: Math.round(value),
     }))
     .sort((a, b) => b.value - a.value);
 
-  // Bar chart data
   const barData = comparison
-    .filter(c => c.planned > 0 || c.actual > 0)
-    .map(c => ({
+    .filter((c) => c.planned > 0 || c.actual > 0)
+    .map((c) => ({
       name: c.countryName,
       Planned: Math.round(c.planned),
       Actual: Math.round(c.actual),
@@ -182,87 +318,103 @@ export default function DashboardPage() {
         </div>
         <div className="flex gap-2">
           <Link href="/track/add">
-            <Badge variant="default" className="cursor-pointer py-1 px-3">
-              <Plus className="h-3 w-3 mr-1" />Quick Add
+            <Badge variant="default" className="cursor-pointer px-3 py-1">
+              <Plus className="mr-1 h-3 w-3" />Quick Add
             </Badge>
           </Link>
         </div>
       </div>
 
-      {/* Summary Cards */}
       {summary && (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-          <Card>
-            <CardHeader className="pb-1"><CardTitle className="text-xs text-muted-foreground">Budget</CardTitle></CardHeader>
-            <CardContent><p className="text-xl font-bold">{fmtAud(summary.totalBudget)}</p></CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-1"><CardTitle className="text-xs text-muted-foreground">Spent</CardTitle></CardHeader>
-            <CardContent>
-              <p className="text-xl font-bold">{fmtAud(summary.totalSpent)}</p>
-              <p className="text-xs text-muted-foreground">{summary.totalBudget > 0 ? `${((summary.totalSpent / summary.totalBudget) * 100).toFixed(0)}% of budget` : ''}</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-1"><CardTitle className="text-xs text-muted-foreground">Projected Total</CardTitle></CardHeader>
-            <CardContent>
-              <p className={`text-xl font-bold ${healthColor}`}>{fmtAud(summary.projectedTotal)}</p>
-              <div className={`flex items-center gap-1 text-xs ${healthColor}`}>
-                <HealthIcon className="h-3 w-3" />
-                <span>{summary.budgetHealth === 'on_track' ? 'On Track' : summary.budgetHealth === 'warning' ? 'Warning' : 'Over Budget'}</span>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-1"><CardTitle className="text-xs text-muted-foreground">Remaining</CardTitle></CardHeader>
-            <CardContent>
-              <p className={`text-xl font-bold ${summary.remaining >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                {fmtAud(summary.remaining)}
-              </p>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-2 gap-3 xl:grid-cols-6">
+          <SummaryStatCard
+            label="Planned Total"
+            help={SUMMARY_HELP.plannedTotal}
+            value={fmtAud(summary.totalBudget)}
+            subtext={`Leg plan ${fmtAud(summary.plannedLegsTotal)} + fixed ${fmtAud(summary.fixedTotal)}`}
+          />
+          <SummaryStatCard
+            label="Actual Spent To Date"
+            help={SUMMARY_HELP.actualSpentToDate}
+            value={fmtAud(summary.totalSpent)}
+            subtext={`${summary.expenseCount} trip expenses logged`}
+          />
+          <SummaryStatCard
+            label="Planned Spend To Date"
+            help={SUMMARY_HELP.plannedSpendToDate}
+            value={fmtAud(summary.plannedToDate)}
+            subtext="Cumulative itinerary plan through today"
+          />
+          <SummaryStatCard
+            label="Variance To Date"
+            help={SUMMARY_HELP.varianceToDate}
+            value={fmtAudSigned(summary.varianceToDate)}
+            valueClassName={summary.varianceToDate > 0 ? 'text-red-600' : summary.varianceToDate < 0 ? 'text-green-600' : ''}
+            subtext={summary.varianceToDate > 0 ? 'Over plan so far' : summary.varianceToDate < 0 ? 'Under plan so far' : 'Exactly on plan so far'}
+          />
+          <SummaryStatCard
+            label="Forecast Final Spend"
+            help={SUMMARY_HELP.forecastFinalSpend}
+            value={fmtAud(summary.projectedTotal)}
+            valueClassName={summary.forecastVariance > 0 ? 'text-red-600' : summary.forecastVariance < 0 ? 'text-green-600' : ''}
+            subtext={`${fmtAudSigned(summary.forecastVariance)} vs planned legs`}
+          />
+          <SummaryStatCard
+            label="Required Daily Pace"
+            help={SUMMARY_HELP.requiredDailyPace}
+            value={summary.burnRate.requiredDailyPace != null ? `${fmtAud(summary.burnRate.requiredDailyPace)}/day` : '—'}
+            valueClassName={summary.remainingLegBudget < 0 ? 'text-red-600' : ''}
+            subtext={summary.daysRemaining > 0 ? (summary.remainingLegBudget < 0 ? `Already over planned legs by ${fmtAud(Math.abs(summary.remainingLegBudget))}` : 'To finish within planned legs') : 'No remaining trip days'}
+          />
         </div>
       )}
 
-      {/* Secondary stats */}
       {summary && (
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
-          <Card>
-            <CardContent className="p-3">
-              <p className="text-xs text-muted-foreground">Days Elapsed</p>
-              <p className="text-lg font-bold">{summary.daysElapsed}</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-3">
-              <p className="text-xs text-muted-foreground">Days Left</p>
-              <p className="text-lg font-bold">{summary.daysRemaining}</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-3">
-              <p className="text-xs text-muted-foreground">Daily Avg</p>
-              <p className="text-lg font-bold">{fmtAud(summary.burnRate.tripAvg)}/day</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-3">
-              <p className="text-xs text-muted-foreground">7-Day Avg</p>
-              <p className="text-lg font-bold">{summary.burnRate.sevenDayAvg != null ? `${fmtAud(summary.burnRate.sevenDayAvg)}/day` : '—'}</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-3">
-              <p className="text-xs text-muted-foreground">30-Day Avg</p>
-              <p className="text-lg font-bold">{summary.burnRate.thirtyDayAvg != null ? `${fmtAud(summary.burnRate.thirtyDayAvg)}/day` : '—'}</p>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 xl:grid-cols-8">
+          <SummaryStatCard
+            label="Planned Legs"
+            help={SUMMARY_HELP.plannedLegs}
+            value={fmtAud(summary.plannedLegsTotal)}
+          />
+          <SummaryStatCard
+            label="Fixed Costs"
+            help={SUMMARY_HELP.fixedCosts}
+            value={fmtAud(summary.fixedTotal)}
+          />
+          <SummaryStatCard
+            label="Days Elapsed"
+            help={SUMMARY_HELP.daysElapsed}
+            value={String(summary.daysElapsed)}
+          />
+          <SummaryStatCard
+            label="Days Left"
+            help={SUMMARY_HELP.daysLeft}
+            value={String(summary.daysRemaining)}
+          />
+          <SummaryStatCard
+            label="Actual Avg So Far"
+            help={SUMMARY_HELP.actualAvgSoFar}
+            value={`${fmtAud(summary.burnRate.tripAvg)}/day`}
+          />
+          <SummaryStatCard
+            label="Planned Avg So Far"
+            help={SUMMARY_HELP.plannedAvgSoFar}
+            value={`${fmtAud(summary.burnRate.plannedAvgSoFar)}/day`}
+          />
+          <SummaryStatCard
+            label="7-Day Avg"
+            help={SUMMARY_HELP.sevenDayAvg}
+            value={summary.burnRate.sevenDayAvg != null ? `${fmtAud(summary.burnRate.sevenDayAvg)}/day` : '—'}
+          />
+          <SummaryStatCard
+            label="30-Day Avg"
+            help={SUMMARY_HELP.thirtyDayAvg}
+            value={summary.burnRate.thirtyDayAvg != null ? `${fmtAud(summary.burnRate.thirtyDayAvg)}/day` : '—'}
+          />
         </div>
       )}
 
-      {/* Charts Grid */}
-      <div className="grid lg:grid-cols-2 gap-6">
-        {/* Planned vs Actual */}
+      <div className="grid gap-6 lg:grid-cols-2">
         {barData.length > 0 && (
           <Card>
             <CardHeader className="pb-2"><CardTitle className="text-sm">Planned vs Actual by Country</CardTitle></CardHeader>
@@ -281,12 +433,11 @@ export default function DashboardPage() {
           </Card>
         )}
 
-        {/* Category Breakdown */}
         {pieData.length > 0 && (
           <Card>
             <CardHeader className="pb-2"><CardTitle className="text-sm">Spending by Category</CardTitle></CardHeader>
             <CardContent>
-              <div className="flex flex-col lg:flex-row items-center gap-4">
+              <div className="flex flex-col items-center gap-4 lg:flex-row">
                 <ResponsiveContainer width="100%" height={250}>
                   <PieChart>
                     <Pie
@@ -312,7 +463,6 @@ export default function DashboardPage() {
         )}
       </div>
 
-      {/* Burn Rate Chart */}
       {burnData.length > 0 && (
         <Card>
           <CardHeader className="pb-2"><CardTitle className="text-sm">Cumulative Spend Over Time</CardTitle></CardHeader>
@@ -351,7 +501,6 @@ export default function DashboardPage() {
         </Card>
       )}
 
-      {/* Country Comparison Table */}
       {comparison.length > 0 && (
         <Card>
           <CardHeader className="pb-2"><CardTitle className="text-sm">Country Comparison</CardTitle></CardHeader>
@@ -368,7 +517,7 @@ export default function DashboardPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparison.filter(c => c.planned > 0 || c.actual > 0).map((c) => {
+                  {comparison.filter((c) => c.planned > 0 || c.actual > 0).map((c) => {
                     const diff = c.actual - c.planned;
                     const isOver = diff > 0;
                     return (
@@ -407,10 +556,9 @@ export default function DashboardPage() {
         </Card>
       )}
 
-      {/* Quick Nav */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Link href="/plan" className="block">
-          <Card className="hover:bg-accent transition-colors cursor-pointer">
+          <Card className="cursor-pointer transition-colors hover:bg-accent">
             <CardContent className="flex flex-col items-center gap-1 py-4">
               <Map className="h-6 w-6 text-muted-foreground" />
               <span className="text-sm font-medium">Plan Trip</span>
@@ -418,7 +566,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
         <Link href="/track/add" className="block">
-          <Card className="hover:bg-accent transition-colors cursor-pointer">
+          <Card className="cursor-pointer transition-colors hover:bg-accent">
             <CardContent className="flex flex-col items-center gap-1 py-4">
               <Plus className="h-6 w-6 text-muted-foreground" />
               <span className="text-sm font-medium">Quick Add</span>
@@ -426,7 +574,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
         <Link href="/track" className="block">
-          <Card className="hover:bg-accent transition-colors cursor-pointer">
+          <Card className="cursor-pointer transition-colors hover:bg-accent">
             <CardContent className="flex flex-col items-center gap-1 py-4">
               <Receipt className="h-6 w-6 text-muted-foreground" />
               <span className="text-sm font-medium">Expenses</span>
@@ -434,7 +582,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
         <Link href="/track/import" className="block">
-          <Card className="hover:bg-accent transition-colors cursor-pointer">
+          <Card className="cursor-pointer transition-colors hover:bg-accent">
             <CardContent className="flex flex-col items-center gap-1 py-4">
               <TrendingUp className="h-6 w-6 text-muted-foreground" />
               <span className="text-sm font-medium">Import CSV</span>

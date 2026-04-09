@@ -72,6 +72,15 @@ export interface CityPriceInputData {
   activityHigh?: number;
 }
 
+export interface IntercityTransportItem {
+  id?: number;
+  legId?: number;
+  mode: string | null;
+  note: string | null;
+  cost: number;
+  sortOrder?: number | null;
+}
+
 export interface LegWithCost {
   id: number;
   cityId: string;
@@ -91,6 +100,7 @@ export interface LegWithCost {
   transportOverride: number | null;
   intercityTransportCost: number;
   intercityTransportNote: string | null;
+  intercityTransports: IntercityTransportItem[];
   splitPct: number;
   sortOrder: number | null;
   notes: string | null;
@@ -103,32 +113,32 @@ export const ACCOM_TIERS: TierOption<AccomTier>[] = [
   {
     value: 'hostel',
     label: 'Shared Hostel Dorm',
-    description: 'One night for two people in shared dorm beds, using the city hostel rate.',
+    description: 'Shared dorm beds using the city hostel rate.',
   },
   {
     value: 'privateRoom',
     label: 'Private Room',
-    description: 'One private hostel or simple guesthouse room for two people per night.',
+    description: 'A private hostel room or simple guesthouse room.',
   },
   {
     value: '1star',
     label: '1-Star',
-    description: 'One very basic private hotel or guesthouse room for two people per night.',
+    description: 'A very basic private hotel or guesthouse room.',
   },
   {
     value: '2star',
     label: '2-Star',
-    description: 'One simple private hotel room for two people per night with standard comforts.',
+    description: 'A simple private hotel room with standard comforts.',
   },
   {
     value: '3star',
     label: '3-Star',
-    description: 'One comfortable mid-range hotel room for two people per night.',
+    description: 'A comfortable mid-range hotel room.',
   },
   {
     value: '4star',
     label: '4-Star',
-    description: 'One upscale hotel room for two people per night with better service and facilities.',
+    description: 'An upscale hotel room with better service and facilities.',
   },
 ];
 
@@ -136,22 +146,22 @@ export const FOOD_TIERS: TierOption<FoodTier>[] = [
   {
     value: 'street',
     label: 'Street Food',
-    description: 'Daily food budget for two built around cheap stalls, markets, and simple local meals for most meals.',
+    description: 'A food budget built around cheap stalls, markets, and simple local meals for most meals.',
   },
   {
     value: 'budget',
     label: 'Budget',
-    description: 'Daily food budget for two using a mix of street food, cheap cafes, and casual restaurants.',
+    description: 'A food budget using a mix of street food, cheap cafes, and casual restaurants.',
   },
   {
     value: 'mid',
     label: 'Mid-Range',
-    description: 'Daily food budget for two with casual meals plus some nicer sit-down meals and occasional treats.',
+    description: 'A food budget with casual meals plus some nicer sit-down meals and occasional treats.',
   },
   {
     value: 'high',
     label: 'High-End',
-    description: 'Daily food budget for two that assumes frequent nicer restaurants, bigger meals, and regular extras.',
+    description: 'A food budget that assumes frequent nicer restaurants, bigger meals, and regular extras.',
   },
 ];
 
@@ -159,17 +169,17 @@ export const DRINKS_TIERS: TierOption<DrinksTier>[] = [
   {
     value: 'light',
     label: 'Light',
-    description: 'Uses the light drinks basket for two: 2 coffees total plus 2 beers total per day.',
+    description: 'Uses the light drinks basket shown in the option details.',
   },
   {
     value: 'moderate',
     label: 'Moderate',
-    description: 'Uses the moderate drinks basket for two: 2 coffees total, 4 beers total, and 1 cocktail each per day.',
+    description: 'Uses the moderate drinks basket shown in the option details.',
   },
   {
     value: 'heavy',
     label: 'Heavy',
-    description: 'Uses the heavy drinks basket for two: 2 coffees total, 6 beers total, 2 cocktails each, plus wine.',
+    description: 'Uses the heavy drinks basket shown in the option details.',
   },
 ];
 

@@ -9,15 +9,15 @@ interface LegData {
   dailyCost: number;
   legTotal: number;
   nights: number;
-  intercityTransportCost: number;
 }
 
 interface CostSummaryProps {
   legs: LegData[];
   fixedCostsTotal: number;
+  groupSize?: number;
 }
 
-export function CostSummary({ legs, fixedCostsTotal }: CostSummaryProps) {
+export function CostSummary({ legs, fixedCostsTotal, groupSize = 2 }: CostSummaryProps) {
   const totalLegsCost = legs.reduce((sum, l) => sum + l.legTotal, 0);
   const grandTotal = totalLegsCost + fixedCostsTotal;
   const totalNights = legs.reduce((sum, l) => sum + l.nights, 0);
@@ -39,7 +39,7 @@ export function CostSummary({ legs, fixedCostsTotal }: CostSummaryProps) {
         <CardHeader className="pb-2">
           <CardTitle className="text-sm">Trip Summary</CardTitle>
           <p className="text-xs leading-4 text-muted-foreground">
-            {PLANNER_UI_LOGIC.tripSummary}
+            {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'} selected. {PLANNER_UI_LOGIC.tripSummary}
           </p>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">

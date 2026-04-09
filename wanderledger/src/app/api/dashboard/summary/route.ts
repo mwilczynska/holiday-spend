@@ -1,24 +1,37 @@
 import { db } from '@/db';
-import { itineraryLegs, cities, expenses, fixedCosts } from '@/db/schema';
+import { itineraryLegs, itineraryLegTransports, cities, expenses, fixedCosts } from '@/db/schema';
 import { asc } from 'drizzle-orm';
-import { getDailyCost, getLegTotal } from '@/lib/cost-calculator';
+import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
 import { calcBurnRate, projectTotal } from '@/lib/burn-rate';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
+import { groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
+import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
+
+export const dynamic = 'force-dynamic';
+
+function addDays(date: string, days: number): string {
+  const next = new Date(`${date}T00:00:00Z`);
+  next.setUTCDate(next.getUTCDate() + days);
+  return next.toISOString().split('T')[0];
+}
 
 export async function GET() {
   try {
     // Fetch legs, cities, expenses, fixed costs
     const allLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
+    const allTransports = await db.select().from(itineraryLegTransports).orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
     const allCities = await db.select().from(cities);
     const allExpenses = await db.select().from(expenses);
     const allFixed = await db.select().from(fixedCosts);
+    const groupSize = await getPlannerGroupSize();
 
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const legMap = new Map(allLegs.map(leg => [leg.id, leg]));
+    const transportMap = groupIntercityTransportsByLegId(allTransports);
     const { tripStart, tripEnd } = getTripWindow(allLegs);
 
     // Calculate planned budget from legs + fixed costs
@@ -31,10 +44,11 @@ export async function GET() {
             (leg.foodTier || 'mid') as FoodTier,
             (leg.drinksTier || 'moderate') as DrinksTier,
             (leg.activitiesTier || 'mid') as ActivitiesTier,
-            { accomOverride: leg.accomOverride, foodOverride: leg.foodOverride, drinksOverride: leg.drinksOverride, activitiesOverride: leg.activitiesOverride, transportOverride: leg.transportOverride }
+            { accomOverride: leg.accomOverride, foodOverride: leg.foodOverride, drinksOverride: leg.drinksOverride, activitiesOverride: leg.activitiesOverride, transportOverride: leg.transportOverride },
+            groupSize
           )
         : 0;
-      return getLegTotal(dailyCost, leg.nights, leg.intercityTransportCost ?? 0);
+      return getLegTotalFromTransports(dailyCost, leg.nights, transportMap.get(leg.id));
     });
 
     const plannedLegsTotal = legTotals.reduce((s, t) => s + t, 0);
@@ -68,6 +82,42 @@ export async function GET() {
       }
     }
 
+    const plannedByDate = new Map<string, number>();
+    for (const leg of allLegs) {
+      if (!leg.startDate || leg.nights < 1) continue;
+
+      const city = cityMap.get(leg.cityId);
+      if (!city) continue;
+
+      const dailyCost = getDailyCost(
+        city,
+        (leg.accomTier || '2star') as AccomTier,
+        (leg.foodTier || 'mid') as FoodTier,
+        (leg.drinksTier || 'moderate') as DrinksTier,
+        (leg.activitiesTier || 'mid') as ActivitiesTier,
+        {
+          accomOverride: leg.accomOverride,
+          foodOverride: leg.foodOverride,
+          drinksOverride: leg.drinksOverride,
+          activitiesOverride: leg.activitiesOverride,
+          transportOverride: leg.transportOverride,
+        },
+        groupSize
+      );
+
+      const intercityTotal = (transportMap.get(leg.id) || []).reduce((sum, transport) => sum + (transport.cost ?? 0), 0);
+      for (let offset = 0; offset < leg.nights; offset += 1) {
+        const date = addDays(leg.startDate, offset);
+        const plannedAmount = dailyCost + (offset === 0 ? intercityTotal : 0);
+        plannedByDate.set(date, (plannedByDate.get(date) || 0) + plannedAmount);
+      }
+    }
+
+    const plannedDatesElapsed = Array.from(plannedByDate.keys()).filter((date) => date <= today);
+    const plannedToDate = plannedDatesElapsed.reduce((sum, date) => sum + (plannedByDate.get(date) || 0), 0);
+    const plannedAvgSoFar = plannedDatesElapsed.length > 0 ? plannedToDate / plannedDatesElapsed.length : 0;
+    const varianceToDate = totalSpent - plannedToDate;
+
     // Burn rates
     const expenseData = activeExpenses.map(e => ({
       date: e.date,
@@ -86,6 +136,9 @@ export async function GET() {
     // Projection using 7-day average if available, else trip average
     const projectionRate = sevenDayAvg ?? tripAvg;
     const projectedTotal = projectTotal(totalSpent, projectionRate, daysRemaining);
+    const forecastVariance = projectedTotal - plannedLegsTotal;
+    const remainingLegBudget = plannedLegsTotal - totalSpent;
+    const requiredDailyPace = daysRemaining > 0 ? Math.max(remainingLegBudget, 0) / daysRemaining : null;
 
     // Budget health: ratio of projected to budget
     let budgetHealth: 'on_track' | 'warning' | 'over_budget' = 'on_track';
@@ -99,8 +152,13 @@ export async function GET() {
       totalBudget,
       plannedLegsTotal,
       fixedTotal,
+      groupSize,
       totalSpent,
+      plannedToDate,
+      varianceToDate,
       projectedTotal,
+      forecastVariance,
+      remainingLegBudget,
       tripStart,
       tripEnd,
       totalNights,
@@ -110,8 +168,10 @@ export async function GET() {
       expenseCount: activeExpenses.length,
       burnRate: {
         tripAvg,
+        plannedAvgSoFar,
         sevenDayAvg,
         thirtyDayAvg,
+        requiredDailyPace,
       },
       budgetHealth,
       remaining: totalBudget - totalSpent,

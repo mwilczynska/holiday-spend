@@ -5,6 +5,7 @@ import path from 'path';
 import fs from 'fs';
 import { derivePrivateRoomRate } from '../lib/accommodation';
 import { findLegForExpenseDate } from '../lib/expense-leg-assignment';
+import { getIntercityTransportTotal } from '../lib/intercity-transport';
 
 const dbPath = path.join(process.cwd(), 'data', 'travel.db');
 
@@ -24,8 +25,10 @@ const tableNames = sqlite
 const hasCitiesTable = tableNames.some((table) => table.name === 'cities');
 const hasExpensesTable = tableNames.some((table) => table.name === 'expenses');
 const hasItineraryLegsTable = tableNames.some((table) => table.name === 'itinerary_legs');
+const hasItineraryLegTransportsTable = tableNames.some((table) => table.name === 'itinerary_leg_transports');
 const hasCityEstimatesTable = tableNames.some((table) => table.name === 'city_estimates');
 const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_price_inputs');
+const hasAppSettingsTable = tableNames.some((table) => table.name === 'app_settings');
 
 const cityColumns = sqlite.prepare("PRAGMA table_info(cities)").all() as Array<{ name: string }>;
 const hasPrivateRoomColumn = cityColumns.some((column) => column.name === 'accom_private_room');
@@ -68,6 +71,34 @@ if (!hasCityPriceInputsTable) {
   `);
 }
 
+if (!hasAppSettingsTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS app_settings (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    )
+  `);
+}
+
+if (!hasItineraryLegTransportsTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS itinerary_leg_transports (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      leg_id INTEGER NOT NULL REFERENCES itinerary_legs(id) ON DELETE CASCADE,
+      mode TEXT,
+      note TEXT,
+      cost REAL NOT NULL DEFAULT 0,
+      sort_order INTEGER
+    )
+  `);
+}
+
+sqlite.prepare(`
+  INSERT INTO app_settings (key, value)
+  VALUES ('planner_group_size', '2')
+  ON CONFLICT(key) DO NOTHING
+`).run();
+
 if (hasCityEstimatesTable) {
   const cityEstimateColumns = sqlite.prepare("PRAGMA table_info(city_estimates)").all() as Array<{ name: string }>;
   const cityEstimateColumnNames = new Set(cityEstimateColumns.map((column) => column.name));
@@ -89,6 +120,62 @@ if (hasCityEstimatesTable) {
   }
   if (!cityEstimateColumnNames.has('fallback_log_json')) {
     sqlite.exec('ALTER TABLE city_estimates ADD COLUMN fallback_log_json TEXT');
+  }
+}
+
+if (hasItineraryLegsTable) {
+  const legsWithLegacyTransport = sqlite.prepare(`
+    SELECT id, intercity_transport_cost, intercity_transport_note
+    FROM itinerary_legs
+    WHERE COALESCE(intercity_transport_cost, 0) != 0
+       OR (intercity_transport_note IS NOT NULL AND trim(intercity_transport_note) != '')
+  `).all() as Array<{
+    id: number;
+    intercity_transport_cost: number | null;
+    intercity_transport_note: string | null;
+  }>;
+
+  const countTransportRows = sqlite.prepare(`
+    SELECT COUNT(*) as count
+    FROM itinerary_leg_transports
+    WHERE leg_id = ?
+  `);
+
+  const insertTransportRow = sqlite.prepare(`
+    INSERT INTO itinerary_leg_transports (leg_id, mode, note, cost, sort_order)
+    VALUES (?, ?, ?, ?, ?)
+  `);
+
+  const updateLegacyTransportFields = sqlite.prepare(`
+    UPDATE itinerary_legs
+    SET intercity_transport_cost = ?, intercity_transport_note = ?
+    WHERE id = ?
+  `);
+
+  for (const leg of legsWithLegacyTransport) {
+    const existingCount = countTransportRows.get(leg.id) as { count: number };
+    if (existingCount.count === 0) {
+      insertTransportRow.run(
+        leg.id,
+        null,
+        leg.intercity_transport_note,
+        leg.intercity_transport_cost ?? 0,
+        0
+      );
+    }
+
+    const transportRows = sqlite.prepare(`
+      SELECT cost, note
+      FROM itinerary_leg_transports
+      WHERE leg_id = ?
+      ORDER BY sort_order, id
+    `).all(leg.id) as Array<{ cost: number | null; note: string | null }>;
+
+    updateLegacyTransportFields.run(
+      getIntercityTransportTotal(transportRows),
+      transportRows.find((row) => row.note?.trim())?.note ?? null,
+      leg.id
+    );
   }
 }
 

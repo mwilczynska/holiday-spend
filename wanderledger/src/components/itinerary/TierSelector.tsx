@@ -12,9 +12,10 @@ interface TierSelectorProps {
   onChange: (value: string) => void;
   costPerDay?: number | null;
   helperText?: string;
+  itemDetailMap?: Record<string, string | undefined>;
 }
 
-export function TierSelector({ label, value, options, onChange, costPerDay, helperText }: TierSelectorProps) {
+export function TierSelector({ label, value, options, onChange, costPerDay, helperText, itemDetailMap }: TierSelectorProps) {
   return (
     <div className="space-y-1">
       <div className="flex items-center gap-1">
@@ -25,6 +26,7 @@ export function TierSelector({ label, value, options, onChange, costPerDay, help
             summary={helperText}
             items={options.map((option) => ({
               label: option.label,
+              detail: itemDetailMap?.[option.value],
               description: option.description,
             }))}
           />
