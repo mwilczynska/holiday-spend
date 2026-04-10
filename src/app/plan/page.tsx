@@ -256,6 +256,8 @@ export default function PlanPage() {
   const importInputRef = useRef<HTMLInputElement>(null);
   const plannerHeaderRef = useRef<HTMLDivElement>(null);
   const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
+  const plannerContentTopPadding = plannerHeaderHeight > 0 ? plannerHeaderHeight + 24 : 224;
+  const plannerSidebarTopOffset = plannerHeaderHeight > 0 ? plannerHeaderHeight + 24 : 200;
 
   useEffect(() => {
     const header = plannerHeaderRef.current;
@@ -1406,9 +1408,9 @@ export default function PlanPage() {
         </DialogContent>
       </Dialog>
 
-      <div className="fixed inset-x-0 top-0 z-30 lg:left-64">
-        <div className="border-b bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/85">
-          <div ref={plannerHeaderRef} className="container mx-auto max-w-6xl px-4 py-4 lg:px-8">
+      <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
+        <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
+          <div ref={plannerHeaderRef} className="mx-auto max-w-6xl px-4 py-4 lg:px-8">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl font-bold">Itinerary Planner</h1>
@@ -1562,46 +1564,51 @@ export default function PlanPage() {
         </div>
       </div>
 
-      <div aria-hidden="true" style={{ height: plannerHeaderHeight || undefined }} />
-
-      <div className="grid lg:grid-cols-[1fr_300px] gap-6">
+        <div
+          className="mx-auto max-w-6xl px-4 pb-6 lg:px-8"
+          style={{ paddingTop: plannerContentTopPadding }}
+        >
+          <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
         {/* Legs list */}
-        <div className="space-y-3">
-          {legs.length === 0 && (
-            <p className="text-muted-foreground text-center py-12">
-              No legs yet. Add your first destination to start planning.
-            </p>
-          )}
-          {legs.map((leg, i) => (
-            <LegCard
-              key={leg.id}
-              leg={leg}
-              cities={cities}
-              groupSize={groupSize}
-              onUpdate={handleUpdateLeg}
-              onDelete={handleDeleteLeg}
-              onMoveUp={() => handleReorder(i, -1)}
-              onMoveDown={() => handleReorder(i, 1)}
-              isFirst={i === 0}
-              isLast={i === legs.length - 1}
-            />
-          ))}
-        </div>
+            <div className="space-y-3">
+              {legs.length === 0 && (
+                <p className="text-muted-foreground text-center py-12">
+                  No legs yet. Add your first destination to start planning.
+                </p>
+              )}
+              {legs.map((leg, i) => (
+                <LegCard
+                  key={leg.id}
+                  leg={leg}
+                  cities={cities}
+                  groupSize={groupSize}
+                  onUpdate={handleUpdateLeg}
+                  onDelete={handleDeleteLeg}
+                  onMoveUp={() => handleReorder(i, -1)}
+                  onMoveDown={() => handleReorder(i, 1)}
+                  isFirst={i === 0}
+                  isLast={i === legs.length - 1}
+                />
+              ))}
+            </div>
 
         {/* Summary sidebar */}
-        <div className="hidden lg:block">
-          <div
-            className="sticky self-start"
-            style={{ top: plannerHeaderHeight > 0 ? plannerHeaderHeight + 16 : 176 }}
-          >
-            <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
+            <div className="hidden lg:block">
+              <div
+                className="sticky self-start"
+                style={{ top: plannerSidebarTopOffset }}
+              >
+                <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Mobile summary */}
-      <div className="lg:hidden">
-        <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
+      <div className="-mx-4 lg:-mx-8">
+        <div className="mx-auto max-w-6xl px-4 pb-6 lg:hidden lg:px-8">
+          <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
+        </div>
       </div>
     </div>
   );
