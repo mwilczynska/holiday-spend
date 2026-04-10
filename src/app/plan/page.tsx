@@ -1514,7 +1514,7 @@ export default function PlanPage() {
 
         {/* Summary sidebar */}
         <div className="hidden lg:block">
-          <div className="sticky top-0">
+          <div className="sticky top-44 self-start">
             <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
           </div>
         </div>

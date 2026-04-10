@@ -564,6 +564,7 @@ export default function DashboardPage() {
                 <thead className="border-b">
                   <tr>
                     <th className="p-2 text-left">Country</th>
+                    <th className="p-2 text-right"># days</th>
                     <th className="p-2 text-right">Planned</th>
                     <th className="p-2 text-right">Planned $/day</th>
                     <th className="p-2 text-right">Actual</th>
@@ -588,6 +589,7 @@ export default function DashboardPage() {
                             ) : null}
                           </div>
                         </td>
+                        <td className="p-2 text-right">{c.plannedDays}</td>
                         <td className="p-2 text-right">{fmtAud(c.planned)}</td>
                         <td className="p-2 text-right">{c.plannedPerDay != null ? fmtAud(c.plannedPerDay) : '—'}</td>
                         <td className="p-2 text-right">{fmtAud(c.actual)}</td>
