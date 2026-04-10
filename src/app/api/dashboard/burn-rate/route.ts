@@ -4,7 +4,7 @@ import { asc } from 'drizzle-orm';
 import { buildBurnRateSeries, buildCountryBands, enumerateDates } from '@/lib/burn-rate';
 import { getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
-import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
+import { findLegForExpenseDate, getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
@@ -46,13 +46,11 @@ export async function GET() {
 
     const activeExpenses = allExpenses.filter((expense) => {
       if (expense.isExcluded) return false;
-      const matchedLeg = expense.legId
-        ? legMap.get(expense.legId)
-        : findLegForExpenseDate(expense.date, allLegs);
-      return Boolean(matchedLeg) || isWithinTripWindow(expense.date, tripStart, tripEnd);
+      const matchedLeg = resolveExpenseLeg(expense, allLegs);
+      return Boolean(matchedLeg) || isWithinTripWindow(getExpenseReportingDate(expense, allLegs), tripStart, tripEnd);
     });
 
-    const expenseDates = activeExpenses.map((expense) => expense.date).filter(Boolean).sort();
+    const expenseDates = activeExpenses.map((expense) => getExpenseReportingDate(expense, allLegs)).filter(Boolean).sort();
     const seriesStart = minDate(tripStart, expenseDates[0]);
     const seriesEnd = maxDate(tripEnd, expenseDates[expenseDates.length - 1]);
 
@@ -68,9 +66,10 @@ export async function GET() {
 
     const actualByDate = new Map<string, number>();
     for (const expense of activeExpenses) {
+      const reportingDate = getExpenseReportingDate(expense, allLegs);
       actualByDate.set(
-        expense.date,
-        (actualByDate.get(expense.date) || 0) + getExpenseAudAmount(expense)
+        reportingDate,
+        (actualByDate.get(reportingDate) || 0) + getExpenseAudAmount(expense)
       );
     }
 

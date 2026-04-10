@@ -4,7 +4,7 @@ import { asc } from 'drizzle-orm';
 import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
 import { calcBurnRate, projectTotal } from '@/lib/burn-rate';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
-import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
+import { getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
 import { groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
@@ -30,7 +30,6 @@ export async function GET() {
     const groupSize = await getPlannerGroupSize();
 
     const cityMap = new Map(allCities.map(c => [c.id, c]));
-    const legMap = new Map(allLegs.map(leg => [leg.id, leg]));
     const transportMap = groupIntercityTransportsByLegId(allTransports);
     const { tripStart, tripEnd } = getTripWindow(allLegs);
 
@@ -58,10 +57,8 @@ export async function GET() {
     // Calculate actual spend (non-excluded)
     const activeExpenses = allExpenses.filter((expense) => {
       if (expense.isExcluded) return false;
-      const matchedLeg = expense.legId
-        ? legMap.get(expense.legId)
-        : findLegForExpenseDate(expense.date, allLegs);
-      return Boolean(matchedLeg) || isWithinTripWindow(expense.date, tripStart, tripEnd);
+      const matchedLeg = resolveExpenseLeg(expense, allLegs);
+      return Boolean(matchedLeg) || isWithinTripWindow(getExpenseReportingDate(expense, allLegs), tripStart, tripEnd);
     });
     const totalSpent = activeExpenses.reduce((s, e) => s + getExpenseAudAmount(e), 0);
 
@@ -120,7 +117,7 @@ export async function GET() {
 
     // Burn rates
     const expenseData = activeExpenses.map(e => ({
-      date: e.date,
+      date: getExpenseReportingDate(e, allLegs),
       amountAud: getExpenseAudAmount(e),
     }));
 

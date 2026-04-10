@@ -1,9 +1,15 @@
 import { db } from '@/db';
 import { cities, countries, expenses, fixedCosts, itineraryLegs, itineraryLegTransports } from '@/db/schema';
+import { NextResponse } from 'next/server';
 import { error, handleError, success } from '@/lib/api-helpers';
+import { CityGenerationError } from '@/lib/city-generation';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { getPlannerGroupSize, setPlannerGroupSize } from '@/lib/planner-settings';
-import { planSnapshotSchema } from '@/lib/plan-snapshot';
+import { resolveMissingCities } from '@/lib/resolve-missing-cities';
+import {
+  collectMissingSnapshotCities,
+  parseSnapshotImportRequest,
+} from '@/lib/snapshot-import';
 import { asc } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
@@ -16,9 +22,13 @@ export async function GET() {
       .from(itineraryLegTransports)
       .orderBy(asc(itineraryLegTransports.legId), asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
     const allFixedCosts = await db.select().from(fixedCosts);
+    const allCities = await db.select().from(cities);
+    const allCountries = await db.select().from(countries);
     const groupSize = await getPlannerGroupSize();
 
     const transportMap = groupIntercityTransportsByLegId(transports);
+    const cityMap = new Map(allCities.map((city) => [city.id, city]));
+    const countryMap = new Map(allCountries.map((country) => [country.id, country]));
 
     return success({
       version: 1,
@@ -26,8 +36,13 @@ export async function GET() {
       groupSize,
       legs: legs.map((leg, index) => {
         const intercityTransports = normalizeIntercityTransports(transportMap.get(leg.id));
+        const city = cityMap.get(leg.cityId);
+        const country = city ? countryMap.get(city.countryId) : null;
         return {
           ...leg,
+          cityName: city?.name ?? null,
+          countryId: city?.countryId ?? null,
+          countryName: country?.name ?? null,
           sortOrder: leg.sortOrder ?? index + 1,
           intercityTransportCost: getIntercityTransportTotal(intercityTransports),
           intercityTransportNote: intercityTransports.find((transport) => transport.note)?.note ?? null,
@@ -44,23 +59,45 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const snapshot = planSnapshotSchema.parse(body);
-    await setPlannerGroupSize(snapshot.groupSize);
+    const importRequest = parseSnapshotImportRequest(body);
+    const { snapshot, missingCityStrategy, generationConfig } = importRequest;
 
     const cityRows = await db.select({ id: cities.id }).from(cities);
-    const countryRows = await db.select({ id: countries.id }).from(countries);
     const knownCityIds = new Set(cityRows.map((row) => row.id));
-    const knownCountryIds = new Set(countryRows.map((row) => row.id));
+    const resolutionByCityId = new Map(
+      importRequest.missingCityResolutions.map((resolution) => [resolution.cityId, resolution])
+    );
 
-    const missingCity = snapshot.legs.find((leg) => !knownCityIds.has(leg.cityId));
-    if (missingCity) {
-      return error(`Cannot import snapshot. Unknown city id "${missingCity.cityId}".`, 400);
+    const missingCities = collectMissingSnapshotCities(snapshot, knownCityIds);
+    if (missingCities.length > 0) {
+      const unresolvedCities = missingCities.filter((missingCity) => {
+        const resolution = resolutionByCityId.get(missingCity.cityId);
+        return !resolution?.cityName.trim() || !resolution.countryName.trim();
+      });
+
+      if (unresolvedCities.length > 0) {
+        return NextResponse.json(
+          {
+            error: 'Cannot import snapshot. Resolve all missing cities before importing.',
+            missingCities,
+          },
+          { status: 400 }
+        );
+      }
     }
+
+    const { createdCountries, createdCities, generatedCities, knownCountryIds } = await resolveMissingCities({
+      resolutions: Array.from(resolutionByCityId.values()),
+      missingCityStrategy,
+      generationConfig,
+    });
 
     const missingCountry = snapshot.fixedCosts.find((cost) => cost.countryId && !knownCountryIds.has(cost.countryId));
     if (missingCountry?.countryId) {
       return error(`Cannot import snapshot. Unknown country id "${missingCountry.countryId}".`, 400);
     }
+
+    await setPlannerGroupSize(snapshot.groupSize);
 
     await db.update(expenses).set({ legId: null });
     await db.delete(itineraryLegs);
@@ -133,8 +170,14 @@ export async function POST(request: Request) {
       legCount: snapshot.legs.length,
       fixedCostCount: snapshot.fixedCosts.length,
       importedLegIds: Array.from(importedLegIdBySnapshotKey.values()),
+      createdCountries,
+      createdCities,
+      generatedCities,
     });
   } catch (err) {
+    if (err instanceof CityGenerationError) {
+      return error(err.message, err.status);
+    }
     return handleError(err);
   }
 }

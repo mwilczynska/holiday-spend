@@ -6,6 +6,11 @@ export interface DateBoundLeg {
   sortOrder: number | null;
 }
 
+interface ExpenseWithOptionalLeg {
+  date: string;
+  legId?: number | null;
+}
+
 function matchesExpenseDate(date: string, leg: DateBoundLeg): boolean {
   if (!leg.startDate && !leg.endDate) return false;
   if (leg.startDate && date < leg.startDate) return false;
@@ -34,4 +39,33 @@ export function findLegForExpenseDate(
     .sort(compareLegPriority);
 
   return matches[0] ?? null;
+}
+
+export function resolveExpenseLeg(
+  expense: ExpenseWithOptionalLeg,
+  legs: DateBoundLeg[]
+): DateBoundLeg | null {
+  if (expense.legId != null) {
+    return legs.find((leg) => leg.id === expense.legId) ?? null;
+  }
+
+  return findLegForExpenseDate(expense.date, legs);
+}
+
+export function getExpenseReportingDate(
+  expense: ExpenseWithOptionalLeg,
+  legs: DateBoundLeg[]
+): string {
+  const matchedLeg = resolveExpenseLeg(expense, legs);
+  if (!matchedLeg) return expense.date;
+
+  if (matchedLeg.startDate && expense.date < matchedLeg.startDate) {
+    return matchedLeg.startDate;
+  }
+
+  if (matchedLeg.endDate && expense.date > matchedLeg.endDate) {
+    return matchedLeg.endDate;
+  }
+
+  return expense.date;
 }

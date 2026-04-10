@@ -14,6 +14,7 @@ export const COUNTRY_CURRENCY_CODES: Record<string, string> = {
   'Czech Republic': 'CZK',
   Denmark: 'DKK',
   Egypt: 'EGP',
+  Ecuador: 'USD',
   Finland: 'EUR',
   France: 'EUR',
   Georgia: 'GEL',
@@ -72,12 +73,29 @@ const REGION_LABELS: Record<string, string> = {
 };
 
 export function getCountryCurrencyCode(countryName: string): string {
-  const currencyCode = COUNTRY_CURRENCY_CODES[countryName];
+  const currencyCode = findKnownCountryCurrencyCode(countryName);
   if (!currencyCode) {
     throw new Error(`Missing currency code mapping for country: ${countryName}`);
   }
 
   return currencyCode;
+}
+
+export function findKnownCountryCurrencyCode(countryName: string | null | undefined): string | null {
+  if (!countryName) return null;
+
+  const trimmed = countryName.trim();
+  if (!trimmed) return null;
+
+  const exact = COUNTRY_CURRENCY_CODES[trimmed];
+  if (exact) return exact;
+
+  const normalizedLookup = slugifyId(trimmed);
+  const matchedEntry = Object.entries(COUNTRY_CURRENCY_CODES).find(
+    ([knownCountryName]) => slugifyId(knownCountryName) === normalizedLookup
+  );
+
+  return matchedEntry?.[1] ?? null;
 }
 
 export function normalizeRegionLabel(regionLabel: string | null | undefined): string | null {

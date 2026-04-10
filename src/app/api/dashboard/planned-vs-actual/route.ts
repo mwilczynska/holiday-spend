@@ -3,7 +3,7 @@ import { itineraryLegs, itineraryLegTransports, cities, countries, expenses } fr
 import { asc } from 'drizzle-orm';
 import { getLegTotalFromTransports, getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
-import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
+import { getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
@@ -76,22 +76,19 @@ export async function GET() {
     }
 
     // Build actual totals per country (join expense → leg → city → country)
-    const activeExpenses = allExpenses.filter(e => !e.isExcluded);
-    const legMap = new Map(allLegs.map(l => [l.id, l]));
+    const reportableExpenses = allExpenses.filter((expense) => {
+      if (expense.isExcluded) return false;
+      const matchedLeg = resolveExpenseLeg(expense, allLegs);
+      return Boolean(matchedLeg) || isWithinTripWindow(getExpenseReportingDate(expense, allLegs), tripStart, tripEnd);
+    });
 
     const actualByCountry = new Map<string, { name: string; actual: number; categories: Record<string, number> }>();
 
-    for (const exp of activeExpenses) {
+    for (const exp of reportableExpenses) {
       let countryId = 'unassigned';
       let countryName = 'Unassigned';
 
-      const matchedLeg = exp.legId
-        ? legMap.get(exp.legId)
-        : findLegForExpenseDate(exp.date, allLegs);
-
-      if (!matchedLeg && !isWithinTripWindow(exp.date, tripStart, tripEnd)) {
-        continue;
-      }
+      const matchedLeg = resolveExpenseLeg(exp, allLegs);
 
       if (matchedLeg) {
         const city = cityMap.get(matchedLeg.cityId);
@@ -132,7 +129,7 @@ export async function GET() {
 
     // Category breakdown across all expenses
     const categoryTotals: Record<string, number> = {};
-    for (const exp of activeExpenses) {
+    for (const exp of reportableExpenses) {
       const audAmount = getExpenseAudAmount(exp);
       categoryTotals[exp.category] = (categoryTotals[exp.category] || 0) + audAmount;
     }

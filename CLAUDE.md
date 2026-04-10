@@ -122,12 +122,15 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Legs can be reordered, edited inline, and constrained by date validation
 - Intercity transport is now a repeatable per-leg list rather than a single always-open field
 - Planner supports saved snapshots plus JSON export/import for comparing alternate itineraries
+- Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
+- That import resolver can now also create missing countries inline when a required country is not yet in the library
 - Traveller count is configurable in `/settings` and `/plan`, and persists in `app_settings.planner_group_size`
 - City base costs remain stored for 2 travellers and are scaled at runtime in planner/dashboard calculations
 - Planner totals and summaries are stable and current
 
 ### Expense Tracking
 - Expense CRUD, tagging, exclusion, reassignment, and bulk operations are implemented
+- When an expense is manually assigned to a leg, dashboard reporting keeps the original transaction date visible in tracking UI but clamps the reporting date into the leg window for timeline calculations
 - Wise CSV import supports both:
   - transaction-history export
   - balance-statement export
@@ -224,6 +227,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 ### Planner And Dashboard Refinements
 - Added `itinerary_leg_transports` plus runtime backfill from older single transport fields
 - Added `/api/itinerary/snapshot` for plan export/import and browser-saved snapshots
+- Added `/api/itinerary/snapshot/preflight` plus UI flow in `/plan` to resolve missing cities during custom snapshot import
+- Missing-country resolution now defaults to just city name plus country name; country ID, currency, and region are treated as inferred/advanced fields
+- The `/plan` add-leg flow can now branch into the same missing-city resolution workflow to create or generate a new city inline before adding the leg
 - Added `/api/planner/settings` plus `app_settings` storage for planner traveller count
 - Planner tier popovers now show the live scaled per-option costs for the selected traveller count
 - Planner leg cards no longer expose a separate split percentage control

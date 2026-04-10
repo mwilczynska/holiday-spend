@@ -261,6 +261,7 @@ export default function TrackPage() {
         </div>
         <p className="text-xs text-muted-foreground">
           City and country come from the assigned itinerary leg. Use edit to move flights, tickets, or pre-paid costs into the destination where you want them counted.
+          Dashboard timelines will keep the original transaction date visible here, but report assigned spend inside the leg&apos;s date window.
         </p>
       </div>
 
@@ -560,7 +561,8 @@ export default function TrackPage() {
                   </SelectContent>
                 </Select>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  This controls which city and country receive the spend on the dashboard.
+                  This controls which city and country receive the spend on the dashboard. If the transaction date sits outside that leg,
+                  dashboard timelines will clamp it into the leg&apos;s window while leaving the original transaction date unchanged here.
                 </p>
               </div>
               <div>

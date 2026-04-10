@@ -12,6 +12,9 @@ export const planSnapshotTransportSchema = z.object({
 export const planSnapshotLegSchema = z.object({
   id: z.number().int().optional(),
   cityId: z.string().min(1),
+  cityName: z.string().nullable().optional(),
+  countryId: z.string().nullable().optional(),
+  countryName: z.string().nullable().optional(),
   startDate: z.string().nullable().optional(),
   endDate: z.string().nullable().optional(),
   nights: z.number().int().min(1),

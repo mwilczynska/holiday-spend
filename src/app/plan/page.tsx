@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { LegCard } from '@/components/itinerary/LegCard';
@@ -12,8 +13,13 @@ import { CostSummary } from '@/components/itinerary/CostSummary';
 import { Download, FolderOpen, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
+import { CITY_GENERATION_DEFAULT_MODELS } from '@/lib/city-generation-config';
+import { findKnownCountryCurrencyCode, slugifyId } from '@/lib/country-metadata';
 
 const PLAN_SNAPSHOT_STORAGE_KEY = 'wanderledger-plan-snapshots';
+const CITY_GENERATION_STORAGE_PREFIX = 'wanderledger.city-generation';
+
+type ProviderOption = 'anthropic' | 'openai' | 'gemini';
 
 interface Leg {
   id: number;
@@ -71,7 +77,30 @@ interface City {
 interface Country {
   id: string;
   name: string;
+  currencyCode: string;
+  region?: string | null;
 }
+
+interface SnapshotMissingCity {
+  cityId: string;
+  cityName: string | null;
+  countryId: string | null;
+  countryName: string | null;
+  legCount: number;
+}
+
+interface MissingCityResolutionDraft {
+  cityId: string;
+  cityName: string;
+  existingCountryId: string;
+  newCountryId: string;
+  newCountryName: string;
+  newCountryCurrencyCode: string;
+  newCountryRegion: string;
+  legCount: number;
+}
+
+type MissingCityDialogMode = 'snapshot-import' | 'add-leg';
 
 interface FixedCost {
   id: number;
@@ -97,6 +126,61 @@ interface SavedPlanSnapshot {
   snapshot: PlanSnapshot;
 }
 
+const PROVIDER_OPTIONS: Array<{
+  value: ProviderOption;
+  label: string;
+  help: string;
+  defaultModel: string;
+}> = [
+  {
+    value: 'openai',
+    label: 'OpenAI',
+    help: 'Uses your OpenAI API key or the server OPENAI_API_KEY.',
+    defaultModel: CITY_GENERATION_DEFAULT_MODELS.openai,
+  },
+  {
+    value: 'anthropic',
+    label: 'Anthropic',
+    help: 'Uses your Anthropic API key or the server ANTHROPIC_API_KEY.',
+    defaultModel: CITY_GENERATION_DEFAULT_MODELS.anthropic,
+  },
+  {
+    value: 'gemini',
+    label: 'Google Gemini',
+    help: 'Uses your Gemini API key or the server GEMINI_API_KEY.',
+    defaultModel: CITY_GENERATION_DEFAULT_MODELS.gemini,
+  },
+];
+
+const REGION_OPTIONS = [
+  { value: 'latin_america', label: 'Latin America' },
+  { value: 'north_america', label: 'North America' },
+  { value: 'europe', label: 'Europe' },
+  { value: 'east_asia', label: 'East Asia' },
+  { value: 'se_asia', label: 'Southeast Asia' },
+  { value: 'south_asia', label: 'South Asia' },
+  { value: 'middle_east', label: 'Middle East' },
+  { value: 'africa', label: 'Africa' },
+  { value: 'oceania', label: 'Oceania' },
+] as const;
+
+function getRegionLabel(regionValue: string) {
+  return REGION_OPTIONS.find((region) => region.value === regionValue)?.label || regionValue;
+}
+
+function getNewCountryPreview(draft: MissingCityResolutionDraft) {
+  const countryName = draft.newCountryName.trim();
+  const countryId = draft.newCountryId.trim() || guessCountryIdFromName(countryName);
+  const currencyCode = draft.newCountryCurrencyCode.trim().toUpperCase() || findKnownCountryCurrencyCode(countryName) || '';
+  const regionValue = draft.newCountryRegion.trim();
+
+  return {
+    countryId,
+    currencyCode,
+    regionLabel: regionValue ? getRegionLabel(regionValue) : 'Not set',
+  };
+}
+
 function compareLegDates(a: Leg, b: Leg) {
   const aPrimaryDate = a.startDate || a.endDate;
   const bPrimaryDate = b.startDate || b.endDate;
@@ -118,18 +202,53 @@ function compareLegDates(a: Leg, b: Leg) {
   return (a.sortOrder ?? Number.MAX_SAFE_INTEGER) - (b.sortOrder ?? Number.MAX_SAFE_INTEGER);
 }
 
+function guessCityNameFromId(cityId: string) {
+  return cityId
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+function guessCountryIdFromName(countryName: string) {
+  return slugifyId(countryName);
+}
+
 export default function PlanPage() {
   const [legs, setLegs] = useState<Leg[]>([]);
   const [cities, setCities] = useState<City[]>([]);
+  const [countries, setCountries] = useState<Country[]>([]);
   const [fixedCosts, setFixedCosts] = useState<FixedCost[]>([]);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [savedPlansOpen, setSavedPlansOpen] = useState(false);
+  const [importResolutionOpen, setImportResolutionOpen] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
   const [newLegNights, setNewLegNights] = useState('7');
   const [savedSnapshots, setSavedSnapshots] = useState<SavedPlanSnapshot[]>([]);
   const [snapshotStatus, setSnapshotStatus] = useState<string | null>(null);
   const [snapshotError, setSnapshotError] = useState<string | null>(null);
   const [groupSize, setGroupSize] = useState(2);
+  const [missingCityDialogMode, setMissingCityDialogMode] = useState<MissingCityDialogMode>('snapshot-import');
+  const [pendingImportSnapshot, setPendingImportSnapshot] = useState<PlanSnapshot | null>(null);
+  const [pendingImportSourceLabel, setPendingImportSourceLabel] = useState<string | null>(null);
+  const [pendingAddLegNights, setPendingAddLegNights] = useState<number | null>(null);
+  const [missingCityDrafts, setMissingCityDrafts] = useState<MissingCityResolutionDraft[]>([]);
+  const [missingCityStrategy, setMissingCityStrategy] = useState<'placeholder' | 'generate'>('placeholder');
+  const [importingSnapshot, setImportingSnapshot] = useState(false);
+  const [importProvider, setImportProvider] = useState<ProviderOption>('openai');
+  const [importApiKeys, setImportApiKeys] = useState<Record<ProviderOption, string>>({
+    openai: '',
+    anthropic: '',
+    gemini: '',
+  });
+  const [importModels, setImportModels] = useState<Record<ProviderOption, string>>({
+    openai: CITY_GENERATION_DEFAULT_MODELS.openai,
+    anthropic: CITY_GENERATION_DEFAULT_MODELS.anthropic,
+    gemini: CITY_GENERATION_DEFAULT_MODELS.gemini,
+  });
+  const [showImportApiKey, setShowImportApiKey] = useState(false);
+  const [importReferenceDate, setImportReferenceDate] = useState('');
+  const [importExtraContext, setImportExtraContext] = useState('');
   const importInputRef = useRef<HTMLInputElement>(null);
 
   const fetchData = useCallback(async () => {
@@ -147,6 +266,7 @@ export default function PlanPage() {
     const countryMap = new Map(countries.map((country) => [country.id, country.name]));
 
     setLegs(legsData.data || []);
+    setCountries(countries.sort((a, b) => a.name.localeCompare(b.name)));
     setCities(
       ((citiesData.data || []) as Array<City>)
         .map((city) => ({
@@ -186,12 +306,102 @@ export default function PlanPage() {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const storedProvider = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.provider`) as ProviderOption | null;
+    const storedKeys = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`);
+    const storedModels = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.models`);
+
+    if (storedProvider && PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
+      setImportProvider(storedProvider);
+    }
+
+    if (storedKeys) {
+      try {
+        const parsed = JSON.parse(storedKeys) as Partial<Record<ProviderOption, string>>;
+        setImportApiKeys({
+          openai: parsed.openai || '',
+          anthropic: parsed.anthropic || '',
+          gemini: parsed.gemini || '',
+        });
+      } catch {
+        // Ignore malformed browser storage and keep defaults.
+      }
+    }
+
+    if (storedModels) {
+      try {
+        const parsed = JSON.parse(storedModels) as Partial<Record<ProviderOption, string>>;
+        setImportModels({
+          openai: parsed.openai || CITY_GENERATION_DEFAULT_MODELS.openai,
+          anthropic: parsed.anthropic || CITY_GENERATION_DEFAULT_MODELS.anthropic,
+          gemini: parsed.gemini || CITY_GENERATION_DEFAULT_MODELS.gemini,
+        });
+      } catch {
+        // Ignore malformed browser storage and keep defaults.
+      }
+    }
+  }, [countries]);
+
   const persistSavedSnapshots = useCallback((nextSnapshots: SavedPlanSnapshot[]) => {
     setSavedSnapshots(nextSnapshots);
     if (typeof window !== 'undefined') {
       window.localStorage.setItem(PLAN_SNAPSHOT_STORAGE_KEY, JSON.stringify(nextSnapshots));
     }
   }, []);
+
+  const createResolvedCities = useCallback(async (
+    drafts: MissingCityResolutionDraft[],
+    strategy: 'placeholder' | 'generate'
+  ) => {
+    const body = {
+      missingCityResolutions: drafts.map((resolution) => {
+        const existingCountry = countries.find((country) => country.id === resolution.existingCountryId);
+        const countryName = existingCountry?.name || resolution.newCountryName.trim();
+        const countryId = existingCountry?.id || resolution.newCountryId.trim() || guessCountryIdFromName(countryName);
+        return {
+          cityId: resolution.cityId.trim(),
+          cityName: resolution.cityName.trim(),
+          countryId,
+          countryName,
+          countryCurrencyCode:
+            existingCountry?.currencyCode ||
+            resolution.newCountryCurrencyCode.trim().toUpperCase() ||
+            findKnownCountryCurrencyCode(countryName) ||
+            undefined,
+          countryRegion: existingCountry?.region || resolution.newCountryRegion.trim() || undefined,
+        };
+      }),
+      missingCityStrategy: strategy,
+      generationConfig:
+        strategy === 'generate'
+          ? {
+              provider: importProvider,
+              apiKey: importApiKeys[importProvider] || undefined,
+              model: importModels[importProvider] || undefined,
+              referenceDate: importReferenceDate || undefined,
+              extraContext: importExtraContext || undefined,
+            }
+          : undefined,
+    };
+
+    const response = await fetch('/api/cities/resolve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Failed to create missing cities.');
+    }
+
+    return data.data as {
+      createdCountries?: string[];
+      createdCities?: string[];
+      generatedCities?: string[];
+    };
+  }, [countries, importApiKeys, importExtraContext, importModels, importProvider, importReferenceDate]);
 
   const handleAddLeg = async () => {
     const parsedNights = Number.parseInt(newLegNights, 10);
@@ -289,18 +499,228 @@ export default function PlanPage() {
     URL.revokeObjectURL(url);
   }, []);
 
-  const importSnapshot = useCallback(async (snapshot: PlanSnapshot) => {
+  const updateImportProvider = (nextProvider: ProviderOption) => {
+    setImportProvider(nextProvider);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.provider`, nextProvider);
+    }
+  };
+
+  const updateImportApiKey = (value: string) => {
+    const nextKeys = {
+      ...importApiKeys,
+      [importProvider]: value,
+    };
+    setImportApiKeys(nextKeys);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+    }
+  };
+
+  const updateImportModel = (value: string) => {
+    const nextModels = {
+      ...importModels,
+      [importProvider]: value,
+    };
+    setImportModels(nextModels);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
+    }
+  };
+
+  const resetPendingImportState = useCallback(() => {
+    setImportResolutionOpen(false);
+    setMissingCityDialogMode('snapshot-import');
+    setPendingImportSnapshot(null);
+    setPendingImportSourceLabel(null);
+    setPendingAddLegNights(null);
+    setMissingCityDrafts([]);
+    setMissingCityStrategy('placeholder');
+    setImportReferenceDate('');
+    setImportExtraContext('');
+  }, []);
+
+  const importSnapshot = useCallback(async (
+    snapshot: PlanSnapshot,
+    options?: {
+      sourceLabel?: string;
+      missingCityStrategy?: 'placeholder' | 'generate';
+      missingCityResolutions?: MissingCityResolutionDraft[];
+    }
+  ) => {
+    const body = options?.missingCityResolutions
+      ? {
+          snapshot,
+          missingCityStrategy: options.missingCityStrategy ?? 'placeholder',
+          missingCityResolutions: options.missingCityResolutions.map((resolution) => {
+            const existingCountry = countries.find((country) => country.id === resolution.existingCountryId);
+            const countryName = existingCountry?.name || resolution.newCountryName.trim();
+            const countryId = existingCountry?.id || resolution.newCountryId.trim() || guessCountryIdFromName(countryName);
+            return {
+              cityId: resolution.cityId,
+              cityName: resolution.cityName.trim(),
+              countryId,
+              countryName,
+              countryCurrencyCode:
+                existingCountry?.currencyCode ||
+                resolution.newCountryCurrencyCode.trim().toUpperCase() ||
+                findKnownCountryCurrencyCode(countryName) ||
+                undefined,
+              countryRegion: resolution.newCountryRegion.trim() || undefined,
+            };
+          }),
+          generationConfig:
+            options.missingCityStrategy === 'generate'
+              ? {
+                  provider: importProvider,
+                  apiKey: importApiKeys[importProvider] || undefined,
+                  model: importModels[importProvider] || undefined,
+                  referenceDate: importReferenceDate || undefined,
+                  extraContext: importExtraContext || undefined,
+                }
+              : undefined,
+        }
+      : snapshot;
+
     const response = await fetch('/api/itinerary/snapshot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      if (Array.isArray(data.missingCities)) {
+        throw Object.assign(new Error(data.error || 'Resolve all missing cities before importing.'), {
+          missingCities: data.missingCities as SnapshotMissingCity[],
+        });
+      }
+      throw new Error(data.error || 'Failed to import plan snapshot.');
+    }
+
+    await fetchData();
+
+    const importResult = data.data as {
+      createdCountries?: string[];
+      createdCities?: string[];
+      generatedCities?: string[];
+    };
+    const sourceLabel = options?.sourceLabel || 'snapshot';
+    const createdCountryCount = importResult.createdCountries?.length ?? 0;
+    const createdCount = importResult.createdCities?.length ?? 0;
+    const generatedCount = importResult.generatedCities?.length ?? 0;
+    const suffixParts = [];
+    if (createdCountryCount > 0) suffixParts.push(`${createdCountryCount} countries created`);
+    if (createdCount > 0) suffixParts.push(`${createdCount} cities created`);
+    if (generatedCount > 0) suffixParts.push(`${generatedCount} cities generated`);
+    setSnapshotStatus(
+      `Imported "${sourceLabel}".${suffixParts.length > 0 ? ` ${suffixParts.join(', ')}.` : ''}`
+    );
+    setSnapshotError(null);
+  }, [
+    countries,
+    fetchData,
+    importApiKeys,
+    importExtraContext,
+    importModels,
+    importProvider,
+    importReferenceDate,
+  ]);
+
+  const preflightSnapshotImport = useCallback(async (snapshot: PlanSnapshot) => {
+    const response = await fetch('/api/itinerary/snapshot/preflight', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(snapshot),
     });
     const data = await response.json();
     if (!response.ok) {
-      throw new Error(data.error || 'Failed to import plan snapshot.');
+      throw new Error(data.error || 'Failed to inspect plan snapshot.');
     }
-    await fetchData();
-  }, [fetchData]);
+    return data.data as {
+      missingCities: SnapshotMissingCity[];
+      readyToImport: boolean;
+    };
+  }, []);
+
+  const queueMissingCityResolution = useCallback((
+    snapshot: PlanSnapshot,
+    sourceLabel: string,
+    missingCities: SnapshotMissingCity[]
+  ) => {
+    setMissingCityDialogMode('snapshot-import');
+    setPendingImportSnapshot(snapshot);
+    setPendingImportSourceLabel(sourceLabel);
+    setPendingAddLegNights(null);
+    setMissingCityDrafts(
+      missingCities.map((missingCity) => {
+        const matchedCountry =
+          countries.find((country) => missingCity.countryId && country.id === missingCity.countryId) ||
+          countries.find((country) => missingCity.countryName && country.name === missingCity.countryName) ||
+          null;
+
+        return {
+          cityId: missingCity.cityId,
+          cityName: missingCity.cityName || guessCityNameFromId(missingCity.cityId),
+          existingCountryId: matchedCountry?.id || '',
+          newCountryId:
+            !matchedCountry && missingCity.countryId
+              ? missingCity.countryId
+              : missingCity.countryName
+                ? guessCountryIdFromName(missingCity.countryName)
+                : '',
+          newCountryName: !matchedCountry ? missingCity.countryName || '' : '',
+          newCountryCurrencyCode:
+            !matchedCountry && missingCity.countryName ? (findKnownCountryCurrencyCode(missingCity.countryName) || '') : '',
+          newCountryRegion: '',
+          legCount: missingCity.legCount,
+        };
+      })
+    );
+    setMissingCityStrategy('placeholder');
+    setSnapshotStatus(null);
+    setSnapshotError(`"${sourceLabel}" needs missing cities resolved before import can continue.`);
+    setImportResolutionOpen(true);
+  }, [countries]);
+
+  const openAddLegMissingCityDialog = useCallback(() => {
+    const parsedNights = Number.parseInt(newLegNights, 10);
+    if (!Number.isInteger(parsedNights) || parsedNights < 1) {
+      setSnapshotStatus(null);
+      setSnapshotError('Enter a valid number of nights before creating a new city for this leg.');
+      return;
+    }
+
+    setMissingCityDialogMode('add-leg');
+    setPendingImportSnapshot(null);
+    setPendingImportSourceLabel(null);
+    setPendingAddLegNights(parsedNights);
+    setMissingCityDrafts([
+      {
+        cityId: '',
+        cityName: '',
+        existingCountryId: '',
+        newCountryId: '',
+        newCountryName: '',
+        newCountryCurrencyCode: '',
+        newCountryRegion: '',
+        legCount: 1,
+      },
+    ]);
+    setMissingCityStrategy('placeholder');
+    setSnapshotStatus(null);
+    setSnapshotError(null);
+    setImportResolutionOpen(true);
+  }, [newLegNights]);
+
+  const startSnapshotImport = useCallback(async (snapshot: PlanSnapshot, sourceLabel: string) => {
+    const preflight = await preflightSnapshotImport(snapshot);
+    if (preflight.missingCities.length > 0) {
+      queueMissingCityResolution(snapshot, sourceLabel, preflight.missingCities);
+      return;
+    }
+
+    await importSnapshot(snapshot, { sourceLabel });
+  }, [importSnapshot, preflightSnapshotImport, queueMissingCityResolution]);
 
   const handleSaveSnapshot = async () => {
     const name = window.prompt('Snapshot name', `Plan ${new Date().toISOString().slice(0, 10)}`)?.trim();
@@ -346,9 +766,7 @@ export default function PlanPage() {
 
     try {
       const snapshot = JSON.parse(await file.text()) as PlanSnapshot;
-      await importSnapshot(snapshot);
-      setSnapshotError(null);
-      setSnapshotStatus(`Imported "${file.name}".`);
+      await startSnapshotImport(snapshot, file.name);
     } catch (err) {
       setSnapshotStatus(null);
       setSnapshotError(err instanceof Error ? err.message : 'Failed to import snapshot.');
@@ -359,13 +777,100 @@ export default function PlanPage() {
 
   const handleLoadSavedSnapshot = async (savedSnapshot: SavedPlanSnapshot) => {
     try {
-      await importSnapshot(savedSnapshot.snapshot);
+      await startSnapshotImport(savedSnapshot.snapshot, savedSnapshot.name);
       setSavedPlansOpen(false);
-      setSnapshotError(null);
-      setSnapshotStatus(`Loaded snapshot "${savedSnapshot.name}".`);
     } catch (err) {
       setSnapshotStatus(null);
       setSnapshotError(err instanceof Error ? err.message : 'Failed to load saved snapshot.');
+    }
+  };
+
+  const handleConfirmMissingCityImport = async () => {
+    if (missingCityDialogMode === 'snapshot-import' && (!pendingImportSnapshot || !pendingImportSourceLabel)) return;
+
+    const hasMissingFields = missingCityDrafts.some((draft) => {
+      if (!draft.cityId.trim()) return true;
+      if (!draft.cityName.trim()) return true;
+      if (draft.existingCountryId.trim()) return false;
+      const countryName = draft.newCountryName.trim();
+      if (!countryName) return true;
+      const inferredCurrency = findKnownCountryCurrencyCode(countryName);
+      return !draft.newCountryCurrencyCode.trim() && !inferredCurrency;
+    });
+    if (hasMissingFields) {
+      setSnapshotStatus(null);
+      setSnapshotError(
+        'For every missing city, enter a city ID, city name, and either choose an existing country or fill in a new country name. Country ID and region are optional. Only add a currency code when the app cannot infer one.'
+      );
+      return;
+    }
+
+    try {
+      setImportingSnapshot(true);
+      if (missingCityDialogMode === 'add-leg') {
+        const parsedNights = pendingAddLegNights;
+        const cityId = missingCityDrafts[0]?.cityId.trim();
+
+        if (!parsedNights || !cityId) {
+          throw new Error('The new city and leg details are incomplete.');
+        }
+
+        const result = await createResolvedCities(missingCityDrafts, missingCityStrategy);
+
+        const legResponse = await fetch('/api/itinerary/legs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cityId,
+            nights: parsedNights,
+          }),
+        });
+        const legData = await legResponse.json();
+        if (!legResponse.ok) {
+          throw new Error(legData.error || 'Failed to add itinerary leg.');
+        }
+
+        await fetchData();
+        setAddDialogOpen(false);
+        setNewLegCity('');
+        setNewLegNights('7');
+
+        const createdCountryCount = result.createdCountries?.length ?? 0;
+        const createdCityCount = result.createdCities?.length ?? 0;
+        const generatedCityCount = result.generatedCities?.length ?? 0;
+        const suffixParts = [];
+        if (createdCountryCount > 0) suffixParts.push(`${createdCountryCount} countries created`);
+        if (createdCityCount > 0) suffixParts.push(`${createdCityCount} cities created`);
+        if (generatedCityCount > 0) suffixParts.push(`${generatedCityCount} cities generated`);
+        setSnapshotStatus(
+          `Added new leg for "${missingCityDrafts[0].cityName.trim()}".${suffixParts.length > 0 ? ` ${suffixParts.join(', ')}.` : ''}`
+        );
+        setSnapshotError(null);
+      } else {
+        const snapshotToImport = pendingImportSnapshot;
+        const sourceLabel = pendingImportSourceLabel;
+        if (!snapshotToImport || !sourceLabel) {
+          throw new Error('The pending snapshot import is incomplete.');
+        }
+
+        await importSnapshot(snapshotToImport, {
+          sourceLabel,
+          missingCityStrategy,
+          missingCityResolutions: missingCityDrafts,
+        });
+      }
+      resetPendingImportState();
+    } catch (err) {
+      setSnapshotStatus(null);
+      setSnapshotError(
+        err instanceof Error
+          ? err.message
+          : missingCityDialogMode === 'add-leg'
+            ? 'Failed to create the city and add the leg.'
+            : 'Failed to import snapshot.'
+      );
+    } finally {
+      setImportingSnapshot(false);
     }
   };
 
@@ -395,6 +900,10 @@ export default function PlanPage() {
     }
   };
 
+  const selectedImportProvider = PROVIDER_OPTIONS.find((option) => option.value === importProvider) ?? PROVIDER_OPTIONS[0];
+  const activeImportApiKey = importApiKeys[importProvider] || '';
+  const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
+
   return (
     <div className="space-y-6">
       <input
@@ -404,6 +913,428 @@ export default function PlanPage() {
         className="hidden"
         onChange={handleImportFile}
       />
+
+      <Dialog
+        open={importResolutionOpen}
+        onOpenChange={(open) => {
+          if (!open && !importingSnapshot) {
+            resetPendingImportState();
+          }
+        }}
+        >
+          <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-3xl">
+            <DialogHeader>
+              <DialogTitle>
+                {missingCityDialogMode === 'add-leg' ? 'Create City For New Leg' : 'Resolve Missing Cities Before Import'}
+              </DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div className="space-y-1 text-sm text-muted-foreground">
+                {missingCityDialogMode === 'add-leg' ? (
+                  <>
+                    <p>This leg needs a city that is not yet in your library.</p>
+                    <p>
+                      Enter the city details below. In most cases you only need a city ID, city name, and country name. The
+                      app will generate the country ID, fill the currency when it knows it, and leave region blank unless you
+                      want to set it. Then choose whether to create a placeholder city or generate full city costs before the
+                      leg is added.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      {pendingImportSourceLabel
+                        ? `"${pendingImportSourceLabel}" references cities that are not yet in your library.`
+                        : 'This snapshot references cities that are not yet in your library.'}
+                    </p>
+                    <p>
+                      Complete the city name and country for each missing city below. In most cases you only need the city
+                      name and country name. The app will generate the country ID, fill the currency when it knows it, and
+                      leave region blank unless you want to set it. Then choose whether to create placeholders only, or
+                      generate full city costs before the itinerary import runs.
+                    </p>
+                  </>
+                )}
+              </div>
+
+            <div className="space-y-3">
+              {missingCityDrafts.map((draft, index) => (
+                <div key={draft.cityId} className="space-y-3 rounded-md border p-3">
+                  <div className="grid gap-3 md:grid-cols-[160px_1fr_1fr]">
+                    <div>
+                      <Label className="text-xs">City ID</Label>
+                      <Input
+                        className="h-9 text-sm"
+                        value={draft.cityId}
+                        readOnly={missingCityDialogMode !== 'add-leg'}
+                        onChange={(event) =>
+                          setMissingCityDrafts((current) =>
+                            current.map((item, itemIndex) =>
+                              itemIndex === index ? { ...item, cityId: event.target.value } : item
+                            )
+                          )
+                        }
+                        placeholder="e.g. quito"
+                      />
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {missingCityDialogMode === 'add-leg'
+                          ? 'Internal city identifier used in the planner and imports.'
+                          : `Used in ${draft.legCount} ${draft.legCount === 1 ? 'leg' : 'legs'}.`}
+                      </p>
+                    </div>
+                    <div>
+                      <Label className="text-xs">City Name</Label>
+                      <Input
+                        className="h-9 text-sm"
+                        value={draft.cityName}
+                        onChange={(event) =>
+                          setMissingCityDrafts((current) =>
+                            current.map((item, itemIndex) => {
+                              if (itemIndex !== index) return item;
+                              const nextCityName = event.target.value;
+                              const previousAutoCityId = item.cityName ? slugifyId(item.cityName) : '';
+                              return {
+                                ...item,
+                                cityName: nextCityName,
+                                cityId:
+                                  missingCityDialogMode === 'add-leg' &&
+                                  (!item.cityId || item.cityId === previousAutoCityId)
+                                    ? slugifyId(nextCityName)
+                                    : item.cityId,
+                              };
+                            })
+                          )
+                        }
+                        placeholder="e.g. Kunming"
+                      />
+                    </div>
+                    <div>
+                      <Label className="text-xs">Existing Country</Label>
+                    <SearchableSelect
+                      value={draft.existingCountryId}
+                      onValueChange={(value) =>
+                        setMissingCityDrafts((current) =>
+                          current.map((item, itemIndex) =>
+                              itemIndex === index
+                                ? {
+                                    ...item,
+                                    existingCountryId: value,
+                                  }
+                                : item
+                            )
+                          )
+                        }
+                        placeholder="Choose existing country"
+                        searchPlaceholder="Search countries..."
+                        emptyText="No existing country matches. Use the new country fields below."
+                        options={countries.map((country) => ({
+                          value: country.id,
+                          label: country.name,
+                          description: `${country.currencyCode}${country.region ? ` • ${country.region}` : ''}`,
+                        }))}
+                      />
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Choose an existing country here, or leave this blank and define a new country below.
+                      </p>
+                      {draft.existingCountryId ? (
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          className="mt-1 h-7 px-2 text-xs"
+                          onClick={() =>
+                            setMissingCityDrafts((current) =>
+                              current.map((item, itemIndex) =>
+                                itemIndex === index ? { ...item, existingCountryId: '' } : item
+                              )
+                            )
+                          }
+                        >
+                          Use New Country Instead
+                        </Button>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 rounded-md bg-muted/40 p-3">
+                    <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">New Country Details</div>
+                    <p className="text-xs text-muted-foreground">
+                      Only use this section when the country is not already in the dropdown above.
+                    </p>
+                    <div className="grid gap-3 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+                      <div>
+                        <Label className="text-xs">Country Name</Label>
+                        <Input
+                          className="h-9 text-sm"
+                          value={draft.newCountryName}
+                          onChange={(event) =>
+                            setMissingCityDrafts((current) =>
+                              current.map((item, itemIndex) => {
+                                if (itemIndex !== index) return item;
+                                const nextCountryName = event.target.value;
+                                const previousAutoId = item.newCountryName ? guessCountryIdFromName(item.newCountryName) : '';
+                                const suggestedCurrency = findKnownCountryCurrencyCode(nextCountryName) || '';
+                                const previousSuggestedCurrency = findKnownCountryCurrencyCode(item.newCountryName) || '';
+                                return {
+                                  ...item,
+                                  newCountryName: nextCountryName,
+                                  newCountryId:
+                                    !item.newCountryId || item.newCountryId === previousAutoId
+                                      ? guessCountryIdFromName(nextCountryName)
+                                      : item.newCountryId,
+                                  newCountryCurrencyCode:
+                                    !item.newCountryCurrencyCode ||
+                                    item.newCountryCurrencyCode === previousSuggestedCurrency
+                                      ? suggestedCurrency
+                                      : item.newCountryCurrencyCode,
+                                };
+                              })
+                            )
+                          }
+                          placeholder="e.g. Ecuador"
+                        />
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          Required only when using a new country.
+                        </p>
+                      </div>
+                      <div className="space-y-2 rounded-md border bg-background p-3 text-xs text-muted-foreground">
+                        {draft.newCountryName.trim() ? (
+                          (() => {
+                            const preview = getNewCountryPreview(draft);
+                            return (
+                              <>
+                                <div>
+                                  Country ID: <span className="font-medium text-foreground">{preview.countryId || 'Will be generated'}</span>
+                                </div>
+                                <div>
+                                  Currency:{' '}
+                                  <span className="font-medium text-foreground">
+                                    {preview.currencyCode || 'Needs manual entry'}
+                                  </span>
+                                </div>
+                                <div>
+                                  Region: <span className="font-medium text-foreground">{preview.regionLabel}</span>
+                                </div>
+                              </>
+                            );
+                          })()
+                        ) : (
+                          <p>Enter a country name and the app will preview the generated ID and any known currency.</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <details className="rounded-md border bg-background">
+                      <summary className="cursor-pointer px-3 py-2 text-xs font-medium text-foreground">
+                        Advanced country overrides
+                      </summary>
+                      <div className="grid gap-3 p-3 pt-0 md:grid-cols-3">
+                        <div>
+                          <Label className="text-xs">Country ID</Label>
+                          <Input
+                            className="h-9 text-sm"
+                            value={draft.newCountryId}
+                            onChange={(event) =>
+                              setMissingCityDrafts((current) =>
+                                current.map((item, itemIndex) =>
+                                  itemIndex === index ? { ...item, newCountryId: event.target.value } : item
+                                )
+                              )
+                            }
+                            placeholder="Auto-generated from country name"
+                          />
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            Optional. Only override if you need a specific internal ID.
+                          </p>
+                        </div>
+                        <div>
+                          <Label className="text-xs">Currency Code</Label>
+                          <Input
+                            className="h-9 text-sm"
+                            value={draft.newCountryCurrencyCode}
+                            onChange={(event) =>
+                              setMissingCityDrafts((current) =>
+                                current.map((item, itemIndex) =>
+                                  itemIndex === index
+                                    ? { ...item, newCountryCurrencyCode: event.target.value.toUpperCase() }
+                                    : item
+                                )
+                              )
+                            }
+                            placeholder="Only needed when not auto-filled"
+                          />
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            Use the ISO currency code, for example `USD`, `EUR`, or `JPY`.
+                          </p>
+                        </div>
+                        <div>
+                          <Label className="text-xs">Region (optional)</Label>
+                          <Select
+                            value={draft.newCountryRegion}
+                            onValueChange={(value) =>
+                              setMissingCityDrafts((current) =>
+                                current.map((item, itemIndex) =>
+                                  itemIndex === index ? { ...item, newCountryRegion: value === '__none__' ? '' : value } : item
+                                )
+                              )
+                            }
+                          >
+                            <SelectTrigger className="h-9 text-sm">
+                              <SelectValue placeholder="Leave blank if unsure" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="__none__">None</SelectItem>
+                              {REGION_OPTIONS.map((region) => (
+                                <SelectItem key={region.value} value={region.value}>
+                                  {region.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            Optional. This only affects grouping and filtering later.
+                          </p>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-1">
+                <Label className="text-xs">Missing City Handling</Label>
+                <Select
+                  value={missingCityStrategy}
+                  onValueChange={(value) => setMissingCityStrategy(value as 'placeholder' | 'generate')}
+                >
+                  <SelectTrigger className="h-9 text-sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="placeholder">Create placeholders only</SelectItem>
+                    <SelectItem value="generate">Generate city costs now</SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  {missingCityStrategy === 'placeholder'
+                    ? 'Fastest option. The import creates the city rows now and you can fill in budget data later.'
+                    : 'Uses one provider, model, and API key setup for every missing city in this import. Cities are generated sequentially before the itinerary is imported.'}
+                </p>
+              </div>
+            </div>
+
+            {missingCityStrategy === 'generate' ? (
+              <div className="space-y-4 rounded-md border p-4">
+                <div className="space-y-1">
+                  <p className="text-sm font-medium">Generation Settings For This Import</p>
+                  <p className="text-xs text-muted-foreground">
+                    These settings apply to every missing city in this file. If you leave the API key blank, the server will
+                    try its configured key for the chosen provider.
+                  </p>
+                </div>
+
+                <div className="grid gap-3 md:grid-cols-2">
+                  <div className="space-y-1">
+                    <Label className="text-xs">Provider</Label>
+                    <Select value={importProvider} onValueChange={(value) => updateImportProvider(value as ProviderOption)}>
+                      <SelectTrigger className="h-9 text-sm">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {PROVIDER_OPTIONS.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <p className="text-xs text-muted-foreground">{selectedImportProvider.help}</p>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="space-y-1">
+                      <Label className="text-xs">{selectedImportProvider.label} API Key</Label>
+                      <Input
+                        className="h-9 text-sm"
+                        placeholder="Optional. Leave blank to use a server-side key if configured."
+                        type={showImportApiKey ? 'text' : 'password'}
+                        value={activeImportApiKey}
+                        onChange={(event) => updateImportApiKey(event.target.value)}
+                        autoComplete="off"
+                        spellCheck={false}
+                      />
+                    </div>
+                    <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <input
+                        type="checkbox"
+                        checked={showImportApiKey}
+                        onChange={(event) => setShowImportApiKey(event.target.checked)}
+                      />
+                      Show API key
+                    </label>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Model</Label>
+                    <Input
+                      className="h-9 text-sm"
+                      placeholder={selectedImportProvider.defaultModel}
+                      value={activeImportModel}
+                      onChange={(event) => updateImportModel(event.target.value)}
+                      autoComplete="off"
+                      spellCheck={false}
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Default for {selectedImportProvider.label}: {selectedImportProvider.defaultModel}
+                    </p>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Reference Date Or Season</Label>
+                    <Input
+                      className="h-9 text-sm"
+                      placeholder="e.g. April 2026 shoulder season"
+                      value={importReferenceDate}
+                      onChange={(event) => setImportReferenceDate(event.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-1 md:col-span-2">
+                    <Label className="text-xs">Extra Context</Label>
+                    <Textarea
+                      className="min-h-20 text-sm"
+                      placeholder="Optional notes such as neighborhoods, trip style, or caveats that should apply to all missing cities in this import."
+                      value={importExtraContext}
+                      onChange={(event) => setImportExtraContext(event.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            <div className="flex flex-wrap justify-end gap-2">
+              <Button type="button" variant="outline" onClick={resetPendingImportState} disabled={importingSnapshot}>
+                Cancel
+              </Button>
+              <Button type="button" onClick={handleConfirmMissingCityImport} disabled={importingSnapshot}>
+                {importingSnapshot
+                  ? missingCityStrategy === 'generate'
+                    ? missingCityDialogMode === 'add-leg'
+                      ? 'Generating city and adding leg...'
+                      : 'Generating cities and importing...'
+                    : missingCityDialogMode === 'add-leg'
+                      ? 'Creating city and adding leg...'
+                      : 'Creating cities and importing...'
+                  : missingCityStrategy === 'generate'
+                    ? missingCityDialogMode === 'add-leg'
+                      ? 'Generate City And Add Leg'
+                      : 'Generate Cities And Import'
+                    : missingCityDialogMode === 'add-leg'
+                      ? 'Create City And Add Leg'
+                      : 'Create Cities And Import'}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <div className="sticky top-0 z-30 -mx-4 -mt-4 border-b bg-background/95 px-4 py-4 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/85 lg:-mx-8 lg:-mt-8 lg:px-8">
         <div className="flex items-center justify-between gap-4">
@@ -514,6 +1445,14 @@ export default function PlanPage() {
                         keywords: `${city.name} ${city.countryName}`,
                       }))}
                     />
+                    <div className="mt-2 flex items-center justify-between gap-2">
+                      <p className="text-xs text-muted-foreground">
+                        Can&apos;t find the city? Create it here and add the leg in one flow.
+                      </p>
+                      <Button type="button" variant="outline" size="sm" onClick={openAddLegMissingCityDialog}>
+                        New City
+                      </Button>
+                    </div>
                   </div>
                   <div>
                     <Label>Nights</Label>
