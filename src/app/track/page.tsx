@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { PageLoadingState } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { EXPENSE_CATEGORIES } from '@/types';
@@ -84,6 +85,7 @@ export default function TrackPage() {
   const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set());
   const [editExpense, setEditExpense] = useState<Expense | null>(null);
   const [editForm, setEditForm] = useState<ExpenseEditForm | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
     const params = new URLSearchParams();
@@ -92,24 +94,29 @@ export default function TrackPage() {
     if (filterFrom) params.set('from', filterFrom);
     if (filterTo) params.set('to', filterTo);
 
-    const [expensesRes, itineraryRes] = await Promise.all([
-      fetch(`/api/expenses?${params}`),
-      fetch('/api/itinerary'),
-    ]);
+    setLoading(true);
+    try {
+      const [expensesRes, itineraryRes] = await Promise.all([
+        fetch(`/api/expenses?${params}`),
+        fetch('/api/itinerary'),
+      ]);
 
-    const expensesData = await expensesRes.json();
-    const itineraryData = await itineraryRes.json();
+      const expensesData = await expensesRes.json();
+      const itineraryData = await itineraryRes.json();
 
-    setExpenses(expensesData.data || []);
-    setLegs(
-      (itineraryData.data || []).map((leg: LegOption) => ({
-        id: leg.id,
-        cityName: leg.cityName,
-        countryName: leg.countryName,
-        startDate: leg.startDate,
-        endDate: leg.endDate,
-      }))
-    );
+      setExpenses(expensesData.data || []);
+      setLegs(
+        (itineraryData.data || []).map((leg: LegOption) => ({
+          id: leg.id,
+          cityName: leg.cityName,
+          countryName: leg.countryName,
+          startDate: leg.startDate,
+          endDate: leg.endDate,
+        }))
+      );
+    } finally {
+      setLoading(false);
+    }
   }, [filterCat, filterSource, filterFrom, filterTo]);
 
   useEffect(() => {
@@ -213,6 +220,17 @@ export default function TrackPage() {
   const totalAud = activeExpenses.reduce((sum, expense) => sum + getExpenseAudAmount(expense), 0);
 
   const categoryLabel = (value: string) => EXPENSE_CATEGORIES.find((category) => category.value === value)?.label ?? value;
+
+  if (loading && expenses.length === 0 && legs.length === 0) {
+    return (
+      <PageLoadingState
+        title="Loading expenses"
+        description="Fetching transactions, itinerary assignments, and filterable spend history."
+        cardCount={3}
+        rowCount={6}
+      />
+    );
+  }
 
   return (
     <div className="space-y-4">

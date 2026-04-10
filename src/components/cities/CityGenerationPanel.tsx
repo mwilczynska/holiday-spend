@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
@@ -284,10 +285,21 @@ export function CityGenerationPanel({
 
       <div className="flex items-center gap-3">
         <Button onClick={handleGenerate} disabled={loading}>
-          {loading ? 'Generating...' : 'Generate City Costs'}
+          <LoadingButtonLabel
+            idle="Generate City Costs"
+            loading="Generating..."
+            isLoading={loading}
+          />
         </Button>
         {error ? <p className="text-sm text-destructive">{error}</p> : null}
       </div>
+
+      {loading ? (
+        <InlineLoadingState
+          title={`Generating planner costs for ${cityName}, ${countryName}`}
+          detail="The server is running the methodology prompt, validating the output, and saving the new city estimate history."
+        />
+      ) : null}
 
       {result ? (
         <div className="space-y-4 rounded-md border bg-background/70 p-3">

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
+import { InlineLoadingState, PageLoadingState } from '@/components/ui/loading-state';
 import { Plus, Trash2, Edit } from 'lucide-react';
 
 interface Tag {
@@ -36,21 +37,33 @@ export default function TagsPage() {
   const [newName, setNewName] = useState('');
   const [newColor, setNewColor] = useState('#3b82f6');
   const [editTag, setEditTag] = useState<Tag | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [tagLoading, setTagLoading] = useState(false);
 
   const fetchTags = useCallback(async () => {
-    const res = await fetch('/api/tags');
-    const data = await res.json();
-    setTags(data.data || []);
+    setLoading(true);
+    try {
+      const res = await fetch('/api/tags');
+      const data = await res.json();
+      setTags(data.data || []);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => { fetchTags(); }, [fetchTags]);
 
   const selectTag = async (tag: Tag) => {
     setSelectedTag(tag);
-    const res = await fetch(`/api/tags/${tag.id}/expenses`);
-    const data = await res.json();
-    setTagExpenses(data.data?.expenses || []);
-    setTagTotal(data.data?.totalAud || 0);
+    setTagLoading(true);
+    try {
+      const res = await fetch(`/api/tags/${tag.id}/expenses`);
+      const data = await res.json();
+      setTagExpenses(data.data?.expenses || []);
+      setTagTotal(data.data?.totalAud || 0);
+    } finally {
+      setTagLoading(false);
+    }
   };
 
   const handleAdd = async () => {
@@ -85,6 +98,17 @@ export default function TagsPage() {
     setEditTag(null);
     fetchTags();
   };
+
+  if (loading && tags.length === 0) {
+    return (
+      <PageLoadingState
+        title="Loading tags"
+        description="Fetching your saved tags and their expense totals."
+        cardCount={2}
+        rowCount={5}
+      />
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -145,7 +169,12 @@ export default function TagsPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {tagExpenses.length === 0 ? (
+                {tagLoading ? (
+                  <InlineLoadingState
+                    title={`Loading expenses for ${selectedTag.name}`}
+                    detail="Gathering the tagged transactions and their total spend."
+                  />
+                ) : tagExpenses.length === 0 ? (
                   <p className="text-muted-foreground text-sm">No expenses with this tag.</p>
                 ) : (
                   <div className="space-y-1">

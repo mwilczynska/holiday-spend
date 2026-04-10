@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { EXPENSE_CATEGORIES } from '@/types';
 import { Upload, Check, Trash2 } from 'lucide-react';
@@ -112,7 +113,7 @@ export default function ImportPage() {
         <h1 className="text-2xl font-bold">Import Wise CSV</h1>
         <Button variant="destructive" size="sm" onClick={handleClearImported} disabled={clearing}>
           <Trash2 className="h-4 w-4 mr-1" />
-          {clearing ? 'Clearing...' : 'Clear All Imported'}
+          <LoadingButtonLabel idle="Clear All Imported" loading="Clearing..." isLoading={clearing} />
         </Button>
       </div>
 
@@ -123,12 +124,21 @@ export default function ImportPage() {
             <input ref={fileRef} type="file" accept=".csv" className="text-sm" />
             <Button onClick={handleUpload} disabled={uploading}>
               <Upload className="h-4 w-4 mr-2" />
-              {uploading ? 'Parsing...' : 'Parse CSV'}
+              <LoadingButtonLabel idle="Parse CSV" loading="Parsing..." isLoading={uploading} />
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-2">
             Upload a Wise CSV export. Transactions will be parsed, categorised, and deduplicated.
           </p>
+          {uploading ? (
+            <div className="mt-3">
+              <InlineLoadingState
+                title="Parsing CSV and preparing preview"
+                detail="Wise rows are being normalized, categorized, and checked for duplicates."
+                compact
+              />
+            </div>
+          ) : null}
         </CardContent>
       </Card>
 
@@ -226,7 +236,11 @@ export default function ImportPage() {
           )}
 
           <Button onClick={handleConfirmImport} disabled={importing || editableImports.length === 0} className="w-full">
-            {importing ? 'Importing...' : `Import ${editableImports.length} Transactions`}
+            <LoadingButtonLabel
+              idle={`Import ${editableImports.length} Transactions`}
+              loading="Importing..."
+              isLoading={importing}
+            />
           </Button>
         </div>
       )}

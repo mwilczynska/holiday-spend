@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { PageLoadingState } from '@/components/ui/loading-state';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
@@ -42,15 +43,21 @@ export default function CitiesPage() {
   const [newCity, setNewCity] = useState({ id: '', name: '', countryId: '' });
   const [isDirty, setIsDirty] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
-    const response = await fetch('/api/countries', { cache: 'no-store' });
-    const data = await response.json();
-    const nextCountries = (data.data || []).sort((a: Country, b: Country) => a.name.localeCompare(b.name));
-    setCountries(nextCountries);
-    return nextCountries as Country[];
+    setLoading(true);
+    try {
+      const response = await fetch('/api/countries', { cache: 'no-store' });
+      const data = await response.json();
+      const nextCountries = (data.data || []).sort((a: Country, b: Country) => a.name.localeCompare(b.name));
+      setCountries(nextCountries);
+      return nextCountries as Country[];
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -154,6 +161,17 @@ export default function CitiesPage() {
     const nextCountries = await fetchData();
     selectCityFromCountries(newCity.id, nextCountries);
   };
+
+  if (loading && countries.length === 0) {
+    return (
+      <PageLoadingState
+        title="Loading city cost library"
+        description="Fetching countries, cities, and the current planner dataset."
+        cardCount={3}
+        rowCount={5}
+      />
+    );
+  }
 
   return (
     <div className="space-y-6">

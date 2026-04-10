@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { PageLoadingState } from '@/components/ui/loading-state';
 
 interface EstimateHistoryItem {
   id: number;
@@ -252,11 +253,17 @@ export default function EstimatesPage() {
   const router = useRouter();
   const [payload, setPayload] = useState<EstimatesResponse | null>(null);
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(true);
 
   async function load() {
-    const response = await fetch('/api/estimates', { cache: 'no-store' });
-    const data = await response.json();
-    setPayload(data.data || null);
+    setLoading(true);
+    try {
+      const response = await fetch('/api/estimates', { cache: 'no-store' });
+      const data = await response.json();
+      setPayload(data.data || null);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -299,6 +306,17 @@ export default function EstimatesPage() {
         .includes(normalized)
     );
   }, [payload, query]);
+
+  if (loading && !payload) {
+    return (
+      <PageLoadingState
+        title="Loading estimate methodology"
+        description="Fetching the city cost library, source breakdowns, and generation history."
+        cardCount={4}
+        rowCount={5}
+      />
+    );
+  }
 
   return (
     <div className="space-y-6">

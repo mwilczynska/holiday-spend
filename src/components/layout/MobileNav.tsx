@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Calculator, LayoutDashboard, Map, Plus, Receipt, Settings } from 'lucide-react';
+import { useEffect, useState, useTransition } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Calculator, LayoutDashboard, Loader2, Map, Plus, Receipt, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -16,6 +16,21 @@ const navItems = [
 
 export function MobileNav() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const [pendingHref, setPendingHref] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPendingHref(null);
+  }, [pathname]);
+
+  const handleNavigate = (href: string) => {
+    if (href === pathname) return;
+    setPendingHref(href);
+    startTransition(() => {
+      router.push(href);
+    });
+  };
 
   return (
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-card border-t safe-area-bottom">
@@ -23,21 +38,28 @@ export function MobileNav() {
         {navItems.map((item) => {
           const isActive = pathname === item.href ||
             (item.href !== '/' && pathname.startsWith(item.href));
+          const isNavigating = isPending && pendingHref === item.href;
           return (
-            <Link
+            <button
               key={item.href}
-              href={item.href}
+              type="button"
+              onClick={() => handleNavigate(item.href)}
               className={cn(
                 'flex flex-col items-center gap-0.5 px-3 py-1 text-xs transition-colors',
                 item.highlight && !isActive && 'text-primary',
                 isActive
                   ? 'text-primary'
-                  : !item.highlight && 'text-muted-foreground'
+                  : !item.highlight && 'text-muted-foreground',
+                isNavigating && 'opacity-80'
               )}
             >
-              <item.icon className={cn('h-5 w-5', item.highlight && 'h-6 w-6')} />
+              {isNavigating ? (
+                <Loader2 className={cn('h-5 w-5 animate-spin', item.highlight && 'h-6 w-6')} />
+              ) : (
+                <item.icon className={cn('h-5 w-5', item.highlight && 'h-6 w-6')} />
+              )}
               <span>{item.label}</span>
-            </Link>
+            </button>
           );
         })}
       </div>

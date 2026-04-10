@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { InfoPopover } from '@/components/itinerary/InfoPopover';
+import { PageLoadingState } from '@/components/ui/loading-state';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
 import { Map, Receipt, Plus, TrendingUp } from 'lucide-react';
@@ -285,33 +286,50 @@ export default function DashboardPage() {
   const [burnData, setBurnData] = useState<BurnRatePoint[]>([]);
   const [countryBands, setCountryBands] = useState<CountryBand[]>([]);
   const [budgetCeiling, setBudgetCeiling] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
-      const [summaryRes, compRes, burnRes] = await Promise.all([
-        fetch('/api/dashboard/summary', { cache: 'no-store' }),
-        fetch('/api/dashboard/planned-vs-actual', { cache: 'no-store' }),
-        fetch('/api/dashboard/burn-rate', { cache: 'no-store' }),
-      ]);
-      const summaryData = await summaryRes.json();
-      const compData = await compRes.json();
-      const burnRateData = await burnRes.json();
+      setLoading(true);
+      try {
+        const [summaryRes, compRes, burnRes] = await Promise.all([
+          fetch('/api/dashboard/summary', { cache: 'no-store' }),
+          fetch('/api/dashboard/planned-vs-actual', { cache: 'no-store' }),
+          fetch('/api/dashboard/burn-rate', { cache: 'no-store' }),
+        ]);
+        const summaryData = await summaryRes.json();
+        const compData = await compRes.json();
+        const burnRateData = await burnRes.json();
 
-      if (summaryData.data) setSummary(summaryData.data);
-      if (compData.data) {
-        setComparison(compData.data.comparison || []);
-        setCategoryTotals(compData.data.categoryTotals || {});
-      }
-      if (burnRateData.data) {
-        setBurnData(burnRateData.data.cumulative || []);
-        setCountryBands(burnRateData.data.countryBands || []);
-      }
-      if (summaryData.data) {
-        setBudgetCeiling(summaryData.data.totalBudget);
+        if (summaryData.data) setSummary(summaryData.data);
+        if (compData.data) {
+          setComparison(compData.data.comparison || []);
+          setCategoryTotals(compData.data.categoryTotals || {});
+        }
+        if (burnRateData.data) {
+          setBurnData(burnRateData.data.cumulative || []);
+          setCountryBands(burnRateData.data.countryBands || []);
+        }
+        if (summaryData.data) {
+          setBudgetCeiling(summaryData.data.totalBudget);
+        }
+      } finally {
+        setLoading(false);
       }
     }
     load();
   }, []);
+
+  if (loading && !summary) {
+    return (
+      <PageLoadingState
+        title="Loading dashboard"
+        description="Calculating planned versus actual spend, country totals, and burn-rate trends."
+        cardCount={4}
+        rowCount={4}
+      />
+    );
+  }
 
   const pieData = Object.entries(categoryTotals)
     .filter(([, v]) => v > 0)

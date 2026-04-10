@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { SearchableSelect } from '@/components/ui/searchable-select';
+import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
 import { Download, FolderOpen, Plus, Save, Upload } from 'lucide-react';
@@ -249,33 +250,39 @@ export default function PlanPage() {
   const [showImportApiKey, setShowImportApiKey] = useState(false);
   const [importReferenceDate, setImportReferenceDate] = useState('');
   const [importExtraContext, setImportExtraContext] = useState('');
+  const [pageLoading, setPageLoading] = useState(true);
   const importInputRef = useRef<HTMLInputElement>(null);
 
   const fetchData = useCallback(async () => {
-    const [legsRes, citiesRes, countriesRes, fixedRes] = await Promise.all([
-      fetch('/api/itinerary', { cache: 'no-store' }),
-      fetch('/api/cities', { cache: 'no-store' }),
-      fetch('/api/countries', { cache: 'no-store' }),
-      fetch('/api/fixed-costs', { cache: 'no-store' }),
-    ]);
-    const legsData = await legsRes.json();
-    const citiesData = await citiesRes.json();
-    const countriesData = await countriesRes.json();
-    const fixedData = await fixedRes.json();
-    const countries = (countriesData.data || []) as Country[];
-    const countryMap = new Map(countries.map((country) => [country.id, country.name]));
+    setPageLoading(true);
+    try {
+      const [legsRes, citiesRes, countriesRes, fixedRes] = await Promise.all([
+        fetch('/api/itinerary', { cache: 'no-store' }),
+        fetch('/api/cities', { cache: 'no-store' }),
+        fetch('/api/countries', { cache: 'no-store' }),
+        fetch('/api/fixed-costs', { cache: 'no-store' }),
+      ]);
+      const legsData = await legsRes.json();
+      const citiesData = await citiesRes.json();
+      const countriesData = await countriesRes.json();
+      const fixedData = await fixedRes.json();
+      const countries = (countriesData.data || []) as Country[];
+      const countryMap = new Map(countries.map((country) => [country.id, country.name]));
 
-    setLegs(legsData.data || []);
-    setCountries(countries.sort((a, b) => a.name.localeCompare(b.name)));
-    setCities(
-      ((citiesData.data || []) as Array<City>)
-        .map((city) => ({
-          ...city,
-          countryName: countryMap.get(city.countryId) || 'Unknown',
-        }))
-        .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`))
-    );
-    setFixedCosts(fixedData.data || []);
+      setLegs(legsData.data || []);
+      setCountries(countries.sort((a, b) => a.name.localeCompare(b.name)));
+      setCities(
+        ((citiesData.data || []) as Array<City>)
+          .map((city) => ({
+            ...city,
+            countryName: countryMap.get(city.countryId) || 'Unknown',
+          }))
+          .sort((a, b) => `${a.countryName}-${a.name}`.localeCompare(`${b.countryName}-${b.name}`))
+      );
+      setFixedCosts(fixedData.data || []);
+    } finally {
+      setPageLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -904,6 +911,17 @@ export default function PlanPage() {
   const activeImportApiKey = importApiKeys[importProvider] || '';
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
 
+  if (pageLoading && legs.length === 0 && cities.length === 0 && countries.length === 0) {
+    return (
+      <PageLoadingState
+        title="Loading itinerary planner"
+        description="Syncing your legs, cities, countries, and fixed costs."
+        cardCount={3}
+        rowCount={5}
+      />
+    );
+  }
+
   return (
     <div className="space-y-6">
       <input
@@ -1310,26 +1328,51 @@ export default function PlanPage() {
               </div>
             ) : null}
 
+            {importingSnapshot ? (
+              <InlineLoadingState
+                title={
+                  missingCityStrategy === 'generate'
+                    ? missingCityDialogMode === 'add-leg'
+                      ? 'Generating city costs and adding the leg'
+                      : 'Generating city costs before import'
+                    : missingCityDialogMode === 'add-leg'
+                      ? 'Creating the city and adding the leg'
+                      : 'Creating missing cities before import'
+                }
+                detail={
+                  missingCityStrategy === 'generate'
+                    ? 'This can take a short while because cities are generated sequentially and saved back into the planner dataset.'
+                    : 'The planner is creating any missing countries and cities, then continuing with your request.'
+                }
+              />
+            ) : null}
+
             <div className="flex flex-wrap justify-end gap-2">
               <Button type="button" variant="outline" onClick={resetPendingImportState} disabled={importingSnapshot}>
                 Cancel
               </Button>
               <Button type="button" onClick={handleConfirmMissingCityImport} disabled={importingSnapshot}>
-                {importingSnapshot
-                  ? missingCityStrategy === 'generate'
-                    ? missingCityDialogMode === 'add-leg'
-                      ? 'Generating city and adding leg...'
-                      : 'Generating cities and importing...'
-                    : missingCityDialogMode === 'add-leg'
-                      ? 'Creating city and adding leg...'
-                      : 'Creating cities and importing...'
-                  : missingCityStrategy === 'generate'
-                    ? missingCityDialogMode === 'add-leg'
-                      ? 'Generate City And Add Leg'
-                      : 'Generate Cities And Import'
-                    : missingCityDialogMode === 'add-leg'
-                      ? 'Create City And Add Leg'
-                      : 'Create Cities And Import'}
+                <LoadingButtonLabel
+                  isLoading={importingSnapshot}
+                  loading={
+                    missingCityStrategy === 'generate'
+                      ? missingCityDialogMode === 'add-leg'
+                        ? 'Generating city and adding leg...'
+                        : 'Generating cities and importing...'
+                      : missingCityDialogMode === 'add-leg'
+                        ? 'Creating city and adding leg...'
+                        : 'Creating cities and importing...'
+                  }
+                  idle={
+                    missingCityStrategy === 'generate'
+                      ? missingCityDialogMode === 'add-leg'
+                        ? 'Generate City And Add Leg'
+                        : 'Generate Cities And Import'
+                      : missingCityDialogMode === 'add-leg'
+                        ? 'Create City And Add Leg'
+                        : 'Create Cities And Import'
+                  }
+                />
               </Button>
             </div>
           </div>

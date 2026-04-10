@@ -113,6 +113,12 @@ function toTransportPayload(drafts: TransportDraft[]): IntercityTransportItem[] 
   });
 }
 
+function shiftIsoDate(date: string, days: number) {
+  const next = new Date(`${date}T00:00:00Z`);
+  next.setUTCDate(next.getUTCDate() + days);
+  return next.toISOString().split('T')[0];
+}
+
 export function LegCard({
   leg,
   cities,
@@ -216,15 +222,37 @@ export function LegCard({
     if (field === 'startDate') {
       onUpdate(leg.id, {
         startDate: value,
-        ...(leg.endDate && leg.endDate < value ? { endDate: value } : {}),
+        endDate: leg.nights > 0 ? shiftIsoDate(value, leg.nights - 1) : value,
       });
       return;
     }
 
     onUpdate(leg.id, {
       endDate: value,
-      ...(leg.startDate && leg.startDate > value ? { startDate: value } : {}),
+      startDate: leg.nights > 0 ? shiftIsoDate(value, -(leg.nights - 1)) : value,
     });
+  };
+
+  const handleNightsChange = (value: number) => {
+    const nextNights = Number.isInteger(value) && value > 0 ? value : 1;
+
+    if (leg.startDate) {
+      onUpdate(leg.id, {
+        nights: nextNights,
+        endDate: shiftIsoDate(leg.startDate, nextNights - 1),
+      });
+      return;
+    }
+
+    if (leg.endDate) {
+      onUpdate(leg.id, {
+        nights: nextNights,
+        startDate: shiftIsoDate(leg.endDate, -(nextNights - 1)),
+      });
+      return;
+    }
+
+    onUpdate(leg.id, { nights: nextNights });
   };
 
   const persistIntercityTransports = (drafts: TransportDraft[]) => {
@@ -367,7 +395,7 @@ export function LegCard({
               className="h-8 text-xs"
               min={1}
               value={leg.nights}
-              onChange={(e) => handleFieldChange('nights', parseInt(e.target.value) || 1)}
+              onChange={(e) => handleNightsChange(parseInt(e.target.value, 10) || 1)}
             />
           </div>
         </div>

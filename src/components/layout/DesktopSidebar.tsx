@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Calculator, LayoutDashboard, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
+import { useEffect, useState, useTransition } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Calculator, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -17,6 +17,21 @@ const navItems = [
 
 export function DesktopSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const [pendingHref, setPendingHref] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPendingHref(null);
+  }, [pathname]);
+
+  const handleNavigate = (href: string) => {
+    if (href === pathname) return;
+    setPendingHref(href);
+    startTransition(() => {
+      router.push(href);
+    });
+  };
 
   return (
     <aside className="hidden lg:flex flex-col w-64 border-r bg-card h-screen sticky top-0">
@@ -28,20 +43,23 @@ export function DesktopSidebar() {
         {navItems.map((item) => {
           const isActive = pathname === item.href ||
             (item.href !== '/' && pathname.startsWith(item.href));
+          const isNavigating = isPending && pendingHref === item.href;
           return (
-            <Link
+            <button
               key={item.href}
-              href={item.href}
+              type="button"
+              onClick={() => handleNavigate(item.href)}
               className={cn(
-                'flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors',
+                'flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                 isActive
                   ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground',
+                isNavigating && 'opacity-80'
               )}
             >
-              <item.icon className="h-4 w-4" />
+              {isNavigating ? <Loader2 className="h-4 w-4 animate-spin" /> : <item.icon className="h-4 w-4" />}
               {item.label}
-            </Link>
+            </button>
           );
         })}
       </nav>

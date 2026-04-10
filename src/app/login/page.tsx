@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { LoadingButtonLabel } from '@/components/ui/loading-state';
 
 export default function LoginPage() {
   const [pin, setPin] = useState('');
@@ -51,7 +52,7 @@ export default function LoginPage() {
             />
             {error && <p className="text-sm text-destructive text-center">{error}</p>}
             <Button type="submit" className="w-full" disabled={loading || !pin}>
-              {loading ? 'Checking...' : 'Enter'}
+              <LoadingButtonLabel idle="Enter" loading="Checking..." isLoading={loading} />
             </Button>
           </form>
         </CardContent>

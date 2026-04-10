@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
+import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { EXPENSE_CATEGORIES } from '@/types';
 
 interface ActiveLeg {
@@ -39,9 +40,11 @@ export default function QuickAddPage() {
   const [activeLeg, setActiveLeg] = useState<ActiveLeg | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadActiveLeg() {
+      setLoading(true);
       try {
         const [legsRes, countriesRes] = await Promise.all([
           fetch('/api/itinerary'),
@@ -68,10 +71,23 @@ export default function QuickAddPage() {
         }
       } catch {
         // Ignore errors loading active leg
+      } finally {
+        setLoading(false);
       }
     }
     loadActiveLeg();
   }, []);
+
+  if (loading) {
+    return (
+      <PageLoadingState
+        title="Loading quick add"
+        description="Checking the active leg and local currency before you log an expense."
+        cardCount={2}
+        rowCount={3}
+      />
+    );
+  }
 
   const handleSubmit = async () => {
     if (!amount || parseFloat(amount) <= 0) return;
@@ -205,7 +221,9 @@ export default function QuickAddPage() {
         onClick={handleSubmit}
         disabled={saving || !amount || parseFloat(amount) <= 0}
       >
-        {saved ? 'Saved!' : saving ? 'Saving...' : 'Add Expense'}
+        {saved ? 'Saved!' : (
+          <LoadingButtonLabel idle="Add Expense" loading="Saving..." isLoading={saving} />
+        )}
       </Button>
     </div>
   );

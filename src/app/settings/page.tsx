@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
+import { PageLoadingState } from '@/components/ui/loading-state';
 import { Plus, Trash2, Download } from 'lucide-react';
 import Link from 'next/link';
 
@@ -37,6 +38,7 @@ export default function SettingsPage() {
   const [groupSize, setGroupSize] = useState(2);
   const [groupSizeStatus, setGroupSizeStatus] = useState<string | null>(null);
   const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const [addOpen, setAddOpen] = useState(false);
   const [newCost, setNewCost] = useState({
     description: '',
@@ -48,22 +50,27 @@ export default function SettingsPage() {
   });
 
   const fetchData = useCallback(async () => {
-    const [costsRes, countriesRes, plannerSettingsRes] = await Promise.all([
-      fetch('/api/fixed-costs'),
-      fetch('/api/countries'),
-      fetch('/api/planner/settings', { cache: 'no-store' }),
-    ]);
-    const costsData = await costsRes.json();
-    const countriesData = await countriesRes.json();
-    const plannerSettingsData = await plannerSettingsRes.json();
-    setCosts(costsData.data || []);
-    setCountries(
-      (countriesData.data || [])
-        .map((c: Country & { cities?: unknown[] }) => ({ id: c.id, name: c.name }))
-        .sort((a: Country, b: Country) => a.name.localeCompare(b.name))
-    );
-    if (plannerSettingsRes.ok && plannerSettingsData.data?.groupSize) {
-      setGroupSize(plannerSettingsData.data.groupSize);
+    setLoading(true);
+    try {
+      const [costsRes, countriesRes, plannerSettingsRes] = await Promise.all([
+        fetch('/api/fixed-costs'),
+        fetch('/api/countries'),
+        fetch('/api/planner/settings', { cache: 'no-store' }),
+      ]);
+      const costsData = await costsRes.json();
+      const countriesData = await countriesRes.json();
+      const plannerSettingsData = await plannerSettingsRes.json();
+      setCosts(costsData.data || []);
+      setCountries(
+        (countriesData.data || [])
+          .map((c: Country & { cities?: unknown[] }) => ({ id: c.id, name: c.name }))
+          .sort((a: Country, b: Country) => a.name.localeCompare(b.name))
+      );
+      if (plannerSettingsRes.ok && plannerSettingsData.data?.groupSize) {
+        setGroupSize(plannerSettingsData.data.groupSize);
+      }
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -125,6 +132,17 @@ export default function SettingsPage() {
   const totalPaid = costs.filter(c => c.isPaid).reduce((s, c) => s + c.amountAud, 0);
   const totalUnpaid = costs.filter(c => !c.isPaid).reduce((s, c) => s + c.amountAud, 0);
   const total = totalPaid + totalUnpaid;
+
+  if (loading && costs.length === 0 && countries.length === 0) {
+    return (
+      <PageLoadingState
+        title="Loading settings"
+        description="Preparing trip settings, fixed costs, and country options."
+        cardCount={3}
+        rowCount={4}
+      />
+    );
+  }
 
   return (
     <div className="space-y-6">
