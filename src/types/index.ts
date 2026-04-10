@@ -101,7 +101,6 @@ export interface LegWithCost {
   intercityTransportCost: number;
   intercityTransportNote: string | null;
   intercityTransports: IntercityTransportItem[];
-  splitPct: number;
   sortOrder: number | null;
   notes: string | null;
   status: LegStatus;

@@ -128,10 +128,6 @@ export function getLegTotalFromTransports(
   return getLegTotal(dailyCost, nights, getIntercityTransportTotal(transports));
 }
 
-export function getYourShare(total: number, splitPct: number = 50): number {
-  return total * (splitPct / 100);
-}
-
 export function getAccommodationCostForTier(
   city: CityData,
   accomTier: AccomTier,

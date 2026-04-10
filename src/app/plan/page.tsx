@@ -36,7 +36,6 @@ interface Leg {
   intercityTransportCost: number;
   intercityTransportNote: string | null;
   intercityTransports: IntercityTransportItem[];
-  splitPct: number;
   sortOrder: number | null;
   notes: string | null;
   status: string;
@@ -414,7 +413,7 @@ export default function PlanPage() {
               Build your trip leg by leg. City costs are stored for 2 people and scaled here for your selected traveller count.
             </p>
             <p className="text-xs text-muted-foreground">
-              Split % is your share of each leg total. For example, 50 means you pay half and 100 means you pay the full amount.
+              Traveller count is shared with Settings and the dashboard.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-end gap-2">

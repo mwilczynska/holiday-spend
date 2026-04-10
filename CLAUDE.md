@@ -13,7 +13,7 @@ It combines:
 The app stores base city costs in AUD for 2 people, then scales them at runtime for the traveller group size and selected budget tiers.
 
 ## Core Product Behaviour
-- `/plan` builds the trip city-by-city with dates, tiers, overrides, split percentages, and intercity transport
+- `/plan` builds the trip city-by-city with dates, tiers, overrides, and intercity transport
 - `/track` records actual spend, either manually or by importing Wise CSV exports
 - `/` compares planned vs actual spend across the trip and across countries
 - `/settings/cities` manages the city cost library and runs new-city cost generation
@@ -122,9 +122,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Legs can be reordered, edited inline, and constrained by date validation
 - Intercity transport is now a repeatable per-leg list rather than a single always-open field
 - Planner supports saved snapshots plus JSON export/import for comparing alternate itineraries
-- Traveller count is configurable in `/plan` and persists in `app_settings.planner_group_size`
+- Traveller count is configurable in `/settings` and `/plan`, and persists in `app_settings.planner_group_size`
 - City base costs remain stored for 2 travellers and are scaled at runtime in planner/dashboard calculations
-- `splitPct` is "your share" of a leg total and does not control traveller count
 - Planner totals and summaries are stable and current
 
 ### Expense Tracking
@@ -139,6 +138,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Actual-spend handling was tightened so missing AUD conversions do not pollute totals
 - Spend views are constrained to the trip window instead of entire historical account activity
 - Summary cards now use clearer planned-vs-actual terminology and include info popovers that explain each calculation
+- Dashboard header and summary now make the selected traveller count explicit
 - Country comparison now includes planned/day and actual/day columns using each country's planned itinerary days
 
 ## Completed Work
@@ -226,6 +226,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Added `/api/itinerary/snapshot` for plan export/import and browser-saved snapshots
 - Added `/api/planner/settings` plus `app_settings` storage for planner traveller count
 - Planner tier popovers now show the live scaled per-option costs for the selected traveller count
+- Planner leg cards no longer expose a separate split percentage control
 - Planner header/sidebar locking and transport input focus handling were tightened
 - Dashboard summary calculations and labels were rebuilt around planned-vs-actual clarity
 - Dashboard country comparison now exposes planned/day and actual/day values per country

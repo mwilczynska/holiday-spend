@@ -34,6 +34,9 @@ const CATEGORIES = ['visa', 'insurance', 'flights', 'gear', 'other'];
 export default function SettingsPage() {
   const [costs, setCosts] = useState<FixedCost[]>([]);
   const [countries, setCountries] = useState<Country[]>([]);
+  const [groupSize, setGroupSize] = useState(2);
+  const [groupSizeStatus, setGroupSizeStatus] = useState<string | null>(null);
+  const [groupSizeError, setGroupSizeError] = useState<string | null>(null);
   const [addOpen, setAddOpen] = useState(false);
   const [newCost, setNewCost] = useState({
     description: '',
@@ -45,18 +48,23 @@ export default function SettingsPage() {
   });
 
   const fetchData = useCallback(async () => {
-    const [costsRes, countriesRes] = await Promise.all([
+    const [costsRes, countriesRes, plannerSettingsRes] = await Promise.all([
       fetch('/api/fixed-costs'),
       fetch('/api/countries'),
+      fetch('/api/planner/settings', { cache: 'no-store' }),
     ]);
     const costsData = await costsRes.json();
     const countriesData = await countriesRes.json();
+    const plannerSettingsData = await plannerSettingsRes.json();
     setCosts(costsData.data || []);
     setCountries(
       (countriesData.data || [])
         .map((c: Country & { cities?: unknown[] }) => ({ id: c.id, name: c.name }))
         .sort((a: Country, b: Country) => a.name.localeCompare(b.name))
     );
+    if (plannerSettingsRes.ok && plannerSettingsData.data?.groupSize) {
+      setGroupSize(plannerSettingsData.data.groupSize);
+    }
   }, []);
 
   useEffect(() => { fetchData(); }, [fetchData]);
@@ -91,6 +99,29 @@ export default function SettingsPage() {
     fetchData();
   };
 
+  const handleGroupSizeChange = async (value: string) => {
+    const nextGroupSize = Number.parseInt(value, 10);
+    setGroupSize(nextGroupSize);
+    try {
+      const response = await fetch('/api/planner/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ groupSize: nextGroupSize }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to update traveller count.');
+      }
+      setGroupSize(data.data.groupSize);
+      setGroupSizeError(null);
+      setGroupSizeStatus(`Traveller count set to ${data.data.groupSize}.`);
+    } catch (err) {
+      setGroupSizeStatus(null);
+      setGroupSizeError(err instanceof Error ? err.message : 'Failed to update traveller count.');
+      fetchData();
+    }
+  };
+
   const totalPaid = costs.filter(c => c.isPaid).reduce((s, c) => s + c.amountAud, 0);
   const totalUnpaid = costs.filter(c => !c.isPaid).reduce((s, c) => s + c.amountAud, 0);
   const total = totalPaid + totalUnpaid;
@@ -114,6 +145,34 @@ export default function SettingsPage() {
           </a>
         </div>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Trip Settings</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="max-w-xs">
+            <Label>Travellers</Label>
+            <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {[1, 2, 3, 4, 5].map((count) => (
+                  <SelectItem key={count} value={String(count)}>
+                    {count} {count === 1 ? 'traveller' : 'travellers'}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            City costs are stored for 2 travellers and scaled across the planner and dashboard using this setting.
+          </p>
+          {groupSizeStatus ? <p className="text-sm text-muted-foreground">{groupSizeStatus}</p> : null}
+          {groupSizeError ? <p className="text-sm text-destructive">{groupSizeError}</p> : null}
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">

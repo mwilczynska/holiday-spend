@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { SearchableSelect } from '@/components/ui/searchable-select';
-import { InfoPopover } from './InfoPopover';
 import { TierSelector } from './TierSelector';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import type { IntercityTransportItem } from '@/types';
@@ -41,7 +40,6 @@ interface LegCardProps {
     intercityTransportCost: number;
     intercityTransportNote: string | null;
     intercityTransports: IntercityTransportItem[];
-    splitPct: number;
     notes: string | null;
     status: string;
     dailyCost: number;
@@ -409,100 +407,84 @@ export function LegCard({
           />
         </div>
 
-        <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_160px]">
-          <div className="space-y-2 rounded-md border p-3">
-            <div className="flex items-center justify-between gap-2">
-              <div>
-                <Label className="text-xs">Intercity Transport</Label>
-                <p className="text-xs text-muted-foreground">
-                  Add the one-off between-city moves you want included in this leg total.
-                </p>
-              </div>
-              <Button type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
-                <Plus className="mr-1 h-3.5 w-3.5" />
-                Add transport
-              </Button>
+        <div className="mt-3 space-y-2 rounded-md border p-3">
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <Label className="text-xs">Intercity Transport</Label>
+              <p className="text-xs text-muted-foreground">
+                Add the one-off between-city moves you want included in this leg total.
+              </p>
             </div>
-            {transportDrafts.length > 0 ? (
-              <div className="space-y-2">
-                {transportDrafts.map((transport, index) => (
-                  <div
-                    key={transport.draftKey}
-                    className="grid gap-2 rounded-md border p-2 lg:grid-cols-[140px_1fr_120px_40px]"
-                  >
-                    <div>
-                      <Label className="text-xs">Mode</Label>
-                      <Input
-                        className="h-8 text-xs"
-                        value={transport.mode || ''}
-                        onChange={(e) => updateIntercityTransportDraft(index, { mode: e.target.value || null })}
-                        onFocus={() => {
-                          editingTransportKeyRef.current = transport.draftKey;
-                        }}
-                        onBlur={commitIntercityTransports}
-                        placeholder="Flight"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Note</Label>
-                      <Input
-                        className="h-8 text-xs"
-                        value={transport.note || ''}
-                        onChange={(e) => updateIntercityTransportDraft(index, { note: e.target.value || null })}
-                        onFocus={() => {
-                          editingTransportKeyRef.current = transport.draftKey;
-                        }}
-                        onBlur={commitIntercityTransports}
-                        placeholder="e.g. VietJet HAN-SGN"
-                      />
-                    </div>
-                    <div>
-                      <Label className="text-xs">Cost ($)</Label>
-                      <Input
-                        type="text"
-                        inputMode="decimal"
-                        className="h-8 text-xs"
-                        value={transport.costInput}
-                        onChange={(e) => updateIntercityTransportDraft(index, { costInput: e.target.value })}
-                        onFocus={() => {
-                          editingTransportKeyRef.current = transport.draftKey;
-                        }}
-                        onBlur={commitIntercityTransports}
-                        placeholder="Cost"
-                      />
-                    </div>
-                    <div className="flex items-end">
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                        onClick={() => removeIntercityTransport(index)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
+            <Button type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
+              <Plus className="mr-1 h-3.5 w-3.5" />
+              Add transport
+            </Button>
+          </div>
+          {transportDrafts.length > 0 ? (
+            <div className="space-y-2">
+              {transportDrafts.map((transport, index) => (
+                <div
+                  key={transport.draftKey}
+                  className="grid gap-2 rounded-md border p-2 lg:grid-cols-[140px_1fr_120px_40px]"
+                >
+                  <div>
+                    <Label className="text-xs">Mode</Label>
+                    <Input
+                      className="h-8 text-xs"
+                      value={transport.mode || ''}
+                      onChange={(e) => updateIntercityTransportDraft(index, { mode: e.target.value || null })}
+                      onFocus={() => {
+                        editingTransportKeyRef.current = transport.draftKey;
+                      }}
+                      onBlur={commitIntercityTransports}
+                      placeholder="Flight"
+                    />
                   </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-xs text-muted-foreground">No intercity transport rows added for this leg.</p>
-            )}
-          </div>
-          <div>
-            <div className="flex items-center gap-1">
-              <Label className="text-xs">Your Share %</Label>
-              <InfoPopover title="Your Share %" summary={PLANNER_UI_LOGIC.splitPct} />
+                  <div>
+                    <Label className="text-xs">Note</Label>
+                    <Input
+                      className="h-8 text-xs"
+                      value={transport.note || ''}
+                      onChange={(e) => updateIntercityTransportDraft(index, { note: e.target.value || null })}
+                      onFocus={() => {
+                        editingTransportKeyRef.current = transport.draftKey;
+                      }}
+                      onBlur={commitIntercityTransports}
+                      placeholder="e.g. VietJet HAN-SGN"
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs">Cost ($)</Label>
+                    <Input
+                      type="text"
+                      inputMode="decimal"
+                      className="h-8 text-xs"
+                      value={transport.costInput}
+                      onChange={(e) => updateIntercityTransportDraft(index, { costInput: e.target.value })}
+                      onFocus={() => {
+                        editingTransportKeyRef.current = transport.draftKey;
+                      }}
+                      onBlur={commitIntercityTransports}
+                      placeholder="Cost"
+                    />
+                  </div>
+                  <div className="flex items-end">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-muted-foreground hover:text-destructive"
+                      onClick={() => removeIntercityTransport(index)}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
             </div>
-            <Input
-              type="number"
-              className="h-8 text-xs"
-              min={0}
-              max={100}
-              value={leg.splitPct}
-              onChange={(e) => handleFieldChange('splitPct', parseFloat(e.target.value) || 50)}
-            />
-          </div>
+          ) : (
+            <p className="text-xs text-muted-foreground">No intercity transport rows added for this leg.</p>
+          )}
         </div>
 
         <Button

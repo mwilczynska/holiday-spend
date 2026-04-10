@@ -17,6 +17,7 @@ interface Summary {
   totalBudget: number;
   plannedLegsTotal: number;
   fixedTotal: number;
+  groupSize: number;
   totalSpent: number;
   plannedToDate: number;
   varianceToDate: number;
@@ -326,7 +327,14 @@ export default function DashboardPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Wanderledger</h1>
-          <p className="text-sm text-muted-foreground">Travel Budget Planner & Tracker</p>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <span>Travel Budget Planner & Tracker</span>
+            {summary ? (
+              <Badge variant="outline">
+                {summary.groupSize} {summary.groupSize === 1 ? 'traveller' : 'travellers'}
+              </Badge>
+            ) : null}
+          </div>
         </div>
         <div className="flex gap-2">
           <Link href="/track/add">
@@ -343,7 +351,7 @@ export default function DashboardPage() {
             label="Planned Total"
             help={SUMMARY_HELP.plannedTotal}
             value={fmtAud(summary.totalBudget)}
-            subtext={`Leg plan ${fmtAud(summary.plannedLegsTotal)} + fixed ${fmtAud(summary.fixedTotal)}`}
+            subtext={`${summary.groupSize} ${summary.groupSize === 1 ? 'traveller' : 'travellers'} selected. Leg plan ${fmtAud(summary.plannedLegsTotal)} + fixed ${fmtAud(summary.fixedTotal)}`}
           />
           <SummaryStatCard
             label="Actual Spent To Date"
