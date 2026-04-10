@@ -255,6 +255,29 @@ function BurnRateTooltip({
   );
 }
 
+function BurnRateLegend({ includeBudget }: { includeBudget: boolean }) {
+  const items = [
+    { label: 'Spent', color: '#16a34a' },
+    { label: 'Estimated', color: '#0f766e' },
+    ...(includeBudget ? [{ label: 'Budget', color: '#7c3aed' }] : []),
+  ];
+
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-4 pb-2 text-xs text-muted-foreground">
+      {items.map((item) => (
+        <div key={item.label} className="flex items-center gap-2">
+          <span
+            aria-hidden="true"
+            className="inline-block h-0.5 w-6"
+            style={{ backgroundColor: item.color }}
+          />
+          <span className="font-medium">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function DashboardPage() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [comparison, setComparison] = useState<CountryComparison[]>([]);
@@ -485,18 +508,24 @@ export default function DashboardPage() {
 
       {burnData.length > 0 && (
         <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-sm">Cumulative Spend Over Time</CardTitle></CardHeader>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm">Cumulative Spend Over Time</CardTitle>
+          </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={chartBurnData} margin={{ top: 24, right: 16, left: 0, bottom: 0 }}>
+              <LineChart data={chartBurnData} margin={{ top: 36, right: 16, left: 0, bottom: 0 }}>
                 <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-                <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`} />
+                <YAxis
+                  tick={{ fontSize: 11 }}
+                  tickFormatter={(v) => `$${v}`}
+                  domain={[0, (dataMax: number) => Math.max(0, Math.ceil(dataMax * 1.12))]}
+                />
                 <Tooltip content={<BurnRateTooltip />} />
-                <Legend />
+                <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} />} />
                 {countryBands.map((band, index) => (
                   <ReferenceArea
                     key={`${band.countryName}-${band.startDate}-${band.endDate}`}
-                    x1={band.startDate}
+                  x1={band.startDate}
                     x2={band.endDate}
                     fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
                     fillOpacity={0.18}
@@ -504,8 +533,9 @@ export default function DashboardPage() {
                     label={band.pointCount >= 4 ? {
                       value: band.countryName,
                       position: 'insideTop',
-                      fill: '#64748b',
-                      fontSize: 10,
+                      fill: '#475569',
+                      fontSize: 11,
+                      fontWeight: 700,
                     } : undefined}
                   />
                 ))}
@@ -513,7 +543,11 @@ export default function DashboardPage() {
                 <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={2} dot={false} legendType="none" />
                 <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
                 {budgetCeiling > 0 && (
-                  <ReferenceLine y={budgetCeiling} stroke="#ef4444" strokeDasharray="5 5" label={{ value: `Budget ${fmtAud(budgetCeiling)}`, position: 'right', fontSize: 10, fill: '#ef4444' }} />
+                  <ReferenceLine
+                    y={budgetCeiling}
+                    stroke="#7c3aed"
+                    strokeDasharray="5 5"
+                  />
                 )}
               </LineChart>
             </ResponsiveContainer>
