@@ -44,6 +44,9 @@ interface CountryComparison {
   countryName: string;
   planned: number;
   actual: number;
+  plannedDays: number;
+  plannedPerDay: number | null;
+  actualPerDay: number | null;
   status: 'planned' | 'active' | 'completed' | null;
 }
 
@@ -511,7 +514,9 @@ export default function DashboardPage() {
                   <tr>
                     <th className="p-2 text-left">Country</th>
                     <th className="p-2 text-right">Planned</th>
+                    <th className="p-2 text-right">Planned $/day</th>
                     <th className="p-2 text-right">Actual</th>
+                    <th className="p-2 text-right">Actual $/day</th>
                     <th className="p-2 text-right">Difference</th>
                     <th className="p-2 text-right">Status</th>
                   </tr>
@@ -533,7 +538,9 @@ export default function DashboardPage() {
                           </div>
                         </td>
                         <td className="p-2 text-right">{fmtAud(c.planned)}</td>
+                        <td className="p-2 text-right">{c.plannedPerDay != null ? fmtAud(c.plannedPerDay) : '—'}</td>
                         <td className="p-2 text-right">{fmtAud(c.actual)}</td>
+                        <td className="p-2 text-right">{c.actualPerDay != null ? fmtAud(c.actualPerDay) : '—'}</td>
                         <td className={`p-2 text-right ${isOver ? 'text-red-600' : 'text-green-600'}`}>
                           {isOver ? '+' : ''}{fmtAud(diff)}
                         </td>

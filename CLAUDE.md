@@ -139,6 +139,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Actual-spend handling was tightened so missing AUD conversions do not pollute totals
 - Spend views are constrained to the trip window instead of entire historical account activity
 - Summary cards now use clearer planned-vs-actual terminology and include info popovers that explain each calculation
+- Country comparison now includes planned/day and actual/day columns using each country's planned itinerary days
 
 ## Completed Work
 
@@ -227,6 +228,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Planner tier popovers now show the live scaled per-option costs for the selected traveller count
 - Planner header/sidebar locking and transport input focus handling were tightened
 - Dashboard summary calculations and labels were rebuilt around planned-vs-actual clarity
+- Dashboard country comparison now exposes planned/day and actual/day values per country
 
 ## Useful Files
 - `CLAUDE.md`

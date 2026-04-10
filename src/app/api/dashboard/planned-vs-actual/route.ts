@@ -37,7 +37,7 @@ export async function GET() {
     const statusByCountry = new Map<string, LegStatus>();
 
     // Build planned totals per country
-    const plannedByCountry = new Map<string, { name: string; planned: number; categories: Record<string, number> }>();
+    const plannedByCountry = new Map<string, { name: string; planned: number; days: number; categories: Record<string, number> }>();
 
     for (const leg of allLegs) {
       const city = cityMap.get(leg.cityId);
@@ -59,10 +59,11 @@ export async function GET() {
       const legTotal = getLegTotalFromTransports(breakdown.total, leg.nights, transportMap.get(leg.id));
 
       if (!plannedByCountry.has(city.countryId)) {
-        plannedByCountry.set(city.countryId, { name: countryName, planned: 0, categories: {} });
+        plannedByCountry.set(city.countryId, { name: countryName, planned: 0, days: 0, categories: {} });
       }
       const entry = plannedByCountry.get(city.countryId)!;
       entry.planned += legTotal;
+      entry.days += leg.nights;
       statusByCountry.set(
         city.countryId,
         mergeCountryStatus(statusByCountry.get(city.countryId) ?? null, leg.status) ?? 'planned'
@@ -117,6 +118,13 @@ export async function GET() {
       countryName: plannedByCountry.get(id)?.name ?? actualByCountry.get(id)?.name ?? id,
       planned: plannedByCountry.get(id)?.planned ?? 0,
       actual: actualByCountry.get(id)?.actual ?? 0,
+      plannedDays: plannedByCountry.get(id)?.days ?? 0,
+      plannedPerDay: (plannedByCountry.get(id)?.days ?? 0) > 0
+        ? (plannedByCountry.get(id)?.planned ?? 0) / (plannedByCountry.get(id)?.days ?? 0)
+        : null,
+      actualPerDay: (plannedByCountry.get(id)?.days ?? 0) > 0
+        ? (actualByCountry.get(id)?.actual ?? 0) / (plannedByCountry.get(id)?.days ?? 0)
+        : null,
       status: statusByCountry.get(id) ?? null,
       plannedCategories: plannedByCountry.get(id)?.categories ?? {},
       actualCategories: actualByCountry.get(id)?.categories ?? {},
