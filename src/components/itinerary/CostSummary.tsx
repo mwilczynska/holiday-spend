@@ -66,17 +66,19 @@ export function CostSummary({ legs, fixedCostsTotal, groupSize = 2 }: CostSummar
         <CardHeader className="pb-2">
           <CardTitle className="text-sm">By Country</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-1 text-sm">
-          {Object.entries(byCountry)
-            .sort((a, b) => b[1].total - a[1].total)
-            .map(([country, data]) => (
-              <div key={country} className="flex justify-between">
-                <span className="text-muted-foreground">
-                  {country} <span className="text-xs">({data.nights}n)</span>
-                </span>
-                <span>${data.total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
-              </div>
-            ))}
+        <CardContent className="text-sm">
+          <div className="max-h-72 space-y-1 overflow-y-auto pr-4">
+            {Object.entries(byCountry)
+              .sort((a, b) => b[1].total - a[1].total)
+              .map(([country, data]) => (
+                <div key={country} className="flex justify-between gap-3">
+                  <span className="text-muted-foreground">
+                    {country} <span className="text-xs">({data.nights}n)</span>
+                  </span>
+                  <span className="shrink-0">${data.total.toLocaleString('en-AU', { maximumFractionDigits: 0 })}</span>
+                </div>
+              ))}
+          </div>
         </CardContent>
       </Card>
     </div>
