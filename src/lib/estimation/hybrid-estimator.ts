@@ -157,6 +157,7 @@ function deriveDrinkEstimates(snapshot: Partial<CityPriceInputData>): Partial<Ci
     drinkImportBeer: withMoney(snapshot.importBeer) ?? undefined,
     drinkWineGlass: withMoney(snapshot.wineGlass) ?? undefined,
     drinkCocktail: withMoney(snapshot.cocktail) ?? undefined,
+    drinksNone: withMoney(2 * snapshot.coffee) ?? undefined,
     drinksLight: withMoney(2 * snapshot.coffee + 2 * snapshot.localBeer) ?? undefined,
     drinksModerate: withMoney(2 * snapshot.coffee + 4 * snapshot.localBeer + 2 * snapshot.cocktail) ?? undefined,
     drinksHeavy: withMoney(2 * snapshot.coffee + 6 * snapshot.localBeer + 4 * snapshot.cocktail + 2 * snapshot.wineGlass) ?? undefined,

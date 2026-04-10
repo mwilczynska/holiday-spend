@@ -66,6 +66,7 @@ type ParsedCity = {
   foodBudget: number | null;
   foodMid: number | null;
   foodHigh: number | null;
+  drinksNone: number | null;
   drinksLight: number | null;
   drinksModerate: number | null;
   drinksHeavy: number | null;
@@ -119,6 +120,7 @@ CREATE TABLE IF NOT EXISTS cities (
   drink_wine_glass   REAL,
   drink_cocktail     REAL,
   drink_coffee       REAL,
+  drinks_none     REAL,
   drinks_light    REAL,
   drinks_moderate REAL,
   drinks_heavy    REAL,
@@ -234,6 +236,20 @@ CREATE TABLE IF NOT EXISTS city_estimates (
 );
 `);
 
+const cityColumns = sqlite.prepare("PRAGMA table_info(cities)").all() as Array<{ name: string }>;
+const hasDrinksNoneColumn = cityColumns.some((column) => column.name === 'drinks_none');
+
+if (!hasDrinksNoneColumn) {
+  sqlite.exec('ALTER TABLE cities ADD COLUMN drinks_none REAL');
+}
+
+sqlite.exec(`
+  UPDATE cities
+  SET drinks_none = ROUND(drink_coffee * 2, 2)
+  WHERE drinks_none IS NULL
+    AND drink_coffee IS NOT NULL
+`);
+
 sqlite.prepare(`
   INSERT INTO app_settings (key, value)
   VALUES ('planner_group_size', '2')
@@ -337,6 +353,7 @@ function buildDataset(legacySeedData: LegacySeedData, csvRows: CityCostCsvRow[])
       foodBudget: parseMoney(row.food_budget),
       foodMid: parseMoney(row.food_mid_range),
       foodHigh: parseMoney(row.food_high_end),
+      drinksNone: null,
       drinksLight: parseMoney(row.drinks_light),
       drinksModerate: parseMoney(row.drinks_moderate),
       drinksHeavy: parseMoney(row.drinks_heavy),
@@ -375,10 +392,10 @@ const upsertCity = sqlite.prepare(`
     accom_hostel, accom_private_room, accom_1star, accom_2star, accom_3star, accom_4star,
     food_street, food_budget, food_mid, food_high,
     drink_local_beer, drink_import_beer, drink_wine_glass, drink_cocktail, drink_coffee,
-    drinks_light, drinks_moderate, drinks_heavy,
+    drinks_none, drinks_light, drinks_moderate, drinks_heavy,
     activities_free, activities_budget, activities_mid, activities_high,
     transport_local, estimation_source, estimated_at, notes
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   ON CONFLICT(id) DO UPDATE SET
     country_id = excluded.country_id,
     name = excluded.name,
@@ -397,6 +414,7 @@ const upsertCity = sqlite.prepare(`
     drink_wine_glass = excluded.drink_wine_glass,
     drink_cocktail = excluded.drink_cocktail,
     drink_coffee = excluded.drink_coffee,
+    drinks_none = excluded.drinks_none,
     drinks_light = excluded.drinks_light,
     drinks_moderate = excluded.drinks_moderate,
     drinks_heavy = excluded.drinks_heavy,
@@ -435,6 +453,7 @@ const seedAll = sqlite.transaction(() => {
       null,
       null,
       null,
+      city.drinksNone,
       city.drinksLight,
       city.drinksModerate,
       city.drinksHeavy,

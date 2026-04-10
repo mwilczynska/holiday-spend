@@ -45,6 +45,7 @@ food_mid_range        = (street_food_meal + inexp_meal_1p + midrange_meal_2p/2) 
 food_high_end         = food_mid_range × 1.50
 
 # DRINKS (per day, 2 people)
+drinks_none           = 2×coffee
 drinks_light          = 2×coffee + 2×beer
 drinks_moderate       = 2×coffee + 4×beer + 2×cocktail
 drinks_heavy          = 2×coffee + 6×beer + 4×cocktail + 2×wine_glass
@@ -86,6 +87,7 @@ Return valid JSON:
     "food_budget": 0.00,
     "food_mid_range": 0.00,
     "food_high_end": 0.00,
+    "drinks_none": 0.00,
     "drinks_light": 0.00,
     "drinks_moderate": 0.00,
     "drinks_heavy": 0.00,
@@ -99,6 +101,7 @@ Return valid JSON:
 
 ## IMPORTANT RULES
 - All tier values are for 2 PEOPLE. The app handles group scaling separately.
+- `drinks_none` is the coffee-only tier: 2 coffees total for 2 people, with no alcohol basket.
 - Use actual data wherever possible. Only estimate when no data exists.
 - If a city has no hostel scene (e.g. small rural town), set hostel_dorm_1p = hotel_1star_2p / 2 and hostel_private_2p = hotel_1star_2p.
 - Round all AUD values to nearest whole number.

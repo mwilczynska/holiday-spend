@@ -29,6 +29,7 @@ DRINKS (unit prices):
 - drinkCoffee: One coffee at a cafe
 
 DRINKS DAILY BUDGETS (per day, 2 people):
+- drinksNone: 2 coffees
 - drinksLight: 2 coffees + 2 beers
 - drinksModerate: 2 coffees + 4 beers + 1 cocktail each
 - drinksHeavy: 2 coffees + 6 beers + 2 cocktails each + wine
@@ -44,7 +45,7 @@ Respond with ONLY a JSON object in this exact format (all values in AUD, numbers
   "accomHostel": 0, "accomPrivateRoom": 0, "accom1star": 0, "accom2star": 0, "accom3star": 0, "accom4star": 0,
   "foodStreet": 0, "foodBudget": 0, "foodMid": 0, "foodHigh": 0,
   "drinkLocalBeer": 0, "drinkImportBeer": 0, "drinkWineGlass": 0, "drinkCocktail": 0, "drinkCoffee": 0,
-  "drinksLight": 0, "drinksModerate": 0, "drinksHeavy": 0,
+  "drinksNone": 0, "drinksLight": 0, "drinksModerate": 0, "drinksHeavy": 0,
   "activitiesFree": 0, "activitiesBudget": 0, "activitiesMid": 0, "activitiesHigh": 0,
   "reasoning": "Brief explanation of your estimates",
   "confidence": "low|medium|high"

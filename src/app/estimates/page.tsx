@@ -42,6 +42,7 @@ interface EstimateRow {
   foodBudget: number | null;
   foodMid: number | null;
   foodHigh: number | null;
+  drinksNone: number | null;
   drinksLight: number | null;
   drinksModerate: number | null;
   drinksHeavy: number | null;
@@ -151,11 +152,13 @@ food_high_end    = food_mid_range × 1.50`,
     title: 'Drinks Formulas',
     summary: 'Drink tiers are literal baskets for two people per day.',
     codeBlocks: [
-      `drinks_light    = 2 × coffee + 2 × beer
+      `drinks_none     = 2 × coffee
+drinks_light    = 2 × coffee + 2 × beer
 drinks_moderate = 2 × coffee + 4 × beer + 2 × cocktail
 drinks_heavy    = 2 × coffee + 6 × beer + 4 × cocktail + 2 × wine_glass`,
     ],
     bullets: [
+      'None: 1 coffee each',
       'Light: 1 coffee each + 1 beer each',
       'Moderate: 1 coffee each + 2 beers each + 1 cocktail each',
       'Heavy: 1 coffee each + 3 beers each + 2 cocktails each + 1 wine each',
@@ -466,6 +469,7 @@ export default function EstimatesPage() {
                   <th className="px-3 py-2 text-left font-medium">Food Budget</th>
                   <th className="px-3 py-2 text-left font-medium">Food Mid</th>
                   <th className="px-3 py-2 text-left font-medium">Food High</th>
+                  <th className="px-3 py-2 text-left font-medium">Drinks None</th>
                   <th className="px-3 py-2 text-left font-medium">Drinks Light</th>
                   <th className="px-3 py-2 text-left font-medium">Drinks Moderate</th>
                   <th className="px-3 py-2 text-left font-medium">Drinks Heavy</th>
@@ -504,6 +508,7 @@ export default function EstimatesPage() {
                     <td className="px-3 py-2">{fmtMoney(row.foodBudget)}</td>
                     <td className="px-3 py-2">{fmtMoney(row.foodMid)}</td>
                     <td className="px-3 py-2">{fmtMoney(row.foodHigh)}</td>
+                    <td className="px-3 py-2">{fmtMoney(row.drinksNone)}</td>
                     <td className="px-3 py-2">{fmtMoney(row.drinksLight)}</td>
                     <td className="px-3 py-2">{fmtMoney(row.drinksModerate)}</td>
                     <td className="px-3 py-2">{fmtMoney(row.drinksHeavy)}</td>
@@ -536,7 +541,7 @@ export default function EstimatesPage() {
                 ))}
                 {filteredRows.length === 0 ? (
                   <tr>
-                    <td colSpan={23} className="px-3 py-8 text-center text-sm text-muted-foreground">
+                    <td colSpan={24} className="px-3 py-8 text-center text-sm text-muted-foreground">
                       No city rows match the current search.
                     </td>
                   </tr>

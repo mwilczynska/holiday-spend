@@ -112,11 +112,13 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - anchors JSON
   - estimate history
 - Drink unit prices shown in the editable city model are inferred from `anchors_usd` and converted to AUD using the implied AUD/USD rate from the generated tier outputs
+- Drink tiers now include an explicit stored `drinks_none` field for the coffee-only basket: 2 coffees total for 2 travellers
 
 ## Planner / Tracking / Dashboard State
 
 ### Planner
 - Accommodation tiers support hostel dorm, private room, and 1-star through 4-star
+- Drinks tiers support none, light, moderate, and heavy
 - Tier descriptions are explicit and planner helper copy explains category logic
 - Country and city pickers are searchable
 - Legs can be reordered, edited inline, and constrained by date validation

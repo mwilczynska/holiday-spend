@@ -32,9 +32,14 @@ const hasAppSettingsTable = tableNames.some((table) => table.name === 'app_setti
 
 const cityColumns = sqlite.prepare("PRAGMA table_info(cities)").all() as Array<{ name: string }>;
 const hasPrivateRoomColumn = cityColumns.some((column) => column.name === 'accom_private_room');
+const hasDrinksNoneColumn = cityColumns.some((column) => column.name === 'drinks_none');
 
 if (hasCitiesTable && !hasPrivateRoomColumn) {
   sqlite.exec('ALTER TABLE cities ADD COLUMN accom_private_room REAL');
+}
+
+if (hasCitiesTable && !hasDrinksNoneColumn) {
+  sqlite.exec('ALTER TABLE cities ADD COLUMN drinks_none REAL');
 }
 
 if (!hasCityPriceInputsTable) {
@@ -203,6 +208,13 @@ if (hasCitiesTable) {
       updatePrivateRoomRate.run(privateRoomRate, city.id);
     }
   }
+
+  sqlite.exec(`
+    UPDATE cities
+    SET drinks_none = ROUND(drink_coffee * 2, 2)
+    WHERE drinks_none IS NULL
+      AND drink_coffee IS NOT NULL
+  `);
 }
 
 if (hasExpensesTable && hasItineraryLegsTable) {

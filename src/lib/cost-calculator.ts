@@ -13,6 +13,8 @@ interface CityData {
   foodBudget: number | null;
   foodMid: number | null;
   foodHigh: number | null;
+  drinkCoffee: number | null;
+  drinksNone: number | null;
   drinksLight: number | null;
   drinksModerate: number | null;
   drinksHeavy: number | null;
@@ -69,10 +71,24 @@ const FOOD_MAP: Record<FoodTier, keyof CityData> = {
 };
 
 const DRINKS_MAP: Record<DrinksTier, keyof CityData> = {
+  none: 'drinksNone',
   light: 'drinksLight',
   moderate: 'drinksModerate',
   heavy: 'drinksHeavy',
 };
+
+function getStoredDrinksBaseCost(city: CityData, drinksTier: DrinksTier): number | null {
+  const baseCost = city[DRINKS_MAP[drinksTier]];
+  if (baseCost != null) {
+    return baseCost as number;
+  }
+
+  if (drinksTier === 'none' && city.drinkCoffee != null) {
+    return city.drinkCoffee * 2;
+  }
+
+  return null;
+}
 
 const ACTIVITIES_MAP: Record<ActivitiesTier, keyof CityData> = {
   free: 'activitiesFree',
@@ -101,7 +117,8 @@ export function getDailyCost(
       ? scaleDormAccommodation(computedAccommodation, normalizedGroupSize)
       : scaleRoomAccommodation(computedAccommodation, normalizedGroupSize);
   const scaledFood = city[FOOD_MAP[foodTier]] == null ? 0 : scaleFood(city[FOOD_MAP[foodTier]] as number, normalizedGroupSize);
-  const scaledDrinks = city[DRINKS_MAP[drinksTier]] == null ? 0 : scaleLinear(city[DRINKS_MAP[drinksTier]] as number, normalizedGroupSize);
+  const drinksBaseCost = getStoredDrinksBaseCost(city, drinksTier);
+  const scaledDrinks = drinksBaseCost == null ? 0 : scaleLinear(drinksBaseCost, normalizedGroupSize);
   const scaledActivities = city[ACTIVITIES_MAP[activitiesTier]] == null ? 0 : scaleLinear(city[ACTIVITIES_MAP[activitiesTier]] as number, normalizedGroupSize);
   const accom = overrides?.accomOverride ?? scaledAccommodation;
   const food = overrides?.foodOverride ?? scaledFood;
@@ -165,11 +182,11 @@ export function getDrinksCostForTier(
   drinksTier: DrinksTier,
   groupSize: number = 2
 ): number | null {
-  const baseCost = city[DRINKS_MAP[drinksTier]];
+  const baseCost = getStoredDrinksBaseCost(city, drinksTier);
   if (baseCost == null) {
     return null;
   }
-  return scaleLinear(baseCost as number, normalizeGroupSize(groupSize));
+  return scaleLinear(baseCost, normalizeGroupSize(groupSize));
 }
 
 export function getActivitiesCostForTier(

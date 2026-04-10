@@ -39,6 +39,7 @@ export const cities = sqliteTable('cities', {
   drinkCocktail: real('drink_cocktail'),
   drinkCoffee: real('drink_coffee'),
   // Composed daily drink budgets
+  drinksNone: real('drinks_none'),
   drinksLight: real('drinks_light'),
   drinksModerate: real('drinks_moderate'),
   drinksHeavy: real('drinks_heavy'),

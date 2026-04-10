@@ -29,6 +29,7 @@ export const COST_FIELDS: CostField[] = [
   { key: 'drinkCocktail', label: 'Cocktail', group: 'Drink Prices (per unit)' },
   { key: 'drinkCoffee', label: 'Coffee', group: 'Drink Prices (per unit)' },
   // Drink tiers
+  { key: 'drinksNone', label: 'None', group: 'Drinks (per day, 2 ppl)' },
   { key: 'drinksLight', label: 'Light', group: 'Drinks (per day, 2 ppl)' },
   { key: 'drinksModerate', label: 'Moderate', group: 'Drinks (per day, 2 ppl)' },
   { key: 'drinksHeavy', label: 'Heavy', group: 'Drinks (per day, 2 ppl)' },

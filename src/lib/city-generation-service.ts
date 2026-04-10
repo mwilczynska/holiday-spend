@@ -20,6 +20,7 @@ function buildSourceMap() {
     foodBudget: source,
     foodMid: source,
     foodHigh: source,
+    drinksNone: source,
     drinksLight: source,
     drinksModerate: source,
     drinksHeavy: source,

@@ -36,6 +36,7 @@ const OUTPUT_FIELDS: Array<keyof CityEstimateData> = [
   'drinkWineGlass',
   'drinkCocktail',
   'drinkCoffee',
+  'drinksNone',
   'drinksLight',
   'drinksModerate',
   'drinksHeavy',

@@ -65,6 +65,8 @@ interface City {
   foodBudget: number | null;
   foodMid: number | null;
   foodHigh: number | null;
+  drinkCoffee: number | null;
+  drinksNone: number | null;
   drinksLight: number | null;
   drinksModerate: number | null;
   drinksHeavy: number | null;

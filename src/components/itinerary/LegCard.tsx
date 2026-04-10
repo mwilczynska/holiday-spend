@@ -60,6 +60,8 @@ interface LegCardProps {
     foodBudget: number | null;
     foodMid: number | null;
     foodHigh: number | null;
+    drinkCoffee: number | null;
+    drinksNone: number | null;
     drinksLight: number | null;
     drinksModerate: number | null;
     drinksHeavy: number | null;
@@ -191,6 +193,7 @@ export function LegCard({
     : undefined;
   const drinksDetailMap = selectedCity
     ? {
+        none: formatCategoryCost(getDrinksCostForTier(selectedCity, 'none', groupSize), 'day'),
         light: formatCategoryCost(getDrinksCostForTier(selectedCity, 'light', groupSize), 'day'),
         moderate: formatCategoryCost(getDrinksCostForTier(selectedCity, 'moderate', groupSize), 'day'),
         heavy: formatCategoryCost(getDrinksCostForTier(selectedCity, 'heavy', groupSize), 'day'),

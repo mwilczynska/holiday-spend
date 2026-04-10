@@ -80,6 +80,7 @@ where midrange_pp = midrange_meal_2p / 2
 ### Drinks (per day, 2 people — basket approach)
 
 ```
+drinks_none     = 2 × coffee
 drinks_light    = 2 × coffee + 2 × beer
 drinks_moderate = 2 × coffee + 4 × beer + 2 × cocktail
 drinks_heavy    = 2 × coffee + 6 × beer + 4 × cocktail + 2 × wine_glass
@@ -88,6 +89,7 @@ drinks_heavy    = 2 × coffee + 6 × beer + 4 × cocktail + 2 × wine_glass
 **Rationale:** Each tier is a literal basket of drinks consumed by 2 people across the day. This is the most robust derivation (CV = 11.5%) because it's a direct sum of observable unit prices with no multipliers or approximations.
 
 **Basket definitions:**
+- **None:** 1 coffee each per day.
 - **Light:** 1 coffee each + 1 beer each per day.
 - **Moderate:** 1 coffee each + 2 beers each + 1 cocktail each per day.
 - **Heavy:** 1 coffee each + 3 beers each + 2 cocktails each + 1 glass of wine each per day.
@@ -297,6 +299,7 @@ The app-facing CSV (`city_costs_app_aud.csv`) contains these columns:
 | `food_budget` | AUD/day/2p | Daily food: mix of street food and cheap restaurants |
 | `food_mid_range` | AUD/day/2p | Daily food: casual + some nicer sit-down meals |
 | `food_high_end` | AUD/day/2p | Daily food: frequent nicer restaurants |
+| `drinks_none` | AUD/day/2p | 2 coffees |
 | `drinks_light` | AUD/day/2p | 2 coffees + 2 beers |
 | `drinks_moderate` | AUD/day/2p | 2 coffees + 4 beers + 2 cocktails |
 | `drinks_heavy` | AUD/day/2p | 2 coffees + 6 beers + 4 cocktails + 2 wines |

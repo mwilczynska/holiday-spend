@@ -28,6 +28,7 @@ export async function GET() {
         foodBudget: cities.foodBudget,
         foodMid: cities.foodMid,
         foodHigh: cities.foodHigh,
+        drinksNone: cities.drinksNone,
         drinksLight: cities.drinksLight,
         drinksModerate: cities.drinksModerate,
         drinksHeavy: cities.drinksHeavy,

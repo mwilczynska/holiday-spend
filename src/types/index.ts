@@ -1,6 +1,6 @@
 export type AccomTier = 'hostel' | 'privateRoom' | '1star' | '2star' | '3star' | '4star';
 export type FoodTier = 'street' | 'budget' | 'mid' | 'high';
-export type DrinksTier = 'light' | 'moderate' | 'heavy';
+export type DrinksTier = 'none' | 'light' | 'moderate' | 'heavy';
 export type ActivitiesTier = 'free' | 'budget' | 'mid' | 'high';
 export type LegStatus = 'planned' | 'active' | 'completed';
 export type EstimateConfidence = 'low' | 'medium' | 'high';
@@ -41,6 +41,7 @@ export interface CityEstimateData {
   drinkWineGlass?: number;
   drinkCocktail?: number;
   drinkCoffee?: number;
+  drinksNone?: number;
   drinksLight?: number;
   drinksModerate?: number;
   drinksHeavy?: number;
@@ -166,19 +167,24 @@ export const FOOD_TIERS: TierOption<FoodTier>[] = [
 
 export const DRINKS_TIERS: TierOption<DrinksTier>[] = [
   {
+    value: 'none',
+    label: 'None',
+    description: 'Daily basket for 2 travellers: 2 coffees total.',
+  },
+  {
     value: 'light',
     label: 'Light',
-    description: 'Uses the light drinks basket shown in the option details.',
+    description: 'Daily basket for 2 travellers: 2 coffees and 2 local beers total.',
   },
   {
     value: 'moderate',
     label: 'Moderate',
-    description: 'Uses the moderate drinks basket shown in the option details.',
+    description: 'Daily basket for 2 travellers: 2 coffees, 4 local beers, and 2 cocktails total.',
   },
   {
     value: 'heavy',
     label: 'Heavy',
-    description: 'Uses the heavy drinks basket shown in the option details.',
+    description: 'Daily basket for 2 travellers: 2 coffees, 6 local beers, 4 cocktails, and 2 glasses of wine total.',
   },
 ];
 

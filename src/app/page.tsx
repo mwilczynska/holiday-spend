@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { InfoPopover } from '@/components/itinerary/InfoPopover';
 import { PageLoadingState } from '@/components/ui/loading-state';
+import { Switch } from '@/components/ui/switch';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
 import { Map, Receipt, Plus, TrendingUp } from 'lucide-react';
@@ -68,6 +69,10 @@ interface CountryBand {
   startDate: string;
   endDate: string;
   pointCount: number;
+}
+
+interface StaggeredCountryBand extends CountryBand {
+  labelLevel: number;
 }
 
 interface StatHelp {
@@ -279,6 +284,40 @@ function BurnRateLegend({ includeBudget }: { includeBudget: boolean }) {
   );
 }
 
+function buildStaggeredCountryBands(bands: CountryBand[], totalPointCount: number): StaggeredCountryBand[] {
+  if (bands.length === 0 || totalPointCount <= 0) return [];
+
+  const estimatedPlotWidthPx = 760;
+  const pointsPerPixel = totalPointCount > 1 ? (totalPointCount - 1) / estimatedPlotWidthPx : 1;
+  const levelEndByIndex: number[] = [];
+  let pointCursor = 0;
+
+  return bands.map((band) => {
+    const bandStart = pointCursor;
+    const bandEnd = pointCursor + Math.max(band.pointCount - 1, 0);
+    pointCursor += band.pointCount;
+
+    const estimatedLabelWidthInPoints = Math.max(
+      band.pointCount,
+      Math.max(band.countryName.length * 7 * pointsPerPixel, 3)
+    );
+    const labelMidpoint = (bandStart + bandEnd) / 2;
+    const labelStart = labelMidpoint - estimatedLabelWidthInPoints / 2;
+    const labelEnd = labelMidpoint + estimatedLabelWidthInPoints / 2;
+
+    let labelLevel = 0;
+    while (levelEndByIndex[labelLevel] != null && labelStart <= levelEndByIndex[labelLevel]) {
+      labelLevel += 1;
+    }
+    levelEndByIndex[labelLevel] = labelEnd;
+
+    return {
+      ...band,
+      labelLevel,
+    };
+  });
+}
+
 export default function DashboardPage() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [comparison, setComparison] = useState<CountryComparison[]>([]);
@@ -287,6 +326,7 @@ export default function DashboardPage() {
   const [countryBands, setCountryBands] = useState<CountryBand[]>([]);
   const [budgetCeiling, setBudgetCeiling] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [showCountryDailySpend, setShowCountryDailySpend] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -343,8 +383,8 @@ export default function DashboardPage() {
     .filter((c) => c.planned > 0 || c.actual > 0)
     .map((c) => ({
       name: c.countryName,
-      Planned: Math.round(c.planned),
-      Actual: Math.round(c.actual),
+      Planned: Math.round(showCountryDailySpend ? (c.plannedPerDay ?? 0) : c.planned),
+      Actual: Math.round(showCountryDailySpend ? (c.actualPerDay ?? 0) : c.actual),
     }));
 
   const firstPlannedIndex = burnData.findIndex((point) => point.legStatus === 'planned');
@@ -362,6 +402,21 @@ export default function DashboardPage() {
         ? point.cumulative
         : null,
   }));
+  const staggeredCountryBands = buildStaggeredCountryBands(countryBands, chartBurnData.length);
+  const maxCountryLabelLevel = staggeredCountryBands.reduce((maxLevel, band) => Math.max(maxLevel, band.labelLevel), 0);
+  const maxEstimatedTotal = chartBurnData.reduce(
+    (maxValue, point) => Math.max(maxValue, point.plannedCumulative),
+    0
+  );
+  const maxSpentTotal = chartBurnData.reduce(
+    (maxValue, point) => Math.max(maxValue, point.cumulative),
+    0
+  );
+  const cumulativeSeriesMax = Math.max(maxEstimatedTotal, maxSpentTotal);
+  const chartYAxisMax = Math.max(
+    cumulativeSeriesMax * 1.3,
+    budgetCeiling,
+  );
 
   return (
     <div className="space-y-6">
@@ -478,13 +533,30 @@ export default function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         {barData.length > 0 && (
           <Card>
-            <CardHeader className="pb-2"><CardTitle className="text-sm">Planned vs Actual by Country</CardTitle></CardHeader>
+            <CardHeader className="pb-2">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <CardTitle className="text-sm">
+                  Planned vs Actual by Country
+                </CardTitle>
+                <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Switch checked={showCountryDailySpend} onCheckedChange={setShowCountryDailySpend} />
+                  <span>Show daily spend</span>
+                </label>
+              </div>
+            </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={barData}>
-                  <XAxis dataKey="name" tick={{ fontSize: 11 }} />
+                  <XAxis
+                    dataKey="name"
+                    interval={0}
+                    height={72}
+                    angle={-45}
+                    textAnchor="end"
+                    tick={{ fontSize: 11 }}
+                  />
                   <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`} />
-                  <Tooltip formatter={tooltipFmt} />
+                  <Tooltip formatter={(value) => showCountryDailySpend ? `${fmtAud(Number(value))}/day` : fmtAud(Number(value))} />
                   <Legend />
                   <Bar dataKey="Planned" fill="#94a3b8" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="Actual" fill="#3b82f6" radius={[4, 4, 0, 0]} />
@@ -531,19 +603,19 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={chartBurnData} margin={{ top: 36, right: 16, left: 0, bottom: 0 }}>
+              <LineChart data={chartBurnData} margin={{ top: 36 + maxCountryLabelLevel * 14, right: 16, left: 0, bottom: 0 }}>
                 <XAxis dataKey="date" tick={{ fontSize: 10 }} />
                 <YAxis
                   tick={{ fontSize: 11 }}
                   tickFormatter={(v) => `$${v}`}
-                  domain={[0, (dataMax: number) => Math.max(0, Math.ceil(dataMax * 1.12))]}
+                  domain={[0, Math.max(0, Math.ceil(chartYAxisMax * (1 + maxCountryLabelLevel * 0.02)))]}
                 />
                 <Tooltip content={<BurnRateTooltip />} />
                 <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} />} />
-                {countryBands.map((band, index) => (
+                {staggeredCountryBands.map((band, index) => (
                   <ReferenceArea
                     key={`${band.countryName}-${band.startDate}-${band.endDate}`}
-                  x1={band.startDate}
+                    x1={band.startDate}
                     x2={band.endDate}
                     fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
                     fillOpacity={0.18}
@@ -554,6 +626,7 @@ export default function DashboardPage() {
                       fill: '#475569',
                       fontSize: 11,
                       fontWeight: 700,
+                      dy: 4 + band.labelLevel * 14,
                     } : undefined}
                   />
                 ))}

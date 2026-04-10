@@ -23,6 +23,7 @@ const createSchema = z.object({
   drinkWineGlass: z.number().optional(),
   drinkCocktail: z.number().optional(),
   drinkCoffee: z.number().optional(),
+  drinksNone: z.number().optional(),
   drinksLight: z.number().optional(),
   drinksModerate: z.number().optional(),
   drinksHeavy: z.number().optional(),
