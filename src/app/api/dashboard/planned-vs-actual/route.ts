@@ -127,14 +127,22 @@ export async function GET() {
       actualCategories: actualByCountry.get(id)?.categories ?? {},
     }));
 
-    // Category breakdown across all expenses
-    const categoryTotals: Record<string, number> = {};
-    for (const exp of reportableExpenses) {
-      const audAmount = getExpenseAudAmount(exp);
-      categoryTotals[exp.category] = (categoryTotals[exp.category] || 0) + audAmount;
+    // Category breakdown across all planned legs
+    const plannedCategoryTotals: Record<string, number> = {};
+    for (const entry of Array.from(plannedByCountry.values())) {
+      for (const [category, amount] of Object.entries(entry.categories)) {
+        plannedCategoryTotals[category] = (plannedCategoryTotals[category] || 0) + Number(amount);
+      }
     }
 
-    return success({ comparison, categoryTotals });
+    // Category breakdown across all expenses
+    const actualCategoryTotals: Record<string, number> = {};
+    for (const exp of reportableExpenses) {
+      const audAmount = getExpenseAudAmount(exp);
+      actualCategoryTotals[exp.category] = (actualCategoryTotals[exp.category] || 0) + audAmount;
+    }
+
+    return success({ comparison, plannedCategoryTotals, actualCategoryTotals });
   } catch (err) {
     return handleError(err);
   }

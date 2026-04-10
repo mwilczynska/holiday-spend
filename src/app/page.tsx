@@ -53,6 +53,8 @@ interface CountryComparison {
   status: 'planned' | 'active' | 'completed' | null;
 }
 
+type CategoryMode = 'actual' | 'planned';
+
 interface BurnRatePoint {
   date: string;
   cumulative: number;
@@ -321,12 +323,14 @@ function buildStaggeredCountryBands(bands: CountryBand[], totalPointCount: numbe
 export default function DashboardPage() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [comparison, setComparison] = useState<CountryComparison[]>([]);
-  const [categoryTotals, setCategoryTotals] = useState<Record<string, number>>({});
+  const [actualCategoryTotals, setActualCategoryTotals] = useState<Record<string, number>>({});
+  const [plannedCategoryTotals, setPlannedCategoryTotals] = useState<Record<string, number>>({});
   const [burnData, setBurnData] = useState<BurnRatePoint[]>([]);
   const [countryBands, setCountryBands] = useState<CountryBand[]>([]);
   const [budgetCeiling, setBudgetCeiling] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showCountryDailySpend, setShowCountryDailySpend] = useState(false);
+  const [categoryMode, setCategoryMode] = useState<CategoryMode>('actual');
 
   useEffect(() => {
     async function load() {
@@ -344,7 +348,8 @@ export default function DashboardPage() {
         if (summaryData.data) setSummary(summaryData.data);
         if (compData.data) {
           setComparison(compData.data.comparison || []);
-          setCategoryTotals(compData.data.categoryTotals || {});
+          setActualCategoryTotals(compData.data.actualCategoryTotals || {});
+          setPlannedCategoryTotals(compData.data.plannedCategoryTotals || {});
         }
         if (burnRateData.data) {
           setBurnData(burnRateData.data.cumulative || []);
@@ -371,7 +376,9 @@ export default function DashboardPage() {
     );
   }
 
-  const pieData = Object.entries(categoryTotals)
+  const selectedCategoryTotals = categoryMode === 'planned' ? plannedCategoryTotals : actualCategoryTotals;
+
+  const pieData = Object.entries(selectedCategoryTotals)
     .filter(([, v]) => v > 0)
     .map(([key, value]) => ({
       name: EXPENSE_CATEGORIES.find((c) => c.value === key)?.label ?? key,
@@ -568,7 +575,18 @@ export default function DashboardPage() {
 
         {pieData.length > 0 && (
           <Card>
-            <CardHeader className="pb-2"><CardTitle className="text-sm">Spending by Category</CardTitle></CardHeader>
+            <CardHeader className="pb-2">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <CardTitle className="text-sm">Spending by Category</CardTitle>
+                <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Switch
+                    checked={categoryMode === 'planned'}
+                    onCheckedChange={(checked) => setCategoryMode(checked ? 'planned' : 'actual')}
+                  />
+                  <span>{categoryMode === 'planned' ? 'Showing planned' : 'Showing actual'}</span>
+                </label>
+              </div>
+            </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center gap-4 lg:flex-row">
                 <ResponsiveContainer width="100%" height={250}>
@@ -587,7 +605,10 @@ export default function DashboardPage() {
                         <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
                       ))}
                     </Pie>
-                    <Tooltip formatter={tooltipFmt} />
+                    <Tooltip
+                      formatter={tooltipFmt}
+                      labelFormatter={() => categoryMode === 'planned' ? 'Planned' : 'Actual'}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
