@@ -88,8 +88,18 @@ function extractJsonObject(text: string): unknown {
   return JSON.parse(text.slice(start, end + 1));
 }
 
+function findRepoFile(fileName: string) {
+  const candidates = [path.resolve(process.cwd(), fileName), path.resolve(process.cwd(), '..', fileName)];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return candidate;
+  }
+
+  throw new Error(`Expected file was not found. Tried: ${candidates.join(', ')}`);
+}
+
 function loadPromptTemplate(): string {
-  const promptPath = path.resolve(process.cwd(), '..', 'llm_prompt_new_cities_1.md');
+  const promptPath = findRepoFile('llm_prompt_new_cities_1.md');
   return fs.readFileSync(promptPath, 'utf8');
 }
 

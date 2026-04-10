@@ -261,8 +261,8 @@ function loadLegacySeedData(): LegacySeedData {
 
 function loadCsvRows(): CityCostCsvRow[] {
   const csvPath = findFile([
-    path.join(process.cwd(), '..', 'city_costs_app_aud.csv'),
     path.join(process.cwd(), 'city_costs_app_aud.csv'),
+    path.join(process.cwd(), '..', 'city_costs_app_aud.csv'),
   ]);
 
   const csvText = fs.readFileSync(csvPath, 'utf-8');
