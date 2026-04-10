@@ -254,6 +254,31 @@ export default function PlanPage() {
   const [importExtraContext, setImportExtraContext] = useState('');
   const [pageLoading, setPageLoading] = useState(true);
   const importInputRef = useRef<HTMLInputElement>(null);
+  const plannerHeaderRef = useRef<HTMLDivElement>(null);
+  const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const header = plannerHeaderRef.current;
+    if (!header) return;
+
+    const updateHeight = () => {
+      setPlannerHeaderHeight(header.getBoundingClientRect().height);
+    };
+
+    updateHeight();
+
+    const observer = new ResizeObserver(() => {
+      updateHeight();
+    });
+
+    observer.observe(header);
+    window.addEventListener('resize', updateHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, []);
 
   const fetchData = useCallback(async () => {
     setPageLoading(true);
@@ -1381,157 +1406,163 @@ export default function PlanPage() {
         </DialogContent>
       </Dialog>
 
-      <div className="sticky top-0 z-30 -mx-4 -mt-4 border-b bg-background/95 px-4 py-4 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/85 lg:-mx-8 lg:-mt-8 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-bold">Itinerary Planner</h1>
-            <p className="text-sm text-muted-foreground">
-              Build your trip leg by leg. City costs are stored for 2 people and scaled here for your selected traveller count.
-            </p>
-            <p className="text-xs text-muted-foreground">
-              Traveller count is shared with Settings and the dashboard.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center justify-end gap-2">
-            <div className="min-w-[160px]">
-              <Label className="mb-1 block text-xs text-muted-foreground">Travellers</Label>
-              <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
-                <SelectTrigger className="h-9">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {[1, 2, 3, 4, 5].map((count) => (
-                    <SelectItem key={count} value={String(count)}>
-                      {count} {count === 1 ? 'traveller' : 'travellers'}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <Dialog open={savedPlansOpen} onOpenChange={setSavedPlansOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline">
-                  <FolderOpen className="mr-2 h-4 w-4" />
-                  Saved Plans
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Saved Plan Snapshots</DialogTitle>
-                </DialogHeader>
-                <div className="space-y-3">
-                  {savedSnapshots.length === 0 ? (
-                    <p className="text-sm text-muted-foreground">No saved snapshots yet.</p>
-                  ) : (
-                    savedSnapshots.map((snapshot) => (
-                      <div key={snapshot.id} className="rounded-md border p-3">
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <div className="font-medium">{snapshot.name}</div>
-                            <div className="text-xs text-muted-foreground">{snapshot.savedAt.slice(0, 16).replace('T', ' ')}</div>
-                            <div className="mt-1 text-xs text-muted-foreground">
-                              {snapshot.summary.legCount} legs, {snapshot.summary.totalNights} nights, ${snapshot.summary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+      <div className="fixed inset-x-0 top-0 z-30 lg:left-64">
+        <div className="border-b bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/85">
+          <div ref={plannerHeaderRef} className="container mx-auto max-w-6xl px-4 py-4 lg:px-8">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <h1 className="text-2xl font-bold">Itinerary Planner</h1>
+                <p className="text-sm text-muted-foreground">
+                  Build your trip leg by leg. City costs are stored for 2 people and scaled here for your selected traveller count.
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Traveller count is shared with Settings and the dashboard.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center justify-end gap-2">
+                <div className="min-w-[160px]">
+                  <Label className="mb-1 block text-xs text-muted-foreground">Travellers</Label>
+                  <Select value={String(groupSize)} onValueChange={handleGroupSizeChange}>
+                    <SelectTrigger className="h-9">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {[1, 2, 3, 4, 5].map((count) => (
+                        <SelectItem key={count} value={String(count)}>
+                          {count} {count === 1 ? 'traveller' : 'travellers'}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <Dialog open={savedPlansOpen} onOpenChange={setSavedPlansOpen}>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">
+                      <FolderOpen className="mr-2 h-4 w-4" />
+                      Saved Plans
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Saved Plan Snapshots</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-3">
+                      {savedSnapshots.length === 0 ? (
+                        <p className="text-sm text-muted-foreground">No saved snapshots yet.</p>
+                      ) : (
+                        savedSnapshots.map((snapshot) => (
+                          <div key={snapshot.id} className="rounded-md border p-3">
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <div className="font-medium">{snapshot.name}</div>
+                                <div className="text-xs text-muted-foreground">{snapshot.savedAt.slice(0, 16).replace('T', ' ')}</div>
+                                <div className="mt-1 text-xs text-muted-foreground">
+                                  {snapshot.summary.legCount} legs, {snapshot.summary.totalNights} nights, ${snapshot.summary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+                                </div>
+                              </div>
+                              <div className="flex flex-wrap gap-2">
+                                <Button type="button" size="sm" variant="outline" onClick={() => downloadSnapshot(snapshot.snapshot, snapshot.name.replace(/\s+/g, '-').toLowerCase())}>
+                                  <Download className="mr-1 h-3.5 w-3.5" />
+                                  Export
+                                </Button>
+                                <Button type="button" size="sm" onClick={() => handleLoadSavedSnapshot(snapshot)}>
+                                  Load
+                                </Button>
+                                <Button type="button" size="sm" variant="destructive" onClick={() => handleDeleteSavedSnapshot(snapshot.id)}>
+                                  Delete
+                                </Button>
+                              </div>
                             </div>
                           </div>
-                          <div className="flex flex-wrap gap-2">
-                            <Button type="button" size="sm" variant="outline" onClick={() => downloadSnapshot(snapshot.snapshot, snapshot.name.replace(/\s+/g, '-').toLowerCase())}>
-                              <Download className="mr-1 h-3.5 w-3.5" />
-                              Export
-                            </Button>
-                            <Button type="button" size="sm" onClick={() => handleLoadSavedSnapshot(snapshot)}>
-                              Load
-                            </Button>
-                            <Button type="button" size="sm" variant="destructive" onClick={() => handleDeleteSavedSnapshot(snapshot.id)}>
-                              Delete
-                            </Button>
-                          </div>
+                        ))
+                      )}
+                    </div>
+                  </DialogContent>
+                </Dialog>
+                <Button type="button" variant="outline" onClick={handleSaveSnapshot}>
+                  <Save className="mr-2 h-4 w-4" />
+                  Save Snapshot
+                </Button>
+                <Button type="button" variant="outline" onClick={handleExportCurrentPlan}>
+                  <Download className="mr-2 h-4 w-4" />
+                  Export
+                </Button>
+                <Button type="button" variant="outline" onClick={() => importInputRef.current?.click()}>
+                  <Upload className="mr-2 h-4 w-4" />
+                  Import
+                </Button>
+                <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button>
+                      <Plus className="mr-2 h-4 w-4" />
+                      Add Leg
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Add Itinerary Leg</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <div>
+                        <Label>City</Label>
+                        <SearchableSelect
+                          value={newLegCity}
+                          onValueChange={setNewLegCity}
+                          placeholder="Select a city"
+                          searchPlaceholder="Search cities..."
+                          options={cities.map((city) => ({
+                            value: city.id,
+                            label: `${city.name}, ${city.countryName}`,
+                            description: city.countryName,
+                            keywords: `${city.name} ${city.countryName}`,
+                          }))}
+                        />
+                        <div className="mt-2 flex items-center justify-between gap-2">
+                          <p className="text-xs text-muted-foreground">
+                            Can&apos;t find the city? Create it here and add the leg in one flow.
+                          </p>
+                          <Button type="button" variant="outline" size="sm" onClick={openAddLegMissingCityDialog}>
+                            New City
+                          </Button>
                         </div>
                       </div>
-                    ))
-                  )}
-                </div>
-              </DialogContent>
-            </Dialog>
-            <Button type="button" variant="outline" onClick={handleSaveSnapshot}>
-              <Save className="mr-2 h-4 w-4" />
-              Save Snapshot
-            </Button>
-            <Button type="button" variant="outline" onClick={handleExportCurrentPlan}>
-              <Download className="mr-2 h-4 w-4" />
-              Export
-            </Button>
-            <Button type="button" variant="outline" onClick={() => importInputRef.current?.click()}>
-              <Upload className="mr-2 h-4 w-4" />
-              Import
-            </Button>
-            <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
-              <DialogTrigger asChild>
-                <Button>
-                  <Plus className="mr-2 h-4 w-4" />
-                  Add Leg
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Add Itinerary Leg</DialogTitle>
-                </DialogHeader>
-                <div className="space-y-4">
-                  <div>
-                    <Label>City</Label>
-                    <SearchableSelect
-                      value={newLegCity}
-                      onValueChange={setNewLegCity}
-                      placeholder="Select a city"
-                      searchPlaceholder="Search cities..."
-                      options={cities.map((city) => ({
-                        value: city.id,
-                        label: `${city.name}, ${city.countryName}`,
-                        description: city.countryName,
-                        keywords: `${city.name} ${city.countryName}`,
-                      }))}
-                    />
-                    <div className="mt-2 flex items-center justify-between gap-2">
-                      <p className="text-xs text-muted-foreground">
-                        Can&apos;t find the city? Create it here and add the leg in one flow.
-                      </p>
-                      <Button type="button" variant="outline" size="sm" onClick={openAddLegMissingCityDialog}>
-                        New City
+                      <div>
+                        <Label>Nights</Label>
+                        <Input
+                          type="number"
+                          min={1}
+                          step={1}
+                          inputMode="numeric"
+                          value={newLegNights}
+                          onChange={(e) => setNewLegNights(e.target.value)}
+                        />
+                      </div>
+                      <Button
+                        onClick={handleAddLeg}
+                        disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
+                        className="w-full"
+                      >
+                        Add Leg
                       </Button>
                     </div>
-                  </div>
-                  <div>
-                    <Label>Nights</Label>
-                    <Input
-                      type="number"
-                      min={1}
-                      step={1}
-                      inputMode="numeric"
-                      value={newLegNights}
-                      onChange={(e) => setNewLegNights(e.target.value)}
-                    />
-                  </div>
-                  <Button
-                    onClick={handleAddLeg}
-                    disabled={!newLegCity || !Number.isInteger(Number.parseInt(newLegNights, 10)) || Number.parseInt(newLegNights, 10) < 1}
-                    className="w-full"
-                  >
-                    Add Leg
-                  </Button>
-                </div>
-              </DialogContent>
-            </Dialog>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
+            {snapshotStatus || snapshotError ? (
+              <div className="mt-3 text-sm">
+                {snapshotStatus ? <span className="text-muted-foreground">{snapshotStatus}</span> : null}
+                {snapshotError ? <span className="text-destructive">{snapshotError}</span> : null}
+              </div>
+            ) : null}
+            <div className="mt-3 text-xs text-muted-foreground">
+              Current plan: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
+            </div>
           </div>
-        </div>
-        {snapshotStatus || snapshotError ? (
-          <div className="mt-3 text-sm">
-            {snapshotStatus ? <span className="text-muted-foreground">{snapshotStatus}</span> : null}
-            {snapshotError ? <span className="text-destructive">{snapshotError}</span> : null}
-          </div>
-        ) : null}
-        <div className="mt-3 text-xs text-muted-foreground">
-          Current plan: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
         </div>
       </div>
+
+      <div aria-hidden="true" style={{ height: plannerHeaderHeight || undefined }} />
 
       <div className="grid lg:grid-cols-[1fr_300px] gap-6">
         {/* Legs list */}
@@ -1559,7 +1590,10 @@ export default function PlanPage() {
 
         {/* Summary sidebar */}
         <div className="hidden lg:block">
-          <div className="sticky top-44 self-start">
+          <div
+            className="sticky self-start"
+            style={{ top: plannerHeaderHeight > 0 ? plannerHeaderHeight + 16 : 176 }}
+          >
             <CostSummary legs={legs} fixedCostsTotal={fixedCostsTotal} groupSize={groupSize} />
           </div>
         </div>
