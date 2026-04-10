@@ -209,6 +209,26 @@ export function LegCard({
     onUpdate(leg.id, { [field]: value });
   };
 
+  const handleDateChange = (field: 'startDate' | 'endDate', value: string | null) => {
+    if (!value) {
+      handleFieldChange(field, null);
+      return;
+    }
+
+    if (field === 'startDate') {
+      onUpdate(leg.id, {
+        startDate: value,
+        ...(leg.endDate && leg.endDate < value ? { endDate: value } : {}),
+      });
+      return;
+    }
+
+    onUpdate(leg.id, {
+      endDate: value,
+      ...(leg.startDate && leg.startDate > value ? { startDate: value } : {}),
+    });
+  };
+
   const persistIntercityTransports = (drafts: TransportDraft[]) => {
     handleFieldChange('intercityTransports', toTransportPayload(drafts));
   };
@@ -330,7 +350,7 @@ export function LegCard({
               type="date"
               className="h-8 text-xs"
               value={leg.startDate || ''}
-              onChange={(e) => handleFieldChange('startDate', e.target.value || null)}
+              onChange={(e) => handleDateChange('startDate', e.target.value || null)}
             />
           </div>
           <div>
@@ -339,7 +359,7 @@ export function LegCard({
               type="date"
               className="h-8 text-xs"
               value={leg.endDate || ''}
-              onChange={(e) => handleFieldChange('endDate', e.target.value || null)}
+              onChange={(e) => handleDateChange('endDate', e.target.value || null)}
             />
           </div>
           <div>

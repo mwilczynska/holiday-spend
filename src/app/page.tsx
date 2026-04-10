@@ -306,10 +306,19 @@ export default function DashboardPage() {
     }));
 
   const firstPlannedIndex = burnData.findIndex((point) => point.legStatus === 'planned');
+  const lastActualIndex = burnData.reduce((lastIndex, point, index) => (
+    point.daily > 0 ? index : lastIndex
+  ), -1);
   const chartBurnData = burnData.map((point, index) => ({
     ...point,
-    spentActual: firstPlannedIndex === -1 || index <= firstPlannedIndex ? point.cumulative : null,
-    spentPlannedTail: firstPlannedIndex !== -1 && index >= firstPlannedIndex ? point.cumulative : null,
+    spentActual:
+      lastActualIndex !== -1 && (firstPlannedIndex === -1 || index < firstPlannedIndex) && index <= lastActualIndex
+        ? point.cumulative
+        : null,
+    spentPlannedTail:
+      firstPlannedIndex !== -1 && lastActualIndex >= firstPlannedIndex && index >= firstPlannedIndex && index <= lastActualIndex
+        ? point.cumulative
+        : null,
   }));
 
   return (

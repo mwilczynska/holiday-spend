@@ -213,6 +213,10 @@ export default function PlanPage() {
   };
 
   const handleUpdateLeg = async (id: number, data: Record<string, unknown>) => {
+    setLegs((currentLegs) =>
+      currentLegs.map((leg) => (leg.id === id ? { ...leg, ...data } : leg))
+    );
+
     const response = await fetch(`/api/itinerary/legs/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -220,6 +224,7 @@ export default function PlanPage() {
     });
 
     if (!response.ok) {
+      fetchData();
       return;
     }
 
