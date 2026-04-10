@@ -740,7 +740,7 @@ SQLite's single-file nature makes this trivial. You could also push to a cloud s
 When you're ready to build, the Claude Code session should produce:
 
 ```
-wanderledger/
+holiday-spend/
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
@@ -820,6 +820,7 @@ wanderledger/
 │   └── types/
 │       └── index.ts
 ├── data/                             # SQLite DB (gitignored, volume-mounted)
+├── sample-data/                      # Local Wise CSV samples (typically untracked)
 └── seed-data/
     └── cities.json                   # Pre-populated cost estimates
 ```

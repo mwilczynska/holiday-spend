@@ -20,9 +20,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `/estimates` documents the current city-cost methodology, shows the dataset, and shows generation history
 
 ## Project Location
-- App code: `wanderledger/`
-- Planning/data assets: repo root
-- DB: `wanderledger/data/travel.db` (SQLite, gitignored)
+- App code: repo root
+- Planning/docs assets: repo root
+- Local sample imports: `sample-data/` (typically untracked)
+- DB: `data/travel.db` (SQLite, gitignored)
 - Dev PIN: `1234` in `.env.local`
 
 ## Tech Stack
@@ -42,7 +43,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Some unused shadcn v4-style files still exist and should only be touched if those components are actually introduced
 
 ### Database And Runtime Bootstrap
-- Primary DB is SQLite at `wanderledger/data/travel.db`
+- Primary DB is SQLite at `data/travel.db`
 - `src/db/index.ts` performs runtime bootstrap/backfill for schema changes on older local DBs
 - `city_estimates` now stores richer generation metadata:
   - `prompt_version`
@@ -232,10 +233,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `city_costs_app_aud.csv`
 - `methodology.md`
 - `llm_prompt_new_cities_1.md`
-- `wanderledger/src/lib/city-generation.ts`
-- `wanderledger/src/lib/city-generation-config.ts`
-- `wanderledger/src/lib/country-metadata.ts`
-- `wanderledger/src/lib/wise-csv-parser.ts`
-- `wanderledger/src/app/api/cities/[id]/generate/route.ts`
-- `wanderledger/src/app/settings/cities/page.tsx`
-- `wanderledger/src/app/estimates/page.tsx`
+- `src/lib/city-generation.ts`
+- `src/lib/city-generation-config.ts`
+- `src/lib/country-metadata.ts`
+- `src/lib/wise-csv-parser.ts`
+- `src/app/api/cities/[id]/generate/route.ts`
+- `src/app/settings/cities/page.tsx`
+- `src/app/estimates/page.tsx`
