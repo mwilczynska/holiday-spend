@@ -128,6 +128,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - That import resolver can now also create missing countries inline when a required country is not yet in the library
 - Traveller count is configurable in `/settings` and `/plan`, and persists in `app_settings.planner_group_size`
 - City base costs remain stored for 2 travellers and are scaled at runtime in planner/dashboard calculations
+- Legacy `splitPct` / split-percentage planner flow has been removed from the active app layer; traveller count is the only current cost-sharing model
 - Planner totals and summaries are stable and current
 
 ### Expense Tracking
@@ -137,6 +138,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - transaction-history export
   - balance-statement export
 - Wise import now handles repeated IDs, multiple date formats, better category inference, and itinerary leg assignment by date
+- `/track/add` still exists as the manual quick-add page, but its old 50/50 split toggle has been removed
 
 ### Dashboard
 - Dashboard summary, country comparison, planned-vs-actual, and cumulative burn views are implemented
@@ -145,6 +147,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Summary cards now use clearer planned-vs-actual terminology and include info popovers that explain each calculation
 - Dashboard header and summary now make the selected traveller count explicit
 - Country comparison now includes planned/day and actual/day columns using each country's planned itinerary days
+- Dashboard charts now use explicit mode pickers rather than ambiguous toggles, include axis labels, and can be expanded into larger interactive dialogs
+- The spending-by-category view is now a bar chart with percentage labels rather than a pie chart
+- The dashboard no longer exposes a quick-add CTA
 
 ## Completed Work
 
@@ -235,9 +240,12 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Added `/api/planner/settings` plus `app_settings` storage for planner traveller count
 - Planner tier popovers now show the live scaled per-option costs for the selected traveller count
 - Planner leg cards no longer expose a separate split percentage control
+- Legacy `splitPct` wiring was also removed from the current planner schema, snapshot flow, and quick-add split UI
 - Planner header/sidebar locking and transport input focus handling were tightened
 - Dashboard summary calculations and labels were rebuilt around planned-vs-actual clarity
 - Dashboard country comparison now exposes planned/day and actual/day values per country
+- Dashboard category spend now renders as a labeled bar chart, chart mode controls are explicit, and each dashboard chart can be expanded into a larger interactive dialog
+- Dashboard quick-add shortcuts were removed from the home page
 
 ## Useful Files
 - `CLAUDE.md`

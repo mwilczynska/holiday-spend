@@ -1,17 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { InfoPopover } from '@/components/itinerary/InfoPopover';
 import { PageLoadingState } from '@/components/ui/loading-state';
-import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
-import { Map, Receipt, TrendingUp } from 'lucide-react';
+import { Map, Maximize2, Receipt, TrendingUp } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
-  Cell, LabelList,
+  Cell, LabelList, Label,
   LineChart, Line, ReferenceArea, ReferenceLine,
 } from 'recharts';
 
@@ -76,6 +78,8 @@ interface CountryBand {
 interface StaggeredCountryBand extends CountryBand {
   labelLevel: number;
 }
+
+type ExpandedChart = 'country' | 'category' | 'burn' | null;
 
 interface StatHelp {
   summary: string;
@@ -334,6 +338,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [showCountryDailySpend, setShowCountryDailySpend] = useState(false);
   const [categoryMode, setCategoryMode] = useState<CategoryMode>('actual');
+  const [expandedChart, setExpandedChart] = useState<ExpandedChart>(null);
 
   useEffect(() => {
     async function load() {
@@ -435,6 +440,147 @@ export default function DashboardPage() {
     cumulativeSeriesMax * 1.3,
     budgetCeiling,
   );
+
+  const countryChartTitle = 'Planned vs Actual by Country';
+  const categoryChartTitle = 'Spending by Category';
+  const burnChartTitle = 'Cumulative Spend Over Time';
+  const countryViewLabel = showCountryDailySpend ? 'Showing Per Day' : 'Showing Totals';
+  const categoryViewLabel = categoryMode === 'planned' ? 'Showing Planned' : 'Showing Actual';
+  const pickerTriggerClassName = 'px-3 text-xs data-[active]:bg-primary data-[active]:text-primary-foreground';
+
+  const renderCountryChart = (height: number) => (
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChart data={barData} margin={{ top: 8, right: 16, left: 8, bottom: 36 }}>
+        <XAxis
+          dataKey="name"
+          interval={0}
+          height={84}
+          angle={-45}
+          textAnchor="end"
+          tick={{ fontSize: 11 }}
+        >
+          <Label value="Country" position="insideBottom" offset={-8} style={{ fill: '#64748b', fontSize: 11 }} />
+        </XAxis>
+        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`}>
+          <Label
+            value={showCountryDailySpend ? 'Spend per Day (AUD)' : 'Spend (AUD)'}
+            angle={-90}
+            position="insideLeft"
+            style={{ fill: '#64748b', fontSize: 11, textAnchor: 'middle' }}
+          />
+        </YAxis>
+        <Tooltip formatter={(value) => showCountryDailySpend ? `${fmtAud(Number(value))}/day` : fmtAud(Number(value))} />
+        <Legend verticalAlign="bottom" wrapperStyle={{ bottom: -8, paddingTop: 8 }} />
+        <Bar dataKey="Planned" fill="#94a3b8" radius={[4, 4, 0, 0]} />
+        <Bar dataKey="Actual" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+
+  const renderCategoryChart = (height: number) => (
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChart
+        data={categoryChartData}
+        layout="vertical"
+        margin={{ top: 8, right: 56, left: 16, bottom: 24 }}
+      >
+        <XAxis type="number" tick={{ fontSize: 11 }} tickFormatter={(value) => `$${value}`}>
+          <Label value="Spend (AUD)" position="insideBottom" offset={-8} style={{ fill: '#64748b', fontSize: 11 }} />
+        </XAxis>
+        <YAxis
+          type="category"
+          dataKey="name"
+          width={120}
+          tick={{ fontSize: 11 }}
+        >
+          <Label
+            value="Category"
+            angle={-90}
+            position="insideLeft"
+            style={{ fill: '#64748b', fontSize: 11, textAnchor: 'middle' }}
+          />
+        </YAxis>
+        <Tooltip
+          formatter={(value, _name, item) => {
+            const percent = typeof item?.payload?.percent === 'number'
+              ? ` (${item.payload.percent.toFixed(0)}%)`
+              : '';
+            return `${fmtAud(Number(value))}${percent}`;
+          }}
+          labelFormatter={(label) =>
+            `${categoryMode === 'planned' ? 'Planned' : 'Actual'}: ${label}`
+          }
+        />
+        <Bar dataKey="value" radius={[0, 4, 4, 0]}>
+          {categoryChartData.map((entry) => (
+            <Cell key={entry.name} fill={entry.fill} />
+          ))}
+          <LabelList dataKey="percentLabel" position="right" fill="#64748b" fontSize={11} />
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  );
+
+  const renderBurnChart = (height: number) => (
+    <ResponsiveContainer width="100%" height={height}>
+      <LineChart data={chartBurnData} margin={{ top: 44 + maxCountryLabelLevel * 14, right: 16, left: 8, bottom: 16 }}>
+        <XAxis dataKey="date" tick={{ fontSize: 10 }}>
+          <Label value="Date" position="insideBottom" offset={-4} style={{ fill: '#64748b', fontSize: 11 }} />
+        </XAxis>
+        <YAxis
+          tick={{ fontSize: 11 }}
+          tickFormatter={(v) => `$${v}`}
+          domain={[0, Math.max(0, Math.ceil(chartYAxisMax * (1 + maxCountryLabelLevel * 0.02)))]}
+        >
+          <Label
+            value="Cumulative Spend (AUD)"
+            angle={-90}
+            position="insideLeft"
+            style={{ fill: '#64748b', fontSize: 11, textAnchor: 'middle' }}
+          />
+        </YAxis>
+        <Tooltip content={<BurnRateTooltip />} />
+        <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} />} />
+        {staggeredCountryBands.map((band, index) => (
+          <ReferenceArea
+            key={`${band.countryName}-${band.startDate}-${band.endDate}`}
+            x1={band.startDate}
+            x2={band.endDate}
+            fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
+            fillOpacity={0.18}
+            ifOverflow="extendDomain"
+            label={band.pointCount >= 4 ? {
+              value: band.countryName,
+              position: 'insideTop',
+              fill: '#475569',
+              fontSize: 11,
+              fontWeight: 700,
+              dy: 4 + band.labelLevel * 14,
+            } : undefined}
+          />
+        ))}
+        <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={2} dot={false} />
+        <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={2} dot={false} legendType="none" />
+        <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
+        {budgetCeiling > 0 && (
+          <ReferenceLine
+            y={budgetCeiling}
+            stroke="#7c3aed"
+            strokeDasharray="5 5"
+          />
+        )}
+      </LineChart>
+    </ResponsiveContainer>
+  );
+
+  const expandedChartTitle =
+    expandedChart === 'country'
+      ? countryChartTitle
+      : expandedChart === 'category'
+        ? categoryChartTitle
+        : expandedChart === 'burn'
+          ? burnChartTitle
+          : '';
 
   return (
     <div className="space-y-6">
@@ -546,34 +692,32 @@ export default function DashboardPage() {
           <Card>
             <CardHeader className="pb-2">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <CardTitle className="text-sm">
-                  Planned vs Actual by Country
-                </CardTitle>
-                <label className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Switch checked={showCountryDailySpend} onCheckedChange={setShowCountryDailySpend} />
-                  <span>Show daily spend</span>
-                </label>
+                <CardTitle className="text-sm">{countryChartTitle}</CardTitle>
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-2 rounded-md border px-2 py-1">
+                    <span className="text-xs font-medium text-muted-foreground">View</span>
+                    <Tabs
+                      value={showCountryDailySpend ? 'daily' : 'total'}
+                      onValueChange={(value) => setShowCountryDailySpend(value === 'daily')}
+                      className="gap-0"
+                    >
+                      <TabsList className="h-8">
+                        <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
+                        <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
+                    <Badge variant={showCountryDailySpend ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
+                      {countryViewLabel}
+                    </Badge>
+                  </div>
+                  <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('country')}>
+                    <Maximize2 className="mr-2 h-4 w-4" />
+                    Expand
+                  </Button>
+                </div>
               </div>
             </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={barData}>
-                  <XAxis
-                    dataKey="name"
-                    interval={0}
-                    height={72}
-                    angle={-45}
-                    textAnchor="end"
-                    tick={{ fontSize: 11 }}
-                  />
-                  <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`} />
-                  <Tooltip formatter={(value) => showCountryDailySpend ? `${fmtAud(Number(value))}/day` : fmtAud(Number(value))} />
-                  <Legend />
-                  <Bar dataKey="Planned" fill="#94a3b8" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="Actual" fill="#3b82f6" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
+            <CardContent>{renderCountryChart(300)}</CardContent>
           </Card>
         )}
 
@@ -581,50 +725,32 @@ export default function DashboardPage() {
           <Card>
             <CardHeader className="pb-2">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <CardTitle className="text-sm">Spending by Category</CardTitle>
-                <label className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Switch
-                    checked={categoryMode === 'planned'}
-                    onCheckedChange={(checked) => setCategoryMode(checked ? 'planned' : 'actual')}
-                  />
-                  <span>{categoryMode === 'planned' ? 'Showing planned' : 'Showing actual'}</span>
-                </label>
+                <CardTitle className="text-sm">{categoryChartTitle}</CardTitle>
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-2 rounded-md border px-2 py-1">
+                    <span className="text-xs font-medium text-muted-foreground">View</span>
+                    <Tabs
+                      value={categoryMode}
+                      onValueChange={(value) => setCategoryMode(value as CategoryMode)}
+                      className="gap-0"
+                    >
+                      <TabsList className="h-8">
+                        <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
+                        <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
+                    <Badge variant={categoryMode === 'planned' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
+                      {categoryViewLabel}
+                    </Badge>
+                  </div>
+                  <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('category')}>
+                    <Maximize2 className="mr-2 h-4 w-4" />
+                    Expand
+                  </Button>
+                </div>
               </div>
             </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={Math.max(250, categoryChartData.length * 40)}>
-                <BarChart
-                  data={categoryChartData}
-                  layout="vertical"
-                  margin={{ top: 8, right: 48, left: 16, bottom: 8 }}
-                >
-                  <XAxis type="number" tick={{ fontSize: 11 }} tickFormatter={(value) => `$${value}`} />
-                  <YAxis
-                    type="category"
-                    dataKey="name"
-                    width={120}
-                    tick={{ fontSize: 11 }}
-                  />
-                  <Tooltip
-                    formatter={(value, _name, item) => {
-                      const percent = typeof item?.payload?.percent === 'number'
-                        ? ` (${item.payload.percent.toFixed(0)}%)`
-                        : '';
-                      return `${fmtAud(Number(value))}${percent}`;
-                    }}
-                    labelFormatter={(label) =>
-                      `${categoryMode === 'planned' ? 'Planned' : 'Actual'}: ${label}`
-                    }
-                  />
-                  <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                    {categoryChartData.map((entry) => (
-                      <Cell key={entry.name} fill={entry.fill} />
-                    ))}
-                    <LabelList dataKey="percentLabel" position="right" fill="#64748b" fontSize={11} />
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
+            <CardContent>{renderCategoryChart(Math.max(250, categoryChartData.length * 40))}</CardContent>
           </Card>
         )}
       </div>
@@ -632,52 +758,66 @@ export default function DashboardPage() {
       {burnData.length > 0 && (
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">Cumulative Spend Over Time</CardTitle>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <CardTitle className="text-sm">{burnChartTitle}</CardTitle>
+              <Button type="button" variant="outline" size="sm" onClick={() => setExpandedChart('burn')}>
+                <Maximize2 className="mr-2 h-4 w-4" />
+                Expand
+              </Button>
+            </div>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={chartBurnData} margin={{ top: 36 + maxCountryLabelLevel * 14, right: 16, left: 0, bottom: 0 }}>
-                <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-                <YAxis
-                  tick={{ fontSize: 11 }}
-                  tickFormatter={(v) => `$${v}`}
-                  domain={[0, Math.max(0, Math.ceil(chartYAxisMax * (1 + maxCountryLabelLevel * 0.02)))]}
-                />
-                <Tooltip content={<BurnRateTooltip />} />
-                <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} />} />
-                {staggeredCountryBands.map((band, index) => (
-                  <ReferenceArea
-                    key={`${band.countryName}-${band.startDate}-${band.endDate}`}
-                    x1={band.startDate}
-                    x2={band.endDate}
-                    fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
-                    fillOpacity={0.18}
-                    ifOverflow="extendDomain"
-                    label={band.pointCount >= 4 ? {
-                      value: band.countryName,
-                      position: 'insideTop',
-                      fill: '#475569',
-                      fontSize: 11,
-                      fontWeight: 700,
-                      dy: 4 + band.labelLevel * 14,
-                    } : undefined}
-                  />
-                ))}
-                <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={2} dot={false} legendType="none" />
-                <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
-                {budgetCeiling > 0 && (
-                  <ReferenceLine
-                    y={budgetCeiling}
-                    stroke="#7c3aed"
-                    strokeDasharray="5 5"
-                  />
-                )}
-              </LineChart>
-            </ResponsiveContainer>
-          </CardContent>
+          <CardContent>{renderBurnChart(300)}</CardContent>
         </Card>
       )}
+
+      <Dialog open={expandedChart !== null} onOpenChange={(open) => {
+        if (!open) setExpandedChart(null);
+      }}>
+        <DialogContent className="max-h-[92vh] overflow-hidden sm:max-w-6xl">
+          <DialogHeader className="gap-3">
+            <DialogTitle>{expandedChartTitle}</DialogTitle>
+            {expandedChart === 'country' ? (
+              <div className="flex flex-wrap items-center gap-2">
+                <Tabs
+                  value={showCountryDailySpend ? 'daily' : 'total'}
+                  onValueChange={(value) => setShowCountryDailySpend(value === 'daily')}
+                  className="gap-0"
+                >
+                  <TabsList className="h-9">
+                    <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
+                    <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
+                  </TabsList>
+                </Tabs>
+                <Badge variant={showCountryDailySpend ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
+                  {countryViewLabel}
+                </Badge>
+              </div>
+            ) : null}
+            {expandedChart === 'category' ? (
+              <div className="flex flex-wrap items-center gap-2">
+                <Tabs
+                  value={categoryMode}
+                  onValueChange={(value) => setCategoryMode(value as CategoryMode)}
+                  className="gap-0"
+                >
+                  <TabsList className="h-9">
+                    <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
+                    <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
+                  </TabsList>
+                </Tabs>
+                <Badge variant={categoryMode === 'planned' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
+                  {categoryViewLabel}
+                </Badge>
+              </div>
+            ) : null}
+          </DialogHeader>
+          <div className="min-h-[520px]">
+            {expandedChart === 'country' ? renderCountryChart(560) : null}
+            {expandedChart === 'category' ? renderCategoryChart(Math.max(520, categoryChartData.length * 56)) : null}
+            {expandedChart === 'burn' ? renderBurnChart(560) : null}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {comparison.length > 0 && (
         <Card>
