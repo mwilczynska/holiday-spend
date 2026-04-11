@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { Map, Receipt, Plus, TrendingUp } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
-  PieChart, Pie, Cell,
+  Cell, LabelList,
   LineChart, Line, ReferenceArea, ReferenceLine,
 } from 'recharts';
 
@@ -95,8 +95,11 @@ const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> =
 
 const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const tooltipFmt = (v: any) => fmtAud(Number(v));
+
+function getCategoryLabel(categoryKey: string) {
+  if (categoryKey === 'transport') return 'Transport';
+  return EXPENSE_CATEGORIES.find((category) => category.value === categoryKey)?.label ?? categoryKey;
+}
 
 const SUMMARY_HELP: Record<string, StatHelp> = {
   plannedTotal: {
@@ -377,14 +380,22 @@ export default function DashboardPage() {
   }
 
   const selectedCategoryTotals = categoryMode === 'planned' ? plannedCategoryTotals : actualCategoryTotals;
+  const totalCategorySpend = Object.values(selectedCategoryTotals).reduce((sum, value) => sum + value, 0);
 
-  const pieData = Object.entries(selectedCategoryTotals)
+  const categoryChartData = Object.entries(selectedCategoryTotals)
     .filter(([, v]) => v > 0)
     .map(([key, value]) => ({
-      name: EXPENSE_CATEGORIES.find((c) => c.value === key)?.label ?? key,
+      name: getCategoryLabel(key),
       value: Math.round(value),
+      fill: CHART_COLORS[0],
+      percent: totalCategorySpend > 0 ? (value / totalCategorySpend) * 100 : 0,
     }))
-    .sort((a, b) => b.value - a.value);
+    .sort((a, b) => b.value - a.value)
+    .map((entry, index) => ({
+      ...entry,
+      fill: CHART_COLORS[index % CHART_COLORS.length],
+      percentLabel: `${entry.percent.toFixed(0)}%`,
+    }));
 
   const barData = comparison
     .filter((c) => c.planned > 0 || c.actual > 0)
@@ -573,7 +584,7 @@ export default function DashboardPage() {
           </Card>
         )}
 
-        {pieData.length > 0 && (
+        {categoryChartData.length > 0 && (
           <Card>
             <CardHeader className="pb-2">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -588,30 +599,38 @@ export default function DashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col items-center gap-4 lg:flex-row">
-                <ResponsiveContainer width="100%" height={250}>
-                  <PieChart>
-                    <Pie
-                      data={pieData}
-                      dataKey="value"
-                      nameKey="name"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={90}
-                      label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
-                      labelLine={{ strokeWidth: 1 }}
-                    >
-                      {pieData.map((_, i) => (
-                        <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
-                      ))}
-                    </Pie>
-                    <Tooltip
-                      formatter={tooltipFmt}
-                      labelFormatter={() => categoryMode === 'planned' ? 'Planned' : 'Actual'}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
+              <ResponsiveContainer width="100%" height={Math.max(250, categoryChartData.length * 40)}>
+                <BarChart
+                  data={categoryChartData}
+                  layout="vertical"
+                  margin={{ top: 8, right: 48, left: 16, bottom: 8 }}
+                >
+                  <XAxis type="number" tick={{ fontSize: 11 }} tickFormatter={(value) => `$${value}`} />
+                  <YAxis
+                    type="category"
+                    dataKey="name"
+                    width={120}
+                    tick={{ fontSize: 11 }}
+                  />
+                  <Tooltip
+                    formatter={(value, _name, item) => {
+                      const percent = typeof item?.payload?.percent === 'number'
+                        ? ` (${item.payload.percent.toFixed(0)}%)`
+                        : '';
+                      return `${fmtAud(Number(value))}${percent}`;
+                    }}
+                    labelFormatter={(label) =>
+                      `${categoryMode === 'planned' ? 'Planned' : 'Actual'}: ${label}`
+                    }
+                  />
+                  <Bar dataKey="value" radius={[0, 4, 4, 0]}>
+                    {categoryChartData.map((entry) => (
+                      <Cell key={entry.name} fill={entry.fill} />
+                    ))}
+                    <LabelList dataKey="percentLabel" position="right" fill="#64748b" fontSize={11} />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
             </CardContent>
           </Card>
         )}
