@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -77,6 +77,8 @@ interface CountryBand {
 
 interface StaggeredCountryBand extends CountryBand {
   labelLevel: number;
+  segmentStartRatio: number;
+  segmentEndRatio: number;
 }
 
 type ExpandedChart = 'country' | 'category' | 'burn' | null;
@@ -96,6 +98,10 @@ const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> =
   active: 'bg-green-100 text-green-800',
   completed: 'bg-gray-100 text-gray-800',
 };
+const BURN_CHART_MARGIN = { top: 12, right: 16, left: 8, bottom: 16 } as const;
+const BURN_CHART_Y_AXIS_WIDTH = 76;
+const BURN_COUNTRY_LABEL_TOP_OFFSET = 4;
+const BURN_COUNTRY_LABEL_ROW_GAP = 4;
 
 const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
@@ -304,6 +310,8 @@ function buildStaggeredCountryBands(bands: CountryBand[], totalPointCount: numbe
   return bands.map((band) => {
     const bandStart = pointCursor;
     const bandEnd = pointCursor + Math.max(band.pointCount - 1, 0);
+    const segmentStartRatio = bandStart / totalPointCount;
+    const segmentEndRatio = (bandStart + Math.max(band.pointCount, 1)) / totalPointCount;
     pointCursor += band.pointCount;
 
     const estimatedLabelWidthInPoints = Math.max(
@@ -323,8 +331,123 @@ function buildStaggeredCountryBands(bands: CountryBand[], totalPointCount: numbe
     return {
       ...band,
       labelLevel,
+      segmentStartRatio,
+      segmentEndRatio,
     };
   });
+}
+
+function getCountryBandKey(band: Pick<CountryBand, 'countryName' | 'startDate' | 'endDate'>) {
+  return `${band.countryName}-${band.startDate}-${band.endDate}`;
+}
+
+function BurnCountryHeaderStrip({
+  bands,
+}: {
+  bands: StaggeredCountryBand[];
+}) {
+  const labelRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const stripInnerRef = useRef<HTMLDivElement>(null);
+  const [layout, setLayout] = useState(() => ({
+    rowOffsets: [] as number[],
+    stripHeight: 24,
+  }));
+
+  useLayoutEffect(() => {
+    if (bands.length === 0) return;
+
+    const measure = () => {
+      const maxLabelLevel = bands.reduce((maxLevel, band) => Math.max(maxLevel, band.labelLevel), 0);
+      const rowHeights = Array.from({ length: maxLabelLevel + 1 }, () => 14);
+
+      for (const band of bands) {
+        const labelNode = labelRefs.current[getCountryBandKey(band)];
+        if (!labelNode) continue;
+        const labelHeight = labelNode.getBoundingClientRect().height;
+        rowHeights[band.labelLevel] = Math.max(rowHeights[band.labelLevel] ?? 14, Math.ceil(labelHeight));
+      }
+
+      const rowOffsets: number[] = [];
+      let cursor = BURN_COUNTRY_LABEL_TOP_OFFSET;
+
+      for (let index = 0; index < rowHeights.length; index += 1) {
+        rowOffsets[index] = cursor;
+        cursor += rowHeights[index] + BURN_COUNTRY_LABEL_ROW_GAP;
+      }
+
+      const stripHeight = cursor;
+
+      setLayout((currentLayout) => {
+        const sameHeight = currentLayout.stripHeight === stripHeight;
+        const sameOffsets =
+          currentLayout.rowOffsets.length === rowOffsets.length &&
+          currentLayout.rowOffsets.every((offset, index) => offset === rowOffsets[index]);
+
+        if (sameHeight && sameOffsets) {
+          return currentLayout;
+        }
+
+        return {
+          rowOffsets,
+          stripHeight,
+        };
+      });
+    };
+
+    measure();
+
+    if (!stripInnerRef.current) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      window.requestAnimationFrame(measure);
+    });
+
+    resizeObserver.observe(stripInnerRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [bands]);
+
+  if (bands.length === 0) return null;
+
+  return (
+    <div
+      className="pointer-events-none pb-2"
+      style={{
+        paddingLeft: BURN_CHART_MARGIN.left + BURN_CHART_Y_AXIS_WIDTH,
+        paddingRight: BURN_CHART_MARGIN.right,
+      }}
+    >
+      <div ref={stripInnerRef} className="relative" style={{ height: layout.stripHeight }}>
+        {bands.map((band) => {
+          const left = `${band.segmentStartRatio * 100}%`;
+          const width = `${Math.max((band.segmentEndRatio - band.segmentStartRatio) * 100, 2)}%`;
+
+          return (
+            <div
+              key={getCountryBandKey(band)}
+              className="absolute"
+              style={{
+                left,
+                width,
+                top: layout.rowOffsets[band.labelLevel] ?? BURN_COUNTRY_LABEL_TOP_OFFSET,
+              }}
+            >
+              <div
+                ref={(node) => {
+                  labelRefs.current[getCountryBandKey(band)] = node;
+                }}
+                className="px-1 text-center text-[11px] font-bold leading-tight text-slate-600"
+              >
+                {band.countryName}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default function DashboardPage() {
@@ -426,7 +549,6 @@ export default function DashboardPage() {
         : null,
   }));
   const staggeredCountryBands = buildStaggeredCountryBands(countryBands, chartBurnData.length);
-  const maxCountryLabelLevel = staggeredCountryBands.reduce((maxLevel, band) => Math.max(maxLevel, band.labelLevel), 0);
   const maxEstimatedTotal = chartBurnData.reduce(
     (maxValue, point) => Math.max(maxValue, point.plannedCumulative),
     0
@@ -437,7 +559,7 @@ export default function DashboardPage() {
   );
   const cumulativeSeriesMax = Math.max(maxEstimatedTotal, maxSpentTotal);
   const chartYAxisMax = Math.max(
-    cumulativeSeriesMax * 1.3,
+    cumulativeSeriesMax,
     budgetCeiling,
   );
 
@@ -522,55 +644,51 @@ export default function DashboardPage() {
   );
 
   const renderBurnChart = (height: number) => (
-    <ResponsiveContainer width="100%" height={height}>
-      <LineChart data={chartBurnData} margin={{ top: 44 + maxCountryLabelLevel * 14, right: 16, left: 8, bottom: 16 }}>
-        <XAxis dataKey="date" tick={{ fontSize: 10 }}>
-          <Label value="Date" position="insideBottom" offset={-4} style={{ fill: '#64748b', fontSize: 11 }} />
-        </XAxis>
-        <YAxis
-          tick={{ fontSize: 11 }}
-          tickFormatter={(v) => `$${v}`}
-          domain={[0, Math.max(0, Math.ceil(chartYAxisMax * (1 + maxCountryLabelLevel * 0.02)))]}
-        >
-          <Label
-            value="Cumulative Spend (AUD)"
-            angle={-90}
-            position="insideLeft"
-            style={{ fill: '#64748b', fontSize: 11, textAnchor: 'middle' }}
-          />
-        </YAxis>
-        <Tooltip content={<BurnRateTooltip />} />
-        <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} />} />
-        {staggeredCountryBands.map((band, index) => (
-          <ReferenceArea
-            key={`${band.countryName}-${band.startDate}-${band.endDate}`}
-            x1={band.startDate}
-            x2={band.endDate}
-            fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
-            fillOpacity={0.18}
-            ifOverflow="extendDomain"
-            label={band.pointCount >= 4 ? {
-              value: band.countryName,
-              position: 'insideTop',
-              fill: '#475569',
-              fontSize: 11,
-              fontWeight: 700,
-              dy: 4 + band.labelLevel * 14,
-            } : undefined}
-          />
-        ))}
-        <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={2} dot={false} />
-        <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={2} dot={false} legendType="none" />
-        <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
-        {budgetCeiling > 0 && (
-          <ReferenceLine
-            y={budgetCeiling}
-            stroke="#7c3aed"
-            strokeDasharray="5 5"
-          />
-        )}
-      </LineChart>
-    </ResponsiveContainer>
+    <div className="space-y-1">
+      <BurnCountryHeaderStrip bands={staggeredCountryBands} />
+      <ResponsiveContainer width="100%" height={height}>
+        <LineChart data={chartBurnData} margin={BURN_CHART_MARGIN}>
+          <XAxis dataKey="date" tick={{ fontSize: 10 }}>
+            <Label value="Date" position="insideBottom" offset={-4} style={{ fill: '#64748b', fontSize: 11 }} />
+          </XAxis>
+          <YAxis
+            width={BURN_CHART_Y_AXIS_WIDTH}
+            tick={{ fontSize: 11 }}
+            tickFormatter={(v) => `$${v}`}
+            domain={[0, Math.max(0, Math.ceil(chartYAxisMax))]}
+          >
+            <Label
+              value="Cumulative Spend (AUD)"
+              angle={-90}
+              position="insideLeft"
+              style={{ fill: '#64748b', fontSize: 11, textAnchor: 'middle' }}
+            />
+          </YAxis>
+          <Tooltip content={<BurnRateTooltip />} />
+          <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} />} />
+          {staggeredCountryBands.map((band, index) => (
+            <ReferenceArea
+              key={getCountryBandKey(band)}
+              x1={band.startDate}
+              x2={band.endDate}
+              fill={COUNTRY_BAND_COLORS[index % COUNTRY_BAND_COLORS.length]}
+              fillOpacity={0.18}
+              ifOverflow="extendDomain"
+            />
+          ))}
+          <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={2} dot={false} />
+          <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={2} dot={false} legendType="none" />
+          <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={2} strokeDasharray="6 4" dot={false} />
+          {budgetCeiling > 0 && (
+            <ReferenceLine
+              y={budgetCeiling}
+              stroke="#7c3aed"
+              strokeDasharray="5 5"
+            />
+          )}
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 
   const expandedChartTitle =

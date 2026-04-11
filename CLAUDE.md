@@ -149,6 +149,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Country comparison now includes planned/day and actual/day columns using each country's planned itinerary days
 - Dashboard charts now use explicit mode pickers rather than ambiguous toggles, include axis labels, and can be expanded into larger interactive dialogs
 - The spending-by-category view is now a bar chart with percentage labels rather than a pie chart
+- The cumulative burn chart now renders country labels in a measured header strip above the plot, preserving the staggered layout while preventing wrapped country names from overlapping plotted lines
+- The cumulative burn chart no longer adds the old 30% y-axis buffer above the highest spend/estimate series
 - The dashboard no longer exposes a quick-add CTA
 
 ## Completed Work
@@ -245,6 +247,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Dashboard summary calculations and labels were rebuilt around planned-vs-actual clarity
 - Dashboard country comparison now exposes planned/day and actual/day values per country
 - Dashboard category spend now renders as a labeled bar chart, chart mode controls are explicit, and each dashboard chart can be expanded into a larger interactive dialog
+- Dashboard burn-chart country labels were moved above the plot into a measured staggered strip so wrapped names cannot collide with spend lines
+- Dashboard burn-chart y-axis now uses the actual series/budget maximum rather than the older extra 30% headroom
 - Dashboard quick-add shortcuts were removed from the home page
 
 ## Useful Files
