@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
-import { Switch } from '@/components/ui/switch';
 import { LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { EXPENSE_CATEGORIES } from '@/types';
 
@@ -35,7 +34,6 @@ export default function QuickAddPage() {
   const [currency, setCurrency] = useState('AUD');
   const [category, setCategory] = useState('food');
   const [description, setDescription] = useState('');
-  const [isSplit, setIsSplit] = useState(true);
   const [loggedBy, setLoggedBy] = useState<'you' | 'partner'>('you');
   const [activeLeg, setActiveLeg] = useState<ActiveLeg | null>(null);
   const [saving, setSaving] = useState(false);
@@ -191,12 +189,9 @@ export default function QuickAddPage() {
         onChange={(e) => setDescription(e.target.value)}
       />
 
-      {/* Split & Logged By */}
+      {/* Logged By */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Switch checked={isSplit} onCheckedChange={setIsSplit} />
-          <Label className="text-sm">{isSplit ? 'Split 50/50' : 'Individual'}</Label>
-        </div>
+        <Label className="text-sm">Logged By</Label>
         <div className="flex gap-1">
           <Button
             variant={loggedBy === 'you' ? 'default' : 'outline'}

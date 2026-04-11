@@ -152,7 +152,6 @@ CREATE TABLE IF NOT EXISTS itinerary_legs (
   transport_override  REAL,
   intercity_transport_cost REAL DEFAULT 0,
   intercity_transport_note TEXT,
-  split_pct           REAL DEFAULT 50,
   sort_order      INTEGER,
   notes           TEXT,
   status          TEXT DEFAULT 'planned'

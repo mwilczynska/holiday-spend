@@ -30,7 +30,6 @@ export const planSnapshotLegSchema = z.object({
   intercityTransportCost: z.number().optional(),
   intercityTransportNote: z.string().nullable().optional(),
   intercityTransports: z.array(planSnapshotTransportSchema).default([]),
-  splitPct: z.number().default(50),
   sortOrder: z.number().int().nullable().optional(),
   notes: z.string().nullable().optional(),
   status: z.string().default('planned'),

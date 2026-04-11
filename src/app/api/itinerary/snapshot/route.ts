@@ -128,7 +128,6 @@ export async function POST(request: Request) {
           transportOverride: leg.transportOverride ?? null,
           intercityTransportCost,
           intercityTransportNote,
-          splitPct: leg.splitPct,
           sortOrder: index + 1,
           notes: leg.notes ?? null,
           status: leg.status,

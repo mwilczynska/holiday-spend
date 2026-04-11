@@ -84,7 +84,6 @@ export const itineraryLegs = sqliteTable('itinerary_legs', {
   intercityTransportCost: real('intercity_transport_cost').default(0),
   intercityTransportNote: text('intercity_transport_note'),
 
-  splitPct: real('split_pct').default(50),
   sortOrder: integer('sort_order'),
   notes: text('notes'),
   status: text('status').default('planned'), // 'planned', 'active', 'completed'

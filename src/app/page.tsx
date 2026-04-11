@@ -8,7 +8,7 @@ import { PageLoadingState } from '@/components/ui/loading-state';
 import { Switch } from '@/components/ui/switch';
 import { EXPENSE_CATEGORIES } from '@/types';
 import Link from 'next/link';
-import { Map, Receipt, Plus, TrendingUp } from 'lucide-react';
+import { Map, Receipt, TrendingUp } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
   Cell, LabelList,
@@ -450,13 +450,6 @@ export default function DashboardPage() {
             ) : null}
           </div>
         </div>
-        <div className="flex gap-2">
-          <Link href="/track/add">
-            <Badge variant="default" className="cursor-pointer px-3 py-1">
-              <Plus className="mr-1 h-3 w-3" />Quick Add
-            </Badge>
-          </Link>
-        </div>
       </div>
 
       {summary && (
@@ -747,20 +740,12 @@ export default function DashboardPage() {
         </Card>
       )}
 
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
         <Link href="/plan" className="block">
           <Card className="cursor-pointer transition-colors hover:bg-accent">
             <CardContent className="flex flex-col items-center gap-1 py-4">
               <Map className="h-6 w-6 text-muted-foreground" />
               <span className="text-sm font-medium">Plan Trip</span>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href="/track/add" className="block">
-          <Card className="cursor-pointer transition-colors hover:bg-accent">
-            <CardContent className="flex flex-col items-center gap-1 py-4">
-              <Plus className="h-6 w-6 text-muted-foreground" />
-              <span className="text-sm font-medium">Quick Add</span>
             </CardContent>
           </Card>
         </Link>

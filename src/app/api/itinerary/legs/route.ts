@@ -25,7 +25,6 @@ const createSchema = z.object({
   intercityTransportCost: z.number().default(0),
   intercityTransportNote: z.string().nullable().optional(),
   intercityTransports: z.array(intercityTransportSchema).optional(),
-  splitPct: z.number().default(50),
   notes: z.string().nullable().optional(),
   status: z.string().default('planned'),
 });
