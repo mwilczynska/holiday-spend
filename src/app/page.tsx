@@ -13,9 +13,10 @@ import Link from 'next/link';
 import { Map, Maximize2, Receipt, TrendingUp } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
-  Cell, LabelList, Label,
+  Cell, LabelList, Label, CartesianGrid,
   LineChart, Line, ReferenceArea, ReferenceLine,
 } from 'recharts';
+import { cn } from '@/lib/utils';
 
 interface Summary {
   totalBudget: number;
@@ -57,6 +58,7 @@ interface CountryComparison {
 
 type CategoryMode = 'actual' | 'planned';
 type ChartRenderMode = 'inline' | 'expanded';
+type ResponsiveChartHeight = number | '100%';
 
 interface BurnRatePoint {
   date: string;
@@ -92,6 +94,17 @@ interface StatHelp {
   }>;
 }
 
+interface WrappedCategoryTickProps {
+  x?: number | string;
+  y?: number | string;
+  payload?: {
+    value?: string;
+  };
+  maxWidth?: number;
+  fontSize?: number;
+  lineHeight?: number;
+}
+
 const CHART_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'];
 const COUNTRY_BAND_COLORS = ['#dbeafe', '#dcfce7', '#fef3c7', '#fce7f3', '#e0e7ff', '#cffafe'];
 const COUNTRY_STATUS_BADGE: Record<'planned' | 'active' | 'completed', string> = {
@@ -108,12 +121,12 @@ const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.ab
 function getBurnChartMetrics(mode: ChartRenderMode) {
   return mode === 'expanded'
     ? {
-        margin: { top: 18, right: 28, left: 16, bottom: 22 },
+        margin: { top: 2, right: 28, left: 16, bottom: 22 },
         yAxisWidth: 92,
         countryLabelFontSize: 13,
         countryLabelLineHeight: 1.3,
-        countryStripPaddingBottom: 10,
-        legendGap: 6,
+        countryStripPaddingBottom: 2,
+        legendGap: 2,
         legendSwatchWidth: 30,
         legendFontSize: 13,
       }
@@ -132,6 +145,78 @@ function getBurnChartMetrics(mode: ChartRenderMode) {
 function getCategoryLabel(categoryKey: string) {
   if (categoryKey === 'transport') return 'Transport';
   return EXPENSE_CATEGORIES.find((category) => category.value === categoryKey)?.label ?? categoryKey;
+}
+
+function wrapTickLabel(value: string, maxCharsPerLine: number, maxLines: number) {
+  const words = value.split(/\s+/).filter(Boolean);
+  if (words.length === 0) return [''];
+
+  const lines: string[] = [];
+  let currentLine = '';
+
+  for (const word of words) {
+    const candidate = currentLine ? `${currentLine} ${word}` : word;
+    if (candidate.length <= maxCharsPerLine || currentLine.length === 0) {
+      currentLine = candidate;
+      continue;
+    }
+
+    lines.push(currentLine);
+    currentLine = word;
+
+    if (lines.length === maxLines - 1) {
+      break;
+    }
+  }
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  if (lines.length > maxLines) {
+    return lines.slice(0, maxLines);
+  }
+
+  const lastIndex = maxLines - 1;
+  if (lines.length === maxLines && words.join(' ').length > lines.join(' ').length) {
+    const truncated = lines[lastIndex];
+    lines[lastIndex] = truncated.length > maxCharsPerLine - 1
+      ? `${truncated.slice(0, Math.max(maxCharsPerLine - 1, 1)).trimEnd()}…`
+      : `${truncated}…`;
+  }
+
+  return lines;
+}
+
+function WrappedCategoryTick({
+  x = 0,
+  y = 0,
+  payload,
+  maxWidth = 116,
+  fontSize = 10,
+  lineHeight = 12,
+}: WrappedCategoryTickProps) {
+  const rawValue = payload?.value ?? '';
+  const lines = wrapTickLabel(rawValue, Math.max(8, Math.floor(maxWidth / 6.6)), 2);
+  const resolvedX = typeof x === 'number' ? x : Number(x ?? 0);
+  const resolvedY = typeof y === 'number' ? y : Number(y ?? 0);
+  const startY = resolvedY - ((lines.length - 1) * lineHeight) / 2;
+
+  return (
+    <text
+      x={resolvedX}
+      y={startY}
+      textAnchor="end"
+      fill="#475569"
+      fontSize={fontSize}
+    >
+      {lines.map((line, index) => (
+        <tspan key={`${rawValue}-${index}`} x={resolvedX} dy={index === 0 ? 0 : lineHeight}>
+          {line}
+        </tspan>
+      ))}
+    </text>
+  );
 }
 
 const SUMMARY_HELP: Record<string, StatHelp> = {
@@ -328,6 +413,42 @@ function BurnRateLegend({
             aria-hidden="true"
             className="inline-block h-0.5"
             style={{ width: metrics.legendSwatchWidth, backgroundColor: item.color }}
+          />
+          <span className="font-medium">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ExpandedChartLegend({
+  items,
+  mode = 'expanded',
+  className,
+}: {
+  items: Array<{ label: string; color: string; dashed?: boolean }>;
+  mode?: ChartRenderMode;
+  className?: string;
+}) {
+  const fontSize = mode === 'expanded' ? 13 : 11;
+  const swatchWidth = mode === 'expanded' ? 26 : 20;
+
+  return (
+    <div
+      className={cn('flex flex-wrap items-center gap-x-5 gap-y-1.5 text-muted-foreground', className)}
+      style={{ fontSize }}
+    >
+      {items.map((item) => (
+        <div key={item.label} className="flex items-center gap-2">
+          <span
+            aria-hidden="true"
+            className="inline-block h-0.5"
+            style={{
+              width: swatchWidth,
+              backgroundColor: item.color,
+              borderTop: item.dashed ? `2px dashed ${item.color}` : undefined,
+              height: item.dashed ? 0 : undefined,
+            }}
           />
           <span className="font-medium">{item.label}</span>
         </div>
@@ -614,124 +735,240 @@ export default function DashboardPage() {
   const countryViewLabel = showCountryDailySpend ? 'Showing Per Day' : 'Showing Totals';
   const categoryViewLabel = categoryMode === 'planned' ? 'Showing Planned' : 'Showing Actual';
   const pickerTriggerClassName = 'px-3 text-xs data-[active]:bg-primary data-[active]:text-primary-foreground';
+  const expandedPlotShellClassName = 'min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm';
+  const inlineCountryChartHeight = 360;
+  const expandedCountryChartHeight = 620;
+  const inlineCategoryChartHeight = 360;
+  const expandedCategoryChartHeight = 620;
+  const expandedBurnChartHeight = 680;
+  const expandedCountryBarSize = Math.min(
+    24,
+    Math.max(18, Math.floor(((expandedCountryChartHeight - 72) / Math.max(barData.length, 1)) * 0.78))
+  );
+  const expandedCategoryBarSize = Math.min(
+    60,
+    Math.max(34, Math.floor(((expandedCategoryChartHeight - 52) / Math.max(categoryChartData.length, 1)) * 0.68))
+  );
+  const burnLegendItems = [
+    { label: 'Spent', color: '#16a34a' },
+    { label: 'Estimated', color: '#0f766e', dashed: true },
+    ...(budgetCeiling > 0 ? [{ label: 'Budget', color: '#7c3aed', dashed: true }] : []),
+  ];
+  const expandedChartControls = expandedChart === 'country' ? (
+    <div className="flex flex-wrap items-center gap-2">
+      <Tabs
+        value={showCountryDailySpend ? 'daily' : 'total'}
+        onValueChange={(value) => setShowCountryDailySpend(value === 'daily')}
+        className="gap-0"
+      >
+        <TabsList className="h-9">
+          <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
+          <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
+        </TabsList>
+      </Tabs>
+      <Badge variant={showCountryDailySpend ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
+        {countryViewLabel}
+      </Badge>
+    </div>
+  ) : expandedChart === 'category' ? (
+    <div className="flex flex-wrap items-center gap-2">
+      <Tabs
+        value={categoryMode}
+        onValueChange={(value) => setCategoryMode(value as CategoryMode)}
+        className="gap-0"
+      >
+        <TabsList className="h-9">
+          <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
+          <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
+        </TabsList>
+      </Tabs>
+      <Badge variant={categoryMode === 'planned' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
+        {categoryViewLabel}
+      </Badge>
+    </div>
+  ) : expandedChart === 'burn' ? (
+    <ExpandedChartLegend items={burnLegendItems} className="justify-end" />
+  ) : null;
 
   const renderCountryChart = (height: number, mode: ChartRenderMode = 'inline') => {
     const isExpanded = mode === 'expanded';
+    const inlineCountryTickWidth = 126;
+    const chartNode = (
+      <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
+        <BarChart
+          data={barData}
+          layout="vertical"
+          barCategoryGap={isExpanded ? '10%' : '8%'}
+          barGap={isExpanded ? 4 : 2}
+          margin={isExpanded ? { top: 8, right: 24, left: 18, bottom: 24 } : { top: 12, right: 10, left: 6, bottom: 18 }}
+        >
+          <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
+          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => `$${value}`}>
+            <Label
+              value={showCountryDailySpend ? 'Spend per Day (AUD)' : 'Spend (AUD)'}
+              position="insideBottom"
+              offset={isExpanded ? -2 : -6}
+              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}
+            />
+          </XAxis>
+          <YAxis
+            type="category"
+            dataKey="name"
+            width={isExpanded ? 180 : inlineCountryTickWidth}
+            interval={0}
+            padding={{ top: 0, bottom: 0 }}
+            tick={isExpanded
+              ? { fontSize: 13 }
+              : (props: WrappedCategoryTickProps) => (
+                <WrappedCategoryTick
+                  {...props}
+                  maxWidth={inlineCountryTickWidth - 10}
+                  fontSize={10}
+                  lineHeight={11}
+                />
+              )}
+          >
+            {isExpanded ? (
+              <Label
+                value="Country"
+                angle={-90}
+                position="insideLeft"
+                style={{ fill: '#64748b', fontSize: 13, textAnchor: 'middle' }}
+              />
+            ) : null}
+          </YAxis>
+          <Tooltip
+            cursor={{ fill: 'rgba(148, 163, 184, 0.12)' }}
+            contentStyle={{
+              fontSize: isExpanded ? 13 : 11,
+              padding: isExpanded ? '10px 12px' : '8px 10px',
+              borderRadius: '10px',
+              borderColor: '#cbd5e1',
+            }}
+            formatter={(value) => showCountryDailySpend ? `${fmtAud(Number(value))}/day` : fmtAud(Number(value))}
+          />
+          {!isExpanded ? (
+            <Legend
+              verticalAlign="top"
+              align="right"
+              wrapperStyle={{
+                paddingBottom: 6,
+                fontSize: 11,
+              }}
+            />
+          ) : null}
+          <Bar
+            dataKey="Planned"
+            fill="#94a3b8"
+            radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
+            barSize={isExpanded ? expandedCountryBarSize : undefined}
+          />
+          <Bar
+            dataKey="Actual"
+            fill="#2563eb"
+            radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
+            barSize={isExpanded ? expandedCountryBarSize : undefined}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    );
+
+    if (!isExpanded) {
+      return chartNode;
+    }
 
     return (
-    <ResponsiveContainer width="100%" height={height}>
-      <BarChart
-        data={barData}
-        barCategoryGap={isExpanded ? '18%' : '24%'}
-        margin={isExpanded ? { top: 16, right: 26, left: 18, bottom: 54 } : { top: 8, right: 16, left: 8, bottom: 36 }}
-      >
-        <XAxis
-          dataKey="name"
-          interval={0}
-          height={isExpanded ? 108 : 84}
-          angle={-45}
-          textAnchor="end"
-          tick={{ fontSize: isExpanded ? 13 : 11 }}
-        >
-          <Label
-            value="Country"
-            position="insideBottom"
-            offset={isExpanded ? -2 : -8}
-            style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11 }}
-          />
-        </XAxis>
-        <YAxis width={isExpanded ? 92 : 60} tick={{ fontSize: isExpanded ? 13 : 11 }} tickFormatter={(v) => `$${v}`}>
-          <Label
-            value={showCountryDailySpend ? 'Spend per Day (AUD)' : 'Spend (AUD)'}
-            angle={-90}
-            position="insideLeft"
-            style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11, textAnchor: 'middle' }}
-          />
-        </YAxis>
-        <Tooltip
-          contentStyle={isExpanded ? { fontSize: 13, padding: '10px 12px' } : undefined}
-          formatter={(value) => showCountryDailySpend ? `${fmtAud(Number(value))}/day` : fmtAud(Number(value))}
+      <div className="flex h-full min-h-0 flex-col gap-2">
+        <ExpandedChartLegend
+          items={[
+            { label: 'Actual', color: '#2563eb' },
+            { label: 'Planned', color: '#94a3b8' },
+          ]}
         />
-        <Legend
-          verticalAlign="bottom"
-          wrapperStyle={{
-            bottom: isExpanded ? -2 : -8,
-            paddingTop: isExpanded ? 12 : 8,
-            fontSize: isExpanded ? 13 : 12,
-          }}
-        />
-        <Bar dataKey="Planned" fill="#94a3b8" radius={isExpanded ? [6, 6, 0, 0] : [4, 4, 0, 0]} barSize={isExpanded ? 30 : 22} />
-        <Bar dataKey="Actual" fill="#3b82f6" radius={isExpanded ? [6, 6, 0, 0] : [4, 4, 0, 0]} barSize={isExpanded ? 30 : 22} />
-      </BarChart>
-    </ResponsiveContainer>
+        <div className={expandedPlotShellClassName}>{chartNode}</div>
+      </div>
     );
   };
 
   const renderCategoryChart = (height: number, mode: ChartRenderMode = 'inline') => {
     const isExpanded = mode === 'expanded';
+    const chartNode = (
+      <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
+        <BarChart
+          data={categoryChartData}
+          layout="vertical"
+          barCategoryGap={isExpanded ? '2%' : '20%'}
+          margin={isExpanded ? { top: 8, right: 88, left: 22, bottom: 24 } : { top: 12, right: 56, left: 12, bottom: 18 }}
+        >
+          <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
+          <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 10 }} tickFormatter={(value) => `$${value}`}>
+            <Label
+              value="Spend (AUD)"
+              position="insideBottom"
+              offset={isExpanded ? -2 : -6}
+              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}
+            />
+          </XAxis>
+          <YAxis
+            type="category"
+            dataKey="name"
+            width={isExpanded ? 180 : 110}
+            padding={{ top: 0, bottom: 0 }}
+            tick={{ fontSize: isExpanded ? 13 : 10 }}
+          >
+            <Label
+              value="Category"
+              angle={-90}
+              position="insideLeft"
+              style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10, textAnchor: 'middle' }}
+            />
+          </YAxis>
+          <Tooltip
+            contentStyle={{
+              fontSize: isExpanded ? 13 : 11,
+              padding: isExpanded ? '10px 12px' : '8px 10px',
+              borderRadius: '10px',
+              borderColor: '#cbd5e1',
+            }}
+            formatter={(value, _name, item) => {
+              const percent = typeof item?.payload?.percent === 'number'
+                ? ` (${item.payload.percent.toFixed(0)}%)`
+                : '';
+              return `${fmtAud(Number(value))}${percent}`;
+            }}
+            labelFormatter={(label) =>
+              `${categoryMode === 'planned' ? 'Planned' : 'Actual'}: ${label}`
+            }
+          />
+          <Bar dataKey="value" radius={isExpanded ? [0, 7, 7, 0] : [0, 5, 5, 0]} barSize={isExpanded ? expandedCategoryBarSize : 20}>
+            {categoryChartData.map((entry) => (
+              <Cell key={entry.name} fill={entry.fill} />
+            ))}
+            <LabelList dataKey="percentLabel" position="right" fill="#64748b" fontSize={isExpanded ? 13 : 10} offset={isExpanded ? 12 : 8} />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    );
+
+    if (!isExpanded) {
+      return chartNode;
+    }
 
     return (
-    <ResponsiveContainer width="100%" height={height}>
-      <BarChart
-        data={categoryChartData}
-        layout="vertical"
-        barCategoryGap={isExpanded ? '20%' : '24%'}
-        margin={isExpanded ? { top: 16, right: 72, left: 20, bottom: 30 } : { top: 8, right: 56, left: 16, bottom: 24 }}
-      >
-        <XAxis type="number" tick={{ fontSize: isExpanded ? 13 : 11 }} tickFormatter={(value) => `$${value}`}>
-          <Label
-            value="Spend (AUD)"
-            position="insideBottom"
-            offset={isExpanded ? -2 : -8}
-            style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11 }}
-          />
-        </XAxis>
-        <YAxis
-          type="category"
-          dataKey="name"
-          width={isExpanded ? 168 : 120}
-          tick={{ fontSize: isExpanded ? 13 : 11 }}
-        >
-          <Label
-            value="Category"
-            angle={-90}
-            position="insideLeft"
-            style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11, textAnchor: 'middle' }}
-          />
-        </YAxis>
-        <Tooltip
-          contentStyle={isExpanded ? { fontSize: 13, padding: '10px 12px' } : undefined}
-          formatter={(value, _name, item) => {
-            const percent = typeof item?.payload?.percent === 'number'
-              ? ` (${item.payload.percent.toFixed(0)}%)`
-              : '';
-            return `${fmtAud(Number(value))}${percent}`;
-          }}
-          labelFormatter={(label) =>
-            `${categoryMode === 'planned' ? 'Planned' : 'Actual'}: ${label}`
-          }
-        />
-        <Bar dataKey="value" radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]} barSize={isExpanded ? 28 : 20}>
-          {categoryChartData.map((entry) => (
-            <Cell key={entry.name} fill={entry.fill} />
-          ))}
-          <LabelList dataKey="percentLabel" position="right" fill="#64748b" fontSize={isExpanded ? 13 : 11} offset={isExpanded ? 10 : 6} />
-        </Bar>
-      </BarChart>
-    </ResponsiveContainer>
+      <div className="flex h-full min-h-0 flex-col">
+        <div className={expandedPlotShellClassName}>{chartNode}</div>
+      </div>
     );
   };
 
   const renderBurnChart = (height: number, mode: ChartRenderMode = 'inline') => {
     const isExpanded = mode === 'expanded';
     const burnMetrics = getBurnChartMetrics(mode);
-
-    return (
-    <div className="space-y-1">
-      <BurnCountryHeaderStrip bands={staggeredCountryBands} mode={mode} />
-      <ResponsiveContainer width="100%" height={height}>
+    const chartNode = (
+      <ResponsiveContainer width="100%" height={(isExpanded ? '100%' : height) as ResponsiveChartHeight}>
         <LineChart data={chartBurnData} margin={burnMetrics.margin}>
-          <XAxis dataKey="date" tick={{ fontSize: isExpanded ? 12 : 10 }}>
+          <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" />
+          <XAxis dataKey="date" tick={{ fontSize: isExpanded ? 12 : 10 }} minTickGap={isExpanded ? 18 : 24}>
             <Label
               value="Date"
               position="insideBottom"
@@ -752,8 +989,8 @@ export default function DashboardPage() {
               style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 11, textAnchor: 'middle' }}
             />
           </YAxis>
-          <Tooltip content={<BurnRateTooltip />} />
-          <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} mode={mode} />} />
+          <Tooltip content={<BurnRateTooltip />} cursor={{ stroke: '#94a3b8', strokeOpacity: 0.4 }} />
+          {!isExpanded ? <Legend content={<BurnRateLegend includeBudget={budgetCeiling > 0} mode={mode} />} /> : null}
           {staggeredCountryBands.map((band, index) => (
             <ReferenceArea
               key={getCountryBandKey(band)}
@@ -764,9 +1001,9 @@ export default function DashboardPage() {
               ifOverflow="extendDomain"
             />
           ))}
-          <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={isExpanded ? 3 : 2} dot={false} />
-          <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={isExpanded ? 3 : 2} dot={false} legendType="none" />
-          <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={isExpanded ? 3 : 2} strokeDasharray={isExpanded ? '7 5' : '6 4'} dot={false} />
+          <Line type="monotone" dataKey="spentActual" name="Spent" stroke="#16a34a" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
+          <Line type="monotone" dataKey="spentPlannedTail" name="Spent (planned dates)" stroke="#9ca3af" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} legendType="none" />
+          <Line type="monotone" dataKey="plannedCumulative" name="Estimated" stroke="#0f766e" strokeWidth={isExpanded ? 3 : 2.25} strokeLinecap="round" strokeDasharray={isExpanded ? '7 5' : '6 4'} activeDot={{ r: isExpanded ? 5 : 4 }} dot={false} />
           {budgetCeiling > 0 && (
             <ReferenceLine
               y={budgetCeiling}
@@ -777,7 +1014,22 @@ export default function DashboardPage() {
           )}
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    );
+
+    if (!isExpanded) {
+      return (
+        <div className="space-y-1">
+          <BurnCountryHeaderStrip bands={staggeredCountryBands} mode={mode} />
+          {chartNode}
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex h-full min-h-0 flex-col gap-2">
+        <BurnCountryHeaderStrip bands={staggeredCountryBands} mode={mode} />
+        <div className={expandedPlotShellClassName}>{chartNode}</div>
+      </div>
     );
   };
 
@@ -789,6 +1041,10 @@ export default function DashboardPage() {
         : expandedChart === 'burn'
           ? burnChartTitle
           : '';
+  const expandedDialogClassName =
+    expandedChart === 'burn'
+      ? 'grid h-[90vh] max-h-[90vh] w-[96vw] max-w-[96vw] grid-rows-[auto_minmax(0,1fr)] gap-0 overflow-hidden p-0 sm:max-w-[92vw] xl:max-w-[1500px]'
+      : 'grid h-[80vh] max-h-[80vh] w-[96vw] max-w-[96vw] grid-rows-[auto_minmax(0,1fr)] gap-0 overflow-hidden p-0 sm:max-w-[92vw] xl:max-w-[1380px]';
 
   return (
     <div className="space-y-6">
@@ -895,7 +1151,7 @@ export default function DashboardPage() {
         </div>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
         {barData.length > 0 && (
           <Card>
             <CardHeader className="pb-2">
@@ -925,7 +1181,7 @@ export default function DashboardPage() {
                 </div>
               </div>
             </CardHeader>
-            <CardContent>{renderCountryChart(300)}</CardContent>
+            <CardContent>{renderCountryChart(inlineCountryChartHeight, 'inline')}</CardContent>
           </Card>
         )}
 
@@ -958,7 +1214,7 @@ export default function DashboardPage() {
                 </div>
               </div>
             </CardHeader>
-            <CardContent>{renderCategoryChart(Math.max(250, categoryChartData.length * 40))}</CardContent>
+            <CardContent>{renderCategoryChart(inlineCategoryChartHeight, 'inline')}</CardContent>
           </Card>
         )}
       </div>
@@ -974,55 +1230,28 @@ export default function DashboardPage() {
               </Button>
             </div>
           </CardHeader>
-          <CardContent>{renderBurnChart(300)}</CardContent>
+          <CardContent>{renderBurnChart(400, 'inline')}</CardContent>
         </Card>
       )}
 
       <Dialog open={expandedChart !== null} onOpenChange={(open) => {
         if (!open) setExpandedChart(null);
       }}>
-        <DialogContent className="h-[94vh] max-h-[94vh] w-[96vw] max-w-[96vw] overflow-hidden p-0 sm:max-w-[92vw] xl:max-w-[1500px]">
-          <DialogHeader className="gap-3 border-b px-6 py-5">
-            <DialogTitle>{expandedChartTitle}</DialogTitle>
-            {expandedChart === 'country' ? (
-              <div className="flex flex-wrap items-center gap-2">
-                <Tabs
-                  value={showCountryDailySpend ? 'daily' : 'total'}
-                  onValueChange={(value) => setShowCountryDailySpend(value === 'daily')}
-                  className="gap-0"
-                >
-                  <TabsList className="h-9">
-                    <TabsTrigger value="total" className={pickerTriggerClassName}>Totals</TabsTrigger>
-                    <TabsTrigger value="daily" className={pickerTriggerClassName}>Per Day</TabsTrigger>
-                  </TabsList>
-                </Tabs>
-                <Badge variant={showCountryDailySpend ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-                  {countryViewLabel}
-                </Badge>
+      <DialogContent className={expandedDialogClassName}>
+          <DialogHeader className="gap-0 border-b px-5 pt-3 pb-2">
+            {expandedChartControls ? (
+              <div className="flex flex-wrap items-center justify-between gap-3 pr-8">
+                <DialogTitle>{expandedChartTitle}</DialogTitle>
+                {expandedChartControls}
               </div>
-            ) : null}
-            {expandedChart === 'category' ? (
-              <div className="flex flex-wrap items-center gap-2">
-                <Tabs
-                  value={categoryMode}
-                  onValueChange={(value) => setCategoryMode(value as CategoryMode)}
-                  className="gap-0"
-                >
-                  <TabsList className="h-9">
-                    <TabsTrigger value="actual" className={pickerTriggerClassName}>Actual</TabsTrigger>
-                    <TabsTrigger value="planned" className={pickerTriggerClassName}>Planned</TabsTrigger>
-                  </TabsList>
-                </Tabs>
-                <Badge variant={categoryMode === 'planned' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-                  {categoryViewLabel}
-                </Badge>
-              </div>
-            ) : null}
+            ) : (
+              <DialogTitle>{expandedChartTitle}</DialogTitle>
+            )}
           </DialogHeader>
-          <div className="h-full overflow-auto px-6 py-5">
-            {expandedChart === 'country' ? renderCountryChart(760, 'expanded') : null}
-            {expandedChart === 'category' ? renderCategoryChart(Math.max(760, categoryChartData.length * 72), 'expanded') : null}
-            {expandedChart === 'burn' ? renderBurnChart(760, 'expanded') : null}
+          <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">
+            {expandedChart === 'country' ? renderCountryChart(expandedCountryChartHeight, 'expanded') : null}
+            {expandedChart === 'category' ? renderCategoryChart(expandedCategoryChartHeight, 'expanded') : null}
+            {expandedChart === 'burn' ? renderBurnChart(expandedBurnChartHeight, 'expanded') : null}
           </div>
         </DialogContent>
       </Dialog>
