@@ -2,10 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
 import type { CityEstimateData } from '@/types';
-import {
-  CITY_GENERATION_DEFAULT_MODELS,
-  type CityGenerationProvider,
-} from '@/lib/city-generation-config';
+import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
+import { type CityGenerationProvider } from '@/lib/city-generation-config';
 
 const generatedCitySchema = z.object({
   city: z.string().min(1),
@@ -130,165 +128,6 @@ Additional output requirements:
   return { prompt, promptVersion };
 }
 
-function normalizeApiKey(apiKey?: string) {
-  const trimmed = apiKey?.trim();
-  return trimmed ? trimmed : undefined;
-}
-
-function summarizeProviderError(rawText: string) {
-  const text = rawText.trim();
-  if (!text) return 'Empty error body';
-
-  try {
-    const parsed = JSON.parse(text) as { error?: { message?: string } | string; message?: string };
-    if (typeof parsed.error === 'string') return parsed.error;
-    if (parsed.error?.message) return parsed.error.message;
-    if (parsed.message) return parsed.message;
-  } catch {
-    // Fall back to plain text when the provider does not return JSON.
-  }
-
-  return text.slice(0, 400);
-}
-
-function normalizeModel(model?: string) {
-  const trimmed = model?.trim();
-  return trimmed ? trimmed : undefined;
-}
-
-function isOpenAiMaxCompletionModel(model: string) {
-  const normalized = model.toLowerCase();
-  return normalized.startsWith('gpt-5') || normalized.startsWith('o1') || normalized.startsWith('o3') || normalized.startsWith('o4');
-}
-
-async function runOpenAi(prompt: string, overrideApiKey?: string, overrideModel?: string) {
-  const apiKey = normalizeApiKey(overrideApiKey) ?? process.env.OPENAI_API_KEY;
-  if (!apiKey) return null;
-
-  const model = normalizeModel(overrideModel) ?? (process.env.OPENAI_MODEL || CITY_GENERATION_DEFAULT_MODELS.openai);
-  const requestBody: Record<string, unknown> = {
-    model,
-    response_format: { type: 'json_object' },
-    messages: [
-      {
-        role: 'system',
-        content: 'You are a careful travel cost estimation assistant. Return valid JSON only.',
-      },
-      {
-        role: 'user',
-        content: prompt,
-      },
-    ],
-  };
-
-  if (isOpenAiMaxCompletionModel(model)) {
-    requestBody.max_completion_tokens = 3000;
-  } else {
-    requestBody.max_tokens = 3000;
-  }
-
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(requestBody),
-  });
-
-  if (!response.ok) {
-    const errText = summarizeProviderError(await response.text());
-    throw new CityGenerationError(`OpenAI API error ${response.status}: ${errText}`, 502);
-  }
-
-  const data = await response.json();
-  const text = data.choices?.[0]?.message?.content || '';
-  return { provider: 'openai', model, text };
-}
-
-async function runAnthropic(prompt: string, overrideApiKey?: string, overrideModel?: string) {
-  const apiKey = normalizeApiKey(overrideApiKey) ?? process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) return null;
-
-  const model =
-    normalizeModel(overrideModel) ?? (process.env.ANTHROPIC_MODEL || CITY_GENERATION_DEFAULT_MODELS.anthropic);
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model,
-      max_tokens: 3000,
-      system: 'You are a careful travel cost estimation assistant. Return valid JSON only.',
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  });
-
-  if (!response.ok) {
-    const errText = summarizeProviderError(await response.text());
-    throw new CityGenerationError(`Anthropic API error ${response.status}: ${errText}`, 502);
-  }
-
-  const data = await response.json();
-  const text = data.content?.map((item: { text?: string }) => item.text || '').join('\n') || '';
-  return { provider: 'anthropic', model, text };
-}
-
-async function runGemini(prompt: string, overrideApiKey?: string, overrideModel?: string) {
-  const apiKey = normalizeApiKey(overrideApiKey) ?? process.env.GEMINI_API_KEY;
-  if (!apiKey) return null;
-
-  const model = normalizeModel(overrideModel) ?? (process.env.GEMINI_MODEL || CITY_GENERATION_DEFAULT_MODELS.gemini);
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        systemInstruction: {
-          parts: [{ text: 'You are a careful travel cost estimation assistant. Return valid JSON only.' }],
-        },
-        contents: [
-          {
-            role: 'user',
-            parts: [{ text: prompt }],
-          },
-        ],
-        generationConfig: {
-          responseMimeType: 'application/json',
-          maxOutputTokens: 3000,
-          thinkingConfig: {
-            thinkingBudget: 0,
-          },
-        },
-      }),
-    }
-  );
-
-  if (!response.ok) {
-    const errText = summarizeProviderError(await response.text());
-    throw new CityGenerationError(`Gemini API error ${response.status}: ${errText}`, 502);
-  }
-
-  const data = await response.json();
-  const finishReason = data.candidates?.[0]?.finishReason;
-  if (finishReason === 'MAX_TOKENS') {
-    throw new CityGenerationError(
-      'Gemini stopped before finishing the JSON response. Try the same request again or use a model with a larger output budget.',
-      502
-    );
-  }
-  const text =
-    data.candidates?.[0]?.content?.parts?.map((item: { text?: string }) => item.text || '').join('\n') || '';
-
-  return { provider: 'gemini', model, text };
-}
-
 function getMissingKeyMessage(provider: CityGenerationProvider) {
   if (provider === 'anthropic') {
     return 'No Anthropic API key provided. Add one in the UI or configure ANTHROPIC_API_KEY on the server.';
@@ -368,23 +207,19 @@ function inferAudPerUsd(payload: GeneratedCityPayload) {
 
 export async function generateCityCostEstimate(request: CityGenerationRequest): Promise<CityGenerationResult> {
   const { prompt, promptVersion } = buildCityGenerationPrompt(request);
-  const providerOrder: CityGenerationProvider[] = request.provider
-    ? [request.provider]
-    : ['anthropic', 'openai', 'gemini'];
-
-  const runners: Record<
-    CityGenerationProvider,
-    (nextPrompt: string, apiKey?: string, model?: string) => Promise<{ provider: string; model: string; text: string } | null>
-  > = {
-    anthropic: runAnthropic,
-    openai: runOpenAi,
-    gemini: runGemini,
-  };
-
   let providerResponse: { provider: string; model: string; text: string } | null = null;
-  for (const provider of providerOrder) {
-    providerResponse = await runners[provider](prompt, request.apiKey, request.model);
-    if (providerResponse) break;
+  try {
+    providerResponse = await runJsonPromptWithProvider({
+      systemPrompt: 'You are a careful travel cost estimation assistant. Return valid JSON only.',
+      userPrompt: prompt,
+      provider: request.provider,
+      apiKey: request.apiKey,
+      model: request.model,
+      maxTokens: 3000,
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'LLM request failed.';
+    throw new CityGenerationError(message, 502);
   }
 
   if (!providerResponse) {

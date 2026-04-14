@@ -60,6 +60,80 @@ export const COUNTRY_CURRENCY_CODES: Record<string, string> = {
   Vietnam: 'VND',
 };
 
+export const COUNTRY_REGIONS: Record<string, string> = {
+  Argentina: 'latin_america',
+  Australia: 'oceania',
+  Austria: 'europe',
+  Brazil: 'latin_america',
+  Bulgaria: 'europe',
+  Cambodia: 'se_asia',
+  Canada: 'north_america',
+  Chile: 'latin_america',
+  China: 'east_asia',
+  Colombia: 'latin_america',
+  Croatia: 'europe',
+  Cuba: 'latin_america',
+  'Czech Republic': 'europe',
+  Denmark: 'europe',
+  Egypt: 'middle_east',
+  Ecuador: 'latin_america',
+  Finland: 'europe',
+  France: 'europe',
+  Georgia: 'europe',
+  Germany: 'europe',
+  Greece: 'europe',
+  'Hong Kong': 'east_asia',
+  Hungary: 'europe',
+  Iceland: 'europe',
+  India: 'south_asia',
+  Indonesia: 'se_asia',
+  Israel: 'middle_east',
+  Italy: 'europe',
+  Japan: 'east_asia',
+  Jordan: 'middle_east',
+  Kenya: 'africa',
+  Laos: 'se_asia',
+  Malaysia: 'se_asia',
+  Mexico: 'north_america',
+  Morocco: 'africa',
+  Myanmar: 'se_asia',
+  Nepal: 'south_asia',
+  Netherlands: 'europe',
+  'New Zealand': 'oceania',
+  Peru: 'latin_america',
+  Philippines: 'se_asia',
+  Poland: 'europe',
+  Portugal: 'europe',
+  Romania: 'europe',
+  Serbia: 'europe',
+  Singapore: 'se_asia',
+  'South Africa': 'africa',
+  'South Korea': 'east_asia',
+  Spain: 'europe',
+  'Sri Lanka': 'south_asia',
+  Sweden: 'europe',
+  Taiwan: 'east_asia',
+  Tanzania: 'africa',
+  Thailand: 'se_asia',
+  Turkey: 'middle_east',
+  UAE: 'middle_east',
+  'United Kingdom': 'europe',
+  'United States': 'north_america',
+  Vietnam: 'se_asia',
+};
+
+export const APP_REGION_VALUES = [
+  'latin_america',
+  'north_america',
+  'europe',
+  'east_asia',
+  'se_asia',
+  'south_asia',
+  'middle_east',
+  'africa',
+  'oceania',
+] as const;
+
 const REGION_LABELS: Record<string, string> = {
   SEA: 'se_asia',
   'East Asia': 'east_asia',
@@ -92,6 +166,23 @@ export function findKnownCountryCurrencyCode(countryName: string | null | undefi
 
   const normalizedLookup = slugifyId(trimmed);
   const matchedEntry = Object.entries(COUNTRY_CURRENCY_CODES).find(
+    ([knownCountryName]) => slugifyId(knownCountryName) === normalizedLookup
+  );
+
+  return matchedEntry?.[1] ?? null;
+}
+
+export function findKnownCountryRegion(countryName: string | null | undefined): string | null {
+  if (!countryName) return null;
+
+  const trimmed = countryName.trim();
+  if (!trimmed) return null;
+
+  const exact = COUNTRY_REGIONS[trimmed];
+  if (exact) return exact;
+
+  const normalizedLookup = slugifyId(trimmed);
+  const matchedEntry = Object.entries(COUNTRY_REGIONS).find(
     ([knownCountryName]) => slugifyId(knownCountryName) === normalizedLookup
   );
 
