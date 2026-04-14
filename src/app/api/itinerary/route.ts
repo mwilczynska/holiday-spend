@@ -3,6 +3,7 @@ import { itineraryLegs, itineraryLegTransports, cities, countries } from '@/db/s
 import { asc } from 'drizzle-orm';
 import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId, normalizeIntercityTransports } from '@/lib/intercity-transport';
+import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
@@ -28,7 +29,7 @@ export async function GET() {
     const countryMap = new Map(allCountries.map(c => [c.id, c]));
     const transportMap = groupIntercityTransportsByLegId(transportRows);
 
-    const legsWithCosts = legs.map(leg => {
+    const legsWithCosts = deriveLegDates(legs).map(leg => {
       const city = cityMap.get(leg.cityId);
       const country = city ? countryMap.get(city.countryId) : null;
       const intercityTransports = normalizeIntercityTransports(transportMap.get(leg.id));

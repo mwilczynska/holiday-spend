@@ -6,6 +6,7 @@ import { getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { findLegForExpenseDate, getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
+import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { success, handleError } from '@/lib/api-helpers';
@@ -32,12 +33,13 @@ function minDate(...dates: Array<string | null | undefined>): string | null {
 export async function GET() {
   try {
     const allExpenses = await db.select().from(expenses);
-    const allLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
+    const rawLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
     const allTransports = await db.select().from(itineraryLegTransports).orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);
     const groupSize = await getPlannerGroupSize();
 
+    const allLegs = deriveLegDates(rawLegs);
     const legMap = new Map(allLegs.map((leg) => [leg.id, leg]));
     const cityMap = new Map(allCities.map((city) => [city.id, city]));
     const countryMap = new Map(allCountries.map((country) => [country.id, country]));

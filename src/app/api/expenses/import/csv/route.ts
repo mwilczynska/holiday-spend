@@ -24,6 +24,7 @@ export async function POST(request: Request) {
         cityId: itineraryLegs.cityId,
         startDate: itineraryLegs.startDate,
         endDate: itineraryLegs.endDate,
+        nights: itineraryLegs.nights,
         sortOrder: itineraryLegs.sortOrder,
       })
       .from(itineraryLegs)

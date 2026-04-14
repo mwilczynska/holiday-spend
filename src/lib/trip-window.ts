@@ -1,14 +1,19 @@
+import { deriveLegDates } from '@/lib/itinerary-leg-dates';
+
 interface DatedLeg {
   startDate: string | null;
   endDate: string | null;
+  nights: number;
+  sortOrder?: number | null;
 }
 
 export function getTripWindow(legs: DatedLeg[]): {
   tripStart: string | null;
   tripEnd: string | null;
 } {
-  const legDates = legs.filter((leg) => leg.startDate).map((leg) => leg.startDate!).sort();
-  const legEndDates = legs.filter((leg) => leg.endDate).map((leg) => leg.endDate!).sort();
+  const derivedLegs = deriveLegDates(legs);
+  const legDates = derivedLegs.filter((leg) => leg.startDate).map((leg) => leg.startDate!).sort();
+  const legEndDates = derivedLegs.filter((leg) => leg.endDate).map((leg) => leg.endDate!).sort();
 
   return {
     tripStart: legDates[0] || null,

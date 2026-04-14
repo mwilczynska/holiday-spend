@@ -1,8 +1,11 @@
+import { deriveLegDates } from '@/lib/itinerary-leg-dates';
+
 export interface DateBoundLeg {
   id: number;
   cityId: string;
   startDate: string | null;
   endDate: string | null;
+  nights: number;
   sortOrder: number | null;
 }
 
@@ -34,7 +37,7 @@ export function findLegForExpenseDate(
 ): DateBoundLeg | null {
   if (!date) return null;
 
-  const matches = legs
+  const matches = deriveLegDates(legs)
     .filter((leg) => matchesExpenseDate(date, leg))
     .sort(compareLegPriority);
 
@@ -45,11 +48,13 @@ export function resolveExpenseLeg(
   expense: ExpenseWithOptionalLeg,
   legs: DateBoundLeg[]
 ): DateBoundLeg | null {
+  const derivedLegs = deriveLegDates(legs);
+
   if (expense.legId != null) {
-    return legs.find((leg) => leg.id === expense.legId) ?? null;
+    return derivedLegs.find((leg) => leg.id === expense.legId) ?? null;
   }
 
-  return findLegForExpenseDate(expense.date, legs);
+  return findLegForExpenseDate(expense.date, derivedLegs);
 }
 
 export function getExpenseReportingDate(

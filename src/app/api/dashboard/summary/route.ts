@@ -6,6 +6,7 @@ import { calcBurnRate, projectTotal } from '@/lib/burn-rate';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
 import { groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
+import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
 import { success, handleError } from '@/lib/api-helpers';
@@ -22,13 +23,14 @@ function addDays(date: string, days: number): string {
 export async function GET() {
   try {
     // Fetch legs, cities, expenses, fixed costs
-    const allLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
+    const rawLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
     const allTransports = await db.select().from(itineraryLegTransports).orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
     const allCities = await db.select().from(cities);
     const allExpenses = await db.select().from(expenses);
     const allFixed = await db.select().from(fixedCosts);
     const groupSize = await getPlannerGroupSize();
 
+    const allLegs = deriveLegDates(rawLegs);
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const transportMap = groupIntercityTransportsByLegId(allTransports);
     const { tripStart, tripEnd } = getTripWindow(allLegs);

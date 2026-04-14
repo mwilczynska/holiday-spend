@@ -6,6 +6,7 @@ import fs from 'fs';
 import { derivePrivateRoomRate } from '../lib/accommodation';
 import { findLegForExpenseDate } from '../lib/expense-leg-assignment';
 import { getIntercityTransportTotal } from '../lib/intercity-transport';
+import { deriveLegDates } from '../lib/itinerary-leg-dates';
 
 const dbPath = path.join(process.cwd(), 'data', 'travel.db');
 
@@ -219,7 +220,7 @@ if (hasCitiesTable) {
 
 if (hasExpensesTable && hasItineraryLegsTable) {
   const datedLegs = sqlite.prepare(`
-    SELECT id, city_id as cityId, start_date as startDate, end_date as endDate, sort_order as sortOrder
+    SELECT id, city_id as cityId, start_date as startDate, end_date as endDate, nights, sort_order as sortOrder
     FROM itinerary_legs
     ORDER BY sort_order
   `).all() as Array<{
@@ -227,8 +228,15 @@ if (hasExpensesTable && hasItineraryLegsTable) {
     cityId: string;
     startDate: string | null;
     endDate: string | null;
+    nights: number;
     sortOrder: number | null;
   }>;
+  const updateLegDates = sqlite.prepare(`
+    UPDATE itinerary_legs
+    SET start_date = COALESCE(start_date, ?),
+        end_date = COALESCE(end_date, ?)
+    WHERE id = ?
+  `);
 
   const unassignedWiseExpenses = sqlite.prepare(`
     SELECT id, date
@@ -244,9 +252,25 @@ if (hasExpensesTable && hasItineraryLegsTable) {
     SET leg_id = ?
     WHERE id = ?
   `);
+  const derivedLegs = deriveLegDates(datedLegs);
+
+  for (let index = 0; index < datedLegs.length; index += 1) {
+    const originalLeg = datedLegs[index];
+    const derivedLeg = derivedLegs[index];
+    const needsStartDate = !originalLeg.startDate && derivedLeg?.startDate;
+    const needsEndDate = !originalLeg.endDate && derivedLeg?.endDate;
+
+    if (needsStartDate || needsEndDate) {
+      updateLegDates.run(
+        derivedLeg?.startDate ?? null,
+        derivedLeg?.endDate ?? null,
+        originalLeg.id
+      );
+    }
+  }
 
   for (const expense of unassignedWiseExpenses) {
-    const matchedLeg = findLegForExpenseDate(expense.date, datedLegs);
+    const matchedLeg = findLegForExpenseDate(expense.date, derivedLegs);
     if (matchedLeg) {
       updateExpenseLeg.run(matchedLeg.id, expense.id);
     }

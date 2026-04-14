@@ -1,7 +1,8 @@
-import { sql } from 'drizzle-orm';
+import { asc, sql } from 'drizzle-orm';
 import { db } from '@/db';
 import { itineraryLegs } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
+import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { resolveOrCreatePlannerCity, PlannerCityResolutionError } from '@/lib/planner-city-resolution';
 import { z } from 'zod';
 
@@ -37,16 +38,44 @@ export async function POST(request: Request) {
       .select({ max: sql<number>`COALESCE(MAX(sort_order), 0)` })
       .from(itineraryLegs)
       .get();
+    const nextSortOrder = (maxOrder?.max ?? 0) + 1;
+    const existingLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id));
+    const derivedNewLeg = deriveLegDates([
+      ...existingLegs,
+      {
+        id: -1,
+        cityId: resolvedCity.cityId,
+        startDate: null,
+        endDate: null,
+        nights: data.nights,
+        sortOrder: nextSortOrder,
+        accomTier: '2star',
+        foodTier: 'mid',
+        drinksTier: 'moderate',
+        activitiesTier: 'mid',
+        accomOverride: null,
+        foodOverride: null,
+        drinksOverride: null,
+        activitiesOverride: null,
+        transportOverride: null,
+        intercityTransportCost: 0,
+        intercityTransportNote: null,
+        notes: null,
+        status: 'planned',
+      },
+    ])[existingLegs.length];
 
     const result = await db.insert(itineraryLegs).values({
       cityId: resolvedCity.cityId,
+      startDate: derivedNewLeg?.startDate ?? null,
+      endDate: derivedNewLeg?.endDate ?? null,
       nights: data.nights,
       accomTier: '2star',
       foodTier: 'mid',
       drinksTier: 'moderate',
       activitiesTier: 'mid',
       intercityTransportCost: 0,
-      sortOrder: (maxOrder?.max ?? 0) + 1,
+      sortOrder: nextSortOrder,
       status: 'planned',
     }).returning();
 
