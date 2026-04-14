@@ -11,6 +11,7 @@ import { SearchableSelect } from '@/components/ui/searchable-select';
 import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
+import { PlannerNewCityDialog } from '@/components/itinerary/PlannerNewCityDialog';
 import { Download, FolderOpen, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
@@ -231,8 +232,6 @@ export default function PlanPage() {
   const [plannerNewCityOpen, setPlannerNewCityOpen] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
   const [newLegNights, setNewLegNights] = useState('7');
-  const [newPlannerCityName, setNewPlannerCityName] = useState('');
-  const [newPlannerCountryName, setNewPlannerCountryName] = useState('');
   const [savedSnapshots, setSavedSnapshots] = useState<SavedPlanSnapshot[]>([]);
   const [snapshotStatus, setSnapshotStatus] = useState<string | null>(null);
   const [snapshotError, setSnapshotError] = useState<string | null>(null);
@@ -242,7 +241,6 @@ export default function PlanPage() {
   const [missingCityDrafts, setMissingCityDrafts] = useState<MissingCityResolutionDraft[]>([]);
   const [missingCityStrategy, setMissingCityStrategy] = useState<'placeholder' | 'generate'>('placeholder');
   const [importingSnapshot, setImportingSnapshot] = useState(false);
-  const [creatingPlannerCity, setCreatingPlannerCity] = useState(false);
   const [importProvider, setImportProvider] = useState<ProviderOption>('openai');
   const [importApiKeys, setImportApiKeys] = useState<Record<ProviderOption, string>>({
     openai: '',
@@ -261,8 +259,8 @@ export default function PlanPage() {
   const importInputRef = useRef<HTMLInputElement>(null);
   const plannerHeaderRef = useRef<HTMLDivElement>(null);
   const [plannerHeaderHeight, setPlannerHeaderHeight] = useState(0);
-  const plannerContentTopPadding = plannerHeaderHeight > 0 ? plannerHeaderHeight + 24 : 224;
-  const plannerSidebarTopOffset = plannerHeaderHeight > 0 ? plannerHeaderHeight + 24 : 200;
+  const plannerContentTopPadding = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight - 56, 128) : 144;
+  const plannerSidebarTopOffset = plannerHeaderHeight > 0 ? Math.max(plannerHeaderHeight + 10, 120) : 200;
 
   useEffect(() => {
     const header = plannerHeaderRef.current;
@@ -403,86 +401,6 @@ export default function PlanPage() {
     }
   }, []);
 
-  const handleCreatePlannerCityLeg = useCallback(async () => {
-    const parsedNights = Number.parseInt(newLegNights, 10);
-    if (!Number.isInteger(parsedNights) || parsedNights < 1) {
-      setSnapshotStatus(null);
-      setSnapshotError('Enter a valid number of nights before adding the leg.');
-      return;
-    }
-
-    if (!newPlannerCityName.trim() || !newPlannerCountryName.trim()) {
-      setSnapshotStatus(null);
-      setSnapshotError('Enter both the city name and country name.');
-      return;
-    }
-
-    try {
-      setCreatingPlannerCity(true);
-      const response = await fetch('/api/itinerary/legs/create-with-city', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          cityName: newPlannerCityName.trim(),
-          countryName: newPlannerCountryName.trim(),
-          nights: parsedNights,
-          provider: importProvider,
-          apiKey: importApiKeys[importProvider] || undefined,
-          model: importModels[importProvider] || undefined,
-          referenceDate: importReferenceDate || undefined,
-          extraContext: importExtraContext || undefined,
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to create the city and add the leg.');
-      }
-
-      await fetchData();
-      setPlannerNewCityOpen(false);
-      setAddDialogOpen(false);
-      setNewLegCity('');
-      setNewLegNights('7');
-      setNewPlannerCityName('');
-      setNewPlannerCountryName('');
-
-      const cityResult = data.data?.city as {
-        cityName: string;
-        countryName: string;
-        createdCountry: boolean;
-        createdCity: boolean;
-        generatedCity: boolean;
-        reusedExistingCity: boolean;
-      };
-
-      const suffixParts = [];
-      if (cityResult?.reusedExistingCity) suffixParts.push('existing city reused');
-      if (cityResult?.createdCountry) suffixParts.push('country created');
-      if (cityResult?.createdCity) suffixParts.push('city created');
-      if (cityResult?.generatedCity) suffixParts.push('city costs generated');
-
-      setSnapshotStatus(
-        `Added leg for "${cityResult?.cityName || newPlannerCityName.trim()}, ${cityResult?.countryName || newPlannerCountryName.trim()}".${suffixParts.length > 0 ? ` ${suffixParts.join(', ')}.` : ''}`
-      );
-      setSnapshotError(null);
-    } catch (err) {
-      setSnapshotStatus(null);
-      setSnapshotError(err instanceof Error ? err.message : 'Failed to create the city and add the leg.');
-    } finally {
-      setCreatingPlannerCity(false);
-    }
-  }, [
-    fetchData,
-    importApiKeys,
-    importExtraContext,
-    importModels,
-    importProvider,
-    importReferenceDate,
-    newLegNights,
-    newPlannerCityName,
-    newPlannerCountryName,
-  ]);
-
   const handleAddLeg = async () => {
     const parsedNights = Number.parseInt(newLegNights, 10);
     if (!newLegCity || !Number.isInteger(parsedNights) || parsedNights < 1) return;
@@ -500,6 +418,39 @@ export default function PlanPage() {
     setNewLegNights('7');
     fetchData();
   };
+
+  const handlePlannerNewCityCreated = useCallback(async (payload: {
+    city: {
+      cityName: string;
+      countryName: string;
+      createdCountry: boolean;
+      createdCity: boolean;
+      generatedCity: boolean;
+      reusedExistingCity: boolean;
+    };
+    requested: {
+      cityName: string;
+      countryName: string;
+      nights: number;
+    };
+  }) => {
+    await fetchData();
+    setAddDialogOpen(false);
+    setNewLegCity('');
+    setNewLegNights('7');
+
+    const cityResult = payload.city;
+    const suffixParts = [];
+    if (cityResult?.reusedExistingCity) suffixParts.push('existing city reused');
+    if (cityResult?.createdCountry) suffixParts.push('country created');
+    if (cityResult?.createdCity) suffixParts.push('city created');
+    if (cityResult?.generatedCity) suffixParts.push('city costs generated');
+
+    setSnapshotStatus(
+      `Added leg for "${cityResult?.cityName || payload.requested.cityName}, ${cityResult?.countryName || payload.requested.countryName}".${suffixParts.length > 0 ? ` ${suffixParts.join(', ')}.` : ''}`
+    );
+    setSnapshotError(null);
+  }, [fetchData]);
 
   const handleUpdateLeg = async (id: number, data: Record<string, unknown>) => {
     setLegs((currentLegs) =>
@@ -1417,185 +1368,11 @@ export default function PlanPage() {
                   <Upload className="mr-2 h-4 w-4" />
                   Import
                 </Button>
-                <Dialog
+                <PlannerNewCityDialog
                   open={plannerNewCityOpen}
-                  onOpenChange={(open) => {
-                    if (!creatingPlannerCity) {
-                      setPlannerNewCityOpen(open);
-                    }
-                  }}
-                >
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Add New City With LLM</DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      <div className="space-y-1 text-sm text-muted-foreground">
-                        <p>Enter only the city name and country name. The server will check the current library first.</p>
-                        <p>
-                          If the city is missing, it will infer the IDs, country currency, region, and city-cost data before
-                          the leg is added.
-                        </p>
-                      </div>
-
-                      <div>
-                        <Label>City Name</Label>
-                        <Input
-                          value={newPlannerCityName}
-                          onChange={(event) => setNewPlannerCityName(event.target.value)}
-                          placeholder="e.g. Kunming"
-                        />
-                      </div>
-
-                      <div>
-                        <Label>Country Name</Label>
-                        <Input
-                          value={newPlannerCountryName}
-                          onChange={(event) => setNewPlannerCountryName(event.target.value)}
-                          placeholder="e.g. China"
-                        />
-                      </div>
-
-                      <div>
-                        <Label>Nights</Label>
-                        <Input
-                          type="number"
-                          min={1}
-                          step={1}
-                          inputMode="numeric"
-                          value={newLegNights}
-                          onChange={(event) => setNewLegNights(event.target.value)}
-                        />
-                      </div>
-
-                      <details className="rounded-md border bg-muted/20">
-                        <summary className="cursor-pointer px-3 py-2 text-sm font-medium text-foreground">
-                          Advanced generation settings
-                        </summary>
-                        <div className="space-y-4 border-t px-3 py-3">
-                          <p className="text-xs text-muted-foreground">
-                            Optional. Leave these alone to use your saved provider defaults or the server-side key if one is
-                            configured.
-                          </p>
-
-                          <div className="grid gap-3 md:grid-cols-2">
-                            <div className="space-y-1">
-                              <Label className="text-xs">Provider</Label>
-                              <Select value={importProvider} onValueChange={(value) => updateImportProvider(value as ProviderOption)}>
-                                <SelectTrigger className="h-9 text-sm">
-                                  <SelectValue />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {PROVIDER_OPTIONS.map((option) => (
-                                    <SelectItem key={option.value} value={option.value}>
-                                      {option.label}
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                              <p className="text-xs text-muted-foreground">{selectedImportProvider.help}</p>
-                            </div>
-
-                            <div className="space-y-2">
-                              <div className="space-y-1">
-                                <Label className="text-xs">{selectedImportProvider.label} API Key</Label>
-                                <Input
-                                  className="h-9 text-sm"
-                                  placeholder="Optional. Leave blank to use a server-side key if configured."
-                                  type={showImportApiKey ? 'text' : 'password'}
-                                  value={activeImportApiKey}
-                                  onChange={(event) => updateImportApiKey(event.target.value)}
-                                  autoComplete="off"
-                                  spellCheck={false}
-                                />
-                              </div>
-                              <label className="flex items-center gap-2 text-xs text-muted-foreground">
-                                <input
-                                  type="checkbox"
-                                  checked={showImportApiKey}
-                                  onChange={(event) => setShowImportApiKey(event.target.checked)}
-                                />
-                                Show API key
-                              </label>
-                            </div>
-
-                            <div className="space-y-1">
-                              <Label className="text-xs">Model</Label>
-                              <Input
-                                className="h-9 text-sm"
-                                placeholder={selectedImportProvider.defaultModel}
-                                value={activeImportModel}
-                                onChange={(event) => updateImportModel(event.target.value)}
-                                autoComplete="off"
-                                spellCheck={false}
-                              />
-                              <p className="text-xs text-muted-foreground">
-                                Default for {selectedImportProvider.label}: {selectedImportProvider.defaultModel}
-                              </p>
-                            </div>
-
-                            <div className="space-y-1">
-                              <Label className="text-xs">Reference Date Or Season</Label>
-                              <Input
-                                className="h-9 text-sm"
-                                placeholder="e.g. April 2026 shoulder season"
-                                value={importReferenceDate}
-                                onChange={(event) => setImportReferenceDate(event.target.value)}
-                              />
-                            </div>
-
-                            <div className="space-y-1 md:col-span-2">
-                              <Label className="text-xs">Extra Context</Label>
-                              <Textarea
-                                className="min-h-20 text-sm"
-                                placeholder="Optional notes such as neighborhoods, trip style, or caveats."
-                                value={importExtraContext}
-                                onChange={(event) => setImportExtraContext(event.target.value)}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </details>
-
-                      {creatingPlannerCity ? (
-                        <InlineLoadingState
-                          title="Resolving city details and adding the leg"
-                          detail="The server is checking the current library, inferring metadata, generating city costs if needed, and creating the new itinerary leg."
-                        />
-                      ) : null}
-
-                      <div className="flex gap-2">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          className="flex-1"
-                          onClick={() => setPlannerNewCityOpen(false)}
-                          disabled={creatingPlannerCity}
-                        >
-                          Cancel
-                        </Button>
-                        <Button
-                          type="button"
-                          className="flex-1"
-                          onClick={handleCreatePlannerCityLeg}
-                          disabled={
-                            creatingPlannerCity ||
-                            !newPlannerCityName.trim() ||
-                            !newPlannerCountryName.trim() ||
-                            !Number.isInteger(Number.parseInt(newLegNights, 10)) ||
-                            Number.parseInt(newLegNights, 10) < 1
-                          }
-                        >
-                          <LoadingButtonLabel
-                            idle="Generate City And Add Leg"
-                            loading="Generating And Adding..."
-                            isLoading={creatingPlannerCity}
-                          />
-                        </Button>
-                      </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                  onOpenChange={setPlannerNewCityOpen}
+                  onCreated={handlePlannerNewCityCreated}
+                />
                 <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
                   <DialogTrigger asChild>
                     <Button>
