@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { TierSelector } from './TierSelector';
+import { TransportEstimateDialog } from './TransportEstimateDialog';
 import { ACCOM_TIERS, FOOD_TIERS, DRINKS_TIERS, ACTIVITIES_TIERS } from '@/types';
 import type { IntercityTransportItem } from '@/types';
 import {
@@ -78,6 +79,11 @@ interface LegCardProps {
   onMoveDown: () => void;
   isFirst: boolean;
   isLast: boolean;
+  previousLeg: {
+    id: number;
+    cityName: string;
+    countryName: string;
+  } | null;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -131,8 +137,10 @@ export function LegCard({
   onMoveDown,
   isFirst,
   isLast,
+  previousLeg,
 }: LegCardProps) {
   const [showOverrides, setShowOverrides] = useState(false);
+  const [transportEstimateOpen, setTransportEstimateOpen] = useState(false);
   const draftKeyCounterRef = useRef(0);
   const editingTransportKeyRef = useRef<string | null>(null);
 
@@ -149,15 +157,15 @@ export function LegCard({
       const previousDraft =
         previousDrafts.find((draft) => draft.id != null && draft.id === transport.id) ??
         previousDrafts[index];
+      const canReusePreviousCostInput = previousDraft != null && (
+        (previousDraft.id != null && transport.id != null && previousDraft.id === transport.id) ||
+        (transport.cost === 0 && previousDraft.id == null)
+      );
 
       return {
         ...transport,
         draftKey: previousDraft?.draftKey ?? createDraftKey(),
-        costInput: previousDraft?.id === transport.id
-          ? previousDraft.costInput
-          : transport.cost === 0 && previousDraft?.id == null
-          ? previousDraft.costInput
-          : String(transport.cost ?? 0),
+        costInput: canReusePreviousCostInput ? previousDraft.costInput : String(transport.cost ?? 0),
       };
     }), [createDraftKey]);
 
@@ -446,11 +454,33 @@ export function LegCard({
                 Add the one-off between-city moves you want included in this leg total.
               </p>
             </div>
-            <Button type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
-              <Plus className="mr-1 h-3.5 w-3.5" />
-              Add transport
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="h-8"
+                onClick={() => setTransportEstimateOpen(true)}
+                disabled={previousLeg == null || !leg.startDate}
+              >
+                Estimate transport
+              </Button>
+              <Button type="button" variant="outline" size="sm" className="h-8" onClick={addIntercityTransport}>
+                <Plus className="mr-1 h-3.5 w-3.5" />
+                Add transport
+              </Button>
+            </div>
           </div>
+          {previousLeg == null ? (
+            <p className="text-xs text-muted-foreground">
+              Add a previous leg before estimating intercity transport.
+            </p>
+          ) : null}
+          {previousLeg != null && !leg.startDate ? (
+            <p className="text-xs text-muted-foreground">
+              Set this leg&apos;s start date before estimating transport from {previousLeg.cityName}.
+            </p>
+          ) : null}
           {transportDrafts.length > 0 ? (
             <div className="space-y-2">
               {transportDrafts.map((transport, index) => (
@@ -563,6 +593,22 @@ export function LegCard({
             </Button>
           ))}
         </div>
+
+        <TransportEstimateDialog
+          open={transportEstimateOpen}
+          onOpenChange={setTransportEstimateOpen}
+          legId={leg.id}
+          previousLeg={previousLeg}
+          currentLeg={{
+            cityName: leg.cityName,
+            countryName: leg.countryName,
+            startDate: leg.startDate,
+          }}
+          existingTransports={leg.intercityTransports}
+          onApplyTransports={async (transports) => {
+            onUpdate(leg.id, { intercityTransports: transports });
+          }}
+        />
       </CardContent>
     </Card>
   );

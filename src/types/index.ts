@@ -4,6 +4,7 @@ export type DrinksTier = 'none' | 'light' | 'moderate' | 'heavy';
 export type ActivitiesTier = 'free' | 'budget' | 'mid' | 'high';
 export type LegStatus = 'planned' | 'active' | 'completed';
 export type EstimateConfidence = 'low' | 'medium' | 'high';
+export type TransportEstimateMode = 'flight' | 'train' | 'bus' | 'ferry' | 'drive' | 'rental_car';
 
 export interface TierOption<T extends string> {
   value: T;
@@ -80,6 +81,65 @@ export interface IntercityTransportItem {
   note: string | null;
   cost: number;
   sortOrder?: number | null;
+}
+
+export interface TransportEstimateOption {
+  mode: TransportEstimateMode;
+  label: string;
+  totalAud: number;
+  confidence: EstimateConfidence;
+  sourceBasis: string;
+  notes: string;
+  reasons: string[];
+  appliedAssumptions: string[];
+  transportRowDraft: {
+    mode: string | null;
+    note: string | null;
+    cost: number;
+    sortOrder?: number | null;
+  };
+}
+
+export interface TransportEstimateCitation {
+  url: string;
+  title: string | null;
+}
+
+export interface TransportEstimateResult {
+  legId: number;
+  origin: {
+    legId: number;
+    cityId: string;
+    cityName: string;
+    countryName: string;
+    startDate: string | null;
+    endDate: string | null;
+  };
+  destination: {
+    legId: number;
+    cityId: string;
+    cityName: string;
+    countryName: string;
+    startDate: string | null;
+    endDate: string | null;
+  };
+  travelDate: string;
+  currency: 'AUD';
+  assumptions: string[];
+  evidenceSummary: {
+    modesRequested: string[];
+    routeFacts: string[];
+  };
+  options: TransportEstimateOption[];
+  providerResult?: {
+    provider: string;
+    model: string;
+    promptVersion: string;
+    usedWebSearch: boolean;
+    fallbackReason: string | null;
+    searchQueries: string[];
+    citations: TransportEstimateCitation[];
+  };
 }
 
 export interface LegWithCost {

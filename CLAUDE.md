@@ -77,6 +77,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `transportOverride`
   - repeatable per-leg `intercityTransports`
 - City cost generation and methodology pages should continue to treat transport as manual-only
+- Planner transport estimation is now a separate intercity feature with its own prompt, provider adapters, and planner UI flows
 
 ## Current LLM Generation System
 
@@ -92,6 +93,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ### UI Behaviour
 - `/settings/cities` includes provider selection, API key entry, model entry, reference date/context, and generation results
+- `/plan` now has a dedicated `Add Leg -> New City` LLM flow that only asks for city name, country name, and nights by default; provider/model/API-key overrides live in an optional advanced section
 - API keys entered in the UI are stored only in browser `localStorage`
 - Keys are not written to the repo or database
 - Model names are editable so the UI is not hard-blocked by stale defaults
@@ -102,6 +104,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Gemini now surfaces a clearer truncation error when it stops before finishing the JSON
 - Provider/model defaults are centralized in `src/lib/city-generation-config.ts`
 - Legacy stored browser defaults are migrated forward automatically
+- Planner-side metadata inference now reuses the same provider/browser-default plumbing through a shared JSON LLM client rather than duplicating provider-specific request code
 
 ### Generation Output Handling
 - Generated rows save:
@@ -123,12 +126,15 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Country and city pickers are searchable
 - Legs can be reordered, edited inline, and constrained by date validation
 - Intercity transport is now a repeatable per-leg list rather than a single always-open field
+- Planner now supports LLM-backed intercity transport estimation per leg plus a bulk `Estimate Missing Transport` flow for unfilled legs
 - Planner supports saved snapshots plus JSON export/import for comparing alternate itineraries
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
 - That import resolver can now also create missing countries inline when a required country is not yet in the library
+- The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
 - Traveller count is configurable in `/settings` and `/plan`, and persists in `app_settings.planner_group_size`
 - City base costs remain stored for 2 travellers and are scaled at runtime in planner/dashboard calculations
 - Legacy `splitPct` / split-percentage planner flow has been removed from the active app layer; traveller count is the only current cost-sharing model
+- Planner header spacing was tightened, the desktop `Trip Summary` / `By Country` column remains sticky, and planner info popovers now use viewport-clamped portal positioning so tall popups stay visible near the bottom of the page
 - Planner totals and summaries are stable and current
 
 ### Expense Tracking
@@ -211,6 +217,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [ ] Review whether `/estimates` should allow inline editing directly, or remain a jump-off point into `/settings/cities`
 - [ ] Consider surfacing city provenance/history more richly in the settings editor
 - [ ] Consider adding tests around city generation parsing and Wise import format handling
+- [ ] Consider expanding Playwright coverage from planner regressions into full add-leg / generation success-path tests with controlled fixture data
+- [ ] Add direct provider/model capability validation for planner transport estimation, especially browse-enabled model compatibility
+- [ ] Consider caching transport estimates by route/date/provider to reduce repeated bulk-estimation cost and rate-limit pressure
+- [ ] Add automated coverage around bulk transport estimation, provider fallback behaviour, and planner apply flows
 
 ## Recent Important Changes
 
@@ -235,15 +245,24 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ### Planner And Dashboard Refinements
 - Added `itinerary_leg_transports` plus runtime backfill from older single transport fields
+- Added derived itinerary leg date backfill so older legs with missing dates still participate in planner, tracking, and dashboard timeline calculations
 - Added `/api/itinerary/snapshot` for plan export/import and browser-saved snapshots
 - Added `/api/itinerary/snapshot/preflight` plus UI flow in `/plan` to resolve missing cities during custom snapshot import
 - Missing-country resolution now defaults to just city name plus country name; country ID, currency, and region are treated as inferred/advanced fields
-- The `/plan` add-leg flow can now branch into the same missing-city resolution workflow to create or generate a new city inline before adding the leg
+- The `/plan` add-leg flow now uses a dedicated planner LLM dialog and server route instead of the older import-style missing-city resolver UI
+- Planner-side new-city creation now checks the DB first, canonicalizes names, infers currency/region/IDs server-side, handles ID collisions, creates missing rows, generates city costs, and then inserts the leg
 - Added `/api/planner/settings` plus `app_settings` storage for planner traveller count
 - Planner tier popovers now show the live scaled per-option costs for the selected traveller count
 - Planner leg cards no longer expose a separate split percentage control
 - Legacy `splitPct` wiring was also removed from the current planner schema, snapshot flow, and quick-add split UI
 - Planner header/sidebar locking and transport input focus handling were tightened
+- Planner new-city typing lag was fixed by moving the LLM add-city dialog into a local-state component instead of keeping the form state at the page root
+- Planner info popovers now render through a portal with measured viewport clamping and a max-height fallback so taller cards, especially `Accommodation`, are not cut off at the bottom of the page
+- Planner transport estimation now has provider-neutral methodology with provider-specific browse adapters for OpenAI, Anthropic, and Gemini, plus single-leg and bulk estimation dialogs
+- Transport estimation now reports whether live search/grounding was actually used, shows search queries/citations when available, and falls back to stricter JSON-only estimation when browse responses do not parse cleanly
+- Anthropic and Gemini transport estimation now use lower token budgets, retry/backoff handling for rate limits, and paced bulk estimation to reduce provider TPM/RPM failures
+- Bulk `Estimate Missing Transport` targets only eligible legs with no transport rows yet and applies the top estimated option per successful leg
+- Added Playwright planner regression coverage for sticky summary behaviour, new-city dialog typing responsiveness, and bottom-edge accommodation popover visibility
 - Dashboard summary calculations and labels were rebuilt around planned-vs-actual clarity
 - Dashboard country comparison now exposes planned/day and actual/day values per country
 - Dashboard category spend now renders as a labeled bar chart, chart mode controls are explicit, and each dashboard chart can be expanded into a larger interactive dialog
@@ -256,10 +275,21 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `city_costs_app_aud.csv`
 - `methodology.md`
 - `llm_prompt_new_cities_1.md`
+- `llm_prompt_intercity_transport_1.md`
 - `src/lib/city-generation.ts`
+- `src/lib/city-llm-client.ts`
 - `src/lib/city-generation-config.ts`
 - `src/lib/country-metadata.ts`
+- `src/lib/planner-city-resolution.ts`
+- `src/lib/transport-estimation.ts`
 - `src/lib/wise-csv-parser.ts`
 - `src/app/api/cities/[id]/generate/route.ts`
+- `src/app/api/itinerary/legs/create-with-city/route.ts`
+- `src/app/api/itinerary/legs/[id]/estimate-transport/route.ts`
+- `src/components/itinerary/BulkTransportEstimateDialog.tsx`
+- `src/components/itinerary/TransportEstimateDialog.tsx`
+- `src/components/itinerary/PlannerNewCityDialog.tsx`
+- `src/components/itinerary/InfoPopover.tsx`
 - `src/app/settings/cities/page.tsx`
 - `src/app/estimates/page.tsx`
+- `tests/playwright/planner-regressions.spec.ts`

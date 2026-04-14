@@ -12,6 +12,7 @@ import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/comp
 import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
 import { PlannerNewCityDialog } from '@/components/itinerary/PlannerNewCityDialog';
+import { BulkTransportEstimateDialog } from '@/components/itinerary/BulkTransportEstimateDialog';
 import { Download, FolderOpen, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
@@ -221,6 +222,15 @@ function guessCountryIdFromName(countryName: string) {
   return slugifyId(countryName);
 }
 
+function countMissingTransportLegs(legs: Leg[]) {
+  return legs.reduce((count, leg, index) => {
+    if (index === 0) return count;
+    if (!leg.startDate) return count;
+    if ((leg.intercityTransports || []).length > 0) return count;
+    return count + 1;
+  }, 0);
+}
+
 export default function PlanPage() {
   const [legs, setLegs] = useState<Leg[]>([]);
   const [cities, setCities] = useState<City[]>([]);
@@ -228,6 +238,7 @@ export default function PlanPage() {
   const [fixedCosts, setFixedCosts] = useState<FixedCost[]>([]);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [savedPlansOpen, setSavedPlansOpen] = useState(false);
+  const [bulkTransportEstimateOpen, setBulkTransportEstimateOpen] = useState(false);
   const [importResolutionOpen, setImportResolutionOpen] = useState(false);
   const [plannerNewCityOpen, setPlannerNewCityOpen] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
@@ -504,6 +515,7 @@ export default function PlanPage() {
   };
 
   const fixedCostsTotal = fixedCosts.reduce((sum, fc) => sum + fc.amountAud, 0);
+  const missingTransportLegCount = countMissingTransportLegs(legs);
   const currentPlanSummary = {
     legCount: legs.length,
     totalNights: legs.reduce((sum, leg) => sum + leg.nights, 0),
@@ -1368,6 +1380,37 @@ export default function PlanPage() {
                   <Upload className="mr-2 h-4 w-4" />
                   Import
                 </Button>
+                <BulkTransportEstimateDialog
+                  open={bulkTransportEstimateOpen}
+                  onOpenChange={setBulkTransportEstimateOpen}
+                  legs={legs.map((leg) => ({
+                    id: leg.id,
+                    cityName: leg.cityName,
+                    countryName: leg.countryName,
+                    startDate: leg.startDate,
+                    intercityTransports: leg.intercityTransports,
+                  }))}
+                  onApplied={async (appliedCount) => {
+                    await fetchData();
+                    setSnapshotStatus(
+                      `Applied estimated intercity transport to ${appliedCount} ${appliedCount === 1 ? 'leg' : 'legs'}.`
+                    );
+                    setSnapshotError(null);
+                  }}
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setBulkTransportEstimateOpen(true);
+                    setSnapshotStatus(null);
+                    setSnapshotError(null);
+                  }}
+                  disabled={missingTransportLegCount === 0}
+                >
+                  Estimate Missing Transport
+                  {missingTransportLegCount > 0 ? ` (${missingTransportLegCount})` : ''}
+                </Button>
                 <PlannerNewCityDialog
                   open={plannerNewCityOpen}
                   onOpenChange={setPlannerNewCityOpen}
@@ -1478,6 +1521,11 @@ export default function PlanPage() {
                   onMoveDown={() => handleReorder(i, 1)}
                   isFirst={i === 0}
                   isLast={i === legs.length - 1}
+                  previousLeg={i > 0 ? {
+                    id: legs[i - 1].id,
+                    cityName: legs[i - 1].cityName,
+                    countryName: legs[i - 1].countryName,
+                  } : null}
                 />
               ))}
             </div>
