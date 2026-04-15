@@ -12,6 +12,10 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
+# Stage 2b: Seed helper
+FROM builder AS seed
+CMD ["npm", "run", "db:seed"]
+
 # Stage 3: Production
 FROM node:20-alpine AS runner
 WORKDIR /app
