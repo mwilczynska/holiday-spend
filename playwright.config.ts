@@ -3,6 +3,10 @@ import { defineConfig, devices } from '@playwright/test';
 const port = Number(process.env.PLAYWRIGHT_PORT || 3000);
 const baseURL = process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${port}`;
 
+process.env.NEXTAUTH_URL ||= baseURL;
+process.env.NEXTAUTH_SECRET ||= process.env.APP_SECRET || 'playwright-dev-secret';
+process.env.AUTH_DEV_PIN ||= process.env.PLAYWRIGHT_AUTH_DEV_PIN || process.env.APP_SECRET || '1234';
+
 export default defineConfig({
   testDir: './tests/playwright',
   timeout: 30_000,

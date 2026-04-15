@@ -1,8 +1,9 @@
-import { asc } from 'drizzle-orm';
+import { asc, eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
 import { cities, countries, itineraryLegs } from '@/db/schema';
 import { success, error, handleError } from '@/lib/api-helpers';
+import { requireCurrentUserId } from '@/lib/auth';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import {
@@ -57,11 +58,16 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
+    const userId = await requireCurrentUserId();
     const body = requestSchema.parse(await request.json());
     const legId = Number.parseInt(params.id, 10);
     if (!Number.isInteger(legId)) return error('Invalid leg id.', 400);
 
-    const rawLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id));
+    const rawLegs = await db
+      .select()
+      .from(itineraryLegs)
+      .where(eq(itineraryLegs.userId, userId))
+      .orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id));
     const allLegs = deriveLegDates(rawLegs);
     const targetIndex = allLegs.findIndex((leg) => leg.id === legId);
     if (targetIndex === -1) return error('Leg not found.', 404);
@@ -82,7 +88,7 @@ export async function POST(
     const [cityRows, countryRows, groupSize] = await Promise.all([
       db.select().from(cities),
       db.select().from(countries),
-      getPlannerGroupSize(),
+      getPlannerGroupSize(userId),
     ]);
 
     const cityMap = new Map(cityRows.map((city) => [city.id, city]));

@@ -1,8 +1,9 @@
 import { db } from '@/db';
 import { itineraryLegs, itineraryLegTransports } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { validateLegDates } from '@/lib/itinerary-validation';
+import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { z } from 'zod';
 
@@ -19,10 +20,11 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const id = parseInt(params.id);
 
-    const existing = await db.select().from(itineraryLegs).where(eq(itineraryLegs.id, id)).get();
+    const existing = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
     if (!existing) return error('Leg not found', 404);
 
     const dateError = validateLegDates({
@@ -43,7 +45,7 @@ export async function PUT(
       updateBody.intercityTransportNote = nextTransports.find((transport) => transport.note)?.note ?? null;
     }
 
-    await db.update(itineraryLegs).set(updateBody).where(eq(itineraryLegs.id, id));
+    await db.update(itineraryLegs).set(updateBody).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId)));
 
     if (nextTransports) {
       await db.delete(itineraryLegTransports).where(eq(itineraryLegTransports.legId, id));
@@ -61,7 +63,7 @@ export async function PUT(
       }
     }
 
-    const updated = await db.select().from(itineraryLegs).where(eq(itineraryLegs.id, id)).get();
+    const updated = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
 
     return success(updated);
   } catch (err) {
@@ -74,12 +76,13 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
+    const userId = await requireCurrentUserId();
     const id = parseInt(params.id);
 
-    const existing = await db.select().from(itineraryLegs).where(eq(itineraryLegs.id, id)).get();
+    const existing = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
     if (!existing) return error('Leg not found', 404);
 
-    await db.delete(itineraryLegs).where(eq(itineraryLegs.id, id));
+    await db.delete(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId)));
     return success({ deleted: true });
   } catch (err) {
     return handleError(err);

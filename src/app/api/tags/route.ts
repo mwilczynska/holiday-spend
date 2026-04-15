@@ -2,11 +2,13 @@ import { db } from '@/db';
 import { tags, expenseTags, expenses } from '@/db/schema';
 import { eq, sql } from 'drizzle-orm';
 import { success, handleError } from '@/lib/api-helpers';
+import { requireCurrentUserId } from '@/lib/auth';
 import { z } from 'zod';
 
 export async function GET() {
   try {
-    const allTags = await db.select().from(tags);
+    const userId = await requireCurrentUserId();
+    const allTags = await db.select().from(tags).where(eq(tags.userId, userId));
 
     // Get counts and sums for each tag
     const tagStats = await db
@@ -17,6 +19,7 @@ export async function GET() {
       })
       .from(expenseTags)
       .leftJoin(expenses, eq(expenseTags.expenseId, expenses.id))
+      .where(eq(expenses.userId, userId))
       .groupBy(expenseTags.tagId);
 
     const statsMap = new Map(tagStats.map(s => [s.tagId, s]));
@@ -40,9 +43,10 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = createSchema.parse(body);
-    const result = await db.insert(tags).values(data).returning();
+    const result = await db.insert(tags).values({ ...data, userId }).returning();
     return success(result[0], 201);
   } catch (err) {
     return handleError(err);

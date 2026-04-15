@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Calculator, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
+import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -63,6 +64,9 @@ export function DesktopSidebar() {
           );
         })}
       </nav>
+      <div className="border-t p-4">
+        <SignOutButton />
+      </div>
     </aside>
   );
 }

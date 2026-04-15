@@ -1,10 +1,11 @@
 import { db } from '@/db';
 import { itineraryLegs, itineraryLegTransports } from '@/db/schema';
+import { requireCurrentUserId } from '@/lib/auth';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { validateLegDates } from '@/lib/itinerary-validation';
 import { z } from 'zod';
-import { sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 
 const intercityTransportSchema = z.object({
   mode: z.string().nullable().optional(),
@@ -31,6 +32,7 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = createSchema.parse(body);
     const intercityTransports = normalizeIntercityTransports(data.intercityTransports);
@@ -47,6 +49,7 @@ export async function POST(request: Request) {
     const maxOrder = await db
       .select({ max: sql<number>`COALESCE(MAX(sort_order), 0)` })
       .from(itineraryLegs)
+      .where(eq(itineraryLegs.userId, userId))
       .get();
 
     const legData = { ...data };
@@ -54,6 +57,7 @@ export async function POST(request: Request) {
 
     const result = await db.insert(itineraryLegs).values({
       ...legData,
+      userId,
       intercityTransportCost,
       intercityTransportNote,
       sortOrder: (maxOrder?.max ?? 0) + 1,

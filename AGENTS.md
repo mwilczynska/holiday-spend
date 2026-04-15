@@ -24,7 +24,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Planning/docs assets: repo root
 - Local sample imports: `sample-data/` (typically untracked)
 - DB: `data/travel.db` (SQLite, gitignored)
-- Dev PIN: `1234` in `.env.local`
+- Local dev auth fallback: optional `AUTH_DEV_PIN` in `.env.local` (current local setup still uses `1234`)
 
 ## Tech Stack
 - Next.js 14 App Router
@@ -131,7 +131,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
 - That import resolver can now also create missing countries inline when a required country is not yet in the library
 - The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
-- Traveller count is configurable in `/settings` and `/plan`, and persists in `app_settings.planner_group_size`
+- Traveller count is configurable in `/settings` and `/plan`, and now persists per user in `user_preferences.planner_group_size`
 - City base costs remain stored for 2 travellers and are scaled at runtime in planner/dashboard calculations
 - Legacy `splitPct` / split-percentage planner flow has been removed from the active app layer; traveller count is the only current cost-sharing model
 - Planner header spacing was tightened, the desktop `Trip Summary` / `By Country` column remains sticky, and planner info popovers now use viewport-clamped portal positioning so tall popups stay visible near the bottom of the page
@@ -206,9 +206,20 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Add a smoother production bootstrap flow for first deploys, including DB creation/seed expectations and failure troubleshooting
 
 ### Priority 2: Auth / Multi-User Foundation
-- [ ] Replace the current shared PIN gate with real auth for a future 2+ user-facing app
-- [ ] Choose and implement an auth stack that supports OAuth and user-owned data from day one
-- [ ] Add user ownership to persisted entities that should not be globally shared, especially saved plans and related comparison data
+- [x] Replace the current shared PIN gate with real auth for a future 2+ user-facing app
+- [x] Choose and implement an auth stack that supports OAuth and user-owned data from day one
+- [x] Add user ownership to current persisted trip entities so later saved-plans/comparison work sits on top of user-owned data rather than global shared state
+
+### Priority 2B: Native Account Expansion
+- [ ] Add native email/password accounts alongside Google OAuth rather than replacing Google sign-in
+- [ ] Treat email as the primary account identifier and keep display name optional instead of introducing username-first auth
+- [ ] Add dedicated native-auth storage for password hashes plus email-verification and password-reset tokens rather than overloading the base `user` table
+- [ ] Use strong password hashing such as `argon2id` for native accounts
+- [ ] Build the public auth flows and pages for sign up, email sign in, verify email, forgot password, and reset password
+- [ ] Add email delivery for verification and password reset flows before treating native accounts as production-ready
+- [ ] Require verification, password reset, and basic brute-force / rate-limit protection as part of the native-account rollout rather than shipping raw passwords without the surrounding safety flows
+- [ ] Decide and document account-linking rules between Google and email/password accounts, and avoid blind auto-linking based only on matching email
+- [ ] Add account-management follow-up such as change password and, later, explicit provider linking/unlinking from a signed-in settings flow
 
 ### Priority 3: Saved Plans And Comparison
 - [ ] Move saved plans from browser `localStorage` into the database
@@ -265,6 +276,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/statement_88001685_GBP_2026-02-01_2026-04-08.csv`
 
 ### Planner And Dashboard Refinements
+- Replaced the old shared PIN cookie gate with NextAuth-based session auth, Google OAuth support, and a dev-only credentials fallback for local development
+- Added Auth.js SQLite tables plus user ownership on itinerary legs, expenses, fixed costs, tags, and planner preferences, with first-sign-in claiming of older single-user data
 - Added `itinerary_leg_transports` plus runtime backfill from older single transport fields
 - Added derived itinerary leg date backfill so older legs with missing dates still participate in planner, tracking, and dashboard timeline calculations
 - Added `/api/itinerary/snapshot` for plan export/import and browser-saved snapshots

@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Calculator, LayoutDashboard, Loader2, Map, Plus, Receipt, Settings } from 'lucide-react';
+import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -62,6 +63,7 @@ export function MobileNav() {
             </button>
           );
         })}
+        <SignOutButton compact />
       </div>
     </nav>
   );

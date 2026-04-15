@@ -101,6 +101,49 @@ CREATE TABLE IF NOT EXISTS app_settings (
   value         TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS user (
+  id            TEXT PRIMARY KEY,
+  name          TEXT,
+  email         TEXT UNIQUE,
+  emailVerified INTEGER,
+  image         TEXT
+);
+
+CREATE TABLE IF NOT EXISTS account (
+  userId            TEXT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+  type              TEXT NOT NULL,
+  provider          TEXT NOT NULL,
+  providerAccountId TEXT NOT NULL,
+  refresh_token     TEXT,
+  access_token      TEXT,
+  expires_at        INTEGER,
+  token_type        TEXT,
+  scope             TEXT,
+  id_token          TEXT,
+  session_state     TEXT,
+  PRIMARY KEY (provider, providerAccountId)
+);
+
+CREATE TABLE IF NOT EXISTS session (
+  sessionToken TEXT PRIMARY KEY,
+  userId       TEXT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+  expires      INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS verificationToken (
+  identifier TEXT NOT NULL,
+  token      TEXT NOT NULL,
+  expires    INTEGER NOT NULL,
+  PRIMARY KEY (identifier, token)
+);
+
+CREATE TABLE IF NOT EXISTS user_preferences (
+  user_id            TEXT PRIMARY KEY REFERENCES user(id) ON DELETE CASCADE,
+  planner_group_size INTEGER NOT NULL DEFAULT 2,
+  created_at         TEXT DEFAULT (datetime('now')),
+  updated_at         TEXT DEFAULT (datetime('now'))
+);
+
 CREATE TABLE IF NOT EXISTS cities (
   id              TEXT PRIMARY KEY,
   country_id      TEXT NOT NULL REFERENCES countries(id),
@@ -137,6 +180,7 @@ CREATE TABLE IF NOT EXISTS cities (
 
 CREATE TABLE IF NOT EXISTS itinerary_legs (
   id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id         TEXT REFERENCES user(id) ON DELETE CASCADE,
   city_id         TEXT NOT NULL REFERENCES cities(id),
   start_date      TEXT,
   end_date        TEXT,
@@ -168,6 +212,7 @@ CREATE TABLE IF NOT EXISTS itinerary_leg_transports (
 
 CREATE TABLE IF NOT EXISTS expenses (
   id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id         TEXT REFERENCES user(id) ON DELETE CASCADE,
   date            TEXT NOT NULL,
   amount          REAL NOT NULL,
   currency        TEXT NOT NULL,
@@ -187,6 +232,7 @@ CREATE TABLE IF NOT EXISTS expenses (
 
 CREATE TABLE IF NOT EXISTS tags (
   id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id         TEXT REFERENCES user(id) ON DELETE CASCADE,
   name            TEXT NOT NULL UNIQUE,
   color           TEXT
 );
@@ -207,6 +253,7 @@ CREATE TABLE IF NOT EXISTS exchange_rates (
 
 CREATE TABLE IF NOT EXISTS fixed_costs (
   id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id         TEXT REFERENCES user(id) ON DELETE CASCADE,
   description     TEXT NOT NULL,
   amount_aud      REAL NOT NULL,
   category        TEXT,

@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { itineraryLegs, itineraryLegTransports, cities, expenses, fixedCosts } from '@/db/schema';
-import { asc } from 'drizzle-orm';
+import { asc, eq, inArray } from 'drizzle-orm';
 import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
 import { calcBurnRate, projectTotal } from '@/lib/burn-rate';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
@@ -9,6 +9,7 @@ import { groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
+import { requireCurrentUserId } from '@/lib/auth';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
 
@@ -22,13 +23,20 @@ function addDays(date: string, days: number): string {
 
 export async function GET() {
   try {
+    const userId = await requireCurrentUserId();
     // Fetch legs, cities, expenses, fixed costs
-    const rawLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
-    const allTransports = await db.select().from(itineraryLegTransports).orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
+    const rawLegs = await db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder));
+    const allTransports = rawLegs.length > 0
+      ? await db
+          .select()
+          .from(itineraryLegTransports)
+          .where(inArray(itineraryLegTransports.legId, rawLegs.map((leg) => leg.id)))
+          .orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id))
+      : [];
     const allCities = await db.select().from(cities);
-    const allExpenses = await db.select().from(expenses);
-    const allFixed = await db.select().from(fixedCosts);
-    const groupSize = await getPlannerGroupSize();
+    const allExpenses = await db.select().from(expenses).where(eq(expenses.userId, userId));
+    const allFixed = await db.select().from(fixedCosts).where(eq(fixedCosts.userId, userId));
+    const groupSize = await getPlannerGroupSize(userId);
 
     const allLegs = deriveLegDates(rawLegs);
     const cityMap = new Map(allCities.map(c => [c.id, c]));

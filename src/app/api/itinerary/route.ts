@@ -1,10 +1,11 @@
 import { db } from '@/db';
 import { itineraryLegs, itineraryLegTransports, cities, countries } from '@/db/schema';
-import { asc } from 'drizzle-orm';
+import { asc, eq, inArray } from 'drizzle-orm';
 import { getDailyCost, getLegTotalFromTransports } from '@/lib/cost-calculator';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
+import { requireCurrentUserId } from '@/lib/auth';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
 
@@ -12,18 +13,23 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
+    const userId = await requireCurrentUserId();
     const legs = await db
       .select()
       .from(itineraryLegs)
+      .where(eq(itineraryLegs.userId, userId))
       .orderBy(asc(itineraryLegs.sortOrder));
-    const transportRows = await db
-      .select()
-      .from(itineraryLegTransports)
-      .orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
+    const transportRows = legs.length > 0
+      ? await db
+          .select()
+          .from(itineraryLegTransports)
+          .where(inArray(itineraryLegTransports.legId, legs.map((leg) => leg.id)))
+          .orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id))
+      : [];
 
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);
-    const groupSize = await getPlannerGroupSize();
+    const groupSize = await getPlannerGroupSize(userId);
 
     const cityMap = new Map(allCities.map(c => [c.id, c]));
     const countryMap = new Map(allCountries.map(c => [c.id, c]));

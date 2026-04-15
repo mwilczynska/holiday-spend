@@ -1,13 +1,15 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs } from '@/db/schema';
-import { asc, eq } from 'drizzle-orm';
+import { and, asc, eq } from 'drizzle-orm';
 import { parseWiseCsv } from '@/lib/wise-csv-parser';
 import { findLegForExpenseDate } from '@/lib/expense-leg-assignment';
 import { prepareWiseExpenses } from '@/lib/wise-import';
 import { success, error, handleError } from '@/lib/api-helpers';
+import { requireCurrentUserId } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const formData = await request.formData();
     const file = formData.get('file') as File | null;
     const confirmImport = formData.get('confirm') === 'true';
@@ -28,6 +30,7 @@ export async function POST(request: Request) {
         sortOrder: itineraryLegs.sortOrder,
       })
       .from(itineraryLegs)
+      .where(eq(itineraryLegs.userId, userId))
       .orderBy(asc(itineraryLegs.sortOrder));
 
     const existingTxnIds = new Set<string>();
@@ -36,7 +39,7 @@ export async function POST(request: Request) {
       const existing = await db
         .select({ id: expenses.id })
         .from(expenses)
-        .where(eq(expenses.wiseTxnId, expense.wiseTxnId))
+        .where(and(eq(expenses.userId, userId), eq(expenses.wiseTxnId, expense.wiseTxnId)))
         .get();
       if (existing) existingTxnIds.add(expense.wiseTxnId);
     }
@@ -63,6 +66,7 @@ export async function POST(request: Request) {
       const matchedLeg = findLegForExpenseDate(expense.date, legs);
 
       await db.insert(expenses).values({
+        userId,
         date: expense.date,
         amount: expense.amount,
         currency: expense.currency,

@@ -30,6 +30,51 @@ const hasItineraryLegTransportsTable = tableNames.some((table) => table.name ===
 const hasCityEstimatesTable = tableNames.some((table) => table.name === 'city_estimates');
 const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_price_inputs');
 const hasAppSettingsTable = tableNames.some((table) => table.name === 'app_settings');
+const hasUserPreferencesTable = tableNames.some((table) => table.name === 'user_preferences');
+
+sqlite.exec(`
+  CREATE TABLE IF NOT EXISTS user (
+    id TEXT PRIMARY KEY,
+    name TEXT,
+    email TEXT UNIQUE,
+    emailVerified INTEGER,
+    image TEXT
+  )
+`);
+
+sqlite.exec(`
+  CREATE TABLE IF NOT EXISTS account (
+    userId TEXT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+    type TEXT NOT NULL,
+    provider TEXT NOT NULL,
+    providerAccountId TEXT NOT NULL,
+    refresh_token TEXT,
+    access_token TEXT,
+    expires_at INTEGER,
+    token_type TEXT,
+    scope TEXT,
+    id_token TEXT,
+    session_state TEXT,
+    PRIMARY KEY (provider, providerAccountId)
+  )
+`);
+
+sqlite.exec(`
+  CREATE TABLE IF NOT EXISTS session (
+    sessionToken TEXT PRIMARY KEY,
+    userId TEXT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+    expires INTEGER NOT NULL
+  )
+`);
+
+sqlite.exec(`
+  CREATE TABLE IF NOT EXISTS verificationToken (
+    identifier TEXT NOT NULL,
+    token TEXT NOT NULL,
+    expires INTEGER NOT NULL,
+    PRIMARY KEY (identifier, token)
+  )
+`);
 
 const cityColumns = sqlite.prepare("PRAGMA table_info(cities)").all() as Array<{ name: string }>;
 const hasPrivateRoomColumn = cityColumns.some((column) => column.name === 'accom_private_room');
@@ -86,6 +131,17 @@ if (!hasAppSettingsTable) {
   `);
 }
 
+if (!hasUserPreferencesTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS user_preferences (
+      user_id TEXT PRIMARY KEY REFERENCES user(id) ON DELETE CASCADE,
+      planner_group_size INTEGER NOT NULL DEFAULT 2,
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    )
+  `);
+}
+
 if (!hasItineraryLegTransportsTable) {
   sqlite.exec(`
     CREATE TABLE IF NOT EXISTS itinerary_leg_transports (
@@ -97,6 +153,38 @@ if (!hasItineraryLegTransportsTable) {
       sort_order INTEGER
     )
   `);
+}
+
+if (hasItineraryLegsTable) {
+  const itineraryLegColumns = sqlite.prepare("PRAGMA table_info(itinerary_legs)").all() as Array<{ name: string }>;
+  const hasUserIdColumn = itineraryLegColumns.some((column) => column.name === 'user_id');
+  if (!hasUserIdColumn) {
+    sqlite.exec('ALTER TABLE itinerary_legs ADD COLUMN user_id TEXT REFERENCES user(id) ON DELETE CASCADE');
+  }
+}
+
+if (hasExpensesTable) {
+  const expenseColumns = sqlite.prepare("PRAGMA table_info(expenses)").all() as Array<{ name: string }>;
+  const hasUserIdColumn = expenseColumns.some((column) => column.name === 'user_id');
+  if (!hasUserIdColumn) {
+    sqlite.exec('ALTER TABLE expenses ADD COLUMN user_id TEXT REFERENCES user(id) ON DELETE CASCADE');
+  }
+}
+
+if (tableNames.some((table) => table.name === 'fixed_costs')) {
+  const fixedCostColumns = sqlite.prepare("PRAGMA table_info(fixed_costs)").all() as Array<{ name: string }>;
+  const hasUserIdColumn = fixedCostColumns.some((column) => column.name === 'user_id');
+  if (!hasUserIdColumn) {
+    sqlite.exec('ALTER TABLE fixed_costs ADD COLUMN user_id TEXT REFERENCES user(id) ON DELETE CASCADE');
+  }
+}
+
+if (tableNames.some((table) => table.name === 'tags')) {
+  const tagColumns = sqlite.prepare("PRAGMA table_info(tags)").all() as Array<{ name: string }>;
+  const hasUserIdColumn = tagColumns.some((column) => column.name === 'user_id');
+  if (!hasUserIdColumn) {
+    sqlite.exec('ALTER TABLE tags ADD COLUMN user_id TEXT REFERENCES user(id) ON DELETE CASCADE');
+  }
 }
 
 sqlite.prepare(`

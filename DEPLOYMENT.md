@@ -68,11 +68,19 @@ If that baseline is not already present, use the `travel-blog` guide for the ser
 Create `.env.local` from `.env.example` and set at least:
 
 ```env
-APP_SECRET=replace-with-a-long-random-secret
+NEXTAUTH_SECRET=replace-with-a-long-random-secret
+# NEXTAUTH_URL=https://wanderledger.example.com
 DATABASE_URL=file:./data/travel.db
 ```
 
-Optional provider keys:
+For production auth, also set Google OAuth credentials:
+
+```env
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+```
+
+Optional LLM provider keys:
 
 ```env
 ANTHROPIC_API_KEY=...

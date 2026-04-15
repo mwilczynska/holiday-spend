@@ -2,6 +2,7 @@ import { db } from '@/db';
 import { cities, countries, expenses, fixedCosts, itineraryLegs, itineraryLegTransports } from '@/db/schema';
 import { NextResponse } from 'next/server';
 import { error, handleError, success } from '@/lib/api-helpers';
+import { requireCurrentUserId } from '@/lib/auth';
 import { CityGenerationError } from '@/lib/city-generation';
 import { getIntercityTransportTotal, groupIntercityTransportsByLegId, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { getPlannerGroupSize, setPlannerGroupSize } from '@/lib/planner-settings';
@@ -10,21 +11,25 @@ import {
   collectMissingSnapshotCities,
   parseSnapshotImportRequest,
 } from '@/lib/snapshot-import';
-import { asc } from 'drizzle-orm';
+import { asc, eq, inArray } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const legs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
-    const transports = await db
-      .select()
-      .from(itineraryLegTransports)
-      .orderBy(asc(itineraryLegTransports.legId), asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
-    const allFixedCosts = await db.select().from(fixedCosts);
+    const userId = await requireCurrentUserId();
+    const legs = await db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder));
+    const transports = legs.length > 0
+      ? await db
+          .select()
+          .from(itineraryLegTransports)
+          .where(inArray(itineraryLegTransports.legId, legs.map((leg) => leg.id)))
+          .orderBy(asc(itineraryLegTransports.legId), asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id))
+      : [];
+    const allFixedCosts = await db.select().from(fixedCosts).where(eq(fixedCosts.userId, userId));
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);
-    const groupSize = await getPlannerGroupSize();
+    const groupSize = await getPlannerGroupSize(userId);
 
     const transportMap = groupIntercityTransportsByLegId(transports);
     const cityMap = new Map(allCities.map((city) => [city.id, city]));
@@ -58,6 +63,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const importRequest = parseSnapshotImportRequest(body);
     const { snapshot, missingCityStrategy, generationConfig } = importRequest;
@@ -97,11 +103,11 @@ export async function POST(request: Request) {
       return error(`Cannot import snapshot. Unknown country id "${missingCountry.countryId}".`, 400);
     }
 
-    await setPlannerGroupSize(snapshot.groupSize);
+    await setPlannerGroupSize(userId, snapshot.groupSize);
 
-    await db.update(expenses).set({ legId: null });
-    await db.delete(itineraryLegs);
-    await db.delete(fixedCosts);
+    await db.update(expenses).set({ legId: null }).where(eq(expenses.userId, userId));
+    await db.delete(itineraryLegs).where(eq(itineraryLegs.userId, userId));
+    await db.delete(fixedCosts).where(eq(fixedCosts.userId, userId));
 
     const importedLegIdBySnapshotKey = new Map<number, number>();
 
@@ -113,6 +119,7 @@ export async function POST(request: Request) {
       const inserted = await db
         .insert(itineraryLegs)
         .values({
+          userId,
           cityId: leg.cityId,
           startDate: leg.startDate ?? null,
           endDate: leg.endDate ?? null,
@@ -153,6 +160,7 @@ export async function POST(request: Request) {
     if (snapshot.fixedCosts.length > 0) {
       await db.insert(fixedCosts).values(
         snapshot.fixedCosts.map((cost) => ({
+          userId,
           description: cost.description,
           amountAud: cost.amountAud,
           category: cost.category ?? null,

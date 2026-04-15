@@ -33,20 +33,23 @@ It combines itinerary planning, city-by-city budget modelling, actual expense tr
 ## Local Development
 
 1. Copy `.env.example` to `.env.local`.
-2. Set `APP_SECRET`. The local dev PIN in the current project memory is `1234`.
-3. Install dependencies:
+2. Set `NEXTAUTH_SECRET`.
+3. For local development, either:
+   - set `AUTH_DEV_PIN` for the built-in dev-only credentials login, or
+   - set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` for Google OAuth.
+4. Install dependencies:
 
 ```bash
 npm ci
 ```
 
-4. Seed the local SQLite database:
+5. Seed the local SQLite database:
 
 ```bash
 npm run db:seed
 ```
 
-5. Start the dev server:
+6. Start the dev server:
 
 ```bash
 npm run dev
@@ -94,5 +97,5 @@ The active backlog lives in `AGENTS.md` / `CLAUDE.md`. Current priorities are:
 
 ## Notes
 
-- The repo still includes a temporary shared-secret gate for private use today
-- OAuth and user-owned data are planned next-step foundation work for a future 2+ user-facing deployment
+- The app now uses real session auth with Google OAuth support and a dev-only local PIN fallback
+- User-owned trip data is now scoped per authenticated user; saved plans still need to move from browser storage into the DB

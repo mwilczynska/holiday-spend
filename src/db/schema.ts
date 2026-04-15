@@ -1,6 +1,44 @@
 import { sqliteTable, text, integer, real, primaryKey } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 
+export const users = sqliteTable('user', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text('name'),
+  email: text('email').unique(),
+  emailVerified: integer('emailVerified', { mode: 'timestamp_ms' }),
+  image: text('image'),
+});
+
+export const accounts = sqliteTable('account', {
+  userId: text('userId').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  type: text('type').notNull(),
+  provider: text('provider').notNull(),
+  providerAccountId: text('providerAccountId').notNull(),
+  refresh_token: text('refresh_token'),
+  access_token: text('access_token'),
+  expires_at: integer('expires_at'),
+  token_type: text('token_type'),
+  scope: text('scope'),
+  id_token: text('id_token'),
+  session_state: text('session_state'),
+}, (table) => [
+  primaryKey({ columns: [table.provider, table.providerAccountId] }),
+]);
+
+export const sessions = sqliteTable('session', {
+  sessionToken: text('sessionToken').primaryKey(),
+  userId: text('userId').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  expires: integer('expires', { mode: 'timestamp_ms' }).notNull(),
+});
+
+export const verificationTokens = sqliteTable('verificationToken', {
+  identifier: text('identifier').notNull(),
+  token: text('token').notNull(),
+  expires: integer('expires', { mode: 'timestamp_ms' }).notNull(),
+}, (table) => [
+  primaryKey({ columns: [table.identifier, table.token] }),
+]);
+
 export const countries = sqliteTable('countries', {
   id: text('id').primaryKey(), // e.g. 'vietnam', 'japan'
   name: text('name').notNull(),
@@ -11,6 +49,13 @@ export const countries = sqliteTable('countries', {
 export const appSettings = sqliteTable('app_settings', {
   key: text('key').primaryKey(),
   value: text('value').notNull(),
+});
+
+export const userPreferences = sqliteTable('user_preferences', {
+  userId: text('user_id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
+  plannerGroupSize: integer('planner_group_size').notNull().default(2),
+  createdAt: text('created_at').default(sql`(datetime('now'))`),
+  updatedAt: text('updated_at').default(sql`(datetime('now'))`),
 });
 
 export const cities = sqliteTable('cities', {
@@ -62,6 +107,7 @@ export const cities = sqliteTable('cities', {
 
 export const itineraryLegs = sqliteTable('itinerary_legs', {
   id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   cityId: text('city_id').notNull().references(() => cities.id),
   startDate: text('start_date'),
   endDate: text('end_date'),
@@ -100,6 +146,7 @@ export const itineraryLegTransports = sqliteTable('itinerary_leg_transports', {
 
 export const expenses = sqliteTable('expenses', {
   id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   date: text('date').notNull(),
   amount: real('amount').notNull(),
   currency: text('currency').notNull(),
@@ -119,6 +166,7 @@ export const expenses = sqliteTable('expenses', {
 
 export const tags = sqliteTable('tags', {
   id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   name: text('name').notNull().unique(),
   color: text('color'),
 });
@@ -141,6 +189,7 @@ export const exchangeRates = sqliteTable('exchange_rates', {
 
 export const fixedCosts = sqliteTable('fixed_costs', {
   id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   description: text('description').notNull(),
   amountAud: real('amount_aud').notNull(),
   category: text('category'), // 'visa', 'insurance', 'flights', 'gear', 'other'

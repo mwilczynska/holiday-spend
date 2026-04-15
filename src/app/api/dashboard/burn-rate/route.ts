@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs, itineraryLegTransports, cities, countries } from '@/db/schema';
-import { asc } from 'drizzle-orm';
+import { asc, eq, inArray } from 'drizzle-orm';
 import { buildBurnRateSeries, buildCountryBands, enumerateDates } from '@/lib/burn-rate';
 import { getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
@@ -9,6 +9,7 @@ import { getIntercityTransportTotal, groupIntercityTransportsByLegId } from '@/l
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
+import { requireCurrentUserId } from '@/lib/auth';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, ActivitiesTier, DrinksTier, FoodTier } from '@/types';
 
@@ -32,12 +33,19 @@ function minDate(...dates: Array<string | null | undefined>): string | null {
 
 export async function GET() {
   try {
-    const allExpenses = await db.select().from(expenses);
-    const rawLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
-    const allTransports = await db.select().from(itineraryLegTransports).orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id));
+    const userId = await requireCurrentUserId();
+    const allExpenses = await db.select().from(expenses).where(eq(expenses.userId, userId));
+    const rawLegs = await db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder));
+    const allTransports = rawLegs.length > 0
+      ? await db
+          .select()
+          .from(itineraryLegTransports)
+          .where(inArray(itineraryLegTransports.legId, rawLegs.map((leg) => leg.id)))
+          .orderBy(asc(itineraryLegTransports.sortOrder), asc(itineraryLegTransports.id))
+      : [];
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);
-    const groupSize = await getPlannerGroupSize();
+    const groupSize = await getPlannerGroupSize(userId);
 
     const allLegs = deriveLegDates(rawLegs);
     const legMap = new Map(allLegs.map((leg) => [leg.id, leg]));

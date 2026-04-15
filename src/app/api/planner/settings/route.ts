@@ -1,4 +1,5 @@
 import { error, handleError, success } from '@/lib/api-helpers';
+import { requireCurrentUserId } from '@/lib/auth';
 import { getPlannerGroupSize, setPlannerGroupSize } from '@/lib/planner-settings';
 import { z } from 'zod';
 
@@ -10,7 +11,8 @@ const updateSchema = z.object({
 
 export async function GET() {
   try {
-    const groupSize = await getPlannerGroupSize();
+    const userId = await requireCurrentUserId();
+    const groupSize = await getPlannerGroupSize(userId);
     return success({ groupSize });
   } catch (err) {
     return handleError(err);
@@ -19,9 +21,10 @@ export async function GET() {
 
 export async function PUT(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = updateSchema.parse(body);
-    const groupSize = await setPlannerGroupSize(data.groupSize);
+    const groupSize = await setPlannerGroupSize(userId, data.groupSize);
     return success({ groupSize });
   } catch (err) {
     if (err instanceof z.ZodError) {

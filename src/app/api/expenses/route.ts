@@ -2,10 +2,13 @@ import { db } from '@/db';
 import { expenses, expenseTags, itineraryLegs, cities, countries } from '@/db/schema';
 import { eq, and, gte, lte, desc } from 'drizzle-orm';
 import { success, handleError } from '@/lib/api-helpers';
+import { error } from '@/lib/api-helpers';
+import { requireCurrentUserId } from '@/lib/auth';
 import { z } from 'zod';
 
 export async function GET(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const url = new URL(request.url);
     const leg = url.searchParams.get('leg');
     const cat = url.searchParams.get('cat');
@@ -14,7 +17,7 @@ export async function GET(request: Request) {
     const to = url.searchParams.get('to');
     const source = url.searchParams.get('source');
 
-    const conditions = [];
+    const conditions = [eq(expenses.userId, userId)];
     if (leg) conditions.push(eq(expenses.legId, parseInt(leg)));
     if (cat) conditions.push(eq(expenses.category, cat));
     if (from) conditions.push(gte(expenses.date, from));
@@ -90,9 +93,20 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = createSchema.parse(body);
-    const result = await db.insert(expenses).values(data).returning();
+    if (data.legId != null) {
+      const leg = await db
+        .select({ id: itineraryLegs.id })
+        .from(itineraryLegs)
+        .where(and(eq(itineraryLegs.id, data.legId), eq(itineraryLegs.userId, userId)))
+        .get();
+      if (!leg) {
+        return error('Assigned leg not found', 404);
+      }
+    }
+    const result = await db.insert(expenses).values({ ...data, userId }).returning();
     return success(result[0], 201);
   } catch (err) {
     return handleError(err);

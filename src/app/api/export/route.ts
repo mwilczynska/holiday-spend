@@ -1,20 +1,32 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs, cities, countries, fixedCosts, tags, expenseTags } from '@/db/schema';
-import { asc } from 'drizzle-orm';
+import { and, asc, eq, inArray } from 'drizzle-orm';
+import { requireCurrentUserId } from '@/lib/auth';
 import { handleError } from '@/lib/api-helpers';
 
 export async function GET(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const { searchParams } = new URL(request.url);
     const format = searchParams.get('format') || 'json';
 
-    const allExpenses = await db.select().from(expenses).orderBy(asc(expenses.date));
-    const allLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder));
+    const allExpenses = await db.select().from(expenses).where(eq(expenses.userId, userId)).orderBy(asc(expenses.date));
+    const allLegs = await db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder));
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);
-    const allFixed = await db.select().from(fixedCosts);
-    const allTags = await db.select().from(tags);
-    const allExpenseTags = await db.select().from(expenseTags);
+    const allFixed = await db.select().from(fixedCosts).where(eq(fixedCosts.userId, userId));
+    const allTags = await db.select().from(tags).where(eq(tags.userId, userId));
+    const allExpenseTags = allExpenses.length > 0 && allTags.length > 0
+      ? await db
+          .select()
+          .from(expenseTags)
+          .where(
+            and(
+              inArray(expenseTags.expenseId, allExpenses.map((expense) => expense.id)),
+              inArray(expenseTags.tagId, allTags.map((tag) => tag.id))
+            )
+          )
+      : [];
 
     if (format === 'csv') {
       // Export expenses as CSV

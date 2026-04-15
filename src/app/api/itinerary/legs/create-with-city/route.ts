@@ -1,6 +1,7 @@
-import { asc, sql } from 'drizzle-orm';
+import { asc, eq, sql } from 'drizzle-orm';
 import { db } from '@/db';
 import { itineraryLegs } from '@/db/schema';
+import { requireCurrentUserId } from '@/lib/auth';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { resolveOrCreatePlannerCity, PlannerCityResolutionError } from '@/lib/planner-city-resolution';
@@ -21,6 +22,7 @@ const createSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    const userId = await requireCurrentUserId();
     const body = await request.json();
     const data = createSchema.parse(body);
 
@@ -37,9 +39,14 @@ export async function POST(request: Request) {
     const maxOrder = await db
       .select({ max: sql<number>`COALESCE(MAX(sort_order), 0)` })
       .from(itineraryLegs)
+      .where(eq(itineraryLegs.userId, userId))
       .get();
     const nextSortOrder = (maxOrder?.max ?? 0) + 1;
-    const existingLegs = await db.select().from(itineraryLegs).orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id));
+    const existingLegs = await db
+      .select()
+      .from(itineraryLegs)
+      .where(eq(itineraryLegs.userId, userId))
+      .orderBy(asc(itineraryLegs.sortOrder), asc(itineraryLegs.id));
     const derivedNewLeg = deriveLegDates([
       ...existingLegs,
       {
@@ -66,6 +73,7 @@ export async function POST(request: Request) {
     ])[existingLegs.length];
 
     const result = await db.insert(itineraryLegs).values({
+      userId,
       cityId: resolvedCity.cityId,
       startDate: derivedNewLeg?.startDate ?? null,
       endDate: derivedNewLeg?.endDate ?? null,
