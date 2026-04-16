@@ -7,14 +7,16 @@ test.describe.serial('plan comparison', () => {
 
     await expect(page.getByRole('heading', { name: 'Compare Plans' })).toBeVisible();
     await expect(page.getByText('Select 2 to 5 saved plans')).toBeVisible();
-    await expect(page.getByRole('button', { name: /Back to Planner/ })).toBeVisible();
+    // Sub-nav tabs should be visible
+    await expect(page.getByRole('button', { name: /Planner/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /Compare Plans/ })).toBeVisible();
   });
 
-  test('back button navigates to planner', async ({ page }) => {
+  test('planner tab navigates back to planner', async ({ page }) => {
     await page.goto('/plan/compare');
     await page.waitForLoadState('networkidle');
 
-    await page.getByRole('button', { name: /Back to Planner/ }).click();
+    await page.getByRole('button', { name: /Planner/ }).first().click();
     await expect(page).toHaveURL('/plan', { timeout: 15000 });
   });
 

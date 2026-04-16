@@ -3,10 +3,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { ComparisonChart } from '@/components/itinerary/ComparisonChart';
 import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummaryCards';
+import { PlannerSubNav } from '@/components/itinerary/PlannerSubNav';
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
 
@@ -97,12 +97,9 @@ export default function ComparePlansPage() {
   if (!idsParam) {
     return (
       <div className="space-y-6">
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" onClick={() => router.push('/plan')}>
-            <ArrowLeft className="mr-1 h-4 w-4" />
-            Back to Planner
-          </Button>
-          <h1 className="text-2xl font-bold">Compare Plans</h1>
+        <div>
+          <PlannerSubNav />
+          <h1 className="text-2xl font-bold mt-4">Compare Plans</h1>
         </div>
 
         <div className="rounded-lg border bg-card p-4">
@@ -158,12 +155,9 @@ export default function ComparePlansPage() {
   if (error) {
     return (
       <div className="space-y-6">
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" onClick={() => router.push('/plan')}>
-            <ArrowLeft className="mr-1 h-4 w-4" />
-            Back to Planner
-          </Button>
-          <h1 className="text-2xl font-bold">Compare Plans</h1>
+        <div>
+          <PlannerSubNav />
+          <h1 className="text-2xl font-bold mt-4">Compare Plans</h1>
         </div>
         <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
           <p className="text-sm text-destructive">{error}</p>
@@ -176,12 +170,9 @@ export default function ComparePlansPage() {
   if (!comparisonData || comparisonData.length === 0) {
     return (
       <div className="space-y-6">
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" onClick={() => router.push('/plan')}>
-            <ArrowLeft className="mr-1 h-4 w-4" />
-            Back to Planner
-          </Button>
-          <h1 className="text-2xl font-bold">Compare Plans</h1>
+        <div>
+          <PlannerSubNav />
+          <h1 className="text-2xl font-bold mt-4">Compare Plans</h1>
         </div>
         <p className="text-sm text-muted-foreground">
           No comparison data available. The selected plans may not have valid date ranges.
@@ -192,15 +183,14 @@ export default function ComparePlansPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
-        <Button variant="ghost" size="sm" onClick={() => router.push('/plan')}>
-          <ArrowLeft className="mr-1 h-4 w-4" />
-          Back to Planner
-        </Button>
-        <h1 className="text-2xl font-bold">Compare Plans</h1>
-        <span className="text-sm text-muted-foreground">
-          {comparisonData.length} plan{comparisonData.length !== 1 ? 's' : ''}
-        </span>
+      <div>
+        <PlannerSubNav />
+        <div className="flex items-center gap-3 mt-4">
+          <h1 className="text-2xl font-bold">Compare Plans</h1>
+          <span className="text-sm text-muted-foreground">
+            {comparisonData.length} plan{comparisonData.length !== 1 ? 's' : ''}
+          </span>
+        </div>
       </div>
 
       <ComparisonSummaryCards plans={comparisonData} />
