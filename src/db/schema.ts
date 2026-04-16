@@ -58,6 +58,20 @@ export const userPreferences = sqliteTable('user_preferences', {
   updatedAt: text('updated_at').default(sql`(datetime('now'))`),
 });
 
+export const savedPlans = sqliteTable('saved_plans', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  name: text('name').notNull(),
+  snapshotJson: text('snapshot_json').notNull(),
+  groupSize: integer('group_size').notNull().default(2),
+  legCount: integer('leg_count').notNull().default(0),
+  totalNights: integer('total_nights').notNull().default(0),
+  totalBudget: real('total_budget').notNull().default(0),
+  fixedCostCount: integer('fixed_cost_count').notNull().default(0),
+  createdAt: text('created_at').default(sql`(datetime('now'))`),
+  updatedAt: text('updated_at').default(sql`(datetime('now'))`),
+});
+
 export const cities = sqliteTable('cities', {
   id: text('id').primaryKey(), // e.g. 'hanoi', 'tokyo'
   countryId: text('country_id').notNull().references(() => countries.id),
