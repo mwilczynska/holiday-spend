@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/saved-plans-comparison` off `main`
 > **PR target**: `main`
-> **Status**: COMPLETE — all phases done, branch pushed, PR ready
+> **Status**: IN PROGRESS — Phase 8 (Compare as first-class page)
 
 ---
 
@@ -23,6 +23,14 @@ The existing snapshot infrastructure (`PlanSnapshot` Zod schema in `src/lib/plan
 - [x] **Phase 5** — Playwright E2E tests (commit bc4002c)
 - [x] **Phase 6** — Documentation updates (CLAUDE.md) + cleanup
 - [x] **Phase 7** — PR creation (branch pushed; PR ready at GitHub)
+- [ ] **Phase 8** — Compare as first-class page (sidebar nav + fixed header + persistence + change-plans flow)
+  - [ ] 8a — Add "Compare" to sidebar nav (Desktop + Mobile), fix `isActive` specificity for `/plan`
+  - [ ] 8b — Fixed header on compare page matching planner proportions
+  - [ ] 8c — sessionStorage persistence for last-compared plan IDs
+  - [ ] 8d — "Change Plans" button on results view, pre-select current IDs in selector
+  - [ ] 8e — Remove PlannerSubNav component (sidebar replaces it)
+  - [ ] 8f — Update Playwright tests for new nav pattern
+  - [ ] 8g — Update CLAUDE.md + commit
 
 ---
 
@@ -282,6 +290,90 @@ Uses existing `Card` component from `src/components/ui/card.tsx`.
 - Push `feat/saved-plans-comparison` to remote
 - Create PR with summary of all changes
 - Link back to this plan file
+
+---
+
+## Phase 8: Compare as First-Class Page
+
+### Problem
+
+The comparison feature is buried behind a sub-tab that only appears inside the planner. Users must expand saved plans, tick checkboxes, then navigate — and navigating away loses the comparison. The compare page header also doesn't match the planner's fixed header style.
+
+### 8a. Sidebar navigation
+
+**Files to modify**: `src/components/layout/DesktopSidebar.tsx`, `src/components/layout/MobileNav.tsx`
+
+Add a "Compare" nav item directly after "Plan":
+
+```ts
+{ href: '/plan/compare', label: 'Compare', icon: BarChart3 }
+```
+
+Fix `isActive` specificity: the "Plan" item must NOT highlight when `pathname.startsWith('/plan/compare')`. Add an exclusion check so `/plan/compare` only activates "Compare", not both.
+
+### 8b. Fixed header on compare page
+
+**File to modify**: `src/app/plan/compare/page.tsx`
+
+Wrap the compare page header in the same fixed-header pattern as the planner:
+
+```
+<div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
+  <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
+    <div className="mx-auto max-w-6xl px-4 py-4 lg:px-8">
+      <!-- title + subtitle + action buttons -->
+    </div>
+  </div>
+</div>
+<div style={{ paddingTop: headerHeight }}>
+  <!-- page content -->
+</div>
+```
+
+Header layout mirrors the planner: title + subtitle left, action buttons right.
+
+### 8c. sessionStorage persistence
+
+**File to modify**: `src/app/plan/compare/page.tsx`
+
+Store last-compared plan IDs in `sessionStorage` under `wanderledger.compare-ids`. On load:
+- If `?ids=...` in URL → use those, update sessionStorage
+- If no `?ids=` but sessionStorage has IDs → auto-load that comparison
+- If neither → show plan selector
+
+This means clicking "Compare" in the sidebar always returns to the last comparison.
+
+### 8d. "Change Plans" button + pre-selection
+
+**File to modify**: `src/app/plan/compare/page.tsx`
+
+On the comparison results view, add a "Change Plans" button in the header. Clicking it:
+- Clears `?ids=` from URL (shows selector mode)
+- Pre-checks the currently-compared plan IDs in the selector checkboxes
+
+### 8e. Remove PlannerSubNav
+
+**Files to modify**: `src/app/plan/page.tsx`, `src/app/plan/compare/page.tsx`
+**File to delete**: `src/components/itinerary/PlannerSubNav.tsx`
+
+Sidebar now handles navigation — the sub-tab strip is redundant.
+
+### 8f. Update Playwright tests
+
+**File to modify**: `tests/playwright/plan-comparison.spec.ts`
+
+Update tests that reference PlannerSubNav buttons or "Back to Planner" patterns. Verify sidebar navigation works for the comparison flow.
+
+### 8g. Documentation
+
+Update CLAUDE.md with the new sidebar entry, remove sub-tab references.
+
+### Phase 8 verification
+- `npx tsc --noEmit` passes
+- Browser: clicking "Compare" in sidebar loads last comparison or selector
+- Browser: "Change Plans" button returns to selector with current IDs pre-checked
+- Browser: navigating away and back retains comparison
+- Playwright tests pass
 
 ---
 
