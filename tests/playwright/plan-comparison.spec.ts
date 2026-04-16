@@ -2,22 +2,25 @@ import { expect, test } from '@playwright/test';
 
 test.describe.serial('plan comparison', () => {
   test('plan selector renders when no IDs provided', async ({ page }) => {
+    // Clear any stored comparison IDs
+    await page.goto('/plan/compare');
+    await page.evaluate(() => sessionStorage.removeItem('wanderledger.compare-ids'));
     await page.goto('/plan/compare');
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByRole('heading', { name: 'Compare Plans' })).toBeVisible();
-    await expect(page.getByText('Select 2 to 5 saved plans')).toBeVisible();
-    // Sub-nav tabs should be visible
-    await expect(page.getByRole('button', { name: /Planner/ })).toBeVisible();
-    await expect(page.getByRole('button', { name: /Compare Plans/ })).toBeVisible();
+    await expect(page.getByText('Select 2')).toBeVisible();
   });
 
-  test('planner tab navigates back to planner', async ({ page }) => {
-    await page.goto('/plan/compare');
+  test('compare sidebar navigates to compare page', async ({ page }) => {
+    await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    await page.getByRole('button', { name: /Planner/ }).first().click();
-    await expect(page).toHaveURL('/plan', { timeout: 15000 });
+    // Click Compare in sidebar
+    const compareNav = page.locator('aside').getByRole('button', { name: 'Compare' });
+    await expect(compareNav).toBeVisible();
+    await compareNav.click();
+    await expect(page).toHaveURL(/\/plan\/compare/, { timeout: 15000 });
   });
 
   test('comparison renders chart and cards for saved plans', async ({ page }) => {
@@ -37,6 +40,7 @@ test.describe.serial('plan comparison', () => {
     }
 
     // Navigate to comparison page through the selector
+    await page.evaluate(() => sessionStorage.removeItem('wanderledger.compare-ids'));
     await page.goto('/plan/compare');
     await page.waitForLoadState('networkidle');
 
@@ -57,6 +61,9 @@ test.describe.serial('plan comparison', () => {
 
     // Verify chart renders
     await expect(page.getByText('Cumulative Planned Spend')).toBeVisible();
+
+    // Verify "Change Plans" button is visible
+    await expect(page.getByRole('button', { name: /Change Plans/ })).toBeVisible();
   });
 
   test('shows error for invalid plan IDs', async ({ page }) => {

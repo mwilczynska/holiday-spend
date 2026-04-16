@@ -20,7 +20,6 @@ import { CITY_GENERATION_DEFAULT_MODELS } from '@/lib/city-generation-config';
 import { findKnownCountryCurrencyCode, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
-import { PlannerSubNav } from '@/components/itinerary/PlannerSubNav';
 import { migrateLocalStoragePlans } from '@/lib/saved-plan-migration';
 
 const CITY_GENERATION_STORAGE_PREFIX = 'wanderledger.city-generation';
@@ -1489,9 +1488,6 @@ export default function PlanPage() {
             ) : null}
             <div className="mt-3 text-xs text-muted-foreground">
               Current plan: {groupSize} {groupSize === 1 ? 'traveller' : 'travellers'}, {currentPlanSummary.legCount} legs, {currentPlanSummary.totalNights} nights, ${currentPlanSummary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total.
-            </div>
-            <div className="mt-3 -mb-4">
-              <PlannerSubNav />
             </div>
           </div>
         </div>

@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { ArrowLeftRight } from 'lucide-react';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { ComparisonChart } from '@/components/itinerary/ComparisonChart';
 import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummaryCards';
-import { PlannerSubNav } from '@/components/itinerary/PlannerSubNav';
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
+
+const COMPARE_IDS_STORAGE_KEY = 'wanderledger.compare-ids';
 
 export default function ComparePlansPage() {
   const searchParams = useSearchParams();
@@ -19,10 +21,27 @@ export default function ComparePlansPage() {
   const [error, setError] = useState<string | null>(null);
   const [comparisonData, setComparisonData] = useState<PlanComparisonResult[] | null>(null);
 
-  // Plan selector state (when no ids param)
+  // Plan selector state
   const [allPlans, setAllPlans] = useState<SavedPlanSummary[]>([]);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [plansLoading, setPlansLoading] = useState(false);
+  // Track whether we're in selector mode explicitly (for "Change Plans")
+  const [selectorMode, setSelectorMode] = useState(false);
+
+  // Header height measurement for fixed header offset
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    if (!headerRef.current) return;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setHeaderHeight(entry.contentRect.height);
+      }
+    });
+    observer.observe(headerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const fetchComparison = useCallback(async (planIds: string[]) => {
     setLoading(true);
@@ -38,6 +57,11 @@ export default function ComparePlansPage() {
         throw new Error(data.error || 'Failed to load comparison data.');
       }
       setComparisonData(data.data.plans);
+      setSelectorMode(false);
+      // Persist last-compared IDs to sessionStorage
+      try {
+        sessionStorage.setItem(COMPARE_IDS_STORAGE_KEY, planIds.join(','));
+      } catch { /* sessionStorage unavailable */ }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load comparison data.');
     } finally {
@@ -45,24 +69,41 @@ export default function ComparePlansPage() {
     }
   }, []);
 
-  // Fetch comparison data when ids are in the URL
+  // On mount: determine whether to load from URL, sessionStorage, or show selector
   useEffect(() => {
-    if (!idsParam) return;
-    const planIds = idsParam.split(',').filter(Boolean);
-    if (planIds.length < 1) return;
-    fetchComparison(planIds);
-  }, [idsParam, fetchComparison]);
+    if (idsParam) {
+      const planIds = idsParam.split(',').filter(Boolean);
+      if (planIds.length >= 1) {
+        fetchComparison(planIds);
+        return;
+      }
+    }
+    // No ids in URL — try sessionStorage
+    try {
+      const stored = sessionStorage.getItem(COMPARE_IDS_STORAGE_KEY);
+      if (stored) {
+        const planIds = stored.split(',').filter(Boolean);
+        if (planIds.length >= 2) {
+          // Auto-load last comparison
+          router.replace(`/plan/compare?ids=${planIds.join(',')}`);
+          return;
+        }
+      }
+    } catch { /* sessionStorage unavailable */ }
+    // Fall through to selector
+    setSelectorMode(true);
+  }, [idsParam, fetchComparison, router]);
 
-  // Fetch all plans for the selector when no ids param
+  // Fetch plans list when in selector mode
   useEffect(() => {
-    if (idsParam) return;
+    if (!selectorMode) return;
     setPlansLoading(true);
     fetch('/api/saved-plans', { cache: 'no-store' })
       .then((res) => res.json())
       .then((data) => setAllPlans(data.data || []))
       .catch(() => setAllPlans([]))
       .finally(() => setPlansLoading(false));
-  }, [idsParam]);
+  }, [selectorMode]);
 
   const togglePlanSelection = (id: string) => {
     setSelectedIds((prev) => {
@@ -81,43 +122,28 @@ export default function ComparePlansPage() {
     router.push(`/plan/compare?ids=${Array.from(selectedIds).join(',')}`);
   };
 
-  // Derive subtitle and status text for the header
-  const isSelector = !idsParam && !loading;
-  const hasResults = !!comparisonData && comparisonData.length > 0;
+  const handleChangePlans = () => {
+    // Pre-select the currently compared plan IDs
+    if (comparisonData) {
+      setSelectedIds(new Set(comparisonData.map((p) => p.id)));
+    }
+    setSelectorMode(true);
+  };
 
-  let subtitle = 'Compare cumulative planned spend across your saved plan snapshots.';
+  // Derive header state
+  const hasResults = !!comparisonData && comparisonData.length > 0;
+  const showSelector = selectorMode && !loading;
+
   let statusText = '';
-  if (isSelector && allPlans.length > 0) {
-    statusText = `${allPlans.length} saved plan${allPlans.length !== 1 ? 's' : ''} available. Select 2–5 to compare.`;
-  } else if (hasResults) {
+  if (showSelector && allPlans.length > 0) {
+    statusText = `${allPlans.length} saved plan${allPlans.length !== 1 ? 's' : ''} available. Select 2\u20135 to compare.`;
+  } else if (hasResults && !selectorMode) {
     statusText = `Comparing ${comparisonData.length} plan${comparisonData.length !== 1 ? 's' : ''}.`;
   }
 
-  // Shared header — mirrors the planner page proportions
-  const header = (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold">Compare Plans</h1>
-          <p className="text-sm text-muted-foreground">{subtitle}</p>
-          {statusText && (
-            <p className="text-xs text-muted-foreground mt-1">{statusText}</p>
-          )}
-        </div>
-        {isSelector && allPlans.length > 0 && (
-          <Button
-            onClick={handleCompareSelected}
-            disabled={selectedIds.size < 2}
-          >
-            Compare {selectedIds.size > 0 ? `(${selectedIds.size} selected)` : ''}
-          </Button>
-        )}
-      </div>
-      <PlannerSubNav />
-    </div>
-  );
+  const contentTopPadding = headerHeight > 0 ? Math.max(headerHeight - 40, 100) : 120;
 
-  // Loading state
+  // Loading state (no header — full-page skeleton)
   if (loading) {
     return (
       <PageLoadingState
@@ -129,77 +155,104 @@ export default function ComparePlansPage() {
     );
   }
 
-  // Plan selector mode (no ids in URL)
-  if (isSelector) {
-    return (
-      <div className="space-y-6">
-        {header}
-
-        <div className="rounded-lg border bg-card p-4">
-          {plansLoading ? (
-            <p className="text-sm text-muted-foreground">Loading saved plans...</p>
-          ) : allPlans.length === 0 ? (
-            <p className="text-sm text-muted-foreground">
-              No saved plans yet. Save a plan from the planner to start comparing.
-            </p>
-          ) : (
-            <div className="space-y-2">
-              {allPlans.map((plan) => (
-                <label
-                  key={plan.id}
-                  className="flex items-center gap-3 rounded-md border p-3 cursor-pointer hover:bg-muted/50 transition-colors"
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedIds.has(plan.id)}
-                    onChange={() => togglePlanSelection(plan.id)}
-                    className="h-4 w-4"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="font-medium text-sm">{plan.name}</div>
-                    <div className="text-xs text-muted-foreground">
-                      {plan.legCount} legs, {plan.totalNights} nights, $
-                      {plan.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
-                    </div>
-                  </div>
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  // Error state
-  if (error) {
-    return (
-      <div className="space-y-6">
-        {header}
-        <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
-          <p className="text-sm text-destructive">{error}</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Comparison results
-  if (!hasResults) {
-    return (
-      <div className="space-y-6">
-        {header}
-        <p className="text-sm text-muted-foreground">
-          No comparison data available. The selected plans may not have valid date ranges.
-        </p>
-      </div>
-    );
-  }
-
   return (
-    <div className="space-y-6">
-      {header}
-      <ComparisonSummaryCards plans={comparisonData} />
-      <ComparisonChart plans={comparisonData} />
+    <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
+      {/* Fixed header */}
+      <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
+        <div ref={headerRef} className="mx-auto max-w-6xl px-4 py-4 lg:px-8">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold">Compare Plans</h1>
+              <p className="text-sm text-muted-foreground">
+                Compare cumulative planned spend across your saved plan snapshots.
+              </p>
+              {statusText && (
+                <p className="text-xs text-muted-foreground mt-1">{statusText}</p>
+              )}
+            </div>
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              {showSelector && allPlans.length > 0 && (
+                <Button
+                  onClick={handleCompareSelected}
+                  disabled={selectedIds.size < 2}
+                >
+                  Compare {selectedIds.size > 0 ? `(${selectedIds.size} selected)` : ''}
+                </Button>
+              )}
+              {hasResults && !selectorMode && (
+                <Button variant="outline" onClick={handleChangePlans}>
+                  <ArrowLeftRight className="mr-2 h-4 w-4" />
+                  Change Plans
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Page content */}
+      <div
+        className="mx-auto max-w-6xl px-4 pb-6 lg:px-8"
+        style={{ paddingTop: contentTopPadding }}
+      >
+        {/* Selector mode */}
+        {showSelector && (
+          <div className="rounded-lg border bg-card p-4">
+            {plansLoading ? (
+              <p className="text-sm text-muted-foreground">Loading saved plans...</p>
+            ) : allPlans.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                No saved plans yet. Save a plan from the planner to start comparing.
+              </p>
+            ) : (
+              <div className="space-y-2">
+                {allPlans.map((plan) => (
+                  <label
+                    key={plan.id}
+                    className="flex items-center gap-3 rounded-md border p-3 cursor-pointer hover:bg-muted/50 transition-colors"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.has(plan.id)}
+                      onChange={() => togglePlanSelection(plan.id)}
+                      className="h-4 w-4"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="font-medium text-sm">{plan.name}</div>
+                      <div className="text-xs text-muted-foreground">
+                        {plan.legCount} legs, {plan.totalNights} nights, $
+                        {plan.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+                      </div>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Error state */}
+        {error && !showSelector && (
+          <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
+            <p className="text-sm text-destructive">{error}</p>
+          </div>
+        )}
+
+        {/* Comparison results */}
+        {hasResults && !selectorMode && (
+          <div className="space-y-6">
+            <ComparisonSummaryCards plans={comparisonData} />
+            <ComparisonChart plans={comparisonData} />
+          </div>
+        )}
+
+        {/* Empty results */}
+        {!hasResults && !showSelector && !error && !loading && (
+          <p className="text-sm text-muted-foreground">
+            No comparison data available. The selected plans may not have valid date ranges.
+          </p>
+        )}
+      </div>
     </div>
   );
 }

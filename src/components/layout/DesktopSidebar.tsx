@@ -2,13 +2,14 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Calculator, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
+import { BarChart3, Calculator, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/plan', label: 'Plan', icon: Map },
+  { href: '/plan', label: 'Plan', icon: Map, excludePrefix: '/plan/compare' },
+  { href: '/plan/compare', label: 'Compare', icon: BarChart3 },
   { href: '/estimates', label: 'Estimates', icon: Calculator },
   { href: '/track', label: 'Expenses', icon: Receipt },
   { href: '/track/add', label: 'Quick Add', icon: Plus },
@@ -42,8 +43,9 @@ export function DesktopSidebar() {
       </div>
       <nav className="flex-1 p-4 space-y-1">
         {navItems.map((item) => {
-          const isActive = pathname === item.href ||
-            (item.href !== '/' && pathname.startsWith(item.href));
+          const isActive = (pathname === item.href ||
+            (item.href !== '/' && pathname.startsWith(item.href))) &&
+            !('excludePrefix' in item && item.excludePrefix && pathname.startsWith(item.excludePrefix));
           const isNavigating = isPending && pendingHref === item.href;
           return (
             <button
