@@ -267,22 +267,17 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
       { label: 'Formula', description: 'trip end date - today' },
     ],
   },
+  plannedPerDayToDate: {
+    summary: 'Average planned daily spend based on the cities visited so far.',
+    items: [
+      { label: 'Formula', description: 'planned spend to date / days elapsed' },
+      { label: 'Why it differs from Planned $/day', description: 'Planned $/day is the full-trip average. This metric reflects the cost mix of cities you have actually been through.' },
+    ],
+  },
   actualPerDay: {
     summary: 'Average actual spend per elapsed trip day so far.',
     items: [
       { label: 'Formula', description: 'actual spent to date / days elapsed' },
-    ],
-  },
-  sevenDayAvg: {
-    summary: 'Recent actual spend pace based on the last 7 calendar days.',
-    items: [
-      { label: 'Formula', description: 'actual spend in last 7 days / 7' },
-    ],
-  },
-  thirtyDayAvg: {
-    summary: 'Recent actual spend pace based on the last 30 calendar days.',
-    items: [
-      { label: 'Formula', description: 'actual spend in last 30 days / 30' },
     ],
   },
 };
@@ -1068,7 +1063,7 @@ export default function DashboardPage() {
       )}
 
       {summary && (
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 xl:grid-cols-5">
           <SummaryStatCard
             label="Planned $/day"
             help={SUMMARY_HELP.plannedPerDay}
@@ -1076,20 +1071,16 @@ export default function DashboardPage() {
             subtext={`${summary.totalNights} nights planned`}
           />
           <SummaryStatCard
+            label="Plan $/day to Date"
+            help={SUMMARY_HELP.plannedPerDayToDate}
+            value={summary.daysElapsed > 0 ? `${fmtAud(summary.plannedToDate / summary.daysElapsed)}/day` : '—'}
+            subtext={`Over ${summary.daysElapsed} days elapsed`}
+          />
+          <SummaryStatCard
             label="Actual $/day"
             help={SUMMARY_HELP.actualPerDay}
             value={`${fmtAud(summary.burnRate.tripAvg)}/day`}
             subtext={`Over ${summary.daysElapsed} days elapsed`}
-          />
-          <SummaryStatCard
-            label="7-Day Avg"
-            help={SUMMARY_HELP.sevenDayAvg}
-            value={summary.burnRate.sevenDayAvg != null ? `${fmtAud(summary.burnRate.sevenDayAvg)}/day` : '—'}
-          />
-          <SummaryStatCard
-            label="30-Day Avg"
-            help={SUMMARY_HELP.thirtyDayAvg}
-            value={summary.burnRate.thirtyDayAvg != null ? `${fmtAud(summary.burnRate.thirtyDayAvg)}/day` : '—'}
           />
           <SummaryStatCard
             label="Days Elapsed"
