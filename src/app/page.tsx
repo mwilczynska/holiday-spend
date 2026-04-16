@@ -255,23 +255,11 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
       { label: 'Forecast Rate', description: 'Uses the 7-day average if available, otherwise the trip average.' },
     ],
   },
-  requiredDailyPace: {
-    summary: 'Daily spending pace available from here if you want to finish within planned leg spend.',
+  plannedPerDay: {
+    summary: 'Average planned daily spend across the entire trip.',
     items: [
-      { label: 'Formula', description: 'max(planned leg total - actual spent to date, 0) / days left' },
-      { label: 'Scope', description: 'This pace compares actual spend to itinerary leg spend. Fixed costs are not included.' },
-    ],
-  },
-  plannedLegs: {
-    summary: 'Total planned spend across itinerary legs only.',
-    items: [
-      { label: 'Included', description: 'Daily leg costs plus intercity transport rows.' },
-    ],
-  },
-  fixedCosts: {
-    summary: 'Planned fixed costs tracked outside the leg-by-leg spend model.',
-    items: [
-      { label: 'Examples', description: 'Flights, visas, insurance, gear, and other one-off planned costs.' },
+      { label: 'Formula', description: 'planned total / total trip nights' },
+      { label: 'Scope', description: 'Includes leg costs and fixed costs spread across the trip.' },
     ],
   },
   daysElapsed: {
@@ -286,16 +274,10 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
       { label: 'Formula', description: 'trip end date - today' },
     ],
   },
-  actualAvgSoFar: {
+  actualPerDay: {
     summary: 'Average actual spend per elapsed trip day so far.',
     items: [
       { label: 'Formula', description: 'actual spent to date / days elapsed' },
-    ],
-  },
-  plannedAvgSoFar: {
-    summary: 'Average planned leg spend per planned day that has passed so far.',
-    items: [
-      { label: 'Formula', description: 'planned spend to date / planned trip days elapsed' },
     ],
   },
   sevenDayAvg: {
@@ -1063,7 +1045,7 @@ export default function DashboardPage() {
       </div>
 
       {summary && (
-        <div className="grid grid-cols-2 gap-3 xl:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 xl:grid-cols-5">
           <SummaryStatCard
             label="Planned Total"
             help={SUMMARY_HELP.plannedTotal}
@@ -1096,47 +1078,22 @@ export default function DashboardPage() {
             valueClassName={summary.forecastVariance > 0 ? 'text-red-600' : summary.forecastVariance < 0 ? 'text-green-600' : ''}
             subtext={`${fmtAudSigned(summary.forecastVariance)} vs planned legs`}
           />
-          <SummaryStatCard
-            label="Required Daily Pace"
-            help={SUMMARY_HELP.requiredDailyPace}
-            value={summary.burnRate.requiredDailyPace != null ? `${fmtAud(summary.burnRate.requiredDailyPace)}/day` : '—'}
-            valueClassName={summary.remainingLegBudget < 0 ? 'text-red-600' : ''}
-            subtext={summary.daysRemaining > 0 ? (summary.remainingLegBudget < 0 ? `Already over planned legs by ${fmtAud(Math.abs(summary.remainingLegBudget))}` : 'To finish within planned legs') : 'No remaining trip days'}
-          />
         </div>
       )}
 
       {summary && (
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 xl:grid-cols-8">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
           <SummaryStatCard
-            label="Planned Legs"
-            help={SUMMARY_HELP.plannedLegs}
-            value={fmtAud(summary.plannedLegsTotal)}
+            label="Planned $/day"
+            help={SUMMARY_HELP.plannedPerDay}
+            value={summary.totalNights > 0 ? `${fmtAud(summary.totalBudget / summary.totalNights)}/day` : '—'}
+            subtext={`${summary.totalNights} nights planned`}
           />
           <SummaryStatCard
-            label="Fixed Costs"
-            help={SUMMARY_HELP.fixedCosts}
-            value={fmtAud(summary.fixedTotal)}
-          />
-          <SummaryStatCard
-            label="Days Elapsed"
-            help={SUMMARY_HELP.daysElapsed}
-            value={String(summary.daysElapsed)}
-          />
-          <SummaryStatCard
-            label="Days Left"
-            help={SUMMARY_HELP.daysLeft}
-            value={String(summary.daysRemaining)}
-          />
-          <SummaryStatCard
-            label="Actual Avg So Far"
-            help={SUMMARY_HELP.actualAvgSoFar}
+            label="Actual $/day"
+            help={SUMMARY_HELP.actualPerDay}
             value={`${fmtAud(summary.burnRate.tripAvg)}/day`}
-          />
-          <SummaryStatCard
-            label="Planned Avg So Far"
-            help={SUMMARY_HELP.plannedAvgSoFar}
-            value={`${fmtAud(summary.burnRate.plannedAvgSoFar)}/day`}
+            subtext={`Over ${summary.daysElapsed} days elapsed`}
           />
           <SummaryStatCard
             label="7-Day Avg"
@@ -1147,6 +1104,16 @@ export default function DashboardPage() {
             label="30-Day Avg"
             help={SUMMARY_HELP.thirtyDayAvg}
             value={summary.burnRate.thirtyDayAvg != null ? `${fmtAud(summary.burnRate.thirtyDayAvg)}/day` : '—'}
+          />
+          <SummaryStatCard
+            label="Days Elapsed"
+            help={SUMMARY_HELP.daysElapsed}
+            value={String(summary.daysElapsed)}
+          />
+          <SummaryStatCard
+            label="Days Left"
+            help={SUMMARY_HELP.daysLeft}
+            value={String(summary.daysRemaining)}
           />
         </div>
       )}

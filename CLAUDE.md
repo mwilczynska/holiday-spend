@@ -156,6 +156,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Actual-spend handling was tightened so missing AUD conversions do not pollute totals
 - Spend views are constrained to the trip window instead of entire historical account activity
 - Summary cards now use clearer planned-vs-actual terminology and include info popovers that explain each calculation
+- Dashboard summary was simplified from 14 cards to 11: removed `Required Daily Pace`, `Planned Legs`, `Fixed Costs`, and `Planned Avg So Far`; added `Planned $/day` (total budget / total nights) and renamed `Actual Avg So Far` to `Actual $/day`
 - Dashboard header and summary now make the selected traveller count explicit
 - Country comparison now includes planned/day and actual/day columns using each country's planned itinerary days
 - Dashboard charts now use explicit mode pickers rather than ambiguous toggles, include axis labels, and can be expanded into larger interactive dialogs
@@ -233,9 +234,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Start that comparison UI with a cumulative planned spend over time chart, one line per saved plan, plus a small set of summary cards such as planned total and planned average spend per day
 
 ### Priority 4: Dashboard Simplification
-- [ ] Simplify the dashboard summary so it focuses on the most useful trip-level numbers
-- [ ] Remove low-signal summary stats that currently add clutter, especially `Required Daily Pace`, `Planned Legs`, and `Fixed Costs`
-- [ ] Add a clearer top-level planned average spend metric in `$ / day`
+- [x] Simplify the dashboard summary so it focuses on the most useful trip-level numbers
+- [x] Remove low-signal summary stats that currently add clutter, especially `Required Daily Pace`, `Planned Legs`, and `Fixed Costs`
+- [x] Add a clearer top-level planned average spend metric in `$ / day`
 
 ### City Cost / LLM Workflow
 - [ ] Add provider/model validation or discovery so UI options do not become stale over time
