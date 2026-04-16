@@ -269,9 +269,13 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Planner page now shows saved plans in an inline collapsible panel instead of a modal dialog
 - `SavePlanDialog` replaces `window.prompt()` for naming plans
 - Auto-migration from localStorage to database on first load via `src/lib/saved-plan-migration.ts`
-- `/plan/compare` route shows cumulative spend chart (Recharts LineChart) and summary cards for up to 5 plans
-- Comparison plan selector shown when no IDs provided in URL
-- Playwright E2E tests cover save, persist, delete, compare navigation, chart rendering, and error states
+- `/plan/compare` is a first-class page with its own sidebar entry ("Compare") in both desktop and mobile nav
+- Compare page uses a fixed header matching the planner's proportions (sticky, shadow, title/subtitle/action buttons)
+- Comparison is persisted in sessionStorage — navigating away and back restores the last comparison
+- "Change Plans" button on comparison results returns to selector with current plan IDs pre-checked
+- Sidebar `isActive` logic uses `excludePrefix` to prevent `/plan` and `/plan/compare` from both highlighting
+- Recharts LineChart cumulative spend chart and summary cards for up to 5 plans
+- Playwright E2E tests cover save, persist, delete, compare navigation, chart rendering, sidebar nav, and error states
 
 ### Dataset And Seeding
 - `src/db/seed.ts` now imports the new CSV dataset

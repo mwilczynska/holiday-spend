@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/saved-plans-comparison` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS — Phase 8 (Compare as first-class page)
+> **Status**: COMPLETE — all phases done including Phase 8 UI refinements
 
 ---
 
@@ -23,14 +23,14 @@ The existing snapshot infrastructure (`PlanSnapshot` Zod schema in `src/lib/plan
 - [x] **Phase 5** — Playwright E2E tests (commit bc4002c)
 - [x] **Phase 6** — Documentation updates (CLAUDE.md) + cleanup
 - [x] **Phase 7** — PR creation (branch pushed; PR ready at GitHub)
-- [ ] **Phase 8** — Compare as first-class page (sidebar nav + fixed header + persistence + change-plans flow)
-  - [ ] 8a — Add "Compare" to sidebar nav (Desktop + Mobile), fix `isActive` specificity for `/plan`
-  - [ ] 8b — Fixed header on compare page matching planner proportions
-  - [ ] 8c — sessionStorage persistence for last-compared plan IDs
-  - [ ] 8d — "Change Plans" button on results view, pre-select current IDs in selector
-  - [ ] 8e — Remove PlannerSubNav component (sidebar replaces it)
-  - [ ] 8f — Update Playwright tests for new nav pattern
-  - [ ] 8g — Update CLAUDE.md + commit
+- [x] **Phase 8** — Compare as first-class page (commit 15a853f)
+  - [x] 8a — Add "Compare" to sidebar nav (Desktop + Mobile), fix `isActive` specificity for `/plan`
+  - [x] 8b — Fixed header on compare page matching planner proportions
+  - [x] 8c — sessionStorage persistence for last-compared plan IDs
+  - [x] 8d — "Change Plans" button on results view, pre-select current IDs in selector
+  - [x] 8e — Remove PlannerSubNav component (sidebar replaces it)
+  - [x] 8f — Update Playwright tests for new nav pattern
+  - [x] 8g — Update CLAUDE.md + commit
 
 ---
 
