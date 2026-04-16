@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/saved-plans-comparison` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS
+> **Status**: COMPLETE — all phases done, branch pushed, PR ready
 
 ---
 
@@ -22,7 +22,7 @@ The existing snapshot infrastructure (`PlanSnapshot` Zod schema in `src/lib/plan
 - [x] **Phase 4** — Comparison UI (`/plan/compare` route + chart + cards) (commit 2ec1856)
 - [x] **Phase 5** — Playwright E2E tests (commit bc4002c)
 - [x] **Phase 6** — Documentation updates (CLAUDE.md) + cleanup
-- [ ] **Phase 7** — PR creation
+- [x] **Phase 7** — PR creation (branch pushed; PR ready at GitHub)
 
 ---
 
