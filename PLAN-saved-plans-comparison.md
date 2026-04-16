@@ -18,10 +18,10 @@ The existing snapshot infrastructure (`PlanSnapshot` Zod schema in `src/lib/plan
 
 - [x] **Phase 1** — Database table + CRUD API (commit 7ceb6b5)
 - [x] **Phase 2** — Rewire planner UI from localStorage to API (commit 35f720b)
-- [ ] **Phase 3** — Comparison backend (server-side cost computation)
-- [ ] **Phase 4** — Comparison UI (`/plan/compare` route + chart + cards)
-- [ ] **Phase 5** — Playwright E2E tests
-- [ ] **Phase 6** — Documentation updates (CLAUDE.md) + cleanup
+- [x] **Phase 3** — Comparison backend (server-side cost computation) (commits 37f8a1e, 00ebbe3)
+- [x] **Phase 4** — Comparison UI (`/plan/compare` route + chart + cards) (commit 2ec1856)
+- [x] **Phase 5** — Playwright E2E tests (commit bc4002c)
+- [x] **Phase 6** — Documentation updates (CLAUDE.md) + cleanup
 - [ ] **Phase 7** — PR creation
 
 ---
