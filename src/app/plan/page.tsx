@@ -13,13 +13,15 @@ import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
 import { PlannerNewCityDialog } from '@/components/itinerary/PlannerNewCityDialog';
 import { BulkTransportEstimateDialog } from '@/components/itinerary/BulkTransportEstimateDialog';
-import { Download, FolderOpen, Plus, Save, Upload } from 'lucide-react';
+import { Download, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
 import { CITY_GENERATION_DEFAULT_MODELS } from '@/lib/city-generation-config';
 import { findKnownCountryCurrencyCode, slugifyId } from '@/lib/country-metadata';
+import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
+import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
+import { migrateLocalStoragePlans } from '@/lib/saved-plan-migration';
 
-const PLAN_SNAPSHOT_STORAGE_KEY = 'wanderledger-plan-snapshots';
 const CITY_GENERATION_STORAGE_PREFIX = 'wanderledger.city-generation';
 const LEGACY_DEFAULT_MODEL_MIGRATIONS: Record<ProviderOption, string[]> = {
   openai: ['gpt-4o', 'gpt-5-mini'],
@@ -121,18 +123,6 @@ interface FixedCost {
   notes?: string | null;
 }
 
-interface SavedPlanSnapshot {
-  id: string;
-  name: string;
-  savedAt: string;
-  summary: {
-    legCount: number;
-    totalNights: number;
-    totalBudget: number;
-    fixedCostCount: number;
-  };
-  snapshot: PlanSnapshot;
-}
 
 const PROVIDER_OPTIONS: Array<{
   value: ProviderOption;
@@ -237,13 +227,15 @@ export default function PlanPage() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [fixedCosts, setFixedCosts] = useState<FixedCost[]>([]);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
-  const [savedPlansOpen, setSavedPlansOpen] = useState(false);
+  const [savePlanDialogOpen, setSavePlanDialogOpen] = useState(false);
   const [bulkTransportEstimateOpen, setBulkTransportEstimateOpen] = useState(false);
   const [importResolutionOpen, setImportResolutionOpen] = useState(false);
   const [plannerNewCityOpen, setPlannerNewCityOpen] = useState(false);
   const [newLegCity, setNewLegCity] = useState('');
   const [newLegNights, setNewLegNights] = useState('7');
-  const [savedSnapshots, setSavedSnapshots] = useState<SavedPlanSnapshot[]>([]);
+  const [savedPlans, setSavedPlans] = useState<SavedPlanSummary[]>([]);
+  const [savedPlansLoading, setSavedPlansLoading] = useState(false);
+  const [savingPlan, setSavingPlan] = useState(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string | null>(null);
   const [snapshotError, setSnapshotError] = useState<string | null>(null);
   const [groupSize, setGroupSize] = useState(2);
@@ -343,18 +335,33 @@ export default function PlanPage() {
     loadPlannerSettings();
   }, []);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const raw = window.localStorage.getItem(PLAN_SNAPSHOT_STORAGE_KEY);
-    if (!raw) return;
-
+  const fetchSavedPlans = useCallback(async () => {
+    setSavedPlansLoading(true);
     try {
-      const parsed = JSON.parse(raw) as SavedPlanSnapshot[];
-      setSavedSnapshots(parsed);
+      const response = await fetch('/api/saved-plans', { cache: 'no-store' });
+      if (response.ok) {
+        const data = await response.json();
+        setSavedPlans(data.data || []);
+      }
     } catch {
-      setSavedSnapshots([]);
+      // Silently fail — saved plans are non-critical.
+    } finally {
+      setSavedPlansLoading(false);
     }
   }, []);
+
+  const migrationRan = useRef(false);
+  useEffect(() => {
+    if (migrationRan.current) return;
+    migrationRan.current = true;
+    (async () => {
+      const result = await migrateLocalStoragePlans();
+      if (result.migrated > 0) {
+        setSnapshotStatus(`Migrated ${result.migrated} saved plan${result.migrated > 1 ? 's' : ''} to your account.`);
+      }
+      await fetchSavedPlans();
+    })();
+  }, [fetchSavedPlans]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -405,12 +412,6 @@ export default function PlanPage() {
     }
   }, [countries]);
 
-  const persistSavedSnapshots = useCallback((nextSnapshots: SavedPlanSnapshot[]) => {
-    setSavedSnapshots(nextSnapshots);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(PLAN_SNAPSHOT_STORAGE_KEY, JSON.stringify(nextSnapshots));
-    }
-  }, []);
 
   const handleAddLeg = async () => {
     const parsedNights = Number.parseInt(newLegNights, 10);
@@ -731,29 +732,32 @@ export default function PlanPage() {
     await importSnapshot(snapshot, { sourceLabel });
   }, [importSnapshot, preflightSnapshotImport, queueMissingCityResolution]);
 
-  const handleSaveSnapshot = async () => {
-    const name = window.prompt('Snapshot name', `Plan ${new Date().toISOString().slice(0, 10)}`)?.trim();
-    if (!name) return;
-
+  const handleSaveSnapshot = async (name: string) => {
+    setSavingPlan(true);
     try {
       const snapshot = await fetchCurrentSnapshot();
-      const nextSnapshot: SavedPlanSnapshot = {
-        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        name,
-        savedAt: new Date().toISOString(),
-        summary: currentPlanSummary,
-        snapshot: {
-          ...snapshot,
+      const response = await fetch('/api/saved-plans', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           name,
-          exportedAt: new Date().toISOString(),
-        },
-      };
-      persistSavedSnapshots([nextSnapshot, ...savedSnapshots]);
+          snapshot: { ...snapshot, name, exportedAt: new Date().toISOString() },
+          summary: currentPlanSummary,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to save plan.');
+      }
       setSnapshotError(null);
-      setSnapshotStatus(`Saved snapshot "${name}".`);
+      setSnapshotStatus(`Saved plan "${name}".`);
+      setSavePlanDialogOpen(false);
+      await fetchSavedPlans();
     } catch (err) {
       setSnapshotStatus(null);
-      setSnapshotError(err instanceof Error ? err.message : 'Failed to save snapshot.');
+      setSnapshotError(err instanceof Error ? err.message : 'Failed to save plan.');
+    } finally {
+      setSavingPlan(false);
     }
   };
 
@@ -784,13 +788,17 @@ export default function PlanPage() {
     }
   };
 
-  const handleLoadSavedSnapshot = async (savedSnapshot: SavedPlanSnapshot) => {
+  const handleLoadSavedPlan = async (planId: string) => {
     try {
-      await startSnapshotImport(savedSnapshot.snapshot, savedSnapshot.name);
-      setSavedPlansOpen(false);
+      const response = await fetch(`/api/saved-plans/${planId}`, { cache: 'no-store' });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch saved plan.');
+      }
+      await startSnapshotImport(data.data.snapshot, data.data.name);
     } catch (err) {
       setSnapshotStatus(null);
-      setSnapshotError(err instanceof Error ? err.message : 'Failed to load saved snapshot.');
+      setSnapshotError(err instanceof Error ? err.message : 'Failed to load saved plan.');
     }
   };
 
@@ -836,8 +844,34 @@ export default function PlanPage() {
     }
   };
 
-  const handleDeleteSavedSnapshot = (id: string) => {
-    persistSavedSnapshots(savedSnapshots.filter((snapshot) => snapshot.id !== id));
+  const handleDeleteSavedPlan = async (planId: string) => {
+    try {
+      const response = await fetch(`/api/saved-plans/${planId}`, { method: 'DELETE' });
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to delete plan.');
+      }
+      setSnapshotError(null);
+      setSnapshotStatus('Plan deleted.');
+      await fetchSavedPlans();
+    } catch (err) {
+      setSnapshotStatus(null);
+      setSnapshotError(err instanceof Error ? err.message : 'Failed to delete plan.');
+    }
+  };
+
+  const handleExportSavedPlan = async (planId: string) => {
+    try {
+      const response = await fetch(`/api/saved-plans/${planId}`, { cache: 'no-store' });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch saved plan.');
+      }
+      downloadSnapshot(data.data.snapshot, data.data.name.replace(/\s+/g, '-').toLowerCase());
+    } catch (err) {
+      setSnapshotStatus(null);
+      setSnapshotError(err instanceof Error ? err.message : 'Failed to export saved plan.');
+    }
   };
 
   const handleGroupSizeChange = async (value: string) => {
@@ -1324,53 +1358,15 @@ export default function PlanPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <Dialog open={savedPlansOpen} onOpenChange={setSavedPlansOpen}>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">
-                      <FolderOpen className="mr-2 h-4 w-4" />
-                      Saved Plans
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Saved Plan Snapshots</DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-3">
-                      {savedSnapshots.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">No saved snapshots yet.</p>
-                      ) : (
-                        savedSnapshots.map((snapshot) => (
-                          <div key={snapshot.id} className="rounded-md border p-3">
-                            <div className="flex items-start justify-between gap-3">
-                              <div>
-                                <div className="font-medium">{snapshot.name}</div>
-                                <div className="text-xs text-muted-foreground">{snapshot.savedAt.slice(0, 16).replace('T', ' ')}</div>
-                                <div className="mt-1 text-xs text-muted-foreground">
-                                  {snapshot.summary.legCount} legs, {snapshot.summary.totalNights} nights, ${snapshot.summary.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
-                                </div>
-                              </div>
-                              <div className="flex flex-wrap gap-2">
-                                <Button type="button" size="sm" variant="outline" onClick={() => downloadSnapshot(snapshot.snapshot, snapshot.name.replace(/\s+/g, '-').toLowerCase())}>
-                                  <Download className="mr-1 h-3.5 w-3.5" />
-                                  Export
-                                </Button>
-                                <Button type="button" size="sm" onClick={() => handleLoadSavedSnapshot(snapshot)}>
-                                  Load
-                                </Button>
-                                <Button type="button" size="sm" variant="destructive" onClick={() => handleDeleteSavedSnapshot(snapshot.id)}>
-                                  Delete
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </DialogContent>
-                </Dialog>
-                <Button type="button" variant="outline" onClick={handleSaveSnapshot}>
+                <SavePlanDialog
+                  open={savePlanDialogOpen}
+                  onOpenChange={setSavePlanDialogOpen}
+                  onSave={handleSaveSnapshot}
+                  isSaving={savingPlan}
+                />
+                <Button type="button" variant="outline" onClick={() => setSavePlanDialogOpen(true)}>
                   <Save className="mr-2 h-4 w-4" />
-                  Save Snapshot
+                  Save Plan
                 </Button>
                 <Button type="button" variant="outline" onClick={handleExportCurrentPlan}>
                   <Download className="mr-2 h-4 w-4" />
@@ -1501,6 +1497,18 @@ export default function PlanPage() {
           className="mx-auto max-w-6xl px-4 pb-6 lg:px-8"
           style={{ paddingTop: plannerContentTopPadding }}
         >
+          {savedPlans.length > 0 && (
+            <div className="mb-4">
+              <SavedPlansList
+                plans={savedPlans}
+                onLoad={handleLoadSavedPlan}
+                onDelete={handleDeleteSavedPlan}
+                onExport={handleExportSavedPlan}
+                isLoading={savedPlansLoading}
+              />
+            </div>
+          )}
+
           <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
         {/* Legs list */}
             <div className="space-y-3">
