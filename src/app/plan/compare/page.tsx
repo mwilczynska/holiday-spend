@@ -81,6 +81,42 @@ export default function ComparePlansPage() {
     router.push(`/plan/compare?ids=${Array.from(selectedIds).join(',')}`);
   };
 
+  // Derive subtitle and status text for the header
+  const isSelector = !idsParam && !loading;
+  const hasResults = !!comparisonData && comparisonData.length > 0;
+
+  let subtitle = 'Compare cumulative planned spend across your saved plan snapshots.';
+  let statusText = '';
+  if (isSelector && allPlans.length > 0) {
+    statusText = `${allPlans.length} saved plan${allPlans.length !== 1 ? 's' : ''} available. Select 2–5 to compare.`;
+  } else if (hasResults) {
+    statusText = `Comparing ${comparisonData.length} plan${comparisonData.length !== 1 ? 's' : ''}.`;
+  }
+
+  // Shared header — mirrors the planner page proportions
+  const header = (
+    <div className="space-y-3">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold">Compare Plans</h1>
+          <p className="text-sm text-muted-foreground">{subtitle}</p>
+          {statusText && (
+            <p className="text-xs text-muted-foreground mt-1">{statusText}</p>
+          )}
+        </div>
+        {isSelector && allPlans.length > 0 && (
+          <Button
+            onClick={handleCompareSelected}
+            disabled={selectedIds.size < 2}
+          >
+            Compare {selectedIds.size > 0 ? `(${selectedIds.size} selected)` : ''}
+          </Button>
+        )}
+      </div>
+      <PlannerSubNav />
+    </div>
+  );
+
   // Loading state
   if (loading) {
     return (
@@ -94,19 +130,12 @@ export default function ComparePlansPage() {
   }
 
   // Plan selector mode (no ids in URL)
-  if (!idsParam) {
+  if (isSelector) {
     return (
       <div className="space-y-6">
-        <div>
-          <PlannerSubNav />
-          <h1 className="text-2xl font-bold mt-4">Compare Plans</h1>
-        </div>
+        {header}
 
         <div className="rounded-lg border bg-card p-4">
-          <p className="text-sm text-muted-foreground mb-4">
-            Select 2 to 5 saved plans to compare their planned spend over time.
-          </p>
-
           {plansLoading ? (
             <p className="text-sm text-muted-foreground">Loading saved plans...</p>
           ) : allPlans.length === 0 ? (
@@ -135,15 +164,6 @@ export default function ComparePlansPage() {
                   </div>
                 </label>
               ))}
-
-              <div className="flex justify-end pt-2">
-                <Button
-                  onClick={handleCompareSelected}
-                  disabled={selectedIds.size < 2}
-                >
-                  Compare {selectedIds.size > 0 ? `(${selectedIds.size})` : ''}
-                </Button>
-              </div>
             </div>
           )}
         </div>
@@ -155,10 +175,7 @@ export default function ComparePlansPage() {
   if (error) {
     return (
       <div className="space-y-6">
-        <div>
-          <PlannerSubNav />
-          <h1 className="text-2xl font-bold mt-4">Compare Plans</h1>
-        </div>
+        {header}
         <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
           <p className="text-sm text-destructive">{error}</p>
         </div>
@@ -167,13 +184,10 @@ export default function ComparePlansPage() {
   }
 
   // Comparison results
-  if (!comparisonData || comparisonData.length === 0) {
+  if (!hasResults) {
     return (
       <div className="space-y-6">
-        <div>
-          <PlannerSubNav />
-          <h1 className="text-2xl font-bold mt-4">Compare Plans</h1>
-        </div>
+        {header}
         <p className="text-sm text-muted-foreground">
           No comparison data available. The selected plans may not have valid date ranges.
         </p>
@@ -183,16 +197,7 @@ export default function ComparePlansPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <PlannerSubNav />
-        <div className="flex items-center gap-3 mt-4">
-          <h1 className="text-2xl font-bold">Compare Plans</h1>
-          <span className="text-sm text-muted-foreground">
-            {comparisonData.length} plan{comparisonData.length !== 1 ? 's' : ''}
-          </span>
-        </div>
-      </div>
-
+      {header}
       <ComparisonSummaryCards plans={comparisonData} />
       <ComparisonChart plans={comparisonData} />
     </div>
