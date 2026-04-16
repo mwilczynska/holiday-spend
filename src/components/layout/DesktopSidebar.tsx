@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/plan', label: 'Plan', icon: Map, excludePrefix: '/plan/compare' },
-  { href: '/plan/compare', label: 'Compare', icon: BarChart3 },
+  { href: '/plan/compare', label: 'Compare Plans', icon: BarChart3, indent: true },
   { href: '/estimates', label: 'Estimates', icon: Calculator },
   { href: '/track', label: 'Expenses', icon: Receipt },
   { href: '/track/add', label: 'Quick Add', icon: Plus },
@@ -57,7 +57,8 @@ export function DesktopSidebar() {
                 isActive
                   ? 'bg-primary text-primary-foreground'
                   : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground',
-                isNavigating && 'opacity-80'
+                isNavigating && 'opacity-80',
+                'indent' in item && item.indent && 'pl-7'
               )}
             >
               {isNavigating ? <Loader2 className="h-4 w-4 animate-spin" /> : <item.icon className="h-4 w-4" />}

@@ -201,9 +201,15 @@ export default function ComparePlansPage() {
             {plansLoading ? (
               <p className="text-sm text-muted-foreground">Loading saved plans...</p>
             ) : allPlans.length === 0 ? (
-              <p className="text-sm text-muted-foreground">
-                No saved plans yet. Save a plan from the planner to start comparing.
-              </p>
+              <div className="flex flex-col items-center gap-3 py-6 text-center">
+                <p className="text-sm text-muted-foreground">
+                  No saved plans yet. Build your itinerary on the Plan page and save
+                  at least two snapshots to compare them side by side.
+                </p>
+                <Button variant="outline" size="sm" onClick={() => router.push('/plan')}>
+                  Go to Planner
+                </Button>
+              </div>
             ) : (
               <div className="space-y-2">
                 {allPlans.map((plan) => (

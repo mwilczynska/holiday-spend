@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '/', label: 'Home', icon: LayoutDashboard },
   { href: '/plan', label: 'Plan', icon: Map, excludePrefix: '/plan/compare' },
-  { href: '/plan/compare', label: 'Compare', icon: BarChart3 },
+  { href: '/plan/compare', label: 'Compare Plans', icon: BarChart3 },
   { href: '/track/add', label: 'Add', icon: Plus, highlight: true },
   { href: '/track', label: 'Track', icon: Receipt },
   { href: '/settings', label: 'Settings', icon: Settings },
