@@ -248,13 +248,6 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
       { label: 'Reading', description: 'Positive means over plan so far. Negative means under plan so far.' },
     ],
   },
-  forecastFinalSpend: {
-    summary: 'Projected final actual spend by trip end if your current pace continues.',
-    items: [
-      { label: 'Formula', description: 'actual spent to date + forecast daily rate × days left' },
-      { label: 'Forecast Rate', description: 'Uses the 7-day average if available, otherwise the trip average.' },
-    ],
-  },
   plannedPerDay: {
     summary: 'Average planned daily spend across the entire trip.',
     items: [
@@ -310,7 +303,7 @@ function SummaryStatCard({
   return (
     <Card>
       <CardHeader className="pb-1">
-        <CardTitle className="flex items-center gap-1 text-xs text-muted-foreground">
+        <CardTitle className="flex items-center gap-1 text-sm text-muted-foreground">
           <span>{label}</span>
           <InfoPopover title={label} summary={help.summary} items={help.items} />
         </CardTitle>
@@ -1045,7 +1038,7 @@ export default function DashboardPage() {
       </div>
 
       {summary && (
-        <div className="grid grid-cols-2 gap-3 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
           <SummaryStatCard
             label="Planned Total"
             help={SUMMARY_HELP.plannedTotal}
@@ -1070,13 +1063,6 @@ export default function DashboardPage() {
             value={fmtAudSigned(summary.varianceToDate)}
             valueClassName={summary.varianceToDate > 0 ? 'text-red-600' : summary.varianceToDate < 0 ? 'text-green-600' : ''}
             subtext={summary.varianceToDate > 0 ? 'Over plan so far' : summary.varianceToDate < 0 ? 'Under plan so far' : 'Exactly on plan so far'}
-          />
-          <SummaryStatCard
-            label="Forecast Final Spend"
-            help={SUMMARY_HELP.forecastFinalSpend}
-            value={fmtAud(summary.projectedTotal)}
-            valueClassName={summary.forecastVariance > 0 ? 'text-red-600' : summary.forecastVariance < 0 ? 'text-green-600' : ''}
-            subtext={`${fmtAudSigned(summary.forecastVariance)} vs planned legs`}
           />
         </div>
       )}
