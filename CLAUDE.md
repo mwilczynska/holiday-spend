@@ -14,6 +14,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ## Core Product Behaviour
 - `/plan` builds the trip city-by-city with dates, tiers, overrides, and intercity transport
+- `/plan/compare` compares saved plan snapshots side-by-side with cumulative spend charts and summary cards
 - `/track` records actual spend, either manually or by importing Wise CSV exports
 - `/` compares planned vs actual spend across the trip and across countries
 - `/settings/cities` manages the city cost library and runs new-city cost generation
@@ -127,7 +128,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Legs can be reordered, edited inline, and constrained by date validation
 - Intercity transport is now a repeatable per-leg list rather than a single always-open field
 - Planner now supports LLM-backed intercity transport estimation per leg plus a bulk `Estimate Missing Transport` flow for unfilled legs
-- Planner supports saved snapshots plus JSON export/import for comparing alternate itineraries
+- Saved plan snapshots are now stored in the `saved_plans` database table (user-owned), replacing the old browser localStorage approach
+- Saved plans are surfaced as an inline collapsible panel on `/plan` with load, export, delete, and compare actions
+- Plans can be selected for side-by-side comparison at `/plan/compare`, which shows cumulative spend charts and summary cards
+- Comparison computes planned costs server-side from snapshot tier selections plus current city base rates
+- Any existing localStorage snapshots are auto-migrated to the database on first load
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
 - That import resolver can now also create missing countries inline when a required country is not yet in the library
 - The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
@@ -222,10 +227,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [ ] Add account-management follow-up such as change password and, later, explicit provider linking/unlinking from a signed-in settings flow
 
 ### Priority 3: Saved Plans And Comparison
-- [ ] Move saved plans from browser `localStorage` into the database
-- [ ] Surface saved plans directly on `/plan` so they are easy to browse, open, and manage without hiding them behind the current modal-first flow
-- [ ] Design and build a dedicated multi-plan comparison view
-- [ ] Start that comparison UI with a cumulative planned spend over time chart, one line per saved plan, plus a small set of summary cards such as planned total and planned average spend per day
+- [x] Move saved plans from browser `localStorage` into the database
+- [x] Surface saved plans directly on `/plan` so they are easy to browse, open, and manage without hiding them behind the current modal-first flow
+- [x] Design and build a dedicated multi-plan comparison view
+- [x] Start that comparison UI with a cumulative planned spend over time chart, one line per saved plan, plus a small set of summary cards such as planned total and planned average spend per day
 
 ### Priority 4: Dashboard Simplification
 - [ ] Simplify the dashboard summary so it focuses on the most useful trip-level numbers
@@ -255,6 +260,22 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [ ] Add automated coverage around bulk transport estimation, provider fallback behaviour, and planner apply flows
 
 ## Recent Important Changes
+
+### Saved Plans And Comparison
+- Saved plan snapshots moved from browser `localStorage` to `saved_plans` SQLite table with user ownership
+- `saved_plans` table stores full snapshot JSON blob plus denormalized summary columns for fast list queries
+- CRUD API at `/api/saved-plans` and `/api/saved-plans/[id]`
+- Comparison API at `POST /api/saved-plans/compare` computes cumulative planned spend series server-side
+- Planner page now shows saved plans in an inline collapsible panel instead of a modal dialog
+- `SavePlanDialog` replaces `window.prompt()` for naming plans
+- Auto-migration from localStorage to database on first load via `src/lib/saved-plan-migration.ts`
+- `/plan/compare` is a first-class page with its own sidebar entry ("Compare") in both desktop and mobile nav
+- Compare page uses a fixed header matching the planner's proportions (sticky, shadow, title/subtitle/action buttons)
+- Comparison is persisted in sessionStorage — navigating away and back restores the last comparison
+- "Change Plans" button on comparison results returns to selector with current plan IDs pre-checked
+- Sidebar `isActive` logic uses `excludePrefix` to prevent `/plan` and `/plan/compare` from both highlighting
+- Recharts LineChart cumulative spend chart and summary cards for up to 5 plans
+- Playwright E2E tests cover save, persist, delete, compare navigation, chart rendering, sidebar nav, and error states
 
 ### Dataset And Seeding
 - `src/db/seed.ts` now imports the new CSV dataset
@@ -327,3 +348,16 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/app/settings/cities/page.tsx`
 - `src/app/estimates/page.tsx`
 - `tests/playwright/planner-regressions.spec.ts`
+- `src/lib/plan-comparison.ts`
+- `src/lib/saved-plan-migration.ts`
+- `src/components/itinerary/SavedPlansList.tsx`
+- `src/components/itinerary/SavePlanDialog.tsx`
+- `src/components/itinerary/ComparisonChart.tsx`
+- `src/components/itinerary/ComparisonSummaryCards.tsx`
+- `src/app/plan/compare/page.tsx`
+- `src/app/api/saved-plans/route.ts`
+- `src/app/api/saved-plans/[id]/route.ts`
+- `src/app/api/saved-plans/compare/route.ts`
+- `tests/playwright/saved-plans.spec.ts`
+- `tests/playwright/plan-comparison.spec.ts`
+- `PLAN-saved-plans-comparison.md`

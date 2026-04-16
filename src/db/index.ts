@@ -30,6 +30,7 @@ const hasItineraryLegTransportsTable = tableNames.some((table) => table.name ===
 const hasCityEstimatesTable = tableNames.some((table) => table.name === 'city_estimates');
 const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_price_inputs');
 const hasAppSettingsTable = tableNames.some((table) => table.name === 'app_settings');
+const hasSavedPlansTable = tableNames.some((table) => table.name === 'saved_plans');
 const hasUserPreferencesTable = tableNames.some((table) => table.name === 'user_preferences');
 
 sqlite.exec(`
@@ -136,6 +137,24 @@ if (!hasUserPreferencesTable) {
     CREATE TABLE IF NOT EXISTS user_preferences (
       user_id TEXT PRIMARY KEY REFERENCES user(id) ON DELETE CASCADE,
       planner_group_size INTEGER NOT NULL DEFAULT 2,
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    )
+  `);
+}
+
+if (!hasSavedPlansTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS saved_plans (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      snapshot_json TEXT NOT NULL,
+      group_size INTEGER NOT NULL DEFAULT 2,
+      leg_count INTEGER NOT NULL DEFAULT 0,
+      total_nights INTEGER NOT NULL DEFAULT 0,
+      total_budget REAL NOT NULL DEFAULT 0,
+      fixed_cost_count INTEGER NOT NULL DEFAULT 0,
       created_at TEXT DEFAULT (datetime('now')),
       updated_at TEXT DEFAULT (datetime('now'))
     )
