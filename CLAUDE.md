@@ -26,6 +26,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Local sample imports: `sample-data/` (typically untracked)
 - DB: `data/travel.db` (SQLite, gitignored)
 - Local dev auth fallback: optional `AUTH_DEV_PIN` in `.env.local` (current local setup still uses `1234`)
+- Native-auth env vars:
+  - `ENABLE_EMAIL_PASSWORD` enables the public email/password flows in dev when mail delivery is not otherwise configured
+  - `APP_URL` is used to build absolute verification/reset links
+  - `RESEND_API_KEY` and `MAIL_FROM` are required for production email delivery
+  - without `RESEND_API_KEY` in development, verification/reset links fall back to `console.log`
 
 ## Tech Stack
 - Next.js 14 App Router
@@ -202,6 +207,17 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Add explicit `Save City` flow in `/settings/cities`
 - [x] Refresh project memory in `CLAUDE.md`
 
+### Priority 2B: Native Account Expansion
+- [x] Add native email/password accounts alongside Google OAuth rather than replacing Google sign-in
+- [x] Treat email as the primary account identifier and keep display name optional instead of introducing username-first auth
+- [x] Add dedicated native-auth storage for password hashes plus email-verification and password-reset tokens rather than overloading the base `user` table
+- [x] Use strong password hashing such as `argon2id` for native accounts
+- [x] Build the public auth flows and pages for sign up, email sign in, verify email, forgot password, and reset password
+- [x] Add email delivery for verification and password reset flows before treating native accounts as production-ready
+- [x] Require verification, password reset, and basic brute-force / rate-limit protection as part of the native-account rollout rather than shipping raw passwords without the surrounding safety flows
+- [x] Decide and document account-linking rules between Google and email/password accounts, and avoid blind auto-linking based only on matching email
+- [x] Add signed-in account management follow-up for display name and change password
+
 ## Current Known Gaps / Follow-Up Work
 
 ### Priority 1: Deployment / Production Readiness
@@ -215,17 +231,6 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Replace the current shared PIN gate with real auth for a future 2+ user-facing app
 - [x] Choose and implement an auth stack that supports OAuth and user-owned data from day one
 - [x] Add user ownership to current persisted trip entities so later saved-plans/comparison work sits on top of user-owned data rather than global shared state
-
-### Priority 2B: Native Account Expansion
-- [ ] Add native email/password accounts alongside Google OAuth rather than replacing Google sign-in
-- [ ] Treat email as the primary account identifier and keep display name optional instead of introducing username-first auth
-- [ ] Add dedicated native-auth storage for password hashes plus email-verification and password-reset tokens rather than overloading the base `user` table
-- [ ] Use strong password hashing such as `argon2id` for native accounts
-- [ ] Build the public auth flows and pages for sign up, email sign in, verify email, forgot password, and reset password
-- [ ] Add email delivery for verification and password reset flows before treating native accounts as production-ready
-- [ ] Require verification, password reset, and basic brute-force / rate-limit protection as part of the native-account rollout rather than shipping raw passwords without the surrounding safety flows
-- [ ] Decide and document account-linking rules between Google and email/password accounts, and avoid blind auto-linking based only on matching email
-- [ ] Add account-management follow-up such as change password and, later, explicit provider linking/unlinking from a signed-in settings flow
 
 ### Priority 3: Saved Plans And Comparison
 - [x] Move saved plans from browser `localStorage` into the database
@@ -261,6 +266,16 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [ ] Add automated coverage around bulk transport estimation, provider fallback behaviour, and planner apply flows
 
 ## Recent Important Changes
+
+### Native Account Expansion
+- Added native email/password accounts alongside Google OAuth using dedicated `user_passwords`, `auth_tokens`, and `auth_rate_limits` tables plus `argon2id` password hashing
+- Added public auth flows for signup, check-email, verify-email, forgot-password, reset-password, and resend-verification, with verification required before native sign-in succeeds
+- Added Resend-backed email delivery for verification and password reset links, with a development fallback that logs links to the server console when `RESEND_API_KEY` is unset
+- Added account-collision guardrails so Google and email/password accounts are not auto-linked purely by matching email; the login page now shows explicit provider-specific guidance
+- Added signed-in account management at `/settings/account` with display-name editing, change-password, and read-only sign-in method status
+- Added Vitest unit coverage for `password`, `auth-tokens`, and `rate-limit`
+- `ensureUserRow` no longer upserts on every sign-in, preventing provider logins from clobbering user-edited display names
+- `src/middleware.ts` now exempts all public auth pages (`/login`, `/signup`, `/forgot-password`, `/reset-password`, `/verify-email`, `/check-email`) so signed-out users can complete the native-account flow
 
 ### Saved Plans And Comparison
 - Saved plan snapshots moved from browser `localStorage` to `saved_plans` SQLite table with user ownership
@@ -346,6 +361,13 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/components/itinerary/TransportEstimateDialog.tsx`
 - `src/components/itinerary/PlannerNewCityDialog.tsx`
 - `src/components/itinerary/InfoPopover.tsx`
+- `src/app/api/auth/change-password/route.ts`
+- `src/app/api/user/profile/route.ts`
+- `src/app/settings/account/page.tsx`
+- `src/components/auth/AccountSettings.tsx`
+- `src/lib/password.ts`
+- `src/lib/auth-tokens.ts`
+- `src/lib/rate-limit.ts`
 - `src/app/settings/cities/page.tsx`
 - `src/app/estimates/page.tsx`
 - `tests/playwright/planner-regressions.spec.ts`
