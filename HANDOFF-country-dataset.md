@@ -1,51 +1,38 @@
-# Handoff to Claude Code - Wanderledger Country Dataset Workstream
+# Handoff to Codex - Wanderledger Country Dataset Workstream
 
-This document supersedes the old `HANDOFF-codex-phase-9.md`, which was for the native-accounts feature on a different branch.
+This document supersedes the earlier revision of `HANDOFF-country-dataset.md` (commit `ff88f4c`). Phase 3 is now complete and the workstream has evolved in a way the original plan did not anticipate; this handoff captures the new shape so Codex can resume cleanly.
 
 ## Current branch
 
 - Branch: `feat/country-dataset`
 - Base: `main`
-- Current HEAD: `549d6ed` (`refactor(country-data): back runtime metadata with canonical dataset`)
+- Current HEAD: `b7ba68a` (`feat(dataset): auto-create country from canonical dataset on city add`)
 - PR: #4 `docs(plan): add canonical country dataset implementation plan` (draft)
 - Plan file: `PLAN-country-dataset.md`
 
 ## Why this workstream exists
 
-The user wants to remove manual currency-code entry from country creation flows.
+Unchanged from the previous handoff. Summary:
 
-They explicitly chose the "canonical country dataset" approach:
+- Country currency and region are deterministic metadata, not LLM output
+- The repo owns a canonical country dataset
+- Runtime country inference must not depend on live network calls
+- Admins should not have to enter currency codes by hand
+- Unknown countries should fail clearly and force a dataset update rather than freeform metadata entry
 
-- country currency and region are deterministic metadata, not LLM output
-- the repo should own a canonical country dataset
-- runtime country inference must not depend on live network calls
-- admins should create countries by name, with currency inferred automatically
-- unknown countries should fail clearly and force a dataset update rather than freeform metadata entry
+## What has landed on this branch since the last handoff
 
-This feature is the implementation of that decision.
-
-## Important context since the old handoff
-
-The old handoff file is no longer the right restart point.
-
-Since then:
-
-- the native-accounts work it described was completed and merged separately
-- the app continued evolving around dataset/settings/methodology flows
-- a new dedicated workstream was started for automatic country metadata inference
-- this branch and plan are now about canonical country metadata, not auth
-
-If Claude resumes from here, it should ignore the old Phase 9 native-auth instructions and continue from `PLAN-country-dataset.md`.
-
-## What has landed on this branch
-
-Commits on `feat/country-dataset`:
+Commits on `feat/country-dataset` (newest first):
 
 | SHA | Scope | Summary |
 | --- | --- | --- |
-| `e253ef0` | plan/setup | Added `PLAN-country-dataset.md` and opened the new workstream |
-| `fccacc1` | Phase 1 | Added generator scaffold, overrides file, generated canonical dataset, and npm script |
-| `549d6ed` | Phase 2 | Replaced hardcoded runtime country maps with resolver logic backed by the canonical dataset |
+| `b7ba68a` | Expanded Phase 3 | Cities route auto-creates country rows from canonical dataset; `/dataset` Add City dropdown now enumerates all 245 canonical countries; Add Country dialog and inline Create Country button removed entirely |
+| `bb59cbf` | Phase 3 follow-up | Removed the top-level Add Country button (intermediate step before the full auto-create flow) |
+| `6e93c19` | Phase 3 base | `POST /api/countries` strict-schema refactor that rejects freeform currency and unknown countries; initial name-first `/dataset` Add Country dialog |
+| `ff88f4c` | Handoff refresh | Old handoff doc refresh (now superseded by this file) |
+| `549d6ed` | Phase 2 | Runtime resolver refactor onto canonical dataset |
+| `fccacc1` | Phase 1 | Canonical dataset + generator scaffold |
+| `e253ef0` | Phase 0 | Plan doc |
 
 ## Current phase status
 
@@ -54,201 +41,133 @@ From `PLAN-country-dataset.md`:
 - [x] Phase 0 - Branch + plan doc
 - [x] Phase 1 - Canonical dataset files + generator scaffold
 - [x] Phase 2 - Runtime resolver refactor onto canonical dataset
-- [ ] Phase 3 - `/dataset` country creation simplified to name-first flow
+- [x] Phase 3 - `/dataset` country creation simplified (shipped a stronger UX than originally planned - see below)
 - [ ] Phase 4 - Planner and server-side country creation paths reuse canonical resolver
 - [ ] Phase 5 - Validation/tests for dataset integrity and alias resolution
 - [ ] Phase 6 - Docs, PR review, and merge readiness
 
-## What Phase 1 actually changed
+## How Phase 3 differs from the original plan
 
-New generator/data files:
+The original Phase 3 spec was "simplify `/dataset` country creation to name-first". The first commit (`6e93c19`) implemented exactly that. During user testing the user rejected the concept of a standalone Add Country admin step entirely:
 
-- `scripts/generate-country-metadata.mjs`
-- `src/lib/data/country-metadata.overrides.json`
-- `src/lib/data/country-metadata.generated.json`
+> "The whole point of having a complete country list is to NOT have to create a country. It should all happen automatically."
 
-`package.json` now has:
+So Phase 3 ended up shipping a different and stronger final state, captured in `b7ba68a`:
 
-```json
-"country-metadata:generate": "node scripts/generate-country-metadata.mjs"
+1. **`/dataset` Add Country UI removed entirely.**
+   - The top-level "Add Country" button is gone.
+   - The Add Country dialog JSX, state, derivations, and `handleAddCountry` are gone.
+   - The inline "Create Country" subflow inside Add City is gone.
+
+2. **Add City country dropdown now enumerates all 245 canonical countries.**
+   - Sourced from a new `KNOWN_COUNTRIES` export in `src/lib/country-metadata.ts` (readonly, pre-sorted).
+   - Any city anywhere in the world can be added in one step.
+
+3. **`POST /api/cities` auto-creates the country row when missing.**
+   - Resolves `countryId` against the canonical dataset.
+   - Rejects (400) only if the id is not in the canonical dataset at all.
+   - Auto-inserts the `countries` row from canonical metadata before inserting the city.
+   - Country insert is ordered AFTER city-level duplicate validation so no orphan country rows can be left behind if the city insert fails.
+
+4. **`POST /api/countries` still exists and is still hardened.**
+   - Strict Zod schema rejects any extra fields (no `currencyCode` input).
+   - Rejects unknown countries with a clear message pointing at the regeneration command.
+   - No UI in the app currently calls this route, but it is kept intact for completeness and is the right surface for Phase 4 planner/snapshot flows if they need an explicit country-only creation path.
+
+## Design principle worth carrying forward
+
+The user explicitly framed the new direction as a general principle: **when a repo-owned canonical dataset covers an entity, the user-facing pickers must enumerate the canonical dataset, and any DB row creation must be a transparent side effect of the primary action.** There should never be a separate admin "create row" step for entities that are already fully defined in canonical repo data.
+
+This principle should guide Phase 4:
+
+- Planner new-city flow should reference the canonical country set directly.
+- Snapshot-import missing-country resolution should not prompt the user to "create" a country it could auto-resolve from the canonical dataset.
+
+## What Phase 4 should do
+
+### Scope
+
+- Unify every country-creation path so it routes through the same canonical resolver.
+- Extract a shared helper so the pattern used in `POST /api/cities` (line by line: resolve canonical, auto-insert if missing, return canonical ids) is reused rather than re-implemented per route.
+- Rewire any planner or snapshot-import UI that still has user-facing "create missing country" steps so the canonical list is available directly.
+
+### Likely files
+
+- `src/lib/country-metadata.ts` (add `resolveCountryCreationDefaults` or similar shared helper)
+- `src/app/api/cities/route.ts` (already uses the pattern; should call the shared helper)
+- `src/app/api/itinerary/legs/create-with-city/route.ts` (planner-side new-city server path; per CLAUDE.md this already checks DB first, canonicalizes, creates rows - but needs to reuse the shared helper instead of reimplementing)
+- `src/lib/planner-city-resolution.ts`
+- `src/lib/resolve-missing-cities.ts` (snapshot import)
+- `src/app/plan/page.tsx` (check whether the new-city dialog / missing-country resolver still exposes UI for country creation that should be removed or simplified)
+
+### Suggested helper shape
+
+```ts
+export function resolveCountryCreationDefaults(input: {
+  name?: string;
+  id?: string;
+}): {
+  canonical: CountryMetadata;
+  dbInsert: typeof countries.$inferInsert;
+} | null;
 ```
 
-Implementation details:
+Returning both the canonical row and an insert-ready shape keeps the call sites thin.
 
-- generator uses `world-countries` as the upstream source package
-- output is committed to the repo; no runtime fetching
-- generated rows are ASCII-safe to avoid the mojibake/rendering problems seen elsewhere
-- generator maps world regions/subregions into Wanderledger app regions
-- app-specific overrides are applied for cases where the app intentionally differs from upstream defaults
+### Phase 4 verification
 
-Important overrides currently encoded:
-
-- Cambodia -> `USD`
-- Cuba -> `CUP`
-- Micronesia -> `USD`
-- Egypt region -> `middle_east`
-- Georgia region -> `europe`
-- Czechia canonicalized to app-facing `Czech Republic`
-- Turkiye/Turkey compatibility
-
-Generator output shape:
-
-- `id`
-- `name`
-- `aliases`
-- `currencyCode`
-- `region`
-- `iso2`
-- `iso3`
-- `source`
-
-Current generated dataset size:
-
-- 245 rows
-
-## What Phase 2 actually changed
-
-`src/lib/country-metadata.ts` no longer hardcodes `COUNTRY_CURRENCY_CODES` and `COUNTRY_REGIONS` as the source of truth.
-
-Instead it now:
-
-- imports `src/lib/data/country-metadata.generated.json`
-- validates rows on load
-- builds deterministic lookup maps
-- supports lookup by:
-  - canonical name
-  - alias
-  - canonical `id`
-  - `iso2`
-  - `iso3`
-- preserves the existing public helpers used throughout the app
-
-Exports now available:
-
-- `findKnownCountryMetadata`
-- `findKnownCountryById`
-- `findKnownCountryCurrencyCode`
-- `findKnownCountryRegion`
-- `getCountryCurrencyCode`
-- `normalizeRegionLabel`
-- `slugifyId`
-- `COUNTRY_CURRENCY_CODES`
-- `COUNTRY_REGIONS`
-- `APP_REGION_VALUES`
-
-The compatibility constraint for Phase 2 was preserved: current callers did not need to be rewritten yet.
+- Snapshot import missing-country flow no longer prompts for manual country creation.
+- Planner-side new-city flow uses the same canonical source as `/dataset`.
+- Every country insert in the codebase resolves through one helper.
+- `npm run build` and `npx tsc --noEmit` pass.
 
 ## Verified state so far
 
-Phase 1 verification:
+- `npx tsc --noEmit` passes at HEAD
+- `npm run build` passes at HEAD
+- `/dataset` bundle size dropped from ~10.7 kB to ~9.7 kB after the Add Country UI removal
+- The known `/api/export` dynamic-server warning still appears during `next build`; that is pre-existing and documented in `CLAUDE.md`
 
-- `npm run country-metadata:generate` passed
-- generated dataset successfully built at `src/lib/data/country-metadata.generated.json`
-- generated data matched all current app-used country currency/region expectations
+No test suite was added in this phase (that is Phase 5).
 
-Phase 2 verification:
-
-- `npx tsc --noEmit` passed
-- `npm run build` passed
-- deterministic lookup smoke checks confirmed expected results for:
-  - `UK`
-  - `USA`
-  - `Czechia`
-  - `Turkiye`
-  - `UAE`
-  - `Georgia`
-  - `Egypt`
-
-Existing build note still applies:
-
-- `/api/export` shows the known dynamic-server warning because it uses request headers/url
-
-## Key files for the next person
+## Key files for Codex
 
 - `PLAN-country-dataset.md`
-- `HANDOFF-country-dataset.md`
-- `src/lib/country-metadata.ts`
-- `src/lib/data/country-metadata.generated.json`
+- `HANDOFF-country-dataset.md` (this file)
+- `src/lib/country-metadata.ts` (now exports `KNOWN_COUNTRIES`)
+- `src/lib/data/country-metadata.generated.json` (245 rows)
 - `src/lib/data/country-metadata.overrides.json`
 - `scripts/generate-country-metadata.mjs`
-- `src/app/api/countries/route.ts`
-- `src/app/dataset/page.tsx`
-- `src/app/plan/page.tsx`
-- `src/lib/planner-city-resolution.ts`
-- `src/lib/resolve-missing-cities.ts`
-
-## The next task: Phase 3
-
-Phase 3 is the next logical step and is not started yet.
-
-Scope:
-
-- simplify `/dataset` country creation to name-first flow
-- remove manual currency-code responsibility from the admin UI
-- infer currency from canonical country metadata
-- keep region as canonical by default, with override only where needed
-- reject unknown countries instead of falling back to manual currency entry
-
-Likely files:
-
-- `src/app/dataset/page.tsx`
-- `src/app/api/countries/route.ts`
-
-Likely implementation shape:
-
-1. UI:
-   - remove freeform currency input from the create-country form
-   - show inferred currency as preview text
-   - optionally allow region override, but default to canonical region
-   - show a clear error/help message when the country is not in the canonical dataset
-
-2. API:
-   - resolve canonical metadata from `name`
-   - use canonical `currencyCode`
-   - use canonical region unless the user explicitly overrides region
-   - return a clear `400` for unknown country names
-   - keep duplicate-country checks in place
-
-3. Verification:
-   - known country creation succeeds without manual currency entry
-   - unknown country creation fails clearly
-   - duplicate by id / duplicate by normalized name still behave correctly
-
-## After Phase 3
-
-Phase 4 should unify planner-side country creation with the same canonical resolver.
-
-That likely means shared helper extraction rather than keeping similar logic in:
-
-- `/dataset`
-- planner missing-country creation
-- snapshot import country creation
-- planner "create with city" server path
-
-The plan already suggests a shared resolver such as:
-
-```ts
-resolveCountryCreationDefaults({ name, id? })
-```
-
-That is still the right direction.
+- `src/app/api/countries/route.ts` (hardened, strict schema)
+- `src/app/api/cities/route.ts` (auto-creates country from canonical)
+- `src/app/api/itinerary/legs/create-with-city/route.ts` (planner new-city; Phase 4 target)
+- `src/lib/planner-city-resolution.ts` (Phase 4 target)
+- `src/lib/resolve-missing-cities.ts` (Phase 4 target)
+- `src/app/dataset/page.tsx` (Add Country UI removed; dropdown uses canonical)
+- `src/app/plan/page.tsx` (Phase 4 target - check missing-country resolver UI)
 
 ## Important cautions
 
-1. Do not reintroduce freeform currency as the fallback path.
-   The whole point of this workstream is to keep currency deterministic and repo-owned.
+1. **Do not reintroduce an Add Country admin step.**
+   The user explicitly rejected this. Countries are picked from the canonical list; DB rows appear as a side effect of city or leg creation.
 
-2. Keep runtime lookup deterministic.
-   No fuzzy matching. Exact normalized alias/name/id/ISO matching only.
+2. **Do not reintroduce freeform currency entry.**
+   Currency is canonical metadata, not user input.
 
-3. Treat the generated JSON as committed output, not hand-maintained truth.
+3. **Keep runtime lookup deterministic.**
+   No fuzzy matching. Exact normalized alias/name/id/ISO matching only via `findKnownCountryMetadata`.
+
+4. **Treat the generated JSON as committed output, not hand-maintained truth.**
    If metadata needs changing, prefer the overrides layer or generator logic.
 
-4. Keep ASCII-safe output in generated assets.
-   This was added specifically because the user previously saw mojibake-like rendering in docs.
+5. **Keep ASCII-safe output in generated assets.**
+   The user has previously seen mojibake-like rendering in docs; the generator explicitly strips non-ASCII to avoid this.
 
-5. There is still an unrelated local handoff history story in the repo conversation.
-   This file is now the correct restart point for Claude Code.
+6. **Auto-create ordering matters.**
+   In `POST /api/cities`, the country insert is placed AFTER city-level duplicate checks and BEFORE the city insert. Preserve this order when extracting the shared helper so no orphan country rows can be left behind on late city-insert failure.
+
+7. **`POST /api/countries` is intentionally orphaned from the UI.**
+   It is still hardened and still correct; keep it as the canonical-only creation endpoint for any future server-side flow that needs it. Do not delete it just because nothing calls it right now.
 
 ## Useful commands
 
@@ -263,6 +182,6 @@ npm run build
 
 ## Working tree note
 
-At the time this handoff was rewritten, there were no tracked local changes pending.
+At the time this handoff was written, there are no pending local changes. All Phase 3 work is committed and pushed to `origin/feat/country-dataset`.
 
 This file itself should be committed and pushed so future resumes have the correct context.
