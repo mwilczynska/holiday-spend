@@ -9,8 +9,8 @@ It combines itinerary planning, city-by-city budget modelling, actual expense tr
 - Build trips leg by leg in `/plan`
 - Track real spend manually or by importing Wise CSV exports in `/track`
 - Compare planned vs actual spend across the whole trip and by country on `/`
-- Manage the city cost library and generate new city costs in `/settings/cities`
-- Review the city-cost methodology, dataset, and generation history in `/estimates`
+- Manage the city cost library, dataset, and generation history in `/dataset`
+- Review the city-cost methodology in `/estimates`
 
 ## Current Product Model
 

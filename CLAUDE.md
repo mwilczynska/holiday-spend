@@ -19,8 +19,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `/plan/compare` compares saved plan snapshots side-by-side with cumulative spend charts and summary cards
 - `/track` records actual spend, either manually or by importing Wise CSV exports
 - `/` compares planned vs actual spend across the trip and across countries
-- `/settings/cities` manages the city cost library and runs new-city cost generation
-- `/estimates` documents the current city-cost methodology, shows the dataset, and shows generation history
+- `/dataset` manages the city cost library, shows the planner-facing dataset, and shows generation history
+- `/estimates` documents the current city-cost methodology
 
 ## Project Location
 - App code: repo root
@@ -78,6 +78,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Methodology doc: `methodology.md`
 - New-city prompt template: `llm_prompt_new_cities_1.md`
 - `/estimates` now reflects this methodology rather than the older hybrid/Xotelo explanation
+- `/dataset` now holds the editable planner dataset and generation-history views
 
 ### Transport
 - Transport estimation has been removed from the city methodology
@@ -100,7 +101,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Gemini: `gemini-2.5-flash`
 
 ### UI Behaviour
-- `/settings/cities` includes provider selection, API key entry, model entry, reference date/context, and generation results
+- `/dataset` includes provider selection, API key entry, model entry, reference date/context, and generation results
 - `/plan` now has a dedicated `Add Leg -> New City` LLM flow that only asks for city name, country name, and nights by default; provider/model/API-key overrides live in an optional advanced section
 - API keys entered in the UI are stored only in browser `localStorage`
 - Keys are not written to the repo or database
@@ -252,10 +253,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [ ] Decide whether older historical estimate records need migration or pruning after the methodology switch
 
 ### Settings / Admin UX
-- [ ] Add country-creation UI in `/settings/cities` so city-library admin work does not depend on a pre-existing country row
+- [ ] Add country-creation UI in `/dataset` so city-library admin work does not depend on a pre-existing country row
 - [ ] Add duplicate-city protection beyond id uniqueness, such as fuzzy warnings on similar city names
 - [ ] Add a clear saved API keys control in the generation UI
-- [ ] Surface city provenance/history more richly in the settings editor without turning `/estimates` into a second full editor
+- [ ] Surface city provenance/history more richly in the dataset editor without turning `/dataset` into a second full editor
 
 ### Cleanup / Simplification
 - [ ] Do a legacy-code cleanup pass and remove dead or superseded code paths, especially around older estimation flows and stale deployment scaffolding
@@ -289,7 +290,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Auto-migration from localStorage to database on first load via `src/lib/saved-plan-migration.ts`
 - `/plan/compare` is a first-class page with its own sidebar entry ("Compare") in both desktop and mobile nav
 - Compare page uses a fixed header matching the planner's proportions (sticky, shadow, title/subtitle/action buttons)
-- Comparison is persisted in sessionStorage — navigating away and back restores the last comparison
+- Comparison is persisted in sessionStorage - navigating away and back restores the last comparison
 - "Change Plans" button on comparison results returns to selector with current plan IDs pre-checked
 - Sidebar `isActive` logic uses `excludePrefix` to prevent `/plan` and `/plan/compare` from both highlighting
 - Recharts LineChart cumulative spend chart and summary cards for up to 5 plans
@@ -300,11 +301,12 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/country-metadata.ts` maps country ids, currency codes, and regions
 - CSV-backed rows are tagged with `base_csv_apr_2026`
 
-### Estimates And Settings UI
-- `/estimates` is now a methodology-heavy page with dataset and generation history tables
-- `/settings/cities` is now the main city-cost library editor
-- The city library now supports explicit save, edit, delete, and deep-linking from the estimates table
-- The `/estimates` city-cost table sticky column overlap on horizontal scroll was fixed
+### Dataset And Methodology UI
+- `/dataset` is now the main city-cost library page and includes the city editor, dataset table, and generation history
+- `/estimates` is now methodology-only
+- `/settings/cities` now redirects to `/dataset`, preserving `?cityId=...` deep links
+- The city library still supports explicit save, edit, delete, and generated-value refresh from the dataset page
+- The methodology page retains the written model details while the planner-facing data now lives separately
 
 ### Wise Import Improvements
 - `src/lib/wise-csv-parser.ts` was upgraded to support both provided Wise CSV export formats
@@ -370,6 +372,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/password.ts`
 - `src/lib/auth-tokens.ts`
 - `src/lib/rate-limit.ts`
+- `src/app/dataset/page.tsx`
 - `src/app/settings/cities/page.tsx`
 - `src/app/estimates/page.tsx`
 - `tests/playwright/planner-regressions.spec.ts`
