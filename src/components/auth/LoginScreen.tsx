@@ -23,7 +23,7 @@ export function LoginScreen({ hasGoogle, hasCredentials }: LoginScreenProps) {
     setLoading(true);
     setError('');
 
-    const result = await signIn('credentials', {
+    const result = await signIn('dev-pin', {
       pin,
       redirect: false,
       callbackUrl: '/',

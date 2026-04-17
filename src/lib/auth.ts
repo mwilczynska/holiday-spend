@@ -4,12 +4,17 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { db } from '@/db';
 import { accounts, sessions, users, verificationTokens } from '@/db/schema';
+import {
+  NATIVE_AUTH_ERROR_CODES,
+  verifyEmailPasswordCredentials,
+} from '@/lib/native-auth';
 import { ensureUserRow, claimLegacyDataForUser } from '@/lib/user-data';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const devPin = !isProduction
   ? process.env.AUTH_DEV_PIN || process.env.APP_SECRET || undefined
   : undefined;
+const emailPasswordEnabled = process.env.ENABLE_EMAIL_PASSWORD === 'true';
 
 const providers = [];
 
@@ -22,9 +27,39 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
   );
 }
 
+if (emailPasswordEnabled) {
+  providers.push(
+    CredentialsProvider({
+      id: 'email-password',
+      name: 'Email and password',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        const result = await verifyEmailPasswordCredentials(
+          credentials?.email,
+          credentials?.password
+        );
+
+        if (result.kind === 'unverified') {
+          throw new Error(NATIVE_AUTH_ERROR_CODES.EMAIL_NOT_VERIFIED);
+        }
+
+        if (result.kind === 'invalid') {
+          return null;
+        }
+
+        return result.user;
+      },
+    })
+  );
+}
+
 if (devPin) {
   providers.push(
     CredentialsProvider({
+      id: 'dev-pin',
       name: 'Development PIN',
       credentials: {
         pin: { label: 'PIN', type: 'password' },
@@ -120,6 +155,7 @@ export async function requireCurrentUserId() {
 export function getConfiguredAuthProviders() {
   return {
     google: Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET),
+    emailPassword: emailPasswordEnabled,
     devPin: Boolean(devPin),
   };
 }
