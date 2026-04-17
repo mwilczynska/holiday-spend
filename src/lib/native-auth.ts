@@ -1,6 +1,6 @@
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { db } from '@/db';
-import { userPasswords, users } from '@/db/schema';
+import { accounts, userPasswords, users } from '@/db/schema';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { verifyPassword } from '@/lib/password';
 
@@ -15,6 +15,7 @@ export type NativeAuthResult =
       };
     }
   | { kind: 'invalid' }
+  | { kind: 'link-required-password' }
   | { kind: 'unverified' };
 
 export async function verifyEmailPasswordCredentials(
@@ -53,6 +54,16 @@ export async function verifyEmailPasswordCredentials(
     .get();
 
   if (!stored) {
+    const googleAccount = await db
+      .select({ userId: accounts.userId })
+      .from(accounts)
+      .where(and(eq(accounts.userId, user.id), eq(accounts.provider, 'google')))
+      .get();
+
+    if (googleAccount) {
+      return { kind: 'link-required-password' };
+    }
+
     return { kind: 'invalid' };
   }
 
@@ -78,5 +89,6 @@ export async function verifyEmailPasswordCredentials(
 
 export const NATIVE_AUTH_ERROR_CODES = {
   EMAIL_NOT_VERIFIED: 'EMAIL_NOT_VERIFIED',
+  LINK_REQUIRED_PASSWORD: 'LINK_REQUIRED_PASSWORD',
   RATE_LIMITED: 'RATE_LIMITED',
 } as const;

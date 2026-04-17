@@ -14,6 +14,7 @@ type LoginScreenProps = {
   hasEmailPassword: boolean;
   hasDevPin: boolean;
   passwordResetSuccess?: boolean;
+  linkRequired?: 'google' | 'password' | null;
 };
 
 export function LoginScreen({
@@ -21,6 +22,7 @@ export function LoginScreen({
   hasEmailPassword,
   hasDevPin,
   passwordResetSuccess = false,
+  linkRequired = null,
 }: LoginScreenProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -54,6 +56,9 @@ export function LoginScreen({
 
     if (result?.error === 'EMAIL_NOT_VERIFIED') {
       setUnverifiedEmail(email.trim());
+    } else if (result?.error === 'LINK_REQUIRED_PASSWORD') {
+      window.location.href = '/login?linkRequired=password';
+      return;
     } else if (result?.error === 'RATE_LIMITED') {
       setEmailError('Too many sign-in attempts. Please wait a bit and try again.');
     } else {
@@ -108,6 +113,20 @@ export function LoginScreen({
           {passwordResetSuccess ? (
             <div className="rounded-md border border-emerald-500/40 bg-emerald-500/5 p-3 text-sm text-foreground">
               Your password has been reset. Sign in with your new password.
+            </div>
+          ) : null}
+
+          {linkRequired === 'google' ? (
+            <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm text-foreground">
+              This email already has a Wanderledger account created with Google. Sign in with Google
+              first, then link email and password from your account settings.
+            </div>
+          ) : null}
+
+          {linkRequired === 'password' ? (
+            <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm text-foreground">
+              This email already has a Wanderledger account created with email and password. Sign in
+              with email and password first, then link Google from your account settings.
             </div>
           ) : null}
 

@@ -9,6 +9,7 @@ import {
   userPreferences,
   users,
 } from '@/db/schema';
+import { normalizeEmail } from '@/lib/email';
 
 type EnsureUserRowInput = {
   id: string;
@@ -18,18 +19,21 @@ type EnsureUserRowInput = {
 };
 
 export async function ensureUserRow(input: EnsureUserRowInput) {
+  const normalizedEmail =
+    typeof input.email === 'string' && input.email.trim() ? normalizeEmail(input.email) : null;
+
   await db
     .insert(users)
     .values({
       id: input.id,
-      email: input.email ?? null,
+      email: normalizedEmail,
       name: input.name ?? null,
       image: input.image ?? null,
     })
     .onConflictDoUpdate({
       target: users.id,
       set: {
-        email: input.email ?? null,
+        email: normalizedEmail,
         name: input.name ?? null,
         image: input.image ?? null,
       },

@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = authPageMetadata;
 
 type PageProps = {
-  searchParams?: { reset?: string };
+  searchParams?: { reset?: string; linkRequired?: string };
 };
 
 export default async function LoginPage({ searchParams }: PageProps) {
@@ -18,6 +18,10 @@ export default async function LoginPage({ searchParams }: PageProps) {
 
   const configuredProviders = getConfiguredAuthProviders();
   const passwordResetSuccess = searchParams?.reset === 'success';
+  const linkRequired =
+    searchParams?.linkRequired === 'google' || searchParams?.linkRequired === 'password'
+      ? searchParams.linkRequired
+      : null;
 
   return (
     <LoginScreen
@@ -25,6 +29,7 @@ export default async function LoginPage({ searchParams }: PageProps) {
       hasEmailPassword={configuredProviders.emailPassword}
       hasDevPin={configuredProviders.devPin}
       passwordResetSuccess={passwordResetSuccess}
+      linkRequired={linkRequired}
     />
   );
 }

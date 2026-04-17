@@ -1,14 +1,15 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { getServerSession, type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { db } from '@/db';
-import { accounts, sessions, users, verificationTokens } from '@/db/schema';
+import { accounts, sessions, userPasswords, users, verificationTokens } from '@/db/schema';
 import {
   NATIVE_AUTH_ERROR_CODES,
   verifyEmailPasswordCredentials,
 } from '@/lib/native-auth';
+import { normalizeEmail } from '@/lib/email';
 import { isMailConfigured } from '@/lib/mailer';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { getRequestIp } from '@/lib/request-ip';
@@ -29,6 +30,57 @@ async function getUserTokenVersion(userId: string) {
     .get();
 
   return user?.tokenVersion ?? null;
+}
+
+async function getUserByNormalizedEmail(rawEmail: string | null | undefined) {
+  if (!rawEmail?.trim()) {
+    return null;
+  }
+
+  return db
+    .select({
+      id: users.id,
+      email: users.email,
+    })
+    .from(users)
+    .where(eq(users.email, normalizeEmail(rawEmail)))
+    .get();
+}
+
+async function hasUserPassword(userId: string) {
+  const row = await db
+    .select({ userId: userPasswords.userId })
+    .from(userPasswords)
+    .where(eq(userPasswords.userId, userId))
+    .get();
+
+  return Boolean(row);
+}
+
+async function hasLinkedProviderAccount(userId: string, provider: string, providerAccountId?: string | null) {
+  if (providerAccountId) {
+    const exact = await db
+      .select({ userId: accounts.userId })
+      .from(accounts)
+      .where(
+        and(eq(accounts.provider, provider), eq(accounts.providerAccountId, providerAccountId))
+      )
+      .get();
+
+    if (exact) {
+      return true;
+    }
+
+    return false;
+  }
+
+  const linked = await db
+    .select({ userId: accounts.userId })
+    .from(accounts)
+    .where(and(eq(accounts.userId, userId), eq(accounts.provider, provider)))
+    .get();
+
+  return Boolean(linked);
 }
 
 const providers = [];
@@ -80,6 +132,10 @@ if (emailPasswordEnabled) {
           throw new Error(NATIVE_AUTH_ERROR_CODES.EMAIL_NOT_VERIFIED);
         }
 
+        if (result.kind === 'link-required-password') {
+          throw new Error(NATIVE_AUTH_ERROR_CODES.LINK_REQUIRED_PASSWORD);
+        }
+
         if (result.kind === 'invalid') {
           return null;
         }
@@ -129,25 +185,45 @@ export const authOptions: NextAuthOptions = {
   },
   providers,
   callbacks: {
-    async signIn({ user }) {
-      if (!user.id) {
+    async signIn({ user, account }) {
+      if (!account) {
         return false;
       }
 
-      const userId = String(user.id);
-      await ensureUserRow({
-        id: userId,
-        email: user.email,
-        name: user.name,
-        image: user.image,
-      });
-      await claimLegacyDataForUser(userId);
+      if (account.provider === 'google') {
+        const existingUser = await getUserByNormalizedEmail(user.email);
+        if (!existingUser) {
+          return true;
+        }
+
+        const linkedGoogleAccount = await hasLinkedProviderAccount(
+          existingUser.id,
+          'google',
+          account.providerAccountId
+        );
+        if (linkedGoogleAccount) {
+          return true;
+        }
+
+        if (await hasUserPassword(existingUser.id)) {
+          return '/login?linkRequired=google';
+        }
+      }
+
       return true;
     },
     async jwt({ token, user }) {
       if (user?.id) {
-        token.sub = String(user.id);
-        token.tokenVersion = (await getUserTokenVersion(String(user.id))) ?? 0;
+        const userId = String(user.id);
+        await ensureUserRow({
+          id: userId,
+          email: user.email,
+          name: user.name,
+          image: user.image,
+        });
+        await claimLegacyDataForUser(userId);
+        token.sub = userId;
+        token.tokenVersion = (await getUserTokenVersion(userId)) ?? 0;
         return token;
       }
 

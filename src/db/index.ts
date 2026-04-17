@@ -54,6 +54,43 @@ if (!hasUserTokenVersionColumn) {
   sqlite.exec('ALTER TABLE user ADD COLUMN token_version INTEGER NOT NULL DEFAULT 0');
 }
 
+const usersNeedingEmailNormalization = sqlite.prepare(`
+  SELECT id, email
+  FROM user
+  WHERE email IS NOT NULL
+    AND email != lower(trim(email))
+`).all() as Array<{ id: string; email: string }>;
+
+const findNormalizedEmailConflict = sqlite.prepare(`
+  SELECT id
+  FROM user
+  WHERE email = ?
+    AND id != ?
+  LIMIT 1
+`);
+
+const updateNormalizedUserEmail = sqlite.prepare(`
+  UPDATE user
+  SET email = ?
+  WHERE id = ?
+`);
+
+for (const row of usersNeedingEmailNormalization) {
+  const normalizedEmail = row.email.trim().toLowerCase();
+  const conflict = findNormalizedEmailConflict.get(normalizedEmail, row.id) as
+    | { id: string }
+    | undefined;
+
+  if (conflict) {
+    console.warn(
+      `[auth] Skipped email normalization for user ${row.id} because ${normalizedEmail} already exists on ${conflict.id}.`
+    );
+    continue;
+  }
+
+  updateNormalizedUserEmail.run(normalizedEmail, row.id);
+}
+
 sqlite.exec(`
   CREATE TABLE IF NOT EXISTS account (
     userId TEXT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
