@@ -41,7 +41,7 @@ Priority 2B adds native accounts **alongside** Google (not as a replacement), wi
 - [x] **Phase 5** - Email delivery (Resend) + deployment docs (commit 8776a14)
 - [x] **Phase 6** - Rate limiting + abuse protection (commit c3c4a19)
 - [x] **Phase 7** - Account-linking policy in `signIn` callback + collision screen (commit f845a42)
-- [ ] **Phase 8** - Signed-in account management (`/settings/account` change-password)
+- [x] **Phase 8** - Signed-in account management (`/settings/account` change-password) (commit 1d7a486)
 - [ ] **Phase 9** - Tests (unit + Playwright) + CLAUDE.md update
 - [ ] **Phase 10** - PR review, merge readiness
 
