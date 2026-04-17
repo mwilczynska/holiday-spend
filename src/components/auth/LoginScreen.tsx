@@ -230,8 +230,8 @@ export function LoginScreen({
 
           {!hasAnyProvider ? (
             <p className="text-sm text-center text-muted-foreground">
-              Auth is not configured yet. Set Google OAuth credentials, enable email/password with
-              `ENABLE_EMAIL_PASSWORD=true`, or set `AUTH_DEV_PIN` for local development.
+              Auth is not configured yet. Set Google OAuth credentials, configure native email delivery,
+              or set `AUTH_DEV_PIN` for local development.
             </p>
           ) : null}
         </CardContent>

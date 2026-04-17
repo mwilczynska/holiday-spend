@@ -37,19 +37,23 @@ It combines itinerary planning, city-by-city budget modelling, actual expense tr
 3. For local development, either:
    - set `AUTH_DEV_PIN` for the built-in dev-only credentials login, or
    - set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` for Google OAuth.
-4. Install dependencies:
+4. To test native email/password auth locally:
+   - set `ENABLE_EMAIL_PASSWORD=true`
+   - optionally set `APP_URL=http://localhost:3000`
+   - add `RESEND_API_KEY` and `MAIL_FROM` for real email delivery, or leave them unset to log verification/reset links to the server console in development
+5. Install dependencies:
 
 ```bash
 npm ci
 ```
 
-5. Seed the local SQLite database:
+6. Seed the local SQLite database:
 
 ```bash
 npm run db:seed
 ```
 
-6. Start the dev server:
+7. Start the dev server:
 
 ```bash
 npm run dev
@@ -98,4 +102,5 @@ The active backlog lives in `AGENTS.md` / `CLAUDE.md`. Current priorities are:
 ## Notes
 
 - The app now uses real session auth with Google OAuth support and a dev-only local PIN fallback
-- User-owned trip data is now scoped per authenticated user; saved plans still need to move from browser storage into the DB
+- Native email/password auth now supports signup, verification, forgot-password, and reset flows
+- User-owned trip data is now scoped per authenticated user, and saved plans are now database-backed

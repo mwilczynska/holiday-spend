@@ -6,6 +6,7 @@ import { handleError, success } from '@/lib/api-helpers';
 import { buildAuthLink } from '@/lib/auth-links';
 import { invalidateUserTokens, issueToken } from '@/lib/auth-tokens';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
+import { sendPasswordResetEmail } from '@/lib/mailer';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,7 +50,7 @@ export async function POST(request: Request) {
       userAgent: request.headers.get('user-agent'),
     });
     const resetUrl = buildAuthLink('/reset-password', issued.rawToken, request);
-    console.log(`[auth] password reset link for ${email}: ${resetUrl}`);
+    await sendPasswordResetEmail(email, resetUrl);
 
     return success({ ok: true });
   } catch (err) {

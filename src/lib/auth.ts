@@ -9,13 +9,15 @@ import {
   NATIVE_AUTH_ERROR_CODES,
   verifyEmailPasswordCredentials,
 } from '@/lib/native-auth';
+import { isMailConfigured } from '@/lib/mailer';
 import { ensureUserRow, claimLegacyDataForUser } from '@/lib/user-data';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const devPin = !isProduction
   ? process.env.AUTH_DEV_PIN || process.env.APP_SECRET || undefined
   : undefined;
-const emailPasswordEnabled = process.env.ENABLE_EMAIL_PASSWORD === 'true';
+const emailPasswordEnabled =
+  process.env.ENABLE_EMAIL_PASSWORD === 'true' || isMailConfigured();
 
 async function getUserTokenVersion(userId: string) {
   const user = await db

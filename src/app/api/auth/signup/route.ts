@@ -6,6 +6,7 @@ import { error as apiError, handleError, success } from '@/lib/api-helpers';
 import { buildAuthLink } from '@/lib/auth-links';
 import { issueToken } from '@/lib/auth-tokens';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
+import { sendVerificationEmail } from '@/lib/mailer';
 import { hashPassword, validatePasswordStrength } from '@/lib/password';
 
 export const dynamic = 'force-dynamic';
@@ -55,8 +56,7 @@ export async function POST(request: Request) {
 
     const issued = await issueToken(userId, 'verify_email');
     const verifyUrl = buildAuthLink('/verify-email', issued.rawToken, request);
-
-    console.log(`[auth] verification link for ${email}: ${verifyUrl}`);
+    await sendVerificationEmail(email, verifyUrl);
 
     return success({ ok: true });
   } catch (err) {

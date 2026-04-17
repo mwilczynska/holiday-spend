@@ -70,14 +70,25 @@ Create `.env.local` from `.env.example` and set at least:
 ```env
 NEXTAUTH_SECRET=replace-with-a-long-random-secret
 # NEXTAUTH_URL=https://wanderledger.example.com
+APP_URL=https://wanderledger.example.com
 DATABASE_URL=file:./data/travel.db
 ```
 
-For production auth, also set Google OAuth credentials:
+For production auth, set your auth secrets and providers explicitly:
 
 ```env
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
+RESEND_API_KEY=...
+MAIL_FROM=Wanderledger <no-reply@your-domain>
+```
+
+`APP_URL` should match the public origin used in verification and reset emails.
+
+`ENABLE_EMAIL_PASSWORD` is optional. Native email/password auth turns on automatically when `RESEND_API_KEY` and `MAIL_FROM` are both configured. You can still force it on in development with:
+
+```env
+ENABLE_EMAIL_PASSWORD=true
 ```
 
 Optional LLM provider keys:
@@ -213,8 +224,8 @@ For SQLite, stop the app or use a SQLite-aware backup process if you want the sa
 
 ## Current Production Caveats
 
-- Auth is still a shared-secret gate today, not OAuth or full user auth
-- Saved plans are still browser-local, not database-backed
+- Native auth now includes Google OAuth, email/password signup, email verification, forgot-password, and reset flows
+- Resend email delivery requires `RESEND_API_KEY`, `MAIL_FROM`, and a real `APP_URL` in production
 - SQLite is fine for a small private deployment, but it is still a single-node filesystem database
 
 Given those caveats, deployment polish should not outrun product readiness. The app can be made deployable now, but real multi-user auth and DB-backed saved plans are still the more important pre-launch tasks.
