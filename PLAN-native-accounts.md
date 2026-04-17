@@ -35,7 +35,7 @@ Priority 2B adds native accounts **alongside** Google (not as a replacement), wi
 
 - [x] **Phase 0** — Plan doc + branch (commit f1bd116)
 - [x] **Phase 1** — Schema + password/token helpers (commit 2111056)
-- [ ] **Phase 2** — EmailPassword `CredentialsProvider` wired into NextAuth
+- [x] **Phase 2** — EmailPassword `CredentialsProvider` wired into NextAuth (commit 412f073)
 - [ ] **Phase 3** — Signup + email verification flow (API + pages)
 - [ ] **Phase 4** — Forgot password + reset flow (API + pages)
 - [ ] **Phase 5** — Email delivery (Resend) + deployment docs
