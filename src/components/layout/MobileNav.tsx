@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { BarChart3, Calculator, LayoutDashboard, Loader2, Map, Plus, Receipt, Settings } from 'lucide-react';
+import { BarChart3, LayoutDashboard, Loader2, Map, Plus, Receipt, Settings } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 
