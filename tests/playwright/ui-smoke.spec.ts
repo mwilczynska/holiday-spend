@@ -27,9 +27,9 @@ test.describe('app UI smoke', () => {
   });
 
   test('city library renders', async ({ page }, testInfo) => {
-    await page.goto('/settings/cities');
-    await expect(page).toHaveURL(/\/settings\/cities$/);
-    await captureFullPage(page, testInfo, 'settings-cities.png');
+    await page.goto('/dataset');
+    await expect(page).toHaveURL(/\/dataset$/);
+    await captureFullPage(page, testInfo, 'dataset.png');
   });
 
   test('dashboard expanded charts open when available', async ({ page }, testInfo) => {

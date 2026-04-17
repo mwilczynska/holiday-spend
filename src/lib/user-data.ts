@@ -1,7 +1,6 @@
 import { and, eq, isNull } from 'drizzle-orm';
 import { db } from '@/db';
 import {
-  appSettings,
   expenses,
   fixedCosts,
   itineraryLegs,
@@ -36,20 +35,11 @@ export async function ensureUserRow(input: EnsureUserRowInput) {
 export async function claimLegacyDataForUser(userId: string) {
   const userPrefs = await db.select().from(userPreferences).where(eq(userPreferences.userId, userId)).get();
   if (!userPrefs) {
-    const legacyGroupSize = await db
-      .select()
-      .from(appSettings)
-      .where(eq(appSettings.key, 'planner_group_size'))
-      .get();
-
-    const parsedGroupSize = Number.parseInt(legacyGroupSize?.value || '', 10);
-    const plannerGroupSize = Number.isFinite(parsedGroupSize) ? parsedGroupSize : 2;
-
     await db
       .insert(userPreferences)
       .values({
         userId,
-        plannerGroupSize,
+        plannerGroupSize: 2,
       })
       .onConflictDoNothing();
   }

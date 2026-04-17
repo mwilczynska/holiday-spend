@@ -56,7 +56,6 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
   }, {});
 
   const SOURCE_BADGES: Record<string, string> = {
-    xotelo: 'bg-purple-100 text-purple-700',
     manual: 'bg-gray-100 text-gray-700',
     llm: 'bg-blue-100 text-blue-700',
     numbeo: 'bg-green-100 text-green-700',

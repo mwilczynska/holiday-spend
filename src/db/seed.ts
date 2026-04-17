@@ -2,25 +2,7 @@ import Database from 'better-sqlite3';
 import fs from 'fs';
 import Papa from 'papaparse';
 import path from 'path';
-import { getCountryCurrencyCode, normalizeRegionLabel, slugifyId } from '../lib/country-metadata';
-
-type LegacyCountry = {
-  id: string;
-  name: string;
-  currencyCode: string;
-  region?: string;
-};
-
-type LegacyCity = {
-  id: string;
-  countryId: string;
-  name: string;
-};
-
-type LegacySeedData = {
-  countries: LegacyCountry[];
-  cities: LegacyCity[];
-};
+import { findKnownCountryMetadata, getCountryCurrencyCode, normalizeRegionLabel, slugifyId } from '../lib/country-metadata';
 
 type CityCostCsvRow = {
   city: string;
@@ -94,11 +76,6 @@ CREATE TABLE IF NOT EXISTS countries (
   name          TEXT NOT NULL,
   currency_code TEXT NOT NULL,
   region        TEXT
-);
-
-CREATE TABLE IF NOT EXISTS app_settings (
-  key           TEXT PRIMARY KEY,
-  value         TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS user (
@@ -277,7 +254,6 @@ CREATE TABLE IF NOT EXISTS city_estimates (
   reasoning       TEXT,
   confidence      TEXT,
   numbeo_items    TEXT,
-  xotelo_data     TEXT,
   is_active       INTEGER DEFAULT 1
 );
 `);
@@ -296,12 +272,6 @@ sqlite.exec(`
     AND drink_coffee IS NOT NULL
 `);
 
-sqlite.prepare(`
-  INSERT INTO app_settings (key, value)
-  VALUES ('planner_group_size', '2')
-  ON CONFLICT(key) DO NOTHING
-`).run();
-
 function findFile(candidates: string[]): string {
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) return candidate;
@@ -314,11 +284,6 @@ function parseMoney(value: string | null | undefined): number | null {
   if (!value) return null;
   const parsed = Number.parseFloat(value);
   return Number.isFinite(parsed) ? parsed : null;
-}
-
-function loadLegacySeedData(): LegacySeedData {
-  const legacySeedPath = path.join(process.cwd(), 'seed-data', 'cities.json');
-  return JSON.parse(fs.readFileSync(legacySeedPath, 'utf-8')) as LegacySeedData;
 }
 
 function loadCsvRows(): CityCostCsvRow[] {
@@ -340,23 +305,23 @@ function loadCsvRows(): CityCostCsvRow[] {
   return parsed.data;
 }
 
-function buildDataset(legacySeedData: LegacySeedData, csvRows: CityCostCsvRow[]) {
-  const legacyCountriesByName = new Map(legacySeedData.countries.map((country) => [country.name, country]));
-  const legacyCountryNamesById = new Map(legacySeedData.countries.map((country) => [country.id, country.name]));
-  const legacyCitiesByKey = new Map(
-    legacySeedData.cities.map((city) => [`${legacyCountryNamesById.get(city.countryId)}::${city.name}`, city])
-  );
-
+function buildDataset(csvRows: CityCostCsvRow[]) {
   const countriesByName = new Map<string, ParsedCountry>();
   for (const row of csvRows) {
     if (countriesByName.has(row.country)) continue;
 
-    const legacyCountry = legacyCountriesByName.get(row.country);
+    const canonicalCountry = findKnownCountryMetadata(row.country);
+    if (!canonicalCountry) {
+      throw new Error(
+        `Country "${row.country}" is not in the canonical country dataset. Update src/lib/data/country-metadata.overrides.json or regenerate the canonical dataset before seeding.`
+      );
+    }
+
     countriesByName.set(row.country, {
-      id: legacyCountry?.id ?? slugifyId(row.country),
-      name: row.country,
-      currencyCode: legacyCountry?.currencyCode ?? getCountryCurrencyCode(row.country),
-      region: legacyCountry?.region ?? normalizeRegionLabel(row.region),
+      id: canonicalCountry.id,
+      name: canonicalCountry.name,
+      currencyCode: canonicalCountry.currencyCode ?? getCountryCurrencyCode(row.country),
+      region: canonicalCountry.region ?? normalizeRegionLabel(row.region),
     });
   }
 
@@ -364,23 +329,19 @@ function buildDataset(legacySeedData: LegacySeedData, csvRows: CityCostCsvRow[])
   const cities: ParsedCity[] = [];
 
   for (const row of csvRows) {
-    const cityKey = `${row.country}::${row.city}`;
-    const legacyCity = legacyCitiesByKey.get(cityKey);
     const country = countriesByName.get(row.country);
     if (!country) {
       throw new Error(`Unable to resolve country metadata for ${row.country}`);
     }
 
-    let cityId = legacyCity?.id ?? slugifyId(row.city);
-    if (!legacyCity) {
-      if (usedCityIds.has(cityId)) {
-        cityId = `${cityId}-${country.id}`;
-      }
-      let collisionCounter = 2;
-      while (usedCityIds.has(cityId)) {
-        cityId = `${slugifyId(row.city)}-${country.id}-${collisionCounter}`;
-        collisionCounter += 1;
-      }
+    let cityId = slugifyId(row.city);
+    if (usedCityIds.has(cityId)) {
+      cityId = `${cityId}-${country.id}`;
+    }
+    let collisionCounter = 2;
+    while (usedCityIds.has(cityId)) {
+      cityId = `${slugifyId(row.city)}-${country.id}-${collisionCounter}`;
+      collisionCounter += 1;
     }
 
     usedCityIds.add(cityId);
@@ -418,9 +379,8 @@ function buildDataset(legacySeedData: LegacySeedData, csvRows: CityCostCsvRow[])
   };
 }
 
-const legacySeedData = loadLegacySeedData();
 const csvRows = loadCsvRows();
-const dataset = buildDataset(legacySeedData, csvRows);
+const dataset = buildDataset(csvRows);
 const seededAt = new Date().toISOString();
 
 const upsertCountry = sqlite.prepare(`

@@ -1,5 +1,7 @@
 # Handoff: Dataset / Methodology Split
 
+Historical note: this handoff describes the earlier split that introduced `/dataset`. The temporary `/settings/cities` compatibility route mentioned below was later removed during the cleanup/simplification pass.
+
 ## What Was Done
 
 The city-cost information architecture was split into two pages:
@@ -14,7 +16,6 @@ The city-cost information architecture was split into two pages:
 Routing and navigation changes:
 
 - `src/app/dataset/page.tsx` added
-- `src/app/settings/cities/page.tsx` now redirects to `/dataset`, preserving `?cityId=...`
 - `src/app/settings/page.tsx` buttons now use `Dataset` and `Methodology`
 - `src/components/layout/DesktopSidebar.tsx` now exposes `Dataset` and `Methodology`
 
@@ -29,7 +30,7 @@ Routing and navigation changes:
 
 - `HANDOFF-codex-phase-9.md` remains untracked and unrelated to this work
 - this change set does **not** update `README.md`, `CLAUDE.md`, or `AGENTS.md`
-  - those files still describe `/settings/cities` as the main city-cost editor
+  - those files still described `/settings/cities` as the main city-cost editor at the time of this handoff
 - mobile nav was not expanded with `Dataset` / `Methodology`
   - current access path on mobile is through `/settings`
 
@@ -43,7 +44,6 @@ Routing and navigation changes:
 3. Browser-check:
    - `/dataset`
    - `/dataset?cityId=...`
-   - `/settings/cities?cityId=...` redirect
    - `/estimates`
 4. If desired, rename `/estimates` route itself later.
 
@@ -51,7 +51,6 @@ Routing and navigation changes:
 
 - `src/app/dataset/page.tsx`
 - `src/app/estimates/page.tsx`
-- `src/app/settings/cities/page.tsx`
 - `src/app/settings/page.tsx`
 - `src/components/layout/DesktopSidebar.tsx`
-- `HANDOFF-dataset-methodology-split.md`
+- `docs/dev/HANDOFF-dataset-methodology-split.md`

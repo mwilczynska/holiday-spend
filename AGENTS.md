@@ -206,11 +206,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Add `country-metadata.ts` and CSV-backed seed mapping
 - [x] Remove transport estimation from the city methodology
 - [x] Replace the old estimate logic page with methodology + dataset + history
-- [x] Simplify `/settings/cities` into a city cost library editor
+- [x] Consolidate the city cost library editor onto `/dataset`
 - [x] Add server-side city generation route and UI
 - [x] Support user-supplied OpenAI / Anthropic / Gemini keys and model selection
 - [x] Add edit/delete actions from `/estimates`
-- [x] Add explicit `Save City` flow in `/settings/cities`
+- [x] Add explicit `Save City` flow in the dataset editor
 - [x] Refresh project memory in `CLAUDE.md`
 
 ### Priority 2B: Native Account Expansion
@@ -290,7 +290,6 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Comparison API at `POST /api/saved-plans/compare` computes cumulative planned spend series server-side
 - Planner page now shows saved plans in an inline collapsible panel instead of a modal dialog
 - `SavePlanDialog` replaces `window.prompt()` for naming plans
-- Auto-migration from localStorage to database on first load via `src/lib/saved-plan-migration.ts`
 - `/plan/compare` is a first-class page with its own sidebar entry ("Compare") in both desktop and mobile nav
 - Compare page uses a fixed header matching the planner's proportions (sticky, shadow, title/subtitle/action buttons)
 - Comparison is persisted in sessionStorage - navigating away and back restores the last comparison
@@ -298,6 +297,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Sidebar `isActive` logic uses `excludePrefix` to prevent `/plan` and `/plan/compare` from both highlighting
 - Recharts LineChart cumulative spend chart and summary cards for up to 5 plans
 - Playwright E2E tests cover save, persist, delete, compare navigation, chart rendering, sidebar nav, and error states
+- The temporary browser `localStorage` migration shim has now been removed; saved plans are DB-only in the active app model
 
 ### Dataset And Seeding
 - `src/db/seed.ts` now imports the new CSV dataset
@@ -309,9 +309,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 ### Dataset And Methodology UI
 - `/dataset` is now the main city-cost library page and includes the city editor, dataset table, and generation history
 - `/estimates` is now methodology-only
-- `/settings/cities` now redirects to `/dataset`, preserving `?cityId=...` deep links
 - The city library still supports explicit save, edit, delete, and generated-value refresh from the dataset page
 - The methodology page retains the written model details while the planner-facing data now lives separately
+- The temporary `/settings/cities` compatibility route has been removed; `/dataset` is now the only canonical city-library route
 
 ### Settings / Admin UX
 - `/dataset` no longer exposes a standalone Add Country flow; country rows are auto-created from the canonical dataset as a side effect of adding cities or resolving planner/snapshot imports
@@ -334,6 +334,14 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - The generation UI now surfaces the implied AUD/USD rate directly in the result panel, and dataset history exposes the stored inferred rate per estimate record
 - Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
 
+### Cleanup And Simplification
+- Removed the `/settings/cities` compatibility route and updated tests/docs to use `/dataset` directly
+- Removed the saved-plan localStorage migration helper and the legacy planner-group-size fallback from `app_settings`
+- Simplified seeding so it no longer depends on `seed-data/cities.json`; seeding now follows the CSV dataset plus canonical country metadata
+- Removed old `xotelo` references from the typed/schema and UI surface where they no longer participate in active logic
+- Moved handoff notes into `docs/dev/` so they no longer live at the repo root
+- Removed the stale repo-managed nginx config artifact; deployment docs continue to treat reverse proxy/TLS as host-level concerns
+
 ### Wise Import Improvements
 - `src/lib/wise-csv-parser.ts` was upgraded to support both provided Wise CSV export formats
 - `src/lib/wise-import.ts` now does a second-pass AUD conversion lookup for merged non-AUD rows that still lack `amountAud`
@@ -352,7 +360,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Missing-country resolution now defaults to just city name plus country name; country ID, currency, and region are treated as inferred/advanced fields
 - The `/plan` add-leg flow now uses a dedicated planner LLM dialog and server route instead of the older import-style missing-city resolver UI
 - Planner-side new-city creation now checks the DB first, canonicalizes names, infers currency/region/IDs server-side, handles ID collisions, creates missing rows, generates city costs, and then inserts the leg
-- Added `/api/planner/settings` plus `app_settings` storage for planner traveller count
+- Added `/api/planner/settings` plus `user_preferences.planner_group_size` storage for planner traveller count
 - Planner tier popovers now show the live scaled per-option costs for the selected traveller count
 - Planner leg cards no longer expose a separate split percentage control
 - Legacy `splitPct` wiring was also removed from the current planner schema, snapshot flow, and quick-add split UI
@@ -401,13 +409,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/auth-tokens.ts`
 - `src/lib/rate-limit.ts`
 - `src/app/dataset/page.tsx`
-- `src/app/settings/cities/page.tsx`
 - `src/app/estimates/page.tsx`
 - `src/lib/country-metadata.test.ts`
 - `src/lib/country-routes.test.ts`
 - `tests/playwright/planner-regressions.spec.ts`
 - `src/lib/plan-comparison.ts`
-- `src/lib/saved-plan-migration.ts`
 - `src/components/itinerary/SavedPlansList.tsx`
 - `src/components/itinerary/SavePlanDialog.tsx`
 - `src/components/itinerary/ComparisonChart.tsx`
@@ -420,4 +426,5 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `tests/playwright/plan-comparison.spec.ts`
 - `PLAN-saved-plans-comparison.md`
 - `PLAN-country-dataset.md`
-- `HANDOFF-country-dataset.md`
+- `PLAN-cleanup-simplification.md`
+- `docs/dev/HANDOFF-country-dataset.md`

@@ -47,11 +47,6 @@ export const countries = sqliteTable('countries', {
   region: text('region'), // 'se_asia', 'east_asia', 'europe', etc.
 });
 
-export const appSettings = sqliteTable('app_settings', {
-  key: text('key').primaryKey(),
-  value: text('value').notNull(),
-});
-
 export const userPreferences = sqliteTable('user_preferences', {
   userId: text('user_id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
   plannerGroupSize: integer('planner_group_size').notNull().default(2),
@@ -255,7 +250,6 @@ export const cityEstimates = sqliteTable('city_estimates', {
   reasoning: text('reasoning'),
   confidence: text('confidence'),
   numbeoItems: text('numbeo_items'),
-  xoteloData: text('xotelo_data'),
   sourcesJson: text('sources_json'),
   inputSnapshotJson: text('input_snapshot_json'),
   fallbackLogJson: text('fallback_log_json'),

@@ -29,7 +29,6 @@ const hasItineraryLegsTable = tableNames.some((table) => table.name === 'itinera
 const hasItineraryLegTransportsTable = tableNames.some((table) => table.name === 'itinerary_leg_transports');
 const hasCityEstimatesTable = tableNames.some((table) => table.name === 'city_estimates');
 const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_price_inputs');
-const hasAppSettingsTable = tableNames.some((table) => table.name === 'app_settings');
 const hasSavedPlansTable = tableNames.some((table) => table.name === 'saved_plans');
 const hasUserPreferencesTable = tableNames.some((table) => table.name === 'user_preferences');
 const hasUserPasswordsTable = tableNames.some((table) => table.name === 'user_passwords');
@@ -171,15 +170,6 @@ if (!hasCityPriceInputsTable) {
   `);
 }
 
-if (!hasAppSettingsTable) {
-  sqlite.exec(`
-    CREATE TABLE IF NOT EXISTS app_settings (
-      key TEXT PRIMARY KEY,
-      value TEXT NOT NULL
-    )
-  `);
-}
-
 if (!hasUserPreferencesTable) {
   sqlite.exec(`
     CREATE TABLE IF NOT EXISTS user_preferences (
@@ -298,12 +288,6 @@ if (tableNames.some((table) => table.name === 'tags')) {
     sqlite.exec('ALTER TABLE tags ADD COLUMN user_id TEXT REFERENCES user(id) ON DELETE CASCADE');
   }
 }
-
-sqlite.prepare(`
-  INSERT INTO app_settings (key, value)
-  VALUES ('planner_group_size', '2')
-  ON CONFLICT(key) DO NOTHING
-`).run();
 
 if (hasCityEstimatesTable) {
   const cityEstimateColumns = sqlite.prepare("PRAGMA table_info(city_estimates)").all() as Array<{ name: string }>;

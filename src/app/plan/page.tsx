@@ -26,7 +26,6 @@ import {
 import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
-import { migrateLocalStoragePlans } from '@/lib/saved-plan-migration';
 
 const CITY_GENERATION_STORAGE_PREFIX = 'wanderledger.city-generation';
 type ProviderOption = CityGenerationProvider;
@@ -313,17 +312,8 @@ export default function PlanPage() {
     }
   }, []);
 
-  const migrationRan = useRef(false);
   useEffect(() => {
-    if (migrationRan.current) return;
-    migrationRan.current = true;
-    (async () => {
-      const result = await migrateLocalStoragePlans();
-      if (result.migrated > 0) {
-        setSnapshotStatus(`Migrated ${result.migrated} saved plan${result.migrated > 1 ? 's' : ''} to your account.`);
-      }
-      await fetchSavedPlans();
-    })();
+    fetchSavedPlans();
   }, [fetchSavedPlans]);
 
   useEffect(() => {
