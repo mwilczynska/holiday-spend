@@ -13,9 +13,15 @@ type LoginScreenProps = {
   hasGoogle: boolean;
   hasEmailPassword: boolean;
   hasDevPin: boolean;
+  passwordResetSuccess?: boolean;
 };
 
-export function LoginScreen({ hasGoogle, hasEmailPassword, hasDevPin }: LoginScreenProps) {
+export function LoginScreen({
+  hasGoogle,
+  hasEmailPassword,
+  hasDevPin,
+  passwordResetSuccess = false,
+}: LoginScreenProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [pin, setPin] = useState('');
@@ -97,6 +103,12 @@ export function LoginScreen({ hasGoogle, hasEmailPassword, hasDevPin }: LoginScr
           <p className="text-sm text-muted-foreground">Sign in to access your trip data</p>
         </CardHeader>
         <CardContent className="space-y-4">
+          {passwordResetSuccess ? (
+            <div className="rounded-md border border-emerald-500/40 bg-emerald-500/5 p-3 text-sm text-foreground">
+              Your password has been reset. Sign in with your new password.
+            </div>
+          ) : null}
+
           {hasEmailPassword ? (
             <form onSubmit={handleEmailSubmit} className="space-y-3">
               <div className="space-y-2">

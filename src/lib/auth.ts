@@ -1,4 +1,5 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
+import { eq } from 'drizzle-orm';
 import { getServerSession, type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
@@ -15,6 +16,16 @@ const devPin = !isProduction
   ? process.env.AUTH_DEV_PIN || process.env.APP_SECRET || undefined
   : undefined;
 const emailPasswordEnabled = process.env.ENABLE_EMAIL_PASSWORD === 'true';
+
+async function getUserTokenVersion(userId: string) {
+  const user = await db
+    .select({ tokenVersion: users.tokenVersion })
+    .from(users)
+    .where(eq(users.id, userId))
+    .get();
+
+  return user?.tokenVersion ?? null;
+}
 
 const providers = [];
 
@@ -113,7 +124,23 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user?.id) {
         token.sub = String(user.id);
+        token.tokenVersion = (await getUserTokenVersion(String(user.id))) ?? 0;
+        return token;
       }
+
+      if (!token.sub) {
+        return token;
+      }
+
+      const currentTokenVersion = await getUserTokenVersion(String(token.sub));
+      if (currentTokenVersion == null) {
+        return {};
+      }
+
+      if (currentTokenVersion !== (token.tokenVersion ?? 0)) {
+        return {};
+      }
+
       return token;
     },
     async session({ session, token }) {

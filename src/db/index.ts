@@ -41,9 +41,17 @@ sqlite.exec(`
     name TEXT,
     email TEXT UNIQUE,
     emailVerified INTEGER,
-    image TEXT
+    image TEXT,
+    token_version INTEGER NOT NULL DEFAULT 0
   )
 `);
+
+const userColumns = sqlite.prepare("PRAGMA table_info(user)").all() as Array<{ name: string }>;
+const hasUserTokenVersionColumn = userColumns.some((column) => column.name === 'token_version');
+
+if (!hasUserTokenVersionColumn) {
+  sqlite.exec('ALTER TABLE user ADD COLUMN token_version INTEGER NOT NULL DEFAULT 0');
+}
 
 sqlite.exec(`
   CREATE TABLE IF NOT EXISTS account (
