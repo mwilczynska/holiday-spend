@@ -251,8 +251,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 ### City Cost / LLM Workflow
 - [x] Add provider/model validation or discovery so UI options do not become stale over time
 - [x] Remove the older legacy estimate API path and any now-unused estimation code if it is no longer part of the active product flow
-- [ ] Consider exposing the inferred AUD/USD rate in the generation UI, not just stored metadata
-- [ ] Decide whether older historical estimate records need migration or pruning after the methodology switch
+- [x] Consider exposing the inferred AUD/USD rate in the generation UI, not just stored metadata
+- [x] Decide whether older historical estimate records need migration or pruning after the methodology switch
 
 ### Settings / Admin UX
 - [ ] Add country-creation UI in `/dataset` so city-library admin work does not depend on a pre-existing country row
@@ -316,6 +316,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Browser-stored legacy model defaults are automatically migrated forward when these UIs load
 - Added Vitest coverage for city-generation model migration and validation helpers in `src/lib/city-generation-config.test.ts`
 - Removed the legacy `/api/cities/estimate` route, unused hybrid/Xotelo estimation library, and the inactive anchor-input / legacy estimator components that no longer back any active UI flow
+- The generation UI now surfaces the implied AUD/USD rate directly in the result panel, and dataset history exposes the stored inferred rate per estimate record
+- Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
 
 ### Wise Import Improvements
 - `src/lib/wise-csv-parser.ts` was upgraded to support both provided Wise CSV export formats

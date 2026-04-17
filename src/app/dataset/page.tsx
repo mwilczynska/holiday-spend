@@ -41,6 +41,7 @@ interface EstimateHistoryItem {
   llmProvider: string | null;
   confidence: string | null;
   reasoning: string | null;
+  inferredAudPerUsd: number | null;
   isActive: number | null;
 }
 
@@ -613,6 +614,11 @@ export default function DatasetPage() {
           <CardTitle className="text-base">Generation History</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <p className="text-sm text-muted-foreground">
+            Historical estimate rows are retained as an audit trail. Older pre-methodology records are not
+            migrated or pruned automatically; the active city row remains the planner&apos;s canonical source of truth.
+          </p>
+
           <div className="space-y-2">
             <Label htmlFor="dataset-history-query">Search history</Label>
             <Input
@@ -632,6 +638,7 @@ export default function DatasetPage() {
                   <th className="px-3 py-2 text-left font-medium">Country</th>
                   <th className="px-3 py-2 text-left font-medium">Source</th>
                   <th className="px-3 py-2 text-left font-medium">Provider</th>
+                  <th className="px-3 py-2 text-left font-medium">AUD/USD</th>
                   <th className="px-3 py-2 text-left font-medium">Confidence</th>
                   <th className="px-3 py-2 text-left font-medium">Reasoning</th>
                 </tr>
@@ -647,13 +654,16 @@ export default function DatasetPage() {
                     <td className="px-3 py-2">{entry.countryName}</td>
                     <td className="px-3 py-2">{entry.source || '-'}</td>
                     <td className="px-3 py-2">{entry.llmProvider || '-'}</td>
+                    <td className="px-3 py-2">
+                      {typeof entry.inferredAudPerUsd === 'number' ? entry.inferredAudPerUsd.toFixed(2) : '-'}
+                    </td>
                     <td className="px-3 py-2">{entry.confidence || '-'}</td>
                     <td className="min-w-[24rem] px-3 py-2 text-xs text-muted-foreground">{entry.reasoning || '-'}</td>
                   </tr>
                 ))}
                 {filteredHistory.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="px-3 py-8 text-center text-sm text-muted-foreground">
+                    <td colSpan={8} className="px-3 py-8 text-center text-sm text-muted-foreground">
                       No generation history is stored yet for the current filter.
                     </td>
                   </tr>

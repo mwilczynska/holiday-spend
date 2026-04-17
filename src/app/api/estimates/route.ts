@@ -5,6 +5,17 @@ import { handleError, success } from '@/lib/api-helpers';
 
 export const dynamic = 'force-dynamic';
 
+function readInferredAudPerUsd(metadataJson: string | null) {
+  if (!metadataJson) return null;
+
+  try {
+    const parsed = JSON.parse(metadataJson) as { inferredAudPerUsd?: unknown };
+    return typeof parsed.inferredAudPerUsd === 'number' ? parsed.inferredAudPerUsd : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function GET() {
   try {
     const cityRows = await db
@@ -58,6 +69,7 @@ export async function GET() {
         llmProvider: cityEstimates.llmProvider,
         confidence: cityEstimates.confidence,
         reasoning: cityEstimates.reasoning,
+        metadataJson: cityEstimates.metadataJson,
         isActive: cityEstimates.isActive,
       })
       .from(cityEstimates)
@@ -65,8 +77,13 @@ export async function GET() {
       .innerJoin(countries, eq(cities.countryId, countries.id))
       .orderBy(desc(cityEstimates.estimatedAt));
 
-    const historyByCity = new Map<string, typeof historyRows>();
-    for (const row of historyRows) {
+    const history = historyRows.map(({ metadataJson, ...row }) => ({
+      ...row,
+      inferredAudPerUsd: readInferredAudPerUsd(metadataJson),
+    }));
+
+    const historyByCity = new Map<string, typeof history>();
+    for (const row of history) {
       const bucket = historyByCity.get(row.cityId) ?? [];
       bucket.push(row);
       historyByCity.set(row.cityId, bucket);
@@ -107,7 +124,7 @@ export async function GET() {
     return success({
       summary,
       rows,
-      history: historyRows,
+      history,
     });
   } catch (err) {
     return handleError(err);

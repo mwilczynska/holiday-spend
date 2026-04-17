@@ -28,6 +28,7 @@ interface GenerationResult {
   provider: string;
   model: string;
   promptVersion: string;
+  inferredAudPerUsd: number;
   payload: {
     confidence: string;
     confidence_notes: string;
@@ -290,6 +291,7 @@ export function CityGenerationPanel({
             <Badge variant="outline">{result.provider}</Badge>
             <Badge variant="outline">{result.model}</Badge>
             <Badge variant="outline">{result.promptVersion}</Badge>
+            <Badge variant="outline">1 USD = {fmtMoney(result.inferredAudPerUsd)} AUD</Badge>
             <Badge
               variant={
                 result.payload.confidence === 'high'
@@ -306,6 +308,13 @@ export function CityGenerationPanel({
           <div className="space-y-1">
             <p className="text-xs uppercase tracking-wide text-muted-foreground">Confidence Notes</p>
             <p className="text-sm text-muted-foreground">{result.payload.confidence_notes}</p>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground">Implied AUD/USD Rate</p>
+            <p className="text-sm text-muted-foreground">
+              The generated tier basket implies an exchange rate of 1 USD = {fmtMoney(result.inferredAudPerUsd)} AUD.
+            </p>
           </div>
 
           <details className="rounded-md border">
