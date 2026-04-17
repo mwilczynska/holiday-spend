@@ -9,10 +9,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { SearchableSelect } from '@/components/ui/searchable-select';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
-import { findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
+import { KNOWN_COUNTRIES, slugifyId } from '@/lib/country-metadata';
 import { Plus } from 'lucide-react';
 
 interface City {
@@ -119,20 +118,15 @@ export default function DatasetPage() {
   const [selectedCity, setSelectedCity] = useState<DatasetCity | null>(null);
   const [history, setHistory] = useState<EstimateHistoryItem[]>([]);
   const [historyCount, setHistoryCount] = useState(0);
-  const [addCountryDialogOpen, setAddCountryDialogOpen] = useState(false);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
-  const [reopenAddCityAfterCountry, setReopenAddCityAfterCountry] = useState(false);
-  const [newCountry, setNewCountry] = useState({ id: '', name: '', region: '' });
   const [newCity, setNewCity] = useState({ id: '', name: '', countryId: '' });
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
   const [isDirty, setIsDirty] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [addingCountry, setAddingCountry] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
-  const [addCountryError, setAddCountryError] = useState<string | null>(null);
   const [addCityError, setAddCityError] = useState<string | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
@@ -227,28 +221,15 @@ export default function DatasetPage() {
     [selectedCityHistory]
   );
 
-  const canonicalCountry = useMemo(
-    () => findKnownCountryMetadata(newCountry.name),
-    [newCountry.name]
+  const countryOptions = useMemo(
+    () =>
+      KNOWN_COUNTRIES.map((country) => ({
+        value: country.id,
+        label: country.name,
+        description: `${country.currencyCode} - ${getRegionLabel(country.region)}`,
+      })),
+    []
   );
-  const hasCountryName = newCountry.name.trim().length > 0;
-  const isUnknownCountry = hasCountryName && !canonicalCountry;
-  const effectiveCountryId = newCountry.id.trim()
-    ? slugifyId(newCountry.id)
-    : canonicalCountry?.id ?? '';
-  const effectiveCountryCurrencyCode = canonicalCountry?.currencyCode ?? '';
-  const effectiveCountryRegion = newCountry.region.trim() || canonicalCountry?.region || '';
-  const countryConflict = useMemo(() => {
-    if (!hasCountryName && !effectiveCountryId) return null;
-    const normalizedName = canonicalCountry
-      ? slugifyId(canonicalCountry.name)
-      : slugifyId(newCountry.name);
-    return (
-      countries.find((country) => country.id === effectiveCountryId) ||
-      countries.find((country) => normalizedName && slugifyId(country.name) === normalizedName) ||
-      null
-    );
-  }, [canonicalCountry, countries, effectiveCountryId, hasCountryName, newCountry.name]);
 
   const effectiveCityId = useMemo(
     () => (newCity.id.trim() ? slugifyId(newCity.id) : slugifyId(newCity.name)),
@@ -394,50 +375,6 @@ export default function DatasetPage() {
     }
   };
 
-  const handleAddCountry = async () => {
-    if (!newCountry.name.trim() || !canonicalCountry || !effectiveCountryId || countryConflict) return;
-
-    setAddingCountry(true);
-    setAddCountryError(null);
-
-    try {
-      const response = await fetch('/api/countries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: newCountry.id.trim() || undefined,
-          name: newCountry.name.trim(),
-          region: newCountry.region.trim() || undefined,
-        }),
-      });
-      const data = await response.json();
-
-      if (!response.ok) {
-        setAddCountryError(data.error || 'Failed to add country.');
-        return;
-      }
-
-      const nextCountries = await fetchData();
-      setNewCountry({ id: '', name: '', region: '' });
-      setNewCity((current) => ({ ...current, countryId: data.data.id }));
-      setAddCountryDialogOpen(false);
-      setAddCountryError(null);
-
-      if (reopenAddCityAfterCountry) {
-        setReopenAddCityAfterCountry(false);
-        setAddDialogOpen(true);
-      }
-
-      if (!selectedCity && nextCountries.length > 0) {
-        setSaveMessage(`Country "${data.data.name}" created.`);
-      }
-    } catch {
-      setAddCountryError('Failed to add country.');
-    } finally {
-      setAddingCountry(false);
-    }
-  };
-
   const handleDeleteCity = async (city: DatasetCity) => {
     const confirmed = window.confirm(
       `Delete ${city.name}, ${city.countryName}? This will also remove its generation history.`
@@ -490,111 +427,6 @@ export default function DatasetPage() {
         </div>
         <div className="flex flex-wrap gap-2">
           <Dialog
-            open={addCountryDialogOpen}
-            onOpenChange={(open) => {
-              setAddCountryDialogOpen(open);
-              if (!open) {
-                setAddCountryError(null);
-                setReopenAddCityAfterCountry(false);
-              }
-            }}
-          >
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Add Country</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-4">
-                <div>
-                  <Label>Country Name</Label>
-                  <Input
-                    value={newCountry.name}
-                    onChange={(event) => setNewCountry((current) => ({ ...current, name: event.target.value }))}
-                    placeholder="e.g. Uzbekistan"
-                  />
-                </div>
-                <div>
-                  <Label>Country ID (optional)</Label>
-                  <Input
-                    value={newCountry.id}
-                    onChange={(event) => setNewCountry((current) => ({ ...current, id: event.target.value }))}
-                    placeholder={canonicalCountry?.id || 'Leave blank to use the canonical id'}
-                    disabled={isUnknownCountry}
-                  />
-                </div>
-                <div>
-                  <Label>Region override (optional)</Label>
-                  <Select
-                    value={newCountry.region || '__auto__'}
-                    onValueChange={(value) =>
-                      setNewCountry((current) => ({ ...current, region: value === '__auto__' ? '' : value }))
-                    }
-                    disabled={isUnknownCountry}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Use the canonical region" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="__auto__">Use canonical region</SelectItem>
-                      {REGION_OPTIONS.map((region) => (
-                        <SelectItem key={region.value} value={region.value}>
-                          {region.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {canonicalCountry ? (
-                  <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
-                    <p className="font-medium text-foreground">Canonical match: {canonicalCountry.name}</p>
-                    <p>
-                      id <span className="font-medium text-foreground">{effectiveCountryId || canonicalCountry.id}</span>,
-                      currency <span className="font-medium text-foreground">{effectiveCountryCurrencyCode}</span>,
-                      region <span className="font-medium text-foreground">{getRegionLabel(effectiveCountryRegion)}</span>
-                      {newCountry.region ? ' (overridden)' : ''}.
-                    </p>
-                  </div>
-                ) : hasCountryName ? (
-                  <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
-                    <p className="font-medium">Country not found in the canonical dataset.</p>
-                    <p className="mt-1">
-                      {`"${newCountry.name.trim()}"`} is not in src/lib/data/country-metadata.generated.json. Add it to
-                      country-metadata.overrides.json (or the upstream source) and run{' '}
-                      <code className="rounded bg-amber-100 px-1 py-0.5">npm run country-metadata:generate</code>
-                      {' '}before creating the country here. Freeform currency entry is intentionally no longer supported.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
-                    Start typing a country name to see the canonical currency and region that will be used.
-                  </div>
-                )}
-
-                {countryConflict ? (
-                  <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                    {`Country "${countryConflict.name}" already exists with id "${countryConflict.id}". Reuse it instead of creating a duplicate.`}
-                  </div>
-                ) : null}
-
-                {addCountryError ? <p className="text-sm text-destructive">{addCountryError}</p> : null}
-
-                <Button
-                  onClick={handleAddCountry}
-                  className="w-full"
-                  disabled={
-                    !hasCountryName ||
-                    !canonicalCountry ||
-                    !effectiveCountryId ||
-                    !!countryConflict ||
-                    addingCountry
-                  }
-                >
-                  {addingCountry ? 'Creating Country...' : 'Create Country'}
-                </Button>
-              </div>
-            </DialogContent>
-          </Dialog>
-          <Dialog
             open={addDialogOpen}
             onOpenChange={(open) => {
               setAddDialogOpen(open);
@@ -614,37 +446,16 @@ export default function DatasetPage() {
             <div className="space-y-4">
               <div>
                 <Label>Country</Label>
-                <div className="space-y-2">
-                  <SearchableSelect
-                    value={newCity.countryId}
-                    onValueChange={(value) => setNewCity((current) => ({ ...current, countryId: value }))}
-                    placeholder="Select country"
-                    searchPlaceholder="Search countries..."
-                    options={countries.map((country) => ({
-                      value: country.id,
-                      label: country.name,
-                      description: `${country.currencyCode}${country.region ? ` - ${getRegionLabel(country.region)}` : ''}`,
-                    }))}
-                  />
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-xs text-muted-foreground">
-                      Need a country first? Create it here, then come back to finish the city row.
-                    </p>
-                    <Button
-                      type="button"
-                      size="sm"
-                      variant="outline"
-                      onClick={() => {
-                        setAddDialogOpen(false);
-                        setAddCountryDialogOpen(true);
-                        setReopenAddCityAfterCountry(true);
-                        setAddCountryError(null);
-                      }}
-                    >
-                      Create Country
-                    </Button>
-                  </div>
-                </div>
+                <SearchableSelect
+                  value={newCity.countryId}
+                  onValueChange={(value) => setNewCity((current) => ({ ...current, countryId: value }))}
+                  placeholder="Select any country"
+                  searchPlaceholder="Search countries..."
+                  options={countryOptions}
+                />
+                <p className="mt-1 text-xs text-muted-foreground">
+                  All 245 canonical countries are available. The country row is created automatically if it does not exist yet.
+                </p>
               </div>
               <div>
                 <Label>City ID</Label>

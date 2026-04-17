@@ -2,7 +2,7 @@ import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { eq } from 'drizzle-orm';
-import { slugifyId } from '@/lib/country-metadata';
+import { findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { z } from 'zod';
 
 const createSchema = z.object({
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = createSchema.parse(body);
     const name = data.name.trim();
-    const countryId = data.countryId.trim();
+    const requestedCountryId = data.countryId.trim();
     const id = slugifyId(data.id?.trim() || name);
 
     if (!name) {
@@ -61,10 +61,15 @@ export async function POST(request: Request) {
       return error('City id is required.', 400);
     }
 
-    const existingCountry = await db.select({ id: countries.id }).from(countries).where(eq(countries.id, countryId)).get();
-    if (!existingCountry) {
-      return error(`Country "${countryId}" was not found. Create the country first, then add the city.`, 400);
+    const canonicalCountry = findKnownCountryMetadata(requestedCountryId);
+    if (!canonicalCountry) {
+      return error(
+        `"${requestedCountryId}" is not in the canonical country dataset. Add it to src/lib/data/country-metadata.overrides.json and regenerate before adding cities under it.`,
+        400
+      );
     }
+
+    const countryId = canonicalCountry.id;
 
     const existingCity = await db.select({ id: cities.id }).from(cities).where(eq(cities.id, id)).get();
     if (existingCity) {
@@ -78,6 +83,20 @@ export async function POST(request: Request) {
         `City "${duplicateByName.name}" already exists in this country with id "${duplicateByName.id}". Reuse that city instead of creating a duplicate.`,
         409
       );
+    }
+
+    const existingCountry = await db
+      .select({ id: countries.id })
+      .from(countries)
+      .where(eq(countries.id, countryId))
+      .get();
+    if (!existingCountry) {
+      await db.insert(countries).values({
+        id: canonicalCountry.id,
+        name: canonicalCountry.name,
+        currencyCode: canonicalCountry.currencyCode,
+        region: canonicalCountry.region,
+      });
     }
 
     await db.insert(cities).values({

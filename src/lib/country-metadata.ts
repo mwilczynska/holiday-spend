@@ -97,6 +97,10 @@ function registerLookupKey(lookup: Map<string, CountryMetadata>, rawKey: string,
 
 const COUNTRY_METADATA = normalizeCountryMetadataRows(countryMetadataRows);
 
+export const KNOWN_COUNTRIES: readonly CountryMetadata[] = [...COUNTRY_METADATA].sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
+
 const COUNTRY_METADATA_BY_ID = new Map(COUNTRY_METADATA.map((row) => [row.id, row] as const));
 
 const COUNTRY_METADATA_LOOKUP = (() => {
