@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { BarChart3, Calculator, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags } from 'lucide-react';
+import { BarChart3, Calculator, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags, UserCircle } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 
@@ -14,7 +14,8 @@ const navItems = [
   { href: '/track', label: 'Expenses', icon: Receipt },
   { href: '/track/add', label: 'Quick Add', icon: Plus },
   { href: '/track/tags', label: 'Tags', icon: Tags },
-  { href: '/settings', label: 'Settings', icon: Settings },
+  { href: '/settings', label: 'Settings', icon: Settings, excludePrefix: '/settings/account' },
+  { href: '/settings/account', label: 'Account', icon: UserCircle },
 ];
 
 export function DesktopSidebar() {

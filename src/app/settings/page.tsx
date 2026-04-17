@@ -149,6 +149,9 @@ export default function SettingsPage() {
       <div>
         <h1 className="text-2xl font-bold">Settings</h1>
         <div className="flex flex-wrap gap-2 mt-4">
+          <Link href="/settings/account">
+            <Button variant="outline">Account</Button>
+          </Link>
           <Link href="/settings/cities">
             <Button variant="outline">City Cost Editor</Button>
           </Link>
