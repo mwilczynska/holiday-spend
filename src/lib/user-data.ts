@@ -30,14 +30,7 @@ export async function ensureUserRow(input: EnsureUserRowInput) {
       name: input.name ?? null,
       image: input.image ?? null,
     })
-    .onConflictDoUpdate({
-      target: users.id,
-      set: {
-        email: normalizedEmail,
-        name: input.name ?? null,
-        image: input.image ?? null,
-      },
-    });
+    .onConflictDoNothing({ target: users.id });
 }
 
 export async function claimLegacyDataForUser(userId: string) {
