@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "country-metadata:generate": "node scripts/generate-country-metadata.mjs",
     "docs:sync-memory": "node scripts/sync-memory-docs.mjs",
     "docs:check-memory": "node scripts/sync-memory-docs.mjs --check",
     "test": "vitest run",
@@ -69,6 +70,7 @@
     "tsx": "^4.21.0",
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.4",
+    "world-countries": "^5.1.0"
   }
 }
