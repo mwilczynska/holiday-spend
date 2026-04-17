@@ -42,7 +42,7 @@ export function LoginScreen({
     setUnverifiedEmail(null);
     setResendState('idle');
 
-    const result = await signIn('email-password', {
+    const result = await signIn('credentials', {
       email: email.trim(),
       password,
       redirect: false,
@@ -87,7 +87,7 @@ export function LoginScreen({
     setPinLoading(true);
     setPinError('');
 
-    const result = await signIn('dev-pin', {
+    const result = await signIn('credentials', {
       pin,
       redirect: false,
       callbackUrl: '/',

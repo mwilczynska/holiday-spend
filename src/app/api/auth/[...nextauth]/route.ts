@@ -3,8 +3,12 @@ import { authOptions } from '@/lib/auth';
 
 const handler = NextAuth(authOptions);
 
-async function withNoIndex(request: Request) {
-  const response = await handler(request);
+type RouteContext = {
+  params: Promise<{ nextauth: string[] }>;
+};
+
+async function withNoIndex(request: Request, context: RouteContext) {
+  const response = await handler(request, context);
   response.headers.set('X-Robots-Tag', 'noindex');
   return response;
 }

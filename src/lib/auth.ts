@@ -94,16 +94,33 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
   );
 }
 
-if (emailPasswordEnabled) {
+if (emailPasswordEnabled || devPin) {
   providers.push(
     CredentialsProvider({
-      id: 'email-password',
-      name: 'Email and password',
+      name: emailPasswordEnabled ? 'Email and password' : 'Development PIN',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
+        pin: { label: 'PIN', type: 'password' },
       },
       async authorize(credentials, req) {
+        const rawPin = typeof credentials?.pin === 'string' ? credentials.pin : '';
+        if (rawPin) {
+          if (!devPin || rawPin !== devPin) {
+            return null;
+          }
+
+          return {
+            id: 'dev-local-user',
+            name: 'Local Dev',
+            email: 'dev@wanderledger.local',
+          };
+        }
+
+        if (!emailPasswordEnabled) {
+          return null;
+        }
+
         const normalizedEmail =
           typeof credentials?.email === 'string' ? credentials.email.trim().toLowerCase() : '';
         const clientIp = getRequestIp(req) ?? 'unknown';
@@ -141,29 +158,6 @@ if (emailPasswordEnabled) {
         }
 
         return result.user;
-      },
-    })
-  );
-}
-
-if (devPin) {
-  providers.push(
-    CredentialsProvider({
-      id: 'dev-pin',
-      name: 'Development PIN',
-      credentials: {
-        pin: { label: 'PIN', type: 'password' },
-      },
-      async authorize(credentials) {
-        if (!credentials?.pin || credentials.pin !== devPin) {
-          return null;
-        }
-
-        return {
-          id: 'dev-local-user',
-          name: 'Local Dev',
-          email: 'dev@wanderledger.local',
-        };
       },
     })
   );
