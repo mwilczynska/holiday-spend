@@ -1,5 +1,7 @@
 # Wanderledger
 
+This is the canonical project memory file. `AGENTS.md` must stay a byte-for-byte mirror of this document. After editing this file, run `npm run docs:sync-memory`, and use `npm run docs:check-memory` to verify they still match.
+
 ## What The App Is
 Wanderledger is a private travel budget and spend-tracking app for long multi-city trips.
 
@@ -14,6 +16,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ## Core Product Behaviour
 - `/plan` builds the trip city-by-city with dates, tiers, overrides, and intercity transport
+- `/plan/compare` compares saved plan snapshots side-by-side with cumulative spend charts and summary cards
 - `/track` records actual spend, either manually or by importing Wise CSV exports
 - `/` compares planned vs actual spend across the trip and across countries
 - `/settings/cities` manages the city cost library and runs new-city cost generation
@@ -25,6 +28,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Local sample imports: `sample-data/` (typically untracked)
 - DB: `data/travel.db` (SQLite, gitignored)
 - Local dev auth fallback: optional `AUTH_DEV_PIN` in `.env.local` (current local setup still uses `1234`)
+- Native-auth env vars:
+  - `ENABLE_EMAIL_PASSWORD` enables the public email/password flows in dev when mail delivery is not otherwise configured
+  - `APP_URL` is used to build absolute verification/reset links
+  - `RESEND_API_KEY` and `MAIL_FROM` are required for production email delivery
+  - without `RESEND_API_KEY` in development, verification/reset links fall back to `console.log`
 
 ## Tech Stack
 - Next.js 14 App Router
@@ -127,7 +135,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Legs can be reordered, edited inline, and constrained by date validation
 - Intercity transport is now a repeatable per-leg list rather than a single always-open field
 - Planner now supports LLM-backed intercity transport estimation per leg plus a bulk `Estimate Missing Transport` flow for unfilled legs
-- Planner supports saved snapshots plus JSON export/import for comparing alternate itineraries
+- Saved plan snapshots are now stored in the `saved_plans` database table (user-owned), replacing the old browser localStorage approach
+- Saved plans are surfaced as an inline collapsible panel on `/plan` with load, export, delete, and compare actions
+- Plans can be selected for side-by-side comparison at `/plan/compare`, which shows cumulative spend charts and summary cards
+- Comparison computes planned costs server-side from snapshot tier selections plus current city base rates
+- Any existing localStorage snapshots are auto-migrated to the database on first load
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
 - That import resolver can now also create missing countries inline when a required country is not yet in the library
 - The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
@@ -151,6 +163,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Actual-spend handling was tightened so missing AUD conversions do not pollute totals
 - Spend views are constrained to the trip window instead of entire historical account activity
 - Summary cards now use clearer planned-vs-actual terminology and include info popovers that explain each calculation
+- Dashboard summary was simplified from 14 cards to 11: removed `Required Daily Pace`, `Planned Legs`, `Fixed Costs`, and `Planned Avg So Far`; added `Planned $/day` (total budget / total nights) and renamed `Actual Avg So Far` to `Actual $/day`
 - Dashboard header and summary now make the selected traveller count explicit
 - Country comparison now includes planned/day and actual/day columns using each country's planned itinerary days
 - Dashboard charts now use explicit mode pickers rather than ambiguous toggles, include axis labels, and can be expanded into larger interactive dialogs
@@ -196,6 +209,17 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Add explicit `Save City` flow in `/settings/cities`
 - [x] Refresh project memory in `CLAUDE.md`
 
+### Priority 2B: Native Account Expansion
+- [x] Add native email/password accounts alongside Google OAuth rather than replacing Google sign-in
+- [x] Treat email as the primary account identifier and keep display name optional instead of introducing username-first auth
+- [x] Add dedicated native-auth storage for password hashes plus email-verification and password-reset tokens rather than overloading the base `user` table
+- [x] Use strong password hashing such as `argon2id` for native accounts
+- [x] Build the public auth flows and pages for sign up, email sign in, verify email, forgot password, and reset password
+- [x] Add email delivery for verification and password reset flows before treating native accounts as production-ready
+- [x] Require verification, password reset, and basic brute-force / rate-limit protection as part of the native-account rollout rather than shipping raw passwords without the surrounding safety flows
+- [x] Decide and document account-linking rules between Google and email/password accounts, and avoid blind auto-linking based only on matching email
+- [x] Add signed-in account management follow-up for display name and change password
+
 ## Current Known Gaps / Follow-Up Work
 
 ### Priority 1: Deployment / Production Readiness
@@ -210,27 +234,16 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Choose and implement an auth stack that supports OAuth and user-owned data from day one
 - [x] Add user ownership to current persisted trip entities so later saved-plans/comparison work sits on top of user-owned data rather than global shared state
 
-### Priority 2B: Native Account Expansion
-- [ ] Add native email/password accounts alongside Google OAuth rather than replacing Google sign-in
-- [ ] Treat email as the primary account identifier and keep display name optional instead of introducing username-first auth
-- [ ] Add dedicated native-auth storage for password hashes plus email-verification and password-reset tokens rather than overloading the base `user` table
-- [ ] Use strong password hashing such as `argon2id` for native accounts
-- [ ] Build the public auth flows and pages for sign up, email sign in, verify email, forgot password, and reset password
-- [ ] Add email delivery for verification and password reset flows before treating native accounts as production-ready
-- [ ] Require verification, password reset, and basic brute-force / rate-limit protection as part of the native-account rollout rather than shipping raw passwords without the surrounding safety flows
-- [ ] Decide and document account-linking rules between Google and email/password accounts, and avoid blind auto-linking based only on matching email
-- [ ] Add account-management follow-up such as change password and, later, explicit provider linking/unlinking from a signed-in settings flow
-
 ### Priority 3: Saved Plans And Comparison
-- [ ] Move saved plans from browser `localStorage` into the database
-- [ ] Surface saved plans directly on `/plan` so they are easy to browse, open, and manage without hiding them behind the current modal-first flow
-- [ ] Design and build a dedicated multi-plan comparison view
-- [ ] Start that comparison UI with a cumulative planned spend over time chart, one line per saved plan, plus a small set of summary cards such as planned total and planned average spend per day
+- [x] Move saved plans from browser `localStorage` into the database
+- [x] Surface saved plans directly on `/plan` so they are easy to browse, open, and manage without hiding them behind the current modal-first flow
+- [x] Design and build a dedicated multi-plan comparison view
+- [x] Start that comparison UI with a cumulative planned spend over time chart, one line per saved plan, plus a small set of summary cards such as planned total and planned average spend per day
 
 ### Priority 4: Dashboard Simplification
-- [ ] Simplify the dashboard summary so it focuses on the most useful trip-level numbers
-- [ ] Remove low-signal summary stats that currently add clutter, especially `Required Daily Pace`, `Planned Legs`, and `Fixed Costs`
-- [ ] Add a clearer top-level planned average spend metric in `$ / day`
+- [x] Simplify the dashboard summary so it focuses on the most useful trip-level numbers
+- [x] Remove low-signal summary stats that currently add clutter, especially `Required Daily Pace`, `Planned Legs`, and `Fixed Costs`
+- [x] Add a clearer top-level planned average spend metric in `$ / day`
 
 ### City Cost / LLM Workflow
 - [ ] Add provider/model validation or discovery so UI options do not become stale over time
@@ -255,6 +268,32 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [ ] Add automated coverage around bulk transport estimation, provider fallback behaviour, and planner apply flows
 
 ## Recent Important Changes
+
+### Native Account Expansion
+- Added native email/password accounts alongside Google OAuth using dedicated `user_passwords`, `auth_tokens`, and `auth_rate_limits` tables plus `argon2id` password hashing
+- Added public auth flows for signup, check-email, verify-email, forgot-password, reset-password, and resend-verification, with verification required before native sign-in succeeds
+- Added Resend-backed email delivery for verification and password reset links, with a development fallback that logs links to the server console when `RESEND_API_KEY` is unset
+- Added account-collision guardrails so Google and email/password accounts are not auto-linked purely by matching email; the login page now shows explicit provider-specific guidance
+- Added signed-in account management at `/settings/account` with display-name editing, change-password, and read-only sign-in method status
+- Added Vitest unit coverage for `password`, `auth-tokens`, and `rate-limit`
+- `ensureUserRow` no longer upserts on every sign-in, preventing provider logins from clobbering user-edited display names
+- `src/middleware.ts` now exempts all public auth pages (`/login`, `/signup`, `/forgot-password`, `/reset-password`, `/verify-email`, `/check-email`) so signed-out users can complete the native-account flow
+
+### Saved Plans And Comparison
+- Saved plan snapshots moved from browser `localStorage` to `saved_plans` SQLite table with user ownership
+- `saved_plans` table stores full snapshot JSON blob plus denormalized summary columns for fast list queries
+- CRUD API at `/api/saved-plans` and `/api/saved-plans/[id]`
+- Comparison API at `POST /api/saved-plans/compare` computes cumulative planned spend series server-side
+- Planner page now shows saved plans in an inline collapsible panel instead of a modal dialog
+- `SavePlanDialog` replaces `window.prompt()` for naming plans
+- Auto-migration from localStorage to database on first load via `src/lib/saved-plan-migration.ts`
+- `/plan/compare` is a first-class page with its own sidebar entry ("Compare") in both desktop and mobile nav
+- Compare page uses a fixed header matching the planner's proportions (sticky, shadow, title/subtitle/action buttons)
+- Comparison is persisted in sessionStorage — navigating away and back restores the last comparison
+- "Change Plans" button on comparison results returns to selector with current plan IDs pre-checked
+- Sidebar `isActive` logic uses `excludePrefix` to prevent `/plan` and `/plan/compare` from both highlighting
+- Recharts LineChart cumulative spend chart and summary cards for up to 5 plans
+- Playwright E2E tests cover save, persist, delete, compare navigation, chart rendering, sidebar nav, and error states
 
 ### Dataset And Seeding
 - `src/db/seed.ts` now imports the new CSV dataset
@@ -324,6 +363,26 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/components/itinerary/TransportEstimateDialog.tsx`
 - `src/components/itinerary/PlannerNewCityDialog.tsx`
 - `src/components/itinerary/InfoPopover.tsx`
+- `src/app/api/auth/change-password/route.ts`
+- `src/app/api/user/profile/route.ts`
+- `src/app/settings/account/page.tsx`
+- `src/components/auth/AccountSettings.tsx`
+- `src/lib/password.ts`
+- `src/lib/auth-tokens.ts`
+- `src/lib/rate-limit.ts`
 - `src/app/settings/cities/page.tsx`
 - `src/app/estimates/page.tsx`
 - `tests/playwright/planner-regressions.spec.ts`
+- `src/lib/plan-comparison.ts`
+- `src/lib/saved-plan-migration.ts`
+- `src/components/itinerary/SavedPlansList.tsx`
+- `src/components/itinerary/SavePlanDialog.tsx`
+- `src/components/itinerary/ComparisonChart.tsx`
+- `src/components/itinerary/ComparisonSummaryCards.tsx`
+- `src/app/plan/compare/page.tsx`
+- `src/app/api/saved-plans/route.ts`
+- `src/app/api/saved-plans/[id]/route.ts`
+- `src/app/api/saved-plans/compare/route.ts`
+- `tests/playwright/saved-plans.spec.ts`
+- `tests/playwright/plan-comparison.spec.ts`
+- `PLAN-saved-plans-comparison.md`

@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "docs:sync-memory": "node scripts/sync-memory-docs.mjs",
+    "docs:check-memory": "node scripts/sync-memory-docs.mjs --check",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",

@@ -1,5 +1,7 @@
 # Wanderledger
 
+This is the canonical project memory file. `AGENTS.md` must stay a byte-for-byte mirror of this document. After editing this file, run `npm run docs:sync-memory`, and use `npm run docs:check-memory` to verify they still match.
+
 ## What The App Is
 Wanderledger is a private travel budget and spend-tracking app for long multi-city trips.
 
