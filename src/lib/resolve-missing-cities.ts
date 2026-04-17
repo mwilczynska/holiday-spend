@@ -2,7 +2,7 @@ import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { CityGenerationError } from '@/lib/city-generation';
 import { generateAndPersistCityEstimate } from '@/lib/city-generation-service';
-import { findKnownCountryCurrencyCode, slugifyId } from '@/lib/country-metadata';
+import { CountryMetadataResolutionError, findExistingCountryForCanonical } from '@/lib/country-metadata';
 import type { MissingCityResolution, SnapshotImportRequest } from '@/lib/snapshot-import';
 
 export interface ResolveMissingCitiesResult {
@@ -24,7 +24,7 @@ export async function resolveMissingCities(params: {
   const { resolutions, missingCityStrategy, generationConfig } = params;
 
   const cityRows = await db.select({ id: cities.id }).from(cities);
-  const countryRows = await db.select({ id: countries.id }).from(countries);
+  const countryRows = await db.select({ id: countries.id, name: countries.name }).from(countries);
   const knownCityIds = new Set(cityRows.map((row) => row.id));
   const knownCountryIds = new Set(countryRows.map((row) => row.id));
 
@@ -34,67 +34,51 @@ export async function resolveMissingCities(params: {
 
   const createdCountryDefinitions = new Map<
     string,
-    { name: string; currencyCode: string; region: string | null }
+    { id: string; name: string; currencyCode: string; region: string }
   >();
+  const resolvedCountryIdByCityId = new Map<string, string>();
 
   for (const resolution of resolutions) {
     const countryName = normalizeCountryName(resolution.countryName);
-    const derivedCountryId = resolution.countryId?.trim() || slugifyId(countryName);
-    if (knownCountryIds.has(derivedCountryId)) continue;
-
-    const currencyCode =
-      resolution.countryCurrencyCode?.trim().toUpperCase() ||
-      findKnownCountryCurrencyCode(countryName) ||
-      '';
-    const region = resolution.countryRegion?.trim() || null;
-
-    if (!currencyCode) {
+    let resolvedCountry;
+    try {
+      resolvedCountry = findExistingCountryForCanonical(countryRows, {
+        id: resolution.countryId,
+        name: countryName,
+      });
+    } catch (err) {
+      if (err instanceof CountryMetadataResolutionError) {
+        throw new CityGenerationError(err.message, 400);
+      }
+      throw err;
+    }
+    if (!resolvedCountry) {
       throw new CityGenerationError(
-        `Cannot create country "${countryName}" without a currency code.`,
+        `"${countryName}" is not in the canonical country dataset. Add it to src/lib/data/country-metadata.overrides.json (or the upstream source) and regenerate with "npm run country-metadata:generate" before importing cities in that country.`,
         400
       );
     }
 
-    const existingDefinition = createdCountryDefinitions.get(derivedCountryId);
-    if (existingDefinition) {
-      const hasNameConflict = slugifyId(existingDefinition.name) !== slugifyId(countryName);
-      const hasCurrencyConflict = existingDefinition.currencyCode !== currencyCode;
-      const hasRegionConflict = Boolean(existingDefinition.region && region && existingDefinition.region !== region);
+    const resolvedCountryId = resolvedCountry.existing?.id ?? resolvedCountry.dbInsert.id;
+    resolvedCountryIdByCityId.set(resolution.cityId, resolvedCountryId);
 
-      if (hasNameConflict || hasCurrencyConflict || hasRegionConflict) {
-        throw new CityGenerationError(
-          `Country id "${derivedCountryId}" was given conflicting details in missing city resolutions.`,
-          400
-        );
-      }
+    if (resolvedCountry.existing || knownCountryIds.has(resolvedCountryId)) continue;
 
-      if (!existingDefinition.region && region) {
-        existingDefinition.region = region;
-      }
-      continue;
-    }
-
-    createdCountryDefinitions.set(derivedCountryId, {
-      name: countryName,
-      currencyCode,
-      region,
-    });
+    createdCountryDefinitions.set(resolvedCountry.dbInsert.id, resolvedCountry.dbInsert);
   }
 
-  for (const [countryId, country] of Array.from(createdCountryDefinitions.entries())) {
-    await db.insert(countries).values({
-      id: countryId,
-      name: country.name,
-      currencyCode: country.currencyCode,
-      region: country.region,
-    });
-    knownCountryIds.add(countryId);
-    createdCountries.push(countryId);
+  for (const country of Array.from(createdCountryDefinitions.values())) {
+    await db.insert(countries).values(country);
+    knownCountryIds.add(country.id);
+    createdCountries.push(country.id);
   }
 
   for (const resolution of resolutions) {
     const cityId = resolution.cityId.trim();
-    const resolvedCountryId = resolution.countryId?.trim() || slugifyId(normalizeCountryName(resolution.countryName));
+    const resolvedCountryId = resolvedCountryIdByCityId.get(resolution.cityId);
+    if (!resolvedCountryId) {
+      throw new CityGenerationError(`Could not resolve the country for "${resolution.cityName}".`, 400);
+    }
 
     if (!knownCityIds.has(cityId)) {
       await db.insert(cities).values({

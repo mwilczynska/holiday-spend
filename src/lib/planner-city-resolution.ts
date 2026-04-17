@@ -5,10 +5,9 @@ import { cities, countries } from '@/db/schema';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
 import { generateAndPersistCityEstimate } from '@/lib/city-generation-service';
 import {
-  APP_REGION_VALUES,
-  findKnownCountryCurrencyCode,
-  findKnownCountryRegion,
-  normalizeRegionLabel,
+  CountryMetadataResolutionError,
+  findExistingCountryForCanonical,
+  resolveCountryCreationDefaults,
   slugifyId,
 } from '@/lib/country-metadata';
 import type { GenerateAndPersistCityEstimateInput } from '@/lib/city-generation-service';
@@ -16,8 +15,6 @@ import type { GenerateAndPersistCityEstimateInput } from '@/lib/city-generation-
 const plannerCityMetadataSchema = z.object({
   city: z.string().min(1),
   country: z.string().min(1),
-  currency_code: z.string().regex(/^[A-Z]{3}$/),
-  region: z.enum(APP_REGION_VALUES),
   confidence_notes: z.string().min(1),
 });
 
@@ -130,13 +127,11 @@ User input:
 Return one JSON object with exactly these fields:
 - "city": the canonical city name in common English usage
 - "country": the canonical country name in common English usage
-- "currency_code": the ISO 4217 currency code used for that country
-- "region": one of ${APP_REGION_VALUES.join(', ')}
 - "confidence_notes": one short sentence explaining any ambiguity
 
 Rules:
 - Keep the city within the user-specified country. Do not substitute a different city.
-- Use the country's normal everyday currency, not a card-settlement currency.
+- The server resolves country currency and region from the canonical dataset, so do not invent metadata fields beyond the JSON schema above.
 - Return JSON only. No markdown fences or extra commentary.`,
       provider: input.provider,
       apiKey: input.apiKey,
@@ -207,10 +202,11 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
       throw new PlannerCityResolutionError('Existing city is linked to a missing country record.', 500);
     }
 
-    const knownRegion =
-      existingCountry.region ||
-      findKnownCountryRegion(existingCountry.name) ||
-      normalizeRegionLabel(metadata.region);
+    const existingCountryDefaults = resolveCountryCreationDefaults({
+      id: existingCountry.id,
+      name: existingCountry.name,
+    });
+    const knownRegion = existingCountry.region || existingCountryDefaults?.dbInsert.region || null;
 
     if (!existingCountry.region && knownRegion) {
       await db
@@ -235,52 +231,37 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
   let createdCityId: string | null = null;
 
   try {
-    const resolvedCurrencyCode =
-      resolvedCountry?.currencyCode ||
-      findKnownCountryCurrencyCode(canonicalCountryName) ||
-      metadata.currency_code;
-    const resolvedRegion =
-      resolvedCountry?.region ||
-      findKnownCountryRegion(canonicalCountryName) ||
-      normalizeRegionLabel(metadata.region);
+    const countryDefaults =
+      findExistingCountryForCanonical(countryRows, { name: canonicalCountryName }) ??
+      findExistingCountryForCanonical(countryRows, { name: requestedCountryName }) ??
+      null;
 
-    if (!resolvedCurrencyCode) {
-      throw new PlannerCityResolutionError(`Could not determine the currency for "${canonicalCountryName}".`, 400);
+    if (!countryDefaults) {
+      throw new PlannerCityResolutionError(
+        `"${canonicalCountryName}" is not in the canonical country dataset. Add it to src/lib/data/country-metadata.overrides.json (or the upstream source) and regenerate with "npm run country-metadata:generate" before creating planner cities in that country.`,
+        400
+      );
     }
 
-    if (!resolvedRegion) {
-      throw new PlannerCityResolutionError(`Could not determine the region for "${canonicalCountryName}".`, 400);
-    }
+    resolvedCountry = countryDefaults.existing ?? resolvedCountry;
 
     if (!resolvedCountry) {
-      const existingCountryIds = new Set(countryRows.map((country) => country.id));
-      const baseCountryId = slugifyId(canonicalCountryName);
-      const countryId = allocateUniqueId(baseCountryId, existingCountryIds);
+      await db.insert(countries).values(countryDefaults.dbInsert);
 
-      await db.insert(countries).values({
-        id: countryId,
-        name: canonicalCountryName,
-        currencyCode: resolvedCurrencyCode,
-        region: resolvedRegion,
-      });
-
-      createdCountryId = countryId;
+      createdCountryId = countryDefaults.dbInsert.id;
       resolvedCountry = {
-        id: countryId,
-        name: canonicalCountryName,
-        currencyCode: resolvedCurrencyCode,
-        region: resolvedRegion,
+        ...countryDefaults.dbInsert,
       };
       countryRows.push(resolvedCountry);
-    } else if (!resolvedCountry.region && resolvedRegion) {
+    } else if (!resolvedCountry.region) {
       await db
         .update(countries)
-        .set({ region: resolvedRegion })
+        .set({ region: countryDefaults.dbInsert.region })
         .where(eq(countries.id, resolvedCountry.id));
 
       resolvedCountry = {
         ...resolvedCountry,
-        region: resolvedRegion,
+        region: countryDefaults.dbInsert.region,
       };
     }
 
@@ -328,6 +309,9 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
 
     if (err instanceof PlannerCityResolutionError) {
       throw err;
+    }
+    if (err instanceof CountryMetadataResolutionError) {
+      throw new PlannerCityResolutionError(err.message, 400);
     }
 
     const message = err instanceof Error ? err.message : 'Failed to resolve and create planner city.';

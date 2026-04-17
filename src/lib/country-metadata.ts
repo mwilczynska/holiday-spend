@@ -25,6 +25,25 @@ export type CountryMetadata = {
   source: string;
 };
 
+export type CountryInsertDefaults = {
+  id: string;
+  name: string;
+  currencyCode: string;
+  region: AppRegion;
+};
+
+export type ResolvedCountryCreationDefaults = {
+  canonical: CountryMetadata;
+  dbInsert: CountryInsertDefaults;
+};
+
+export class CountryMetadataResolutionError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'CountryMetadataResolutionError';
+  }
+}
+
 const REGION_LABELS: Record<string, string> = {
   SEA: 'se_asia',
   'East Asia': 'east_asia',
@@ -161,6 +180,63 @@ export function findKnownCountryCurrencyCode(countryName: string | null | undefi
 
 export function findKnownCountryRegion(countryName: string | null | undefined): string | null {
   return findKnownCountryMetadata(countryName)?.region ?? null;
+}
+
+export function resolveCountryCreationDefaults(input: {
+  id?: string | null | undefined;
+  name?: string | null | undefined;
+}): ResolvedCountryCreationDefaults | null {
+  const resolvedById = findKnownCountryMetadata(input.id);
+  const resolvedByName = findKnownCountryMetadata(input.name);
+
+  if (resolvedById && resolvedByName && resolvedById.id !== resolvedByName.id) {
+    throw new CountryMetadataResolutionError(
+      `Country id "${input.id}" and country name "${input.name}" resolve to different canonical countries.`
+    );
+  }
+
+  const canonical = resolvedById ?? resolvedByName;
+  if (!canonical) return null;
+
+  return {
+    canonical,
+    dbInsert: {
+      id: canonical.id,
+      name: canonical.name,
+      currencyCode: canonical.currencyCode,
+      region: canonical.region,
+    },
+  };
+}
+
+export function findExistingCountryForCanonical<
+  TCountry extends {
+    id: string;
+    name: string;
+  },
+>(
+  countryRows: readonly TCountry[],
+  input: {
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+  }
+): (ResolvedCountryCreationDefaults & { existing: TCountry | null }) | null {
+  const resolved = resolveCountryCreationDefaults(input);
+  if (!resolved) return null;
+
+  const existing =
+    countryRows.find((country) => {
+      const existingResolved = resolveCountryCreationDefaults({
+        id: country.id,
+        name: country.name,
+      });
+      return existingResolved?.canonical.id === resolved.canonical.id;
+    }) ?? null;
+
+  return {
+    ...resolved,
+    existing,
+  };
 }
 
 export function normalizeRegionLabel(regionLabel: string | null | undefined): string | null {

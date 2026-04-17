@@ -3,8 +3,8 @@ import { countries, cities } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import {
   APP_REGION_VALUES,
-  findKnownCountryMetadata,
-  slugifyId,
+  findExistingCountryForCanonical,
+  CountryMetadataResolutionError,
   type AppRegion,
 } from '@/lib/country-metadata';
 import { eq } from 'drizzle-orm';
@@ -46,41 +46,36 @@ export async function POST(request: Request) {
       return error('Country name is required.', 400);
     }
 
-    const canonical = findKnownCountryMetadata(name);
-    if (!canonical) {
+    const allCountries = await db.select().from(countries);
+    const resolved = findExistingCountryForCanonical(allCountries, {
+      id: data.id,
+      name,
+    });
+
+    if (!resolved) {
       return error(
         `"${name}" is not in the canonical country dataset. Add it to src/lib/data/country-metadata.overrides.json (or the upstream source) and regenerate with "npm run country-metadata:generate" before creating the country.`,
         400
       );
     }
 
-    const requestedId = data.id?.trim();
-    const id = requestedId ? slugifyId(requestedId) : canonical.id;
-    if (!id) {
-      return error('Country id is required.', 400);
+    if (resolved.existing) {
+      return error(
+        `Country "${resolved.existing.name}" already exists with id "${resolved.existing.id}". Reuse that country instead of creating a duplicate.`,
+        409
+      );
     }
 
-    const currencyCode = canonical.currencyCode;
-    const region: AppRegion = data.region ?? canonical.region;
-
+    const { id, name: canonicalName, currencyCode } = resolved.dbInsert;
+    const region: AppRegion = data.region ?? resolved.dbInsert.region;
     const existingCountryById = await db.select().from(countries).where(eq(countries.id, id)).get();
     if (existingCountryById) {
       return error(`Country id "${id}" already exists. Choose a different id or update the existing country.`, 409);
     }
 
-    const allCountries = await db.select().from(countries);
-    const normalizedName = slugifyId(canonical.name);
-    const duplicateByName = allCountries.find((country) => slugifyId(country.name) === normalizedName);
-    if (duplicateByName) {
-      return error(
-        `Country "${duplicateByName.name}" already exists with id "${duplicateByName.id}". Reuse that country instead of creating a duplicate.`,
-        409
-      );
-    }
-
     await db.insert(countries).values({
       id,
-      name: canonical.name,
+      name: canonicalName,
       currencyCode,
       region,
     });
@@ -88,13 +83,16 @@ export async function POST(request: Request) {
     return success(
       {
         id,
-        name: canonical.name,
+        name: canonicalName,
         currencyCode,
         region,
       },
       201
     );
   } catch (err) {
+    if (err instanceof CountryMetadataResolutionError) {
+      return error(err.message, 400);
+    }
     return handleError(err);
   }
 }

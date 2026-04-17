@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/country-dataset` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS -- Phase 3 complete (shipped a stronger UX than originally scoped; see `HANDOFF-country-dataset.md`)
+> **Status**: IN PROGRESS -- Phase 4 complete, Phase 5 next
 > **Related**: CLAUDE.md "Settings / Admin UX" follow-up and country metadata canonicalization
 
 ---
@@ -32,7 +32,7 @@ This feature introduces a canonical country dataset in the repo, generated from 
 - [x] **Phase 1** - Canonical dataset files + generator scaffold
 - [x] **Phase 2** - Runtime resolver refactor onto canonical dataset
 - [x] **Phase 3** - `/dataset` country creation simplified (shipped as full auto-create from canonical list, not just name-first form)
-- [ ] **Phase 4** - Planner and server-side country creation paths reuse canonical resolver
+- [x] **Phase 4** - Planner and server-side country creation paths reuse canonical resolver
 - [ ] **Phase 5** - Validation/tests for dataset integrity and alias resolution
 - [ ] **Phase 6** - Docs, PR review, and merge readiness
 
@@ -226,6 +226,9 @@ export function resolveCountryCreationDefaults(input: {
 - Snapshot import missing-country flow no longer needs manual currency entry
 - Planner-side country creation uses the same canonical metadata as `/dataset`
 - No country-creation path bypasses the canonical resolver
+- Verified with:
+  - `npx tsc --noEmit`
+  - `npm run build`
 
 **Commit**: `refactor(country-data): reuse canonical resolver across planner flows`
 

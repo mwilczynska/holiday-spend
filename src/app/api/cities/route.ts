@@ -2,7 +2,11 @@ import { db } from '@/db';
 import { cities, countries } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { eq } from 'drizzle-orm';
-import { findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
+import {
+  CountryMetadataResolutionError,
+  findExistingCountryForCanonical,
+  slugifyId,
+} from '@/lib/country-metadata';
 import { z } from 'zod';
 
 const createSchema = z.object({
@@ -61,15 +65,19 @@ export async function POST(request: Request) {
       return error('City id is required.', 400);
     }
 
-    const canonicalCountry = findKnownCountryMetadata(requestedCountryId);
-    if (!canonicalCountry) {
+    const allCountries = await db.select().from(countries);
+    const resolvedCountry = findExistingCountryForCanonical(allCountries, {
+      id: requestedCountryId,
+      name: requestedCountryId,
+    });
+    if (!resolvedCountry) {
       return error(
         `"${requestedCountryId}" is not in the canonical country dataset. Add it to src/lib/data/country-metadata.overrides.json and regenerate before adding cities under it.`,
         400
       );
     }
 
-    const countryId = canonicalCountry.id;
+    const countryId = resolvedCountry.existing?.id ?? resolvedCountry.dbInsert.id;
 
     const existingCity = await db.select({ id: cities.id }).from(cities).where(eq(cities.id, id)).get();
     if (existingCity) {
@@ -85,18 +93,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const existingCountry = await db
-      .select({ id: countries.id })
-      .from(countries)
-      .where(eq(countries.id, countryId))
-      .get();
-    if (!existingCountry) {
-      await db.insert(countries).values({
-        id: canonicalCountry.id,
-        name: canonicalCountry.name,
-        currencyCode: canonicalCountry.currencyCode,
-        region: canonicalCountry.region,
-      });
+    if (!resolvedCountry.existing) {
+      await db.insert(countries).values(resolvedCountry.dbInsert);
     }
 
     await db.insert(cities).values({
@@ -117,6 +115,9 @@ export async function POST(request: Request) {
       201
     );
   } catch (err) {
+    if (err instanceof CountryMetadataResolutionError) {
+      return error(err.message, 400);
+    }
     return handleError(err);
   }
 }

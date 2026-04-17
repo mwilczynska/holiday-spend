@@ -7,8 +7,6 @@ export const missingCityResolutionSchema = z.object({
   cityName: z.string().min(1),
   countryId: z.string().optional(),
   countryName: z.string().min(1),
-  countryCurrencyCode: z.string().optional(),
-  countryRegion: z.string().optional(),
 });
 
 export const snapshotGenerationConfigSchema = z.object({

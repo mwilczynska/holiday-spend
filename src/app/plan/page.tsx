@@ -23,7 +23,7 @@ import {
   validateCityGenerationModel,
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
-import { findKnownCountryCurrencyCode, slugifyId } from '@/lib/country-metadata';
+import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
 import { migrateLocalStoragePlans } from '@/lib/saved-plan-migration';
@@ -104,11 +104,7 @@ interface SnapshotMissingCity {
 interface MissingCityResolutionDraft {
   cityId: string;
   cityName: string;
-  existingCountryId: string;
-  newCountryId: string;
-  newCountryName: string;
-  newCountryCurrencyCode: string;
-  newCountryRegion: string;
+  countryId: string;
   legCount: number;
 }
 
@@ -138,16 +134,19 @@ function getRegionLabel(regionValue: string) {
   return REGION_OPTIONS.find((region) => region.value === regionValue)?.label || regionValue;
 }
 
-function getNewCountryPreview(draft: MissingCityResolutionDraft) {
-  const countryName = draft.newCountryName.trim();
-  const countryId = draft.newCountryId.trim() || guessCountryIdFromName(countryName);
-  const currencyCode = draft.newCountryCurrencyCode.trim().toUpperCase() || findKnownCountryCurrencyCode(countryName) || '';
-  const regionValue = draft.newCountryRegion.trim();
+function getSelectedCountryPreview(canonicalCountryId: string, countries: Country[]) {
+  const canonicalCountry = findKnownCountryMetadata(canonicalCountryId);
+  if (!canonicalCountry) return null;
+
+  const existingCountry =
+    countries.find((country) => {
+      const resolved = findKnownCountryMetadata(country.id) ?? findKnownCountryMetadata(country.name);
+      return resolved?.id === canonicalCountry.id;
+    }) ?? null;
 
   return {
-    countryId,
-    currencyCode,
-    regionLabel: regionValue ? getRegionLabel(regionValue) : 'Not set',
+    canonicalCountry,
+    existingCountry,
   };
 }
 
@@ -178,10 +177,6 @@ function guessCityNameFromId(cityId: string) {
     .filter(Boolean)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
-}
-
-function guessCountryIdFromName(countryName: string) {
-  return slugifyId(countryName);
 }
 
 function countMissingTransportLegs(legs: Leg[]) {
@@ -569,20 +564,14 @@ export default function PlanPage() {
           snapshot,
           missingCityStrategy: options.missingCityStrategy ?? 'placeholder',
           missingCityResolutions: options.missingCityResolutions.map((resolution) => {
-            const existingCountry = countries.find((country) => country.id === resolution.existingCountryId);
-            const countryName = existingCountry?.name || resolution.newCountryName.trim();
-            const countryId = existingCountry?.id || resolution.newCountryId.trim() || guessCountryIdFromName(countryName);
+            const canonicalCountry = findKnownCountryMetadata(resolution.countryId);
+            const countryName = canonicalCountry?.name || '';
+            const countryId = canonicalCountry?.id || '';
             return {
               cityId: resolution.cityId,
               cityName: resolution.cityName.trim(),
               countryId,
               countryName,
-              countryCurrencyCode:
-                existingCountry?.currencyCode ||
-                resolution.newCountryCurrencyCode.trim().toUpperCase() ||
-                findKnownCountryCurrencyCode(countryName) ||
-                undefined,
-              countryRegion: resolution.newCountryRegion.trim() || undefined,
             };
           }),
           generationConfig:
@@ -633,7 +622,6 @@ export default function PlanPage() {
     );
     setSnapshotError(null);
   }, [
-    countries,
     fetchData,
     importApiKeys,
     importExtraContext,
@@ -667,25 +655,15 @@ export default function PlanPage() {
     setPendingImportSourceLabel(sourceLabel);
     setMissingCityDrafts(
       missingCities.map((missingCity) => {
-        const matchedCountry =
-          countries.find((country) => missingCity.countryId && country.id === missingCity.countryId) ||
-          countries.find((country) => missingCity.countryName && country.name === missingCity.countryName) ||
+        const canonicalCountry =
+          findKnownCountryMetadata(missingCity.countryId) ??
+          findKnownCountryMetadata(missingCity.countryName) ??
           null;
 
         return {
           cityId: missingCity.cityId,
           cityName: missingCity.cityName || guessCityNameFromId(missingCity.cityId),
-          existingCountryId: matchedCountry?.id || '',
-          newCountryId:
-            !matchedCountry && missingCity.countryId
-              ? missingCity.countryId
-              : missingCity.countryName
-                ? guessCountryIdFromName(missingCity.countryName)
-                : '',
-          newCountryName: !matchedCountry ? missingCity.countryName || '' : '',
-          newCountryCurrencyCode:
-            !matchedCountry && missingCity.countryName ? (findKnownCountryCurrencyCode(missingCity.countryName) || '') : '',
-          newCountryRegion: '',
+          countryId: canonicalCountry?.id || '',
           legCount: missingCity.legCount,
         };
       })
@@ -694,7 +672,7 @@ export default function PlanPage() {
     setSnapshotStatus(null);
     setSnapshotError(`"${sourceLabel}" needs missing cities resolved before import can continue.`);
     setImportResolutionOpen(true);
-  }, [countries]);
+  }, []);
 
   const startSnapshotImport = useCallback(async (snapshot: PlanSnapshot, sourceLabel: string) => {
     const preflight = await preflightSnapshotImport(snapshot);
@@ -782,16 +760,12 @@ export default function PlanPage() {
     const hasMissingFields = missingCityDrafts.some((draft) => {
       if (!draft.cityId.trim()) return true;
       if (!draft.cityName.trim()) return true;
-      if (draft.existingCountryId.trim()) return false;
-      const countryName = draft.newCountryName.trim();
-      if (!countryName) return true;
-      const inferredCurrency = findKnownCountryCurrencyCode(countryName);
-      return !draft.newCountryCurrencyCode.trim() && !inferredCurrency;
+      return !findKnownCountryMetadata(draft.countryId);
     });
     if (hasMissingFields) {
       setSnapshotStatus(null);
       setSnapshotError(
-        'For every missing city, enter a city ID, city name, and either choose an existing country or fill in a new country name. Country ID and region are optional. Only add a currency code when the app cannot infer one.'
+        'For every missing city, enter a city ID, city name, and choose a country from the canonical dataset.'
       );
       return;
     }
@@ -877,6 +851,14 @@ export default function PlanPage() {
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
   const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel);
   const importModelListId = `${CITY_GENERATION_STORAGE_PREFIX}.${importProvider}.models`;
+  const canonicalCountryOptions = KNOWN_COUNTRIES.map((country) => {
+    const preview = getSelectedCountryPreview(country.id, countries);
+    return {
+      value: country.id,
+      label: country.name,
+      description: `${country.currencyCode} • ${getRegionLabel(country.region)}${preview?.existingCountry ? ' • already in library' : ' • creates row on import'}`,
+    };
+  });
 
   if (pageLoading && legs.length === 0 && cities.length === 0 && countries.length === 0) {
     return (
@@ -906,25 +888,25 @@ export default function PlanPage() {
             resetPendingImportState();
           }
         }}
-        >
-          <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-3xl">
-            <DialogHeader>
-              <DialogTitle>Resolve Missing Cities Before Import</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div className="space-y-1 text-sm text-muted-foreground">
-                <p>
-                  {pendingImportSourceLabel
-                    ? `"${pendingImportSourceLabel}" references cities that are not yet in your library.`
-                    : 'This snapshot references cities that are not yet in your library.'}
-                </p>
-                <p>
-                  Complete the city name and country for each missing city below. In most cases you only need the city
-                  name and country name. The app will generate the country ID, fill the currency when it knows it, and
-                  leave region blank unless you want to set it. Then choose whether to create placeholders only, or
-                  generate full city costs before the itinerary import runs.
-                </p>
-              </div>
+      >
+        <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>Resolve Missing Cities Before Import</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <p>
+                {pendingImportSourceLabel
+                  ? `"${pendingImportSourceLabel}" references cities that are not yet in your library.`
+                  : 'This snapshot references cities that are not yet in your library.'}
+              </p>
+              <p>
+                Complete the city name and choose the canonical country for each missing city below. If that country
+                is not yet in your library, the import will create the country row automatically from the repo-owned
+                dataset before it creates the city. Then choose whether to create placeholders only, or generate full
+                city costs before the itinerary import runs.
+              </p>
+            </div>
 
             <div className="space-y-3">
               {missingCityDrafts.map((draft, index) => (
@@ -967,194 +949,74 @@ export default function PlanPage() {
                       />
                     </div>
                     <div>
-                      <Label className="text-xs">Existing Country</Label>
-                    <SearchableSelect
-                      value={draft.existingCountryId}
-                      onValueChange={(value) =>
-                        setMissingCityDrafts((current) =>
-                          current.map((item, itemIndex) =>
+                      <Label className="text-xs">Country</Label>
+                      <SearchableSelect
+                        value={draft.countryId}
+                        onValueChange={(value) =>
+                          setMissingCityDrafts((current) =>
+                            current.map((item, itemIndex) =>
                               itemIndex === index
                                 ? {
                                     ...item,
-                                    existingCountryId: value,
+                                    countryId: value,
                                   }
                                 : item
                             )
                           )
                         }
-                        placeholder="Choose existing country"
-                        searchPlaceholder="Search countries..."
-                        emptyText="No existing country matches. Use the new country fields below."
-                        options={countries.map((country) => ({
-                          value: country.id,
-                          label: country.name,
-                          description: `${country.currencyCode}${country.region ? ` • ${country.region}` : ''}`,
-                        }))}
+                        placeholder="Choose canonical country"
+                        searchPlaceholder="Search canonical countries..."
+                        emptyText="No canonical country matches."
+                        options={canonicalCountryOptions}
                       />
                       <p className="mt-1 text-xs text-muted-foreground">
-                        Choose an existing country here, or leave this blank and define a new country below.
+                        Pick from the canonical dataset. The import reuses any matching library row or creates the
+                        country automatically if it does not exist yet.
                       </p>
-                      {draft.existingCountryId ? (
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="sm"
-                          className="mt-1 h-7 px-2 text-xs"
-                          onClick={() =>
-                            setMissingCityDrafts((current) =>
-                              current.map((item, itemIndex) =>
-                                itemIndex === index ? { ...item, existingCountryId: '' } : item
-                              )
-                            )
-                          }
-                        >
-                          Use New Country Instead
-                        </Button>
-                      ) : null}
                     </div>
                   </div>
 
                   <div className="space-y-2 rounded-md bg-muted/40 p-3">
-                    <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">New Country Details</div>
-                    <p className="text-xs text-muted-foreground">
-                      Only use this section when the country is not already in the dropdown above.
-                    </p>
-                    <div className="grid gap-3 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-                      <div>
-                        <Label className="text-xs">Country Name</Label>
-                        <Input
-                          className="h-9 text-sm"
-                          value={draft.newCountryName}
-                          onChange={(event) =>
-                            setMissingCityDrafts((current) =>
-                              current.map((item, itemIndex) => {
-                                if (itemIndex !== index) return item;
-                                const nextCountryName = event.target.value;
-                                const previousAutoId = item.newCountryName ? guessCountryIdFromName(item.newCountryName) : '';
-                                const suggestedCurrency = findKnownCountryCurrencyCode(nextCountryName) || '';
-                                const previousSuggestedCurrency = findKnownCountryCurrencyCode(item.newCountryName) || '';
-                                return {
-                                  ...item,
-                                  newCountryName: nextCountryName,
-                                  newCountryId:
-                                    !item.newCountryId || item.newCountryId === previousAutoId
-                                      ? guessCountryIdFromName(nextCountryName)
-                                      : item.newCountryId,
-                                  newCountryCurrencyCode:
-                                    !item.newCountryCurrencyCode ||
-                                    item.newCountryCurrencyCode === previousSuggestedCurrency
-                                      ? suggestedCurrency
-                                      : item.newCountryCurrencyCode,
-                                };
-                              })
-                            )
+                    <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Country Preview</div>
+                    <div className="space-y-2 rounded-md border bg-background p-3 text-xs text-muted-foreground">
+                      {draft.countryId ? (
+                        (() => {
+                          const preview = getSelectedCountryPreview(draft.countryId, countries);
+                          if (!preview) {
+                            return <p>Select a valid country from the canonical dataset.</p>;
                           }
-                          placeholder="e.g. Ecuador"
-                        />
-                        <p className="mt-1 text-xs text-muted-foreground">
-                          Required only when using a new country.
-                        </p>
-                      </div>
-                      <div className="space-y-2 rounded-md border bg-background p-3 text-xs text-muted-foreground">
-                        {draft.newCountryName.trim() ? (
-                          (() => {
-                            const preview = getNewCountryPreview(draft);
-                            return (
-                              <>
-                                <div>
-                                  Country ID: <span className="font-medium text-foreground">{preview.countryId || 'Will be generated'}</span>
-                                </div>
-                                <div>
-                                  Currency:{' '}
-                                  <span className="font-medium text-foreground">
-                                    {preview.currencyCode || 'Needs manual entry'}
-                                  </span>
-                                </div>
-                                <div>
-                                  Region: <span className="font-medium text-foreground">{preview.regionLabel}</span>
-                                </div>
-                              </>
-                            );
-                          })()
-                        ) : (
-                          <p>Enter a country name and the app will preview the generated ID and any known currency.</p>
-                        )}
-                      </div>
-                    </div>
 
-                    <details className="rounded-md border bg-background">
-                      <summary className="cursor-pointer px-3 py-2 text-xs font-medium text-foreground">
-                        Advanced country overrides
-                      </summary>
-                      <div className="grid gap-3 p-3 pt-0 md:grid-cols-3">
-                        <div>
-                          <Label className="text-xs">Country ID</Label>
-                          <Input
-                            className="h-9 text-sm"
-                            value={draft.newCountryId}
-                            onChange={(event) =>
-                              setMissingCityDrafts((current) =>
-                                current.map((item, itemIndex) =>
-                                  itemIndex === index ? { ...item, newCountryId: event.target.value } : item
-                                )
-                              )
-                            }
-                            placeholder="Auto-generated from country name"
-                          />
-                          <p className="mt-1 text-xs text-muted-foreground">
-                            Optional. Only override if you need a specific internal ID.
-                          </p>
-                        </div>
-                        <div>
-                          <Label className="text-xs">Currency Code</Label>
-                          <Input
-                            className="h-9 text-sm"
-                            value={draft.newCountryCurrencyCode}
-                            onChange={(event) =>
-                              setMissingCityDrafts((current) =>
-                                current.map((item, itemIndex) =>
-                                  itemIndex === index
-                                    ? { ...item, newCountryCurrencyCode: event.target.value.toUpperCase() }
-                                    : item
-                                )
-                              )
-                            }
-                            placeholder="Only needed when not auto-filled"
-                          />
-                          <p className="mt-1 text-xs text-muted-foreground">
-                            Use the ISO currency code, for example `USD`, `EUR`, or `JPY`.
-                          </p>
-                        </div>
-                        <div>
-                          <Label className="text-xs">Region (optional)</Label>
-                          <Select
-                            value={draft.newCountryRegion}
-                            onValueChange={(value) =>
-                              setMissingCityDrafts((current) =>
-                                current.map((item, itemIndex) =>
-                                  itemIndex === index ? { ...item, newCountryRegion: value === '__none__' ? '' : value } : item
-                                )
-                              )
-                            }
-                          >
-                            <SelectTrigger className="h-9 text-sm">
-                              <SelectValue placeholder="Leave blank if unsure" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="__none__">None</SelectItem>
-                              {REGION_OPTIONS.map((region) => (
-                                <SelectItem key={region.value} value={region.value}>
-                                  {region.label}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                          <p className="mt-1 text-xs text-muted-foreground">
-                            Optional. This only affects grouping and filtering later.
-                          </p>
-                        </div>
-                      </div>
-                    </details>
+                          return (
+                            <>
+                              <div>
+                                Canonical ID:{' '}
+                                <span className="font-medium text-foreground">{preview.canonicalCountry.id}</span>
+                              </div>
+                              <div>
+                                Currency:{' '}
+                                <span className="font-medium text-foreground">{preview.canonicalCountry.currencyCode}</span>
+                              </div>
+                              <div>
+                                Region:{' '}
+                                <span className="font-medium text-foreground">
+                                  {getRegionLabel(preview.canonicalCountry.region)}
+                                </span>
+                              </div>
+                              <div>
+                                Library row:{' '}
+                                <span className="font-medium text-foreground">
+                                  {preview.existingCountry
+                                    ? `${preview.existingCountry.name} (${preview.existingCountry.id})`
+                                    : 'Will be created automatically during import'}
+                                </span>
+                              </div>
+                            </>
+                          );
+                        })()
+                      ) : (
+                        <p>Select a country from the canonical dataset and the app will preview the canonical metadata.</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
