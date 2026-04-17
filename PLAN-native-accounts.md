@@ -1,8 +1,8 @@
-# Native Email/Password Accounts â€” Implementation Plan
+﻿# Native Email/Password Accounts ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Implementation Plan
 
 > **Branch**: `feat/native-accounts` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS â€” through Phase 4
+> **Status**: IN PROGRESS -- through Phase 5
 > **Related**: CLAUDE.md "Priority 2B: Native Account Expansion"
 
 ---
@@ -27,23 +27,23 @@ Priority 2B adds native accounts **alongside** Google (not as a replacement), wi
 2. **Unverified users cannot sign in.** Simpler security model than "sign in but restrict features". Unverified login returns a specific error the UI uses to offer "resend verification".
 3. **No auto-linking across providers.** If a native account and a Google sign-in collide on email, the user is sent to a "this email already has an account" screen and must link explicitly from signed-in settings (settings-side linking is Phase H / out-of-scope follow-up).
 4. **Rate limiting covers all five public auth endpoints**: login, signup, forgot-password, reset-password, verify-email resend.
-5. **argon2id via `argon2` (node-argon2).** Time cost 3, memory 64 MiB, parallelism 1 â€” tuned later if latency-sensitive.
+5. **argon2id via `argon2` (node-argon2).** Time cost 3, memory 64 MiB, parallelism 1 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â tuned later if latency-sensitive.
 
 ---
 
 ## Checkpoints
 
-- [x] **Phase 0** â€” Plan doc + branch (commit f1bd116)
-- [x] **Phase 1** â€” Schema + password/token helpers (commit 2111056)
-- [x] **Phase 2** â€” EmailPassword `CredentialsProvider` wired into NextAuth (commit 412f073)
-- [x] **Phase 3** â€” Signup + email verification flow (API + pages) (commit bdbccf4)
-- [x] **Phase 4** â€” Forgot password + reset flow (API + pages) (commit a216021)
-- [ ] **Phase 5** â€” Email delivery (Resend) + deployment docs
-- [ ] **Phase 6** â€” Rate limiting + abuse protection
-- [ ] **Phase 7** â€” Account-linking policy in `signIn` callback + collision screen
-- [ ] **Phase 8** â€” Signed-in account management (`/settings/account` change-password)
-- [ ] **Phase 9** â€” Tests (unit + Playwright) + CLAUDE.md update
-- [ ] **Phase 10** â€” PR review, merge readiness
+- [x] **Phase 0** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Plan doc + branch (commit f1bd116)
+- [x] **Phase 1** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Schema + password/token helpers (commit 2111056)
+- [x] **Phase 2** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â EmailPassword `CredentialsProvider` wired into NextAuth (commit 412f073)
+- [x] **Phase 3** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Signup + email verification flow (API + pages) (commit bdbccf4)
+- [x] **Phase 4** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Forgot password + reset flow (API + pages) (commit a216021)
+- [x] **Phase 5** -- Email delivery (Resend) + deployment docs (commit 8776a14)
+- [ ] **Phase 6** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Rate limiting + abuse protection
+- [ ] **Phase 7** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Account-linking policy in `signIn` callback + collision screen
+- [ ] **Phase 8** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Signed-in account management (`/settings/account` change-password)
+- [ ] **Phase 9** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Tests (unit + Playwright) + CLAUDE.md update
+- [ ] **Phase 10** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â PR review, merge readiness
 
 Each phase ends with a verification step and its own commit on `feat/native-accounts`.
 
@@ -80,13 +80,13 @@ export const authTokens = sqliteTable('auth_tokens', {
 **Design decisions**:
 - Store `tokenHash`, never the raw token. Raw value only lives in the email link.
 - One row per issuance; "rotate" by consuming the old row and inserting a new one. Don't UPDATE.
-- `purpose` is a plain string plus a runtime Zod check rather than a CHECK constraint â€” keeps future purposes (`change_email`, `delete_account`) easy to add.
+- `purpose` is a plain string plus a runtime Zod check rather than a CHECK constraint ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â keeps future purposes (`change_email`, `delete_account`) easy to add.
 
 ### 1b. Runtime bootstrap
 
 **File to modify**: `src/db/index.ts`
 
-Add two `CREATE TABLE IF NOT EXISTS` blocks following the existing pattern (see how `saved_plans` and `user_preferences` are done). No backfill needed â€” these are new data.
+Add two `CREATE TABLE IF NOT EXISTS` blocks following the existing pattern (see how `saved_plans` and `user_preferences` are done). No backfill needed ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â these are new data.
 
 ### 1c. Password helpers
 
@@ -99,7 +99,7 @@ export function validatePasswordStrength(plaintext: string): { ok: true } | { ok
 ```
 
 - Uses `argon2` (npm `argon2`) with `argon2id`, `timeCost: 3`, `memoryCost: 65536`, `parallelism: 1`.
-- `validatePasswordStrength`: min 10 chars, not purely numeric, not in a small denylist of obviously-bad passwords (`password`, `12345678`, etc.). Deliberately minimal â€” not trying to reinvent a strength meter.
+- `validatePasswordStrength`: min 10 chars, not purely numeric, not in a small denylist of obviously-bad passwords (`password`, `12345678`, etc.). Deliberately minimal ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â not trying to reinvent a strength meter.
 
 ### 1d. Token helpers
 
@@ -134,7 +134,7 @@ export async function invalidateUserTokens(userId: string, purpose: TokenPurpose
 npm install argon2
 ```
 
-Note: `argon2` has a native addon. Verify it builds on Windows dev and the production Linux VPS. If Windows install fails, document the `node-gyp` prereqs in `DEPLOYMENT.md`; fallback is `@node-rs/argon2` (prebuilt binaries, no build step) â€” switch only if needed.
+Note: `argon2` has a native addon. Verify it builds on Windows dev and the production Linux VPS. If Windows install fails, document the `node-gyp` prereqs in `DEPLOYMENT.md`; fallback is `@node-rs/argon2` (prebuilt binaries, no build step) ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â switch only if needed.
 
 ### Phase 1 verification
 
@@ -167,9 +167,9 @@ CredentialsProvider({
   async authorize(credentials) {
     // 1. Zod-validate shape
     // 2. Look up user by normalized email (lowercased, trimmed)
-    // 3. Look up userPasswords row; if missing â†’ return null (account exists but has no native password)
-    // 4. verifyPassword; if false â†’ return null
-    // 5. If user.emailVerified is null â†’ throw specific error code 'EMAIL_NOT_VERIFIED'
+    // 3. Look up userPasswords row; if missing ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ return null (account exists but has no native password)
+    // 4. verifyPassword; if false ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ return null
+    // 5. If user.emailVerified is null ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ throw specific error code 'EMAIL_NOT_VERIFIED'
     // 6. Return { id, email, name, image }
   },
 })
@@ -177,13 +177,13 @@ CredentialsProvider({
 
 ### 2b. Provider discovery
 
-Extend `getConfiguredAuthProviders()` to return `{ google, emailPassword, devPin }`. `emailPassword` is on whenever the app is past Phase 5 (email delivery configured) OR an env flag `ENABLE_EMAIL_PASSWORD=true` is set. Gate this so phases 2â€“4 don't accidentally expose sign-in before email delivery is wired.
+Extend `getConfiguredAuthProviders()` to return `{ google, emailPassword, devPin }`. `emailPassword` is on whenever the app is past Phase 5 (email delivery configured) OR an env flag `ENABLE_EMAIL_PASSWORD=true` is set. Gate this so phases 2ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ4 don't accidentally expose sign-in before email delivery is wired.
 
 ### 2c. Error surface
 
 NextAuth's `signIn('email-password', ...)` returns `{ error: string }`. Normalize error strings:
-- `'EMAIL_NOT_VERIFIED'` â€” UI links to "resend verification"
-- `'CredentialsSignin'` (default NextAuth) â€” generic "wrong email or password"
+- `'EMAIL_NOT_VERIFIED'` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â UI links to "resend verification"
+- `'CredentialsSignin'` (default NextAuth) ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â generic "wrong email or password"
 - Never distinguish "no such user" from "wrong password" in the response (avoid enumeration).
 
 ### 2d. Email normalization
@@ -221,18 +221,18 @@ Body (Zod): `{ email: string; password: string; name?: string }`
 Flow:
 1. Normalize email; validate shape + password strength
 2. Look up existing user by email
-   - If a user exists and has a `userPasswords` row â†’ return generic `{ ok: true }` (don't leak existence); silently do nothing
-   - If a user exists but no `userPasswords` row â†’ it's an OAuth-only account. Return generic `{ ok: true }` with a flag that the UI can use to suggest "sign in with Google instead"? **No** â€” keeps enumeration-proof. Just return generic success and send a password-set email? **Decision: return generic success, send no email.** Defer cross-provider linking to Phase 7.
-3. If no user exists: insert `user` row (via `ensureUserRow`), insert `userPasswords` row with argon2id hash, issue a `verify_email` token, send verification email (Phase 5 â€” for now, log the link), return `{ ok: true }`
+   - If a user exists and has a `userPasswords` row ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ return generic `{ ok: true }` (don't leak existence); silently do nothing
+   - If a user exists but no `userPasswords` row ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ it's an OAuth-only account. Return generic `{ ok: true }` with a flag that the UI can use to suggest "sign in with Google instead"? **No** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â keeps enumeration-proof. Just return generic success and send a password-set email? **Decision: return generic success, send no email.** Defer cross-provider linking to Phase 7.
+3. If no user exists: insert `user` row (via `ensureUserRow`), insert `userPasswords` row with argon2id hash, issue a `verify_email` token, send verification email (Phase 5 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â for now, log the link), return `{ ok: true }`
 4. Always return 200 with generic `{ ok: true }` regardless of branch (enumeration-proof)
 
 ### 3b. Verify-email API
 
 **File to create**: `src/app/api/auth/verify-email/route.ts`
 
-`POST /api/auth/verify-email` â€” body `{ token: string }`
+`POST /api/auth/verify-email` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â body `{ token: string }`
 
-- `consumeToken(token, 'verify_email')` â†’ if null, return 400 generic error
+- `consumeToken(token, 'verify_email')` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ if null, return 400 generic error
 - Set `user.emailVerified = now`
 - Return `{ ok: true, email }` so the client can auto-sign-in
 
@@ -240,16 +240,16 @@ Flow:
 
 **File to create**: `src/app/api/auth/resend-verification/route.ts`
 
-`POST /api/auth/resend-verification` â€” body `{ email: string }`
+`POST /api/auth/resend-verification` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â body `{ email: string }`
 
 - Always return 200 generic
-- If user exists + not verified + has a native password â†’ issue new token, invalidate old `verify_email` tokens for that user, send email
+- If user exists + not verified + has a native password ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ issue new token, invalidate old `verify_email` tokens for that user, send email
 
 ### 3d. Signup page
 
-**File to create**: `src/app/(auth)/signup/page.tsx` (or flat `src/app/signup/page.tsx` if no route group in use â€” match existing `/login` convention, which is flat)
+**File to create**: `src/app/(auth)/signup/page.tsx` (or flat `src/app/signup/page.tsx` if no route group in use ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â match existing `/login` convention, which is flat)
 
-Form fields: email, password, optional display name. Client-side password strength hint (uses `validatePasswordStrength` client-safe export). Submit â†’ POST to `/api/auth/signup` â†’ redirect to `/check-email`.
+Form fields: email, password, optional display name. Client-side password strength hint (uses `validatePasswordStrength` client-safe export). Submit ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ POST to `/api/auth/signup` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ redirect to `/check-email`.
 
 ### 3e. Check-email page
 
@@ -263,7 +263,7 @@ Static "We sent you a verification link. Check your inbox." with a "Resend" butt
 
 - Reads `?token=...`
 - POSTs to `/api/auth/verify-email`
-- On success: auto-calls `signIn('email-password', ...)` if possible? **No** â€” user already authenticated with Google would be confused, and we don't have their password. Instead, show "Email verified. Sign in below." with a link to `/login`.
+- On success: auto-calls `signIn('email-password', ...)` if possible? **No** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â user already authenticated with Google would be confused, and we don't have their password. Instead, show "Email verified. Sign in below." with a link to `/login`.
 
 ### 3g. Login page updates
 
@@ -272,16 +272,16 @@ Static "We sent you a verification link. Check your inbox." with a "Resend" butt
 - Add email + password fields above the Google button
 - Add "Forgot password?" link (Phase 4)
 - Add "Sign up" link to `/signup`
-- Handle `EMAIL_NOT_VERIFIED` error â†’ show "resend verification" CTA
+- Handle `EMAIL_NOT_VERIFIED` error ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ show "resend verification" CTA
 - Keep dev-PIN section unchanged
 
 ### Phase 3 verification
 
 - `npx tsc --noEmit` passes
-- Browser: `/signup` â†’ fill form â†’ email logged to server console with verification link
-- Click link â†’ `/verify-email?token=...` â†’ "Email verified" â†’ sign in on `/login` succeeds
-- Attempt to sign in before verifying â†’ `EMAIL_NOT_VERIFIED` error + resend CTA
-- Attempt to sign up with existing email â†’ always returns "check your inbox" (no enumeration)
+- Browser: `/signup` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ fill form ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ email logged to server console with verification link
+- Click link ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ `/verify-email?token=...` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ "Email verified" ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ sign in on `/login` succeeds
+- Attempt to sign in before verifying ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ `EMAIL_NOT_VERIFIED` error + resend CTA
+- Attempt to sign up with existing email ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ always returns "check your inbox" (no enumeration)
 
 **Commit**: `feat(auth): signup, email verification, and resend flows`
 
@@ -293,19 +293,19 @@ Static "We sent you a verification link. Check your inbox." with a "Resend" butt
 
 **File to create**: `src/app/api/auth/forgot-password/route.ts`
 
-`POST /api/auth/forgot-password` â€” body `{ email: string }`
+`POST /api/auth/forgot-password` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â body `{ email: string }`
 
 - Always return 200 generic `{ ok: true }`
-- If user exists and has `userPasswords` row â†’ issue `reset_password` token (30 min TTL), invalidate prior reset tokens for that user, send email
+- If user exists and has `userPasswords` row ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ issue `reset_password` token (30 min TTL), invalidate prior reset tokens for that user, send email
 
 ### 4b. Reset-password API
 
 **File to create**: `src/app/api/auth/reset-password/route.ts`
 
-`POST /api/auth/reset-password` â€” body `{ token: string; newPassword: string }`
+`POST /api/auth/reset-password` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â body `{ token: string; newPassword: string }`
 
 - Validate password strength
-- `consumeToken(token, 'reset_password')` â†’ if null, 400 generic
+- `consumeToken(token, 'reset_password')` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ if null, 400 generic
 - Update `userPasswords.hash`, stamp `lastChangedAt`
 - `invalidateUserTokens(userId, 'reset_password')` for safety (catches any races)
 - Clear all NextAuth sessions for that user (see 4d)
@@ -314,8 +314,8 @@ Static "We sent you a verification link. Check your inbox." with a "Resend" butt
 ### 4c. Forgot-password + reset-password pages
 
 **Files to create**:
-- `src/app/forgot-password/page.tsx` â€” email input â†’ POST â†’ "Check your inbox" screen
-- `src/app/reset-password/page.tsx` â€” reads `?token=...`, new-password field + confirm, POST â†’ redirect to `/login` with a success flash
+- `src/app/forgot-password/page.tsx` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â email input ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ POST ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ "Check your inbox" screen
+- `src/app/reset-password/page.tsx` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â reads `?token=...`, new-password field + confirm, POST ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ redirect to `/login` with a success flash
 
 ### 4d. Session invalidation
 
@@ -324,7 +324,7 @@ Static "We sent you a verification link. Check your inbox." with a "Resend" butt
 Because we use JWT sessions (not DB sessions), we can't just DELETE from `session`. Options:
 - (a) Add a `tokenVersion` column on `user`; include it in the JWT; bump on password reset; reject JWTs with a stale version in the `session` callback.
 - (b) Switch to DB sessions for native users only (complex, not recommended).
-- (c) Live with the JWT staying valid until its short exp â€” NextAuth JWT default is 30 days, but we can set `session.maxAge` to something short like 1 hour.
+- (c) Live with the JWT staying valid until its short exp ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â NextAuth JWT default is 30 days, but we can set `session.maxAge` to something short like 1 hour.
 
 **Decision: (a).** Add `users.tokenVersion` (integer, default 0). JWT carries `user.tokenVersion`. `session` callback rejects mismatch. `deleteSession`-on-reset becomes `UPDATE user SET tokenVersion = tokenVersion + 1`. Simple, correct, survives across devices.
 
@@ -332,9 +332,9 @@ Schema addition: add `tokenVersion: integer('token_version').notNull().default(0
 
 ### Phase 4 verification
 
-- `/forgot-password` with unknown email â†’ generic success
-- `/forgot-password` with known email â†’ reset email logged (still no real delivery â€” Phase 5)
-- Click reset link â†’ `/reset-password?token=...` â†’ set new password â†’ login with new password works
+- `/forgot-password` with unknown email ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ generic success
+- `/forgot-password` with known email ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ reset email logged (still no real delivery ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Phase 5)
+- Click reset link ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ `/reset-password?token=...` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ set new password ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ login with new password works
 - Old session from before reset is rejected on next request (after JWT refresh)
 
 **Commit**: `feat(auth): forgot password and reset flows with session invalidation`
@@ -355,7 +355,7 @@ export function isMailConfigured(): boolean
 
 - Uses `resend` SDK (`npm i resend`).
 - Templates are inline HTML strings for now. Both include plaintext fallback.
-- If `RESEND_API_KEY` is missing in non-production â†’ log the email to stdout (dev path). In production, throw so misconfiguration is loud.
+- If `RESEND_API_KEY` is missing in non-production ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ log the email to stdout (dev path). In production, throw so misconfiguration is loud.
 - Respects `APP_URL` env var to build absolute links.
 
 ### 5b. Wire the mailer
@@ -367,10 +367,10 @@ Replace `console.log` stubs in the Phase 3 and Phase 4 API routes with real call
 **Files to modify**: `.env.example`, `DEPLOYMENT.md`, `README.md` (if it documents env vars)
 
 New env vars:
-- `RESEND_API_KEY` â€” required in production for native auth
-- `MAIL_FROM` â€” e.g. `Wanderledger <no-reply@your-domain>`
-- `APP_URL` â€” used to build verification/reset links
-- `ENABLE_EMAIL_PASSWORD` â€” optional, defaults on when `RESEND_API_KEY` is set
+- `RESEND_API_KEY` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â required in production for native auth
+- `MAIL_FROM` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â e.g. `Wanderledger <no-reply@your-domain>`
+- `APP_URL` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â used to build verification/reset links
+- `ENABLE_EMAIL_PASSWORD` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â optional, defaults on when `RESEND_API_KEY` is set
 
 ### 5d. Turn on the provider
 
@@ -412,11 +412,11 @@ export async function checkRateLimit(
 ): Promise<{ allowed: true } | { allowed: false; retryAfterSeconds: number }>
 ```
 
-Atomic via SQLite transaction: if window expired â†’ reset; else increment and compare to `max`.
+Atomic via SQLite transaction: if window expired ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ reset; else increment and compare to `max`.
 
 ### 6c. Apply to auth endpoints
 
-Per-endpoint limits (both IP and email buckets â€” limit on whichever fills first):
+Per-endpoint limits (both IP and email buckets ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â limit on whichever fills first):
 
 | Endpoint | Max | Window | Buckets |
 |----------|-----|--------|---------|
@@ -427,7 +427,7 @@ Per-endpoint limits (both IP and email buckets â€” limit on whichever fills
 | `/api/auth/verify-email` | 20 | 1 hour | IP |
 | `/api/auth/resend-verification` | 3 | 1 hour | email |
 
-NextAuth callbacks are tricky to intercept cleanly â€” the `authorize()` function itself should call `checkRateLimit` as the first thing it does with `'login:email:' + normalizedEmail` and `'login:ip:' + clientIp`.
+NextAuth callbacks are tricky to intercept cleanly ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â the `authorize()` function itself should call `checkRateLimit` as the first thing it does with `'login:email:' + normalizedEmail` and `'login:ip:' + clientIp`.
 
 ### 6d. IP extraction
 
@@ -442,8 +442,8 @@ Add `X-Robots-Tag: noindex` to responses from `/api/auth/*` and pages under `(au
 ### Phase 6 verification
 
 - `npx tsc --noEmit` passes
-- Script: hammer `/api/auth/signup` with the same IP â€” 6th request returns 429 + `Retry-After`
-- Script: hammer login with same email, wrong password â€” limited after 10 attempts
+- Script: hammer `/api/auth/signup` with the same IP ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â 6th request returns 429 + `Retry-After`
+- Script: hammer login with same email, wrong password ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â limited after 10 attempts
 - Correct password still works after limit expires
 
 **Commit**: `feat(auth): rate limiting for native-auth endpoints`
@@ -457,9 +457,9 @@ Add `X-Robots-Tag: noindex` to responses from `/api/auth/*` and pages under `(au
 **File to modify**: `src/lib/auth.ts` (`callbacks.signIn`)
 
 On every sign-in:
-1. If `account.provider === 'google'` and an existing `user` row owns this email AND that user already has a `userPasswords` row (native account) AND no `account` row links them yet â†’ **reject** with a specific redirect to `/login?linkRequired=google`.
-2. Symmetrical check for email-password sign-in when a Google `account` row exists for the same email but no `userPasswords` row yet â€” reject with `/login?linkRequired=password`.
-3. When the account row already exists for this provider+email pair â†’ allow (normal flow).
+1. If `account.provider === 'google'` and an existing `user` row owns this email AND that user already has a `userPasswords` row (native account) AND no `account` row links them yet ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ **reject** with a specific redirect to `/login?linkRequired=google`.
+2. Symmetrical check for email-password sign-in when a Google `account` row exists for the same email but no `userPasswords` row yet ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â reject with `/login?linkRequired=password`.
+3. When the account row already exists for this provider+email pair ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ allow (normal flow).
 4. Update `ensureUserRow` / `claimLegacyDataForUser` so they don't accidentally create linked state.
 
 ### 7b. Link-required screen
@@ -469,7 +469,7 @@ On every sign-in:
 Reads `?linkRequired=` and renders an explanatory banner:
 > This email already has a Wanderledger account created with {other provider}. Sign in with {other provider} first, then link Google/email-password from your account settings.
 
-No automatic linking â€” user explicitly initiates from signed-in settings (Phase 8 or later).
+No automatic linking ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â user explicitly initiates from signed-in settings (Phase 8 or later).
 
 ### 7c. Consistent email casing
 
@@ -478,7 +478,7 @@ Ensure all `account.userId` lookups and `user.email` comparisons use `normalizeE
 ### Phase 7 verification
 
 - Create native account for `test@example.com` (verify + set password)
-- Try Google sign-in with the same email â†’ redirected to `/login?linkRequired=google`, no session created, no silent linking
+- Try Google sign-in with the same email ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ redirected to `/login?linkRequired=google`, no session created, no silent linking
 - Native sign-in still works, Google sign-in for different emails still works
 
 **Commit**: `feat(auth): account-linking policy with collision screen`
@@ -492,20 +492,20 @@ Ensure all `account.userId` lookups and `user.email` comparisons use `normalizeE
 **File to create**: `src/app/settings/account/page.tsx`
 
 Sections:
-1. **Profile** â€” email (read-only for now), display name (editable, writes to `user.name`)
-2. **Change password** â€” current password + new password + confirm. Server verifies current hash, rotates it, bumps `tokenVersion`. Only rendered if user has a `userPasswords` row.
-3. **Sign-in methods** â€” read-only list: "Google (linked)" and/or "Email + password (set)". No link/unlink UI yet; "Add [method]" buttons are disabled with "coming soon".
+1. **Profile** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â email (read-only for now), display name (editable, writes to `user.name`)
+2. **Change password** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â current password + new password + confirm. Server verifies current hash, rotates it, bumps `tokenVersion`. Only rendered if user has a `userPasswords` row.
+3. **Sign-in methods** ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â read-only list: "Google (linked)" and/or "Email + password (set)". No link/unlink UI yet; "Add [method]" buttons are disabled with "coming soon".
 
 ### 8b. Change-password API
 
 **File to create**: `src/app/api/auth/change-password/route.ts`
 
-`POST /api/auth/change-password` â€” body `{ currentPassword: string; newPassword: string }`
+`POST /api/auth/change-password` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â body `{ currentPassword: string; newPassword: string }`
 
 - Requires an authenticated session (`requireCurrentUser`)
 - Verify current hash; if wrong, rate-limit this endpoint too (reuse `checkRateLimit` with `change-password:user:` bucket)
 - Update hash, stamp `lastChangedAt`, bump `tokenVersion`
-- Return `{ ok: true }` â€” client forces a `signOut()` + redirect to `/login`
+- Return `{ ok: true }` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â client forces a `signOut()` + redirect to `/login`
 
 ### 8c. Sidebar entry
 
@@ -515,7 +515,7 @@ Add "Account" under Settings (or make `/settings/account` the default `/settings
 
 ### Phase 8 verification
 
-- Signed-in user â†’ `/settings/account` â†’ change password works; old password fails afterwards
+- Signed-in user ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ `/settings/account` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ change password works; old password fails afterwards
 - Mismatched current password shows error; repeated attempts get rate-limited
 - Google-only account sees "Sign-in methods: Google" and no change-password form
 
@@ -528,9 +528,9 @@ Add "Account" under Settings (or make `/settings/account` the default `/settings
 ### 9a. Unit tests
 
 **Files to create**:
-- `src/lib/password.test.ts` â€” hash/verify round-trip; strength validator edge cases
-- `src/lib/auth-tokens.test.ts` â€” issue/consume/expire/invalidate cycles; idempotent double-consume returns null
-- `src/lib/rate-limit.test.ts` â€” window rollover, per-bucket isolation, concurrent increment
+- `src/lib/password.test.ts` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â hash/verify round-trip; strength validator edge cases
+- `src/lib/auth-tokens.test.ts` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â issue/consume/expire/invalidate cycles; idempotent double-consume returns null
+- `src/lib/rate-limit.test.ts` ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â window rollover, per-bucket isolation, concurrent increment
 
 Using whatever test runner already exists in the repo (check `package.json`; add Vitest if none).
 
@@ -539,16 +539,16 @@ Using whatever test runner already exists in the repo (check `package.json`; add
 **File to create**: `tests/playwright/native-auth.spec.ts`
 
 Happy-path flow:
-1. Signup with new email â†’ check-email page shown
-2. Simulate clicking verification link (hit the verify API directly with a captured token) â†’ verified
-3. Sign in with email+password â†’ lands on `/`
-4. Sign out â†’ forgot-password flow â†’ reset token â†’ new password
+1. Signup with new email ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ check-email page shown
+2. Simulate clicking verification link (hit the verify API directly with a captured token) ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ verified
+3. Sign in with email+password ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ lands on `/`
+4. Sign out ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ forgot-password flow ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ reset token ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ new password
 5. Sign in with new password succeeds, old password fails
 
 Error paths:
-- Signup with existing email â†’ no enumeration
-- Sign in unverified â†’ `EMAIL_NOT_VERIFIED` + resend works
-- Rate limit hit after N attempts â†’ 429
+- Signup with existing email ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ no enumeration
+- Sign in unverified ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ `EMAIL_NOT_VERIFIED` + resend works
+- Rate limit hit after N attempts ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 429
 
 Use a test-mode mailer that writes emails to an in-memory buffer the test can read (add a `MAIL_TRANSPORT=memory` env path in `src/lib/mailer.ts`).
 
@@ -572,7 +572,7 @@ Use a test-mode mailer that writes emails to an in-memory buffer the test can re
 
 ## Phase 10: PR Review + Merge Readiness
 
-- Push `feat/native-accounts` (push after each phase commit is fine â€” the plan doc push kicks this off)
+- Push `feat/native-accounts` (push after each phase commit is fine ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â the plan doc push kicks this off)
 - Open PR against `main` referencing this file and the Priority 2B CLAUDE.md bullets
 - Self-review the full diff; delete any stray temp files (`tmp-auth-dev*.log` if still present)
 - Verify `npm run build` and the full test suite green on the branch
@@ -597,5 +597,5 @@ Use a test-mode mailer that writes emails to an in-memory buffer the test can re
 - **Why a JWT `tokenVersion` instead of DB sessions?** Keeps the existing session strategy intact; minimal change surface. DB sessions would require migrating every callback that reads the JWT.
 - **Why separate `user_passwords` and `auth_tokens` tables?** Isolates native-auth data so OAuth-only users never have empty columns in the base `user` table, and so token churn doesn't bloat the user row's page on disk.
 - **Why not reuse NextAuth `verificationToken`?** That table's primary key is `(identifier, token)` and is built for the magic-link Email provider. Adding a `purpose` column and different TTL logic muddies a table NextAuth owns; we'd rather keep it clean for a future passwordless-email option.
-- **Enumeration resistance everywhere.** Signup, forgot-password, and resend-verification always return generic success so response bodies can't be used to enumerate registered emails. Timing side-channels are further dulled by the argon2 verification on login regardless of whether the user exists (dummy-hash if no user found, though this is lower priority â€” flag for future hardening).
+- **Enumeration resistance everywhere.** Signup, forgot-password, and resend-verification always return generic success so response bodies can't be used to enumerate registered emails. Timing side-channels are further dulled by the argon2 verification on login regardless of whether the user exists (dummy-hash if no user found, though this is lower priority ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â flag for future hardening).
 - **Local dev ergonomics.** Dev-PIN stays. `MAIL_TRANSPORT=memory` lets local dev skip Resend entirely. `APP_URL` defaults to `http://localhost:3000` so links work out of the box.
