@@ -16,20 +16,20 @@ import { BulkTransportEstimateDialog } from '@/components/itinerary/BulkTranspor
 import { Download, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
-import { CITY_GENERATION_DEFAULT_MODELS } from '@/lib/city-generation-config';
+import {
+  CITY_GENERATION_PROVIDER_OPTIONS,
+  getDefaultCityGenerationModels,
+  migrateStoredCityGenerationModels,
+  validateCityGenerationModel,
+  type CityGenerationProvider,
+} from '@/lib/city-generation-config';
 import { findKnownCountryCurrencyCode, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
 import { migrateLocalStoragePlans } from '@/lib/saved-plan-migration';
 
 const CITY_GENERATION_STORAGE_PREFIX = 'wanderledger.city-generation';
-const LEGACY_DEFAULT_MODEL_MIGRATIONS: Record<ProviderOption, string[]> = {
-  openai: ['gpt-4o', 'gpt-5-mini'],
-  anthropic: ['claude-sonnet-4-20250514'],
-  gemini: ['gemini-2.0-flash'],
-};
-
-type ProviderOption = 'anthropic' | 'openai' | 'gemini';
+type ProviderOption = CityGenerationProvider;
 
 interface Leg {
   id: number;
@@ -122,34 +122,6 @@ interface FixedCost {
   isPaid?: number;
   notes?: string | null;
 }
-
-
-const PROVIDER_OPTIONS: Array<{
-  value: ProviderOption;
-  label: string;
-  help: string;
-  defaultModel: string;
-}> = [
-  {
-    value: 'openai',
-    label: 'OpenAI',
-    help: 'Uses your OpenAI API key or the server OPENAI_API_KEY.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.openai,
-  },
-  {
-    value: 'anthropic',
-    label: 'Anthropic',
-    help: 'Uses your Anthropic API key or the server ANTHROPIC_API_KEY.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-  },
-  {
-    value: 'gemini',
-    label: 'Google Gemini',
-    help: 'Uses your Gemini API key or the server GEMINI_API_KEY.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  },
-];
-
 const REGION_OPTIONS = [
   { value: 'latin_america', label: 'Latin America' },
   { value: 'north_america', label: 'North America' },
@@ -250,11 +222,7 @@ export default function PlanPage() {
     anthropic: '',
     gemini: '',
   });
-  const [importModels, setImportModels] = useState<Record<ProviderOption, string>>({
-    openai: CITY_GENERATION_DEFAULT_MODELS.openai,
-    anthropic: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-    gemini: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  });
+  const [importModels, setImportModels] = useState<Record<ProviderOption, string>>(getDefaultCityGenerationModels());
   const [showImportApiKey, setShowImportApiKey] = useState(false);
   const [importReferenceDate, setImportReferenceDate] = useState('');
   const [importExtraContext, setImportExtraContext] = useState('');
@@ -370,7 +338,7 @@ export default function PlanPage() {
     const storedKeys = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.models`);
 
-    if (storedProvider && PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
+    if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setImportProvider(storedProvider);
     }
 
@@ -390,20 +358,7 @@ export default function PlanPage() {
     if (storedModels) {
       try {
         const parsed = JSON.parse(storedModels) as Partial<Record<ProviderOption, string>>;
-        const nextModels = {
-          openai:
-            parsed.openai && !LEGACY_DEFAULT_MODEL_MIGRATIONS.openai.includes(parsed.openai)
-              ? parsed.openai
-              : CITY_GENERATION_DEFAULT_MODELS.openai,
-          anthropic:
-            parsed.anthropic && !LEGACY_DEFAULT_MODEL_MIGRATIONS.anthropic.includes(parsed.anthropic)
-              ? parsed.anthropic
-              : CITY_GENERATION_DEFAULT_MODELS.anthropic,
-          gemini:
-            parsed.gemini && !LEGACY_DEFAULT_MODEL_MIGRATIONS.gemini.includes(parsed.gemini)
-              ? parsed.gemini
-              : CITY_GENERATION_DEFAULT_MODELS.gemini,
-        };
+        const nextModels = migrateStoredCityGenerationModels(parsed);
         setImportModels(nextModels);
         window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
       } catch {
@@ -590,6 +545,7 @@ export default function PlanPage() {
       missingCityResolutions?: MissingCityResolutionDraft[];
     }
   ) => {
+    const effectiveImportModel = validateCityGenerationModel(importProvider, importModels[importProvider]).effectiveModel;
     const body = options?.missingCityResolutions
       ? {
           snapshot,
@@ -616,7 +572,7 @@ export default function PlanPage() {
               ? {
                   provider: importProvider,
                   apiKey: importApiKeys[importProvider] || undefined,
-                  model: importModels[importProvider] || undefined,
+                  model: effectiveImportModel || undefined,
                   referenceDate: importReferenceDate || undefined,
                   extraContext: importExtraContext || undefined,
                 }
@@ -896,9 +852,12 @@ export default function PlanPage() {
     }
   };
 
-  const selectedImportProvider = PROVIDER_OPTIONS.find((option) => option.value === importProvider) ?? PROVIDER_OPTIONS[0];
+  const selectedImportProvider =
+    CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === importProvider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0];
   const activeImportApiKey = importApiKeys[importProvider] || '';
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
+  const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel);
+  const importModelListId = `${CITY_GENERATION_STORAGE_PREFIX}.${importProvider}.models`;
 
   if (pageLoading && legs.length === 0 && cities.length === 0 && countries.length === 0) {
     return (
@@ -1223,7 +1182,7 @@ export default function PlanPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {PROVIDER_OPTIONS.map((option) => (
+                        {CITY_GENERATION_PROVIDER_OPTIONS.map((option) => (
                           <SelectItem key={option.value} value={option.value}>
                             {option.label}
                           </SelectItem>
@@ -1258,14 +1217,36 @@ export default function PlanPage() {
                     <Label className="text-xs">Model</Label>
                     <Input
                       className="h-9 text-sm"
+                      list={importModelListId}
                       placeholder={selectedImportProvider.defaultModel}
                       value={activeImportModel}
                       onChange={(event) => updateImportModel(event.target.value)}
                       autoComplete="off"
                       spellCheck={false}
                     />
+                    <datalist id={importModelListId}>
+                      {selectedImportProvider.knownModels.map((model) => (
+                        <option key={model} value={model} />
+                      ))}
+                    </datalist>
                     <p className="text-xs text-muted-foreground">
-                      Default for {selectedImportProvider.label}: {selectedImportProvider.defaultModel}
+                      Suggested models: {selectedImportProvider.knownModels.join(', ')}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedImportProvider.knownModels.map((model) => (
+                        <Button
+                          key={model}
+                          type="button"
+                          variant={importModelValidation.effectiveModel === model ? 'secondary' : 'outline'}
+                          size="sm"
+                          onClick={() => updateImportModel(model)}
+                        >
+                          {model === selectedImportProvider.defaultModel ? `${model} (default)` : model}
+                        </Button>
+                      ))}
+                    </div>
+                    <p className={`text-xs ${importModelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
+                      {importModelValidation.message}
                     </p>
                   </div>
                   <div className="space-y-1">

@@ -9,7 +9,13 @@ import { InlineLoadingState, LoadingButtonLabel } from '@/components/ui/loading-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import { CITY_GENERATION_DEFAULT_MODELS } from '@/lib/city-generation-config';
+import {
+  CITY_GENERATION_PROVIDER_OPTIONS,
+  getDefaultCityGenerationModels,
+  migrateStoredCityGenerationModels,
+  validateCityGenerationModel,
+  type CityGenerationProvider,
+} from '@/lib/city-generation-config';
 
 interface CityGenerationPanelProps {
   cityId: string;
@@ -30,40 +36,9 @@ interface GenerationResult {
   };
 }
 
-type ProviderOption = 'anthropic' | 'openai' | 'gemini';
-type ProviderConfig = {
-  label: string;
-  help: string;
-  defaultModel: string;
-};
+type ProviderOption = CityGenerationProvider;
 
 const STORAGE_PREFIX = 'wanderledger.city-generation';
-const LEGACY_DEFAULT_MODEL_MIGRATIONS: Record<ProviderOption, string[]> = {
-  openai: ['gpt-4o', 'gpt-5-mini'],
-  anthropic: ['claude-sonnet-4-20250514'],
-  gemini: ['gemini-2.0-flash'],
-};
-
-const PROVIDER_OPTIONS: Array<{ value: ProviderOption } & ProviderConfig> = [
-  {
-    value: 'openai',
-    label: 'OpenAI',
-    help: 'Uses your OpenAI API key or the server OPENAI_API_KEY.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.openai,
-  },
-  {
-    value: 'anthropic',
-    label: 'Anthropic',
-    help: 'Uses your Anthropic API key or the server ANTHROPIC_API_KEY.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-  },
-  {
-    value: 'gemini',
-    label: 'Google Gemini',
-    help: 'Uses your Gemini API key or the server GEMINI_API_KEY.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  },
-];
 
 const fmtMoney = (value: number) => value.toFixed(2);
 
@@ -79,11 +54,7 @@ export function CityGenerationPanel({
     anthropic: '',
     gemini: '',
   });
-  const [models, setModels] = useState<Record<ProviderOption, string>>({
-    openai: CITY_GENERATION_DEFAULT_MODELS.openai,
-    anthropic: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-    gemini: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  });
+  const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultCityGenerationModels());
   const [showApiKey, setShowApiKey] = useState(false);
   const [referenceDate, setReferenceDate] = useState('');
   const [extraContext, setExtraContext] = useState('');
@@ -96,7 +67,7 @@ export function CityGenerationPanel({
     const storedKeys = window.localStorage.getItem(`${STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${STORAGE_PREFIX}.models`);
 
-    if (storedProvider && PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
+    if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setProvider(storedProvider);
     }
 
@@ -116,20 +87,7 @@ export function CityGenerationPanel({
     if (storedModels) {
       try {
         const parsed = JSON.parse(storedModels) as Partial<Record<ProviderOption, string>>;
-        const nextModels = {
-          openai:
-            parsed.openai && !LEGACY_DEFAULT_MODEL_MIGRATIONS.openai.includes(parsed.openai)
-              ? parsed.openai
-              : CITY_GENERATION_DEFAULT_MODELS.openai,
-          anthropic:
-            parsed.anthropic && !LEGACY_DEFAULT_MODEL_MIGRATIONS.anthropic.includes(parsed.anthropic)
-              ? parsed.anthropic
-              : CITY_GENERATION_DEFAULT_MODELS.anthropic,
-          gemini:
-            parsed.gemini && !LEGACY_DEFAULT_MODEL_MIGRATIONS.gemini.includes(parsed.gemini)
-              ? parsed.gemini
-              : CITY_GENERATION_DEFAULT_MODELS.gemini,
-        };
+        const nextModels = migrateStoredCityGenerationModels(parsed);
 
         setModels(nextModels);
         window.localStorage.setItem(`${STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
@@ -139,9 +97,12 @@ export function CityGenerationPanel({
     }
   }, []);
 
-  const selectedProvider = PROVIDER_OPTIONS.find((option) => option.value === provider) ?? PROVIDER_OPTIONS[0];
+  const selectedProvider =
+    CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === provider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0];
   const activeApiKey = apiKeys[provider] || '';
   const activeModel = models[provider] || selectedProvider.defaultModel;
+  const modelValidation = validateCityGenerationModel(provider, activeModel);
+  const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
 
   function updateProvider(nextProvider: ProviderOption) {
     setProvider(nextProvider);
@@ -179,7 +140,7 @@ export function CityGenerationPanel({
         body: JSON.stringify({
           provider,
           apiKey: activeApiKey || undefined,
-          model: activeModel || undefined,
+          model: modelValidation.effectiveModel || undefined,
           referenceDate: referenceDate || undefined,
           extraContext: extraContext || undefined,
         }),
@@ -219,7 +180,7 @@ export function CityGenerationPanel({
               <SelectValue placeholder="Select provider" />
             </SelectTrigger>
             <SelectContent>
-              {PROVIDER_OPTIONS.map((option) => (
+              {CITY_GENERATION_PROVIDER_OPTIONS.map((option) => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.label}
                 </SelectItem>
@@ -253,14 +214,36 @@ export function CityGenerationPanel({
           <Label className="text-xs">Model</Label>
           <Input
             className="h-9 text-sm"
+            list={modelListId}
             placeholder={selectedProvider.defaultModel}
             value={activeModel}
             onChange={(event) => updateModel(event.target.value)}
             autoComplete="off"
             spellCheck={false}
           />
+          <datalist id={modelListId}>
+            {selectedProvider.knownModels.map((model) => (
+              <option key={model} value={model} />
+            ))}
+          </datalist>
           <p className="text-xs text-muted-foreground">
-            Provider model id. Default for {selectedProvider.label}: {selectedProvider.defaultModel}
+            Provider model id. Suggested models: {selectedProvider.knownModels.join(', ')}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {selectedProvider.knownModels.map((model) => (
+              <Button
+                key={model}
+                type="button"
+                variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
+                size="sm"
+                onClick={() => updateModel(model)}
+              >
+                {model === selectedProvider.defaultModel ? `${model} (default)` : model}
+              </Button>
+            ))}
+          </div>
+          <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
+            {modelValidation.message}
           </p>
         </div>
         <div className="space-y-1">

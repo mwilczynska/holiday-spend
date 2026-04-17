@@ -106,6 +106,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - API keys entered in the UI are stored only in browser `localStorage`
 - Keys are not written to the repo or database
 - Model names are editable so the UI is not hard-blocked by stale defaults
+- City-generation UIs now surface provider-specific known model suggestions, quick-pick buttons, and non-blocking warnings for custom/unknown model ids
 
 ### Provider-Specific Reliability Fixes Already Applied
 - OpenAI payload switches between `max_tokens` and `max_completion_tokens` depending on model family
@@ -113,6 +114,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Gemini now surfaces a clearer truncation error when it stops before finishing the JSON
 - Provider/model defaults are centralized in `src/lib/city-generation-config.ts`
 - Legacy stored browser defaults are migrated forward automatically
+- Known city-generation model ids and legacy browser model migrations are centralized in `src/lib/city-generation-config.ts`
 - Planner-side metadata inference now reuses the same provider/browser-default plumbing through a shared JSON LLM client rather than duplicating provider-specific request code
 
 ### Generation Output Handling
@@ -247,8 +249,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Add a clearer top-level planned average spend metric in `$ / day`
 
 ### City Cost / LLM Workflow
-- [ ] Add provider/model validation or discovery so UI options do not become stale over time
-- [ ] Remove the older legacy estimate API path and any now-unused estimation code if it is no longer part of the active product flow
+- [x] Add provider/model validation or discovery so UI options do not become stale over time
+- [x] Remove the older legacy estimate API path and any now-unused estimation code if it is no longer part of the active product flow
 - [ ] Consider exposing the inferred AUD/USD rate in the generation UI, not just stored metadata
 - [ ] Decide whether older historical estimate records need migration or pruning after the methodology switch
 
@@ -307,6 +309,13 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `/settings/cities` now redirects to `/dataset`, preserving `?cityId=...` deep links
 - The city library still supports explicit save, edit, delete, and generated-value refresh from the dataset page
 - The methodology page retains the written model details while the planner-facing data now lives separately
+
+### City Cost / LLM Workflow
+- Shared provider/model metadata, legacy default migrations, and model validation now live in `src/lib/city-generation-config.ts`
+- `/dataset`, `/plan` new-city creation, and snapshot-import generation now reuse the same known-model suggestions and custom-model warnings
+- Browser-stored legacy model defaults are automatically migrated forward when these UIs load
+- Added Vitest coverage for city-generation model migration and validation helpers in `src/lib/city-generation-config.test.ts`
+- Removed the legacy `/api/cities/estimate` route, unused hybrid/Xotelo estimation library, and the inactive anchor-input / legacy estimator components that no longer back any active UI flow
 
 ### Wise Import Improvements
 - `src/lib/wise-csv-parser.ts` was upgraded to support both provided Wise CSV export formats
