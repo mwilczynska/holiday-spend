@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/native-accounts` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS -- through Phase 6
+> **Status**: IN PROGRESS -- through Phase 7
 > **Related**: CLAUDE.md "Priority 2B: Native Account Expansion"
 
 ---
@@ -40,7 +40,7 @@ Priority 2B adds native accounts **alongside** Google (not as a replacement), wi
 - [x] **Phase 4** - Forgot password + reset flow (API + pages) (commit a216021)
 - [x] **Phase 5** - Email delivery (Resend) + deployment docs (commit 8776a14)
 - [x] **Phase 6** - Rate limiting + abuse protection (commit c3c4a19)
-- [ ] **Phase 7** - Account-linking policy in `signIn` callback + collision screen
+- [x] **Phase 7** - Account-linking policy in `signIn` callback + collision screen (commit f845a42)
 - [ ] **Phase 8** - Signed-in account management (`/settings/account` change-password)
 - [ ] **Phase 9** - Tests (unit + Playwright) + CLAUDE.md update
 - [ ] **Phase 10** - PR review, merge readiness
