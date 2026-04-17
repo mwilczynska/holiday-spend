@@ -499,12 +499,6 @@ export default function DatasetPage() {
               }
             }}
           >
-            <DialogTrigger asChild>
-              <Button size="sm" variant="outline">
-                <Plus className="mr-2 h-4 w-4" />
-                Add Country
-              </Button>
-            </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Add Country</DialogTitle>
