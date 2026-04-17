@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/country-dataset` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS -- Phase 5 complete, Phase 6 next
+> **Status**: COMPLETE -- Phases 0-6 complete, branch ready for review/merge
 > **Related**: CLAUDE.md "Settings / Admin UX" follow-up and country metadata canonicalization
 
 ---
@@ -34,7 +34,7 @@ This feature introduces a canonical country dataset in the repo, generated from 
 - [x] **Phase 3** - `/dataset` country creation simplified (shipped as full auto-create from canonical list, not just name-first form)
 - [x] **Phase 4** - Planner and server-side country creation paths reuse canonical resolver
 - [x] **Phase 5** - Validation/tests for dataset integrity and alias resolution
-- [ ] **Phase 6** - Docs, PR review, and merge readiness
+- [x] **Phase 6** - Docs, PR review, and merge readiness
 
 Each phase should end with verification and its own commit on `feat/country-dataset`.
 
@@ -302,7 +302,9 @@ Document:
 ### Phase 6 verification
 
 - `npm run docs:check-memory` passes
+- README includes a canonical-country dataset/regeneration note
 - PR is open and references `PLAN-country-dataset.md`
+- Branch is pushed with Phases 1-6 commits on `feat/country-dataset`
 
 **Commit**: `docs(country-data): document canonical dataset workflow`
 

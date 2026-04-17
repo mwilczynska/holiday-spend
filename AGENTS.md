@@ -145,7 +145,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Comparison computes planned costs server-side from snapshot tier selections plus current city base rates
 - Any existing localStorage snapshots are auto-migrated to the database on first load
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
-- That import resolver can now also create missing countries inline when a required country is not yet in the library
+- That import resolver now asks the user to choose a canonical country from the repo-owned dataset and auto-creates the country row server-side only when needed
 - The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
 - Traveller count is configurable in `/settings` and `/plan`, and now persists per user in `user_preferences.planner_group_size`
 - City base costs remain stored for 2 travellers and are scaled at runtime in planner/dashboard calculations
@@ -256,7 +256,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Decide whether older historical estimate records need migration or pruning after the methodology switch
 
 ### Settings / Admin UX
-- [x] Add country-creation UI in `/dataset` so city-library admin work does not depend on a pre-existing country row
+- [x] Replace manual country creation with canonical-country selection plus automatic DB row creation where needed
 - [x] Add duplicate-city protection beyond id uniqueness, such as fuzzy warnings on similar city names
 - [x] Add a clear saved API keys control in the generation UI
 - [x] Surface city provenance/history more richly in the dataset editor without turning `/dataset` into a second full editor
@@ -301,7 +301,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ### Dataset And Seeding
 - `src/db/seed.ts` now imports the new CSV dataset
-- `src/lib/country-metadata.ts` maps country ids, currency codes, and regions
+- `src/lib/country-metadata.ts` now resolves a repo-owned canonical country dataset and shared country-creation defaults
+- Canonical country metadata lives in `src/lib/data/country-metadata.generated.json` with app-specific adjustments in `src/lib/data/country-metadata.overrides.json`
+- Country creation paths now reuse shared canonical-resolution helpers so `/api/countries`, `/api/cities`, planner new-city creation, and snapshot import all resolve the same metadata
 - CSV-backed rows are tagged with `base_csv_apr_2026`
 
 ### Dataset And Methodology UI
@@ -312,10 +314,16 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - The methodology page retains the written model details while the planner-facing data now lives separately
 
 ### Settings / Admin UX
-- `/dataset` now includes first-class country creation with inferred `id`, currency, and region defaults, so admins can create missing countries without leaving the dataset page
+- `/dataset` no longer exposes a standalone Add Country flow; country rows are auto-created from the canonical dataset as a side effect of adding cities or resolving planner/snapshot imports
 - The add-city flow now warns on likely duplicate rows, blocks exact same-country duplicate names, and can infer city ids from the city name when left blank
 - The selected-city editor now includes an inline provenance panel with active estimate metadata and recent history rows
 - City-generation flows in `/dataset`, planner new-city creation, and snapshot-import generation now expose explicit controls to clear browser-stored API keys
+
+### Canonical Country Dataset
+- Country metadata is now repo-owned, deterministic, and generated into `src/lib/data/country-metadata.generated.json` with a narrow overrides layer in `src/lib/data/country-metadata.overrides.json`
+- Runtime resolution is deterministic across canonical names, aliases, ISO codes, and ids through `src/lib/country-metadata.ts`
+- Manual country metadata entry is no longer part of active product flows; planner import, planner new-city creation, and dataset city creation all resolve canonical country metadata server-side
+- Added Vitest coverage for canonical dataset integrity, resolver behavior, and `/api/countries` + `/api/cities` creation/reuse paths
 
 ### City Cost / LLM Workflow
 - Shared provider/model metadata, legacy default migrations, and model validation now live in `src/lib/city-generation-config.ts`
@@ -373,6 +381,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/city-llm-client.ts`
 - `src/lib/city-generation-config.ts`
 - `src/lib/country-metadata.ts`
+- `src/lib/data/country-metadata.generated.json`
+- `src/lib/data/country-metadata.overrides.json`
 - `src/lib/planner-city-resolution.ts`
 - `src/lib/transport-estimation.ts`
 - `src/lib/wise-csv-parser.ts`
@@ -393,6 +403,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/app/dataset/page.tsx`
 - `src/app/settings/cities/page.tsx`
 - `src/app/estimates/page.tsx`
+- `src/lib/country-metadata.test.ts`
+- `src/lib/country-routes.test.ts`
 - `tests/playwright/planner-regressions.spec.ts`
 - `src/lib/plan-comparison.ts`
 - `src/lib/saved-plan-migration.ts`
@@ -407,3 +419,5 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `tests/playwright/saved-plans.spec.ts`
 - `tests/playwright/plan-comparison.spec.ts`
 - `PLAN-saved-plans-comparison.md`
+- `PLAN-country-dataset.md`
+- `HANDOFF-country-dataset.md`

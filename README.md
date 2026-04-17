@@ -67,9 +67,21 @@ Open `http://localhost:3000`.
 npm run dev
 npm run build
 npx tsc --noEmit
+npm test
+npm run country-metadata:generate
 npm run test:e2e
 npm run db:seed
 ```
+
+## Canonical Country Metadata
+
+Country currency/region metadata is repo-owned and generated, not inferred from LLM output or typed manually in the UI.
+
+- generated dataset: `src/lib/data/country-metadata.generated.json`
+- app-specific overrides: `src/lib/data/country-metadata.overrides.json`
+- generation command: `npm run country-metadata:generate`
+
+Country rows are now auto-created from this canonical dataset during dataset city creation, planner new-city creation, and snapshot-import missing-city resolution.
 
 ## Project Structure
 
