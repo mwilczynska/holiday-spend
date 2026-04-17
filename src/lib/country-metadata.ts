@@ -1,126 +1,4 @@
-export const COUNTRY_CURRENCY_CODES: Record<string, string> = {
-  Argentina: 'ARS',
-  Australia: 'AUD',
-  Austria: 'EUR',
-  Brazil: 'BRL',
-  Bulgaria: 'BGN',
-  Cambodia: 'USD',
-  Canada: 'CAD',
-  Chile: 'CLP',
-  China: 'CNY',
-  Colombia: 'COP',
-  Croatia: 'EUR',
-  Cuba: 'CUP',
-  'Czech Republic': 'CZK',
-  Denmark: 'DKK',
-  Egypt: 'EGP',
-  Ecuador: 'USD',
-  Finland: 'EUR',
-  France: 'EUR',
-  Georgia: 'GEL',
-  Germany: 'EUR',
-  Greece: 'EUR',
-  'Hong Kong': 'HKD',
-  Hungary: 'HUF',
-  Iceland: 'ISK',
-  India: 'INR',
-  Indonesia: 'IDR',
-  Israel: 'ILS',
-  Italy: 'EUR',
-  Japan: 'JPY',
-  Jordan: 'JOD',
-  Kenya: 'KES',
-  Laos: 'LAK',
-  Malaysia: 'MYR',
-  Mexico: 'MXN',
-  Morocco: 'MAD',
-  Myanmar: 'MMK',
-  Nepal: 'NPR',
-  Netherlands: 'EUR',
-  'New Zealand': 'NZD',
-  Peru: 'PEN',
-  Philippines: 'PHP',
-  Poland: 'PLN',
-  Portugal: 'EUR',
-  Romania: 'RON',
-  Serbia: 'RSD',
-  Singapore: 'SGD',
-  'South Africa': 'ZAR',
-  'South Korea': 'KRW',
-  Spain: 'EUR',
-  'Sri Lanka': 'LKR',
-  Sweden: 'SEK',
-  Taiwan: 'TWD',
-  Tanzania: 'TZS',
-  Thailand: 'THB',
-  Turkey: 'TRY',
-  UAE: 'AED',
-  'United Kingdom': 'GBP',
-  'United States': 'USD',
-  Vietnam: 'VND',
-};
-
-export const COUNTRY_REGIONS: Record<string, string> = {
-  Argentina: 'latin_america',
-  Australia: 'oceania',
-  Austria: 'europe',
-  Brazil: 'latin_america',
-  Bulgaria: 'europe',
-  Cambodia: 'se_asia',
-  Canada: 'north_america',
-  Chile: 'latin_america',
-  China: 'east_asia',
-  Colombia: 'latin_america',
-  Croatia: 'europe',
-  Cuba: 'latin_america',
-  'Czech Republic': 'europe',
-  Denmark: 'europe',
-  Egypt: 'middle_east',
-  Ecuador: 'latin_america',
-  Finland: 'europe',
-  France: 'europe',
-  Georgia: 'europe',
-  Germany: 'europe',
-  Greece: 'europe',
-  'Hong Kong': 'east_asia',
-  Hungary: 'europe',
-  Iceland: 'europe',
-  India: 'south_asia',
-  Indonesia: 'se_asia',
-  Israel: 'middle_east',
-  Italy: 'europe',
-  Japan: 'east_asia',
-  Jordan: 'middle_east',
-  Kenya: 'africa',
-  Laos: 'se_asia',
-  Malaysia: 'se_asia',
-  Mexico: 'north_america',
-  Morocco: 'africa',
-  Myanmar: 'se_asia',
-  Nepal: 'south_asia',
-  Netherlands: 'europe',
-  'New Zealand': 'oceania',
-  Peru: 'latin_america',
-  Philippines: 'se_asia',
-  Poland: 'europe',
-  Portugal: 'europe',
-  Romania: 'europe',
-  Serbia: 'europe',
-  Singapore: 'se_asia',
-  'South Africa': 'africa',
-  'South Korea': 'east_asia',
-  Spain: 'europe',
-  'Sri Lanka': 'south_asia',
-  Sweden: 'europe',
-  Taiwan: 'east_asia',
-  Tanzania: 'africa',
-  Thailand: 'se_asia',
-  Turkey: 'middle_east',
-  UAE: 'middle_east',
-  'United Kingdom': 'europe',
-  'United States': 'north_america',
-  Vietnam: 'se_asia',
-};
+import countryMetadataRows from './data/country-metadata.generated.json';
 
 export const APP_REGION_VALUES = [
   'latin_america',
@@ -134,6 +12,19 @@ export const APP_REGION_VALUES = [
   'oceania',
 ] as const;
 
+export type AppRegion = (typeof APP_REGION_VALUES)[number];
+
+export type CountryMetadata = {
+  id: string;
+  name: string;
+  aliases: string[];
+  currencyCode: string;
+  region: AppRegion;
+  iso2: string;
+  iso3: string;
+  source: string;
+};
+
 const REGION_LABELS: Record<string, string> = {
   SEA: 'se_asia',
   'East Asia': 'east_asia',
@@ -146,6 +37,93 @@ const REGION_LABELS: Record<string, string> = {
   Oceania: 'oceania',
 };
 
+function isAppRegion(value: string): value is AppRegion {
+  return APP_REGION_VALUES.includes(value as AppRegion);
+}
+
+function normalizeCountryMetadataRows(rows: typeof countryMetadataRows): CountryMetadata[] {
+  const byId = new Map<string, string>();
+  const byName = new Map<string, string>();
+  const byIso2 = new Map<string, string>();
+  const byIso3 = new Map<string, string>();
+
+  return rows.map((row) => {
+    if (!isAppRegion(row.region)) {
+      throw new Error(`Invalid app region "${row.region}" in canonical country metadata for ${row.name}.`);
+    }
+
+    if (byId.has(row.id)) {
+      throw new Error(`Duplicate country metadata id "${row.id}" for ${row.name} and ${byId.get(row.id)}.`);
+    }
+    if (byName.has(row.name)) {
+      throw new Error(`Duplicate country metadata name "${row.name}".`);
+    }
+    if (byIso2.has(row.iso2)) {
+      throw new Error(`Duplicate country metadata iso2 "${row.iso2}" for ${row.name} and ${byIso2.get(row.iso2)}.`);
+    }
+    if (byIso3.has(row.iso3)) {
+      throw new Error(`Duplicate country metadata iso3 "${row.iso3}" for ${row.name} and ${byIso3.get(row.iso3)}.`);
+    }
+
+    byId.set(row.id, row.name);
+    byName.set(row.name, row.name);
+    byIso2.set(row.iso2, row.name);
+    byIso3.set(row.iso3, row.name);
+
+    return {
+      id: row.id,
+      name: row.name,
+      aliases: [...row.aliases],
+      currencyCode: row.currencyCode,
+      region: row.region,
+      iso2: row.iso2,
+      iso3: row.iso3,
+      source: row.source,
+    };
+  });
+}
+
+function registerLookupKey(lookup: Map<string, CountryMetadata>, rawKey: string, row: CountryMetadata) {
+  const key = slugifyId(rawKey);
+  if (!key) return;
+
+  const existing = lookup.get(key);
+  if (existing && existing.id !== row.id) {
+    throw new Error(`Ambiguous country metadata lookup key "${rawKey}" for ${existing.name} and ${row.name}.`);
+  }
+
+  lookup.set(key, row);
+}
+
+const COUNTRY_METADATA = normalizeCountryMetadataRows(countryMetadataRows);
+
+const COUNTRY_METADATA_BY_ID = new Map(COUNTRY_METADATA.map((row) => [row.id, row] as const));
+
+const COUNTRY_METADATA_LOOKUP = (() => {
+  const lookup = new Map<string, CountryMetadata>();
+
+  for (const row of COUNTRY_METADATA) {
+    registerLookupKey(lookup, row.id, row);
+    registerLookupKey(lookup, row.name, row);
+    registerLookupKey(lookup, row.iso2, row);
+    registerLookupKey(lookup, row.iso3, row);
+
+    for (const alias of row.aliases) {
+      registerLookupKey(lookup, alias, row);
+    }
+  }
+
+  return lookup;
+})();
+
+export const COUNTRY_CURRENCY_CODES: Record<string, string> = Object.fromEntries(
+  COUNTRY_METADATA.map((row) => [row.name, row.currencyCode])
+);
+
+export const COUNTRY_REGIONS: Record<string, string> = Object.fromEntries(
+  COUNTRY_METADATA.map((row) => [row.name, row.region])
+);
+
 export function getCountryCurrencyCode(countryName: string): string {
   const currencyCode = findKnownCountryCurrencyCode(countryName);
   if (!currencyCode) {
@@ -155,38 +133,30 @@ export function getCountryCurrencyCode(countryName: string): string {
   return currencyCode;
 }
 
-export function findKnownCountryCurrencyCode(countryName: string | null | undefined): string | null {
-  if (!countryName) return null;
+export function findKnownCountryMetadata(input: string | null | undefined): CountryMetadata | null {
+  if (!input) return null;
 
-  const trimmed = countryName.trim();
+  const trimmed = input.trim();
   if (!trimmed) return null;
 
-  const exact = COUNTRY_CURRENCY_CODES[trimmed];
-  if (exact) return exact;
+  return COUNTRY_METADATA_LOOKUP.get(slugifyId(trimmed)) ?? null;
+}
 
-  const normalizedLookup = slugifyId(trimmed);
-  const matchedEntry = Object.entries(COUNTRY_CURRENCY_CODES).find(
-    ([knownCountryName]) => slugifyId(knownCountryName) === normalizedLookup
-  );
+export function findKnownCountryById(id: string | null | undefined): CountryMetadata | null {
+  if (!id) return null;
 
-  return matchedEntry?.[1] ?? null;
+  const trimmed = id.trim();
+  if (!trimmed) return null;
+
+  return COUNTRY_METADATA_BY_ID.get(slugifyId(trimmed)) ?? null;
+}
+
+export function findKnownCountryCurrencyCode(countryName: string | null | undefined): string | null {
+  return findKnownCountryMetadata(countryName)?.currencyCode ?? null;
 }
 
 export function findKnownCountryRegion(countryName: string | null | undefined): string | null {
-  if (!countryName) return null;
-
-  const trimmed = countryName.trim();
-  if (!trimmed) return null;
-
-  const exact = COUNTRY_REGIONS[trimmed];
-  if (exact) return exact;
-
-  const normalizedLookup = slugifyId(trimmed);
-  const matchedEntry = Object.entries(COUNTRY_REGIONS).find(
-    ([knownCountryName]) => slugifyId(knownCountryName) === normalizedLookup
-  );
-
-  return matchedEntry?.[1] ?? null;
+  return findKnownCountryMetadata(countryName)?.region ?? null;
 }
 
 export function normalizeRegionLabel(regionLabel: string | null | undefined): string | null {

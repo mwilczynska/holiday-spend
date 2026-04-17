@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/country-dataset` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS -- Phase 1 complete
+> **Status**: IN PROGRESS -- Phase 2 complete
 > **Related**: CLAUDE.md "Settings / Admin UX" follow-up and country metadata canonicalization
 
 ---
@@ -30,7 +30,7 @@ This feature introduces a canonical country dataset in the repo, generated from 
 
 - [x] **Phase 0** - Branch + plan doc
 - [x] **Phase 1** - Canonical dataset files + generator scaffold
-- [ ] **Phase 2** - Runtime resolver refactor onto canonical dataset
+- [x] **Phase 2** - Runtime resolver refactor onto canonical dataset
 - [ ] **Phase 3** - `/dataset` country creation simplified to name-first flow
 - [ ] **Phase 4** - Planner and server-side country creation paths reuse canonical resolver
 - [ ] **Phase 5** - Validation/tests for dataset integrity and alias resolution
