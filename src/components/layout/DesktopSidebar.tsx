@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { BarChart3, Calculator, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags, UserCircle } from 'lucide-react';
+import { BarChart3, BookOpenText, Database, LayoutDashboard, Loader2, Map, Receipt, Plus, Settings, Tags, UserCircle } from 'lucide-react';
 import { SignOutButton } from '@/components/auth/SignOutButton';
 import { cn } from '@/lib/utils';
 
@@ -10,7 +10,8 @@ const navItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/plan', label: 'Plan', icon: Map, excludePrefix: '/plan/compare' },
   { href: '/plan/compare', label: 'Compare Plans', icon: BarChart3 },
-  { href: '/estimates', label: 'Estimates', icon: Calculator },
+  { href: '/dataset', label: 'Dataset', icon: Database },
+  { href: '/estimates', label: 'Methodology', icon: BookOpenText },
   { href: '/track', label: 'Expenses', icon: Receipt },
   { href: '/track/add', label: 'Quick Add', icon: Plus },
   { href: '/track/tags', label: 'Tags', icon: Tags },
