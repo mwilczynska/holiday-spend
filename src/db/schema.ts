@@ -79,6 +79,13 @@ export const authTokens = sqliteTable('auth_tokens', {
   userAgent: text('user_agent'),
 });
 
+export const authRateLimits = sqliteTable('auth_rate_limits', {
+  bucket: text('bucket').primaryKey(),
+  count: integer('count').notNull().default(0),
+  windowStart: text('window_start').notNull(),
+  updatedAt: text('updated_at').default(sql`(datetime('now'))`),
+});
+
 export const savedPlans = sqliteTable('saved_plans', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),

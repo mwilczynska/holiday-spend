@@ -3,4 +3,10 @@ import { authOptions } from '@/lib/auth';
 
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+async function withNoIndex(request: Request) {
+  const response = await handler(request);
+  response.headers.set('X-Robots-Tag', 'noindex');
+  return response;
+}
+
+export { withNoIndex as GET, withNoIndex as POST };

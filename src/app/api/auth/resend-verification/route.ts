@@ -2,28 +2,38 @@ import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
 import { userPasswords, users } from '@/db/schema';
-import { handleError, success } from '@/lib/api-helpers';
+import { authSuccess, handleAuthError, RateLimitError } from '@/lib/auth-responses';
 import { buildAuthLink } from '@/lib/auth-links';
 import { invalidateUserTokens, issueToken } from '@/lib/auth-tokens';
+import { checkRateLimit } from '@/lib/rate-limit';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendVerificationEmail } from '@/lib/mailer';
 
 export const dynamic = 'force-dynamic';
 
 const resendSchema = z.object({
-  email: z.string().email(),
+  email: z.string().optional().default(''),
 });
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = resendSchema.parse(body);
+    const normalizedEmail = normalizeEmail(data.email);
 
-    if (!isValidEmailShape(data.email)) {
-      return success({ ok: true });
+    const emailLimit = await checkRateLimit(`resend-verification:email:${normalizedEmail}`, {
+      max: 3,
+      windowSeconds: 60 * 60,
+    });
+
+    if (!emailLimit.allowed) {
+      throw new RateLimitError(emailLimit.retryAfterSeconds);
     }
 
-    const email = normalizeEmail(data.email);
+    if (!isValidEmailShape(data.email)) {
+      return authSuccess({ ok: true });
+    }
+    const email = normalizedEmail;
 
     const user = await db
       .select({ id: users.id, emailVerified: users.emailVerified })
@@ -32,7 +42,7 @@ export async function POST(request: Request) {
       .get();
 
     if (!user || user.emailVerified) {
-      return success({ ok: true });
+      return authSuccess({ ok: true });
     }
 
     const native = await db
@@ -42,7 +52,7 @@ export async function POST(request: Request) {
       .get();
 
     if (!native) {
-      return success({ ok: true });
+      return authSuccess({ ok: true });
     }
 
     await invalidateUserTokens(user.id, 'verify_email');
@@ -50,8 +60,8 @@ export async function POST(request: Request) {
     const verifyUrl = buildAuthLink('/verify-email', issued.rawToken, request);
     await sendVerificationEmail(email, verifyUrl);
 
-    return success({ ok: true });
+    return authSuccess({ ok: true });
   } catch (err) {
-    return handleError(err);
+    return handleAuthError(err);
   }
 }

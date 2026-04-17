@@ -54,6 +54,8 @@ export function LoginScreen({
 
     if (result?.error === 'EMAIL_NOT_VERIFIED') {
       setUnverifiedEmail(email.trim());
+    } else if (result?.error === 'RATE_LIMITED') {
+      setEmailError('Too many sign-in attempts. Please wait a bit and try again.');
     } else {
       setEmailError('Wrong email or password.');
     }

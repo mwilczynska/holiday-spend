@@ -190,6 +190,8 @@ server {
 
 Then add real TLS with Certbot in the normal host-level flow.
 
+For native-auth rate limiting and auditability, only trust `X-Forwarded-For` from your own reverse proxy. Do not expose the app directly on a public interface if you want IP-based auth throttling to remain meaningful.
+
 ## Integration Recommendation For Your Existing VPS
 
 When you are eventually ready to deploy, the intended shape is:

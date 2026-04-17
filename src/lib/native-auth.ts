@@ -78,4 +78,5 @@ export async function verifyEmailPasswordCredentials(
 
 export const NATIVE_AUTH_ERROR_CODES = {
   EMAIL_NOT_VERIFIED: 'EMAIL_NOT_VERIFIED',
+  RATE_LIMITED: 'RATE_LIMITED',
 } as const;

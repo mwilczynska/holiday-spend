@@ -2,9 +2,11 @@ import { eq, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
 import { userPasswords, users } from '@/db/schema';
-import { error as apiError, handleError, success } from '@/lib/api-helpers';
+import { authError, authSuccess, handleAuthError, RateLimitError } from '@/lib/auth-responses';
 import { consumeToken, invalidateUserTokens } from '@/lib/auth-tokens';
 import { hashPassword, validatePasswordStrength } from '@/lib/password';
+import { checkRateLimit } from '@/lib/rate-limit';
+import { getRequestIp } from '@/lib/request-ip';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,17 +17,27 @@ const resetPasswordSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    const clientIp = getRequestIp(request) ?? 'unknown';
+    const ipLimit = await checkRateLimit(`reset-password:ip:${clientIp}`, {
+      max: 10,
+      windowSeconds: 15 * 60,
+    });
+
+    if (!ipLimit.allowed) {
+      throw new RateLimitError(ipLimit.retryAfterSeconds);
+    }
+
     const body = await request.json();
     const data = resetPasswordSchema.parse(body);
 
     const strength = validatePasswordStrength(data.newPassword);
     if (!strength.ok) {
-      return apiError(strength.reason);
+      return authError(strength.reason);
     }
 
     const consumed = await consumeToken(data.token, 'reset_password');
     if (!consumed) {
-      return apiError('This reset link is invalid or has expired.', 400);
+      return authError('This reset link is invalid or has expired.', 400);
     }
 
     const hash = await hashPassword(data.newPassword);
@@ -40,7 +52,7 @@ export async function POST(request: Request) {
       .run();
 
     if (updatedPassword.changes === 0) {
-      return apiError('This reset link is invalid or has expired.', 400);
+      return authError('This reset link is invalid or has expired.', 400);
     }
 
     await invalidateUserTokens(consumed.userId, 'reset_password');
@@ -52,8 +64,8 @@ export async function POST(request: Request) {
       .where(eq(users.id, consumed.userId))
       .run();
 
-    return success({ ok: true });
+    return authSuccess({ ok: true });
   } catch (err) {
-    return handleError(err);
+    return handleAuthError(err);
   }
 }

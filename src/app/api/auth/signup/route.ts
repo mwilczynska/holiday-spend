@@ -2,12 +2,14 @@ import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
 import { userPasswords, users } from '@/db/schema';
-import { error as apiError, handleError, success } from '@/lib/api-helpers';
+import { authError, authSuccess, handleAuthError, RateLimitError } from '@/lib/auth-responses';
 import { buildAuthLink } from '@/lib/auth-links';
 import { issueToken } from '@/lib/auth-tokens';
+import { checkRateLimit } from '@/lib/rate-limit';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendVerificationEmail } from '@/lib/mailer';
 import { hashPassword, validatePasswordStrength } from '@/lib/password';
+import { getRequestIp } from '@/lib/request-ip';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,17 +23,36 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = signupSchema.parse(body);
+    const clientIp = getRequestIp(request) ?? 'unknown';
+    const normalizedEmail = normalizeEmail(data.email);
+
+    const [ipLimit, emailLimit] = await Promise.all([
+      checkRateLimit(`signup:ip:${clientIp}`, {
+        max: 5,
+        windowSeconds: 60 * 60,
+      }),
+      checkRateLimit(`signup:email:${normalizedEmail}`, {
+        max: 5,
+        windowSeconds: 60 * 60,
+      }),
+    ]);
+
+    if (!ipLimit.allowed) {
+      throw new RateLimitError(ipLimit.retryAfterSeconds);
+    }
+    if (!emailLimit.allowed) {
+      throw new RateLimitError(emailLimit.retryAfterSeconds);
+    }
 
     if (!isValidEmailShape(data.email)) {
-      return apiError('Invalid email');
+      return authError('Invalid email');
     }
 
     const strength = validatePasswordStrength(data.password);
     if (!strength.ok) {
-      return apiError(strength.reason);
+      return authError(strength.reason);
     }
-
-    const email = normalizeEmail(data.email);
+    const email = normalizedEmail;
 
     const existing = await db
       .select({ id: users.id })
@@ -40,7 +61,7 @@ export async function POST(request: Request) {
       .get();
 
     if (existing) {
-      return success({ ok: true });
+      return authSuccess({ ok: true });
     }
 
     const userId = crypto.randomUUID();
@@ -58,8 +79,8 @@ export async function POST(request: Request) {
     const verifyUrl = buildAuthLink('/verify-email', issued.rawToken, request);
     await sendVerificationEmail(email, verifyUrl);
 
-    return success({ ok: true });
+    return authSuccess({ ok: true });
   } catch (err) {
-    return handleError(err);
+    return handleAuthError(err);
   }
 }

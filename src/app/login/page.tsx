@@ -1,8 +1,10 @@
 import { redirect } from 'next/navigation';
 import { LoginScreen } from '@/components/auth/LoginScreen';
 import { getAuthSession, getConfiguredAuthProviders } from '@/lib/auth';
+import { authPageMetadata } from '@/lib/auth-responses';
 
 export const dynamic = 'force-dynamic';
+export const metadata = authPageMetadata;
 
 type PageProps = {
   searchParams?: { reset?: string };

@@ -10,6 +10,8 @@ import {
   verifyEmailPasswordCredentials,
 } from '@/lib/native-auth';
 import { isMailConfigured } from '@/lib/mailer';
+import { checkRateLimit } from '@/lib/rate-limit';
+import { getRequestIp } from '@/lib/request-ip';
 import { ensureUserRow, claimLegacyDataForUser } from '@/lib/user-data';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -49,7 +51,26 @@ if (emailPasswordEnabled) {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
+        const normalizedEmail =
+          typeof credentials?.email === 'string' ? credentials.email.trim().toLowerCase() : '';
+        const clientIp = getRequestIp(req) ?? 'unknown';
+
+        const [emailLimit, ipLimit] = await Promise.all([
+          checkRateLimit(`login:email:${normalizedEmail || 'unknown'}`, {
+            max: 10,
+            windowSeconds: 15 * 60,
+          }),
+          checkRateLimit(`login:ip:${clientIp}`, {
+            max: 10,
+            windowSeconds: 15 * 60,
+          }),
+        ]);
+
+        if (!emailLimit.allowed || !ipLimit.allowed) {
+          throw new Error(NATIVE_AUTH_ERROR_CODES.RATE_LIMITED);
+        }
+
         const result = await verifyEmailPasswordCredentials(
           credentials?.email,
           credentials?.password

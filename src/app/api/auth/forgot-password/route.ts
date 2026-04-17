@@ -2,11 +2,13 @@ import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/db';
 import { userPasswords, users } from '@/db/schema';
-import { handleError, success } from '@/lib/api-helpers';
+import { authSuccess, handleAuthError, RateLimitError } from '@/lib/auth-responses';
 import { buildAuthLink } from '@/lib/auth-links';
 import { invalidateUserTokens, issueToken } from '@/lib/auth-tokens';
+import { checkRateLimit } from '@/lib/rate-limit';
 import { isValidEmailShape, normalizeEmail } from '@/lib/email';
 import { sendPasswordResetEmail } from '@/lib/mailer';
+import { getRequestIp } from '@/lib/request-ip';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,12 +20,31 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = forgotPasswordSchema.parse(body);
+    const clientIp = getRequestIp(request) ?? 'unknown';
+    const normalizedEmail = normalizeEmail(data.email);
 
-    if (!isValidEmailShape(data.email)) {
-      return success({ ok: true });
+    const [ipLimit, emailLimit] = await Promise.all([
+      checkRateLimit(`forgot-password:ip:${clientIp}`, {
+        max: 5,
+        windowSeconds: 60 * 60,
+      }),
+      checkRateLimit(`forgot-password:email:${normalizedEmail || 'unknown'}`, {
+        max: 5,
+        windowSeconds: 60 * 60,
+      }),
+    ]);
+
+    if (!ipLimit.allowed) {
+      throw new RateLimitError(ipLimit.retryAfterSeconds);
+    }
+    if (!emailLimit.allowed) {
+      throw new RateLimitError(emailLimit.retryAfterSeconds);
     }
 
-    const email = normalizeEmail(data.email);
+    if (!isValidEmailShape(data.email)) {
+      return authSuccess({ ok: true });
+    }
+    const email = normalizedEmail;
 
     const user = await db
       .select({ id: users.id })
@@ -32,7 +53,7 @@ export async function POST(request: Request) {
       .get();
 
     if (!user) {
-      return success({ ok: true });
+      return authSuccess({ ok: true });
     }
 
     const nativePassword = await db
@@ -42,7 +63,7 @@ export async function POST(request: Request) {
       .get();
 
     if (!nativePassword) {
-      return success({ ok: true });
+      return authSuccess({ ok: true });
     }
 
     await invalidateUserTokens(user.id, 'reset_password');
@@ -52,8 +73,8 @@ export async function POST(request: Request) {
     const resetUrl = buildAuthLink('/reset-password', issued.rawToken, request);
     await sendPasswordResetEmail(email, resetUrl);
 
-    return success({ ok: true });
+    return authSuccess({ ok: true });
   } catch (err) {
-    return handleError(err);
+    return handleAuthError(err);
   }
 }

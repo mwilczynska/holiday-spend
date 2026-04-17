@@ -34,6 +34,7 @@ const hasSavedPlansTable = tableNames.some((table) => table.name === 'saved_plan
 const hasUserPreferencesTable = tableNames.some((table) => table.name === 'user_preferences');
 const hasUserPasswordsTable = tableNames.some((table) => table.name === 'user_passwords');
 const hasAuthTokensTable = tableNames.some((table) => table.name === 'auth_tokens');
+const hasAuthRateLimitsTable = tableNames.some((table) => table.name === 'auth_rate_limits');
 
 sqlite.exec(`
   CREATE TABLE IF NOT EXISTS user (
@@ -185,6 +186,17 @@ if (!hasAuthTokensTable) {
   sqlite.exec(
     'CREATE INDEX IF NOT EXISTS idx_auth_tokens_user_purpose ON auth_tokens (user_id, purpose)'
   );
+}
+
+if (!hasAuthRateLimitsTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS auth_rate_limits (
+      bucket TEXT PRIMARY KEY,
+      count INTEGER NOT NULL DEFAULT 0,
+      window_start TEXT NOT NULL,
+      updated_at TEXT DEFAULT (datetime('now'))
+    )
+  `);
 }
 
 if (!hasSavedPlansTable) {
@@ -429,4 +441,4 @@ if (hasExpensesTable && hasItineraryLegsTable) {
 }
 
 export const db = drizzle(sqlite, { schema });
-export { schema };
+export { schema, sqlite };
