@@ -15,7 +15,8 @@ export default async function LoginPage() {
   return (
     <LoginScreen
       hasGoogle={configuredProviders.google}
-      hasCredentials={configuredProviders.devPin}
+      hasEmailPassword={configuredProviders.emailPassword}
+      hasDevPin={configuredProviders.devPin}
     />
   );
 }
