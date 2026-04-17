@@ -107,6 +107,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Keys are not written to the repo or database
 - Model names are editable so the UI is not hard-blocked by stale defaults
 - City-generation UIs now surface provider-specific known model suggestions, quick-pick buttons, and non-blocking warnings for custom/unknown model ids
+- City-generation UIs now include explicit `Clear This Key` and `Clear All Saved Keys` controls for browser-stored API keys
 
 ### Provider-Specific Reliability Fixes Already Applied
 - OpenAI payload switches between `max_tokens` and `max_completion_tokens` depending on model family
@@ -255,10 +256,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Decide whether older historical estimate records need migration or pruning after the methodology switch
 
 ### Settings / Admin UX
-- [ ] Add country-creation UI in `/dataset` so city-library admin work does not depend on a pre-existing country row
-- [ ] Add duplicate-city protection beyond id uniqueness, such as fuzzy warnings on similar city names
-- [ ] Add a clear saved API keys control in the generation UI
-- [ ] Surface city provenance/history more richly in the dataset editor without turning `/dataset` into a second full editor
+- [x] Add country-creation UI in `/dataset` so city-library admin work does not depend on a pre-existing country row
+- [x] Add duplicate-city protection beyond id uniqueness, such as fuzzy warnings on similar city names
+- [x] Add a clear saved API keys control in the generation UI
+- [x] Surface city provenance/history more richly in the dataset editor without turning `/dataset` into a second full editor
 
 ### Cleanup / Simplification
 - [ ] Do a legacy-code cleanup pass and remove dead or superseded code paths, especially around older estimation flows and stale deployment scaffolding
@@ -309,6 +310,12 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `/settings/cities` now redirects to `/dataset`, preserving `?cityId=...` deep links
 - The city library still supports explicit save, edit, delete, and generated-value refresh from the dataset page
 - The methodology page retains the written model details while the planner-facing data now lives separately
+
+### Settings / Admin UX
+- `/dataset` now includes first-class country creation with inferred `id`, currency, and region defaults, so admins can create missing countries without leaving the dataset page
+- The add-city flow now warns on likely duplicate rows, blocks exact same-country duplicate names, and can infer city ids from the city name when left blank
+- The selected-city editor now includes an inline provenance panel with active estimate metadata and recent history rows
+- City-generation flows in `/dataset`, planner new-city creation, and snapshot-import generation now expose explicit controls to clear browser-stored API keys
 
 ### City Cost / LLM Workflow
 - Shared provider/model metadata, legacy default migrations, and model validation now live in `src/lib/city-generation-config.ts`

@@ -1,11 +1,12 @@
 import { db } from '@/db';
-import { cities } from '@/db/schema';
+import { cities, countries } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import { eq } from 'drizzle-orm';
+import { slugifyId } from '@/lib/country-metadata';
 import { z } from 'zod';
 
 const createSchema = z.object({
-  id: z.string().min(1),
+  id: z.string().optional(),
   countryId: z.string().min(1),
   name: z.string().min(1),
   accomHostel: z.number().optional(),
@@ -48,18 +49,54 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = createSchema.parse(body);
+    const name = data.name.trim();
+    const countryId = data.countryId.trim();
+    const id = slugifyId(data.id?.trim() || name);
 
-    const existingCity = await db.select({ id: cities.id }).from(cities).where(eq(cities.id, data.id)).get();
+    if (!name) {
+      return error('City name is required.', 400);
+    }
+
+    if (!id) {
+      return error('City id is required.', 400);
+    }
+
+    const existingCountry = await db.select({ id: countries.id }).from(countries).where(eq(countries.id, countryId)).get();
+    if (!existingCountry) {
+      return error(`Country "${countryId}" was not found. Create the country first, then add the city.`, 400);
+    }
+
+    const existingCity = await db.select({ id: cities.id }).from(cities).where(eq(cities.id, id)).get();
     if (existingCity) {
-      return error(`City id "${data.id}" already exists. Choose a different id or update the existing city.`, 409);
+      return error(`City id "${id}" already exists. Choose a different id or update the existing city.`, 409);
+    }
+
+    const allCitiesInCountry = await db.select().from(cities).where(eq(cities.countryId, countryId));
+    const duplicateByName = allCitiesInCountry.find((city) => slugifyId(city.name) === slugifyId(name));
+    if (duplicateByName) {
+      return error(
+        `City "${duplicateByName.name}" already exists in this country with id "${duplicateByName.id}". Reuse that city instead of creating a duplicate.`,
+        409
+      );
     }
 
     await db.insert(cities).values({
       ...data,
+      id,
+      countryId,
+      name,
       estimatedAt: new Date().toISOString(),
     });
 
-    return success(data, 201);
+    return success(
+      {
+        ...data,
+        id,
+        countryId,
+        name,
+      },
+      201
+    );
   } catch (err) {
     return handleError(err);
   }

@@ -516,6 +516,24 @@ export default function PlanPage() {
     }
   };
 
+  const clearCurrentImportApiKey = () => {
+    updateImportApiKey('');
+    setShowImportApiKey(false);
+  };
+
+  const clearAllImportApiKeys = () => {
+    const nextKeys = {
+      openai: '',
+      anthropic: '',
+      gemini: '',
+    };
+    setImportApiKeys(nextKeys);
+    setShowImportApiKey(false);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+    }
+  };
+
   const updateImportModel = (value: string) => {
     const nextModels = {
       ...importModels,
@@ -855,6 +873,7 @@ export default function PlanPage() {
   const selectedImportProvider =
     CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === importProvider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0];
   const activeImportApiKey = importApiKeys[importProvider] || '';
+  const hasAnySavedImportApiKey = Object.values(importApiKeys).some((value) => value.trim().length > 0);
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
   const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel);
   const importModelListId = `${CITY_GENERATION_STORAGE_PREFIX}.${importProvider}.models`;
@@ -1212,6 +1231,29 @@ export default function PlanPage() {
                       />
                       Show API key
                     </label>
+                    <div className="flex flex-wrap gap-2">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={clearCurrentImportApiKey}
+                        disabled={!activeImportApiKey}
+                      >
+                        Clear This Key
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={clearAllImportApiKeys}
+                        disabled={!hasAnySavedImportApiKey}
+                      >
+                        Clear All Saved Keys
+                      </Button>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Clears browser-stored keys only. Server-side env keys are unchanged.
+                    </p>
                   </div>
                   <div className="space-y-1">
                     <Label className="text-xs">Model</Label>

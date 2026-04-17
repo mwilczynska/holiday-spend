@@ -9,8 +9,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { SearchableSelect } from '@/components/ui/searchable-select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
+import { findKnownCountryCurrencyCode, findKnownCountryRegion, slugifyId } from '@/lib/country-metadata';
 import { Plus } from 'lucide-react';
 
 interface City {
@@ -72,6 +74,28 @@ const DATASET_COLUMNS: Array<{ key: string; label: string }> = [
   { key: 'activitiesHigh', label: 'Activities High' },
 ];
 
+const REGION_OPTIONS = [
+  { value: 'latin_america', label: 'Latin America' },
+  { value: 'north_america', label: 'North America' },
+  { value: 'europe', label: 'Europe' },
+  { value: 'east_asia', label: 'East Asia' },
+  { value: 'se_asia', label: 'Southeast Asia' },
+  { value: 'south_asia', label: 'South Asia' },
+  { value: 'middle_east', label: 'Middle East' },
+  { value: 'africa', label: 'Africa' },
+  { value: 'oceania', label: 'Oceania' },
+] as const;
+
+function getRegionLabel(regionValue: string | null | undefined) {
+  if (!regionValue) return '-';
+  return REGION_OPTIONS.find((option) => option.value === regionValue)?.label || regionValue;
+}
+
+function looksSimilarBySlug(left: string, right: string) {
+  if (!left || !right) return false;
+  return left === right || left.includes(right) || right.includes(left);
+}
+
 function fmtDate(value: string | null | undefined) {
   return value ? value.slice(0, 10) : '-';
 }
@@ -95,15 +119,21 @@ export default function DatasetPage() {
   const [selectedCity, setSelectedCity] = useState<DatasetCity | null>(null);
   const [history, setHistory] = useState<EstimateHistoryItem[]>([]);
   const [historyCount, setHistoryCount] = useState(0);
+  const [addCountryDialogOpen, setAddCountryDialogOpen] = useState(false);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
+  const [reopenAddCityAfterCountry, setReopenAddCityAfterCountry] = useState(false);
+  const [newCountry, setNewCountry] = useState({ id: '', name: '', currencyCode: '', region: '' });
   const [newCity, setNewCity] = useState({ id: '', name: '', countryId: '' });
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
   const [isDirty, setIsDirty] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [addingCountry, setAddingCountry] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [addCountryError, setAddCountryError] = useState<string | null>(null);
+  const [addCityError, setAddCityError] = useState<string | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
   const syncCityQuery = useCallback((cityId: string | null) => {
@@ -186,6 +216,69 @@ export default function DatasetPage() {
         .includes(normalized)
     );
   }, [history, historyQuery]);
+
+  const selectedCityHistory = useMemo(() => {
+    if (!selectedCity) return [];
+    return history.filter((row) => row.cityId === selectedCity.id);
+  }, [history, selectedCity]);
+
+  const selectedCityActiveHistory = useMemo(
+    () => selectedCityHistory.find((row) => row.isActive) ?? selectedCityHistory[0] ?? null,
+    [selectedCityHistory]
+  );
+
+  const suggestedCountryId = useMemo(() => slugifyId(newCountry.name), [newCountry.name]);
+  const suggestedCountryCurrencyCode = useMemo(
+    () => findKnownCountryCurrencyCode(newCountry.name) || '',
+    [newCountry.name]
+  );
+  const suggestedCountryRegion = useMemo(
+    () => findKnownCountryRegion(newCountry.name) || '',
+    [newCountry.name]
+  );
+  const effectiveCountryId = newCountry.id.trim() ? slugifyId(newCountry.id) : suggestedCountryId;
+  const effectiveCountryCurrencyCode = newCountry.currencyCode.trim().toUpperCase() || suggestedCountryCurrencyCode;
+  const effectiveCountryRegion = newCountry.region.trim() || suggestedCountryRegion;
+  const countryConflict = useMemo(() => {
+    if (!newCountry.name.trim() && !effectiveCountryId) return null;
+    const normalizedName = slugifyId(newCountry.name);
+    return (
+      countries.find((country) => country.id === effectiveCountryId) ||
+      countries.find((country) => normalizedName && slugifyId(country.name) === normalizedName) ||
+      null
+    );
+  }, [countries, effectiveCountryId, newCountry.name]);
+
+  const effectiveCityId = useMemo(
+    () => (newCity.id.trim() ? slugifyId(newCity.id) : slugifyId(newCity.name)),
+    [newCity.id, newCity.name]
+  );
+  const cityIdConflict = useMemo(
+    () => allCities.find((city) => effectiveCityId && city.id === effectiveCityId) ?? null,
+    [allCities, effectiveCityId]
+  );
+  const exactCityNameConflict = useMemo(() => {
+    const normalizedName = slugifyId(newCity.name);
+    if (!newCity.countryId || !normalizedName) return null;
+    return (
+      allCities.find(
+        (city) => city.countryId === newCity.countryId && slugifyId(city.name) === normalizedName
+      ) ?? null
+    );
+  }, [allCities, newCity.countryId, newCity.name]);
+  const similarCityMatches = useMemo(() => {
+    const normalizedName = slugifyId(newCity.name);
+    if (!normalizedName) return [];
+
+    return allCities
+      .filter((city) => {
+        const citySlug = slugifyId(city.name);
+        if (!looksSimilarBySlug(citySlug, normalizedName)) return false;
+        if (cityIdConflict && city.id === cityIdConflict.id) return true;
+        return true;
+      })
+      .slice(0, 5);
+  }, [allCities, cityIdConflict, newCity.name]);
 
   const selectCityFromCountries = useCallback(
     (cityId: string | null, sourceCountries: Country[], updateQuery = true) => {
@@ -270,19 +363,79 @@ export default function DatasetPage() {
   };
 
   const handleAddCity = async () => {
-    if (!newCity.id || !newCity.name || !newCity.countryId) return;
+    if (!newCity.name.trim() || !newCity.countryId || !effectiveCityId || cityIdConflict || exactCityNameConflict) return;
 
-    const cityId = newCity.id;
-    await fetch('/api/cities', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newCity),
-    });
+    setAddCityError(null);
 
-    setAddDialogOpen(false);
-    setNewCity({ id: '', name: '', countryId: '' });
-    const nextCountries = await fetchData();
-    selectCityFromCountries(cityId, nextCountries);
+    try {
+      const response = await fetch('/api/cities', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: newCity.id.trim() || undefined,
+          name: newCity.name.trim(),
+          countryId: newCity.countryId,
+        }),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setAddCityError(data.error || 'Failed to add city.');
+        return;
+      }
+
+      setAddDialogOpen(false);
+      setNewCity({ id: '', name: '', countryId: '' });
+      const nextCountries = await fetchData();
+      selectCityFromCountries(data.data?.id || effectiveCityId, nextCountries);
+    } catch {
+      setAddCityError('Failed to add city.');
+    }
+  };
+
+  const handleAddCountry = async () => {
+    if (!newCountry.name.trim() || !effectiveCountryId || !effectiveCountryCurrencyCode || countryConflict) return;
+
+    setAddingCountry(true);
+    setAddCountryError(null);
+
+    try {
+      const response = await fetch('/api/countries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: newCountry.id.trim() || undefined,
+          name: newCountry.name.trim(),
+          currencyCode: newCountry.currencyCode.trim() || undefined,
+          region: newCountry.region.trim() || undefined,
+        }),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setAddCountryError(data.error || 'Failed to add country.');
+        return;
+      }
+
+      const nextCountries = await fetchData();
+      setNewCountry({ id: '', name: '', currencyCode: '', region: '' });
+      setNewCity((current) => ({ ...current, countryId: data.data.id }));
+      setAddCountryDialogOpen(false);
+      setAddCountryError(null);
+
+      if (reopenAddCityAfterCountry) {
+        setReopenAddCityAfterCountry(false);
+        setAddDialogOpen(true);
+      }
+
+      if (!selectedCity && nextCountries.length > 0) {
+        setSaveMessage(`Country "${data.data.name}" created.`);
+      }
+    } catch {
+      setAddCountryError('Failed to add country.');
+    } finally {
+      setAddingCountry(false);
+    }
   };
 
   const handleDeleteCity = async (city: DatasetCity) => {
@@ -335,7 +488,110 @@ export default function DatasetPage() {
             dataset history stays here with the underlying rows.
           </p>
         </div>
-        <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
+        <div className="flex flex-wrap gap-2">
+          <Dialog
+            open={addCountryDialogOpen}
+            onOpenChange={(open) => {
+              setAddCountryDialogOpen(open);
+              if (!open) {
+                setAddCountryError(null);
+                setReopenAddCityAfterCountry(false);
+              }
+            }}
+          >
+            <DialogTrigger asChild>
+              <Button size="sm" variant="outline">
+                <Plus className="mr-2 h-4 w-4" />
+                Add Country
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add Country</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label>Country Name</Label>
+                  <Input
+                    value={newCountry.name}
+                    onChange={(event) => setNewCountry((current) => ({ ...current, name: event.target.value }))}
+                    placeholder="e.g. Uzbekistan"
+                  />
+                </div>
+                <div>
+                  <Label>Country ID</Label>
+                  <Input
+                    value={newCountry.id}
+                    onChange={(event) => setNewCountry((current) => ({ ...current, id: event.target.value }))}
+                    placeholder={suggestedCountryId || 'Leave blank to infer from country name'}
+                  />
+                </div>
+                <div>
+                  <Label>Currency Code</Label>
+                  <Input
+                    value={newCountry.currencyCode}
+                    onChange={(event) =>
+                      setNewCountry((current) => ({ ...current, currencyCode: event.target.value.toUpperCase() }))
+                    }
+                    placeholder={suggestedCountryCurrencyCode || 'e.g. UZS'}
+                    maxLength={3}
+                  />
+                </div>
+                <div>
+                  <Label>Region</Label>
+                  <Select
+                    value={newCountry.region || '__auto__'}
+                    onValueChange={(value) =>
+                      setNewCountry((current) => ({ ...current, region: value === '__auto__' ? '' : value }))
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Leave blank to use the inferred region" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="__auto__">Auto / leave blank</SelectItem>
+                      {REGION_OPTIONS.map((region) => (
+                        <SelectItem key={region.value} value={region.value}>
+                          {region.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
+                  <p>
+                    Inferred defaults: id <span className="font-medium text-foreground">{effectiveCountryId || '-'}</span>,
+                    currency <span className="font-medium text-foreground">{effectiveCountryCurrencyCode || 'manual required'}</span>,
+                    region <span className="font-medium text-foreground">{getRegionLabel(effectiveCountryRegion)}</span>.
+                  </p>
+                </div>
+
+                {countryConflict ? (
+                  <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+                    {`Country "${countryConflict.name}" already exists with id "${countryConflict.id}". Reuse it instead of creating a duplicate.`}
+                  </div>
+                ) : null}
+
+                {addCountryError ? <p className="text-sm text-destructive">{addCountryError}</p> : null}
+
+                <Button
+                  onClick={handleAddCountry}
+                  className="w-full"
+                  disabled={!newCountry.name.trim() || !effectiveCountryId || !effectiveCountryCurrencyCode || !!countryConflict || addingCountry}
+                >
+                  {addingCountry ? 'Creating Country...' : 'Create Country'}
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+          <Dialog
+            open={addDialogOpen}
+            onOpenChange={(open) => {
+              setAddDialogOpen(open);
+              if (!open) setAddCityError(null);
+            }}
+          >
           <DialogTrigger asChild>
             <Button size="sm">
               <Plus className="mr-2 h-4 w-4" />
@@ -349,23 +605,44 @@ export default function DatasetPage() {
             <div className="space-y-4">
               <div>
                 <Label>Country</Label>
-                <SearchableSelect
-                  value={newCity.countryId}
-                  onValueChange={(value) => setNewCity((current) => ({ ...current, countryId: value }))}
-                  placeholder="Select country"
-                  searchPlaceholder="Search countries..."
-                  options={countries.map((country) => ({
-                    value: country.id,
-                    label: country.name,
-                  }))}
-                />
+                <div className="space-y-2">
+                  <SearchableSelect
+                    value={newCity.countryId}
+                    onValueChange={(value) => setNewCity((current) => ({ ...current, countryId: value }))}
+                    placeholder="Select country"
+                    searchPlaceholder="Search countries..."
+                    options={countries.map((country) => ({
+                      value: country.id,
+                      label: country.name,
+                      description: `${country.currencyCode}${country.region ? ` - ${getRegionLabel(country.region)}` : ''}`,
+                    }))}
+                  />
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs text-muted-foreground">
+                      Need a country first? Create it here, then come back to finish the city row.
+                    </p>
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        setAddDialogOpen(false);
+                        setAddCountryDialogOpen(true);
+                        setReopenAddCityAfterCountry(true);
+                        setAddCountryError(null);
+                      }}
+                    >
+                      Create Country
+                    </Button>
+                  </div>
+                </div>
               </div>
               <div>
                 <Label>City ID</Label>
                 <Input
                   value={newCity.id}
                   onChange={(event) => setNewCity((current) => ({ ...current, id: event.target.value }))}
-                  placeholder="e.g. mexico-city"
+                  placeholder={effectiveCityId || 'Leave blank to infer from city name'}
                 />
               </div>
               <div>
@@ -376,12 +653,43 @@ export default function DatasetPage() {
                   placeholder="e.g. Mexico City"
                 />
               </div>
-              <Button onClick={handleAddCity} className="w-full">
+              <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
+                <p>
+                  Effective city id: <span className="font-medium text-foreground">{effectiveCityId || '-'}</span>
+                </p>
+                {cityIdConflict ? (
+                  <p className="mt-1 text-amber-700">
+                    {`City id conflict: "${cityIdConflict.name}, ${cityIdConflict.countryName}" already uses this id.`}
+                  </p>
+                ) : null}
+                {exactCityNameConflict ? (
+                  <p className="mt-1 text-amber-700">
+                    {`"${exactCityNameConflict.name}, ${exactCityNameConflict.countryName}" already exists in this country.`}
+                  </p>
+                ) : null}
+                {!cityIdConflict && !exactCityNameConflict && similarCityMatches.length > 0 ? (
+                  <div className="mt-2 space-y-1">
+                    <p className="text-amber-700">Similar existing city rows:</p>
+                    {similarCityMatches.map((city) => (
+                      <p key={`${city.id}-${city.countryId}`} className="text-xs text-amber-700">
+                        {city.name}, {city.countryName} ({city.id})
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+              {addCityError ? <p className="text-sm text-destructive">{addCityError}</p> : null}
+              <Button
+                onClick={handleAddCity}
+                className="w-full"
+                disabled={!newCity.name.trim() || !newCity.countryId || !effectiveCityId || !!cityIdConflict || !!exactCityNameConflict}
+              >
                 Add City
               </Button>
             </div>
           </DialogContent>
-        </Dialog>
+          </Dialog>
+        </div>
       </div>
 
       <Card>
@@ -420,7 +728,7 @@ export default function DatasetPage() {
                 <CardContent className="grid gap-4 md:grid-cols-4">
                   <div>
                     <div className="text-xs uppercase tracking-wide text-muted-foreground">Region</div>
-                    <div className="text-sm">{selectedCity.region || '-'}</div>
+                    <div className="text-sm">{getRegionLabel(selectedCity.region)}</div>
                   </div>
                   <div>
                     <div className="text-xs uppercase tracking-wide text-muted-foreground">Currency</div>
@@ -441,6 +749,67 @@ export default function DatasetPage() {
                         'Base dataset row. Methodology and generation history live alongside the dataset pages.'}
                     </div>
                   </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Estimate Provenance</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid gap-4 md:grid-cols-5">
+                    <div>
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground">Row Source</div>
+                      <div className="text-sm">{selectedCity.estimationSource || '-'}</div>
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground">Active Provider</div>
+                      <div className="text-sm">{selectedCityActiveHistory?.llmProvider || '-'}</div>
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground">Confidence</div>
+                      <div className="text-sm">{selectedCityActiveHistory?.confidence || '-'}</div>
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground">AUD/USD</div>
+                      <div className="text-sm">
+                        {typeof selectedCityActiveHistory?.inferredAudPerUsd === 'number'
+                          ? selectedCityActiveHistory.inferredAudPerUsd.toFixed(2)
+                          : '-'}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground">History Rows</div>
+                      <div className="text-sm">{selectedCityHistory.length}</div>
+                    </div>
+                  </div>
+
+                  {selectedCityHistory.length > 0 ? (
+                    <div className="space-y-3 rounded-md border p-3">
+                      {selectedCityHistory.slice(0, 4).map((entry) => (
+                        <div key={entry.id} className="space-y-1 border-b pb-3 last:border-0 last:pb-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <Badge variant={entry.isActive ? 'default' : 'outline'}>
+                              {entry.isActive ? 'Active' : 'History'}
+                            </Badge>
+                            <Badge variant="outline">{fmtDate(entry.estimatedAt)}</Badge>
+                            {entry.source ? <Badge variant="outline">{entry.source}</Badge> : null}
+                            {entry.llmProvider ? <Badge variant="outline">{entry.llmProvider}</Badge> : null}
+                            {entry.confidence ? <Badge variant="outline">{entry.confidence}</Badge> : null}
+                            {typeof entry.inferredAudPerUsd === 'number' ? (
+                              <Badge variant="outline">1 USD = {entry.inferredAudPerUsd.toFixed(2)} AUD</Badge>
+                            ) : null}
+                          </div>
+                          <p className="text-xs text-muted-foreground">{entry.reasoning || 'No reasoning stored.'}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="rounded-md border border-dashed p-4 text-sm text-muted-foreground">
+                      No estimate history rows are stored for this city yet. The current row is acting as the canonical
+                      planner dataset entry.
+                    </div>
+                  )}
                 </CardContent>
               </Card>
 

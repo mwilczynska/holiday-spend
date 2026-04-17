@@ -101,6 +101,7 @@ export function CityGenerationPanel({
   const selectedProvider =
     CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === provider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0];
   const activeApiKey = apiKeys[provider] || '';
+  const hasAnySavedApiKey = Object.values(apiKeys).some((value) => value.trim().length > 0);
   const activeModel = models[provider] || selectedProvider.defaultModel;
   const modelValidation = validateCityGenerationModel(provider, activeModel);
   const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
@@ -118,6 +119,23 @@ export function CityGenerationPanel({
 
     setApiKeys(nextKeys);
     window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+  }
+
+  function clearCurrentProviderApiKey() {
+    updateApiKey('');
+    setShowApiKey(false);
+  }
+
+  function clearAllSavedApiKeys() {
+    const nextKeys = {
+      openai: '',
+      anthropic: '',
+      gemini: '',
+    };
+
+    setApiKeys(nextKeys);
+    window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+    setShowApiKey(false);
   }
 
   function updateModel(value: string) {
@@ -207,6 +225,15 @@ export function CityGenerationPanel({
             <Switch checked={showApiKey} onCheckedChange={setShowApiKey} />
             <Label className="text-xs text-muted-foreground">Show API key</Label>
           </div>
+          <div className="flex flex-wrap gap-2">
+            <Button type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
+              Clear This Key
+            </Button>
+            <Button type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
+              Clear All Saved Keys
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground">Clears browser-stored keys only. Server-side env keys are unchanged.</p>
         </div>
       </div>
 
