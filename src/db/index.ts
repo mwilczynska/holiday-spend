@@ -32,6 +32,8 @@ const hasCityPriceInputsTable = tableNames.some((table) => table.name === 'city_
 const hasAppSettingsTable = tableNames.some((table) => table.name === 'app_settings');
 const hasSavedPlansTable = tableNames.some((table) => table.name === 'saved_plans');
 const hasUserPreferencesTable = tableNames.some((table) => table.name === 'user_preferences');
+const hasUserPasswordsTable = tableNames.some((table) => table.name === 'user_passwords');
+const hasAuthTokensTable = tableNames.some((table) => table.name === 'auth_tokens');
 
 sqlite.exec(`
   CREATE TABLE IF NOT EXISTS user (
@@ -141,6 +143,40 @@ if (!hasUserPreferencesTable) {
       updated_at TEXT DEFAULT (datetime('now'))
     )
   `);
+}
+
+if (!hasUserPasswordsTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS user_passwords (
+      user_id TEXT PRIMARY KEY REFERENCES user(id) ON DELETE CASCADE,
+      hash TEXT NOT NULL,
+      algorithm TEXT NOT NULL DEFAULT 'argon2id',
+      updated_at TEXT DEFAULT (datetime('now')),
+      last_changed_at TEXT DEFAULT (datetime('now'))
+    )
+  `);
+}
+
+if (!hasAuthTokensTable) {
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS auth_tokens (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+      purpose TEXT NOT NULL,
+      token_hash TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      consumed_at TEXT,
+      created_at TEXT DEFAULT (datetime('now')),
+      ip TEXT,
+      user_agent TEXT
+    )
+  `);
+  sqlite.exec(
+    'CREATE INDEX IF NOT EXISTS idx_auth_tokens_lookup ON auth_tokens (token_hash, purpose)'
+  );
+  sqlite.exec(
+    'CREATE INDEX IF NOT EXISTS idx_auth_tokens_user_purpose ON auth_tokens (user_id, purpose)'
+  );
 }
 
 if (!hasSavedPlansTable) {

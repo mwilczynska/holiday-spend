@@ -58,6 +58,26 @@ export const userPreferences = sqliteTable('user_preferences', {
   updatedAt: text('updated_at').default(sql`(datetime('now'))`),
 });
 
+export const userPasswords = sqliteTable('user_passwords', {
+  userId: text('user_id').primaryKey().references(() => users.id, { onDelete: 'cascade' }),
+  hash: text('hash').notNull(),
+  algorithm: text('algorithm').notNull().default('argon2id'),
+  updatedAt: text('updated_at').default(sql`(datetime('now'))`),
+  lastChangedAt: text('last_changed_at').default(sql`(datetime('now'))`),
+});
+
+export const authTokens = sqliteTable('auth_tokens', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  purpose: text('purpose').notNull(),
+  tokenHash: text('token_hash').notNull(),
+  expiresAt: text('expires_at').notNull(),
+  consumedAt: text('consumed_at'),
+  createdAt: text('created_at').default(sql`(datetime('now'))`),
+  ip: text('ip'),
+  userAgent: text('user_agent'),
+});
+
 export const savedPlans = sqliteTable('saved_plans', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
