@@ -3,9 +3,9 @@ import { countries, cities } from '@/db/schema';
 import { error, success, handleError } from '@/lib/api-helpers';
 import {
   APP_REGION_VALUES,
-  findKnownCountryCurrencyCode,
-  findKnownCountryRegion,
+  findKnownCountryMetadata,
   slugifyId,
+  type AppRegion,
 } from '@/lib/country-metadata';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
@@ -28,37 +28,40 @@ export async function GET() {
   }
 }
 
-const createSchema = z.object({
-  id: z.string().optional(),
-  name: z.string().min(1),
-  currencyCode: z.string().optional(),
-  region: z.string().optional(),
-});
+const createSchema = z
+  .object({
+    id: z.string().optional(),
+    name: z.string().min(1),
+    region: z.enum(APP_REGION_VALUES).optional(),
+  })
+  .strict();
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = createSchema.parse(body);
     const name = data.name.trim();
-    const id = slugifyId(data.id?.trim() || name);
-    const currencyCode = (data.currencyCode?.trim().toUpperCase() || findKnownCountryCurrencyCode(name) || '').trim();
-    const region = (data.region?.trim() || findKnownCountryRegion(name) || '').trim();
 
     if (!name) {
       return error('Country name is required.', 400);
     }
 
+    const canonical = findKnownCountryMetadata(name);
+    if (!canonical) {
+      return error(
+        `"${name}" is not in the canonical country dataset. Add it to src/lib/data/country-metadata.overrides.json (or the upstream source) and regenerate with "npm run country-metadata:generate" before creating the country.`,
+        400
+      );
+    }
+
+    const requestedId = data.id?.trim();
+    const id = requestedId ? slugifyId(requestedId) : canonical.id;
     if (!id) {
       return error('Country id is required.', 400);
     }
 
-    if (!currencyCode) {
-      return error(`Enter a currency code because one could not be inferred for "${name}".`, 400);
-    }
-
-    if (region && !APP_REGION_VALUES.includes(region as (typeof APP_REGION_VALUES)[number])) {
-      return error(`Region "${region}" is not one of the supported app regions.`, 400);
-    }
+    const currencyCode = canonical.currencyCode;
+    const region: AppRegion = data.region ?? canonical.region;
 
     const existingCountryById = await db.select().from(countries).where(eq(countries.id, id)).get();
     if (existingCountryById) {
@@ -66,7 +69,8 @@ export async function POST(request: Request) {
     }
 
     const allCountries = await db.select().from(countries);
-    const duplicateByName = allCountries.find((country) => slugifyId(country.name) === slugifyId(name));
+    const normalizedName = slugifyId(canonical.name);
+    const duplicateByName = allCountries.find((country) => slugifyId(country.name) === normalizedName);
     if (duplicateByName) {
       return error(
         `Country "${duplicateByName.name}" already exists with id "${duplicateByName.id}". Reuse that country instead of creating a duplicate.`,
@@ -76,17 +80,17 @@ export async function POST(request: Request) {
 
     await db.insert(countries).values({
       id,
-      name,
+      name: canonical.name,
       currencyCode,
-      region: region || null,
+      region,
     });
 
     return success(
       {
         id,
-        name,
+        name: canonical.name,
         currencyCode,
-        region: region || null,
+        region,
       },
       201
     );

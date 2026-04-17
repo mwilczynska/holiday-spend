@@ -12,7 +12,7 @@ import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
-import { findKnownCountryCurrencyCode, findKnownCountryRegion, slugifyId } from '@/lib/country-metadata';
+import { findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { Plus } from 'lucide-react';
 
 interface City {
@@ -122,7 +122,7 @@ export default function DatasetPage() {
   const [addCountryDialogOpen, setAddCountryDialogOpen] = useState(false);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const [reopenAddCityAfterCountry, setReopenAddCityAfterCountry] = useState(false);
-  const [newCountry, setNewCountry] = useState({ id: '', name: '', currencyCode: '', region: '' });
+  const [newCountry, setNewCountry] = useState({ id: '', name: '', region: '' });
   const [newCity, setNewCity] = useState({ id: '', name: '', countryId: '' });
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
@@ -227,27 +227,28 @@ export default function DatasetPage() {
     [selectedCityHistory]
   );
 
-  const suggestedCountryId = useMemo(() => slugifyId(newCountry.name), [newCountry.name]);
-  const suggestedCountryCurrencyCode = useMemo(
-    () => findKnownCountryCurrencyCode(newCountry.name) || '',
+  const canonicalCountry = useMemo(
+    () => findKnownCountryMetadata(newCountry.name),
     [newCountry.name]
   );
-  const suggestedCountryRegion = useMemo(
-    () => findKnownCountryRegion(newCountry.name) || '',
-    [newCountry.name]
-  );
-  const effectiveCountryId = newCountry.id.trim() ? slugifyId(newCountry.id) : suggestedCountryId;
-  const effectiveCountryCurrencyCode = newCountry.currencyCode.trim().toUpperCase() || suggestedCountryCurrencyCode;
-  const effectiveCountryRegion = newCountry.region.trim() || suggestedCountryRegion;
+  const hasCountryName = newCountry.name.trim().length > 0;
+  const isUnknownCountry = hasCountryName && !canonicalCountry;
+  const effectiveCountryId = newCountry.id.trim()
+    ? slugifyId(newCountry.id)
+    : canonicalCountry?.id ?? '';
+  const effectiveCountryCurrencyCode = canonicalCountry?.currencyCode ?? '';
+  const effectiveCountryRegion = newCountry.region.trim() || canonicalCountry?.region || '';
   const countryConflict = useMemo(() => {
-    if (!newCountry.name.trim() && !effectiveCountryId) return null;
-    const normalizedName = slugifyId(newCountry.name);
+    if (!hasCountryName && !effectiveCountryId) return null;
+    const normalizedName = canonicalCountry
+      ? slugifyId(canonicalCountry.name)
+      : slugifyId(newCountry.name);
     return (
       countries.find((country) => country.id === effectiveCountryId) ||
       countries.find((country) => normalizedName && slugifyId(country.name) === normalizedName) ||
       null
     );
-  }, [countries, effectiveCountryId, newCountry.name]);
+  }, [canonicalCountry, countries, effectiveCountryId, hasCountryName, newCountry.name]);
 
   const effectiveCityId = useMemo(
     () => (newCity.id.trim() ? slugifyId(newCity.id) : slugifyId(newCity.name)),
@@ -394,7 +395,7 @@ export default function DatasetPage() {
   };
 
   const handleAddCountry = async () => {
-    if (!newCountry.name.trim() || !effectiveCountryId || !effectiveCountryCurrencyCode || countryConflict) return;
+    if (!newCountry.name.trim() || !canonicalCountry || !effectiveCountryId || countryConflict) return;
 
     setAddingCountry(true);
     setAddCountryError(null);
@@ -406,7 +407,6 @@ export default function DatasetPage() {
         body: JSON.stringify({
           id: newCountry.id.trim() || undefined,
           name: newCountry.name.trim(),
-          currencyCode: newCountry.currencyCode.trim() || undefined,
           region: newCountry.region.trim() || undefined,
         }),
       });
@@ -418,7 +418,7 @@ export default function DatasetPage() {
       }
 
       const nextCountries = await fetchData();
-      setNewCountry({ id: '', name: '', currencyCode: '', region: '' });
+      setNewCountry({ id: '', name: '', region: '' });
       setNewCity((current) => ({ ...current, countryId: data.data.id }));
       setAddCountryDialogOpen(false);
       setAddCountryError(null);
@@ -519,37 +519,28 @@ export default function DatasetPage() {
                   />
                 </div>
                 <div>
-                  <Label>Country ID</Label>
+                  <Label>Country ID (optional)</Label>
                   <Input
                     value={newCountry.id}
                     onChange={(event) => setNewCountry((current) => ({ ...current, id: event.target.value }))}
-                    placeholder={suggestedCountryId || 'Leave blank to infer from country name'}
+                    placeholder={canonicalCountry?.id || 'Leave blank to use the canonical id'}
+                    disabled={isUnknownCountry}
                   />
                 </div>
                 <div>
-                  <Label>Currency Code</Label>
-                  <Input
-                    value={newCountry.currencyCode}
-                    onChange={(event) =>
-                      setNewCountry((current) => ({ ...current, currencyCode: event.target.value.toUpperCase() }))
-                    }
-                    placeholder={suggestedCountryCurrencyCode || 'e.g. UZS'}
-                    maxLength={3}
-                  />
-                </div>
-                <div>
-                  <Label>Region</Label>
+                  <Label>Region override (optional)</Label>
                   <Select
                     value={newCountry.region || '__auto__'}
                     onValueChange={(value) =>
                       setNewCountry((current) => ({ ...current, region: value === '__auto__' ? '' : value }))
                     }
+                    disabled={isUnknownCountry}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Leave blank to use the inferred region" />
+                      <SelectValue placeholder="Use the canonical region" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="__auto__">Auto / leave blank</SelectItem>
+                      <SelectItem value="__auto__">Use canonical region</SelectItem>
                       {REGION_OPTIONS.map((region) => (
                         <SelectItem key={region.value} value={region.value}>
                           {region.label}
@@ -559,13 +550,31 @@ export default function DatasetPage() {
                   </Select>
                 </div>
 
-                <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
-                  <p>
-                    Inferred defaults: id <span className="font-medium text-foreground">{effectiveCountryId || '-'}</span>,
-                    currency <span className="font-medium text-foreground">{effectiveCountryCurrencyCode || 'manual required'}</span>,
-                    region <span className="font-medium text-foreground">{getRegionLabel(effectiveCountryRegion)}</span>.
-                  </p>
-                </div>
+                {canonicalCountry ? (
+                  <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
+                    <p className="font-medium text-foreground">Canonical match: {canonicalCountry.name}</p>
+                    <p>
+                      id <span className="font-medium text-foreground">{effectiveCountryId || canonicalCountry.id}</span>,
+                      currency <span className="font-medium text-foreground">{effectiveCountryCurrencyCode}</span>,
+                      region <span className="font-medium text-foreground">{getRegionLabel(effectiveCountryRegion)}</span>
+                      {newCountry.region ? ' (overridden)' : ''}.
+                    </p>
+                  </div>
+                ) : hasCountryName ? (
+                  <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+                    <p className="font-medium">Country not found in the canonical dataset.</p>
+                    <p className="mt-1">
+                      {`"${newCountry.name.trim()}"`} is not in src/lib/data/country-metadata.generated.json. Add it to
+                      country-metadata.overrides.json (or the upstream source) and run{' '}
+                      <code className="rounded bg-amber-100 px-1 py-0.5">npm run country-metadata:generate</code>
+                      {' '}before creating the country here. Freeform currency entry is intentionally no longer supported.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
+                    Start typing a country name to see the canonical currency and region that will be used.
+                  </div>
+                )}
 
                 {countryConflict ? (
                   <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
@@ -578,7 +587,13 @@ export default function DatasetPage() {
                 <Button
                   onClick={handleAddCountry}
                   className="w-full"
-                  disabled={!newCountry.name.trim() || !effectiveCountryId || !effectiveCountryCurrencyCode || !!countryConflict || addingCountry}
+                  disabled={
+                    !hasCountryName ||
+                    !canonicalCountry ||
+                    !effectiveCountryId ||
+                    !!countryConflict ||
+                    addingCountry
+                  }
                 >
                   {addingCountry ? 'Creating Country...' : 'Create Country'}
                 </Button>
