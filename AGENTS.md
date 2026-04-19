@@ -145,6 +145,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Saved plans are surfaced as an inline collapsible panel on `/plan` with load, export, delete, and compare actions
 - Plans can be selected for side-by-side comparison at `/plan/compare`, which shows cumulative spend charts and summary cards
 - Comparison computes planned costs server-side from snapshot tier selections plus current city base rates
+- Compare now uses one canonical planned-allocation model for summary totals, cumulative chart lines, and future country/category grouped outputs
+- Compare totals reconcile by design: summary total, final cumulative value, country totals, and category totals all come from the same allocation engine
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
 - That import resolver now asks the user to choose a canonical country from the repo-owned dataset and auto-creates the country row server-side only when needed
 - The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
@@ -288,7 +290,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Saved plan snapshots moved from browser `localStorage` to `saved_plans` SQLite table with user ownership
 - `saved_plans` table stores full snapshot JSON blob plus denormalized summary columns for fast list queries
 - CRUD API at `/api/saved-plans` and `/api/saved-plans/[id]`
-- Comparison API at `POST /api/saved-plans/compare` computes cumulative planned spend series server-side
+- Comparison API at `POST /api/saved-plans/compare` computes canonical planned-allocation results server-side and derives summary, cumulative series, country totals, and category totals from that one model
 - Planner page now shows saved plans in an inline collapsible panel instead of a modal dialog
 - `SavePlanDialog` replaces `window.prompt()` for naming plans
 - `/plan/compare` is a first-class page with its own sidebar entry ("Compare") in both desktop and mobile nav
@@ -297,7 +299,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - "Change Plans" button on comparison results returns to selector with current plan IDs pre-checked
 - Sidebar `isActive` logic uses `excludePrefix` to prevent `/plan` and `/plan/compare` from both highlighting
 - Recharts LineChart cumulative spend chart and summary cards for up to 5 plans
+- The old compare-page mismatch caused by `nights`-based totals versus inclusive date enumeration has been removed; the canonical allocation engine now prevents chart overcounting when explicit date spans exceed `nights`
 - Playwright E2E tests cover save, persist, delete, compare navigation, chart rendering, sidebar nav, and error states
+- Vitest coverage now locks compare reconciliation invariants, fixed-cost allocation behavior, intercity-first-day allocation, and the `nights` versus inclusive-date regression case
 - The temporary browser `localStorage` migration shim has now been removed; saved plans are DB-only in the active app model
 
 ### Dataset And Seeding
@@ -418,6 +422,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/country-routes.test.ts`
 - `tests/playwright/planner-regressions.spec.ts`
 - `src/lib/plan-comparison.ts`
+- `src/lib/plan-comparison.test.ts`
 - `src/components/itinerary/SavedPlansList.tsx`
 - `src/components/itinerary/SavePlanDialog.tsx`
 - `src/components/itinerary/ComparisonChart.tsx`
@@ -429,6 +434,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `tests/playwright/saved-plans.spec.ts`
 - `tests/playwright/plan-comparison.spec.ts`
 - `docs/dev/plans/saved-plans-comparison.md`
+- `docs/dev/plans/compare-planned-allocations.md`
 - `docs/dev/plans/country-dataset.md`
 - `docs/dev/plans/cleanup-simplification.md`
 - `docs/dev/README.md`

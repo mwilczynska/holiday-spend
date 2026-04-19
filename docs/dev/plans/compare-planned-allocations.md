@@ -89,8 +89,8 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 3b - Add explicit invariant assertions for summary, cumulative, country, and category totals
 - [x] Phase 3c - Add a regression fixture for the inclusive-date overcount bug class
 - [ ] Phase 4 - Refresh docs, push branch, and open PR
-- [ ] Phase 4a - Refresh project memory with the canonical compare calculation model
-- [ ] Phase 4b - Document future compare-page by-country and by-category chart follow-through
+- [x] Phase 4a - Refresh project memory with the canonical compare calculation model
+- [x] Phase 4b - Document future compare-page by-country and by-category chart follow-through
 - [ ] Phase 4c - Push branch and open the PR with the old/new calculation explanation
 
 ### Handoff Notes
