@@ -143,7 +143,6 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Saved plans are surfaced as an inline collapsible panel on `/plan` with load, export, delete, and compare actions
 - Plans can be selected for side-by-side comparison at `/plan/compare`, which shows cumulative spend charts and summary cards
 - Comparison computes planned costs server-side from snapshot tier selections plus current city base rates
-- Any existing localStorage snapshots are auto-migrated to the database on first load
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
 - That import resolver now asks the user to choose a canonical country from the repo-owned dataset and auto-creates the country row server-side only when needed
 - The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
@@ -262,7 +261,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Surface city provenance/history more richly in the dataset editor without turning `/dataset` into a second full editor
 
 ### Cleanup / Simplification
-- [ ] Do a legacy-code cleanup pass and remove dead or superseded code paths, especially around older estimation flows and stale deployment scaffolding
+- [x] Do a legacy-code cleanup pass and remove dead or superseded code paths, especially around older estimation flows and stale deployment scaffolding
 - [ ] Review whether transport-estimation caching is worth adding later, but treat it as lower priority than cleanup, auth, saved plans, and comparison
 
 ### Testing
@@ -427,4 +426,6 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `PLAN-saved-plans-comparison.md`
 - `PLAN-country-dataset.md`
 - `PLAN-cleanup-simplification.md`
+- `docs/dev/README.md`
+- `docs/dev/HANDOFF-cleanup-simplification.md`
 - `docs/dev/HANDOFF-country-dataset.md`

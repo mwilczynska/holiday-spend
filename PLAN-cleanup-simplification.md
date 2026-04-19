@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/cleanup-simplification` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS -- decisions locked in, implementation underway
+> **Status**: COMPLETE -- verification passed and PR #5 is open
 > **Related**: CLAUDE.md "Cleanup / Simplification"
 
 ---
@@ -67,10 +67,10 @@ By the end of this workstream:
 ## Checkpoints
 
 - [x] **Phase 0** - Plan doc + cleanup inventory
-- [ ] **Phase 1** - Seed/dataset/methodology legacy-path cleanup
-- [ ] **Phase 2** - Migration-shim and compatibility-route cleanup
-- [ ] **Phase 3** - Deployment/repo surface cleanup
-- [ ] **Phase 4** - Verification, documentation, and merge readiness
+- [x] **Phase 1** - Seed/dataset/methodology legacy-path cleanup
+- [x] **Phase 2** - Migration-shim and compatibility-route cleanup
+- [x] **Phase 3** - Deployment/repo surface cleanup
+- [x] **Phase 4** - Verification, documentation, and merge readiness
 
 Each phase should end with verification and its own commit on `feat/cleanup-simplification`.
 
@@ -188,6 +188,10 @@ Avoid keeping older source vocabulary that implies product paths which no longer
 
 **Commit**: `refactor(cleanup): remove legacy dataset and methodology leftovers`
 
+Implemented in:
+
+- `92dc20c` - `refactor(cleanup): remove legacy compatibility paths`
+
 ---
 
 ## Phase 2: Migration Shims And Compatibility Route Cleanup
@@ -241,6 +245,10 @@ This is not a request to remove valid dev-only auth or active compatibility prot
 - saved plans, planner settings, `/dataset`, and auth flows still work in the current app model
 
 **Commit**: `refactor(cleanup): remove completed migration shims`
+
+Implemented in:
+
+- `92dc20c` - `refactor(cleanup): remove legacy compatibility paths`
 
 ---
 
@@ -299,6 +307,11 @@ all describe the same current product/deployment model without stale references 
 
 **Commit**: `chore(cleanup): remove stale deployment and repo-surface artifacts`
 
+Implemented in:
+
+- `92dc20c` - `refactor(cleanup): remove legacy compatibility paths`
+- `5f80220` - `chore(cleanup): move historical dev docs out of repo root`
+
 ---
 
 ## Phase 4: Verification, Documentation, And Merge Readiness
@@ -349,8 +362,18 @@ so the cleanup work is reflected in:
 - PR is open
 - PR body references this plan
 - cleanup removals are documented clearly enough that reviewers can assess risk
+- PR: `#5` - `chore: finish cleanup and simplification pass`
 
 **Commit**: `docs(cleanup): finalize cleanup and merge notes`
+
+### Current verification already completed
+
+- verified locally on April 19, 2026
+- `cmd /c npm test`
+- `npx tsc --noEmit`
+- `npm run build`
+- `cmd /c npm run docs:check-memory`
+- isolated seed smoke test via `cmd /c npx tsx ..\\src\\db\\seed.ts` from a temp workdir
 
 ---
 
@@ -382,4 +405,3 @@ The following are explicitly out of scope for this cleanup branch unless they be
 - `docker-compose.yml`
 - `nginx/*`
 - `docs/dev/*`
-
