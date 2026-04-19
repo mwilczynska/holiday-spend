@@ -75,10 +75,10 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 0 - Create implementation plan and branch scaffold
 - [x] Phase 0a - Audit the current compare page layout and dashboard chart patterns
 - [x] Phase 0b - Lock the recommended compare-page layout and chart choices
-- [ ] Phase 1 - Extend the canonical compare payload for richer charting
-- [ ] Phase 1a - Add chart-friendly compare outputs for per-country totals and planned-day metrics
-- [ ] Phase 1b - Confirm category totals and any percentage helpers needed for the category chart
-- [ ] Phase 1c - Keep all new metrics inside the canonical compare engine rather than chart-side derivations
+- [x] Phase 1 - Extend the canonical compare payload for richer charting
+- [x] Phase 1a - Add chart-friendly compare outputs for per-country totals and planned-day metrics
+- [x] Phase 1b - Confirm category totals and any percentage helpers needed for the category chart
+- [x] Phase 1c - Keep all new metrics inside the canonical compare engine rather than chart-side derivations
 - [ ] Phase 2 - Refactor compare-page layout and summary-card presentation
 - [ ] Phase 2a - Replace the fixed summary-card grid with a wider responsive horizontal rail
 - [ ] Phase 2b - Preserve a clean page hierarchy: summary rail, hero chart, secondary chart section

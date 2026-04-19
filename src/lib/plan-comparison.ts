@@ -63,6 +63,8 @@ export interface PlanComparisonCountryTotal {
   countryId: string | null;
   countryName: string | null;
   totalPlanned: number;
+  plannedDays: number;
+  plannedPerDay: number | null;
 }
 
 export interface PlanComparisonCategoryTotal {
@@ -114,6 +116,26 @@ function addDays(date: string, days: number) {
 
 function roundMoney(value: number) {
   return Math.round(value * 100) / 100;
+}
+
+function getCountryBucketKey(countryId: string | null, countryName: string | null) {
+  if (countryId) {
+    return `id:${countryId}`;
+  }
+  return `name:${countryName ?? 'null'}`;
+}
+
+function buildCountryNameById(cityMap: Map<string, CityData>) {
+  const countryNames = new Map<string, string>();
+
+  for (const city of Array.from(cityMap.values())) {
+    if (!city.countryId || !city.countryName) continue;
+    if (!countryNames.has(city.countryId)) {
+      countryNames.set(city.countryId, city.countryName);
+    }
+  }
+
+  return countryNames;
 }
 
 function buildLegPlannedAllocations(
@@ -199,7 +221,8 @@ function buildLegPlannedAllocations(
 function buildFixedCostAllocations(
   planId: string,
   snapshot: PlanSnapshot,
-  tripDates: string[]
+  tripDates: string[],
+  countryNameById: Map<string, string>
 ): PlannedAllocationRow[] {
   const allocations: PlannedAllocationRow[] = [];
 
@@ -210,7 +233,7 @@ function buildFixedCostAllocations(
       planId,
       legId: null,
       countryId: fixedCost.countryId ?? null,
-      countryName: null,
+      countryName: fixedCost.countryId ? (countryNameById.get(fixedCost.countryId) ?? null) : null,
       cityId: null,
       cityName: null,
       category: 'fixed_cost' as const,
@@ -273,17 +296,50 @@ function buildPlanComparisonSeries(allocations: PlannedAllocationRow[]): PlanCom
   });
 }
 
-function buildPlanComparisonCountryTotals(allocations: PlannedAllocationRow[]): PlanComparisonCountryTotal[] {
+function buildCountryPlannedDays(
+  datedLegs: NormalizedComparisonLeg[],
+  cityMap: Map<string, CityData>
+) {
+  const daysByCountry = new Map<string, PlanComparisonCountryTotal>();
+
+  for (const leg of datedLegs) {
+    const city = cityMap.get(leg.cityId);
+    const countryId = city?.countryId ?? leg.countryId ?? null;
+    const countryName = city?.countryName ?? leg.countryName ?? null;
+    const key = getCountryBucketKey(countryId, countryName);
+    const existing = daysByCountry.get(key) ?? {
+      countryId,
+      countryName,
+      totalPlanned: 0,
+      plannedDays: 0,
+      plannedPerDay: null,
+    };
+
+    existing.countryName = existing.countryName ?? countryName;
+    existing.plannedDays += leg.nights;
+    daysByCountry.set(key, existing);
+  }
+
+  return daysByCountry;
+}
+
+function buildPlanComparisonCountryTotals(
+  allocations: PlannedAllocationRow[],
+  plannedDaysByCountry: Map<string, PlanComparisonCountryTotal>
+): PlanComparisonCountryTotal[] {
   const totals = new Map<string, PlanComparisonCountryTotal>();
 
   for (const allocation of allocations) {
-    const key = `${allocation.countryId ?? 'null'}::${allocation.countryName ?? 'null'}`;
+    const key = getCountryBucketKey(allocation.countryId, allocation.countryName);
     const existing = totals.get(key) ?? {
       countryId: allocation.countryId,
       countryName: allocation.countryName,
       totalPlanned: 0,
+      plannedDays: plannedDaysByCountry.get(key)?.plannedDays ?? 0,
+      plannedPerDay: null,
     };
 
+    existing.countryName = existing.countryName ?? allocation.countryName;
     existing.totalPlanned += allocation.amount;
     totals.set(key, existing);
   }
@@ -292,6 +348,7 @@ function buildPlanComparisonCountryTotals(allocations: PlannedAllocationRow[]): 
     .map((entry) => ({
       ...entry,
       totalPlanned: roundMoney(entry.totalPlanned),
+      plannedPerDay: entry.plannedDays > 0 ? roundMoney(entry.totalPlanned / entry.plannedDays) : null,
     }))
     .sort((a, b) => b.totalPlanned - a.totalPlanned || (a.countryName ?? '').localeCompare(b.countryName ?? ''));
 }
@@ -350,6 +407,7 @@ export function computePlanComparison(
   snapshot: PlanSnapshot,
   cityMap: Map<string, CityData>
 ): PlanComparisonResult {
+  const countryNameById = buildCountryNameById(cityMap);
   const datedLegs = deriveLegDates(
     snapshot.legs.map((leg, index) => ({
       id: leg.id ?? null,
@@ -382,8 +440,9 @@ export function computePlanComparison(
         .filter((date): date is string => date !== null)
     )
   ).sort();
-  const fixedCostAllocations = buildFixedCostAllocations(planId, snapshot, tripDates);
+  const fixedCostAllocations = buildFixedCostAllocations(planId, snapshot, tripDates, countryNameById);
   const allocations = [...legAllocations, ...fixedCostAllocations];
+  const plannedDaysByCountry = buildCountryPlannedDays(datedLegs, cityMap);
 
   return {
     id: planId,
@@ -391,7 +450,7 @@ export function computePlanComparison(
     groupSize: snapshot.groupSize,
     summary: buildPlanComparisonSummary(snapshot, allocations),
     series: buildPlanComparisonSeries(allocations),
-    countryTotals: buildPlanComparisonCountryTotals(allocations),
+    countryTotals: buildPlanComparisonCountryTotals(allocations, plannedDaysByCountry),
     categoryTotals: buildPlanComparisonCategoryTotals(allocations),
   };
 }
