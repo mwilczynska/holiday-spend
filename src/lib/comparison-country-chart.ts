@@ -6,7 +6,7 @@ export interface CountryChartRow {
   countryId: string;
   countryName: string;
   combinedValue: number;
-  combinedDailyValue: number;
+  maxDailyValue: number;
   [key: `plan_${number}`]: number;
 }
 
@@ -25,13 +25,13 @@ export function buildCountryChartRows(plans: PlanComparisonResult[], mode: Count
         countryId,
         countryName,
         combinedValue: 0,
-        combinedDailyValue: 0,
+        maxDailyValue: 0,
       };
 
       existing.countryName = existing.countryName || countryName;
       existing[`plan_${planIndex}`] = value;
       existing.combinedValue += value;
-      existing.combinedDailyValue += country.plannedPerDay ?? 0;
+      existing.maxDailyValue = Math.max(existing.maxDailyValue, country.plannedPerDay ?? 0);
       rowsByCountry.set(countryId, existing);
     }
   }
@@ -45,5 +45,5 @@ export function buildCountryChartRows(plans: PlanComparisonResult[], mode: Count
       return completedRow;
     })
     .filter((row) => row.combinedValue > 0)
-    .sort((a, b) => b.combinedDailyValue - a.combinedDailyValue || a.countryName.localeCompare(b.countryName));
+    .sort((a, b) => b.maxDailyValue - a.maxDailyValue || a.countryName.localeCompare(b.countryName));
 }

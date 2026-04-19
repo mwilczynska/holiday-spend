@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -15,7 +15,6 @@ import { Maximize2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PLAN_COLORS } from '@/lib/comparison-colors';
 import {
   buildCountryChartRows,
@@ -23,9 +22,10 @@ import {
   type CountryChartMode,
   type CountryChartRow,
 } from '@/lib/comparison-country-chart';
+import { cn } from '@/lib/utils';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
 
-const PICKER_TRIGGER_CLASS_NAME = 'px-3 text-xs data-active:bg-foreground data-active:text-background hover:data-active:text-background data-active:shadow-none';
+const PICKER_BUTTON_CLASS_NAME = 'h-7 rounded-md px-3 text-xs font-medium transition-colors';
 
 interface WrappedTickProps {
   x?: number | string;
@@ -128,6 +128,46 @@ function CountryLegend({ plans, compact = false }: { plans: PlanComparisonResult
   );
 }
 
+function CountryChartModePicker({
+  mode,
+  onChange,
+  size = 'inline',
+}: {
+  mode: CountryChartMode;
+  onChange: (mode: CountryChartMode) => void;
+  size?: 'inline' | 'expanded';
+}) {
+  const wrapperClassName = size === 'expanded' ? 'rounded-md border px-2 py-1.5' : 'rounded-md border px-2 py-1';
+  const listClassName = size === 'expanded' ? 'h-9' : 'h-8';
+
+  return (
+    <div className={cn('flex items-center gap-2', wrapperClassName)}>
+      <span className="text-xs font-medium text-muted-foreground">View</span>
+      <div className={cn('inline-flex items-center rounded-lg bg-muted p-[3px]', listClassName)}>
+        {([
+          ['total', 'Totals'],
+          ['daily', 'Per Day'],
+        ] as const).map(([value, label]) => (
+          <button
+            key={value}
+            type="button"
+            onClick={() => onChange(value)}
+            className={cn(
+              PICKER_BUTTON_CLASS_NAME,
+              mode === value
+                ? 'bg-foreground text-background shadow-none'
+                : 'text-foreground/70 hover:bg-background/70 hover:text-foreground'
+            )}
+            aria-pressed={mode === value}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function renderChart(
   plans: PlanComparisonResult[],
   rows: CountryChartRow[],
@@ -223,6 +263,10 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
   const [expanded, setExpanded] = useState(false);
   const [mode, setMode] = useState<CountryChartMode>(DEFAULT_COUNTRY_CHART_MODE);
 
+  useEffect(() => {
+    setMode(DEFAULT_COUNTRY_CHART_MODE);
+  }, []);
+
   const allRows = useMemo(() => buildCountryChartRows(plans, mode), [plans, mode]);
 
   if (allRows.length === 0) return null;
@@ -234,15 +278,7 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-sm">Planned Spend by Country</CardTitle>
             <div className="flex flex-wrap items-center gap-2">
-              <div className="flex items-center gap-2 rounded-md border px-2 py-1">
-                <span className="text-xs font-medium text-muted-foreground">View</span>
-                <Tabs value={mode} onValueChange={(value) => setMode(value as CountryChartMode)} className="gap-0">
-                  <TabsList className="h-8">
-                    <TabsTrigger value="total" className={PICKER_TRIGGER_CLASS_NAME}>Totals</TabsTrigger>
-                    <TabsTrigger value="daily" className={PICKER_TRIGGER_CLASS_NAME}>Per Day</TabsTrigger>
-                  </TabsList>
-                </Tabs>
-              </div>
+              <CountryChartModePicker mode={mode} onChange={setMode} size="inline" />
               <Button type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
                 <Maximize2 className="mr-2 h-4 w-4" />
                 Expand
@@ -266,14 +302,7 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
           <DialogHeader className="gap-0 border-b px-5 pt-3 pb-2">
             <div className="flex flex-wrap items-center justify-between gap-3 pr-8">
               <DialogTitle>Planned Spend by Country</DialogTitle>
-              <div className="flex flex-wrap items-center gap-2">
-                <Tabs value={mode} onValueChange={(value) => setMode(value as CountryChartMode)} className="gap-0">
-                  <TabsList className="h-9">
-                    <TabsTrigger value="total" className={PICKER_TRIGGER_CLASS_NAME}>Totals</TabsTrigger>
-                    <TabsTrigger value="daily" className={PICKER_TRIGGER_CLASS_NAME}>Per Day</TabsTrigger>
-                  </TabsList>
-                </Tabs>
-              </div>
+              <CountryChartModePicker mode={mode} onChange={setMode} size="expanded" />
             </div>
           </DialogHeader>
           <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">

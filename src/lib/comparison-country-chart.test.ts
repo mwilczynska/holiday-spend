@@ -32,7 +32,7 @@ describe('comparison-country-chart helpers', () => {
     expect(DEFAULT_COUNTRY_CHART_MODE).toBe('daily');
   });
 
-  it('orders country rows by combined planned daily spend', () => {
+  it('orders country rows by the highest planned daily spend shown across compared plans', () => {
     const plans = [
       makePlan({
         id: 'plan-a',
@@ -79,9 +79,9 @@ describe('comparison-country-chart helpers', () => {
     const rows = buildCountryChartRows(plans, 'total');
 
     expect(rows.map((row) => row.countryName)).toEqual([
-      'Thailand',
       'South Korea',
       'Japan',
+      'Thailand',
     ]);
   });
 });
