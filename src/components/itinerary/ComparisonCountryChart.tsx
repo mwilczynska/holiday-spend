@@ -28,6 +28,7 @@ interface CountryChartRow {
   countryId: string;
   countryName: string;
   combinedValue: number;
+  combinedDailyValue: number;
   [key: `plan_${number}`]: number;
 }
 
@@ -125,11 +126,13 @@ function buildCountryChartRows(plans: PlanComparisonResult[], mode: CountryChart
         countryId,
         countryName,
         combinedValue: 0,
+        combinedDailyValue: 0,
       };
 
       existing.countryName = existing.countryName || countryName;
       existing[`plan_${planIndex}`] = value;
       existing.combinedValue += value;
+      existing.combinedDailyValue += country.plannedPerDay ?? 0;
       rowsByCountry.set(countryId, existing);
     }
   }
@@ -143,7 +146,7 @@ function buildCountryChartRows(plans: PlanComparisonResult[], mode: CountryChart
       return completedRow;
     })
     .filter((row) => row.combinedValue > 0)
-    .sort((a, b) => b.combinedValue - a.combinedValue || a.countryName.localeCompare(b.countryName));
+    .sort((a, b) => b.combinedDailyValue - a.combinedDailyValue || a.countryName.localeCompare(b.countryName));
 
   return rows;
 }
