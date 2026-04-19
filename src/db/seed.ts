@@ -288,6 +288,8 @@ function parseMoney(value: string | null | undefined): number | null {
 
 function loadCsvRows(): CityCostCsvRow[] {
   const csvPath = findFile([
+    path.join(process.cwd(), 'data', 'reference', 'city_costs_app_aud.csv'),
+    path.join(process.cwd(), '..', 'data', 'reference', 'city_costs_app_aud.csv'),
     path.join(process.cwd(), 'city_costs_app_aud.csv'),
     path.join(process.cwd(), '..', 'city_costs_app_aud.csv'),
   ]);
@@ -369,7 +371,7 @@ function buildDataset(csvRows: CityCostCsvRow[]) {
       activitiesMid: parseMoney(row.activities_mid_range),
       activitiesHigh: parseMoney(row.activities_high_end),
       estimationSource: 'base_csv_apr_2026',
-      notes: 'Imported from city_costs_app_aud.csv. Transport is manual-only at plan level.',
+      notes: 'Imported from data/reference/city_costs_app_aud.csv. Transport is manual-only at plan level.',
     });
   }
 

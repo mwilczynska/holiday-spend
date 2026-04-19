@@ -89,12 +89,14 @@ Country rows are now auto-created from this canonical dataset during dataset cit
 - `src/components` - planner, dashboard, city library, and UI components
 - `src/lib` - calculators, import logic, LLM clients, planner helpers
 - `src/db` - schema, runtime bootstrap, and seed script
+- `docs/` - public-facing product, ops, and developer documentation
+- `data/reference/` - committed canonical datasets such as the city cost CSV
 - `data/travel.db` - local SQLite database
 - `sample-data/` - local CSV samples for import testing
 
 ## Deployment
 
-Deployment instructions live in [DEPLOYMENT.md](./DEPLOYMENT.md).
+Deployment instructions live in [docs/ops/deployment.md](./docs/ops/deployment.md).
 
 The short version is:
 - run the app in Docker

@@ -53,4 +53,4 @@ Routing and navigation changes:
 - `src/app/estimates/page.tsx`
 - `src/app/settings/page.tsx`
 - `src/components/layout/DesktopSidebar.tsx`
-- `docs/dev/HANDOFF-dataset-methodology-split.md`
+- `docs/dev/handoffs/dataset-methodology-split.md`

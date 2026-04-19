@@ -99,7 +99,7 @@ At minimum, review:
 - `src/lib/saved-plan-migration.ts`
 - `src/components/cities/CostEditor.tsx`
 - deployment-related repo files and directories:
-  - `DEPLOYMENT.md`
+  - `docs/ops/deployment.md`
   - `Dockerfile`
   - `docker-compose.yml`
   - `nginx/`
@@ -134,7 +134,7 @@ This phase cleans the city/dataset layer now that the methodology split and cano
 
 Current state before cleanup:
 
-- the seed flow imported `city_costs_app_aud.csv`
+- the seed flow imported `data/reference/city_costs_app_aud.csv`
 - but it also read `seed-data/cities.json` to preserve older ids, country metadata, and city-name mappings
 
 Goal:
@@ -260,7 +260,7 @@ This phase cleans the repo-level operational surface so contributors are not lef
 
 Review:
 
-- `DEPLOYMENT.md`
+- `docs/ops/deployment.md`
 - `Dockerfile`
 - `docker-compose.yml`
 - `nginx/`
@@ -279,8 +279,8 @@ Likely outcome:
 
 Move:
 
-- `HANDOFF-country-dataset.md`
-- `HANDOFF-dataset-methodology-split.md`
+- `docs/dev/handoffs/country-dataset.md`
+- `docs/dev/handoffs/dataset-methodology-split.md`
 
 Into a dedicated docs/dev-style folder and update references accordingly.
 
@@ -392,7 +392,7 @@ The following are explicitly out of scope for this cleanup branch unless they be
 
 ## Likely Files
 
-- `PLAN-cleanup-simplification.md`
+- `docs/dev/plans/cleanup-simplification.md`
 - `src/db/seed.ts`
 - `src/db/schema.ts`
 - `src/components/cities/CostEditor.tsx`
@@ -400,7 +400,7 @@ The following are explicitly out of scope for this cleanup branch unless they be
 - `README.md`
 - `CLAUDE.md`
 - `AGENTS.md`
-- `DEPLOYMENT.md`
+- `docs/ops/deployment.md`
 - `Dockerfile`
 - `docker-compose.yml`
 - `nginx/*`

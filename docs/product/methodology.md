@@ -282,7 +282,7 @@ The output JSON can be appended directly to the CSV database.
 
 ## 8. Column Reference
 
-The app-facing CSV (`city_costs_app_aud.csv`) contains these columns:
+The app-facing CSV (`data/reference/city_costs_app_aud.csv`) contains these columns:
 
 | Column | Unit | Description |
 |--------|------|-------------|

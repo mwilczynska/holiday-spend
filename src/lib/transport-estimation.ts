@@ -157,8 +157,11 @@ function extractJsonObject(text: string): unknown {
   throw new Error('No parseable JSON object found in model response');
 }
 
-function findRepoFile(fileName: string) {
-  const candidates = [path.resolve(process.cwd(), fileName), path.resolve(process.cwd(), '..', fileName)];
+function findRepoFile(relativePaths: string[]) {
+  const candidates = relativePaths.flatMap((relativePath) => [
+    path.resolve(process.cwd(), relativePath),
+    path.resolve(process.cwd(), '..', relativePath),
+  ]);
 
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) return candidate;
@@ -168,7 +171,10 @@ function findRepoFile(fileName: string) {
 }
 
 function loadPromptTemplate(): string {
-  const promptPath = findRepoFile('llm_prompt_intercity_transport_1.md');
+  const promptPath = findRepoFile([
+    path.join('docs', 'prompts', 'llm_prompt_intercity_transport_1.md'),
+    'llm_prompt_intercity_transport_1.md',
+  ]);
   return fs.readFileSync(promptPath, 'utf8');
 }
 

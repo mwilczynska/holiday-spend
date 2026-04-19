@@ -24,7 +24,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ## Project Location
 - App code: repo root
-- Planning/docs assets: repo root
+- Public docs: `docs/`
+- Developer plans/handoffs: `docs/dev/`
+- Canonical reference datasets: `data/reference/`
 - Local sample imports: `sample-data/` (typically untracked)
 - DB: `data/travel.db` (SQLite, gitignored)
 - Local dev auth fallback: optional `AUTH_DEV_PIN` in `.env.local` (current local setup still uses `1234`)
@@ -69,14 +71,14 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 ## Current City Cost System
 
 ### Canonical Dataset
-- Canonical base dataset is `city_costs_app_aud.csv`
+- Canonical base dataset is `data/reference/city_costs_app_aud.csv`
 - Dataset covers 121 cities across 58 countries
 - App-facing values are AUD for 2 people
 - Seed flow now imports the CSV rather than relying on the older smaller JSON-only city dataset
 
 ### Methodology Assets
-- Methodology doc: `methodology.md`
-- New-city prompt template: `llm_prompt_new_cities_1.md`
+- Methodology doc: `docs/product/methodology.md`
+- New-city prompt template: `docs/prompts/llm_prompt_new_cities_1.md`
 - `/estimates` now reflects this methodology rather than the older hybrid/Xotelo explanation
 - `/dataset` now holds the editable planner dataset and generation-history views
 
@@ -201,7 +203,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Provider plumbing for LLM-backed estimation and generation
 
 ### Phase 5: City Cost System Migration
-- [x] Replace old city seed dataset with `city_costs_app_aud.csv`
+- [x] Replace old city seed dataset with `data/reference/city_costs_app_aud.csv`
 - [x] Add `country-metadata.ts` and CSV-backed seed mapping
 - [x] Remove transport estimation from the city methodology
 - [x] Replace the old estimate logic page with methodology + dataset + history
@@ -226,7 +228,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 ## Current Known Gaps / Follow-Up Work
 
 ### Priority 1: Deployment / Production Readiness
-- [x] Keep `README.md` as the GitHub-facing project overview and move operational runbooks into `DEPLOYMENT.md`
+- [x] Keep `README.md` as the GitHub-facing project overview and move operational runbooks into `docs/ops/deployment.md`
 - [x] Refresh deployment config and docs for current runtime names and expectations, especially `GEMINI_API_KEY`, SQLite persistence, and required secrets
 - [x] Align Wanderledger deployment guidance with the existing `travel-blog` VPS baseline: same server operations model, but a single-app container topology for this repo
 - [x] Replace the self-signed nginx setup with a production-ready VPS path such as a reverse proxy plus real TLS
@@ -340,6 +342,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Removed old `xotelo` references from the typed/schema and UI surface where they no longer participate in active logic
 - Moved handoff notes into `docs/dev/` so they no longer live at the repo root
 - Removed the stale repo-managed nginx config artifact; deployment docs continue to treat reverse proxy/TLS as host-level concerns
+- Moved active plan docs into `docs/dev/plans/`, handoffs into `docs/dev/handoffs/`, deployment docs into `docs/ops/`, methodology into `docs/product/`, prompts into `docs/prompts/`, and the canonical CSV into `data/reference/`
+- Added `docs/README.md` as the docs entry point and a gitignored `.local/` workspace convention for personal imports, notes, scratch files, and screenshots
 
 ### Wise Import Improvements
 - `src/lib/wise-csv-parser.ts` was upgraded to support both provided Wise CSV export formats
@@ -380,10 +384,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ## Useful Files
 - `CLAUDE.md`
-- `city_costs_app_aud.csv`
-- `methodology.md`
-- `llm_prompt_new_cities_1.md`
-- `llm_prompt_intercity_transport_1.md`
+- `docs/README.md`
+- `data/reference/city_costs_app_aud.csv`
+- `docs/product/methodology.md`
+- `docs/prompts/llm_prompt_new_cities_1.md`
+- `docs/prompts/llm_prompt_intercity_transport_1.md`
 - `src/lib/city-generation.ts`
 - `src/lib/city-llm-client.ts`
 - `src/lib/city-generation-config.ts`
@@ -423,9 +428,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/app/api/saved-plans/compare/route.ts`
 - `tests/playwright/saved-plans.spec.ts`
 - `tests/playwright/plan-comparison.spec.ts`
-- `PLAN-saved-plans-comparison.md`
-- `PLAN-country-dataset.md`
-- `PLAN-cleanup-simplification.md`
+- `docs/dev/plans/saved-plans-comparison.md`
+- `docs/dev/plans/country-dataset.md`
+- `docs/dev/plans/cleanup-simplification.md`
 - `docs/dev/README.md`
-- `docs/dev/HANDOFF-cleanup-simplification.md`
-- `docs/dev/HANDOFF-country-dataset.md`
+- `docs/dev/handoffs/cleanup-simplification.md`
+- `docs/dev/handoffs/country-dataset.md`

@@ -135,7 +135,7 @@ export async function invalidateUserTokens(userId: string, purpose: TokenPurpose
 npm install argon2
 ```
 
-Note: `argon2` has a native addon. Verify it builds on Windows dev and the production Linux VPS. If Windows install fails, document the `node-gyp` prereqs in `DEPLOYMENT.md`; fallback is `@node-rs/argon2` (prebuilt binaries, no build step) - switch only if needed.
+Note: `argon2` has a native addon. Verify it builds on Windows dev and the production Linux VPS. If Windows install fails, document the `node-gyp` prereqs in `docs/ops/deployment.md`; fallback is `@node-rs/argon2` (prebuilt binaries, no build step) - switch only if needed.
 
 ### Phase 1 verification
 
@@ -365,7 +365,7 @@ Replace `console.log` stubs in the Phase 3 and Phase 4 API routes with real call
 
 ### 5c. Env + deployment docs
 
-**Files to modify**: `.env.example`, `DEPLOYMENT.md`, `README.md` (if it documents env vars)
+**Files to modify**: `.env.example`, `docs/ops/deployment.md`, `README.md` (if it documents env vars)
 
 New env vars:
 - `RESEND_API_KEY` - required in production for native auth
@@ -381,7 +381,7 @@ Update `getConfiguredAuthProviders()` to expose `emailPassword` whenever `isMail
 
 - With a dev Resend key pointed at a sandboxed sender, signup + reset deliver real emails
 - Without `RESEND_API_KEY` in dev: links still log to stdout so local testing works
-- DEPLOYMENT.md lists the new env vars in the secrets table
+- `docs/ops/deployment.md` lists the new env vars in the secrets table
 
 **Commit**: `feat(auth): email delivery via Resend for verify and reset flows`
 
@@ -434,7 +434,7 @@ NextAuth callbacks are tricky to intercept cleanly - the `authorize()` function 
 
 **File to create**: `src/lib/request-ip.ts`
 
-Reads `x-forwarded-for` (first entry), falls back to `request.ip`. Document the nginx trust boundary in `DEPLOYMENT.md`.
+Reads `x-forwarded-for` (first entry), falls back to `request.ip`. Document the nginx trust boundary in `docs/ops/deployment.md`.
 
 ### 6e. Headers + noindex
 
@@ -558,7 +558,7 @@ Use a test-mode mailer that writes emails to an in-memory buffer the test can re
 - Move Priority 2B checklist items from "Current Known Gaps" to "Completed Work" (Phase 6)
 - Add a "Native Account Expansion" subsection under "Recent Important Changes"
 - Update "Useful Files" list with the new auth modules/pages
-- Document env vars introduced (already in DEPLOYMENT.md from Phase 5; note here for discoverability)
+- Document env vars introduced (already in `docs/ops/deployment.md` from Phase 5; note here for discoverability)
 
 ### Phase 9 verification
 

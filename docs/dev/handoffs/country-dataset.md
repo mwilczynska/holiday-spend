@@ -6,12 +6,12 @@ This workstream is now complete through Phase 6. The branch is in merge-ready sh
 
 - Branch: `feat/country-dataset`
 - Base: `main`
-- Plan file: `PLAN-country-dataset.md`
+- Plan file: `docs/dev/plans/country-dataset.md`
 - PR: #4
 
 ## Final phase status
 
-From `PLAN-country-dataset.md`:
+From `docs/dev/plans/country-dataset.md`:
 
 - [x] Phase 0 - Branch + plan doc
 - [x] Phase 1 - Canonical dataset files + generator scaffold
@@ -72,7 +72,7 @@ Coverage includes:
 - `CLAUDE.md` updated to reflect the completed canonical-country workflow
 - `AGENTS.md` resynced from `CLAUDE.md`
 - `README.md` now includes a short canonical-country metadata note and regeneration command
-- `PLAN-country-dataset.md` marked complete
+- `docs/dev/plans/country-dataset.md` marked complete
 
 ## Verification completed
 
@@ -101,9 +101,8 @@ Notes:
 - `src/app/plan/page.tsx`
 - `src/lib/country-metadata.test.ts`
 - `src/lib/country-routes.test.ts`
-- `PLAN-country-dataset.md`
+- `docs/dev/plans/country-dataset.md`
 
 ## Recommended next action
 
 Merge PR #4 into `main` once the review is complete.
-

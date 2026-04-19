@@ -6,12 +6,12 @@ This handoff covers the current state of the `feat/cleanup-simplification` branc
 
 - Branch: `feat/cleanup-simplification`
 - Base: `main`
-- Plan file: `PLAN-cleanup-simplification.md`
+- Plan file: `docs/dev/plans/cleanup-simplification.md`
 - Current HEAD: `5f80220`
 
 ## Branch status
 
-From `PLAN-cleanup-simplification.md`:
+From `docs/dev/plans/cleanup-simplification.md`:
 
 - [x] Phase 0 - Plan doc + cleanup inventory
 - [x] Phase 1 - Seed/dataset/methodology legacy-path cleanup
@@ -46,7 +46,7 @@ From `PLAN-cleanup-simplification.md`:
 - deleted `seed-data/cities.json`
 - `src/db/seed.ts` no longer depends on legacy seed JSON
 - seeding now uses:
-  - `city_costs_app_aud.csv`
+  - `data/reference/city_costs_app_aud.csv`
   - canonical country metadata from `src/lib/country-metadata.ts`
 - city ids are derived from current slug/collision handling instead of preserved from the old seed JSON
 
@@ -66,10 +66,10 @@ From `PLAN-cleanup-simplification.md`:
 
 ### Documentation already updated
 
-- `PLAN-cleanup-simplification.md`
+- `docs/dev/plans/cleanup-simplification.md`
 - `CLAUDE.md`
 - `AGENTS.md`
-- `docs/dev/HANDOFF-dataset-methodology-split.md`
+- `docs/dev/handoffs/dataset-methodology-split.md`
 
 ## Verification completed
 
@@ -96,8 +96,8 @@ Notes:
 The branch is already in good shape, so keep this narrow. Good candidates to inspect:
 
 - whether any remaining historical docs in root should also move to `docs/dev/`
-- whether any branch docs or README notes should reference `docs/dev/HANDOFF-cleanup-simplification.md`
-- whether `PLAN-saved-plans-comparison.md` should keep the old `saved-plan-migration.ts` creation step untouched as historical context, or gain a short note that the shim was later removed
+- whether any branch docs or README notes should reference `docs/dev/handoffs/cleanup-simplification.md`
+- whether `docs/dev/plans/saved-plans-comparison.md` should keep the old `saved-plan-migration.ts` creation step untouched as historical context, or gain a short note that the shim was later removed
 
 Bias toward minimal churn. Do not rewrite historical plan docs unless the stale reference is actively misleading in the current branch.
 
@@ -126,7 +126,7 @@ PR summary should call out:
 
 Update:
 
-- `PLAN-cleanup-simplification.md`
+- `docs/dev/plans/cleanup-simplification.md`
 - optionally `CLAUDE.md` / `AGENTS.md` if you want the branch memory to reflect PR-open state
 
 Then commit the final docs-only checkpoint.
@@ -137,7 +137,7 @@ Suggested commit:
 
 ## Files most relevant for review
 
-- `PLAN-cleanup-simplification.md`
+- `docs/dev/plans/cleanup-simplification.md`
 - `src/db/seed.ts`
 - `src/db/schema.ts`
 - `src/db/index.ts`
@@ -149,6 +149,5 @@ Suggested commit:
 - `AGENTS.md`
 - `docs/dev/README.md`
 - `docs/dev/PLAN-initial-spec.md`
-- `docs/dev/HANDOFF-country-dataset.md`
-- `docs/dev/HANDOFF-dataset-methodology-split.md`
-
+- `docs/dev/handoffs/country-dataset.md`
+- `docs/dev/handoffs/dataset-methodology-split.md`
