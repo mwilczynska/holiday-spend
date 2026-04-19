@@ -92,8 +92,8 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 4b - Implement the expanded category view as grouped-by-category comparison
 - [x] Phase 4c - Add dynamic legend, label, and sizing behavior for 2-5 plans
 - [ ] Phase 4.5 - Run a compare-chart visual alignment pass before Phase 5 wrap-up
-- [ ] Phase 4.5a - Centralize `PLAN_COLORS` and standardize compare-page plan colors to `blue -> purple -> teal -> yellow -> green`
-- [ ] Phase 4.5b - Remove the duplicate legend from the planned-by-category chart and keep one clear legend treatment
+- [x] Phase 4.5a - Centralize `PLAN_COLORS` and standardize compare-page plan colors to `blue -> purple -> teal -> yellow -> green`
+- [x] Phase 4.5b - Remove the duplicate legend from the planned-by-category chart and keep one clear legend treatment
 - [ ] Phase 4.5c - Sync the inline card heights for the planned-by-country and planned-by-category cards
 - [ ] Phase 4.5d - Inline and expanded planned-by-country chart must be visually identical: same plot type, colors, axes, legend, and controls; expanded only shows more rows and more breathing room
 - [ ] Phase 4.5e - Inline and expanded planned-by-category chart must be visually identical; use grouped horizontal bars (categories on y-axis, plans as grouped bars) in both states and delete the stacked-vertical implementation

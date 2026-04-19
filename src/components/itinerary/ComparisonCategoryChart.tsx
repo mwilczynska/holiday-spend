@@ -7,7 +7,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   CartesianGrid,
   Label,
@@ -252,12 +251,6 @@ function renderInlineCompositionChart(plans: PlanComparisonResult[], rows: Categ
             return `${formatAud(numericValue)}${percent}`;
           }}
           labelFormatter={(label) => `Plan: ${label}`}
-        />
-        <Legend
-          verticalAlign="top"
-          align="right"
-          wrapperStyle={{ paddingBottom: 6, fontSize: 11 }}
-          formatter={(value: string) => getCategoryLabel(value as PlanComparisonCategoryTotal['category'])}
         />
         {categoryOrder.map((category) => (
           <Bar
