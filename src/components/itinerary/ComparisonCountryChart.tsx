@@ -7,7 +7,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   CartesianGrid,
   Label,
@@ -153,15 +152,18 @@ function buildCountryChartRows(plans: PlanComparisonResult[], mode: CountryChart
   return rows;
 }
 
-function ExpandedCountryLegend({ plans }: { plans: PlanComparisonResult[] }) {
+function CountryLegend({ plans, compact = false }: { plans: PlanComparisonResult[]; compact?: boolean }) {
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[13px] text-muted-foreground">
+    <div
+      className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-muted-foreground"
+      style={{ fontSize: compact ? 12 : 13 }}
+    >
       {plans.map((plan, index) => (
         <div key={plan.id} className="flex items-center gap-2">
           <span
             aria-hidden="true"
             className="inline-block h-0.5"
-            style={{ width: 26, backgroundColor: PLAN_COLORS[index % PLAN_COLORS.length] }}
+            style={{ width: compact ? 22 : 26, backgroundColor: PLAN_COLORS[index % PLAN_COLORS.length] }}
           />
           <span className="font-medium">{plan.name}</span>
         </div>
@@ -184,7 +186,7 @@ function renderChart(
     Math.max(16, Math.floor(((expandedHeight - 80) / Math.max(rows.length * Math.max(plans.length, 1), 1)) * 0.82))
   );
 
-  const chartNode = (
+  return (
     <ResponsiveContainer width="100%" height={isExpanded ? '100%' : 360}>
       <BarChart
         data={rows}
@@ -242,17 +244,6 @@ function renderChart(
           }}
           formatter={(value) => mode === 'daily' ? `${formatAud(Number(value ?? 0))}/day` : formatAud(Number(value ?? 0))}
         />
-        {!isExpanded ? (
-          <Legend
-            verticalAlign="top"
-            align="right"
-            wrapperStyle={{ paddingBottom: 6, fontSize: 11 }}
-            formatter={(value: string) => {
-              const planIndex = Number(value.replace('plan_', ''));
-              return plans[planIndex]?.name ?? value;
-            }}
-          />
-        ) : null}
         {plans.map((plan, index) => (
           <Bar
             key={plan.id}
@@ -265,19 +256,6 @@ function renderChart(
         ))}
       </BarChart>
     </ResponsiveContainer>
-  );
-
-  if (!isExpanded) {
-    return chartNode;
-  }
-
-  return (
-    <div className="flex h-full min-h-0 flex-col gap-2">
-      <ExpandedCountryLegend plans={plans} />
-      <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
-        {chartNode}
-      </div>
-    </div>
   );
 }
 
@@ -325,8 +303,9 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
             Inline view shows the top {Math.min(inlineCountryLimit, allRows.length)} countries by combined planned spend. Expand to inspect every country.
           </p>
         </CardHeader>
-        <CardContent className="flex flex-1 flex-col">
-          <div className="flex-1">
+        <CardContent className="flex flex-1 flex-col gap-3">
+          <CountryLegend plans={plans} compact />
+          <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
             {renderChart(plans, inlineRows, mode, 'inline')}
           </div>
         </CardContent>
@@ -351,7 +330,12 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
             </div>
           </DialogHeader>
           <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">
-            {renderChart(plans, allRows, mode, 'expanded')}
+            <div className="flex h-full min-h-0 flex-col gap-2">
+              <CountryLegend plans={plans} />
+              <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
+                {renderChart(plans, allRows, mode, 'expanded')}
+              </div>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
