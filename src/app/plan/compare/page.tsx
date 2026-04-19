@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeftRight } from 'lucide-react';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { ComparisonChart } from '@/components/itinerary/ComparisonChart';
+import { ComparisonCategoryChart } from '@/components/itinerary/ComparisonCategoryChart';
 import { ComparisonCountryChart } from '@/components/itinerary/ComparisonCountryChart';
 import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummaryCards';
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
@@ -134,6 +135,8 @@ export default function ComparePlansPage() {
   // Derive header state
   const hasResults = !!comparisonData && comparisonData.length > 0;
   const showSelector = selectorMode && !loading;
+  const comparedPlanCount = comparisonData?.length ?? 0;
+  const shouldStackAnalyticsSections = comparedPlanCount >= 4;
 
   let statusText = '';
   if (showSelector && allPlans.length > 0) {
@@ -271,14 +274,22 @@ export default function ComparePlansPage() {
               <ComparisonChart plans={comparisonData} />
             </section>
 
-            <section className="space-y-3">
+            <section className="space-y-4">
               <div className="flex flex-col gap-1">
-                <h2 className="text-base font-semibold">By Country</h2>
+                <h2 className="text-base font-semibold">Plan Breakdown</h2>
                 <p className="text-sm text-muted-foreground">
-                  Compare how each plan allocates spend geographically in total terms or per planned day.
+                  Country and category views adapt to the number of plans so the inline compare page stays readable.
                 </p>
               </div>
-              <ComparisonCountryChart plans={comparisonData} />
+
+              <div className={shouldStackAnalyticsSections ? 'space-y-6' : 'grid gap-6 xl:grid-cols-2 xl:items-start'}>
+                <div className="min-w-0">
+                  <ComparisonCountryChart plans={comparisonData} />
+                </div>
+                <div className="min-w-0">
+                  <ComparisonCategoryChart plans={comparisonData} />
+                </div>
+              </div>
             </section>
           </div>
         )}

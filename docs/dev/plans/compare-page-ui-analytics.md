@@ -87,10 +87,10 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 3a - Implement grouped horizontal country bars with one series per compared plan
 - [x] Phase 3b - Add `Totals` / `Per Day` modes using canonical compare payload fields
 - [x] Phase 3c - Limit the inline view to a readable top-country subset while keeping the expanded dialog exhaustive
-- [ ] Phase 4 - Add the planned-by-category compare chart
-- [ ] Phase 4a - Implement the inline category chart as stacked-by-plan composition
-- [ ] Phase 4b - Implement the expanded category view as grouped-by-category comparison
-- [ ] Phase 4c - Add dynamic legend, label, and sizing behavior for 2-5 plans
+- [x] Phase 4 - Add the planned-by-category compare chart
+- [x] Phase 4a - Implement the inline category chart as stacked-by-plan composition
+- [x] Phase 4b - Implement the expanded category view as grouped-by-category comparison
+- [x] Phase 4c - Add dynamic legend, label, and sizing behavior for 2-5 plans
 - [ ] Phase 5 - Polish, test, and document the compare UI expansion
 - [ ] Phase 5a - Add unit and/or component coverage for new compare payload extensions
 - [ ] Phase 5b - Add Playwright coverage for 2-plan and 5-plan compare-page readability and chart rendering
