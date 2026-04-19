@@ -74,10 +74,24 @@ By the end of this workstream:
 Use this as the primary handoff/resume checklist for the branch.
 
 - [x] Phase 0 - Create implementation plan and branch scaffold
+- [x] Phase 0a - Document the canonical allocation approach
+- [x] Phase 0b - Inventory compare-page consumers
 - [x] Phase 1 - Refactor `src/lib/plan-comparison.ts` to build canonical planned-allocation rows and derived grouped outputs
+- [x] Phase 1a - Refactor `src/lib/plan-comparison.ts` around a canonical allocation pipeline
+- [x] Phase 1b - Extend the public comparison result with grouped totals for future charts
+- [x] Phase 1c - Remove chart-specific inclusive-date budget derivation
 - [x] Phase 2 - Align `/api/saved-plans/compare` and compare-page consumers to the canonical comparison engine
-- [ ] Phase 3 - Add regression tests for `nights` vs inclusive-date mismatch and reconciliation invariants
+- [x] Phase 2a - Keep `/api/saved-plans/compare` thin and engine-driven
+- [x] Phase 2b - Align compare-page UI wording and result consumers to the canonical payload
+- [x] Phase 2c - Document the intentional snapshot replay behavior against current city rates
+- [x] Phase 3 - Add regression tests for `nights` vs inclusive-date mismatch and reconciliation invariants
+- [x] Phase 3a - Add unit coverage for comparison math and allocation behavior
+- [x] Phase 3b - Add explicit invariant assertions for summary, cumulative, country, and category totals
+- [x] Phase 3c - Add a regression fixture for the inclusive-date overcount bug class
 - [ ] Phase 4 - Refresh docs, push branch, and open PR
+- [ ] Phase 4a - Refresh project memory with the canonical compare calculation model
+- [ ] Phase 4b - Document future compare-page by-country and by-category chart follow-through
+- [ ] Phase 4c - Push branch and open the PR with the old/new calculation explanation
 
 ### Handoff Notes
 
