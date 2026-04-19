@@ -1,5 +1,5 @@
 import { db } from '@/db';
-import { cities, savedPlans } from '@/db/schema';
+import { cities, countries, savedPlans } from '@/db/schema';
 import { requireCurrentUserId } from '@/lib/auth';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { planSnapshotSchema } from '@/lib/plan-snapshot';
@@ -29,10 +29,16 @@ export async function POST(request: Request) {
 
     // Build city data map from all cities in DB
     const allCities = await db.select().from(cities);
+    const allCountries = await db.select().from(countries);
+    const countryMap = new Map(allCountries.map((country) => [country.id, country.name]));
     const cityMap = new Map(
       allCities.map((city) => [
         city.id,
         {
+          id: city.id,
+          name: city.name,
+          countryId: city.countryId,
+          countryName: countryMap.get(city.countryId) ?? null,
           accomHostel: city.accomHostel,
           accomPrivateRoom: city.accomPrivateRoom,
           accom1star: city.accom1star,
@@ -59,6 +65,8 @@ export async function POST(request: Request) {
 
     const results = plans.map((plan) => {
       const snapshot = planSnapshotSchema.parse(JSON.parse(plan.snapshotJson));
+      // Compare intentionally replays the saved snapshot inputs against the current
+      // canonical city dataset so every result surface comes from the same engine.
       return computePlanComparison(plan.id, plan.name, snapshot, cityMap);
     });
 

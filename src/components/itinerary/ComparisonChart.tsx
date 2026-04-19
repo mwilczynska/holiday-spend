@@ -9,23 +9,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Maximize2 } from 'lucide-react';
+import type { PlanComparisonResult } from '@/lib/plan-comparison';
 
 const PLAN_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'];
 
-interface SeriesPoint {
-  date: string;
-  cumulativePlanned: number;
-  dailyPlanned: number;
-}
-
-interface PlanSeries {
-  id: string;
-  name: string;
-  series: SeriesPoint[];
-}
-
 interface ComparisonChartProps {
-  plans: PlanSeries[];
+  plans: PlanComparisonResult[];
 }
 
 function formatAud(value: number) {
@@ -38,7 +27,7 @@ function formatShortDate(dateStr: string) {
   return `${parts[1]}/${parts[2]}`;
 }
 
-function buildChartData(plans: PlanSeries[]) {
+function buildChartData(plans: PlanComparisonResult[]) {
   const allDates = new Set<string>();
   for (const plan of plans) {
     for (const point of plan.series) {
@@ -97,7 +86,7 @@ function getEvenlySpacedTicks(dates: string[], mode: 'inline' | 'expanded'): str
 }
 
 function renderChart(
-  plans: PlanSeries[],
+  plans: PlanComparisonResult[],
   data: ReturnType<typeof buildChartData>['data'],
   sortedDates: string[],
   yAxisMax: number,
@@ -198,6 +187,9 @@ export function ComparisonChart({ plans }: ComparisonChartProps) {
               Expand
             </Button>
           </div>
+          <p className="text-xs text-muted-foreground">
+            This line is grouped from the same canonical planned allocations as the comparison summary cards.
+          </p>
         </CardHeader>
         <CardContent>
           {renderChart(plans, data, sortedDates, yAxisMax, 'inline')}
