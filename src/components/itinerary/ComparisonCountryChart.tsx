@@ -112,10 +112,6 @@ function WrappedCountryTick({
   );
 }
 
-function getInlineCountryLimit(planCount: number) {
-  return planCount >= 4 ? 6 : 8;
-}
-
 function buildCountryChartRows(plans: PlanComparisonResult[], mode: CountryChartMode) {
   const rowsByCountry = new Map<string, CountryChartRow>();
 
@@ -180,6 +176,7 @@ function renderChart(
 ) {
   const isExpanded = chartMode === 'expanded';
   const inlineCountryTickWidth = 132;
+  const inlineHeight = Math.max(360, rows.length * Math.max(34, plans.length * 10) + 96);
   const expandedHeight = Math.max(440, rows.length * Math.max(38, plans.length * 11) + 110);
   const expandedBarSize = Math.min(
     22,
@@ -187,7 +184,7 @@ function renderChart(
   );
 
   return (
-    <ResponsiveContainer width="100%" height={isExpanded ? '100%' : 360}>
+    <ResponsiveContainer width="100%" height={isExpanded ? '100%' : inlineHeight}>
       <BarChart
         data={rows}
         layout="vertical"
@@ -264,14 +261,9 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
   const [mode, setMode] = useState<CountryChartMode>('total');
 
   const allRows = useMemo(() => buildCountryChartRows(plans, mode), [plans, mode]);
-  const inlineRows = useMemo(
-    () => allRows.slice(0, getInlineCountryLimit(plans.length)),
-    [allRows, plans.length]
-  );
 
   if (allRows.length === 0) return null;
 
-  const inlineCountryLimit = getInlineCountryLimit(plans.length);
   const countryViewLabel = mode === 'daily' ? 'Showing Per Day' : 'Showing Totals';
 
   return (
@@ -300,13 +292,13 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
             </div>
           </div>
           <p className="text-xs text-muted-foreground">
-            Inline view shows the top {Math.min(inlineCountryLimit, allRows.length)} countries by combined planned spend. Expand to inspect every country.
+            Inline view shows every country in the comparison and grows to fit larger trips. Expand for a roomier full-screen view.
           </p>
         </CardHeader>
         <CardContent className="flex flex-1 flex-col gap-3">
           <CountryLegend plans={plans} compact />
           <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
-            {renderChart(plans, inlineRows, mode, 'inline')}
+            {renderChart(plans, allRows, mode, 'inline')}
           </div>
         </CardContent>
       </Card>
