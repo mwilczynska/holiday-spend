@@ -18,9 +18,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { PLAN_COLORS } from '@/lib/comparison-colors';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
 
-const PLAN_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'];
 const PICKER_TRIGGER_CLASS_NAME = 'px-3 text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground';
 
 type CountryChartMode = 'total' | 'daily';

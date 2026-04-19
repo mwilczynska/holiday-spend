@@ -1,10 +1,9 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { PLAN_COLORS } from '@/lib/comparison-colors';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
 import { cn } from '@/lib/utils';
-
-const PLAN_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'];
 
 interface ComparisonSummaryCardsProps {
   plans: PlanComparisonResult[];
