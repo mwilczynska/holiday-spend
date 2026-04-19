@@ -91,6 +91,13 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 4a - Implement the inline category chart as stacked-by-plan composition
 - [x] Phase 4b - Implement the expanded category view as grouped-by-category comparison
 - [x] Phase 4c - Add dynamic legend, label, and sizing behavior for 2-5 plans
+- [ ] Phase 4.5 - Run a compare-chart visual alignment pass before Phase 5 wrap-up
+- [ ] Phase 4.5a - Centralize `PLAN_COLORS` and standardize compare-page plan colors to `blue -> purple -> teal -> yellow -> green`
+- [ ] Phase 4.5b - Remove the duplicate legend from the planned-by-category chart and keep one clear legend treatment
+- [ ] Phase 4.5c - Sync the inline card heights for the planned-by-country and planned-by-category cards
+- [ ] Phase 4.5d - Inline and expanded planned-by-country chart must be visually identical: same plot type, colors, axes, legend, and controls; expanded only shows more rows and more breathing room
+- [ ] Phase 4.5e - Inline and expanded planned-by-category chart must be visually identical; use grouped horizontal bars (categories on y-axis, plans as grouped bars) in both states and delete the stacked-vertical implementation
+- [ ] Phase 4.5f - Fix tooltip/legend labels to use plan names instead of `plan_0` / `plan_1` in grouped compare charts
 - [ ] Phase 5 - Polish, test, and document the compare UI expansion
 - [ ] Phase 5a - Add unit and/or component coverage for new compare payload extensions
 - [ ] Phase 5b - Add Playwright coverage for 2-plan and 5-plan compare-page readability and chart rendering
@@ -102,6 +109,13 @@ Use this as the primary handoff/resume checklist for the branch.
 - This branch should build on that result rather than introducing chart-specific data shaping outside the compare engine.
 - The dashboard's `Planned vs Actual by Country` chart must be reinterpreted for compare as a **planned-only** country comparison.
 - The dashboard's category chart can be adapted more directly, but the compare version should compare plans against each other rather than planned versus actual.
+- Before Phase 5c, run a small visual-consistency pass on the compare charts:
+  - reorder compare plan colors to `blue -> purple -> teal -> yellow -> green`
+  - centralize the palette constant (currently duplicated across `ComparisonChart`, `ComparisonCountryChart`, `ComparisonCategoryChart`, `ComparisonSummaryCards`)
+  - keep only one category legend in the inline card
+  - make the country/category inline cards align in height
+  - inline and expanded country/category charts must be visually identical in plot type, colors, axes, legend, and controls; expanded only scales up size/detail
+  - fix compare tooltip labels that currently read `plan_0` / `plan_1`
 
 ---
 
@@ -502,6 +516,146 @@ Ensure:
 
 ---
 
+## Phase 4.5: Visual Alignment Pass
+
+This phase exists to tighten presentation after the first chart implementations landed, but before the final Phase 5 wrap-up.
+
+### 4.5a. Centralize and standardize compare-page plan colors
+
+`PLAN_COLORS` is currently declared identically in four files:
+
+- `src/components/itinerary/ComparisonChart.tsx`
+- `src/components/itinerary/ComparisonCountryChart.tsx`
+- `src/components/itinerary/ComparisonCategoryChart.tsx`
+- `src/components/itinerary/ComparisonSummaryCards.tsx`
+
+Consolidate into a single shared module (for example `src/lib/comparison-colors.ts`) and import from there in all four components. Delete the duplicated constants in the same commit.
+
+Adopt one consistent compare-page plan color order everywhere plan colors appear:
+
+- first: blue (`#3b82f6`)
+- second: purple (`#8b5cf6`)
+- third: teal (`#14b8a6`)
+- fourth: yellow (`#eab308`)
+- fifth: green (`#22c55e`)
+
+Use the same ordered palette across:
+
+- summary rail markers
+- cumulative spend chart lines
+- planned-by-country series colors
+- planned-by-category plan-level legends/series
+- any other compare-page plan-level legends or markers
+
+### 4.5b. Keep one legend treatment in the category card
+
+The inline category card currently renders **two** category legends: a custom `CategoryLegend` (circle dots) above the chart, and a Recharts `<Legend>` inside the chart (square swatches, top-right). Both describe the same category series.
+
+Target:
+
+- remove the built-in Recharts `<Legend>` from the stacked inline category chart and keep the custom `CategoryLegend` above the chart, so legend styling matches the country card's custom plan-color rail
+- confirm the expanded category chart keeps a single legend that is consistent with whichever final chart form Phase 4.5e lands on
+- avoid making the card taller just because two legends are competing for space
+
+### 4.5c. Sync inline chart-card heights
+
+The inline:
+
+- planned-by-country card
+- planned-by-category card
+
+should align visually when shown side-by-side.
+
+Measured today: card heights are ~528px vs ~519px (close, ~9px diff) and the inner Recharts plot areas are already identical. The **perceived** mismatch comes from uneven header stacks (title/subtitle/legend/controls), not the chart itself. Once Phase 4.5b removes the duplicate legend the headers will drift further apart, so this phase must normalize them.
+
+Target:
+
+- normalize header stacks so both cards have the same header min-height after 4.5b
+- ensure the chart plot area sits at the same y-offset in both cards
+- keep heights intentional and balanced regardless of whether the country card has the `Totals` / `Per Day` toggle and the category card does not
+
+### 4.5d. Inline and expanded country chart must be visually identical
+
+The inline and expanded planned-by-country views must be the **same chart** — only size and data density may differ. This is a stricter rule than "same chart family."
+
+The expanded view may ONLY change:
+
+- the number of rows rendered (inline = top N, expanded = all)
+- the vertical space allocated to the plot
+- the horizontal breathing room around the axes
+
+The expanded view must MATCH the inline view on:
+
+- chart type (grouped horizontal bars)
+- color palette per plan (from the centralized palette)
+- axis orientation, scale type, tick format
+- legend style and placement (use the same custom plan-color legend in both states)
+- `Totals` / `Per Day` control surface and default
+
+Target:
+
+- delete any bespoke "expanded-only" legend styling so the inline legend component is reused in the dialog
+- reuse the same chart component/config across both states rather than maintaining two parallel render paths
+
+### 4.5e. Inline and expanded category chart must be visually identical
+
+Phase 4 shipped the category chart with two genuinely different forms:
+
+- inline: stacked vertical bars (plans on x-axis, categories stacked)
+- expanded: grouped horizontal bars (categories on y-axis, plans grouped)
+
+That split violates the new rule. Phase 4.5e collapses the category chart onto a **single** chart form used in both inline and expanded states, where expansion only changes size/density.
+
+Locked-in form: **grouped horizontal bars**
+
+- categories on the y-axis
+- one bar per plan per category, using the centralized plan color palette
+- plan-level legend using the same custom legend component the country card uses
+- no stacked-vertical fallback; the stacked-composition implementation is deleted in this phase
+
+Why this form was chosen:
+
+- it matches the planned-by-country chart layout, making the two inline cards read as a paired set
+- it answers "how does each plan differ on a given category" directly, which is the primary compare-page question
+- the category set is small and fixed, so there is no inline vs expanded row-count tradeoff — the inline view shows every category already, and expanded only grows the plot
+- it shares a legend shape with the country card, which lets Phase 4.5c normalize header heights cleanly
+
+Both states must MATCH on:
+
+- chart type (grouped horizontal bars)
+- color palette (centralized plan colors from 4.5a)
+- axis orientation, scale type, tick format
+- legend style and placement (custom plan-color legend, same component as the country card)
+- any control surface added later (for example, a `Totals` / `Share` toggle)
+
+Target:
+
+- delete the stacked-vertical inline implementation and any helpers only it uses
+- reuse the same chart component/config across both inline and expanded rather than maintaining two parallel render paths
+
+### 4.5f. Fix plan-name labels in grouped compare charts
+
+Both `ComparisonCountryChart` and the grouped view inside `ComparisonCategoryChart` render Recharts `<Bar>` elements with `dataKey={\`plan_${index}\`}` but no `name` prop. That causes tooltips and Recharts legends to display `plan_0`, `plan_1`, etc. instead of the actual plan name.
+
+Target:
+
+- pass `name={plan.name}` on each `<Bar>` in country and category grouped views
+- verify tooltip and any Recharts legend lines show the real plan name
+- make sure the fix lands in both the inline and expanded render paths (per 4.5d/4.5e those should be the same component, so one fix should cover both)
+
+### Phase 4.5 verification
+
+- compare-page plan colors are consistent across all plan-level visuals and come from a single shared palette module
+- category card shows one legend treatment only
+- inline country/category cards align in height when side-by-side, including equal header min-heights
+- inline and expanded country chart are visually identical in chart type, axes, colors, legend, and controls
+- inline and expanded category chart are visually identical in chart type, axes, colors, legend, and controls
+- tooltips and Recharts legends everywhere on the compare page read real plan names, never `plan_0` / `plan_1`
+
+**Commit**: `fix(compare-ui): align compare chart presentation`
+
+---
+
 ## Phase 5: Testing, Docs, And PR Readiness
 
 ### 5a. Add coverage around new compare payload and layout states
@@ -525,6 +679,8 @@ Update:
 
 - `CLAUDE.md`
 - `AGENTS.md`
+
+Only do this after the Phase 4.5 visual-alignment pass is complete and manually reviewed.
 
 Explain in the PR:
 
