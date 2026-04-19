@@ -248,7 +248,7 @@ function renderChart(
           <Bar
             key={plan.id}
             dataKey={`plan_${index}`}
-            name={`plan_${index}`}
+            name={plan.name}
             fill={PLAN_COLORS[index % PLAN_COLORS.length]}
             radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
             barSize={isExpanded ? expandedBarSize : undefined}
