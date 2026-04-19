@@ -65,6 +65,8 @@ export async function POST(request: Request) {
 
     const results = plans.map((plan) => {
       const snapshot = planSnapshotSchema.parse(JSON.parse(plan.snapshotJson));
+      // Compare intentionally replays the saved snapshot inputs against the current
+      // canonical city dataset so every result surface comes from the same engine.
       return computePlanComparison(plan.id, plan.name, snapshot, cityMap);
     });
 

@@ -75,7 +75,7 @@ Use this as the primary handoff/resume checklist for the branch.
 
 - [x] Phase 0 - Create implementation plan and branch scaffold
 - [x] Phase 1 - Refactor `src/lib/plan-comparison.ts` to build canonical planned-allocation rows and derived grouped outputs
-- [ ] Phase 2 - Align `/api/saved-plans/compare` and compare-page consumers to the canonical comparison engine
+- [x] Phase 2 - Align `/api/saved-plans/compare` and compare-page consumers to the canonical comparison engine
 - [ ] Phase 3 - Add regression tests for `nights` vs inclusive-date mismatch and reconciliation invariants
 - [ ] Phase 4 - Refresh docs, push branch, and open PR
 

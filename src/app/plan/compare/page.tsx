@@ -136,7 +136,7 @@ export default function ComparePlansPage() {
 
   let statusText = '';
   if (showSelector && allPlans.length > 0) {
-    statusText = `${allPlans.length} saved plan${allPlans.length !== 1 ? 's' : ''} available. Select 2\u20135 to compare.`;
+    statusText = `${allPlans.length} saved plan snapshot${allPlans.length !== 1 ? 's' : ''} available. Select 2\u20135 to compare.`;
   } else if (hasResults && !selectorMode) {
     statusText = `Comparing ${comparisonData.length} plan${comparisonData.length !== 1 ? 's' : ''}.`;
   }
@@ -164,7 +164,7 @@ export default function ComparePlansPage() {
             <div>
               <h1 className="text-2xl font-bold">Compare Plans</h1>
               <p className="text-sm text-muted-foreground">
-                Compare cumulative planned spend across your saved plan snapshots.
+                Compare saved plan snapshots with one canonical planned-cost calculation.
               </p>
               {statusText && (
                 <p className="text-xs text-muted-foreground mt-1">{statusText}</p>
@@ -228,6 +228,9 @@ export default function ComparePlansPage() {
                       <div className="text-xs text-muted-foreground">
                         {plan.legCount} legs, {plan.totalNights} nights, $
                         {plan.totalBudget.toLocaleString('en-AU', { maximumFractionDigits: 0 })} total
+                      </div>
+                      <div className="text-[11px] text-muted-foreground/80">
+                        Saved snapshot metadata. Loaded comparison totals are recomputed from current city rates.
                       </div>
                     </div>
                   </label>
