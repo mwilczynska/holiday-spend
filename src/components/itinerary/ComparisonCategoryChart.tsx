@@ -366,8 +366,8 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
 
   return (
     <>
-      <Card>
-        <CardHeader className="pb-2">
+      <Card className="flex h-full flex-col">
+        <CardHeader className="min-h-[112px] pb-2">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-sm">Planned Spend by Category</CardTitle>
             <Button type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
@@ -379,9 +379,11 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
             Inline view shows each plan as a stacked composition. Expand to compare plans category by category.
           </p>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="flex flex-1 flex-col space-y-3">
           <CategoryLegend type="category" items={activeCategories} />
-          {renderInlineCompositionChart(plans, inlineRows)}
+          <div className="flex-1">
+            {renderInlineCompositionChart(plans, inlineRows)}
+          </div>
         </CardContent>
       </Card>
 

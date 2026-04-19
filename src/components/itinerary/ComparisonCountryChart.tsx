@@ -298,8 +298,8 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
 
   return (
     <>
-      <Card>
-        <CardHeader className="pb-2">
+      <Card className="flex h-full flex-col">
+        <CardHeader className="min-h-[112px] pb-2">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-sm">Planned Spend by Country</CardTitle>
             <div className="flex flex-wrap items-center gap-2">
@@ -325,8 +325,10 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
             Inline view shows the top {Math.min(inlineCountryLimit, allRows.length)} countries by combined planned spend. Expand to inspect every country.
           </p>
         </CardHeader>
-        <CardContent>
-          {renderChart(plans, inlineRows, mode, 'inline')}
+        <CardContent className="flex flex-1 flex-col">
+          <div className="flex-1">
+            {renderChart(plans, inlineRows, mode, 'inline')}
+          </div>
         </CardContent>
       </Card>
 
