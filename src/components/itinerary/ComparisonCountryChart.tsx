@@ -176,7 +176,10 @@ function renderChart(
 ) {
   const isExpanded = chartMode === 'expanded';
   const inlineCountryTickWidth = 132;
-  const inlineHeight = Math.max(360, rows.length * Math.max(34, plans.length * 10) + 96);
+  const inlineBarSize = Math.max(4, 8 - Math.max(plans.length - 2, 0));
+  const inlineBarGap = 1;
+  const inlineRowHeight = (plans.length * inlineBarSize) + (Math.max(plans.length - 1, 0) * inlineBarGap) + 4;
+  const inlineHeight = Math.max(360, rows.length * inlineRowHeight + 80);
   const expandedHeight = Math.max(440, rows.length * Math.max(38, plans.length * 11) + 110);
   const expandedBarSize = Math.min(
     22,
@@ -188,21 +191,21 @@ function renderChart(
       <BarChart
         data={rows}
         layout="vertical"
-        barCategoryGap={isExpanded ? '10%' : '8%'}
-        barGap={isExpanded ? 4 : 2}
-        margin={isExpanded ? { top: 8, right: 24, left: 18, bottom: 24 } : { top: 12, right: 10, left: 6, bottom: 18 }}
+        barCategoryGap={isExpanded ? '10%' : '2%'}
+        barGap={isExpanded ? 4 : inlineBarGap}
+        margin={isExpanded ? { top: 8, right: 24, left: 18, bottom: 24 } : { top: 8, right: 10, left: 6, bottom: 14 }}
       >
         <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
         <XAxis
           type="number"
-          tick={{ fontSize: isExpanded ? 13 : 10 }}
+          tick={{ fontSize: isExpanded ? 13 : 9 }}
           tickFormatter={(value) => `$${value}`}
         >
           <Label
             value={mode === 'daily' ? 'Spend per Day (AUD)' : 'Spend (AUD)'}
             position="insideBottom"
-            offset={isExpanded ? -2 : -6}
-            style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}
+            offset={isExpanded ? -2 : -4}
+            style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 9 }}
           />
         </XAxis>
         <YAxis
@@ -217,8 +220,8 @@ function renderChart(
               <WrappedCountryTick
                 {...props}
                 maxWidth={inlineCountryTickWidth - 10}
-                fontSize={10}
-                lineHeight={11}
+                fontSize={9}
+                lineHeight={10}
               />
             )}
         >
@@ -248,7 +251,7 @@ function renderChart(
             name={plan.name}
             fill={PLAN_COLORS[index % PLAN_COLORS.length]}
             radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
-            barSize={isExpanded ? expandedBarSize : undefined}
+            barSize={isExpanded ? expandedBarSize : inlineBarSize}
           />
         ))}
       </BarChart>
