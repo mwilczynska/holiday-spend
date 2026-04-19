@@ -16,21 +16,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
 import { PLAN_COLORS } from '@/lib/comparison-colors';
+import {
+  buildCountryChartRows,
+  DEFAULT_COUNTRY_CHART_MODE,
+  type CountryChartMode,
+  type CountryChartRow,
+} from '@/lib/comparison-country-chart';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
 
-const PICKER_TRIGGER_CLASS_NAME = 'px-3 text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground';
-
-type CountryChartMode = 'total' | 'daily';
-
-interface CountryChartRow {
-  countryId: string;
-  countryName: string;
-  combinedValue: number;
-  combinedDailyValue: number;
-  [key: `plan_${number}`]: number;
-}
+const PICKER_TRIGGER_CLASS_NAME = 'px-3 text-xs data-active:bg-foreground data-active:text-background hover:data-active:text-background data-active:shadow-none';
 
 interface WrappedTickProps {
   x?: number | string;
@@ -111,44 +106,6 @@ function WrappedCountryTick({
       ))}
     </text>
   );
-}
-
-function buildCountryChartRows(plans: PlanComparisonResult[], mode: CountryChartMode) {
-  const rowsByCountry = new Map<string, CountryChartRow>();
-
-  for (let planIndex = 0; planIndex < plans.length; planIndex += 1) {
-    const plan = plans[planIndex];
-    for (const country of plan.countryTotals) {
-      const countryId = country.countryId ?? `unassigned:${country.countryName ?? 'unknown'}`;
-      const countryName = country.countryName ?? 'Unassigned';
-      const value = mode === 'daily' ? (country.plannedPerDay ?? 0) : country.totalPlanned;
-      const existing = rowsByCountry.get(countryId) ?? {
-        countryId,
-        countryName,
-        combinedValue: 0,
-        combinedDailyValue: 0,
-      };
-
-      existing.countryName = existing.countryName || countryName;
-      existing[`plan_${planIndex}`] = value;
-      existing.combinedValue += value;
-      existing.combinedDailyValue += country.plannedPerDay ?? 0;
-      rowsByCountry.set(countryId, existing);
-    }
-  }
-
-  const rows = Array.from(rowsByCountry.values())
-    .map((row) => {
-      const completedRow = { ...row };
-      for (let planIndex = 0; planIndex < plans.length; planIndex += 1) {
-        completedRow[`plan_${planIndex}`] = completedRow[`plan_${planIndex}`] ?? 0;
-      }
-      return completedRow;
-    })
-    .filter((row) => row.combinedValue > 0)
-    .sort((a, b) => b.combinedDailyValue - a.combinedDailyValue || a.countryName.localeCompare(b.countryName));
-
-  return rows;
 }
 
 function CountryLegend({ plans, compact = false }: { plans: PlanComparisonResult[]; compact?: boolean }) {
@@ -264,13 +221,11 @@ function renderChart(
 
 export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[] }) {
   const [expanded, setExpanded] = useState(false);
-  const [mode, setMode] = useState<CountryChartMode>('total');
+  const [mode, setMode] = useState<CountryChartMode>(DEFAULT_COUNTRY_CHART_MODE);
 
   const allRows = useMemo(() => buildCountryChartRows(plans, mode), [plans, mode]);
 
   if (allRows.length === 0) return null;
-
-  const countryViewLabel = mode === 'daily' ? 'Showing Per Day' : 'Showing Totals';
 
   return (
     <>
@@ -287,9 +242,6 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
                     <TabsTrigger value="daily" className={PICKER_TRIGGER_CLASS_NAME}>Per Day</TabsTrigger>
                   </TabsList>
                 </Tabs>
-                <Badge variant={mode === 'daily' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-                  {countryViewLabel}
-                </Badge>
               </div>
               <Button type="button" variant="outline" size="sm" onClick={() => setExpanded(true)}>
                 <Maximize2 className="mr-2 h-4 w-4" />
@@ -321,9 +273,6 @@ export function ComparisonCountryChart({ plans }: { plans: PlanComparisonResult[
                     <TabsTrigger value="daily" className={PICKER_TRIGGER_CLASS_NAME}>Per Day</TabsTrigger>
                   </TabsList>
                 </Tabs>
-                <Badge variant={mode === 'daily' ? 'outline' : 'default'} className="text-[10px] uppercase tracking-wide">
-                  {countryViewLabel}
-                </Badge>
               </div>
             </div>
           </DialogHeader>
