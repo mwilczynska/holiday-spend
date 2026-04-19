@@ -79,10 +79,10 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 1a - Add chart-friendly compare outputs for per-country totals and planned-day metrics
 - [x] Phase 1b - Confirm category totals and any percentage helpers needed for the category chart
 - [x] Phase 1c - Keep all new metrics inside the canonical compare engine rather than chart-side derivations
-- [ ] Phase 2 - Refactor compare-page layout and summary-card presentation
-- [ ] Phase 2a - Replace the fixed summary-card grid with a wider responsive horizontal rail
-- [ ] Phase 2b - Preserve a clean page hierarchy: summary rail, hero chart, secondary chart section
-- [ ] Phase 2c - Add dynamic layout rules for 2-3 plans versus 4-5 plans
+- [x] Phase 2 - Refactor compare-page layout and summary-card presentation
+- [x] Phase 2a - Replace the fixed summary-card grid with a wider responsive horizontal rail
+- [x] Phase 2b - Preserve a clean page hierarchy: summary rail, hero chart, secondary chart section
+- [x] Phase 2c - Add dynamic layout rules for 2-3 plans versus 4-5 plans
 - [ ] Phase 3 - Add the planned-by-country compare chart
 - [ ] Phase 3a - Implement grouped horizontal country bars with one series per compared plan
 - [ ] Phase 3b - Add `Totals` / `Per Day` modes using canonical compare payload fields
