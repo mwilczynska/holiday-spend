@@ -69,6 +69,24 @@ By the end of this workstream:
 
 ---
 
+## Task Tracker
+
+Use this as the primary handoff/resume checklist for the branch.
+
+- [x] Phase 0 - Create implementation plan and branch scaffold
+- [x] Phase 1 - Refactor `src/lib/plan-comparison.ts` to build canonical planned-allocation rows and derived grouped outputs
+- [ ] Phase 2 - Align `/api/saved-plans/compare` and compare-page consumers to the canonical comparison engine
+- [ ] Phase 3 - Add regression tests for `nights` vs inclusive-date mismatch and reconciliation invariants
+- [ ] Phase 4 - Refresh docs, push branch, and open PR
+
+### Handoff Notes
+
+- The branch starts from `main` after the cleanup/docs reorganization merge.
+- The known discrepancy reproduced on both test plans is caused by inclusive date enumeration in the chart path, not by stale saved-plan summary rows.
+- Future compare-page country/category charts are intentionally part of the target data model, even if their UI does not ship in this branch.
+
+---
+
 ## Non-Goals
 
 The following are intentionally out of scope unless needed to support the canonical allocation model:
@@ -414,4 +432,3 @@ This branch is successful when all of the following are true:
 - `src/components/itinerary/ComparisonSummaryCards.tsx`
 - `src/components/itinerary/SavedPlansList.tsx`
 - comparison tests under `src/lib/*.test.ts` and/or `tests/playwright/*`
-
