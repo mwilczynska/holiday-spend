@@ -10,7 +10,6 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   Label,
-  Cell,
 } from 'recharts';
 import { Maximize2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,22 +17,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { PLAN_COLORS } from '@/lib/comparison-colors';
 import type { PlanComparisonCategoryTotal, PlanComparisonResult } from '@/lib/plan-comparison';
-
-const CATEGORY_COLORS: Record<PlanComparisonCategoryTotal['category'], string> = {
-  accommodation: '#2563eb',
-  food: '#16a34a',
-  drinks: '#f59e0b',
-  activities: '#8b5cf6',
-  transport: '#06b6d4',
-  fixed_cost: '#64748b',
-};
-
-interface CategoryCompositionRow {
-  id: string;
-  name: string;
-  totalPlanned: number;
-  [key: string]: string | number;
-}
 
 interface CategoryComparisonRow {
   category: PlanComparisonCategoryTotal['category'];
@@ -113,15 +96,22 @@ function wrapLabel(value: string, maxCharsPerLine: number, maxLines: number) {
   return lines;
 }
 
-function WrappedPlanTick({ x = 0, y = 0, payload }: WrappedTickProps) {
+function WrappedCategoryTick({
+  x = 0,
+  y = 0,
+  payload,
+  maxWidth = 128,
+  fontSize = 10,
+  lineHeight = 11,
+}: WrappedTickProps & { maxWidth?: number; fontSize?: number; lineHeight?: number }) {
   const rawValue = payload?.value ?? '';
-  const lines = wrapLabel(rawValue, 12, 2);
+  const lines = wrapLabel(rawValue, Math.max(8, Math.floor(maxWidth / 6.8)), 2);
   const resolvedX = typeof x === 'number' ? x : Number(x ?? 0);
   const resolvedY = typeof y === 'number' ? y : Number(y ?? 0);
-  const lineHeight = 11;
+  const startY = resolvedY - ((lines.length - 1) * lineHeight) / 2;
 
   return (
-    <text x={resolvedX} y={resolvedY + 10} textAnchor="middle" fill="#475569" fontSize={10}>
+    <text x={resolvedX} y={startY} textAnchor="end" fill="#475569" fontSize={fontSize}>
       {lines.map((line, index) => (
         <tspan key={`${rawValue}-${index}`} x={resolvedX} dy={index === 0 ? 0 : lineHeight}>
           {line}
@@ -129,22 +119,6 @@ function WrappedPlanTick({ x = 0, y = 0, payload }: WrappedTickProps) {
       ))}
     </text>
   );
-}
-
-function buildCategoryCompositionRows(plans: PlanComparisonResult[]) {
-  return plans.map((plan) => {
-    const row: CategoryCompositionRow = {
-      id: plan.id,
-      name: plan.name,
-      totalPlanned: plan.summary.totalBudget,
-    };
-
-    for (const category of plan.categoryTotals) {
-      row[category.category] = category.totalPlanned;
-    }
-
-    return row;
-  });
 }
 
 function buildCategoryComparisonRows(plans: PlanComparisonResult[]) {
@@ -177,140 +151,92 @@ function buildCategoryComparisonRows(plans: PlanComparisonResult[]) {
     .sort((a, b) => b.total - a.total);
 }
 
-function CategoryLegend({
-  items,
-  type,
-}: {
-  items: Array<{ key: string; label: string; color: string }>;
-  type: 'category' | 'plan';
-}) {
+function CategoryPlanLegend({ plans, compact = false }: { plans: PlanComparisonResult[]; compact?: boolean }) {
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
-      {items.map((item) => (
-        <div key={item.key} className="flex items-center gap-2">
+    <div
+      className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-muted-foreground"
+      style={{ fontSize: compact ? 12 : 13 }}
+    >
+      {plans.map((plan, index) => (
+        <div key={plan.id} className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={type === 'category' ? 'inline-block h-2.5 w-2.5 rounded-full' : 'inline-block h-0.5'}
-            style={type === 'category'
-              ? { backgroundColor: item.color }
-              : { width: 26, backgroundColor: item.color }}
+            className="inline-block h-0.5"
+            style={{ width: compact ? 22 : 26, backgroundColor: PLAN_COLORS[index % PLAN_COLORS.length] }}
           />
-          <span className="font-medium">{item.label}</span>
+          <span className="font-medium">{plan.name}</span>
         </div>
       ))}
     </div>
   );
 }
 
-function renderInlineCompositionChart(plans: PlanComparisonResult[], rows: CategoryCompositionRow[]) {
-  const categoryOrder: PlanComparisonCategoryTotal['category'][] = [
-    'accommodation',
-    'food',
-    'drinks',
-    'activities',
-    'transport',
-    'fixed_cost',
-  ];
-
-  return (
-    <ResponsiveContainer width="100%" height={360}>
-      <BarChart data={rows} margin={{ top: 16, right: 18, left: 6, bottom: 34 }}>
-        <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" vertical={false} />
-        <XAxis
-          dataKey="name"
-          interval={0}
-          height={54}
-          tick={(props: WrappedTickProps) => <WrappedPlanTick {...props} />}
-        >
-          <Label
-            value="Plan"
-            position="insideBottom"
-            offset={-8}
-            style={{ fill: '#64748b', fontSize: 10 }}
-          />
-        </XAxis>
-        <YAxis tick={{ fontSize: 10 }} tickFormatter={(value) => `$${value}`}>
-          <Label
-            value="Spend (AUD)"
-            angle={-90}
-            position="insideLeft"
-            style={{ fill: '#64748b', fontSize: 10, textAnchor: 'middle' }}
-          />
-        </YAxis>
-        <Tooltip
-          contentStyle={{
-            fontSize: 11,
-            padding: '8px 10px',
-            borderRadius: '10px',
-            borderColor: '#cbd5e1',
-          }}
-          formatter={(value, _name, item) => {
-            const rowTotal = Number(item?.payload?.totalPlanned ?? 0);
-            const numericValue = Number(value ?? 0);
-            const percent = rowTotal > 0 ? ` (${((numericValue / rowTotal) * 100).toFixed(0)}%)` : '';
-            return `${formatAud(numericValue)}${percent}`;
-          }}
-          labelFormatter={(label) => `Plan: ${label}`}
-        />
-        {categoryOrder.map((category) => (
-          <Bar
-            key={category}
-            dataKey={category}
-            stackId="plan-category"
-            fill={CATEGORY_COLORS[category]}
-            radius={category === 'fixed_cost' ? [4, 4, 0, 0] : 0}
-          />
-        ))}
-      </BarChart>
-    </ResponsiveContainer>
-  );
-}
-
-function renderExpandedGroupedChart(plans: PlanComparisonResult[], rows: Array<CategoryComparisonRow & { total: number }>) {
+function renderGroupedChart(
+  plans: PlanComparisonResult[],
+  rows: Array<CategoryComparisonRow & { total: number }>,
+  chartMode: 'inline' | 'expanded'
+) {
+  const isExpanded = chartMode === 'expanded';
+  const inlineCategoryTickWidth = 132;
   const expandedHeight = Math.max(420, rows.length * Math.max(42, plans.length * 12) + 110);
   const expandedBarSize = Math.min(
     22,
     Math.max(16, Math.floor(((expandedHeight - 84) / Math.max(rows.length * Math.max(plans.length, 1), 1)) * 0.8))
   );
 
-  const chartNode = (
-    <ResponsiveContainer width="100%" height="100%">
+  return (
+    <ResponsiveContainer width="100%" height={isExpanded ? '100%' : 360}>
       <BarChart
         data={rows}
         layout="vertical"
-        barCategoryGap="10%"
-        barGap={4}
-        margin={{ top: 8, right: 24, left: 18, bottom: 24 }}
+        barCategoryGap={isExpanded ? '10%' : '8%'}
+        barGap={isExpanded ? 4 : 2}
+        margin={isExpanded ? { top: 8, right: 24, left: 18, bottom: 24 } : { top: 12, right: 10, left: 6, bottom: 18 }}
       >
         <CartesianGrid stroke="#cbd5e1" strokeDasharray="3 3" horizontal={false} />
-        <XAxis type="number" tick={{ fontSize: 13 }} tickFormatter={(value) => `$${value}`}>
+        <XAxis
+          type="number"
+          tick={{ fontSize: isExpanded ? 13 : 10 }}
+          tickFormatter={(value) => `$${value}`}
+        >
           <Label
             value="Spend (AUD)"
             position="insideBottom"
-            offset={-2}
-            style={{ fill: '#64748b', fontSize: 13 }}
+            offset={isExpanded ? -2 : -6}
+            style={{ fill: '#64748b', fontSize: isExpanded ? 13 : 10 }}
           />
         </XAxis>
         <YAxis
           type="category"
           dataKey="name"
-          width={180}
+          width={isExpanded ? 180 : inlineCategoryTickWidth}
           interval={0}
           padding={{ top: 0, bottom: 0 }}
-          tick={{ fontSize: 13 }}
+          tick={isExpanded
+            ? { fontSize: 13 }
+            : (props: WrappedTickProps) => (
+              <WrappedCategoryTick
+                {...props}
+                maxWidth={inlineCategoryTickWidth - 10}
+                fontSize={10}
+                lineHeight={11}
+              />
+            )}
         >
-          <Label
-            value="Category"
-            angle={-90}
-            position="insideLeft"
-            style={{ fill: '#64748b', fontSize: 13, textAnchor: 'middle' }}
-          />
+          {isExpanded ? (
+            <Label
+              value="Category"
+              angle={-90}
+              position="insideLeft"
+              style={{ fill: '#64748b', fontSize: 13, textAnchor: 'middle' }}
+            />
+          ) : null}
         </YAxis>
         <Tooltip
           cursor={{ fill: 'rgba(148, 163, 184, 0.12)' }}
           contentStyle={{
-            fontSize: 13,
-            padding: '10px 12px',
+            fontSize: isExpanded ? 13 : 11,
+            padding: isExpanded ? '10px 12px' : '8px 10px',
             borderRadius: '10px',
             borderColor: '#cbd5e1',
           }}
@@ -322,47 +248,21 @@ function renderExpandedGroupedChart(plans: PlanComparisonResult[], rows: Array<C
             dataKey={`plan_${index}`}
             name={`plan_${index}`}
             fill={PLAN_COLORS[index % PLAN_COLORS.length]}
-            radius={[0, 6, 6, 0]}
-            barSize={expandedBarSize}
+            radius={isExpanded ? [0, 6, 6, 0] : [0, 4, 4, 0]}
+            barSize={isExpanded ? expandedBarSize : undefined}
           />
         ))}
       </BarChart>
     </ResponsiveContainer>
-  );
-
-  return (
-    <div className="flex h-full min-h-0 flex-col gap-2">
-      <CategoryLegend
-        type="plan"
-        items={plans.map((plan, index) => ({
-          key: plan.id,
-          label: plan.name,
-          color: PLAN_COLORS[index % PLAN_COLORS.length],
-        }))}
-      />
-      <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
-        {chartNode}
-      </div>
-    </div>
   );
 }
 
 export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult[] }) {
   const [expanded, setExpanded] = useState(false);
 
-  const inlineRows = useMemo(() => buildCategoryCompositionRows(plans), [plans]);
-  const expandedRows = useMemo(() => buildCategoryComparisonRows(plans), [plans]);
-  const activeCategories = useMemo(
-    () =>
-      expandedRows.map((row) => ({
-        key: row.category,
-        label: row.name,
-        color: CATEGORY_COLORS[row.category],
-      })),
-    [expandedRows]
-  );
+  const rows = useMemo(() => buildCategoryComparisonRows(plans), [plans]);
 
-  if (expandedRows.length === 0) return null;
+  if (rows.length === 0) return null;
 
   return (
     <>
@@ -376,13 +276,13 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
             </Button>
           </div>
           <p className="text-xs text-muted-foreground">
-            Inline view shows each plan as a stacked composition. Expand to compare plans category by category.
+            Compare plans category by category. Expand for a roomier version of the same grouped chart.
           </p>
         </CardHeader>
-        <CardContent className="flex flex-1 flex-col space-y-3">
-          <CategoryLegend type="category" items={activeCategories} />
-          <div className="flex-1">
-            {renderInlineCompositionChart(plans, inlineRows)}
+        <CardContent className="flex flex-1 flex-col gap-3">
+          <CategoryPlanLegend plans={plans} compact />
+          <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
+            {renderGroupedChart(plans, rows, 'inline')}
           </div>
         </CardContent>
       </Card>
@@ -393,7 +293,12 @@ export function ComparisonCategoryChart({ plans }: { plans: PlanComparisonResult
             <DialogTitle>Planned Spend by Category</DialogTitle>
           </DialogHeader>
           <div className="min-h-0 overflow-hidden px-5 pt-1 pb-3">
-            {renderExpandedGroupedChart(plans, expandedRows)}
+            <div className="flex h-full min-h-0 flex-col gap-2">
+              <CategoryPlanLegend plans={plans} />
+              <div className="min-h-0 flex-1 rounded-xl border border-slate-200/80 bg-slate-50/40 px-2 pb-2 pt-1 shadow-sm">
+                {renderGroupedChart(plans, rows, 'expanded')}
+              </div>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
