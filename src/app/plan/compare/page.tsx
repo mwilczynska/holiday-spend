@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeftRight } from 'lucide-react';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { ComparisonChart } from '@/components/itinerary/ComparisonChart';
+import { ComparisonCountryChart } from '@/components/itinerary/ComparisonCountryChart';
 import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummaryCards';
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
@@ -133,8 +134,6 @@ export default function ComparePlansPage() {
   // Derive header state
   const hasResults = !!comparisonData && comparisonData.length > 0;
   const showSelector = selectorMode && !loading;
-  const comparedPlanCount = comparisonData?.length ?? 0;
-  const shouldStackAnalyticsSections = comparedPlanCount >= 4;
 
   let statusText = '';
   if (showSelector && allPlans.length > 0) {
@@ -274,14 +273,12 @@ export default function ComparePlansPage() {
 
             <section className="space-y-3">
               <div className="flex flex-col gap-1">
-                <h2 className="text-base font-semibold">More Compare Analytics</h2>
+                <h2 className="text-base font-semibold">By Country</h2>
                 <p className="text-sm text-muted-foreground">
-                  The next charts in this branch will add planned spend by country and planned spend by category.
-                  {shouldStackAnalyticsSections
-                    ? ' With four or more plans, those cards will stack vertically to preserve readability.'
-                    : ' With two or three plans, those cards will sit side by side on desktop.'}
+                  Compare how each plan allocates spend geographically in total terms or per planned day.
                 </p>
               </div>
+              <ComparisonCountryChart plans={comparisonData} />
             </section>
           </div>
         )}

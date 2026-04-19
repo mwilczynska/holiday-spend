@@ -83,10 +83,10 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 2a - Replace the fixed summary-card grid with a wider responsive horizontal rail
 - [x] Phase 2b - Preserve a clean page hierarchy: summary rail, hero chart, secondary chart section
 - [x] Phase 2c - Add dynamic layout rules for 2-3 plans versus 4-5 plans
-- [ ] Phase 3 - Add the planned-by-country compare chart
-- [ ] Phase 3a - Implement grouped horizontal country bars with one series per compared plan
-- [ ] Phase 3b - Add `Totals` / `Per Day` modes using canonical compare payload fields
-- [ ] Phase 3c - Limit the inline view to a readable top-country subset while keeping the expanded dialog exhaustive
+- [x] Phase 3 - Add the planned-by-country compare chart
+- [x] Phase 3a - Implement grouped horizontal country bars with one series per compared plan
+- [x] Phase 3b - Add `Totals` / `Per Day` modes using canonical compare payload fields
+- [x] Phase 3c - Limit the inline view to a readable top-country subset while keeping the expanded dialog exhaustive
 - [ ] Phase 4 - Add the planned-by-category compare chart
 - [ ] Phase 4a - Implement the inline category chart as stacked-by-plan composition
 - [ ] Phase 4b - Implement the expanded category view as grouped-by-category comparison
