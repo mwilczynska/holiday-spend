@@ -91,17 +91,22 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 4a - Implement the inline category chart as stacked-by-plan composition
 - [x] Phase 4b - Implement the expanded category view as grouped-by-category comparison
 - [x] Phase 4c - Add dynamic legend, label, and sizing behavior for 2-5 plans
-- [ ] Phase 4.5 - Run a compare-chart visual alignment pass before Phase 5 wrap-up
+- [x] Phase 4.5 - Run a compare-chart visual alignment pass before Phase 5 wrap-up
 - [x] Phase 4.5a - Centralize `PLAN_COLORS` and standardize compare-page plan colors to `blue -> purple -> teal -> yellow -> green`
 - [x] Phase 4.5b - Remove the duplicate legend from the planned-by-category chart and keep one clear legend treatment
 - [x] Phase 4.5c - Sync the inline card heights for the planned-by-country and planned-by-category cards
 - [x] Phase 4.5d - Inline and expanded planned-by-country chart must be visually identical: same plot type, colors, axes, legend, and controls; expanded only shows more rows and more breathing room
 - [x] Phase 4.5e - Inline and expanded planned-by-category chart must be visually identical; use grouped horizontal bars (categories on y-axis, plans as grouped bars) in both states and delete the stacked-vertical implementation
 - [x] Phase 4.5f - Fix tooltip/legend labels to use plan names instead of `plan_0` / `plan_1` in grouped compare charts
+- [x] Phase 4.5g - Expand the inline planned-by-country chart to show every country and grow card height dynamically with row count
+- [x] Phase 4.5h - Tighten the inline planned-by-country chart density so high-country-count comparisons stay closer to one screen
+- [x] Phase 4.5i - Make `Per Day` the default country-chart mode and replace the ambiguous tab styling with an explicit black active-state picker
+- [x] Phase 4.5j - Change country-row ranking from combined per-day spend across plans to the maximum displayed per-day spend across compared plans
 - [ ] Phase 5 - Polish, test, and document the compare UI expansion
 - [ ] Phase 5a - Add unit and/or component coverage for new compare payload extensions
 - [ ] Phase 5b - Add Playwright coverage for 2-plan and 5-plan compare-page readability and chart rendering
-- [ ] Phase 5c - Refresh project memory, push branch, and open the implementation PR
+- [ ] Phase 5c - Run a cleanup pass on temporary probe files, stale test scaffolding, and tracked vs untracked compare-page artifacts before merge
+- [ ] Phase 5d - Refresh project memory, push branch, and open the implementation PR
 
 ### Handoff Notes
 
@@ -643,6 +648,56 @@ Target:
 - verify tooltip and any Recharts legend lines show the real plan name
 - make sure the fix lands in both the inline and expanded render paths (per 4.5d/4.5e those should be the same component, so one fix should cover both)
 
+### 4.5g. Inline country chart must show every country
+
+Phase 3 intentionally limited the inline country chart to a top-country subset. That proved too aggressive once the compare page became a richer planning surface.
+
+Target:
+
+- remove the inline top-N country limit
+- render every country in the inline planned-by-country card
+- make the inline chart height grow dynamically from the actual number of country rows instead of using a fixed chart height
+
+### 4.5h. Tighten inline country-chart density
+
+Once 4.5g removed the top-N limit, larger comparisons could push the inline country card beyond a comfortable one-screen height.
+
+Target:
+
+- reduce inline bar thickness versus the expanded chart
+- tighten inter-row spacing and inline axis typography
+- keep all countries visible while reducing the overall inline card height materially for dense comparisons
+
+### 4.5i. Make `Per Day` the default and the active picker state explicit
+
+The compare-country chart's intended primary read is daily spend, but the old control styling left the active state visually ambiguous.
+
+Target:
+
+- default the country chart to `Per Day`
+- replace the fragile shared-tab styling with an explicit compare-country mode picker that always shows the active option with a black background
+- use the same clearer picker treatment in both inline and expanded country-chart states
+
+### 4.5j. Rank country rows by the highest displayed per-day spend
+
+The earlier sort rule used the **sum** of per-day values across all compared plans. That was mathematically valid, but it did not match how users read grouped horizontal bars visually.
+
+Locked-in rule:
+
+- rank country rows by the **maximum** per-day value shown across the compared plans
+- do not rank by the sum of per-day values across plans
+
+Why this rule was chosen:
+
+- it matches the strongest visible bar in each grouped row
+- it makes countries with one standout expensive plan rise appropriately
+- it aligns the row ordering more closely with how the grouped compare bars are read at a glance
+
+Target:
+
+- keep the sort logic in a small helper module rather than burying it in the chart component
+- add unit coverage that locks the max-per-day ranking behavior explicitly
+
 ### Phase 4.5 verification
 
 - compare-page plan colors are consistent across all plan-level visuals and come from a single shared palette module
@@ -651,6 +706,10 @@ Target:
 - inline and expanded country chart are visually identical in chart type, axes, colors, legend, and controls
 - inline and expanded category chart are visually identical in chart type, axes, colors, legend, and controls
 - tooltips and Recharts legends everywhere on the compare page read real plan names, never `plan_0` / `plan_1`
+- inline country chart shows every country and grows from actual row count rather than truncating to a top subset
+- dense inline country comparisons stay materially tighter than the first full-height version
+- `Per Day` is the default country-chart mode and the active picker state is visually unambiguous
+- country rows are ranked by the maximum displayed per-day spend across compared plans, not by the sum of per-day values across plans
 
 **Commit**: `fix(compare-ui): align compare chart presentation`
 
@@ -673,7 +732,18 @@ At minimum:
 - 5-plan comparison still renders readable inline layout
 - expand dialogs open successfully for all compare charts
 
-### 5c. Refresh memory and open the implementation PR
+### 5c. Cleanup before merge
+
+Before merging the branch, do one explicit cleanup pass focused on compare-page implementation leftovers.
+
+Target:
+
+- remove any temporary probe files, debug scripts, or one-off test artifacts created during visual investigation
+- confirm compare-page tests that should be tracked are committed and any personal/local artifacts remain untracked
+- check for stale compare-only helper code that is no longer referenced after the Phase 4.5 follow-up work
+- leave the worktree clean except for intentional documentation or implementation changes still under review
+
+### 5d. Refresh memory and open the implementation PR
 
 Update:
 
@@ -693,6 +763,7 @@ Explain in the PR:
 - tests pass
 - docs are current
 - implementation PR is open
+- compare-page branch has no leftover debug/probe files and no ambiguous tracked/untracked artifacts related to this workstream
 
 **Commit**: `docs(compare-ui): finalize compare analytics notes`
 
