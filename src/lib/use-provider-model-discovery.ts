@@ -32,6 +32,16 @@ function buildFallbackState(provider: CityGenerationProvider): ProviderModelDisc
   };
 }
 
+function pluralizeModels(count: number) {
+  return `${count} model${count === 1 ? '' : 's'}`;
+}
+
+function formatAggregatorLabel(aggregatorSource: ProviderModelDiscoveryResult['aggregatorSource']) {
+  if (aggregatorSource === 'openrouter') return 'OpenRouter';
+  if (aggregatorSource === 'models.dev') return 'models.dev';
+  return 'an aggregator';
+}
+
 export function formatProviderModelDiscoveryStatus(params: {
   result: ProviderModelDiscoveryResult;
   loading: boolean;
@@ -40,14 +50,23 @@ export function formatProviderModelDiscoveryStatus(params: {
     return 'Loading live model suggestions...';
   }
 
-  if (params.result.source === 'live') {
-    const discoveredCount = params.result.liveModels.length;
+  const { result } = params;
+  const cachedSuffix = result.cacheHit ? ' (cached)' : '';
+
+  if (result.source === 'live') {
+    const discoveredCount = result.liveModels.length;
     return discoveredCount > 0
-      ? `Live models loaded from the provider API${params.result.cacheHit ? ' (cached)' : ''}. ${discoveredCount} model${discoveredCount === 1 ? '' : 's'} discovered.`
-      : 'Live model discovery returned no usable generation models. Showing curated fallback suggestions first.';
+      ? `Live models loaded from the provider API${cachedSuffix}. ${pluralizeModels(discoveredCount)} discovered.`
+      : 'Live model discovery returned no usable generation models. Showing curated snapshot suggestions first.';
   }
 
-  return 'Showing curated fallback suggestions.';
+  if (result.source === 'aggregated') {
+    const aggregatorLabel = formatAggregatorLabel(result.aggregatorSource);
+    const discoveredCount = result.liveModels.length;
+    return `Showing aggregated suggestions from ${aggregatorLabel}${cachedSuffix}. ${pluralizeModels(discoveredCount)} listed. Add a provider API key for live models straight from the provider.`;
+  }
+
+  return 'Showing curated snapshot suggestions. Run `npm run models:refresh` to update them.';
 }
 
 export function summarizeProviderModelExamples(modelIds: string[], limit = 4) {

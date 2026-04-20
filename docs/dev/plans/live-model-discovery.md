@@ -368,10 +368,10 @@ By the end of this workstream:
 - [x] Phase B4 - Update `city-generation-config.ts` to import `CITY_GENERATION_KNOWN_MODELS` from the generated JSON
 - [x] Phase B5 - Add a `models:check` dry-run mode so CI can detect when the snapshot is stale without rewriting it
 - [x] Phase B6 - Run the refresh script once and commit the initial snapshot
-- [ ] Phase C - UI integration for the new source tier
-- [ ] Phase C1 - Extend the shared status line copy to cover `source === 'aggregated'` (e.g. "Suggestions from OpenRouter")
-- [ ] Phase C2 - Update warnings so users understand when Tier 2 was used vs Tier 3 snapshot
-- [ ] Phase C3 - Confirm all five picker surfaces render the new status line correctly
+- [x] Phase C - UI integration for the new source tier
+- [x] Phase C1 - Extend the shared status line copy to cover `source === 'aggregated'` (names OpenRouter/models.dev and prompts for API key for live provider discovery)
+- [x] Phase C2 - Warnings cleanly distinguish Tier 2 success (no warning) from Tier 3 fallback (warning carries the aggregator/provider error)
+- [x] Phase C3 - All five picker surfaces already render the shared `statusMessage` + `warning` fields; no per-picker changes needed
 - [ ] Phase D - Tests and verification
 - [ ] Phase D1 - Unit tests for OpenRouter response normalization (provider split, prefix stripping, filter reuse)
 - [ ] Phase D2 - Unit tests for models.dev response normalization

@@ -536,8 +536,8 @@ export async function discoverProviderModels(params: {
         provider: params.provider,
         credentialSource: credential.credentialSource,
         warning: err instanceof Error
-          ? `${err.message} Showing curated fallback suggestions.`
-          : 'Live model discovery is unavailable without a provider API key, and aggregated sources could not be reached. Showing curated fallback suggestions.',
+          ? `${err.message} Showing curated snapshot suggestions.`
+          : 'Live model discovery is unavailable without a provider API key, and aggregated sources could not be reached. Showing curated snapshot suggestions.',
       });
     }
   }
@@ -558,7 +558,7 @@ export async function discoverProviderModels(params: {
       effectiveModels: mergeProviderModelSuggestions(params.provider, liveModels),
       fetchedAt: new Date().toISOString(),
       warning: liveModels.length === 0
-        ? 'The provider returned no usable generation models. Showing curated fallback suggestions first.'
+        ? 'The provider returned no usable generation models. Showing curated snapshot suggestions first.'
         : null,
     };
 
@@ -576,8 +576,8 @@ export async function discoverProviderModels(params: {
       provider: params.provider,
       credentialSource: credential.credentialSource,
       warning: err instanceof Error
-        ? `${err.message} Showing curated fallback suggestions.`
-        : 'Live model discovery failed. Showing curated fallback suggestions.',
+        ? `${err.message} Showing curated snapshot suggestions.`
+        : 'Live model discovery failed. Showing curated snapshot suggestions.',
     });
   }
 }

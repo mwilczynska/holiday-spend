@@ -209,7 +209,7 @@ describe('provider-model-discovery', () => {
       expect(result.credentialSource).toBe('none');
       expect(result.liveModels).toEqual([]);
       expect(result.effectiveModels.length).toBeGreaterThan(0);
-      expect(result.warning).toMatch(/curated fallback/i);
+      expect(result.warning).toMatch(/curated snapshot/i);
     } finally {
       global.fetch = originalFetch;
       if (originalOpenAiKey !== undefined) process.env.OPENAI_API_KEY = originalOpenAiKey;
