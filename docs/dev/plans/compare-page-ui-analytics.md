@@ -103,7 +103,7 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 4.5i - Make `Per Day` the default country-chart mode and replace the ambiguous tab styling with an explicit black active-state picker
 - [x] Phase 4.5j - Change country-row ranking from combined per-day spend across plans to the maximum displayed per-day spend across compared plans
 - [ ] Phase 5 - Polish, test, and document the compare UI expansion
-- [ ] Phase 5a - Add unit and/or component coverage for new compare payload extensions
+- [x] Phase 5a - Add unit and/or component coverage for new compare payload extensions
 - [ ] Phase 5b - Add Playwright coverage for 2-plan and 5-plan compare-page readability and chart rendering
 - [ ] Phase 5c - Run a cleanup pass on temporary probe files, stale test scaffolding, and tracked vs untracked compare-page artifacts before merge
 - [ ] Phase 5d - Refresh project memory, push branch, and open the implementation PR
