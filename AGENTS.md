@@ -16,7 +16,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 ## Core Product Behaviour
 - `/plan` builds the trip city-by-city with dates, tiers, overrides, and intercity transport
-- `/plan/compare` compares saved plan snapshots side-by-side with cumulative spend charts and summary cards
+- `/plan/compare` compares saved plan snapshots side-by-side with cumulative spend, country, and category charts plus summary cards
 - `/track` records actual spend, either manually or by importing Wise CSV exports
 - `/` compares planned vs actual spend across the trip and across countries
 - `/dataset` manages the city cost library, shows the planner-facing dataset, and shows generation history
@@ -147,6 +147,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Comparison computes planned costs server-side from snapshot tier selections plus current city base rates
 - Compare now uses one canonical planned-allocation model for summary totals, cumulative chart lines, and future country/category grouped outputs
 - Compare totals reconcile by design: summary total, final cumulative value, country totals, and category totals all come from the same allocation engine
+- The compare page now has a deliberate hierarchy: wider plan-summary cards first, cumulative spend as the hero chart, then country/category breakdown charts below
+- Compare-page layout adapts by plan count: 2-3 plans keep the breakdown charts side-by-side, while 4-5 plans stack them vertically for readability
+- Planned spend by country now supports canonical `Totals` and `Per Day` modes, defaults to `Per Day`, shows all countries inline with dynamic height, and ranks rows by the maximum displayed daily spend across compared plans
+- Planned spend by category now uses grouped horizontal bars in both inline and expanded states so the expanded view mirrors the inline card rather than changing chart type
+- Compare-page colors are centralized in `src/lib/comparison-colors.ts` and fixed to the sequence `blue -> purple -> teal -> yellow -> green`
 - Snapshot export now includes optional city/country metadata per leg, and snapshot import can pause for a missing-city resolution step before continuing
 - That import resolver now asks the user to choose a canonical country from the repo-owned dataset and auto-creates the country row server-side only when needed
 - The `/plan` add-leg new-city path now uses a planner-specific server route that checks the DB first, infers currency/region/IDs server-side, creates missing country/city rows, generates costs, and then adds the leg
@@ -303,6 +308,15 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Playwright E2E tests cover save, persist, delete, compare navigation, chart rendering, sidebar nav, and error states
 - Vitest coverage now locks compare reconciliation invariants, fixed-cost allocation behavior, intercity-first-day allocation, and the `nights` versus inclusive-date regression case
 - The temporary browser `localStorage` migration shim has now been removed; saved plans are DB-only in the active app model
+- Compare-page analytics now include:
+  - a wider responsive summary rail for 2-5 plans
+  - a planned-by-country chart derived from canonical compare payload fields, with `Per Day` as the default view
+  - a planned-by-category grouped bar chart that stays visually aligned between inline and expanded states
+  - a centralized compare-page color palette shared across summary cards and all compare charts
+- Compare-page country-chart shaping is now centralized in `src/lib/comparison-country-chart.ts`, including the default mode and the max-daily-spend row ordering rule
+- Compare-page test coverage now includes:
+  - Vitest helper coverage for country-chart data shaping
+  - Playwright coverage for 2-plan and 5-plan compare readability plus all compare-chart expand dialogs
 
 ### Dataset And Seeding
 - `src/db/seed.ts` now imports the new CSV dataset
@@ -423,9 +437,14 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `tests/playwright/planner-regressions.spec.ts`
 - `src/lib/plan-comparison.ts`
 - `src/lib/plan-comparison.test.ts`
+- `src/lib/comparison-country-chart.ts`
+- `src/lib/comparison-country-chart.test.ts`
+- `src/lib/comparison-colors.ts`
 - `src/components/itinerary/SavedPlansList.tsx`
 - `src/components/itinerary/SavePlanDialog.tsx`
 - `src/components/itinerary/ComparisonChart.tsx`
+- `src/components/itinerary/ComparisonCountryChart.tsx`
+- `src/components/itinerary/ComparisonCategoryChart.tsx`
 - `src/components/itinerary/ComparisonSummaryCards.tsx`
 - `src/app/plan/compare/page.tsx`
 - `src/app/api/saved-plans/route.ts`
@@ -435,6 +454,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `tests/playwright/plan-comparison.spec.ts`
 - `docs/dev/plans/saved-plans-comparison.md`
 - `docs/dev/plans/compare-planned-allocations.md`
+- `docs/dev/plans/compare-page-ui-analytics.md`
 - `docs/dev/plans/country-dataset.md`
 - `docs/dev/plans/cleanup-simplification.md`
 - `docs/dev/README.md`

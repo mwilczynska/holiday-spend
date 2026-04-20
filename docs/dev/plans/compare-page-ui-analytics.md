@@ -104,8 +104,8 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 4.5j - Change country-row ranking from combined per-day spend across plans to the maximum displayed per-day spend across compared plans
 - [ ] Phase 5 - Polish, test, and document the compare UI expansion
 - [x] Phase 5a - Add unit and/or component coverage for new compare payload extensions
-- [ ] Phase 5b - Add Playwright coverage for 2-plan and 5-plan compare-page readability and chart rendering
-- [ ] Phase 5c - Run a cleanup pass on temporary probe files, stale test scaffolding, and tracked vs untracked compare-page artifacts before merge
+- [x] Phase 5b - Add Playwright coverage for 2-plan and 5-plan compare-page readability and chart rendering
+- [x] Phase 5c - Run a cleanup pass on temporary probe files, stale test scaffolding, and tracked vs untracked compare-page artifacts before merge
 - [ ] Phase 5d - Refresh project memory, push branch, and open the implementation PR
 
 ### Handoff Notes
@@ -732,6 +732,18 @@ At minimum:
 - 5-plan comparison still renders readable inline layout
 - expand dialogs open successfully for all compare charts
 
+Completed:
+
+- compare-page Playwright coverage now seeds saved plans through the authenticated API so the suite stays focused on compare behavior instead of repeatedly exercising the planner save dialog
+- the compare spec now verifies:
+  - baseline compare rendering for saved plans
+  - 2-plan layout keeps the two breakdown cards side-by-side
+  - all three chart expand dialogs open successfully
+  - 5-plan layout stacks the two breakdown sections vertically while keeping all compared summary cards visible
+- verification run completed with:
+  - `npx tsc --noEmit`
+  - `npx playwright test tests/playwright/plan-comparison.spec.ts --project=chromium`
+
 ### 5c. Cleanup before merge
 
 Before merging the branch, do one explicit cleanup pass focused on compare-page implementation leftovers.
@@ -742,6 +754,13 @@ Target:
 - confirm compare-page tests that should be tracked are committed and any personal/local artifacts remain untracked
 - check for stale compare-only helper code that is no longer referenced after the Phase 4.5 follow-up work
 - leave the worktree clean except for intentional documentation or implementation changes still under review
+
+Completed:
+
+- removed the unused `getPlanColor()` helper from `src/lib/comparison-colors.ts`; all active compare components now consume the shared palette directly
+- confirmed `test-results/` remains gitignored and local-only
+- removed local Playwright output from the workspace after verification
+- current tracked changes remain limited to intentional compare-page test and documentation updates
 
 ### 5d. Refresh memory and open the implementation PR
 
