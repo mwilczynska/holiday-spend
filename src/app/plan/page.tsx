@@ -23,6 +23,7 @@ import {
   validateCityGenerationModel,
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
+import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
@@ -850,6 +851,11 @@ export default function PlanPage() {
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
   const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel);
   const importModelListId = `${CITY_GENERATION_STORAGE_PREFIX}.${importProvider}.models`;
+  const importModelDiscovery = useProviderModelDiscovery({
+    provider: importProvider,
+    apiKey: activeImportApiKey,
+    enabled: importResolutionOpen && missingCityStrategy === 'generate',
+  });
   const canonicalCountryOptions = KNOWN_COUNTRIES.map((country) => {
     const preview = getSelectedCountryPreview(country.id, countries);
     return {
@@ -1128,13 +1134,16 @@ export default function PlanPage() {
                       spellCheck={false}
                     />
                     <datalist id={importModelListId}>
-                      {selectedImportProvider.knownModels.map((model) => (
+                      {importModelDiscovery.result.effectiveModels.map((model) => (
                         <option key={model} value={model} />
                       ))}
                     </datalist>
-                    <p className="text-xs text-muted-foreground">
-                      Provider model id. Suggested models: {selectedImportProvider.knownModels.join(', ')}
-                    </p>
+                    <p className="text-xs text-muted-foreground">{importModelDiscovery.statusMessage}</p>
+                    {importModelDiscovery.exampleSummary ? (
+                      <p className="text-xs text-muted-foreground">
+                        Example models: {importModelDiscovery.exampleSummary}
+                      </p>
+                    ) : null}
                     <div className="flex flex-wrap gap-2">
                       {selectedImportProvider.knownModels.map((model) => (
                         <Button
@@ -1147,7 +1156,16 @@ export default function PlanPage() {
                           {model === selectedImportProvider.defaultModel ? `${model} (default)` : model}
                         </Button>
                       ))}
+                      <Button type="button" variant="ghost" size="sm" onClick={() => void importModelDiscovery.refresh()} disabled={importModelDiscovery.loading || importModelDiscovery.refreshing || importingSnapshot}>
+                        <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={importModelDiscovery.refreshing} />
+                      </Button>
                     </div>
+                    {importModelDiscovery.result.warning ? (
+                      <p className="text-xs text-amber-600">{importModelDiscovery.result.warning}</p>
+                    ) : null}
+                    {importModelDiscovery.error ? (
+                      <p className="text-xs text-amber-600">{importModelDiscovery.error}</p>
+                    ) : null}
                     <p className={`text-xs ${importModelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
                       {importModelValidation.message}
                     </p>

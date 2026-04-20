@@ -109,6 +109,12 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Keys are not written to the repo or database
 - Model names are editable so the UI is not hard-blocked by stale defaults
 - City-generation UIs now surface provider-specific known model suggestions, quick-pick buttons, and non-blocking warnings for custom/unknown model ids
+- All current LLM pickers now also support live provider model discovery through an authenticated `/api/llm/models` route, with a shared `Refresh models` action and explicit live-vs-fallback status copy
+- Model discovery runs through a three-tier pipeline: Tier 1 is the live provider API (when a browser key or server env key is present), Tier 2 is a no-key aggregator fetch against OpenRouter with models.dev as a secondary source, and Tier 3 is a generated curated snapshot
+- Live discovery uses the browser-supplied API key when present, otherwise the server-side env key for that provider when available
+- When neither live discovery nor any aggregator is usable, the UI falls back cleanly to the generated curated snapshot rather than blocking custom model ids
+- The curated snapshot lives at `src/lib/data/curated-models.generated.json` and is refreshed by `npm run models:refresh` (with a dry-run `npm run models:check` variant); the refresh script reuses the runtime filters so the committed snapshot never contains ids that runtime would reject
+- Aggregator fetches read the body as text, inspect content-type, and parse inside a try/catch so gateway HTML or truncated responses surface as a friendly "Aggregated sources temporarily unavailable" warning rather than leaking raw engine parse errors into the UI
 - City-generation UIs now include explicit `Clear This Key` and `Clear All Saved Keys` controls for browser-stored API keys
 
 ### Provider-Specific Reliability Fixes Already Applied
@@ -116,6 +122,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Gemini generation disables thinking with `thinkingBudget: 0` to reduce truncated JSON output
 - Gemini now surfaces a clearer truncation error when it stops before finishing the JSON
 - Provider/model defaults are centralized in `src/lib/city-generation-config.ts`
+- Live provider model discovery is centralized in `src/lib/provider-model-discovery.ts` with a shared client hook in `src/lib/use-provider-model-discovery.ts`
+- Live model discovery uses a lightweight in-memory TTL cache keyed by provider plus credential fingerprint rather than a background sync job
 - Legacy stored browser defaults are migrated forward automatically
 - Known city-generation model ids and legacy browser model migrations are centralized in `src/lib/city-generation-config.ts`
 - Planner-side metadata inference now reuses the same provider/browser-default plumbing through a shared JSON LLM client rather than duplicating provider-specific request code
@@ -347,8 +355,12 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 ### City Cost / LLM Workflow
 - Shared provider/model metadata, legacy default migrations, and model validation now live in `src/lib/city-generation-config.ts`
 - `/dataset`, `/plan` new-city creation, and snapshot-import generation now reuse the same known-model suggestions and custom-model warnings
+- `/dataset`, `/plan` new-city creation, snapshot-import generation, single-leg transport estimation, and bulk transport estimation now all share the same live model discovery flow and fallback status treatment
+- Added authenticated `GET /api/llm/models` plus provider adapters for OpenAI `/v1/models`, Anthropic `/v1/models`, and Gemini `/v1beta/models`
+- Live discovery responses now distinguish `source`, `credentialSource`, `liveModels`, `effectiveModels`, `fetchedAt`, `cacheHit`, and `warning` so the UI can explain whether it is showing fresh or fallback suggestions
 - Browser-stored legacy model defaults are automatically migrated forward when these UIs load
 - Added Vitest coverage for city-generation model migration and validation helpers in `src/lib/city-generation-config.test.ts`
+- Added Vitest coverage for provider model normalization, filtering, and cache reuse in `src/lib/provider-model-discovery.test.ts`
 - Removed the legacy `/api/cities/estimate` route, unused hybrid/Xotelo estimation library, and the inactive anchor-input / legacy estimator components that no longer back any active UI flow
 - The generation UI now surfaces the implied AUD/USD rate directly in the result panel, and dataset history exposes the stored inferred rate per estimate record
 - Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
@@ -410,6 +422,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/city-generation.ts`
 - `src/lib/city-llm-client.ts`
 - `src/lib/city-generation-config.ts`
+- `src/lib/provider-model-discovery.ts`
+- `src/lib/use-provider-model-discovery.ts`
 - `src/lib/country-metadata.ts`
 - `src/lib/data/country-metadata.generated.json`
 - `src/lib/data/country-metadata.overrides.json`
@@ -417,6 +431,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/transport-estimation.ts`
 - `src/lib/wise-csv-parser.ts`
 - `src/app/api/cities/[id]/generate/route.ts`
+- `src/app/api/llm/models/route.ts`
 - `src/app/api/itinerary/legs/create-with-city/route.ts`
 - `src/app/api/itinerary/legs/[id]/estimate-transport/route.ts`
 - `src/components/itinerary/BulkTransportEstimateDialog.tsx`
