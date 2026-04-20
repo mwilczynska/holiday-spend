@@ -5,7 +5,9 @@ import {
   normalizeAnthropicModelIds,
   normalizeGeminiModelIds,
   normalizeGeminiModelName,
+  normalizeModelsDevModelIds,
   normalizeOpenAiModelIds,
+  normalizeOpenRouterModelIds,
 } from '@/lib/provider-model-discovery';
 
 describe('provider-model-discovery', () => {
@@ -70,6 +72,128 @@ describe('provider-model-discovery', () => {
     });
 
     expect(result).toEqual(['gemini-2.5-flash']);
+  });
+
+  it('splits OpenRouter responses by provider prefix and strips vendor namespaces plus suffixes', () => {
+    const payload = {
+      data: [
+        { id: 'openai/gpt-5.4-mini' },
+        { id: 'openai/gpt-image-1' },
+        { id: 'openai/gpt-5.4:free' },
+        { id: 'anthropic/claude-sonnet-4-6' },
+        { id: 'anthropic/claude-opus-4-7' },
+        { id: 'google/gemini-2.5-flash' },
+        { id: 'google/gemini-embedding-2' },
+        { id: 'meta/llama-4' },
+      ],
+    };
+
+    expect(normalizeOpenRouterModelIds('openai', payload)).toEqual(['gpt-5.4-mini', 'gpt-5.4']);
+    expect(normalizeOpenRouterModelIds('anthropic', payload)).toEqual([
+      'claude-sonnet-4-6',
+      'claude-opus-4-7',
+    ]);
+    expect(normalizeOpenRouterModelIds('gemini', payload)).toEqual(['gemini-2.5-flash']);
+  });
+
+  it('extracts per-provider models from the models.dev shape and applies provider filters', () => {
+    const payload = {
+      openai: {
+        models: {
+          'gpt-5.4-mini': { id: 'gpt-5.4-mini' },
+          'gpt-image-1': { id: 'gpt-image-1' },
+          'o3': { id: 'o3' },
+        },
+      },
+      anthropic: {
+        models: {
+          'claude-sonnet-4-6': {},
+          'claude-opus-4-7': { id: 'claude-opus-4-7' },
+          'not-claude': { id: 'not-claude' },
+        },
+      },
+      google: {
+        models: {
+          'gemini-2.5-pro': { id: 'gemini-2.5-pro' },
+          'gemini-embedding-2': { id: 'gemini-embedding-2' },
+        },
+      },
+    };
+
+    expect(normalizeModelsDevModelIds('openai', payload)).toEqual(['gpt-5.4-mini', 'o3']);
+    expect(normalizeModelsDevModelIds('anthropic', payload)).toEqual([
+      'claude-sonnet-4-6',
+      'claude-opus-4-7',
+    ]);
+    expect(normalizeModelsDevModelIds('gemini', payload)).toEqual(['gemini-2.5-pro']);
+  });
+
+  it('falls through to models.dev when OpenRouter fails, returning aggregated source', async () => {
+    const originalFetch = global.fetch;
+    const originalOpenAiKey = process.env.OPENAI_API_KEY;
+    delete process.env.OPENAI_API_KEY;
+
+    global.fetch = (async (input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input instanceof URL ? input.toString() : input.url;
+      if (url.includes('openrouter.ai')) {
+        return new Response('upstream unavailable', { status: 503 });
+      }
+      if (url.includes('models.dev')) {
+        return new Response(
+          JSON.stringify({
+            openai: {
+              models: {
+                'gpt-5.4-mini': { id: 'gpt-5.4-mini' },
+                'gpt-5.4': { id: 'gpt-5.4' },
+              },
+            },
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } }
+        );
+      }
+      throw new Error(`Unexpected fetch in test: ${url}`);
+    }) as typeof fetch;
+
+    try {
+      const result = await discoverProviderModels({
+        provider: 'openai',
+        forceRefresh: true,
+      });
+
+      expect(result.source).toBe('aggregated');
+      expect(result.aggregatorSource).toBe('models.dev');
+      expect(result.credentialSource).toBe('none');
+      expect(result.liveModels).toContain('gpt-5.4-mini');
+      expect(result.warning).toBeNull();
+    } finally {
+      global.fetch = originalFetch;
+      if (originalOpenAiKey !== undefined) process.env.OPENAI_API_KEY = originalOpenAiKey;
+    }
+  });
+
+  it('returns curated fallback when both aggregators fail and no credential is present', async () => {
+    const originalFetch = global.fetch;
+    const originalOpenAiKey = process.env.OPENAI_API_KEY;
+    delete process.env.OPENAI_API_KEY;
+
+    global.fetch = (async () => new Response('upstream down', { status: 503 })) as typeof fetch;
+
+    try {
+      const result = await discoverProviderModels({
+        provider: 'anthropic',
+        forceRefresh: true,
+      });
+
+      expect(result.source).toBe('fallback');
+      expect(result.aggregatorSource).toBeNull();
+      expect(result.credentialSource).toBe('none');
+      expect(result.liveModels).toEqual([]);
+      expect(result.effectiveModels.length).toBeGreaterThan(0);
+      expect(result.warning).toMatch(/curated fallback/i);
+    } finally {
+      global.fetch = originalFetch;
+      if (originalOpenAiKey !== undefined) process.env.OPENAI_API_KEY = originalOpenAiKey;
+    }
   });
 
   it('reuses the cached provider response until force refresh is requested', async () => {

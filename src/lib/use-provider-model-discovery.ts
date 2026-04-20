@@ -21,6 +21,7 @@ function buildFallbackState(provider: CityGenerationProvider): ProviderModelDisc
     provider,
     source: 'fallback',
     credentialSource: 'none',
+    aggregatorSource: null,
     defaultModel: CITY_GENERATION_DEFAULT_MODELS[provider],
     curatedModels,
     liveModels: [],

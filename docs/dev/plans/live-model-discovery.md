@@ -299,6 +299,170 @@ If we decide to improve the no-key experience later, the strongest next step is:
 
 ---
 
+## Follow-Up Workstream - No-Key Aggregator Discovery + Self-Refreshing Fallback
+
+> **Status**: Planned - not yet implemented
+> **Decision date**: 2026-04-20
+> **Branch target**: continues on `feat/live-model-discovery` (or a follow-up branch if scope grows)
+
+### Decision
+
+Adopt a **three-tier discovery pipeline** and stop treating the in-repo curated list as a hand-edited literal. The curated fallback becomes a generated artifact that is periodically refreshed from live aggregator data, so even the no-live-fetch path stays fresh.
+
+### Discovery Tiers
+
+1. **Tier 1 - Live provider API** (unchanged)
+   - Used when a browser-supplied API key or server env key is available.
+   - Hits OpenAI/Anthropic/Gemini endpoints as today.
+   - `source: 'live'`.
+
+2. **Tier 2 - No-key aggregator fetch** (new)
+   - Used when no credential is available.
+   - Runtime fetch to OpenRouter `https://openrouter.ai/api/v1/models` as primary.
+   - Runtime fetch to models.dev `https://models.dev/api.json` as secondary on OpenRouter failure.
+   - Responses are split by provider prefix (`openai/`, `anthropic/`, `google/`) and passed through the existing `isLikelyOpenAiGenerationModel`-style filters.
+   - Cached in the existing `modelDiscoveryCache` keyed by `credentialSource: 'none'`.
+   - `source: 'aggregated'`.
+
+3. **Tier 3 - Self-refreshing snapshot** (replaces current hand-edited curated list)
+   - Committed JSON artifact at `src/lib/data/curated-models.generated.json`.
+   - Refreshed by a repo script (`scripts/refresh-curated-models.ts`) that pulls from the same aggregator sources and writes filtered per-provider lists.
+   - `city-generation-config.ts` reads this JSON instead of owning hardcoded arrays.
+   - Used only when both Tier 1 and Tier 2 fail.
+   - `source: 'fallback'`.
+
+This keeps the UI contract stable - `source` still distinguishes how fresh the suggestions are, the TTL cache is unchanged, and custom model ids remain allowed.
+
+### Design Anchors
+
+- **Aggregators preferred over doc scraping.** OpenRouter and models.dev cover all three providers with one fetch each; scraping docs pages is fragile and provider-by-provider.
+- **Two aggregator sources, not one.** OpenRouter primary for freshness, models.dev secondary because it is MIT-licensed and can be vendored.
+- **Fallback is generated, not hand-edited.** The curated list is refreshed by script so it cannot drift independently of reality.
+- **Runtime and snapshot share filters.** The same "is this a usable generation model" predicate gates both the aggregator response and the snapshot output, so the tiers never disagree about what counts.
+- **No change to the UI contract.** Pickers keep using `effectiveModels`, `source`, `warning`. Only the status copy extends.
+- **Scripted refresh, not scheduled.** Snapshot refresh is a manual/CI-triggered script, not a cron job. Keeps infra footprint at zero.
+
+### Goals
+
+By the end of this workstream:
+
+- users without a provider API key see live-aggregated model lists rather than hand-edited defaults
+- the in-repo fallback list is a generated artifact refreshed from aggregator data
+- three-tier source status is visible in every picker (`live` / `aggregated` / `fallback`)
+- aggregator failures degrade cleanly into the generated snapshot
+- snapshot refresh is one `npm run` script, not a manual JSON edit
+
+### Task Tracker
+
+- [x] Phase A - No-key aggregator discovery layer
+- [x] Phase A1 - Add OpenRouter adapter: fetch, split by provider prefix, strip `vendor/`, reuse existing filters
+- [x] Phase A2 - Add models.dev adapter as secondary aggregator
+- [x] Phase A3 - Add `fetchAggregatedProviderModelIds(provider)` that tries OpenRouter then models.dev
+- [x] Phase A4 - Extend `ProviderModelDiscoverySource` union to include `'aggregated'` and add `aggregatorSource` to `ProviderModelDiscoveryResult`
+- [x] Phase A5 - Rewire `discoverProviderModels` no-credential branch to call the aggregator before falling through to curated fallback
+- [x] Phase A6 - Keep TTL cache intact; `credentialSource: 'none'` entries now participate in the same cache
+- [ ] Phase B - Self-refreshing curated fallback snapshot
+- [ ] Phase B1 - Add `src/lib/data/curated-models.generated.json` schema (per-provider arrays plus `generatedAt`, `sources`)
+- [ ] Phase B2 - Add `scripts/refresh-curated-models.ts` that fetches aggregator sources, applies the same filters, and writes the JSON
+- [ ] Phase B3 - Add `npm run models:refresh` entry to `package.json`
+- [ ] Phase B4 - Update `city-generation-config.ts` to import `CITY_GENERATION_KNOWN_MODELS` from the generated JSON
+- [ ] Phase B5 - Add a `models:check` dry-run mode so CI can detect when the snapshot is stale without rewriting it
+- [ ] Phase B6 - Run the refresh script once and commit the initial snapshot
+- [ ] Phase C - UI integration for the new source tier
+- [ ] Phase C1 - Extend the shared status line copy to cover `source === 'aggregated'` (e.g. "Suggestions from OpenRouter")
+- [ ] Phase C2 - Update warnings so users understand when Tier 2 was used vs Tier 3 snapshot
+- [ ] Phase C3 - Confirm all five picker surfaces render the new status line correctly
+- [ ] Phase D - Tests and verification
+- [ ] Phase D1 - Unit tests for OpenRouter response normalization (provider split, prefix stripping, filter reuse)
+- [ ] Phase D2 - Unit tests for models.dev response normalization
+- [ ] Phase D3 - Unit test for aggregator fallthrough (OpenRouter error -> models.dev)
+- [ ] Phase D4 - Unit test for `discoverProviderModels` no-credential path producing `source: 'aggregated'`
+- [ ] Phase D5 - Snapshot integrity test: generated JSON parses, contains at least one id per provider, all ids pass the runtime filter
+- [ ] Phase D6 - `npx tsc --noEmit`
+- [ ] Phase D7 - Targeted test run: `npm test -- provider-model-discovery city-generation-config curated-models`
+- [ ] Phase D8 - Manual UI pass over the five picker surfaces with no provider env keys set
+- [ ] Phase E - Docs, memory, and PR
+- [ ] Phase E1 - Update this tracker
+- [ ] Phase E2 - Update `CLAUDE.md` "Provider-Specific Reliability Fixes" and "City Cost / LLM Workflow" sections to reflect the three-tier pipeline and generated snapshot
+- [ ] Phase E3 - Add a short "Refreshing model suggestions" note to `docs/dev/README.md` or similar so future contributors know how to run `npm run models:refresh`
+- [ ] Phase E4 - Push branch and open/update PR
+
+### Checkpoints
+
+Commit and push at each checkpoint so the PR stays incremental:
+
+- **Checkpoint 1** - after Phase A: aggregator discovery layer lands, covered by unit tests. No UI change yet; `discoverProviderModels` returns `source: 'aggregated'` when no key is present.
+- **Checkpoint 2** - after Phase B: curated fallback is now a generated artifact. First snapshot committed. `city-generation-config.ts` reads from it. Runtime behavior unchanged from Checkpoint 1 because Tier 2 still handles the no-key path; snapshot only kicks in on aggregator failure.
+- **Checkpoint 3** - after Phase C: all five picker surfaces show the new three-tier status copy.
+- **Checkpoint 4** - after Phase D: full test pass plus manual UI sweep.
+- **Checkpoint 5** - after Phase E: docs, memory, PR ready for review.
+
+### Phase Details
+
+#### Phase A - Aggregator discovery
+
+The key seam is `src/lib/provider-model-discovery.ts:337` where `!credential.apiKey` currently short-circuits to `buildFallbackDiscoveryResult`. Replace that branch with a call into a new `fetchAggregatedProviderModelIds(provider)` helper that tries OpenRouter, then models.dev, then rethrows. The outer `try/catch` already catches into the fallback path, so aggregator failure still degrades into Tier 3 cleanly.
+
+OpenRouter response shape: `{data: [{id: 'openai/gpt-5.4-mini', ...}]}`. Strip the `vendor/` prefix and run through the existing provider-specific filter helpers to drop audio/realtime/embedding ids.
+
+models.dev response shape: `{openai: {models: {...}}, anthropic: {...}, google: {...}}`. Pull `id` per model and apply the same filters.
+
+#### Phase B - Self-refreshing snapshot
+
+`scripts/refresh-curated-models.ts` mirrors the runtime pipeline but writes to disk. Output shape:
+
+```
+{
+  "generatedAt": "2026-04-20T...",
+  "sources": ["openrouter", "models.dev"],
+  "providers": {
+    "openai": ["gpt-5.4", "gpt-5.4-mini", ...],
+    "anthropic": ["claude-opus-4-7", "claude-sonnet-4-6", ...],
+    "gemini": ["gemini-2.5-pro", "gemini-2.5-flash", ...]
+  }
+}
+```
+
+`city-generation-config.ts` imports this JSON and exposes `CITY_GENERATION_KNOWN_MODELS` as today, so the rest of the app does not change.
+
+#### Phase C - UI
+
+Only one status line needs new copy. The existing `ProviderModelDiscoveryResult.source` plus `warning` fields are already threaded through all five pickers via `useProviderModelDiscovery`. Extending the switch from `'live' | 'fallback'` to `'live' | 'aggregated' | 'fallback'` is a copy-only change.
+
+#### Phase D - Verification
+
+- Unit tests belong next to `src/lib/provider-model-discovery.test.ts`.
+- Snapshot integrity test runs in the normal Vitest suite and guards the invariant "every snapshot id passes the runtime filter."
+- Manual UI sweep: unset `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY` locally and confirm each picker shows aggregated suggestions with the new status line.
+
+### Success Criteria (Follow-up)
+
+This follow-up workstream is successful when:
+
+- a user with zero API keys sees live-aggregated model lists in every picker
+- the curated in-repo fallback is generated, not hand-edited
+- `npm run models:refresh` is the only step needed to refresh suggestions
+- aggregator outages fall back to the snapshot without surfacing as errors
+- `source` status accurately distinguishes `live` / `aggregated` / `fallback` in every picker
+
+### Likely Files (Follow-up)
+
+- `src/lib/provider-model-discovery.ts`
+- `src/lib/provider-model-discovery.test.ts`
+- `src/lib/city-generation-config.ts`
+- `src/lib/data/curated-models.generated.json` (new)
+- `scripts/refresh-curated-models.ts` (new)
+- `package.json` (add `models:refresh` and `models:check` scripts)
+- `src/components/cities/CityGenerationPanel.tsx`
+- `src/components/itinerary/PlannerNewCityDialog.tsx`
+- `src/components/itinerary/TransportEstimateDialog.tsx`
+- `src/components/itinerary/BulkTransportEstimateDialog.tsx`
+- `src/lib/use-provider-model-discovery.ts`
+- `docs/dev/README.md`
+- `CLAUDE.md`
+
+---
+
 ## Success Criteria
 
 This workstream is successful when:
