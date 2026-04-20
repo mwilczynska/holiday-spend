@@ -191,6 +191,79 @@ describe('provider-model-discovery', () => {
     }
   });
 
+  it('treats non-JSON aggregator bodies as a failure and falls through cleanly', async () => {
+    const originalFetch = global.fetch;
+    const originalGeminiKey = process.env.GEMINI_API_KEY;
+    delete process.env.GEMINI_API_KEY;
+
+    global.fetch = (async (input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input instanceof URL ? input.toString() : input.url;
+      if (url.includes('openrouter.ai')) {
+        // Simulate a gateway/HTML response with a 200 status — this is what triggered the
+        // raw `JSON.parse: unexpected character...` leak to the UI.
+        return new Response('<html><body>upstream cache miss</body></html>', {
+          status: 200,
+          headers: { 'content-type': 'text/html' },
+        });
+      }
+      if (url.includes('models.dev')) {
+        return new Response(
+          JSON.stringify({
+            google: {
+              models: {
+                'gemini-2.5-flash': { id: 'gemini-2.5-flash' },
+              },
+            },
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } }
+        );
+      }
+      throw new Error(`Unexpected fetch in test: ${url}`);
+    }) as typeof fetch;
+
+    try {
+      const result = await discoverProviderModels({
+        provider: 'gemini',
+        forceRefresh: true,
+      });
+
+      expect(result.source).toBe('aggregated');
+      expect(result.aggregatorSource).toBe('models.dev');
+      expect(result.liveModels).toContain('gemini-2.5-flash');
+      expect(result.warning).toBeNull();
+    } finally {
+      global.fetch = originalFetch;
+      if (originalGeminiKey !== undefined) process.env.GEMINI_API_KEY = originalGeminiKey;
+    }
+  });
+
+  it('never surfaces raw JSON.parse engine errors in the user-facing warning', async () => {
+    const originalFetch = global.fetch;
+    const originalGeminiKey = process.env.GEMINI_API_KEY;
+    delete process.env.GEMINI_API_KEY;
+
+    global.fetch = (async () =>
+      new Response('not json at all', {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      })) as typeof fetch;
+
+    try {
+      const result = await discoverProviderModels({
+        provider: 'gemini',
+        forceRefresh: true,
+      });
+
+      expect(result.source).toBe('fallback');
+      expect(result.warning).not.toMatch(/JSON\.parse/i);
+      expect(result.warning).not.toMatch(/unexpected character/i);
+      expect(result.warning).toMatch(/curated snapshot/i);
+    } finally {
+      global.fetch = originalFetch;
+      if (originalGeminiKey !== undefined) process.env.GEMINI_API_KEY = originalGeminiKey;
+    }
+  });
+
   it('returns curated fallback when both aggregators fail and no credential is present', async () => {
     const originalFetch = global.fetch;
     const originalOpenAiKey = process.env.OPENAI_API_KEY;

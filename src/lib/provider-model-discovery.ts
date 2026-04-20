@@ -395,18 +395,43 @@ export function normalizeModelsDevModelIds(provider: CityGenerationProvider, pay
   );
 }
 
+async function readAggregatorJson(params: {
+  response: Response;
+  aggregatorLabel: string;
+}): Promise<unknown> {
+  const rawBody = await params.response.text();
+
+  if (!params.response.ok) {
+    throw new Error(
+      `${params.aggregatorLabel} error ${params.response.status}: ${summarizeProviderError(rawBody)}`
+    );
+  }
+
+  const contentType = params.response.headers.get('content-type') ?? '';
+  if (contentType && !contentType.toLowerCase().includes('json')) {
+    throw new Error(
+      `${params.aggregatorLabel} returned a non-JSON response (content-type: ${contentType}).`
+    );
+  }
+
+  try {
+    return JSON.parse(rawBody);
+  } catch {
+    throw new Error(`${params.aggregatorLabel} returned a malformed JSON response.`);
+  }
+}
+
 async function fetchOpenRouterProviderModelIds(provider: CityGenerationProvider) {
   const response = await fetch('https://openrouter.ai/api/v1/models', {
     cache: 'no-store',
   });
 
-  if (!response.ok) {
-    throw new Error(
-      `OpenRouter aggregator error ${response.status}: ${summarizeProviderError(await response.text())}`
-    );
-  }
+  const payload = await readAggregatorJson({
+    response,
+    aggregatorLabel: 'OpenRouter aggregator',
+  });
 
-  return normalizeOpenRouterModelIds(provider, await response.json());
+  return normalizeOpenRouterModelIds(provider, payload);
 }
 
 async function fetchModelsDevProviderModelIds(provider: CityGenerationProvider) {
@@ -414,13 +439,12 @@ async function fetchModelsDevProviderModelIds(provider: CityGenerationProvider) 
     cache: 'no-store',
   });
 
-  if (!response.ok) {
-    throw new Error(
-      `models.dev aggregator error ${response.status}: ${summarizeProviderError(await response.text())}`
-    );
-  }
+  const payload = await readAggregatorJson({
+    response,
+    aggregatorLabel: 'models.dev aggregator',
+  });
 
-  return normalizeModelsDevModelIds(provider, await response.json());
+  return normalizeModelsDevModelIds(provider, payload);
 }
 
 export interface AggregatedProviderModelResult {
@@ -532,12 +556,14 @@ export async function discoverProviderModels(params: {
       });
       return { ...value, cacheHit: false };
     } catch (err) {
+      if (err instanceof Error) {
+        console.warn(`[model-discovery] aggregator fetch failed for ${params.provider}: ${err.message}`);
+      }
       return buildFallbackDiscoveryResult({
         provider: params.provider,
         credentialSource: credential.credentialSource,
-        warning: err instanceof Error
-          ? `${err.message} Showing curated snapshot suggestions.`
-          : 'Live model discovery is unavailable without a provider API key, and aggregated sources could not be reached. Showing curated snapshot suggestions.',
+        warning:
+          'Aggregated model sources are temporarily unavailable. Showing curated snapshot suggestions.',
       });
     }
   }
