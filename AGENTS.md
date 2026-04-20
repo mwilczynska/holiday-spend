@@ -110,8 +110,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Model names are editable so the UI is not hard-blocked by stale defaults
 - City-generation UIs now surface provider-specific known model suggestions, quick-pick buttons, and non-blocking warnings for custom/unknown model ids
 - All current LLM pickers now also support live provider model discovery through an authenticated `/api/llm/models` route, with a shared `Refresh models` action and explicit live-vs-fallback status copy
+- Model discovery runs through a three-tier pipeline: Tier 1 is the live provider API (when a browser key or server env key is present), Tier 2 is a no-key aggregator fetch against OpenRouter with models.dev as a secondary source, and Tier 3 is a generated curated snapshot
 - Live discovery uses the browser-supplied API key when present, otherwise the server-side env key for that provider when available
-- When live discovery is unavailable or returns nothing usable, the UI falls back cleanly to the repo-owned curated model suggestions rather than blocking custom model ids
+- When neither live discovery nor any aggregator is usable, the UI falls back cleanly to the generated curated snapshot rather than blocking custom model ids
+- The curated snapshot lives at `src/lib/data/curated-models.generated.json` and is refreshed by `npm run models:refresh` (with a dry-run `npm run models:check` variant); the refresh script reuses the runtime filters so the committed snapshot never contains ids that runtime would reject
+- Aggregator fetches read the body as text, inspect content-type, and parse inside a try/catch so gateway HTML or truncated responses surface as a friendly "Aggregated sources temporarily unavailable" warning rather than leaking raw engine parse errors into the UI
 - City-generation UIs now include explicit `Clear This Key` and `Clear All Saved Keys` controls for browser-stored API keys
 
 ### Provider-Specific Reliability Fixes Already Applied

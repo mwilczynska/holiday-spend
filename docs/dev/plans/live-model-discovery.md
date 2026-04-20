@@ -301,7 +301,7 @@ If we decide to improve the no-key experience later, the strongest next step is:
 
 ## Follow-Up Workstream - No-Key Aggregator Discovery + Self-Refreshing Fallback
 
-> **Status**: Planned - not yet implemented
+> **Status**: COMPLETE - shipped on `feat/live-model-discovery`
 > **Decision date**: 2026-04-20
 > **Branch target**: continues on `feat/live-model-discovery` (or a follow-up branch if scope grows)
 
@@ -381,11 +381,12 @@ By the end of this workstream:
 - [x] Phase D6 - `npx tsc --noEmit` clean
 - [x] Phase D7 - Targeted test run: 21/21 pass across `provider-model-discovery`, `city-generation-config`, `use-provider-model-discovery`; full suite 51/51
 - [x] Phase D8 - Dev server boots without regression; `npm run models:refresh` exercised the aggregator path end-to-end against live OpenRouter. Browser-level visual confirmation of the new status copy is a user-driven spot check (claude-in-chrome extension was not connected in this session).
-- [ ] Phase E - Docs, memory, and PR
-- [ ] Phase E1 - Update this tracker
-- [ ] Phase E2 - Update `CLAUDE.md` "Provider-Specific Reliability Fixes" and "City Cost / LLM Workflow" sections to reflect the three-tier pipeline and generated snapshot
-- [ ] Phase E3 - Add a short "Refreshing model suggestions" note to `docs/dev/README.md` or similar so future contributors know how to run `npm run models:refresh`
-- [ ] Phase E4 - Push branch and open/update PR
+- [x] Phase E - Docs, memory, and PR
+- [x] Phase E1 - Update this tracker
+- [x] Phase E2 - Update `CLAUDE.md` "Provider-Specific Reliability Fixes" and "City Cost / LLM Workflow" sections to reflect the three-tier pipeline and generated snapshot
+- [x] Phase E3 - Add a short "Refreshing model suggestions" note to `docs/dev/README.md` or similar so future contributors know how to run `npm run models:refresh`
+- [x] Phase E4 - Push branch and open/update PR
+- [x] Phase E5 - Harden aggregator fetches against non-JSON responses after observing a raw `JSON.parse` error leak into the Gemini picker on 2026-04-20
 
 ### Checkpoints
 
