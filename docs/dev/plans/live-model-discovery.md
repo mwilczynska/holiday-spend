@@ -2,7 +2,7 @@
 
 > **Branch**: `feat/live-model-discovery` off `main`
 > **PR target**: `main`
-> **Status**: IN PROGRESS - planning and branch setup
+> **Status**: COMPLETE - implemented, verified, and ready for review
 > **Related**:
 > - `src/lib/city-generation-config.ts`
 > - `src/components/cities/CityGenerationPanel.tsx`
@@ -93,28 +93,28 @@ Use this as the primary handoff/resume checklist for the branch.
 - [x] Phase 0 - Create implementation plan and branch scaffold
 - [x] Phase 0a - Lock the lightweight architecture: provider APIs + TTL cache + curated fallback
 - [x] Phase 0b - Create branch and planning doc
-- [ ] Phase 1 - Add shared live model discovery server layer
-- [ ] Phase 1a - Add normalized provider model types and filtering helpers
-- [ ] Phase 1b - Add provider-specific fetch adapters for OpenAI, Anthropic, and Gemini
-- [ ] Phase 1c - Add cache and fallback shaping so consumers always receive a usable response
-- [ ] Phase 2 - Expose discovery through one authenticated app route
-- [ ] Phase 2a - Add `GET /api/llm/models`
-- [ ] Phase 2b - Support browser key override plus server env fallback
-- [ ] Phase 2c - Return normalized model metadata plus source/status fields for the UI
-- [ ] Phase 3 - Integrate live discovery into all LLM pickers
-- [ ] Phase 3a - Dataset city-generation panel uses live discovery with fallback
-- [ ] Phase 3b - Planner add-city dialog uses live discovery with fallback
-- [ ] Phase 3c - Snapshot import generation settings use live discovery with fallback
-- [ ] Phase 3d - Single-leg transport estimation uses live discovery with fallback
-- [ ] Phase 3e - Bulk transport estimation uses live discovery with fallback
-- [ ] Phase 3f - Add a consistent status line and `Refresh models` control everywhere
-- [ ] Phase 4 - Test and verify the discovery flow
-- [ ] Phase 4a - Add unit coverage for normalization/filtering and cache behavior where isolated
-- [ ] Phase 4b - Verify TypeScript and any targeted tests
-- [ ] Phase 4c - Run a manual or scripted UI pass over the affected dialogs/pages
-- [ ] Phase 5 - Finalize docs and PR
-- [ ] Phase 5a - Update this tracker with completed work
-- [ ] Phase 5b - Refresh project memory if the shipped behavior meaningfully changes user-facing model selection
+- [x] Phase 1 - Add shared live model discovery server layer
+- [x] Phase 1a - Add normalized provider model types and filtering helpers
+- [x] Phase 1b - Add provider-specific fetch adapters for OpenAI, Anthropic, and Gemini
+- [x] Phase 1c - Add cache and fallback shaping so consumers always receive a usable response
+- [x] Phase 2 - Expose discovery through one authenticated app route
+- [x] Phase 2a - Add `GET /api/llm/models`
+- [x] Phase 2b - Support browser key override plus server env fallback
+- [x] Phase 2c - Return normalized model metadata plus source/status fields for the UI
+- [x] Phase 3 - Integrate live discovery into all LLM pickers
+- [x] Phase 3a - Dataset city-generation panel uses live discovery with fallback
+- [x] Phase 3b - Planner add-city dialog uses live discovery with fallback
+- [x] Phase 3c - Snapshot import generation settings use live discovery with fallback
+- [x] Phase 3d - Single-leg transport estimation uses live discovery with fallback
+- [x] Phase 3e - Bulk transport estimation uses live discovery with fallback
+- [x] Phase 3f - Add a consistent status line and `Refresh models` control everywhere
+- [x] Phase 4 - Test and verify the discovery flow
+- [x] Phase 4a - Add unit coverage for normalization/filtering and cache behavior where isolated
+- [x] Phase 4b - Verify TypeScript and any targeted tests
+- [x] Phase 4c - Run a manual or scripted UI pass over the affected dialogs/pages
+- [x] Phase 5 - Finalize docs and PR
+- [x] Phase 5a - Update this tracker with completed work
+- [x] Phase 5b - Refresh project memory if the shipped behavior meaningfully changes user-facing model selection
 - [ ] Phase 5c - Push branch and open/update the implementation PR
 
 ---
@@ -163,6 +163,17 @@ At minimum:
 - `npx tsc --noEmit`
 - targeted unit coverage for the new shared model-discovery logic
 - a UI pass across all LLM picker surfaces
+
+Completed verification:
+
+- `npx tsc --noEmit`
+- `cmd /c npm test -- provider-model-discovery city-generation-config`
+- scripted Playwright pass against:
+  - `/dataset` city generation
+  - `/plan` add-leg new-city dialog
+  - `/plan` single-leg transport estimation dialog
+  - `/plan` bulk transport estimation dialog
+  - `/plan` snapshot import generation settings
 
 ### Phase 5 - Docs and PR
 

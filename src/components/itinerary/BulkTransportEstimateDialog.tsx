@@ -16,6 +16,7 @@ import {
   validateCityGenerationModel,
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
+import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import type { IntercityTransportItem, TransportEstimateMode, TransportEstimateResult } from '@/types';
 
 type ProviderOption = CityGenerationProvider;
@@ -178,6 +179,11 @@ export function BulkTransportEstimateDialog({
   const activeModel = models[provider] || selectedProvider.defaultModel;
   const modelValidation = validateCityGenerationModel(provider, activeModel);
   const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
+  const modelDiscovery = useProviderModelDiscovery({
+    provider,
+    apiKey: activeApiKey,
+    enabled: open,
+  });
   const estimatableTransportLegs = useMemo(() => buildEstimatableTransportLegs(legs), [legs]);
   const defaultSelectedLegIds = useMemo(
     () => estimatableTransportLegs
@@ -577,13 +583,16 @@ export function BulkTransportEstimateDialog({
                     spellCheck={false}
                   />
                   <datalist id={modelListId}>
-                    {selectedProvider.knownModels.map((model) => (
+                    {modelDiscovery.result.effectiveModels.map((model) => (
                       <option key={model} value={model} />
                     ))}
                   </datalist>
-                  <p className="text-xs text-muted-foreground">
-                    Provider model id. Suggested models: {selectedProvider.knownModels.join(', ')}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{modelDiscovery.statusMessage}</p>
+                  {modelDiscovery.exampleSummary ? (
+                    <p className="text-xs text-muted-foreground">
+                      Example models: {modelDiscovery.exampleSummary}
+                    </p>
+                  ) : null}
                   <div className="flex flex-wrap gap-2">
                     {selectedProvider.knownModels.map((model) => (
                       <Button
@@ -596,7 +605,16 @@ export function BulkTransportEstimateDialog({
                         {model === selectedProvider.defaultModel ? `${model} (default)` : model}
                       </Button>
                     ))}
+                    <Button type="button" variant="ghost" size="sm" onClick={() => void modelDiscovery.refresh()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || estimating || applying}>
+                      <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
+                    </Button>
                   </div>
+                  {modelDiscovery.result.warning ? (
+                    <p className="text-xs text-amber-600">{modelDiscovery.result.warning}</p>
+                  ) : null}
+                  {modelDiscovery.error ? (
+                    <p className="text-xs text-amber-600">{modelDiscovery.error}</p>
+                  ) : null}
                   <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
                     {modelValidation.message}
                   </p>

@@ -15,6 +15,7 @@ import {
   validateCityGenerationModel,
   type CityGenerationProvider,
 } from '@/lib/city-generation-config';
+import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 
 const STORAGE_PREFIX = 'wanderledger.city-generation';
 
@@ -105,6 +106,11 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
   const activeModel = models[provider] || selectedProvider.defaultModel;
   const modelValidation = validateCityGenerationModel(provider, activeModel);
   const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
+  const modelDiscovery = useProviderModelDiscovery({
+    provider,
+    apiKey: activeApiKey,
+    enabled: open,
+  });
 
   function resetForm() {
     setCityName('');
@@ -333,13 +339,16 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
                     spellCheck={false}
                   />
                   <datalist id={modelListId}>
-                    {selectedProvider.knownModels.map((model) => (
+                    {modelDiscovery.result.effectiveModels.map((model) => (
                       <option key={model} value={model} />
                     ))}
                   </datalist>
-                  <p className="text-xs text-muted-foreground">
-                    Provider model id. Suggested models: {selectedProvider.knownModels.join(', ')}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{modelDiscovery.statusMessage}</p>
+                  {modelDiscovery.exampleSummary ? (
+                    <p className="text-xs text-muted-foreground">
+                      Example models: {modelDiscovery.exampleSummary}
+                    </p>
+                  ) : null}
                   <div className="flex flex-wrap gap-2">
                     {selectedProvider.knownModels.map((model) => (
                       <Button
@@ -352,7 +361,16 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
                         {model === selectedProvider.defaultModel ? `${model} (default)` : model}
                       </Button>
                     ))}
+                    <Button type="button" variant="ghost" size="sm" onClick={() => void modelDiscovery.refresh()} disabled={modelDiscovery.loading || modelDiscovery.refreshing || loading}>
+                      <LoadingButtonLabel idle="Refresh models" loading="Refreshing..." isLoading={modelDiscovery.refreshing} />
+                    </Button>
                   </div>
+                  {modelDiscovery.result.warning ? (
+                    <p className="text-xs text-amber-600">{modelDiscovery.result.warning}</p>
+                  ) : null}
+                  {modelDiscovery.error ? (
+                    <p className="text-xs text-amber-600">{modelDiscovery.error}</p>
+                  ) : null}
                   <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
                     {modelValidation.message}
                   </p>
