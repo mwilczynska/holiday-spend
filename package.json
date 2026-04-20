@@ -10,6 +10,8 @@
     "country-metadata:generate": "node scripts/generate-country-metadata.mjs",
     "docs:sync-memory": "node scripts/sync-memory-docs.mjs",
     "docs:check-memory": "node scripts/sync-memory-docs.mjs --check",
+    "models:refresh": "tsx scripts/refresh-curated-models.ts",
+    "models:check": "tsx scripts/refresh-curated-models.ts --check",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",

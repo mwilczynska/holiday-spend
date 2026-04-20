@@ -342,6 +342,14 @@ function applyProviderIdFilter(provider: CityGenerationProvider, modelId: string
   return normalized.startsWith('gemini-') && !hasNonGenerationFragment(normalized);
 }
 
+function translateAggregatorModelId(provider: CityGenerationProvider, modelId: string) {
+  // OpenRouter uses dot separators for Anthropic ids (`claude-opus-4.7`) while the
+  // Anthropic API itself uses dashes (`claude-opus-4-7`). OpenAI and Gemini agree
+  // between aggregators and their own APIs, so only Anthropic needs translation.
+  if (provider === 'anthropic') return modelId.replace(/\./g, '-');
+  return modelId;
+}
+
 export function normalizeOpenRouterModelIds(provider: CityGenerationProvider, payload: unknown) {
   const rows = Array.isArray((payload as { data?: unknown[] })?.data)
     ? ((payload as { data: Array<{ id?: string }> }).data)
@@ -356,6 +364,7 @@ export function normalizeOpenRouterModelIds(provider: CityGenerationProvider, pa
       .map((rawId) => rawId.slice(prefix.length))
       // OpenRouter sometimes appends `:free`, `:beta`, or other suffixes — strip them.
       .map((modelId) => modelId.split(':')[0]!.trim())
+      .map((modelId) => translateAggregatorModelId(provider, modelId))
       .filter((modelId) => modelId.length > 0 && applyProviderIdFilter(provider, modelId))
   );
 }
@@ -379,7 +388,11 @@ export function normalizeModelsDevModelIds(provider: CityGenerationProvider, pay
     if (id) rawIds.push(id);
   }
 
-  return dedupeModelIds(rawIds.filter((modelId) => applyProviderIdFilter(provider, modelId)));
+  return dedupeModelIds(
+    rawIds
+      .map((modelId) => translateAggregatorModelId(provider, modelId))
+      .filter((modelId) => applyProviderIdFilter(provider, modelId))
+  );
 }
 
 async function fetchOpenRouterProviderModelIds(provider: CityGenerationProvider) {

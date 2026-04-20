@@ -1,3 +1,5 @@
+import curatedModelsSnapshot from '@/lib/data/curated-models.generated.json';
+
 export const CITY_GENERATION_PROVIDERS = ['anthropic', 'openai', 'gemini'] as const;
 
 export type CityGenerationProvider = (typeof CITY_GENERATION_PROVIDERS)[number];
@@ -14,10 +16,19 @@ export const CITY_GENERATION_LEGACY_DEFAULT_MODEL_MIGRATIONS: Record<CityGenerat
   gemini: ['gemini-2.0-flash'],
 };
 
+export interface CuratedModelsSnapshot {
+  schemaVersion: number;
+  generatedAt: string;
+  sources: Record<CityGenerationProvider, string>;
+  providers: Record<CityGenerationProvider, string[]>;
+}
+
+export const CITY_GENERATION_CURATED_SNAPSHOT = curatedModelsSnapshot as CuratedModelsSnapshot;
+
 export const CITY_GENERATION_KNOWN_MODELS: Record<CityGenerationProvider, string[]> = {
-  openai: ['gpt-5.4-mini', 'gpt-5.4', 'gpt-4.1-mini'],
-  anthropic: ['claude-sonnet-4-6', 'claude-sonnet-4-5', 'claude-3-5-sonnet-latest'],
-  gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash'],
+  openai: CITY_GENERATION_CURATED_SNAPSHOT.providers.openai,
+  anthropic: CITY_GENERATION_CURATED_SNAPSHOT.providers.anthropic,
+  gemini: CITY_GENERATION_CURATED_SNAPSHOT.providers.gemini,
 };
 
 export const CITY_GENERATION_PROVIDER_OPTIONS: Array<{

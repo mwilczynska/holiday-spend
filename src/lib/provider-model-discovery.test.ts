@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
+  CITY_GENERATION_CURATED_SNAPSHOT,
+  CITY_GENERATION_PROVIDERS,
+} from '@/lib/city-generation-config';
+import {
   discoverProviderModels,
   mergeProviderModelSuggestions,
   normalizeAnthropicModelIds,
@@ -11,15 +15,15 @@ import {
 } from '@/lib/provider-model-discovery';
 
 describe('provider-model-discovery', () => {
-  it('keeps the provider default first when merging curated and live suggestions', () => {
-    expect(
-      mergeProviderModelSuggestions('openai', ['gpt-5.4', 'gpt-5.4-mini', 'gpt-4.1', 'gpt-4.1-mini'])
-    ).toEqual([
-      'gpt-5.4-mini',
-      'gpt-5.4',
-      'gpt-4.1-mini',
-      'gpt-4.1',
-    ]);
+  it('keeps the provider default first and ranks curated snapshot entries above alphabetical', () => {
+    const merged = mergeProviderModelSuggestions('openai', ['gpt-5.4', 'gpt-5.4-mini', 'gpt-4.1', 'gpt-4.1-mini']);
+
+    // default model always first; remaining non-snapshot ids fall back to alphabetical sort
+    expect(merged[0]).toBe('gpt-5.4-mini');
+    expect(merged).toContain('gpt-5.4');
+    expect(merged).toContain('gpt-4.1');
+    expect(merged).toContain('gpt-4.1-mini');
+    expect(merged.indexOf('gpt-4.1')).toBeLessThan(merged.indexOf('gpt-4.1-mini'));
   });
 
   it('filters OpenAI models down to likely text-generation ids', () => {
@@ -94,6 +98,22 @@ describe('provider-model-discovery', () => {
       'claude-opus-4-7',
     ]);
     expect(normalizeOpenRouterModelIds('gemini', payload)).toEqual(['gemini-2.5-flash']);
+  });
+
+  it('translates OpenRouter dotted Anthropic ids into dash-separated API format', () => {
+    const payload = {
+      data: [
+        { id: 'anthropic/claude-opus-4.7' },
+        { id: 'anthropic/claude-sonnet-4.6' },
+        { id: 'anthropic/claude-haiku-4.5:beta' },
+      ],
+    };
+
+    expect(normalizeOpenRouterModelIds('anthropic', payload)).toEqual([
+      'claude-opus-4-7',
+      'claude-sonnet-4-6',
+      'claude-haiku-4-5',
+    ]);
   });
 
   it('extracts per-provider models from the models.dev shape and applies provider filters', () => {
@@ -196,6 +216,19 @@ describe('provider-model-discovery', () => {
     }
   });
 
+  it('ships a curated-models snapshot that is well-formed and passes runtime filters', () => {
+    expect(CITY_GENERATION_CURATED_SNAPSHOT.schemaVersion).toBe(1);
+
+    for (const provider of CITY_GENERATION_PROVIDERS) {
+      const modelIds = CITY_GENERATION_CURATED_SNAPSHOT.providers[provider];
+      expect(modelIds.length).toBeGreaterThan(0);
+
+      // Every id in the shipped snapshot must pass the aggregator normalizer's filter.
+      const payload = { data: modelIds.map((id) => ({ id: `${provider === 'gemini' ? 'google' : provider}/${id}` })) };
+      expect(normalizeOpenRouterModelIds(provider, payload)).toEqual(modelIds);
+    }
+  });
+
   it('reuses the cached provider response until force refresh is requested', async () => {
     const originalFetch = global.fetch;
     let fetchCount = 0;
@@ -235,7 +268,9 @@ describe('provider-model-discovery', () => {
       expect(second.cacheHit).toBe(true);
       expect(refreshed.cacheHit).toBe(false);
       expect(fetchCount).toBe(2);
-      expect(second.effectiveModels.slice(0, 2)).toEqual(['gpt-5.4-mini', 'gpt-5.4']);
+      expect(second.effectiveModels[0]).toBe('gpt-5.4-mini');
+      expect(second.liveModels).toContain('gpt-5.4-mini');
+      expect(second.liveModels).toContain('gpt-5.4');
     } finally {
       global.fetch = originalFetch;
     }

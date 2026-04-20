@@ -361,13 +361,13 @@ By the end of this workstream:
 - [x] Phase A4 - Extend `ProviderModelDiscoverySource` union to include `'aggregated'` and add `aggregatorSource` to `ProviderModelDiscoveryResult`
 - [x] Phase A5 - Rewire `discoverProviderModels` no-credential branch to call the aggregator before falling through to curated fallback
 - [x] Phase A6 - Keep TTL cache intact; `credentialSource: 'none'` entries now participate in the same cache
-- [ ] Phase B - Self-refreshing curated fallback snapshot
-- [ ] Phase B1 - Add `src/lib/data/curated-models.generated.json` schema (per-provider arrays plus `generatedAt`, `sources`)
-- [ ] Phase B2 - Add `scripts/refresh-curated-models.ts` that fetches aggregator sources, applies the same filters, and writes the JSON
-- [ ] Phase B3 - Add `npm run models:refresh` entry to `package.json`
-- [ ] Phase B4 - Update `city-generation-config.ts` to import `CITY_GENERATION_KNOWN_MODELS` from the generated JSON
-- [ ] Phase B5 - Add a `models:check` dry-run mode so CI can detect when the snapshot is stale without rewriting it
-- [ ] Phase B6 - Run the refresh script once and commit the initial snapshot
+- [x] Phase B - Self-refreshing curated fallback snapshot
+- [x] Phase B1 - Add `src/lib/data/curated-models.generated.json` schema (per-provider arrays plus `generatedAt`, `sources`)
+- [x] Phase B2 - Add `scripts/refresh-curated-models.ts` that fetches aggregator sources, applies the same filters, and writes the JSON
+- [x] Phase B3 - Add `npm run models:refresh` entry to `package.json`
+- [x] Phase B4 - Update `city-generation-config.ts` to import `CITY_GENERATION_KNOWN_MODELS` from the generated JSON
+- [x] Phase B5 - Add a `models:check` dry-run mode so CI can detect when the snapshot is stale without rewriting it
+- [x] Phase B6 - Run the refresh script once and commit the initial snapshot
 - [ ] Phase C - UI integration for the new source tier
 - [ ] Phase C1 - Extend the shared status line copy to cover `source === 'aggregated'` (e.g. "Suggestions from OpenRouter")
 - [ ] Phase C2 - Update warnings so users understand when Tier 2 was used vs Tier 3 snapshot
