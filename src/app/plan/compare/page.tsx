@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeftRight } from 'lucide-react';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { ComparisonChart } from '@/components/itinerary/ComparisonChart';
+import { ComparisonCategoryChart } from '@/components/itinerary/ComparisonCategoryChart';
+import { ComparisonCountryChart } from '@/components/itinerary/ComparisonCountryChart';
 import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummaryCards';
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
@@ -133,6 +135,8 @@ export default function ComparePlansPage() {
   // Derive header state
   const hasResults = !!comparisonData && comparisonData.length > 0;
   const showSelector = selectorMode && !loading;
+  const comparedPlanCount = comparisonData?.length ?? 0;
+  const shouldStackAnalyticsSections = comparedPlanCount >= 4;
 
   let statusText = '';
   if (showSelector && allPlans.length > 0) {
@@ -159,7 +163,7 @@ export default function ComparePlansPage() {
     <div className="-mx-4 -mt-4 lg:-mx-8 lg:-mt-8">
       {/* Fixed header */}
       <div className="fixed inset-x-0 top-0 z-30 border-b bg-background shadow-sm lg:left-64">
-        <div ref={headerRef} className="mx-auto max-w-6xl px-4 py-4 lg:px-8">
+        <div ref={headerRef} className="mx-auto max-w-[1440px] px-4 py-4 lg:px-8">
           <div className="flex items-center justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold">Compare Plans</h1>
@@ -192,7 +196,7 @@ export default function ComparePlansPage() {
 
       {/* Page content */}
       <div
-        className="mx-auto max-w-6xl px-4 pb-6 lg:px-8"
+        className="mx-auto max-w-[1440px] px-4 pb-8 lg:px-8"
         style={{ paddingTop: contentTopPadding }}
       >
         {/* Selector mode */}
@@ -249,9 +253,44 @@ export default function ComparePlansPage() {
 
         {/* Comparison results */}
         {hasResults && !selectorMode && (
-          <div className="space-y-6">
-            <ComparisonSummaryCards plans={comparisonData} />
-            <ComparisonChart plans={comparisonData} />
+          <div className="space-y-8">
+            <section className="space-y-4">
+              <div className="flex flex-col gap-1">
+                <h2 className="text-base font-semibold">Plan Overview</h2>
+                <p className="text-sm text-muted-foreground">
+                  Wider summary cards keep each plan readable even as you compare more snapshots.
+                </p>
+              </div>
+              <ComparisonSummaryCards plans={comparisonData} />
+            </section>
+
+            <section className="space-y-4">
+              <div className="flex flex-col gap-1">
+                <h2 className="text-base font-semibold">Spend Over Time</h2>
+                <p className="text-sm text-muted-foreground">
+                  The cumulative line chart remains the hero view for spotting where plans diverge.
+                </p>
+              </div>
+              <ComparisonChart plans={comparisonData} />
+            </section>
+
+            <section className="space-y-4">
+              <div className="flex flex-col gap-1">
+                <h2 className="text-base font-semibold">Plan Breakdown</h2>
+                <p className="text-sm text-muted-foreground">
+                  Country and category views adapt to the number of plans so the inline compare page stays readable.
+                </p>
+              </div>
+
+              <div className={shouldStackAnalyticsSections ? 'space-y-6' : 'grid gap-6 xl:grid-cols-2 xl:items-start'}>
+                <div className="min-w-0">
+                  <ComparisonCountryChart plans={comparisonData} />
+                </div>
+                <div className="min-w-0">
+                  <ComparisonCategoryChart plans={comparisonData} />
+                </div>
+              </div>
+            </section>
           </div>
         )}
 

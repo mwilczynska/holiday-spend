@@ -76,6 +76,15 @@ describe('computePlanComparison', () => {
     const result = computePlanComparison('plan-1', 'Mismatch fixture', snapshot, cityMap);
 
     expect(result.summary.totalBudget).toBe(1225);
+    expect(result.countryTotals).toEqual([
+      {
+        countryId: 'country-a',
+        countryName: 'Country A',
+        totalPlanned: 1225,
+        plannedDays: 7,
+        plannedPerDay: 175,
+      },
+    ]);
     expect(result.series).toHaveLength(7);
     expect(result.series[0]).toMatchObject({
       date: '2026-02-04',
@@ -127,6 +136,15 @@ describe('computePlanComparison', () => {
     expect(result.series[0]?.dailyPlanned).toBe(170);
     expect(result.series[1]?.dailyPlanned).toBe(130);
     expect(result.summary.totalBudget).toBe(950);
+    expect(result.countryTotals).toEqual([
+      {
+        countryId: 'country-a',
+        countryName: 'Country A',
+        totalPlanned: 950,
+        plannedDays: 7,
+        plannedPerDay: 135.71,
+      },
+    ]);
     expect(result.series[result.series.length - 1]?.cumulativePlanned).toBe(950);
   });
 
@@ -216,10 +234,27 @@ describe('computePlanComparison', () => {
     expect(sumTotals(result.categoryTotals)).toBeCloseTo(result.summary.totalBudget, 2);
 
     expect(result.countryTotals).toEqual([
-      { countryId: 'country-a', countryName: 'Country A', totalPlanned: 720 },
-      { countryId: 'country-b', countryName: 'Country B', totalPlanned: 240 },
-      { countryId: 'country-b', countryName: null, totalPlanned: 100 },
-      { countryId: null, countryName: null, totalPlanned: 50 },
+      {
+        countryId: 'country-a',
+        countryName: 'Country A',
+        totalPlanned: 720,
+        plannedDays: 3,
+        plannedPerDay: 240,
+      },
+      {
+        countryId: 'country-b',
+        countryName: 'Country B',
+        totalPlanned: 340,
+        plannedDays: 2,
+        plannedPerDay: 170,
+      },
+      {
+        countryId: null,
+        countryName: null,
+        totalPlanned: 50,
+        plannedDays: 0,
+        plannedPerDay: null,
+      },
     ]);
 
     expect(result.categoryTotals).toEqual([

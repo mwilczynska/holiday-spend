@@ -1,9 +1,9 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { PLAN_COLORS } from '@/lib/comparison-colors';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
-
-const PLAN_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'];
+import { cn } from '@/lib/utils';
 
 interface ComparisonSummaryCardsProps {
   plans: PlanComparisonResult[];
@@ -13,12 +13,25 @@ function formatAud(value: number) {
   return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 }
 
+function getCardWidthClass(planCount: number) {
+  if (planCount <= 2) {
+    return 'min-w-[320px] sm:min-w-[360px] xl:min-w-[420px]';
+  }
+  if (planCount === 3) {
+    return 'min-w-[300px] sm:min-w-[340px] xl:min-w-[380px]';
+  }
+  return 'min-w-[280px] sm:min-w-[320px] xl:min-w-[340px]';
+}
+
 export function ComparisonSummaryCards({ plans }: ComparisonSummaryCardsProps) {
+  const cardWidthClass = getCardWidthClass(plans.length);
+
   return (
     <div className="space-y-3">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="overflow-x-auto pb-2 [scrollbar-width:thin]">
+        <div className="flex gap-4 pr-1">
         {plans.map((plan, index) => (
-          <Card key={plan.id}>
+          <Card key={plan.id} className={cn('shrink-0', cardWidthClass)}>
             <CardContent className="pt-4 pb-4">
               <div className="mb-3 flex items-center gap-2">
                 <div
@@ -56,6 +69,7 @@ export function ComparisonSummaryCards({ plans }: ComparisonSummaryCardsProps) {
             </CardContent>
           </Card>
         ))}
+        </div>
       </div>
       <p className="text-xs text-muted-foreground">
         Comparison totals are recomputed from the saved plan inputs using the current city dataset and the same canonical planned-allocation model as the chart.

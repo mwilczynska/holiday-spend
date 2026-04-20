@@ -1,6 +1,78 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 
 test.describe.serial('plan comparison', () => {
+  const uniquePrefix = `CmpE2E-${Date.now()}`;
+  const seededPlanNames = ['One', 'Two', 'Three', 'Four', 'Five'].map(
+    (suffix) => `${uniquePrefix}-Seed-${suffix}`
+  );
+  let hasSeededSavedPlans = false;
+
+  async function seedSavedPlans(request: APIRequestContext) {
+    if (hasSeededSavedPlans) return;
+
+    const [snapshotResponse, itineraryResponse] = await Promise.all([
+      request.get('/api/itinerary/snapshot'),
+      request.get('/api/itinerary'),
+    ]);
+
+    expect(snapshotResponse.ok()).toBeTruthy();
+    expect(itineraryResponse.ok()).toBeTruthy();
+
+    const snapshotPayload = await snapshotResponse.json();
+    const itineraryPayload = await itineraryResponse.json();
+    const snapshot = snapshotPayload.data;
+    const itinerary = itineraryPayload.data as Array<{ legTotal: number }>;
+    const totalBudget =
+      itinerary.reduce((sum, leg) => sum + (leg.legTotal ?? 0), 0) +
+      snapshot.fixedCosts.reduce(
+        (sum: number, fixedCost: { amountAud: number }) => sum + (fixedCost.amountAud ?? 0),
+        0
+      );
+
+    for (const planName of seededPlanNames) {
+      const saveResponse = await request.post('/api/saved-plans', {
+        data: {
+          name: planName,
+          snapshot: { ...snapshot, name: planName, exportedAt: new Date().toISOString() },
+          summary: {
+            legCount: snapshot.legs.length,
+            totalNights: snapshot.legs.reduce(
+              (sum: number, leg: { nights: number }) => sum + (leg.nights ?? 0),
+              0
+            ),
+            totalBudget,
+            fixedCostCount: snapshot.fixedCosts.length,
+          },
+        },
+      });
+
+      expect(saveResponse.ok()).toBeTruthy();
+    }
+
+    hasSeededSavedPlans = true;
+  }
+
+  async function openCompareSelector(page: Page) {
+    await page.goto('/plan/compare');
+    await page.evaluate(() => sessionStorage.removeItem('wanderledger.compare-ids'));
+    await page.goto('/plan/compare');
+    await page.waitForLoadState('networkidle');
+  }
+
+  async function compareNamedPlans(page: Page, planNames: string[]) {
+    await openCompareSelector(page);
+
+    for (const planName of planNames) {
+      const checkbox = page.locator('label').filter({ hasText: planName }).locator('input[type="checkbox"]');
+      await expect(checkbox).toBeVisible({ timeout: 15_000 });
+      await checkbox.check();
+    }
+
+    await page.getByRole('button', { name: /Compare/ }).last().click();
+    await expect(page).toHaveURL(/\/plan\/compare\?ids=/, { timeout: 10_000 });
+    await expect(page.getByRole('button', { name: /Change Plans/ })).toBeVisible();
+  }
+
   test('plan selector renders when no IDs provided', async ({ page }) => {
     // Clear any stored comparison IDs
     await page.goto('/plan/compare');
@@ -23,47 +95,68 @@ test.describe.serial('plan comparison', () => {
     await expect(page).toHaveURL(/\/plan\/compare/, { timeout: 15000 });
   });
 
-  test('comparison renders chart and cards for saved plans', async ({ page }) => {
-    // Save two plans from the planner
-    await page.goto('/plan');
-    await page.waitForLoadState('networkidle');
+  test('comparison renders chart and cards for saved plans', async ({ page, request }) => {
+    await seedSavedPlans(request);
 
-    for (const suffix of ['ChartA', 'ChartB']) {
-      await page.getByRole('button', { name: 'Save Plan' }).click();
+    await compareNamedPlans(page, seededPlanNames.slice(0, 2));
+
+    await expect(page.getByText('Planned Total').first()).toBeVisible({ timeout: 15000 });
+    await expect(page.getByText('Cumulative Planned Spend')).toBeVisible();
+    await expect(page.getByRole('button', { name: /Change Plans/ })).toBeVisible();
+  });
+
+  test('two-plan compare keeps analytics cards side-by-side and all expand dialogs open', async ({ page, request }) => {
+    await seedSavedPlans(request);
+    const planNames = seededPlanNames.slice(0, 2);
+    await compareNamedPlans(page, planNames);
+
+    await expect(page.getByText('Plan Overview')).toBeVisible();
+    await expect(page.getByText('Spend Over Time')).toBeVisible();
+    await expect(page.getByText('Plan Breakdown')).toBeVisible();
+
+    const countryHeading = page.getByText('Planned Spend by Country').first();
+    const categoryHeading = page.getByText('Planned Spend by Category').first();
+    const countryBox = await countryHeading.boundingBox();
+    const categoryBox = await categoryHeading.boundingBox();
+
+    expect(countryBox).not.toBeNull();
+    expect(categoryBox).not.toBeNull();
+    expect(Math.abs((countryBox?.y ?? 0) - (categoryBox?.y ?? 0))).toBeLessThan(24);
+    expect((categoryBox?.x ?? 0) - (countryBox?.x ?? 0)).toBeGreaterThan(120);
+
+    const expandButtons = page.getByRole('button', { name: 'Expand' });
+    await expect(expandButtons).toHaveCount(3);
+
+    for (let index = 0; index < 3; index += 1) {
+      await expandButtons.nth(index).click();
       const dialog = page.getByRole('dialog');
       await expect(dialog).toBeVisible();
-      const nameInput = dialog.getByLabel('Plan name');
-      await nameInput.clear();
-      await nameInput.fill(`CompTest-${suffix}`);
-      await dialog.getByRole('button', { name: 'Save' }).click();
-      await expect(dialog).not.toBeVisible({ timeout: 10000 });
+      await page.keyboard.press('Escape');
+      await expect(dialog).toHaveCount(0);
     }
+  });
 
-    // Navigate to comparison page through the selector
-    await page.evaluate(() => sessionStorage.removeItem('wanderledger.compare-ids'));
-    await page.goto('/plan/compare');
-    await page.waitForLoadState('networkidle');
+  test('five-plan compare stacks breakdown charts vertically and keeps charts readable', async ({ page, request }) => {
+    await seedSavedPlans(request);
+    const planNames = seededPlanNames;
+    await compareNamedPlans(page, planNames);
 
-    // Select two plans via checkboxes
-    const checkboxes = page.locator('label').filter({ hasText: /CompTest/ }).locator('input[type="checkbox"]');
-    const checkboxCount = await checkboxes.count();
-    test.skip(checkboxCount < 2, 'Need at least 2 plans for comparison');
+    await expect(page.getByText('Comparing 5 plans.')).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText('Planned Spend by Country').first()).toBeVisible();
+    await expect(page.getByText('Planned Spend by Category').first()).toBeVisible();
 
-    await checkboxes.nth(0).check();
-    await checkboxes.nth(1).check();
-    await page.getByRole('button', { name: /Compare/ }).click();
+    const countryHeading = page.getByText('Planned Spend by Country').first();
+    const categoryHeading = page.getByText('Planned Spend by Category').first();
+    const countryBox = await countryHeading.boundingBox();
+    const categoryBox = await categoryHeading.boundingBox();
 
-    // Verify URL changed to include ids
-    await expect(page).toHaveURL(/\/plan\/compare\?ids=/, { timeout: 10000 });
+    expect(countryBox).not.toBeNull();
+    expect(categoryBox).not.toBeNull();
+    expect((categoryBox?.y ?? 0) - (countryBox?.y ?? 0)).toBeGreaterThan(150);
 
-    // Verify summary cards render
-    await expect(page.getByText('Total Budget').first()).toBeVisible({ timeout: 15000 });
-
-    // Verify chart renders
-    await expect(page.getByText('Cumulative Planned Spend')).toBeVisible();
-
-    // Verify "Change Plans" button is visible
-    await expect(page.getByRole('button', { name: /Change Plans/ })).toBeVisible();
+    for (const planName of planNames) {
+      await expect(page.getByRole('heading', { name: planName }).first()).toBeVisible();
+    }
   });
 
   test('shows error for invalid plan IDs', async ({ page }) => {

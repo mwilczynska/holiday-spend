@@ -9,9 +9,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Maximize2 } from 'lucide-react';
+import { PLAN_COLORS } from '@/lib/comparison-colors';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
-
-const PLAN_COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'];
 
 interface ComparisonChartProps {
   plans: PlanComparisonResult[];
