@@ -185,6 +185,120 @@ Document:
 
 ---
 
+## Post-Implementation Research - No-Key Discovery
+
+This branch now supports live provider discovery when a valid browser API key or server-side env key is available.
+
+After shipping that work, we investigated whether Anthropic and Gemini expose an **official no-key route** that could be used when neither key source is present.
+
+### Research Question
+
+Can Wanderledger fetch a fresh list of latest Anthropic and Gemini models **without** requiring a live provider API key?
+
+### Findings
+
+- **Anthropic**:
+  - The official Models API remains the best live source when a key is available:
+    - `GET https://api.anthropic.com/v1/models`
+  - Anthropic documents `x-api-key` as required for that endpoint.
+  - We did **not** identify an official unauthenticated Anthropic model-list API.
+  - Anthropic does publish public model information on docs pages that do not require authentication.
+
+- **Gemini**:
+  - The official live source when a key is available remains:
+    - `GET https://generativelanguage.googleapis.com/v1beta/models`
+  - We did **not** identify an official unauthenticated Gemini model-list API.
+  - Google does publish public Gemini model information on docs pages and changelogs that do not require authentication.
+
+- **Conclusion**:
+  - For Anthropic and Gemini, the realistic no-key path is **public-docs fallback**, not an unauthenticated live models API.
+
+### Viable No-Key Sources
+
+- **Anthropic public docs**
+  - Models overview page:
+    - public model families, API ids, aliases, and current comparison tables
+  - API release notes:
+    - launches and model changes
+  - Model deprecations page:
+    - retirements and migration guidance
+
+- **Gemini public docs**
+  - Gemini models page:
+    - public naming patterns, current families, stable/preview/latest conventions
+  - Gemini changelog:
+    - launches, deprecations, shutdowns, and alias movement
+
+### Notable Examples Observed During Research
+
+- **Anthropic**
+  - Public Anthropic docs currently show current API ids such as:
+    - `claude-opus-4-7`
+    - `claude-sonnet-4-6`
+    - `claude-haiku-4-5`
+  - Anthropic’s public docs also expose aliases alongside API ids on the models overview page.
+
+- **Gemini**
+  - Gemini public docs explicitly document `latest` aliases such as:
+    - `gemini-flash-latest`
+  - Gemini’s public docs and changelog also show stable ids and release/deprecation movement, for example around:
+    - `gemini-2.5-pro`
+    - `gemini-2.5-flash`
+    - `gemini-2.5-flash-lite`
+
+### Possible Future Paths
+
+These are intentionally **not yet chosen**. They are the plausible next options for follow-up work:
+
+- **Option A - Keep the current implementation only**
+  - Continue using provider APIs when a key is available.
+  - Keep curated repo-owned fallback suggestions when no key is available.
+
+- **Option B - Add docs-based fallback for no-key discovery**
+  - Keep provider APIs as the primary source.
+  - Add a server-side docs parser for official public Anthropic and Gemini docs.
+  - Use docs-derived models when no provider key is available.
+  - Fall back to curated repo-owned defaults only if the docs parser fails.
+
+- **Option C - Use more alias-heavy curated defaults**
+  - Keep the current architecture.
+  - Refresh the curated fallback list to prefer stable public aliases where available, especially for Gemini.
+  - This reduces staleness somewhat without adding docs parsing.
+
+### Current Recommendation
+
+If we decide to improve the no-key experience later, the strongest next step is:
+
+- keep provider APIs as the primary source of truth
+- add a docs-derived fallback for no-key Anthropic and Gemini discovery
+- cache docs-derived results server-side
+- keep curated repo-owned suggestions as the final safety net
+
+### Decision Status
+
+- No implementation decision has been made yet for the no-key path.
+- The current branch remains valid and complete as shipped.
+- Any docs-based fallback should be treated as a separate follow-up decision/workstream.
+
+### Research Sources
+
+- Anthropic Models overview:
+  - `https://platform.claude.com/docs/en/about-claude/models/overview`
+- Anthropic Release notes:
+  - `https://platform.claude.com/docs/en/release-notes/overview`
+- Anthropic Model deprecations:
+  - `https://docs.anthropic.com/en/docs/about-claude/model-deprecations`
+- Anthropic Models API docs:
+  - `https://docs.anthropic.com/en/api/models-list`
+- Gemini models guide:
+  - `https://ai.google.dev/gemini-api/docs/models`
+- Gemini changelog:
+  - `https://ai.google.dev/gemini-api/docs/changelog`
+- Gemini models API reference:
+  - `https://ai.google.dev/api/rest/generativelanguage/models/list`
+
+---
+
 ## Success Criteria
 
 This workstream is successful when:
