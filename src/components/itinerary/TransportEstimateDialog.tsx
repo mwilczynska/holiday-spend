@@ -9,7 +9,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { CITY_GENERATION_DEFAULT_MODELS } from '@/lib/city-generation-config';
+import {
+  CITY_GENERATION_PROVIDER_OPTIONS,
+  getDefaultCityGenerationModels,
+  migrateStoredCityGenerationModels,
+  validateCityGenerationModel,
+  type CityGenerationProvider,
+} from '@/lib/city-generation-config';
 import type {
   IntercityTransportItem,
   TransportEstimateMode,
@@ -17,40 +23,9 @@ import type {
   TransportEstimateResult,
 } from '@/types';
 
-type ProviderOption = 'anthropic' | 'openai' | 'gemini';
+type ProviderOption = CityGenerationProvider;
 
 const STORAGE_PREFIX = 'wanderledger.transport-estimation';
-const LEGACY_DEFAULT_MODEL_MIGRATIONS: Record<ProviderOption, string[]> = {
-  openai: ['gpt-4o', 'gpt-5-mini'],
-  anthropic: ['claude-sonnet-4-20250514'],
-  gemini: ['gemini-2.0-flash'],
-};
-
-const PROVIDER_OPTIONS: Array<{
-  value: ProviderOption;
-  label: string;
-  help: string;
-  defaultModel: string;
-}> = [
-  {
-    value: 'openai',
-    label: 'OpenAI',
-    help: 'Uses OpenAI web search when the selected model/runtime supports it, then falls back to estimation.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.openai,
-  },
-  {
-    value: 'anthropic',
-    label: 'Anthropic',
-    help: 'Uses Anthropic web search when the selected model/runtime supports it, then falls back to estimation.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-  },
-  {
-    value: 'gemini',
-    label: 'Google Gemini',
-    help: 'Uses Google Search grounding when the selected model/runtime supports it, then falls back to estimation.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  },
-];
 
 const MODE_OPTIONS: Array<{ value: TransportEstimateMode; label: string }> = [
   { value: 'flight', label: 'Flight' },
@@ -84,11 +59,7 @@ function fmtAud(value: number) {
 }
 
 function getDefaultModels() {
-  return {
-    openai: CITY_GENERATION_DEFAULT_MODELS.openai,
-    anthropic: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-    gemini: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  };
+  return getDefaultCityGenerationModels();
 }
 
 function buildTransportRows(
@@ -154,7 +125,7 @@ export function TransportEstimateDialog({
     const storedKeys = window.localStorage.getItem(`${STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${STORAGE_PREFIX}.models`);
 
-    if (storedProvider && PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
+    if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setProvider(storedProvider);
     }
 
@@ -174,20 +145,7 @@ export function TransportEstimateDialog({
     if (storedModels) {
       try {
         const parsed = JSON.parse(storedModels) as Partial<Record<ProviderOption, string>>;
-        const nextModels = {
-          openai:
-            parsed.openai && !LEGACY_DEFAULT_MODEL_MIGRATIONS.openai.includes(parsed.openai)
-              ? parsed.openai
-              : CITY_GENERATION_DEFAULT_MODELS.openai,
-          anthropic:
-            parsed.anthropic && !LEGACY_DEFAULT_MODEL_MIGRATIONS.anthropic.includes(parsed.anthropic)
-              ? parsed.anthropic
-              : CITY_GENERATION_DEFAULT_MODELS.anthropic,
-          gemini:
-            parsed.gemini && !LEGACY_DEFAULT_MODEL_MIGRATIONS.gemini.includes(parsed.gemini)
-              ? parsed.gemini
-              : CITY_GENERATION_DEFAULT_MODELS.gemini,
-        };
+        const nextModels = migrateStoredCityGenerationModels(parsed);
 
         setModels(nextModels);
         window.localStorage.setItem(`${STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
@@ -198,11 +156,14 @@ export function TransportEstimateDialog({
   }, []);
 
   const selectedProvider = useMemo(
-    () => PROVIDER_OPTIONS.find((option) => option.value === provider) ?? PROVIDER_OPTIONS[0],
+    () => CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === provider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0],
     [provider]
   );
   const activeApiKey = apiKeys[provider] || '';
+  const hasAnySavedApiKey = Object.values(apiKeys).some((value) => value.trim().length > 0);
   const activeModel = models[provider] || selectedProvider.defaultModel;
+  const modelValidation = validateCityGenerationModel(provider, activeModel);
+  const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
   const canEstimate = previousLeg != null && Boolean(currentLeg.startDate) && allowedModes.length > 0;
 
   function handleOpenChange(nextOpen: boolean) {
@@ -226,6 +187,23 @@ export function TransportEstimateDialog({
     };
     setApiKeys(nextKeys);
     window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+  }
+
+  function clearCurrentProviderApiKey() {
+    updateApiKey('');
+    setShowApiKey(false);
+  }
+
+  function clearAllSavedApiKeys() {
+    const nextKeys = {
+      openai: '',
+      anthropic: '',
+      gemini: '',
+    };
+
+    setApiKeys(nextKeys);
+    window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+    setShowApiKey(false);
   }
 
   function updateModel(value: string) {
@@ -264,7 +242,7 @@ export function TransportEstimateDialog({
         body: JSON.stringify({
           provider,
           apiKey: activeApiKey || undefined,
-          model: activeModel || undefined,
+          model: modelValidation.effectiveModel || undefined,
           allowedModes,
           referenceDate: referenceDate || undefined,
           extraContext: extraContext || undefined,
@@ -355,7 +333,7 @@ export function TransportEstimateDialog({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {PROVIDER_OPTIONS.map((option) => (
+                      {CITY_GENERATION_PROVIDER_OPTIONS.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
                         </SelectItem>
@@ -386,18 +364,54 @@ export function TransportEstimateDialog({
                     />
                     Show API key
                   </label>
+                  <div className="flex flex-wrap gap-2">
+                    <Button type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
+                      Clear This Key
+                    </Button>
+                    <Button type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
+                      Clear All Saved Keys
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Clears browser-stored keys only. Server-side env keys are unchanged.
+                  </p>
                 </div>
 
                 <div className="space-y-1">
                   <Label className="text-xs">Model</Label>
                   <Input
                     className="h-9 text-sm"
+                    list={modelListId}
                     placeholder={selectedProvider.defaultModel}
                     value={activeModel}
                     onChange={(event) => updateModel(event.target.value)}
                     autoComplete="off"
                     spellCheck={false}
                   />
+                  <datalist id={modelListId}>
+                    {selectedProvider.knownModels.map((model) => (
+                      <option key={model} value={model} />
+                    ))}
+                  </datalist>
+                  <p className="text-xs text-muted-foreground">
+                    Provider model id. Suggested models: {selectedProvider.knownModels.join(', ')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProvider.knownModels.map((model) => (
+                      <Button
+                        key={model}
+                        type="button"
+                        variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
+                        size="sm"
+                        onClick={() => updateModel(model)}
+                      >
+                        {model === selectedProvider.defaultModel ? `${model} (default)` : model}
+                      </Button>
+                    ))}
+                  </div>
+                  <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
+                    {modelValidation.message}
+                  </p>
                 </div>
 
                 <div className="space-y-1">

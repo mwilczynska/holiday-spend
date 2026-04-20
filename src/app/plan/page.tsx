@@ -187,6 +187,14 @@ function countMissingTransportLegs(legs: Leg[]) {
   }, 0);
 }
 
+function countEstimatableTransportLegs(legs: Leg[]) {
+  return legs.reduce((count, leg, index) => {
+    if (index === 0) return count;
+    if (!leg.startDate) return count;
+    return count + 1;
+  }, 0);
+}
+
 export default function PlanPage() {
   const [legs, setLegs] = useState<Leg[]>([]);
   const [cities, setCities] = useState<City[]>([]);
@@ -457,6 +465,7 @@ export default function PlanPage() {
 
   const fixedCostsTotal = fixedCosts.reduce((sum, fc) => sum + fc.amountAud, 0);
   const missingTransportLegCount = countMissingTransportLegs(legs);
+  const estimatableTransportLegCount = countEstimatableTransportLegs(legs);
   const currentPlanSummary = {
     legCount: legs.length,
     totalNights: legs.reduce((sum, leg) => sum + leg.nights, 0),
@@ -1124,7 +1133,7 @@ export default function PlanPage() {
                       ))}
                     </datalist>
                     <p className="text-xs text-muted-foreground">
-                      Suggested models: {selectedImportProvider.knownModels.join(', ')}
+                      Provider model id. Suggested models: {selectedImportProvider.knownModels.join(', ')}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {selectedImportProvider.knownModels.map((model) => (
@@ -1277,10 +1286,14 @@ export default function PlanPage() {
                     setSnapshotStatus(null);
                     setSnapshotError(null);
                   }}
-                  disabled={missingTransportLegCount === 0}
+                  disabled={estimatableTransportLegCount === 0}
                 >
-                  Estimate Missing Transport
-                  {missingTransportLegCount > 0 ? ` (${missingTransportLegCount})` : ''}
+                  Estimate Intercity Transport
+                  {estimatableTransportLegCount > 0
+                    ? missingTransportLegCount > 0
+                      ? ` (${missingTransportLegCount} missing)`
+                      : ` (${estimatableTransportLegCount} eligible)`
+                    : ''}
                 </Button>
                 <PlannerNewCityDialog
                   open={plannerNewCityOpen}

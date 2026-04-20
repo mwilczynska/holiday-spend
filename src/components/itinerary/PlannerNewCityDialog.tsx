@@ -338,7 +338,7 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
                     ))}
                   </datalist>
                   <p className="text-xs text-muted-foreground">
-                    Suggested models: {selectedProvider.knownModels.join(', ')}
+                    Provider model id. Suggested models: {selectedProvider.knownModels.join(', ')}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {selectedProvider.knownModels.map((model) => (

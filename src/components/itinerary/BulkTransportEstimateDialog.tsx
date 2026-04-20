@@ -9,43 +9,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { CITY_GENERATION_DEFAULT_MODELS } from '@/lib/city-generation-config';
+import {
+  CITY_GENERATION_PROVIDER_OPTIONS,
+  getDefaultCityGenerationModels,
+  migrateStoredCityGenerationModels,
+  validateCityGenerationModel,
+  type CityGenerationProvider,
+} from '@/lib/city-generation-config';
 import type { IntercityTransportItem, TransportEstimateMode, TransportEstimateResult } from '@/types';
 
-type ProviderOption = 'anthropic' | 'openai' | 'gemini';
+type ProviderOption = CityGenerationProvider;
 
 const STORAGE_PREFIX = 'wanderledger.transport-estimation';
-const LEGACY_DEFAULT_MODEL_MIGRATIONS: Record<ProviderOption, string[]> = {
-  openai: ['gpt-4o', 'gpt-5-mini'],
-  anthropic: ['claude-sonnet-4-20250514'],
-  gemini: ['gemini-2.0-flash'],
-};
-
-const PROVIDER_OPTIONS: Array<{
-  value: ProviderOption;
-  label: string;
-  help: string;
-  defaultModel: string;
-}> = [
-  {
-    value: 'openai',
-    label: 'OpenAI',
-    help: 'Uses OpenAI web search when the selected model/runtime supports it, then falls back to estimation.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.openai,
-  },
-  {
-    value: 'anthropic',
-    label: 'Anthropic',
-    help: 'Uses Anthropic web search when the selected model/runtime supports it, then falls back to estimation.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-  },
-  {
-    value: 'gemini',
-    label: 'Google Gemini',
-    help: 'Uses Google Search grounding when the selected model/runtime supports it, then falls back to estimation.',
-    defaultModel: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  },
-];
 
 const MODE_OPTIONS: Array<{ value: TransportEstimateMode; label: string }> = [
   { value: 'flight', label: 'Flight' },
@@ -76,6 +51,11 @@ interface MissingTransportLeg {
   travelDate: string;
 }
 
+interface EstimatableTransportLeg extends MissingTransportLeg {
+  hasExistingTransport: boolean;
+  transportRowCount: number;
+}
+
 interface EstimatedLegResult {
   legId: number;
   origin: string;
@@ -97,31 +77,29 @@ function sleep(ms: number) {
 }
 
 function getDefaultModels() {
-  return {
-    openai: CITY_GENERATION_DEFAULT_MODELS.openai,
-    anthropic: CITY_GENERATION_DEFAULT_MODELS.anthropic,
-    gemini: CITY_GENERATION_DEFAULT_MODELS.gemini,
-  };
+  return getDefaultCityGenerationModels();
 }
 
 function fmtAud(value: number) {
   return `$${value.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 }
 
-function buildMissingTransportLegs(
+function buildEstimatableTransportLegs(
   legs: BulkTransportEstimateDialogProps['legs']
-): MissingTransportLeg[] {
+): EstimatableTransportLeg[] {
   return legs.flatMap((leg, index) => {
     if (index === 0) return [];
     if (!leg.startDate) return [];
-    if ((leg.intercityTransports || []).length > 0) return [];
 
     const previousLeg = legs[index - 1];
+    const transportRowCount = (leg.intercityTransports || []).length;
     return [{
       legId: leg.id,
       origin: `${previousLeg.cityName}, ${previousLeg.countryName}`,
       destination: `${leg.cityName}, ${leg.countryName}`,
       travelDate: leg.startDate,
+      hasExistingTransport: transportRowCount > 0,
+      transportRowCount,
     }];
   });
 }
@@ -161,7 +139,7 @@ export function BulkTransportEstimateDialog({
     const storedKeys = window.localStorage.getItem(`${STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${STORAGE_PREFIX}.models`);
 
-    if (storedProvider && PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
+    if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setProvider(storedProvider);
     }
 
@@ -181,20 +159,7 @@ export function BulkTransportEstimateDialog({
     if (storedModels) {
       try {
         const parsed = JSON.parse(storedModels) as Partial<Record<ProviderOption, string>>;
-        const nextModels = {
-          openai:
-            parsed.openai && !LEGACY_DEFAULT_MODEL_MIGRATIONS.openai.includes(parsed.openai)
-              ? parsed.openai
-              : CITY_GENERATION_DEFAULT_MODELS.openai,
-          anthropic:
-            parsed.anthropic && !LEGACY_DEFAULT_MODEL_MIGRATIONS.anthropic.includes(parsed.anthropic)
-              ? parsed.anthropic
-              : CITY_GENERATION_DEFAULT_MODELS.anthropic,
-          gemini:
-            parsed.gemini && !LEGACY_DEFAULT_MODEL_MIGRATIONS.gemini.includes(parsed.gemini)
-              ? parsed.gemini
-              : CITY_GENERATION_DEFAULT_MODELS.gemini,
-        };
+        const nextModels = migrateStoredCityGenerationModels(parsed);
 
         setModels(nextModels);
         window.localStorage.setItem(`${STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
@@ -205,16 +170,45 @@ export function BulkTransportEstimateDialog({
   }, []);
 
   const selectedProvider = useMemo(
-    () => PROVIDER_OPTIONS.find((option) => option.value === provider) ?? PROVIDER_OPTIONS[0],
+    () => CITY_GENERATION_PROVIDER_OPTIONS.find((option) => option.value === provider) ?? CITY_GENERATION_PROVIDER_OPTIONS[0],
     [provider]
   );
   const activeApiKey = apiKeys[provider] || '';
+  const hasAnySavedApiKey = Object.values(apiKeys).some((value) => value.trim().length > 0);
   const activeModel = models[provider] || selectedProvider.defaultModel;
-  const missingTransportLegs = useMemo(() => buildMissingTransportLegs(legs), [legs]);
+  const modelValidation = validateCityGenerationModel(provider, activeModel);
+  const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
+  const estimatableTransportLegs = useMemo(() => buildEstimatableTransportLegs(legs), [legs]);
+  const defaultSelectedLegIds = useMemo(
+    () => estimatableTransportLegs
+      .filter((leg) => !leg.hasExistingTransport)
+      .map((leg) => leg.legId),
+    [estimatableTransportLegs]
+  );
+  const [selectedLegIds, setSelectedLegIds] = useState<Set<number>>(new Set());
+  const selectedTransportLegs = useMemo(
+    () => estimatableTransportLegs.filter((leg) => selectedLegIds.has(leg.legId)),
+    [estimatableTransportLegs, selectedLegIds]
+  );
+  const missingTransportLegs = useMemo(
+    () => estimatableTransportLegs.filter((leg) => !leg.hasExistingTransport),
+    [estimatableTransportLegs]
+  );
+  const existingTransportLegs = useMemo(
+    () => estimatableTransportLegs.filter((leg) => leg.hasExistingTransport),
+    [estimatableTransportLegs]
+  );
   const successfulResults = results.filter(
     (result): result is EstimatedLegResult & { estimate: TransportEstimateResult } =>
       result.status === 'success' && result.estimate != null && result.estimate.options.length > 0
   );
+
+  useEffect(() => {
+    if (!open) return;
+    setSelectedLegIds(new Set(defaultSelectedLegIds));
+    setError(null);
+    setResults([]);
+  }, [defaultSelectedLegIds, open]);
 
   function handleOpenChange(nextOpen: boolean) {
     if (estimating || applying) return;
@@ -239,6 +233,23 @@ export function BulkTransportEstimateDialog({
     window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
   }
 
+  function clearCurrentProviderApiKey() {
+    updateApiKey('');
+    setShowApiKey(false);
+  }
+
+  function clearAllSavedApiKeys() {
+    const nextKeys = {
+      openai: '',
+      anthropic: '',
+      gemini: '',
+    };
+
+    setApiKeys(nextKeys);
+    window.localStorage.setItem(`${STORAGE_PREFIX}.apiKeys`, JSON.stringify(nextKeys));
+    setShowApiKey(false);
+  }
+
   function updateModel(value: string) {
     const nextModels = {
       ...models,
@@ -254,9 +265,25 @@ export function BulkTransportEstimateDialog({
     ));
   }
 
+  function replaceSelectedLegIds(nextSelectedLegIds: Set<number>) {
+    setSelectedLegIds(nextSelectedLegIds);
+    setError(null);
+    setResults([]);
+  }
+
+  function toggleLegSelection(legId: number) {
+    const nextSelectedLegIds = new Set(selectedLegIds);
+    if (nextSelectedLegIds.has(legId)) {
+      nextSelectedLegIds.delete(legId);
+    } else {
+      nextSelectedLegIds.add(legId);
+    }
+    replaceSelectedLegIds(nextSelectedLegIds);
+  }
+
   async function handleEstimateAll() {
-    if (missingTransportLegs.length === 0) {
-      setError('There are no missing intercity transport legs to estimate.');
+    if (selectedTransportLegs.length === 0) {
+      setError('Select at least one leg to estimate.');
       return;
     }
 
@@ -271,7 +298,8 @@ export function BulkTransportEstimateDialog({
 
     const nextResults: EstimatedLegResult[] = [];
 
-    for (const leg of missingTransportLegs) {
+    for (let index = 0; index < selectedTransportLegs.length; index += 1) {
+      const leg = selectedTransportLegs[index];
       try {
         const response = await fetch(`/api/itinerary/legs/${leg.legId}/estimate-transport`, {
           method: 'POST',
@@ -279,7 +307,7 @@ export function BulkTransportEstimateDialog({
           body: JSON.stringify({
             provider,
             apiKey: activeApiKey || undefined,
-            model: activeModel || undefined,
+            model: modelValidation.effectiveModel || undefined,
             allowedModes,
             referenceDate: referenceDate || undefined,
             extraContext: extraContext || undefined,
@@ -312,7 +340,7 @@ export function BulkTransportEstimateDialog({
 
       setResults([...nextResults]);
 
-      if (leg.legId !== missingTransportLegs[missingTransportLegs.length - 1]?.legId) {
+      if (index < selectedTransportLegs.length - 1) {
         await sleep(BULK_ESTIMATE_DELAY_MS[provider]);
       }
     }
@@ -365,21 +393,102 @@ export function BulkTransportEstimateDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-4xl">
         <DialogHeader>
-          <DialogTitle>Estimate Missing Intercity Transport</DialogTitle>
+          <DialogTitle>Estimate Intercity Transport</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
           <div className="rounded-md border bg-muted/30 p-3 text-sm">
             <div className="font-medium">
-              {missingTransportLegs.length} missing intercity transport {missingTransportLegs.length === 1 ? 'leg' : 'legs'} found
+              {estimatableTransportLegs.length} intercity transport {estimatableTransportLegs.length === 1 ? 'leg' : 'legs'} can be estimated
             </div>
             <div className="mt-1 text-xs text-muted-foreground">
-              This bulk action only targets legs that already have a previous leg, already have a start date, and do not yet have any intercity transport rows.
+              {missingTransportLegs.length} missing {missingTransportLegs.length === 1 ? 'leg is' : 'legs are'} selected by default. You can also tick legs that already have transport rows to recalculate them after plan edits.
             </div>
             <div className="mt-1 text-xs text-muted-foreground">
-              Applying uses the top returned option for each successful leg.
+              This bulk action only targets legs that already have a previous leg and a start date. Applying uses the top returned option for each successful leg and replaces any existing transport rows on the checked legs.
             </div>
           </div>
+
+          <details className="rounded-md border bg-muted/20">
+            <summary className="cursor-pointer px-3 py-2 text-sm font-medium">
+              Choose legs to estimate ({selectedTransportLegs.length} selected)
+            </summary>
+            <div className="space-y-3 border-t px-3 py-3">
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => replaceSelectedLegIds(new Set(defaultSelectedLegIds))}
+                >
+                  Select Missing
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => replaceSelectedLegIds(new Set(estimatableTransportLegs.map((leg) => leg.legId)))}
+                >
+                  Select All
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => replaceSelectedLegIds(new Set())}
+                >
+                  Clear
+                </Button>
+              </div>
+
+              {estimatableTransportLegs.length === 0 ? (
+                <p className="text-sm text-muted-foreground">
+                  No legs are ready for bulk estimation yet. Each leg needs a previous leg and a start date.
+                </p>
+              ) : (
+                <div className="max-h-64 space-y-2 overflow-y-auto pr-1">
+                  {estimatableTransportLegs.map((leg) => {
+                    const selected = selectedLegIds.has(leg.legId);
+                    return (
+                      <label
+                        key={leg.legId}
+                        className={`flex cursor-pointer items-start gap-3 rounded-md border px-3 py-3 text-sm ${
+                          selected ? 'border-primary bg-primary/5' : ''
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          className="mt-1"
+                          checked={selected}
+                          onChange={() => toggleLegSelection(leg.legId)}
+                        />
+                        <div className="min-w-0 flex-1">
+                          <div className="font-medium">{leg.origin} to {leg.destination}</div>
+                          <div className="mt-1 text-xs text-muted-foreground">{leg.travelDate}</div>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            <Badge variant="outline">
+                              {leg.hasExistingTransport
+                                ? `${leg.transportRowCount} existing transport ${leg.transportRowCount === 1 ? 'row' : 'rows'}`
+                                : 'Missing transport'}
+                            </Badge>
+                            {leg.hasExistingTransport ? (
+                              <Badge variant="outline">Will replace current rows</Badge>
+                            ) : null}
+                          </div>
+                        </div>
+                      </label>
+                    );
+                  })}
+                </div>
+              )}
+
+              {existingTransportLegs.length > 0 ? (
+                <p className="text-xs text-muted-foreground">
+                  {existingTransportLegs.length} leg{existingTransportLegs.length === 1 ? ' already has' : 's already have'} transport rows and can be re-estimated if you tick them here.
+                </p>
+              ) : null}
+            </div>
+          </details>
 
           <div className="space-y-2">
             <Label className="text-xs">Modes</Label>
@@ -412,7 +521,7 @@ export function BulkTransportEstimateDialog({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {PROVIDER_OPTIONS.map((option) => (
+                      {CITY_GENERATION_PROVIDER_OPTIONS.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
                           {option.label}
                         </SelectItem>
@@ -443,18 +552,54 @@ export function BulkTransportEstimateDialog({
                     />
                     Show API key
                   </label>
+                  <div className="flex flex-wrap gap-2">
+                    <Button type="button" variant="ghost" size="sm" onClick={clearCurrentProviderApiKey} disabled={!activeApiKey}>
+                      Clear This Key
+                    </Button>
+                    <Button type="button" variant="ghost" size="sm" onClick={clearAllSavedApiKeys} disabled={!hasAnySavedApiKey}>
+                      Clear All Saved Keys
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Clears browser-stored keys only. Server-side env keys are unchanged.
+                  </p>
                 </div>
 
                 <div className="space-y-1">
                   <Label className="text-xs">Model</Label>
                   <Input
                     className="h-9 text-sm"
+                    list={modelListId}
                     placeholder={selectedProvider.defaultModel}
                     value={activeModel}
                     onChange={(event) => updateModel(event.target.value)}
                     autoComplete="off"
                     spellCheck={false}
                   />
+                  <datalist id={modelListId}>
+                    {selectedProvider.knownModels.map((model) => (
+                      <option key={model} value={model} />
+                    ))}
+                  </datalist>
+                  <p className="text-xs text-muted-foreground">
+                    Provider model id. Suggested models: {selectedProvider.knownModels.join(', ')}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProvider.knownModels.map((model) => (
+                      <Button
+                        key={model}
+                        type="button"
+                        variant={modelValidation.effectiveModel === model ? 'secondary' : 'outline'}
+                        size="sm"
+                        onClick={() => updateModel(model)}
+                      >
+                        {model === selectedProvider.defaultModel ? `${model} (default)` : model}
+                      </Button>
+                    ))}
+                  </div>
+                  <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
+                    {modelValidation.message}
+                  </p>
                 </div>
 
                 <div className="space-y-1">
@@ -482,8 +627,8 @@ export function BulkTransportEstimateDialog({
 
           {estimating ? (
             <InlineLoadingState
-              title="Estimating missing transport legs"
-              detail="The planner is working through missing route legs sequentially so each estimate uses the same provider settings."
+              title="Estimating selected transport legs"
+              detail="The planner is working through the checked route legs sequentially so each estimate uses the same provider settings."
             />
           ) : null}
 
@@ -559,9 +704,9 @@ export function BulkTransportEstimateDialog({
               variant="outline"
               className="flex-1"
               onClick={handleEstimateAll}
-              disabled={estimating || applying || missingTransportLegs.length === 0 || allowedModes.length === 0}
+              disabled={estimating || applying || selectedTransportLegs.length === 0 || allowedModes.length === 0}
             >
-              <LoadingButtonLabel idle="Estimate Missing Legs" loading="Estimating..." isLoading={estimating} />
+              <LoadingButtonLabel idle="Estimate Selected Legs" loading="Estimating..." isLoading={estimating} />
             </Button>
             <Button
               type="button"
