@@ -127,6 +127,13 @@ function shiftIsoDate(date: string, days: number) {
   return next.toISOString().split('T')[0];
 }
 
+// endDate is the check-out day, so endDate - startDate (in days) = nights
+function nightsBetween(startDate: string, endDate: string): number {
+  const start = new Date(`${startDate}T00:00:00Z`);
+  const end = new Date(`${endDate}T00:00:00Z`);
+  return Math.round((end.getTime() - start.getTime()) / 86400000);
+}
+
 export function LegCard({
   leg,
   cities,
@@ -231,35 +238,38 @@ export function LegCard({
     }
 
     if (field === 'startDate') {
-      onUpdate(leg.id, {
-        startDate: value,
-        endDate: leg.nights > 0 ? shiftIsoDate(value, leg.nights - 1) : value,
-      });
+      if (leg.endDate && leg.endDate > value) {
+        // Both dates set and valid — derive nights from the chosen span
+        onUpdate(leg.id, { startDate: value, nights: nightsBetween(value, leg.endDate) });
+      } else {
+        // No end date yet, or new start is on/after existing end — project forward using current nights
+        onUpdate(leg.id, { startDate: value, endDate: shiftIsoDate(value, leg.nights) });
+      }
       return;
     }
 
-    onUpdate(leg.id, {
-      endDate: value,
-      startDate: leg.nights > 0 ? shiftIsoDate(value, -(leg.nights - 1)) : value,
-    });
+    // field === 'endDate'
+    if (leg.startDate && value > leg.startDate) {
+      // Both dates set and valid — derive nights from the chosen span
+      onUpdate(leg.id, { endDate: value, nights: nightsBetween(leg.startDate, value) });
+    } else {
+      // No start date yet, or new end is on/before existing start — project backward using current nights
+      onUpdate(leg.id, { endDate: value, startDate: shiftIsoDate(value, -leg.nights) });
+    }
   };
 
   const handleNightsChange = (value: number) => {
     const nextNights = Number.isInteger(value) && value > 0 ? value : 1;
 
     if (leg.startDate) {
-      onUpdate(leg.id, {
-        nights: nextNights,
-        endDate: shiftIsoDate(leg.startDate, nextNights - 1),
-      });
+      // endDate = check-out = startDate + nights
+      onUpdate(leg.id, { nights: nextNights, endDate: shiftIsoDate(leg.startDate, nextNights) });
       return;
     }
 
     if (leg.endDate) {
-      onUpdate(leg.id, {
-        nights: nextNights,
-        startDate: shiftIsoDate(leg.endDate, -(nextNights - 1)),
-      });
+      // startDate = check-in = endDate - nights
+      onUpdate(leg.id, { nights: nextNights, startDate: shiftIsoDate(leg.endDate, -nextNights) });
       return;
     }
 

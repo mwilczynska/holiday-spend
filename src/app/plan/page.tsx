@@ -13,7 +13,7 @@ import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
 import { PlannerNewCityDialog } from '@/components/itinerary/PlannerNewCityDialog';
 import { BulkTransportEstimateDialog } from '@/components/itinerary/BulkTransportEstimateDialog';
-import { Download, Plus, Save, Upload } from 'lucide-react';
+import { ArrowUpDown, Download, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
 import {
@@ -463,6 +463,20 @@ export default function PlanPage() {
     });
     fetchData();
   };
+
+  const handleSortByDate = async () => {
+    const sortedIds = [...legs].sort(compareLegDates).map((l) => l.id);
+    await fetch('/api/itinerary/reorder', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ legIds: sortedIds }),
+    });
+    await fetchData();
+    setSnapshotStatus('Legs sorted by date.');
+  };
+
+  const isAlreadySortedByDate = legs.length >= 2 &&
+    [...legs].sort(compareLegDates).every((leg, i) => leg.id === legs[i].id);
 
   const fixedCostsTotal = fixedCosts.reduce((sum, fc) => sum + fc.amountAud, 0);
   const missingTransportLegCount = countMissingTransportLegs(legs);
@@ -1266,6 +1280,16 @@ export default function PlanPage() {
                   onSave={handleSaveSnapshot}
                   isSaving={savingPlan}
                 />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleSortByDate}
+                  disabled={legs.length < 2 || isAlreadySortedByDate}
+                  title={isAlreadySortedByDate ? 'Legs are already in date order' : 'Sort legs by start date'}
+                >
+                  <ArrowUpDown className="mr-2 h-4 w-4" />
+                  Sort by Date
+                </Button>
                 <Button type="button" variant="outline" onClick={() => setSavePlanDialogOpen(true)}>
                   <Save className="mr-2 h-4 w-4" />
                   Save Plan

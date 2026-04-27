@@ -43,20 +43,25 @@ export function deriveLegDates<T extends DerivedLegBase>(legs: T[]): Array<T & {
 
     if (!current.startDate && previous) {
       if (previous._endExplicit && previous.endDate) {
+        // Previous leg's endDate is the check-out day — new leg checks in same day
         current.startDate = previous.endDate;
       } else if (previous.startDate) {
+        // endDate = startDate + nights, so next leg starts startDate + nights
         current.startDate = addDays(previous.startDate, previous._nights);
       } else if (previous.endDate) {
-        current.startDate = addDays(previous.endDate, 1);
+        // Derived endDate is already the check-out day
+        current.startDate = previous.endDate;
       }
     }
 
     if (!current.endDate && current.startDate) {
-      current.endDate = addDays(current.startDate, current._nights - 1);
+      // endDate = check-out = startDate + nights
+      current.endDate = addDays(current.startDate, current._nights);
     }
 
     if (!current.startDate && current.endDate) {
-      current.startDate = addDays(current.endDate, -(current._nights - 1));
+      // startDate = check-in = endDate - nights
+      current.startDate = addDays(current.endDate, -current._nights);
     }
   }
 
@@ -65,15 +70,16 @@ export function deriveLegDates<T extends DerivedLegBase>(legs: T[]): Array<T & {
     const next = index < resolved.length - 1 ? resolved[index + 1] : null;
 
     if (!current.endDate && next?.startDate) {
-      current.endDate = next._startExplicit ? next.startDate : addDays(next.startDate, -1);
+      // Next leg's check-in = this leg's check-out
+      current.endDate = next.startDate;
     }
 
     if (!current.startDate && current.endDate) {
-      current.startDate = addDays(current.endDate, -(current._nights - 1));
+      current.startDate = addDays(current.endDate, -current._nights);
     }
 
     if (!current.endDate && current.startDate) {
-      current.endDate = addDays(current.startDate, current._nights - 1);
+      current.endDate = addDays(current.startDate, current._nights);
     }
   }
 
