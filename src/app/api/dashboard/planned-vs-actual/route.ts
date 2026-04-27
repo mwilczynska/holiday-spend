@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { itineraryLegs, itineraryLegTransports, cities, countries, expenses } from '@/db/schema';
-import { asc, eq, inArray } from 'drizzle-orm';
+import { and, asc, eq, inArray, ne } from 'drizzle-orm';
 import { getLegTotalFromTransports, getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
 import { getExpenseReportingDate, resolveExpenseLeg } from '@/lib/expense-leg-assignment';
@@ -35,7 +35,7 @@ export async function GET() {
       : [];
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);
-    const allExpenses = await db.select().from(expenses).where(eq(expenses.userId, userId));
+    const allExpenses = await db.select().from(expenses).where(and(eq(expenses.userId, userId), ne(expenses.isDeleted, 1)));
     const groupSize = await getPlannerGroupSize(userId);
 
     const cityMap = new Map(allCities.map(c => [c.id, c]));

@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs, itineraryLegTransports, cities, countries } from '@/db/schema';
-import { asc, eq, inArray } from 'drizzle-orm';
+import { and, asc, eq, inArray, ne } from 'drizzle-orm';
 import { buildBurnRateSeries, buildCountryBands, enumerateDates } from '@/lib/burn-rate';
 import { getDailyBreakdown } from '@/lib/cost-calculator';
 import { getExpenseAudAmount } from '@/lib/expense-aud';
@@ -34,7 +34,7 @@ function minDate(...dates: Array<string | null | undefined>): string | null {
 export async function GET() {
   try {
     const userId = await requireCurrentUserId();
-    const allExpenses = await db.select().from(expenses).where(eq(expenses.userId, userId));
+    const allExpenses = await db.select().from(expenses).where(and(eq(expenses.userId, userId), ne(expenses.isDeleted, 1)));
     const rawLegs = await db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder));
     const allTransports = rawLegs.length > 0
       ? await db

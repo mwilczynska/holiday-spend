@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs } from '@/db/schema';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, ne } from 'drizzle-orm';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 
@@ -13,7 +13,7 @@ export async function PUT(
     const body = await request.json();
     const id = parseInt(params.id);
 
-    const existing = await db.select().from(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId))).get();
+    const existing = await db.select().from(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId), ne(expenses.isDeleted, 1))).get();
     if (!existing) return error('Expense not found', 404);
 
     if (body.legId != null) {
@@ -46,10 +46,12 @@ export async function DELETE(
   try {
     const userId = await requireCurrentUserId();
     const id = parseInt(params.id);
-    const existing = await db.select().from(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId))).get();
+    const existing = await db.select().from(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId), ne(expenses.isDeleted, 1))).get();
     if (!existing) return error('Expense not found', 404);
 
-    await db.delete(expenses).where(and(eq(expenses.id, id), eq(expenses.userId, userId)));
+    await db.update(expenses)
+      .set({ isDeleted: 1, updatedAt: new Date().toISOString() })
+      .where(and(eq(expenses.id, id), eq(expenses.userId, userId)));
     return success({ deleted: true });
   } catch (err) {
     return handleError(err);

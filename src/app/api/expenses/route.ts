@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { expenses, expenseTags, itineraryLegs, cities, countries } from '@/db/schema';
-import { eq, and, gte, lte, desc } from 'drizzle-orm';
+import { eq, and, gte, lte, desc, ne } from 'drizzle-orm';
 import { success, handleError } from '@/lib/api-helpers';
 import { error } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     const to = url.searchParams.get('to');
     const source = url.searchParams.get('source');
 
-    const conditions = [eq(expenses.userId, userId)];
+    const conditions = [eq(expenses.userId, userId), ne(expenses.isDeleted, 1)];
     if (leg) conditions.push(eq(expenses.legId, parseInt(leg)));
     if (cat) conditions.push(eq(expenses.category, cat));
     if (from) conditions.push(gte(expenses.date, from));

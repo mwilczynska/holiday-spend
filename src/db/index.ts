@@ -267,9 +267,12 @@ if (hasItineraryLegsTable) {
 
 if (hasExpensesTable) {
   const expenseColumns = sqlite.prepare("PRAGMA table_info(expenses)").all() as Array<{ name: string }>;
-  const hasUserIdColumn = expenseColumns.some((column) => column.name === 'user_id');
-  if (!hasUserIdColumn) {
+  const expenseColumnNames = new Set(expenseColumns.map((col) => col.name));
+  if (!expenseColumnNames.has('user_id')) {
     sqlite.exec('ALTER TABLE expenses ADD COLUMN user_id TEXT REFERENCES user(id) ON DELETE CASCADE');
+  }
+  if (!expenseColumnNames.has('is_deleted')) {
+    sqlite.exec('ALTER TABLE expenses ADD COLUMN is_deleted INTEGER NOT NULL DEFAULT 0');
   }
 }
 

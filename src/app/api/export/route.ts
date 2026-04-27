@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { expenses, itineraryLegs, cities, countries, fixedCosts, tags, expenseTags } from '@/db/schema';
-import { and, asc, eq, inArray } from 'drizzle-orm';
+import { and, asc, eq, inArray, ne } from 'drizzle-orm';
 import { requireCurrentUserId } from '@/lib/auth';
 import { handleError } from '@/lib/api-helpers';
 
@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const format = searchParams.get('format') || 'json';
 
-    const allExpenses = await db.select().from(expenses).where(eq(expenses.userId, userId)).orderBy(asc(expenses.date));
+    const allExpenses = await db.select().from(expenses).where(and(eq(expenses.userId, userId), ne(expenses.isDeleted, 1))).orderBy(asc(expenses.date));
     const allLegs = await db.select().from(itineraryLegs).where(eq(itineraryLegs.userId, userId)).orderBy(asc(itineraryLegs.sortOrder));
     const allCities = await db.select().from(cities);
     const allCountries = await db.select().from(countries);

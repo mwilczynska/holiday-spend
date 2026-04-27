@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { expenses, expenseTags, tags } from '@/db/schema';
-import { and, eq, inArray } from 'drizzle-orm';
+import { and, eq, inArray, ne } from 'drizzle-orm';
 import { success, error, handleError } from '@/lib/api-helpers';
 import { requireCurrentUserId } from '@/lib/auth';
 import { z } from 'zod';
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     const ownedExpenses = await db
       .select({ id: expenses.id })
       .from(expenses)
-      .where(and(eq(expenses.userId, userId), inArray(expenses.id, data.ids)));
+      .where(and(eq(expenses.userId, userId), inArray(expenses.id, data.ids), ne(expenses.isDeleted, 1)));
     const ownedExpenseIds = ownedExpenses.map((expense) => expense.id);
     if (ownedExpenseIds.length === 0) {
       return success({ updated: 0 });
@@ -65,7 +65,8 @@ export async function POST(request: Request) {
         break;
 
       case 'delete':
-        await db.delete(expenses)
+        await db.update(expenses)
+          .set({ isDeleted: 1, updatedAt: new Date().toISOString() })
           .where(and(eq(expenses.userId, userId), inArray(expenses.id, ownedExpenseIds)));
         break;
     }

@@ -197,6 +197,7 @@ export const expenses = sqliteTable('expenses', {
   wiseTxnId: text('wise_txn_id').unique(),
   loggedBy: text('logged_by'),
   isExcluded: integer('is_excluded').default(0),
+  isDeleted: integer('is_deleted').default(0),
   createdAt: text('created_at').default(sql`(datetime('now'))`),
   updatedAt: text('updated_at').default(sql`(datetime('now'))`),
 });
