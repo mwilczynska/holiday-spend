@@ -3,6 +3,7 @@ import fs from 'fs';
 import Papa from 'papaparse';
 import path from 'path';
 import { findKnownCountryMetadata, getCountryCurrencyCode, normalizeRegionLabel, slugifyId } from '../lib/country-metadata';
+import { resolveCityDrinkInputs } from '../lib/city-drink-inputs';
 
 type CityCostCsvRow = {
   city: string;
@@ -18,6 +19,8 @@ type CityCostCsvRow = {
   food_budget: string;
   food_mid_range: string;
   food_high_end: string;
+  drink_coffee?: string;
+  drinks_none?: string;
   drinks_light: string;
   drinks_moderate: string;
   drinks_heavy: string;
@@ -48,6 +51,7 @@ type ParsedCity = {
   foodBudget: number | null;
   foodMid: number | null;
   foodHigh: number | null;
+  drinkCoffee: number | null;
   drinksNone: number | null;
   drinksLight: number | null;
   drinksModerate: number | null;
@@ -348,6 +352,11 @@ function buildDataset(csvRows: CityCostCsvRow[]) {
 
     usedCityIds.add(cityId);
 
+    const drinkInputs = resolveCityDrinkInputs({
+      drinkCoffee: parseMoney(row.drink_coffee),
+      drinksNone: parseMoney(row.drinks_none),
+    });
+
     cities.push({
       id: cityId,
       countryId: country.id,
@@ -362,7 +371,8 @@ function buildDataset(csvRows: CityCostCsvRow[]) {
       foodBudget: parseMoney(row.food_budget),
       foodMid: parseMoney(row.food_mid_range),
       foodHigh: parseMoney(row.food_high_end),
-      drinksNone: null,
+      drinkCoffee: drinkInputs.drinkCoffee,
+      drinksNone: drinkInputs.drinksNone,
       drinksLight: parseMoney(row.drinks_light),
       drinksModerate: parseMoney(row.drinks_moderate),
       drinksHeavy: parseMoney(row.drinks_heavy),
@@ -460,7 +470,7 @@ const seedAll = sqlite.transaction(() => {
       null,
       null,
       null,
-      null,
+      city.drinkCoffee,
       city.drinksNone,
       city.drinksLight,
       city.drinksModerate,

@@ -403,6 +403,25 @@ if (hasCitiesTable) {
     WHERE drinks_none IS NULL
       AND drink_coffee IS NOT NULL
   `);
+
+  sqlite.exec(`
+    UPDATE cities
+    SET drink_coffee = ROUND(drinks_none / 2, 2)
+    WHERE drink_coffee IS NULL
+      AND drinks_none IS NOT NULL
+  `);
+
+  // Older canonical CSV seeds had only the composed light basket. Repair
+  // those base rows without changing manually edited or LLM-generated cities.
+  sqlite.exec(`
+    UPDATE cities
+    SET drink_coffee = ROUND(drinks_light / 4, 2),
+        drinks_none = ROUND(ROUND(drinks_light / 4, 2) * 2, 2)
+    WHERE estimation_source = 'base_csv_apr_2026'
+      AND drink_coffee IS NULL
+      AND drinks_none IS NULL
+      AND drinks_light IS NOT NULL
+  `);
 }
 
 if (hasExpensesTable && hasItineraryLegsTable) {

@@ -299,6 +299,7 @@ The app-facing CSV (`data/reference/city_costs_app_aud.csv`) contains these colu
 | `food_budget` | AUD/day/2p | Daily food: mix of street food and cheap restaurants |
 | `food_mid_range` | AUD/day/2p | Daily food: casual + some nicer sit-down meals |
 | `food_high_end` | AUD/day/2p | Daily food: frequent nicer restaurants |
+| `drink_coffee` | AUD/unit | One regular cappuccino or equivalent coffee |
 | `drinks_none` | AUD/day/2p | 2 coffees |
 | `drinks_light` | AUD/day/2p | 2 coffees + 2 beers |
 | `drinks_moderate` | AUD/day/2p | 2 coffees + 4 beers + 2 cocktails |
@@ -307,3 +308,10 @@ The app-facing CSV (`data/reference/city_costs_app_aud.csv`) contains these colu
 | `activities_budget` | AUD/day/2p | Low-cost museums, temples, local attractions |
 | `activities_mid_range` | AUD/day/2p | Paid tours, classes, bigger ticket entries |
 | `activities_high_end` | AUD/day/2p | Premium tours, adventure activities, splurges |
+
+### Coffee Input Backfill
+
+The April 2026 CSV originally contained the composed drink baskets but omitted the coffee unit input. The current
+reference file includes both `drink_coffee` and `drinks_none` so the coffee-only tier is available to the planner.
+For the backfill, 44 city-name matches retained the legacy seed coffee values; the remaining rows use a regional
+coffee-to-light-basket inference as an editable starting value. In every row, `drinks_none = drink_coffee × 2`.

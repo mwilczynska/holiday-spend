@@ -12,6 +12,7 @@ import { SearchableSelect } from '@/components/ui/searchable-select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
 import { KNOWN_COUNTRIES, slugifyId } from '@/lib/country-metadata';
+import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
 import { Plus } from 'lucide-react';
 
 interface City {
@@ -63,6 +64,7 @@ const DATASET_COLUMNS: Array<{ key: string; label: string }> = [
   { key: 'foodBudget', label: 'Food Budget' },
   { key: 'foodMid', label: 'Food Mid' },
   { key: 'foodHigh', label: 'Food High' },
+  { key: 'drinkCoffee', label: 'Coffee / Unit' },
   { key: 'drinksNone', label: 'Drinks None' },
   { key: 'drinksLight', label: 'Drinks Light' },
   { key: 'drinksModerate', label: 'Drinks Moderate' },
@@ -304,7 +306,16 @@ export default function DatasetPage() {
 
   const handleCostChange = (key: string, value: number | null) => {
     if (!selectedCity) return;
-    setSelectedCity({ ...selectedCity, [key]: value });
+    const nextCity = { ...selectedCity, [key]: value };
+    if (key === 'drinkCoffee' || key === 'drinksNone') {
+      const drinkInputs = resolveCityDrinkInputs({
+        drinkCoffee: key === 'drinkCoffee' ? value : undefined,
+        drinksNone: key === 'drinksNone' ? value : undefined,
+      });
+      nextCity.drinkCoffee = drinkInputs.drinkCoffee;
+      nextCity.drinksNone = drinkInputs.drinksNone;
+    }
+    setSelectedCity(nextCity);
     setIsDirty(true);
     setSaveError(null);
     setSaveMessage(null);
