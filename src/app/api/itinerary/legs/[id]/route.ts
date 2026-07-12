@@ -1,5 +1,5 @@
 import { db } from '@/db';
-import { itineraryLegs, itineraryLegTransports } from '@/db/schema';
+import { expenses, itineraryLegs, itineraryLegTransports } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { getIntercityTransportTotal, normalizeIntercityTransports } from '@/lib/intercity-transport';
 import { validateLegDates } from '@/lib/itinerary-validation';
@@ -82,7 +82,20 @@ export async function DELETE(
     const existing = await db.select().from(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId))).get();
     if (!existing) return error('Leg not found', 404);
 
-    await db.delete(itineraryLegs).where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId)));
+    await db.transaction((tx) => {
+      // Keep recorded expenses, but remove their assignment to the leg before
+      // deleting it. The expense foreign key intentionally does not cascade.
+      tx
+        .update(expenses)
+        .set({ legId: null })
+        .where(eq(expenses.legId, id))
+        .run();
+
+      tx
+        .delete(itineraryLegs)
+        .where(and(eq(itineraryLegs.id, id), eq(itineraryLegs.userId, userId)))
+        .run();
+    });
     return success({ deleted: true });
   } catch (err) {
     return handleError(err);

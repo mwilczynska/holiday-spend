@@ -4,15 +4,17 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PageLoadingState } from '@/components/ui/loading-state';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
-import { KNOWN_COUNTRIES, slugifyId } from '@/lib/country-metadata';
 import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
+import {
+  PlannerNewCityDialog,
+  type NewCityCreatedPayload,
+} from '@/components/itinerary/PlannerNewCityDialog';
 import { Plus } from 'lucide-react';
 
 interface City {
@@ -92,11 +94,6 @@ function getRegionLabel(regionValue: string | null | undefined) {
   return REGION_OPTIONS.find((option) => option.value === regionValue)?.label || regionValue;
 }
 
-function looksSimilarBySlug(left: string, right: string) {
-  if (!left || !right) return false;
-  return left === right || left.includes(right) || right.includes(left);
-}
-
 function fmtDate(value: string | null | undefined) {
   return value ? value.slice(0, 10) : '-';
 }
@@ -121,7 +118,6 @@ export default function DatasetPage() {
   const [history, setHistory] = useState<EstimateHistoryItem[]>([]);
   const [historyCount, setHistoryCount] = useState(0);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
-  const [newCity, setNewCity] = useState({ id: '', name: '', countryId: '' });
   const [query, setQuery] = useState('');
   const [historyQuery, setHistoryQuery] = useState('');
   const [isDirty, setIsDirty] = useState(false);
@@ -129,7 +125,6 @@ export default function DatasetPage() {
   const [loading, setLoading] = useState(true);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
-  const [addCityError, setAddCityError] = useState<string | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
   const syncCityQuery = useCallback((cityId: string | null) => {
@@ -223,47 +218,6 @@ export default function DatasetPage() {
     [selectedCityHistory]
   );
 
-  const countryOptions = useMemo(
-    () =>
-      KNOWN_COUNTRIES.map((country) => ({
-        value: country.id,
-        label: country.name,
-        description: `${country.currencyCode} - ${getRegionLabel(country.region)}`,
-      })),
-    []
-  );
-
-  const effectiveCityId = useMemo(
-    () => (newCity.id.trim() ? slugifyId(newCity.id) : slugifyId(newCity.name)),
-    [newCity.id, newCity.name]
-  );
-  const cityIdConflict = useMemo(
-    () => allCities.find((city) => effectiveCityId && city.id === effectiveCityId) ?? null,
-    [allCities, effectiveCityId]
-  );
-  const exactCityNameConflict = useMemo(() => {
-    const normalizedName = slugifyId(newCity.name);
-    if (!newCity.countryId || !normalizedName) return null;
-    return (
-      allCities.find(
-        (city) => city.countryId === newCity.countryId && slugifyId(city.name) === normalizedName
-      ) ?? null
-    );
-  }, [allCities, newCity.countryId, newCity.name]);
-  const similarCityMatches = useMemo(() => {
-    const normalizedName = slugifyId(newCity.name);
-    if (!normalizedName) return [];
-
-    return allCities
-      .filter((city) => {
-        const citySlug = slugifyId(city.name);
-        if (!looksSimilarBySlug(citySlug, normalizedName)) return false;
-        if (cityIdConflict && city.id === cityIdConflict.id) return true;
-        return true;
-      })
-      .slice(0, 5);
-  }, [allCities, cityIdConflict, newCity.name]);
-
   const selectCityFromCountries = useCallback(
     (cityId: string | null, sourceCountries: Country[], updateQuery = true) => {
       if (!cityId) {
@@ -355,35 +309,16 @@ export default function DatasetPage() {
     }
   };
 
-  const handleAddCity = async () => {
-    if (!newCity.name.trim() || !newCity.countryId || !effectiveCityId || cityIdConflict || exactCityNameConflict) return;
-
-    setAddCityError(null);
-
-    try {
-      const response = await fetch('/api/cities', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: newCity.id.trim() || undefined,
-          name: newCity.name.trim(),
-          countryId: newCity.countryId,
-        }),
-      });
-      const data = await response.json();
-
-      if (!response.ok) {
-        setAddCityError(data.error || 'Failed to add city.');
-        return;
-      }
-
-      setAddDialogOpen(false);
-      setNewCity({ id: '', name: '', countryId: '' });
-      const nextCountries = await fetchData();
-      selectCityFromCountries(data.data?.id || effectiveCityId, nextCountries);
-    } catch {
-      setAddCityError('Failed to add city.');
-    }
+  const handleDatasetNewCityCreated = async (payload: NewCityCreatedPayload) => {
+    const nextCountries = await fetchData();
+    selectCityFromCountries(payload.city.cityId, nextCountries);
+    setSaveMessage(
+      payload.city.reusedExistingCity
+        ? 'Existing city selected.'
+        : payload.city.generatedCity
+          ? 'City added and costs generated.'
+          : 'City added.'
+    );
   };
 
   const handleDeleteCity = async (city: DatasetCity) => {
@@ -437,89 +372,27 @@ export default function DatasetPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Dialog
+          <Button
+            type="button"
+            size="sm"
+            onClick={() => {
+              setAddDialogOpen(true);
+              setSaveError(null);
+              setSaveMessage(null);
+            }}
+          >
+            <Plus className="mr-2 h-4 w-4" />
+            Add City
+          </Button>
+          <PlannerNewCityDialog
+            mode="dataset"
             open={addDialogOpen}
             onOpenChange={(open) => {
               setAddDialogOpen(open);
-              if (!open) setAddCityError(null);
+              if (!open) setSaveError(null);
             }}
-          >
-          <DialogTrigger asChild>
-            <Button size="sm">
-              <Plus className="mr-2 h-4 w-4" />
-              Add City
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Add City</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div>
-                <Label>Country</Label>
-                <SearchableSelect
-                  value={newCity.countryId}
-                  onValueChange={(value) => setNewCity((current) => ({ ...current, countryId: value }))}
-                  placeholder="Select any country"
-                  searchPlaceholder="Search countries..."
-                  options={countryOptions}
-                />
-                <p className="mt-1 text-xs text-muted-foreground">
-                  All 245 canonical countries are available. The country row is created automatically if it does not exist yet.
-                </p>
-              </div>
-              <div>
-                <Label>City ID</Label>
-                <Input
-                  value={newCity.id}
-                  onChange={(event) => setNewCity((current) => ({ ...current, id: event.target.value }))}
-                  placeholder={effectiveCityId || 'Leave blank to infer from city name'}
-                />
-              </div>
-              <div>
-                <Label>City Name</Label>
-                <Input
-                  value={newCity.name}
-                  onChange={(event) => setNewCity((current) => ({ ...current, name: event.target.value }))}
-                  placeholder="e.g. Mexico City"
-                />
-              </div>
-              <div className="rounded-md border bg-muted/30 p-3 text-sm text-muted-foreground">
-                <p>
-                  Effective city id: <span className="font-medium text-foreground">{effectiveCityId || '-'}</span>
-                </p>
-                {cityIdConflict ? (
-                  <p className="mt-1 text-amber-700">
-                    {`City id conflict: "${cityIdConflict.name}, ${cityIdConflict.countryName}" already uses this id.`}
-                  </p>
-                ) : null}
-                {exactCityNameConflict ? (
-                  <p className="mt-1 text-amber-700">
-                    {`"${exactCityNameConflict.name}, ${exactCityNameConflict.countryName}" already exists in this country.`}
-                  </p>
-                ) : null}
-                {!cityIdConflict && !exactCityNameConflict && similarCityMatches.length > 0 ? (
-                  <div className="mt-2 space-y-1">
-                    <p className="text-amber-700">Similar existing city rows:</p>
-                    {similarCityMatches.map((city) => (
-                      <p key={`${city.id}-${city.countryId}`} className="text-xs text-amber-700">
-                        {city.name}, {city.countryName} ({city.id})
-                      </p>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-              {addCityError ? <p className="text-sm text-destructive">{addCityError}</p> : null}
-              <Button
-                onClick={handleAddCity}
-                className="w-full"
-                disabled={!newCity.name.trim() || !newCity.countryId || !effectiveCityId || !!cityIdConflict || !!exactCityNameConflict}
-              >
-                Add City
-              </Button>
-            </div>
-          </DialogContent>
-          </Dialog>
+            onCreated={handleDatasetNewCityCreated}
+          />
         </div>
       </div>
 

@@ -11,7 +11,10 @@ import { SearchableSelect } from '@/components/ui/searchable-select';
 import { InlineLoadingState, LoadingButtonLabel, PageLoadingState } from '@/components/ui/loading-state';
 import { LegCard } from '@/components/itinerary/LegCard';
 import { CostSummary } from '@/components/itinerary/CostSummary';
-import { PlannerNewCityDialog } from '@/components/itinerary/PlannerNewCityDialog';
+import {
+  PlannerNewCityDialog,
+  type NewCityCreatedPayload,
+} from '@/components/itinerary/PlannerNewCityDialog';
 import { BulkTransportEstimateDialog } from '@/components/itinerary/BulkTransportEstimateDialog';
 import { ArrowUpDown, Download, Plus, Save, Upload } from 'lucide-react';
 import type { IntercityTransportItem } from '@/types';
@@ -380,21 +383,7 @@ export default function PlanPage() {
     fetchData();
   };
 
-  const handlePlannerNewCityCreated = useCallback(async (payload: {
-    city: {
-      cityName: string;
-      countryName: string;
-      createdCountry: boolean;
-      createdCity: boolean;
-      generatedCity: boolean;
-      reusedExistingCity: boolean;
-    };
-    requested: {
-      cityName: string;
-      countryName: string;
-      nights: number;
-    };
-  }) => {
+  const handlePlannerNewCityCreated = useCallback(async (payload: NewCityCreatedPayload) => {
     await fetchData();
     setAddDialogOpen(false);
     setNewLegCity('');
@@ -446,8 +435,20 @@ export default function PlanPage() {
   };
 
   const handleDeleteLeg = async (id: number) => {
-    await fetch(`/api/itinerary/legs/${id}`, { method: 'DELETE' });
-    fetchData();
+    try {
+      const response = await fetch(`/api/itinerary/legs/${id}`, { method: 'DELETE' });
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error || 'Failed to delete leg.');
+      }
+
+      await fetchData();
+      setSnapshotStatus('Leg deleted.');
+      setSnapshotError(null);
+    } catch (err) {
+      setSnapshotError(err instanceof Error ? err.message : 'Failed to delete leg.');
+      setSnapshotStatus(null);
+    }
   };
 
   const handleReorder = async (fromIndex: number, direction: number) => {

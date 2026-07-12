@@ -21,31 +21,41 @@ const STORAGE_PREFIX = 'wanderledger.city-generation';
 
 type ProviderOption = CityGenerationProvider;
 
+export interface NewCityCreatedPayload {
+  city: {
+    cityId: string;
+    cityName: string;
+    countryName: string;
+    createdCountry: boolean;
+    createdCity: boolean;
+    generatedCity: boolean;
+    reusedExistingCity: boolean;
+  };
+  requested: {
+    cityName: string;
+    countryName: string;
+    nights: number;
+  };
+}
+
 interface PlannerNewCityDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onCreated: (payload: {
-    city: {
-      cityName: string;
-      countryName: string;
-      createdCountry: boolean;
-      createdCity: boolean;
-      generatedCity: boolean;
-      reusedExistingCity: boolean;
-    };
-    requested: {
-      cityName: string;
-      countryName: string;
-      nights: number;
-    };
-  }) => Promise<void> | void;
+  onCreated: (payload: NewCityCreatedPayload) => Promise<void> | void;
+  mode?: 'planner' | 'dataset';
 }
 
 function getDefaultModels() {
   return getDefaultCityGenerationModels();
 }
 
-export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerNewCityDialogProps) {
+export function PlannerNewCityDialog({
+  open,
+  onOpenChange,
+  onCreated,
+  mode = 'planner',
+}: PlannerNewCityDialogProps) {
+  const isDatasetMode = mode === 'dataset';
   const [cityName, setCityName] = useState('');
   const [countryName, setCountryName] = useState('');
   const [nights, setNights] = useState('7');
@@ -170,7 +180,7 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
 
   async function handleSubmit() {
     const parsedNights = Number.parseInt(nights, 10);
-    if (!Number.isInteger(parsedNights) || parsedNights < 1) {
+    if (!isDatasetMode && (!Number.isInteger(parsedNights) || parsedNights < 1)) {
       setError('Enter a valid number of nights before adding the leg.');
       return;
     }
@@ -190,22 +200,31 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
         nights: parsedNights,
       };
 
-      const response = await fetch('/api/itinerary/legs/create-with-city', {
+      const endpoint = isDatasetMode
+        ? '/api/cities/create-with-generation'
+        : '/api/itinerary/legs/create-with-city';
+      const requestBody = {
+        cityName: requested.cityName,
+        countryName: requested.countryName,
+        ...(isDatasetMode ? {} : { nights: requested.nights }),
+        provider,
+        apiKey: activeApiKey || undefined,
+        model: modelValidation.effectiveModel || undefined,
+        referenceDate: referenceDate || undefined,
+        extraContext: extraContext || undefined,
+      };
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...requested,
-          provider,
-          apiKey: activeApiKey || undefined,
-          model: modelValidation.effectiveModel || undefined,
-          referenceDate: referenceDate || undefined,
-          extraContext: extraContext || undefined,
-        }),
+        body: JSON.stringify(requestBody),
       });
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to create the city and add the leg.');
+        throw new Error(
+          data.error ||
+            (isDatasetMode ? 'Failed to add the city to the dataset.' : 'Failed to create the city and add the leg.')
+        );
       }
 
       onOpenChange(false);
@@ -215,7 +234,13 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
         requested,
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to create the city and add the leg.');
+      setError(
+        err instanceof Error
+          ? err.message
+          : isDatasetMode
+            ? 'Failed to add the city to the dataset.'
+            : 'Failed to create the city and add the leg.'
+      );
     } finally {
       setLoading(false);
     }
@@ -231,8 +256,9 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
           <div className="space-y-1 text-sm text-muted-foreground">
             <p>Enter only the city name and country name. The server will check the current library first.</p>
             <p>
-              If the city is missing, it will infer the IDs, country currency, region, and city-cost data before the leg is
-              added.
+              {isDatasetMode
+                ? 'If the city is missing, it will infer the IDs, country currency, region, and city-cost data before the city is added to the dataset.'
+                : 'If the city is missing, it will infer the IDs, country currency, region, and city-cost data before the leg is added.'}
             </p>
           </div>
 
@@ -254,17 +280,19 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
             />
           </div>
 
-          <div>
-            <Label>Nights</Label>
-            <Input
-              type="number"
-              min={1}
-              step={1}
-              inputMode="numeric"
-              value={nights}
-              onChange={(event) => setNights(event.target.value)}
-            />
-          </div>
+          {!isDatasetMode ? (
+            <div>
+              <Label>Nights</Label>
+              <Input
+                type="number"
+                min={1}
+                step={1}
+                inputMode="numeric"
+                value={nights}
+                onChange={(event) => setNights(event.target.value)}
+              />
+            </div>
+          ) : null}
 
           <details className="rounded-md border bg-muted/20">
             <summary className="cursor-pointer px-3 py-2 text-sm font-medium text-foreground">
@@ -401,8 +429,12 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
 
           {loading ? (
             <InlineLoadingState
-              title="Resolving city details and adding the leg"
-              detail="The server is checking the current library, inferring metadata, generating city costs if needed, and creating the new itinerary leg."
+              title={isDatasetMode ? 'Resolving city details and adding the city' : 'Resolving city details and adding the leg'}
+              detail={
+                isDatasetMode
+                  ? 'The server is checking the current library, inferring metadata, and generating city costs if needed.'
+                  : 'The server is checking the current library, inferring metadata, generating city costs if needed, and creating the new itinerary leg.'
+              }
             />
           ) : null}
 
@@ -420,13 +452,13 @@ export function PlannerNewCityDialog({ open, onOpenChange, onCreated }: PlannerN
                 loading ||
                 !cityName.trim() ||
                 !countryName.trim() ||
-                !Number.isInteger(Number.parseInt(nights, 10)) ||
-                Number.parseInt(nights, 10) < 1
+                (!isDatasetMode &&
+                  (!Number.isInteger(Number.parseInt(nights, 10)) || Number.parseInt(nights, 10) < 1))
               }
             >
               <LoadingButtonLabel
-                idle="Generate City And Add Leg"
-                loading="Generating And Adding..."
+                idle={isDatasetMode ? 'Generate And Add City' : 'Generate City And Add Leg'}
+                loading={isDatasetMode ? 'Generating And Adding...' : 'Generating And Adding...'}
                 isLoading={loading}
               />
             </Button>

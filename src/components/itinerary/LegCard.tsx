@@ -365,9 +365,12 @@ export function LegCard({
             </div>
           </div>
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             className="h-8 w-8 text-muted-foreground hover:text-destructive"
+            aria-label={'Delete ' + leg.cityName + ' leg'}
+            title="Delete leg"
             onClick={() => onDelete(leg.id)}
           >
             <Trash2 className="h-4 w-4" />
