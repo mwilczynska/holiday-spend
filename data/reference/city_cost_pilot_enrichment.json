@@ -532,14 +532,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 11.391424556231277,
+        "referenceYear": 2023,
+        "spatialUnit": "Lisbon municipality",
+        "band": "high",
+        "overnightArrivals": 6460430,
+        "residentPopulation": 567131,
+        "numeratorDefinition": "Guests recorded in tourist accommodation establishments located in Lisbon municipality during 2023",
+        "denominatorDefinition": "Estimated resident population of Lisbon municipality in 2023",
+        "arrivalsSourceName": "Portuguese Strategy and Studies Office municipal profile for Lisbon, sourced from Statistics Portugal Regional Statistical Yearbook",
+        "arrivalsSourceUrl": "https://www.gee.gov.pt/pt/documentos/publicacoes/estatisticas-regionais/distritos-concelhos/lisboa/lisboa-2/3195-lisboa/file",
+        "populationSourceName": "Portuguese Strategy and Studies Office municipal profile for Lisbon, sourced from Statistics Portugal Regional Statistical Yearbook",
+        "populationSourceUrl": "https://www.gee.gov.pt/pt/documentos/publicacoes/estatisticas-regionais/distritos-concelhos/lisboa/lisboa-2/3195-lisboa/file",
+        "notes": "The bilingual official profile reports both values for the same municipality and year. The numerator covers guests in surveyed tourist accommodation establishments, so it excludes stays outside that frame and can count the same person again across separate establishments or stays; retain it as an accommodation-pressure proxy rather than a unique-person count."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

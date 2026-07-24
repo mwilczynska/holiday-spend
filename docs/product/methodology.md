@@ -367,9 +367,16 @@ published 2023 model separates 5.81 million domestic and 2.19 million internatio
 including hotels, rentals, and stays with friends or family. Their rounded sum of 8.00 million divided by
 the Census Bureau's 808,988 city/county residents produces 9.89 arrivals per resident. Because the
 numerator is a rounded model output rather than an accommodation register, its inputs and published
-precision remain explicit. The other 26 fields stay pending until an equally defensible same-year,
-same-geography pair is available. Tokyo remains pending because its official table reports person-nights,
+precision remain explicit. Tokyo remains pending because its official table reports person-nights,
 not arrivals, and its broader tourism estimate mixes day and overnight trips.
+
+Lisbon adds another `high` case from a single bilingual official municipal profile sourced to Statistics
+Portugal's Regional Statistical Yearbook. It reports 6,460,430 guests in tourist accommodation and
+567,131 residents for Lisbon municipality in 2023, producing 11.39 arrivals per resident. The common
+year and boundary remove the denominator-matching ambiguity, but the numerator remains a count within
+surveyed accommodation: stays outside the frame are absent and separate stays can count one person more
+than once. It is retained as an accommodation-pressure proxy rather than a unique-visitor estimate. The
+other 25 tourism-intensity fields remain pending.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

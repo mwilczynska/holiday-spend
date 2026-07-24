@@ -197,6 +197,21 @@
       "populationSourceName": "U.S. Census Bureau, Vintage 2023 Population Estimates Program",
       "populationSourceUrl": "https://data.census.gov/table/PEPCHARV2023.PEP_ALLDATA?g=050XX00US06075",
       "notes": "The numerator sums the report's charted 5.81 million domestic and 2.19 million international overnight visitors. It is a rounded model estimate derived from lodging, transport, attraction, economic, and visitor-survey inputs; unlike accommodation-register counts it also covers vacation rentals and stays with friends or family. Retain 8.00 million as published precision, not an exact administrative count."
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "referenceYear": 2023,
+      "spatialUnit": "Lisbon municipality",
+      "overnightArrivals": 6460430,
+      "residentPopulation": 567131,
+      "numeratorDefinition": "Guests recorded in tourist accommodation establishments located in Lisbon municipality during 2023",
+      "denominatorDefinition": "Estimated resident population of Lisbon municipality in 2023",
+      "arrivalsSourceName": "Portuguese Strategy and Studies Office municipal profile for Lisbon, sourced from Statistics Portugal Regional Statistical Yearbook",
+      "arrivalsSourceUrl": "https://www.gee.gov.pt/pt/documentos/publicacoes/estatisticas-regionais/distritos-concelhos/lisboa/lisboa-2/3195-lisboa/file",
+      "populationSourceName": "Portuguese Strategy and Studies Office municipal profile for Lisbon, sourced from Statistics Portugal Regional Statistical Yearbook",
+      "populationSourceUrl": "https://www.gee.gov.pt/pt/documentos/publicacoes/estatisticas-regionais/distritos-concelhos/lisboa/lisboa-2/3195-lisboa/file",
+      "notes": "The bilingual official profile reports both values for the same municipality and year. The numerator covers guests in surveyed tourist accommodation establishments, so it excludes stays outside that frame and can count the same person again across separate establishments or stays; retain it as an accommodation-pressure proxy rather than a unique-person count."
     }
   ]
 }

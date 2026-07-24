@@ -255,8 +255,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [ ] Complete food, drink, and activity measures, prioritizing missing measures, independent source overlap, freshness, and documented sparse-city exceptions
 - [x] Complete the population matching pass with 29 reviewed records and seven explicit unmatched or non-single-city outcomes
 - [ ] Complete comparable tourism intensity using same-geography overnight arrivals and resident population
-  - [x] Measure 10/36 cities and both registered predictors for 9/36
-  - [ ] Resolve more of the remaining 26 cities without accepting geography or estimand mismatches
+  - [x] Measure 11/36 cities and both registered predictors for 10/36
+  - [ ] Resolve more of the remaining 25 cities without accepting geography or estimand mismatches
 - [x] Publish the deterministic baseline profile: 32/36 cities represented, 151/684 required tier cells materialized (22.08%), and zero complete cities
 - [ ] Add cross-channel disagreement, source-age, robust-outlier, seasonal-completeness, and systematic-missingness diagnostics when overlap is sufficient
 
@@ -328,6 +328,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Add Istanbul as the second measured `low` tourism-intensity record: 13,212,666 official 2023 accommodation arrivals / 15,655,924 province residents = 0.84, retaining repeat-entry and registered-establishment limitations
   - [x] Add Dubrovnik and Split tourism-intensity records from official 2024 eVisitor and municipal-population evidence: Dubrovnik = 33.25 (`very_high`) and Split = 6.62 (`high`), retaining the repeat-registration limitation
   - [x] Add San Francisco tourism intensity from the published 2023 overnight-visitor model and Census population: 8.00 million / 808,988 = 9.89 (`high`), retaining rounded/modelled precision; reject Tokyo guest-night and mixed-visit substitutes
+  - [x] Add Lisbon tourism intensity from the bilingual official municipal profile: 6,460,430 accommodation guests / 567,131 residents = 11.39 (`high`) for the same municipality and year, retaining registered-accommodation and repeat-stay limitations
   - [x] Add a deterministic pilot-wide missingness profile: 32/36 pilot cities represented, 151/684 tier cells materialized (22.08%), zero complete cities, and three non-pilot batch-zero rows explicitly excluded
   - [x] Add a validated accommodation attempt ledger and complete the Copenhagen shoulder checkpoint: ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and four booking-path failures
   - [x] Materialize the current fail-closed research artifact from 171 direct observations: 166 of 665 tier cells across 35 represented cities, one incomplete accommodation measure, and zero incomplete wide rows published
@@ -490,6 +491,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Istanbul raises measured tourism-intensity coverage to seven of 36 and adds a second `low` case; its official 2023 numerator counts registered-establishment entries rather than unique visitors and excludes out-of-frame stays
 - Dubrovnik and Split raise measured tourism-intensity coverage to nine of 36 and add the first `very_high` case; both use same-boundary 2024 eVisitor arrivals and official municipal populations while retaining eVisitor's repeat-registration limitation
 - San Francisco raises measured tourism-intensity coverage to ten of 36 and adds the first North American record; its 2023 numerator is a rounded model estimate covering hotels, rentals, and friends/family stays rather than an administrative registration count
+- Lisbon raises measured tourism-intensity coverage to 11 of 36 and measured-both-predictors coverage to ten; its official 2023 municipal profile supplies both the guest numerator and resident denominator on one boundary while retaining registered-accommodation and repeat-stay limitations
 - `data/reference/materialized/city_cost_pilot_profile.json` now joins enrichment and materialized evidence across the full 36-city denominator, reports coverage by region/city-size/tourism/source-density strata, and records that fallback-model selection is not yet defensible
 - Bulgaria's canonical country metadata now resolves to EUR rather than the retired BGN code, with generated metadata and tests refreshed from the explicit override
 - The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, INR, CAD, KRW, HUF, and MXN through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, CUP through the Banco Central de Cuba natural-person reference, MMK through the CBM bank-customer market rate published by Myanmar's Central Statistical Organization, and LAK through the latest Bank of the Lao P.D.R. reference preceding the snapshot
