@@ -25,15 +25,25 @@ const inputs = JSON.parse(fs.readFileSync(inputsPath, 'utf8')) as {
   schemaVersion: string;
   source: { name: string; url: string; spatialUnit: 'DEGURBA_city'; referenceYear: number; rawUnit: string };
   citySize: Array<{ city: string; country: string; value: number; sourceRecordId: string; sourceLocation: string }>;
+  unmatchedCitySize: Array<{ city: string; country: string; reason: 'no_matching_named_record' | 'destination_is_not_single_city'; notes: string }>;
 };
-if (inputs.schemaVersion !== 'city-cost-pilot-enrichment-inputs-v1') {
+if (inputs.schemaVersion !== 'city-cost-pilot-enrichment-inputs-v2') {
   throw new Error(`Unsupported enrichment inputs schema: ${inputs.schemaVersion}`);
 }
 const pilotKeys = new Set(pilot.cities.map((city) => `${city.city}|${city.country}`));
 const citySizeInputs = new Map(inputs.citySize.map((row) => [`${row.city}|${row.country}`, row]));
+const unmatchedCitySizeInputs = new Map(inputs.unmatchedCitySize.map((row) => [`${row.city}|${row.country}`, row]));
 if (citySizeInputs.size !== inputs.citySize.length) throw new Error('Duplicate city-size enrichment input');
+if (unmatchedCitySizeInputs.size !== inputs.unmatchedCitySize.length) throw new Error('Duplicate unmatched city-size input');
 for (const key of Array.from(citySizeInputs.keys())) {
   if (!pilotKeys.has(key)) throw new Error(`City-size enrichment input is not in pilot: ${key}`);
+  if (unmatchedCitySizeInputs.has(key)) throw new Error(`City-size input is both matched and unmatched: ${key}`);
+}
+for (const key of Array.from(unmatchedCitySizeInputs.keys())) {
+  if (!pilotKeys.has(key)) throw new Error(`Unmatched city-size input is not in pilot: ${key}`);
+}
+if (citySizeInputs.size + unmatchedCitySizeInputs.size !== pilot.cities.length) {
+  throw new Error('Every pilot city must have either a measured WUP value or an explicit unmatched outcome');
 }
 const manifest = cityCostCollectionManifestSchema.parse(
   JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
@@ -57,6 +67,7 @@ const cities = pilot.cities.map((candidate) => {
   >;
   const pendingNotes = 'Pending collection from a named public source; no intuitive or country-level label is permitted.';
   const citySizeInput = citySizeInputs.get(`${candidate.city}|${candidate.country}`);
+  const unmatchedCitySizeInput = unmatchedCitySizeInputs.get(`${candidate.city}|${candidate.country}`);
   return {
     city: candidate.city,
     country: candidate.country,
@@ -80,7 +91,7 @@ const cities = pilot.cities.map((candidate) => {
       band: 'unknown' as const,
       sourceName: null,
       sourceUrl: null,
-      notes: pendingNotes,
+      notes: unmatchedCitySizeInput?.notes ?? pendingNotes,
     },
     tourismIntensity: {
       status: 'pending_source_collection' as const,

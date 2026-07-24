@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "city-cost-pilot-enrichment-inputs-v1",
+  "schemaVersion": "city-cost-pilot-enrichment-inputs-v2",
   "source": {
     "name": "United Nations World Urbanization Prospects 2025, File 21",
     "url": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
@@ -8,15 +8,44 @@
     "rawUnit": "thousands of residents"
   },
   "citySize": [
+    { "city": "Zanzibar", "country": "Tanzania", "value": 966642, "sourceRecordId": "3670", "sourceLocation": "Zanzibar City" },
     { "city": "Nairobi", "country": "Kenya", "value": 6134334, "sourceRecordId": "2033", "sourceLocation": "Nairobi" },
+    { "city": "Shanghai", "country": "China", "value": 29558908, "sourceRecordId": "11738", "sourceLocation": "Shanghai" },
+    { "city": "Fukuoka", "country": "Japan", "value": 2225078, "sourceRecordId": "884", "sourceLocation": "Fukuoka" },
+    { "city": "Sendai", "country": "Japan", "value": 1256440, "sourceRecordId": "5593", "sourceLocation": "Sendai" },
+    { "city": "Seoul", "country": "South Korea", "value": 22490482, "sourceRecordId": "332", "sourceLocation": "Seoul" },
     { "city": "Tokyo", "country": "Japan", "value": 33412512, "sourceRecordId": "6030", "sourceLocation": "Tōkyō (Tokyo)" },
+    { "city": "Sofia", "country": "Bulgaria", "value": 1067136, "sourceRecordId": "100", "sourceLocation": "Sofia" },
+    { "city": "Budapest", "country": "Hungary", "value": 1609260, "sourceRecordId": "942", "sourceLocation": "Budapest" },
+    { "city": "Prague", "country": "Czech Republic", "value": 1197765, "sourceRecordId": "542", "sourceLocation": "Praha (Prague)" },
+    { "city": "Split", "country": "Croatia", "value": 190315, "sourceRecordId": "549", "sourceLocation": "Split" },
     { "city": "Lisbon", "country": "Portugal", "value": 1913798, "sourceRecordId": "217", "sourceLocation": "Lisboa (Lisbon)" },
+    { "city": "Barcelona", "country": "Spain", "value": 3982704, "sourceRecordId": "5068", "sourceLocation": "Barcelona" },
+    { "city": "Medellin", "country": "Colombia", "value": 3350384, "sourceRecordId": "2525", "sourceLocation": "Medellín" },
+    { "city": "Havana", "country": "Cuba", "value": 1593580, "sourceRecordId": "350", "sourceLocation": "La Habana (Havana)" },
     { "city": "Mexico City", "country": "Mexico", "value": 17734212, "sourceRecordId": "5439", "sourceLocation": "Ciudad de México (Mexico City)" },
+    { "city": "Istanbul", "country": "Turkey", "value": 15014763, "sourceRecordId": "2626", "sourceLocation": "Istanbul" },
     { "city": "Dubai", "country": "UAE", "value": 5283789, "sourceRecordId": "865", "sourceLocation": "Dubai" },
     { "city": "Vancouver", "country": "Canada", "value": 1707865, "sourceRecordId": "341", "sourceLocation": "Vancouver" },
+    { "city": "San Francisco", "country": "United States", "value": 3163486, "sourceRecordId": "1233", "sourceLocation": "San Francisco" },
     { "city": "Auckland", "country": "New Zealand", "value": 1123094, "sourceRecordId": "1005", "sourceLocation": "Auckland" },
+    { "city": "Can Tho", "country": "Vietnam", "value": 1327741, "sourceRecordId": "4924", "sourceLocation": "Cần Thơ" },
+    { "city": "Da Lat", "country": "Vietnam", "value": 239212, "sourceRecordId": "6197", "sourceLocation": "Đà Lạt" },
+    { "city": "Da Nang", "country": "Vietnam", "value": 1142621, "sourceRecordId": "5489", "sourceLocation": "Đà Nẵng" },
+    { "city": "Chiang Rai", "country": "Thailand", "value": 112713, "sourceRecordId": "324", "sourceLocation": "Chiang Rai" },
     { "city": "Hanoi", "country": "Vietnam", "value": 5068414, "sourceRecordId": "1975", "sourceLocation": "Hà Nội (Hanoi)" },
+    { "city": "Yangon", "country": "Myanmar", "value": 5618303, "sourceRecordId": "5433", "sourceLocation": "Yangon" },
+    { "city": "Bali (Ubud)", "country": "Indonesia", "value": 78960, "sourceRecordId": "8052", "sourceLocation": "Ubud" },
     { "city": "Delhi", "country": "India", "value": 30222405, "sourceRecordId": "8364", "sourceLocation": "New Delhi" }
+  ],
+  "unmatchedCitySize": [
+    { "city": "Dubrovnik", "country": "Croatia", "reason": "no_matching_named_record", "notes": "No Dubrovnik record is present in WUP File 21; retain pending for a Croatian public-statistics source." },
+    { "city": "Queenstown", "country": "New Zealand", "reason": "no_matching_named_record", "notes": "No Queenstown record is present in WUP File 21; retain pending for a New Zealand public-statistics source." },
+    { "city": "Don Det", "country": "Laos", "reason": "no_matching_named_record", "notes": "No Don Det record is present in WUP File 21; do not substitute Pakse or another Lao destination." },
+    { "city": "Pu Luong", "country": "Vietnam", "reason": "no_matching_named_record", "notes": "No Pu Luong record is present in WUP File 21; do not use the fuzzy Phú Cường match." },
+    { "city": "Vang Vieng", "country": "Laos", "reason": "no_matching_named_record", "notes": "No Vang Vieng record is present in WUP File 21; do not substitute Vientiane." },
+    { "city": "Santa Fe (Bantayan)", "country": "Philippines", "reason": "no_matching_named_record", "notes": "No Santa Fe, Bantayan record is present in WUP File 21; do not substitute one of several unrelated Santa Cruz or San Jose records." },
+    { "city": "Goa", "country": "India", "reason": "destination_is_not_single_city", "notes": "Goa is a state and multi-city destination; a single WUP city population would not represent the planner destination." }
   ],
   "tourismIntensity": []
 }

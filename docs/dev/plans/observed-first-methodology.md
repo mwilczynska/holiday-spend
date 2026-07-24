@@ -402,6 +402,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     calculation for all 36 cities; retain unknown population/tourism fields explicitly.
   - [x] Populate a first region-stratified tranche of nine comparable 2025 city populations from UN WUP
     File 21, retaining DEGURBA spatial units, source city codes, and original location labels.
+  - [x] Complete the WUP matching pass: retain 29 reviewed city records and seven explicit unmatched or
+    non-single-city outcomes rather than accepting fuzzy substitutes.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

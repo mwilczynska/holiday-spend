@@ -302,14 +302,18 @@ for that same geography and a stated year. Neither field may be assigned from in
 or an unlabeled search result. Until comparable public values are retained, the artifact records them as
 unknown rather than introducing silent classification error.
 
-The first population tranche now uses the United Nations World Urbanization Prospects 2025 File 21,
-which applies the harmonised Degree of Urbanization (DEGURBA) definition across countries. Nine cities,
-one from each pilot region, have matched 2025 values: Nairobi, Tokyo, Lisbon, Mexico City, Dubai,
-Vancouver, Auckland, Hanoi, and Delhi. Published values in thousands are converted to integer residents,
+Population enrichment uses the United Nations World Urbanization Prospects 2025 File 21, which applies
+the harmonised Degree of Urbanization (DEGURBA) definition across countries. Twenty-nine of the 36 pilot
+destinations have a reviewed 2025 match. Published values in thousands are converted to integer residents,
 while the UN city code and original location label are retained for audit. These are comparable urban-centre
 populations, not municipal-boundary counts, so later sources may only replace them if they preserve or
-explicitly improve geographic comparability. The other 27 city-size fields and all 36 tourism-intensity
-fields remain explicitly pending.
+explicitly improve geographic comparability.
+
+Seven destinations remain pending with an explicit match outcome. Dubrovnik, Queenstown, Don Det,
+Pu Luong, Vang Vieng, and Santa Fe (Bantayan) have no matching named File 21 record; Goa is a state and
+multi-city destination, so assigning one city's population would misstate the estimand. The audit rejects
+plausible-looking but wrong fuzzy matches, including Pu Luong to Phú Cường and Vang Vieng to Vientiane.
+All 36 tourism-intensity fields remain pending.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

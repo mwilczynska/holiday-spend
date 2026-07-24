@@ -23,11 +23,17 @@ describe('city cost pilot enrichment', () => {
     expect(artifact.cities).toHaveLength(36);
     expect(new Set(artifact.cities.map((city) => `${city.city}|${city.country}`)).size).toBe(36);
     expect(artifact.cities.find((city) => city.city === 'Dubai')?.publicSourceDensity.band).toBe('moderate');
-    expect(artifact.cities.filter((city) => city.citySize.status === 'measured_from_public_source')).toHaveLength(9);
+    expect(artifact.cities.filter((city) => city.citySize.status === 'measured_from_public_source')).toHaveLength(29);
+    expect(artifact.cities.filter((city) => city.citySize.status === 'pending_source_collection')).toHaveLength(7);
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.citySize).toMatchObject({
       value: 33_412_512,
       band: 'megacity',
       sourceRecordId: '6030',
     });
+    expect(artifact.cities.find((city) => city.city === 'Yangon')?.citySize).toMatchObject({
+      value: 5_618_303,
+      sourceRecordId: '5433',
+    });
+    expect(artifact.cities.find((city) => city.city === 'Goa')?.citySize.notes).toContain('state and multi-city');
   });
 });
