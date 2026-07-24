@@ -493,6 +493,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     and resident counts; retain the registered-accommodation and repeat-stay limitations.
   - [x] Add Vancouver from Destination Vancouver's exact 2024 monthly overnight-visitation series and the
     same-year BC Stats municipal population estimate; retain the destination-model methodology limitation.
+  - [x] Add a structured, source-attributed tourism-intensity rejection path and use it for Copenhagen:
+    municipality accommodation data expose nights, while the city estimate covers international tourists only.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

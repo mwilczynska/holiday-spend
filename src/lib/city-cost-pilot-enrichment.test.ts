@@ -102,5 +102,13 @@ describe('city cost pilot enrichment', () => {
       residentPopulation: 748_777,
       band: 'very_high',
     });
+    expect(artifact.cities.find((city) => city.city === 'Queenstown')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      value: null,
+      band: 'unknown',
+    });
+    expect(artifact.cities.find((city) => city.city === 'Queenstown')?.tourismIntensity.notes).toContain(
+      'reports 4.5 million guest nights'
+    );
   });
 });

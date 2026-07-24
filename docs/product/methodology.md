@@ -440,6 +440,11 @@ destination page rounds the annual total to 11.3 million but does not publish de
 inline, so the exact inputs and that limitation remain attached. The other 24 tourism-intensity fields
 remain pending.
 
+Pending fields can now retain source-attributed rejection reasons rather than a generic missing label.
+Copenhagen is the first structured rejection: its public municipality accommodation table reports nights,
+not arrivals, and its published city estimate covers international tourists only. Neither is converted into
+the required all-overnight-arrivals numerator.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

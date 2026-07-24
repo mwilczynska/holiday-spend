@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "city-cost-pilot-enrichment-inputs-v2",
+  "schemaVersion": "city-cost-pilot-enrichment-inputs-v3",
   "source": {
     "name": "United Nations World Urbanization Prospects 2025, File 21",
     "url": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
@@ -46,6 +46,24 @@
     { "city": "Vang Vieng", "country": "Laos", "reason": "no_matching_named_record", "notes": "No Vang Vieng record is present in WUP File 21; do not substitute Vientiane." },
     { "city": "Santa Fe (Bantayan)", "country": "Philippines", "reason": "no_matching_named_record", "notes": "No Santa Fe, Bantayan record is present in WUP File 21; do not substitute one of several unrelated Santa Cruz or San Jose records." },
     { "city": "Goa", "country": "India", "reason": "destination_is_not_single_city", "notes": "Goa is a state and multi-city destination; a single WUP city population would not represent the planner destination." }
+  ],
+  "rejectedTourismIntensity": [
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "reason": "incompatible_numerator",
+      "notes": "Queenstown Lakes District Council reports 4.5 million guest nights for the year ending March 2024 and publishes average-day and peak-day visitor populations, while the registered estimand requires annual overnight visitor arrivals. The evidence also covers the broader Queenstown Lakes District rather than the planner's Queenstown destination. Retain tourism intensity as pending rather than converting nights or visitor-day populations to arrivals.",
+      "sources": [
+        {
+          "name": "Queenstown Lakes District Council submission on the International Visitor Conservation and Tourism Levy",
+          "url": "https://www.qldc.govt.nz/media/yu4lkjnn/110624-final-qldc-submission-to-mbie-on-ivl.pdf"
+        },
+        {
+          "name": "Queenstown Lakes District Council, Population and Demand",
+          "url": "https://www.qldc.govt.nz/community/population-and-demand"
+        }
+      ]
+    }
   ],
   "tourismIntensity": [
     {

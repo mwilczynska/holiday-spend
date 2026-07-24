@@ -27,6 +27,12 @@ const inputs = JSON.parse(fs.readFileSync(inputsPath, 'utf8')) as {
   source: { name: string; url: string; spatialUnit: 'DEGURBA_city'; referenceYear: number; rawUnit: string };
   citySize: Array<{ city: string; country: string; value: number; sourceRecordId: string; sourceLocation: string }>;
   unmatchedCitySize: Array<{ city: string; country: string; reason: 'no_matching_named_record' | 'destination_is_not_single_city'; notes: string }>;
+  rejectedTourismIntensity: Array<{
+    city: string; country: string;
+    reason: 'incompatible_numerator' | 'incompatible_geography' | 'incomplete_period';
+    notes: string;
+    sources: Array<{ name: string; url: string }>;
+  }>;
   tourismIntensity: Array<{
     city: string; country: string; referenceYear: number; spatialUnit: string;
     overnightArrivals: number; residentPopulation: number;
@@ -35,15 +41,17 @@ const inputs = JSON.parse(fs.readFileSync(inputsPath, 'utf8')) as {
     populationSourceName: string; populationSourceUrl: string; notes: string;
   }>;
 };
-if (inputs.schemaVersion !== 'city-cost-pilot-enrichment-inputs-v2') {
+if (inputs.schemaVersion !== 'city-cost-pilot-enrichment-inputs-v3') {
   throw new Error(`Unsupported enrichment inputs schema: ${inputs.schemaVersion}`);
 }
 const pilotKeys = new Set(pilot.cities.map((city) => `${city.city}|${city.country}`));
 const citySizeInputs = new Map(inputs.citySize.map((row) => [`${row.city}|${row.country}`, row]));
 const unmatchedCitySizeInputs = new Map(inputs.unmatchedCitySize.map((row) => [`${row.city}|${row.country}`, row]));
+const rejectedTourismIntensityInputs = new Map(inputs.rejectedTourismIntensity.map((row) => [`${row.city}|${row.country}`, row]));
 const tourismIntensityInputs = new Map(inputs.tourismIntensity.map((row) => [`${row.city}|${row.country}`, row]));
 if (citySizeInputs.size !== inputs.citySize.length) throw new Error('Duplicate city-size enrichment input');
 if (unmatchedCitySizeInputs.size !== inputs.unmatchedCitySize.length) throw new Error('Duplicate unmatched city-size input');
+if (rejectedTourismIntensityInputs.size !== inputs.rejectedTourismIntensity.length) throw new Error('Duplicate rejected tourism-intensity input');
 if (tourismIntensityInputs.size !== inputs.tourismIntensity.length) throw new Error('Duplicate tourism-intensity input');
 for (const key of Array.from(citySizeInputs.keys())) {
   if (!pilotKeys.has(key)) throw new Error(`City-size enrichment input is not in pilot: ${key}`);
@@ -54,6 +62,14 @@ for (const key of Array.from(unmatchedCitySizeInputs.keys())) {
 }
 for (const key of Array.from(tourismIntensityInputs.keys())) {
   if (!pilotKeys.has(key)) throw new Error(`Tourism-intensity input is not in pilot: ${key}`);
+  if (rejectedTourismIntensityInputs.has(key)) throw new Error(`Tourism-intensity input is both measured and rejected: ${key}`);
+}
+for (const [key, row] of Array.from(rejectedTourismIntensityInputs.entries())) {
+  if (!pilotKeys.has(key)) throw new Error(`Rejected tourism-intensity input is not in pilot: ${key}`);
+  if (!row.notes.trim()) throw new Error(`Rejected tourism-intensity input requires notes: ${key}`);
+  if (!row.sources.length || row.sources.some((source) => !source.name.trim() || !URL.canParse(source.url))) {
+    throw new Error(`Rejected tourism-intensity input requires valid source evidence: ${key}`);
+  }
 }
 if (citySizeInputs.size + unmatchedCitySizeInputs.size !== pilot.cities.length) {
   throw new Error('Every pilot city must have either a measured WUP value or an explicit unmatched outcome');
@@ -81,6 +97,7 @@ const cities = pilot.cities.map((candidate) => {
   const pendingNotes = 'Pending collection from a named public source; no intuitive or country-level label is permitted.';
   const citySizeInput = citySizeInputs.get(`${candidate.city}|${candidate.country}`);
   const unmatchedCitySizeInput = unmatchedCitySizeInputs.get(`${candidate.city}|${candidate.country}`);
+  const rejectedTourismIntensityInput = rejectedTourismIntensityInputs.get(`${candidate.city}|${candidate.country}`);
   const tourismIntensityInput = tourismIntensityInputs.get(`${candidate.city}|${candidate.country}`);
   return {
     city: candidate.city,
@@ -130,7 +147,7 @@ const cities = pilot.cities.map((candidate) => {
       band: 'unknown' as const,
       sourceName: null,
       sourceUrl: null,
-      notes: pendingNotes,
+      notes: rejectedTourismIntensityInput?.notes ?? pendingNotes,
     },
     publicSourceDensity: {
       status: 'measured_from_retained_evidence' as const,
