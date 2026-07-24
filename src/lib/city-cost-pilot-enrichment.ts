@@ -16,6 +16,24 @@ const pendingMetricSchema = z.object({
   notes: z.string().min(1),
 });
 
+const measuredCitySizeSchema = z.object({
+  status: z.literal('measured_from_public_source'),
+  value: z.number().int().positive(),
+  referenceYear: z.number().int().min(1900).max(2100),
+  spatialUnit: z.literal('DEGURBA_city'),
+  band: z.enum(['small', 'medium', 'large', 'megacity']),
+  sourceName: z.string().min(1),
+  sourceUrl: z.string().url(),
+  sourceRecordId: z.string().min(1),
+  sourceLocation: z.string().min(1),
+  notes: z.string().min(1),
+});
+
+const citySizeMetricSchema = z.discriminatedUnion('status', [
+  pendingMetricSchema,
+  measuredCitySizeSchema,
+]);
+
 const sourceDensitySchema = z.object({
   status: z.literal('measured_from_retained_evidence'),
   acceptedObservationCount: z.number().int().nonnegative(),
@@ -28,7 +46,7 @@ const sourceDensitySchema = z.object({
 
 export const cityCostPilotEnrichmentSchema = z
   .object({
-    schemaVersion: z.literal('city-cost-pilot-enrichment-v1'),
+    schemaVersion: z.literal('city-cost-pilot-enrichment-v2'),
     enrichmentId: z.string().min(1),
     pilotSource: z.string().min(1),
     observationManifestSource: z.string().min(1),
@@ -54,7 +72,7 @@ export const cityCostPilotEnrichmentSchema = z
         city: z.string().min(1),
         country: z.string().min(1),
         region: cityCostRegionSchema,
-        citySize: pendingMetricSchema,
+        citySize: citySizeMetricSchema,
         tourismIntensity: pendingMetricSchema,
         publicSourceDensity: sourceDensitySchema,
       })
@@ -85,6 +103,17 @@ export const cityCostPilotEnrichmentSchema = z
           message: 'A zero-observation city cannot have a retained numeric source',
         });
       }
+
+      if (city.citySize.status === 'measured_from_public_source') {
+        const expectedCitySizeBand = citySizeBand(city.citySize.value);
+        if (city.citySize.band !== expectedCitySizeBand) {
+          context.addIssue({
+            code: 'custom',
+            path: ['cities', index, 'citySize', 'band'],
+            message: `Expected ${expectedCitySizeBand} from population ${city.citySize.value}`,
+          });
+        }
+      }
     });
   });
 
@@ -95,5 +124,11 @@ export function sourceDensityBand(observedMeasureCount: number) {
   return 'dense' as const;
 }
 
-export type CityCostPilotEnrichment = z.infer<typeof cityCostPilotEnrichmentSchema>;
+export function citySizeBand(population: number) {
+  if (population < 100_000) return 'small' as const;
+  if (population < 500_000) return 'medium' as const;
+  if (population < 5_000_000) return 'large' as const;
+  return 'megacity' as const;
+}
 
+export type CityCostPilotEnrichment = z.infer<typeof cityCostPilotEnrichmentSchema>;

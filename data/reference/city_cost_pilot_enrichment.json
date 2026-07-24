@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "city-cost-pilot-enrichment-v1",
-  "enrichmentId": "pilot-36-enrichment-2026-07-24-v1",
+  "schemaVersion": "city-cost-pilot-enrichment-v2",
+  "enrichmentId": "pilot-36-enrichment-2026-07-24-v2",
   "pilotSource": "data/reference/city_cost_collection_pilot.json",
   "observationManifestSource": "data/reference/city_cost_collection_batches.json",
   "generatedAt": "2026-07-24T15:00:00.000Z",
@@ -88,14 +88,16 @@
       "country": "Kenya",
       "region": "Africa",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 6134334,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "megacity",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "2033",
+        "sourceLocation": "Nairobi",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -278,14 +280,16 @@
       "country": "Japan",
       "region": "East Asia",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 33412512,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "megacity",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "6030",
+        "sourceLocation": "Tōkyō (Tokyo)",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -468,14 +472,16 @@
       "country": "Portugal",
       "region": "Europe",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 1913798,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "large",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "217",
+        "sourceLocation": "Lisboa (Lisbon)",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -657,14 +663,16 @@
       "country": "Mexico",
       "region": "Latin America",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 17734212,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "megacity",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "5439",
+        "sourceLocation": "Ciudad de México (Mexico City)",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -733,14 +741,16 @@
       "country": "UAE",
       "region": "Middle East",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 5283789,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "megacity",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "865",
+        "sourceLocation": "Dubai",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -771,14 +781,16 @@
       "country": "Canada",
       "region": "North America",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 1707865,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "large",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "341",
+        "sourceLocation": "Vancouver",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -847,14 +859,16 @@
       "country": "New Zealand",
       "region": "Oceania",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 1123094,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "large",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "1005",
+        "sourceLocation": "Auckland",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -1215,14 +1229,16 @@
       "country": "Vietnam",
       "region": "SEA",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 5068414,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "megacity",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "1975",
+        "sourceLocation": "Hà Nội (Hanoi)",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",
@@ -1363,14 +1379,16 @@
       "country": "India",
       "region": "South Asia",
       "citySize": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_source",
+        "value": 30222405,
+        "referenceYear": 2025,
+        "spatialUnit": "DEGURBA_city",
+        "band": "megacity",
+        "sourceName": "United Nations World Urbanization Prospects 2025, File 21",
+        "sourceUrl": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
+        "sourceRecordId": "8364",
+        "sourceLocation": "New Delhi",
+        "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
         "status": "pending_source_collection",

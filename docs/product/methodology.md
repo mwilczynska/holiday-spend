@@ -302,6 +302,15 @@ for that same geography and a stated year. Neither field may be assigned from in
 or an unlabeled search result. Until comparable public values are retained, the artifact records them as
 unknown rather than introducing silent classification error.
 
+The first population tranche now uses the United Nations World Urbanization Prospects 2025 File 21,
+which applies the harmonised Degree of Urbanization (DEGURBA) definition across countries. Nine cities,
+one from each pilot region, have matched 2025 values: Nairobi, Tokyo, Lisbon, Mexico City, Dubai,
+Vancouver, Auckland, Hanoi, and Delhi. Published values in thousands are converted to integer residents,
+while the UN city code and original location label are retained for audit. These are comparable urban-centre
+populations, not municipal-boundary counts, so later sources may only replace them if they preserve or
+explicitly improve geographic comparability. The other 27 city-size fields and all 36 tourism-intensity
+fields remain explicitly pending.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
