@@ -191,6 +191,15 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('Data Compendium 2024'), url: expect.stringContaining('data.tourism.gov.in') },
       ],
     });
+    expect(artifact.cities.find((city) => city.city === 'Havana')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Anuario Estadistico'), url: expect.stringContaining('aep-la-habana-2023.pdf') },
+        { name: expect.stringContaining('visitantes internacionales'), url: expect.stringContaining('onei.gob.cu') },
+      ],
+    });
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',

@@ -517,6 +517,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     foreign tourist visits, not an overnight-only accommodation-arrivals series.
   - [x] Add Goa as a destination-level measured proxy from official 2024 state tourist arrivals and
     same-period projected population, retaining the public table's limited inline methodology disclosure.
+  - [x] Record Havana as a screened rejection because ONEI's accommodation-arrival table is explicitly
+    international-only and the current national bulletin also omits domestic overnight arrivals.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

@@ -519,6 +519,12 @@ table does not document its overnight filter, coverage, or repeat-visit handling
 a destination-pressure proxy rather than a unique-person census. The current profile contains 14 measured
 cities, nine screened rejections, and 13 unscreened gaps.
 
+Havana is the tenth screened rejection. ONEI's provincial yearbook defines a tourist as a visitor staying
+at least one night, but its Havana accommodation-arrival table covers international tourists only. ONEI's
+current arrival bulletin is likewise international-only and national. The project does not treat either as
+the complete domestic-plus-international overnight numerator; the current profile therefore contains
+14 measured cities, ten screened rejections, and 12 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

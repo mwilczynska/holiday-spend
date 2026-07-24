@@ -784,10 +784,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "ONEI, Anuario Estadistico de La Habana 2023",
+            "url": "https://cubamemorias.com/wp-content/uploads/2025/04/aep-la-habana-2023.pdf"
+          },
+          {
+            "name": "ONEI, Arribo de viajeros: visitantes internacionales, April 2024",
+            "url": "https://www.onei.gob.cu/sites/default/files/publicaciones/2024-05/arribo-de-viajeros.-visitantes-internacionales-abril-2024_0.pdf"
+          }
+        ],
+        "notes": "The ONEI provincial yearbook defines tourists as visitors staying at least one night and publishes arrivals to La Habana accommodation, but its arrival table is explicitly limited to international tourists. ONEI's current arrival bulletin likewise covers international visitors and is national rather than Havana-specific. Neither source supplies domestic plus international overnight arrivals for the Havana geography. Retain tourism intensity as pending rather than treating international arrivals as the complete numerator."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
