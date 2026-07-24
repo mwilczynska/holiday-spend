@@ -106,6 +106,22 @@ describe('accommodation reference-window schedule', () => {
         },
       ],
     });
+    expect(
+      parsed.cities
+        .find((city) => city.city === 'Bangkok')!
+        .windows.find((window) => window.season === 'low')
+    ).toMatchObject({
+      checkIn: '2026-10-29',
+      checkOut: '2026-11-05',
+      quoteCaptureDate: '2026-07-31',
+      replacementHistory: [
+        {
+          checkIn: '2026-10-22',
+          checkOut: '2026-10-29',
+          quoteCaptureDate: '2026-07-24',
+        },
+      ],
+    });
   });
 
   it('rejects a stay that is not seven nights', () => {

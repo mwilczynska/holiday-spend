@@ -264,6 +264,12 @@ moves forward exactly seven days to 29 October-5 November and its exact-90-day c
 The rejected window and source URLs stay in the schedule's replacement history, and no price from the
 rejected dates enters the evidence store.
 
+Bangkok's original low-season week of 22-29 October also failed its capture-day screen because the official
+2026 Bank of Thailand calendar places King Chulalongkorn Memorial Day on Friday 23 October, creating a
+three-day public-holiday weekend within the stay. The stay and capture therefore move exactly seven days
+forward to 29 October-5 November and 31 July. The replacement is not pre-cleared: it requires a fresh
+official event and holiday review on its new capture date.
+
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted
 4-star quotes, one genuine no-availability result, and four booking-path failures: three could not preserve

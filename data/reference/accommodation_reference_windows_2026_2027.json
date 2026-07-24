@@ -430,16 +430,29 @@
       "windows": [
         {
           "season": "low",
-          "checkIn": "2026-10-22",
-          "checkOut": "2026-10-29",
-          "quoteCaptureDate": "2026-07-24",
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-11-05",
+          "quoteCaptureDate": "2026-07-31",
           "status": "scheduled",
           "eventReview": {
             "status": "pending_final_check",
-            "dueDate": "2026-07-24",
+            "dueDate": "2026-07-31",
             "checkedAt": null,
-            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
-          }
+            "notes": "Replacement window requires a fresh Tourism Authority of Thailand event-calendar and public-holiday review on 31 July 2026 before any quote is accepted."
+          },
+          "replacementHistory": [
+            {
+              "checkIn": "2026-10-22",
+              "checkOut": "2026-10-29",
+              "quoteCaptureDate": "2026-07-24",
+              "checkedAt": "2026-07-24T14:45:00.000Z",
+              "reason": "Rejected under the public-holiday demand-distortion rule: the official Bank of Thailand 2026 calendar identifies Friday 23 October as H.M. King Chulalongkorn the Great Memorial Day, creating a three-day holiday weekend within the stay. The stay is moved forward exactly seven days without collecting a price.",
+              "sourceUrls": [
+                "https://www.bot.or.th/en/financial-institutions-holiday.html",
+                "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf"
+              ]
+            }
+          ]
         },
         {
           "season": "shoulder",

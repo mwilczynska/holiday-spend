@@ -400,6 +400,12 @@ and a major arena concert on 22 October. The pre-registered rule moves the stay 
 exactly seven days to 29 October-5 November and 31 July respectively. The rejected dates, evidence URLs,
 timestamp, and reason remain in `replacementHistory`; no quote was collected against the rejected window.
 
+Bangkok's original 22-29 October low-season window also failed its 24 July capture-day screen. The official
+Bank of Thailand 2026 calendar places King Chulalongkorn Memorial Day on Friday 23 October, producing a
+three-day public-holiday weekend inside the stay. The same frozen rule moves the stay to 29 October-5
+November and the capture to 31 July. The replacement remains pending a fresh official event and holiday
+screen, and no quote was collected against the rejected dates.
+
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the
 exact-date or mandatory-charge verification gate. The accepted nightly prices are DKK 1,178.36,
