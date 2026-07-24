@@ -122,6 +122,21 @@
       "populationSourceName": "Hungarian Central Statistical Office, resident population by sex, county and region",
       "populationSourceUrl": "https://www.ksh.hu/stadat_files/nep/en/nep0034.html",
       "notes": "The numerator covers registered commercial, private, and other tourist accommodation establishments and includes domestic and international arrivals. The denominator is the start-of-year resident population for the same capital-region geography."
+    },
+    {
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "referenceYear": 2024,
+      "spatialUnit": "Sofia (Stolitsa) capital district",
+      "overnightArrivals": 1185345,
+      "residentPopulation": 1295931,
+      "numeratorDefinition": "Arrivals in categorized accommodation establishments with 10 or more bed places in Sofia capital district during 2024",
+      "denominatorDefinition": "Population of Sofia (Stolitsa) capital district at 31 December 2024",
+      "arrivalsSourceName": "Bulgarian National Statistical Institute, accommodation establishments annual time series",
+      "arrivalsSourceUrl": "https://www.nsi.bg/sites/default/files/files/data/timeseries/TUR_2.1.3_EUR_en.xlsx",
+      "populationSourceName": "Bulgarian National Statistical Institute, District Sofia (Stolitsa) key indicators",
+      "populationSourceUrl": "https://www.nsi.bg/en/statistical-data/46/172",
+      "notes": "The numerator includes resident and non-resident arrivals but only at categorized accommodation establishments with at least 10 bed places. Smaller and informal stays are outside the frame, so the result is a reproducible lower-bound proxy for overnight arrivals."
     }
   ]
 }

@@ -340,8 +340,14 @@ resident (`medium`). The numerator is rounded to the nearest 10,000 and is model
 the national accommodation survey, and a visitor-survey overnight rate, so its estimated status remains
 visible. Budapest reports 6,730,727 arrivals across commercial, private, and other accommodation in 2024
 and 1,686,222 residents at the start of that year for the same capital-region boundary. Its ratio is 3.99
-(`medium`). The other 31 fields stay pending until an equally defensible same-year, same-geography pair
-is available.
+(`medium`).
+
+Sofia contributes a lower-intensity case rather than extending only the upper end of the distribution.
+The Bulgarian National Statistical Institute records 1,185,345 arrivals in categorized accommodation
+establishments with at least 10 bed places during 2024 and 1,295,931 residents at 31 December for the
+same Sofia-capital district. The resulting 0.91 arrivals per resident is `low`. Smaller and informal stays
+are outside the accommodation frame, so the retained value is a lower-bound proxy. The other 30 fields
+stay pending until an equally defensible same-year, same-geography pair is available.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

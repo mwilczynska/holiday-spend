@@ -412,6 +412,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     from all 16 boroughs in the official CONAPO projection file and retaining the hotel-only limitation.
   - [x] Add Fukuoka and Budapest from official city/national statistics, retaining Fukuoka's rounded modelled
     numerator and Budapest's broader commercial/private/other accommodation coverage.
+  - [x] Add Sofia from the official NSI annual time series as the first measured `low` case, retaining the
+    exclusion of accommodation establishments with fewer than 10 bed places.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.
