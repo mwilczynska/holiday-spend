@@ -44,6 +44,7 @@ const sourceSchema = z.object({
     'geolocation',
     'eligibility_classification_and_geolocation',
     'candidate_universe',
+    'inventory_and_geolocation',
   ]),
   landingPageUrl: z.string().url(),
   dataUrl: z.string().url(),
@@ -91,6 +92,7 @@ const propertySchema = z.object({
     'eligible_in_radius',
     'excluded_missing_official_geolocation',
     'excluded_outside_radius',
+    'pending_inventory_verification',
     'pending_inventory_and_geolocation',
   ]),
   exclusionReason: z.string().min(1).nullable(),
@@ -285,6 +287,22 @@ export const accommodationPropertyPanelCollectionSchema = z
           });
         }
         if (
+          property.geographicDisposition === 'pending_inventory_verification' &&
+          (!hasCoordinates ||
+            property.distanceFromCentreKm === null ||
+            property.distanceFromCentreKm > collection.protocol.searchRadiusKm ||
+            property.exclusionReason === null ||
+            property.eligibleMeasures.length !== 0 ||
+            property.officialWebsiteUrl === null)
+        ) {
+          context.addIssue({
+            code: 'custom',
+            path: ['cities', cityIndex, 'properties', propertyIndex],
+            message:
+              'Inventory-pending candidates require in-radius coordinates, a reason, a listed website, and no inferred measures',
+          });
+        }
+        if (
           property.geographicDisposition === 'pending_inventory_and_geolocation' &&
           (hasCoordinates ||
             property.distanceFromCentreKm !== null ||
@@ -324,7 +342,9 @@ export const accommodationPropertyPanelCollectionSchema = z
         (property) => property.eligibleMeasures.length > 0
       );
       const candidateProperties = city.properties.filter(
-        (property) => property.geographicDisposition === 'pending_inventory_and_geolocation'
+        (property) =>
+          property.geographicDisposition === 'pending_inventory_verification' ||
+          property.geographicDisposition === 'pending_inventory_and_geolocation'
       );
       const geolocatedEligible = eligibleProperties.filter(
         (property) => property.latitude !== null && property.longitude !== null
@@ -467,6 +487,28 @@ export type AccommodationPropertyPanelCollection = z.infer<
 export type AccommodationCityPanel = AccommodationPropertyPanelCollection['cities'][number];
 export type AccommodationPanelProperty = AccommodationCityPanel['properties'][number];
 
+export function upsertAccommodationCityPanel(
+  collection: AccommodationPropertyPanelCollection,
+  city: AccommodationCityPanel,
+  lockedAt: string
+) {
+  const cities = collection.cities
+    .filter(
+      (candidate) => !(candidate.city === city.city && candidate.country === city.country)
+    )
+    .concat(city)
+    .sort(
+      (left, right) =>
+        left.city.localeCompare(right.city) || left.country.localeCompare(right.country)
+    );
+  return accommodationPropertyPanelCollectionSchema.parse({
+    ...collection,
+    lockedAt:
+      collection.lockedAt.localeCompare(lockedAt) >= 0 ? collection.lockedAt : lockedAt,
+    cities,
+  });
+}
+
 export function accommodationPropertySelectionSeed(input: {
   scheduleId: string;
   city: string;
@@ -562,6 +604,12 @@ export function summarizeAccommodationPropertyPanels(
           panel.measure as AccommodationHotelPanelMeasure
         ) && panel.status.startsWith('frozen_')
     ).length,
+    frozenHostelPanels: panels.filter(
+      (panel) =>
+        !ACCOMMODATION_HOTEL_PANEL_MEASURES.includes(
+          panel.measure as AccommodationHotelPanelMeasure
+        ) && panel.status.startsWith('frozen_')
+    ).length,
     belowQuoteMinimumPanels: panels.filter(
       (panel) => panel.status === 'frozen_below_quote_minimum'
     ).length,
@@ -584,7 +632,9 @@ export function summarizeAccommodationPropertyPanels(
       (property) => property.eligibleMeasures.length > 0
     ).length,
     candidateProperties: properties.filter(
-      (property) => property.geographicDisposition === 'pending_inventory_and_geolocation'
+      (property) =>
+        property.geographicDisposition === 'pending_inventory_verification' ||
+        property.geographicDisposition === 'pending_inventory_and_geolocation'
     ).length,
     eligibleInRadiusProperties: properties.filter(
       (property) => property.geographicDisposition === 'eligible_in_radius'

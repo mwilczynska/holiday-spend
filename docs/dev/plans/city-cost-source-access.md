@@ -141,6 +141,36 @@ accepted. The legacy GuideDanmark JSON extract was rejected because its records 
 2016, while direct GuideDanmark API access requires authentication and a commercial agreement, which is
 outside the project's no-paid-API constraint.
 
+### Third frozen sampling frame: Prague
+
+Prague reuses the current, public, no-key Hotelstars Union search for hotel classification and
+coordinates, and adds Prague City Tourism's official 12-property hostel directory plus all 12 official
+destination detail pages. The latter are unusually useful: they expose address coordinates, direct
+property websites, and prose that can establish dorm/shared and private-room inventory without inferring
+either measure from the word `hostel` alone. Exact retrieval timestamps, page byte counts, page-modified
+dates where published, request body, and SHA-256 checksums are frozen for all 14 source artifacts.
+
+The Czech Hotelstars response contains 229 hotel rows, including repeated records for the same physical
+property. After excluding four 5-star rows, the remaining 225 one- through four-star rows collapse to 148
+physical properties using normalized name, street, street number, and postcode. Seventy-six identity
+groups contain duplicate rows. Class and city must agree inside every group. Coordinates are combined by
+component-wise median only when their maximum pairwise separation is at most 0.25 km; four materially
+conflicting groups remain visibly ungeolocated rather than receiving an arbitrary coordinate.
+
+The price-independent centre is the component-wise median of the 18 deduplicated eligible hotels whose
+official city field starts with `Praha`: `50.07870000, 14.43375000`. The full physical-property frame has
+25 eligible in-radius properties: ten with explicit dorm inventory, ten with explicit private-room
+inventory, five 3-star hotels, and nine 4-star hotels. A hostel may appear in both measure panels but is
+stored once. No 1-star or 2-star hotel remains within 5 km, so those measures are unavailable rather than
+filled from another class. Luma Terra's official page verifies its location and website but does not state
+dorm or private-room inventory; it is retained as geolocated and inventory-pending, not promoted.
+
+Both hostel panels exceed the five-property minimum with ten properties each. The 3-star hotel panel
+meets the gate exactly with five properties and the 4-star panel contains nine. All 34 measure-specific
+ranked entries are primary because no eligible Prague measure reaches the 12-property target. These are
+still source-listed websites, not verified owner booking paths, and no Prague accommodation price has yet
+been accepted.
+
 Reviewed source pages:
 
 - https://www.hotelstars.eu/denmark/hotel-search
@@ -148,17 +178,21 @@ Reviewed source pages:
 - https://www.visitcopenhagen.dk/node/1570
 - https://www.opendata.dk/open-data-dk/guidedanmark-oplevelser-overnatning-aktiviteter-i-hele-danmark
 - https://api.guidedanmark.org/
+- https://www.hotelstars.eu/czech-republic/hotel-search
+- https://www.hotelstars.eu/czech-republic/
+- https://prague.eu/en/ubytovani-kategorie/hostels/
 
-Both builders consume downloaded source snapshots rather than silently refetching mutable data. They
+All three builders consume downloaded source snapshots rather than silently refetching mutable data. They
 reject any checksum drift and upsert only their own city, preserving the other frozen frames:
 
 ```text
 npm run methodology:accommodation-panel:build:barcelona -- --register-csv <catalonia.csv> --geolocation-json <barcelona-hotels.json> --write
 npm run methodology:accommodation-panel:build:copenhagen -- --hotelstars-json <hotelstars-denmark.json> --hostels-html <visitcopenhagen-hostels.html> --write
+npm run methodology:accommodation-panel:build:prague -- --hotelstars-json <hotelstars-czech.json> --hostels-html <prague-hostels.html> --hostel-details-dir <prague-hostel-detail-pages> --write
 ```
 
-Running either command with the frozen 24 July inputs reproduces the same collection SHA-256 rather than
-changing row order, ranks, source metadata, or the other city's frame.
+Running any command with the frozen 24 July inputs reproduces the same collection SHA-256 rather than
+changing row order, ranks, source metadata, or the other cities' frames.
 
 ## Adaptive Throughput And Checkpointing
 

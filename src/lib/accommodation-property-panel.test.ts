@@ -7,6 +7,7 @@ import {
   haversineDistanceKm,
   rankAccommodationProperties,
   summarizeAccommodationPropertyPanels,
+  upsertAccommodationCityPanel,
   type AccommodationPropertyPanelCollection,
 } from './accommodation-property-panel';
 
@@ -22,24 +23,25 @@ function checkedInCollection() {
 }
 
 describe('accommodation property panels', () => {
-  it('validates and reconciles both checked-in sampling frames', () => {
+  it('validates and reconciles all checked-in sampling frames', () => {
     const collection = checkedInCollection();
     expect(summarizeAccommodationPropertyPanels(collection)).toEqual({
       collectionId: 'accommodation-property-panels-2026-2027-v2',
-      cities: 2,
-      frozenHotelPanels: 7,
+      cities: 3,
+      frozenHotelPanels: 9,
+      frozenHostelPanels: 2,
       belowQuoteMinimumPanels: 1,
-      unavailableHotelPanels: 1,
+      unavailableHotelPanels: 3,
       candidateHostelPanels: 2,
       unavailableHostelPanels: 2,
-      eligibleSourceProperties: 545,
-      candidateProperties: 13,
-      eligibleInRadiusProperties: 351,
-      primaryProperties: 74,
+      eligibleSourceProperties: 704,
+      candidateProperties: 14,
+      eligibleInRadiusProperties: 376,
+      primaryProperties: 108,
       reserveProperties: 277,
-      missingOfficialGeolocation: 17,
-      outsideRadius: 177,
-      websitesSourceListed: 78,
+      missingOfficialGeolocation: 21,
+      outsideRadius: 307,
+      websitesSourceListed: 238,
       websitesVerified: 0,
     });
 
@@ -124,6 +126,76 @@ describe('accommodation property panels', () => {
     ).toHaveLength(13);
   });
 
+  it('deduplicates Prague hotels and ranks only explicitly evidenced hostel inventory', () => {
+    const prague = checkedInCollection().cities.find((city) => city.city === 'Prague')!;
+    expect(prague.samplingFrame.centre).toEqual({
+      method:
+        'componentwise_median_of_deduplicated_official_praha_1_to_4_star_hotel_coordinates',
+      latitude: 50.0787,
+      longitude: 14.43375,
+      inputPropertyCount: 18,
+      searchRadiusKm: 5,
+    });
+    expect(prague.samplingFrame.counts).toMatchObject({
+      sourceRecordCount: 253,
+      sourceLodgingRecordCount: 241,
+      eligiblePropertyCount: 159,
+      candidatePropertyCount: 1,
+      geolocatedEligiblePropertyCount: 155,
+      missingOfficialGeolocationCount: 4,
+      outsideRadiusCount: 130,
+      eligibleInRadiusCount: 25,
+      sourceSpecificCounts: {
+        hotelstarsCzechRecords: 229,
+        hotelstarsOneToFourStarRawRows: 225,
+        hotelstarsOneToFourStarPhysicalProperties: 148,
+        hotelstarsDuplicateIdentityGroups: 76,
+        hotelstarsCoordinateConflictGroups: 4,
+        praguePhysicalCentreInputs: 18,
+        pragueCityTourismHostelCandidates: 12,
+        pragueCityTourismHostelDetailPages: 12,
+        hostelDormEligibleInRadius: 10,
+        hostelPrivateEligibleInRadius: 10,
+        hostelInventoryPending: 1,
+      },
+    });
+    expect(
+      prague.measurePanels.map((panel) => [
+        panel.measure,
+        panel.status,
+        panel.eligibleInRadiusCount,
+      ])
+    ).toEqual([
+      ['hostel_dorm_bed_1p', 'frozen_pending_website_verification', 10],
+      ['hostel_private_room_2p', 'frozen_pending_website_verification', 10],
+      ['hotel_1star_room_2p', 'unavailable_no_eligible_properties', 0],
+      ['hotel_2star_room_2p', 'unavailable_no_eligible_properties', 0],
+      ['hotel_3star_room_2p', 'frozen_pending_website_verification', 5],
+      ['hotel_4star_room_2p', 'frozen_pending_website_verification', 9],
+    ]);
+    expect(
+      prague.measurePanels
+        .find((panel) => panel.measure === 'hotel_3star_room_2p')!
+        .rankedProperties.map((property) => property.propertyId)
+    ).toEqual([
+      'hotelstars-union:CZ:119417',
+      'hotelstars-union:CZ:123801',
+      'hotelstars-union:CZ:118911',
+      'hotelstars-union:CZ:125697',
+      'hotelstars-union:CZ:118408',
+    ]);
+    expect(
+      prague.properties.find(
+        (property) => property.propertyId === 'prague-city-tourism:luma-terra-prague'
+      )
+    ).toMatchObject({
+      eligibleMeasures: [],
+      geographicDisposition: 'pending_inventory_verification',
+      latitude: 50.07625299,
+      longitude: 14.43046796,
+    });
+  });
+
   it('ranks properties identically regardless of input order', () => {
     const properties = [
       { propertyId: 'property-3', eligibleMeasures: ['hotel_1star_room_2p' as const] },
@@ -142,6 +214,26 @@ describe('accommodation property panels', () => {
     expect(accommodationPropertySelectionHash('frozen-seed', 'property-1')).toMatch(
       /^[a-f0-9]{64}$/
     );
+  });
+
+  it('upserts city frames in stable order without moving the collection lock backwards', () => {
+    const collection = checkedInCollection();
+    const copenhagen = collection.cities.find((city) => city.city === 'Copenhagen')!;
+    const reordered = {
+      ...collection,
+      cities: [...collection.cities].reverse(),
+    };
+    const upserted = upsertAccommodationCityPanel(
+      reordered,
+      copenhagen,
+      '2026-07-24T07:23:48.123Z'
+    );
+    expect(upserted.cities.map((city) => city.city)).toEqual([
+      'Barcelona',
+      'Copenhagen',
+      'Prague',
+    ]);
+    expect(upserted.lockedAt).toBe('2026-07-24T07:51:38.7445202Z');
   });
 
   it('allows one verified hostel to participate in both hostel measures', () => {

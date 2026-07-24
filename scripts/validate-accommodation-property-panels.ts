@@ -51,7 +51,7 @@ console.log(`Validated ${path.relative(process.cwd(), panelPath)}`);
 console.log(`Collection: ${summary.collectionId}`);
 console.log(`Cities with frozen sampling frames: ${summary.cities} of ${schedule.cities.length}`);
 console.log(
-  `Panels: ${summary.frozenHotelPanels} hotel frozen (${summary.belowQuoteMinimumPanels} below quote minimum), ${summary.unavailableHotelPanels} hotel unavailable, ${summary.candidateHostelPanels} hostel candidate, ${summary.unavailableHostelPanels} hostel unavailable`
+  `Panels: ${summary.frozenHotelPanels} hotel frozen (${summary.belowQuoteMinimumPanels} below quote minimum), ${summary.unavailableHotelPanels} hotel unavailable, ${summary.frozenHostelPanels} hostel frozen, ${summary.candidateHostelPanels} hostel candidate, ${summary.unavailableHostelPanels} hostel unavailable`
 );
 console.log(
   `Properties: ${summary.eligibleSourceProperties} source eligible, ${summary.candidateProperties} candidates pending verification, ${summary.eligibleInRadiusProperties} in radius, ${summary.primaryProperties} primary, ${summary.reserveProperties} reserve`

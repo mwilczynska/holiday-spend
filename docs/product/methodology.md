@@ -173,7 +173,7 @@ tier. For food and drink, city-level source medians will be
 triangulated with independent menu observations in the validation sample. For activities, current
 official attraction and tour-operator prices will replace global multipliers.
 
-The first two frames now provide concrete reproducibility tests. Barcelona's July 2026 frame joins the
+The first three frames now provide concrete reproducibility tests. Barcelona's July 2026 frame joins the
 Catalonia Tourism Register to Barcelona City Council coordinates using the official `HB` registration id.
 It starts with 344 active standard one- through four-star hotels; 327 join to official coordinates and
 322 fall within 5 km of the frozen, price-independent centre (`41.38749043, 2.16952564`). A SHA-256 rank
@@ -206,8 +206,24 @@ verification, one real hostel can enter both hostel measures without being count
 Neither Copenhagen source states an open-data licence. The research artifact therefore stores only the
 factual fields required for the private sampling frame, attributes the publishers, and freezes exact
 retrieval timestamps, byte counts, request body, and source checksums. Source-listed websites are not
-treated as verified booking evidence. Across the two current frames there are still zero verified
-property websites and zero accepted accommodation quotes.
+treated as verified booking evidence.
+
+Prague adds a data-cleaning problem that is important to make visible in a portfolio methodology. The
+current Czech Hotelstars response contains 229 hotel rows, but many are repeat records for the same
+physical establishment. After excluding 5-star inventory, 225 eligible rows collapse to 148 physical
+properties using normalized name, street, street number, and postcode; 76 identity groups contain
+duplicates. Duplicate rows must agree on class and city. Coordinates are combined only when every pair
+is within 0.25 km, leaving four conflicting groups explicitly ungeolocated rather than choosing the most
+convenient value.
+
+The median of 18 deduplicated `Praha*` hotel locations fixes Prague's centre at
+`50.07870000, 14.43375000`. Prague City Tourism's official hostel directory and its 12 destination-detail
+pages then supply inventory descriptions, addresses, coordinates, and direct website links. Ten
+in-radius properties explicitly support the dorm measure and ten support the private-room measure. One
+hostel remains geolocated but inventory-pending because its official page states neither room type. The
+hotel frame contains five eligible 3-star and nine eligible 4-star properties within 5 km, but no 1-star
+or 2-star property; missing classes remain missing. Across the three current frames there are still zero
+verified property websites and zero accepted accommodation quotes.
 
 ### Robust Aggregation And Missing Data
 

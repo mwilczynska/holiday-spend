@@ -1,7 +1,6 @@
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import { z } from 'zod';
 import {
   ACCOMMODATION_HOTEL_PANEL_MEASURES,
   ACCOMMODATION_MIN_QUOTES_PER_SEASON,
@@ -11,6 +10,7 @@ import {
   haversineDistanceKm,
   rankAccommodationProperties,
   summarizeAccommodationPropertyPanels,
+  upsertAccommodationCityPanel,
   type AccommodationCityPanel,
   type AccommodationPanelProperty,
   type AccommodationPropertyPanelCollection,
@@ -19,6 +19,7 @@ import {
   ACCOMMODATION_PANEL_MEASURES,
   type AccommodationPanelMeasure,
 } from '../src/lib/accommodation-reference-window';
+import { hotelstarsResponseSchema } from '../src/lib/hotelstars-directory';
 
 const HOTELSTARS_SHA256 = 'fa4d08b08fff6e90f1e7c9d2b6fdf5aac2b8e53f0e4cf25b129db77829336a63';
 const HOTELSTARS_RETRIEVED_AT = '2026-07-24T07:23:48.123Z';
@@ -54,29 +55,6 @@ const EXPECTED_HOSTELS = [
   'Urban House Copenhagen by MEININGER',
   'Woodah Hostel',
 ] as const;
-
-const companySchema = z.object({
-  id: z.union([z.string(), z.number()]).transform(String),
-  hotelName: z.string().min(1),
-  street: z.string(),
-  streetNumber: z.string(),
-  zip: z.string(),
-  city: z.string(),
-  catalogName: z.string().min(1),
-  hotelCategory: z.union([z.string(), z.number()]).transform(String),
-  superior: z.boolean().nullable().transform(Boolean),
-  garni: z.boolean().nullable().transform(Boolean),
-  countryCode: z.literal('DK'),
-  website: z.string(),
-  location: z.object({
-    lat: z.union([z.string(), z.number()]).transform(Number),
-    lon: z.union([z.string(), z.number()]).transform(Number),
-  }),
-});
-
-const hotelstarsResponseSchema = z.object({
-  companies: z.array(companySchema),
-});
 
 function parseArgs() {
   const hotelstarsIndex = process.argv.indexOf('--hotelstars-json');
@@ -179,6 +157,9 @@ function buildCityPanel(
   const hotelstars = hotelstarsResponseSchema.parse(
     JSON.parse(hotelstarsBuffer.toString('utf8'))
   );
+  if (hotelstars.companies.some((company) => company.countryCode !== 'DK')) {
+    throw new Error('Hotelstars Denmark snapshot contains a non-DK record');
+  }
   const hostelCandidates = extractHostelDirectory(hostelDirectoryBuffer.toString('utf8'));
   if (hotelstars.companies.length !== 309) {
     throw new Error(`Expected 309 Hotelstars Denmark records, received ${hotelstars.companies.length}`);
@@ -314,7 +295,8 @@ function buildCityPanel(
     eligible_in_radius: 0,
     excluded_outside_radius: 1,
     excluded_missing_official_geolocation: 2,
-    pending_inventory_and_geolocation: 3,
+    pending_inventory_verification: 3,
+    pending_inventory_and_geolocation: 4,
   } as const;
   properties.sort(
     (left, right) =>
@@ -485,15 +467,7 @@ function mergeCollection(city: AccommodationCityPanel): AccommodationPropertyPan
   const collection = accommodationPropertyPanelCollectionSchema.parse(
     JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'))
   );
-  const cities = collection.cities.filter(
-    (candidate) => !(candidate.city === city.city && candidate.country === city.country)
-  );
-  cities.push(city);
-  return accommodationPropertyPanelCollectionSchema.parse({
-    ...collection,
-    lockedAt: LOCKED_AT,
-    cities,
-  });
+  return upsertAccommodationCityPanel(collection, city, LOCKED_AT);
 }
 
 function main() {

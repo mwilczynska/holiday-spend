@@ -341,7 +341,7 @@ between quote capture and check-in, one low/shoulder/high stratum per city, and 
 gate with a deterministic same-season replacement rule. Several destination labels currently use
 official climate/travel guidance and are explicitly provisional until upgraded with monthly demand data.
 
-The first two official-source sampling frames are also frozen in
+The first three official-source sampling frames are also frozen in
 `data/reference/accommodation_property_panels_2026_2027.json`. Its generic version 2 contract stores
 properties separately from measure-specific rankings, so a verified hostel can participate in both dorm
 and private-room panels without duplicating the establishment. For Barcelona, an `HB` registration-id
@@ -362,7 +362,22 @@ of 29 eligible `København*` records fixes the price-independent centre at `55.6
 one-star property. All three two-star records remain below the five-quote gate, while the 4-star panel has
 12 primary properties and three reserves. A separate VisitCopenhagen directory contributes 13 hostel
 candidates, but dorm/private eligibility and geolocation are still pending direct-site verification.
-Across Barcelona and Copenhagen, zero websites are verified and zero accommodation prices are accepted.
+
+Prague adds an explicit physical-property deduplication stage because the 24 July Czech Hotelstars
+snapshot contains 229 hotel rows but repeated classifications for many establishments. Removing four
+5-star rows and grouping by normalized name, street, street number, and postcode collapses 225 eligible
+rows to 148 physical properties; 76 identity groups contain duplicates. Four groups with official
+coordinates disagreeing by more than 0.25 km remain visibly ungeolocated. The component-wise median of
+18 deduplicated `Praha*` properties fixes the centre at `50.07870000, 14.43375000`.
+
+Prague City Tourism's official hostel directory and 12 property-detail pages provide direct destination
+evidence for inventory, addresses, coordinates, and source-listed websites. Ten in-radius properties
+explicitly support each hostel measure. One property is geolocated but remains inventory-pending because
+its official detail page does not state dorm or private-room inventory. The complete in-radius frame has
+25 distinct properties: ten dorm-eligible hostels, ten private-room-eligible hostels, five 3-star hotels,
+and nine 4-star hotels, with overlap where one hostel supports both measures. No 1-star or 2-star hotel is
+eligible within 5 km. Across Barcelona, Copenhagen, and Prague, zero websites are verified and zero
+accommodation prices are accepted.
 
 ### 6C. Pilot and model selection
 
@@ -380,6 +395,9 @@ Across Barcelona and Copenhagen, zero websites are verified and zero accommodati
 - [x] Generalize the panel contract and freeze Copenhagen's Hotelstars hotel frame plus the official
   13-property VisitCopenhagen hostel candidate universe, retaining the absent one-star class and the
   below-minimum two-star class as explicit limitations.
+- [x] Freeze Prague's deduplicated Hotelstars frame and official 12-property hostel evidence: 25 distinct
+  in-radius properties, two ten-property hostel panels, five 3-star and nine 4-star hotels, explicit
+  absent 1-/2-star classes, and one geolocated inventory-pending hostel.
 - [ ] Collect batch zero, then the 36-city pilot, with all four categories.
 - [ ] Profile missingness, source disagreement, seasonality, and outliers.
 - [ ] Fit and compare fallback models with whole-city cross-validation.

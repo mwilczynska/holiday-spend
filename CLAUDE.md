@@ -83,7 +83,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Methodology doc: `docs/product/methodology.md`
 - New-city prompt template: `docs/prompts/llm_prompt_new_cities_1.md`
 - First accommodation reference schedule: `data/reference/accommodation_reference_windows_2026_2027.json`
-- Accommodation property-panel collection (currently Barcelona and Copenhagen): `data/reference/accommodation_property_panels_2026_2027.json`
+- Accommodation property-panel collection (currently Barcelona, Copenhagen, and Prague): `data/reference/accommodation_property_panels_2026_2027.json`
 - `/estimates` now reflects this methodology rather than the older hybrid/Xotelo explanation
 - `/dataset` now holds the editable planner dataset and generation-history views
 
@@ -250,6 +250,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Require five direct property quotes per low/shoulder/high season and 60% cross-season panel overlap before an accommodation measure can materialize
   - [x] Freeze the first official-register property frame for Barcelona: 344 active standard hotels, 322 in-radius candidates, 48 price-blind primary selections, and 274 ordered reserves
   - [x] Generalize the property/ranking contract and freeze Copenhagen: 201 eligible national Hotelstars records, 29 hotels within 5 km, and 13 VisitCopenhagen hostel candidates pending inventory/location verification
+  - [x] Freeze Prague after collapsing 225 eligible Hotelstars rows to 148 physical properties: 25 distinct in-radius properties, two ten-property hostel panels, five 3-star and nine 4-star hotels, explicit absent 1-/2-star classes, and one geolocated inventory-pending hostel
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities
@@ -397,11 +398,13 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
 - Phase 6 accommodation collection now uses a deterministic repeated-property panel rather than Booking.com/Hostelworld extraction: official registers or classification directories define the sampling frame and selected property sites provide public dated quotes
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
-- `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona plus Copenhagen; one verified hostel can later enter both dorm and private-room panels without duplicating the establishment
+- `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
 - The Barcelona frame has four frozen hotel panels but zero verified websites or accepted quotes; its hostel measures remain explicitly unavailable because `Hostal o pensió` is not treated as youth-hostel inventory
 - Copenhagen uses the public no-key Hotelstars Union Denmark directory: after excluding conference and 5-star products, 201 eligible hotel records produce 29 in-radius properties (3 two-star, 11 three-star, 15 four-star), no one-star class, and a two-star panel below the five-quote gate
 - VisitCopenhagen supplies 13 hostel candidates with direct property links; inventory, address, radius eligibility, and website ownership remain pending, and no Copenhagen accommodation price has been accepted
+- Prague's reusable Hotelstars deduplicator collapses repeated rows by physical identity, requires class/city agreement, and refuses to choose between duplicate coordinates more than 0.25 km apart; the frozen Czech snapshot has 225 eligible rows, 148 physical properties, 76 duplicate groups, and four coordinate-conflict exclusions
+- Prague City Tourism's official 12-property hostel directory and detail pages yield two ten-property ranked hostel panels; combined with five 3-star and nine 4-star hotels, the Prague frame has 25 distinct eligible in-radius properties, while 1-/2-star remain absent and one geolocated hostel remains inventory-pending
 - Calculator `city-cost-v3-alpha-3` retains partial seasonal evidence but requires at least five quotes per season plus 60% cross-season property overlap before materializing a direct accommodation measure
 
 ### Cleanup And Simplification

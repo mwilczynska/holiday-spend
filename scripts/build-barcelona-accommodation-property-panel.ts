@@ -10,6 +10,7 @@ import {
   haversineDistanceKm,
   rankAccommodationProperties,
   summarizeAccommodationPropertyPanels,
+  upsertAccommodationCityPanel,
   type AccommodationPanelProperty,
   type AccommodationPropertyPanelCollection,
 } from '../src/lib/accommodation-property-panel';
@@ -261,7 +262,8 @@ function buildCollection(registerPath: string, geolocationPath: string) {
     eligible_in_radius: 0,
     excluded_outside_radius: 2,
     excluded_missing_official_geolocation: 3,
-    pending_inventory_and_geolocation: 4,
+    pending_inventory_verification: 4,
+    pending_inventory_and_geolocation: 5,
   } as const;
   properties.sort(
     (left, right) =>
@@ -443,19 +445,7 @@ async function main() {
     const existing = accommodationPropertyPanelCollectionSchema.parse(
       JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'))
     );
-    collection = accommodationPropertyPanelCollectionSchema.parse({
-      ...existing,
-      lockedAt:
-        existing.lockedAt.localeCompare(rebuilt.lockedAt) >= 0
-          ? existing.lockedAt
-          : rebuilt.lockedAt,
-      cities: [
-        barcelona,
-        ...existing.cities.filter(
-          (city) => !(city.city === barcelona.city && city.country === barcelona.country)
-        ),
-      ],
-    });
+    collection = upsertAccommodationCityPanel(existing, barcelona, rebuilt.lockedAt);
   }
   const summary = summarizeAccommodationPropertyPanels(collection);
   if (args.write) {
