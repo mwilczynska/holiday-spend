@@ -205,6 +205,16 @@
       "derivation": "cross_rate",
       "derivationFormula": "1.6312 / 110.1670"
     },
+    "MMK": {
+      "currency": "MMK",
+      "audPerUnit": 0.0004007718405715066,
+      "sourceName": "Myanmar Central Statistical Organization and European Central Bank",
+      "sourceUrl": "https://www.csostat.gov.mm/Home/IndexMyanmar",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "CBM bank-customer market rate: 1 USD = 3,567.8 MMK on 22 July 2026 and 1 USD = 1.4298737727910238 AUD in the frozen snapshot",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.4298737727910238 / 3567.8"
+    },
     "COP": {
       "currency": "COP",
       "audPerUnit": 0.000438264739191383,

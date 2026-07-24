@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "pilot-wave-01-day-10",
+  "checkpoint": "pilot_sea_city_specific_food_drinks_and_attractions_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 4,
+  "cities": [
+    "Da Lat",
+    "Yangon"
+  ],
+  "acceptedObservations": 10,
+  "rejectedObservations": 0,
+  "sources": [
+    {
+      "name": "Numbeo",
+      "accessBasis": "personal_use_with_attribution",
+      "termsUrl": "https://www.numbeo.com/common/terms_of_use.jsp",
+      "methodologyUrl": "https://www.numbeo.com/common/motivation_and_methodology.jsp"
+    },
+    {
+      "name": "Da Lat Tourism Portal",
+      "accessBasis": "public_official"
+    },
+    {
+      "name": "Shwedagon Pagoda",
+      "accessBasis": "public_official"
+    }
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 2,
+    "midrange_restaurant_meal_2p": 2,
+    "premium_restaurant_meal_2p": 0,
+    "domestic_draft_beer_1": 2,
+    "cappuccino_1": 2,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 2,
+    "half_day_group_activity_adult_1": 0,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {
+      "city": "Da Lat",
+      "measure": "street_food_meal_1p",
+      "reason": "The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."
+    },
+    {
+      "city": "Da Lat",
+      "measure": "premium_restaurant_meal_2p",
+      "reason": "A reproducible two-person premium meal definition has not yet been collected."
+    },
+    {
+      "city": "Da Lat",
+      "measure": "cocktail_1",
+      "reason": "Not published on the Numbeo city page; requires an independent current menu sample."
+    },
+    {
+      "city": "Da Lat",
+      "measure": "wine_glass_1",
+      "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."
+    },
+    {
+      "city": "Da Lat",
+      "measure": "half_day_group_activity_adult_1",
+      "reason": "No current directly priced official operator product was verified in this bounded call."
+    },
+    {
+      "city": "Da Lat",
+      "measure": "full_day_premium_activity_adult_1",
+      "reason": "No current directly priced official operator product was verified in this bounded call."
+    },
+    {
+      "city": "Yangon",
+      "measure": "street_food_meal_1p",
+      "reason": "The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."
+    },
+    {
+      "city": "Yangon",
+      "measure": "premium_restaurant_meal_2p",
+      "reason": "A reproducible two-person premium meal definition has not yet been collected."
+    },
+    {
+      "city": "Yangon",
+      "measure": "cocktail_1",
+      "reason": "Not published on the Numbeo city page; requires an independent current menu sample."
+    },
+    {
+      "city": "Yangon",
+      "measure": "wine_glass_1",
+      "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."
+    },
+    {
+      "city": "Yangon",
+      "measure": "half_day_group_activity_adult_1",
+      "reason": "No current directly priced official operator product was verified in this bounded call."
+    },
+    {
+      "city": "Yangon",
+      "measure": "full_day_premium_activity_adult_1",
+      "reason": "No current directly priced official operator product was verified in this bounded call."
+    }
+  ],
+  "remainingCategories": [
+    "food_drink_menu_triangulation",
+    "activity_products",
+    "accommodation"
+  ],
+  "notes": "This batch adds eight direct city-specific Numbeo food/drink primitives and two direct attraction prices. Da Lat remains source-density flagged at 13 contributors. Yangon uses the current indexed city result after a temporary canonical-page 503 and retains the source's USD quotation; no Myanmar country average or unofficial exchange-rate conversion is substituted."
+}

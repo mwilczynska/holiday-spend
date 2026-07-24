@@ -1,22 +1,22 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T13:40:00.000Z",
+  "dataCutoff": "2026-07-24T14:10:00.000Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 158,
-    "accepted": 158,
+    "input": 168,
+    "accepted": 168,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 158,
+    "direct": 168,
     "derived": 0,
     "imputed": 0
   },
-  "cityCount": 32,
+  "cityCount": 34,
   "completeCityCount": 0,
-  "requiredTierCells": 608,
-  "materializedTierCells": 153,
+  "requiredTierCells": 646,
+  "materializedTierCells": 163,
   "tierCoverage": {
     "accom_shared_hostel_dorm": 0,
     "accom_hostel_private_room": 0,
@@ -28,13 +28,13 @@
     "food_budget": 0,
     "food_mid_range": 0,
     "food_high_end": 0,
-    "drink_coffee": 31,
-    "drinks_none": 31,
-    "drinks_light": 31,
+    "drink_coffee": 33,
+    "drinks_none": 33,
+    "drinks_light": 33,
     "drinks_moderate": 0,
     "drinks_heavy": 0,
-    "activities_free": 32,
-    "activities_budget": 27,
+    "activities_free": 34,
+    "activities_budget": 29,
     "activities_mid_range": 1,
     "activities_high_end": 0
   },
@@ -2710,6 +2710,391 @@
       ],
       "availableObservationIds": [
         "rosenborg-copenhagen-2026-online-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-da-lat-2026-06-cappuccino"
+          ],
+          "medianLocal": 42098.34,
+          "q25Local": 42098.34,
+          "q75Local": 42098.34,
+          "medianAud": 2.312333
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "VND",
+      "audPerLocalUnit": 0.000054926947160276834,
+      "medianLocal": 42098.34,
+      "q25Local": 42098.34,
+      "q75Local": 42098.34,
+      "minLocal": 42098.34,
+      "maxLocal": 42098.34,
+      "medianAud": 2.312333,
+      "q25Aud": 2.312333,
+      "q75Aud": 2.312333,
+      "minAud": 2.312333,
+      "maxAud": 2.312333,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "VND"
+      ],
+      "observationIds": [
+        "numbeo-da-lat-2026-06-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-da-lat-2026-06-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-da-lat-2026-06-domestic-draft-beer"
+          ],
+          "medianLocal": 23665.53,
+          "q25Local": 23665.53,
+          "q75Local": 23665.53,
+          "medianAud": 1.299875
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "VND",
+      "audPerLocalUnit": 0.000054926947160276834,
+      "medianLocal": 23665.53,
+      "q25Local": 23665.53,
+      "q75Local": 23665.53,
+      "minLocal": 23665.53,
+      "maxLocal": 23665.53,
+      "medianAud": 1.299875,
+      "q25Aud": 1.299875,
+      "q75Aud": 1.299875,
+      "minAud": 1.299875,
+      "maxAud": 1.299875,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "VND"
+      ],
+      "observationIds": [
+        "numbeo-da-lat-2026-06-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-da-lat-2026-06-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-da-lat-2026-06-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 57500,
+          "q25Local": 57500,
+          "q75Local": 57500,
+          "medianAud": 3.158299
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "VND",
+      "audPerLocalUnit": 0.000054926947160276834,
+      "medianLocal": 57500,
+      "q25Local": 57500,
+      "q75Local": 57500,
+      "minLocal": 57500,
+      "maxLocal": 57500,
+      "medianAud": 3.158299,
+      "q25Aud": 3.158299,
+      "q75Aud": 3.158299,
+      "minAud": 3.158299,
+      "maxAud": 3.158299,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "VND"
+      ],
+      "observationIds": [
+        "numbeo-da-lat-2026-06-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-da-lat-2026-06-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-da-lat-2026-06-midrange-meal-two"
+          ],
+          "medianLocal": 400000,
+          "q25Local": 400000,
+          "q75Local": 400000,
+          "medianAud": 21.970779
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "VND",
+      "audPerLocalUnit": 0.000054926947160276834,
+      "medianLocal": 400000,
+      "q25Local": 400000,
+      "q75Local": 400000,
+      "minLocal": 400000,
+      "maxLocal": 400000,
+      "medianAud": 21.970779,
+      "q25Aud": 21.970779,
+      "q75Aud": 21.970779,
+      "minAud": 21.970779,
+      "maxAud": 21.970779,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "VND"
+      ],
+      "observationIds": [
+        "numbeo-da-lat-2026-06-midrange-meal-two"
+      ],
+      "availableObservationIds": [
+        "numbeo-da-lat-2026-06-midrange-meal-two"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Da Lat Tourism Portal"
+          ],
+          "observationIds": [
+            "dalat-crazy-house-current-adult"
+          ],
+          "medianLocal": 40000,
+          "q25Local": 40000,
+          "q75Local": 40000,
+          "medianAud": 2.197078
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "VND",
+      "audPerLocalUnit": 0.000054926947160276834,
+      "medianLocal": 40000,
+      "q25Local": 40000,
+      "q75Local": 40000,
+      "minLocal": 40000,
+      "maxLocal": 40000,
+      "medianAud": 2.197078,
+      "q25Aud": 2.197078,
+      "q75Aud": 2.197078,
+      "minAud": 2.197078,
+      "maxAud": 2.197078,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Da Lat Tourism Portal"
+      ],
+      "sourceCurrencies": [
+        "VND"
+      ],
+      "observationIds": [
+        "dalat-crazy-house-current-adult"
+      ],
+      "availableObservationIds": [
+        "dalat-crazy-house-current-adult"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
@@ -11646,6 +12031,391 @@
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
     {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-yangon-2026-04-17-cappuccino"
+          ],
+          "medianLocal": 5993.904,
+          "q25Local": 5993.904,
+          "q75Local": 5993.904,
+          "medianAud": 2.402188
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MMK",
+      "audPerLocalUnit": 0.0004007718405715066,
+      "medianLocal": 5993.904,
+      "q25Local": 5993.904,
+      "q75Local": 5993.904,
+      "minLocal": 5993.904,
+      "maxLocal": 5993.904,
+      "medianAud": 2.402188,
+      "q25Aud": 2.402188,
+      "q75Aud": 2.402188,
+      "minAud": 2.402188,
+      "maxAud": 2.402188,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-yangon-2026-04-17-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-yangon-2026-04-17-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-yangon-2026-04-17-domestic-draft-beer"
+          ],
+          "medianLocal": 3567.8,
+          "q25Local": 3567.8,
+          "q75Local": 3567.8,
+          "medianAud": 1.429874
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MMK",
+      "audPerLocalUnit": 0.0004007718405715066,
+      "medianLocal": 3567.8,
+      "q25Local": 3567.8,
+      "q75Local": 3567.8,
+      "minLocal": 3567.8,
+      "maxLocal": 3567.8,
+      "medianAud": 1.429874,
+      "q25Aud": 1.429874,
+      "q75Aud": 1.429874,
+      "minAud": 1.429874,
+      "maxAud": 1.429874,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-yangon-2026-04-17-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-yangon-2026-04-17-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-yangon-2026-04-17-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 9133.568,
+          "q25Local": 9133.568,
+          "q75Local": 9133.568,
+          "medianAud": 3.660477
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MMK",
+      "audPerLocalUnit": 0.0004007718405715066,
+      "medianLocal": 9133.568,
+      "q25Local": 9133.568,
+      "q75Local": 9133.568,
+      "minLocal": 9133.568,
+      "maxLocal": 9133.568,
+      "medianAud": 3.660477,
+      "q25Aud": 3.660477,
+      "q75Aud": 3.660477,
+      "minAud": 3.660477,
+      "maxAud": 3.660477,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-yangon-2026-04-17-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-yangon-2026-04-17-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-yangon-2026-04-17-midrange-meal-two"
+          ],
+          "medianLocal": 59546.582,
+          "q25Local": 59546.582,
+          "q75Local": 59546.582,
+          "medianAud": 23.864593
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MMK",
+      "audPerLocalUnit": 0.0004007718405715066,
+      "medianLocal": 59546.582,
+      "q25Local": 59546.582,
+      "q75Local": 59546.582,
+      "minLocal": 59546.582,
+      "maxLocal": 59546.582,
+      "medianAud": 23.864593,
+      "q25Aud": 23.864593,
+      "q75Aud": 23.864593,
+      "minAud": 23.864593,
+      "maxAud": 23.864593,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-yangon-2026-04-17-midrange-meal-two"
+      ],
+      "availableObservationIds": [
+        "numbeo-yangon-2026-04-17-midrange-meal-two"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Shwedagon Pagoda"
+          ],
+          "observationIds": [
+            "shwedagon-pagoda-current-foreign-adult"
+          ],
+          "medianLocal": 28542.4,
+          "q25Local": 28542.4,
+          "q75Local": 28542.4,
+          "medianAud": 11.43899
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MMK",
+      "audPerLocalUnit": 0.0004007718405715066,
+      "medianLocal": 28542.4,
+      "q25Local": 28542.4,
+      "q75Local": 28542.4,
+      "minLocal": 28542.4,
+      "maxLocal": 28542.4,
+      "medianAud": 11.43899,
+      "q25Aud": 11.43899,
+      "q75Aud": 11.43899,
+      "minAud": 11.43899,
+      "maxAud": 11.43899,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Shwedagon Pagoda"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "shwedagon-pagoda-current-foreign-adult"
+      ],
+      "availableObservationIds": [
+        "shwedagon-pagoda-current-foreign-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
       "city": "Zanzibar",
       "country": "Tanzania",
       "region": "Africa",
@@ -13442,6 +14212,224 @@
         },
         "activities_budget": {
           "amountAud": 61.1,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "localCurrency": "VND",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 2.31,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 4.62,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 7.22,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 4.39,
           "formula": "2 * paid_attraction_adult_1",
           "parentMeasures": [
             "paid_attraction_adult_1"
@@ -18741,6 +19729,224 @@
     {
       "schemaVersion": "city-cost-materialization-v1",
       "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "localCurrency": "MMK",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 2.4,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 4.8,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 7.66,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 22.88,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Zanzibar",
       "country": "Tanzania",
       "region": "Africa",
@@ -18984,7 +20190,9 @@
       "data/reference/observations/pilot-wave-01-day-08-activities.jsonl",
       "data/reference/observations/pilot-wave-01-day-08-food-drinks.jsonl",
       "data/reference/observations/pilot-wave-01-day-09-activities.jsonl",
-      "data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl"
+      "data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl",
+      "data/reference/observations/pilot-wave-01-day-10-activities.jsonl",
+      "data/reference/observations/pilot-wave-01-day-10-food-drinks.jsonl"
     ],
     "fxSnapshotFile": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   }

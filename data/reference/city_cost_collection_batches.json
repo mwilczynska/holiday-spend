@@ -368,6 +368,23 @@
       ]
     },
     {
+      "batchId": "pilot-wave-01-day-10",
+      "status": "complete_with_missing",
+      "plannedCalls": 4,
+      "completedCalls": 4,
+      "acceptedObservations": 10,
+      "checkpoint": "pilot_sea_city_specific_food_drinks_and_attractions_complete",
+      "observationFiles": [
+        "data/reference/observations/pilot-wave-01-day-10-food-drinks.jsonl",
+        "data/reference/observations/pilot-wave-01-day-10-activities.jsonl"
+      ],
+      "reportFile": "data/reference/observations/pilot-wave-01-day-10-report.json",
+      "cities": [
+        {"city":"Da Lat","country":"Vietnam","region":"SEA","categories":["food_drinks","activities"],"reason":"next_unobserved_sea_cost_quantile_city"},
+        {"city":"Yangon","country":"Myanmar","region":"SEA","categories":["food_drinks","activities"],"reason":"next_unobserved_sea_city_with_currency_stress_test"}
+      ]
+    },
+    {
       "batchId": "batch-zero-accommodation",
       "status": "in_progress",
       "plannedCalls": 27,
