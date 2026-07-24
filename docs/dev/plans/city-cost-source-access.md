@@ -84,6 +84,13 @@ least five accepted quotes, and requires at least 60% panel overlap across seaso
 estimate gives each season equal weight by taking the median of the three seasonal medians, so a season
 with more visible inventory cannot dominate the annualized reference rate.
 
+For Da Nang, the Viet Nam National Authority of Tourism accommodation directory is accepted as the
+eligibility and official-classification source. The capture must submit the province, hotel type,
+government-managed provenance, and star filter on every paginated request: the site's displayed GET page
+links do not retain those filters. The normalized capture retains stable property ids, names, addresses,
+reported totals, page byte counts, and SHA-256 hashes. The directory does not supply property coordinates,
+so it cannot by itself establish the fixed centre, radius eligibility, or ranking.
+
 ### First frozen sampling frame: Barcelona
 
 `data/reference/accommodation_property_panels_2026_2027.json` contains the first audited property frame.

@@ -276,6 +276,13 @@ official sources cannot support either decision. Hanoi, Pu Luong, San Francisco,
 source-attributed inconclusive outcomes on 24 July because the available calendars were incomplete for a
 required part of their registered screen. Pending and inconclusive windows cannot contribute a quote.
 
+Da Nang's property-frame work has begun with a frozen official-register universe, not a completed panel.
+The Viet Nam National Authority of Tourism directory was filtered to government-managed hotel records in
+Da Nang and captured separately for one through four stars. The validated checkpoint contains 423 unique
+hotels (180 one-star, 103 two-star, 86 three-star, and 54 four-star), with an address for every record and
+page-level hashes. These records remain ineligible for ranking and price collection until an auditable
+geolocation source establishes which properties fall within the fixed 5 km radius.
+
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted
 4-star quotes, one genuine no-availability result, and four booking-path failures: three could not preserve

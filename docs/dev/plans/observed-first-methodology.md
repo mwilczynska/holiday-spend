@@ -417,6 +417,17 @@ until 1 November, but the registered major-sports and general-festival screen is
 official second-half calendar lists no overlapping event, but a 90-day-ahead typhoon-disruption conclusion
 is not supportable. All four retain timestamps, evidence URLs, and reasons; none can accept a quote.
 
+The next property-frame checkpoint freezes Da Nang's official source universe without yet claiming a
+usable panel. A checkpointed collector submits the full province (`48,49`), hotel type (`1`),
+government-managed (`0`), and star-specific filters on every page of the Viet Nam National Authority of
+Tourism accommodation register. Re-posting the filters is essential because following the site's bare GET
+pagination links drops the filter and returns the national universe. The 24 July capture contains 423
+unique government-managed 1-4-star Da Nang hotels: 180 one-star, 103 two-star, 86 three-star, and 54
+four-star records across 29 hashed pages. All 423 expose an address. The normalized snapshot is 94,609
+bytes with SHA-256 `1067ba95e95487413831b8f49efbb9d7761d10d7f63de1395e49a173de7524c6`.
+This is an eligibility/classification checkpoint only: no record enters a price-blind ranking until an
+auditable geolocation source supports the frozen centre and 5 km radius.
+
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the
 exact-date or mandatory-charge verification gate. The accepted nightly prices are DKK 1,178.36,
