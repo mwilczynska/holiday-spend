@@ -149,6 +149,15 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('International Tourist Arrivals'), url: expect.stringContaining('tjj.sh.gov.cn') },
       ],
     });
+    expect(artifact.cities.find((city) => city.city === 'Dubai')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Annual Visitor Report 2024'), url: expect.stringContaining('dubaidet.gov.ae') },
+        { name: expect.stringContaining('Tourism Performance Report'), url: expect.stringContaining('dubaidet.gov.ae') },
+      ],
+    });
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',

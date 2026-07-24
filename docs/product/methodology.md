@@ -488,6 +488,12 @@ covers inbound international visitors only. The project does not combine those p
 all domestic trips as overnight arrivals; the current profile therefore contains 13 measured cities, five
 screened rejections, and 18 unscreened gaps.
 
+Dubai is the sixth screened rejection. Its official 2024 annual visitor report publishes international
+overnight visitors, not all overnight arrivals. DET's methodology excludes UAE residents from that visitor
+series; its hotel KPIs include residents but publish room nights rather than a deduplicated all-visitor arrival
+count. Neither series can supply the registered numerator, so the current profile contains 13 measured cities,
+six screened rejections, and 17 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

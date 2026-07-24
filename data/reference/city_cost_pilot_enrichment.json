@@ -900,10 +900,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "Dubai Department of Economy and Tourism, Annual Visitor Report 2024",
+            "url": "https://www.dubaidet.gov.ae/en/research-and-insights/-/media/files/faqs/annual-visitor-report-2024/det-annual-visitor-report-2024.pdf"
+          },
+          {
+            "name": "Dubai Department of Economy and Tourism, Tourism Performance Report January-December 2025 definitions",
+            "url": "https://www.dubaidet.gov.ae/en/research-and-insights/tourism-performance-report-december-2025"
+          }
+        ],
+        "notes": "Dubai's official 2024 annual visitor report publishes 18.72 million international overnight visitors, not all overnight arrivals. DET's methodology excludes UAE residents from the international visitor series, while its hotel-performance data include residents but report room nights rather than a deduplicated all-visitor arrival count. Retain tourism intensity as pending rather than treating international visitors as the complete numerator or converting room nights to arrivals."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
