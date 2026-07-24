@@ -506,6 +506,12 @@ does not isolate all overnight arrivals for Medellin. The project does not reint
 partial-year airport traffic as a city overnight-arrivals series; the current profile therefore contains
 13 measured cities, eight screened rejections, and 15 unscreened gaps.
 
+Delhi is the ninth screened rejection. India's Ministry of Tourism publishes domestic and foreign tourist
+visits for the Delhi National Capital Territory, but the screened official series does not isolate overnight
+arrivals. The project does not assume that every recorded visit includes a night or reinterpret the visit
+total as accommodation arrivals; the current profile therefore contains 13 measured cities, nine screened
+rejections, and 14 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

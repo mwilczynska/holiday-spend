@@ -176,6 +176,15 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('Labour Market Trends'), url: expect.stringContaining('medellin.gov.co') },
       ],
     });
+    expect(artifact.cities.find((city) => city.city === 'Delhi')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Domestic and Foreign Tourist Visits'), url: expect.stringContaining('tourism.gov.in') },
+        { name: expect.stringContaining('Data Compendium 2024'), url: expect.stringContaining('data.tourism.gov.in') },
+      ],
+    });
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',

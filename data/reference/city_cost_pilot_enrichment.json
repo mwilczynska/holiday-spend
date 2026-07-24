@@ -1654,10 +1654,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "India Ministry of Tourism, State/UT-wise Domestic and Foreign Tourist Visits 2022-2024",
+            "url": "https://tourism.gov.in/sites/default/files/2025-12/usq.1411%20for%2011.12.2025.pdf"
+          },
+          {
+            "name": "India Ministry of Tourism, India Tourism Data Compendium 2024",
+            "url": "https://data.tourism.gov.in/mrd/Uploads/tourism_data/India%20Tourism%20Data%20Compendium%202024.pdf"
+          }
+        ],
+        "notes": "India's Ministry of Tourism publishes Domestic Tourist Visits and Foreign Tourist Visits for the Delhi National Capital Territory, but the screened official tables do not isolate overnight arrivals. These are visit series furnished by the State/UT administration, not a registered-accommodation guest-arrival count, and the project does not assume every visit includes an overnight stay. Retain tourism intensity as pending rather than summing DTV and FTV into the registered numerator."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

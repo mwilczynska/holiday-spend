@@ -513,6 +513,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     bed occupancy or a partial Nairobi High Class bed-night series, not all overnight arrivals for the city.
   - [x] Record Medellin as a screened rejection because the available SIT total is an eleven-month
     airport passenger series that includes residents, not full-year all-visitor overnight arrivals for the city.
+  - [x] Record Delhi as a screened rejection because official State/UT tables expose domestic and
+    foreign tourist visits, not an overnight-only accommodation-arrivals series.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.
