@@ -212,6 +212,18 @@ describe('city cost pilot enrichment', () => {
     expect(artifact.cities.find((city) => city.city === 'Da Nang')?.tourismIntensity.notes).toContain(
       'rest for only a few hours'
     );
+    expect(artifact.cities.find((city) => city.city === 'Hanoi')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('socio-economic report'), url: expect.stringContaining('thongkehanoi.nso.gov.vn') },
+        { name: expect.stringContaining('tourism-sector 2024 results'), url: expect.stringContaining('hanoi.gov.vn') },
+      ],
+    });
+    expect(artifact.cities.find((city) => city.city === 'Hanoi')?.tourismIntensity.notes).toContain(
+      'two non-reconciled systems'
+    );
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',

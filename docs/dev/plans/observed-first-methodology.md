@@ -521,6 +521,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     international-only and the current national bulletin also omits domestic overnight arrivals.
   - [x] Record Da Nang as a screened rejection because the official accommodation-served series explicitly
     includes some few-hour rests and therefore cannot establish an overnight-only arrivals numerator.
+  - [x] Record Hanoi as a screened rejection because the statistics-office and tourism-department series
+    expose different incomplete overnight components that cannot be combined without splicing systems.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

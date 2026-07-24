@@ -532,6 +532,14 @@ The series is therefore not demonstrably overnight-only and remains missing rath
 the registered numerator. The current profile contains 14 measured cities, 11 screened rejections, and 11
 unscreened gaps.
 
+Hanoi is the twelfth screened rejection. The city statistics office reports 6.466 million guests served by
+accommodation establishments in 2024 and separates 1.120 million domestic overnight guests from 834,000
+domestic day guests, but it does not split 4.512 million international accommodation guests by stay status.
+The tourism department separately reports 4.47 million international visitors with stays but no domestic
+overnight component in that series. Because the international totals also differ, the project does not splice
+the two systems into an apparent all-visitor numerator. The profile now contains 14 measured cities, 12
+screened rejections, and ten unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
