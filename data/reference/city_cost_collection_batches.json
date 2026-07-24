@@ -332,6 +332,24 @@
       ]
     },
     {
+      "batchId": "pilot-wave-01-day-08",
+      "status": "complete_with_missing",
+      "plannedCalls": 6,
+      "completedCalls": 6,
+      "acceptedObservations": 14,
+      "checkpoint": "pilot_east_asia_europe_sea_food_drinks_and_partial_attractions_complete",
+      "observationFiles": [
+        "data/reference/observations/pilot-wave-01-day-08-food-drinks.jsonl",
+        "data/reference/observations/pilot-wave-01-day-08-activities.jsonl"
+      ],
+      "reportFile": "data/reference/observations/pilot-wave-01-day-08-report.json",
+      "cities": [
+        {"city":"Tokyo","country":"Japan","region":"East Asia","categories":["food_drinks","activities"],"reason":"fifth_unobserved_east_asia_cost_quantile_city"},
+        {"city":"Split","country":"Croatia","region":"Europe","categories":["food_drinks","activities"],"reason":"third_unobserved_remaining_europe_cost_quantile_city"},
+        {"city":"Can Tho","country":"Vietnam","region":"SEA","categories":["food_drinks","activities"],"reason":"unobserved_lower_cost_sea_city_with_source_density_stress_test"}
+      ]
+    },
+    {
       "batchId": "batch-zero-accommodation",
       "status": "in_progress",
       "plannedCalls": 27,

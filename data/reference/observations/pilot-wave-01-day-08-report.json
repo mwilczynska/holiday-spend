@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "pilot-wave-01-day-08",
+  "checkpoint": "pilot_east_asia_europe_sea_food_drinks_and_partial_attractions_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 6,
+  "cities": ["Tokyo", "Split", "Can Tho"],
+  "acceptedObservations": 14,
+  "rejectedObservations": 0,
+  "sources": [
+    {"name":"Numbeo","accessBasis":"personal_use_with_attribution","termsUrl":"https://www.numbeo.com/common/terms_of_use.jsp","methodologyUrl":"https://www.numbeo.com/common/motivation_and_methodology.jsp"},
+    {"name":"Tokyo Fuji Art Museum","accessBasis":"public_official"},
+    {"name":"Split City Museum","accessBasis":"public_official"},
+    {"name":"Cantho Tourism Portal","accessBasis":"public_official"}
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 3,
+    "midrange_restaurant_meal_2p": 3,
+    "premium_restaurant_meal_2p": 0,
+    "domestic_draft_beer_1": 3,
+    "cappuccino_1": 3,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 2,
+    "half_day_group_activity_adult_1": 0,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {"city":"Tokyo","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Tokyo","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Tokyo","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Tokyo","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Tokyo","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Tokyo","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Split","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Split","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Split","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Split","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Split","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Split","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Can Tho","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Can Tho","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Can Tho","measure":"cocktail_1","reason":"Not published on the sparse Numbeo city page; requires an independent current menu sample."},
+    {"city":"Can Tho","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Can Tho","measure":"paid_attraction_adult_1","reason":"The official destination portal lists attractions but no current paid adult tariff was verified; reseller and nearby-destination products were excluded."},
+    {"city":"Can Tho","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Can Tho","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."}
+  ],
+  "remainingCategories": ["food_drink_menu_triangulation", "activity_products", "accommodation"],
+  "notes": "This batch adds 12 direct published city-page food/drink primitives and two official paid-attraction prices. Can Tho remains explicitly source-density flagged: its page has four contributors, a 25 February 2026 update, and an estimated-data warning. Its official paid attraction remains missing. No nearby-city substitution or uncited conversion occurred."
+}
