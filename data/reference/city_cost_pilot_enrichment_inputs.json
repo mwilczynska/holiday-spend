@@ -137,6 +137,21 @@
       "populationSourceName": "Bulgarian National Statistical Institute, District Sofia (Stolitsa) key indicators",
       "populationSourceUrl": "https://www.nsi.bg/en/statistical-data/46/172",
       "notes": "The numerator includes resident and non-resident arrivals but only at categorized accommodation establishments with at least 10 bed places. Smaller and informal stays are outside the frame, so the result is a reproducible lower-bound proxy for overnight arrivals."
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "referenceYear": 2023,
+      "spatialUnit": "Istanbul province",
+      "overnightArrivals": 13212666,
+      "residentPopulation": 15655924,
+      "numeratorDefinition": "Arrivals for an overnight stay at Ministry-certified tourism-operation and simple-accommodation establishments in Istanbul province during 2023",
+      "denominatorDefinition": "Residents of Istanbul province at 31 December 2023",
+      "arrivalsSourceName": "Istanbul Provincial Directorate of Culture and Tourism, December 2024 tourism statistics report",
+      "arrivalsSourceUrl": "https://istanbul.ktb.gov.tr/Eklenti/130623%2Caralik-2024-turizm-istatistik-raporupdf.pdf?0=",
+      "populationSourceName": "TurkStat, Address Based Population Registration System results 2023",
+      "populationSourceUrl": "https://veriportali.tuik.gov.tr/en/press/49684",
+      "notes": "The numerator includes domestic and international arrivals at registered Ministry-certified accommodation but counts establishment entries rather than unique people: repeat stays by the same tourist are separate arrivals. Informal and other out-of-frame stays are excluded, so the result is a reproducible accommodation-pressure proxy rather than total unique visitation."
     }
   ]
 }

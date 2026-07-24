@@ -346,8 +346,15 @@ Sofia contributes a lower-intensity case rather than extending only the upper en
 The Bulgarian National Statistical Institute records 1,185,345 arrivals in categorized accommodation
 establishments with at least 10 bed places during 2024 and 1,295,931 residents at 31 December for the
 same Sofia-capital district. The resulting 0.91 arrivals per resident is `low`. Smaller and informal stays
-are outside the accommodation frame, so the retained value is a lower-bound proxy. The other 30 fields
-stay pending until an equally defensible same-year, same-geography pair is available.
+are outside the accommodation frame, so the retained value is a lower-bound proxy.
+
+Istanbul adds a second `low` case from a common province boundary. The provincial tourism directorate
+reports 13,212,666 domestic and international arrivals for an overnight stay at Ministry-certified
+tourism-operation and simple-accommodation establishments during 2023; TurkStat reports 15,655,924
+province residents at 31 December 2023. The resulting 0.84 arrivals per resident is `low`. The source
+counts establishment entries, not unique visitors, so repeat stays by the same person are separate
+arrivals; informal and other out-of-frame stays are excluded. The other 29 fields stay pending until an
+equally defensible same-year, same-geography pair is available.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

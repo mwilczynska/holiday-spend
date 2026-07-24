@@ -775,14 +775,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 0.843940351268951,
+        "referenceYear": 2023,
+        "spatialUnit": "Istanbul province",
+        "band": "low",
+        "overnightArrivals": 13212666,
+        "residentPopulation": 15655924,
+        "numeratorDefinition": "Arrivals for an overnight stay at Ministry-certified tourism-operation and simple-accommodation establishments in Istanbul province during 2023",
+        "denominatorDefinition": "Residents of Istanbul province at 31 December 2023",
+        "arrivalsSourceName": "Istanbul Provincial Directorate of Culture and Tourism, December 2024 tourism statistics report",
+        "arrivalsSourceUrl": "https://istanbul.ktb.gov.tr/Eklenti/130623%2Caralik-2024-turizm-istatistik-raporupdf.pdf?0=",
+        "populationSourceName": "TurkStat, Address Based Population Registration System results 2023",
+        "populationSourceUrl": "https://veriportali.tuik.gov.tr/en/press/49684",
+        "notes": "The numerator includes domestic and international arrivals at registered Ministry-certified accommodation but counts establishment entries rather than unique people: repeat stays by the same tourist are separate arrivals. Informal and other out-of-frame stays are excluded, so the result is a reproducible accommodation-pressure proxy rather than total unique visitation."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
