@@ -501,6 +501,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     international-only arrivals and total guest nights, not all overnight visitor arrivals.
   - [x] Record Tokyo as a screened rejection because its official sources expose broad traveler estimates
     and guest nights, but not an overnight-only arrivals numerator.
+  - [x] Record Seoul as a screened rejection because its official city sources expose a foreign-only
+    arrivals estimate and broad tourist-area mobility visits, but not all overnight visitor arrivals.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

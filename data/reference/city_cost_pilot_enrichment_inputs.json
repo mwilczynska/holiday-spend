@@ -95,6 +95,22 @@
           "url": "https://www.mlit.go.jp/kankocho/tokei_hakusyo/shukuhakutokei.html"
         }
       ]
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "reason": "incompatible_numerator",
+      "notes": "Seoul Metropolitan Government's published tourist-arrival series estimates foreign visitors to Seoul by applying Seoul's share to Korea-wide inbound visitors, so it excludes domestic overnight visitors. The Seoul Data Hub mobility series counts broad movements into tourist-area grids, includes domestic residents and long- and short-term foreigners, and does not isolate overnight arrivals. Retain tourism intensity as pending rather than treating foreign-only arrivals or broad mobility visits as the registered all-overnight-arrivals numerator.",
+      "sources": [
+        {
+          "name": "Seoul Metropolitan Government, Seoul Welcomes 1.56 Million Visitors in April",
+          "url": "https://english.seoul.go.kr/seoul-welcomes-1-56-million-visitors-in-april-generating-krw-1-15-trillion-in-tourist-spending/"
+        },
+        {
+          "name": "Seoul Data Hub, Welcome to Seoul tourism-area analysis",
+          "url": "https://data.seoul.go.kr/bsp/wgs/theme/detail/9.do"
+        }
+      ]
     }
   ],
   "tourismIntensity": [

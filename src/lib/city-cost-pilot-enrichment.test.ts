@@ -125,13 +125,13 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('Auckland Council'), url: expect.stringContaining('aucklandcouncil.govt.nz') },
       ],
     });
-    expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
+    expect(artifact.cities.find((city) => city.city === 'Seoul')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',
       rejectionReason: 'incompatible_numerator',
       screenedSources: [
-        { name: expect.stringContaining('Tokyo Tourism Data Catalog'), url: expect.stringContaining('metro.tokyo.lg.jp') },
-        { name: expect.stringContaining('Overnight Travel Statistics'), url: expect.stringContaining('mlit.go.jp') },
+        { name: expect.stringContaining('Seoul Welcomes'), url: expect.stringContaining('english.seoul.go.kr') },
+        { name: expect.stringContaining('Seoul Data Hub'), url: expect.stringContaining('data.seoul.go.kr') },
       ],
     });
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({

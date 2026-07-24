@@ -469,6 +469,12 @@ Tokyo is the third screened rejection. Its metropolitan catalog publishes broad 
 traveler estimates, while the national accommodation survey publishes guest nights. Neither source exposes
 the required overnight-only arrivals numerator, leaving 21 pilot cities still unscreened.
 
+Seoul is the fourth screened rejection. The metropolitan government's tourist-arrival series estimates
+foreign visitors to Seoul from Korea-wide inbound totals and therefore omits domestic overnight visitors.
+The city data hub's alternative series measures broad movements into tourist-area grids and includes
+residents plus long- and short-term foreigners without isolating overnight stays. Neither is converted to
+the registered all-overnight-arrivals numerator; 20 pilot cities remain unscreened.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
