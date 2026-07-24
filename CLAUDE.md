@@ -240,21 +240,30 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 
 Phase 6 replaces the current anchor-and-derive city costs with directly observed, source-attributed evidence and only uses a validated missing-data model where observation is not possible. Progress is gated: later milestones must not begin merely because an earlier research pass exists; they begin only when the earlier milestone's completion criteria are met.
 
-**Current position:** methodology and evidence tooling are complete; pilot collection and accommodation validation are active. Model selection, 121-city recollection, and product migration remain blocked on adequate pilot coverage.
+**Current position:** Phase 6A and 6B are complete. Phase 6C and 6D are the only active execution milestones: they must produce a frozen, model-ready pilot with accepted non-accommodation observations, validated accommodation panels, registered predictors, and an explicit missingness report. Phase 6E through 6H are deliberately gated and must not start from the current sparse first-pass artifact.
 
 #### Phase 6A: Freeze The Methodology And Acceptance Rules (Complete)
+
+**Deliverable and exit gate:** a versioned specification that fixes what is measured, what evidence is admissible, how missingness is represented, and how success will be judged before new evidence or models can influence those rules.
+
 - [x] Assess the original anchor-and-derive methodology against the supplied external accuracy audit
 - [x] Define version 3 estimands for accommodation, food, drinks, and activities; keep intercity transport manual and outside city costs
 - [x] Freeze observation provenance, source precedence, validation metrics, provisional accuracy gates, and fail-closed missing-data behaviour before model fitting
 - [x] Document the redesign in `docs/dev/plans/observed-first-methodology.md` and add the reproducible `accuracy_audit.csv` baseline
 
 #### Phase 6B: Build The Reproducible Evidence Pipeline (Complete)
+
+**Deliverable and exit gate:** one reproducible path from source-attributed observations to validated, deterministic tier cells, with checkpoints, review states, frozen FX, and fail-closed publication.
+
 - [x] Add the versioned observation contract, source-access matrix, JSONL store, extraction-batch manifest, and bounded provider-neutral research runner
 - [x] Add batch validation, deterministic local-currency aggregation, frozen source-attributed FX, and v3-alpha basket materialization
 - [x] Retain secondary evidence, flag cross-channel medians differing by more than 25%, and keep research output unreviewed until evidence review
 - [x] Enforce fail-closed publication: unsupported cells remain missing and no incomplete wide city row is published
 
 #### Phase 6C: Build A Model-Ready 36-City Pilot (In Progress)
+
+**Deliverable and exit gate:** a frozen 36-city pilot whose accepted food, drink, and activity evidence, registered predictors, source overlap, and unresolved missingness are sufficient to support whole-city model comparison. A completed first-pass search is evidence-discovery progress, not completion of this milestone.
+
 - [x] Select a deterministic pilot spanning every region and the current cost range, then complete bounded first-pass research for all 36 candidates
 - [x] Retain explicit source-gap outcomes rather than substituting nearby cities, country averages, unlabeled prices, guest nights, or mixed day/overnight totals
 - [ ] Complete observation collection for food, drinks, and activities, prioritizing required-measure coverage, independent source overlap, freshness, and documented sparse-city exceptions
@@ -267,6 +276,9 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [ ] Freeze the pilot dataset and its missingness report; document every unresolved cell before any model comparison begins
 
 #### Phase 6D: Complete Observed-First Accommodation Panels (In Progress)
+
+**Deliverable and exit gate:** annualized accommodation measures built only from pre-registered seasonal windows, price-blind property frames, direct-property quotes, and panels that pass quote-count and cross-season-overlap gates. Unsupported star or hostel classes remain missing.
+
 - [x] Use official registers or destination directories for price-blind frames and direct property sites for quotes; exclude Booking.com and Hostelworld from LLM extraction
 - [x] Pre-register exact-90-day low/shoulder/high windows and require five accepted quotes per measure and season plus at least 60% cross-season property overlap
 - [x] Freeze reproducible Barcelona, Copenhagen, Da Nang, Lisbon, and Prague frames and add an append-only quote-attempt ledger
@@ -277,12 +289,18 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [ ] Materialize and independently validate the first annualized accommodation measures; leave any measure that fails a gate explicitly missing
 
 #### Phase 6E: Freeze Validation Design And Independent Holdout (Blocked On 6C-6D)
+
+**Deliverable and exit gate:** a hashed, pre-registered evaluation design and untouched city holdout, frozen only after the combined pilot from Phase 6C and 6D meets its coverage and representation requirements.
+
 - [ ] Confirm that pilot target coverage, regional representation, destination types, cost range, and independent-source overlap support defensible evaluation
 - [ ] Pre-register primary and subgroup metrics, provisional acceptance gates, uncertainty methods, and failure/remediation rules
 - [ ] Freeze a region/cost/source-density-stratified city holdout before fitting; prevent all holdout cities from influencing feature engineering, model choice, or tuning
 - [ ] Version and hash the training/validation split plus the frozen pilot artifact so later evaluation is reproducible
 
 #### Phase 6F: Compare And Freeze The Missing-Data Method (Blocked On 6E)
+
+**Deliverable and exit gate:** a leakage-safe comparison of transparent missing-data methods, followed by one frozen fallback and a single independent-holdout evaluation. Failure of registered gates triggers remediation and a newly protected validation cycle rather than tuning against the opened holdout.
+
 - [ ] Benchmark transparent baselines before more complex methods, including regional/category medians and shrinkage or hierarchical alternatives
 - [ ] Use whole-city cross-validation so observations or derived tiers from one city cannot leak between training and validation folds
 - [ ] Compare accuracy, bias, subgroup failure, stability, and interval calibration; prefer the simplest method that materially improves the registered metrics
@@ -290,12 +308,18 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [ ] Evaluate the holdout once; disclose failed gates and start a newly protected validation cycle if material remediation is required
 
 #### Phase 6G: Recollect And Validate All 121 Cities (Blocked On 6F)
+
+**Deliverable and exit gate:** a versioned 121-city dataset with direct evidence recollected under the frozen contract, deterministic observed tiers, limited and visible fallback use, calibrated uncertainty, subgroup validation, and a complete data card.
+
 - [ ] Recollect direct observations for all 121 cities in versioned, checkpointed, auditable batches using the frozen source and review contracts
 - [ ] Materialize observed tiers deterministically, apply the frozen fallback only to eligible missing cells, and publish calibrated uncertainty plus evidence-quality scores
 - [ ] Report achieved overall and subgroup metrics with city-cluster uncertainty intervals and run full-itinerary backtests against the current dataset
 - [ ] Produce a versioned data card containing coverage, provenance, missingness, model use, limitations, validation results, and rollback inputs
 
 #### Phase 6H: Product Migration And Ongoing Monitoring (Blocked On 6G)
+
+**Deliverable and exit gate:** the app uses the validated source-first generation and deterministic calculation path, publishes achieved metrics and limitations, monitors freshness and drift, and can restore the previous production dataset through a tested rollback.
+
 - [ ] Replace the version 1 prompt with source-first observation extraction and deterministic server-side tier calculation, validation, provenance, fallback logging, and uncertainty
 - [ ] Migrate the canonical CSV/database only after the validation gates pass; retain the prior dataset, methodology, and a tested rollback path
 - [ ] Publish achieved rather than aspirational coverage, accuracy, bias, subgroup, and uncertainty metrics on `/estimates`
