@@ -32,6 +32,17 @@ property booking page, menu, or tourism publication and extract a displayed
 value. It may not output an uncited price or calculate final city tiers. Local deterministic code performs
 currency normalization, aggregation, basket construction, and later imputation.
 
+The local runner makes this hand-off reproducible without coupling the project to a paid API. A versioned
+assignment JSON renders the bounded prompt; a saved free web-enabled LLM response is then parsed and checked
+against that assignment. Raw JSON and a single JSON code fence are accepted, but surrounding prose,
+wrong-city output, out-of-category measures, duplicate ids, implicit missingness, and self-accepted rows are
+rejected. Runner output is always `unreviewed` until a separate evidence review accepts it.
+
+```text
+npm run methodology:research -- --assignment <assignment.json>
+npm run methodology:research -- --assignment <assignment.json> --response <llm-response.txt>
+```
+
 ## Free Source Hierarchy
 
 | Category | First choice | Secondary evidence | Explicit fallback |
@@ -226,6 +237,10 @@ Every free research call must:
 7. Return `missing` with a reason when evidence is unavailable.
 8. Avoid derived tiers, AUD conversion, confidence labels, or unsupported narrative estimates.
 9. Return JSON matching `city-cost-observation-v1` fields.
+
+`src/lib/city-cost-research-response.ts` enforces this call contract, including complete accounting of
+every requested measure as either observed or explicitly missing. Fixture-backed tests cover raw and
+fenced JSON, assignment mismatches, missing coverage, the review gate, and prompt rendering.
 
 A value mentioned only in a search snippet may enter the raw queue but cannot be marked `accepted` until
 the definition, unit, and source page are verified.

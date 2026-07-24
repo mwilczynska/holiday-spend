@@ -100,6 +100,12 @@ original EUR, CZK, DKK, THB, VND, or USD value, source URL, retrieval time, page
 displayed range, source-access basis, and extraction version. The validator reports 47 valid direct rows
 and no schema errors.
 
+A provider-neutral local research runner now renders one versioned city/category assignment and validates
+the saved response from a free web-enabled LLM call. It does not call a paid API. The parser rejects
+wrong-city or out-of-category output, duplicate ids, uncatalogued missingness, and any observation the
+research call tries to mark accepted. This makes the LLM an evidence collector while preserving a separate
+review decision before a row can influence the model.
+
 Pu Luong is an intentional sparse-market stress test. No defensible Numbeo city page was found, so the
 pipeline retained the directly observed local menu and activity listings while leaving all other fields
 missing. It did not inherit Hanoi prices or a Vietnam-wide average. Collection reports are now

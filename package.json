@@ -14,6 +14,7 @@
     "models:check": "tsx scripts/refresh-curated-models.ts --check",
     "methodology:audit": "node scripts/audit-city-cost-accuracy.mjs",
     "methodology:pilot": "node scripts/select-city-cost-pilot.mjs",
+    "methodology:research": "tsx scripts/run-city-cost-research.ts",
     "methodology:batches:validate": "tsx scripts/validate-city-cost-batches.ts",
     "methodology:accommodation-windows:validate": "tsx scripts/validate-accommodation-reference-windows.ts",
     "methodology:accommodation-panels:validate": "tsx scripts/validate-accommodation-property-panels.ts",

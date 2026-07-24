@@ -326,9 +326,12 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
   - [x] Route accommodation through official registers plus direct property pages, subject to a per-page
     access check.
   - [ ] Complete the same access review for every secondary menu/activity source before scaling it.
-- [ ] Build the source-research runner with fixture-based parser tests.
+- [x] Build a provider-neutral source-research runner with fixture-based parser tests. It renders one
+  bounded assignment from the versioned prompt, accepts raw or fenced JSON from a saved free web-enabled
+  LLM call, verifies assignment identity and complete observed/missing measure coverage, and forces every
+  returned observation to remain `unreviewed` for a separate evidence-review step.
 
-Checkpoint: batch zero and the first pilot wave currently provide 45 accepted direct observations across
+Checkpoint: batch zero and the first pilot wave currently provide 47 accepted direct observations across
 nine cities. The v3-alpha materializer aggregates in city-local currency, applies a frozen and
 source-attributed AUD FX snapshot, and materializes 42 of 171 possible
 city-tier cells. No city is complete and no partial wide row is published.

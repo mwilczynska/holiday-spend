@@ -244,6 +244,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Generate a deterministic 36-city candidate pilot spanning every region and the current cost range
   - [x] Constrain collection to free, checkpointed LLM web-research calls with no paid data APIs or project-imposed daily cap
   - [x] Add an observation-level JSONL store and extraction-batch manifest
+  - [x] Add a provider-neutral source-research runner that renders bounded assignments, validates saved free-call JSON, requires explicit measure coverage, and keeps all returned rows unreviewed pending evidence review
   - [x] Add extraction-batch validation plus deterministic local-currency aggregation, frozen FX, and v3-alpha basket materialization
   - [x] Add source-channel-aware aggregation that retains secondary evidence and flags cross-channel medians differing by more than the provisional 25% review threshold
   - [x] Review accommodation source access, exclude Booking.com/Hostelworld from LLM extraction, and route the new panel through official registers plus direct property sites
@@ -399,6 +400,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - The generation UI now surfaces the implied AUD/USD rate directly in the result panel, and dataset history exposes the stored inferred rate per estimate record
 - Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
 - Phase 6 accommodation collection now uses a deterministic repeated-property panel rather than Booking.com/Hostelworld extraction: official registers or classification directories define the sampling frame and selected property sites provide public dated quotes
+- `npm run methodology:research` renders one bounded source-research assignment or validates a saved raw/fenced JSON response from a free web-enabled LLM; assignment mismatches, unaccounted measures, duplicate ids, and self-accepted rows fail closed
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
 - `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
@@ -497,6 +499,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `scripts/validate-accommodation-property-panels.ts`
 - `scripts/validate-accommodation-reference-windows.ts`
 - `scripts/validate-accommodation-quote-attempts.ts`
+- `scripts/run-city-cost-research.ts`
+- `src/lib/city-cost-research-response.ts`
 - `scripts/select-city-cost-pilot.mjs`
 - `scripts/validate-city-cost-observations.ts`
 - `src/lib/city-cost-methodology-v3.ts`

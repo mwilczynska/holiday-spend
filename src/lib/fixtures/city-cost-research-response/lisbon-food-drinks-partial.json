@@ -1,0 +1,91 @@
+{
+  "call": {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "region": "Europe",
+    "category": "food_drinks",
+    "batchId": "fixture-batch",
+    "status": "partial"
+  },
+  "observations": [
+    {
+      "schemaVersion": "city-cost-observation-v1",
+      "observationId": "fixture-lisbon-cappuccino",
+      "batchId": "fixture-batch",
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "valueStatus": "direct",
+      "priceAmount": 2.4,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "quantity": 1,
+      "taxStatus": "included",
+      "sourceName": "Fixture public city page",
+      "sourceType": "published_dataset",
+      "sourceAccess": "personal_use_with_attribution",
+      "sourceTermsUrl": "https://example.com/terms",
+      "sourceUrl": "https://example.com/lisbon",
+      "sourceRecordId": null,
+      "retrievedAt": "2026-07-24T09:30:00.000Z",
+      "priceValidFrom": null,
+      "priceValidTo": null,
+      "reportedLow": 1.5,
+      "reportedHigh": 4,
+      "sampleSize": 120,
+      "resultCount": null,
+      "checkIn": null,
+      "checkOut": null,
+      "quoteCaptureDate": null,
+      "bookingLeadDays": null,
+      "stayNights": null,
+      "season": "not_applicable",
+      "searchRadiusKm": null,
+      "minimumReviewScore": null,
+      "bookerCountry": null,
+      "samplingFrameId": null,
+      "rateAccess": "not_applicable",
+      "rateCondition": "not_applicable",
+      "extractionMethod": "browser_research",
+      "extractorVersion": "llm-observation-prompt-1",
+      "parentObservationIds": [],
+      "derivationMethod": null,
+      "modelVersion": null,
+      "predictionLower": null,
+      "predictionUpper": null,
+      "reviewerStatus": "unreviewed",
+      "exclusionReason": null,
+      "notes": "Fixture only."
+    }
+  ],
+  "missing": [
+    {
+      "measure": "inexpensive_restaurant_meal_1p",
+      "reason": "No inspected matching value.",
+      "attemptedUrls": ["https://example.com/lisbon"]
+    },
+    {
+      "measure": "midrange_restaurant_meal_2p",
+      "reason": "No inspected matching value.",
+      "attemptedUrls": ["https://example.com/lisbon"]
+    },
+    {
+      "measure": "domestic_draft_beer_1",
+      "reason": "No inspected matching value.",
+      "attemptedUrls": ["https://example.com/lisbon"]
+    },
+    {
+      "measure": "cocktail_1",
+      "reason": "No inspected matching value.",
+      "attemptedUrls": ["https://example.com/lisbon"]
+    },
+    {
+      "measure": "wine_glass_1",
+      "reason": "No inspected matching value.",
+      "attemptedUrls": ["https://example.com/lisbon"]
+    }
+  ]
+}
