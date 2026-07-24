@@ -350,6 +350,24 @@
       ]
     },
     {
+      "batchId": "pilot-wave-01-day-09",
+      "status": "complete_with_missing",
+      "plannedCalls": 6,
+      "completedCalls": 6,
+      "acceptedObservations": 9,
+      "checkpoint": "pilot_europe_sea_food_drinks_and_partial_attractions_complete",
+      "observationFiles": [
+        "data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl",
+        "data/reference/observations/pilot-wave-01-day-09-activities.jsonl"
+      ],
+      "reportFile": "data/reference/observations/pilot-wave-01-day-09-report.json",
+      "cities": [
+        {"city":"Dubrovnik","country":"Croatia","region":"Europe","categories":["food_drinks","activities"],"reason":"fourth_unobserved_remaining_europe_cost_quantile_city"},
+        {"city":"Chiang Rai","country":"Thailand","region":"SEA","categories":["food_drinks","activities"],"reason":"unobserved_lower_cost_sea_city_with_source_density_stress_test"},
+        {"city":"Bali (Ubud)","country":"Indonesia","region":"SEA","categories":["food_drinks","activities"],"reason":"unobserved_tourism_intensive_sea_market_with_source_gap_test"}
+      ]
+    },
+    {
       "batchId": "batch-zero-accommodation",
       "status": "in_progress",
       "plannedCalls": 27,

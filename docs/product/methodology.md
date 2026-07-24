@@ -92,14 +92,14 @@ dated source observations
 ### Implementation Checkpoint
 
 The observation schema, JSONL validator, and batch manifest are now implemented. Batch zero plus the
-first eight pilot-wave checkpoints contain 149 direct observations across 30 cities, representing every
-pilot region: 116 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, 26 official
+first nine pilot-wave checkpoints contain 158 direct observations across 32 cities, representing every
+pilot region: 124 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, 27 official
 paid-attraction prices, one
 operator-listed Pu Luong half-day group activity, and five exact-date official-property accommodation
 quotes. Every row retains its original EUR, CZK, DKK, THB, VND, USD, TZS, CNY, NZD, KES, JPY, COP, TRY,
 INR, AED, CAD, KRW, HUF, or MXN value, source URL,
 retrieval time, page-valid date where known, displayed range, source-access basis, and extraction version.
-The validator reports 149 valid direct rows
+The validator reports 158 valid direct rows
 and no schema errors.
 
 A provider-neutral local research runner now renders one versioned city/category assignment and validates
@@ -145,9 +145,9 @@ uses the natural-person segment because Havana's retained Numbeo prices are tour
 Each stored rate retains its source date, quote, URL, and derivation formula. The materializer verifies
 the snapshot and recomputes cross-rate arithmetic in automated tests.
 
-The current materialized artifact contains 30 cities and 149 accepted direct observations. It can
-calculate 144 of 570 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 29
-cities, free activities for all 30, budget paid-attraction baskets for 26, and one Pu Luong mid-range
+The current materialized artifact contains 32 cities and 158 accepted direct observations. It can
+calculate 153 of 608 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 31
+cities, free activities for all 32, budget paid-attraction baskets for 27, and one Pu Luong mid-range
 half-day activity basket. It reports zero complete cities and emits no publishable wide row because
 the Copenhagen shoulder panel has reached five quotes but its low/high seasons and repeated-property
 overlap gate are still missing, while street/premium food, cocktail/wine, and many activity observations

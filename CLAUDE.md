@@ -263,8 +263,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Add Sendai, Sofia, and Vancouver, bringing the store to 120 accepted direct observations across 24 cities while retaining Sendai's sparse source context and correcting Bulgaria's post-euro-adoption canonical currency
   - [x] Add Seoul, Budapest, and Mexico City, bringing the store to 135 accepted direct observations across 27 cities while retaining Mexico City's temporary direct-page access limitation
   - [x] Add Tokyo, Split, and Can Tho, bringing the store to 149 accepted direct observations across 30 cities while retaining Can Tho's four-contributor estimated-data warning and explicit missing paid attraction
+  - [x] Add Dubrovnik and Chiang Rai evidence and a fail-closed Ubud source-gap audit, bringing the store to 158 accepted direct observations across 32 cities; no Ubud numeric value is inferred from an unlabeled menu scale
+  - [x] Add Dubrovnik and Chiang Rai evidence and a fail-closed Ubud source-gap audit, bringing the store to 158 accepted direct observations across 32 cities; no Ubud numeric value is inferred from an unlabeled menu scale
   - [x] Add a validated accommodation attempt ledger and complete the Copenhagen shoulder checkpoint: ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and four booking-path failures
-  - [x] Materialize the current fail-closed research artifact from 149 direct observations: 144 of 570 tier cells across 30 cities, one incomplete accommodation measure, and zero incomplete wide rows published
+  - [x] Materialize the current fail-closed research artifact from 158 direct observations: 153 of 608 tier cells across 32 cities, one incomplete accommodation measure, and zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -415,6 +417,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - The sixth pilot checkpoint adds Sendai, Sofia, and Vancouver: 12 direct Numbeo food/drink primitives and three official paid-attraction prices; Sendai's low 19-contributor density and wide ranges remain explicit, Vancouver retains its April 2026 page date, and Sofia uses EUR after Bulgaria's 1 January 2026 euro adoption
 - The seventh pilot checkpoint adds Seoul, Budapest, and Mexico City: 12 direct Numbeo food/drink primitives and three official paid-attraction prices; Mexico City's exact 12 June 2026 update and temporary canonical-page 503 remain explicit rather than being hidden by the indexed-page fallback
 - The eighth pilot checkpoint adds Tokyo, Split, and Can Tho: 12 direct Numbeo food/drink primitives and official paid-attraction prices for Tokyo and Split; Can Tho retains its four-contributor estimated-data warning, 25 February 2026 source date, and explicit missing official paid attraction
+- The ninth pilot checkpoint adds eight direct Numbeo food/drink primitives across Dubrovnik and Chiang Rai plus the official Dubrovnik Museums adult ticket; Dubrovnik's April 2025 freshness limitation and Chiang Rai's low-contributor estimated-data warning remain explicit, while Ubud stays numeric-missing because the inspected menu does not label its currency scale
+- The ninth pilot checkpoint adds eight direct Numbeo food/drink primitives across Dubrovnik and Chiang Rai plus the official Dubrovnik Museums adult ticket; Dubrovnik's April 2025 freshness limitation and Chiang Rai's low-contributor estimated-data warning remain explicit, while Ubud stays numeric-missing because the inspected menu does not label its currency scale
 - Bulgaria's canonical country metadata now resolves to EUR rather than the retired BGN code, with generated metadata and tests refreshed from the explicit override
 - The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, INR, CAD, KRW, HUF, and MXN through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, and CUP through the Banco Central de Cuba natural-person reference crossed with frozen USD/AUD
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
@@ -525,6 +529,12 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/observations/pilot-wave-01-day-08-food-drinks.jsonl`
   - `data/reference/observations/pilot-wave-01-day-08-activities.jsonl`
   - `data/reference/observations/pilot-wave-01-day-08-report.json`
+  - `data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-09-activities.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-09-report.json`
+  - `data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-09-activities.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-09-report.json`
 - `docs/dev/plans/city-cost-source-access.md`
 - `docs/prompts/llm_prompt_city_cost_observations_1.md`
 - `src/lib/city-cost-observation.ts`
