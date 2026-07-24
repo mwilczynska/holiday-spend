@@ -8,7 +8,7 @@
 
 ## Context
 
-Wanderledger currently stores saved plan snapshots in browser `localStorage`. Plans are lost if the user clears their browser or switches devices. This feature moves them into the SQLite database (user-owned), surfaces them inline on `/plan`, and adds a multi-plan comparison view at `/plan/compare`.
+Holiday Spend currently stores saved plan snapshots in browser `localStorage`. Plans are lost if the user clears their browser or switches devices. This feature moves them into the SQLite database (user-owned), surfaces them inline on `/plan`, and adds a multi-plan comparison view at `/plan/compare`.
 
 The existing snapshot infrastructure (`PlanSnapshot` Zod schema in `src/lib/plan-snapshot.ts`, `GET/POST /api/itinerary/snapshot`) provides the serialization format. We need persistence, a better browsing UI, and a comparison engine.
 
@@ -144,7 +144,7 @@ Changes:
 export async function migrateLocalStoragePlans(): Promise<{ migrated: number; cleared: boolean }>
 ```
 
-On mount: if localStorage has `wanderledger-plan-snapshots`, POST each to API, then clear localStorage. Runs once via `useEffect` gated by a ref.
+On mount: if localStorage has `holiday-spend-plan-snapshots`, POST each to API, then clear localStorage. Runs once via `useEffect` gated by a ref.
 
 ### Phase 2 verification
 - `npx tsc --noEmit` passes
@@ -336,7 +336,7 @@ Header layout mirrors the planner: title + subtitle left, action buttons right.
 
 **File to modify**: `src/app/plan/compare/page.tsx`
 
-Store last-compared plan IDs in `sessionStorage` under `wanderledger.compare-ids`. On load:
+Store last-compared plan IDs in `sessionStorage` under `holiday-spend.compare-ids`. On load:
 - If `?ids=...` in URL → use those, update sessionStorage
 - If no `?ids=` but sessionStorage has IDs → auto-load that comparison
 - If neither → show plan selector

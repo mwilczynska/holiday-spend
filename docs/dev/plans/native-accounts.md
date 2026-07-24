@@ -9,7 +9,7 @@
 
 ## Context
 
-Wanderledger currently uses NextAuth v4 with Google OAuth as the only real provider, plus a dev-only PIN `CredentialsProvider` used for local development (`src/lib/auth.ts`). There is no native email/password sign-up path, so anyone without a Google account cannot use the app, and there is no self-service password reset.
+Holiday Spend currently uses NextAuth v4 with Google OAuth as the only real provider, plus a dev-only PIN `CredentialsProvider` used for local development (`src/lib/auth.ts`). There is no native email/password sign-up path, so anyone without a Google account cannot use the app, and there is no self-service password reset.
 
 Priority 2B adds native accounts **alongside** Google (not as a replacement), with email as the primary identifier, proper password hashing (`argon2id`), email verification, password reset, abuse protection, and a documented account-linking policy that avoids silent cross-provider merging.
 
@@ -369,7 +369,7 @@ Replace `console.log` stubs in the Phase 3 and Phase 4 API routes with real call
 
 New env vars:
 - `RESEND_API_KEY` - required in production for native auth
-- `MAIL_FROM` - e.g. `Wanderledger <no-reply@your-domain>`
+- `MAIL_FROM` - e.g. `Holiday Spend <no-reply@your-domain>`
 - `APP_URL` - used to build verification/reset links
 - `ENABLE_EMAIL_PASSWORD` - optional, defaults on when `RESEND_API_KEY` is set
 
@@ -468,7 +468,7 @@ On every sign-in:
 **File to modify**: `src/components/auth/LoginScreen.tsx`
 
 Reads `?linkRequired=` and renders an explanatory banner:
-> This email already has a Wanderledger account created with {other provider}. Sign in with {other provider} first, then link Google/email-password from your account settings.
+> This email already has a Holiday Spend account created with {other provider}. Sign in with {other provider} first, then link Google/email-password from your account settings.
 
 No automatic linking - user explicitly initiates from signed-in settings (Phase 8 or later).
 

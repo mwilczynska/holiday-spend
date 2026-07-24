@@ -42,7 +42,7 @@ export async function GET(request: Request) {
       return new Response(csv, {
         headers: {
           'Content-Type': 'text/csv',
-          'Content-Disposition': `attachment; filename="wanderledger-expenses-${new Date().toISOString().split('T')[0]}.csv"`,
+          'Content-Disposition': `attachment; filename="holiday-spend-expenses-${new Date().toISOString().split('T')[0]}.csv"`,
         },
       });
     }
@@ -62,7 +62,7 @@ export async function GET(request: Request) {
     return new Response(JSON.stringify(data, null, 2), {
       headers: {
         'Content-Type': 'application/json',
-        'Content-Disposition': `attachment; filename="wanderledger-export-${new Date().toISOString().split('T')[0]}.json"`,
+        'Content-Disposition': `attachment; filename="holiday-spend-export-${new Date().toISOString().split('T')[0]}.json"`,
       },
     });
   } catch (err) {

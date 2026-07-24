@@ -40,7 +40,7 @@ interface GenerationResult {
 
 type ProviderOption = CityGenerationProvider;
 
-const STORAGE_PREFIX = 'wanderledger.city-generation';
+const STORAGE_PREFIX = 'holiday-spend.city-generation';
 
 const fmtMoney = (value: number) => value.toFixed(2);
 

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('dashboard graphs audit', () => {
   test('inspect inline and expanded dashboard charts', async ({ page }, testInfo) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Wanderledger' }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Holiday Spend' }).first()).toBeVisible();
 
     await expect(page.getByRole('button', { name: 'Expand' }).first()).toBeVisible({ timeout: 15_000 });
 

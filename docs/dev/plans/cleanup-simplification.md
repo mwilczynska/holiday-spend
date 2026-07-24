@@ -9,7 +9,7 @@
 
 ## Context
 
-Wanderledger has gone through several substantial feature migrations in sequence:
+Holiday Spend has gone through several substantial feature migrations in sequence:
 
 - city-cost methodology moved from the older hybrid/Xotelo framing to the current dataset + methodology split
 - `/settings/cities` was replaced by `/dataset`

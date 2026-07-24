@@ -1,6 +1,6 @@
-# Wanderledger
+# Holiday Spend
 
-Wanderledger is a private travel budget and spend-tracking app for long multi-city trips.
+Holiday Spend is a private travel budget and spend-tracking app for long multi-city trips.
 
 It combines itinerary planning, city-by-city budget modelling, actual expense tracking, planned-vs-actual reporting, and LLM-assisted city cost generation for places that are not yet in the library.
 

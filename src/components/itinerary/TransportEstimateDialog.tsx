@@ -26,7 +26,7 @@ import type {
 
 type ProviderOption = CityGenerationProvider;
 
-const STORAGE_PREFIX = 'wanderledger.transport-estimation';
+const STORAGE_PREFIX = 'holiday-spend.transport-estimation';
 
 const MODE_OPTIONS: Array<{ value: TransportEstimateMode; label: string }> = [
   { value: 'flight', label: 'Flight' },

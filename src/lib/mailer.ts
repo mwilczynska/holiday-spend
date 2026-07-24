@@ -46,9 +46,9 @@ export function isMailConfigured() {
 }
 
 export async function sendVerificationEmail(to: string, verifyUrl: string): Promise<void> {
-  const subject = 'Verify your Wanderledger email';
+  const subject = 'Verify your Holiday Spend email';
   const text = [
-    'Verify your Wanderledger email address.',
+    'Verify your Holiday Spend email address.',
     '',
     `Open this link to finish setting up your account: ${verifyUrl}`,
     '',
@@ -58,7 +58,7 @@ export async function sendVerificationEmail(to: string, verifyUrl: string): Prom
   ].join('\n');
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
-      <h1 style="font-size: 20px; margin-bottom: 16px;">Verify your Wanderledger email</h1>
+      <h1 style="font-size: 20px; margin-bottom: 16px;">Verify your Holiday Spend email</h1>
       <p>Finish setting up your account by opening the link below.</p>
       <p style="margin: 24px 0;">
         <a
@@ -86,9 +86,9 @@ export async function sendVerificationEmail(to: string, verifyUrl: string): Prom
 }
 
 export async function sendPasswordResetEmail(to: string, resetUrl: string): Promise<void> {
-  const subject = 'Reset your Wanderledger password';
+  const subject = 'Reset your Holiday Spend password';
   const text = [
-    'Reset your Wanderledger password.',
+    'Reset your Holiday Spend password.',
     '',
     `Open this link to set a new password: ${resetUrl}`,
     '',
@@ -98,7 +98,7 @@ export async function sendPasswordResetEmail(to: string, resetUrl: string): Prom
   ].join('\n');
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
-      <h1 style="font-size: 20px; margin-bottom: 16px;">Reset your Wanderledger password</h1>
+      <h1 style="font-size: 20px; margin-bottom: 16px;">Reset your Holiday Spend password</h1>
       <p>Open the link below to choose a new password for your account.</p>
       <p style="margin: 24px 0;">
         <a

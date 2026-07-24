@@ -12,7 +12,7 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Wanderledger",
+  title: "Holiday Spend",
   description: "Travel Budget Planner & Tracker",
 };
 

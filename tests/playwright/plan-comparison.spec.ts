@@ -54,7 +54,7 @@ test.describe.serial('plan comparison', () => {
 
   async function openCompareSelector(page: Page) {
     await page.goto('/plan/compare');
-    await page.evaluate(() => sessionStorage.removeItem('wanderledger.compare-ids'));
+    await page.evaluate(() => sessionStorage.removeItem('holiday-spend.compare-ids'));
     await page.goto('/plan/compare');
     await page.waitForLoadState('networkidle');
   }
@@ -76,7 +76,7 @@ test.describe.serial('plan comparison', () => {
   test('plan selector renders when no IDs provided', async ({ page }) => {
     // Clear any stored comparison IDs
     await page.goto('/plan/compare');
-    await page.evaluate(() => sessionStorage.removeItem('wanderledger.compare-ids'));
+    await page.evaluate(() => sessionStorage.removeItem('holiday-spend.compare-ids'));
     await page.goto('/plan/compare');
     await page.waitForLoadState('networkidle');
 

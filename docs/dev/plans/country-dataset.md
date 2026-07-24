@@ -9,7 +9,7 @@
 
 ## Context
 
-Wanderledger currently resolves country currency codes and app regions from hand-maintained constant maps in `src/lib/country-metadata.ts`. That works for the current seeded countries, but it has two structural problems:
+Holiday Spend currently resolves country currency codes and app regions from hand-maintained constant maps in `src/lib/country-metadata.ts`. That works for the current seeded countries, but it has two structural problems:
 
 1. **The source of truth is incomplete and code-shaped.** Adding a country means editing helper code rather than updating a canonical data asset.
 2. **Country creation still has metadata gaps.** We want admins to create missing countries without typing currency codes, while keeping the result deterministic and auditable.
@@ -88,7 +88,7 @@ Create `country-metadata.overrides.json` for:
 - app-specific aliases
 - rare manual corrections
 - inclusion/exclusion decisions
-- app-region overrides where the raw upstream region tree does not map cleanly to Wanderledger's buckets
+- app-region overrides where the raw upstream region tree does not map cleanly to Holiday Spend's buckets
 
 The generator should merge:
 

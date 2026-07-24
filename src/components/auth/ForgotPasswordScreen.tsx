@@ -52,7 +52,7 @@ export function ForgotPasswordScreen() {
             {submittedEmail ? (
               <>
                 If <span className="font-medium text-foreground">{submittedEmail}</span> belongs to a
-                Wanderledger email-password account, we sent a reset link.
+                Holiday Spend email-password account, we sent a reset link.
               </>
             ) : (
               <>Enter your email and we&apos;ll send you a password reset link.</>

@@ -70,7 +70,7 @@ export function ResetPasswordScreen() {
             {missingToken ? (
               <>This page needs a valid password reset link from your email.</>
             ) : (
-              <>Choose a new password for your Wanderledger account.</>
+              <>Choose a new password for your Holiday Spend account.</>
             )}
           </p>
         </CardHeader>

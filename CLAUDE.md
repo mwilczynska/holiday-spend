@@ -1,9 +1,9 @@
-# Wanderledger
+# Holiday Spend
 
 This is the canonical project memory file. `AGENTS.md` must stay a byte-for-byte mirror of this document. After editing this file, run `npm run docs:sync-memory`, and use `npm run docs:check-memory` to verify they still match.
 
 ## What The App Is
-Wanderledger is a private travel budget and spend-tracking app for long multi-city trips.
+Holiday Spend is a private travel budget and spend-tracking app for long multi-city trips.
 
 It combines:
 - itinerary planning by city and date
@@ -245,7 +245,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 ### Priority 1: Deployment / Production Readiness
 - [x] Keep `README.md` as the GitHub-facing project overview and move operational runbooks into `docs/ops/deployment.md`
 - [x] Refresh deployment config and docs for current runtime names and expectations, especially `GEMINI_API_KEY`, SQLite persistence, and required secrets
-- [x] Align Wanderledger deployment guidance with the existing `travel-blog` VPS baseline: same server operations model, but a single-app container topology for this repo
+- [x] Align Holiday Spend deployment guidance with the existing `travel-blog` VPS baseline: same server operations model, but a single-app container topology for this repo
 - [x] Replace the self-signed nginx setup with a production-ready VPS path such as a reverse proxy plus real TLS
 - [x] Add a smoother production bootstrap flow for first deploys, including DB creation/seed expectations and failure troubleshooting
 

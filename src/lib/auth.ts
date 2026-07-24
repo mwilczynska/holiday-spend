@@ -113,7 +113,7 @@ if (emailPasswordEnabled || devPin) {
           return {
             id: 'dev-local-user',
             name: 'Local Dev',
-            email: 'dev@wanderledger.local',
+            email: 'dev@holiday-spend.local',
           };
         }
 

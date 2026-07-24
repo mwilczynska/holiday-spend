@@ -12,7 +12,7 @@ import { ComparisonSummaryCards } from '@/components/itinerary/ComparisonSummary
 import type { SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import type { PlanComparisonResult } from '@/lib/plan-comparison';
 
-const COMPARE_IDS_STORAGE_KEY = 'wanderledger.compare-ids';
+const COMPARE_IDS_STORAGE_KEY = 'holiday-spend.compare-ids';
 
 export default function ComparePlansPage() {
   const searchParams = useSearchParams();

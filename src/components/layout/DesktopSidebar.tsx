@@ -40,7 +40,7 @@ export function DesktopSidebar() {
   return (
     <aside className="hidden lg:flex flex-col w-64 border-r bg-card h-screen sticky top-0">
       <div className="p-6 border-b">
-        <h1 className="text-xl font-bold">Wanderledger</h1>
+        <h1 className="text-xl font-bold">Holiday Spend</h1>
         <p className="text-xs text-muted-foreground">Travel Budget Tracker</p>
       </div>
       <nav className="flex-1 p-4 space-y-1">

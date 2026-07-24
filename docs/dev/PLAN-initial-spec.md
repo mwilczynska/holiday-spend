@@ -1,4 +1,4 @@
-# Wanderledger — Travel Budget Planner & Tracker
+# Holiday Spend — Travel Budget Planner & Tracker
 
 ## Technical Specification & Claude Code Build Plan
 

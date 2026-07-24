@@ -17,7 +17,7 @@ const originalCwd = process.cwd();
 
 describe.sequential('itinerary leg deletion', () => {
   beforeAll(async () => {
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wanderledger-itinerary-delete-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'holiday-spend-itinerary-delete-'));
     process.chdir(tempDir);
     vi.resetModules();
 

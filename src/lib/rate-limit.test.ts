@@ -14,7 +14,7 @@ const originalCwd = process.cwd();
 
 describe.sequential('rate limit helper', () => {
   beforeAll(async () => {
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wanderledger-rate-limit-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'holiday-spend-rate-limit-'));
     process.chdir(tempDir);
     vi.resetModules();
 

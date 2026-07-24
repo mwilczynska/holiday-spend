@@ -20,7 +20,7 @@ function hashRawToken(rawToken: string) {
 
 describe.sequential('auth token helpers', () => {
   beforeAll(async () => {
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wanderledger-auth-tokens-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'holiday-spend-auth-tokens-'));
     process.chdir(tempDir);
     vi.resetModules();
 

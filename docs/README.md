@@ -1,6 +1,6 @@
 # Docs
 
-This folder holds the non-code documentation for Wanderledger.
+This folder holds the non-code documentation for Holiday Spend.
 
 ## Layout
 

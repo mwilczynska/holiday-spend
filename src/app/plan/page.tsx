@@ -31,7 +31,7 @@ import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/coun
 import { SavedPlansList, type SavedPlanSummary } from '@/components/itinerary/SavedPlansList';
 import { SavePlanDialog } from '@/components/itinerary/SavePlanDialog';
 
-const CITY_GENERATION_STORAGE_PREFIX = 'wanderledger.city-generation';
+const CITY_GENERATION_STORAGE_PREFIX = 'holiday-spend.city-generation';
 type ProviderOption = CityGenerationProvider;
 
 interface Leg {
@@ -731,7 +731,7 @@ export default function PlanPage() {
   const handleExportCurrentPlan = async () => {
     try {
       const snapshot = await fetchCurrentSnapshot();
-      downloadSnapshot(snapshot, `wanderledger-plan-${new Date().toISOString().slice(0, 10)}`);
+      downloadSnapshot(snapshot, `holiday-spend-plan-${new Date().toISOString().slice(0, 10)}`);
       setSnapshotError(null);
       setSnapshotStatus('Exported current plan.');
     } catch (err) {

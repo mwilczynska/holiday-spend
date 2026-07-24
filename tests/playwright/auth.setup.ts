@@ -13,7 +13,7 @@ setup('authenticate dev user', async ({ page }) => {
   await page.getByPlaceholder('Development PIN').fill(appPin);
   await page.getByRole('button', { name: 'Enter dev mode' }).click();
   await expect(page).toHaveURL('/', { timeout: 15000 });
-  await expect(page.getByRole('heading', { name: 'Wanderledger' }).first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Holiday Spend' }).first()).toBeVisible();
 
   await page.context().storageState({ path: authFile });
 });

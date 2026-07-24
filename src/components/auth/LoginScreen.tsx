@@ -106,7 +106,7 @@ export function LoginScreen({
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Wanderledger</CardTitle>
+          <CardTitle className="text-2xl">Holiday Spend</CardTitle>
           <p className="text-sm text-muted-foreground">Sign in to access your trip data</p>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -118,14 +118,14 @@ export function LoginScreen({
 
           {linkRequired === 'google' ? (
             <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm text-foreground">
-              This email already has a Wanderledger account created with Google. Sign in with Google
+              This email already has a Holiday Spend account created with Google. Sign in with Google
               first, then link email and password from your account settings.
             </div>
           ) : null}
 
           {linkRequired === 'password' ? (
             <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm text-foreground">
-              This email already has a Wanderledger account created with email and password. Sign in
+              This email already has a Holiday Spend account created with email and password. Sign in
               with email and password first, then link Google from your account settings.
             </div>
           ) : null}

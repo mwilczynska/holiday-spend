@@ -1,4 +1,4 @@
-# Handoff to Codex - Wanderledger Country Dataset Workstream
+# Handoff to Codex - Holiday Spend Country Dataset Workstream
 
 This workstream is now complete through Phase 6. The branch is in merge-ready shape.
 

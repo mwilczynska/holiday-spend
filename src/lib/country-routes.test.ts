@@ -35,7 +35,7 @@ async function postJson(
 
 describe.sequential('country metadata routes', () => {
   beforeAll(async () => {
-    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wanderledger-country-routes-'));
+    tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'holiday-spend-country-routes-'));
     process.chdir(tempDir);
     vi.resetModules();
 

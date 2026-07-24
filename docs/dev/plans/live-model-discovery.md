@@ -193,7 +193,7 @@ After shipping that work, we investigated whether Anthropic and Gemini expose an
 
 ### Research Question
 
-Can Wanderledger fetch a fresh list of latest Anthropic and Gemini models **without** requiring a live provider API key?
+Can Holiday Spend fetch a fresh list of latest Anthropic and Gemini models **without** requiring a live provider API key?
 
 ### Findings
 

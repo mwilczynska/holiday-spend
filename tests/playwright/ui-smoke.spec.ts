@@ -10,7 +10,7 @@ async function captureFullPage(page: Page, testInfo: TestInfo, filename: string)
 test.describe('app UI smoke', () => {
   test('dashboard renders', async ({ page }, testInfo) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Wanderledger' }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Holiday Spend' }).first()).toBeVisible();
     await captureFullPage(page, testInfo, 'dashboard.png');
   });
 
@@ -34,7 +34,7 @@ test.describe('app UI smoke', () => {
 
   test('dashboard expanded charts open when available', async ({ page }, testInfo) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Wanderledger' }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Holiday Spend' }).first()).toBeVisible();
 
     const expandButtons = page.getByRole('button', { name: 'Expand' });
     const firstExpandButtonVisible = await expandButtons.first().isVisible({ timeout: 15_000 }).catch(() => false);

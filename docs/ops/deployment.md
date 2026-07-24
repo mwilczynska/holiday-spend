@@ -1,6 +1,6 @@
 # Deployment
 
-This document covers the recommended VPS deployment path for Wanderledger.
+This document covers the recommended VPS deployment path for Holiday Spend.
 
 It is written to fit the same server pattern already documented in your `travel-blog` project:
 
@@ -28,7 +28,7 @@ This keeps the app simple and avoids shipping self-signed certificates inside th
 
 `travel-blog` is a split frontend/backend app, so its deployment uses multiple application services.
 
-Wanderledger should be simpler:
+Holiday Spend should be simpler:
 
 - one Next.js app container
 - SQLite persisted on disk
@@ -69,8 +69,8 @@ Create `.env.local` from `.env.example` and set at least:
 
 ```env
 NEXTAUTH_SECRET=replace-with-a-long-random-secret
-# NEXTAUTH_URL=https://wanderledger.example.com
-APP_URL=https://wanderledger.example.com
+# NEXTAUTH_URL=https://holiday-spend.example.com
+APP_URL=https://holiday-spend.example.com
 DATABASE_URL=file:./data/travel.db
 ```
 
@@ -80,7 +80,7 @@ For production auth, set your auth secrets and providers explicitly:
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
 RESEND_API_KEY=...
-MAIL_FROM=Wanderledger <no-reply@your-domain>
+MAIL_FROM=Holiday Spend <no-reply@your-domain>
 ```
 
 `APP_URL` should match the public origin used in verification and reset emails.
@@ -114,7 +114,7 @@ cp .env.example .env.local
 mkdir -p data
 docker compose build
 docker compose run --rm seed
-docker compose up -d wanderledger
+docker compose up -d holiday-spend
 ```
 
 The app will listen on `127.0.0.1:3000`.
@@ -126,7 +126,7 @@ For a normal code update:
 ```bash
 git pull
 docker compose build
-docker compose up -d wanderledger
+docker compose up -d holiday-spend
 ```
 
 If the seed dataset or DB bootstrap expectations change and you explicitly want to reseed a fresh database, do that on purpose. Do not casually reseed an in-use production DB.
@@ -139,8 +139,8 @@ Useful commands:
 
 ```bash
 docker compose ps
-docker compose logs -f wanderledger
-docker inspect --format='{{json .State.Health}}' $(docker compose ps -q wanderledger)
+docker compose logs -f holiday-spend
+docker inspect --format='{{json .State.Health}}' $(docker compose ps -q holiday-spend)
 ```
 
 ## Reverse Proxy
@@ -164,7 +164,7 @@ Caddy will obtain and renew certificates automatically.
 
 Use host-level nginx, not the old self-signed repo-managed container setup.
 
-If your VPS is already running host-level nginx for other projects, this is probably the most natural fit for Wanderledger too.
+If your VPS is already running host-level nginx for other projects, this is probably the most natural fit for Holiday Spend too.
 
 Minimal site config shape:
 
@@ -197,12 +197,12 @@ For native-auth rate limiting and auditability, only trust `X-Forwarded-For` fro
 When you are eventually ready to deploy, the intended shape is:
 
 1. keep your existing VPS hardening model from `travel-blog`
-2. run Wanderledger with Docker Compose from its repo directory
-3. keep Wanderledger bound to `127.0.0.1:3000`
+2. run Holiday Spend with Docker Compose from its repo directory
+3. keep Holiday Spend bound to `127.0.0.1:3000`
 4. point your existing reverse proxy to that local port
 5. terminate real TLS at the reverse proxy, not inside this repo
 
-That keeps Wanderledger operationally consistent with your existing server without forcing the app into a more complex container topology than it needs.
+That keeps Holiday Spend operationally consistent with your existing server without forcing the app into a more complex container topology than it needs.
 
 ## Database Notes
 
@@ -242,7 +242,7 @@ Run:
 
 ```bash
 docker compose run --rm seed
-docker compose up -d wanderledger
+docker compose up -d holiday-spend
 ```
 
 ## The container is up but the site is unreachable externally
@@ -268,8 +268,8 @@ Check:
 ## Useful Commands
 
 ```bash
-docker compose logs -f wanderledger
-docker compose restart wanderledger
-docker compose up -d --build wanderledger
+docker compose logs -f holiday-spend
+docker compose restart holiday-spend
+docker compose up -d --build holiday-spend
 docker compose run --rm seed
 ```

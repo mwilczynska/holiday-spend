@@ -17,7 +17,7 @@ import {
 } from '@/lib/city-generation-config';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 
-const STORAGE_PREFIX = 'wanderledger.city-generation';
+const STORAGE_PREFIX = 'holiday-spend.city-generation';
 
 type ProviderOption = CityGenerationProvider;
 
