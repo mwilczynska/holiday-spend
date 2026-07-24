@@ -17,6 +17,7 @@ the cell from model memory.
 versioned city batch manifest
         -> bounded LLM research call
         -> public web search and page inspection
+        -> deterministic property panel for accommodation
         -> structured observations with URLs
         -> local schema validation
         -> reviewer/quality-control queue
@@ -27,7 +28,7 @@ versioned city batch manifest
 
 The LLM is a research agent, not the numeric model. For this private project it may inspect a public
 Numbeo city page one city at a time with attribution, or locate an official attraction page, public
-accommodation listing, menu, or tourism publication and extract a displayed
+property booking page, menu, or tourism publication and extract a displayed
 value. It may not output an uncited price or calculate final city tiers. Local deterministic code performs
 currency normalization, aggregation, basket construction, and later imputation.
 
@@ -36,9 +37,9 @@ currency normalization, aggregation, basket construction, and later imputation.
 | Category | First choice | Secondary evidence | Explicit fallback |
 |---|---|---|---|
 | Food and drinks | Public Numbeo city pages reached through LLM web search | Public menus, official venue pages, other publicly accessible city-price pages | Missing; later impute from the validated model |
-| Hostel accommodation | Public Hostelworld/hostel listing pages where accessible | Direct hostel websites and public search snippets with matching dates | Missing |
-| Hotel accommodation | Public hotel/booking pages or search results for standardized dates | Direct property sites and official tourism listings | Missing |
-| Activities | Official attraction/tour operator price pages | Public Viator/GetYourGuide-style product pages where accessible | Missing |
+| Hostel accommodation | Dated public rates on official hostel sites for a deterministic panel drawn from an official accommodation register | Another eligible panel property selected by the frozen reserve order | Missing |
+| Hotel accommodation | Dated public rates on official property sites for a deterministic registered-property panel stratified by star class | Another eligible panel property selected by the frozen reserve order | Missing |
+| Activities | Official attraction or tour-operator price pages | Official destination/tourism pages that publish a matching current price | Missing |
 | FX | Public ECB reference-rate pages/data | Another official central-bank source | Freeze the last verified public rate and flag age |
 | Seasonality | Eurostat, national tourism bodies, public destination calendars | Observed cross-date accommodation dispersion | `unknown`, never assumed away |
 
@@ -47,6 +48,30 @@ personal-use-with-attribution terms, through reviewed page-by-page lookups rathe
 crawler, or paid API. Other calls must also stay within normal browsing behaviour, respect access
 controls, and avoid attempts to bypass blocks, logins, CAPTCHAs, or explicit restrictions. The stored
 record contains facts needed for audit, not copied page content.
+
+### Accommodation source-access decision
+
+Booking.com and Hostelworld are excluded as price-extraction sources for the version 3 accommodation
+panel. Booking.com's current consumer terms expressly cover unauthorized use by automated means or an
+automated assistant, including assistants that interact with a browser. Hostelworld permits personal,
+non-commercial booking use but restricts robots, scrapers, automated means, and manual processes used for
+purposes outside its terms. The reviewed terms are retained as the decision evidence:
+
+- https://www.booking.com/content/terms.en-gb.html
+- https://www.hostelworld.com/legal/hostel-terms-and-conditions/
+
+This is a source-design decision, not a claim that publicly displayed prices cannot be factual evidence.
+The project does not need those channels: each city's sampling frame will instead be built from an
+official tourism or accommodation register, frozen with a deterministic selection seed and reserve
+order, and the price will be read from the selected property's own public booking page. Property pages
+are still checked individually for access conditions. Login-only, member-only, mobile-only, blocked, or
+tax-ambiguous rates are missing observations, not invitations to work around the restriction.
+
+The panel design follows the same properties through low, shoulder, and high seasons where availability
+allows. This reduces property-mix confounding. Each city/measure/season targets 12 properties, requires at
+least five accepted quotes, and requires at least 60% panel overlap across seasons. The city point
+estimate gives each season equal weight by taking the median of the three seasonal medians, so a season
+with more visible inventory cannot dominate the annualized reference rate.
 
 ## Adaptive Throughput And Checkpointing
 
@@ -104,7 +129,7 @@ For each city, seek:
 
 - inexpensive restaurant meal, mid-range meal for two, cappuccino, and domestic draft beer
 - cocktail and wine only where directly observable
-- dated dorm-bed, hostel-private, and hotel-room observations where public pages are accessible
+- dated dorm-bed, hostel-private, and hotel-room observations from selected official property pages
 - official paid-attraction, half-day activity, and full-day/premium activity prices
 - explicit missing records for items that cannot be supported
 
@@ -116,6 +141,8 @@ For each city, seek:
 - observation schema validation passes with no duplicate ids
 - at least four direct food/drink primitives are found for each dense city
 - accommodation and activity success rates are reported separately
+- accepted direct accommodation measures cover all three frozen seasons with at least five eligible
+  panel-property quotes per season; partial panels remain visible but cannot materialize a tier
 - calls used, observations returned, observations accepted, and minutes of review per city are measured
 
 If the free path has poor coverage for a category, the methodology will report that category as sparse

@@ -80,6 +80,22 @@ export interface CityCostSourceChannelSummary {
   medianAud: number;
 }
 
+export const REQUIRED_ACCOMMODATION_SEASONS = ['low', 'shoulder', 'high'] as const;
+export const MIN_ACCOMMODATION_OBSERVATIONS_PER_SEASON = 5;
+export const MIN_ACCOMMODATION_CROSS_SEASON_PANEL_OVERLAP_PCT = 60;
+
+export interface CityCostSeasonSummary {
+  season: (typeof REQUIRED_ACCOMMODATION_SEASONS)[number];
+  observationCount: number;
+  sourceCount: number;
+  sourceNames: string[];
+  observationIds: string[];
+  medianLocal: number;
+  q25Local: number;
+  q75Local: number;
+  medianAud: number;
+}
+
 export interface AggregatedCityCostMeasure {
   city: string;
   country: string;
@@ -97,6 +113,19 @@ export interface AggregatedCityCostMeasure {
     maxAbsoluteDifferencePct: number | null;
     flagged: boolean;
   };
+  seasonCoverage: {
+    requiredSeasons: (typeof REQUIRED_ACCOMMODATION_SEASONS)[number][];
+    availableSeasons: (typeof REQUIRED_ACCOMMODATION_SEASONS)[number][];
+    minimumObservationsPerSeason: number | null;
+    sampleSizeComplete: boolean;
+    crossSeasonPanelOverlapPct: number | null;
+    minimumCrossSeasonPanelOverlapPct: number | null;
+    panelOverlapComplete: boolean;
+    complete: boolean;
+    weightingMethod: 'equal_weight_median_of_season_medians' | 'not_applicable';
+    summaries: CityCostSeasonSummary[];
+  };
+  eligibleForMaterialization: boolean;
   localCurrency: string;
   audPerLocalUnit: number;
   medianLocal: number;
@@ -152,7 +181,7 @@ export interface MaterializedCityCostTier {
 
 export interface MaterializedCityCostV3 {
   schemaVersion: 'city-cost-materialization-v1';
-  calculatorVersion: 'city-cost-v3-alpha-2';
+  calculatorVersion: 'city-cost-v3-alpha-3';
   city: string;
   country: string;
   region: CityCostObservation['region'];
@@ -167,7 +196,7 @@ export interface MaterializedCityCostV3 {
 
 export interface CityCostV3Dataset {
   schemaVersion: 'city-cost-materialized-dataset-v1';
-  calculatorVersion: 'city-cost-v3-alpha-2';
+  calculatorVersion: 'city-cost-v3-alpha-3';
   dataCutoff: string;
   fxSnapshotId: string;
   fxAsOfDate: string;
@@ -188,6 +217,8 @@ export interface CityCostV3Dataset {
   qualitySummary: {
     crossChannelMeasureCount: number;
     flaggedSourceDisagreementCount: number;
+    completeSeasonAccommodationMeasureCount: number;
+    incompleteSeasonAccommodationMeasureCount: number;
   };
   aggregates: AggregatedCityCostMeasure[];
   cities: MaterializedCityCostV3[];
@@ -262,10 +293,10 @@ const sourceChannelPriority: Record<
   Record<CityCostObservation['sourceType'], number>
 > = {
   accommodation: {
-    marketplace_api: 0,
+    official_website: 0,
     official_api: 1,
-    official_website: 2,
-    published_dataset: 3,
+    published_dataset: 2,
+    marketplace_api: 3,
     crowdsourced_api: 4,
     manual_menu_sample: 5,
     derived_model: 6,
@@ -361,9 +392,19 @@ export function aggregateCityCostMeasures(
         channelGroup.push(item);
         sourceChannelGroups.set(channel, channelGroup);
       }
+      const isDirectAccommodation =
+        first.category === 'accommodation' && first.valueStatus === 'direct';
       const sourceChannelSummaries = Array.from(sourceChannelGroups.entries())
         .map(([sourceChannel, channelGroup]) => {
-          const channelValues = channelGroup.map((item) => item.priceLocal);
+          const rawChannelValues = channelGroup.map((item) => item.priceLocal);
+          const channelValues = isDirectAccommodation
+            ? REQUIRED_ACCOMMODATION_SEASONS.flatMap((season) => {
+                const seasonValues = channelGroup
+                  .filter((item) => item.observation.season === season)
+                  .map((item) => item.priceLocal);
+                return seasonValues.length ? [quantile(seasonValues, 0.5)] : [];
+              })
+            : rawChannelValues;
           const channelMedianLocal = round(quantile(channelValues, 0.5));
           return {
             sourceChannel,
@@ -388,11 +429,78 @@ export function aggregateCityCostMeasures(
             a.sourceChannel.localeCompare(b.sourceChannel)
         );
       const values = selected.map((item) => item.priceLocal);
-      const medianLocal = round(quantile(values, 0.5));
-      const q25Local = round(quantile(values, 0.25));
-      const q75Local = round(quantile(values, 0.75));
-      const minLocal = round(Math.min(...values));
-      const maxLocal = round(Math.max(...values));
+      const requiresSeasonCoverage = isDirectAccommodation;
+      const seasonSummaries = requiresSeasonCoverage
+        ? REQUIRED_ACCOMMODATION_SEASONS.flatMap((season) => {
+            const seasonGroup = selected.filter((item) => item.observation.season === season);
+            if (!seasonGroup.length) return [];
+            const seasonValues = seasonGroup.map((item) => item.priceLocal);
+            const seasonMedianLocal = round(quantile(seasonValues, 0.5));
+            return [
+              {
+                season,
+                observationCount: seasonGroup.length,
+                sourceCount: new Set(seasonGroup.map((item) => item.observation.sourceName)).size,
+                sourceNames: Array.from(
+                  new Set(seasonGroup.map((item) => item.observation.sourceName))
+                ).sort(),
+                observationIds: seasonGroup
+                  .map((item) => item.observation.observationId)
+                  .sort(),
+                medianLocal: seasonMedianLocal,
+                q25Local: round(quantile(seasonValues, 0.25)),
+                q75Local: round(quantile(seasonValues, 0.75)),
+                medianAud: round(seasonMedianLocal * audPerLocalUnit),
+              } satisfies CityCostSeasonSummary,
+            ];
+          })
+        : [];
+      const seasonSampleSizeComplete =
+        !requiresSeasonCoverage ||
+        REQUIRED_ACCOMMODATION_SEASONS.every(
+          (season) =>
+            seasonSummaries.find((summary) => summary.season === season)?.observationCount !==
+              undefined &&
+            seasonSummaries.find((summary) => summary.season === season)!.observationCount >=
+              MIN_ACCOMMODATION_OBSERVATIONS_PER_SEASON
+        );
+      const seasonPropertySets = requiresSeasonCoverage
+        ? REQUIRED_ACCOMMODATION_SEASONS.map(
+            (season) =>
+              new Set(
+                selected
+                  .filter((item) => item.observation.season === season)
+                  .map((item) => item.observation.sourceRecordId)
+                  .filter((recordId): recordId is string => recordId !== null)
+              )
+          )
+        : [];
+      const largestSeasonPanelSize = seasonPropertySets.length
+        ? Math.max(...seasonPropertySets.map((set) => set.size))
+        : 0;
+      const commonPropertyCount = seasonPropertySets.length
+        ? Array.from(seasonPropertySets[0]).filter((recordId) =>
+            seasonPropertySets.slice(1).every((set) => set.has(recordId))
+          ).length
+        : 0;
+      const crossSeasonPanelOverlapPct =
+        requiresSeasonCoverage && largestSeasonPanelSize > 0
+          ? round((commonPropertyCount / largestSeasonPanelSize) * 100, 2)
+          : null;
+      const panelOverlapComplete =
+        !requiresSeasonCoverage ||
+        (seasonPropertySets.every((set) => set.size > 0) &&
+          crossSeasonPanelOverlapPct !== null &&
+          crossSeasonPanelOverlapPct >= MIN_ACCOMMODATION_CROSS_SEASON_PANEL_OVERLAP_PCT);
+      const seasonCoverageComplete = seasonSampleSizeComplete && panelOverlapComplete;
+      const aggregationValues = requiresSeasonCoverage
+        ? seasonSummaries.map((summary) => summary.medianLocal)
+        : values;
+      const medianLocal = round(quantile(aggregationValues, 0.5));
+      const q25Local = round(quantile(aggregationValues, 0.25));
+      const q75Local = round(quantile(aggregationValues, 0.75));
+      const minLocal = round(Math.min(...aggregationValues));
+      const maxLocal = round(Math.max(...aggregationValues));
       const channelDifferences = sourceChannelSummaries.map((summary) =>
         medianLocal === 0
           ? summary.medianLocal === 0
@@ -423,6 +531,25 @@ export function aggregateCityCostMeasures(
             (maxAbsoluteDifferencePct === null ||
               maxAbsoluteDifferencePct > SOURCE_CHANNEL_DISAGREEMENT_THRESHOLD_PCT),
         },
+        seasonCoverage: {
+          requiredSeasons: requiresSeasonCoverage ? [...REQUIRED_ACCOMMODATION_SEASONS] : [],
+          availableSeasons: seasonSummaries.map((summary) => summary.season),
+          minimumObservationsPerSeason: requiresSeasonCoverage
+            ? MIN_ACCOMMODATION_OBSERVATIONS_PER_SEASON
+            : null,
+          sampleSizeComplete: seasonSampleSizeComplete,
+          crossSeasonPanelOverlapPct,
+          minimumCrossSeasonPanelOverlapPct: requiresSeasonCoverage
+            ? MIN_ACCOMMODATION_CROSS_SEASON_PANEL_OVERLAP_PCT
+            : null,
+          panelOverlapComplete,
+          complete: seasonCoverageComplete,
+          weightingMethod: requiresSeasonCoverage
+            ? 'equal_weight_median_of_season_medians'
+            : 'not_applicable',
+          summaries: seasonSummaries,
+        },
+        eligibleForMaterialization: seasonCoverageComplete,
         localCurrency,
         audPerLocalUnit,
         medianLocal,
@@ -485,7 +612,11 @@ export function materializeCityCostV3(
     throw new Error(`Inconsistent region, local currency, or FX snapshot for ${city}, ${country}`);
   }
 
-  const measures = new Map(cityAggregates.map((aggregate) => [aggregate.measure, aggregate]));
+  const measures = new Map(
+    cityAggregates
+      .filter((aggregate) => aggregate.eligibleForMaterialization)
+      .map((aggregate) => [aggregate.measure, aggregate])
+  );
   const tiersAud: Record<CityCostV3TierName, MaterializedCityCostTier> = {
     accom_shared_hostel_dorm: tier(
       measures,
@@ -594,7 +725,7 @@ export function materializeCityCostV3(
 
   return {
     schemaVersion: 'city-cost-materialization-v1',
-    calculatorVersion: 'city-cost-v3-alpha-2',
+    calculatorVersion: 'city-cost-v3-alpha-3',
     city,
     country,
     region: cityAggregates[0].region,
@@ -648,7 +779,7 @@ export function buildCityCostV3Dataset(
 
   return {
     schemaVersion: 'city-cost-materialized-dataset-v1',
-    calculatorVersion: 'city-cost-v3-alpha-2',
+    calculatorVersion: 'city-cost-v3-alpha-3',
     dataCutoff,
     fxSnapshotId: snapshot.snapshotId,
     fxAsOfDate: snapshot.asOfDate,
@@ -672,6 +803,14 @@ export function buildCityCostV3Dataset(
       ).length,
       flaggedSourceDisagreementCount: aggregates.filter(
         (aggregate) => aggregate.sourceDisagreement.flagged
+      ).length,
+      completeSeasonAccommodationMeasureCount: aggregates.filter(
+        (aggregate) =>
+          aggregate.seasonCoverage.requiredSeasons.length > 0 && aggregate.seasonCoverage.complete
+      ).length,
+      incompleteSeasonAccommodationMeasureCount: aggregates.filter(
+        (aggregate) =>
+          aggregate.seasonCoverage.requiredSeasons.length > 0 && !aggregate.seasonCoverage.complete
       ).length,
     },
     aggregates,

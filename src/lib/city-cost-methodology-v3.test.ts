@@ -5,9 +5,11 @@ import {
   aggregateCityCostMeasures,
   buildCityCostV3Dataset,
   cityCostFxSnapshotSchema,
+  MIN_ACCOMMODATION_OBSERVATIONS_PER_SEASON,
   materializeCityCostV3,
   normalizeCityCostObservation,
   quantile,
+  REQUIRED_ACCOMMODATION_SEASONS,
   type CityCostFxSnapshot,
 } from './city-cost-methodology-v3';
 
@@ -93,10 +95,10 @@ function observation(
     taxStatus: 'included',
     sourceName: 'Fixture source',
     sourceType: 'official_website',
-    sourceAccess: 'public_official',
+    sourceAccess: category === 'accommodation' ? 'public_property' : 'public_official',
     sourceTermsUrl: null,
     sourceUrl: 'https://example.com/source',
-    sourceRecordId: null,
+    sourceRecordId: category === 'accommodation' ? `property-${priceAmount}` : null,
     retrievedAt: '2026-07-24T00:00:00.000Z',
     priceValidFrom: '2026-07-01',
     priceValidTo: null,
@@ -106,12 +108,16 @@ function observation(
     resultCount: null,
     checkIn: category === 'accommodation' ? '2026-10-01' : null,
     checkOut: category === 'accommodation' ? '2026-10-08' : null,
+    quoteCaptureDate: category === 'accommodation' ? '2026-07-03' : null,
     bookingLeadDays: category === 'accommodation' ? 90 : null,
     stayNights: category === 'accommodation' ? 7 : null,
     season: category === 'accommodation' ? 'shoulder' : 'not_applicable',
-    searchRadiusKm: null,
+    searchRadiusKm: category === 'accommodation' ? 5 : null,
     minimumReviewScore: null,
     bookerCountry: category === 'accommodation' ? 'AU' : null,
+    samplingFrameId: category === 'accommodation' ? 'test-panel-v1' : null,
+    rateAccess: category === 'accommodation' ? 'public' : 'not_applicable',
+    rateCondition: category === 'accommodation' ? 'flexible' : 'not_applicable',
     extractionMethod: 'browser_research',
     extractorVersion: 'test',
     parentObservationIds: [],
@@ -124,6 +130,30 @@ function observation(
     notes: '',
     ...overrides,
   };
+}
+
+const accommodationWindows = {
+  low: { checkIn: '2026-10-22', checkOut: '2026-10-29', quoteCaptureDate: '2026-07-24' },
+  shoulder: { checkIn: '2027-02-08', checkOut: '2027-02-15', quoteCaptureDate: '2026-11-10' },
+  high: { checkIn: '2027-07-12', checkOut: '2027-07-19', quoteCaptureDate: '2027-04-13' },
+} as const;
+
+function accommodationPanel(
+  measure: CityCostObservation['measure'],
+  priceAmount: number,
+  seasons: readonly (keyof typeof accommodationWindows)[] = REQUIRED_ACCOMMODATION_SEASONS
+) {
+  return seasons.flatMap((season) =>
+    Array.from({ length: MIN_ACCOMMODATION_OBSERVATIONS_PER_SEASON }, (_, index) =>
+      observation(measure, priceAmount, {
+        observationId: `obs-${measure}-${season}-${index}`,
+        sourceName: `Property ${index + 1}`,
+        sourceRecordId: `property-${index + 1}`,
+        season,
+        ...accommodationWindows[season],
+      })
+    )
+  );
 }
 
 describe('city cost methodology v3', () => {
@@ -241,6 +271,68 @@ describe('city cost methodology v3', () => {
     });
   });
 
+  it('keeps partial accommodation panels visible but ineligible for materialization', () => {
+    const aggregates = aggregateCityCostMeasures(
+      accommodationPanel('hotel_3star_room_2p', 120, ['shoulder']),
+      fxSnapshot,
+      resolveAud
+    );
+    const result = materializeCityCostV3('Test City', 'Testland', aggregates);
+
+    expect(aggregates[0].seasonCoverage).toMatchObject({
+      requiredSeasons: ['low', 'shoulder', 'high'],
+      availableSeasons: ['shoulder'],
+      complete: false,
+      minimumObservationsPerSeason: 5,
+    });
+    expect(aggregates[0].eligibleForMaterialization).toBe(false);
+    expect(result.tiersAud.accom_3_star.amountAud).toBeNull();
+    expect(result.missingMeasures).toContain('hotel_3star_room_2p');
+  });
+
+  it('equal-weights the three seasonal medians for a complete accommodation panel', () => {
+    const observations = REQUIRED_ACCOMMODATION_SEASONS.flatMap((season) =>
+      accommodationPanel(
+        'hotel_3star_room_2p',
+        season === 'low' ? 80 : season === 'shoulder' ? 120 : 240,
+        [season]
+      )
+    );
+    const aggregates = aggregateCityCostMeasures(observations, fxSnapshot, resolveAud);
+    const result = materializeCityCostV3('Test City', 'Testland', aggregates);
+
+    expect(aggregates[0].seasonCoverage.complete).toBe(true);
+    expect(aggregates[0].seasonCoverage.summaries.map((summary) => summary.medianLocal)).toEqual([
+      80,
+      120,
+      240,
+    ]);
+    expect(aggregates[0].medianLocal).toBe(120);
+    expect(aggregates[0].seasonCoverage.crossSeasonPanelOverlapPct).toBe(100);
+    expect(result.tiersAud.accom_3_star.amountAud).toBe(120);
+  });
+
+  it('requires cross-season property overlap instead of accepting three unrelated samples', () => {
+    const observations = REQUIRED_ACCOMMODATION_SEASONS.flatMap((season) =>
+      accommodationPanel('hotel_3star_room_2p', 120, [season]).map((item, index) => ({
+        ...item,
+        sourceRecordId: `${season}-property-${index + 1}`,
+      }))
+    );
+    const aggregates = aggregateCityCostMeasures(observations, fxSnapshot, resolveAud);
+    const result = materializeCityCostV3('Test City', 'Testland', aggregates);
+
+    expect(aggregates[0].seasonCoverage).toMatchObject({
+      sampleSizeComplete: true,
+      crossSeasonPanelOverlapPct: 0,
+      minimumCrossSeasonPanelOverlapPct: 60,
+      panelOverlapComplete: false,
+      complete: false,
+    });
+    expect(aggregates[0].eligibleForMaterialization).toBe(false);
+    expect(result.tiersAud.accom_3_star.amountAud).toBeNull();
+  });
+
   it('materializes every tier from complete primitive observations', () => {
     const values: Record<CityCostObservation['measure'], number> = {
       hostel_dorm_bed_1p: 20,
@@ -262,8 +354,10 @@ describe('city cost methodology v3', () => {
       full_day_premium_activity_adult_1: 150,
     };
     const aggregates = aggregateCityCostMeasures(
-      Object.entries(values).map(([measure, value]) =>
-        observation(measure as CityCostObservation['measure'], value)
+      Object.entries(values).flatMap(([measure, value]) =>
+        measure.startsWith('hostel') || measure.startsWith('hotel')
+          ? accommodationPanel(measure as CityCostObservation['measure'], value)
+          : [observation(measure as CityCostObservation['measure'], value)]
       ),
       fxSnapshot,
       resolveAud
@@ -302,7 +396,7 @@ describe('city cost methodology v3', () => {
     );
 
     expect(dataset.observationSummary).toMatchObject({ input: 2, accepted: 2, direct: 2 });
-    expect(dataset.calculatorVersion).toBe('city-cost-v3-alpha-2');
+    expect(dataset.calculatorVersion).toBe('city-cost-v3-alpha-3');
     expect(dataset.cityCount).toBe(1);
     expect(dataset.completeCityCount).toBe(0);
     expect(dataset.requiredTierCells).toBe(19);
@@ -310,6 +404,8 @@ describe('city cost methodology v3', () => {
     expect(dataset.qualitySummary).toEqual({
       crossChannelMeasureCount: 0,
       flaggedSourceDisagreementCount: 0,
+      completeSeasonAccommodationMeasureCount: 0,
+      incompleteSeasonAccommodationMeasureCount: 0,
     });
     expect(dataset.tierCoverage.drinks_light).toBe(1);
     expect(dataset.cities[0].wideRow).toBeNull();

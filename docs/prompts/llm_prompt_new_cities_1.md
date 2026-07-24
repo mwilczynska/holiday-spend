@@ -14,14 +14,14 @@ Research or estimate these 10 anchor prices for the city (all in USD):
 | midrange_meal_2p | Mid-range restaurant, 3 courses, 2 people, no drinks | Numbeo "Meal for 2 People, Mid-range Restaurant" |
 | cocktail | Standard cocktail at a bar/restaurant | If unavailable: beer × 2.5 |
 | wine_glass | Glass of wine at restaurant | If unavailable: beer × 1.5 |
-| hostel_dorm_1p | 1 dorm bed, well-reviewed hostel, per night | Hostelworld median for city |
-| hostel_private_2p | 1 private hostel room, 2 people, per night | Hostelworld or Booking.com |
-| hotel_1star_2p | Very basic hotel/guesthouse, 1 room, 2 people | Booking.com lowest-tier |
-| hotel_3star_2p | Comfortable 3-star hotel, 1 room, 2 people | Booking.com 3-star median |
+| hostel_dorm_1p | 1 dorm bed, registered hostel, per night | Median of dated public rates on official hostel sites |
+| hostel_private_2p | 1 private hostel room, 2 people, per night | Median of dated public rates on official hostel sites |
+| hotel_1star_2p | Very basic registered hotel/guesthouse, 1 room, 2 people | Median of dated public rates on official property sites |
+| hotel_3star_2p | Registered 3-star hotel, 1 room, 2 people | Median of dated public rates on official property sites |
 
 ### Source priority:
 1. Numbeo.com (city-level data, most recent)
-2. Hostelworld.com / Booking.com (accommodation)
+2. Official accommodation registers to define the property sample, then each property's public official booking page. Do not extract prices from Booking.com or Hostelworld.
 3. If no direct data: find the nearest city WITH data in Numbeo. Apply Numbeo's relative cost-of-living index to scale. Note this in your confidence field.
 4. For very small/remote places: use the nearest regional hub and adjust down 10-30% based on remoteness.
 
@@ -106,4 +106,4 @@ Return valid JSON:
 - If a city has no hostel scene (e.g. small rural town), set hostel_dorm_1p = hotel_1star_2p / 2 and hostel_private_2p = hotel_1star_2p.
 - Round all AUD values to nearest whole number.
 - "Street food" in expensive Western cities means cheap takeaway/fast food.
-- Confidence: "high" = Numbeo has city data + Hostelworld listings. "medium" = estimated from nearby city. "low" = very sparse data, rough estimate only.
+- Confidence: "high" = Numbeo has city data plus multiple directly inspected official-property rates. "medium" = estimated from nearby city. "low" = very sparse data, rough estimate only.

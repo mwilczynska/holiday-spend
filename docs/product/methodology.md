@@ -119,10 +119,12 @@ interquartile ranges; and only then converts the aggregated result to AUD using 
 Direct observations take precedence over derived values, which take precedence over imputed values, so
 an imputation cannot dilute available direct evidence.
 
-Calculator `city-cost-v3-alpha-2` also treats source types as measurement channels rather than silently
+Calculator `city-cost-v3-alpha-3` also treats source types as measurement channels rather than silently
 pooling them. Food and drink use the retained city-level published dataset channel as the primary point
 estimate, with menu samples retained as triangulation evidence. Activities prefer the attraction or
-operator's official site, and accommodation prefers representative marketplace evidence when available.
+operator's official site. Accommodation uses direct property sites selected from a deterministic panel
+drawn from official accommodation registers. Booking.com and Hostelworld are excluded as extraction
+sources after review of their current restrictions on automated/assistant use.
 Every available channel keeps its own observation count, source names, median, interquartile range, and
 lineage. A secondary-channel median more than 25% from the selected primary median receives a provisional
 disagreement flag for review; this threshold is an operational diagnostic to validate during the pilot,
@@ -154,22 +156,29 @@ current artifact lives at `data/reference/materialized/city_costs_v3_alpha.json`
 
 ### Reproducible Estimands
 
-Every estimate must specify what is being estimated. Accommodation, for example, will use fixed
-reference weeks, booking lead time, stay length, occupancy, search radius, review threshold, room type,
-and all mandatory taxes. Food and drink retain explicit item and serving definitions. Activities use a
+Every estimate must specify what is being estimated. Accommodation uses fixed reference weeks, an exact
+90-day booking lead, seven nights, two adults in one room, a 5 km central search radius, room type/star
+class, public non-member rates, cancellation basis, and all mandatory taxes. Food and drink retain
+explicit item and serving definitions. Activities use a
 fixed taxonomy of free attractions, paid attractions, half-day group experiences, and premium/full-day
 experiences instead of an inexpensive-meal proxy.
 
-For accommodation, multiple low-, shoulder-, and high-season searches will produce a median nightly
-total plus interquartile range and listing count. For food and drink, city-level source medians will be
+For accommodation, a deterministic panel targets 12 registered properties per measure and season, with
+a hard minimum of five accepted quotes per season and at least 60% property overlap across seasons. The
+same properties are followed through low, shoulder, and high reference weeks where possible, reducing
+property-mix confounding. Each seasonal search produces a median nightly total, interquartile range, and
+property count; the annualized point estimate is the equally weighted median of the three seasonal
+medians. A partial panel remains visible in the research artifact but cannot materialize an accommodation
+tier. For food and drink, city-level source medians will be
 triangulated with independent menu observations in the validation sample. For activities, current
-official attraction prices and structured tour-marketplace results will replace global multipliers.
+official attraction and tour-operator prices will replace global multipliers.
 
 ### Robust Aggregation And Missing Data
 
 Prices remain in local currency until city-level aggregation is complete. Comparable observations are
-aggregated with robust medians or documented trimmed estimators; marketplace minimums are not treated as
-representative prices. Source disagreement, excluded outliers, ranges, counts, retrieval dates, and URLs
+aggregated with robust medians or documented trimmed estimators; a property's headline minimum is not
+treated as a payable representative rate. Source disagreement, excluded outliers, ranges, counts,
+retrieval dates, and URLs
 remain in the observation table rather than disappearing into a final average.
 
 Missing values will be predicted on the log-price scale, where proportional errors are symmetric. The
@@ -218,8 +227,15 @@ below 12%, a 90th-percentile basket error at or below 25%, Spearman rank correla
 and empirical 80% interval coverage between 75% and 85%. These are acceptance criteria for future work,
 not results the current dataset claims to have achieved.
 
-The detailed execution plan and source feasibility assessment are recorded in
+The detailed execution plan, source feasibility assessment, and frozen first nine-city accommodation
+schedule are recorded in
 `docs/dev/plans/observed-first-methodology.md`.
+
+## Version 2.1 Baseline (Retained For Reproducibility)
+
+The sections below document the currently active April 2026 dataset and its original generation prompt.
+They are retained so the baseline can be reproduced and audited; their Booking.com/Hostelworld sourcing,
+global multipliers, and nearest-city adjustments are not the version 3 collection policy.
 
 ## 1. Anchor Prices
 

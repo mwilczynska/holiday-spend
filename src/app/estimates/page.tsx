@@ -13,21 +13,21 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
     title: 'Methodology Purpose And Scope',
     summary: 'A transparent planning model with explicit estimands, transformations, and uncertainty.',
     paragraphs: [
-      'This page specifies how city-level travel budgets are constructed. It is intended to be reproducible: a reviewer should be able to start with the named anchor inputs, apply the documented formulas, and recover the stored value within rounding tolerance.',
+      'This page separates the active April 2026 baseline from the observed-first version 3 redesign. The baseline remains documented for reproducibility; the redesign is the methodology being collected and validated before it can replace planner values.',
       'The model optimises for comparability across cities rather than false precision for any individual hotel, restaurant, or activity. A budget is therefore an estimate of a representative daily basket, not a quote, forecast, or statistical confidence interval.',
     ],
     bullets: [
       'Unit of analysis: a city-level daily or nightly cost basket',
       'Base population: two travellers; group-size scaling is applied at runtime',
-      'Currency: source anchors are researched in USD and app-facing city values are stored in AUD',
+      'Currency: version 3 preserves source and city-local currency through aggregation, then converts to AUD with a frozen attributed FX snapshot',
       'Included categories: accommodation, food, drinks, and activities',
       'Excluded from this city model: local transport estimates, intercity transport, and user-specific fixed costs',
       'Current dataset: 121 cities across 58 countries, with the active city row used as the planner source',
     ],
   },
   {
-    title: 'Data Lineage And Calculation Flow',
-    summary: 'Each planner number passes through an identifiable research, transformation, and application layer.',
+    title: 'Version 2 Baseline Calculation Flow',
+    summary: 'The current planner values remain reproducible while version 3 is validated.',
     codeBlocks: [
       [
         'researched source prices (USD)',
@@ -80,14 +80,32 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
     paragraphs: [
       'The LLM changes role under the redesigned methodology. It may locate, extract, classify, and explain evidence, but it is not allowed to invent an uncited price, calculate the published tiers, or judge the accuracy of its own output. Deterministic server code performs normalization, currency conversion, aggregation, basket construction, invariant checks, and uncertainty calculations.',
       'Each observation will retain its original currency, unit, source URL, retrieval date, price-valid window, direct/derived/imputed status, sample size or listing count, reported range, tax treatment, and extraction version. The wide city CSV becomes a materialized output of a versioned observation table rather than the only retained evidence.',
-      'Implementation has started. The first validated checkpoint contains 15 direct observations across Lisbon, Prague, and Hanoi: 12 standardized Numbeo food/drink prices and three official paid-attraction prices. They remain in EUR, CZK, and VND with source URLs, page dates, ranges, attribution/access basis, and extraction metadata. This is collection progress, not a new accuracy result.',
+      'Implementation has started. The validated store now contains 42 direct observations across nine cities: 32 standardized Numbeo food/drink prices, one Pu Luong official-menu price, eight official paid-attraction prices, and one official-operator half-day activity. Values remain in source currency with URLs, page dates, ranges, attribution/access basis, and extraction metadata. This is collection progress, not a new accuracy result.',
     ],
     bullets: [
       'Collection cost: paid data APIs are excluded; free web-enabled LLM calls have no project-imposed daily cap and continue until a provider enforces its actual free-tier limit',
-      'Accommodation: standardized dates, 90-day lead time, seven-night stay, two adults, city radius, review threshold, mandatory charges, and seasonal sampling',
+      'Accommodation: exact 90-day lead, seven nights, two adults, 5 km radius, deterministic registered-property panels, mandatory charges, and three pre-registered seasons',
       'Food and drinks: explicit item definitions, fresh city medians, source counts/ranges, and independent menu checks in the validation sample',
       'Activities: observed attraction and tour prices using a fixed product taxonomy instead of an inexpensive-meal proxy',
       'Missing values: validated log-price model with whole-city cross-validation, not an arbitrary nearest-city discount',
+    ],
+  },
+  {
+    title: 'Accommodation Panel And Seasonal Design',
+    summary: 'The largest budget category is measured as a repeated property panel, not a marketplace minimum.',
+    paragraphs: [
+      'Each city uses a deterministic panel drawn from an official accommodation register and stratified into hostel dorm, hostel private room, and one- through four-star hotel measures. The target is 12 properties per measure and season, with a hard minimum of five accepted public quotes and at least 60% property overlap across seasons. Following the same properties reduces property-mix confounding when seasonal prices change.',
+      'Low, shoulder, and high reference weeks are fixed before observing prices. Every stay is seven nights for two adults in one room and every quote is captured exactly 90 days before check-in. A capture-day check against official event calendars and public holidays is mandatory; a failed week moves forward seven days under a documented replacement rule.',
+      'The annualized point estimate is the median of the three seasonal medians, so unequal visible inventory cannot give one season extra weight. Partial panels and provisional climate-based season labels remain visible as quality flags, but a direct accommodation tier cannot materialize until all three seasons meet the minimum sample size.',
+      'Booking.com and Hostelworld are excluded as extraction sources after review of their restrictions on automated or assistant use. Prices instead come from each selected property\'s own public booking page. Login, member, mobile-only, blocked, or tax-ambiguous rates are recorded as missing.',
+    ],
+    bullets: [
+      'Panel target/minimum: 12 / 5 properties per measure-season',
+      'Cross-season property overlap: at least 60%',
+      'Stay definition: 2 adults, 1 room, 7 nights, exact 90-day lead',
+      'Rate definition: lowest eligible public standard rate, cancellation basis recorded, all mandatory taxes and fees included',
+      'Aggregation: equal-weight median of low-, shoulder-, and high-season medians',
+      'Current schedule: 27 reference windows across the first 9 observed cities',
     ],
   },
   {
@@ -125,7 +143,7 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
     ],
   },
   {
-    title: 'Anchor Inputs',
+    title: 'Version 2 Baseline Anchor Inputs',
     summary: 'Each city is represented by 10 named USD anchor slots, sourced directly where coverage exists and explicitly approximated when it does not.',
     paragraphs: [
       'The anchor set is intentionally small and operationally defined. This makes the model easier to audit and keeps the same observable concepts across countries with very different food, accommodation, and nightlife markets.',
@@ -146,8 +164,8 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
     ],
   },
   {
-    title: 'Source Priority And Fallbacks',
-    summary: 'The methodology uses a fixed lookup hierarchy before estimating anything.',
+    title: 'Version 2 Baseline Source Priority And Fallbacks',
+    summary: 'These rules reproduce the active baseline; they are not the version 3 collection policy.',
     bullets: [
       'Numbeo first for food and drink anchors',
       'Hostelworld and Booking.com for accommodation anchors',
@@ -163,8 +181,8 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
     ],
   },
   {
-    title: 'Research Procedure And Evidence',
-    summary: 'The source hierarchy describes how evidence is collected and how a representative value is chosen.',
+    title: 'Version 2 Baseline Research Procedure',
+    summary: 'The historical source hierarchy is retained so the active dataset can be audited.',
     paragraphs: [
       'For each anchor, the research record should identify the city, source, reference date or pricing window, currency, unit, occupancy, and whether the value is direct or inferred. These fields matter because a number without its unit or observation context is not reproducible.',
       'Source priority is a consistency rule, not a claim that one website is universally authoritative. Numbeo provides standardised city-level food and drink labels; Hostelworld and Booking.com provide accommodation observations; secondary travel-budget sources are used as external plausibility checks rather than silently mixed into the calculation.',
@@ -195,7 +213,7 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
     ],
   },
   {
-    title: 'Accommodation Formulas',
+    title: 'Version 2 Baseline Accommodation Formulas',
     summary: 'Accommodation outputs are deterministic transformations of the accommodation anchors.',
     codeBlocks: [
       `accom_shared_hostel_dorm  = hostel_dorm_1p x 2

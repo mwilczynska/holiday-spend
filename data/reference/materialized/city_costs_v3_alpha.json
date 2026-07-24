@@ -1,6 +1,6 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
-  "calculatorVersion": "city-cost-v3-alpha-2",
+  "calculatorVersion": "city-cost-v3-alpha-3",
   "dataCutoff": "2026-07-24T06:08:23.051Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
@@ -40,7 +40,9 @@
   },
   "qualitySummary": {
     "crossChannelMeasureCount": 0,
-    "flaggedSourceDisagreementCount": 0
+    "flaggedSourceDisagreementCount": 0,
+    "completeSeasonAccommodationMeasureCount": 0,
+    "incompleteSeasonAccommodationMeasureCount": 0
   },
   "aggregates": [
     {
@@ -78,6 +80,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 96.3,
@@ -142,6 +157,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 100,
@@ -206,6 +234,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 110,
@@ -270,6 +311,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 1200,
@@ -334,6 +388,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 500,
@@ -398,6 +465,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 2.7,
@@ -462,6 +542,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 4,
@@ -526,6 +619,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 16,
@@ -590,6 +696,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 60,
@@ -654,6 +773,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 26,
@@ -718,6 +850,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 45.1,
@@ -782,6 +927,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 60,
@@ -846,6 +1004,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 150,
@@ -910,6 +1081,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 800,
@@ -974,6 +1158,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 140,
@@ -1038,6 +1235,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 43684.21,
@@ -1102,6 +1312,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 35000,
@@ -1166,6 +1389,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 60000,
@@ -1230,6 +1466,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 471807.95,
@@ -1294,6 +1543,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 40000,
@@ -1358,6 +1620,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 48277.36,
@@ -1422,6 +1697,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 28157.89,
@@ -1486,6 +1774,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 52500,
@@ -1550,6 +1851,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 550000,
@@ -1614,6 +1928,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 100000,
@@ -1678,6 +2005,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 2.58,
@@ -1742,6 +2082,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 3,
@@ -1806,6 +2159,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 15,
@@ -1870,6 +2236,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 55,
@@ -1934,6 +2313,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 27,
@@ -1998,6 +2390,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 80.29,
@@ -2062,6 +2467,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 65,
@@ -2126,6 +2544,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 230,
@@ -2190,6 +2621,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 1100,
@@ -2254,6 +2698,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 450,
@@ -2318,6 +2775,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 494613.356241,
@@ -2382,6 +2852,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 85000,
@@ -2446,6 +2929,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "USD",
       "audPerLocalUnit": 1.4298737727910238,
       "medianLocal": 5.94,
@@ -2510,6 +3006,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "USD",
       "audPerLocalUnit": 1.4298737727910238,
       "medianLocal": 8,
@@ -2574,6 +3083,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "USD",
       "audPerLocalUnit": 1.4298737727910238,
       "medianLocal": 25,
@@ -2638,6 +3160,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "USD",
       "audPerLocalUnit": 1.4298737727910238,
       "medianLocal": 127.5,
@@ -2702,6 +3237,19 @@
         "maxAbsoluteDifferencePct": 0,
         "flagged": false
       },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
       "localCurrency": "USD",
       "audPerLocalUnit": 1.4298737727910238,
       "medianLocal": 47.95,
@@ -2735,7 +3283,7 @@
   "cities": [
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Bangkok",
       "country": "Thailand",
       "region": "SEA",
@@ -2953,7 +3501,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Barcelona",
       "country": "Spain",
       "region": "Europe",
@@ -3171,7 +3719,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Copenhagen",
       "country": "Denmark",
       "region": "Europe",
@@ -3389,7 +3937,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Da Nang",
       "country": "Vietnam",
       "region": "SEA",
@@ -3607,7 +4155,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Hanoi",
       "country": "Vietnam",
       "region": "SEA",
@@ -3825,7 +4373,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Lisbon",
       "country": "Portugal",
       "region": "Europe",
@@ -4043,7 +4591,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Prague",
       "country": "Czech Republic",
       "region": "Europe",
@@ -4261,7 +4809,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Pu Luong",
       "country": "Vietnam",
       "region": "SEA",
@@ -4495,7 +5043,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-2",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "San Francisco",
       "country": "United States",
       "region": "North America",

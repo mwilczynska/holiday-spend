@@ -52,6 +52,33 @@ function directFoodObservation() {
   };
 }
 
+function directAccommodationObservation() {
+  return {
+    ...directFoodObservation(),
+    observationId: 'test-city-hotel-3star-low-property-1',
+    category: 'accommodation' as const,
+    measure: 'hotel_3star_room_2p' as const,
+    priceAmount: 700,
+    unit: 'per_room_night' as const,
+    travellers: 2,
+    sourceName: 'Property 1 official website',
+    sourceType: 'official_website' as const,
+    sourceAccess: 'public_property' as const,
+    sourceRecordId: 'official-register-property-1',
+    checkIn: '2026-10-22',
+    checkOut: '2026-10-29',
+    quoteCaptureDate: '2026-07-24',
+    bookingLeadDays: 90,
+    stayNights: 7,
+    season: 'low' as const,
+    searchRadiusKm: 5,
+    bookerCountry: 'AU',
+    samplingFrameId: 'test-city-panel-v1',
+    rateAccess: 'public' as const,
+    rateCondition: 'flexible' as const,
+  };
+}
+
 describe('city cost observation schema', () => {
   it('accepts a sourced direct observation', () => {
     expect(cityCostObservationSchema.parse(directFoodObservation()).observationId).toBe('hanoi-coffee-001');
@@ -86,6 +113,36 @@ describe('city cost observation schema', () => {
       extractionMethod: 'statistical_model',
     });
     expect(result.success).toBe(false);
+  });
+
+  it('accepts a direct property quote with fixed dates and public-rate provenance', () => {
+    expect(cityCostObservationSchema.parse(directAccommodationObservation())).toMatchObject({
+      bookingLeadDays: 90,
+      stayNights: 7,
+      season: 'low',
+      rateAccess: 'public',
+    });
+  });
+
+  it('rejects inconsistent stay or booking-lead arithmetic', () => {
+    expect(
+      cityCostObservationSchema.safeParse({
+        ...directAccommodationObservation(),
+        bookingLeadDays: 89,
+        stayNights: 6,
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects accepted accommodation quotes with unknown taxes or restricted rates', () => {
+    expect(
+      cityCostObservationSchema.safeParse({
+        ...directAccommodationObservation(),
+        taxStatus: 'unknown',
+        rateAccess: 'member',
+        rateCondition: 'unknown',
+      }).success
+    ).toBe(false);
   });
 
   it('summarizes accepted direct coverage without counting rejected rows', () => {

@@ -117,10 +117,25 @@
     },
     {
       "batchId": "batch-zero-accommodation",
-      "status": "blocked_on_reference_window_design",
-      "plannedCalls": 0,
-      "cities": [],
-      "reason": "Define city-specific low, shoulder, and high-season reference weeks before collecting dated quotes"
+      "status": "pending",
+      "plannedCalls": 27,
+      "completedCalls": 0,
+      "acceptedObservations": 0,
+      "checkpoint": "reference_windows_scheduled",
+      "observationFiles": [],
+      "reportFile": null,
+      "cities": [
+        {"city": "Lisbon", "country": "Portugal", "region": "Europe", "categories": ["accommodation"], "reason": "baseline_bias_recheck_panel"},
+        {"city": "Prague", "country": "Czech Republic", "region": "Europe", "categories": ["accommodation"], "reason": "baseline_accuracy_recheck_panel"},
+        {"city": "Hanoi", "country": "Vietnam", "region": "SEA", "categories": ["accommodation"], "reason": "baseline_low_cost_panel"},
+        {"city": "Copenhagen", "country": "Denmark", "region": "Europe", "categories": ["accommodation"], "reason": "high_cost_stress_test_panel"},
+        {"city": "Bangkok", "country": "Thailand", "region": "SEA", "categories": ["accommodation"], "reason": "dense_lower_cost_panel"},
+        {"city": "Pu Luong", "country": "Vietnam", "region": "SEA", "categories": ["accommodation"], "reason": "sparse_market_panel"},
+        {"city": "Barcelona", "country": "Spain", "region": "Europe", "categories": ["accommodation"], "reason": "pilot_high_cost_europe_panel"},
+        {"city": "San Francisco", "country": "United States", "region": "North America", "categories": ["accommodation"], "reason": "event_sensitive_high_cost_panel"},
+        {"city": "Da Nang", "country": "Vietnam", "region": "SEA", "categories": ["accommodation"], "reason": "seasonal_beach_market_panel"}
+      ],
+      "reason": "Twenty-seven exact-90-day city-season quote calls are scheduled in accommodation_reference_windows_2026_2027.json; each capture requires a final event review and a frozen official-register property panel."
     }
   ]
 }

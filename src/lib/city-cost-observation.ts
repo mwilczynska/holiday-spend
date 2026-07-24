@@ -3,6 +3,13 @@ import { z } from 'zod';
 const isoDate = /^\d{4}-\d{2}-\d{2}$/;
 const currencyCode = /^[A-Z]{3}$/;
 
+function daysBetween(start: string, end: string) {
+  return (
+    new Date(`${end}T00:00:00.000Z`).getTime() -
+    new Date(`${start}T00:00:00.000Z`).getTime()
+  ) / 86_400_000;
+}
+
 export const CITY_COST_MEASURES = [
   'hostel_dorm_bed_1p',
   'hostel_private_room_2p',
@@ -101,7 +108,14 @@ export const cityCostObservationSchema = z
       'derived_model',
     ]),
     sourceAccess: z
-      .enum(['personal_use_with_attribution', 'open_license', 'public_official', 'user_supplied', 'unknown'])
+      .enum([
+        'personal_use_with_attribution',
+        'open_license',
+        'public_official',
+        'public_property',
+        'user_supplied',
+        'unknown',
+      ])
       .default('unknown'),
     sourceTermsUrl: z.string().url().nullable().default(null),
     sourceUrl: z.string().url().nullable(),
@@ -115,12 +129,16 @@ export const cityCostObservationSchema = z
     resultCount: z.number().int().positive().nullable().default(null),
     checkIn: z.string().regex(isoDate).nullable().default(null),
     checkOut: z.string().regex(isoDate).nullable().default(null),
+    quoteCaptureDate: z.string().regex(isoDate).nullable().default(null),
     bookingLeadDays: z.number().int().nonnegative().nullable().default(null),
     stayNights: z.number().int().positive().nullable().default(null),
     season: z.enum(['low', 'shoulder', 'high', 'not_applicable', 'unknown']),
     searchRadiusKm: z.number().positive().nullable().default(null),
     minimumReviewScore: z.number().min(0).max(10).nullable().default(null),
     bookerCountry: z.string().regex(/^[A-Z]{2}$/).nullable().default(null),
+    samplingFrameId: z.string().min(1).nullable().default(null),
+    rateAccess: z.enum(['public', 'member', 'mobile', 'login', 'unknown', 'not_applicable']).default('not_applicable'),
+    rateCondition: z.enum(['flexible', 'non_refundable', 'mixed', 'unknown', 'not_applicable']).default('not_applicable'),
     extractionMethod: z.enum(['api', 'browser_research', 'manual_entry', 'deterministic_derivation', 'statistical_model']),
     extractorVersion: z.string().min(1),
     parentObservationIds: z.array(z.string().min(1)).default([]),
@@ -197,9 +215,108 @@ export const cityCostObservationSchema = z
 
     const isAccommodation = observation.category === 'accommodation';
     if (isAccommodation && observation.valueStatus === 'direct') {
-      for (const field of ['checkIn', 'checkOut', 'bookingLeadDays', 'stayNights', 'bookerCountry'] as const) {
+      for (const field of [
+        'checkIn',
+        'checkOut',
+        'quoteCaptureDate',
+        'bookingLeadDays',
+        'stayNights',
+        'searchRadiusKm',
+        'bookerCountry',
+        'samplingFrameId',
+        'sourceRecordId',
+      ] as const) {
         if (observation[field] === null) {
           context.addIssue({ code: 'custom', path: [field], message: `Direct accommodation observations require ${field}` });
+        }
+      }
+
+      if (!['low', 'shoulder', 'high'].includes(observation.season)) {
+        context.addIssue({
+          code: 'custom',
+          path: ['season'],
+          message: 'Direct accommodation observations require a low, shoulder, or high season stratum',
+        });
+      }
+
+      if (observation.checkIn && observation.checkOut && observation.stayNights !== null) {
+        const actualStayNights = daysBetween(observation.checkIn, observation.checkOut);
+        if (actualStayNights !== observation.stayNights) {
+          context.addIssue({
+            code: 'custom',
+            path: ['stayNights'],
+            message: `stayNights ${observation.stayNights} does not match the ${actualStayNights}-night date interval`,
+          });
+        }
+      }
+
+      if (observation.quoteCaptureDate && observation.checkIn && observation.bookingLeadDays !== null) {
+        const actualLeadDays = daysBetween(observation.quoteCaptureDate, observation.checkIn);
+        if (actualLeadDays !== observation.bookingLeadDays) {
+          context.addIssue({
+            code: 'custom',
+            path: ['bookingLeadDays'],
+            message: `bookingLeadDays ${observation.bookingLeadDays} does not match the ${actualLeadDays}-day date interval`,
+          });
+        }
+      }
+
+      if (observation.reviewerStatus === 'accepted') {
+        if (observation.bookingLeadDays !== 90) {
+          context.addIssue({
+            code: 'custom',
+            path: ['bookingLeadDays'],
+            message: 'Accepted direct accommodation quotes require the frozen 90-day booking lead',
+          });
+        }
+        if (observation.stayNights !== 7) {
+          context.addIssue({
+            code: 'custom',
+            path: ['stayNights'],
+            message: 'Accepted direct accommodation quotes require a seven-night stay',
+          });
+        }
+        if (observation.bookerCountry !== 'AU') {
+          context.addIssue({
+            code: 'custom',
+            path: ['bookerCountry'],
+            message: 'Accepted direct accommodation quotes require the frozen AU booker context',
+          });
+        }
+        if (observation.searchRadiusKm !== 5) {
+          context.addIssue({
+            code: 'custom',
+            path: ['searchRadiusKm'],
+            message: 'Accepted direct accommodation quotes require the frozen 5 km search radius',
+          });
+        }
+        if (observation.taxStatus !== 'included') {
+          context.addIssue({
+            code: 'custom',
+            path: ['taxStatus'],
+            message: 'Accepted accommodation quotes must include all mandatory taxes and fees',
+          });
+        }
+        if (observation.rateAccess !== 'public') {
+          context.addIssue({
+            code: 'custom',
+            path: ['rateAccess'],
+            message: 'Accepted accommodation quotes must use a public, non-member rate',
+          });
+        }
+        if (!['flexible', 'non_refundable'].includes(observation.rateCondition)) {
+          context.addIssue({
+            code: 'custom',
+            path: ['rateCondition'],
+            message: 'Accepted accommodation quotes must record a flexible or non-refundable rate condition',
+          });
+        }
+        if (observation.sourceType !== 'official_website') {
+          context.addIssue({
+            code: 'custom',
+            path: ['sourceType'],
+            message: 'Accepted accommodation quotes must come from the selected property\'s official website',
+          });
         }
       }
     }

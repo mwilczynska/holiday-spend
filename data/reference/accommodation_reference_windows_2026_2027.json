@@ -1,0 +1,800 @@
+{
+  "schemaVersion": "accommodation-reference-windows-v1",
+  "scheduleId": "accommodation-reference-2026-2027-v1",
+  "lockedAt": "2026-07-24T07:00:00.000Z",
+  "referencePeriodStart": "2026-10-22",
+  "referencePeriodEnd": "2027-07-19",
+  "protocol": {
+    "adults": 2,
+    "rooms": 1,
+    "stayNights": 7,
+    "targetBookingLeadDays": 90,
+    "bookingLeadToleranceDays": 0,
+    "bookerCountry": "AU",
+    "searchRadiusKm": 5,
+    "samplingFrame": "official_accommodation_register",
+    "priceSource": "direct_property_website",
+    "targetPanelPropertiesPerMeasure": 12,
+    "minimumPanelPropertiesPerMeasureSeason": 5,
+    "minimumCrossSeasonPanelOverlapPct": 60,
+    "memberRatePolicy": "exclude_member_mobile_and_login_only_rates",
+    "roomRatePolicy": "lowest_public_standard_rate_record_cancellation_basis",
+    "mandatoryChargePolicy": "include_all_mandatory_taxes_and_nonconditional_fees",
+    "mealPolicy": "exclude_optional_meals_and_addons",
+    "seasonWeighting": "equal_weight_median_of_three_season_medians",
+    "eventExclusionRule": "On the quote-capture date, check the destination's official event calendar plus national and local public holidays. Reject citywide events, festivals, conventions, and public-holiday periods likely to distort ordinary accommodation demand.",
+    "replacementRule": "If a final event review fails, move the seven-night stay forward by exactly seven days within the same season stratum, recompute the capture date at a 90-day lead, record the replaced window, and run the event review again."
+  },
+  "cities": [
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "searchCentre": "Lisbon city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://www.visitlisboa.com/en/events"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "moderate",
+          "sourceName": "Visit Portugal",
+          "sourceUrls": [
+            "https://www.visitportugal.com/en/content/winter-sun"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "The official tourism guide explicitly describes winter as low season; the February week avoids Christmas and New Year demand."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Visit Portugal",
+          "sourceUrls": [
+            "https://www.visitportugal.com/en/weather"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Late October represents the warm-autumn transition outside the summer peak; demand classification will be checked against observed seasonal medians."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Visit Portugal",
+          "sourceUrls": [
+            "https://www.visitportugal.com/en/weather"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "July is in Portugal's hot, dry summer travel period; the selected week avoids Lisbon's June city festival."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2027-02-08",
+          "checkOut": "2027-02-15",
+          "quoteCaptureDate": "2026-11-10",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-11-10",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "quoteCaptureDate": "2027-04-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-04-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        }
+      ]
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "searchCentre": "Prague city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://prague.eu/en/akce-kategorie/events/"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "high",
+          "sourceName": "CzechTourism",
+          "sourceUrls": [
+            "https://www.visitczechia.com/en-us/campaigns/sustainable-travel/off-season-travel"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "CzechTourism defines November to March as off season; early February avoids the Christmas-market period."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "high",
+          "sourceName": "CzechTourism",
+          "sourceUrls": [
+            "https://www.visitczechia.com/en-us/campaigns/sustainable-travel/off-season-travel"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "CzechTourism recommends spring and autumn outside the June-August high season; the week starts after the 28 October public holiday."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "high",
+          "sourceName": "CzechTourism",
+          "sourceUrls": [
+            "https://www.visitczechia.com/en-us/campaigns/sustainable-travel/off-season-travel"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "CzechTourism identifies June through August as the high tourist season."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2027-02-08",
+          "checkOut": "2027-02-15",
+          "quoteCaptureDate": "2026-11-10",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-11-10",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-11-05",
+          "quoteCaptureDate": "2026-07-31",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-31",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "quoteCaptureDate": "2027-04-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-04-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        }
+      ]
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "searchCentre": "Hanoi city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://vietnam.travel/things-to-do/festivals-and-events"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/places-to-go/northern-vietnam/ha-noi",
+            "https://vietnam.travel/things-to-do/weather-and-climate-vietnam"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "July lies in Hanoi's hot, humid June-August rainy period; the low-demand label remains a testable design hypothesis."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/things-to-do/weather-and-climate-vietnam"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Late February represents the cool-to-spring transition and is placed after the 2027 Lunar New Year period."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "moderate",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/places-to-go/northern-vietnam/ha-noi",
+            "https://vietnam.travel/things-to-do/weather-and-climate-vietnam"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Vietnam Tourism describes September and October as excellent months, with cooler temperatures and clearer skies."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "quoteCaptureDate": "2027-04-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-04-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2027-02-22",
+          "checkOut": "2027-03-01",
+          "quoteCaptureDate": "2026-11-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-11-24",
+            "checkedAt": null,
+            "notes": "Reconfirm the Lunar New Year and local festival calendar before capture."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
+          }
+        }
+      ]
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "region": "Europe",
+      "searchCentre": "Copenhagen city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://www.visitcopenhagen.com/copenhagen/activities/events"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "moderate",
+          "sourceName": "VisitCopenhagen",
+          "sourceUrls": [
+            "https://www.visitcopenhagen.com/copenhagen/this-is-copenhagen/seasons/copenhagen-weather-a-guide-to-all-seasons"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "February is the coldest part of Copenhagen's winter and sits outside the Christmas and New Year period."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "moderate",
+          "sourceName": "VisitCopenhagen",
+          "sourceUrls": [
+            "https://www.visitcopenhagen.com/copenhagen/this-is-copenhagen/seasons/you-cant-miss-autumn-in-copenhagen"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "The official guide describes autumn as less crowded; late October represents the shoulder transition."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "moderate",
+          "sourceName": "VisitCopenhagen",
+          "sourceUrls": [
+            "https://www.visitcopenhagen.com/copenhagen/this-is-copenhagen/seasons/copenhagen-weather-a-guide-to-all-seasons"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "July represents the long-day summer visitor period described by the official destination guide."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2027-02-08",
+          "checkOut": "2027-02-15",
+          "quoteCaptureDate": "2026-11-10",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-11-10",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "quoteCaptureDate": "2027-04-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-04-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        }
+      ]
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "region": "SEA",
+      "searchCentre": "Bangkok city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://www.tourismthailand.org/Events-and-Festivals"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "moderate",
+          "sourceName": "Tourism Authority of Thailand",
+          "sourceUrls": [
+            "https://www.tourismthailand.org/Plan-Your-Trip/Weather",
+            "https://www.tourismthailand.org/Articles/rainy-season-5-place-en"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "The Tourism Authority describes the rainy period as tourism low season; late October samples the end of that broad stratum."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Tourism Authority of Thailand",
+          "sourceUrls": [
+            "https://www.tourismthailand.org/Plan-Your-Trip/Weather"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Late April represents the hot-season shoulder and begins after the Songkran holiday period."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "moderate",
+          "sourceName": "Tourism Authority of Thailand",
+          "sourceUrls": [
+            "https://www.tourismthailand.org/Plan-Your-Trip/Weather"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "January represents the dry, cooler winter travel period; the week avoids Western New Year and Lunar New Year."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2027-04-19",
+          "checkOut": "2027-04-26",
+          "quoteCaptureDate": "2027-01-19",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-01-19",
+            "checkedAt": null,
+            "notes": "Reconfirm Songkran spillover and national holidays before capture."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2027-01-11",
+          "checkOut": "2027-01-18",
+          "quoteCaptureDate": "2026-10-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-10-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        }
+      ]
+    },
+    {
+      "city": "Pu Luong",
+      "country": "Vietnam",
+      "region": "SEA",
+      "searchCentre": "Pu Luong Nature Reserve accommodation cluster; retain properties within 5 km of the canonical locality centre",
+      "eventCalendarUrls": [
+        "https://vietnam.travel/things-to-do/festivals-and-events"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/things-to-do/pu-luong-thanh-hoa-hidden-paradise"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "July sits outside the two rice-viewing periods highlighted by the official guide; the low label is intentionally provisional for this sparse market."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/things-to-do/pu-luong-thanh-hoa-hidden-paradise"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Late February is outside the named late-May/early-June and September/October highlights and follows Lunar New Year."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "moderate",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/things-to-do/pu-luong-thanh-hoa-hidden-paradise"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "The official guide highlights September and October harvest scenery as a best time to visit."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "quoteCaptureDate": "2027-04-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-04-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2027-02-22",
+          "checkOut": "2027-03-01",
+          "quoteCaptureDate": "2026-11-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-11-24",
+            "checkedAt": null,
+            "notes": "Reconfirm the Lunar New Year and local festival calendar before capture."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
+          }
+        }
+      ]
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "searchCentre": "Barcelona city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://www.barcelonaturisme.com/wv3/en/agenda/page/1.html"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Turisme de Barcelona",
+          "sourceUrls": [
+            "https://www.barcelonaturisme.com/wv3/en/agenda/17831/10-reasons-to-get-away-to-barcelona-this-winter.html"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Early February represents winter outside the Christmas and Mobile World Congress periods; the low-demand label will be checked against prices."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "Turisme de Barcelona",
+          "sourceUrls": [
+            "https://www.barcelonaturisme.com/wv3/el/page/5603/barcelona-en-cualquier-epoca-del-ano.html"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Late October represents the autumn transition outside the summer festival and beach peak."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "moderate",
+          "sourceName": "Turisme de Barcelona",
+          "sourceUrls": [
+            "https://www.barcelonaturisme.com/wv3/sv/page/5125/climat-a-barcelone.html"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "July is in the hot summer visitor period and the chosen week avoids the named August neighbourhood festivals."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2027-02-08",
+          "checkOut": "2027-02-15",
+          "quoteCaptureDate": "2026-11-10",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-11-10",
+            "checkedAt": null,
+            "notes": "Reconfirm the Mobile World Congress dates before capture."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "quoteCaptureDate": "2027-04-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-04-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        }
+      ]
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "searchCentre": "San Francisco city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://www.sftravel.com/events"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "San Francisco Travel",
+          "sourceUrls": [
+            "https://www.sftravel.com/info/what-to-pack"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Late January samples winter after New Year and before the February public-holiday weekend; convention effects still require explicit event screening."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_climate_guidance",
+          "confidence": "provisional",
+          "sourceName": "San Francisco Travel",
+          "sourceUrls": [
+            "https://www.sftravel.com/info/what-to-pack"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "May provides a temperate shoulder stratum between winter and the warmest August-October period."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "provisional",
+          "sourceName": "San Francisco Travel",
+          "sourceUrls": [
+            "https://www.sftravel.com/info/what-to-pack",
+            "https://www.sftravel.com/media/press-release/san-francisco-travel-reports-visitor-spending-milestone-projects-continued"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "October is within the official guide's warmest August-October period, but conventions materially move room demand, so the final event review is a hard acceptance gate."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2027-01-25",
+          "checkOut": "2027-02-01",
+          "quoteCaptureDate": "2026-10-27",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-10-27",
+            "checkedAt": null,
+            "notes": "Final Moscone, sports, festival, and public-holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2027-05-10",
+          "checkOut": "2027-05-17",
+          "quoteCaptureDate": "2027-02-09",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-02-09",
+            "checkedAt": null,
+            "notes": "Final Moscone, sports, festival, and public-holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "A same-day Moscone, major sports, festival, and public-holiday review is required before any quote is accepted."
+          }
+        }
+      ]
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "searchCentre": "Da Nang city centre as defined by the official accommodation register; retain properties within 5 km",
+      "eventCalendarUrls": [
+        "https://danangfantasticity.com/en/events"
+      ],
+      "seasonEvidence": [
+        {
+          "season": "low",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "high",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/things-to-do/da-nang-travel-guides"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "The official guide describes mid-September to December as a quieter exceptional-value period after summer crowds."
+        },
+        {
+          "season": "shoulder",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "high",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/things-to-do/da-nang-travel-guides",
+            "https://www.vietnam.travel/places-to-go/central-vietnam/da-nang"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "Early March is within the official February-May sweet spot and the guide describes late December-March hotel pricing as balanced."
+        },
+        {
+          "season": "high",
+          "evidenceClass": "official_peak_offpeak_guidance",
+          "confidence": "high",
+          "sourceName": "Vietnam Tourism",
+          "sourceUrls": [
+            "https://vietnam.travel/things-to-do/da-nang-travel-guides"
+          ],
+          "accessedAt": "2026-07-24T07:00:00.000Z",
+          "rationale": "The official guide identifies April through mid-September as the vibrant peak season."
+        }
+      ],
+      "windows": [
+        {
+          "season": "low",
+          "checkIn": "2026-10-22",
+          "checkOut": "2026-10-29",
+          "quoteCaptureDate": "2026-07-24",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-07-24",
+            "checkedAt": null,
+            "notes": "Final official-calendar, typhoon disruption, and holiday review is required before this quote is accepted."
+          }
+        },
+        {
+          "season": "shoulder",
+          "checkIn": "2027-03-08",
+          "checkOut": "2027-03-15",
+          "quoteCaptureDate": "2026-12-08",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2026-12-08",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        },
+        {
+          "season": "high",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "quoteCaptureDate": "2027-04-13",
+          "status": "scheduled",
+          "eventReview": {
+            "status": "pending_final_check",
+            "dueDate": "2027-04-13",
+            "checkedAt": null,
+            "notes": "Final official-calendar and holiday review is deferred to quote capture."
+          }
+        }
+      ]
+    }
+  ]
+}

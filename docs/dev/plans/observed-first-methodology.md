@@ -111,16 +111,31 @@ Every published number must answer: “the expected cost of what, for whom, wher
 - Publicly available rate, all mandatory taxes and non-conditional charges included.
 - Standard desktop booker context and a recorded booker country.
 - Three fixed non-event reference weeks representing low, shoulder, and high season.
-- Fixed booking lead time, initially 90 days.
-- City-centre search area or a documented radius from the canonical city coordinates.
-- Tier-specific property type/star filter and minimum review threshold.
-- Report the median nightly total plus the 25th and 75th percentiles and listing count.
+- Fixed 90-day booking lead time. Quote capture is scheduled separately for each stay week; three
+  seasons cannot be measured at the same lead time on one research day.
+- City-centre search area with a documented 5 km radius.
+- A deterministic property panel drawn from an official accommodation register, stratified by hostel
+  room type or hotel star class. Proprietary review scores are not a primary inclusion criterion.
+- Target 12 panel properties per measure and season, with a hard minimum of five and at least 60% panel
+  overlap across seasons.
+- Report the median nightly total plus the 25th and 75th percentiles, property count, panel overlap, and
+  each season's retained distribution.
 - Dorm tier is per bed; private tiers are per room.
 
-The free-only collection path uses LLM web research against publicly accessible booking, hostel, and
-direct-property pages. Search dates and the displayed mandatory-charge treatment must be retained. If a
-payable total cannot be verified without a login, partner API, or access-control bypass, the observation
-is recorded as missing rather than replaced with a headline minimum.
+The free-only collection path uses LLM web research against each selected property's public official
+booking page. Booking.com and Hostelworld are not extraction sources because their reviewed current terms
+restrict automated/assistant extraction. Search dates and the displayed mandatory-charge treatment must
+be retained. If a payable total cannot be verified without a login, partner API, member/mobile rate, or
+access-control bypass, the observation is recorded as missing and the next property in the frozen reserve
+order is tried.
+
+The annualized accommodation point estimate is the median of the low-, shoulder-, and high-season
+medians, giving each season equal weight regardless of how much inventory a source exposes. A direct
+accommodation measure remains ineligible for tier materialization until all three strata contain at least
+five accepted property quotes. The season labels are pre-registered design strata, not conclusions drawn
+from the prices: provisional climate-based labels stay flagged and are upgraded from official monthly
+accommodation-demand data where available in the next schedule version, never relabelled after observing
+the current outcomes.
 
 ### Food
 
@@ -274,7 +289,8 @@ the same validation checks as the bulk dataset.
 ## Free-Only Source Feasibility
 
 Paid data APIs are out of scope. Collection uses free LLM calls with web access to inspect public Numbeo
-city pages one city at a time for this private project, public accommodation pages, official attractions,
+city pages one city at a time for this private project, official property pages selected through public
+accommodation registers, official attractions,
 public activity listings, and open official statistics. Each value must retain its inspected URL,
 retrieval timestamp, source-access basis, and attribution requirement. The process does not use a
 Numbeo scraper/crawler or paid API, respects ordinary access controls, and never bypasses a login, block,
@@ -304,6 +320,11 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
 - [x] Add explicit source-channel selection, retained channel summaries, and provisional disagreement flags instead of silently pooling unlike sources.
 - [x] Define a free-only LLM research protocol with adaptive throughput and no project-imposed call cap.
 - [ ] Confirm public-page usage and retention constraints before scaling each source.
+  - [x] Retain page-by-page Numbeo use with attribution for this private project.
+  - [x] Exclude Booking.com and Hostelworld as LLM extraction sources after reviewing their current terms.
+  - [x] Route accommodation through official registers plus direct property pages, subject to a per-page
+    access check.
+  - [ ] Complete the same access review for every secondary menu/activity source before scaling it.
 - [ ] Build the source-research runner with fixture-based parser tests.
 
 Checkpoint: batch zero and the first pilot wave currently provide 42 accepted direct observations across
@@ -312,6 +333,12 @@ source-attributed AUD FX snapshot, and materializes 42 of 171 possible
 city-tier cells. No city is complete and no partial wide row is published.
 The pipeline is therefore reproducible and fail-closed, but it is not yet a replacement for the active
 121-city dataset.
+
+The first accommodation schedule is now pre-registered for these nine cities in
+`data/reference/accommodation_reference_windows_2026_2027.json`: 27 seven-night windows, exactly 90 days
+between quote capture and check-in, one low/shoulder/high stratum per city, and a capture-day event-screen
+gate with a deterministic same-season replacement rule. Several destination labels currently use
+official climate/travel guidance and are explicitly provisional until upgraded with monthly demand data.
 
 ### 6C. Pilot and model selection
 

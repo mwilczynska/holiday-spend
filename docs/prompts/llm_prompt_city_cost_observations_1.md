@@ -20,9 +20,11 @@ One call covers one city and one category. Keep the search bounded to the reques
 
 1. Browse current publicly accessible pages. Do not use remembered prices.
 2. Prefer a public Numbeo city page for standardized food/drink items in this private project,
-   direct/official venue pages for attractions, and publicly accessible dated listing/property pages
-   for accommodation. Use normal page-by-page research with attribution; do not build or invoke a
-   scraper/crawler or the paid Numbeo API.
+   direct/official venue pages for attractions, and the selected property's own public booking page for
+   accommodation. Accommodation properties must come from the assigned versioned panel drawn from an
+   official accommodation register. Booking.com and Hostelworld are not extraction sources because their
+   current terms restrict automated/assistant extraction; they may not be used to fill a price. Use normal
+   page-by-page research with attribution; do not build or invoke a scraper/crawler or the paid Numbeo API.
 3. Every numeric observation requires the exact source URL and retrieval timestamp.
 4. Preserve the displayed currency, unit, tax/fee treatment, range, count, and price-valid dates where
    available. Do not convert to USD or AUD.
@@ -56,9 +58,19 @@ One call covers one city and one category. Keep the search bounded to the reques
 - `hotel_4star_room_2p`
 
 Accommodation observations require check-in, check-out, stay length, two-adult/one-room occupancy for
-private rooms, booker country, displayed mandatory-charge treatment, and property/listing count. A dorm
-observation is per bed. Do not compare a non-refundable member price with a flexible public price without
-recording the difference.
+private rooms, booker country, displayed mandatory-charge treatment, assigned sampling-frame id, and
+official-register property id. Return one observation per property quote, not a pre-aggregated city
+minimum or median. A dorm observation is per bed. Exclude login, member, and mobile-only prices. Record
+whether the lowest eligible public rate is flexible or non-refundable, and reject the quote if the final
+payable total including mandatory taxes and fees cannot be verified. The local calculator requires at
+least five eligible property quotes in each of low, shoulder, and high season before a direct
+accommodation measure can be materialized.
+
+Preserve the displayed payable total in `priceAmount` and use `quantity` as the denominator needed to
+produce the declared nightly unit. For a seven-night private-room/hotel total, `quantity` is 7. For a
+seven-night dorm total covering two travellers/two beds, `quantity` is 14 bed-nights. If the page displays
+a nightly rate but the seven-night payable total is also verified, the nightly amount may use
+`quantity = 1`; explain the displayed-total check in `notes`.
 
 ### `activities`
 
@@ -102,7 +114,7 @@ Return JSON only:
       "taxStatus": "included|excluded|mixed|unknown",
       "sourceName": "Source name",
       "sourceType": "official_website|crowdsourced_api|published_dataset|manual_menu_sample",
-      "sourceAccess": "personal_use_with_attribution|open_license|public_official|user_supplied|unknown",
+      "sourceAccess": "personal_use_with_attribution|open_license|public_official|public_property|user_supplied|unknown",
       "sourceTermsUrl": null,
       "sourceUrl": "https://source.example/page",
       "sourceRecordId": null,
@@ -115,12 +127,16 @@ Return JSON only:
       "resultCount": null,
       "checkIn": null,
       "checkOut": null,
+      "quoteCaptureDate": null,
       "bookingLeadDays": null,
       "stayNights": null,
       "season": "low|shoulder|high|not_applicable|unknown",
       "searchRadiusKm": null,
       "minimumReviewScore": null,
       "bookerCountry": null,
+      "samplingFrameId": null,
+      "rateAccess": "public|member|mobile|login|unknown|not_applicable",
+      "rateCondition": "flexible|non_refundable|mixed|unknown|not_applicable",
       "extractionMethod": "browser_research",
       "extractorVersion": "llm-observation-prompt-1",
       "parentObservationIds": [],
