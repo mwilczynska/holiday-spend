@@ -1,0 +1,117 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { cityCostCollectionManifestSchema } from '../src/lib/city-cost-collection-batch';
+import { cityCostObservationSchema } from '../src/lib/city-cost-observation';
+import {
+  cityCostPilotEnrichmentSchema,
+  sourceDensityBand,
+} from '../src/lib/city-cost-pilot-enrichment';
+
+const root = process.cwd();
+const pilotPath = path.join(root, 'data/reference/city_cost_collection_pilot.json');
+const manifestPath = path.join(root, 'data/reference/city_cost_collection_batches.json');
+const outputPath = path.join(root, 'data/reference/city_cost_pilot_enrichment.json');
+const check = process.argv.includes('--check');
+const evidenceCountryAliases: Record<string, string> = {
+  UAE: 'United Arab Emirates',
+};
+
+const pilot = JSON.parse(fs.readFileSync(pilotPath, 'utf8')) as {
+  cities: Array<{ city: string; country: string; region: string }>;
+};
+const manifest = cityCostCollectionManifestSchema.parse(
+  JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
+);
+
+const retained = manifest.batches.flatMap((batch) =>
+  batch.observationFiles.flatMap((relativeFile) =>
+    fs.readFileSync(path.join(root, relativeFile), 'utf8').split(/\r?\n/).filter(Boolean).map((line) =>
+      cityCostObservationSchema.parse(JSON.parse(line))
+    )
+  )
+).filter((row) => row.reviewerStatus === 'accepted');
+
+const cities = pilot.cities.map((candidate) => {
+  const evidenceCountry = evidenceCountryAliases[candidate.country] ?? candidate.country;
+  const rows = retained.filter((row) => row.city === candidate.city && row.country === evidenceCountry);
+  const measures = Array.from(new Set(rows.map((row) => row.measure))).sort();
+  const sources = new Set(rows.map((row) => `${row.sourceName}|${row.sourceUrl}`));
+  const categories = Array.from(new Set(rows.map((row) => row.category))).sort() as Array<
+    'accommodation' | 'food' | 'drinks' | 'activities'
+  >;
+  const pendingNotes = 'Pending collection from a named public source; no intuitive or country-level label is permitted.';
+  return {
+    city: candidate.city,
+    country: candidate.country,
+    region: candidate.region,
+    citySize: {
+      status: 'pending_source_collection' as const,
+      value: null,
+      referenceYear: null,
+      spatialUnit: null,
+      band: 'unknown' as const,
+      sourceName: null,
+      sourceUrl: null,
+      notes: pendingNotes,
+    },
+    tourismIntensity: {
+      status: 'pending_source_collection' as const,
+      value: null,
+      referenceYear: null,
+      spatialUnit: null,
+      band: 'unknown' as const,
+      sourceName: null,
+      sourceUrl: null,
+      notes: pendingNotes,
+    },
+    publicSourceDensity: {
+      status: 'measured_from_retained_evidence' as const,
+      acceptedObservationCount: rows.length,
+      observedMeasureCount: measures.length,
+      distinctSourceCount: sources.size,
+      categoriesWithEvidence: categories,
+      band: sourceDensityBand(measures.length),
+      derivation: `Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: ${evidenceCountry}.`,
+    },
+  };
+});
+
+const artifact = cityCostPilotEnrichmentSchema.parse({
+  schemaVersion: 'city-cost-pilot-enrichment-v1',
+  enrichmentId: 'pilot-36-enrichment-2026-07-24-v1',
+  pilotSource: 'data/reference/city_cost_collection_pilot.json',
+  observationManifestSource: 'data/reference/city_cost_collection_batches.json',
+  generatedAt: '2026-07-24T15:00:00.000Z',
+  definitions: {
+    citySize: {
+      estimand: 'Resident population of the smallest consistently defined city or urban-area geography containing the destination; geography and reference year must be retained.',
+      preferredSourceOrder: ['official municipal or national statistics', 'UN World Urbanization Prospects', 'World Bank or other public intergovernmental dataset'],
+      bands: { small: '<100,000', medium: '100,000-499,999', large: '500,000-4,999,999', megacity: '>=5,000,000', unknown: 'No comparable public value retained' },
+    },
+    tourismIntensity: {
+      estimand: 'Annual overnight visitor arrivals divided by resident population for the same destination geography and a stated reference year.',
+      preferredSourceOrder: ['official destination or municipal statistics', 'official national tourism statistics with destination table', 'public intergovernmental tourism dataset'],
+      bands: { low: '<1 visitor per resident', medium: '1-4.99', high: '5-14.99', very_high: '>=15', unknown: 'No comparable public numerator and denominator retained' },
+    },
+    publicSourceDensity: {
+      estimand: 'Number of distinct required measures with accepted numeric evidence in the retained Phase 6 observation store for the exact city-country key.',
+      bands: { none: '0 measures', sparse: '1-2 measures', moderate: '3-5 measures', dense: '>=6 measures' },
+    },
+  },
+  cities,
+});
+
+const serialized = `${JSON.stringify(artifact, null, 2)}\n`;
+if (check) {
+  if (!fs.existsSync(outputPath) || fs.readFileSync(outputPath, 'utf8') !== serialized) {
+    console.error('data/reference/city_cost_pilot_enrichment.json is stale; run npm run methodology:pilot:enrich');
+    process.exit(1);
+  }
+} else {
+  fs.writeFileSync(outputPath, serialized);
+}
+
+console.log(JSON.stringify({ valid: true, mode: check ? 'check' : 'write', cities: artifact.cities.length,
+  sourceDensityBands: Object.fromEntries(['none','sparse','moderate','dense'].map((band) => [band, artifact.cities.filter((city) => city.publicSourceDensity.band === band).length])),
+  pendingCitySize: artifact.cities.filter((city) => city.citySize.status === 'pending_source_collection').length,
+  pendingTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection').length }, null, 2));

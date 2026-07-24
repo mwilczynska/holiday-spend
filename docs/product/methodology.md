@@ -295,6 +295,18 @@ Results will always include city count, observation count, dataset version, refe
 cluster-level uncertainty intervals. They will be broken down by category, region, cost quartile,
 season, and direct-versus-imputed provenance so a good global average cannot conceal a failing subgroup.
 
+The pilot-enrichment contract now freezes the remaining subgroup definitions before modelling. City size
+means resident population for the smallest consistently defined city or urban-area geography containing
+the destination. Tourism intensity means annual overnight visitor arrivals divided by resident population
+for that same geography and a stated year. Neither field may be assigned from intuition, a country total,
+or an unlabeled search result. Until comparable public values are retained, the artifact records them as
+unknown rather than introducing silent classification error.
+
+Public-source density is already reproducible from the observation store: zero retained measures is
+`none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
+36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
+coverage diagnostics, not claims that the underlying sources are statistically representative.
+
 ### Validation Design And Provisional Gates
 
 The first defensible study will use at least 30 whole cities stratified by region, cost quartile, city

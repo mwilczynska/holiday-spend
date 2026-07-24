@@ -398,6 +398,9 @@ flexible and non-refundable conditions; a true availability failure; and technic
 
 - [x] Generate a deterministic 36-city candidate pilot across every region and the current cost range.
 - [ ] Enrich the candidate manifest with city size, tourism intensity, and public-source density.
+  - [x] Freeze validated estimands, source precedence, band thresholds, and deterministic evidence-density
+    calculation for all 36 cities; retain unknown population/tourism fields explicitly.
+  - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.
 - [x] Collect batch-zero day 02: eight Numbeo food/drink observations, one Pu Luong official-menu meal,

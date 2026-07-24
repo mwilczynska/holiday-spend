@@ -1,0 +1,1400 @@
+{
+  "schemaVersion": "city-cost-pilot-enrichment-v1",
+  "enrichmentId": "pilot-36-enrichment-2026-07-24-v1",
+  "pilotSource": "data/reference/city_cost_collection_pilot.json",
+  "observationManifestSource": "data/reference/city_cost_collection_batches.json",
+  "generatedAt": "2026-07-24T15:00:00.000Z",
+  "definitions": {
+    "citySize": {
+      "estimand": "Resident population of the smallest consistently defined city or urban-area geography containing the destination; geography and reference year must be retained.",
+      "preferredSourceOrder": [
+        "official municipal or national statistics",
+        "UN World Urbanization Prospects",
+        "World Bank or other public intergovernmental dataset"
+      ],
+      "bands": {
+        "small": "<100,000",
+        "medium": "100,000-499,999",
+        "large": "500,000-4,999,999",
+        "megacity": ">=5,000,000",
+        "unknown": "No comparable public value retained"
+      }
+    },
+    "tourismIntensity": {
+      "estimand": "Annual overnight visitor arrivals divided by resident population for the same destination geography and a stated reference year.",
+      "preferredSourceOrder": [
+        "official destination or municipal statistics",
+        "official national tourism statistics with destination table",
+        "public intergovernmental tourism dataset"
+      ],
+      "bands": {
+        "low": "<1 visitor per resident",
+        "medium": "1-4.99",
+        "high": "5-14.99",
+        "very_high": ">=15",
+        "unknown": "No comparable public numerator and denominator retained"
+      }
+    },
+    "publicSourceDensity": {
+      "estimand": "Number of distinct required measures with accepted numeric evidence in the retained Phase 6 observation store for the exact city-country key.",
+      "bands": {
+        "none": "0 measures",
+        "sparse": "1-2 measures",
+        "moderate": "3-5 measures",
+        "dense": ">=6 measures"
+      }
+    }
+  },
+  "cities": [
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 4,
+        "observedMeasureCount": 4,
+        "distinctSourceCount": 1,
+        "categoriesWithEvidence": [
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Tanzania."
+      }
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "region": "Africa",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Kenya."
+      }
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: China."
+      }
+    },
+    {
+      "city": "Fukuoka",
+      "country": "Japan",
+      "region": "East Asia",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Japan."
+      }
+    },
+    {
+      "city": "Sendai",
+      "country": "Japan",
+      "region": "East Asia",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Japan."
+      }
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: South Korea."
+      }
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Japan."
+      }
+    },
+    {
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "region": "Europe",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Bulgaria."
+      }
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Hungary."
+      }
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Czech Republic."
+      }
+    },
+    {
+      "city": "Split",
+      "country": "Croatia",
+      "region": "Europe",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Croatia."
+      }
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Portugal."
+      }
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Spain."
+      }
+    },
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "region": "Europe",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Croatia."
+      }
+    },
+    {
+      "city": "Medellin",
+      "country": "Colombia",
+      "region": "Latin America",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Colombia."
+      }
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 4,
+        "observedMeasureCount": 4,
+        "distinctSourceCount": 1,
+        "categoriesWithEvidence": [
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Cuba."
+      }
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Mexico."
+      }
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Turkey."
+      }
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "region": "Middle East",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: United Arab Emirates."
+      }
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Canada."
+      }
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: United States."
+      }
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: New Zealand."
+      }
+    },
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: New Zealand."
+      }
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 0,
+        "observedMeasureCount": 0,
+        "distinctSourceCount": 0,
+        "categoriesWithEvidence": [],
+        "band": "none",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Laos."
+      }
+    },
+    {
+      "city": "Can Tho",
+      "country": "Vietnam",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 4,
+        "observedMeasureCount": 4,
+        "distinctSourceCount": 1,
+        "categoriesWithEvidence": [
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Vietnam."
+      }
+    },
+    {
+      "city": "Pu Luong",
+      "country": "Vietnam",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 2,
+        "observedMeasureCount": 2,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "food"
+        ],
+        "band": "sparse",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Vietnam."
+      }
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Vietnam."
+      }
+    },
+    {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 3,
+        "observedMeasureCount": 3,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Laos."
+      }
+    },
+    {
+      "city": "Santa Fe (Bantayan)",
+      "country": "Philippines",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 0,
+        "observedMeasureCount": 0,
+        "distinctSourceCount": 0,
+        "categoriesWithEvidence": [],
+        "band": "none",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Philippines."
+      }
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Vietnam."
+      }
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 4,
+        "observedMeasureCount": 4,
+        "distinctSourceCount": 1,
+        "categoriesWithEvidence": [
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Thailand."
+      }
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Vietnam."
+      }
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Myanmar."
+      }
+    },
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "region": "SEA",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 0,
+        "observedMeasureCount": 0,
+        "distinctSourceCount": 0,
+        "categoriesWithEvidence": [],
+        "band": "none",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: Indonesia."
+      }
+    },
+    {
+      "city": "Goa",
+      "country": "India",
+      "region": "South Asia",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: India."
+      }
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "citySize": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "tourismIntensity": {
+        "status": "pending_source_collection",
+        "value": null,
+        "referenceYear": null,
+        "spatialUnit": null,
+        "band": "unknown",
+        "sourceName": null,
+        "sourceUrl": null,
+        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+      },
+      "publicSourceDensity": {
+        "status": "measured_from_retained_evidence",
+        "acceptedObservationCount": 5,
+        "observedMeasureCount": 5,
+        "distinctSourceCount": 2,
+        "categoriesWithEvidence": [
+          "activities",
+          "drinks",
+          "food"
+        ],
+        "band": "moderate",
+        "derivation": "Count accepted retained observations, distinct standardized measures, numeric sources, and represented categories for the exact city-country key. Evidence-country key: India."
+      }
+    }
+  ]
+}
