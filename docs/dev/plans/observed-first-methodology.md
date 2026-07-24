@@ -503,6 +503,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     and guest nights, but not an overnight-only arrivals numerator.
   - [x] Record Seoul as a screened rejection because its official city sources expose a foreign-only
     arrivals estimate and broad tourist-area mobility visits, but not all overnight visitor arrivals.
+  - [x] Add Sendai from official 2024 citywide lodging and population reports: retain the four-district
+    accommodation-guest total as a lower-bound proxy, with the explicit private-lodging exclusion attached.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

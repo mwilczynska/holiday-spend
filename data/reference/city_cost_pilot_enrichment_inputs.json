@@ -175,6 +175,21 @@
       "notes": "The city publishes the overnight-tourist estimate rounded to the nearest 10,000. Its methodology combines Fukuoka tax statistics and the Japan Tourism Agency accommodation survey, then applies an overnight-tourist rate derived from city visitor surveys; retain the resulting ratio as an estimated tourism-pressure proxy rather than an exact census of guests."
     },
     {
+      "city": "Sendai",
+      "country": "Japan",
+      "referenceYear": 2024,
+      "spatialUnit": "Sendai city municipality",
+      "overnightArrivals": 6508856,
+      "residentPopulation": 1064142,
+      "numeratorDefinition": "Guests staying in surveyed accommodation across all four Sendai city tourism districts during 2024",
+      "denominatorDefinition": "Residents registered in Sendai city at year-end 2024",
+      "arrivalsSourceName": "Sendai City Tourism Strategy Division, 2024 Basic Tourism Statistics",
+      "arrivalsSourceUrl": "https://www.city.sendai.jp/kankokikaku/toukei/documents/r6kankoutoukei_ver1_3.pdf",
+      "populationSourceName": "Sendai City, 2024 Population Trends",
+      "populationSourceUrl": "https://www.city.sendai.jp/chosatoke/shise/toke/jiho/jinko/documents/r6_kaisetsu.pdf",
+      "notes": "The citywide total is the published sum of the old Sendai, Miyagi, Izumi, and Akiu districts. The source explicitly excludes private lodging (minpaku), so the numerator is retained as a reproducible registered-accommodation lower bound rather than exhaustive overnight visitation."
+    },
+    {
       "city": "Budapest",
       "country": "Hungary",
       "referenceYear": 2024,

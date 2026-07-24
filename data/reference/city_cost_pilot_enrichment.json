@@ -237,17 +237,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 6.116529560904466,
+        "referenceYear": 2024,
+        "spatialUnit": "Sendai city municipality",
+        "band": "high",
+        "overnightArrivals": 6508856,
+        "residentPopulation": 1064142,
+        "numeratorDefinition": "Guests staying in surveyed accommodation across all four Sendai city tourism districts during 2024",
+        "denominatorDefinition": "Residents registered in Sendai city at year-end 2024",
+        "arrivalsSourceName": "Sendai City Tourism Strategy Division, 2024 Basic Tourism Statistics",
+        "arrivalsSourceUrl": "https://www.city.sendai.jp/kankokikaku/toukei/documents/r6kankoutoukei_ver1_3.pdf",
+        "populationSourceName": "Sendai City, 2024 Population Trends",
+        "populationSourceUrl": "https://www.city.sendai.jp/chosatoke/shise/toke/jiho/jinko/documents/r6_kaisetsu.pdf",
+        "notes": "The citywide total is the published sum of the old Sendai, Miyagi, Izumi, and Akiu districts. The source explicitly excludes private lodging (minpaku), so the numerator is retained as a reproducible registered-accommodation lower bound rather than exhaustive overnight visitation."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

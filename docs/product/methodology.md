@@ -450,7 +450,13 @@ Vancouver adds the second North American record and a `very_high` case. Summing 
 twelve exact monthly 2024 overnight-visitation values gives 11,271,967; dividing by BC Stats' same-year
 Vancouver municipality population estimate of 748,777 produces 15.05 arrivals per resident. The public
 destination page rounds the annual total to 11.3 million but does not publish detailed model methodology
-inline, so the exact inputs and that limitation remain attached. The other 24 tourism-intensity fields
+inline, so the exact inputs and that limitation remain attached.
+
+Sendai adds a measured East Asian record. Its city tourism table reports 6,508,856 guests across the old
+Sendai, Miyagi, Izumi, and Akiu districts in 2024; the city's annual population report records 1,064,142
+residents at year-end. The resulting 6.12 arrivals per resident is `high`. Because the tourism table
+explicitly excludes private lodging, this remains a registered-accommodation lower bound rather than an
+exhaustive count. The other 23 tourism-intensity fields
 remain pending.
 
 Pending fields can now retain source-attributed rejection reasons rather than a generic missing label.
@@ -473,7 +479,8 @@ Seoul is the fourth screened rejection. The metropolitan government's tourist-ar
 foreign visitors to Seoul from Korea-wide inbound totals and therefore omits domestic overnight visitors.
 The city data hub's alternative series measures broad movements into tourist-area grids and includes
 residents plus long- and short-term foreigners without isolating overnight stays. Neither is converted to
-the registered all-overnight-arrivals numerator; 20 pilot cities remain unscreened.
+the registered all-overnight-arrivals numerator. After adding Sendai, the current profile contains 13
+measured cities, four screened rejections, and 19 unscreened tourism-intensity gaps.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
