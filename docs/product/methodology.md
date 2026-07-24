@@ -368,6 +368,16 @@ Public-source density is already reproducible from the observation store: zero r
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
 coverage diagnostics, not claims that the underlying sources are statistically representative.
 
+The first joined missingness profile uses the entire 36-city manifest as its denominator, including
+cities with no materialized values. It finds 32 represented cities and 151 materialized tier cells out
+of 684 required (22.08%), with no complete city. The source materializer also contains Bangkok,
+Copenhagen, and Dubai from earlier batch-zero work; the pilot profile explicitly excludes those three
+non-pilot rows so they cannot inflate coverage or leak into later whole-city validation. Coverage is
+currently concentrated in coffee and light-drink tiers (30 cities each), the always-zero free-activity
+tier (32), and budget activities (26). All accommodation and food tiers remain unmaterialized because
+their required direct parent measures or seasonal gates are incomplete. This is evidence that fallback
+model selection is premature, not a reason to fill missing cells with unvalidated regional adjustments.
+
 ### Validation Design And Provisional Gates
 
 The first defensible study will use at least 30 whole cities stratified by region, cost quartile, city

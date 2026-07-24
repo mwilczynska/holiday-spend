@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "city-cost-pilot-profile-v1",
+  "enrichmentId": "pilot-36-enrichment-2026-07-24-v3",
+  "calculatorVersion": "city-cost-v3-alpha-3",
+  "dataCutoff": "2026-07-24T14:35:00.000Z",
+  "pilotCityCount": 36,
+  "representedCityCount": 32,
+  "zeroMaterializedCityCount": 4,
+  "excludedNonPilotCities": [
+    {
+      "city": "Bangkok",
+      "country": "Thailand"
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates"
+    }
+  ],
+  "materializedTierCells": 151,
+  "requiredTierCells": 684,
+  "materializedTierCoveragePct": 22.08,
+  "completeCityCount": 0,
+  "tierCoverage": {
+    "accom_shared_hostel_dorm": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "accom_hostel_private_room": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "accom_1_star": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "accom_2_star": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "accom_3_star": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "accom_4_star": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "food_street_food": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "food_budget": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "food_mid_range": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "food_high_end": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "drink_coffee": {
+      "materializedCityCount": 30,
+      "missingCityCount": 6,
+      "coveragePct": 83.33
+    },
+    "drinks_none": {
+      "materializedCityCount": 30,
+      "missingCityCount": 6,
+      "coveragePct": 83.33
+    },
+    "drinks_light": {
+      "materializedCityCount": 30,
+      "missingCityCount": 6,
+      "coveragePct": 83.33
+    },
+    "drinks_moderate": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "drinks_heavy": {
+      "materializedCityCount": 0,
+      "missingCityCount": 36,
+      "coveragePct": 0
+    },
+    "activities_free": {
+      "materializedCityCount": 32,
+      "missingCityCount": 4,
+      "coveragePct": 88.89
+    },
+    "activities_budget": {
+      "materializedCityCount": 26,
+      "missingCityCount": 10,
+      "coveragePct": 72.22
+    },
+    "activities_mid_range": {
+      "materializedCityCount": 2,
+      "missingCityCount": 34,
+      "coveragePct": 5.56
+    },
+    "activities_high_end": {
+      "materializedCityCount": 1,
+      "missingCityCount": 35,
+      "coveragePct": 2.78
+    }
+  },
+  "strata": {
+    "region": [
+      {
+        "stratum": "Africa",
+        "cityCount": 2,
+        "representedCityCount": 2,
+        "materializedTierCells": 9,
+        "requiredTierCells": 38,
+        "coveragePct": 23.68
+      },
+      {
+        "stratum": "East Asia",
+        "cityCount": 5,
+        "representedCityCount": 5,
+        "materializedTierCells": 25,
+        "requiredTierCells": 95,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "Europe",
+        "cityCount": 7,
+        "representedCityCount": 7,
+        "materializedTierCells": 35,
+        "requiredTierCells": 133,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "Latin America",
+        "cityCount": 3,
+        "representedCityCount": 3,
+        "materializedTierCells": 14,
+        "requiredTierCells": 57,
+        "coveragePct": 24.56
+      },
+      {
+        "stratum": "Middle East",
+        "cityCount": 2,
+        "representedCityCount": 1,
+        "materializedTierCells": 5,
+        "requiredTierCells": 38,
+        "coveragePct": 13.16
+      },
+      {
+        "stratum": "North America",
+        "cityCount": 2,
+        "representedCityCount": 2,
+        "materializedTierCells": 10,
+        "requiredTierCells": 38,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "Oceania",
+        "cityCount": 2,
+        "representedCityCount": 2,
+        "materializedTierCells": 10,
+        "requiredTierCells": 38,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "SEA",
+        "cityCount": 11,
+        "representedCityCount": 8,
+        "materializedTierCells": 33,
+        "requiredTierCells": 209,
+        "coveragePct": 15.79
+      },
+      {
+        "stratum": "South Asia",
+        "cityCount": 2,
+        "representedCityCount": 2,
+        "materializedTierCells": 10,
+        "requiredTierCells": 38,
+        "coveragePct": 26.32
+      }
+    ],
+    "citySize": [
+      {
+        "stratum": "measured_from_public_source:large",
+        "cityCount": 15,
+        "representedCityCount": 15,
+        "materializedTierCells": 72,
+        "requiredTierCells": 285,
+        "coveragePct": 25.26
+      },
+      {
+        "stratum": "measured_from_public_source:medium",
+        "cityCount": 3,
+        "representedCityCount": 3,
+        "materializedTierCells": 14,
+        "requiredTierCells": 57,
+        "coveragePct": 24.56
+      },
+      {
+        "stratum": "measured_from_public_source:megacity",
+        "cityCount": 10,
+        "representedCityCount": 9,
+        "materializedTierCells": 45,
+        "requiredTierCells": 190,
+        "coveragePct": 23.68
+      },
+      {
+        "stratum": "measured_from_public_source:small",
+        "cityCount": 1,
+        "representedCityCount": 0,
+        "materializedTierCells": 0,
+        "requiredTierCells": 19,
+        "coveragePct": 0
+      },
+      {
+        "stratum": "pending_source_collection:unknown",
+        "cityCount": 7,
+        "representedCityCount": 5,
+        "materializedTierCells": 20,
+        "requiredTierCells": 133,
+        "coveragePct": 15.04
+      }
+    ],
+    "tourismIntensity": [
+      {
+        "stratum": "measured_from_public_sources:high",
+        "cityCount": 3,
+        "representedCityCount": 3,
+        "materializedTierCells": 15,
+        "requiredTierCells": 57,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "measured_from_public_sources:low",
+        "cityCount": 2,
+        "representedCityCount": 2,
+        "materializedTierCells": 10,
+        "requiredTierCells": 38,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "measured_from_public_sources:medium",
+        "cityCount": 3,
+        "representedCityCount": 3,
+        "materializedTierCells": 15,
+        "requiredTierCells": 57,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "measured_from_public_sources:very_high",
+        "cityCount": 1,
+        "representedCityCount": 1,
+        "materializedTierCells": 5,
+        "requiredTierCells": 19,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "pending_source_collection:unknown",
+        "cityCount": 27,
+        "representedCityCount": 23,
+        "materializedTierCells": 106,
+        "requiredTierCells": 513,
+        "coveragePct": 20.66
+      }
+    ],
+    "sourceDensity": [
+      {
+        "stratum": "moderate",
+        "cityCount": 32,
+        "representedCityCount": 31,
+        "materializedTierCells": 149,
+        "requiredTierCells": 608,
+        "coveragePct": 24.51
+      },
+      {
+        "stratum": "none",
+        "cityCount": 3,
+        "representedCityCount": 0,
+        "materializedTierCells": 0,
+        "requiredTierCells": 57,
+        "coveragePct": 0
+      },
+      {
+        "stratum": "sparse",
+        "cityCount": 1,
+        "representedCityCount": 1,
+        "materializedTierCells": 2,
+        "requiredTierCells": 19,
+        "coveragePct": 10.53
+      }
+    ]
+  },
+  "qualitySummary": {
+    "crossChannelMeasureCount": 0,
+    "flaggedSourceDisagreementCount": 0,
+    "completeSeasonAccommodationMeasureCount": 0,
+    "incompleteSeasonAccommodationMeasureCount": 1
+  },
+  "modelReadiness": {
+    "status": "insufficient_for_fallback_model_selection",
+    "measuredCitySizeCount": 29,
+    "measuredTourismIntensityCount": 9,
+    "measuredBothPredictorsCount": 8,
+    "completeTargetCityCount": 0,
+    "reasons": [
+      "No pilot city has all 19 tier targets materialized.",
+      "Accommodation has no eligible annualized tier values yet.",
+      "Tourism intensity remains unmeasured for most pilot cities.",
+      "Cross-channel disagreement cannot be estimated until overlapping independent source channels are collected."
+    ]
+  }
+}

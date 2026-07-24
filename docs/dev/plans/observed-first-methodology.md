@@ -472,6 +472,11 @@ flexible and non-refundable conditions; a true availability failure; and technic
   ineligible until low/high coverage and the 60% repeated-property overlap gate pass.
 - [ ] Collect batch zero, then the 36-city pilot, with all four categories.
 - [ ] Profile missingness, source disagreement, seasonality, and outliers.
+  - [x] Add a deterministic pilot-wide baseline profile joined to the enrichment manifest: 32 of 36 pilot
+    cities represented, 151 of 684 tier cells materialized (22.08%), zero complete cities, and three
+    non-pilot batch-zero cities explicitly excluded from pilot denominators.
+  - [ ] Add cross-channel disagreement, seasonal-completeness, and robust outlier diagnostics after the
+    observation store contains enough overlapping channels and repeated seasonal panels.
 - [ ] Fit and compare fallback models with whole-city cross-validation.
 - [ ] Freeze holdout cities and acceptance gates before final fitting.
 

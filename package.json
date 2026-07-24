@@ -16,6 +16,8 @@
     "methodology:pilot": "node scripts/select-city-cost-pilot.mjs",
     "methodology:pilot:enrich": "tsx scripts/build-city-cost-pilot-enrichment.ts",
     "methodology:pilot:enrich:check": "tsx scripts/build-city-cost-pilot-enrichment.ts --check",
+    "methodology:pilot:profile": "tsx scripts/build-city-cost-pilot-profile.ts",
+    "methodology:pilot:profile:check": "tsx scripts/build-city-cost-pilot-profile.ts --check",
     "methodology:research": "tsx scripts/run-city-cost-research.ts",
     "methodology:batches:validate": "tsx scripts/validate-city-cost-batches.ts",
     "methodology:accommodation-windows:validate": "tsx scripts/validate-accommodation-reference-windows.ts",
