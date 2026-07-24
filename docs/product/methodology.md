@@ -187,7 +187,11 @@ same properties are followed through low, shoulder, and high reference weeks whe
 property-mix confounding. Each seasonal search produces a median nightly total, interquartile range, and
 property count; the annualized point estimate is the equally weighted median of the three seasonal
 medians. A partial panel remains visible in the research artifact but cannot materialize an accommodation
-tier. For food and drink, city-level source medians will be
+tier. Before a property can be quoted, its direct website is verified against source-attributed ownership
+or identity evidence and applied through a reproducible verification artifact. A verified website is only
+an eligible collection path: it is not a room-price observation, availability result, or accepted quote.
+Unresolved ownership remains explicit and the collector continues down the frozen rank order rather than
+substituting a directory page or a similarly named property. For food and drink, city-level source medians will be
 triangulated with independent menu observations in the validation sample. For activities, current
 official attraction and tour-operator prices will replace global multipliers.
 
@@ -298,6 +302,12 @@ source universe, not treated as an active property frame. No Hanoi property will
 its current classification status is supported by authoritative evidence.
 The reconciliation ledger therefore begins with all 330 source records pending and zero eligible. It does
 not guess which 37 records correspond to the aggregate current count.
+
+Barcelona's first direct-site checkpoint covers the frozen 4-star primary panel. Ten of twelve properties
+now have source-attributed official websites applied deterministically to the panel. Sansi Pedralbes
+(rank 4) and Husa L'Illa (rank 7) remain unresolved because the reviewed evidence does not establish a
+current property-owned booking site. These ten verifications do not add price observations or quote
+attempts; they establish auditable paths for the later exact-date collection pass.
 
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted

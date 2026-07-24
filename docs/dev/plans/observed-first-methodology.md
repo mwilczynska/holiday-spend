@@ -551,6 +551,11 @@ flexible and non-refundable conditions; a true availability failure; and technic
   absent 1-/2-star classes, and one geolocated inventory-pending hostel.
 - [x] Freeze Lisbon from the complete official RNET/RNAL snapshots: 242 in-radius 1-4-star hotels with four
   12-property primary panels, plus 97 in-radius physical hostel candidates retained without inferred inventory.
+- [x] Verify the current direct-property websites for ten of Barcelona's twelve frozen 4-star primary
+  properties in a separate source-attributed artifact and apply them deterministically to the panel. Retain
+  Sansi Pedralbes (rank 4) and Husa L'Illa (rank 7) as unresolved rather than substituting directory pages or
+  assuming that similarly named properties are the same establishment. Website verification establishes an
+  eligible quote path; it is not price evidence and does not count as an attempted or accepted quote.
 - [x] Add a validated property-attempt ledger and complete the Copenhagen shoulder checkpoint:
   ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and
   four explicit booking-path failures; retain the seasonal median but keep the annualized measure

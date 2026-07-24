@@ -282,6 +282,7 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [x] Use official registers or destination directories for price-blind frames and direct property sites for quotes; exclude Booking.com and Hostelworld from LLM extraction
 - [x] Pre-register exact-90-day low/shoulder/high windows and require five accepted quotes per measure and season plus at least 60% cross-season property overlap
 - [x] Freeze reproducible Barcelona, Copenhagen, Da Nang, Lisbon, and Prague frames and add an append-only quote-attempt ledger
+- [x] Verify official websites for ten of Barcelona's twelve 4-star primary properties; retain ranks 4 and 7 as unresolved and do not count website verification as quote evidence
 - [x] Complete Copenhagen's 4-star shoulder checkpoint with five accepted quotes from ten rank-ordered attempts
 - [ ] Clear or replace every reference window through the event screen while preserving an auditable replacement history
 - [ ] Complete Copenhagen low/high seasons; collect eligible Barcelona, Da Nang, Lisbon, and Prague panels; resolve defensible hostel inventory; and expand reproducible property frames to the remaining pilot cities
@@ -559,7 +560,8 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, Da Nang, Lisbon, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
 - Lisbon's 24 July 2026 official RNET/RNAL frame retains 242 in-radius classified hotels and 97 in-radius physical hostel candidates; hotel selection excludes price/brand/capacity/website visibility, while hostels remain unranked until direct sites prove dorm/private inventory
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
-- The Barcelona frame has four frozen hotel panels but zero verified websites or accepted quotes; its hostel measures remain explicitly unavailable because `Hostal o pensió` is not treated as youth-hostel inventory
+- Barcelona's 4-star primary panel now has ten source-attributed official websites applied through a validated deterministic artifact; Sansi Pedralbes (rank 4) and Husa L'Illa (rank 7) remain unresolved, and no website verification is counted as price or quote evidence
+- The Barcelona frame still has zero accepted quotes; its hostel measures remain explicitly unavailable because `Hostal o pensió` is not treated as youth-hostel inventory
 - Copenhagen uses the public no-key Hotelstars Union Denmark directory: after excluding conference and 5-star products, 201 eligible hotel records produce 29 in-radius properties (3 two-star, 11 three-star, 15 four-star), no one-star class, and a two-star panel below the five-quote gate
 - VisitCopenhagen supplies 13 hostel candidates with direct property links; inventory, address, radius eligibility, and website ownership remain pending
 - Copenhagen's completed shoulder capture attempted the first ten frozen 4-star properties in order: Andersen, Hotel Alexandra, Wide Hotel, Hotel Skt. Annæ, and The Huxley produced accepted public official-site quotes; Absalon had no availability; four other booking paths failed exact-date or mandatory-charge verification

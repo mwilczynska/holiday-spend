@@ -24,6 +24,8 @@
     "methodology:accommodation-panels:validate": "tsx scripts/validate-accommodation-property-panels.ts",
     "methodology:accommodation-quotes:validate": "tsx scripts/validate-accommodation-quote-attempts.ts",
     "methodology:accommodation-panel:build:barcelona": "tsx scripts/build-barcelona-accommodation-property-panel.ts",
+    "methodology:accommodation:websites": "tsx scripts/apply-accommodation-website-verifications.ts",
+    "methodology:accommodation:websites:check": "tsx scripts/apply-accommodation-website-verifications.ts --check",
     "methodology:accommodation-panel:build:copenhagen": "tsx scripts/build-copenhagen-accommodation-property-panel.ts",
     "methodology:accommodation-panel:build:prague": "tsx scripts/build-prague-accommodation-property-panel.ts",
     "methodology:accommodation-panel:build:lisbon": "tsx scripts/build-lisbon-accommodation-property-panel.ts",
