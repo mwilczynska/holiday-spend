@@ -491,6 +491,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     modelled and rounded numerator; reject Tokyo's guest-night and mixed day/overnight substitutes.
   - [x] Add Lisbon from one bilingual official municipal profile containing same-year, same-boundary guest
     and resident counts; retain the registered-accommodation and repeat-stay limitations.
+  - [x] Add Vancouver from Destination Vancouver's exact 2024 monthly overnight-visitation series and the
+    same-year BC Stats municipal population estimate; retain the destination-model methodology limitation.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

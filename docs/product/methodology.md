@@ -433,7 +433,12 @@ Portugal's Regional Statistical Yearbook. It reports 6,460,430 guests in tourist
 year and boundary remove the denominator-matching ambiguity, but the numerator remains a count within
 surveyed accommodation: stays outside the frame are absent and separate stays can count one person more
 than once. It is retained as an accommodation-pressure proxy rather than a unique-visitor estimate. The
-other 25 tourism-intensity fields remain pending.
+Vancouver adds the second North American record and a `very_high` case. Summing Destination Vancouver's
+twelve exact monthly 2024 overnight-visitation values gives 11,271,967; dividing by BC Stats' same-year
+Vancouver municipality population estimate of 748,777 produces 15.05 arrivals per resident. The public
+destination page rounds the annual total to 11.3 million but does not publish detailed model methodology
+inline, so the exact inputs and that limitation remain attached. The other 24 tourism-intensity fields
+remain pending.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

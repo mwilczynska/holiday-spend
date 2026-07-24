@@ -41,7 +41,7 @@ describe('city cost pilot enrichment', () => {
       sourceRecordId: '5433',
     });
     expect(artifact.cities.find((city) => city.city === 'Goa')?.citySize.notes).toContain('state and multi-city');
-    expect(artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources')).toHaveLength(11);
+    expect(artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources')).toHaveLength(12);
     expect(artifact.cities.find((city) => city.city === 'Prague')?.tourismIntensity).toMatchObject({
       overnightArrivals: 8_063_367,
       residentPopulation: 1_397_880,
@@ -96,6 +96,11 @@ describe('city cost pilot enrichment', () => {
       overnightArrivals: 6_460_430,
       residentPopulation: 567_131,
       band: 'high',
+    });
+    expect(artifact.cities.find((city) => city.city === 'Vancouver')?.tourismIntensity).toMatchObject({
+      overnightArrivals: 11_271_967,
+      residentPopulation: 748_777,
+      band: 'very_high',
     });
   });
 });

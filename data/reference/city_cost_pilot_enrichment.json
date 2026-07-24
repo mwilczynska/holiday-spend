@@ -879,14 +879,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 15.05383712373644,
+        "referenceYear": 2024,
+        "spatialUnit": "Vancouver municipality",
+        "band": "very_high",
+        "overnightArrivals": 11271967,
+        "residentPopulation": 748777,
+        "numeratorDefinition": "Total monthly overnight visitation to Vancouver during 2024",
+        "denominatorDefinition": "Estimated resident population of Vancouver municipality on 1 July 2024",
+        "arrivalsSourceName": "Destination Vancouver, Research & Insights overnight visitation series",
+        "arrivalsSourceUrl": "https://www.destinationvancouver.com/about-us/research-and-insights",
+        "populationSourceName": "BC Stats, Municipalities (Census Subdivisions) population estimates",
+        "populationSourceUrl": "https://catalogue.data.gov.bc.ca/dataset/86839277-986a-4a29-9f70-fa9b1166f6cb/resource/0e15d04d-127c-457a-b999-20800c929927/download/municipality-population.csv",
+        "notes": "The numerator is the sum of the twelve exact monthly values embedded in Destination Vancouver's public overnight-visitation chart; the page also rounds the annual result to 11.3 million. The denominator is BC Stats' total-gender 2024 estimate for Vancouver municipality (region 15022). The numerator is a destination-series measure rather than an accommodation-register count, and the public page does not expose detailed model methodology inline."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
