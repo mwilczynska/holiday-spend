@@ -327,6 +327,7 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
   - [x] Add an explicit blocking `inconclusive` event-review state and record source-attributed 24 July outcomes for Hanoi, Pu Luong, San Francisco, and Da Nang rather than treating incomplete official-calendar coverage as clearance
   - [x] Freeze and validate Da Nang's official source universe: 423 unique government-managed 1-4-star hotels across 29 hashed register pages, with all records held out of ranking until auditable geolocation is available
   - [x] Freeze Da Nang's property frame after a cached policy-limited geolocation pass: 50 deduplicated accepted coordinates, 49 hotels within 5 km across all four star classes, and 371 rows visibly unranked for missing, coarse, ambiguous, or boundary-pending location evidence
+  - [x] Freeze Hanoi's 330-record government-managed 1-4-star search universe across 24 hashed pages, but block all ranking until those historical-looking results reconcile to the official February 2026 count of 37 currently valid properties
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities

@@ -39,7 +39,7 @@ export const vietnamAccommodationRegisterCaptureSchema = z
     sourceUrl: z.literal('https://csdl.vietnamtourism.gov.vn/cslt/'),
     sourceStatement: z.literal('Thông tin do Cơ quan nhà nước quản lý'),
     filters: z.object({
-      province: z.object({ code: z.literal('48,49'), label: z.literal('Thành phố Đà Nẵng') }),
+      province: z.object({ code: z.string().min(1), label: z.string().min(1) }),
       type: z.object({ code: z.literal('1'), label: z.literal('Khách sạn') }),
       manager: z.object({ code: z.literal('0'), label: z.literal('Government-managed information') }),
       starRateCodes: z.object({

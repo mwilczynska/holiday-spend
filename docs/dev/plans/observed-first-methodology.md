@@ -438,6 +438,17 @@ coordinates. Their component-wise median fixes the price-independent centre at `
 2-star primary panels remain below the twelve-property target. The other 371 physical/register rows stay
 visibly excluded from ranking for missing accepted geolocation; no road or neighbourhood centroid is used.
 
+The collector is now province-neutral and the next checkpoint freezes Hanoi's official search universe.
+The 24 July capture submits province `01`, hotel type `1`, government-managed provenance `0`, and each
+1-4-star filter on every paginated request. It contains 330 unique records across 24 hashed pages: 219
+one-star, 78 two-star, 19 three-star, and 14 four-star hotels, with no missing addresses. The normalized
+snapshot is 73,897 bytes with SHA-256
+`4367455956dd89823bf4f19439da4f7a7182859fc177c2c04b50cd22fdb6349f`.
+This is not yet an eligible frame: the National Tourism Authority's February 2026 Hanoi summary reports
+only 37 currently valid 1-4-star properties (3 one-star, 10 two-star, 8 three-star, and 16 four-star).
+Because the search universe is much larger and does not expose active validity in its result cards, Hanoi
+must reconcile every candidate to a current classification decision before geolocation or ranking.
+
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the
 exact-date or mandatory-charge verification gate. The accepted nightly prices are DKK 1,178.36,

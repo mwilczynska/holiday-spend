@@ -291,6 +291,12 @@ properties fall within 5 km: ten 1-star, eight 2-star, twelve 3-star, and ninete
 merged-boundary review. This is deliberately low geolocation coverage, not evidence that those hotels are
 outside the city-centre radius.
 
+Hanoi is currently one step earlier. A reproducible query of the same national directory captured 330
+government-managed 1-4-star records, but an official February 2026 city summary reports only 37 hotels
+with currently valid classifications in those classes. The larger search result is retained as a hashed
+source universe, not treated as an active property frame. No Hanoi property will be ranked or quoted until
+its current classification status is supported by authoritative evidence.
+
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted
 4-star quotes, one genuine no-availability result, and four booking-path failures: three could not preserve

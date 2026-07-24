@@ -12,7 +12,6 @@ import {
 } from '../src/lib/vietnam-accommodation-register';
 
 const SOURCE_URL = 'https://csdl.vietnamtourism.gov.vn/cslt/';
-const PROVINCE_CODE = '48,49';
 const HOTEL_TYPE_CODE = '1';
 const GOVERNMENT_MANAGED_CODE = '0';
 
@@ -27,10 +26,25 @@ type PageCheckpoint = {
 
 function parseArgs() {
   const outputIndex = process.argv.indexOf('--out');
-  if (outputIndex === -1 || !process.argv[outputIndex + 1]) {
-    throw new Error('Usage: tsx scripts/capture-da-nang-accommodation-register.ts --out <snapshot.json>');
+  const cityIndex = process.argv.indexOf('--city');
+  const provinceCodeIndex = process.argv.indexOf('--province-code');
+  const provinceLabelIndex = process.argv.indexOf('--province-label');
+  if (
+    outputIndex === -1 || !process.argv[outputIndex + 1] ||
+    cityIndex === -1 || !process.argv[cityIndex + 1] ||
+    provinceCodeIndex === -1 || !process.argv[provinceCodeIndex + 1] ||
+    provinceLabelIndex === -1 || !process.argv[provinceLabelIndex + 1]
+  ) {
+    throw new Error(
+      'Usage: tsx scripts/capture-vietnam-accommodation-register.ts --city <name> --province-code <code> --province-label <label> --out <snapshot.json>'
+    );
   }
-  return { outputPath: path.resolve(process.argv[outputIndex + 1]) };
+  return {
+    city: process.argv[cityIndex + 1],
+    provinceCode: process.argv[provinceCodeIndex + 1],
+    provinceLabel: process.argv[provinceLabelIndex + 1],
+    outputPath: path.resolve(process.argv[outputIndex + 1]),
+  };
 }
 
 function cookieHeader(headers: Headers, previous = '') {
@@ -84,13 +98,13 @@ function checkpoint(page: number, requestUrl: string, html: string): PageCheckpo
   };
 }
 
-async function captureStar(stars: number, rateCode: string) {
+async function captureStar(stars: number, rateCode: string, provinceCode: string) {
   let { html: landingHtml, cookie } = await request(SOURCE_URL);
   const filterBody = (csrf: string) =>
     new URLSearchParams({
       csrf_name: csrf,
       title: '',
-      province: PROVINCE_CODE,
+      province: provinceCode,
       'rate[]': rateCode,
       'type[]': HOTEL_TYPE_CODE,
       'manager[]': GOVERNMENT_MANAGED_CODE,
@@ -152,12 +166,12 @@ async function captureStar(stars: number, rateCode: string) {
 }
 
 async function main() {
-  const { outputPath } = parseArgs();
+  const { city, provinceCode, provinceLabel, outputPath } = parseArgs();
   if (fs.existsSync(outputPath)) throw new Error(`Refusing to overwrite existing snapshot: ${outputPath}`);
   const capturedAt = new Date().toISOString();
   const strata = [];
   for (const filter of VIETNAM_REGISTER_STAR_FILTERS) {
-    strata.push(await captureStar(filter.stars, filter.rateCode));
+    strata.push(await captureStar(filter.stars, filter.rateCode, provinceCode));
   }
   const allIds = strata.flatMap((stratum) => stratum.records.map((record) => record.sourcePropertyId));
   if (new Set(allIds).size !== allIds.length) {
@@ -170,7 +184,7 @@ async function main() {
     sourceUrl: SOURCE_URL,
     sourceStatement: 'Thông tin do Cơ quan nhà nước quản lý',
     filters: {
-      province: { code: PROVINCE_CODE, label: 'Thành phố Đà Nẵng' },
+      province: { code: provinceCode, label: provinceLabel },
       type: { code: HOTEL_TYPE_CODE, label: 'Khách sạn' },
       manager: { code: GOVERNMENT_MANAGED_CODE, label: 'Government-managed information' },
       starRateCodes: Object.fromEntries(
@@ -182,7 +196,7 @@ async function main() {
   });
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
-  console.log(`Captured ${allIds.length} unique government-managed 1-4-star Da Nang hotels`);
+  console.log(`Captured ${allIds.length} unique government-managed 1-4-star ${city} hotels`);
   for (const stratum of strata) {
     console.log(`${stratum.stars}-star: ${stratum.expectedRecordCount} records across ${stratum.lastPage} pages`);
   }

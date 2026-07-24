@@ -4,6 +4,7 @@ import {
   parseVietnamRegisterLastPage,
   parseVietnamRegisterListings,
   parseVietnamRegisterTotal,
+  vietnamAccommodationRegisterCaptureSchema,
 } from './vietnam-accommodation-register';
 
 const fixture = `
@@ -48,5 +49,39 @@ describe('Vietnam accommodation register parser', () => {
         address: null,
       },
     ]);
+  });
+
+  it('keeps the capture contract reusable across official province filters', () => {
+    const stratum = (stars: 1 | 2 | 3 | 4, rateCode: string, id: string) => ({
+      stars,
+      rateCode,
+      expectedRecordCount: 1,
+      lastPage: 1,
+      pages: [{
+        page: 1,
+        requestUrl: 'https://csdl.vietnamtourism.gov.vn/cslt/',
+        reportedResultCount: 1,
+        rawByteCount: 100,
+        rawSha256: 'a'.repeat(64),
+        parsedRecordCount: 1,
+      }],
+      records: [{ sourcePropertyId: id, name: `Hotel ${id}`, address: 'Hanoi' }],
+    });
+    const capture = vietnamAccommodationRegisterCaptureSchema.parse({
+      schemaVersion: 'vietnam-accommodation-register-capture-v1',
+      capturedAt: '2026-07-24T00:00:00.000Z',
+      publisher: 'Viet Nam National Authority of Tourism',
+      sourceUrl: 'https://csdl.vietnamtourism.gov.vn/cslt/',
+      sourceStatement: 'Thông tin do Cơ quan nhà nước quản lý',
+      filters: {
+        province: { code: '01', label: 'Thành phố Hà Nội' },
+        type: { code: '1', label: 'Khách sạn' },
+        manager: { code: '0', label: 'Government-managed information' },
+        starRateCodes: { 1: '5', 2: '4', 3: '3', 4: '2' },
+      },
+      strata: [stratum(1, '5', '1'), stratum(2, '4', '2'), stratum(3, '3', '3'), stratum(4, '2', '4')],
+      totalRecordCount: 4,
+    });
+    expect(capture.filters.province).toEqual({ code: '01', label: 'Thành phố Hà Nội' });
   });
 });

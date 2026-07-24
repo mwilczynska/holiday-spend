@@ -91,6 +91,13 @@ links do not retain those filters. The normalized capture retains stable propert
 reported totals, page byte counts, and SHA-256 hashes. The directory does not supply property coordinates,
 so it cannot by itself establish the fixed centre, radius eligibility, or ranking.
 
+For Hanoi, the same directory is accepted only as a source-universe input until active classification is
+reconciled. The 24 July 2026 filtered capture returns 330 government-managed 1-4-star hotel records, while
+the tourism authority's February 2026 city summary reports only 37 hotels with currently valid 1-4-star
+classifications. The capture therefore cannot establish current eligibility by itself. Every Hanoi row
+must be joined to a current classification decision or another authoritative active-status record before
+it can enter geolocation, ranking, or quote collection; unresolved rows remain visibly excluded.
+
 The one-time address-resolution pass uses the public OpenStreetMap Foundation Nominatim service under its
 published usage policy: one machine and thread, at least 1.1 seconds between calls, an identifying user
 agent, local caching, no autocomplete, no grid/systematic POI search, and no repeated scheduled run. Each
