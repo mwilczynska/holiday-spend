@@ -313,7 +313,13 @@ Seven destinations remain pending with an explicit match outcome. Dubrovnik, Que
 Pu Luong, Vang Vieng, and Santa Fe (Bantayan) have no matching named File 21 record; Goa is a state and
 multi-city destination, so assigning one city's population would misstate the estimand. The audit rejects
 plausible-looking but wrong fuzzy matches, including Pu Luong to Phú Cường and Vang Vieng to Vientiane.
-All 36 tourism-intensity fields remain pending.
+Tourism-intensity collection has begun with Prague. For 2024, the Czech Statistical Office reports
+8,063,367 guests in collective accommodation establishments and 1,397,880 residents for the same
+Capital City of Prague administrative geography. The resulting 5.77 arrivals per resident is classified
+as `high`. The artifact retains both counts, definitions, sources, year, geography, and the derived value.
+This is a reproducible accommodation-based proxy and a lower bound on total overnight visitation because
+some small, informal, and platform-only stays fall outside the reported establishment frame. The other
+35 tourism-intensity fields remain pending rather than mixing incompatible destination geographies.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

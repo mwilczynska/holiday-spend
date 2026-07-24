@@ -47,5 +47,21 @@
     { "city": "Santa Fe (Bantayan)", "country": "Philippines", "reason": "no_matching_named_record", "notes": "No Santa Fe, Bantayan record is present in WUP File 21; do not substitute one of several unrelated Santa Cruz or San Jose records." },
     { "city": "Goa", "country": "India", "reason": "destination_is_not_single_city", "notes": "Goa is a state and multi-city destination; a single WUP city population would not represent the planner destination." }
   ],
-  "tourismIntensity": []
+  "tourismIntensity": [
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "referenceYear": 2024,
+      "spatialUnit": "Capital City of Prague administrative region",
+      "overnightArrivals": 8063367,
+      "residentPopulation": 1397880,
+      "numeratorDefinition": "Guests staying in Prague collective accommodation establishments during 2024",
+      "denominatorDefinition": "Residents of the Capital City of Prague at 31 December 2024",
+      "arrivalsSourceName": "Czech Statistical Office, First Hand Figures Prague 2024",
+      "arrivalsSourceUrl": "https://csu.gov.cz/docs/107508/103c4614-efb2-bcb5-e482-602b2efa8860/33012325_def.pdf?version=1.0",
+      "populationSourceName": "Czech Statistical Office, Population movement in Prague in 2024",
+      "populationSourceUrl": "https://csu.gov.cz/pha/pohyb-obyvatelstva-v-hl-m-praze-v-roce-2024",
+      "notes": "The numerator covers registered collective accommodation establishments and therefore excludes some small, informal, or platform-only stays; it is a reproducible lower-bound proxy for overnight arrivals, not total visitation."
+    }
+  ]
 }

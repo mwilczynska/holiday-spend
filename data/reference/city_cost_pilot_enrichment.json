@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "city-cost-pilot-enrichment-v2",
-  "enrichmentId": "pilot-36-enrichment-2026-07-24-v2",
+  "schemaVersion": "city-cost-pilot-enrichment-v3",
+  "enrichmentId": "pilot-36-enrichment-2026-07-24-v3",
   "pilotSource": "data/reference/city_cost_collection_pilot.json",
   "observationManifestSource": "data/reference/city_cost_collection_batches.json",
   "generatedAt": "2026-07-24T15:00:00.000Z",
@@ -422,14 +422,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 5.768282685209031,
+        "referenceYear": 2024,
+        "spatialUnit": "Capital City of Prague administrative region",
+        "band": "high",
+        "overnightArrivals": 8063367,
+        "residentPopulation": 1397880,
+        "numeratorDefinition": "Guests staying in Prague collective accommodation establishments during 2024",
+        "denominatorDefinition": "Residents of the Capital City of Prague at 31 December 2024",
+        "arrivalsSourceName": "Czech Statistical Office, First Hand Figures Prague 2024",
+        "arrivalsSourceUrl": "https://csu.gov.cz/docs/107508/103c4614-efb2-bcb5-e482-602b2efa8860/33012325_def.pdf?version=1.0",
+        "populationSourceName": "Czech Statistical Office, Population movement in Prague in 2024",
+        "populationSourceUrl": "https://csu.gov.cz/pha/pohyb-obyvatelstva-v-hl-m-praze-v-roce-2024",
+        "notes": "The numerator covers registered collective accommodation establishments and therefore excludes some small, informal, or platform-only stays; it is a reproducible lower-bound proxy for overnight arrivals, not total visitation."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

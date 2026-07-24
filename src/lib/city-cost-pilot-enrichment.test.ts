@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { cityCostPilotEnrichmentSchema, citySizeBand, sourceDensityBand } from './city-cost-pilot-enrichment';
+import { cityCostPilotEnrichmentSchema, citySizeBand, sourceDensityBand, tourismIntensityBand } from './city-cost-pilot-enrichment';
 
 describe('city cost pilot enrichment', () => {
   it('uses frozen evidence-density thresholds', () => {
@@ -13,6 +13,12 @@ describe('city cost pilot enrichment', () => {
   it('uses frozen city-size thresholds', () => {
     expect([99_999, 100_000, 499_999, 500_000, 4_999_999, 5_000_000].map(citySizeBand)).toEqual([
       'small', 'medium', 'medium', 'large', 'large', 'megacity',
+    ]);
+  });
+
+  it('uses frozen tourism-intensity thresholds', () => {
+    expect([0.99, 1, 4.99, 5, 14.99, 15].map(tourismIntensityBand)).toEqual([
+      'low', 'medium', 'medium', 'high', 'high', 'very_high',
     ]);
   });
 
@@ -35,5 +41,11 @@ describe('city cost pilot enrichment', () => {
       sourceRecordId: '5433',
     });
     expect(artifact.cities.find((city) => city.city === 'Goa')?.citySize.notes).toContain('state and multi-city');
+    expect(artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources')).toHaveLength(1);
+    expect(artifact.cities.find((city) => city.city === 'Prague')?.tourismIntensity).toMatchObject({
+      overnightArrivals: 8_063_367,
+      residentPopulation: 1_397_880,
+      band: 'high',
+    });
   });
 });

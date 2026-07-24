@@ -34,6 +34,28 @@ const citySizeMetricSchema = z.discriminatedUnion('status', [
   measuredCitySizeSchema,
 ]);
 
+const measuredTourismIntensitySchema = z.object({
+  status: z.literal('measured_from_public_sources'),
+  value: z.number().positive(),
+  referenceYear: z.number().int().min(1900).max(2100),
+  spatialUnit: z.string().min(1),
+  band: z.enum(['low', 'medium', 'high', 'very_high']),
+  overnightArrivals: z.number().int().positive(),
+  residentPopulation: z.number().int().positive(),
+  numeratorDefinition: z.string().min(1),
+  denominatorDefinition: z.string().min(1),
+  arrivalsSourceName: z.string().min(1),
+  arrivalsSourceUrl: z.string().url(),
+  populationSourceName: z.string().min(1),
+  populationSourceUrl: z.string().url(),
+  notes: z.string().min(1),
+});
+
+const tourismIntensityMetricSchema = z.discriminatedUnion('status', [
+  pendingMetricSchema,
+  measuredTourismIntensitySchema,
+]);
+
 const sourceDensitySchema = z.object({
   status: z.literal('measured_from_retained_evidence'),
   acceptedObservationCount: z.number().int().nonnegative(),
@@ -46,7 +68,7 @@ const sourceDensitySchema = z.object({
 
 export const cityCostPilotEnrichmentSchema = z
   .object({
-    schemaVersion: z.literal('city-cost-pilot-enrichment-v2'),
+    schemaVersion: z.literal('city-cost-pilot-enrichment-v3'),
     enrichmentId: z.string().min(1),
     pilotSource: z.string().min(1),
     observationManifestSource: z.string().min(1),
@@ -73,7 +95,7 @@ export const cityCostPilotEnrichmentSchema = z
         country: z.string().min(1),
         region: cityCostRegionSchema,
         citySize: citySizeMetricSchema,
-        tourismIntensity: pendingMetricSchema,
+        tourismIntensity: tourismIntensityMetricSchema,
         publicSourceDensity: sourceDensitySchema,
       })
     ).length(36),
@@ -114,6 +136,25 @@ export const cityCostPilotEnrichmentSchema = z
           });
         }
       }
+
+      if (city.tourismIntensity.status === 'measured_from_public_sources') {
+        const expectedValue = city.tourismIntensity.overnightArrivals / city.tourismIntensity.residentPopulation;
+        if (Math.abs(city.tourismIntensity.value - expectedValue) > 1e-9) {
+          context.addIssue({
+            code: 'custom',
+            path: ['cities', index, 'tourismIntensity', 'value'],
+            message: `Expected arrivals/population ratio ${expectedValue}`,
+          });
+        }
+        const expectedTourismBand = tourismIntensityBand(expectedValue);
+        if (city.tourismIntensity.band !== expectedTourismBand) {
+          context.addIssue({
+            code: 'custom',
+            path: ['cities', index, 'tourismIntensity', 'band'],
+            message: `Expected ${expectedTourismBand} from intensity ${expectedValue}`,
+          });
+        }
+      }
     });
   });
 
@@ -129,6 +170,13 @@ export function citySizeBand(population: number) {
   if (population < 500_000) return 'medium' as const;
   if (population < 5_000_000) return 'large' as const;
   return 'megacity' as const;
+}
+
+export function tourismIntensityBand(arrivalsPerResident: number) {
+  if (arrivalsPerResident < 1) return 'low' as const;
+  if (arrivalsPerResident < 5) return 'medium' as const;
+  if (arrivalsPerResident < 15) return 'high' as const;
+  return 'very_high' as const;
 }
 
 export type CityCostPilotEnrichment = z.infer<typeof cityCostPilotEnrichmentSchema>;
