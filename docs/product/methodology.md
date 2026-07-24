@@ -327,6 +327,14 @@ this is also an accommodation-based proxy, not an exhaustive count of every over
 34 tourism-intensity fields remain pending rather than mixing incompatible destination geographies or
 using international-only arrivals, guest-night totals, incomplete-year figures, or forecasts as substitutes.
 
+Mexico City adds the first non-European measured record. The city tourism authority reports 14,403,349
+hotel tourists in 2023. The matching CONAPO municipal projection file gives 9,221,637 mid-year residents
+after summing both sexes across the same 16-borough Ciudad de Mexico federal entity. The resulting 1.56
+arrivals per resident is classified as `medium`. The numerator is deliberately labelled hotel-only: it
+excludes other accommodation, friends-and-relatives stays, and some platform inventory, so it remains a
+reproducible lower-bound proxy rather than a claim about all overnight visitors. The other 33 fields stay
+pending until an equally defensible same-year, same-geography pair is available.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

@@ -711,14 +711,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 1.5619080430079821,
+        "referenceYear": 2023,
+        "spatialUnit": "Ciudad de Mexico federal entity (all 16 boroughs)",
+        "band": "medium",
+        "overnightArrivals": 14403349,
+        "residentPopulation": 9221637,
+        "numeratorDefinition": "Tourists staying in Ciudad de Mexico hotels during 2023",
+        "denominatorDefinition": "Projected mid-year population of Ciudad de Mexico in 2023, summed across both sexes and all 16 boroughs",
+        "arrivalsSourceName": "Secretaria de Turismo de la Ciudad de Mexico, Sixth Tourism Report",
+        "arrivalsSourceUrl": "https://www.turismo.cdmx.gob.mx/storage/app/media/informe6/sexto_informe_turismo.pdf",
+        "populationSourceName": "CONAPO, municipal population projections 1990-2040",
+        "populationSourceUrl": "https://www.datos.gob.mx/dataset/f2b9b220-3ef7-4e3a-bde6-87e1dac78c6a/resource/99b28bb6-8e31-48e1-b162-85a7e4deafc3/download/pobproy_ggrupos.csv",
+        "notes": "The numerator covers registered hotel tourists and therefore excludes stays in other accommodation, with friends or relatives, and some platform inventory. It is retained as a same-geography, reproducible lower-bound proxy for overnight arrivals rather than total visitation."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
