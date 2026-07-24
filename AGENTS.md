@@ -242,6 +242,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Constrain collection to free, checkpointed LLM web-research calls with no paid data APIs or project-imposed daily cap
   - [x] Add an observation-level JSONL store and extraction-batch manifest
   - [x] Add extraction-batch validation plus deterministic local-currency aggregation, frozen FX, and v3-alpha basket materialization
+  - [x] Add source-channel-aware aggregation that retains secondary evidence and flags cross-channel medians differing by more than the provisional 25% review threshold
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Materialize the current fail-closed research artifact: 27 of 114 tier cells across six cities, with zero incomplete wide rows published

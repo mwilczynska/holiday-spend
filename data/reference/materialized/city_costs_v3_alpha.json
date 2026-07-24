@@ -1,6 +1,6 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
-  "calculatorVersion": "city-cost-v3-alpha-1",
+  "calculatorVersion": "city-cost-v3-alpha-2",
   "dataCutoff": "2026-07-24T05:56:12.792Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
@@ -38,6 +38,10 @@
     "activities_mid_range": 1,
     "activities_high_end": 0
   },
+  "qualitySummary": {
+    "crossChannelMeasureCount": 0,
+    "flaggedSourceDisagreementCount": 0
+  },
   "aggregates": [
     {
       "city": "Bangkok",
@@ -48,6 +52,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-bangkok-2026-06-10-cappuccino"
+          ],
+          "medianLocal": 96.3,
+          "q25Local": 96.3,
+          "q75Local": 96.3,
+          "medianAud": 4.072714
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 96.3,
@@ -61,6 +91,7 @@
       "minAud": 4.072714,
       "maxAud": 4.072714,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -69,6 +100,9 @@
         "THB"
       ],
       "observationIds": [
+        "numbeo-bangkok-2026-06-10-cappuccino"
+      ],
+      "availableObservationIds": [
         "numbeo-bangkok-2026-06-10-cappuccino"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -82,6 +116,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-bangkok-2026-06-10-domestic-draft-beer"
+          ],
+          "medianLocal": 100,
+          "q25Local": 100,
+          "q75Local": 100,
+          "medianAud": 4.229194
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 100,
@@ -95,6 +155,7 @@
       "minAud": 4.229194,
       "maxAud": 4.229194,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -103,6 +164,9 @@
         "THB"
       ],
       "observationIds": [
+        "numbeo-bangkok-2026-06-10-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
         "numbeo-bangkok-2026-06-10-domestic-draft-beer"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -116,6 +180,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-bangkok-2026-06-10-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 110,
+          "q25Local": 110,
+          "q75Local": 110,
+          "medianAud": 4.652113
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 110,
@@ -129,6 +219,7 @@
       "minAud": 4.652113,
       "maxAud": 4.652113,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -137,6 +228,9 @@
         "THB"
       ],
       "observationIds": [
+        "numbeo-bangkok-2026-06-10-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-bangkok-2026-06-10-inexpensive-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -150,6 +244,32 @@
       "unit": "per_two_person_meal",
       "travellers": 2,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-bangkok-2026-06-10-midrange-restaurant-meal"
+          ],
+          "medianLocal": 1200,
+          "q25Local": 1200,
+          "q75Local": 1200,
+          "medianAud": 50.750324
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 1200,
@@ -163,6 +283,7 @@
       "minAud": 50.750324,
       "maxAud": 50.750324,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -171,6 +292,9 @@
         "THB"
       ],
       "observationIds": [
+        "numbeo-bangkok-2026-06-10-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-bangkok-2026-06-10-midrange-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -184,6 +308,32 @@
       "unit": "per_person_ticket",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "The Grand Palace, Bangkok"
+          ],
+          "observationIds": [
+            "grand-palace-bangkok-2026-foreigner-adult"
+          ],
+          "medianLocal": 500,
+          "q25Local": 500,
+          "q75Local": 500,
+          "medianAud": 21.145968
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "THB",
       "audPerLocalUnit": 0.04229193673839772,
       "medianLocal": 500,
@@ -197,6 +347,7 @@
       "minAud": 21.145968,
       "maxAud": 21.145968,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "The Grand Palace, Bangkok"
@@ -205,6 +356,9 @@
         "THB"
       ],
       "observationIds": [
+        "grand-palace-bangkok-2026-foreigner-adult"
+      ],
+      "availableObservationIds": [
         "grand-palace-bangkok-2026-foreigner-adult"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -218,6 +372,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-copenhagen-2026-06-13-cappuccino"
+          ],
+          "medianLocal": 45.1,
+          "q25Local": 45.1,
+          "q75Local": 45.1,
+          "medianAud": 9.840834
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 45.1,
@@ -231,6 +411,7 @@
       "minAud": 9.840834,
       "maxAud": 9.840834,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -239,6 +420,9 @@
         "DKK"
       ],
       "observationIds": [
+        "numbeo-copenhagen-2026-06-13-cappuccino"
+      ],
+      "availableObservationIds": [
         "numbeo-copenhagen-2026-06-13-cappuccino"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -252,6 +436,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-copenhagen-2026-06-13-domestic-draft-beer"
+          ],
+          "medianLocal": 60,
+          "q25Local": 60,
+          "q75Local": 60,
+          "medianAud": 13.092018
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 60,
@@ -265,6 +475,7 @@
       "minAud": 13.092018,
       "maxAud": 13.092018,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -273,6 +484,9 @@
         "DKK"
       ],
       "observationIds": [
+        "numbeo-copenhagen-2026-06-13-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
         "numbeo-copenhagen-2026-06-13-domestic-draft-beer"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -286,6 +500,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-copenhagen-2026-06-13-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 150,
+          "q25Local": 150,
+          "q75Local": 150,
+          "medianAud": 32.730045
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 150,
@@ -299,6 +539,7 @@
       "minAud": 32.730045,
       "maxAud": 32.730045,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -307,6 +548,9 @@
         "DKK"
       ],
       "observationIds": [
+        "numbeo-copenhagen-2026-06-13-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-copenhagen-2026-06-13-inexpensive-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -320,6 +564,32 @@
       "unit": "per_two_person_meal",
       "travellers": 2,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-copenhagen-2026-06-13-midrange-restaurant-meal"
+          ],
+          "medianLocal": 800,
+          "q25Local": 800,
+          "q75Local": 800,
+          "medianAud": 174.560242
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 800,
@@ -333,6 +603,7 @@
       "minAud": 174.560242,
       "maxAud": 174.560242,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -341,6 +612,9 @@
         "DKK"
       ],
       "observationIds": [
+        "numbeo-copenhagen-2026-06-13-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-copenhagen-2026-06-13-midrange-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -354,6 +628,32 @@
       "unit": "per_person_ticket",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "The Royal Danish Collection"
+          ],
+          "observationIds": [
+            "rosenborg-copenhagen-2026-online-adult"
+          ],
+          "medianLocal": 140,
+          "q25Local": 140,
+          "q75Local": 140,
+          "medianAud": 30.548042
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "DKK",
       "audPerLocalUnit": 0.2182003023128269,
       "medianLocal": 140,
@@ -367,6 +667,7 @@
       "minAud": 30.548042,
       "maxAud": 30.548042,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "The Royal Danish Collection"
@@ -375,6 +676,9 @@
         "DKK"
       ],
       "observationIds": [
+        "rosenborg-copenhagen-2026-online-adult"
+      ],
+      "availableObservationIds": [
         "rosenborg-copenhagen-2026-online-adult"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -388,6 +692,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-hanoi-2026-07-14-cappuccino"
+          ],
+          "medianLocal": 48277.36,
+          "q25Local": 48277.36,
+          "q75Local": 48277.36,
+          "medianAud": 2.651728
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 48277.36,
@@ -401,6 +731,7 @@
       "minAud": 2.651728,
       "maxAud": 2.651728,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -409,6 +740,9 @@
         "VND"
       ],
       "observationIds": [
+        "numbeo-hanoi-2026-07-14-cappuccino"
+      ],
+      "availableObservationIds": [
         "numbeo-hanoi-2026-07-14-cappuccino"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -422,6 +756,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-hanoi-2026-07-14-domestic-draft-beer"
+          ],
+          "medianLocal": 28157.89,
+          "q25Local": 28157.89,
+          "q75Local": 28157.89,
+          "medianAud": 1.546627
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 28157.89,
@@ -435,6 +795,7 @@
       "minAud": 1.546627,
       "maxAud": 1.546627,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -443,6 +804,9 @@
         "VND"
       ],
       "observationIds": [
+        "numbeo-hanoi-2026-07-14-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
         "numbeo-hanoi-2026-07-14-domestic-draft-beer"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -456,6 +820,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-hanoi-2026-07-14-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 52500,
+          "q25Local": 52500,
+          "q75Local": 52500,
+          "medianAud": 2.883665
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 52500,
@@ -469,6 +859,7 @@
       "minAud": 2.883665,
       "maxAud": 2.883665,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -477,6 +868,9 @@
         "VND"
       ],
       "observationIds": [
+        "numbeo-hanoi-2026-07-14-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-hanoi-2026-07-14-inexpensive-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -490,6 +884,32 @@
       "unit": "per_two_person_meal",
       "travellers": 2,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-hanoi-2026-07-14-midrange-restaurant-meal"
+          ],
+          "medianLocal": 550000,
+          "q25Local": 550000,
+          "q75Local": 550000,
+          "medianAud": 30.209821
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 550000,
@@ -503,6 +923,7 @@
       "minAud": 30.209821,
       "maxAud": 30.209821,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -511,6 +932,9 @@
         "VND"
       ],
       "observationIds": [
+        "numbeo-hanoi-2026-07-14-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-hanoi-2026-07-14-midrange-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -524,6 +948,32 @@
       "unit": "per_person_ticket",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Hanoi People's Committee Electronic Portal"
+          ],
+          "observationIds": [
+            "hanoi-thang-long-imperial-citadel-2025-adult"
+          ],
+          "medianLocal": 100000,
+          "q25Local": 100000,
+          "q75Local": 100000,
+          "medianAud": 5.492695
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 100000,
@@ -537,6 +987,7 @@
       "minAud": 5.492695,
       "maxAud": 5.492695,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Hanoi People's Committee Electronic Portal"
@@ -545,6 +996,9 @@
         "VND"
       ],
       "observationIds": [
+        "hanoi-thang-long-imperial-citadel-2025-adult"
+      ],
+      "availableObservationIds": [
         "hanoi-thang-long-imperial-citadel-2025-adult"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -558,6 +1012,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-lisbon-2026-07-17-cappuccino"
+          ],
+          "medianLocal": 2.58,
+          "q25Local": 2.58,
+          "q75Local": 2.58,
+          "medianAud": 4.208496
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 2.58,
@@ -571,6 +1051,7 @@
       "minAud": 4.208496,
       "maxAud": 4.208496,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -579,6 +1060,9 @@
         "EUR"
       ],
       "observationIds": [
+        "numbeo-lisbon-2026-07-17-cappuccino"
+      ],
+      "availableObservationIds": [
         "numbeo-lisbon-2026-07-17-cappuccino"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -592,6 +1076,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-lisbon-2026-07-17-domestic-draft-beer"
+          ],
+          "medianLocal": 3,
+          "q25Local": 3,
+          "q75Local": 3,
+          "medianAud": 4.8936
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 3,
@@ -605,6 +1115,7 @@
       "minAud": 4.8936,
       "maxAud": 4.8936,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -613,6 +1124,9 @@
         "EUR"
       ],
       "observationIds": [
+        "numbeo-lisbon-2026-07-17-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
         "numbeo-lisbon-2026-07-17-domestic-draft-beer"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -626,6 +1140,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-lisbon-2026-07-17-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 15,
+          "q25Local": 15,
+          "q75Local": 15,
+          "medianAud": 24.468
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 15,
@@ -639,6 +1179,7 @@
       "minAud": 24.468,
       "maxAud": 24.468,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -647,6 +1188,9 @@
         "EUR"
       ],
       "observationIds": [
+        "numbeo-lisbon-2026-07-17-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-lisbon-2026-07-17-inexpensive-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -660,6 +1204,32 @@
       "unit": "per_two_person_meal",
       "travellers": 2,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-lisbon-2026-07-17-midrange-restaurant-meal"
+          ],
+          "medianLocal": 55,
+          "q25Local": 55,
+          "q75Local": 55,
+          "medianAud": 89.716
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 55,
@@ -673,6 +1243,7 @@
       "minAud": 89.716,
       "maxAud": 89.716,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -681,6 +1252,9 @@
         "EUR"
       ],
       "observationIds": [
+        "numbeo-lisbon-2026-07-17-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-lisbon-2026-07-17-midrange-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -694,6 +1268,32 @@
       "unit": "per_person_ticket",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Oceanário de Lisboa"
+          ],
+          "observationIds": [
+            "oceanario-lisbon-2026-07-24-adult-early-afternoon"
+          ],
+          "medianLocal": 27,
+          "q25Local": 27,
+          "q75Local": 27,
+          "medianAud": 44.0424
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "EUR",
       "audPerLocalUnit": 1.6312,
       "medianLocal": 27,
@@ -707,6 +1307,7 @@
       "minAud": 44.0424,
       "maxAud": 44.0424,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Oceanário de Lisboa"
@@ -715,6 +1316,9 @@
         "EUR"
       ],
       "observationIds": [
+        "oceanario-lisbon-2026-07-24-adult-early-afternoon"
+      ],
+      "availableObservationIds": [
         "oceanario-lisbon-2026-07-24-adult-early-afternoon"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -728,6 +1332,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-prague-2026-07-23-cappuccino"
+          ],
+          "medianLocal": 80.29,
+          "q25Local": 80.29,
+          "q75Local": 80.29,
+          "medianAud": 5.419558
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 80.29,
@@ -741,6 +1371,7 @@
       "minAud": 5.419558,
       "maxAud": 5.419558,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -749,6 +1380,9 @@
         "CZK"
       ],
       "observationIds": [
+        "numbeo-prague-2026-07-23-cappuccino"
+      ],
+      "availableObservationIds": [
         "numbeo-prague-2026-07-23-cappuccino"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -762,6 +1396,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-prague-2026-07-23-domestic-draft-beer"
+          ],
+          "medianLocal": 65,
+          "q25Local": 65,
+          "q75Local": 65,
+          "medianAud": 4.387487
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 65,
@@ -775,6 +1435,7 @@
       "minAud": 4.387487,
       "maxAud": 4.387487,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -783,6 +1444,9 @@
         "CZK"
       ],
       "observationIds": [
+        "numbeo-prague-2026-07-23-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
         "numbeo-prague-2026-07-23-domestic-draft-beer"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -796,6 +1460,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-prague-2026-07-23-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 230,
+          "q25Local": 230,
+          "q75Local": 230,
+          "medianAud": 15.524952
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 230,
@@ -809,6 +1499,7 @@
       "minAud": 15.524952,
       "maxAud": 15.524952,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -817,6 +1508,9 @@
         "CZK"
       ],
       "observationIds": [
+        "numbeo-prague-2026-07-23-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-prague-2026-07-23-inexpensive-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -830,6 +1524,32 @@
       "unit": "per_two_person_meal",
       "travellers": 2,
       "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-prague-2026-07-23-midrange-restaurant-meal"
+          ],
+          "medianLocal": 1100,
+          "q25Local": 1100,
+          "q75Local": 1100,
+          "medianAud": 74.249772
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 1100,
@@ -843,6 +1563,7 @@
       "minAud": 74.249772,
       "maxAud": 74.249772,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Numbeo"
@@ -851,6 +1572,9 @@
         "CZK"
       ],
       "observationIds": [
+        "numbeo-prague-2026-07-23-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
         "numbeo-prague-2026-07-23-midrange-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -864,6 +1588,32 @@
       "unit": "per_person_ticket",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Prague Castle Administration"
+          ],
+          "observationIds": [
+            "prague-castle-2024-03-main-circuit-adult"
+          ],
+          "medianLocal": 450,
+          "q25Local": 450,
+          "q75Local": 450,
+          "medianAud": 30.374907
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "CZK",
       "audPerLocalUnit": 0.06749979309774062,
       "medianLocal": 450,
@@ -877,6 +1627,7 @@
       "minAud": 30.374907,
       "maxAud": 30.374907,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Prague Castle Administration"
@@ -885,6 +1636,9 @@
         "CZK"
       ],
       "observationIds": [
+        "prague-castle-2024-03-main-circuit-adult"
+      ],
+      "availableObservationIds": [
         "prague-castle-2024-03-main-circuit-adult"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -898,6 +1652,32 @@
       "unit": "per_person_ticket",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Pu Luong Excursions"
+          ],
+          "observationIds": [
+            "pu-luong-excursions-pe005-half-day-group"
+          ],
+          "medianLocal": 494613.356241,
+          "q25Local": 494613.356241,
+          "q75Local": 494613.356241,
+          "medianAud": 27.167602
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 494613.356241,
@@ -911,6 +1691,7 @@
       "minAud": 27.167602,
       "maxAud": 27.167602,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Pu Luong Excursions"
@@ -919,6 +1700,9 @@
         "USD"
       ],
       "observationIds": [
+        "pu-luong-excursions-pe005-half-day-group"
+      ],
+      "availableObservationIds": [
         "pu-luong-excursions-pe005-half-day-group"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
@@ -932,6 +1716,32 @@
       "unit": "per_person_item",
       "travellers": 1,
       "valueStatus": "direct",
+      "selectedSourceChannel": "manual_menu_sample",
+      "availableSourceChannels": [
+        "manual_menu_sample"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "manual_menu_sample",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Central Hill Pu Luong Resort"
+          ],
+          "observationIds": [
+            "central-hill-pu-luong-2026-mixed-fried-rice"
+          ],
+          "medianLocal": 85000,
+          "q25Local": 85000,
+          "q75Local": 85000,
+          "medianAud": 4.668791
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
       "localCurrency": "VND",
       "audPerLocalUnit": 0.000054926947160276834,
       "medianLocal": 85000,
@@ -945,6 +1755,7 @@
       "minAud": 4.668791,
       "maxAud": 4.668791,
       "observationCount": 1,
+      "availableObservationCount": 1,
       "sourceCount": 1,
       "sourceNames": [
         "Central Hill Pu Luong Resort"
@@ -955,13 +1766,16 @@
       "observationIds": [
         "central-hill-pu-luong-2026-mixed-fried-rice"
       ],
+      "availableObservationIds": [
+        "central-hill-pu-luong-2026-mixed-fried-rice"
+      ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     }
   ],
   "cities": [
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-1",
+      "calculatorVersion": "city-cost-v3-alpha-2",
       "city": "Bangkok",
       "country": "Thailand",
       "region": "SEA",
@@ -1179,7 +1993,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-1",
+      "calculatorVersion": "city-cost-v3-alpha-2",
       "city": "Copenhagen",
       "country": "Denmark",
       "region": "Europe",
@@ -1397,7 +2211,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-1",
+      "calculatorVersion": "city-cost-v3-alpha-2",
       "city": "Hanoi",
       "country": "Vietnam",
       "region": "SEA",
@@ -1615,7 +2429,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-1",
+      "calculatorVersion": "city-cost-v3-alpha-2",
       "city": "Lisbon",
       "country": "Portugal",
       "region": "Europe",
@@ -1833,7 +2647,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-1",
+      "calculatorVersion": "city-cost-v3-alpha-2",
       "city": "Prague",
       "country": "Czech Republic",
       "region": "Europe",
@@ -2051,7 +2865,7 @@
     },
     {
       "schemaVersion": "city-cost-materialization-v1",
-      "calculatorVersion": "city-cost-v3-alpha-1",
+      "calculatorVersion": "city-cost-v3-alpha-2",
       "city": "Pu Luong",
       "country": "Vietnam",
       "region": "SEA",

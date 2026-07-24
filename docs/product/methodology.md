@@ -118,6 +118,15 @@ interquartile ranges; and only then converts the aggregated result to AUD using 
 Direct observations take precedence over derived values, which take precedence over imputed values, so
 an imputation cannot dilute available direct evidence.
 
+Calculator `city-cost-v3-alpha-2` also treats source types as measurement channels rather than silently
+pooling them. Food and drink use the retained city-level published dataset channel as the primary point
+estimate, with menu samples retained as triangulation evidence. Activities prefer the attraction or
+operator's official site, and accommodation prefers representative marketplace evidence when available.
+Every available channel keeps its own observation count, source names, median, interquartile range, and
+lineage. A secondary-channel median more than 25% from the selected primary median receives a provisional
+disagreement flag for review; this threshold is an operational diagnostic to validate during the pilot,
+not an accuracy result.
+
 The current frozen snapshot uses the European Central Bank's 22 July 2026 euro reference rates for EUR,
 USD, CZK, DKK, and THB, plus the Reserve Bank of Australia's 14 July 2026 AUD/VND quote. Each stored rate
 retains its source date, quote, URL, and derivation formula. The materializer verifies the snapshot and
@@ -130,6 +139,10 @@ half-day activity basket. It reports zero complete cities and emits no publishab
 accommodation, street/premium food, cocktail/wine, and many activity observations are still missing.
 This fail-closed behaviour is intentional: partial evidence remains visible without being misrepresented
 as a complete replacement dataset.
+
+No city/measure currently has observations from more than one source channel, so the artifact reports
+zero cross-channel comparisons and zero disagreement flags. That is missing triangulation evidence, not
+evidence that sources agree; the independent menu-sampling stage remains open.
 
 The v3-alpha formula set is provisional until the pilot and whole-city validation are complete. Literal
 two-person baskets are calculated deterministically from retained primitives; for example,

@@ -208,6 +208,39 @@ describe('city cost methodology v3', () => {
     expect(aggregates[0].valueStatus).toBe('direct');
   });
 
+  it('selects the primary source channel and flags material cross-channel disagreement', () => {
+    const aggregates = aggregateCityCostMeasures(
+      [
+        observation('cappuccino_1', 4, {
+          observationId: 'numbeo-coffee',
+          sourceName: 'Numbeo',
+          sourceType: 'published_dataset',
+        }),
+        observation('cappuccino_1', 8, {
+          observationId: 'menu-coffee',
+          sourceName: 'Cafe menu',
+          sourceType: 'manual_menu_sample',
+        }),
+      ],
+      fxSnapshot,
+      resolveAud
+    );
+
+    expect(aggregates[0].selectedSourceChannel).toBe('published_dataset');
+    expect(aggregates[0].medianLocal).toBe(4);
+    expect(aggregates[0].observationCount).toBe(1);
+    expect(aggregates[0].availableObservationCount).toBe(2);
+    expect(aggregates[0].availableSourceChannels).toEqual([
+      'published_dataset',
+      'manual_menu_sample',
+    ]);
+    expect(aggregates[0].sourceDisagreement).toEqual({
+      thresholdPct: 25,
+      maxAbsoluteDifferencePct: 100,
+      flagged: true,
+    });
+  });
+
   it('materializes every tier from complete primitive observations', () => {
     const values: Record<CityCostObservation['measure'], number> = {
       hostel_dorm_bed_1p: 20,
@@ -269,10 +302,15 @@ describe('city cost methodology v3', () => {
     );
 
     expect(dataset.observationSummary).toMatchObject({ input: 2, accepted: 2, direct: 2 });
+    expect(dataset.calculatorVersion).toBe('city-cost-v3-alpha-2');
     expect(dataset.cityCount).toBe(1);
     expect(dataset.completeCityCount).toBe(0);
     expect(dataset.requiredTierCells).toBe(19);
     expect(dataset.materializedTierCells).toBe(4);
+    expect(dataset.qualitySummary).toEqual({
+      crossChannelMeasureCount: 0,
+      flaggedSourceDisagreementCount: 0,
+    });
     expect(dataset.tierCoverage.drinks_light).toBe(1);
     expect(dataset.cities[0].wideRow).toBeNull();
   });

@@ -68,6 +68,18 @@ export interface NormalizedCityCostObservation {
   reportedHighLocal: number | null;
 }
 
+export interface CityCostSourceChannelSummary {
+  sourceChannel: CityCostObservation['sourceType'];
+  observationCount: number;
+  sourceCount: number;
+  sourceNames: string[];
+  observationIds: string[];
+  medianLocal: number;
+  q25Local: number;
+  q75Local: number;
+  medianAud: number;
+}
+
 export interface AggregatedCityCostMeasure {
   city: string;
   country: string;
@@ -77,6 +89,14 @@ export interface AggregatedCityCostMeasure {
   unit: CityCostObservation['unit'];
   travellers: number;
   valueStatus: CityCostObservation['valueStatus'];
+  selectedSourceChannel: CityCostObservation['sourceType'];
+  availableSourceChannels: CityCostObservation['sourceType'][];
+  sourceChannelSummaries: CityCostSourceChannelSummary[];
+  sourceDisagreement: {
+    thresholdPct: number;
+    maxAbsoluteDifferencePct: number | null;
+    flagged: boolean;
+  };
   localCurrency: string;
   audPerLocalUnit: number;
   medianLocal: number;
@@ -90,10 +110,12 @@ export interface AggregatedCityCostMeasure {
   minAud: number;
   maxAud: number;
   observationCount: number;
+  availableObservationCount: number;
   sourceCount: number;
   sourceNames: string[];
   sourceCurrencies: string[];
   observationIds: string[];
+  availableObservationIds: string[];
   fxSnapshotId: string;
 }
 
@@ -130,7 +152,7 @@ export interface MaterializedCityCostTier {
 
 export interface MaterializedCityCostV3 {
   schemaVersion: 'city-cost-materialization-v1';
-  calculatorVersion: 'city-cost-v3-alpha-1';
+  calculatorVersion: 'city-cost-v3-alpha-2';
   city: string;
   country: string;
   region: CityCostObservation['region'];
@@ -145,7 +167,7 @@ export interface MaterializedCityCostV3 {
 
 export interface CityCostV3Dataset {
   schemaVersion: 'city-cost-materialized-dataset-v1';
-  calculatorVersion: 'city-cost-v3-alpha-1';
+  calculatorVersion: 'city-cost-v3-alpha-2';
   dataCutoff: string;
   fxSnapshotId: string;
   fxAsOfDate: string;
@@ -163,6 +185,10 @@ export interface CityCostV3Dataset {
   requiredTierCells: number;
   materializedTierCells: number;
   tierCoverage: Record<CityCostV3TierName, number>;
+  qualitySummary: {
+    crossChannelMeasureCount: number;
+    flaggedSourceDisagreementCount: number;
+  };
   aggregates: AggregatedCityCostMeasure[];
   cities: MaterializedCityCostV3[];
 }
@@ -229,6 +255,50 @@ const valueStatusPriority: Record<CityCostObservation['valueStatus'], number> = 
   imputed: 2,
 };
 
+export const SOURCE_CHANNEL_DISAGREEMENT_THRESHOLD_PCT = 25;
+
+const sourceChannelPriority: Record<
+  CityCostObservation['category'],
+  Record<CityCostObservation['sourceType'], number>
+> = {
+  accommodation: {
+    marketplace_api: 0,
+    official_api: 1,
+    official_website: 2,
+    published_dataset: 3,
+    crowdsourced_api: 4,
+    manual_menu_sample: 5,
+    derived_model: 6,
+  },
+  food: {
+    published_dataset: 0,
+    crowdsourced_api: 1,
+    manual_menu_sample: 2,
+    official_api: 3,
+    official_website: 4,
+    marketplace_api: 5,
+    derived_model: 6,
+  },
+  drinks: {
+    published_dataset: 0,
+    crowdsourced_api: 1,
+    manual_menu_sample: 2,
+    official_api: 3,
+    official_website: 4,
+    marketplace_api: 5,
+    derived_model: 6,
+  },
+  activities: {
+    official_website: 0,
+    official_api: 1,
+    marketplace_api: 2,
+    published_dataset: 3,
+    crowdsourced_api: 4,
+    manual_menu_sample: 5,
+    derived_model: 6,
+  },
+};
+
 export function aggregateCityCostMeasures(
   observations: CityCostObservation[],
   snapshotInput: CityCostFxSnapshot,
@@ -257,26 +327,82 @@ export function aggregateCityCostMeasures(
   return Array.from(groups.values())
     .map((group) => {
       const bestPriority = Math.min(...group.map((item) => valueStatusPriority[item.observation.valueStatus]));
-      const selected = group.filter(
+      const provenanceSelected = group.filter(
         (item) => valueStatusPriority[item.observation.valueStatus] === bestPriority
       );
-      const first = selected[0].observation;
-      const units = new Set(selected.map((item) => item.observation.unit));
-      const travellerCounts = new Set(selected.map((item) => item.observation.travellers));
-      const regions = new Set(selected.map((item) => item.observation.region));
-      const localCurrencies = new Set(selected.map((item) => item.localCurrency));
+      const first = provenanceSelected[0].observation;
+      const units = new Set(provenanceSelected.map((item) => item.observation.unit));
+      const travellerCounts = new Set(provenanceSelected.map((item) => item.observation.travellers));
+      const regions = new Set(provenanceSelected.map((item) => item.observation.region));
+      const localCurrencies = new Set(provenanceSelected.map((item) => item.localCurrency));
       if (units.size !== 1 || travellerCounts.size !== 1 || regions.size !== 1 || localCurrencies.size !== 1) {
         throw new Error(`Incompatible observations for ${first.city}, ${first.country}, ${first.measure}`);
       }
 
+      const selectedSourceChannel = provenanceSelected
+        .map((item) => item.observation.sourceType)
+        .sort(
+          (a, b) =>
+            sourceChannelPriority[first.category][a] - sourceChannelPriority[first.category][b] ||
+            a.localeCompare(b)
+        )[0];
+      const selected = provenanceSelected.filter(
+        (item) => item.observation.sourceType === selectedSourceChannel
+      );
       const localCurrency = selected[0].localCurrency;
       const audPerLocalUnit = snapshot.rates[localCurrency].audPerUnit;
+      const sourceChannelGroups = new Map<
+        CityCostObservation['sourceType'],
+        NormalizedCityCostObservation[]
+      >();
+      for (const item of provenanceSelected) {
+        const channel = item.observation.sourceType;
+        const channelGroup = sourceChannelGroups.get(channel) ?? [];
+        channelGroup.push(item);
+        sourceChannelGroups.set(channel, channelGroup);
+      }
+      const sourceChannelSummaries = Array.from(sourceChannelGroups.entries())
+        .map(([sourceChannel, channelGroup]) => {
+          const channelValues = channelGroup.map((item) => item.priceLocal);
+          const channelMedianLocal = round(quantile(channelValues, 0.5));
+          return {
+            sourceChannel,
+            observationCount: channelGroup.length,
+            sourceCount: new Set(channelGroup.map((item) => item.observation.sourceName)).size,
+            sourceNames: Array.from(
+              new Set(channelGroup.map((item) => item.observation.sourceName))
+            ).sort(),
+            observationIds: channelGroup
+              .map((item) => item.observation.observationId)
+              .sort(),
+            medianLocal: channelMedianLocal,
+            q25Local: round(quantile(channelValues, 0.25)),
+            q75Local: round(quantile(channelValues, 0.75)),
+            medianAud: round(channelMedianLocal * audPerLocalUnit),
+          } satisfies CityCostSourceChannelSummary;
+        })
+        .sort(
+          (a, b) =>
+            sourceChannelPriority[first.category][a.sourceChannel] -
+              sourceChannelPriority[first.category][b.sourceChannel] ||
+            a.sourceChannel.localeCompare(b.sourceChannel)
+        );
       const values = selected.map((item) => item.priceLocal);
       const medianLocal = round(quantile(values, 0.5));
       const q25Local = round(quantile(values, 0.25));
       const q75Local = round(quantile(values, 0.75));
       const minLocal = round(Math.min(...values));
       const maxLocal = round(Math.max(...values));
+      const channelDifferences = sourceChannelSummaries.map((summary) =>
+        medianLocal === 0
+          ? summary.medianLocal === 0
+            ? 0
+            : null
+          : Math.abs((summary.medianLocal / medianLocal - 1) * 100)
+      );
+      const maxAbsoluteDifferencePct = channelDifferences.some((difference) => difference === null)
+        ? null
+        : round(Math.max(...(channelDifferences as number[])), 2);
       return {
         city: first.city,
         country: first.country,
@@ -286,6 +412,17 @@ export function aggregateCityCostMeasures(
         unit: first.unit,
         travellers: first.travellers,
         valueStatus: first.valueStatus,
+        selectedSourceChannel,
+        availableSourceChannels: sourceChannelSummaries.map((summary) => summary.sourceChannel),
+        sourceChannelSummaries,
+        sourceDisagreement: {
+          thresholdPct: SOURCE_CHANNEL_DISAGREEMENT_THRESHOLD_PCT,
+          maxAbsoluteDifferencePct,
+          flagged:
+            sourceChannelSummaries.length > 1 &&
+            (maxAbsoluteDifferencePct === null ||
+              maxAbsoluteDifferencePct > SOURCE_CHANNEL_DISAGREEMENT_THRESHOLD_PCT),
+        },
         localCurrency,
         audPerLocalUnit,
         medianLocal,
@@ -299,6 +436,7 @@ export function aggregateCityCostMeasures(
         minAud: round(minLocal * audPerLocalUnit),
         maxAud: round(maxLocal * audPerLocalUnit),
         observationCount: selected.length,
+        availableObservationCount: provenanceSelected.length,
         sourceCount: new Set(selected.map((item) => item.observation.sourceName)).size,
         sourceNames: Array.from(
           new Set(selected.map((item) => item.observation.sourceName))
@@ -307,6 +445,9 @@ export function aggregateCityCostMeasures(
           new Set(selected.map((item) => item.observation.currency))
         ).sort(),
         observationIds: selected.map((item) => item.observation.observationId).sort(),
+        availableObservationIds: provenanceSelected
+          .map((item) => item.observation.observationId)
+          .sort(),
         fxSnapshotId: snapshot.snapshotId,
       } satisfies AggregatedCityCostMeasure;
     })
@@ -453,7 +594,7 @@ export function materializeCityCostV3(
 
   return {
     schemaVersion: 'city-cost-materialization-v1',
-    calculatorVersion: 'city-cost-v3-alpha-1',
+    calculatorVersion: 'city-cost-v3-alpha-2',
     city,
     country,
     region: cityAggregates[0].region,
@@ -507,7 +648,7 @@ export function buildCityCostV3Dataset(
 
   return {
     schemaVersion: 'city-cost-materialized-dataset-v1',
-    calculatorVersion: 'city-cost-v3-alpha-1',
+    calculatorVersion: 'city-cost-v3-alpha-2',
     dataCutoff,
     fxSnapshotId: snapshot.snapshotId,
     fxAsOfDate: snapshot.asOfDate,
@@ -525,6 +666,14 @@ export function buildCityCostV3Dataset(
     requiredTierCells: cities.length * CITY_COST_V3_TIER_NAMES.length,
     materializedTierCells: cities.reduce((total, city) => total + city.materializedTierCount, 0),
     tierCoverage,
+    qualitySummary: {
+      crossChannelMeasureCount: aggregates.filter(
+        (aggregate) => aggregate.availableSourceChannels.length > 1
+      ).length,
+      flaggedSourceDisagreementCount: aggregates.filter(
+        (aggregate) => aggregate.sourceDisagreement.flagged
+      ).length,
+    },
     aggregates,
     cities,
   };

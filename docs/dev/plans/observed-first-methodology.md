@@ -301,6 +301,7 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
 - [x] Add a persistent JSONL observation store and versioned batch manifest.
 - [x] Add an extraction-batch schema and manifest validator.
 - [x] Add deterministic normalization, FX, aggregation, and basket scripts.
+- [x] Add explicit source-channel selection, retained channel summaries, and provisional disagreement flags instead of silently pooling unlike sources.
 - [x] Define a free-only LLM research protocol with adaptive throughput and no project-imposed call cap.
 - [ ] Confirm public-page usage and retention constraints before scaling each source.
 - [ ] Build the source-research runner with fixture-based parser tests.

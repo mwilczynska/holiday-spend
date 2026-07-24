@@ -126,6 +126,7 @@ function run() {
         valid: true,
         mode: shouldCheck ? 'check' : shouldWrite ? 'write' : 'preview',
         output: relativePath(outputPath),
+        calculatorVersion: dataset.calculatorVersion,
         fxSnapshotId: dataset.fxSnapshotId,
         observations: dataset.observationSummary,
         cities: dataset.cityCount,
@@ -133,6 +134,7 @@ function run() {
         materializedTierCells: dataset.materializedTierCells,
         requiredTierCells: dataset.requiredTierCells,
         tierCoverage: dataset.tierCoverage,
+        qualitySummary: dataset.qualitySummary,
       },
       null,
       2
