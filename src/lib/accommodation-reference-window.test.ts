@@ -3,9 +3,10 @@ import { describe, expect, it } from 'vitest';
 import {
   accommodationReferenceWindowScheduleSchema,
   summarizeAccommodationReferenceWindows,
+  type AccommodationReferenceWindowSchedule,
 } from './accommodation-reference-window';
 
-function fixture() {
+function fixture(): AccommodationReferenceWindowSchedule {
   return {
     schemaVersion: 'accommodation-reference-windows-v1' as const,
     scheduleId: 'test-schedule',
@@ -68,7 +69,7 @@ function fixture() {
         })),
       },
     ],
-  };
+  } as AccommodationReferenceWindowSchedule;
 }
 
 describe('accommodation reference-window schedule', () => {
@@ -89,6 +90,22 @@ describe('accommodation reference-window schedule', () => {
       nextQuoteCaptureDate: '2026-07-24',
       pendingEventReviews: 25,
     });
+    expect(
+      parsed.cities
+        .find((city) => city.city === 'Lisbon')!
+        .windows.find((window) => window.season === 'shoulder')
+    ).toMatchObject({
+      checkIn: '2026-10-29',
+      checkOut: '2026-11-05',
+      quoteCaptureDate: '2026-07-31',
+      replacementHistory: [
+        {
+          checkIn: '2026-10-22',
+          checkOut: '2026-10-29',
+          quoteCaptureDate: '2026-07-24',
+        },
+      ],
+    });
   });
 
   it('rejects a stay that is not seven nights', () => {
@@ -107,6 +124,33 @@ describe('accommodation reference-window schedule', () => {
   it('rejects duplicate or missing season strata', () => {
     const data = fixture();
     data.cities[0].windows[2].season = 'shoulder';
+    expect(accommodationReferenceWindowScheduleSchema.safeParse(data).success).toBe(false);
+  });
+
+  it('rejects replacement history that does not move exactly seven days forward', () => {
+    const data = fixture();
+    data.cities[0].windows[0] = {
+      ...data.cities[0].windows[0],
+      checkIn: '2026-10-30',
+      checkOut: '2026-11-06',
+      quoteCaptureDate: '2026-08-01',
+      eventReview: {
+        status: 'pending_final_check',
+        dueDate: '2026-08-01',
+        checkedAt: null,
+        notes: 'Replacement pending review.',
+      },
+      replacementHistory: [
+        {
+          checkIn: '2026-10-22',
+          checkOut: '2026-10-29',
+          quoteCaptureDate: '2026-07-24',
+          checkedAt: '2026-07-24T12:00:00.000Z',
+          reason: 'Official calendar conflict.',
+          sourceUrls: ['https://example.com/events'],
+        },
+      ],
+    };
     expect(accommodationReferenceWindowScheduleSchema.safeParse(data).success).toBe(false);
   });
 });

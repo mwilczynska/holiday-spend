@@ -257,6 +257,13 @@ official property website or prove current dorm/private inventory, so these cand
 and ineligible for either hostel measure until direct-site matching verifies the applicable room types.
 The register class and capacity are not treated as substitutes for inventory evidence.
 
+The original Lisbon shoulder week of 22-29 October did not pass the capture-day event screen. Lisbon's
+official calendar lists the citywide doclisboa festival through 25 October, Drawing Room Lisboa from
+22-25 October, and a major arena concert on 22 October. Following the frozen replacement rule, the stay
+moves forward exactly seven days to 29 October-5 November and its exact-90-day capture moves to 31 July.
+The rejected window and source URLs stay in the schedule's replacement history, and no price from the
+rejected dates enters the evidence store.
+
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted
 4-star quotes, one genuine no-availability result, and four booking-path failures: three could not preserve

@@ -394,6 +394,12 @@ hostel registrations collapsed to 106 physical candidates using normalized name,
 official coordinates; 97 lie within 5 km. They remain unranked because RNAL supplies neither official
 websites nor current dorm/private inventory, and capacity is not used to infer either measure.
 
+Lisbon's original 22-29 October shoulder window failed its 24 July capture-day event screen. The official
+calendar shows the citywide doclisboa festival through 25 October, Drawing Room Lisboa on 22-25 October,
+and a major arena concert on 22 October. The pre-registered rule moves the stay and capture date forward
+exactly seven days to 29 October-5 November and 31 July respectively. The rejected dates, evidence URLs,
+timestamp, and reason remain in `replacementHistory`; no quote was collected against the rejected window.
+
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the
 exact-date or mandatory-charge verification gate. The accepted nightly prices are DKK 1,178.36,

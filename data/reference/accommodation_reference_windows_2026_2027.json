@@ -85,16 +85,29 @@
         },
         {
           "season": "shoulder",
-          "checkIn": "2026-10-22",
-          "checkOut": "2026-10-29",
-          "quoteCaptureDate": "2026-07-24",
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-11-05",
+          "quoteCaptureDate": "2026-07-31",
           "status": "scheduled",
           "eventReview": {
             "status": "pending_final_check",
-            "dueDate": "2026-07-24",
+            "dueDate": "2026-07-31",
             "checkedAt": null,
-            "notes": "Final official-calendar and holiday review is required before this quote is accepted."
-          }
+            "notes": "Replacement window requires a fresh official-calendar and public-holiday review on 31 July 2026 before any quote is accepted."
+          },
+          "replacementHistory": [
+            {
+              "checkIn": "2026-10-22",
+              "checkOut": "2026-10-29",
+              "quoteCaptureDate": "2026-07-24",
+              "checkedAt": "2026-07-24T14:30:00.000Z",
+              "reason": "Rejected under the citywide-event rule: the official Lisbon calendar lists doclisboa through 25 October, Drawing Room Lisboa from 22 to 25 October, and the Laura Pausini arena concert on 22 October. The stay is moved forward exactly seven days without collecting a price.",
+              "sourceUrls": [
+                "https://www.visitlisboa.com/en/events",
+                "https://www.visitlisboa.com/en/events/laura-pausini-io-canto-world-tour"
+              ]
+            }
+          ]
         },
         {
           "season": "high",

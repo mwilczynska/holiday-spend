@@ -61,6 +61,18 @@ const referenceWindowSchema = z.object({
   quoteCaptureDate: z.string().regex(isoDate),
   status: z.enum(['scheduled', 'captured', 'replaced']),
   eventReview: eventReviewSchema,
+  replacementHistory: z
+    .array(
+      z.object({
+        checkIn: z.string().regex(isoDate),
+        checkOut: z.string().regex(isoDate),
+        quoteCaptureDate: z.string().regex(isoDate),
+        checkedAt: z.string().datetime(),
+        reason: z.string().min(1),
+        sourceUrls: z.array(z.string().url()).min(1),
+      })
+    )
+    .optional(),
 });
 
 const referenceCitySchema = z.object({
@@ -79,6 +91,12 @@ function utcDate(date: string) {
 
 function daysBetween(start: string, end: string) {
   return (utcDate(end).getTime() - utcDate(start).getTime()) / 86_400_000;
+}
+
+function addDays(date: string, days: number) {
+  const value = utcDate(date);
+  value.setUTCDate(value.getUTCDate() + days);
+  return value.toISOString().slice(0, 10);
 }
 
 export const accommodationReferenceWindowScheduleSchema = z
@@ -197,6 +215,33 @@ export const accommodationReferenceWindowScheduleSchema = z
             message: 'Reference stay falls outside the declared reference period',
           });
         }
+        const history = window.replacementHistory ?? [];
+        history.forEach((replacement, replacementIndex) => {
+          if (
+            daysBetween(replacement.checkIn, replacement.checkOut) !==
+              schedule.protocol.stayNights ||
+            daysBetween(replacement.quoteCaptureDate, replacement.checkIn) !==
+              schedule.protocol.targetBookingLeadDays
+          ) {
+            context.addIssue({
+              code: 'custom',
+              path: [...path, 'replacementHistory', replacementIndex],
+              message: 'Replaced windows must retain the seven-night stay and exact 90-day lead',
+            });
+          }
+          const successor = history[replacementIndex + 1] ?? window;
+          if (
+            successor.checkIn !== addDays(replacement.checkIn, 7) ||
+            successor.checkOut !== addDays(replacement.checkOut, 7) ||
+            successor.quoteCaptureDate !== addDays(replacement.quoteCaptureDate, 7)
+          ) {
+            context.addIssue({
+              code: 'custom',
+              path: [...path, 'replacementHistory', replacementIndex],
+              message: 'Each replacement must move exactly seven days forward',
+            });
+          }
+        });
       });
     });
   });
