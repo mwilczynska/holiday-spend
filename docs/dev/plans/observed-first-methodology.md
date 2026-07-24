@@ -406,6 +406,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     non-single-city outcomes rather than accepting fuzzy substitutes.
   - [x] Add the measured tourism-intensity contract and first same-geography record for Prague, retaining
     the official arrivals and population inputs separately from the derived ratio and band.
+  - [x] Add Barcelona as the second same-geography record and retain its published accommodation-series
+    availability limitation; reject international-only, guest-night, incomplete-year, and forecast substitutes.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

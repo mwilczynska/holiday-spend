@@ -318,8 +318,14 @@ Tourism-intensity collection has begun with Prague. For 2024, the Czech Statisti
 Capital City of Prague administrative geography. The resulting 5.77 arrivals per resident is classified
 as `high`. The artifact retains both counts, definitions, sources, year, geography, and the derived value.
 This is a reproducible accommodation-based proxy and a lower bound on total overnight visitation because
-some small, informal, and platform-only stays fall outside the reported establishment frame. The other
-35 tourism-intensity fields remain pending rather than mixing incompatible destination geographies.
+some small, informal, and platform-only stays fall outside the reported establishment frame.
+
+Barcelona is the second measured record. Its official 2024 activity report publishes 12,726,360 tourists
+in the available Barcelona city tourist-accommodation series and 1,702,814 municipal residents, producing
+7.47 arrivals per resident (`high`). The report's “according to data availability” qualifier is retained:
+this is also an accommodation-based proxy, not an exhaustive count of every overnight visitor. The other
+34 tourism-intensity fields remain pending rather than mixing incompatible destination geographies or
+using international-only arrivals, guest-night totals, incomplete-year figures, or forecasts as substitutes.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

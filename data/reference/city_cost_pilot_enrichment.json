@@ -548,14 +548,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 7.473722908080389,
+        "referenceYear": 2024,
+        "spatialUnit": "Barcelona city municipality",
+        "band": "high",
+        "overnightArrivals": 12726360,
+        "residentPopulation": 1702814,
+        "numeratorDefinition": "Tourists in Barcelona city tourist accommodation during 2024, according to available accommodation-series data",
+        "denominatorDefinition": "Residents of Barcelona city municipality in 2024",
+        "arrivalsSourceName": "Barcelona Tourism Observatory, Barcelona tourism activity report 2024",
+        "arrivalsSourceUrl": "https://observatoriturisme.barcelona/wp-content/uploads/2026/01/2024_IAT_OTB.pdf",
+        "populationSourceName": "Barcelona City Council, demographic indicators reproduced in Barcelona tourism activity report 2024",
+        "populationSourceUrl": "https://observatoriturisme.barcelona/wp-content/uploads/2026/01/2024_IAT_OTB.pdf",
+        "notes": "The report labels the tourist total as according to data availability across tourist-accommodation series; it is retained as a reproducible accommodation-based proxy rather than an exhaustive count of all overnight visitors."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
