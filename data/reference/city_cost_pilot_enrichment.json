@@ -112,10 +112,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "Tourism Research Institute, Annual Tourism Sector Performance Report 2024",
+            "url": "https://tri.go.ke/wp-content/uploads/2025/02/TRI-Tourism-Sector-Performance-Report-2024.pdf"
+          },
+          {
+            "name": "Kenya National Bureau of Statistics, 2025 Economic Survey tourism tables",
+            "url": "https://www.knbs.or.ke/reports/2025-economic-survey/"
+          }
+        ],
+        "notes": "Kenya's official 2024 tourism report publishes international visitor arrivals and domestic/international bed occupancy at national level, not all overnight arrivals for Nairobi. KNBS's Nairobi-specific accommodation series is a bed-night category for Nairobi High Class hotels, which is neither an arrival count nor complete city accommodation coverage. Retain tourism intensity as pending rather than assigning national arrivals to Nairobi or converting a partial bed-night series to arrivals."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

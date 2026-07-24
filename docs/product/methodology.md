@@ -494,6 +494,12 @@ series; its hotel KPIs include residents but publish room nights rather than a d
 count. Neither series can supply the registered numerator, so the current profile contains 13 measured cities,
 six screened rejections, and 17 unscreened gaps.
 
+Nairobi is the seventh screened rejection. Kenya's official 2024 report publishes international arrivals
+and accommodation occupancy nationally. The Nairobi-specific KNBS series is bed-nights for the partial
+`Nairobi High Class` hotel category, not all overnight arrivals for the city. The project neither assigns
+national arrivals to Nairobi nor converts a partial nights series into arrivals; the current profile therefore
+contains 13 measured cities, seven screened rejections, and 16 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

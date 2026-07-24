@@ -509,6 +509,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     trips or international-only overnight arrivals, but not an all-visitor overnight-arrivals numerator.
   - [x] Record Dubai as a screened rejection because the official visitor series covers international
     overnight visitors only, while hotel KPIs include residents but expose room nights rather than all arrivals.
+  - [x] Record Nairobi as a screened rejection because official sources expose national arrivals and
+    bed occupancy or a partial Nairobi High Class bed-night series, not all overnight arrivals for the city.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

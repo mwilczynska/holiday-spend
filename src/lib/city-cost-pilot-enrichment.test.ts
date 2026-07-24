@@ -158,6 +158,15 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('Tourism Performance Report'), url: expect.stringContaining('dubaidet.gov.ae') },
       ],
     });
+    expect(artifact.cities.find((city) => city.city === 'Nairobi')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Tourism Sector Performance Report 2024'), url: expect.stringContaining('tri.go.ke') },
+        { name: expect.stringContaining('Economic Survey'), url: expect.stringContaining('knbs.or.ke') },
+      ],
+    });
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',
