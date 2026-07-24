@@ -554,7 +554,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
 - [x] Verify the current direct-property websites for eleven of Barcelona's twelve frozen 4-star primary
   properties in a separate source-attributed artifact and apply them deterministically to the panel. Resolve
   the legacy Husa L'Illa identity from the current Marriott page's matching `HB-003973` registration id, while
-  retaining Sansi Pedralbes (rank 4) as unresolved rather than substituting a directory page. Website verification establishes an
+  retaining Sansi Pedralbes (rank 4) as a validated unresolved outcome: its historical property domain redirects
+  to an unidentified group placeholder without exact-date inventory. Website verification establishes an
   eligible quote path; it is not price evidence and does not count as an attempted or accepted quote.
 - [x] Add a validated property-attempt ledger and complete the Copenhagen shoulder checkpoint:
   ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and

@@ -307,7 +307,9 @@ Barcelona's first direct-site checkpoint covers the frozen 4-star primary panel.
 now have source-attributed official websites applied deterministically to the panel. The current Marriott
 page explicitly matches registration `HB-003973`, resolving the legacy Husa L'Illa identity as AC Hotel
 Diagonal L'Illa. Sansi Pedralbes (rank 4) remains unresolved because the reviewed evidence does not establish
-a current property-owned booking site. These eleven verifications do not add price observations or quote
+a current property-owned booking site: its historical domain redirects to an unidentified group placeholder
+with no exact-date inventory. The unresolved evidence is retained alongside the eleven verified outcomes, so
+all twelve primary ranks have an auditable website disposition. These eleven verifications do not add price observations or quote
 attempts; they establish auditable paths for the later exact-date collection pass.
 
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were

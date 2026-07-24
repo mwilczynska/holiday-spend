@@ -33,6 +33,21 @@ for (const record of verification.records) {
   property.websiteVerificationStatus = 'verified';
 }
 
+for (const record of verification.unresolvedRecords) {
+  const property = city.properties.find((candidate) => candidate.propertyId === record.propertyId);
+  const measurePanel = city.measurePanels.find((candidate) => candidate.measure === record.measure);
+  const ranked = measurePanel?.rankedProperties.find((candidate) => candidate.propertyId === record.propertyId);
+  if (!property || !measurePanel || !ranked || ranked.selectionRank !== record.selectionRank || ranked.disposition !== 'primary') {
+    throw new Error(`Unresolved website outcome no longer matches frozen ranking for ${record.propertyId}`);
+  }
+  if (!property.eligibleMeasures.includes(record.measure)) {
+    throw new Error(`Unresolved website measure is not eligible for ${record.propertyId}`);
+  }
+  if (property.websiteVerificationStatus === 'verified') {
+    throw new Error(`Unresolved website outcome conflicts with verified property ${record.propertyId}`);
+  }
+}
+
 const validated = accommodationPropertyPanelCollectionSchema.parse(collection);
 const serialized = `${JSON.stringify(validated, null, 2)}\n`;
 if (check) {
@@ -46,7 +61,9 @@ console.log(JSON.stringify({
   mode: check ? 'check' : 'write',
   verificationId: verification.verificationId,
   verifiedProperties: verification.records.length,
-  pendingTargetPrimaryProperties: city.measurePanels
+  unresolvedProperties: verification.unresolvedRecords.length,
+  primaryOutcomesRecorded: verification.records.length + verification.unresolvedRecords.length,
+  unverifiedTargetPrimaryProperties: city.measurePanels
     .filter((panel) => verification.records.some((record) => record.measure === panel.measure))
     .flatMap((panel) => panel.rankedProperties)
     .filter((ranked) => ranked.disposition === 'primary')

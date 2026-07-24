@@ -11,6 +11,15 @@ describe('accommodation website verification', () => {
     )));
     expect(artifact.records).toHaveLength(11);
     expect(artifact.records.map((record) => record.selectionRank)).toEqual([1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12]);
+    expect(artifact.unresolvedRecords).toEqual([expect.objectContaining({
+      propertyId: 'HB-004086',
+      selectionRank: 4,
+      reason: 'redirects_to_unidentified_group_placeholder',
+    })]);
+    expect([
+      ...artifact.records.map((record) => record.selectionRank),
+      ...artifact.unresolvedRecords.map((record) => record.selectionRank),
+    ].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
     expect(artifact.records.find((record) => record.propertyId === 'HB-004243')?.ownershipBasis)
       .toBe('official_property_page_with_matching_registration_id');
   });
