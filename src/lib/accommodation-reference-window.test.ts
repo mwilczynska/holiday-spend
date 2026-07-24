@@ -87,7 +87,7 @@ describe('accommodation reference-window schedule', () => {
       windows: 27,
       seasons: { low: 9, shoulder: 9, high: 9 },
       nextQuoteCaptureDate: '2026-07-24',
-      pendingEventReviews: 27,
+      pendingEventReviews: 25,
     });
   });
 

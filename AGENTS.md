@@ -84,6 +84,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - New-city prompt template: `docs/prompts/llm_prompt_new_cities_1.md`
 - First accommodation reference schedule: `data/reference/accommodation_reference_windows_2026_2027.json`
 - Accommodation property-panel collection (currently Barcelona, Copenhagen, and Prague): `data/reference/accommodation_property_panels_2026_2027.json`
+- Accommodation quote-attempt ledger: `data/reference/accommodation_quote_attempts/`
 - `/estimates` now reflects this methodology rather than the older hybrid/Xotelo explanation
 - `/dataset` now holds the editable planner dataset and generation-history views
 
@@ -254,7 +255,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities
-  - [x] Materialize the current fail-closed research artifact: 42 of 171 tier cells across nine cities, with zero incomplete wide rows published
+  - [x] Add a validated accommodation attempt ledger and collect the first Copenhagen shoulder checkpoint: six rank-ordered official-site attempts, three accepted 4-star quotes, one no-availability result, and two booking-path failures
+  - [x] Materialize the current fail-closed research artifact from 45 direct observations: 42 of 171 tier cells across nine cities, one incomplete accommodation measure, and zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -402,7 +404,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
 - The Barcelona frame has four frozen hotel panels but zero verified websites or accepted quotes; its hostel measures remain explicitly unavailable because `Hostal o pensió` is not treated as youth-hostel inventory
 - Copenhagen uses the public no-key Hotelstars Union Denmark directory: after excluding conference and 5-star products, 201 eligible hotel records produce 29 in-radius properties (3 two-star, 11 three-star, 15 four-star), no one-star class, and a two-star panel below the five-quote gate
-- VisitCopenhagen supplies 13 hostel candidates with direct property links; inventory, address, radius eligibility, and website ownership remain pending, and no Copenhagen accommodation price has been accepted
+- VisitCopenhagen supplies 13 hostel candidates with direct property links; inventory, address, radius eligibility, and website ownership remain pending
+- Copenhagen's first shoulder capture attempted the first six frozen 4-star properties in order: Andersen, Hotel Alexandra, and Wide Hotel produced accepted public official-site quotes; Absalon had no availability; Hotel Hebron and Bryggen Guldsmeden had booking paths that did not preserve the exact registered dates
+- The accepted Copenhagen nightly prices are DKK 1,178.36, DKK 1,417.43, and DKK 1,652.57; their provisional median DKK 1,417.43 remains non-materializable because three properties are below the five-property seasonal minimum
+- `src/lib/accommodation-quote-attempt.ts` and `data/reference/accommodation_quote_attempts/` retain quote, no-availability, and technical-failure outcomes separately, including tax, cancellation, meal-basis, and official-site evidence
 - Prague's reusable Hotelstars deduplicator collapses repeated rows by physical identity, requires class/city agreement, and refuses to choose between duplicate coordinates more than 0.25 km apart; the frozen Czech snapshot has 225 eligible rows, 148 physical properties, 76 duplicate groups, and four coordinate-conflict exclusions
 - Prague City Tourism's official 12-property hostel directory and detail pages yield two ten-property ranked hostel panels; combined with five 3-star and nine 4-star hotels, the Prague frame has 25 distinct eligible in-radius properties, while 1-/2-star remain absent and one geolocated hostel remains inventory-pending
 - Calculator `city-cost-v3-alpha-3` retains partial seasonal evidence but requires at least five quotes per season plus 60% cross-season property overlap before materializing a direct accommodation measure
@@ -469,6 +474,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/city_cost_collection_batches.json`
   - `data/reference/accommodation_reference_windows_2026_2027.json`
   - `data/reference/accommodation_property_panels_2026_2027.json`
+  - `data/reference/accommodation_quote_attempts/copenhagen-shoulder-2026-07-24.jsonl`
+  - `data/reference/observations/accommodation-copenhagen-shoulder-2026-07-24.jsonl`
+  - `data/reference/observations/batch-zero-accommodation-copenhagen-shoulder-report.json`
   - `data/reference/observations/batch-zero-day-01-food-drinks.jsonl`
   - `data/reference/observations/batch-zero-day-01-activities.jsonl`
   - `data/reference/observations/batch-zero-day-01-report.json`
@@ -483,10 +491,12 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/city-cost-observation.ts`
 - `src/lib/accommodation-reference-window.ts`
 - `src/lib/accommodation-property-panel.ts`
+- `src/lib/accommodation-quote-attempt.ts`
 - `scripts/build-barcelona-accommodation-property-panel.ts`
 - `scripts/build-copenhagen-accommodation-property-panel.ts`
 - `scripts/validate-accommodation-property-panels.ts`
 - `scripts/validate-accommodation-reference-windows.ts`
+- `scripts/validate-accommodation-quote-attempts.ts`
 - `scripts/select-city-cost-pilot.mjs`
 - `scripts/validate-city-cost-observations.ts`
 - `src/lib/city-cost-methodology-v3.ts`

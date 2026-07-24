@@ -1,15 +1,15 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T06:08:23.051Z",
+  "dataCutoff": "2026-07-24T08:47:09.000Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 42,
-    "accepted": 42,
+    "input": 45,
+    "accepted": 45,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 42,
+    "direct": 45,
     "derived": 0,
     "imputed": 0
   },
@@ -42,7 +42,7 @@
     "crossChannelMeasureCount": 0,
     "flaggedSourceDisagreementCount": 0,
     "completeSeasonAccommodationMeasureCount": 0,
-    "incompleteSeasonAccommodationMeasureCount": 0
+    "incompleteSeasonAccommodationMeasureCount": 1
   },
   "aggregates": [
     {
@@ -966,6 +966,119 @@
       ],
       "availableObservationIds": [
         "numbeo-copenhagen-2026-06-13-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "region": "Europe",
+      "category": "accommodation",
+      "measure": "hotel_4star_room_2p",
+      "unit": "per_room_night",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 3,
+          "sourceCount": 3,
+          "sourceNames": [
+            "Andersen Boutique Hotel official booking engine",
+            "Hotel Alexandra official booking engine",
+            "Wide Hotel official booking engine"
+          ],
+          "observationIds": [
+            "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
+            "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+            "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
+          ],
+          "medianLocal": 1417.428571,
+          "q25Local": 1417.428571,
+          "q75Local": 1417.428571,
+          "medianAud": 309.283343
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [
+          "low",
+          "shoulder",
+          "high"
+        ],
+        "availableSeasons": [
+          "shoulder"
+        ],
+        "minimumObservationsPerSeason": 5,
+        "sampleSizeComplete": false,
+        "crossSeasonPanelOverlapPct": 0,
+        "minimumCrossSeasonPanelOverlapPct": 60,
+        "panelOverlapComplete": false,
+        "complete": false,
+        "weightingMethod": "equal_weight_median_of_season_medians",
+        "summaries": [
+          {
+            "season": "shoulder",
+            "observationCount": 3,
+            "sourceCount": 3,
+            "sourceNames": [
+              "Andersen Boutique Hotel official booking engine",
+              "Hotel Alexandra official booking engine",
+              "Wide Hotel official booking engine"
+            ],
+            "observationIds": [
+              "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
+              "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+              "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
+            ],
+            "medianLocal": 1417.428571,
+            "q25Local": 1297.894286,
+            "q75Local": 1534.999286,
+            "medianAud": 309.283343
+          }
+        ]
+      },
+      "eligibleForMaterialization": false,
+      "localCurrency": "DKK",
+      "audPerLocalUnit": 0.2182003023128269,
+      "medianLocal": 1417.428571,
+      "q25Local": 1417.428571,
+      "q75Local": 1417.428571,
+      "minLocal": 1417.428571,
+      "maxLocal": 1417.428571,
+      "medianAud": 309.283343,
+      "q25Aud": 309.283343,
+      "q75Aud": 309.283343,
+      "minAud": 309.283343,
+      "maxAud": 309.283343,
+      "observationCount": 3,
+      "availableObservationCount": 3,
+      "sourceCount": 3,
+      "sourceNames": [
+        "Andersen Boutique Hotel official booking engine",
+        "Hotel Alexandra official booking engine",
+        "Wide Hotel official booking engine"
+      ],
+      "sourceCurrencies": [
+        "DKK"
+      ],
+      "observationIds": [
+        "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
+      ],
+      "availableObservationIds": [
+        "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
@@ -5262,6 +5375,7 @@
   ],
   "inputs": {
     "observationFiles": [
+      "data/reference/observations/accommodation-copenhagen-shoulder-2026-07-24.jsonl",
       "data/reference/observations/batch-zero-day-01-activities.jsonl",
       "data/reference/observations/batch-zero-day-01-food-drinks.jsonl",
       "data/reference/observations/batch-zero-day-02-activities.jsonl",

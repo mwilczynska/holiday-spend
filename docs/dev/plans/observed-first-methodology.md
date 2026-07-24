@@ -328,7 +328,7 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
   - [ ] Complete the same access review for every secondary menu/activity source before scaling it.
 - [ ] Build the source-research runner with fixture-based parser tests.
 
-Checkpoint: batch zero and the first pilot wave currently provide 42 accepted direct observations across
+Checkpoint: batch zero and the first pilot wave currently provide 45 accepted direct observations across
 nine cities. The v3-alpha materializer aggregates in city-local currency, applies a frozen and
 source-attributed AUD FX snapshot, and materializes 42 of 171 possible
 city-tier cells. No city is complete and no partial wide row is published.
@@ -376,8 +376,17 @@ explicitly support each hostel measure. One property is geolocated but remains i
 its official detail page does not state dorm or private-room inventory. The complete in-radius frame has
 25 distinct properties: ten dorm-eligible hostels, ten private-room-eligible hostels, five 3-star hotels,
 and nine 4-star hotels, with overlap where one hostel supports both measures. No 1-star or 2-star hotel is
-eligible within 5 km. Across Barcelona, Copenhagen, and Prague, zero websites are verified and zero
-accommodation prices are accepted.
+eligible within 5 km. The frozen sampling-frame artifact initially contains zero verified websites because
+price and website visibility were excluded from ranking. A separate append-only quote-attempt ledger now
+records verification and retrieval outcomes without rewriting that frozen rank.
+
+The first Copenhagen shoulder capture attempted ranks 1-6 in order: three public official-site quotes were
+accepted, Absalon had no inventory for the exact reference week, and two booking paths could not retain the
+registered dates. The accepted nightly prices are DKK 1,178.36, DKK 1,417.43, and DKK 1,652.57. Their
+provisional median is DKK 1,417.43, but three is below the pre-registered five-property minimum, so no
+accommodation tier materializes. The ledger explicitly distinguishes room-only from bundled-breakfast
+rates, flexible from non-refundable conditions, and a true availability failure from technical capture
+failure.
 
 ### 6C. Pilot and model selection
 
@@ -398,6 +407,9 @@ accommodation prices are accepted.
 - [x] Freeze Prague's deduplicated Hotelstars frame and official 12-property hostel evidence: 25 distinct
   in-radius properties, two ten-property hostel panels, five 3-star and nine 4-star hotels, explicit
   absent 1-/2-star classes, and one geolocated inventory-pending hostel.
+- [x] Add a validated property-attempt ledger and collect the first Copenhagen shoulder checkpoint:
+  six rank-ordered official-site attempts, three accepted 4-star quotes, one no-availability result, and
+  two explicit booking-path failures; keep the measure ineligible below five accepted properties.
 - [ ] Collect batch zero, then the 36-city pilot, with all four categories.
 - [ ] Profile missingness, source disagreement, seasonality, and outliers.
 - [ ] Fit and compare fallback models with whole-city cross-validation.

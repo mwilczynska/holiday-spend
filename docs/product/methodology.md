@@ -135,11 +135,12 @@ USD, CZK, DKK, and THB, plus the Reserve Bank of Australia's 14 July 2026 AUD/VN
 retains its source date, quote, URL, and derivation formula. The materializer verifies the snapshot and
 recomputes cross-rate arithmetic in automated tests.
 
-The current materialized artifact contains nine cities and 42 accepted direct observations. It can
+The current materialized artifact contains nine cities and 45 accepted direct observations. It can
 calculate 42 of 171 possible city-tier cells: coffee and the coffee-only/light drinks baskets for eight
 cities, free activities for all nine, budget paid-attraction baskets for eight, and one Pu Luong mid-range
 half-day activity basket. It reports zero complete cities and emits no publishable wide row because
-accommodation, street/premium food, cocktail/wine, and many activity observations are still missing.
+three Copenhagen accommodation quotes are still below the five-property seasonal minimum, while
+street/premium food, cocktail/wine, and many activity observations are also missing.
 This fail-closed behaviour is intentional: partial evidence remains visible without being misrepresented
 as a complete replacement dataset.
 
@@ -162,6 +163,12 @@ class, public non-member rates, cancellation basis, and all mandatory taxes. Foo
 explicit item and serving definitions. Activities use a
 fixed taxonomy of free attractions, paid attractions, half-day group experiences, and premium/full-day
 experiences instead of an inexpensive-meal proxy.
+
+Within an eligible room category, collection takes the lowest public standard rate and records whether it
+is flexible or non-refundable. Optional breakfast and add-ons are excluded. If the property's lowest public
+rate bundles breakfast with no room-only equivalent, the full payable rate is retained and flagged as
+bundled rather than subtracting an invented meal value. This keeps the price observable while making the
+remaining comparability limitation measurable.
 
 For accommodation, a deterministic panel targets 12 registered properties per measure and season, with
 a hard minimum of five accepted quotes per season and at least 60% property overlap across seasons. The
@@ -222,8 +229,18 @@ pages then supply inventory descriptions, addresses, coordinates, and direct web
 in-radius properties explicitly support the dorm measure and ten support the private-room measure. One
 hostel remains geolocated but inventory-pending because its official page states neither room type. The
 hotel frame contains five eligible 3-star and nine eligible 4-star properties within 5 km, but no 1-star
-or 2-star property; missing classes remain missing. Across the three current frames there are still zero
-verified property websites and zero accepted accommodation quotes.
+or 2-star property; missing classes remain missing.
+
+The first Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
+attempted in the frozen order, independent of price. Six official-property paths produced three accepted
+4-star quotes, one genuine no-availability result, and two booking paths that could not preserve the exact
+registered dates. Accepted nightly totals were DKK 1,178.36, DKK 1,417.43, and DKK 1,652.57, for a
+provisional median of DKK 1,417.43. Two are public non-refundable room-only rates; one is a public flexible
+rate with breakfast bundled. Each attempt retains the ownership evidence, exact dates, payable total, tax
+treatment, cancellation basis, meal basis, and failure reason. Because three accepted properties are fewer
+than five, the calculator reports one incomplete seasonal accommodation measure and publishes no
+accommodation tier. This separation prevents availability and technical failures from being misreported as
+zero-cost rooms or silently disappearing from the evidence.
 
 ### Robust Aggregation And Missing Data
 

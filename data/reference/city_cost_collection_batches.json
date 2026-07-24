@@ -117,13 +117,15 @@
     },
     {
       "batchId": "batch-zero-accommodation",
-      "status": "pending",
+      "status": "in_progress",
       "plannedCalls": 27,
       "completedCalls": 0,
-      "acceptedObservations": 0,
-      "checkpoint": "reference_windows_scheduled",
-      "observationFiles": [],
-      "reportFile": null,
+      "acceptedObservations": 3,
+      "checkpoint": "copenhagen_shoulder_partial_three_of_five",
+      "observationFiles": [
+        "data/reference/observations/accommodation-copenhagen-shoulder-2026-07-24.jsonl"
+      ],
+      "reportFile": "data/reference/observations/batch-zero-accommodation-copenhagen-shoulder-report.json",
       "cities": [
         {"city": "Lisbon", "country": "Portugal", "region": "Europe", "categories": ["accommodation"], "reason": "baseline_bias_recheck_panel"},
         {"city": "Prague", "country": "Czech Republic", "region": "Europe", "categories": ["accommodation"], "reason": "baseline_accuracy_recheck_panel"},
@@ -135,7 +137,7 @@
         {"city": "San Francisco", "country": "United States", "region": "North America", "categories": ["accommodation"], "reason": "event_sensitive_high_cost_panel"},
         {"city": "Da Nang", "country": "Vietnam", "region": "SEA", "categories": ["accommodation"], "reason": "seasonal_beach_market_panel"}
       ],
-      "reason": "Twenty-seven exact-90-day city-season quote calls are scheduled in accommodation_reference_windows_2026_2027.json; each capture requires a final event review and a frozen official-register property panel."
+      "reason": "Twenty-seven exact-90-day city-season quote calls are scheduled in accommodation_reference_windows_2026_2027.json. Copenhagen shoulder is in progress with three accepted quotes from six rank-ordered property attempts; the measure remains below the five-property completion gate."
     }
   ]
 }

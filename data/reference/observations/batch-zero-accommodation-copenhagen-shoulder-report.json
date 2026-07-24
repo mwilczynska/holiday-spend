@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "batch-zero-accommodation",
+  "checkpoint": "copenhagen_shoulder_partial_three_of_five",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 0,
+  "cities": [
+    "Lisbon",
+    "Prague",
+    "Hanoi",
+    "Copenhagen",
+    "Bangkok",
+    "Pu Luong",
+    "Barcelona",
+    "San Francisco",
+    "Da Nang"
+  ],
+  "acceptedObservations": 3,
+  "rejectedObservations": 0,
+  "sources": [
+    {
+      "name": "Selected Copenhagen properties' official websites and public booking engines",
+      "accessBasis": "Public property pages inspected interactively without a paid API or login"
+    }
+  ],
+  "coverage": {
+    "hotel_4star_room_2p": 3
+  },
+  "missing": [
+    {
+      "city": "Copenhagen",
+      "measure": "hotel_4star_room_2p",
+      "reason": "Three accepted shoulder-season properties are below the frozen minimum of five; one selected property had no availability and two booking paths did not preserve the exact reference dates."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "hotel_3star_room_2p",
+      "reason": "The ranked 3-star panel has not yet been quoted for the shoulder reference window."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "hotel_2star_room_2p",
+      "reason": "Only three eligible in-radius 2-star properties exist in the official frame, below the five-property minimum."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "hotel_1star_room_2p",
+      "reason": "The official Hotelstars frame contains no eligible 1-star Copenhagen property."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "hostel_dorm_bed_1p",
+      "reason": "The official hostel candidate universe still requires inventory, location, and website verification before price collection."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "hostel_private_room_2p",
+      "reason": "The official hostel candidate universe still requires inventory, location, and website verification before price collection."
+    }
+  ],
+  "remainingCategories": [
+    "copenhagen_shoulder_remaining_property_quotes",
+    "copenhagen_low_and_high_seasons",
+    "other_first-wave_city_panels_and_windows"
+  ],
+  "notes": "The append-only attempt ledger is data/reference/accommodation_quote_attempts/copenhagen-shoulder-2026-07-24.jsonl. It records six primary properties in frozen rank order: three accepted public quotes, one no-availability result, and two booking-path failures. Default-date or unverifiable prices were not accepted. The materializer retains the three quotes as incomplete seasonal evidence and publishes no accommodation tier."
+}
