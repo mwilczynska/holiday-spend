@@ -37,8 +37,8 @@ currency normalization, aggregation, basket construction, and later imputation.
 | Category | First choice | Secondary evidence | Explicit fallback |
 |---|---|---|---|
 | Food and drinks | Public Numbeo city pages reached through LLM web search | Public menus, official venue pages, other publicly accessible city-price pages | Missing; later impute from the validated model |
-| Hostel accommodation | Dated public rates on official hostel sites for a deterministic panel drawn from an official accommodation register | Another eligible panel property selected by the frozen reserve order | Missing |
-| Hotel accommodation | Dated public rates on official property sites for a deterministic registered-property panel stratified by star class | Another eligible panel property selected by the frozen reserve order | Missing |
+| Hostel accommodation | Dated public rates on official hostel sites for a deterministic panel drawn from an official destination directory or register | Another eligible panel property selected by the frozen reserve order | Missing |
+| Hotel accommodation | Dated public rates on official property sites for a deterministic panel from an official register or classification directory, stratified by star class | Another eligible panel property selected by the frozen reserve order | Missing |
 | Activities | Official attraction or tour-operator price pages | Official destination/tourism pages that publish a matching current price | Missing |
 | FX | Public ECB reference-rate pages/data | Another official central-bank source | Freeze the last verified public rate and flag age |
 | Seasonality | Eurostat, national tourism bodies, public destination calendars | Observed cross-date accommodation dispersion | `unknown`, never assumed away |
@@ -62,7 +62,7 @@ purposes outside its terms. The reviewed terms are retained as the decision evid
 
 This is a source-design decision, not a claim that publicly displayed prices cannot be factual evidence.
 The project does not need those channels: each city's sampling frame will instead be built from an
-official tourism or accommodation register, frozen with a deterministic selection seed and reserve
+official tourism/accommodation register or official classification directory, frozen with a deterministic selection seed and reserve
 order, and the price will be read from the selected property's own public booking page. Property pages
 are still checked individually for access conditions. Login-only, member-only, mobile-only, blocked, or
 tax-ambiguous rates are missing observations, not invitations to work around the restriction.
@@ -101,6 +101,64 @@ not yet been verified and no dated quote has been accepted. The register's `Host
 treated as a youth hostel: it does not prove dorm-bed or hostel-private inventory. Barcelona's two hostel
 measures therefore remain explicitly unavailable until a separate official youth-hostel frame is found.
 This prevents a translation/classification error from silently contaminating the cheapest tiers.
+
+### Second frozen sampling frame: Copenhagen
+
+The same collection now contains a Copenhagen frame built from two current, free, no-key official
+directories. Hotelstars Union's Denmark search is the classification and geolocation source; its own
+site describes Hotelstars Union as the official European hotel-classification system. VisitCopenhagen,
+the destination's official guide, supplies a separate 13-property hostel candidate universe and links
+to each property's own site. Neither source states an open-data licence, so the artifact retains only the
+factual fields needed for this private research frame, attributes both publishers, and records the exact
+retrieval time, byte count, request body where applicable, and SHA-256 checksum.
+
+The Hotelstars public search endpoint returned 309 Denmark records on 24 July 2026: 209 `Hotel` records
+and 100 separate `Conference` products. Conference products are excluded before selection so a hotel is
+not double-weighted through its meeting classification. Restricting the hotel records to planner-facing
+one- through four-star classes leaves 201 records, all with usable official-directory coordinates: nine
+two-star, 117 three-star, and 75 four-star properties nationally, with no one-star property. Five-star
+records are outside the planner's published tiers and remain source-count exclusions.
+
+The sampling centre is the component-wise median of the 29 eligible hotel records whose official city
+field begins with `København`: `55.67250000, 12.56450000`. Applying the frozen 5 km radius to every
+eligible Denmark record, rather than only matching the city label, retains one nearby `Valby` property
+and produces 29 in-radius hotels: three two-star, 11 three-star, and 15 four-star. The price-blind SHA-256
+rank makes all three two-star and all 11 three-star properties primary, and selects 12 four-star primary
+properties plus three reserves.
+
+The sparse classes are not papered over. The one-star panel is explicitly unavailable. The full two-star
+universe has only three properties, below the pre-registered minimum of five accepted quotes per season,
+so it is frozen but cannot materialize a direct estimate under the current rule. VisitCopenhagen's 13
+hostel links are retained as candidates, not yet ranked: each direct site must still prove a Copenhagen
+address within 5 km and the relevant dorm-bed and/or private-room inventory. This is precisely why the
+version 2 panel contract separates properties from per-measure rankings: one hostel can legitimately
+enter both panels after verification without being duplicated as two establishments.
+
+This also remains a sampling-frame result, not a price or accuracy result. The directory supplied 65
+websites across the 201 national hotel records and 13 hostel links, but all 78 are merely source-listed;
+none has passed ownership/public-booking verification and no dated accommodation quote has been
+accepted. The legacy GuideDanmark JSON extract was rejected because its records were serialized in
+2016, while direct GuideDanmark API access requires authentication and a commercial agreement, which is
+outside the project's no-paid-API constraint.
+
+Reviewed source pages:
+
+- https://www.hotelstars.eu/denmark/hotel-search
+- https://www.hotelstars.eu/denmark/
+- https://www.visitcopenhagen.dk/node/1570
+- https://www.opendata.dk/open-data-dk/guidedanmark-oplevelser-overnatning-aktiviteter-i-hele-danmark
+- https://api.guidedanmark.org/
+
+Both builders consume downloaded source snapshots rather than silently refetching mutable data. They
+reject any checksum drift and upsert only their own city, preserving the other frozen frames:
+
+```text
+npm run methodology:accommodation-panel:build:barcelona -- --register-csv <catalonia.csv> --geolocation-json <barcelona-hotels.json> --write
+npm run methodology:accommodation-panel:build:copenhagen -- --hotelstars-json <hotelstars-denmark.json> --hostels-html <visitcopenhagen-hostels.html> --write
+```
+
+Running either command with the frozen 24 July inputs reproduces the same collection SHA-256 rather than
+changing row order, ranks, source metadata, or the other city's frame.
 
 ## Adaptive Throughput And Checkpointing
 

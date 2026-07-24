@@ -10,13 +10,13 @@ import {
   haversineDistanceKm,
   rankAccommodationProperties,
   summarizeAccommodationPropertyPanels,
-  type AccommodationHotelPanelMeasure,
   type AccommodationPanelProperty,
   type AccommodationPropertyPanelCollection,
 } from '../src/lib/accommodation-property-panel';
 import { ACCOMMODATION_PANEL_MEASURES } from '../src/lib/accommodation-reference-window';
 
 const REGISTER_SHA256 = '06c2f4dadbfc28f156c98c29479af75e78cd111922875bd36157a87ce2e8a2b2';
+const CKAN_SHA256 = 'f25726a8d06b177042e8e841bd4b1b88055faa0dbe49952878df5789b603520d';
 const REGISTER_RETRIEVED_AT = '2026-07-24T06:45:17.000Z';
 const CKAN_RETRIEVED_AT = '2026-07-24T06:50:00.000Z';
 const LOCKED_AT = '2026-07-24T06:53:00.000Z';
@@ -62,13 +62,20 @@ type CkanResponse = {
 
 function parseArgs() {
   const registerIndex = process.argv.indexOf('--register-csv');
-  if (registerIndex === -1 || !process.argv[registerIndex + 1]) {
+  const geolocationIndex = process.argv.indexOf('--geolocation-json');
+  if (
+    registerIndex === -1 ||
+    !process.argv[registerIndex + 1] ||
+    geolocationIndex === -1 ||
+    !process.argv[geolocationIndex + 1]
+  ) {
     throw new Error(
-      'Usage: tsx scripts/build-barcelona-accommodation-property-panel.ts --register-csv <downloaded CSV> [--write]'
+      'Usage: tsx scripts/build-barcelona-accommodation-property-panel.ts --register-csv <downloaded CSV> --geolocation-json <downloaded JSON> [--write]'
     );
   }
   return {
     registerPath: path.resolve(process.argv[registerIndex + 1]),
+    geolocationPath: path.resolve(process.argv[geolocationIndex + 1]),
     write: process.argv.includes('--write'),
   };
 }
@@ -100,24 +107,27 @@ function isRegistryCategory(
   return value in BARCELONA_REGISTRY_CATEGORY_TO_MEASURE;
 }
 
-async function fetchBarcelonaGeolocation() {
-  const response = await fetch(CKAN_DATA_URL, {
-    headers: { Accept: 'application/json' },
-  });
-  if (!response.ok) {
-    throw new Error(`Barcelona CKAN request failed with ${response.status} ${response.statusText}`);
+function parseBarcelonaGeolocation(geolocationBuffer: Buffer) {
+  const rawSha256 = sha256(geolocationBuffer);
+  if (rawSha256 !== CKAN_SHA256) {
+    throw new Error(
+      `Barcelona geolocation checksum mismatch: expected ${CKAN_SHA256}, received ${rawSha256}. Freeze a new source version instead of overwriting this panel.`
+    );
   }
-  const raw = await response.text();
-  const parsed = JSON.parse(raw) as CkanResponse;
+  const parsed = JSON.parse(geolocationBuffer.toString('utf8')) as CkanResponse;
   if (!parsed.success || parsed.result.records.length !== parsed.result.total) {
     throw new Error(
       `Expected a complete CKAN response, received ${parsed.result.records.length} of ${parsed.result.total}`
     );
   }
-  return { parsed, rawSha256: sha256(raw) };
+  return {
+    parsed,
+    rawSha256,
+    rawByteCount: geolocationBuffer.length,
+  };
 }
 
-async function buildCollection(registerPath: string) {
+function buildCollection(registerPath: string, geolocationPath: string) {
   const registerBuffer = fs.readFileSync(registerPath);
   const registerHash = sha256(registerBuffer);
   if (registerHash !== REGISTER_SHA256) {
@@ -144,8 +154,11 @@ async function buildCollection(registerPath: string) {
       row.Grup === 'Hotel' && row.Modalitat === 'Hotel' && isRegistryCategory(row.Categoria)
   );
 
-  const { parsed: geolocation, rawSha256: geolocationSha256 } =
-    await fetchBarcelonaGeolocation();
+  const {
+    parsed: geolocation,
+    rawSha256: geolocationSha256,
+    rawByteCount: geolocationByteCount,
+  } = parseBarcelonaGeolocation(fs.readFileSync(geolocationPath));
   const geolocationByRegistrationId = new Map<string, BarcelonaGeoRecord>();
   for (const record of geolocation.result.records) {
     const match = record.name.match(/(HB-\d{6})/);
@@ -196,13 +209,79 @@ async function buildCollection(registerPath: string) {
     };
   });
 
+  const properties: AccommodationPanelProperty[] = provisional.map((property) => {
+    const missingGeolocation = !property.geocoded;
+    const geographicDisposition = property.inRadius
+      ? 'eligible_in_radius'
+      : missingGeolocation
+        ? 'excluded_missing_official_geolocation'
+        : 'excluded_outside_radius';
+    const addressLine1 = [
+      nullable(property.row['Tipus de via']),
+      nullable(property.row['Nom de la via']),
+      nullable(property.row.Número),
+    ]
+      .filter((value): value is string => value !== null)
+      .join(' ');
+    return {
+      propertyId: property.registrationId,
+      sourcePropertyId: property.registrationId,
+      name: property.row.Rètol.trim(),
+      sourceStatus: 'Alta',
+      sourcePropertyType: 'Hotels',
+      sourcePropertySubtype: 'Hotel / Hotel',
+      sourceClassification: {
+        scheme: 'Catalonia Tourism Register hotel category',
+        value: property.row.Categoria,
+      },
+      eligibleMeasures: [property.measure],
+      address: {
+        addressLine1: addressLine1 || null,
+        postalCode: nullable(property.row['Codi Postal']),
+        locality: 'Barcelona',
+        municipality: 'Barcelona',
+      },
+      capacity: nullableInteger(property.row['Total places']),
+      latitude: property.geocoded ? round(property.geocoded.latitude, 8) : null,
+      longitude: property.geocoded ? round(property.geocoded.longitude, 8) : null,
+      distanceFromCentreKm:
+        property.distanceFromCentreKm === null ? null : round(property.distanceFromCentreKm, 6),
+      geographicDisposition,
+      exclusionReason: property.inRadius
+        ? null
+        : missingGeolocation
+          ? 'No matching HB registration id with usable coordinates was present in the official Barcelona city hotels datastore snapshot.'
+          : `Official coordinates are more than ${SEARCH_RADIUS_KM} km from the frozen sampling-frame centre.`,
+      officialWebsiteUrl: null,
+      websiteVerificationStatus: 'pending',
+    };
+  });
+
+  const geographicDispositionOrder = {
+    eligible_in_radius: 0,
+    excluded_outside_radius: 2,
+    excluded_missing_official_geolocation: 3,
+    pending_inventory_and_geolocation: 4,
+  } as const;
+  properties.sort(
+    (left, right) =>
+      ACCOMMODATION_HOTEL_PANEL_MEASURES.indexOf(
+        left.eligibleMeasures[0] as (typeof ACCOMMODATION_HOTEL_PANEL_MEASURES)[number]
+      ) -
+        ACCOMMODATION_HOTEL_PANEL_MEASURES.indexOf(
+          right.eligibleMeasures[0] as (typeof ACCOMMODATION_HOTEL_PANEL_MEASURES)[number]
+        ) ||
+      geographicDispositionOrder[left.geographicDisposition] -
+        geographicDispositionOrder[right.geographicDisposition] ||
+      (left.distanceFromCentreKm ?? Number.MAX_SAFE_INTEGER) -
+        (right.distanceFromCentreKm ?? Number.MAX_SAFE_INTEGER) ||
+      left.propertyId.localeCompare(right.propertyId)
+  );
+
   const ranking = rankAccommodationProperties(
-    provisional
-      .filter((property) => property.inRadius)
-      .map((property) => ({
-        registrationId: property.registrationId,
-        measure: property.measure,
-      })),
+    properties.filter(
+      (property) => property.geographicDisposition === 'eligible_in_radius'
+    ),
     {
       scheduleId: SCHEDULE_ID,
       city: 'Barcelona',
@@ -211,113 +290,48 @@ async function buildCollection(registerPath: string) {
     }
   );
 
-  const properties: AccommodationPanelProperty[] = provisional.map((property) => {
-    const ranked = ranking.get(property.registrationId);
-    const missingGeolocation = !property.geocoded;
-    const disposition = ranked
-      ? ranked.disposition
-      : missingGeolocation
-        ? 'excluded_missing_official_geolocation'
-        : 'excluded_outside_radius';
-    return {
-      registrationId: property.registrationId,
-      name: property.row.Rètol.trim(),
-      registryStatus: 'Alta',
-      registryType: 'Hotels',
-      registryGroup: 'Hotel',
-      registryModality: 'Hotel',
-      registryCategory: property.row.Categoria as AccommodationPanelProperty['registryCategory'],
-      measure: property.measure,
-      address: {
-        roadType: nullable(property.row['Tipus de via']),
-        roadName: nullable(property.row['Nom de la via']),
-        streetNumber: nullable(property.row.Número),
-        postalCode: nullable(property.row['Codi Postal']),
-        municipality: 'Barcelona',
-      },
-      totalPlaces: nullableInteger(property.row['Total places']),
-      latitude: property.geocoded ? round(property.geocoded.latitude, 8) : null,
-      longitude: property.geocoded ? round(property.geocoded.longitude, 8) : null,
-      distanceFromCentreKm:
-        property.distanceFromCentreKm === null ? null : round(property.distanceFromCentreKm, 6),
-      disposition,
-      exclusionReason: ranked
-        ? null
-        : missingGeolocation
-          ? 'No matching HB registration id with usable coordinates was present in the official Barcelona city hotels datastore snapshot.'
-          : `Official coordinates are more than ${SEARCH_RADIUS_KM} km from the frozen sampling-frame centre.`,
-      selectionHash: ranked?.selectionHash ?? null,
-      selectionRank: ranked?.selectionRank ?? null,
-      officialWebsiteUrl: null,
-      websiteVerificationStatus: 'pending',
-    };
-  });
-
-  const dispositionOrder = {
-    primary: 0,
-    reserve: 1,
-    excluded_outside_radius: 2,
-    excluded_missing_official_geolocation: 3,
-  } as const;
-  properties.sort(
-    (left, right) =>
-      ACCOMMODATION_HOTEL_PANEL_MEASURES.indexOf(left.measure) -
-        ACCOMMODATION_HOTEL_PANEL_MEASURES.indexOf(right.measure) ||
-      dispositionOrder[left.disposition] - dispositionOrder[right.disposition] ||
-      (left.selectionRank ?? Number.MAX_SAFE_INTEGER) -
-        (right.selectionRank ?? Number.MAX_SAFE_INTEGER) ||
-      left.registrationId.localeCompare(right.registrationId)
-  );
-
   const measurePanels = ACCOMMODATION_PANEL_MEASURES.map((measure) => {
-    if (!ACCOMMODATION_HOTEL_PANEL_MEASURES.includes(measure as AccommodationHotelPanelMeasure)) {
+    if (
+      !ACCOMMODATION_HOTEL_PANEL_MEASURES.includes(
+        measure as (typeof ACCOMMODATION_HOTEL_PANEL_MEASURES)[number]
+      )
+    ) {
       return {
         measure,
         status: 'unavailable_no_unambiguous_registry_class' as const,
         eligibleInRadiusCount: 0,
         targetPrimaryCount: 0,
-        primaryRegistrationIds: [],
-        reserveRegistrationIds: [],
+        rankedProperties: [],
         notes:
           "The Catalonia hotel's 'Hostal o pensió' group is a lodging classification, not evidence of youth-hostel dorm or private-room inventory. A separate official youth-hostel frame is required.",
       };
     }
-    const candidates = properties
-      .filter(
-        (property) =>
-          property.measure === measure &&
-          (property.disposition === 'primary' || property.disposition === 'reserve')
-      )
-      .sort((left, right) => left.selectionRank! - right.selectionRank!);
+    const rankedProperties = ranking.get(measure) ?? [];
     return {
       measure,
       status: 'frozen_pending_website_verification' as const,
-      eligibleInRadiusCount: candidates.length,
-      targetPrimaryCount: Math.min(TARGET_PRIMARY_COUNT, candidates.length),
-      primaryRegistrationIds: candidates
-        .filter((property) => property.disposition === 'primary')
-        .map((property) => property.registrationId),
-      reserveRegistrationIds: candidates
-        .filter((property) => property.disposition === 'reserve')
-        .map((property) => property.registrationId),
+      eligibleInRadiusCount: rankedProperties.length,
+      targetPrimaryCount: Math.min(TARGET_PRIMARY_COUNT, rankedProperties.length),
+      rankedProperties,
       notes:
         'The primary twelve are selected without price or brand inputs. Website ownership and public booking access remain pending; unusable properties are replaced in the frozen reserve order.',
     };
   });
 
   const collection: AccommodationPropertyPanelCollection = {
-    schemaVersion: 'accommodation-property-panels-v1',
-    collectionId: 'accommodation-property-panels-2026-2027-v1',
+    schemaVersion: 'accommodation-property-panels-v2',
+    collectionId: 'accommodation-property-panels-2026-2027-v2',
     scheduleId: SCHEDULE_ID,
     lockedAt: LOCKED_AT,
     protocol: {
       targetPanelPropertiesPerMeasure: TARGET_PRIMARY_COUNT,
+      minimumAcceptedQuotesPerSeason: 5,
       searchRadiusKm: SEARCH_RADIUS_KM,
       selectionAlgorithm: 'sha256_ascending_v1',
       selectionSeedTemplate:
         '{scheduleId}<US>{city}<US>{country}<US>{measure}<US>official-register-panel-v1',
       selectionRule:
-        'Within each measure, sort the SHA-256 hash of the frozen unit-separator seed plus registration id ascending; registration id is the deterministic tie-break. Price, brand, capacity, and website visibility are not ranking inputs.',
+        'Within each measure, sort the SHA-256 hash of the frozen unit-separator seed plus stable property id ascending; property id is the deterministic tie-break. Price, brand, capacity, and website visibility are not ranking inputs.',
       replacementRule:
         'Attempt primary properties in rank order. If a property has no verified official website, no public booking path, no comparable room, or no acceptable quote, record the failure and continue through the frozen reserve order without re-ranking.',
     },
@@ -329,6 +343,7 @@ async function buildCollection(registerPath: string) {
         region: 'Europe',
         status: 'sampling_frame_frozen_websites_pending',
         samplingFrame: {
+          frameKind: 'official_register_join',
           joinKey:
             'catalonia_tourism_register.Número inscripció == barcelona_city_hotels.name embedded HB registration id',
           inclusionCriteria: [
@@ -361,12 +376,14 @@ async function buildCollection(registerPath: string) {
               landingPageUrl: 'https://analisi.transparenciacatalunya.cat/d/t2h3-cgys',
               dataUrl:
                 'https://analisi.transparenciacatalunya.cat/api/v3/views/t2h3-cgys/export.csv?accessType=DOWNLOAD',
+              requestBody: null,
               retrievedAt: REGISTER_RETRIEVED_AT,
               sourceLastUpdatedAt: '2026-07-01T22:00:00.000Z',
               licenceName: "Llicència oberta d’ús d'informació - Catalunya",
               licenceUrl:
                 'https://web.gencat.cat/ca/generalitat/dades-indicadors/dades-obertes/llicencies',
               rawRecordCount: registerRows.length,
+              rawByteCount: registerBuffer.length,
               rawSha256: registerHash,
             },
             {
@@ -377,26 +394,35 @@ async function buildCollection(registerPath: string) {
               landingPageUrl:
                 'https://opendata-ajuntament.barcelona.cat/data/en/dataset/allotjaments-hotels',
               dataUrl: CKAN_DATA_URL,
+              requestBody: null,
               retrievedAt: CKAN_RETRIEVED_AT,
               sourceLastUpdatedAt: '2023-10-31T08:26:45.535Z',
               licenceName: 'Creative Commons Attribution 4.0',
               licenceUrl: 'https://creativecommons.org/licenses/by/4.0/',
               rawRecordCount: geolocation.result.total,
+              rawByteCount: geolocationByteCount,
               rawSha256: geolocationSha256,
             },
           ],
           counts: {
-            activeBarcelonaAccommodationRows: activeBarcelonaRows.length,
-            activeBarcelonaHotelRows: activeBarcelonaHotels.length,
-            eligibleRegisterRows: eligibleRegisterRows.length,
-            joinedOfficialGeolocationRows: joined.length,
-            missingOfficialGeolocationRows: eligibleRegisterRows.length - joined.length,
-            outsideRadiusRows: properties.filter(
-              (property) => property.disposition === 'excluded_outside_radius'
+            sourceRecordCount: registerRows.length,
+            sourceLodgingRecordCount: activeBarcelonaRows.length,
+            eligiblePropertyCount: eligibleRegisterRows.length,
+            candidatePropertyCount: 0,
+            geolocatedEligiblePropertyCount: joined.length,
+            missingOfficialGeolocationCount: eligibleRegisterRows.length - joined.length,
+            outsideRadiusCount: properties.filter(
+              (property) => property.geographicDisposition === 'excluded_outside_radius'
             ).length,
-            eligibleInRadiusRows: properties.filter(
-              (property) => property.disposition === 'primary' || property.disposition === 'reserve'
+            eligibleInRadiusCount: properties.filter(
+              (property) => property.geographicDisposition === 'eligible_in_radius'
             ).length,
+            sourceSpecificCounts: {
+              activeBarcelonaAccommodationRows: activeBarcelonaRows.length,
+              activeBarcelonaHotelRows: activeBarcelonaHotels.length,
+              eligibleRegisterRows: eligibleRegisterRows.length,
+              barcelonaCityGeolocationRows: geolocation.result.total,
+            },
           },
         },
         measurePanels,
@@ -410,7 +436,27 @@ async function buildCollection(registerPath: string) {
 
 async function main() {
   const args = parseArgs();
-  const collection = await buildCollection(args.registerPath);
+  const rebuilt = buildCollection(args.registerPath, args.geolocationPath);
+  const barcelona = rebuilt.cities[0];
+  let collection = rebuilt;
+  if (fs.existsSync(OUTPUT_PATH)) {
+    const existing = accommodationPropertyPanelCollectionSchema.parse(
+      JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'))
+    );
+    collection = accommodationPropertyPanelCollectionSchema.parse({
+      ...existing,
+      lockedAt:
+        existing.lockedAt.localeCompare(rebuilt.lockedAt) >= 0
+          ? existing.lockedAt
+          : rebuilt.lockedAt,
+      cities: [
+        barcelona,
+        ...existing.cities.filter(
+          (city) => !(city.city === barcelona.city && city.country === barcelona.country)
+        ),
+      ],
+    });
+  }
   const summary = summarizeAccommodationPropertyPanels(collection);
   if (args.write) {
     fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(collection, null, 2)}\n`, 'utf8');

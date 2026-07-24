@@ -114,7 +114,8 @@ Every published number must answer: “the expected cost of what, for whom, wher
 - Fixed 90-day booking lead time. Quote capture is scheduled separately for each stay week; three
   seasons cannot be measured at the same lead time on one research day.
 - City-centre search area with a documented 5 km radius.
-- A deterministic property panel drawn from an official accommodation register, stratified by hostel
+- A deterministic property panel drawn from an official accommodation register or classification
+  directory, stratified by hostel
   room type or hotel star class. Proprietary review scores are not a primary inclusion criterion.
 - Target 12 panel properties per measure and season, with a hard minimum of five and at least 60% panel
   overlap across seasons.
@@ -340,8 +341,10 @@ between quote capture and check-in, one low/shoulder/high stratum per city, and 
 gate with a deterministic same-season replacement rule. Several destination labels currently use
 official climate/travel guidance and are explicitly provisional until upgraded with monthly demand data.
 
-The first official-register sampling frame is also frozen in
-`data/reference/accommodation_property_panels_2026_2027.json`. For Barcelona, an `HB` registration-id
+The first two official-source sampling frames are also frozen in
+`data/reference/accommodation_property_panels_2026_2027.json`. Its generic version 2 contract stores
+properties separately from measure-specific rankings, so a verified hostel can participate in both dorm
+and private-room panels without duplicating the establishment. For Barcelona, an `HB` registration-id
 join between the July 2026 Catalonia Tourism Register and Barcelona City Council geolocation data retains
 344 active standard 1-4-star hotels, joins 327 to official coordinates, and leaves 322 within the fixed
 5 km radius. A price-blind SHA-256 rank selects 12 primary properties for each hotel star class (48 total)
@@ -350,6 +353,16 @@ The frame has zero verified property websites and zero accepted prices, so this 
 infrastructure rather than coverage or accuracy evidence. Hostel dorm/private measures remain missing
 until a separate youth-hostel frame is found; Catalonia's `Hostal o pensió` class is not mislabelled as a
 youth hostel.
+
+For Copenhagen, the 24 July 2026 Hotelstars Union public search snapshot contains 309 Denmark records:
+209 hotels and 100 separately listed conference products. Excluding conference and 5-star products leaves
+201 one- through four-star hotel records with official-directory coordinates. The component-wise median
+of 29 eligible `København*` records fixes the price-independent centre at `55.67250000, 12.56450000`;
+29 eligible hotels fall within 5 km (three two-star, 11 three-star, and 15 four-star). The snapshot has no
+one-star property. All three two-star records remain below the five-quote gate, while the 4-star panel has
+12 primary properties and three reserves. A separate VisitCopenhagen directory contributes 13 hostel
+candidates, but dorm/private eligibility and geolocation are still pending direct-site verification.
+Across Barcelona and Copenhagen, zero websites are verified and zero accommodation prices are accepted.
 
 ### 6C. Pilot and model selection
 
@@ -364,6 +377,9 @@ youth hostel.
   observations and three official attraction prices.
 - [x] Freeze the first official-register accommodation sampling frame for Barcelona, including
   deterministic hotel panels, full reserve order, join coverage, and visible exclusions.
+- [x] Generalize the panel contract and freeze Copenhagen's Hotelstars hotel frame plus the official
+  13-property VisitCopenhagen hostel candidate universe, retaining the absent one-star class and the
+  below-minimum two-star class as explicit limitations.
 - [ ] Collect batch zero, then the 36-city pilot, with all four categories.
 - [ ] Profile missingness, source disagreement, seasonality, and outliers.
 - [ ] Fit and compare fallback models with whole-city cross-validation.

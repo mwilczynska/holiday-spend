@@ -22,22 +22,29 @@ function checkedInCollection() {
 }
 
 describe('accommodation property panels', () => {
-  it('validates and reconciles the checked-in Barcelona sampling frame', () => {
+  it('validates and reconciles both checked-in sampling frames', () => {
     const collection = checkedInCollection();
     expect(summarizeAccommodationPropertyPanels(collection)).toEqual({
-      collectionId: 'accommodation-property-panels-2026-2027-v1',
-      cities: 1,
-      frozenHotelPanels: 4,
+      collectionId: 'accommodation-property-panels-2026-2027-v2',
+      cities: 2,
+      frozenHotelPanels: 7,
+      belowQuoteMinimumPanels: 1,
+      unavailableHotelPanels: 1,
+      candidateHostelPanels: 2,
       unavailableHostelPanels: 2,
-      eligibleRegisterProperties: 344,
-      eligibleInRadiusProperties: 322,
-      primaryProperties: 48,
-      reserveProperties: 274,
+      eligibleSourceProperties: 545,
+      candidateProperties: 13,
+      eligibleInRadiusProperties: 351,
+      primaryProperties: 74,
+      reserveProperties: 277,
       missingOfficialGeolocation: 17,
-      outsideRadius: 5,
+      outsideRadius: 177,
+      websitesSourceListed: 78,
       websitesVerified: 0,
     });
-    expect(collection.cities[0].samplingFrame.centre).toEqual({
+
+    const barcelona = collection.cities.find((city) => city.city === 'Barcelona')!;
+    expect(barcelona.samplingFrame.centre).toEqual({
       method: 'componentwise_median_of_joined_active_1_to_4_star_hotel_coordinates',
       latitude: 41.38749043,
       longitude: 2.16952564,
@@ -45,9 +52,10 @@ describe('accommodation property panels', () => {
       searchRadiusKm: 5,
     });
     expect(
-      collection.cities[0].measurePanels.find(
-        (panel) => panel.measure === 'hotel_1star_room_2p'
-      )?.primaryRegistrationIds
+      barcelona.measurePanels
+        .find((panel) => panel.measure === 'hotel_1star_room_2p')!
+        .rankedProperties.filter((property) => property.disposition === 'primary')
+        .map((property) => property.propertyId)
     ).toEqual([
       'HB-003443',
       'HB-003925',
@@ -62,13 +70,65 @@ describe('accommodation property panels', () => {
       'HB-004248',
       'HB-004606',
     ]);
+    expect(
+      barcelona.properties.every(
+        (property) => property.sourcePropertySubtype === 'Hotel / Hotel'
+      )
+    ).toBe(true);
+  });
+
+  it('freezes Copenhagen without inventing missing classes or hostel inventory', () => {
+    const copenhagen = checkedInCollection().cities.find(
+      (city) => city.city === 'Copenhagen'
+    )!;
+    expect(copenhagen.samplingFrame.centre).toEqual({
+      method: 'componentwise_median_of_official_kobenhavn_1_to_4_star_hotel_coordinates',
+      latitude: 55.6725,
+      longitude: 12.5645,
+      inputPropertyCount: 29,
+      searchRadiusKm: 5,
+    });
+    expect(copenhagen.samplingFrame.counts).toMatchObject({
+      eligiblePropertyCount: 201,
+      candidatePropertyCount: 13,
+      outsideRadiusCount: 172,
+      eligibleInRadiusCount: 29,
+    });
+    expect(
+      copenhagen.measurePanels.map((panel) => [
+        panel.measure,
+        panel.status,
+        panel.eligibleInRadiusCount,
+      ])
+    ).toEqual([
+      ['hostel_dorm_bed_1p', 'candidate_universe_pending_inventory_verification', 0],
+      ['hostel_private_room_2p', 'candidate_universe_pending_inventory_verification', 0],
+      ['hotel_1star_room_2p', 'unavailable_no_eligible_properties', 0],
+      ['hotel_2star_room_2p', 'frozen_below_quote_minimum', 3],
+      ['hotel_3star_room_2p', 'frozen_pending_website_verification', 11],
+      ['hotel_4star_room_2p', 'frozen_pending_website_verification', 15],
+    ]);
+    expect(
+      copenhagen.measurePanels
+        .find((panel) => panel.measure === 'hotel_2star_room_2p')!
+        .rankedProperties.map((property) => property.propertyId)
+    ).toEqual([
+      'hotelstars-union:DK:112075',
+      'hotelstars-union:DK:89237',
+      'hotelstars-union:DK:89232',
+    ]);
+    expect(
+      copenhagen.properties.filter(
+        (property) => property.geographicDisposition === 'pending_inventory_and_geolocation'
+      )
+    ).toHaveLength(13);
   });
 
   it('ranks properties identically regardless of input order', () => {
     const properties = [
-      { registrationId: 'HB-000003', measure: 'hotel_1star_room_2p' as const },
-      { registrationId: 'HB-000001', measure: 'hotel_1star_room_2p' as const },
-      { registrationId: 'HB-000002', measure: 'hotel_1star_room_2p' as const },
+      { propertyId: 'property-3', eligibleMeasures: ['hotel_1star_room_2p' as const] },
+      { propertyId: 'property-1', eligibleMeasures: ['hotel_1star_room_2p' as const] },
+      { propertyId: 'property-2', eligibleMeasures: ['hotel_1star_room_2p' as const] },
     ];
     const input = {
       scheduleId: 'test-schedule',
@@ -76,14 +136,31 @@ describe('accommodation property panels', () => {
       country: 'Testland',
       targetPrimaryCount: 2,
     };
-    const normalize = (ranking: ReturnType<typeof rankAccommodationProperties>) =>
-      Array.from(ranking.entries()).sort(([left], [right]) => left.localeCompare(right));
-    expect(normalize(rankAccommodationProperties(properties, input))).toEqual(
-      normalize(rankAccommodationProperties([...properties].reverse(), input))
+    expect(rankAccommodationProperties(properties, input)).toEqual(
+      rankAccommodationProperties([...properties].reverse(), input)
     );
-    expect(
-      accommodationPropertySelectionHash('frozen-seed', 'HB-000001')
-    ).toMatch(/^[a-f0-9]{64}$/);
+    expect(accommodationPropertySelectionHash('frozen-seed', 'property-1')).toMatch(
+      /^[a-f0-9]{64}$/
+    );
+  });
+
+  it('allows one verified hostel to participate in both hostel measures', () => {
+    const ranking = rankAccommodationProperties(
+      [
+        {
+          propertyId: 'shared-hostel',
+          eligibleMeasures: ['hostel_dorm_bed_1p', 'hostel_private_room_2p'],
+        },
+      ],
+      {
+        scheduleId: 'test-schedule',
+        city: 'Test City',
+        country: 'Testland',
+        targetPrimaryCount: 12,
+      }
+    );
+    expect(ranking.get('hostel_dorm_bed_1p')?.[0].propertyId).toBe('shared-hostel');
+    expect(ranking.get('hostel_private_room_2p')?.[0].propertyId).toBe('shared-hostel');
   });
 
   it('calculates the centre and radius inputs deterministically', () => {
@@ -100,9 +177,9 @@ describe('accommodation property panels', () => {
     const oneStar = collection.cities[0].measurePanels.find(
       (panel) => panel.measure === 'hotel_1star_room_2p'
     )!;
-    [oneStar.primaryRegistrationIds[0], oneStar.primaryRegistrationIds[1]] = [
-      oneStar.primaryRegistrationIds[1],
-      oneStar.primaryRegistrationIds[0],
+    [oneStar.rankedProperties[0], oneStar.rankedProperties[1]] = [
+      oneStar.rankedProperties[1],
+      oneStar.rankedProperties[0],
     ];
     expect(accommodationPropertyPanelCollectionSchema.safeParse(collection).success).toBe(false);
   });
@@ -111,18 +188,23 @@ describe('accommodation property panels', () => {
     const collection = structuredClone(
       checkedInCollection()
     ) as AccommodationPropertyPanelCollection;
-    const property = collection.cities[0].properties.find(
-      (candidate) => candidate.disposition === 'primary'
-    )!;
-    property.selectionHash = '0'.repeat(64);
+    const rankedProperty = collection.cities[0].measurePanels.find(
+      (panel) => panel.rankedProperties.length > 0
+    )!.rankedProperties[0];
+    rankedProperty.selectionHash = '0'.repeat(64);
     expect(accommodationPropertyPanelCollectionSchema.safeParse(collection).success).toBe(false);
   });
 
-  it('rejects a hotel-apartment modality in the standard-room frame', () => {
-    const collection = structuredClone(checkedInCollection()) as unknown as {
-      cities: Array<{ properties: Array<{ registryModality: string }> }>;
-    };
-    collection.cities[0].properties[0].registryModality = 'Hotel-apartament';
+  it('rejects a hostel candidate promoted without inventory or geolocation evidence', () => {
+    const collection = structuredClone(
+      checkedInCollection()
+    ) as AccommodationPropertyPanelCollection;
+    const candidate = collection.cities
+      .find((city) => city.city === 'Copenhagen')!
+      .properties.find(
+        (property) => property.geographicDisposition === 'pending_inventory_and_geolocation'
+      )!;
+    candidate.eligibleMeasures = ['hostel_dorm_bed_1p'];
     expect(accommodationPropertyPanelCollectionSchema.safeParse(collection).success).toBe(false);
   });
 });

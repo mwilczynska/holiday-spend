@@ -123,7 +123,7 @@ Calculator `city-cost-v3-alpha-3` also treats source types as measurement channe
 pooling them. Food and drink use the retained city-level published dataset channel as the primary point
 estimate, with menu samples retained as triangulation evidence. Activities prefer the attraction or
 operator's official site. Accommodation uses direct property sites selected from a deterministic panel
-drawn from official accommodation registers. Booking.com and Hostelworld are excluded as extraction
+drawn from official accommodation registers or classification directories. Booking.com and Hostelworld are excluded as extraction
 sources after review of their current restrictions on automated/assistant use.
 Every available channel keeps its own observation count, source names, median, interquartile range, and
 lineage. A secondary-channel median more than 25% from the selected primary median receives a provisional
@@ -173,7 +173,7 @@ tier. For food and drink, city-level source medians will be
 triangulated with independent menu observations in the validation sample. For activities, current
 official attraction and tour-operator prices will replace global multipliers.
 
-The first frame now provides a concrete reproducibility test. Barcelona's July 2026 frame joins the
+The first two frames now provide concrete reproducibility tests. Barcelona's July 2026 frame joins the
 Catalonia Tourism Register to Barcelona City Council coordinates using the official `HB` registration id.
 It starts with 344 active standard one- through four-star hotels; 327 join to official coordinates and
 322 fall within 5 km of the frozen, price-independent centre (`41.38749043, 2.16952564`). A SHA-256 rank
@@ -185,6 +185,29 @@ This is not yet an accommodation estimate. No official property website has been
 has been accepted from the frame. Barcelona's hostel tiers also remain missing because the register's
 `Hostal o pensió` lodging class is not evidence of youth-hostel dorm or private-room inventory. A separate
 official hostel frame is required rather than forcing a misleading category mapping.
+
+Copenhagen uses a different but equally explicit source path. A current, public, no-key Hotelstars Union
+search snapshot contains 309 Denmark records. The pipeline excludes 100 separately listed conference
+products, then retains 201 hotel records in the planner's one- through four-star scope. All have directory
+coordinates. A component-wise median of the 29 eligible records labelled `København*` fixes the centre at
+`55.67250000, 12.56450000`; applying the 5 km radius to all eligible Denmark records produces 29 hotels:
+three two-star, 11 three-star, and 15 four-star. The official snapshot contains no eligible one-star
+hotel. The four-star SHA-256 panel has 12 primary and three reserve properties; every two- and three-star
+property is retained because those classes contain fewer than 12.
+
+This frame exposes two useful forms of missingness. Three two-star properties are fewer than the frozen
+five-quote minimum, so that direct measure cannot materialize even if all three sites quote successfully.
+One-star remains unavailable rather than being imputed from two-star. VisitCopenhagen's current official
+hostel directory contributes 13 named candidates and direct property links, but those candidates remain
+unranked until their sites prove a location within 5 km and the applicable dorm and/or private-room
+inventory. The panel schema therefore stores properties separately from per-measure rankings: after
+verification, one real hostel can enter both hostel measures without being counted as two properties.
+
+Neither Copenhagen source states an open-data licence. The research artifact therefore stores only the
+factual fields required for the private sampling frame, attributes the publishers, and freezes exact
+retrieval timestamps, byte counts, request body, and source checksums. Source-listed websites are not
+treated as verified booking evidence. Across the two current frames there are still zero verified
+property websites and zero accepted accommodation quotes.
 
 ### Robust Aggregation And Missing Data
 
