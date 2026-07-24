@@ -171,6 +171,9 @@ describe('city cost methodology v3', () => {
     expect(snapshot.rates.DKK.audPerUnit).toBeCloseTo(1.6312 / 7.4757, 12);
     expect(snapshot.rates.THB.audPerUnit).toBeCloseTo(1.6312 / 38.57, 12);
     expect(snapshot.rates.VND.audPerUnit).toBeCloseTo(1 / 18206, 12);
+    expect(snapshot.rates.CNY.audPerUnit).toBeCloseTo(1.6312 / 7.7266, 12);
+    expect(snapshot.rates.NZD.audPerUnit).toBeCloseTo(1.6312 / 1.9608, 12);
+    expect(snapshot.rates.TZS.audPerUnit).toBeCloseTo(1 / 1848.9043, 12);
   });
 
   it('normalizes price, range, and quantity into the declared city-local currency', () => {

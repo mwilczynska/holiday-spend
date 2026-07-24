@@ -3,7 +3,7 @@
   "snapshotId": "aud-reference-2026-07-22-v1",
   "baseCurrency": "AUD",
   "asOfDate": "2026-07-22",
-  "retrievedAt": "2026-07-24T05:00:00.000Z",
+  "retrievedAt": "2026-07-24T09:29:20.944Z",
   "rates": {
     "AUD": {
       "currency": "AUD",
@@ -74,6 +74,36 @@
       "sourceQuote": "1 AUD = 18,206 VND",
       "derivation": "inverted_quote",
       "derivationFormula": "1 / 18206"
+    },
+    "CNY": {
+      "currency": "CNY",
+      "audPerUnit": 0.21111484999870575,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 7.7266 CNY",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 7.7266"
+    },
+    "NZD": {
+      "currency": "NZD",
+      "audPerUnit": 0.8319053447572419,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 1.9608 NZD",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 1.9608"
+    },
+    "TZS": {
+      "currency": "TZS",
+      "audPerUnit": 0.0005408608763579597,
+      "sourceName": "Bank of Tanzania",
+      "sourceUrl": "https://www.bot.go.tz/exchangerate/excrates",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 AUD = 1,848.9043 TZS at the published mean rate",
+      "derivation": "inverted_quote",
+      "derivationFormula": "1 / 1848.9043"
     }
   }
 }

@@ -256,8 +256,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities
+  - [x] Extend pilot wave 1 across Zanzibar, Shanghai, and Auckland, bringing the store to 61 accepted direct observations across 12 cities while adding Africa, East Asia, and Oceania coverage
   - [x] Add a validated accommodation attempt ledger and complete the Copenhagen shoulder checkpoint: ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and four booking-path failures
-  - [x] Materialize the current fail-closed research artifact from 47 direct observations: 42 of 171 tier cells across nine cities, one incomplete accommodation measure, and zero incomplete wide rows published
+  - [x] Materialize the current fail-closed research artifact from 61 direct observations: 56 of 228 tier cells across 12 cities, one incomplete accommodation measure, and zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -401,6 +402,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
 - Phase 6 accommodation collection now uses a deterministic repeated-property panel rather than Booking.com/Hostelworld extraction: official registers or classification directories define the sampling frame and selected property sites provide public dated quotes
 - `npm run methodology:research` renders one bounded source-research assignment or validates a saved raw/fenced JSON response from a free web-enabled LLM; assignment mismatches, unaccounted measures, duplicate ids, and self-accepted rows fail closed
+- The second pilot checkpoint adds Zanzibar, Shanghai, and Auckland: 12 direct Numbeo food/drink primitives and official paid-attraction prices for Shanghai Tower and Auckland MOTAT; Zanzibar retains explicit attraction missingness and its sparse eight-contributor context
+- The frozen 22 July 2026 FX snapshot now covers CNY and NZD through ECB euro cross-rates and TZS through the Bank of Tanzania's published AUD mean rate, alongside the earlier currencies
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
 - `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
@@ -488,6 +491,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/observations/pilot-wave-01-day-01-food-drinks.jsonl`
   - `data/reference/observations/pilot-wave-01-day-01-activities.jsonl`
   - `data/reference/observations/pilot-wave-01-day-01-report.json`
+  - `data/reference/observations/pilot-wave-01-day-02-food-drinks.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-02-activities.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-02-report.json`
 - `docs/dev/plans/city-cost-source-access.md`
 - `docs/prompts/llm_prompt_city_cost_observations_1.md`
 - `src/lib/city-cost-observation.ts`

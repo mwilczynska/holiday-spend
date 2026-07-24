@@ -92,12 +92,13 @@ dated source observations
 ### Implementation Checkpoint
 
 The observation schema, JSONL validator, and batch manifest are now implemented. Batch zero plus the
-first pilot wave contain 47 direct observations across Lisbon, Prague, Hanoi, Copenhagen, Bangkok, Pu
-Luong, Barcelona, San Francisco, and Da Nang: 32 standardized Numbeo food/drink prices, one Pu Luong
-official-menu meal, eight official paid-attraction prices, one operator-listed Pu Luong half-day group
-activity, and five exact-date official-property accommodation quotes. Every row retains its
-original EUR, CZK, DKK, THB, VND, or USD value, source URL, retrieval time, page-valid date where known,
-displayed range, source-access basis, and extraction version. The validator reports 47 valid direct rows
+first two pilot-wave checkpoints contain 61 direct observations across Lisbon, Prague, Hanoi, Copenhagen,
+Bangkok, Pu Luong, Barcelona, San Francisco, Da Nang, Zanzibar, Shanghai, and Auckland: 44 standardized
+Numbeo food/drink prices, one Pu Luong official-menu meal, ten official paid-attraction prices, one
+operator-listed Pu Luong half-day group activity, and five exact-date official-property accommodation
+quotes. Every row retains its original EUR, CZK, DKK, THB, VND, USD, TZS, CNY, or NZD value, source URL,
+retrieval time, page-valid date where known, displayed range, source-access basis, and extraction version.
+The validator reports 61 valid direct rows
 and no schema errors.
 
 A provider-neutral local research runner now renders one versioned city/category assignment and validates
@@ -137,13 +138,14 @@ disagreement flag for review; this threshold is an operational diagnostic to val
 not an accuracy result.
 
 The current frozen snapshot uses the European Central Bank's 22 July 2026 euro reference rates for EUR,
-USD, CZK, DKK, and THB, plus the Reserve Bank of Australia's 14 July 2026 AUD/VND quote. Each stored rate
-retains its source date, quote, URL, and derivation formula. The materializer verifies the snapshot and
-recomputes cross-rate arithmetic in automated tests.
+USD, CZK, DKK, THB, CNY, and NZD, the Reserve Bank of Australia's 14 July 2026 AUD/VND quote, and the
+Bank of Tanzania's 22 July 2026 AUD/TZS mean rate. Each stored rate retains its source date, quote, URL,
+and derivation formula. The materializer verifies the snapshot and recomputes cross-rate arithmetic in
+automated tests.
 
-The current materialized artifact contains nine cities and 47 accepted direct observations. It can
-calculate 42 of 171 possible city-tier cells: coffee and the coffee-only/light drinks baskets for eight
-cities, free activities for all nine, budget paid-attraction baskets for eight, and one Pu Luong mid-range
+The current materialized artifact contains 12 cities and 61 accepted direct observations. It can
+calculate 56 of 228 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 11
+cities, free activities for all 12, budget paid-attraction baskets for ten, and one Pu Luong mid-range
 half-day activity basket. It reports zero complete cities and emits no publishable wide row because
 the Copenhagen shoulder panel has reached five quotes but its low/high seasons and repeated-property
 overlap gate are still missing, while street/premium food, cocktail/wine, and many activity observations

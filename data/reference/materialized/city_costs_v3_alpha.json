@@ -1,22 +1,22 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T09:12:14.000Z",
+  "dataCutoff": "2026-07-24T09:29:20.944Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 47,
-    "accepted": 47,
+    "input": 61,
+    "accepted": 61,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 47,
+    "direct": 61,
     "derived": 0,
     "imputed": 0
   },
-  "cityCount": 9,
+  "cityCount": 12,
   "completeCityCount": 0,
-  "requiredTierCells": 171,
-  "materializedTierCells": 42,
+  "requiredTierCells": 228,
+  "materializedTierCells": 56,
   "tierCoverage": {
     "accom_shared_hostel_dorm": 0,
     "accom_hostel_private_room": 0,
@@ -28,13 +28,13 @@
     "food_budget": 0,
     "food_mid_range": 0,
     "food_high_end": 0,
-    "drink_coffee": 8,
-    "drinks_none": 8,
-    "drinks_light": 8,
+    "drink_coffee": 11,
+    "drinks_none": 11,
+    "drinks_light": 11,
     "drinks_moderate": 0,
     "drinks_heavy": 0,
-    "activities_free": 9,
-    "activities_budget": 8,
+    "activities_free": 12,
+    "activities_budget": 10,
     "activities_mid_range": 1,
     "activities_high_end": 0
   },
@@ -45,6 +45,391 @@
     "incompleteSeasonAccommodationMeasureCount": 1
   },
   "aggregates": [
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-auckland-2026-06-12-cappuccino"
+          ],
+          "medianLocal": 6.09,
+          "q25Local": 6.09,
+          "q75Local": 6.09,
+          "medianAud": 5.066304
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "NZD",
+      "audPerLocalUnit": 0.8319053447572419,
+      "medianLocal": 6.09,
+      "q25Local": 6.09,
+      "q75Local": 6.09,
+      "minLocal": 6.09,
+      "maxLocal": 6.09,
+      "medianAud": 5.066304,
+      "q25Aud": 5.066304,
+      "q75Aud": 5.066304,
+      "minAud": 5.066304,
+      "maxAud": 5.066304,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "NZD"
+      ],
+      "observationIds": [
+        "numbeo-auckland-2026-06-12-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-auckland-2026-06-12-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-auckland-2026-06-12-domestic-draft-beer"
+          ],
+          "medianLocal": 12,
+          "q25Local": 12,
+          "q75Local": 12,
+          "medianAud": 9.982864
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "NZD",
+      "audPerLocalUnit": 0.8319053447572419,
+      "medianLocal": 12,
+      "q25Local": 12,
+      "q75Local": 12,
+      "minLocal": 12,
+      "maxLocal": 12,
+      "medianAud": 9.982864,
+      "q25Aud": 9.982864,
+      "q75Aud": 9.982864,
+      "minAud": 9.982864,
+      "maxAud": 9.982864,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "NZD"
+      ],
+      "observationIds": [
+        "numbeo-auckland-2026-06-12-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-auckland-2026-06-12-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-auckland-2026-06-12-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 25,
+          "q25Local": 25,
+          "q75Local": 25,
+          "medianAud": 20.797634
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "NZD",
+      "audPerLocalUnit": 0.8319053447572419,
+      "medianLocal": 25,
+      "q25Local": 25,
+      "q75Local": 25,
+      "minLocal": 25,
+      "maxLocal": 25,
+      "medianAud": 20.797634,
+      "q25Aud": 20.797634,
+      "q75Aud": 20.797634,
+      "minAud": 20.797634,
+      "maxAud": 20.797634,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "NZD"
+      ],
+      "observationIds": [
+        "numbeo-auckland-2026-06-12-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-auckland-2026-06-12-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-auckland-2026-06-12-midrange-restaurant-meal"
+          ],
+          "medianLocal": 125,
+          "q25Local": 125,
+          "q75Local": 125,
+          "medianAud": 103.988168
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "NZD",
+      "audPerLocalUnit": 0.8319053447572419,
+      "medianLocal": 125,
+      "q25Local": 125,
+      "q75Local": 125,
+      "minLocal": 125,
+      "maxLocal": 125,
+      "medianAud": 103.988168,
+      "q25Aud": 103.988168,
+      "q75Aud": 103.988168,
+      "minAud": 103.988168,
+      "maxAud": 103.988168,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "NZD"
+      ],
+      "observationIds": [
+        "numbeo-auckland-2026-06-12-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-auckland-2026-06-12-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Museum of Transport and Technology"
+          ],
+          "observationIds": [
+            "motat-auckland-2026-general-adult"
+          ],
+          "medianLocal": 19,
+          "q25Local": 19,
+          "q75Local": 19,
+          "medianAud": 15.806202
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "NZD",
+      "audPerLocalUnit": 0.8319053447572419,
+      "medianLocal": 19,
+      "q25Local": 19,
+      "q75Local": 19,
+      "minLocal": 19,
+      "maxLocal": 19,
+      "medianAud": 15.806202,
+      "q25Aud": 15.806202,
+      "q75Aud": 15.806202,
+      "minAud": 15.806202,
+      "maxAud": 15.806202,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Museum of Transport and Technology"
+      ],
+      "sourceCurrencies": [
+        "NZD"
+      ],
+      "observationIds": [
+        "motat-auckland-2026-general-adult"
+      ],
+      "availableObservationIds": [
+        "motat-auckland-2026-general-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
     {
       "city": "Bangkok",
       "country": "Thailand",
@@ -3405,9 +3790,920 @@
         "nps-alcatraz-san-francisco-2026-day-tour-adult"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-shanghai-2026-06-04-cappuccino"
+          ],
+          "medianLocal": 21.84,
+          "q25Local": 21.84,
+          "q75Local": 21.84,
+          "medianAud": 4.610748
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CNY",
+      "audPerLocalUnit": 0.21111484999870575,
+      "medianLocal": 21.84,
+      "q25Local": 21.84,
+      "q75Local": 21.84,
+      "minLocal": 21.84,
+      "maxLocal": 21.84,
+      "medianAud": 4.610748,
+      "q25Aud": 4.610748,
+      "q75Aud": 4.610748,
+      "minAud": 4.610748,
+      "maxAud": 4.610748,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "CNY"
+      ],
+      "observationIds": [
+        "numbeo-shanghai-2026-06-04-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-shanghai-2026-06-04-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-shanghai-2026-06-04-domestic-draft-beer"
+          ],
+          "medianLocal": 8,
+          "q25Local": 8,
+          "q75Local": 8,
+          "medianAud": 1.688919
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CNY",
+      "audPerLocalUnit": 0.21111484999870575,
+      "medianLocal": 8,
+      "q25Local": 8,
+      "q75Local": 8,
+      "minLocal": 8,
+      "maxLocal": 8,
+      "medianAud": 1.688919,
+      "q25Aud": 1.688919,
+      "q75Aud": 1.688919,
+      "minAud": 1.688919,
+      "maxAud": 1.688919,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "CNY"
+      ],
+      "observationIds": [
+        "numbeo-shanghai-2026-06-04-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-shanghai-2026-06-04-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-shanghai-2026-06-04-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 30,
+          "q25Local": 30,
+          "q75Local": 30,
+          "medianAud": 6.333445
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CNY",
+      "audPerLocalUnit": 0.21111484999870575,
+      "medianLocal": 30,
+      "q25Local": 30,
+      "q75Local": 30,
+      "minLocal": 30,
+      "maxLocal": 30,
+      "medianAud": 6.333445,
+      "q25Aud": 6.333445,
+      "q75Aud": 6.333445,
+      "minAud": 6.333445,
+      "maxAud": 6.333445,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "CNY"
+      ],
+      "observationIds": [
+        "numbeo-shanghai-2026-06-04-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-shanghai-2026-06-04-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-shanghai-2026-06-04-midrange-restaurant-meal"
+          ],
+          "medianLocal": 200,
+          "q25Local": 200,
+          "q75Local": 200,
+          "medianAud": 42.22297
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CNY",
+      "audPerLocalUnit": 0.21111484999870575,
+      "medianLocal": 200,
+      "q25Local": 200,
+      "q75Local": 200,
+      "minLocal": 200,
+      "maxLocal": 200,
+      "medianAud": 42.22297,
+      "q25Aud": 42.22297,
+      "q75Aud": 42.22297,
+      "minAud": 42.22297,
+      "maxAud": 42.22297,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "CNY"
+      ],
+      "observationIds": [
+        "numbeo-shanghai-2026-06-04-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-shanghai-2026-06-04-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Shanghai Municipal People's Government"
+          ],
+          "observationIds": [
+            "shanghai-government-shanghai-tower-2026-standard-adult"
+          ],
+          "medianLocal": 180,
+          "q25Local": 180,
+          "q75Local": 180,
+          "medianAud": 38.000673
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CNY",
+      "audPerLocalUnit": 0.21111484999870575,
+      "medianLocal": 180,
+      "q25Local": 180,
+      "q75Local": 180,
+      "minLocal": 180,
+      "maxLocal": 180,
+      "medianAud": 38.000673,
+      "q25Aud": 38.000673,
+      "q75Aud": 38.000673,
+      "minAud": 38.000673,
+      "maxAud": 38.000673,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Shanghai Municipal People's Government"
+      ],
+      "sourceCurrencies": [
+        "CNY"
+      ],
+      "observationIds": [
+        "shanghai-government-shanghai-tower-2026-standard-adult"
+      ],
+      "availableObservationIds": [
+        "shanghai-government-shanghai-tower-2026-standard-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-zanzibar-2026-05-04-cappuccino"
+          ],
+          "medianLocal": 5750,
+          "q25Local": 5750,
+          "q75Local": 5750,
+          "medianAud": 3.10995
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "TZS",
+      "audPerLocalUnit": 0.0005408608763579597,
+      "medianLocal": 5750,
+      "q25Local": 5750,
+      "q75Local": 5750,
+      "minLocal": 5750,
+      "maxLocal": 5750,
+      "medianAud": 3.10995,
+      "q25Aud": 3.10995,
+      "q75Aud": 3.10995,
+      "minAud": 3.10995,
+      "maxAud": 3.10995,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "TZS"
+      ],
+      "observationIds": [
+        "numbeo-zanzibar-2026-05-04-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-zanzibar-2026-05-04-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-zanzibar-2026-05-04-domestic-draft-beer"
+          ],
+          "medianLocal": 5000,
+          "q25Local": 5000,
+          "q75Local": 5000,
+          "medianAud": 2.704304
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "TZS",
+      "audPerLocalUnit": 0.0005408608763579597,
+      "medianLocal": 5000,
+      "q25Local": 5000,
+      "q75Local": 5000,
+      "minLocal": 5000,
+      "maxLocal": 5000,
+      "medianAud": 2.704304,
+      "q25Aud": 2.704304,
+      "q75Aud": 2.704304,
+      "minAud": 2.704304,
+      "maxAud": 2.704304,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "TZS"
+      ],
+      "observationIds": [
+        "numbeo-zanzibar-2026-05-04-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-zanzibar-2026-05-04-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-zanzibar-2026-05-04-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 12500,
+          "q25Local": 12500,
+          "q75Local": 12500,
+          "medianAud": 6.760761
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "TZS",
+      "audPerLocalUnit": 0.0005408608763579597,
+      "medianLocal": 12500,
+      "q25Local": 12500,
+      "q75Local": 12500,
+      "minLocal": 12500,
+      "maxLocal": 12500,
+      "medianAud": 6.760761,
+      "q25Aud": 6.760761,
+      "q75Aud": 6.760761,
+      "minAud": 6.760761,
+      "maxAud": 6.760761,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "TZS"
+      ],
+      "observationIds": [
+        "numbeo-zanzibar-2026-05-04-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-zanzibar-2026-05-04-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-zanzibar-2026-05-04-midrange-restaurant-meal"
+          ],
+          "medianLocal": 57500,
+          "q25Local": 57500,
+          "q75Local": 57500,
+          "medianAud": 31.0995
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "TZS",
+      "audPerLocalUnit": 0.0005408608763579597,
+      "medianLocal": 57500,
+      "q25Local": 57500,
+      "q75Local": 57500,
+      "minLocal": 57500,
+      "maxLocal": 57500,
+      "medianAud": 31.0995,
+      "q25Aud": 31.0995,
+      "q75Aud": 31.0995,
+      "minAud": 31.0995,
+      "maxAud": 31.0995,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "TZS"
+      ],
+      "observationIds": [
+        "numbeo-zanzibar-2026-05-04-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-zanzibar-2026-05-04-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
     }
   ],
   "cities": [
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "localCurrency": "NZD",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 5.07,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 10.13,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 30.1,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 31.61,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
     {
       "schemaVersion": "city-cost-materialization-v1",
       "calculatorVersion": "city-cost-v3-alpha-3",
@@ -5385,6 +6681,445 @@
       ],
       "complete": false,
       "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "localCurrency": "CNY",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 4.61,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 9.22,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 12.6,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 76,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "localCurrency": "TZS",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 3.11,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 6.22,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 11.63,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": null,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": [
+            "paid_attraction_adult_1"
+          ]
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 4,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "paid_attraction_adult_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
     }
   ],
   "inputs": {
@@ -5395,7 +7130,9 @@
       "data/reference/observations/batch-zero-day-02-activities.jsonl",
       "data/reference/observations/batch-zero-day-02-food-drinks.jsonl",
       "data/reference/observations/pilot-wave-01-day-01-activities.jsonl",
-      "data/reference/observations/pilot-wave-01-day-01-food-drinks.jsonl"
+      "data/reference/observations/pilot-wave-01-day-01-food-drinks.jsonl",
+      "data/reference/observations/pilot-wave-01-day-02-activities.jsonl",
+      "data/reference/observations/pilot-wave-01-day-02-food-drinks.jsonl"
     ],
     "fxSnapshotFile": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   }
