@@ -385,6 +385,23 @@
       ]
     },
     {
+      "batchId": "pilot-wave-01-day-11",
+      "status": "complete_with_missing",
+      "plannedCalls": 6,
+      "completedCalls": 6,
+      "acceptedObservations": 3,
+      "checkpoint": "pilot_36_city_first_pass_source_research_complete",
+      "observationFiles": [
+        "data/reference/observations/pilot-wave-01-day-11-sparse-markets.jsonl"
+      ],
+      "reportFile": "data/reference/observations/pilot-wave-01-day-11-report.json",
+      "cities": [
+        {"city":"Vang Vieng","country":"Laos","region":"SEA","categories":["food_drinks","activities"],"reason":"remaining_unobserved_regional_cost_quantile_city"},
+        {"city":"Don Det","country":"Laos","region":"SEA","categories":["food_drinks","activities"],"reason":"remaining_sparse_city_stress_test"},
+        {"city":"Santa Fe (Bantayan)","country":"Philippines","region":"SEA","categories":["food_drinks","activities"],"reason":"remaining_sparse_city_stress_test"}
+      ]
+    },
+    {
       "batchId": "batch-zero-accommodation",
       "status": "in_progress",
       "plannedCalls": 27,

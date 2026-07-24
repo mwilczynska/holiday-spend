@@ -265,8 +265,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Add Tokyo, Split, and Can Tho, bringing the store to 149 accepted direct observations across 30 cities while retaining Can Tho's four-contributor estimated-data warning and explicit missing paid attraction
   - [x] Add Dubrovnik and Chiang Rai evidence and a fail-closed Ubud source-gap audit, bringing the store to 158 accepted direct observations across 32 cities; no Ubud numeric value is inferred from an unlabeled menu scale
   - [x] Add Da Lat and Yangon, bringing the store to 168 accepted direct observations across 34 cities while retaining Da Lat's sparse source context and Yangon's city-page USD quotation plus attributed CBM market-rate conversion
+  - [x] Complete bounded first-pass source research for all 36 pilot candidates: add three Vang Vieng menu/activity observations and retain Don Det, Santa Fe (Bantayan), and Ubud as explicit source-gap outcomes rather than substituting nearby cities or national averages
   - [x] Add a validated accommodation attempt ledger and complete the Copenhagen shoulder checkpoint: ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and four booking-path failures
-  - [x] Materialize the current fail-closed research artifact from 168 direct observations: 163 of 646 tier cells across 34 cities, one incomplete accommodation measure, and zero incomplete wide rows published
+  - [x] Materialize the current fail-closed research artifact from 171 direct observations: 166 of 665 tier cells across 35 represented cities, one incomplete accommodation measure, and zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -419,8 +420,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - The eighth pilot checkpoint adds Tokyo, Split, and Can Tho: 12 direct Numbeo food/drink primitives and official paid-attraction prices for Tokyo and Split; Can Tho retains its four-contributor estimated-data warning, 25 February 2026 source date, and explicit missing official paid attraction
 - The ninth pilot checkpoint adds eight direct Numbeo food/drink primitives across Dubrovnik and Chiang Rai plus the official Dubrovnik Museums adult ticket; Dubrovnik's April 2025 freshness limitation and Chiang Rai's low-contributor estimated-data warning remain explicit, while Ubud stays numeric-missing because the inspected menu does not label its currency scale
 - The tenth pilot checkpoint adds eight direct Numbeo food/drink primitives and official attraction prices across Da Lat and Yangon; Da Lat retains its 13-contributor warning, while Yangon's source-quoted USD values use a dated CBM bank-customer market-rate cross-rate rather than an informal or unattributed currency conversion
+- The eleventh pilot checkpoint completes first-pass source research for all 36 candidate cities: Vang Vieng adds one current restaurant-menu meal plus directly priced half-day and full-day operator products; Don Det and Santa Fe remain zero-observation outcomes because their genuine local pages expose no retrievable numeric prices
 - Bulgaria's canonical country metadata now resolves to EUR rather than the retired BGN code, with generated metadata and tests refreshed from the explicit override
-- The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, INR, CAD, KRW, HUF, and MXN through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, CUP through the Banco Central de Cuba natural-person reference, and MMK through the CBM bank-customer market rate published by Myanmar's Central Statistical Organization
+- The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, INR, CAD, KRW, HUF, and MXN through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, CUP through the Banco Central de Cuba natural-person reference, MMK through the CBM bank-customer market rate published by Myanmar's Central Statistical Organization, and LAK through the latest Bank of the Lao P.D.R. reference preceding the snapshot
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
 - `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
@@ -535,6 +537,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/observations/pilot-wave-01-day-10-food-drinks.jsonl`
   - `data/reference/observations/pilot-wave-01-day-10-activities.jsonl`
   - `data/reference/observations/pilot-wave-01-day-10-report.json`
+  - `data/reference/observations/pilot-wave-01-day-11-sparse-markets.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-11-report.json`
   - `data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl`
   - `data/reference/observations/pilot-wave-01-day-09-activities.jsonl`
   - `data/reference/observations/pilot-wave-01-day-09-report.json`

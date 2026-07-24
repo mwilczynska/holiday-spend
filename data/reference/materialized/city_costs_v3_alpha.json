@@ -1,22 +1,22 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T14:10:00.000Z",
+  "dataCutoff": "2026-07-24T14:35:00.000Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 168,
-    "accepted": 168,
+    "input": 171,
+    "accepted": 171,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 168,
+    "direct": 171,
     "derived": 0,
     "imputed": 0
   },
-  "cityCount": 34,
+  "cityCount": 35,
   "completeCityCount": 0,
-  "requiredTierCells": 646,
-  "materializedTierCells": 163,
+  "requiredTierCells": 665,
+  "materializedTierCells": 166,
   "tierCoverage": {
     "accom_shared_hostel_dorm": 0,
     "accom_hostel_private_room": 0,
@@ -33,10 +33,10 @@
     "drinks_light": 33,
     "drinks_moderate": 0,
     "drinks_heavy": 0,
-    "activities_free": 34,
+    "activities_free": 35,
     "activities_budget": 29,
-    "activities_mid_range": 1,
-    "activities_high_end": 0
+    "activities_mid_range": 2,
+    "activities_high_end": 1
   },
   "qualitySummary": {
     "crossChannelMeasureCount": 0,
@@ -12031,6 +12031,237 @@
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
     {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "region": "SEA",
+      "category": "activities",
+      "measure": "full_day_premium_activity_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Visit Vang Vieng / Discovery Laos"
+          ],
+          "observationIds": [
+            "visit-vang-vieng-current-tour-a-full-day"
+          ],
+          "medianLocal": 1981320,
+          "q25Local": 1981320,
+          "q75Local": 1981320,
+          "medianAud": 125.828892
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "LAK",
+      "audPerLocalUnit": 0.0000635076070526766,
+      "medianLocal": 1981320,
+      "q25Local": 1981320,
+      "q75Local": 1981320,
+      "minLocal": 1981320,
+      "maxLocal": 1981320,
+      "medianAud": 125.828892,
+      "q25Aud": 125.828892,
+      "q75Aud": 125.828892,
+      "minAud": 125.828892,
+      "maxAud": 125.828892,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Visit Vang Vieng / Discovery Laos"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "visit-vang-vieng-current-tour-a-full-day"
+      ],
+      "availableObservationIds": [
+        "visit-vang-vieng-current-tour-a-full-day"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "region": "SEA",
+      "category": "activities",
+      "measure": "half_day_group_activity_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Visit Vang Vieng / Discovery Laos"
+          ],
+          "observationIds": [
+            "visit-vang-vieng-current-tour-b-half-day"
+          ],
+          "medianLocal": 990660,
+          "q25Local": 990660,
+          "q75Local": 990660,
+          "medianAud": 62.914446
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "LAK",
+      "audPerLocalUnit": 0.0000635076070526766,
+      "medianLocal": 990660,
+      "q25Local": 990660,
+      "q75Local": 990660,
+      "minLocal": 990660,
+      "maxLocal": 990660,
+      "medianAud": 62.914446,
+      "q25Aud": 62.914446,
+      "q75Aud": 62.914446,
+      "minAud": 62.914446,
+      "maxAud": 62.914446,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Visit Vang Vieng / Discovery Laos"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "visit-vang-vieng-current-tour-b-half-day"
+      ],
+      "availableObservationIds": [
+        "visit-vang-vieng-current-tour-b-half-day"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "region": "SEA",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "manual_menu_sample",
+      "availableSourceChannels": [
+        "manual_menu_sample"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "manual_menu_sample",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "The Graze Bar & Game Room"
+          ],
+          "observationIds": [
+            "graze-vang-vieng-current-kafta-wrap"
+          ],
+          "medianLocal": 145000,
+          "q25Local": 145000,
+          "q75Local": 145000,
+          "medianAud": 9.208603
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "LAK",
+      "audPerLocalUnit": 0.0000635076070526766,
+      "medianLocal": 145000,
+      "q25Local": 145000,
+      "q75Local": 145000,
+      "minLocal": 145000,
+      "maxLocal": 145000,
+      "medianAud": 9.208603,
+      "q25Aud": 9.208603,
+      "q75Aud": 9.208603,
+      "minAud": 9.208603,
+      "maxAud": 9.208603,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "The Graze Bar & Game Room"
+      ],
+      "sourceCurrencies": [
+        "LAK"
+      ],
+      "observationIds": [
+        "graze-vang-vieng-current-kafta-wrap"
+      ],
+      "availableObservationIds": [
+        "graze-vang-vieng-current-kafta-wrap"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
       "city": "Yangon",
       "country": "Myanmar",
       "region": "SEA",
@@ -19729,6 +19960,237 @@
     {
       "schemaVersion": "city-cost-materialization-v1",
       "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "region": "SEA",
+      "localCurrency": "LAK",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": null,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": [
+            "cappuccino_1"
+          ]
+        },
+        "drinks_none": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": [
+            "cappuccino_1"
+          ]
+        },
+        "drinks_light": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ]
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": null,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": [
+            "paid_attraction_adult_1"
+          ]
+        },
+        "activities_mid_range": {
+          "amountAud": 125.83,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_high_end": {
+          "amountAud": 251.66,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": []
+        }
+      },
+      "materializedTierCount": 3,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "midrange_restaurant_meal_2p",
+        "premium_restaurant_meal_2p",
+        "cappuccino_1",
+        "domestic_draft_beer_1",
+        "cocktail_1",
+        "wine_glass_1",
+        "paid_attraction_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Yangon",
       "country": "Myanmar",
       "region": "SEA",
@@ -20192,7 +20654,8 @@
       "data/reference/observations/pilot-wave-01-day-09-activities.jsonl",
       "data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl",
       "data/reference/observations/pilot-wave-01-day-10-activities.jsonl",
-      "data/reference/observations/pilot-wave-01-day-10-food-drinks.jsonl"
+      "data/reference/observations/pilot-wave-01-day-10-food-drinks.jsonl",
+      "data/reference/observations/pilot-wave-01-day-11-sparse-markets.jsonl"
     ],
     "fxSnapshotFile": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   }

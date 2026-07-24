@@ -205,6 +205,16 @@
       "derivation": "cross_rate",
       "derivationFormula": "1.6312 / 110.1670"
     },
+    "LAK": {
+      "currency": "LAK",
+      "audPerUnit": 0.0000635076070526766,
+      "sourceName": "Bank of the Lao P.D.R. and European Central Bank",
+      "sourceUrl": "https://www.bol.gov.la/en/referenceRate",
+      "sourceDate": "2026-07-21",
+      "sourceQuote": "Latest official reference preceding the snapshot: 1 USD = 22,515 LAK on 21 July 2026 and 1 USD = 1.4298737727910238 AUD in the frozen snapshot",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.4298737727910238 / 22515"
+    },
     "MMK": {
       "currency": "MMK",
       "audPerUnit": 0.0004007718405715066,

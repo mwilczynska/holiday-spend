@@ -92,14 +92,14 @@ dated source observations
 ### Implementation Checkpoint
 
 The observation schema, JSONL validator, and batch manifest are now implemented. Batch zero plus the
-first ten pilot-wave checkpoints contain 168 direct observations across 34 cities, representing every
-pilot region: 132 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, 29 official
-paid-attraction prices, one
-operator-listed Pu Luong half-day group activity, and five exact-date official-property accommodation
+first eleven pilot-wave checkpoints contain 171 direct observations across 35 represented cities, and
+bounded first-pass source research now covers all 36 deterministic pilot candidates. The store contains
+132 standardized Numbeo food/drink prices, two independent restaurant-menu meals, 29 official
+paid-attraction prices, three operator-listed duration-specific activities, and five exact-date official-property accommodation
 quotes. Every row retains its original EUR, CZK, DKK, THB, VND, USD, TZS, CNY, NZD, KES, JPY, COP, TRY,
 INR, AED, CAD, KRW, HUF, or MXN value, source URL,
 retrieval time, page-valid date where known, displayed range, source-access basis, and extraction version.
-The validator reports 168 valid direct rows
+The validator reports 171 valid direct rows
 and no schema errors.
 
 A provider-neutral local research runner now renders one versioned city/category assignment and validates
@@ -145,10 +145,10 @@ uses the natural-person segment because Havana's retained Numbeo prices are tour
 Each stored rate retains its source date, quote, URL, and derivation formula. The materializer verifies
 the snapshot and recomputes cross-rate arithmetic in automated tests.
 
-The current materialized artifact contains 34 cities and 168 accepted direct observations. It can
-calculate 163 of 646 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 33
-cities, free activities for all 34, budget paid-attraction baskets for 29, and one Pu Luong mid-range
-half-day activity basket. It reports zero complete cities and emits no publishable wide row because
+The current materialized artifact contains 35 cities and 171 accepted direct observations. It can
+calculate 166 of 665 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 33
+cities, free activities for all 35, budget paid-attraction baskets for 29, two mid-range half-day activity
+baskets, and one high-end full-day activity basket. It reports zero complete cities and emits no publishable wide row because
 the Copenhagen shoulder panel has reached five quotes but its low/high seasons and repeated-property
 overlap gate are still missing, while street/premium food, cocktail/wine, and many activity observations
 are also missing.
