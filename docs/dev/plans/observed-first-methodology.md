@@ -448,6 +448,11 @@ This is not yet an eligible frame: the National Tourism Authority's February 202
 only 37 currently valid 1-4-star properties (3 one-star, 10 two-star, 8 three-star, and 16 four-star).
 Because the search universe is much larger and does not expose active validity in its result cards, Hanoi
 must reconcile every candidate to a current classification decision before geolocation or ranking.
+The versioned reconciliation artifact retains every captured id, name, address, and star stratum. Its
+schema permits `verified_active` and `verified_inactive` only with source-attributed decision evidence and
+derives geolocation eligibility exclusively from verified-active rows. The initial 24 July artifact has
+330 pending rows, zero verified-active rows, and zero eligible rows; this is an explicit source gap, not a
+zero-hotel finding.
 
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the

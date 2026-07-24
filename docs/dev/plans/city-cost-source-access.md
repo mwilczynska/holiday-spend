@@ -97,6 +97,10 @@ the tourism authority's February 2026 city summary reports only 37 hotels with c
 classifications. The capture therefore cannot establish current eligibility by itself. Every Hanoi row
 must be joined to a current classification decision or another authoritative active-status record before
 it can enter geolocation, ranking, or quote collection; unresolved rows remain visibly excluded.
+`data/reference/hanoi_accommodation_classification_reconciliation_2026.json` is the row-complete
+reconciliation ledger. It starts with all 330 records as `pending_current_decision`, zero eligible for
+geolocation, and the published 37-property aggregate as a non-identifying benchmark rather than a source
+of inferred row status.
 
 The one-time address-resolution pass uses the public OpenStreetMap Foundation Nominatim service under its
 published usage policy: one machine and thread, at least 1.1 seconds between calls, an identifying user

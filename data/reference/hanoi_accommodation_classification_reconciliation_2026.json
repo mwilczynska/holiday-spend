@@ -1,0 +1,2683 @@
+{
+  "schemaVersion": "hanoi-accommodation-classification-reconciliation-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "asOf": "2026-07-24",
+  "sourceUniverse": {
+    "snapshotSha256": "4367455956dd89823bf4f19439da4f7a7182859fc177c2c04b50cd22fdb6349f",
+    "snapshotByteCount": 73897,
+    "capturedAt": "2026-07-24T15:30:12.737Z",
+    "sourceUrl": "https://csdl.vietnamtourism.gov.vn/cslt/",
+    "provinceCode": "01",
+    "recordCounts": {
+      "1": 219,
+      "2": 78,
+      "3": 19,
+      "4": 14,
+      "total": 330
+    }
+  },
+  "currentCountBenchmark": {
+    "sourceUrl": "https://vietnamtourism.gov.vn/post/66938",
+    "sourceTitle": "Hanoi welcomed nearly 3.2 million visitors in February 2026",
+    "publishedAt": "2026-02-27",
+    "scope": "currently valid 1-4-star Hanoi hotels and tourist apartments",
+    "recordCounts": {
+      "1": 3,
+      "2": 10,
+      "3": 8,
+      "4": 16,
+      "total": 37
+    },
+    "limitation": "The official article gives aggregate active counts but does not identify individual establishments or separate the included tourist apartments."
+  },
+  "eligibilityRule": "Only verified_active rows backed by authoritative current classification evidence may enter geolocation or ranking.",
+  "records": [
+    {
+      "sourcePropertyId": "577",
+      "name": "Khách sạn Super Candle Hà Nội",
+      "address": "301 Đội Cấn, Ngọc Hà, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "815",
+      "name": "Khách sạn La Siesta & Spa",
+      "address": "94 Mã Mây, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "841",
+      "name": "Khách sạn Goldensilk Boutique",
+      "address": "109-111 Hàng Gai, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "861",
+      "name": "Khách sạn Vietview",
+      "address": "20 Lò Sũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "987",
+      "name": "Khách sạn nghỉ dưỡng Tản Đà",
+      "address": "Km12, Suối Hai, Huyện Ba Vì, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "1911",
+      "name": "Khách sạn Fortuna",
+      "address": "6B Láng Hạ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "2622",
+      "name": "Khách sạn Mường Thanh Grand Xa La",
+      "address": "66 đường Phúc La, Quận Hà Đông, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3022",
+      "name": "Khách sạn A25",
+      "address": "684 Minh Khai, Vĩnh Tuy, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3028",
+      "name": "Khách sạn Silk Path Hà Nội",
+      "address": "195-199 Hàng Bông, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3036",
+      "name": "Khách sạn Thắng Lợi",
+      "address": "200 Yên Phụ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3058",
+      "name": "Khách sạn Bảo Sơn",
+      "address": "50 Nguyễn Chí Thanh, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3166",
+      "name": "Khách sạn A25 Hàng Thiếc",
+      "address": "38 Hàng Thiếc, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3238",
+      "name": "Khách sạn La Dolce Vita",
+      "address": "53 Hàng Bồ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3243",
+      "name": "Khách sạn Sen 1",
+      "address": "26B Nguyễn Khánh Toàn, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3252",
+      "name": "Khách sạn Sen Luxury",
+      "address": "26/118 Nguyễn Khánh Toàn, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3259",
+      "name": "Khách sạn Sen vàng",
+      "address": "53-55 Hàng Trống, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3263",
+      "name": "Khách sạn My way",
+      "address": "2/86 Duy Tân, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3266",
+      "name": "Khách sạn Sao Mai",
+      "address": "23 Thông Phong, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3272",
+      "name": "Khách sạn Công đoàn Quảng Bá",
+      "address": "98 Tô Ngọc Vân, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3273",
+      "name": "Khách sạn Á Châu",
+      "address": "23 Nguyễn Công Trứ, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3274",
+      "name": "Khách sạn Novotel Suites Hà Nội",
+      "address": "5 Duy Tân, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3301",
+      "name": "Khách sạn Ruby",
+      "address": "56 Nguyễn Chánh, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3302",
+      "name": "Khách sạn Green Diamond",
+      "address": "96 Hàng Bạc, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3303",
+      "name": "Khách sạn Indochina Queen 2",
+      "address": "67 Thuốc Bắc, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3305",
+      "name": "Khách sạn Hà Nội Glance",
+      "address": "48 Bát Sứ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3307",
+      "name": "Khách sạn A25 Hàng Nón",
+      "address": "26 Hàng Nón, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3315",
+      "name": "Khách sạn Phố Vắng 2",
+      "address": "162/1 Hoàng Quốc Việt, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3317",
+      "name": "Khách sạn Phố Vắng 3",
+      "address": "05 Ngách 20/14 Hồ Tùng Mậu, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3319",
+      "name": "Khách sạn Phố Vắng 5",
+      "address": "55 Phạm Thận Duật, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3321",
+      "name": "Khách sạn A25 Đội Cấn 1",
+      "address": "25/8 ngõ 379 Đội Cấn, Ngọc Hà, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3322",
+      "name": "Khách sạn A25 Đội Cấn 2",
+      "address": "26B ngõ 379 Đội Cấn, Ngọc Hà, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3324",
+      "name": "Khách sạn A25 Nguyễn Trường Tộ",
+      "address": "67 Nguyễn Trường Tộ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3325",
+      "name": "Khách sạn A25 Châu Long",
+      "address": "46 Châu Long, Ba Đình, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3326",
+      "name": "Khách sạn Church Boutique",
+      "address": "09 Nhà Thờ, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3327",
+      "name": "Khách sạn Hà Nội Lucky",
+      "address": "11 Ngõ Huyện, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3329",
+      "name": "Khách sạn APEC",
+      "address": "46 Phan Kế Bính, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3330",
+      "name": "Khách sạn Hoa Trà",
+      "address": "12C Chân Cầm, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3334",
+      "name": "Khách sạn Hồng Ngọc Cochinchine",
+      "address": "95-97 Nguyễn Trường Tộ, Ba Đình, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3335",
+      "name": "Khách sạn Hanoi House",
+      "address": "85 Mã Mây, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3337",
+      "name": "Khách sạn Tùng An",
+      "address": "39/4 Phương Mai , Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3338",
+      "name": "Khách sạn An Nam Legend",
+      "address": "27 Hàng Bè, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3340",
+      "name": "Khách sạn Hà Nội Moment",
+      "address": "15 Hàng Cân, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3342",
+      "name": "Khách sạn Little Hà Nội 2",
+      "address": "32 Lê Thái Tổ, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3343",
+      "name": "Khách sạn Hanoi Old Town",
+      "address": "95 Hàng Chiếu, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3345",
+      "name": "Khách sạn A25 An Dương",
+      "address": "30 An Dương, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3348",
+      "name": "Khách sạn Calypso Grand",
+      "address": "27 Cửa Đông, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3350",
+      "name": "Khách sạn Le Foyer",
+      "address": "39 Gia Ngư, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3352",
+      "name": "Khách sạn Hồ Vàng",
+      "address": "15 Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3355",
+      "name": "Khách sạn Serene",
+      "address": "10C Yên Thái, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3357",
+      "name": "Khách sạn Hanoi La Storia",
+      "address": "45 Hàng Đồng, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3359",
+      "name": "Khách sạn Dinh Elegant",
+      "address": "04 Lô 15D KĐT mới Trung Yên, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3361",
+      "name": "Khách sạn Hải Giang",
+      "address": "87 Nguyễn Khang, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3362",
+      "name": "Khách sạn An",
+      "address": "10 Hàng Giấy, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3364",
+      "name": "Khách sạn Home Tây Hồ",
+      "address": "156 Yên Phụ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3367",
+      "name": "Khách sạn Hanoi Space",
+      "address": "40 Mã Mây, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3369",
+      "name": "Khách sạn Quang Chung",
+      "address": "56 Lê Văn Thêm, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3370",
+      "name": "Khách sạn Splendid Boutique",
+      "address": "13-15 Hàng Chiếu, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3374",
+      "name": "Khách sạn Capella",
+      "address": "40 Lò Sũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3376",
+      "name": "Khách sạn Canary",
+      "address": "15/19 Liễu Giai, Ngọc Hà, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3379",
+      "name": "Khách sạn Hanoi Charm",
+      "address": "01B Tô Tịch, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3381",
+      "name": "Khách sạn Holiday Center Hanoi",
+      "address": "08 Nhà Hỏa, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3382",
+      "name": "Khách sạn Blue Hanoi Inn City",
+      "address": "86 Mai Hắc Đế, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3384",
+      "name": "Khách sạn Kim Cương Vàng",
+      "address": "10 Trần Nhật Duật, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3385",
+      "name": "Khách sạn Vân Đồn II",
+      "address": "17B8 Đầm Trấu, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3387",
+      "name": "Khách sạn Gia Kim",
+      "address": "95 Yên Phụ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3390",
+      "name": "Khách sạn A25 Trần Quý Cáp",
+      "address": "28 Trần Quý Cáp, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3391",
+      "name": "Khách sạn A25 Nguyễn Thái Học",
+      "address": "150 Nguyễn Thái Học, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3393",
+      "name": "Khách sạn Church Boutique",
+      "address": "58 Hàng Gai, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3394",
+      "name": "Khách sạn Church Boutique Hàng Gai",
+      "address": "95 Hàng Gai, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3396",
+      "name": "Khách sạn Church Boutique Hàng Trống",
+      "address": "35-37 Hàng Trống, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3397",
+      "name": "Khách sạn Church Boutique Lãn Ông",
+      "address": "49 Lãn Ông, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3398",
+      "name": "Khách sạn Urban Alley",
+      "address": "26 Hội Vũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3449",
+      "name": "Khách sạn Hanoi L'Heritage",
+      "address": "39A Hàng Gà, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3450",
+      "name": "Khách sạn Hà Nội Marvellous",
+      "address": "55 Đường Thành, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3453",
+      "name": "Khách sạn Golden Legend Diamond",
+      "address": "18 Chân Cầm, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3454",
+      "name": "Khách sạn Hanoi Guest House Royal",
+      "address": "26 Phất Lộc, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3455",
+      "name": "Khách sạn Noble & Swan Boutique",
+      "address": "16H Đường Thành, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3457",
+      "name": "Khách sạn Centre Point",
+      "address": "25 Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3458",
+      "name": "Khách sạn La Suite",
+      "address": "52 Mã Mây, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3460",
+      "name": "Khách sạn Family Resort",
+      "address": "Xóm Mái, Huyện Ba Vì, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3462",
+      "name": "Khách sạn Golden Sun Suites",
+      "address": "35 Hàng Quạt, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3463",
+      "name": "Khách sạn Hiếu Linh",
+      "address": "11B Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3464",
+      "name": "Khách sạn Golden Moon",
+      "address": "65 Nguyễn Hữu Huân, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3504",
+      "name": "Khách sạn Violin",
+      "address": "212 Trần Duy Hưng, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3505",
+      "name": "Khách sạn Cây Quế Nhà Thờ",
+      "address": "38 Ấu Triệu, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3506",
+      "name": "Khách sạn La Beaute Hanoi",
+      "address": "15 Ngõ Trung yên, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3508",
+      "name": "Khách sạn Calypso Suites",
+      "address": "11 Ngõ Trung yên, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3509",
+      "name": "Khách sạn Thái Sơn",
+      "address": "09 Hàng Vôi, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3511",
+      "name": "Khách sạn Ngọc Trai",
+      "address": "06B Láng Hạ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3512",
+      "name": "Khách sạn Phú Nhuận New",
+      "address": "07 ngách 68, ngõ 34 Hoàng Cầu, Ô Chợ Dừa, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3513",
+      "name": "Khách sạn A25 Thanh Nhàn",
+      "address": "197 Thanh Nhàn, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3515",
+      "name": "Khách sạn A25 Liên Trì",
+      "address": "12 Liên Trì, Cửa Nam, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3516",
+      "name": "Khách sạn A25 Hotel Mai Hắc Đế",
+      "address": "57 Mai Hắc Đế, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3517",
+      "name": "Khách sạn Artisan Lakeview",
+      "address": "23 Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3519",
+      "name": "Khách sạn Artisan Boutique",
+      "address": "24 Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3521",
+      "name": "Khách sạn Golden Sun Villa",
+      "address": "68 Hàng Trống, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3522",
+      "name": "Khách sạn Golden Legend",
+      "address": "10 Chân Cầm, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3529",
+      "name": "Khách sạn De Syloia",
+      "address": "17A Trần Hưng Đạo, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3530",
+      "name": "Khách sạn Cây Xoài",
+      "address": "118 Lê Duẩn, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3533",
+      "name": "Khách sạn Văn Miếu",
+      "address": "54B Quốc Tử Giám, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3535",
+      "name": "Khách sạn A25 Hàng Bún",
+      "address": "44 Hàng Bún, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3536",
+      "name": "Khách sạn Zéphyr",
+      "address": "04 - 06 Bà Triệu, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3537",
+      "name": "Khách sạn Hồng Ngọc",
+      "address": "29 - 30- 34 Hàng Mành, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3540",
+      "name": "Khách sạn VMQ",
+      "address": "87 Nguyễn Thái Học, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3542",
+      "name": "Khách sạn 24",
+      "address": "65 Kim Mã, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3543",
+      "name": "Khách sạn Duy Anh",
+      "address": "04 Vũ Hữu Lợi, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3545",
+      "name": "Khách sạn Cảm Xúc Hà Nội",
+      "address": "26 - 28 Hàng Bột, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3546",
+      "name": "Khách sạn A25 Phan Đình Phùng",
+      "address": "19 Phan Đình Phùng, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3547",
+      "name": "Khách sạn Văn Miếu 2",
+      "address": "159 Khâm Thiên, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3932",
+      "name": "Khách sạn Hà Nội Boutique",
+      "address": "07 Ngõ Gạch, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3940",
+      "name": "Khách sạn 1-2-3",
+      "address": "34 Nam Ngư, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3944",
+      "name": "Khách sạn Moon View 2",
+      "address": "61 Hàng Than, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3946",
+      "name": "Khách sạn Moon View 1",
+      "address": "65 Cửa Bắc, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3949",
+      "name": "Khách sạn Luxeden",
+      "address": "78 Trần Thái Tông, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3952",
+      "name": "Khách sạn Ao Vua",
+      "address": "Thôn Bát Đầm, Suối Hai, Huyện Ba Vì, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3955",
+      "name": "Khách sạn Đầm Long",
+      "address": "Thôn Bằng Tạ, Huyện Ba Vì, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3960",
+      "name": "Khách sạn A25 Dolphin",
+      "address": "61 Lương Ngọc Quyến, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3968",
+      "name": "Khách sạn Hà Nội Sky",
+      "address": "27 Tống Duy Tân, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3971",
+      "name": "Khách sạn Azumaya Kim Mã 1",
+      "address": "62 Phạm Huy Thông, Giảng Võ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3973",
+      "name": "Khách sạn Phú Nhuận",
+      "address": "18/80 Trần Duy Hưng, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3976",
+      "name": "Khách sạn A25",
+      "address": "45 Phan Chu Trinh, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3981",
+      "name": "Khách sạn Hoàng Hôn Hồ Tây",
+      "address": "491 - 493 Lạc Long Quân, Tây Hồ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3984",
+      "name": "Khách sạn Azumaya Kim Mã 2",
+      "address": "18A Phạm Huy Thông, Giảng Võ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3988",
+      "name": "Khách sạn Hồ Gươm",
+      "address": "38 Hai Bà Trưng, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3992",
+      "name": "Khách sạn Hà Nội Delano",
+      "address": "52 Bát Sứ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3994",
+      "name": "Khách sạn Midori Boutique",
+      "address": "43 Triệu Việt Vương, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "3998",
+      "name": "Khách sạn Silk Path Boutique Hà Nội",
+      "address": "21 Hàng Khay, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4001",
+      "name": "Khách sạn A25 Bạch Mai",
+      "address": "221 Bạch Mai, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4004",
+      "name": "Khách sạn Mặt Trời Sài Gòn 2",
+      "address": "26 ngách 85 Xã Đàn II, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4008",
+      "name": "Khách sạn Sunny III",
+      "address": "10-12/168 Hào Nam, Ô Chợ Dừa, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4012",
+      "name": "Khách sạn Hanoi Emerald Waters & Spa",
+      "address": "47 Lò Sũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4014",
+      "name": "Khách sạn Azumaya Hai Bà Trưng 2",
+      "address": "58 Triệu Việt Vương, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4017",
+      "name": "Khách sạn Emerald",
+      "address": "64 Triệu Việt Vương, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4021",
+      "name": "Khách sạn Riverside Boutique",
+      "address": "03 Vân Đồn, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4023",
+      "name": "Khách sạn A1 Hill Hà Nội",
+      "address": "852/850 Đường Láng, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4027",
+      "name": "Khách sạn Hà Nội Golden Holiday",
+      "address": "43 Hàng Đồng, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4030",
+      "name": "Khách sạn Yolo Wa",
+      "address": "120 Trung Kính, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4033",
+      "name": "Khách sạn Hanoi La Siesta Trendy & Spa",
+      "address": "18 Nguyễn Quang Bích, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4036",
+      "name": "Khách sạn MK Premier",
+      "address": "72-74 Hàng Buồm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4039",
+      "name": "Khách sạn Hoa Đào",
+      "address": "713 Lạc Long Quân, Phú Thượng, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4042",
+      "name": "Khách sạn Azumaya Hai Bà Trưng 1",
+      "address": "16 Bùi Thị Xuân, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4045",
+      "name": "Khách sạn Paloma",
+      "address": "70 Xuân Diệu, Hồng Hà, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "4046",
+      "name": "Khách sạn Thăng Long - Tây Ban Nha",
+      "address": "34 Hàng Bún, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7017",
+      "name": "Khách sạn nghỉ dưỡng Asean",
+      "address": "21A Hòa Lạc, Hạ Bằng, Huyện Thạch Thất, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7067",
+      "name": "Khách sạn Super Hà Nội Old Quarter",
+      "address": "Số 2 Phùng Hưng, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7366",
+      "name": "Khách sạn Hòa Bình",
+      "address": "27 Lý Thường Kiệt, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7368",
+      "name": "Khách sạn Riverside Hà Nội",
+      "address": "118 Nguyễn Đình Hoàn, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7432",
+      "name": "Khách sạn Kim Anh",
+      "address": "132 Tôn Đức Thắng, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7433",
+      "name": "Khách sạn Phố cổ",
+      "address": "41 Hàng Bè, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7434",
+      "name": "Khách sạn Lucky Star",
+      "address": "11 Bát Đàn, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7435",
+      "name": "Khách sạn Helios Legend",
+      "address": "2D Đường Thành, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7436",
+      "name": "Khách sạn Hasu",
+      "address": "53 Hàng Bún, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7437",
+      "name": "Khách sạn Vân Nam",
+      "address": "26 Đường Láng, Đống Đa, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7438",
+      "name": "Khách sạn Quan Hoa",
+      "address": "20 ngõ 165 Cầu Giấy, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7439",
+      "name": "Khách sạn Hoàng Tử 1",
+      "address": "51 Lương Ngọc Quyến, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7440",
+      "name": "Khách sạn King Ly",
+      "address": "8 Lý Thái Tổ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7441",
+      "name": "Khách sạn Ngọc Linh",
+      "address": "140 Triệu Việt Vương, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7442",
+      "name": "Khách sạn Nhị Long",
+      "address": "Trần Khát Chân, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7443",
+      "name": "Khách sạn Gia Bảo",
+      "address": "38 Lò Sũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7444",
+      "name": "Khách sạn Gia Thịnh",
+      "address": "19 Hàng Bạc, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7445",
+      "name": "Khách sạn Tùng Trang",
+      "address": "13 Ngõ Tạm Thương, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7446",
+      "name": "Khách sạn Golden Orchid",
+      "address": "34 Hàng Tre, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7447",
+      "name": "Khách sạn Vạn Hoa",
+      "address": "97C Nguyễn Trường Tộ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7448",
+      "name": "Khách sạn Little Hanoi",
+      "address": "48 Hàng Gà, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7449",
+      "name": "Khách sạn Hoàng Anh",
+      "address": "209 Cầu Giấy, Cầu Giấy, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7450",
+      "name": "Khách sạn Nam Thanh",
+      "address": "467 Lạc Long Quân, Tây Hồ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7451",
+      "name": "Khách sạn Tú Linh Legend",
+      "address": "59 Hàng Cót, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7452",
+      "name": "Khách sạn Golden Spring",
+      "address": "22 Nguyễn Hữu Huân, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7453",
+      "name": "Khách sạn Hanoi Central Park",
+      "address": "58 Hàng Bè, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7454",
+      "name": "Khách sạn Sun A25",
+      "address": "30 An Dương, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7456",
+      "name": "Khách sạn Kuretake Inn",
+      "address": "132 Kim Mã, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7457",
+      "name": "Khách sạn Ngọc Hà Nội",
+      "address": "6 Ngõ Bảo Khánh, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7458",
+      "name": "Khách sạn Larosa",
+      "address": "34-36 Nguyễn Khuyến, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7459",
+      "name": "Khách sạn Hoà Nam",
+      "address": ", Huyện Ứng Hòa, Thành phố Hà Nội",
+      "capturedStars": 3,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7460",
+      "name": "Khách sạn Xích lô Vàng",
+      "address": "25-27 Ngõ Trạm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7461",
+      "name": "Khu du lịch Thiên Sơn - Suối Ngà",
+      "address": "Thiên Sơn Suối Ngà, Yên Bài, Huyện Ba Vì, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7462",
+      "name": "Khách sạn Mỹ Lan",
+      "address": "334 Bà Triệu, Hai Bà Trưng, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7463",
+      "name": "Khách sạn Ngọc",
+      "address": "57 Nguyễn Trường Tộ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7465",
+      "name": "Khách sạn Hồng Ngọc",
+      "address": "14 Lương Văn Can, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7466",
+      "name": "Khách sạn Bình Minh",
+      "address": "27 Lý Thái Tổ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7467",
+      "name": "Khách sạn Eden (Yết Kiêu)",
+      "address": "94 Yết Kiêu, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7468",
+      "name": "Khách sạn Hoa Trà",
+      "address": "12 Phố Huế, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7469",
+      "name": "Khách sạn Hướng Dương",
+      "address": "16A Nguyễn Công Trứ, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7470",
+      "name": "Khách sạn Thanh Lịch Hà Nội",
+      "address": "32 Lò Sũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7471",
+      "name": "Khách sạn Hanoi Elegance Emerald",
+      "address": "18 Lò Sũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7472",
+      "name": "Khách sạn Lâm Ký",
+      "address": "119 Quang Trung, Thị xã Sơn Tây, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7473",
+      "name": "Khách sạn Tình yêu",
+      "address": "24 ngõ 80 Phạm Ngọc Thạch, Văn Miếu - Quốc Tử Giám, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7474",
+      "name": "Khách sạn Lucky 3",
+      "address": "81 Hàng Bông, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7475",
+      "name": "Khách sạn Bạch Dương",
+      "address": "417 Đá Bạc, Thị xã Sơn Tây, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7476",
+      "name": "Khách sạn Sunny II",
+      "address": "21 ngách 82 ngõ 189 Nguyễn Ngọc Vũ, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7477",
+      "name": "Khách sạn Hanoi View 2",
+      "address": "48 Ngô Sỹ Liên, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7478",
+      "name": "Khách sạn Meracus",
+      "address": "11 Hàng Dầu, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7479",
+      "name": "Khách sạn Hà Nội 3B Homestay and Spa",
+      "address": "67 Hàng Than, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7480",
+      "name": "Khách sạn Hana Golf",
+      "address": "25 ngõ 20 Nguyễn Chánh, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7481",
+      "name": "Khách sạn Quang Việt",
+      "address": "79 Hàng Bạc, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7482",
+      "name": "Khách sạn Bounty",
+      "address": "Lô 11-12 khu 2,8ha tái định cư X4, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7483",
+      "name": "Khách sạn Sakura 3",
+      "address": "609-611-613 Kim Mã, Giảng Võ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7484",
+      "name": "Khách sạn Nhật Tân",
+      "address": "Thôn Ngọc Chi, Huyện Đông Anh, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7485",
+      "name": "Khách sạn Mai",
+      "address": "26 ngõ 255 Trần Văn Lai, Quận Nam Từ Liêm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7486",
+      "name": "Khách sạn Tùng Lâm",
+      "address": "27-29 Gia Ngư, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7487",
+      "name": "Khách sạn Mặt trời Sài Gòn",
+      "address": "6 ngõ 189 Đông Các, Ô Chợ Dừa, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7488",
+      "name": "Khách sạn Brandi 1",
+      "address": ", Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7489",
+      "name": "Khách sạn Anise",
+      "address": "22 Quán Thánh, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7490",
+      "name": "Khách sạn Brandi 2",
+      "address": "202 Trần Duy Hưng, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7491",
+      "name": "Khách sạn Thể Thao",
+      "address": "15 Lê Văn Thiêm, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 2,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7492",
+      "name": "Khách sạn A25",
+      "address": "57A Quang Trung, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7493",
+      "name": "Khách sạn Vân Đồn",
+      "address": "Số 24-25/B9 Đầm Trấu, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7494",
+      "name": "Khách sạn Hoa Trà",
+      "address": "34 Lãn Ông, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7496",
+      "name": "Khách sạn Kim Cương",
+      "address": "thôn Cổ Điển, Vĩnh Thanh, Huyện Đông Anh, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7497",
+      "name": "Khách sạn Ngọc Trai",
+      "address": "72-74 Nguyễn Chánh, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7498",
+      "name": "Khách sạn Ngọc Trai",
+      "address": "66 Nguyễn Chánh, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7499",
+      "name": "Khách sạn Ngọc Trai",
+      "address": "2 ngõ 118 Đào Tấn, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7500",
+      "name": "Khách sạn Light",
+      "address": "1081 Hồng Hà, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7501",
+      "name": "Khách sạn Hà Nội Asia 2",
+      "address": "139/2 Nguyễn Văn Cừ, Quận Long Biên, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7502",
+      "name": "Khách sạn Hanoi Romance",
+      "address": "19 Trung Yên, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7503",
+      "name": "Khách sạn Wild Lotus",
+      "address": "106 Xuân Diệu, Hồng Hà, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7504",
+      "name": "Khách sạn Ngọc Thanh",
+      "address": "67 Nguyễn Trường Tộ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7506",
+      "name": "Khách sạn Thanh Lịch",
+      "address": "Đường K2 Cầu Diễn, Từ Liêm, Quận Nam Từ Liêm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7507",
+      "name": "Khách sạn An Bình",
+      "address": "Số 9, X2, ngõ 2 Trần Quý Kiên, Cầu Giấy, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7508",
+      "name": "Khách sạn A25 Ngọc Hiếu",
+      "address": "C103, nhà A25 Nghĩa Tân, Nghĩa Đô, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7509",
+      "name": "Khách sạn Sao",
+      "address": "43 Nguyễn Ngọc Vũ, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7510",
+      "name": "Khách sạn Nhân Hòa",
+      "address": "66 ngõ 116 Nhân Hòa, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7511",
+      "name": "Khách sạn Hà Vi",
+      "address": "142 Hoàng Ngân, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7512",
+      "name": "Khách sạn Hà Nội Vàng",
+      "address": "111 Hoàng Ngân, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7513",
+      "name": "Khách sạn Hoàng Anh",
+      "address": "D3, khu X4 Mai Dịch, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7514",
+      "name": "Khách sạn Hoàng Anh",
+      "address": "D10, khu X4 Mai Dịch, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7515",
+      "name": "Khách sạn nghỉ dưỡng Long Việt",
+      "address": "Thôn Nghe, Yên Bài, Huyện Ba Vì, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7516",
+      "name": "Khách sạn A25 Asean",
+      "address": "45B Giảng Võ, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7517",
+      "name": "Khách sạn Sài Gòn Pearl I",
+      "address": "Số 180 tổ 47 Xã Đàn, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7518",
+      "name": "Khách sạn Sài Gòn Pearl II",
+      "address": "Ô số F1 khu tái định cư đường 32, Phạm Hùng, Quận Nam Từ Liêm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7519",
+      "name": "Khách sạn Sài Gòn Pearl III",
+      "address": "19 ngõ 26 Hoàng Quốc Việt, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7520",
+      "name": "Khách sạn Sài Gòn Pearl IV",
+      "address": "Ô 32 khu C Lê Đức Thọ, Quận Nam Từ Liêm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7521",
+      "name": "Khách sạn Thể Thao Hà Nội",
+      "address": "42 Mã Mây, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7523",
+      "name": "Khách sạn Regal II",
+      "address": "90 Phạm Huy Thông, Giảng Võ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7524",
+      "name": "Khách sạn Hoàng Long",
+      "address": "369 Nguyễn Trãi, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7525",
+      "name": "Khách sạn Eiffel",
+      "address": "33 Bùi Thị Xuân, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7526",
+      "name": "Khách sạn Seoul",
+      "address": "6 Nguyễn Chánh, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7527",
+      "name": "Khách sạn Giang Sơn II",
+      "address": "457 Giải Phóng, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7528",
+      "name": "Khách sạn Ruby Phương Mai",
+      "address": "38 ngõ 15 Phương Mai, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7529",
+      "name": "Khách sạn Seoul",
+      "address": "146 Trần Duy Hưng, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7530",
+      "name": "Khách sạn Meracus",
+      "address": "32 Hàng Trống, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7531",
+      "name": "Khách sạn Ngọc Hiếu A25",
+      "address": "38 Hàng Thiếc, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7532",
+      "name": "Khách sạn Tulip",
+      "address": "79 Vũ Ngọc Phan, Láng, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7533",
+      "name": "Khách sạn Mặt Trời Vàng",
+      "address": "24-26 Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7534",
+      "name": "Khách sạn Mặt Trời Vàng II",
+      "address": "23 Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7535",
+      "name": "Khách sạn Mặt trời Sài Gòn III",
+      "address": "20 ngõ 1 Đình Thôn, Quận Nam Từ Liêm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7536",
+      "name": "Khách sạn Phong Lan",
+      "address": "2 Yết Kiêu, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7537",
+      "name": "Khách sạn Cảm Xúc 3",
+      "address": "Lô E6 Khu tái định cư, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7538",
+      "name": "Khách sạn Cảm Xúc",
+      "address": "Lô E5 Khu tái định cư Mai Dịch, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7539",
+      "name": "Khách sạn The Pearl",
+      "address": "6B Láng Hạ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7540",
+      "name": "Khách sạn Bảo Sơn Vàng",
+      "address": "89 Trúc Bạch, Ba Đình, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7541",
+      "name": "Khách sạn Pusan",
+      "address": "10 Nguyễn Chánh, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7542",
+      "name": "Khách sạn Inter",
+      "address": "2 ngõ 24 Nguyễn Văn Ngọc, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7543",
+      "name": "Khách sạn Lotus",
+      "address": "140 Ngọc Hà, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7544",
+      "name": "Khách sạn Venus",
+      "address": "15B Láng Hạ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7545",
+      "name": "Khách sạn Thăng Long",
+      "address": "713 Giải Phóng, Quận Hoàng Mai, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7546",
+      "name": "Khách sạn Hồ Sen Xanh Âu Cơ",
+      "address": "493 Âu Cơ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7547",
+      "name": "Khách sạn Hoàng Gia",
+      "address": "122 Nguyễn Hoàng Tôn, Tây Hồ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7550",
+      "name": "Khách sạn Phố Vắng 6",
+      "address": "23 Trích Sài, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7551",
+      "name": "Khách sạn Ocean",
+      "address": "63 Phương Liệt, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7552",
+      "name": "Khách sạn Nguyễn Anh",
+      "address": "13 Trung Kính, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7553",
+      "name": "Khách sạn Đan Thanh",
+      "address": "179 Nguyễn Đình Thi, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7554",
+      "name": "Khách sạn Nghệ thuật",
+      "address": "65 Hàng Điếu, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7555",
+      "name": "Khách sạn Joseph's",
+      "address": "5 Ấu Triệu, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7556",
+      "name": "Khách sạn Blue Hanoi Inn",
+      "address": "4 ngõ 466 Đê La Thành, Ô Chợ Dừa, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7557",
+      "name": "Khách sạn TNN",
+      "address": "941 Hồng Hà, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7558",
+      "name": "Khách sạn Blue Hanoi Inn",
+      "address": "119 tổ 9 Nguyễn Chánh, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7559",
+      "name": "Khách sạn HM Boutique",
+      "address": "3 Hàng Dầu, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7560",
+      "name": "Khách sạn 96",
+      "address": "96 ngõ 73 Nguyễn Lương Bằng, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7561",
+      "name": "Khách sạn Việt Phương",
+      "address": "123 Nguyễn Thái Học, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7562",
+      "name": "Khách sạn 96",
+      "address": "37 Đặng Văn Ngữ, Văn Miếu - Quốc Tử Giám, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7563",
+      "name": "Khách sạn Vạn Xuân",
+      "address": "71 Bùi Huy Bích, Hoàng Mai, Quận Hoàng Mai, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7564",
+      "name": "Khách sạn Hibiscus",
+      "address": "52 Ngõ Huyện, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7565",
+      "name": "Khách sạn Ruby",
+      "address": "159 Kim Ngưu, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7566",
+      "name": "Khách sạn Thanh Hằng",
+      "address": "Số 1 Khu tập thể Công ty CP dược liệu TW1, Quận Nam Từ Liêm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7567",
+      "name": "Khách sạn An Hưng",
+      "address": "2 ngõ 33 Phạm Tuấn Tài, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7568",
+      "name": "Khách sạn B",
+      "address": "1065 Hồng Hà, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7569",
+      "name": "Khách sạn Royal",
+      "address": "60 Nghi Tàm, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7570",
+      "name": "Khách sạn Hoàn Cầu",
+      "address": "72B Trần Hưng Đạo, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7571",
+      "name": "Khách sạn Vạn Xuân",
+      "address": "39 Vạn Kiếp, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7572",
+      "name": "Khách sạn A25",
+      "address": "28 Trần Quý Cáp, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7573",
+      "name": "Khách sạn Hanoi Stella",
+      "address": "36 Hàng Tre, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7574",
+      "name": "Khách sạn Hanoi Old Quarter Hostel",
+      "address": "32 Hàng Vải, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7575",
+      "name": "Khách sạn Bamboo",
+      "address": "32 Hàng Bè, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7576",
+      "name": "Khách sạn Sakura 2",
+      "address": "Lô B20/D6 KĐT mới Cầu Giấy Trần Thái Tông, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7577",
+      "name": "Khách sạn Ngõ Vắng 2",
+      "address": "5 Phạm Văn Đồng, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7578",
+      "name": "Khách sạn Bắc Đô",
+      "address": "30 Âu Cơ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7579",
+      "name": "Khách sạn Sài Gòn Palace",
+      "address": "10, ngách 53/21, ngõ 53 Trần Quốc Hoàn, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7580",
+      "name": "Khách sạn Golden Art",
+      "address": "4 Hàng Bút, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7581",
+      "name": "Khách sạn Victoria",
+      "address": "12 Đại lộ Thăng Long, Quận Nam Từ Liêm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7583",
+      "name": "Khách sạn Thu Giang",
+      "address": "17A, đường số 1, tổ 41 Trần Thái Tông, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7584",
+      "name": "Khách sạn Soo",
+      "address": "26 ngõ 110 Trần Duy Hưng, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7585",
+      "name": "Khách sạn Hải Dương",
+      "address": "147 Lê Duẩn, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7586",
+      "name": "Khách sạn Hồng Anh",
+      "address": "20 Trương Công Giai, Cầu Giấy, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7587",
+      "name": "Khách sạn Palace",
+      "address": "8 - 10 Vân Đồn, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7588",
+      "name": "Khách sạn Gia Bảo 2",
+      "address": "23 Lò Sũ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7589",
+      "name": "Khách sạn Sunrise",
+      "address": "18 - 20, ngõ 42 Vũ Ngọc Phan, Láng, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7590",
+      "name": "Khách sạn Bảo Sơn Villa",
+      "address": "10B, ngõ 198 Xã Đàn, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7591",
+      "name": "Khách sạn Rose",
+      "address": "59B Đường Thành, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7592",
+      "name": "Khách sạn New II",
+      "address": "17 Nguyễn Công Hoan, Giảng Võ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7593",
+      "name": "Khách sạn Sunny",
+      "address": "6 ngõ 18 Nguyên Hồng, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7595",
+      "name": "Khách sạn Amely",
+      "address": "B12-B14 Cốm Vòng, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7596",
+      "name": "Khách sạn New III",
+      "address": "5 ngõ 81/35 Linh Lang, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7597",
+      "name": "Khách sạn Church Legend",
+      "address": "46 Ấu Triệu, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7599",
+      "name": "Khách sạn Mimosa",
+      "address": "21 - 23 Trần Hữu Tước, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7600",
+      "name": "Khách sạn Times",
+      "address": "31/27 Xã Đàn, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7601",
+      "name": "Khách sạn Hải Nam",
+      "address": "9 Nguyễn Trường Tộ, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7602",
+      "name": "Khách sạn Yến",
+      "address": "66 Trần Thái Tông, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7603",
+      "name": "Khách sạn A25",
+      "address": "150 Nguyễn Thái Học, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7604",
+      "name": "Khách sạn Thái Hòa",
+      "address": "603 Lạc Long Quân, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7605",
+      "name": "Khách sạn Ven Hồ",
+      "address": "181 Nguyễn Đình Thi, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7606",
+      "name": "Khách sạn Golden Moon Suite",
+      "address": "12A Hàng Mành, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7607",
+      "name": "Khách sạn Heritage",
+      "address": "625 La Thành, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7608",
+      "name": "Khách sạn Avalon",
+      "address": "197 Nguyễn Trãi, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7609",
+      "name": "Khách sạn Hà Nội Star",
+      "address": "83 Đặng Văn Ngữ, Văn Miếu - Quốc Tử Giám, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7610",
+      "name": "Khách sạn Tulip",
+      "address": "16 ngách 477/1 Nguyễn Trãi, Quận Thanh Xuân, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7612",
+      "name": "Khách sạn Luxury Old Quarter",
+      "address": "67 Hàng Bồ, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7613",
+      "name": "Khách sạn Seven",
+      "address": "1 ngõ 16 ngách 1 hẻm 30 Huỳnh Thúc Kháng, Láng, Quận Đống Đa, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7615",
+      "name": "Khách sạn Le Le and Frog",
+      "address": "3D Tống Duy Tân, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7616",
+      "name": "Khách sạn Obis",
+      "address": "5B Trần Duy Hưng, Yên Hòa, Quận Cầu Giấy, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7617",
+      "name": "Khách sạn Smile",
+      "address": "34 Cửa Bắc, Ba Đình, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7618",
+      "name": "Khách sạn Splendid Hotel and Spa",
+      "address": "6 Hàng Hành, Hoàn Kiếm, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7619",
+      "name": "Khách sạn Hà My",
+      "address": "35 ngõ 172 Ngọc Hà, Quận Ba Đình, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "7787",
+      "name": "Khách sạn Mường Thanh Grand Hà Nội",
+      "address": "Lô CC2, Bắc Linh Đàm, Định Công, Quận Hoàng Mai, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "8092",
+      "name": "Khách sạn Mövenpick",
+      "address": "83A Lý Thường Kiệt, Cửa Nam, Quận Hoàn Kiếm, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "8099",
+      "name": "Khách sạn nghỉ dưỡng Meliá Ba Vì Mountain Retreat",
+      "address": "Khu Du lịch sinh thái độ cao Cote 600, Vườn quốc gia Ba Vì, Suối Hai, Huyện Ba Vì, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "8279",
+      "name": "Khách sạn Golden",
+      "address": "16 ngõ 203 Kim Ngưu, Quận Hai Bà Trưng, Thành phố Hà Nội",
+      "capturedStars": 1,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "16162",
+      "name": "Khách sạn nghỉ dưỡng Thảo Viên",
+      "address": ", Thị xã Sơn Tây, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "16186",
+      "name": "Khách sạn The Hanoi Club",
+      "address": "76 Yên Phụ, Quận Tây Hồ, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    },
+    {
+      "sourcePropertyId": "17776",
+      "name": "Khách Sạn FTE Ba Đình",
+      "address": "268 Đường Bưởi, P. Ngọc Hà, Thành phố Hà Nội",
+      "capturedStars": 4,
+      "reconciliationStatus": "pending_current_decision",
+      "decisionEvidence": null
+    }
+  ],
+  "summary": {
+    "pending": 330,
+    "verifiedActive": 0,
+    "verifiedInactive": 0,
+    "eligibleForGeolocation": 0
+  }
+}

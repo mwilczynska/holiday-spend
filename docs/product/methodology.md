@@ -296,6 +296,8 @@ government-managed 1-4-star records, but an official February 2026 city summary 
 with currently valid classifications in those classes. The larger search result is retained as a hashed
 source universe, not treated as an active property frame. No Hanoi property will be ranked or quoted until
 its current classification status is supported by authoritative evidence.
+The reconciliation ledger therefore begins with all 330 source records pending and zero eligible. It does
+not guess which 37 records correspond to the aggregate current count.
 
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted

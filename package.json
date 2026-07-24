@@ -32,6 +32,8 @@
     "methodology:accommodation-register:capture:hanoi": "tsx scripts/capture-vietnam-accommodation-register.ts --city \"Hanoi\" --province-code \"01\" --province-label \"Thành phố Hà Nội\"",
     "methodology:accommodation-register:validate:da-nang": "tsx scripts/validate-vietnam-accommodation-register.ts --city \"Da Nang\" --province-code \"48,49\"",
     "methodology:accommodation-register:validate:hanoi": "tsx scripts/validate-vietnam-accommodation-register.ts --city \"Hanoi\" --province-code \"01\"",
+    "methodology:accommodation-classification:build:hanoi": "tsx scripts/build-hanoi-accommodation-classification-reconciliation.ts",
+    "methodology:accommodation-classification:validate:hanoi": "tsx scripts/validate-hanoi-accommodation-classification-reconciliation.ts",
     "methodology:accommodation-geocode:da-nang": "tsx scripts/geocode-da-nang-accommodation-register.ts",
     "methodology:accommodation-geocode:validate:da-nang": "tsx scripts/validate-da-nang-accommodation-geocoding.ts",
     "methodology:observations:validate": "tsx scripts/validate-city-cost-observations.ts",
