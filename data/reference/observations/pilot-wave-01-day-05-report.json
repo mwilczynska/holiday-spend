@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "pilot-wave-01-day-05",
+  "checkpoint": "pilot_second_latin_middle_east_south_asia_food_drinks_and_two_attractions_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 6,
+  "cities": ["Havana", "Dubai", "Delhi"],
+  "acceptedObservations": 14,
+  "rejectedObservations": 0,
+  "sources": [
+    {"name": "Numbeo", "accessBasis": "personal_use_with_attribution", "termsUrl": "https://www.numbeo.com/common/terms_of_use.jsp", "methodologyUrl": "https://www.numbeo.com/common/motivation_and_methodology.jsp"},
+    {"name": "Visit Dubai Experiences", "accessBasis": "public_official"},
+    {"name": "Delhi Tourism", "accessBasis": "public_official"}
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 3,
+    "midrange_restaurant_meal_2p": 3,
+    "premium_restaurant_meal_2p": 0,
+    "domestic_draft_beer_1": 3,
+    "cappuccino_1": 3,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 2,
+    "half_day_group_activity_adult_1": 0,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {"city":"Havana","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Havana","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Havana","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Havana","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Havana","measure":"paid_attraction_adult_1","reason":"No current directly priced official attraction source was verified. A private tourism guide showed prices but was not promoted to official-source evidence."},
+    {"city":"Havana","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Havana","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Dubai","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Dubai","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Dubai","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Dubai","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Dubai","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Dubai","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Delhi","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Delhi","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Delhi","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Delhi","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Delhi","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Delhi","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."}
+  ],
+  "remainingCategories": ["food_drink_menu_triangulation", "activity_products", "accommodation"],
+  "notes": "This batch adds 12 direct Numbeo food/drink primitives and two official paid-attraction prices. Havana retains its August 2025 update, 265-entry/31-contributor context, and tourist-facing USD quotation as explicit limitations. Dubai and Delhi retain their June and May 2026 page timestamps and high source-density context. Havana's paid attraction is explicitly missing because the bounded search found no current official price; a private tourism guide was not silently promoted to official evidence. No nearby-city substitution or uncited conversion occurred during collection."
+}

@@ -125,6 +125,26 @@
       "derivation": "cross_rate",
       "derivationFormula": "1.4298737727910238 / 129.30"
     },
+    "CUP": {
+      "currency": "CUP",
+      "audPerUnit": 0.00239109326553683,
+      "sourceName": "Banco Central de Cuba via Granma",
+      "sourceUrl": "https://www.granma.cu/cuba/2026-07-22/tasa-oficial-de-cambio-de-monedas-22-07-2026-07-07-30",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "Published special natural-person reference: 1 USD = 598 CUP; 1 USD = 1.4298737727910238 AUD in the frozen 22 July cross-rate",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.4298737727910238 / 598"
+    },
+    "AED": {
+      "currency": "AED",
+      "audPerUnit": 0.388699721690999,
+      "sourceName": "Central Bank of the UAE",
+      "sourceUrl": "https://www.centralbank.ae/umbraco/Surface/Exchange/GetExchangeRateAllCurrency",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 AUD = 2.57268 AED at the published mid rate",
+      "derivation": "inverted_quote",
+      "derivationFormula": "1 / 2.57268"
+    },
     "TRY": {
       "currency": "TRY",
       "audPerUnit": 0.0302826654389241,

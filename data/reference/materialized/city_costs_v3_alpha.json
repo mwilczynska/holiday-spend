@@ -1,22 +1,22 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T09:52:16.651Z",
+  "dataCutoff": "2026-07-24T10:01:24.784Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 91,
-    "accepted": 91,
+    "input": 105,
+    "accepted": 105,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 91,
+    "direct": 105,
     "derived": 0,
     "imputed": 0
   },
-  "cityCount": 18,
+  "cityCount": 21,
   "completeCityCount": 0,
-  "requiredTierCells": 342,
-  "materializedTierCells": 86,
+  "requiredTierCells": 399,
+  "materializedTierCells": 100,
   "tierCoverage": {
     "accom_shared_hostel_dorm": 0,
     "accom_hostel_private_room": 0,
@@ -28,13 +28,13 @@
     "food_budget": 0,
     "food_mid_range": 0,
     "food_high_end": 0,
-    "drink_coffee": 17,
-    "drinks_none": 17,
-    "drinks_light": 17,
+    "drink_coffee": 20,
+    "drinks_none": 20,
+    "drinks_light": 20,
     "drinks_moderate": 0,
     "drinks_heavy": 0,
-    "activities_free": 18,
-    "activities_budget": 16,
+    "activities_free": 21,
+    "activities_budget": 18,
     "activities_mid_range": 1,
     "activities_high_end": 0
   },
@@ -2098,6 +2098,776 @@
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
     {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-delhi-2026-05-cappuccino"
+          ],
+          "medianLocal": 216.03,
+          "q25Local": 216.03,
+          "q75Local": 216.03,
+          "medianAud": 3.198672
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "INR",
+      "audPerLocalUnit": 0.0148066117802972,
+      "medianLocal": 216.03,
+      "q25Local": 216.03,
+      "q75Local": 216.03,
+      "minLocal": 216.03,
+      "maxLocal": 216.03,
+      "medianAud": 3.198672,
+      "q25Aud": 3.198672,
+      "q75Aud": 3.198672,
+      "minAud": 3.198672,
+      "maxAud": 3.198672,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "INR"
+      ],
+      "observationIds": [
+        "numbeo-delhi-2026-05-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-delhi-2026-05-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-delhi-2026-05-domestic-draft-beer"
+          ],
+          "medianLocal": 200,
+          "q25Local": 200,
+          "q75Local": 200,
+          "medianAud": 2.961322
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "INR",
+      "audPerLocalUnit": 0.0148066117802972,
+      "medianLocal": 200,
+      "q25Local": 200,
+      "q75Local": 200,
+      "minLocal": 200,
+      "maxLocal": 200,
+      "medianAud": 2.961322,
+      "q25Aud": 2.961322,
+      "q75Aud": 2.961322,
+      "minAud": 2.961322,
+      "maxAud": 2.961322,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "INR"
+      ],
+      "observationIds": [
+        "numbeo-delhi-2026-05-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-delhi-2026-05-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-delhi-2026-05-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 400,
+          "q25Local": 400,
+          "q75Local": 400,
+          "medianAud": 5.922645
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "INR",
+      "audPerLocalUnit": 0.0148066117802972,
+      "medianLocal": 400,
+      "q25Local": 400,
+      "q75Local": 400,
+      "minLocal": 400,
+      "maxLocal": 400,
+      "medianAud": 5.922645,
+      "q25Aud": 5.922645,
+      "q75Aud": 5.922645,
+      "minAud": 5.922645,
+      "maxAud": 5.922645,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "INR"
+      ],
+      "observationIds": [
+        "numbeo-delhi-2026-05-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-delhi-2026-05-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-delhi-2026-05-midrange-restaurant-meal"
+          ],
+          "medianLocal": 2000,
+          "q25Local": 2000,
+          "q75Local": 2000,
+          "medianAud": 29.613224
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "INR",
+      "audPerLocalUnit": 0.0148066117802972,
+      "medianLocal": 2000,
+      "q25Local": 2000,
+      "q75Local": 2000,
+      "minLocal": 2000,
+      "maxLocal": 2000,
+      "medianAud": 29.613224,
+      "q25Aud": 29.613224,
+      "q75Aud": 29.613224,
+      "minAud": 29.613224,
+      "maxAud": 29.613224,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "INR"
+      ],
+      "observationIds": [
+        "numbeo-delhi-2026-05-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-delhi-2026-05-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Delhi Tourism"
+          ],
+          "observationIds": [
+            "delhi-tourism-humayuns-tomb-foreigner-adult"
+          ],
+          "medianLocal": 600,
+          "q25Local": 600,
+          "q75Local": 600,
+          "medianAud": 8.883967
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "INR",
+      "audPerLocalUnit": 0.0148066117802972,
+      "medianLocal": 600,
+      "q25Local": 600,
+      "q75Local": 600,
+      "minLocal": 600,
+      "maxLocal": 600,
+      "medianAud": 8.883967,
+      "q25Aud": 8.883967,
+      "q75Aud": 8.883967,
+      "minAud": 8.883967,
+      "maxAud": 8.883967,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Delhi Tourism"
+      ],
+      "sourceCurrencies": [
+        "INR"
+      ],
+      "observationIds": [
+        "delhi-tourism-humayuns-tomb-foreigner-adult"
+      ],
+      "availableObservationIds": [
+        "delhi-tourism-humayuns-tomb-foreigner-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-dubai-2026-06-cappuccino"
+          ],
+          "medianLocal": 22.47,
+          "q25Local": 22.47,
+          "q75Local": 22.47,
+          "medianAud": 8.734083
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "AED",
+      "audPerLocalUnit": 0.388699721690999,
+      "medianLocal": 22.47,
+      "q25Local": 22.47,
+      "q75Local": 22.47,
+      "minLocal": 22.47,
+      "maxLocal": 22.47,
+      "medianAud": 8.734083,
+      "q25Aud": 8.734083,
+      "q75Aud": 8.734083,
+      "minAud": 8.734083,
+      "maxAud": 8.734083,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "AED"
+      ],
+      "observationIds": [
+        "numbeo-dubai-2026-06-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-dubai-2026-06-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-dubai-2026-06-domestic-draft-beer"
+          ],
+          "medianLocal": 50,
+          "q25Local": 50,
+          "q75Local": 50,
+          "medianAud": 19.434986
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "AED",
+      "audPerLocalUnit": 0.388699721690999,
+      "medianLocal": 50,
+      "q25Local": 50,
+      "q75Local": 50,
+      "minLocal": 50,
+      "maxLocal": 50,
+      "medianAud": 19.434986,
+      "q25Aud": 19.434986,
+      "q75Aud": 19.434986,
+      "minAud": 19.434986,
+      "maxAud": 19.434986,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "AED"
+      ],
+      "observationIds": [
+        "numbeo-dubai-2026-06-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-dubai-2026-06-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-dubai-2026-06-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 46,
+          "q25Local": 46,
+          "q75Local": 46,
+          "medianAud": 17.880187
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "AED",
+      "audPerLocalUnit": 0.388699721690999,
+      "medianLocal": 46,
+      "q25Local": 46,
+      "q75Local": 46,
+      "minLocal": 46,
+      "maxLocal": 46,
+      "medianAud": 17.880187,
+      "q25Aud": 17.880187,
+      "q75Aud": 17.880187,
+      "minAud": 17.880187,
+      "maxAud": 17.880187,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "AED"
+      ],
+      "observationIds": [
+        "numbeo-dubai-2026-06-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-dubai-2026-06-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-dubai-2026-06-midrange-restaurant-meal"
+          ],
+          "medianLocal": 300,
+          "q25Local": 300,
+          "q75Local": 300,
+          "medianAud": 116.609917
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "AED",
+      "audPerLocalUnit": 0.388699721690999,
+      "medianLocal": 300,
+      "q25Local": 300,
+      "q75Local": 300,
+      "minLocal": 300,
+      "maxLocal": 300,
+      "medianAud": 116.609917,
+      "q25Aud": 116.609917,
+      "q75Aud": 116.609917,
+      "minAud": 116.609917,
+      "maxAud": 116.609917,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "AED"
+      ],
+      "observationIds": [
+        "numbeo-dubai-2026-06-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-dubai-2026-06-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Visit Dubai Experiences"
+          ],
+          "observationIds": [
+            "visit-dubai-al-shindagha-museum-2026-entry"
+          ],
+          "medianLocal": 35,
+          "q25Local": 35,
+          "q75Local": 35,
+          "medianAud": 13.60449
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "AED",
+      "audPerLocalUnit": 0.388699721690999,
+      "medianLocal": 35,
+      "q25Local": 35,
+      "q75Local": 35,
+      "minLocal": 35,
+      "maxLocal": 35,
+      "medianAud": 13.60449,
+      "q25Aud": 13.60449,
+      "q75Aud": 13.60449,
+      "minAud": 13.60449,
+      "maxAud": 13.60449,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Visit Dubai Experiences"
+      ],
+      "sourceCurrencies": [
+        "AED"
+      ],
+      "observationIds": [
+        "visit-dubai-al-shindagha-museum-2026-entry"
+      ],
+      "availableObservationIds": [
+        "visit-dubai-al-shindagha-museum-2026-entry"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
       "city": "Fukuoka",
       "country": "Japan",
       "region": "East Asia",
@@ -3249,6 +4019,314 @@
       ],
       "availableObservationIds": [
         "hanoi-thang-long-imperial-citadel-2025-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-havana-2025-08-cappuccino"
+          ],
+          "medianLocal": 603.98,
+          "q25Local": 603.98,
+          "q75Local": 603.98,
+          "medianAud": 1.444173
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CUP",
+      "audPerLocalUnit": 0.00239109326553683,
+      "medianLocal": 603.98,
+      "q25Local": 603.98,
+      "q75Local": 603.98,
+      "minLocal": 603.98,
+      "maxLocal": 603.98,
+      "medianAud": 1.444173,
+      "q25Aud": 1.444173,
+      "q75Aud": 1.444173,
+      "minAud": 1.444173,
+      "maxAud": 1.444173,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-havana-2025-08-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-havana-2025-08-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-havana-2025-08-domestic-draft-beer"
+          ],
+          "medianLocal": 1196,
+          "q25Local": 1196,
+          "q75Local": 1196,
+          "medianAud": 2.859748
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CUP",
+      "audPerLocalUnit": 0.00239109326553683,
+      "medianLocal": 1196,
+      "q25Local": 1196,
+      "q75Local": 1196,
+      "minLocal": 1196,
+      "maxLocal": 1196,
+      "medianAud": 2.859748,
+      "q25Aud": 2.859748,
+      "q75Aud": 2.859748,
+      "minAud": 2.859748,
+      "maxAud": 2.859748,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-havana-2025-08-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-havana-2025-08-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-havana-2025-08-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 2631.2,
+          "q25Local": 2631.2,
+          "q75Local": 2631.2,
+          "medianAud": 6.291445
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CUP",
+      "audPerLocalUnit": 0.00239109326553683,
+      "medianLocal": 2631.2,
+      "q25Local": 2631.2,
+      "q75Local": 2631.2,
+      "minLocal": 2631.2,
+      "maxLocal": 2631.2,
+      "medianAud": 6.291445,
+      "q25Aud": 6.291445,
+      "q75Aud": 6.291445,
+      "minAud": 6.291445,
+      "maxAud": 6.291445,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-havana-2025-08-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-havana-2025-08-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-havana-2025-08-midrange-restaurant-meal"
+          ],
+          "medianLocal": 16445,
+          "q25Local": 16445,
+          "q75Local": 16445,
+          "medianAud": 39.321529
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CUP",
+      "audPerLocalUnit": 0.00239109326553683,
+      "medianLocal": 16445,
+      "q25Local": 16445,
+      "q75Local": 16445,
+      "minLocal": 16445,
+      "maxLocal": 16445,
+      "medianAud": 39.321529,
+      "q25Aud": 39.321529,
+      "q75Aud": 39.321529,
+      "minAud": 39.321529,
+      "maxAud": 39.321529,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "USD"
+      ],
+      "observationIds": [
+        "numbeo-havana-2025-08-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-havana-2025-08-midrange-restaurant-meal"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
@@ -7889,6 +8967,442 @@
     {
       "schemaVersion": "city-cost-materialization-v1",
       "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "localCurrency": "INR",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 3.2,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 6.4,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 12.32,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 17.77,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "localCurrency": "AED",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 8.73,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 17.47,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 56.34,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 27.21,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Fukuoka",
       "country": "Japan",
       "region": "East Asia",
@@ -8534,6 +10048,227 @@
         "premium_restaurant_meal_2p",
         "cocktail_1",
         "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "localCurrency": "CUP",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 1.44,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 2.89,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 8.61,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": null,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": [
+            "paid_attraction_adult_1"
+          ]
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 4,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "paid_attraction_adult_1",
         "half_day_group_activity_adult_1",
         "full_day_premium_activity_adult_1"
       ],
@@ -10754,7 +12489,9 @@
       "data/reference/observations/pilot-wave-01-day-03-activities.jsonl",
       "data/reference/observations/pilot-wave-01-day-03-food-drinks.jsonl",
       "data/reference/observations/pilot-wave-01-day-04-activities.jsonl",
-      "data/reference/observations/pilot-wave-01-day-04-food-drinks.jsonl"
+      "data/reference/observations/pilot-wave-01-day-04-food-drinks.jsonl",
+      "data/reference/observations/pilot-wave-01-day-05-activities.jsonl",
+      "data/reference/observations/pilot-wave-01-day-05-food-drinks.jsonl"
     ],
     "fxSnapshotFile": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   }

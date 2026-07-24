@@ -331,9 +331,9 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
   LLM call, verifies assignment identity and complete observed/missing measure coverage, and forces every
   returned observation to remain `unreviewed` for a separate evidence-review step.
 
-Checkpoint: batch zero and the first four pilot-wave checkpoints currently provide 91 accepted direct
-observations across 18 cities, covering every pilot region. The v3-alpha materializer aggregates in
-city-local currency, applies a frozen and source-attributed AUD FX snapshot, and materializes 86 of 342 possible
+Checkpoint: batch zero and the first five pilot-wave checkpoints currently provide 105 accepted direct
+observations across 21 cities, covering every pilot region. The v3-alpha materializer aggregates in
+city-local currency, applies a frozen and source-attributed AUD FX snapshot, and materializes 100 of 399 possible
 city-tier cells. No city is complete and no partial wide row is published.
 The pipeline is therefore reproducible and fail-closed, but it is not yet a replacement for the active
 121-city dataset.
@@ -412,6 +412,9 @@ flexible and non-refundable conditions; a true availability failure; and technic
 - [x] Add first pilot evidence for the remaining unrepresented regions through Medellin, Istanbul, and
   Goa: 12 direct Numbeo food/drink observations and three official attraction prices; retain Goa's older
   December 2025 freshness date and Medellin's source-access limitation explicitly.
+- [x] Add the next uncovered Latin America, Middle East, and South Asia cities through Havana, Dubai, and
+  Delhi: 12 direct Numbeo food/drink observations and two official attraction prices; retain Havana's
+  August 2025 freshness/source-density limitation and explicit missing official attraction price.
 - [x] Freeze the first official-register accommodation sampling frame for Barcelona, including
   deterministic hotel panels, full reserve order, join coverage, and visible exclusions.
 - [x] Generalize the panel contract and freeze Copenhagen's Hotelstars hotel frame plus the official

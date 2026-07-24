@@ -259,8 +259,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Extend pilot wave 1 across Zanzibar, Shanghai, and Auckland, bringing the store to 61 accepted direct observations across 12 cities while adding Africa, East Asia, and Oceania coverage
   - [x] Continue pilot wave 1 across Nairobi, Fukuoka, and Queenstown, bringing the store to 76 accepted direct observations across 15 cities
   - [x] Add Medellin, Istanbul, and Goa, bringing the store to 91 accepted direct observations across 18 cities and establishing evidence coverage in every pilot region
+  - [x] Add Havana, Dubai, and Delhi, bringing the store to 105 accepted direct observations across 21 cities while retaining Havana's August 2025 freshness limitation and explicit missing official attraction price
   - [x] Add a validated accommodation attempt ledger and complete the Copenhagen shoulder checkpoint: ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and four booking-path failures
-  - [x] Materialize the current fail-closed research artifact from 91 direct observations: 86 of 342 tier cells across 18 cities, one incomplete accommodation measure, and zero incomplete wide rows published
+  - [x] Materialize the current fail-closed research artifact from 105 direct observations: 100 of 399 tier cells across 21 cities, one incomplete accommodation measure, and zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -407,7 +408,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - The second pilot checkpoint adds Zanzibar, Shanghai, and Auckland: 12 direct Numbeo food/drink primitives and official paid-attraction prices for Shanghai Tower and Auckland MOTAT; Zanzibar retains explicit attraction missingness and its sparse eight-contributor context
 - The third pilot checkpoint adds Nairobi, Fukuoka, and Queenstown: 12 direct Numbeo food/drink primitives and three official paid-attraction prices; localized Numbeo URLs remain explicit where canonical English pages returned temporary 503 responses
 - The fourth pilot checkpoint adds Medellin, Istanbul, and Goa: 12 direct Numbeo food/drink primitives and three official paid-attraction prices, establishing evidence coverage in Latin America, the Middle East, and South Asia; Goa's December 2025 freshness date remains explicit
-- The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, and INR through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, and COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD
+- The fifth pilot checkpoint adds Havana, Dubai, and Delhi: 12 direct Numbeo food/drink primitives and official paid-attraction prices for Dubai and Delhi; Havana's August 2025 Numbeo date and 31-contributor context remain explicit, and its official attraction price remains missing rather than substituting a private guide
+- The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, and INR through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, and CUP through the Banco Central de Cuba natural-person reference crossed with frozen USD/AUD
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
 - `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
@@ -504,6 +506,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/observations/pilot-wave-01-day-04-food-drinks.jsonl`
   - `data/reference/observations/pilot-wave-01-day-04-activities.jsonl`
   - `data/reference/observations/pilot-wave-01-day-04-report.json`
+  - `data/reference/observations/pilot-wave-01-day-05-food-drinks.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-05-activities.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-05-report.json`
 - `docs/dev/plans/city-cost-source-access.md`
 - `docs/prompts/llm_prompt_city_cost_observations_1.md`
 - `src/lib/city-cost-observation.ts`
