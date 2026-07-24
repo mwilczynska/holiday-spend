@@ -27,21 +27,21 @@ describe('accommodation property panels', () => {
     const collection = checkedInCollection();
     expect(summarizeAccommodationPropertyPanels(collection)).toEqual({
       collectionId: 'accommodation-property-panels-2026-2027-v2',
-      cities: 3,
-      frozenHotelPanels: 9,
+      cities: 4,
+      frozenHotelPanels: 13,
       frozenHostelPanels: 2,
       belowQuoteMinimumPanels: 1,
       unavailableHotelPanels: 3,
-      candidateHostelPanels: 2,
+      candidateHostelPanels: 4,
       unavailableHostelPanels: 2,
-      eligibleSourceProperties: 704,
-      candidateProperties: 14,
-      eligibleInRadiusProperties: 376,
-      primaryProperties: 108,
-      reserveProperties: 277,
+      eligibleSourceProperties: 958,
+      candidateProperties: 120,
+      eligibleInRadiusProperties: 618,
+      primaryProperties: 156,
+      reserveProperties: 471,
       missingOfficialGeolocation: 21,
-      outsideRadius: 307,
-      websitesSourceListed: 238,
+      outsideRadius: 328,
+      websitesSourceListed: 449,
       websitesVerified: 0,
     });
 
@@ -196,6 +196,89 @@ describe('accommodation property panels', () => {
     });
   });
 
+  it('freezes Lisbon from complete official hotel and hostel registers without inferring hostel inventory', () => {
+    const lisbon = checkedInCollection().cities.find((city) => city.city === 'Lisbon')!;
+    expect(lisbon.samplingFrame.centre).toEqual({
+      method: 'componentwise_median_of_all_official_lisbon_1_to_4_star_hotel_coordinates',
+      latitude: 38.72280334,
+      longitude: -9.14327108,
+      inputPropertyCount: 254,
+      searchRadiusKm: 5,
+    });
+    expect(lisbon.samplingFrame.counts).toMatchObject({
+      sourceRecordCount: 17_514,
+      sourceLodgingRecordCount: 12_237,
+      eligiblePropertyCount: 254,
+      candidatePropertyCount: 106,
+      geolocatedEligiblePropertyCount: 254,
+      missingOfficialGeolocationCount: 0,
+      outsideRadiusCount: 21,
+      eligibleInRadiusCount: 242,
+      sourceSpecificCounts: {
+        rnetPortugalRecords: 5_649,
+        rnetLisbonRecords: 372,
+        rnetLisbonOneToFourStarHotels: 254,
+        rnalLisbonRecords: 11_865,
+        rnalLisbonHostelRegistrations: 113,
+        rnalLisbonPhysicalHostelCandidates: 106,
+        rnalLisbonDuplicateHostelGroups: 4,
+        rnalLisbonHostelCandidatesInRadius: 97,
+        rnalLisbonHostelCandidatesOutsideRadius: 9,
+        rnet1StarInRadius: 13,
+        rnet2StarInRadius: 29,
+        rnet3StarInRadius: 90,
+        rnet4StarInRadius: 110,
+      },
+    });
+    expect(
+      lisbon.measurePanels.map((panel) => [
+        panel.measure,
+        panel.status,
+        panel.eligibleInRadiusCount,
+      ])
+    ).toEqual([
+      ['hostel_dorm_bed_1p', 'candidate_universe_pending_inventory_verification', 0],
+      ['hostel_private_room_2p', 'candidate_universe_pending_inventory_verification', 0],
+      ['hotel_1star_room_2p', 'frozen_pending_website_verification', 13],
+      ['hotel_2star_room_2p', 'frozen_pending_website_verification', 29],
+      ['hotel_3star_room_2p', 'frozen_pending_website_verification', 90],
+      ['hotel_4star_room_2p', 'frozen_pending_website_verification', 110],
+    ]);
+    expect(
+      lisbon.measurePanels
+        .find((panel) => panel.measure === 'hotel_1star_room_2p')!
+        .rankedProperties.filter((property) => property.disposition === 'primary')
+        .map((property) => property.propertyId)
+    ).toEqual([
+      'rnet:PT:11228',
+      'rnet:PT:7575',
+      'rnet:PT:1384',
+      'rnet:PT:12517',
+      'rnet:PT:12066',
+      'rnet:PT:8976',
+      'rnet:PT:13475',
+      'rnet:PT:3100',
+      'rnet:PT:11959',
+      'rnet:PT:12357',
+      'rnet:PT:9836',
+      'rnet:PT:3914',
+    ]);
+    expect(
+      lisbon.properties.filter(
+        (property) =>
+          property.geographicDisposition === 'pending_website_and_inventory_verification'
+      )
+    ).toHaveLength(97);
+    expect(
+      lisbon.properties.find((property) => property.propertyId.includes('11282+25262+114343'))
+    ).toMatchObject({
+      name: 'Lisboa Central Hostel',
+      capacity: 70,
+      eligibleMeasures: [],
+      sourceStatus: '3 registrations collapsed to one physical establishment',
+    });
+  });
+
   it('ranks properties identically regardless of input order', () => {
     const properties = [
       { propertyId: 'property-3', eligibleMeasures: ['hotel_1star_room_2p' as const] },
@@ -231,9 +314,10 @@ describe('accommodation property panels', () => {
     expect(upserted.cities.map((city) => city.city)).toEqual([
       'Barcelona',
       'Copenhagen',
+      'Lisbon',
       'Prague',
     ]);
-    expect(upserted.lockedAt).toBe('2026-07-24T07:51:38.7445202Z');
+    expect(upserted.lockedAt).toBe('2026-07-24T14:22:00.000Z');
   });
 
   it('allows one verified hostel to participate in both hostel measures', () => {

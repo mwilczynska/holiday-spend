@@ -83,7 +83,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Methodology doc: `docs/product/methodology.md`
 - New-city prompt template: `docs/prompts/llm_prompt_new_cities_1.md`
 - First accommodation reference schedule: `data/reference/accommodation_reference_windows_2026_2027.json`
-- Accommodation property-panel collection (currently Barcelona, Copenhagen, and Prague): `data/reference/accommodation_property_panels_2026_2027.json`
+- Accommodation property-panel collection (currently Barcelona, Copenhagen, Lisbon, and Prague): `data/reference/accommodation_property_panels_2026_2027.json`
 - Accommodation quote-attempt ledger: `data/reference/accommodation_quote_attempts/`
 - `/estimates` now reflects this methodology rather than the older hybrid/Xotelo explanation
 - `/dataset` now holds the editable planner dataset and generation-history views
@@ -263,7 +263,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 #### Phase 6D: Complete Observed-First Accommodation Panels (In Progress)
 - [x] Use official registers or destination directories for price-blind frames and direct property sites for quotes; exclude Booking.com and Hostelworld from LLM extraction
 - [x] Pre-register exact-90-day low/shoulder/high windows and require five accepted quotes per measure and season plus at least 60% cross-season property overlap
-- [x] Freeze reproducible Barcelona, Copenhagen, and Prague frames and add an append-only quote-attempt ledger
+- [x] Freeze reproducible Barcelona, Copenhagen, Lisbon, and Prague frames and add an append-only quote-attempt ledger
 - [x] Complete Copenhagen's 4-star shoulder checkpoint with five accepted quotes from ten rank-ordered attempts
 - [ ] Complete Copenhagen low/high seasons, collect eligible Barcelona and Prague panels, resolve defensible hostel inventory, and expand the procedure to the remaining pilot
 - [ ] Materialize the first annualized accommodation measure only after every pre-registered gate passes
@@ -304,6 +304,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Freeze the first official-register property frame for Barcelona: 344 active standard hotels, 322 in-radius candidates, 48 price-blind primary selections, and 274 ordered reserves
   - [x] Generalize the property/ranking contract and freeze Copenhagen: 201 eligible national Hotelstars records, 29 hotels within 5 km, and 13 VisitCopenhagen hostel candidates pending inventory/location verification
   - [x] Freeze Prague after collapsing 225 eligible Hotelstars rows to 148 physical properties: 25 distinct in-radius properties, two ten-property hostel panels, five 3-star and nine 4-star hotels, explicit absent 1-/2-star classes, and one geolocated inventory-pending hostel
+  - [x] Freeze Lisbon from same-day official RNET/RNAL snapshots: 254 geolocated 1-4-star hotels, 242 within 5 km across four frozen hotel panels, and 113 explicit hostel registrations collapsed to 106 physical candidates with 97 in radius pending website/inventory verification
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities
@@ -496,7 +497,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Bulgaria's canonical country metadata now resolves to EUR rather than the retired BGN code, with generated metadata and tests refreshed from the explicit override
 - The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, INR, CAD, KRW, HUF, and MXN through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, CUP through the Banco Central de Cuba natural-person reference, MMK through the CBM bank-customer market rate published by Myanmar's Central Statistical Organization, and LAK through the latest Bank of the Lao P.D.R. reference preceding the snapshot
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
-- `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
+- `data/reference/accommodation_property_panels_2026_2027.json` now uses a generic version 2 property/ranking contract and freezes Barcelona, Copenhagen, Lisbon, and Prague; one verified hostel can enter both dorm and private-room panels without duplicating the establishment
+- Lisbon's 24 July 2026 official RNET/RNAL frame retains 242 in-radius classified hotels and 97 in-radius physical hostel candidates; hotel selection excludes price/brand/capacity/website visibility, while hostels remain unranked until direct sites prove dorm/private inventory
 - Barcelona joins the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
 - The Barcelona frame has four frozen hotel panels but zero verified websites or accepted quotes; its hostel measures remain explicitly unavailable because `Hostal o pensió` is not treated as youth-hostel inventory
 - Copenhagen uses the public no-key Hotelstars Union Denmark directory: after excluding conference and 5-star products, 201 eligible hotel records produce 29 in-radius properties (3 two-star, 11 three-star, 15 four-star), no one-star class, and a two-star panel below the five-quote gate

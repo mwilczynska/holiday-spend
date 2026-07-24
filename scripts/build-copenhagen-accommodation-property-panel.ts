@@ -297,6 +297,8 @@ function buildCityPanel(
     excluded_missing_official_geolocation: 2,
     pending_inventory_verification: 3,
     pending_inventory_and_geolocation: 4,
+    pending_website_and_inventory_verification: 5,
+    excluded_candidate_outside_radius: 6,
   } as const;
   properties.sort(
     (left, right) =>

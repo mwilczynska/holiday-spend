@@ -94,6 +94,8 @@ const propertySchema = z.object({
     'excluded_outside_radius',
     'pending_inventory_verification',
     'pending_inventory_and_geolocation',
+    'pending_website_and_inventory_verification',
+    'excluded_candidate_outside_radius',
   ]),
   exclusionReason: z.string().min(1).nullable(),
   officialWebsiteUrl: z.string().url().nullable(),
@@ -317,6 +319,37 @@ export const accommodationPropertyPanelCollectionSchema = z
           });
         }
         if (
+          property.geographicDisposition === 'pending_website_and_inventory_verification' &&
+          (!hasCoordinates ||
+            property.distanceFromCentreKm === null ||
+            property.distanceFromCentreKm > collection.protocol.searchRadiusKm ||
+            property.exclusionReason === null ||
+            property.eligibleMeasures.length !== 0 ||
+            property.officialWebsiteUrl !== null)
+        ) {
+          context.addIssue({
+            code: 'custom',
+            path: ['cities', cityIndex, 'properties', propertyIndex],
+            message:
+              'Website-and-inventory-pending candidates require in-radius official coordinates, an explicit limitation, no inferred measures, and no unverified website guess',
+          });
+        }
+        if (
+          property.geographicDisposition === 'excluded_candidate_outside_radius' &&
+          (!hasCoordinates ||
+            property.distanceFromCentreKm === null ||
+            property.distanceFromCentreKm <= collection.protocol.searchRadiusKm ||
+            property.exclusionReason === null ||
+            property.eligibleMeasures.length !== 0)
+        ) {
+          context.addIssue({
+            code: 'custom',
+            path: ['cities', cityIndex, 'properties', propertyIndex],
+            message:
+              'Outside-radius candidates require official coordinates, an exclusion reason, and no inferred measures',
+          });
+        }
+        if (
           property.websiteVerificationStatus === 'pending' &&
           property.officialWebsiteUrl !== null
         ) {
@@ -344,7 +377,9 @@ export const accommodationPropertyPanelCollectionSchema = z
       const candidateProperties = city.properties.filter(
         (property) =>
           property.geographicDisposition === 'pending_inventory_verification' ||
-          property.geographicDisposition === 'pending_inventory_and_geolocation'
+          property.geographicDisposition === 'pending_inventory_and_geolocation' ||
+          property.geographicDisposition === 'pending_website_and_inventory_verification' ||
+          property.geographicDisposition === 'excluded_candidate_outside_radius'
       );
       const geolocatedEligible = eligibleProperties.filter(
         (property) => property.latitude !== null && property.longitude !== null
@@ -353,7 +388,9 @@ export const accommodationPropertyPanelCollectionSchema = z
         (property) => property.geographicDisposition === 'excluded_missing_official_geolocation'
       );
       const outside = city.properties.filter(
-        (property) => property.geographicDisposition === 'excluded_outside_radius'
+        (property) =>
+          property.geographicDisposition === 'excluded_outside_radius' ||
+          property.geographicDisposition === 'excluded_candidate_outside_radius'
       );
       const inRadius = city.properties.filter(
         (property) => property.geographicDisposition === 'eligible_in_radius'
@@ -634,7 +671,9 @@ export function summarizeAccommodationPropertyPanels(
     candidateProperties: properties.filter(
       (property) =>
         property.geographicDisposition === 'pending_inventory_verification' ||
-        property.geographicDisposition === 'pending_inventory_and_geolocation'
+        property.geographicDisposition === 'pending_inventory_and_geolocation' ||
+        property.geographicDisposition === 'pending_website_and_inventory_verification' ||
+        property.geographicDisposition === 'excluded_candidate_outside_radius'
     ).length,
     eligibleInRadiusProperties: properties.filter(
       (property) => property.geographicDisposition === 'eligible_in_radius'
@@ -645,7 +684,9 @@ export function summarizeAccommodationPropertyPanels(
       (property) => property.geographicDisposition === 'excluded_missing_official_geolocation'
     ).length,
     outsideRadius: properties.filter(
-      (property) => property.geographicDisposition === 'excluded_outside_radius'
+      (property) =>
+        property.geographicDisposition === 'excluded_outside_radius' ||
+        property.geographicDisposition === 'excluded_candidate_outside_radius'
     ).length,
     websitesSourceListed: properties.filter(
       (property) => property.websiteVerificationStatus === 'source_listed_unverified'

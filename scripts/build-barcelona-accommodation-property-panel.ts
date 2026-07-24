@@ -264,6 +264,8 @@ function buildCollection(registerPath: string, geolocationPath: string) {
     excluded_missing_official_geolocation: 3,
     pending_inventory_verification: 4,
     pending_inventory_and_geolocation: 5,
+    pending_website_and_inventory_verification: 6,
+    excluded_candidate_outside_radius: 7,
   } as const;
   properties.sort(
     (left, right) =>

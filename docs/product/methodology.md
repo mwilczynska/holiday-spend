@@ -191,7 +191,7 @@ tier. For food and drink, city-level source medians will be
 triangulated with independent menu observations in the validation sample. For activities, current
 official attraction and tour-operator prices will replace global multipliers.
 
-The first three frames now provide concrete reproducibility tests. Barcelona's July 2026 frame joins the
+The first four frames now provide concrete reproducibility tests. Barcelona's July 2026 frame joins the
 Catalonia Tourism Register to Barcelona City Council coordinates using the official `HB` registration id.
 It starts with 344 active standard one- through four-star hotels; 327 join to official coordinates and
 322 fall within 5 km of the frozen, price-independent centre (`41.38749043, 2.16952564`). A SHA-256 rank
@@ -241,6 +241,21 @@ in-radius properties explicitly support the dorm measure and ten support the pri
 hostel remains geolocated but inventory-pending because its official page states neither room type. The
 hotel frame contains five eligible 3-star and nine eligible 4-star properties within 5 km, but no 1-star
 or 2-star property; missing classes remain missing.
+
+Lisbon uses two daily official Turismo de Portugal open-data registers captured on 24 July 2026. The
+RNET snapshot contains 5,649 national records and 372 Lisbon records. Restricting the frame to properties
+whose municipality is Lisboa, type is `Hotel`, and national category is exactly one through four stars
+retains 254 hotels, all with official coordinates. Their component-wise median fixes the price-independent
+centre at `38.72280334, -9.14327108`; 242 hotels fall within 5 km: 13 one-star, 29 two-star, 90 three-star,
+and 110 four-star. Each class therefore has a frozen 12-property primary panel and ordered reserves.
+
+The Lisbon-only RNAL extract contains 11,865 local-accommodation registrations, including 113 with the
+explicit `EstabelecimentoHospedagemHostel` modality. Normalized name, postcode, and rounded official
+coordinates collapse those to 106 physical hostel candidates; four identity groups contain multiple
+floor or unit registrations. Ninety-seven physical candidates fall within 5 km. RNAL does not supply an
+official property website or prove current dorm/private inventory, so these candidates remain unranked
+and ineligible for either hostel measure until direct-site matching verifies the applicable room types.
+The register class and capacity are not treated as substitutes for inventory evidence.
 
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted

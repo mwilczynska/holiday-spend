@@ -346,7 +346,7 @@ between quote capture and check-in, one low/shoulder/high stratum per city, and 
 gate with a deterministic same-season replacement rule. Several destination labels currently use
 official climate/travel guidance and are explicitly provisional until upgraded with monthly demand data.
 
-The first three official-source sampling frames are also frozen in
+The first four official-source sampling frames are also frozen in
 `data/reference/accommodation_property_panels_2026_2027.json`. Its generic version 2 contract stores
 properties separately from measure-specific rankings, so a verified hostel can participate in both dorm
 and private-room panels without duplicating the establishment. For Barcelona, an `HB` registration-id
@@ -384,6 +384,15 @@ and nine 4-star hotels, with overlap where one hostel supports both measures. No
 eligible within 5 km. The frozen sampling-frame artifact initially contains zero verified websites because
 price and website visibility were excluded from ranking. A separate append-only quote-attempt ledger now
 records verification and retrieval outcomes without rewriting that frozen rank.
+
+Lisbon adds complete same-day official RNET and Lisbon-filtered RNAL snapshots from Turismo de Portugal.
+RNET retains 254 registered one- through four-star Lisbon hotels with official coordinates. Their
+component-wise median fixes the centre at `38.72280334, -9.14327108`, leaving 242 hotels within 5 km:
+13 one-star, 29 two-star, 90 three-star, and 110 four-star. All four hotel measures therefore receive a
+12-property price-blind primary panel plus their full reserve order. The RNAL extract contains 113 explicit
+hostel registrations collapsed to 106 physical candidates using normalized name, postcode, and rounded
+official coordinates; 97 lie within 5 km. They remain unranked because RNAL supplies neither official
+websites nor current dorm/private inventory, and capacity is not used to infer either measure.
 
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the
@@ -470,6 +479,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
 - [x] Freeze Prague's deduplicated Hotelstars frame and official 12-property hostel evidence: 25 distinct
   in-radius properties, two ten-property hostel panels, five 3-star and nine 4-star hotels, explicit
   absent 1-/2-star classes, and one geolocated inventory-pending hostel.
+- [x] Freeze Lisbon from the complete official RNET/RNAL snapshots: 242 in-radius 1-4-star hotels with four
+  12-property primary panels, plus 97 in-radius physical hostel candidates retained without inferred inventory.
 - [x] Add a validated property-attempt ledger and complete the Copenhagen shoulder checkpoint:
   ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and
   four explicit booking-path failures; retain the seasonal median but keep the annualized measure
