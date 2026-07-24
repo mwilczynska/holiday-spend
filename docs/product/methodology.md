@@ -360,8 +360,16 @@ arrivals in 2024 against an official year-end municipal population estimate of 4
 arrivals per resident (`very_high`). The Split Tourist Board reports 1,050,847 domestic and international
 eVisitor arrivals against 158,636 residents for the same city boundary, producing 6.62 (`high`). eVisitor
 counts registrations rather than unique people, so an accommodation change can register one person more
-than once; the ratios are tourism-pressure signals, not unique visitor counts. The other 27 fields stay
-pending until an equally defensible same-year, same-geography pair is available.
+than once; the ratios are tourism-pressure signals, not unique visitor counts.
+
+San Francisco adds a North American `high` case using a different evidence design. San Francisco Travel's
+published 2023 model separates 5.81 million domestic and 2.19 million international overnight visitors,
+including hotels, rentals, and stays with friends or family. Their rounded sum of 8.00 million divided by
+the Census Bureau's 808,988 city/county residents produces 9.89 arrivals per resident. Because the
+numerator is a rounded model output rather than an accommodation register, its inputs and published
+precision remain explicit. The other 26 fields stay pending until an equally defensible same-year,
+same-geography pair is available. Tokyo remains pending because its official table reports person-nights,
+not arrivals, and its broader tourism estimate mixes day and overnight trips.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

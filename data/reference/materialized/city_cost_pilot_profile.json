@@ -241,10 +241,10 @@
     "tourismIntensity": [
       {
         "stratum": "measured_from_public_sources:high",
-        "cityCount": 3,
-        "representedCityCount": 3,
-        "materializedTierCells": 15,
-        "requiredTierCells": 57,
+        "cityCount": 4,
+        "representedCityCount": 4,
+        "materializedTierCells": 20,
+        "requiredTierCells": 76,
         "coveragePct": 26.32
       },
       {
@@ -273,11 +273,11 @@
       },
       {
         "stratum": "pending_source_collection:unknown",
-        "cityCount": 27,
-        "representedCityCount": 23,
-        "materializedTierCells": 106,
-        "requiredTierCells": 513,
-        "coveragePct": 20.66
+        "cityCount": 26,
+        "representedCityCount": 22,
+        "materializedTierCells": 101,
+        "requiredTierCells": 494,
+        "coveragePct": 20.45
       }
     ],
     "sourceDensity": [
@@ -316,8 +316,8 @@
   "modelReadiness": {
     "status": "insufficient_for_fallback_model_selection",
     "measuredCitySizeCount": 29,
-    "measuredTourismIntensityCount": 9,
-    "measuredBothPredictorsCount": 8,
+    "measuredTourismIntensityCount": 10,
+    "measuredBothPredictorsCount": 9,
     "completeTargetCityCount": 0,
     "reasons": [
       "No pilot city has all 19 tier targets materialized.",

@@ -182,6 +182,21 @@
       "populationSourceName": "Croatian Bureau of Statistics PxWeb, population estimate by towns and municipalities at 31 December",
       "populationSourceUrl": "https://web.dzs.hr/PXWeb/Selection.aspx?px_db=Stanovni%C5%A1tvo&px_language=en&px_path=Stanovni%C5%A1tvo__Procjene+stanovni%C5%A1tva&px_tableid=SP31_2.px",
       "notes": "The numerator is the Tourist Board's eVisitor extract processed on 27 January 2025 and includes both domestic and international registered arrivals. Subsequent registrations can revise eVisitor totals, and establishment changes can count the same tourist more than once; retain it as a reproducible accommodation-pressure proxy rather than a unique-person count."
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "referenceYear": 2023,
+      "spatialUnit": "City and County of San Francisco",
+      "overnightArrivals": 8000000,
+      "residentPopulation": 808988,
+      "numeratorDefinition": "Modelled domestic and international visitors staying at least one night in San Francisco during 2023",
+      "denominatorDefinition": "Estimated resident population of San Francisco County on 1 July 2023",
+      "arrivalsSourceName": "San Francisco Travel Association, 2023 Visitor Volume and Direct Spending Estimates",
+      "arrivalsSourceUrl": "https://www.sftravel.com/sites/default/files/2025-01/2023%20Visitor_Spending_Economic%20Estimates.pdf",
+      "populationSourceName": "U.S. Census Bureau, Vintage 2023 Population Estimates Program",
+      "populationSourceUrl": "https://data.census.gov/table/PEPCHARV2023.PEP_ALLDATA?g=050XX00US06075",
+      "notes": "The numerator sums the report's charted 5.81 million domestic and 2.19 million international overnight visitors. It is a rounded model estimate derived from lodging, transport, attraction, economic, and visitor-survey inputs; unlike accommodation-register counts it also covers vacation rentals and stays with friends or family. Retain 8.00 million as published precision, not an exact administrative count."
     }
   ]
 }

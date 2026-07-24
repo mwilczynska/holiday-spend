@@ -236,6 +236,57 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Refresh project memory in `CLAUDE.md`
 
 ### Phase 6: Observed-First City Cost Methodology And Validation (In Progress)
+
+#### Phase 6A: Freeze The Methodology And Acceptance Rules (Complete)
+- [x] Assess the original anchor-and-derive methodology against the supplied external accuracy audit
+- [x] Define version 3 estimands for accommodation, food, drinks, and activities; keep intercity transport manual and outside city costs
+- [x] Freeze observation provenance, source precedence, validation metrics, provisional accuracy gates, and fail-closed missing-data behaviour before model fitting
+- [x] Document the redesign in `docs/dev/plans/observed-first-methodology.md` and add the reproducible `accuracy_audit.csv` baseline
+
+#### Phase 6B: Build The Reproducible Evidence Pipeline (Complete)
+- [x] Add the versioned observation contract, source-access matrix, JSONL store, extraction-batch manifest, and bounded provider-neutral research runner
+- [x] Add batch validation, deterministic local-currency aggregation, frozen source-attributed FX, and v3-alpha basket materialization
+- [x] Retain secondary evidence, flag cross-channel medians differing by more than 25%, and keep research output unreviewed until evidence review
+- [x] Enforce fail-closed publication: unsupported cells remain missing and no incomplete wide city row is published
+
+#### Phase 6C: Collect And Enrich The 36-City Pilot (In Progress)
+- [x] Select a deterministic pilot spanning every region and the current cost range, then complete bounded first-pass research for all 36 candidates
+- [x] Retain explicit source-gap outcomes rather than substituting nearby cities, country averages, unlabeled prices, guest nights, or mixed day/overnight totals
+- [ ] Complete food, drink, and activity measures, prioritizing missing measures, independent source overlap, freshness, and documented sparse-city exceptions
+- [x] Complete the population matching pass with 29 reviewed records and seven explicit unmatched or non-single-city outcomes
+- [ ] Complete comparable tourism intensity using same-geography overnight arrivals and resident population
+  - [x] Measure 10/36 cities and both registered predictors for 9/36
+  - [ ] Resolve more of the remaining 26 cities without accepting geography or estimand mismatches
+- [x] Publish the deterministic baseline profile: 32/36 cities represented, 151/684 required tier cells materialized (22.08%), and zero complete cities
+- [ ] Add cross-channel disagreement, source-age, robust-outlier, seasonal-completeness, and systematic-missingness diagnostics when overlap is sufficient
+
+#### Phase 6D: Complete Observed-First Accommodation Panels (In Progress)
+- [x] Use official registers or destination directories for price-blind frames and direct property sites for quotes; exclude Booking.com and Hostelworld from LLM extraction
+- [x] Pre-register exact-90-day low/shoulder/high windows and require five accepted quotes per measure and season plus at least 60% cross-season property overlap
+- [x] Freeze reproducible Barcelona, Copenhagen, and Prague frames and add an append-only quote-attempt ledger
+- [x] Complete Copenhagen's 4-star shoulder checkpoint with five accepted quotes from ten rank-ordered attempts
+- [ ] Complete Copenhagen low/high seasons, collect eligible Barcelona and Prague panels, resolve defensible hostel inventory, and expand the procedure to the remaining pilot
+- [ ] Materialize the first annualized accommodation measure only after every pre-registered gate passes
+
+#### Phase 6E: Select And Validate Missing-Data Models (Pending Evidence Coverage)
+- [ ] Confirm that pilot target coverage and independent source overlap are sufficient for defensible comparison
+- [ ] Freeze a stratified independent holdout and overall/subgroup acceptance gates before final fitting or holdout inspection
+- [ ] Compare simple and model-based fallbacks with whole-city cross-validation so tiers from one city cannot leak across folds
+- [ ] Evaluate accuracy, bias, subgroup failure, stability, and interval calibration; freeze the simplest materially better method before one-time holdout evaluation
+
+#### Phase 6F: Recollect And Validate All 121 Cities (Pending Pilot Validation)
+- [ ] Recollect all cities in versioned auditable batches using the frozen pilot contracts
+- [ ] Materialize deterministic tiers, apply the frozen fallback only where needed, and publish calibrated uncertainty and evidence scores
+- [ ] Recollect the holdout independently; report overall and subgroup metrics with city-cluster uncertainty intervals and run full-itinerary backtests
+- [ ] Disclose failed gates and begin a newly protected validation cycle if material remediation is required
+
+#### Phase 6G: Product Migration And Maintenance (Pending Validation)
+- [ ] Replace the version 1 prompt with source-first observation extraction and deterministic server-side tier calculation, validation, provenance, fallback logging, and uncertainty
+- [ ] Migrate the canonical CSV/database only after validation and retain the prior dataset and methodology for reproducibility
+- [ ] Publish achieved rather than aspirational metrics on `/estimates` with a versioned data card/model card
+- [ ] Add category-aware freshness checks and monitor actual-trip residuals for drift by region, category, and destination type
+
+#### Detailed Phase 6 Progress Log
 - [x] Assess the original anchor-and-derive methodology against the supplied external accuracy audit
 - [x] Define version 3 estimands, observation-level provenance, validation metrics, and provisional acceptance gates
 - [x] Document the observed-first redesign in `docs/dev/plans/observed-first-methodology.md`
@@ -276,14 +327,11 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Add Sofia as the first measured `low` tourism-intensity record: 1,185,345 official 2024 accommodation arrivals / 1,295,931 residents = 0.91, retaining the 10-or-more-bed establishment threshold
   - [x] Add Istanbul as the second measured `low` tourism-intensity record: 13,212,666 official 2023 accommodation arrivals / 15,655,924 province residents = 0.84, retaining repeat-entry and registered-establishment limitations
   - [x] Add Dubrovnik and Split tourism-intensity records from official 2024 eVisitor and municipal-population evidence: Dubrovnik = 33.25 (`very_high`) and Split = 6.62 (`high`), retaining the repeat-registration limitation
+  - [x] Add San Francisco tourism intensity from the published 2023 overnight-visitor model and Census population: 8.00 million / 808,988 = 9.89 (`high`), retaining rounded/modelled precision; reject Tokyo guest-night and mixed-visit substitutes
   - [x] Add a deterministic pilot-wide missingness profile: 32/36 pilot cities represented, 151/684 tier cells materialized (22.08%), zero complete cities, and three non-pilot batch-zero rows explicitly excluded
   - [x] Add a validated accommodation attempt ledger and complete the Copenhagen shoulder checkpoint: ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and four booking-path failures
   - [x] Materialize the current fail-closed research artifact from 171 direct observations: 166 of 665 tier cells across 35 represented cities, one incomplete accommodation measure, and zero incomplete wide rows published
-- [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
-- [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
-- [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
-- [ ] Replace the version 1 new-city prompt with a source-first version 2 prompt and deterministic server-side tier calculation
-- [ ] Publish achieved overall and subgroup accuracy metrics on `/estimates`
+- [ ] Continue the category-level pilot collection, accommodation panels, enrichment, diagnostics, model selection, 121-city recollection, validation, and product migration through the gated milestones above
 
 ### Priority 2B: Native Account Expansion
 - [x] Add native email/password accounts alongside Google OAuth rather than replacing Google sign-in
@@ -441,6 +489,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Sofia raises measured tourism-intensity coverage to six of 36 and adds the first `low` case; its NSI numerator excludes categorized establishments with fewer than 10 bed places
 - Istanbul raises measured tourism-intensity coverage to seven of 36 and adds a second `low` case; its official 2023 numerator counts registered-establishment entries rather than unique visitors and excludes out-of-frame stays
 - Dubrovnik and Split raise measured tourism-intensity coverage to nine of 36 and add the first `very_high` case; both use same-boundary 2024 eVisitor arrivals and official municipal populations while retaining eVisitor's repeat-registration limitation
+- San Francisco raises measured tourism-intensity coverage to ten of 36 and adds the first North American record; its 2023 numerator is a rounded model estimate covering hotels, rentals, and friends/family stays rather than an administrative registration count
 - `data/reference/materialized/city_cost_pilot_profile.json` now joins enrichment and materialized evidence across the full 36-city denominator, reports coverage by region/city-size/tourism/source-density strata, and records that fallback-model selection is not yet defensible
 - Bulgaria's canonical country metadata now resolves to EUR rather than the retired BGN code, with generated metadata and tests refreshed from the explicit override
 - The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, INR, CAD, KRW, HUF, and MXN through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, CUP through the Banco Central de Cuba natural-person reference, MMK through the CBM bank-customer market rate published by Myanmar's Central Statistical Organization, and LAK through the latest Bank of the Lao P.D.R. reference preceding the snapshot

@@ -418,6 +418,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     second measured `low` case, retaining the repeat-entry and registered-establishment limitations.
   - [x] Add Dubrovnik and Split from official 2024 eVisitor and municipal-population statistics, adding the
     first `very_high` case while retaining eVisitor's repeat-registration limitation.
+  - [x] Add San Francisco from the official destination model and Census population estimate, retaining the
+    modelled and rounded numerator; reject Tokyo's guest-night and mixed day/overnight substitutes.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.
