@@ -241,7 +241,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Generate a deterministic 36-city candidate pilot spanning every region and the current cost range
   - [x] Constrain collection to free, checkpointed LLM web-research calls with no paid data APIs or project-imposed daily cap
   - [x] Add an observation-level JSONL store and extraction-batch manifest
+  - [x] Add extraction-batch validation plus deterministic local-currency aggregation, frozen FX, and v3-alpha basket materialization
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
+  - [x] Materialize the first fail-closed research artifact: 15 of 57 tier cells across three cities, with zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -452,6 +454,10 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `src/lib/city-cost-observation.ts`
 - `scripts/select-city-cost-pilot.mjs`
 - `scripts/validate-city-cost-observations.ts`
+- `src/lib/city-cost-methodology-v3.ts`
+- `scripts/materialize-city-cost-v3.ts`
+- `data/reference/fx/city_cost_fx_aud_2026-07-22.json`
+- `data/reference/materialized/city_costs_v3_alpha.json`
 - `src/lib/city-generation.ts`
 - `src/lib/city-llm-client.ts`
 - `src/lib/city-generation-config.ts`

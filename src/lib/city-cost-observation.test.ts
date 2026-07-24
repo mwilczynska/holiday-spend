@@ -62,6 +62,21 @@ describe('city cost observation schema', () => {
     expect(result.success).toBe(false);
   });
 
+  it('rejects category, unit, or traveller definitions that do not match the measure', () => {
+    const result = cityCostObservationSchema.safeParse({
+      ...directFoodObservation(),
+      category: 'food',
+      unit: 'per_two_person_meal',
+      travellers: 2,
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues.map((issue) => issue.path.join('.'))).toEqual(
+        expect.arrayContaining(['category', 'unit', 'travellers'])
+      );
+    }
+  });
+
   it('requires imputed estimates to carry a model version and interval', () => {
     const result = cityCostObservationSchema.safeParse({
       ...directFoodObservation(),

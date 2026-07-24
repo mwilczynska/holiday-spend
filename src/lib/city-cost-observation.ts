@@ -23,6 +23,40 @@ export const CITY_COST_MEASURES = [
   'full_day_premium_activity_adult_1',
 ] as const;
 
+type CityCostMeasure = (typeof CITY_COST_MEASURES)[number];
+
+export const CITY_COST_MEASURE_DEFINITIONS = {
+  hostel_dorm_bed_1p: { category: 'accommodation', unit: 'per_bed_night', travellers: 1 },
+  hostel_private_room_2p: { category: 'accommodation', unit: 'per_room_night', travellers: 2 },
+  hotel_1star_room_2p: { category: 'accommodation', unit: 'per_room_night', travellers: 2 },
+  hotel_2star_room_2p: { category: 'accommodation', unit: 'per_room_night', travellers: 2 },
+  hotel_3star_room_2p: { category: 'accommodation', unit: 'per_room_night', travellers: 2 },
+  hotel_4star_room_2p: { category: 'accommodation', unit: 'per_room_night', travellers: 2 },
+  street_food_meal_1p: { category: 'food', unit: 'per_person_item', travellers: 1 },
+  inexpensive_restaurant_meal_1p: { category: 'food', unit: 'per_person_item', travellers: 1 },
+  midrange_restaurant_meal_2p: { category: 'food', unit: 'per_two_person_meal', travellers: 2 },
+  premium_restaurant_meal_2p: { category: 'food', unit: 'per_two_person_meal', travellers: 2 },
+  cappuccino_1: { category: 'drinks', unit: 'per_person_item', travellers: 1 },
+  domestic_draft_beer_1: { category: 'drinks', unit: 'per_person_item', travellers: 1 },
+  cocktail_1: { category: 'drinks', unit: 'per_person_item', travellers: 1 },
+  wine_glass_1: { category: 'drinks', unit: 'per_person_item', travellers: 1 },
+  paid_attraction_adult_1: { category: 'activities', unit: 'per_person_ticket', travellers: 1 },
+  half_day_group_activity_adult_1: { category: 'activities', unit: 'per_person_ticket', travellers: 1 },
+  full_day_premium_activity_adult_1: { category: 'activities', unit: 'per_person_ticket', travellers: 1 },
+} as const satisfies Record<
+  CityCostMeasure,
+  {
+    category: 'accommodation' | 'food' | 'drinks' | 'activities';
+    unit:
+      | 'per_bed_night'
+      | 'per_room_night'
+      | 'per_person_item'
+      | 'per_two_person_meal'
+      | 'per_person_ticket';
+    travellers: number;
+  }
+>;
+
 export const cityCostObservationSchema = z
   .object({
     schemaVersion: z.literal('city-cost-observation-v1'),
@@ -99,6 +133,29 @@ export const cityCostObservationSchema = z
     notes: z.string().default(''),
   })
   .superRefine((observation, context) => {
+    const definition = CITY_COST_MEASURE_DEFINITIONS[observation.measure];
+    if (observation.category !== definition.category) {
+      context.addIssue({
+        code: 'custom',
+        path: ['category'],
+        message: `${observation.measure} requires category ${definition.category}`,
+      });
+    }
+    if (observation.unit !== definition.unit) {
+      context.addIssue({
+        code: 'custom',
+        path: ['unit'],
+        message: `${observation.measure} requires unit ${definition.unit}`,
+      });
+    }
+    if (observation.travellers !== definition.travellers) {
+      context.addIssue({
+        code: 'custom',
+        path: ['travellers'],
+        message: `${observation.measure} requires ${definition.travellers} traveller(s)`,
+      });
+    }
+
     if (observation.reportedLow !== null && observation.reportedHigh !== null && observation.reportedLow > observation.reportedHigh) {
       context.addIssue({ code: 'custom', path: ['reportedLow'], message: 'reportedLow cannot exceed reportedHigh' });
     }

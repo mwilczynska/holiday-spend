@@ -299,11 +299,17 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
 
 - [x] Add a versioned raw-observation schema and JSONL validator.
 - [x] Add a persistent JSONL observation store and versioned batch manifest.
-- [ ] Add an extraction-batch schema and manifest validator.
-- [ ] Add deterministic normalization, FX, aggregation, and basket scripts.
+- [x] Add an extraction-batch schema and manifest validator.
+- [x] Add deterministic normalization, FX, aggregation, and basket scripts.
 - [x] Define a free-only LLM research protocol with adaptive throughput and no project-imposed call cap.
 - [ ] Confirm public-page usage and retention constraints before scaling each source.
 - [ ] Build the source-research runner with fixture-based parser tests.
+
+Checkpoint: the v3-alpha materializer currently validates 15 accepted direct observations across three
+cities, aggregates in city-local currency, applies a frozen and source-attributed AUD FX snapshot, and
+materializes 15 of 57 possible city-tier cells. No city is complete and no partial wide row is published.
+The pipeline is therefore reproducible and fail-closed, but it is not yet a replacement for the active
+121-city dataset.
 
 ### 6C. Pilot and model selection
 

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "city-cost-fx-snapshot-v1",
+  "snapshotId": "aud-reference-2026-07-22-v1",
+  "baseCurrency": "AUD",
+  "asOfDate": "2026-07-22",
+  "retrievedAt": "2026-07-24T05:00:00.000Z",
+  "rates": {
+    "AUD": {
+      "currency": "AUD",
+      "audPerUnit": 1,
+      "sourceName": "Identity",
+      "sourceUrl": "https://www.rba.gov.au/exchange-rates-overview.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 AUD = 1 AUD",
+      "derivation": "identity",
+      "derivationFormula": "1"
+    },
+    "EUR": {
+      "currency": "EUR",
+      "audPerUnit": 1.6312,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD",
+      "derivation": "direct_quote",
+      "derivationFormula": "1.6312"
+    },
+    "USD": {
+      "currency": "USD",
+      "audPerUnit": 1.4298737727910238,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 1.1408 USD",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 1.1408"
+    },
+    "CZK": {
+      "currency": "CZK",
+      "audPerUnit": 0.06749979309774062,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 24.166 CZK",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 24.166"
+    },
+    "DKK": {
+      "currency": "DKK",
+      "audPerUnit": 0.2182003023128269,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 7.4757 DKK",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 7.4757"
+    },
+    "THB": {
+      "currency": "THB",
+      "audPerUnit": 0.04229193673839772,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 38.570 THB",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 38.570"
+    },
+    "VND": {
+      "currency": "VND",
+      "audPerUnit": 0.000054926947160276834,
+      "sourceName": "Reserve Bank of Australia",
+      "sourceUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+      "sourceDate": "2026-07-14",
+      "sourceQuote": "1 AUD = 18,206 VND",
+      "derivation": "inverted_quote",
+      "derivationFormula": "1 / 18206"
+    }
+  }
+}

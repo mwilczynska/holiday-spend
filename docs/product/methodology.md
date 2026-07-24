@@ -104,6 +104,32 @@ city/category. Provider-enforced free-tier limits affect throughput, not the evi
 checkpoint demonstrates that the collection contract works; it is not an updated accuracy result and
 does not replace the frozen holdout evaluation.
 
+The v3-alpha deterministic calculator is also implemented as a reproducible research artifact. It
+validates the category, unit, and traveller count implied by every measure; converts source currencies
+into the canonical city-local currency; aggregates comparable accepted observations with medians and
+interquartile ranges; and only then converts the aggregated result to AUD using a frozen FX snapshot.
+Direct observations take precedence over derived values, which take precedence over imputed values, so
+an imputation cannot dilute available direct evidence.
+
+The current frozen snapshot uses the European Central Bank's 22 July 2026 euro reference rates for EUR,
+USD, CZK, DKK, and THB, plus the Reserve Bank of Australia's 14 July 2026 AUD/VND quote. Each stored rate
+retains its source date, quote, URL, and derivation formula. The materializer verifies the snapshot and
+recomputes cross-rate arithmetic in automated tests.
+
+The first materialized artifact contains three cities and 15 accepted direct observations. It can
+calculate 15 of 57 possible city-tier cells: coffee, the coffee-only drinks basket, the light drinks
+basket, free activities, and the budget paid-attraction basket for each city. It reports zero complete
+cities and emits no publishable wide row because accommodation, street/premium food, cocktail/wine, and
+mid/high activity observations are still missing. This fail-closed behaviour is intentional: partial
+evidence remains visible without being misrepresented as a complete replacement dataset.
+
+The v3-alpha formula set is provisional until the pilot and whole-city validation are complete. Literal
+two-person baskets are calculated deterministically from retained primitives; for example,
+`drinks_light = 2 * cappuccino + 2 * domestic beer`, while `activities_budget = 2 * paid adult
+attraction`. Missing parent measures produce a named missing-data result, not an invented fallback. The
+current artifact lives at `data/reference/materialized/city_costs_v3_alpha.json` and is reproduced with
+`npm run methodology:materialize:v3`; `npm run methodology:materialize:v3:check` detects drift.
+
 ### Reproducible Estimands
 
 Every estimate must specify what is being estimated. Accommodation, for example, will use fixed
