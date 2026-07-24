@@ -119,9 +119,9 @@
       "batchId": "batch-zero-accommodation",
       "status": "in_progress",
       "plannedCalls": 27,
-      "completedCalls": 0,
-      "acceptedObservations": 3,
-      "checkpoint": "copenhagen_shoulder_partial_three_of_five",
+      "completedCalls": 1,
+      "acceptedObservations": 5,
+      "checkpoint": "copenhagen_shoulder_minimum_reached",
       "observationFiles": [
         "data/reference/observations/accommodation-copenhagen-shoulder-2026-07-24.jsonl"
       ],
@@ -137,7 +137,7 @@
         {"city": "San Francisco", "country": "United States", "region": "North America", "categories": ["accommodation"], "reason": "event_sensitive_high_cost_panel"},
         {"city": "Da Nang", "country": "Vietnam", "region": "SEA", "categories": ["accommodation"], "reason": "seasonal_beach_market_panel"}
       ],
-      "reason": "Twenty-seven exact-90-day city-season quote calls are scheduled in accommodation_reference_windows_2026_2027.json. Copenhagen shoulder is in progress with three accepted quotes from six rank-ordered property attempts; the measure remains below the five-property completion gate."
+      "reason": "Twenty-seven exact-90-day city-season quote calls are scheduled in accommodation_reference_windows_2026_2027.json. Copenhagen shoulder is complete at its five-property minimum after ten rank-ordered attempts; low and high seasons plus the repeated-property overlap gate remain before any annualized accommodation measure can materialize."
     }
   ]
 }

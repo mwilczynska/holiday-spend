@@ -92,12 +92,12 @@ dated source observations
 ### Implementation Checkpoint
 
 The observation schema, JSONL validator, and batch manifest are now implemented. Batch zero plus the
-first pilot wave contain 42 direct observations across Lisbon, Prague, Hanoi, Copenhagen, Bangkok, Pu
+first pilot wave contain 47 direct observations across Lisbon, Prague, Hanoi, Copenhagen, Bangkok, Pu
 Luong, Barcelona, San Francisco, and Da Nang: 32 standardized Numbeo food/drink prices, one Pu Luong
-official-menu meal, eight official paid-attraction prices, and one operator-listed Pu Luong half-day
-group activity. Every row retains its
+official-menu meal, eight official paid-attraction prices, one operator-listed Pu Luong half-day group
+activity, and five exact-date official-property accommodation quotes. Every row retains its
 original EUR, CZK, DKK, THB, VND, or USD value, source URL, retrieval time, page-valid date where known,
-displayed range, source-access basis, and extraction version. The validator reports 42 valid direct rows
+displayed range, source-access basis, and extraction version. The validator reports 47 valid direct rows
 and no schema errors.
 
 Pu Luong is an intentional sparse-market stress test. No defensible Numbeo city page was found, so the
@@ -135,12 +135,13 @@ USD, CZK, DKK, and THB, plus the Reserve Bank of Australia's 14 July 2026 AUD/VN
 retains its source date, quote, URL, and derivation formula. The materializer verifies the snapshot and
 recomputes cross-rate arithmetic in automated tests.
 
-The current materialized artifact contains nine cities and 45 accepted direct observations. It can
+The current materialized artifact contains nine cities and 47 accepted direct observations. It can
 calculate 42 of 171 possible city-tier cells: coffee and the coffee-only/light drinks baskets for eight
 cities, free activities for all nine, budget paid-attraction baskets for eight, and one Pu Luong mid-range
 half-day activity basket. It reports zero complete cities and emits no publishable wide row because
-three Copenhagen accommodation quotes are still below the five-property seasonal minimum, while
-street/premium food, cocktail/wine, and many activity observations are also missing.
+the Copenhagen shoulder panel has reached five quotes but its low/high seasons and repeated-property
+overlap gate are still missing, while street/premium food, cocktail/wine, and many activity observations
+are also missing.
 This fail-closed behaviour is intentional: partial evidence remains visible without being misrepresented
 as a complete replacement dataset.
 
@@ -231,16 +232,18 @@ hostel remains geolocated but inventory-pending because its official page states
 hotel frame contains five eligible 3-star and nine eligible 4-star properties within 5 km, but no 1-star
 or 2-star property; missing classes remain missing.
 
-The first Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
-attempted in the frozen order, independent of price. Six official-property paths produced three accepted
-4-star quotes, one genuine no-availability result, and two booking paths that could not preserve the exact
-registered dates. Accepted nightly totals were DKK 1,178.36, DKK 1,417.43, and DKK 1,652.57, for a
-provisional median of DKK 1,417.43. Two are public non-refundable room-only rates; one is a public flexible
-rate with breakfast bundled. Each attempt retains the ownership evidence, exact dates, payable total, tax
-treatment, cancellation basis, meal basis, and failure reason. Because three accepted properties are fewer
-than five, the calculator reports one incomplete seasonal accommodation measure and publishes no
-accommodation tier. This separation prevents availability and technical failures from being misreported as
-zero-cost rooms or silently disappearing from the evidence.
+The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
+attempted in the frozen order, independent of price. Ten official-property paths produced five accepted
+4-star quotes, one genuine no-availability result, and four booking-path failures: three could not preserve
+the exact dates and one exposed only a nightly rate without a verifiable mandatory-charge total. Accepted
+nightly totals were DKK 1,178.36, DKK 1,365.29, DKK 1,417.43, DKK 1,652.57, and DKK 1,738.93, for a
+median of DKK 1,417.43. Four rates are non-refundable and one is flexible; two bundle breakfast, two are
+room-only, and one does not state a meal basis. Each attempt retains the ownership evidence, exact dates,
+payable total, tax treatment, cancellation basis, meal basis, and failure reason. The shoulder stratum now
+passes its five-property sample gate, but the calculator still reports one incomplete seasonal
+accommodation measure and publishes no accommodation tier because low/high coverage and 60% cross-season
+property overlap are not yet available. This separation prevents availability and technical failures from
+being misreported as zero-cost rooms or silently disappearing from the evidence.
 
 ### Robust Aggregation And Missing Data
 

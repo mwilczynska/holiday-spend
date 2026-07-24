@@ -1,10 +1,10 @@
 {
   "schemaVersion": "city-cost-collection-report-v1",
   "batchId": "batch-zero-accommodation",
-  "checkpoint": "copenhagen_shoulder_partial_three_of_five",
+  "checkpoint": "copenhagen_shoulder_minimum_reached",
   "collectionPolicy": "free_llm_web_research_only",
   "projectDailyCallCap": null,
-  "completedCityCategoryCalls": 0,
+  "completedCityCategoryCalls": 1,
   "cities": [
     "Lisbon",
     "Prague",
@@ -16,7 +16,7 @@
     "San Francisco",
     "Da Nang"
   ],
-  "acceptedObservations": 3,
+  "acceptedObservations": 5,
   "rejectedObservations": 0,
   "sources": [
     {
@@ -25,13 +25,13 @@
     }
   ],
   "coverage": {
-    "hotel_4star_room_2p": 3
+    "hotel_4star_room_2p": 5
   },
   "missing": [
     {
       "city": "Copenhagen",
       "measure": "hotel_4star_room_2p",
-      "reason": "Three accepted shoulder-season properties are below the frozen minimum of five; one selected property had no availability and two booking paths did not preserve the exact reference dates."
+      "reason": "The shoulder-season five-property minimum is complete, but the low- and high-season panels and the 60% repeated-property overlap check are still missing, so no annualized 4-star measure can materialize."
     },
     {
       "city": "Copenhagen",
@@ -60,9 +60,8 @@
     }
   ],
   "remainingCategories": [
-    "copenhagen_shoulder_remaining_property_quotes",
     "copenhagen_low_and_high_seasons",
     "other_first-wave_city_panels_and_windows"
   ],
-  "notes": "The append-only attempt ledger is data/reference/accommodation_quote_attempts/copenhagen-shoulder-2026-07-24.jsonl. It records six primary properties in frozen rank order: three accepted public quotes, one no-availability result, and two booking-path failures. Default-date or unverifiable prices were not accepted. The materializer retains the three quotes as incomplete seasonal evidence and publishes no accommodation tier."
+  "notes": "The append-only attempt ledger is data/reference/accommodation_quote_attempts/copenhagen-shoulder-2026-07-24.jsonl. It records ten primary properties in frozen rank order: five accepted public quotes, one no-availability result, and four booking-path failures. Default-date, nightly-only, or mandatory-charge-unverifiable prices were not accepted. The materializer retains the five-quote shoulder median as incomplete seasonal evidence and publishes no accommodation tier until low, shoulder, and high all pass the sample and overlap gates."
 }

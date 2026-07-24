@@ -1,15 +1,15 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T08:47:09.000Z",
+  "dataCutoff": "2026-07-24T09:12:14.000Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 45,
-    "accepted": 45,
+    "input": 47,
+    "accepted": 47,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 45,
+    "direct": 47,
     "derived": 0,
     "imputed": 0
   },
@@ -985,16 +985,20 @@
       "sourceChannelSummaries": [
         {
           "sourceChannel": "official_website",
-          "observationCount": 3,
-          "sourceCount": 3,
+          "observationCount": 5,
+          "sourceCount": 5,
           "sourceNames": [
             "Andersen Boutique Hotel official booking engine",
             "Hotel Alexandra official booking engine",
+            "Hotel Skt. Annæ official booking engine",
+            "The Huxley Copenhagen official Best Western booking engine",
             "Wide Hotel official booking engine"
           ],
           "observationIds": [
             "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
             "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+            "official-hotel-skt-annae-copenhagen-2026-07-24-hotel-4star-shoulder",
+            "official-the-huxley-copenhagen-2026-07-24-hotel-4star-shoulder",
             "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
           ],
           "medianLocal": 1417.428571,
@@ -1027,21 +1031,25 @@
         "summaries": [
           {
             "season": "shoulder",
-            "observationCount": 3,
-            "sourceCount": 3,
+            "observationCount": 5,
+            "sourceCount": 5,
             "sourceNames": [
               "Andersen Boutique Hotel official booking engine",
               "Hotel Alexandra official booking engine",
+              "Hotel Skt. Annæ official booking engine",
+              "The Huxley Copenhagen official Best Western booking engine",
               "Wide Hotel official booking engine"
             ],
             "observationIds": [
               "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
               "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+              "official-hotel-skt-annae-copenhagen-2026-07-24-hotel-4star-shoulder",
+              "official-the-huxley-copenhagen-2026-07-24-hotel-4star-shoulder",
               "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
             ],
             "medianLocal": 1417.428571,
-            "q25Local": 1297.894286,
-            "q75Local": 1534.999286,
+            "q25Local": 1365.285714,
+            "q75Local": 1652.57,
             "medianAud": 309.283343
           }
         ]
@@ -1059,12 +1067,14 @@
       "q75Aud": 309.283343,
       "minAud": 309.283343,
       "maxAud": 309.283343,
-      "observationCount": 3,
-      "availableObservationCount": 3,
-      "sourceCount": 3,
+      "observationCount": 5,
+      "availableObservationCount": 5,
+      "sourceCount": 5,
       "sourceNames": [
         "Andersen Boutique Hotel official booking engine",
         "Hotel Alexandra official booking engine",
+        "Hotel Skt. Annæ official booking engine",
+        "The Huxley Copenhagen official Best Western booking engine",
         "Wide Hotel official booking engine"
       ],
       "sourceCurrencies": [
@@ -1073,11 +1083,15 @@
       "observationIds": [
         "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
         "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-hotel-skt-annae-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-the-huxley-copenhagen-2026-07-24-hotel-4star-shoulder",
         "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
       ],
       "availableObservationIds": [
         "official-andersen-copenhagen-2026-07-24-hotel-4star-shoulder",
         "official-hotel-alexandra-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-hotel-skt-annae-copenhagen-2026-07-24-hotel-4star-shoulder",
+        "official-the-huxley-copenhagen-2026-07-24-hotel-4star-shoulder",
         "official-wide-hotel-copenhagen-2026-07-24-hotel-4star-shoulder"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"

@@ -380,13 +380,14 @@ eligible within 5 km. The frozen sampling-frame artifact initially contains zero
 price and website visibility were excluded from ranking. A separate append-only quote-attempt ledger now
 records verification and retrieval outcomes without rewriting that frozen rank.
 
-The first Copenhagen shoulder capture attempted ranks 1-6 in order: three public official-site quotes were
-accepted, Absalon had no inventory for the exact reference week, and two booking paths could not retain the
-registered dates. The accepted nightly prices are DKK 1,178.36, DKK 1,417.43, and DKK 1,652.57. Their
-provisional median is DKK 1,417.43, but three is below the pre-registered five-property minimum, so no
-accommodation tier materializes. The ledger explicitly distinguishes room-only from bundled-breakfast
-rates, flexible from non-refundable conditions, and a true availability failure from technical capture
-failure.
+The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
+were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the
+exact-date or mandatory-charge verification gate. The accepted nightly prices are DKK 1,178.36,
+DKK 1,365.29, DKK 1,417.43, DKK 1,652.57, and DKK 1,738.93. Their median is DKK 1,417.43. The
+pre-registered five-property seasonal minimum is therefore satisfied, but no annualized accommodation tier
+materializes until the low and high seasons also pass and at least 60% of the property panel overlaps across
+seasons. The ledger explicitly distinguishes room-only, bundled-breakfast, and unstated meal bases;
+flexible and non-refundable conditions; a true availability failure; and technical capture failures.
 
 ### 6C. Pilot and model selection
 
@@ -407,9 +408,10 @@ failure.
 - [x] Freeze Prague's deduplicated Hotelstars frame and official 12-property hostel evidence: 25 distinct
   in-radius properties, two ten-property hostel panels, five 3-star and nine 4-star hotels, explicit
   absent 1-/2-star classes, and one geolocated inventory-pending hostel.
-- [x] Add a validated property-attempt ledger and collect the first Copenhagen shoulder checkpoint:
-  six rank-ordered official-site attempts, three accepted 4-star quotes, one no-availability result, and
-  two explicit booking-path failures; keep the measure ineligible below five accepted properties.
+- [x] Add a validated property-attempt ledger and complete the Copenhagen shoulder checkpoint:
+  ten rank-ordered official-site attempts, five accepted 4-star quotes, one no-availability result, and
+  four explicit booking-path failures; retain the seasonal median but keep the annualized measure
+  ineligible until low/high coverage and the 60% repeated-property overlap gate pass.
 - [ ] Collect batch zero, then the 36-city pilot, with all four categories.
 - [ ] Profile missingness, source disagreement, seasonality, and outliers.
 - [ ] Fit and compare fallback models with whole-city cross-validation.
