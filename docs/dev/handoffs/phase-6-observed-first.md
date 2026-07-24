@@ -10,8 +10,8 @@ The current deterministic pilot profile is still `insufficient_for_fallback_mode
 - 29 measured city-size records
 - 14 measured tourism-intensity records
 - 12 destinations with both registered predictors
-- 10 structured tourism-intensity rejections
-- 12 tourism destinations not yet screened
+- 11 structured tourism-intensity rejections
+- 11 tourism destinations not yet screened
 - 151 of 684 required tier cells materialized (22.08%)
 - zero complete 19-cell destinations
 - zero eligible annualized accommodation measures
@@ -27,15 +27,16 @@ The most recent measured record is Goa, retained at the whole-state planner geog
 - 6.58 arrivals per resident (`high`)
 - limited inline disclosure of overnight filtering, coverage, and repeat-visit handling is retained in the record
 
-The latest screened rejection is Havana:
+The latest screened rejection is Da Nang:
 
-- ONEI defines tourists as visitors staying at least one night
-- the provincial accommodation-arrival table is international-only
-- the current ONEI arrival bulletin is also international-only and national
-- domestic plus international overnight arrivals for Havana therefore remain missing
+- the official full-year 2024 report estimates more than 10.9 million guests served by accommodation establishments
+- a separate official city statistical report says some visitors used accommodation for only a few hours while sightseeing
+- the served-guest series therefore cannot establish an overnight-only arrivals numerator
+- tourism intensity remains missing rather than converting short rests into overnight arrivals
 
 Recent commits, newest first:
 
+- `e0820fd feat: record havana tourism source gap`
 - `2d09c68 feat: add goa tourism intensity`
 - `42952c4 feat: record delhi tourism source gap`
 - `93693f2 feat: record medellin tourism source gap`
@@ -45,7 +46,7 @@ Recent commits, newest first:
 
 ## Remaining Tourism Screens
 
-The twelve `not_yet_screened` destinations are:
+The eleven `not_yet_screened` destinations are:
 
 - Zanzibar
 - Don Det
@@ -54,7 +55,6 @@ The twelve `not_yet_screened` destinations are:
 - Da Lat
 - Vang Vieng
 - Santa Fe (Bantayan)
-- Da Nang
 - Chiang Rai
 - Hanoi
 - Yangon
@@ -107,4 +107,4 @@ Preserve those files unless their owning workstream explicitly requests changes.
 
 ## Recommended Next Step
 
-Continue the twelve tourism screens, prioritizing destinations with official municipal or provincial accommodation-arrival tables (Da Nang, Hanoi, Chiang Rai, or Zanzibar). In parallel, improve independent source overlap for food, drinks, and activities. Resume direct-property accommodation quotes only when the interactive browser runtime is functional.
+Continue the eleven tourism screens, prioritizing destinations with official municipal or provincial accommodation-arrival tables (Hanoi, Chiang Rai, or Zanzibar). In parallel, improve independent source overlap for food, drinks, and activities. Resume direct-property accommodation quotes only when the interactive browser runtime is functional.

@@ -200,6 +200,18 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('visitantes internacionales'), url: expect.stringContaining('onei.gob.cu') },
       ],
     });
+    expect(artifact.cities.find((city) => city.city === 'Da Nang')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('foreign-affairs summary'), url: expect.stringContaining('danang.gov.vn') },
+        { name: expect.stringContaining('GRDP report'), url: expect.stringContaining('danang.gov.vn') },
+      ],
+    });
+    expect(artifact.cities.find((city) => city.city === 'Da Nang')?.tourismIntensity.notes).toContain(
+      'rest for only a few hours'
+    );
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',

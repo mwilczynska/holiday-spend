@@ -525,6 +525,13 @@ current arrival bulletin is likewise international-only and national. The projec
 the complete domestic-plus-international overnight numerator; the current profile therefore contains
 14 measured cities, ten screened rejections, and 12 unscreened gaps.
 
+Da Nang is the eleventh screened rejection. The city's official full-year 2024 report estimates more than
+10.9 million guests served by accommodation establishments, but a separate official statistical report
+states that some visitors used accommodation establishments to rest for only a few hours while sightseeing.
+The series is therefore not demonstrably overnight-only and remains missing rather than being converted into
+the registered numerator. The current profile contains 14 measured cities, 11 screened rejections, and 11
+unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
