@@ -425,8 +425,18 @@ pagination links drops the filter and returns the national universe. The 24 July
 unique government-managed 1-4-star Da Nang hotels: 180 one-star, 103 two-star, 86 three-star, and 54
 four-star records across 29 hashed pages. All 423 expose an address. The normalized snapshot is 94,609
 bytes with SHA-256 `1067ba95e95487413831b8f49efbb9d7761d10d7f63de1395e49a173de7524c6`.
-This is an eligibility/classification checkpoint only: no record enters a price-blind ranking until an
-auditable geolocation source supports the frozen centre and 5 km radius.
+The one-time geolocation checkpoint follows the public Nominatim policy: one machine, one thread, at least
+1.1 seconds between requests, an application-specific user agent, and an append-only local cache. Of the
+423 official rows, 124 former-Quang-Nam or remote merged-ward addresses are deferred for administrative-
+boundary review rather than queried or assumed outside the radius. The other 299 properties produce 560
+cached primary/fallback responses. Only 31 name-matched lodging POIs and 21 exact house-number/road matches
+are accepted; 202 coarse or ambiguous results and 45 misses remain without coordinates. Two same-star OSM
+identity collisions collapse four register rows to two physical properties, leaving 50 accepted physical
+coordinates. Their component-wise median fixes the price-independent centre at `16.06682875,
+108.24336055`. Forty-nine properties lie within 5 km: ten 1-star, eight 2-star, twelve 3-star, and nineteen
+4-star hotels. All four hotel panels therefore clear the five-property quote gate, although the 1- and
+2-star primary panels remain below the twelve-property target. The other 371 physical/register rows stay
+visibly excluded from ranking for missing accepted geolocation; no road or neighbourhood centroid is used.
 
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the

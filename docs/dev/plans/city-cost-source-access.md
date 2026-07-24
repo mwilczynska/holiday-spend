@@ -91,6 +91,15 @@ links do not retain those filters. The normalized capture retains stable propert
 reported totals, page byte counts, and SHA-256 hashes. The directory does not supply property coordinates,
 so it cannot by itself establish the fixed centre, radius eligibility, or ranking.
 
+The one-time address-resolution pass uses the public OpenStreetMap Foundation Nominatim service under its
+published usage policy: one machine and thread, at least 1.1 seconds between calls, an identifying user
+agent, local caching, no autocomplete, no grid/systematic POI search, and no repeated scheduled run. Each
+cached response retains the exact query, timestamp, URL, byte count, SHA-256, result set, policy URL, and
+OpenStreetMap/ODbL attribution. An empty name-plus-normalized-address query may receive one address-only
+fallback. A coordinate is eligible only if it is a name-matched lodging POI or an exact house-number and
+road match in Da Nang; coarse results are stored but rejected. The service and source are replaceable and
+are not exposed as an application feature.
+
 ### First frozen sampling frame: Barcelona
 
 `data/reference/accommodation_property_panels_2026_2027.json` contains the first audited property frame.

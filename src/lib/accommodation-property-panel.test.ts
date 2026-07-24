@@ -27,20 +27,20 @@ describe('accommodation property panels', () => {
     const collection = checkedInCollection();
     expect(summarizeAccommodationPropertyPanels(collection)).toEqual({
       collectionId: 'accommodation-property-panels-2026-2027-v2',
-      cities: 4,
-      frozenHotelPanels: 13,
+      cities: 5,
+      frozenHotelPanels: 17,
       frozenHostelPanels: 2,
       belowQuoteMinimumPanels: 1,
       unavailableHotelPanels: 3,
       candidateHostelPanels: 4,
-      unavailableHostelPanels: 2,
-      eligibleSourceProperties: 958,
+      unavailableHostelPanels: 4,
+      eligibleSourceProperties: 1379,
       candidateProperties: 120,
-      eligibleInRadiusProperties: 618,
-      primaryProperties: 156,
-      reserveProperties: 471,
-      missingOfficialGeolocation: 21,
-      outsideRadius: 328,
+      eligibleInRadiusProperties: 667,
+      primaryProperties: 198,
+      reserveProperties: 478,
+      missingOfficialGeolocation: 392,
+      outsideRadius: 329,
       websitesSourceListed: 449,
       websitesVerified: 0,
     });
@@ -77,6 +77,47 @@ describe('accommodation property panels', () => {
         (property) => property.sourcePropertySubtype === 'Hotel / Hotel'
       )
     ).toBe(true);
+  });
+
+  it('freezes Da Nang only from accepted property-level coordinates', () => {
+    const daNang = checkedInCollection().cities.find((city) => city.city === 'Da Nang')!;
+    expect(daNang.samplingFrame.centre).toEqual({
+      method:
+        'componentwise_median_of_50_deduplicated_name_matched_poi_or_exact_house_address_coordinates',
+      latitude: 16.06682875,
+      longitude: 108.24336055,
+      inputPropertyCount: 50,
+      searchRadiusKm: 5,
+    });
+    expect(daNang.samplingFrame.counts).toMatchObject({
+      sourceRecordCount: 423,
+      eligiblePropertyCount: 421,
+      geolocatedEligiblePropertyCount: 50,
+      missingOfficialGeolocationCount: 371,
+      outsideRadiusCount: 1,
+      eligibleInRadiusCount: 49,
+    });
+    expect(
+      daNang.measurePanels.map((panel) => [
+        panel.measure,
+        panel.status,
+        panel.eligibleInRadiusCount,
+      ])
+    ).toEqual([
+      ['hostel_dorm_bed_1p', 'unavailable_no_unambiguous_registry_class', 0],
+      ['hostel_private_room_2p', 'unavailable_no_unambiguous_registry_class', 0],
+      ['hotel_1star_room_2p', 'frozen_pending_website_verification', 10],
+      ['hotel_2star_room_2p', 'frozen_pending_website_verification', 8],
+      ['hotel_3star_room_2p', 'frozen_pending_website_verification', 12],
+      ['hotel_4star_room_2p', 'frozen_pending_website_verification', 19],
+    ]);
+    expect(
+      daNang.properties.find((property) => property.sourcePropertyId === '17756+17757')
+    ).toMatchObject({
+      name: 'Hilton Garden Inn Đà Nẵng',
+      geographicDisposition: 'eligible_in_radius',
+      sourceClassification: { value: '4 star' },
+    });
   });
 
   it('freezes Copenhagen without inventing missing classes or hostel inventory', () => {
@@ -314,10 +355,12 @@ describe('accommodation property panels', () => {
     expect(upserted.cities.map((city) => city.city)).toEqual([
       'Barcelona',
       'Copenhagen',
+      'Da Nang',
       'Lisbon',
       'Prague',
     ]);
-    expect(upserted.lockedAt).toBe('2026-07-24T14:22:00.000Z');
+    expect(upserted.lockedAt).toBe(collection.lockedAt);
+    expect(upserted.lockedAt.localeCompare('2026-07-24T07:23:48.123Z')).toBeGreaterThan(0);
   });
 
   it('allows one verified hostel to participate in both hostel measures', () => {

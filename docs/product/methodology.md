@@ -276,12 +276,20 @@ official sources cannot support either decision. Hanoi, Pu Luong, San Francisco,
 source-attributed inconclusive outcomes on 24 July because the available calendars were incomplete for a
 required part of their registered screen. Pending and inconclusive windows cannot contribute a quote.
 
-Da Nang's property-frame work has begun with a frozen official-register universe, not a completed panel.
+Da Nang's property frame begins with a frozen official-register universe rather than a commercial list.
 The Viet Nam National Authority of Tourism directory was filtered to government-managed hotel records in
 Da Nang and captured separately for one through four stars. The validated checkpoint contains 423 unique
 hotels (180 one-star, 103 two-star, 86 three-star, and 54 four-star), with an address for every record and
-page-level hashes. These records remain ineligible for ranking and price collection until an auditable
-geolocation source establishes which properties fall within the fixed 5 km radius.
+page-level hashes.
+
+A cached, policy-limited OpenStreetMap Nominatim pass then evaluates the central-city cohort. Coordinates
+are accepted only when the result is a name-matched lodging property or matches the exact house number and
+road; road and neighbourhood centroids do not qualify. Two duplicate physical identities are collapsed.
+This leaves 50 accepted physical coordinates and a median centre of `16.06682875, 108.24336055`. Forty-nine
+properties fall within 5 km: ten 1-star, eight 2-star, twelve 3-star, and nineteen 4-star hotels. The other
+371 rows remain visible but unranked because their location is missing, ambiguous, coarse, or still needs
+merged-boundary review. This is deliberately low geolocation coverage, not evidence that those hotels are
+outside the city-centre radius.
 
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted
