@@ -51,8 +51,35 @@ const measuredTourismIntensitySchema = z.object({
   notes: z.string().min(1),
 });
 
+const rejectedTourismSourceSchema = z.object({
+  name: z.string().min(1),
+  url: z.string().url(),
+});
+
+const pendingTourismIntensitySchema = z.object({
+  status: z.literal('pending_source_collection'),
+  value: z.null(),
+  referenceYear: z.null(),
+  spatialUnit: z.null(),
+  band: z.literal('unknown'),
+  sourceName: z.null(),
+  sourceUrl: z.null(),
+  researchOutcome: z.enum(['not_yet_screened', 'screened_no_compatible_value']),
+  rejectionReason: z.enum(['incompatible_numerator', 'incompatible_geography', 'incomplete_period']).nullable(),
+  screenedSources: z.array(rejectedTourismSourceSchema),
+  notes: z.string().min(1),
+}).superRefine((row, context) => {
+  const screened = row.researchOutcome === 'screened_no_compatible_value';
+  if (screened && (!row.rejectionReason || row.screenedSources.length === 0)) {
+    context.addIssue({ code: 'custom', message: 'A screened rejection requires a reason and at least one source' });
+  }
+  if (!screened && (row.rejectionReason !== null || row.screenedSources.length !== 0)) {
+    context.addIssue({ code: 'custom', message: 'An unscreened row cannot carry rejection evidence' });
+  }
+});
+
 const tourismIntensityMetricSchema = z.discriminatedUnion('status', [
-  pendingMetricSchema,
+  pendingTourismIntensitySchema,
   measuredTourismIntensitySchema,
 ]);
 

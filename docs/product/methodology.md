@@ -432,7 +432,7 @@ Portugal's Regional Statistical Yearbook. It reports 6,460,430 guests in tourist
 567,131 residents for Lisbon municipality in 2023, producing 11.39 arrivals per resident. The common
 year and boundary remove the denominator-matching ambiguity, but the numerator remains a count within
 surveyed accommodation: stays outside the frame are absent and separate stays can count one person more
-than once. It is retained as an accommodation-pressure proxy rather than a unique-visitor estimate. The
+than once. It is retained as an accommodation-pressure proxy rather than a unique-visitor estimate.
 Vancouver adds the second North American record and a `very_high` case. Summing Destination Vancouver's
 twelve exact monthly 2024 overnight-visitation values gives 11,271,967; dividing by BC Stats' same-year
 Vancouver municipality population estimate of 748,777 produces 15.05 arrivals per resident. The public
@@ -441,9 +441,11 @@ inline, so the exact inputs and that limitation remain attached. The other 24 to
 remain pending.
 
 Pending fields can now retain source-attributed rejection reasons rather than a generic missing label.
-Copenhagen is the first structured rejection: its public municipality accommodation table reports nights,
-not arrivals, and its published city estimate covers international tourists only. Neither is converted into
-the required all-overnight-arrivals numerator.
+Queenstown is the first structured rejection: its council reports guest nights plus average-day and peak-day
+visitor populations for the wider Queenstown Lakes District, not annual overnight arrivals for the city.
+None of those measures is converted into the required numerator. The published enrichment artifact retains
+the outcome, reason, and source URLs. The current profile therefore distinguishes 12 measured cities, one
+screened rejection, and 23 tourism-intensity cities still awaiting a compatible-source screen.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

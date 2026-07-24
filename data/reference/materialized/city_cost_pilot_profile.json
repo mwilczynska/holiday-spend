@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "city-cost-pilot-profile-v1",
+  "schemaVersion": "city-cost-pilot-profile-v2",
   "enrichmentId": "pilot-36-enrichment-2026-07-24-v3",
   "calculatorVersion": "city-cost-v3-alpha-3",
   "dataCutoff": "2026-07-24T14:35:00.000Z",
@@ -272,12 +272,20 @@
         "coveragePct": 26.32
       },
       {
-        "stratum": "pending_source_collection:unknown",
-        "cityCount": 24,
-        "representedCityCount": 20,
-        "materializedTierCells": 91,
-        "requiredTierCells": 456,
-        "coveragePct": 19.96
+        "stratum": "pending_source_collection:unknown:not_yet_screened",
+        "cityCount": 23,
+        "representedCityCount": 19,
+        "materializedTierCells": 86,
+        "requiredTierCells": 437,
+        "coveragePct": 19.68
+      },
+      {
+        "stratum": "pending_source_collection:unknown:screened_no_compatible_value",
+        "cityCount": 1,
+        "representedCityCount": 1,
+        "materializedTierCells": 5,
+        "requiredTierCells": 19,
+        "coveragePct": 26.32
       }
     ],
     "sourceDensity": [
@@ -317,6 +325,8 @@
     "status": "insufficient_for_fallback_model_selection",
     "measuredCitySizeCount": 29,
     "measuredTourismIntensityCount": 12,
+    "screenedRejectedTourismIntensityCount": 1,
+    "unscreenedTourismIntensityCount": 23,
     "measuredBothPredictorsCount": 11,
     "completeTargetCityCount": 0,
     "reasons": [

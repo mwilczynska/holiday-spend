@@ -147,6 +147,9 @@ const cities = pilot.cities.map((candidate) => {
       band: 'unknown' as const,
       sourceName: null,
       sourceUrl: null,
+      researchOutcome: rejectedTourismIntensityInput ? 'screened_no_compatible_value' as const : 'not_yet_screened' as const,
+      rejectionReason: rejectedTourismIntensityInput?.reason ?? null,
+      screenedSources: rejectedTourismIntensityInput?.sources ?? [],
       notes: rejectedTourismIntensityInput?.notes ?? pendingNotes,
     },
     publicSourceDensity: {
@@ -201,4 +204,6 @@ console.log(JSON.stringify({ valid: true, mode: check ? 'check' : 'write', citie
   measuredCitySize: artifact.cities.filter((city) => city.citySize.status === 'measured_from_public_source').length,
   pendingCitySize: artifact.cities.filter((city) => city.citySize.status === 'pending_source_collection').length,
   measuredTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources').length,
-  pendingTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection').length }, null, 2));
+  pendingTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection').length,
+  screenedRejectedTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection' && city.tourismIntensity.researchOutcome === 'screened_no_compatible_value').length,
+  unscreenedTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection' && city.tourismIntensity.researchOutcome === 'not_yet_screened').length }, null, 2));

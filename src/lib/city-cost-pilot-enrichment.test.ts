@@ -106,9 +106,21 @@ describe('city cost pilot enrichment', () => {
       status: 'pending_source_collection',
       value: null,
       band: 'unknown',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Queenstown Lakes District Council'), url: expect.stringContaining('qldc.govt.nz') },
+        { name: expect.stringContaining('Population and Demand'), url: expect.stringContaining('qldc.govt.nz') },
+      ],
     });
     expect(artifact.cities.find((city) => city.city === 'Queenstown')?.tourismIntensity.notes).toContain(
       'reports 4.5 million guest nights'
     );
+    expect(artifact.cities.find((city) => city.city === 'Auckland')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'not_yet_screened',
+      rejectionReason: null,
+      screenedSources: [],
+    });
   });
 });

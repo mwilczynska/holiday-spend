@@ -11,7 +11,7 @@ export type PilotProfileEnrichmentCity = {
   country: string;
   region: string;
   citySize: { status: string; band: string };
-  tourismIntensity: { status: string; band: string };
+  tourismIntensity: { status: string; band: string; researchOutcome?: string };
   publicSourceDensity: { band: string };
 };
 
@@ -85,11 +85,13 @@ export function buildCityCostPilotProfile(
   const requiredTierCells = enrichment.cities.length * PILOT_TIER_NAMES.length;
   const measuredCitySize = enrichment.cities.filter((city) => city.citySize.status === 'measured_from_public_source').length;
   const measuredTourism = enrichment.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources').length;
+  const screenedRejectedTourism = enrichment.cities.filter((city) => city.tourismIntensity.researchOutcome === 'screened_no_compatible_value').length;
+  const unscreenedTourism = enrichment.cities.filter((city) => city.tourismIntensity.researchOutcome === 'not_yet_screened').length;
   const measuredBoth = enrichment.cities.filter((city) => city.citySize.status === 'measured_from_public_source' && city.tourismIntensity.status === 'measured_from_public_sources').length;
   const completeCities = enrichment.cities.filter((city) => materialized.get(key(city.city, city.country))?.complete).length;
 
   return {
-    schemaVersion: 'city-cost-pilot-profile-v1',
+    schemaVersion: 'city-cost-pilot-profile-v2',
     enrichmentId: enrichment.enrichmentId,
     calculatorVersion: dataset.calculatorVersion,
     dataCutoff: dataset.dataCutoff,
@@ -105,7 +107,11 @@ export function buildCityCostPilotProfile(
     strata: {
       region: summarizeStrata(enrichment.cities, materialized, (city) => city.region),
       citySize: summarizeStrata(enrichment.cities, materialized, (city) => `${city.citySize.status}:${city.citySize.band}`),
-      tourismIntensity: summarizeStrata(enrichment.cities, materialized, (city) => `${city.tourismIntensity.status}:${city.tourismIntensity.band}`),
+      tourismIntensity: summarizeStrata(enrichment.cities, materialized, (city) =>
+        city.tourismIntensity.status === 'measured_from_public_sources'
+          ? `${city.tourismIntensity.status}:${city.tourismIntensity.band}`
+          : `${city.tourismIntensity.status}:${city.tourismIntensity.band}:${city.tourismIntensity.researchOutcome ?? 'outcome_missing'}`
+      ),
       sourceDensity: summarizeStrata(enrichment.cities, materialized, (city) => city.publicSourceDensity.band),
     },
     qualitySummary: dataset.qualitySummary,
@@ -113,6 +119,8 @@ export function buildCityCostPilotProfile(
       status: 'insufficient_for_fallback_model_selection',
       measuredCitySizeCount: measuredCitySize,
       measuredTourismIntensityCount: measuredTourism,
+      screenedRejectedTourismIntensityCount: screenedRejectedTourism,
+      unscreenedTourismIntensityCount: unscreenedTourism,
       measuredBothPredictorsCount: measuredBoth,
       completeTargetCityCount: completeCities,
       reasons: [
