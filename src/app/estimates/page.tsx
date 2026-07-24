@@ -98,6 +98,8 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
       'Low, shoulder, and high reference weeks are fixed before observing prices. Every stay is seven nights for two adults in one room and every quote is captured exactly 90 days before check-in. A capture-day check against official event calendars and public holidays is mandatory; a failed week moves forward seven days under a documented replacement rule.',
       'The annualized point estimate is the median of the three seasonal medians, so unequal visible inventory cannot give one season extra weight. Partial panels and provisional climate-based season labels remain visible as quality flags, but a direct accommodation tier cannot materialize until all three seasons meet the minimum sample size.',
       'Booking.com and Hostelworld are excluded as extraction sources after review of their restrictions on automated or assistant use. Prices instead come from each selected property\'s own public booking page. Login, member, mobile-only, blocked, or tax-ambiguous rates are recorded as missing.',
+      'The first frozen frame makes this design inspectable. Barcelona joins 344 active standard one- through four-star hotels from the July 2026 Catalonia Tourism Register to Barcelona City Council coordinates by official registration id. Of those, 327 geolocate and 322 fall within 5 km of a price-independent median centre. A SHA-256 rank selects 48 primary hotels and preserves 274 ordered reserves; 17 coordinate misses and five radius exclusions remain visible.',
+      'This sampling milestone is not a price or accuracy result: no official property website has yet been verified and no quote has been accepted. Barcelona hostel measures remain missing because the register\'s “Hostal o pensió” class is not evidence of youth-hostel dorm or private-room inventory.',
     ],
     bullets: [
       'Panel target/minimum: 12 / 5 properties per measure-season',
@@ -106,6 +108,7 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
       'Rate definition: lowest eligible public standard rate, cancellation basis recorded, all mandatory taxes and fees included',
       'Aggregation: equal-weight median of low-, shoulder-, and high-season medians',
       'Current schedule: 27 reference windows across the first 9 observed cities',
+      'Current frozen frames: Barcelona hotel classes only; 0 verified websites and 0 accepted accommodation quotes',
     ],
   },
   {

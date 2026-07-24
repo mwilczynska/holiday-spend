@@ -83,6 +83,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Methodology doc: `docs/product/methodology.md`
 - New-city prompt template: `docs/prompts/llm_prompt_new_cities_1.md`
 - First accommodation reference schedule: `data/reference/accommodation_reference_windows_2026_2027.json`
+- First accommodation property-panel collection: `data/reference/accommodation_property_panels_2026_2027.json`
 - `/estimates` now reflects this methodology rather than the older hybrid/Xotelo explanation
 - `/dataset` now holds the editable planner dataset and generation-history views
 
@@ -247,6 +248,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Review accommodation source access, exclude Booking.com/Hostelworld from LLM extraction, and route the new panel through official registers plus direct property sites
   - [x] Pre-register and validate 27 exact-90-day accommodation reference windows across the first nine observed cities
   - [x] Require five direct property quotes per low/shoulder/high season and 60% cross-season panel overlap before an accommodation measure can materialize
+  - [x] Freeze the first official-register property frame for Barcelona: 344 active standard hotels, 322 in-radius candidates, 48 price-blind primary selections, and 274 ordered reserves
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities
@@ -394,6 +396,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
 - Phase 6 accommodation collection now uses a deterministic repeated-property panel rather than Booking.com/Hostelworld extraction: official registers define the sampling frame and selected property sites provide public dated quotes
 - `data/reference/accommodation_reference_windows_2026_2027.json` freezes 27 low/shoulder/high seven-night windows for nine cities, each with an exact 90-day quote lead and capture-day event-screen gate
+- `data/reference/accommodation_property_panels_2026_2027.json` freezes the first official-register frame for Barcelona by joining the Catalonia Tourism Register to Barcelona City Council coordinates on the `HB` registration id; the full SHA-256 rank retains primary, reserve, missing-coordinate, and out-of-radius rows
+- The Barcelona frame has four frozen hotel panels but zero verified websites or accepted quotes; its hostel measures remain explicitly unavailable because `Hostal o pensió` is not treated as youth-hostel inventory
 - Calculator `city-cost-v3-alpha-3` retains partial seasonal evidence but requires at least five quotes per season plus 60% cross-season property overlap before materializing a direct accommodation measure
 
 ### Cleanup And Simplification
@@ -457,6 +461,7 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/city_cost_collection_pilot.json`
   - `data/reference/city_cost_collection_batches.json`
   - `data/reference/accommodation_reference_windows_2026_2027.json`
+  - `data/reference/accommodation_property_panels_2026_2027.json`
   - `data/reference/observations/batch-zero-day-01-food-drinks.jsonl`
   - `data/reference/observations/batch-zero-day-01-activities.jsonl`
   - `data/reference/observations/batch-zero-day-01-report.json`
@@ -470,6 +475,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `docs/prompts/llm_prompt_city_cost_observations_1.md`
 - `src/lib/city-cost-observation.ts`
 - `src/lib/accommodation-reference-window.ts`
+- `src/lib/accommodation-property-panel.ts`
+- `scripts/build-barcelona-accommodation-property-panel.ts`
+- `scripts/validate-accommodation-property-panels.ts`
 - `scripts/validate-accommodation-reference-windows.ts`
 - `scripts/select-city-cost-pilot.mjs`
 - `scripts/validate-city-cost-observations.ts`

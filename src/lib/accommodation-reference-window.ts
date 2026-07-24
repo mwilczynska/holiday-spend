@@ -14,6 +14,7 @@ export const ACCOMMODATION_PANEL_MEASURES = [
   'hotel_3star_room_2p',
   'hotel_4star_room_2p',
 ] as const;
+export type AccommodationPanelMeasure = (typeof ACCOMMODATION_PANEL_MEASURES)[number];
 
 const eventReviewSchema = z
   .object({

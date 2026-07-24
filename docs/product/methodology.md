@@ -173,6 +173,19 @@ tier. For food and drink, city-level source medians will be
 triangulated with independent menu observations in the validation sample. For activities, current
 official attraction and tour-operator prices will replace global multipliers.
 
+The first frame now provides a concrete reproducibility test. Barcelona's July 2026 frame joins the
+Catalonia Tourism Register to Barcelona City Council coordinates using the official `HB` registration id.
+It starts with 344 active standard one- through four-star hotels; 327 join to official coordinates and
+322 fall within 5 km of the frozen, price-independent centre (`41.38749043, 2.16952564`). A SHA-256 rank
+that excludes price, brand, capacity, and website visibility selects 12 primary properties in each star
+class and retains every other eligible property as a reserve. The artifact therefore contains 48 primary
+and 274 reserve properties, plus 17 coordinate misses and five radius exclusions kept for audit.
+
+This is not yet an accommodation estimate. No official property website has been verified and no price
+has been accepted from the frame. Barcelona's hostel tiers also remain missing because the register's
+`Hostal o pensió` lodging class is not evidence of youth-hostel dorm or private-room inventory. A separate
+official hostel frame is required rather than forcing a misleading category mapping.
+
 ### Robust Aggregation And Missing Data
 
 Prices remain in local currency until city-level aggregation is complete. Comparable observations are

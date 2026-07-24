@@ -73,6 +73,35 @@ least five accepted quotes, and requires at least 60% panel overlap across seaso
 estimate gives each season equal weight by taking the median of the three seasonal medians, so a season
 with more visible inventory cannot dominate the annualized reference rate.
 
+### First frozen sampling frame: Barcelona
+
+`data/reference/accommodation_property_panels_2026_2027.json` contains the first audited property frame.
+It joins two open official sources by the stable `HB-xxxxxx` registration id:
+
+- the Generalitat de Catalunya Tourism Register supplies active status, municipality, hotel modality,
+  star category, address, and capacity;
+- Barcelona City Council's hotel datastore supplies latitude and longitude.
+
+The July 2026 register snapshot contains 112,752 rows and is retained by retrieval timestamp plus SHA-256
+checksum. After restricting to active Barcelona establishments with `Hotels -> Hotel -> Hotel` and an
+exact one- through four-star category, 344 rows remain. Of those, 327 (95.06%) join to usable official
+coordinates. The sampling centre is the component-wise median of those joined coordinates
+(`41.38749043, 2.16952564`), chosen before price collection so the radius does not depend on observed
+rates. Five joined properties lie beyond 5 km and 17 lack an official coordinate match, leaving 322
+eligible in-radius properties: 40 one-star, 40 two-star, 110 three-star, and 132 four-star.
+
+Within each star class, the frozen rank is the ascending SHA-256 hash of schedule id, city, country,
+measure, a version label, and registration id. Registration id is the tie-break. Price, brand, capacity,
+and website visibility are not inputs. The first 12 in each class form 48 primary properties; all 274
+remaining in-radius properties form the ordered reserve pool. The 17 missing-coordinate and five
+out-of-radius rows remain in the artifact as visible exclusions instead of disappearing during cleaning.
+
+This is a sampling-frame milestone, not an accommodation-price result. Official property websites have
+not yet been verified and no dated quote has been accepted. The register's `Hostal o pensió` group is not
+treated as a youth hostel: it does not prove dorm-bed or hostel-private inventory. Barcelona's two hostel
+measures therefore remain explicitly unavailable until a separate official youth-hostel frame is found.
+This prevents a translation/classification error from silently contaminating the cheapest tiers.
+
 ## Adaptive Throughput And Checkpointing
 
 The collection unit is one city/category call, not one entire city. This keeps prompts focused and makes

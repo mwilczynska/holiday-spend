@@ -340,6 +340,17 @@ between quote capture and check-in, one low/shoulder/high stratum per city, and 
 gate with a deterministic same-season replacement rule. Several destination labels currently use
 official climate/travel guidance and are explicitly provisional until upgraded with monthly demand data.
 
+The first official-register sampling frame is also frozen in
+`data/reference/accommodation_property_panels_2026_2027.json`. For Barcelona, an `HB` registration-id
+join between the July 2026 Catalonia Tourism Register and Barcelona City Council geolocation data retains
+344 active standard 1-4-star hotels, joins 327 to official coordinates, and leaves 322 within the fixed
+5 km radius. A price-blind SHA-256 rank selects 12 primary properties for each hotel star class (48 total)
+and preserves 274 ordered reserves. Seventeen coordinate misses and five radius exclusions remain visible.
+The frame has zero verified property websites and zero accepted prices, so this is achieved sampling
+infrastructure rather than coverage or accuracy evidence. Hostel dorm/private measures remain missing
+until a separate youth-hostel frame is found; Catalonia's `Hostal o pensió` class is not mislabelled as a
+youth hostel.
+
 ### 6C. Pilot and model selection
 
 - [x] Generate a deterministic 36-city candidate pilot across every region and the current cost range.
@@ -351,6 +362,8 @@ official climate/travel guidance and are explicitly provisional until upgraded w
   and Pu Luong; retain sparse-city missingness instead of substituting a hub.
 - [x] Collect pilot wave 1 for Barcelona, San Francisco, and Da Nang: 12 direct Numbeo food/drink
   observations and three official attraction prices.
+- [x] Freeze the first official-register accommodation sampling frame for Barcelona, including
+  deterministic hotel panels, full reserve order, join coverage, and visible exclusions.
 - [ ] Collect batch zero, then the 36-city pilot, with all four categories.
 - [ ] Profile missingness, source disagreement, seasonality, and outliers.
 - [ ] Fit and compare fallback models with whole-city cross-validation.
