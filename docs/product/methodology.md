@@ -332,8 +332,16 @@ hotel tourists in 2023. The matching CONAPO municipal projection file gives 9,22
 after summing both sexes across the same 16-borough Ciudad de Mexico federal entity. The resulting 1.56
 arrivals per resident is classified as `medium`. The numerator is deliberately labelled hotel-only: it
 excludes other accommodation, friends-and-relatives stays, and some platform inventory, so it remains a
-reproducible lower-bound proxy rather than a claim about all overnight visitors. The other 33 fields stay
-pending until an equally defensible same-year, same-geography pair is available.
+reproducible lower-bound proxy rather than a claim about all overnight visitors.
+
+Fukuoka and Budapest broaden the evidence beyond the first three records. Fukuoka reports an estimated
+5,760,000 overnight tourists in 2023 and 1,642,571 residents on 1 October, producing 3.51 arrivals per
+resident (`medium`). The numerator is rounded to the nearest 10,000 and is modelled from city tax data,
+the national accommodation survey, and a visitor-survey overnight rate, so its estimated status remains
+visible. Budapest reports 6,730,727 arrivals across commercial, private, and other accommodation in 2024
+and 1,686,222 residents at the start of that year for the same capital-region boundary. Its ratio is 3.99
+(`medium`). The other 31 fields stay pending until an equally defensible same-year, same-geography pair
+is available.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

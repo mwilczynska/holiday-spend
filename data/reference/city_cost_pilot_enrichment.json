@@ -182,14 +182,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 3.506697731787545,
+        "referenceYear": 2023,
+        "spatialUnit": "Fukuoka city municipality",
+        "band": "medium",
+        "overnightArrivals": 5760000,
+        "residentPopulation": 1642571,
+        "numeratorDefinition": "Estimated overnight tourists visiting Fukuoka city during 2023",
+        "denominatorDefinition": "Estimated population of Fukuoka city on 1 October 2023",
+        "arrivalsSourceName": "Fukuoka City, Tourism and MICE Statistics 2025 edition",
+        "arrivalsSourceUrl": "https://www.city.fukuoka.lg.jp/keizai/marketing/shisei/documents/kankotoukei2025.pdf",
+        "populationSourceName": "Fukuoka City, official population statistics",
+        "populationSourceUrl": "https://www.city.fukuoka.lg.jp/shisei/toukei/index.html",
+        "notes": "The city publishes the overnight-tourist estimate rounded to the nearest 10,000. Its methodology combines Fukuoka tax statistics and the Japan Tourism Agency accommodation survey, then applies an overnight-tourist rate derived from city visitor surveys; retain the resulting ratio as an estimated tourism-pressure proxy rather than an exact census of guests."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -382,14 +388,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 3.991601936162617,
+        "referenceYear": 2024,
+        "spatialUnit": "Budapest capital region",
+        "band": "medium",
+        "overnightArrivals": 6730727,
+        "residentPopulation": 1686222,
+        "numeratorDefinition": "Tourist arrivals at commercial, private, and other tourist accommodation establishments in Budapest during 2024",
+        "denominatorDefinition": "Resident population of Budapest capital region on 1 January 2024",
+        "arrivalsSourceName": "Hungarian Central Statistical Office, tourist arrivals by county and region",
+        "arrivalsSourceUrl": "https://www.ksh.hu/stadat_files/tur/en/tur0089.html",
+        "populationSourceName": "Hungarian Central Statistical Office, resident population by sex, county and region",
+        "populationSourceUrl": "https://www.ksh.hu/stadat_files/nep/en/nep0034.html",
+        "notes": "The numerator covers registered commercial, private, and other tourist accommodation establishments and includes domestic and international arrivals. The denominator is the start-of-year resident population for the same capital-region geography."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

@@ -410,6 +410,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     availability limitation; reject international-only, guest-night, incomplete-year, and forecast substitutes.
   - [x] Add Mexico City as the first non-European same-geography record, deriving the resident denominator
     from all 16 boroughs in the official CONAPO projection file and retaining the hotel-only limitation.
+  - [x] Add Fukuoka and Budapest from official city/national statistics, retaining Fukuoka's rounded modelled
+    numerator and Budapest's broader commercial/private/other accommodation coverage.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

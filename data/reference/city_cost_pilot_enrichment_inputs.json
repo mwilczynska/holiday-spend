@@ -92,6 +92,36 @@
       "populationSourceName": "CONAPO, municipal population projections 1990-2040",
       "populationSourceUrl": "https://www.datos.gob.mx/dataset/f2b9b220-3ef7-4e3a-bde6-87e1dac78c6a/resource/99b28bb6-8e31-48e1-b162-85a7e4deafc3/download/pobproy_ggrupos.csv",
       "notes": "The numerator covers registered hotel tourists and therefore excludes stays in other accommodation, with friends or relatives, and some platform inventory. It is retained as a same-geography, reproducible lower-bound proxy for overnight arrivals rather than total visitation."
+    },
+    {
+      "city": "Fukuoka",
+      "country": "Japan",
+      "referenceYear": 2023,
+      "spatialUnit": "Fukuoka city municipality",
+      "overnightArrivals": 5760000,
+      "residentPopulation": 1642571,
+      "numeratorDefinition": "Estimated overnight tourists visiting Fukuoka city during 2023",
+      "denominatorDefinition": "Estimated population of Fukuoka city on 1 October 2023",
+      "arrivalsSourceName": "Fukuoka City, Tourism and MICE Statistics 2025 edition",
+      "arrivalsSourceUrl": "https://www.city.fukuoka.lg.jp/keizai/marketing/shisei/documents/kankotoukei2025.pdf",
+      "populationSourceName": "Fukuoka City, official population statistics",
+      "populationSourceUrl": "https://www.city.fukuoka.lg.jp/shisei/toukei/index.html",
+      "notes": "The city publishes the overnight-tourist estimate rounded to the nearest 10,000. Its methodology combines Fukuoka tax statistics and the Japan Tourism Agency accommodation survey, then applies an overnight-tourist rate derived from city visitor surveys; retain the resulting ratio as an estimated tourism-pressure proxy rather than an exact census of guests."
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "referenceYear": 2024,
+      "spatialUnit": "Budapest capital region",
+      "overnightArrivals": 6730727,
+      "residentPopulation": 1686222,
+      "numeratorDefinition": "Tourist arrivals at commercial, private, and other tourist accommodation establishments in Budapest during 2024",
+      "denominatorDefinition": "Resident population of Budapest capital region on 1 January 2024",
+      "arrivalsSourceName": "Hungarian Central Statistical Office, tourist arrivals by county and region",
+      "arrivalsSourceUrl": "https://www.ksh.hu/stadat_files/tur/en/tur0089.html",
+      "populationSourceName": "Hungarian Central Statistical Office, resident population by sex, county and region",
+      "populationSourceUrl": "https://www.ksh.hu/stadat_files/nep/en/nep0034.html",
+      "notes": "The numerator covers registered commercial, private, and other tourist accommodation establishments and includes domestic and international arrivals. The denominator is the start-of-year resident population for the same capital-region geography."
     }
   ]
 }
