@@ -306,8 +306,9 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
 - [ ] Build the source-research runner with fixture-based parser tests.
 
 Checkpoint: the v3-alpha materializer currently validates 15 accepted direct observations across three
-cities, aggregates in city-local currency, applies a frozen and source-attributed AUD FX snapshot, and
-materializes 15 of 57 possible city-tier cells. No city is complete and no partial wide row is published.
+cities in the first batch and 27 observations across six cities after batch-zero day 02. It aggregates
+in city-local currency, applies a frozen and source-attributed AUD FX snapshot, and materializes 27 of
+114 possible city-tier cells. No city is complete and no partial wide row is published.
 The pipeline is therefore reproducible and fail-closed, but it is not yet a replacement for the active
 121-city dataset.
 
@@ -317,6 +318,9 @@ The pipeline is therefore reproducible and fail-closed, but it is not yet a repl
 - [ ] Enrich the candidate manifest with city size, tourism intensity, and public-source density.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.
+- [x] Collect batch-zero day 02: eight Numbeo food/drink observations, one Pu Luong official-menu meal,
+  two official attraction prices, and one Pu Luong half-day group activity across Copenhagen, Bangkok,
+  and Pu Luong; retain sparse-city missingness instead of substituting a hub.
 - [ ] Collect batch zero, then the 36-city pilot, with all four categories.
 - [ ] Profile missingness, source disagreement, seasonality, and outliers.
 - [ ] Fit and compare fallback models with whole-city cross-validation.

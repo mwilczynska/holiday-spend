@@ -91,12 +91,19 @@ dated source observations
 
 ### Implementation Checkpoint
 
-The observation schema, JSONL validator, and batch manifest are now implemented. The first validated
-checkpoint contains 15 direct observations across Lisbon, Prague, and Hanoi: 12 standardized Numbeo
-food/drink prices and three prices from official paid-attraction pages. Every row retains its original
-EUR, CZK, or VND value, source URL, retrieval time, page-valid date where known, displayed range,
-source-access basis, and extraction version. The validator reports 15 valid direct rows and no schema
-errors.
+The observation schema, JSONL validator, and batch manifest are now implemented. The first two validated
+checkpoints contain 27 direct observations across Lisbon, Prague, Hanoi, Copenhagen, Bangkok, and Pu
+Luong: 20 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, five official
+paid-attraction prices, and one operator-listed Pu Luong half-day group activity. Every row retains its
+original EUR, CZK, DKK, THB, VND, or USD value, source URL, retrieval time, page-valid date where known,
+displayed range, source-access basis, and extraction version. The validator reports 27 valid direct rows
+and no schema errors.
+
+Pu Luong is an intentional sparse-market stress test. No defensible Numbeo city page was found, so the
+pipeline retained the directly observed local menu and activity listings while leaving all other fields
+missing. It did not inherit Hanoi prices or a Vietnam-wide average. Collection reports are now
+schema-validated and reconciled against manifest call counts, accepted/rejected row counts, city lists,
+and per-measure JSONL coverage.
 
 Paid data APIs are excluded. Free web-enabled LLM research has no project-imposed daily call cap; it
 continues while the selected provider offers free capacity and checkpoints after each completed
@@ -116,12 +123,13 @@ USD, CZK, DKK, and THB, plus the Reserve Bank of Australia's 14 July 2026 AUD/VN
 retains its source date, quote, URL, and derivation formula. The materializer verifies the snapshot and
 recomputes cross-rate arithmetic in automated tests.
 
-The first materialized artifact contains three cities and 15 accepted direct observations. It can
-calculate 15 of 57 possible city-tier cells: coffee, the coffee-only drinks basket, the light drinks
-basket, free activities, and the budget paid-attraction basket for each city. It reports zero complete
-cities and emits no publishable wide row because accommodation, street/premium food, cocktail/wine, and
-mid/high activity observations are still missing. This fail-closed behaviour is intentional: partial
-evidence remains visible without being misrepresented as a complete replacement dataset.
+The current materialized artifact contains six cities and 27 accepted direct observations. It can
+calculate 27 of 114 possible city-tier cells: coffee and the coffee-only/light drinks baskets for five
+cities, free activities for all six, budget paid-attraction baskets for five, and one Pu Luong mid-range
+half-day activity basket. It reports zero complete cities and emits no publishable wide row because
+accommodation, street/premium food, cocktail/wine, and many activity observations are still missing.
+This fail-closed behaviour is intentional: partial evidence remains visible without being misrepresented
+as a complete replacement dataset.
 
 The v3-alpha formula set is provisional until the pilot and whole-city validation are complete. Literal
 two-person baskets are calculated deterministically from retained primitives; for example,

@@ -243,7 +243,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Add an observation-level JSONL store and extraction-batch manifest
   - [x] Add extraction-batch validation plus deterministic local-currency aggregation, frozen FX, and v3-alpha basket materialization
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
-  - [x] Materialize the first fail-closed research artifact: 15 of 57 tier cells across three cities, with zero incomplete wide rows published
+  - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
+  - [x] Materialize the current fail-closed research artifact: 27 of 114 tier cells across six cities, with zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -449,6 +450,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/observations/batch-zero-day-01-food-drinks.jsonl`
   - `data/reference/observations/batch-zero-day-01-activities.jsonl`
   - `data/reference/observations/batch-zero-day-01-report.json`
+  - `data/reference/observations/batch-zero-day-02-food-drinks.jsonl`
+  - `data/reference/observations/batch-zero-day-02-activities.jsonl`
+  - `data/reference/observations/batch-zero-day-02-report.json`
 - `docs/dev/plans/city-cost-source-access.md`
 - `docs/prompts/llm_prompt_city_cost_observations_1.md`
 - `src/lib/city-cost-observation.ts`

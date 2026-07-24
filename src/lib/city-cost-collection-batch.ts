@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { CITY_COST_MEASURES } from './city-cost-observation';
 
 export const cityCostRegionSchema = z.enum([
   'SEA',
@@ -133,4 +134,57 @@ export const cityCostCollectionManifestSchema = z
     }
   });
 
+export const cityCostCollectionReportSchema = z
+  .object({
+    schemaVersion: z.literal('city-cost-collection-report-v1'),
+    batchId: z.string().min(1),
+    checkpoint: z.string().min(1),
+    collectionPolicy: z.literal('free_llm_web_research_only'),
+    projectDailyCallCap: z.null(),
+    completedCityCategoryCalls: z.number().int().nonnegative(),
+    cities: z.array(z.string().min(1)).min(1),
+    acceptedObservations: z.number().int().nonnegative(),
+    rejectedObservations: z.number().int().nonnegative(),
+    sources: z
+      .array(
+        z.object({
+          name: z.string().min(1),
+          accessBasis: z.string().min(1),
+          termsUrl: z.string().url().optional(),
+          methodologyUrl: z.string().url().optional(),
+        })
+      )
+      .min(1),
+    coverage: z.partialRecord(z.enum(CITY_COST_MEASURES), z.number().int().nonnegative()),
+    missing: z.array(
+      z.object({
+        city: z.string().min(1),
+        measure: z.enum(CITY_COST_MEASURES),
+        reason: z.string().min(1),
+      })
+    ),
+    remainingCategories: z.array(z.string().min(1)),
+    notes: z.string().min(1),
+  })
+  .superRefine((report, context) => {
+    const coverageCount = Object.values(report.coverage).reduce((total, count) => total + count, 0);
+    if (coverageCount !== report.acceptedObservations) {
+      context.addIssue({
+        code: 'custom',
+        path: ['coverage'],
+        message: `Coverage totals ${coverageCount}, expected ${report.acceptedObservations} accepted observations`,
+      });
+    }
+
+    const cityNames = new Set<string>();
+    for (let index = 0; index < report.cities.length; index += 1) {
+      const city = report.cities[index];
+      if (cityNames.has(city)) {
+        context.addIssue({ code: 'custom', path: ['cities', index], message: `Duplicate city ${city}` });
+      }
+      cityNames.add(city);
+    }
+  });
+
 export type CityCostCollectionManifest = z.infer<typeof cityCostCollectionManifestSchema>;
+export type CityCostCollectionReport = z.infer<typeof cityCostCollectionReportSchema>;

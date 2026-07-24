@@ -45,8 +45,16 @@
     },
     {
       "batchId": "batch-zero-day-02",
-      "status": "pending",
+      "status": "complete_with_missing",
       "plannedCalls": 6,
+      "completedCalls": 6,
+      "acceptedObservations": 12,
+      "checkpoint": "food_drinks_and_activity_stress_test_complete",
+      "observationFiles": [
+        "data/reference/observations/batch-zero-day-02-food-drinks.jsonl",
+        "data/reference/observations/batch-zero-day-02-activities.jsonl"
+      ],
+      "reportFile": "data/reference/observations/batch-zero-day-02-report.json",
       "cities": [
         {
           "city": "Copenhagen",

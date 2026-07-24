@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { cityCostCollectionManifestSchema } from './city-cost-collection-batch';
+import {
+  cityCostCollectionManifestSchema,
+  cityCostCollectionReportSchema,
+} from './city-cost-collection-batch';
 
 function manifestFixture() {
   return {
@@ -78,5 +81,34 @@ describe('city cost collection manifest schema', () => {
       ],
     });
     expect(result.success).toBe(false);
+  });
+});
+
+describe('city cost collection report schema', () => {
+  const report = {
+    schemaVersion: 'city-cost-collection-report-v1' as const,
+    batchId: 'batch-001',
+    checkpoint: 'food_complete',
+    collectionPolicy: 'free_llm_web_research_only' as const,
+    projectDailyCallCap: null,
+    completedCityCategoryCalls: 2,
+    cities: ['Hanoi'],
+    acceptedObservations: 2,
+    rejectedObservations: 0,
+    sources: [{ name: 'Numbeo', accessBasis: 'personal_use_with_attribution' }],
+    coverage: { cappuccino_1: 1, domestic_draft_beer_1: 1 },
+    missing: [{ city: 'Hanoi', measure: 'cocktail_1' as const, reason: 'Not published' }],
+    remainingCategories: ['accommodation'],
+    notes: 'Fixture report.',
+  };
+
+  it('accepts a report whose coverage reconciles to accepted observations', () => {
+    expect(cityCostCollectionReportSchema.parse(report).acceptedObservations).toBe(2);
+  });
+
+  it('rejects a report whose coverage total disagrees with accepted observations', () => {
+    expect(
+      cityCostCollectionReportSchema.safeParse({ ...report, acceptedObservations: 3 }).success
+    ).toBe(false);
   });
 });

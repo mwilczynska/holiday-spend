@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "batch-zero-day-02",
+  "checkpoint": "food_drinks_and_activity_stress_test_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 6,
+  "cities": ["Copenhagen", "Bangkok", "Pu Luong"],
+  "acceptedObservations": 12,
+  "rejectedObservations": 0,
+  "sources": [
+    {
+      "name": "Numbeo",
+      "accessBasis": "personal_use_with_attribution",
+      "termsUrl": "https://www.numbeo.com/common/terms_of_use.jsp",
+      "methodologyUrl": "https://www.numbeo.com/common/motivation_and_methodology.jsp"
+    },
+    {"name": "The Royal Danish Collection", "accessBasis": "public_official"},
+    {"name": "The Grand Palace, Bangkok", "accessBasis": "public_official"},
+    {"name": "Central Hill Pu Luong Resort", "accessBasis": "public_official"},
+    {"name": "Pu Luong Excursions", "accessBasis": "public_official"}
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 3,
+    "midrange_restaurant_meal_2p": 2,
+    "premium_restaurant_meal_2p": 0,
+    "domestic_draft_beer_1": 2,
+    "cappuccino_1": 2,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 2,
+    "half_day_group_activity_adult_1": 1,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {"city": "Copenhagen", "measure": "street_food_meal_1p", "reason": "A comparable cheap takeaway or counter-service menu sample has not yet been collected."},
+    {"city": "Copenhagen", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "Copenhagen", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "Copenhagen", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "Copenhagen", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "Copenhagen", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "Bangkok", "measure": "street_food_meal_1p", "reason": "The Numbeo inexpensive-restaurant measure is not relabelled as street food; a separate menu sample is required."},
+    {"city": "Bangkok", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "Bangkok", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "Bangkok", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "Bangkok", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "Bangkok", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "Pu Luong", "measure": "street_food_meal_1p", "reason": "No city page or directly comparable street-food sample was found; Hanoi was not substituted."},
+    {"city": "Pu Luong", "measure": "midrange_restaurant_meal_2p", "reason": "The inspected menu did not define a comparable three-course two-person meal."},
+    {"city": "Pu Luong", "measure": "premium_restaurant_meal_2p", "reason": "Per-person platters and shared hotpots were not coerced into a two-person premium-meal estimate."},
+    {"city": "Pu Luong", "measure": "domestic_draft_beer_1", "reason": "No current Pu Luong menu with a comparable 0.5-litre draft beer was verified."},
+    {"city": "Pu Luong", "measure": "cappuccino_1", "reason": "No current Pu Luong menu with a regular cappuccino was verified."},
+    {"city": "Pu Luong", "measure": "cocktail_1", "reason": "No current directly inspected Pu Luong cocktail menu was verified."},
+    {"city": "Pu Luong", "measure": "wine_glass_1", "reason": "No current directly inspected Pu Luong wine-by-the-glass menu was verified."},
+    {"city": "Pu Luong", "measure": "paid_attraction_adult_1", "reason": "No official paid-attraction admission matching the taxonomy was verified."},
+    {"city": "Pu Luong", "measure": "full_day_premium_activity_adult_1", "reason": "A premium full-day product has not yet been independently reviewed."}
+  ],
+  "remainingCategories": ["food_drink_menu_triangulation", "activity_products", "accommodation"],
+  "notes": "The batch retained 8 city-level Numbeo observations, two official attraction prices, one official local menu item, and one operator-listed half-day group activity. Pu Luong has no defensible Numbeo city page, so missing values remain missing instead of inheriting Hanoi or national averages. No FX conversion or tier calculation was performed during collection."
+}
