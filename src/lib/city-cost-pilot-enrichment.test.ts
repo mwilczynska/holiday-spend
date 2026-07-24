@@ -125,5 +125,23 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('Auckland Council'), url: expect.stringContaining('aucklandcouncil.govt.nz') },
       ],
     });
+    expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Tokyo Tourism Data Catalog'), url: expect.stringContaining('metro.tokyo.lg.jp') },
+        { name: expect.stringContaining('Overnight Travel Statistics'), url: expect.stringContaining('mlit.go.jp') },
+      ],
+    });
+    expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Tokyo Tourism Data Catalog'), url: expect.stringContaining('metro.tokyo.lg.jp') },
+        { name: expect.stringContaining('Overnight Travel Statistics'), url: expect.stringContaining('mlit.go.jp') },
+      ],
+    });
   });
 });

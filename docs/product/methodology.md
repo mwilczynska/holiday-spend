@@ -452,6 +452,10 @@ visitor arrivals plus domestic and international guest nights. International arr
 overnight visitors, while guest nights are not arrivals, so neither measure satisfies the registered
 numerator. With Auckland recorded, the profile distinguishes two screened rejections and 22 unscreened gaps.
 
+Tokyo is the third screened rejection. Its metropolitan catalog publishes broad Japanese and foreign
+traveler estimates, while the national accommodation survey publishes guest nights. Neither source exposes
+the required overnight-only arrivals numerator, leaving 21 pilot cities still unscreened.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

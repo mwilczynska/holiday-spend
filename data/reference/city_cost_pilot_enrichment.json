@@ -330,10 +330,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "Tokyo Metropolitan Government, Tokyo Tourism Data Catalog",
+            "url": "https://data.tourism.metro.tokyo.lg.jp/en/"
+          },
+          {
+            "name": "Japan Tourism Agency, Overnight Travel Statistics Survey",
+            "url": "https://www.mlit.go.jp/kankocho/tokei_hakusyo/shukuhakutokei.html"
+          }
+        ],
+        "notes": "The Tokyo Metropolitan Government tourism catalog publishes broad Japanese and foreign traveler estimates without an overnight-only arrivals field. The Japan Tourism Agency accommodation survey publishes overnight-stay statistics by prefecture, but those are guest nights rather than arrivals. Retain tourism intensity as pending rather than treating all travelers as overnight arrivals or converting guest nights to arrivals."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
