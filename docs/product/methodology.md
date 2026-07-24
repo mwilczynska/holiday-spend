@@ -303,10 +303,11 @@ its current classification status is supported by authoritative evidence.
 The reconciliation ledger therefore begins with all 330 source records pending and zero eligible. It does
 not guess which 37 records correspond to the aggregate current count.
 
-Barcelona's first direct-site checkpoint covers the frozen 4-star primary panel. Ten of twelve properties
-now have source-attributed official websites applied deterministically to the panel. Sansi Pedralbes
-(rank 4) and Husa L'Illa (rank 7) remain unresolved because the reviewed evidence does not establish a
-current property-owned booking site. These ten verifications do not add price observations or quote
+Barcelona's first direct-site checkpoint covers the frozen 4-star primary panel. Eleven of twelve properties
+now have source-attributed official websites applied deterministically to the panel. The current Marriott
+page explicitly matches registration `HB-003973`, resolving the legacy Husa L'Illa identity as AC Hotel
+Diagonal L'Illa. Sansi Pedralbes (rank 4) remains unresolved because the reviewed evidence does not establish
+a current property-owned booking site. These eleven verifications do not add price observations or quote
 attempts; they establish auditable paths for the later exact-date collection pass.
 
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were

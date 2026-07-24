@@ -42,7 +42,7 @@ describe('accommodation property panels', () => {
       missingOfficialGeolocation: 392,
       outsideRadius: 329,
       websitesSourceListed: 449,
-      websitesVerified: 10,
+      websitesVerified: 11,
     });
 
     const barcelona = collection.cities.find((city) => city.city === 'Barcelona')!;
