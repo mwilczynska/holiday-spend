@@ -505,6 +505,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     arrivals estimate and broad tourist-area mobility visits, but not all overnight visitor arrivals.
   - [x] Add Sendai from official 2024 citywide lodging and population reports: retain the four-district
     accommodation-guest total as a lower-bound proxy, with the explicit private-lodging exclusion attached.
+  - [x] Record Shanghai as a screened rejection because official statistics expose all domestic tourist
+    trips or international-only overnight arrivals, but not an all-visitor overnight-arrivals numerator.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

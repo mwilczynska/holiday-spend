@@ -155,10 +155,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "Shanghai Municipal Statistics Bureau, 2024 Statistical Communique",
+            "url": "https://tjj.sh.gov.cn/tjgb/20250324/a7fe18c6d5c24d66bfca89c5bb4cdcfb.html"
+          },
+          {
+            "name": "Shanghai Municipal Statistics Bureau, December 2024 International Tourist Arrivals",
+            "url": "https://tjj.sh.gov.cn/ydsj56/20250120/4297bf83e0254fbb87240c0b46319531.html"
+          }
+        ],
+        "notes": "Shanghai's official 2024 statistical communique reports domestic tourist trips, including trips by Shanghai residents, without an overnight-only field. It separately reports overnight inbound tourists, but that series covers international arrivals only and therefore excludes domestic overnight visitors. Retain tourism intensity as pending rather than combining these populations or treating all domestic trips as overnight arrivals."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

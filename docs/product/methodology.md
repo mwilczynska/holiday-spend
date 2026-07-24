@@ -482,6 +482,12 @@ residents plus long- and short-term foreigners without isolating overnight stays
 the registered all-overnight-arrivals numerator. After adding Sendai, the current profile contains 13
 measured cities, four screened rejections, and 19 unscreened tourism-intensity gaps.
 
+Shanghai is the fifth screened rejection. Its official 2024 communiqué reports domestic tourist trips,
+including trips by Shanghai residents, without isolating overnight stays. The separate overnight series
+covers inbound international visitors only. The project does not combine those populations or reinterpret
+all domestic trips as overnight arrivals; the current profile therefore contains 13 measured cities, five
+screened rejections, and 18 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
