@@ -92,13 +92,14 @@ dated source observations
 ### Implementation Checkpoint
 
 The observation schema, JSONL validator, and batch manifest are now implemented. Batch zero plus the
-first two pilot-wave checkpoints contain 61 direct observations across Lisbon, Prague, Hanoi, Copenhagen,
-Bangkok, Pu Luong, Barcelona, San Francisco, Da Nang, Zanzibar, Shanghai, and Auckland: 44 standardized
-Numbeo food/drink prices, one Pu Luong official-menu meal, ten official paid-attraction prices, one
+first three pilot-wave checkpoints contain 76 direct observations across Lisbon, Prague, Hanoi, Copenhagen,
+Bangkok, Pu Luong, Barcelona, San Francisco, Da Nang, Zanzibar, Shanghai, Auckland, Nairobi, Fukuoka, and
+Queenstown: 56 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, 13 official
+paid-attraction prices, one
 operator-listed Pu Luong half-day group activity, and five exact-date official-property accommodation
-quotes. Every row retains its original EUR, CZK, DKK, THB, VND, USD, TZS, CNY, or NZD value, source URL,
+quotes. Every row retains its original EUR, CZK, DKK, THB, VND, USD, TZS, CNY, NZD, KES, or JPY value, source URL,
 retrieval time, page-valid date where known, displayed range, source-access basis, and extraction version.
-The validator reports 61 valid direct rows
+The validator reports 76 valid direct rows
 and no schema errors.
 
 A provider-neutral local research runner now renders one versioned city/category assignment and validates
@@ -143,9 +144,9 @@ Bank of Tanzania's 22 July 2026 AUD/TZS mean rate. Each stored rate retains its 
 and derivation formula. The materializer verifies the snapshot and recomputes cross-rate arithmetic in
 automated tests.
 
-The current materialized artifact contains 12 cities and 61 accepted direct observations. It can
-calculate 56 of 228 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 11
-cities, free activities for all 12, budget paid-attraction baskets for ten, and one Pu Luong mid-range
+The current materialized artifact contains 15 cities and 76 accepted direct observations. It can
+calculate 71 of 285 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 14
+cities, free activities for all 15, budget paid-attraction baskets for 13, and one Pu Luong mid-range
 half-day activity basket. It reports zero complete cities and emits no publishable wide row because
 the Copenhagen shoulder panel has reached five quotes but its low/high seasons and repeated-property
 overlap gate are still missing, while street/premium food, cocktail/wine, and many activity observations

@@ -331,9 +331,9 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
   LLM call, verifies assignment identity and complete observed/missing measure coverage, and forces every
   returned observation to remain `unreviewed` for a separate evidence-review step.
 
-Checkpoint: batch zero and the first two pilot-wave checkpoints currently provide 61 accepted direct
-observations across 12 cities. The v3-alpha materializer aggregates in city-local currency, applies a
-frozen and source-attributed AUD FX snapshot, and materializes 56 of 228 possible
+Checkpoint: batch zero and the first three pilot-wave checkpoints currently provide 76 accepted direct
+observations across 15 cities. The v3-alpha materializer aggregates in city-local currency, applies a
+frozen and source-attributed AUD FX snapshot, and materializes 71 of 285 possible
 city-tier cells. No city is complete and no partial wide row is published.
 The pipeline is therefore reproducible and fail-closed, but it is not yet a replacement for the active
 121-city dataset.
@@ -406,6 +406,9 @@ flexible and non-refundable conditions; a true availability failure; and technic
 - [x] Extend pilot wave 1 into three previously unobserved regions through Zanzibar, Shanghai, and
   Auckland: 12 direct Numbeo food/drink observations and two official attraction prices; retain
   Zanzibar's small contributor count and missing official attraction price explicitly.
+- [x] Add the next uncovered Africa, East Asia, and Oceania cities through Nairobi, Fukuoka, and
+  Queenstown: 12 direct Numbeo food/drink observations and three official attraction prices; preserve
+  localized Numbeo URLs, month-level validity, source density, and explicit unsupported measures.
 - [x] Freeze the first official-register accommodation sampling frame for Barcelona, including
   deterministic hotel panels, full reserve order, join coverage, and visible exclusions.
 - [x] Generalize the panel contract and freeze Copenhagen's Hotelstars hotel frame plus the official
