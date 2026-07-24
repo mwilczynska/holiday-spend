@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "pilot-wave-01-day-01",
+  "checkpoint": "pilot_food_drinks_and_paid_attraction_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 6,
+  "cities": ["Barcelona", "San Francisco", "Da Nang"],
+  "acceptedObservations": 15,
+  "rejectedObservations": 0,
+  "sources": [
+    {
+      "name": "Numbeo",
+      "accessBasis": "personal_use_with_attribution",
+      "termsUrl": "https://www.numbeo.com/common/terms_of_use.jsp",
+      "methodologyUrl": "https://www.numbeo.com/common/motivation_and_methodology.jsp"
+    },
+    {"name": "Basílica de la Sagrada Família", "accessBasis": "public_official"},
+    {"name": "U.S. National Park Service", "accessBasis": "public_official"},
+    {"name": "Vietnam Tourism", "accessBasis": "public_official"}
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 3,
+    "midrange_restaurant_meal_2p": 3,
+    "premium_restaurant_meal_2p": 0,
+    "domestic_draft_beer_1": 3,
+    "cappuccino_1": 3,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 3,
+    "half_day_group_activity_adult_1": 0,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {"city": "Barcelona", "measure": "street_food_meal_1p", "reason": "A comparable cheap takeaway or counter-service menu sample has not yet been collected."},
+    {"city": "Barcelona", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "Barcelona", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "Barcelona", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "Barcelona", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "Barcelona", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "San Francisco", "measure": "street_food_meal_1p", "reason": "A comparable cheap takeaway or counter-service menu sample has not yet been collected."},
+    {"city": "San Francisco", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "San Francisco", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "San Francisco", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "San Francisco", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "San Francisco", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "Da Nang", "measure": "street_food_meal_1p", "reason": "The Numbeo inexpensive-restaurant measure is not relabelled as street food; a separate menu sample is required."},
+    {"city": "Da Nang", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "Da Nang", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "Da Nang", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "Da Nang", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."},
+    {"city": "Da Nang", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable operator product."}
+  ],
+  "remainingCategories": ["food_drink_menu_triangulation", "activity_products", "accommodation"],
+  "notes": "Pilot wave 1 retained 12 directly inspected Numbeo city observations and three current official paid-attraction prices. No FX conversion, final-tier arithmetic, uncited fallback, or hub substitution was performed during collection."
+}

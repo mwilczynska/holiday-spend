@@ -245,7 +245,8 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - [x] Add source-channel-aware aggregation that retains secondary evidence and flags cross-channel medians differing by more than the provisional 25% review threshold
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
-  - [x] Materialize the current fail-closed research artifact: 27 of 114 tier cells across six cities, with zero incomplete wide rows published
+  - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities
+  - [x] Materialize the current fail-closed research artifact: 42 of 171 tier cells across nine cities, with zero incomplete wide rows published
 - [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
 - [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
 - [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
@@ -454,6 +455,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `data/reference/observations/batch-zero-day-02-food-drinks.jsonl`
   - `data/reference/observations/batch-zero-day-02-activities.jsonl`
   - `data/reference/observations/batch-zero-day-02-report.json`
+  - `data/reference/observations/pilot-wave-01-day-01-food-drinks.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-01-activities.jsonl`
+  - `data/reference/observations/pilot-wave-01-day-01-report.json`
 - `docs/dev/plans/city-cost-source-access.md`
 - `docs/prompts/llm_prompt_city_cost_observations_1.md`
 - `src/lib/city-cost-observation.ts`

@@ -80,6 +80,42 @@
       ]
     },
     {
+      "batchId": "pilot-wave-01-day-01",
+      "status": "complete_with_missing",
+      "plannedCalls": 6,
+      "completedCalls": 6,
+      "acceptedObservations": 15,
+      "checkpoint": "pilot_food_drinks_and_paid_attraction_complete",
+      "observationFiles": [
+        "data/reference/observations/pilot-wave-01-day-01-food-drinks.jsonl",
+        "data/reference/observations/pilot-wave-01-day-01-activities.jsonl"
+      ],
+      "reportFile": "data/reference/observations/pilot-wave-01-day-01-report.json",
+      "cities": [
+        {
+          "city": "Barcelona",
+          "country": "Spain",
+          "region": "Europe",
+          "categories": ["food_drinks", "activities"],
+          "reason": "pilot_high_cost_europe"
+        },
+        {
+          "city": "San Francisco",
+          "country": "United States",
+          "region": "North America",
+          "categories": ["food_drinks", "activities"],
+          "reason": "pilot_high_cost_north_america"
+        },
+        {
+          "city": "Da Nang",
+          "country": "Vietnam",
+          "region": "SEA",
+          "categories": ["food_drinks", "activities"],
+          "reason": "pilot_lower_cost_sea"
+        }
+      ]
+    },
+    {
       "batchId": "batch-zero-accommodation",
       "status": "blocked_on_reference_window_design",
       "plannedCalls": 0,

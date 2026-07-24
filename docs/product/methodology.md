@@ -91,12 +91,13 @@ dated source observations
 
 ### Implementation Checkpoint
 
-The observation schema, JSONL validator, and batch manifest are now implemented. The first two validated
-checkpoints contain 27 direct observations across Lisbon, Prague, Hanoi, Copenhagen, Bangkok, and Pu
-Luong: 20 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, five official
-paid-attraction prices, and one operator-listed Pu Luong half-day group activity. Every row retains its
+The observation schema, JSONL validator, and batch manifest are now implemented. Batch zero plus the
+first pilot wave contain 42 direct observations across Lisbon, Prague, Hanoi, Copenhagen, Bangkok, Pu
+Luong, Barcelona, San Francisco, and Da Nang: 32 standardized Numbeo food/drink prices, one Pu Luong
+official-menu meal, eight official paid-attraction prices, and one operator-listed Pu Luong half-day
+group activity. Every row retains its
 original EUR, CZK, DKK, THB, VND, or USD value, source URL, retrieval time, page-valid date where known,
-displayed range, source-access basis, and extraction version. The validator reports 27 valid direct rows
+displayed range, source-access basis, and extraction version. The validator reports 42 valid direct rows
 and no schema errors.
 
 Pu Luong is an intentional sparse-market stress test. No defensible Numbeo city page was found, so the
@@ -132,9 +133,9 @@ USD, CZK, DKK, and THB, plus the Reserve Bank of Australia's 14 July 2026 AUD/VN
 retains its source date, quote, URL, and derivation formula. The materializer verifies the snapshot and
 recomputes cross-rate arithmetic in automated tests.
 
-The current materialized artifact contains six cities and 27 accepted direct observations. It can
-calculate 27 of 114 possible city-tier cells: coffee and the coffee-only/light drinks baskets for five
-cities, free activities for all six, budget paid-attraction baskets for five, and one Pu Luong mid-range
+The current materialized artifact contains nine cities and 42 accepted direct observations. It can
+calculate 42 of 171 possible city-tier cells: coffee and the coffee-only/light drinks baskets for eight
+cities, free activities for all nine, budget paid-attraction baskets for eight, and one Pu Luong mid-range
 half-day activity basket. It reports zero complete cities and emits no publishable wide row because
 accommodation, street/premium food, cocktail/wine, and many activity observations are still missing.
 This fail-closed behaviour is intentional: partial evidence remains visible without being misrepresented
