@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "city-cost-pilot-v1",
+  "sourceDataset": "data/reference/city_costs_app_aud.csv",
+  "selectionAlgorithm": "regional quotas with deterministic current-mid-basket quantile coverage",
+  "currentMidBasketFormula": "accom_3_star + food_mid_range + drinks_moderate + activities_mid_range",
+  "status": "candidate_until_city_size_tourism_intensity_and_source_density_features_are_added",
+  "targetCities": 36,
+  "regionQuotas": {
+    "SEA": 11,
+    "Europe": 7,
+    "East Asia": 5,
+    "Latin America": 3,
+    "Oceania": 2,
+    "North America": 2,
+    "South Asia": 2,
+    "Africa": 2,
+    "Middle East": 2
+  },
+  "requiredCityReasons": {
+    "Hanoi|Vietnam": "baseline_audit_recheck",
+    "Lisbon|Portugal": "baseline_audit_recheck",
+    "Prague|Czech Republic": "baseline_audit_recheck",
+    "Pu Luong|Vietnam": "sparse_city_stress_test",
+    "Don Det|Laos": "sparse_city_stress_test",
+    "Santa Fe (Bantayan)|Philippines": "sparse_city_stress_test"
+  },
+  "cities": [
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "currentMidBasketAud": 220.57,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 2
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "region": "Africa",
+      "currentMidBasketAud": 229.87,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 2
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "currentMidBasketAud": 268.27,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Fukuoka",
+      "country": "Japan",
+      "region": "East Asia",
+      "currentMidBasketAud": 325.81,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Sendai",
+      "country": "Japan",
+      "region": "East Asia",
+      "currentMidBasketAud": 342.83,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "currentMidBasketAud": 375.33,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "currentMidBasketAud": 418.69,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "region": "Europe",
+      "currentMidBasketAud": 260.63,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "currentMidBasketAud": 317.91,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "currentMidBasketAud": 355.96,
+      "selectionReason": "baseline_audit_recheck",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Split",
+      "country": "Croatia",
+      "region": "Europe",
+      "currentMidBasketAud": 412.15,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "currentMidBasketAud": 412.22,
+      "selectionReason": "baseline_audit_recheck",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "currentMidBasketAud": 472.44,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 4
+    },
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "region": "Europe",
+      "currentMidBasketAud": 512.66,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 4
+    },
+    {
+      "city": "Medellin",
+      "country": "Colombia",
+      "region": "Latin America",
+      "currentMidBasketAud": 214.68,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 2
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "currentMidBasketAud": 245.29,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 2
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "currentMidBasketAud": 274.69,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 3
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "currentMidBasketAud": 259.24,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 2
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "region": "Middle East",
+      "currentMidBasketAud": 528.4,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 4
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "currentMidBasketAud": 608.61,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 4
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "currentMidBasketAud": 809.72,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 4
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "currentMidBasketAud": 539.09,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 4
+    },
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "currentMidBasketAud": 602.48,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 4
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "region": "SEA",
+      "currentMidBasketAud": 127.72,
+      "selectionReason": "sparse_city_stress_test",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Can Tho",
+      "country": "Vietnam",
+      "region": "SEA",
+      "currentMidBasketAud": 134.26,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Pu Luong",
+      "country": "Vietnam",
+      "region": "SEA",
+      "currentMidBasketAud": 137.36,
+      "selectionReason": "sparse_city_stress_test",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "currentMidBasketAud": 140.76,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "region": "SEA",
+      "currentMidBasketAud": 146.6,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Santa Fe (Bantayan)",
+      "country": "Philippines",
+      "region": "SEA",
+      "currentMidBasketAud": 152.18,
+      "selectionReason": "sparse_city_stress_test",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "currentMidBasketAud": 156.55,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "region": "SEA",
+      "currentMidBasketAud": 161.51,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "currentMidBasketAud": 163.06,
+      "selectionReason": "baseline_audit_recheck",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "currentMidBasketAud": 164.92,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "region": "SEA",
+      "currentMidBasketAud": 177.29,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Goa",
+      "country": "India",
+      "region": "South Asia",
+      "currentMidBasketAud": 168.92,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 1
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "currentMidBasketAud": 181.94,
+      "selectionReason": "regional_cost_quantile",
+      "currentCostQuartile": 2
+    }
+  ]
+}

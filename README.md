@@ -69,6 +69,10 @@ npm run build
 npx tsc --noEmit
 npm test
 npm run country-metadata:generate
+npm run methodology:audit
+npm run methodology:pilot -- --write
+npm run methodology:batches:validate
+npm run methodology:observations:validate -- data/reference/observations
 npm run test:e2e
 npm run db:seed
 ```

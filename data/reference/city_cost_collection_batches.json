@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-collection-batches-v1",
+  "collectionPolicy": "free_llm_web_research_only",
+  "callLimitPolicy": "provider_free_tier_only",
+  "projectDailyCallCap": null,
+  "checkpointAfterEveryCity": true,
+  "researchPrompt": "docs/prompts/llm_prompt_city_cost_observations_1.md",
+  "observationSchema": "city-cost-observation-v1",
+  "batches": [
+    {
+      "batchId": "batch-zero-day-01",
+      "status": "complete_with_missing",
+      "plannedCalls": 6,
+      "completedCalls": 6,
+      "acceptedObservations": 15,
+      "checkpoint": "food_drinks_and_paid_attraction_complete",
+      "observationFiles": [
+        "data/reference/observations/batch-zero-day-01-food-drinks.jsonl",
+        "data/reference/observations/batch-zero-day-01-activities.jsonl"
+      ],
+      "reportFile": "data/reference/observations/batch-zero-day-01-report.json",
+      "cities": [
+        {
+          "city": "Lisbon",
+          "country": "Portugal",
+          "region": "Europe",
+          "categories": ["food_drinks", "activities"],
+          "reason": "largest_baseline_bias"
+        },
+        {
+          "city": "Prague",
+          "country": "Czech Republic",
+          "region": "Europe",
+          "categories": ["food_drinks", "activities"],
+          "reason": "best_baseline_accuracy"
+        },
+        {
+          "city": "Hanoi",
+          "country": "Vietnam",
+          "region": "SEA",
+          "categories": ["food_drinks", "activities"],
+          "reason": "low_cost_baseline"
+        }
+      ]
+    },
+    {
+      "batchId": "batch-zero-day-02",
+      "status": "pending",
+      "plannedCalls": 6,
+      "cities": [
+        {
+          "city": "Copenhagen",
+          "country": "Denmark",
+          "region": "Europe",
+          "categories": ["food_drinks", "activities"],
+          "reason": "high_cost_stress_test"
+        },
+        {
+          "city": "Bangkok",
+          "country": "Thailand",
+          "region": "SEA",
+          "categories": ["food_drinks", "activities"],
+          "reason": "dense_lower_cost_market"
+        },
+        {
+          "city": "Pu Luong",
+          "country": "Vietnam",
+          "region": "SEA",
+          "categories": ["food_drinks", "activities"],
+          "reason": "sparse_city_stress_test"
+        }
+      ]
+    },
+    {
+      "batchId": "batch-zero-accommodation",
+      "status": "blocked_on_reference_window_design",
+      "plannedCalls": 0,
+      "cities": [],
+      "reason": "Define city-specific low, shoulder, and high-season reference weeks before collecting dated quotes"
+    }
+  ]
+}

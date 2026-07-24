@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "batch-zero-day-01",
+  "checkpoint": "food_drinks_and_paid_attraction_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 6,
+  "cities": ["Lisbon", "Prague", "Hanoi"],
+  "acceptedObservations": 15,
+  "rejectedObservations": 0,
+  "sources": [
+    {
+      "name": "Numbeo",
+      "accessBasis": "personal_use_with_attribution",
+      "termsUrl": "https://www.numbeo.com/common/terms_of_use.jsp",
+      "methodologyUrl": "https://www.numbeo.com/common/motivation_and_methodology.jsp"
+    },
+    {"name": "Oceanario de Lisboa", "accessBasis": "public_official"},
+    {"name": "Prague Castle Administration", "accessBasis": "public_official"},
+    {"name": "Hanoi People's Committee Electronic Portal", "accessBasis": "public_official"}
+  ],
+  "coverage": {
+    "inexpensive_restaurant_meal_1p": 3,
+    "midrange_restaurant_meal_2p": 3,
+    "domestic_draft_beer_1": 3,
+    "cappuccino_1": 3,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 3,
+    "half_day_group_activity_adult_1": 0,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {"city": "Lisbon", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent menu sample."},
+    {"city": "Lisbon", "measure": "wine_glass_1", "reason": "Numbeo publishes a retail bottle, not a comparable restaurant glass; requires an independent menu sample."},
+    {"city": "Prague", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent menu sample."},
+    {"city": "Prague", "measure": "wine_glass_1", "reason": "Numbeo publishes a retail bottle, not a comparable restaurant glass; requires an independent menu sample."},
+    {"city": "Hanoi", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent menu sample."},
+    {"city": "Hanoi", "measure": "wine_glass_1", "reason": "Numbeo publishes a retail bottle, not a comparable restaurant glass; requires an independent menu sample."},
+    {"city": "Lisbon", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable official operator product."},
+    {"city": "Lisbon", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable official operator product."},
+    {"city": "Prague", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable official operator product."},
+    {"city": "Prague", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable official operator product."},
+    {"city": "Hanoi", "measure": "half_day_group_activity_adult_1", "reason": "Not yet collected from a directly comparable official operator product."},
+    {"city": "Hanoi", "measure": "full_day_premium_activity_adult_1", "reason": "Not yet collected from a directly comparable official operator product."}
+  ],
+  "remainingCategories": ["activity_products", "accommodation"],
+  "notes": "All 15 accepted rows were directly inspected and retained in original currencies. No FX conversion or tier calculation was performed."
+}

@@ -1,15 +1,182 @@
 # Holiday Spend Tracker — City Cost Database Methodology
 
-**Version 2.0 | 121 Cities | April 2026**
+**Version 2.1 baseline + Version 3 redesign | Reference dataset: April 2026 | Review: July 2026**
 
 All tier values are for **TWO people**, per night (accommodation) or per day (food/drinks/activities).  
-Currency: AUD in app-facing data (USD→AUD rate: 1.55). Full dataset includes both USD and AUD.
+Currency: AUD in app-facing data (USD→AUD reference rate: 1.55). The canonical CSV stores AUD values;
+USD anchors and generation context are retained in research or estimate metadata where available.
 
 ---
 
+## Review Summary
+
+This is a transparent planning model, not a quote, forecast, or statistical confidence interval. It
+constructs a representative city-level basket from named price anchors, applies deterministic formulas,
+converts the result to AUD, and scales the two-person base values at runtime.
+
+The model is intended to let a reviewer answer four questions for every output:
+
+1. What source observation or fallback produced the input?
+2. What formula transformed the input into the tier?
+3. What assumptions or uncertainty remain?
+4. Can the result be recomputed from the recorded context?
+
+The current canonical CSV stores app-facing AUD values but not complete observation-level lineage, so
+it is not sufficient by itself to reproduce or re-audit every reference row. USD anchors and generation
+context are retained in estimate metadata only where available. Closing that provenance gap is a core
+requirement of the version 3 redesign below.
+
+### Data Flow
+
+~~~text
+researched source prices (USD)
+        -> named anchors + source/date/confidence notes
+        -> deterministic tier formulas for two travellers
+        -> AUD conversion and monetary rounding
+        -> stored base-2 city row
+        -> runtime group-size scaling
+        -> itinerary allocation by city, date, and tier
+~~~
+
+The distinction between observed inputs and derived outputs is intentional. A source price is an input;
+a tier such as mid-range food is a model output. The model does not imply that every derived tier was
+directly observed in a source.
+
+## What The Current Accuracy Evidence Shows
+
+Accuracy requires an external benchmark. Internal ratios can show whether formulas behave consistently,
+but a perfectly stable formula can still be wrong in every city. The first external audit therefore
+compared stored anchor values with independently retrieved July 2026 reference prices.
+
+| Metric | Result |
+|---|---:|
+| Cities | 3 of 121 |
+| Anchor comparisons | 9 |
+| Mean absolute percentage error (MAPE) | 17.47% |
+| Median absolute percentage error | 14.29% |
+| Mean signed percentage error (bias) | -16.30% |
+| Weighted absolute percentage error | 21.00% |
+| Root mean squared percentage error | 22.96% |
+| Comparisons within 10% / 15% / 25% | 3/9, 5/9, 7/9 |
+
+Eight of nine stored prices were below the reference value. That is evidence of systematic
+under-estimation, not symmetric random noise. The error is also heterogeneous: Lisbon's four anchors
+have 29.50% MAPE and -29.50% bias, compared with 6.56% MAPE in Prague and 9.77% in Hanoi. A single global
+uplift would therefore correct the mean while leaving important regional or city-level error.
+
+These results are deliberately described as a **baseline spot check**, not a validated accuracy claim.
+Only three city clusters and four food/drink anchor types are represented. Accommodation, activities,
+seasonality, group scaling, and final itinerary totals are untested. The reference prices are also
+measurements with their own uncertainty; a marketplace quote or crowd-sourced median is not an error-free
+ground truth. The audit demonstrates that the current inputs need replacement, but it cannot estimate
+population-wide error or support narrow confidence intervals.
+
+## Version 3: Observed-First Redesign
+
+The revised methodology reverses the current priority. Direct, dated observations become the default;
+statistical estimation is reserved for missing cells; an LLM may locate and extract evidence but cannot
+invent an uncited price or perform the calculation of record.
+
+~~~text
+dated source observations
+        -> definition and unit validation
+        -> local-currency normalization
+        -> robust city/category aggregation
+        -> deterministic basket construction
+        -> validated imputation only where observations are missing
+        -> prediction interval and evidence-quality fields
+        -> frozen holdout validation
+        -> versioned AUD publication snapshot
+~~~
+
+### Implementation Checkpoint
+
+The observation schema, JSONL validator, and batch manifest are now implemented. The first validated
+checkpoint contains 15 direct observations across Lisbon, Prague, and Hanoi: 12 standardized Numbeo
+food/drink prices and three prices from official paid-attraction pages. Every row retains its original
+EUR, CZK, or VND value, source URL, retrieval time, page-valid date where known, displayed range,
+source-access basis, and extraction version. The validator reports 15 valid direct rows and no schema
+errors.
+
+Paid data APIs are excluded. Free web-enabled LLM research has no project-imposed daily call cap; it
+continues while the selected provider offers free capacity and checkpoints after each completed
+city/category. Provider-enforced free-tier limits affect throughput, not the evidence standard. This
+checkpoint demonstrates that the collection contract works; it is not an updated accuracy result and
+does not replace the frozen holdout evaluation.
+
+### Reproducible Estimands
+
+Every estimate must specify what is being estimated. Accommodation, for example, will use fixed
+reference weeks, booking lead time, stay length, occupancy, search radius, review threshold, room type,
+and all mandatory taxes. Food and drink retain explicit item and serving definitions. Activities use a
+fixed taxonomy of free attractions, paid attractions, half-day group experiences, and premium/full-day
+experiences instead of an inexpensive-meal proxy.
+
+For accommodation, multiple low-, shoulder-, and high-season searches will produce a median nightly
+total plus interquartile range and listing count. For food and drink, city-level source medians will be
+triangulated with independent menu observations in the validation sample. For activities, current
+official attraction prices and structured tour-marketplace results will replace global multipliers.
+
+### Robust Aggregation And Missing Data
+
+Prices remain in local currency until city-level aggregation is complete. Comparable observations are
+aggregated with robust medians or documented trimmed estimators; marketplace minimums are not treated as
+representative prices. Source disagreement, excluded outliers, ranges, counts, retrieval dates, and URLs
+remain in the observation table rather than disappearing into a final average.
+
+Missing values will be predicted on the log-price scale, where proportional errors are symmetric. The
+candidate fallback set includes global ratios, region/cost-band ratios, regularized feature models, and a
+hierarchical partial-pooling model with city, country, region, and category effects. Whole cities—not
+individual rows—are held out during cross-validation. The simplest method that performs best on unseen
+cities is selected and published with its prediction interval. The current arbitrary nearest-city
+10% to 30% adjustment will not survive unless it wins that comparison.
+
+### How Accuracy Will Be Measured
+
+For estimate `p_hat` and independent benchmark `p`, the primary residual is:
+
+~~~text
+signed_log_error = ln(p_hat / p)
+~~~
+
+This residual is zero when correct and treats reciprocal proportional errors consistently. No single
+summary statistic is sufficient, so the validation report will include:
+
+- median signed log error and mean signed percentage error for systematic bias
+- median absolute percentage error for typical error
+- weighted absolute percentage error for budget impact
+- root mean squared log error to penalise variance and large misses
+- 50th, 80th, and 90th absolute-error percentiles
+- shares within 10%, 15%, and 25%
+- Spearman rank correlation for cross-city affordability ordering
+- prediction-interval coverage and width for uncertainty calibration
+- itinerary-weighted error after trip length and category mix are applied
+
+Results will always include city count, observation count, dataset version, reference window, and
+cluster-level uncertainty intervals. They will be broken down by category, region, cost quartile,
+season, and direct-versus-imputed provenance so a good global average cannot conceal a failing subgroup.
+
+### Validation Design And Provisional Gates
+
+The first defensible study will use at least 30 whole cities stratified by region, cost quartile, city
+size, tourism intensity, and data density. Benchmark observations will be recollected independently and
+kept separate from model fitting. Confidence intervals will resample cities as clusters because prices
+within a city are correlated. A second behavioural layer will compare representative tier baskets with
+real trip expenses mapped to the same definitions.
+
+The provisional holdout targets are median APE at or below 10% for food/drink anchors, at or below 15%
+for accommodation/activities, absolute bias below 5% to 7.5%, a two-person city-basket median APE at or
+below 12%, a 90th-percentile basket error at or below 25%, Spearman rank correlation of at least 0.95,
+and empirical 80% interval coverage between 75% and 85%. These are acceptance criteria for future work,
+not results the current dataset claims to have achieved.
+
+The detailed execution plan and source feasibility assessment are recorded in
+`docs/dev/plans/observed-first-methodology.md`.
+
 ## 1. Anchor Prices
 
-Each city requires 10 directly-researched anchor prices (all in USD):
+Each city is represented by 10 named USD anchor slots. They are sourced directly where coverage exists
+and explicitly approximated when a direct observation is unavailable:
 
 | # | Anchor | Definition | Primary Source |
 |---|--------|-----------|----------------|
@@ -37,6 +204,44 @@ Each city requires 10 directly-researched anchor prices (all in USD):
 - **Wine glass unavailable:** estimate as `beer × 1.5`
 - **No hostel scene** (e.g. small rural town): set `hostel_dorm_1p = hotel_1star_2p / 2` and `hostel_private_2p = hotel_1star_2p`
 - **"Street food" in expensive Western cities** (Paris, London, Copenhagen, etc.): this tier represents cheap takeaway, fast food, or budget counter-service — not literal street stalls.
+
+---
+
+### Research Procedure And Evidence
+
+For each anchor, the research record should identify the city, source, reference date or pricing
+window, currency, unit, occupancy, and whether the value is direct or inferred. A number without its
+unit or observation context is not reproducible.
+
+The source hierarchy is a consistency rule, not a claim that one website is universally authoritative:
+
+1. Prefer city-level observations over country averages and preserve the original source unit.
+2. Use a representative accommodation price or median where possible; do not select an unusually cheap
+   minimum and present it as a typical night.
+3. Use the most recent comparable observation available, while recording seasonal or event-driven
+   limitations instead of silently smoothing them away.
+4. If direct coverage is missing, scale from a nearby city with a documented cost relationship.
+5. For remote or very small destinations, use a regional hub and record the stated 10% to 30%
+   adjustment for local price level and remoteness.
+6. Use BudgetYourTrip, Price of Travel, hikersbay, and similar sources for external plausibility checks;
+   they are not silently mixed into the primary anchor calculation.
+
+### Approximation And Confidence
+
+The arithmetic is deterministic after the inputs are selected, but the inputs are not equally certain.
+Confidence describes the quality and proximity of the evidence behind a city row. It is not a calibrated
+probability that the estimate will be correct.
+
+- **High:** direct city-level observations cover most material anchors using the preferred source types.
+- **Medium:** one or more material anchors use a nearby city or clearly comparable market with a
+  documented scaling assumption.
+- **Low:** the destination relies substantially on a regional hub, sparse alcohol data, or multiple
+  formula fallbacks.
+
+Confidence notes should say what was directly observed, what was scaled, which fallback was used, and
+why the approximation was considered reasonable. The current system does not publish formal prediction
+intervals; this is an explicit limitation rather than something that should be inferred from a qualitative
+label.
 
 ---
 
@@ -239,6 +444,22 @@ A coefficient of variation (CV) below 20% indicates the formula produces consist
 
 These align with published backpacker indexes from BudgetYourTrip and Price of Travel.
 
+### Validation Interpretation
+
+Validation is applied at three levels:
+
+1. **Structural:** required city fields are present, values are non-negative, the canonical dataset has
+   the expected city and country coverage, and the explicit coffee input is available.
+2. **Deterministic invariants:** composed baskets and fixed-ratio tiers reconcile with their inputs,
+   including drinks_none equal to two coffees.
+3. **Empirical plausibility:** ratio diagnostics and external traveller-budget references are used to
+   identify implausible outputs or assumptions that deserve review.
+
+The ratio diagnostics are descriptive rather than proof of accuracy. A stable ratio shows that a
+transformation behaves consistently across the calibration set; it does not establish that the absolute
+level is correct. Formal prediction intervals and automated outlier treatment are not currently
+published, so the qualitative confidence notes and limitations remain important.
+
 ---
 
 ## 5. Data Sources
@@ -252,6 +473,28 @@ These align with published backpacker indexes from BudgetYourTrip and Price of T
 | BudgetYourTrip | Traveler-reported daily budgets (validation) | budgetyourtrip.com |
 | hikersbay / world-prices | Secondary cross-validation | hikersbay.com |
 
+## 5.1 Data Lineage And Reproducibility
+
+The active city row is the planner source, while estimate history is retained as an audit trail. This
+keeps the operational dataset simple without discarding the evidence and model settings that produced
+earlier estimates.
+
+For generated rows, the metadata can include:
+
+- provider and model
+- prompt version
+- confidence notes
+- anchor values
+- source details
+- input snapshot
+- fallback log
+- inferred AUD-per-USD rate
+
+Reference rows are traceable to data/reference/city_costs_app_aud.csv and the base_csv_apr_2026 seed
+source. Generated rows retain the prompt version so a future prompt change does not make old results
+ambiguous. A reviewer can recompute each composed category from the anchors without needing access to
+the original LLM response.
+
 ---
 
 ## 6. Known Limitations
@@ -263,6 +506,12 @@ These align with published backpacker indexes from BudgetYourTrip and Price of T
 5. **Activities** use a blended local/global scaling factor. The global baseline ($10 USD) may need adjustment if the global cost floor changes significantly.
 6. **Wine and cocktail prices** are estimated where Numbeo data is sparse — these should be verified for accuracy in alcohol-restricted countries (e.g. parts of SE Asia, Middle East).
 7. **Currency rates** — the USD→AUD rate of 1.55 is approximate. The app should ideally use a live or regularly-updated rate.
+8. **Confidence labels** are qualitative evidence-quality labels, not calibrated error probabilities.
+9. **Prediction intervals and automatic outlier treatment** are not currently published; unusual rows require
+   human review and source inspection.
+10. **Source drift** is possible because third-party websites change definitions, coverage, and prices over time.
+11. **Transport boundary** is deliberate: local transport and intercity transport are handled as planner-level
+    manual inputs rather than hidden inside city daily costs.
 
 ---
 
@@ -276,7 +525,13 @@ Use the LLM prompt in `llm_prompt_new_cities.md` to generate entries for cities 
 4. Output JSON in the database schema
 5. Flag confidence level (high / medium / low)
 
-The output JSON can be appended directly to the CSV database.
+The output JSON is an input to the city-generation save flow. It should be reviewed, validated, and
+mapped into the app-facing CSV or database schema rather than appended blindly.
+
+Before accepting a generated or manually edited row, review the city and country identity, inspect all
+ten anchors, mark direct versus inferred values, recompute the tier formulas, review the confidence
+notes, and compare the resulting daily budget with an external plausibility reference. The goal is not
+to remove all uncertainty; it is to make each approximation visible and replaceable.
 
 ---
 

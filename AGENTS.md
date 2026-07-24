@@ -36,6 +36,9 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
   - `RESEND_API_KEY` and `MAIL_FROM` are required for production email delivery
   - without `RESEND_API_KEY` in development, verification/reset links fall back to `console.log`
 
+## Development Workflow
+- Commit and push after each sizeable chunk of work and after each milestone
+
 ## Tech Stack
 - Next.js 14 App Router
 - TypeScript
@@ -229,6 +232,22 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - [x] Add explicit `Save City` flow in the dataset editor
 - [x] Refresh project memory in `CLAUDE.md`
 
+### Phase 6: Observed-First City Cost Methodology And Validation (In Progress)
+- [x] Assess the original anchor-and-derive methodology against the supplied external accuracy audit
+- [x] Define version 3 estimands, observation-level provenance, validation metrics, and provisional acceptance gates
+- [x] Document the observed-first redesign in `docs/dev/plans/observed-first-methodology.md`
+- [x] Add reproducible baseline audit code for `accuracy_audit.csv`
+- [x] Define the versioned observation contract, validation command, and source-access matrix
+- [x] Generate a deterministic 36-city candidate pilot spanning every region and the current cost range
+  - [x] Constrain collection to free, checkpointed LLM web-research calls with no paid data APIs or project-imposed daily cap
+  - [x] Add an observation-level JSONL store and extraction-batch manifest
+  - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
+- [ ] Collect batch zero, then the 36-city pilot, across accommodation, food, drinks, and activities
+- [ ] Compare missing-data models with whole-city cross-validation and freeze an independent holdout set
+- [ ] Recollect direct observations for all 121 cities and publish calibrated uncertainty intervals
+- [ ] Replace the version 1 new-city prompt with a source-first version 2 prompt and deterministic server-side tier calculation
+- [ ] Publish achieved overall and subgroup accuracy metrics on `/estimates`
+
 ### Priority 2B: Native Account Expansion
 - [x] Add native email/password accounts alongside Google OAuth rather than replacing Google sign-in
 - [x] Treat email as the primary account identifier and keep display name optional instead of introducing username-first auth
@@ -419,6 +438,20 @@ The app stores base city costs in AUD for 2 people, then scales them at runtime 
 - `docs/product/methodology.md`
 - `docs/prompts/llm_prompt_new_cities_1.md`
 - `docs/prompts/llm_prompt_intercity_transport_1.md`
+- `data/reference/methodology_page.md`
+- `data/reference/accuracy_audit.csv`
+- `docs/dev/plans/observed-first-methodology.md`
+- `scripts/audit-city-cost-accuracy.mjs`
+  - `data/reference/city_cost_collection_pilot.json`
+  - `data/reference/city_cost_collection_batches.json`
+  - `data/reference/observations/batch-zero-day-01-food-drinks.jsonl`
+  - `data/reference/observations/batch-zero-day-01-activities.jsonl`
+  - `data/reference/observations/batch-zero-day-01-report.json`
+- `docs/dev/plans/city-cost-source-access.md`
+- `docs/prompts/llm_prompt_city_cost_observations_1.md`
+- `src/lib/city-cost-observation.ts`
+- `scripts/select-city-cost-pilot.mjs`
+- `scripts/validate-city-cost-observations.ts`
 - `src/lib/city-generation.ts`
 - `src/lib/city-llm-client.ts`
 - `src/lib/city-generation-config.ts`
