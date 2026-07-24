@@ -182,6 +182,9 @@ describe('city cost methodology v3', () => {
     expect(snapshot.rates.CUP.audPerUnit).toBeCloseTo((1.6312 / 1.1408) / 598, 12);
     expect(snapshot.rates.AED.audPerUnit).toBeCloseTo(1 / 2.57268, 12);
     expect(snapshot.rates.CAD.audPerUnit).toBeCloseTo(1.6312 / 1.6071, 12);
+    expect(snapshot.rates.KRW.audPerUnit).toBeCloseTo(1.6312 / 1688.04, 12);
+    expect(snapshot.rates.HUF.audPerUnit).toBeCloseTo(1.6312 / 363.9, 12);
+    expect(snapshot.rates.MXN.audPerUnit).toBeCloseTo(1.6312 / 19.8767, 12);
     expect(snapshot.rates.TRY.audPerUnit).toBeCloseTo(1.6312 / 53.8658, 12);
     expect(snapshot.rates.INR.audPerUnit).toBeCloseTo(1.6312 / 110.167, 12);
     expect(snapshot.rates.COP.audPerUnit).toBeCloseTo(

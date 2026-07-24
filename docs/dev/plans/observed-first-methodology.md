@@ -331,9 +331,9 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
   LLM call, verifies assignment identity and complete observed/missing measure coverage, and forces every
   returned observation to remain `unreviewed` for a separate evidence-review step.
 
-Checkpoint: batch zero and the first six pilot-wave checkpoints currently provide 120 accepted direct
-observations across 24 cities, covering every pilot region. The v3-alpha materializer aggregates in
-city-local currency, applies a frozen and source-attributed AUD FX snapshot, and materializes 115 of 456 possible
+Checkpoint: batch zero and the first seven pilot-wave checkpoints currently provide 135 accepted direct
+observations across 27 cities, covering every pilot region. The v3-alpha materializer aggregates in
+city-local currency, applies a frozen and source-attributed AUD FX snapshot, and materializes 130 of 513 possible
 city-tier cells. No city is complete and no partial wide row is published.
 The pipeline is therefore reproducible and fail-closed, but it is not yet a replacement for the active
 121-city dataset.
@@ -418,6 +418,9 @@ flexible and non-refundable conditions; a true availability failure; and technic
 - [x] Add Sendai, Sofia, and Vancouver: 12 direct Numbeo food/drink observations and three official
   attraction prices; retain Sendai's sparse 19-contributor context and wide ranges, and correct Bulgaria's
   canonical currency to EUR after its 1 January 2026 euro adoption.
+- [x] Add Seoul, Budapest, and Mexico City: 12 direct Numbeo food/drink observations and three official
+  attraction prices; retain Mexico City's exact 12 June 2026 validity date and temporary direct-page 503
+  while using the indexed current city result rather than a country-level substitute.
 - [x] Freeze the first official-register accommodation sampling frame for Barcelona, including
   deterministic hotel panels, full reserve order, join coverage, and visible exclusions.
 - [x] Generalize the panel contract and freeze Copenhagen's Hotelstars hotel frame plus the official

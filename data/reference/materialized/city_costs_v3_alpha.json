@@ -1,22 +1,22 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T10:16:40.931Z",
+  "dataCutoff": "2026-07-24T11:18:00.000Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 120,
-    "accepted": 120,
+    "input": 135,
+    "accepted": 135,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 120,
+    "direct": 135,
     "derived": 0,
     "imputed": 0
   },
-  "cityCount": 24,
+  "cityCount": 27,
   "completeCityCount": 0,
-  "requiredTierCells": 456,
-  "materializedTierCells": 115,
+  "requiredTierCells": 513,
+  "materializedTierCells": 130,
   "tierCoverage": {
     "accom_shared_hostel_dorm": 0,
     "accom_hostel_private_room": 0,
@@ -28,13 +28,13 @@
     "food_budget": 0,
     "food_mid_range": 0,
     "food_high_end": 0,
-    "drink_coffee": 23,
-    "drinks_none": 23,
-    "drinks_light": 23,
+    "drink_coffee": 26,
+    "drinks_none": 26,
+    "drinks_light": 26,
     "drinks_moderate": 0,
     "drinks_heavy": 0,
-    "activities_free": 24,
-    "activities_budget": 21,
+    "activities_free": 27,
+    "activities_budget": 24,
     "activities_mid_range": 1,
     "activities_high_end": 0
   },
@@ -1197,6 +1197,391 @@
       ],
       "availableObservationIds": [
         "sagrada-familia-barcelona-2026-basic-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-budapest-2026-06-cappuccino"
+          ],
+          "medianLocal": 1085.11,
+          "q25Local": 1085.11,
+          "q75Local": 1085.11,
+          "medianAud": 4.86406
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "HUF",
+      "audPerLocalUnit": 0.004482550151140423,
+      "medianLocal": 1085.11,
+      "q25Local": 1085.11,
+      "q75Local": 1085.11,
+      "minLocal": 1085.11,
+      "maxLocal": 1085.11,
+      "medianAud": 4.86406,
+      "q25Aud": 4.86406,
+      "q75Aud": 4.86406,
+      "minAud": 4.86406,
+      "maxAud": 4.86406,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "HUF"
+      ],
+      "observationIds": [
+        "numbeo-budapest-2026-06-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-budapest-2026-06-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-budapest-2026-06-domestic-draft-beer"
+          ],
+          "medianLocal": 1200,
+          "q25Local": 1200,
+          "q75Local": 1200,
+          "medianAud": 5.37906
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "HUF",
+      "audPerLocalUnit": 0.004482550151140423,
+      "medianLocal": 1200,
+      "q25Local": 1200,
+      "q75Local": 1200,
+      "minLocal": 1200,
+      "maxLocal": 1200,
+      "medianAud": 5.37906,
+      "q25Aud": 5.37906,
+      "q75Aud": 5.37906,
+      "minAud": 5.37906,
+      "maxAud": 5.37906,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "HUF"
+      ],
+      "observationIds": [
+        "numbeo-budapest-2026-06-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-budapest-2026-06-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-budapest-2026-06-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 4495,
+          "q25Local": 4495,
+          "q75Local": 4495,
+          "medianAud": 20.149063
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "HUF",
+      "audPerLocalUnit": 0.004482550151140423,
+      "medianLocal": 4495,
+      "q25Local": 4495,
+      "q75Local": 4495,
+      "minLocal": 4495,
+      "maxLocal": 4495,
+      "medianAud": 20.149063,
+      "q25Aud": 20.149063,
+      "q75Aud": 20.149063,
+      "minAud": 20.149063,
+      "maxAud": 20.149063,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "HUF"
+      ],
+      "observationIds": [
+        "numbeo-budapest-2026-06-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-budapest-2026-06-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-budapest-2026-06-midrange-restaurant-meal"
+          ],
+          "medianLocal": 21500,
+          "q25Local": 21500,
+          "q75Local": 21500,
+          "medianAud": 96.374828
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "HUF",
+      "audPerLocalUnit": 0.004482550151140423,
+      "medianLocal": 21500,
+      "q25Local": 21500,
+      "q75Local": 21500,
+      "minLocal": 21500,
+      "maxLocal": 21500,
+      "medianAud": 96.374828,
+      "q25Aud": 96.374828,
+      "q75Aud": 96.374828,
+      "minAud": 96.374828,
+      "maxAud": 96.374828,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "HUF"
+      ],
+      "observationIds": [
+        "numbeo-budapest-2026-06-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-budapest-2026-06-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Hungarian National Museum"
+          ],
+          "observationIds": [
+            "hungarian-national-museum-2026-full-price"
+          ],
+          "medianLocal": 3500,
+          "q25Local": 3500,
+          "q75Local": 3500,
+          "medianAud": 15.688926
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "HUF",
+      "audPerLocalUnit": 0.004482550151140423,
+      "medianLocal": 3500,
+      "q25Local": 3500,
+      "q75Local": 3500,
+      "minLocal": 3500,
+      "maxLocal": 3500,
+      "medianAud": 15.688926,
+      "q25Aud": 15.688926,
+      "q75Aud": 15.688926,
+      "minAud": 15.688926,
+      "maxAud": 15.688926,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Hungarian National Museum"
+      ],
+      "sourceCurrencies": [
+        "HUF"
+      ],
+      "observationIds": [
+        "hungarian-national-museum-2026-full-price"
+      ],
+      "availableObservationIds": [
+        "hungarian-national-museum-2026-full-price"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
@@ -5486,6 +5871,391 @@
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
     {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-mexico-city-2026-06-cappuccino"
+          ],
+          "medianLocal": 67.51,
+          "q25Local": 67.51,
+          "q75Local": 67.51,
+          "medianAud": 5.540271
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MXN",
+      "audPerLocalUnit": 0.08206593649851333,
+      "medianLocal": 67.51,
+      "q25Local": 67.51,
+      "q75Local": 67.51,
+      "minLocal": 67.51,
+      "maxLocal": 67.51,
+      "medianAud": 5.540271,
+      "q25Aud": 5.540271,
+      "q75Aud": 5.540271,
+      "minAud": 5.540271,
+      "maxAud": 5.540271,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "MXN"
+      ],
+      "observationIds": [
+        "numbeo-mexico-city-2026-06-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-mexico-city-2026-06-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-mexico-city-2026-06-domestic-draft-beer"
+          ],
+          "medianLocal": 59,
+          "q25Local": 59,
+          "q75Local": 59,
+          "medianAud": 4.84189
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MXN",
+      "audPerLocalUnit": 0.08206593649851333,
+      "medianLocal": 59,
+      "q25Local": 59,
+      "q75Local": 59,
+      "minLocal": 59,
+      "maxLocal": 59,
+      "medianAud": 4.84189,
+      "q25Aud": 4.84189,
+      "q75Aud": 4.84189,
+      "minAud": 4.84189,
+      "maxAud": 4.84189,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "MXN"
+      ],
+      "observationIds": [
+        "numbeo-mexico-city-2026-06-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-mexico-city-2026-06-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-mexico-city-2026-06-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 200,
+          "q25Local": 200,
+          "q75Local": 200,
+          "medianAud": 16.413187
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MXN",
+      "audPerLocalUnit": 0.08206593649851333,
+      "medianLocal": 200,
+      "q25Local": 200,
+      "q75Local": 200,
+      "minLocal": 200,
+      "maxLocal": 200,
+      "medianAud": 16.413187,
+      "q25Aud": 16.413187,
+      "q75Aud": 16.413187,
+      "minAud": 16.413187,
+      "maxAud": 16.413187,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "MXN"
+      ],
+      "observationIds": [
+        "numbeo-mexico-city-2026-06-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-mexico-city-2026-06-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-mexico-city-2026-06-midrange-restaurant-meal"
+          ],
+          "medianLocal": 948.34,
+          "q25Local": 948.34,
+          "q75Local": 948.34,
+          "medianAud": 77.82641
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MXN",
+      "audPerLocalUnit": 0.08206593649851333,
+      "medianLocal": 948.34,
+      "q25Local": 948.34,
+      "q75Local": 948.34,
+      "minLocal": 948.34,
+      "maxLocal": 948.34,
+      "medianAud": 77.82641,
+      "q25Aud": 77.82641,
+      "q75Aud": 77.82641,
+      "minAud": 77.82641,
+      "maxAud": 77.82641,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "MXN"
+      ],
+      "observationIds": [
+        "numbeo-mexico-city-2026-06-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-mexico-city-2026-06-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Instituto Nacional de Antropologia e Historia"
+          ],
+          "observationIds": [
+            "mexico-national-anthropology-museum-2026-foreign-general"
+          ],
+          "medianLocal": 210,
+          "q25Local": 210,
+          "q75Local": 210,
+          "medianAud": 17.233847
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "MXN",
+      "audPerLocalUnit": 0.08206593649851333,
+      "medianLocal": 210,
+      "q25Local": 210,
+      "q75Local": 210,
+      "minLocal": 210,
+      "maxLocal": 210,
+      "medianAud": 17.233847,
+      "q25Aud": 17.233847,
+      "q75Aud": 17.233847,
+      "minAud": 17.233847,
+      "maxAud": 17.233847,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Instituto Nacional de Antropologia e Historia"
+      ],
+      "sourceCurrencies": [
+        "MXN"
+      ],
+      "observationIds": [
+        "mexico-national-anthropology-museum-2026-foreign-general"
+      ],
+      "availableObservationIds": [
+        "mexico-national-anthropology-museum-2026-foreign-general"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
       "city": "Nairobi",
       "country": "Kenya",
       "region": "Africa",
@@ -7565,6 +8335,391 @@
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
     {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "category": "drinks",
+      "measure": "cappuccino_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-seoul-2026-06-cappuccino"
+          ],
+          "medianLocal": 5433.33,
+          "q25Local": 5433.33,
+          "q75Local": 5433.33,
+          "medianAud": 5.250378
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "KRW",
+      "audPerLocalUnit": 0.0009663278121371531,
+      "medianLocal": 5433.33,
+      "q25Local": 5433.33,
+      "q75Local": 5433.33,
+      "minLocal": 5433.33,
+      "maxLocal": 5433.33,
+      "medianAud": 5.250378,
+      "q25Aud": 5.250378,
+      "q75Aud": 5.250378,
+      "minAud": 5.250378,
+      "maxAud": 5.250378,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "KRW"
+      ],
+      "observationIds": [
+        "numbeo-seoul-2026-06-cappuccino"
+      ],
+      "availableObservationIds": [
+        "numbeo-seoul-2026-06-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "category": "drinks",
+      "measure": "domestic_draft_beer_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-seoul-2026-06-domestic-draft-beer"
+          ],
+          "medianLocal": 5000,
+          "q25Local": 5000,
+          "q75Local": 5000,
+          "medianAud": 4.831639
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "KRW",
+      "audPerLocalUnit": 0.0009663278121371531,
+      "medianLocal": 5000,
+      "q25Local": 5000,
+      "q75Local": 5000,
+      "minLocal": 5000,
+      "maxLocal": 5000,
+      "medianAud": 4.831639,
+      "q25Aud": 4.831639,
+      "q75Aud": 4.831639,
+      "minAud": 4.831639,
+      "maxAud": 4.831639,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "KRW"
+      ],
+      "observationIds": [
+        "numbeo-seoul-2026-06-domestic-draft-beer"
+      ],
+      "availableObservationIds": [
+        "numbeo-seoul-2026-06-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "category": "food",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-seoul-2026-06-inexpensive-restaurant-meal"
+          ],
+          "medianLocal": 13000,
+          "q25Local": 13000,
+          "q75Local": 13000,
+          "medianAud": 12.562262
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "KRW",
+      "audPerLocalUnit": 0.0009663278121371531,
+      "medianLocal": 13000,
+      "q25Local": 13000,
+      "q75Local": 13000,
+      "minLocal": 13000,
+      "maxLocal": 13000,
+      "medianAud": 12.562262,
+      "q25Aud": 12.562262,
+      "q75Aud": 12.562262,
+      "minAud": 12.562262,
+      "maxAud": 12.562262,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "KRW"
+      ],
+      "observationIds": [
+        "numbeo-seoul-2026-06-inexpensive-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-seoul-2026-06-inexpensive-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "category": "food",
+      "measure": "midrange_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "published_dataset",
+      "availableSourceChannels": [
+        "published_dataset"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "published_dataset",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Numbeo"
+          ],
+          "observationIds": [
+            "numbeo-seoul-2026-06-midrange-restaurant-meal"
+          ],
+          "medianLocal": 90000,
+          "q25Local": 90000,
+          "q75Local": 90000,
+          "medianAud": 86.969503
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "KRW",
+      "audPerLocalUnit": 0.0009663278121371531,
+      "medianLocal": 90000,
+      "q25Local": 90000,
+      "q75Local": 90000,
+      "minLocal": 90000,
+      "maxLocal": 90000,
+      "medianAud": 86.969503,
+      "q25Aud": 86.969503,
+      "q75Aud": 86.969503,
+      "minAud": 86.969503,
+      "maxAud": 86.969503,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Numbeo"
+      ],
+      "sourceCurrencies": [
+        "KRW"
+      ],
+      "observationIds": [
+        "numbeo-seoul-2026-06-midrange-restaurant-meal"
+      ],
+      "availableObservationIds": [
+        "numbeo-seoul-2026-06-midrange-restaurant-meal"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "category": "activities",
+      "measure": "paid_attraction_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Royal Palaces and Tombs Center, Korea Heritage Service"
+          ],
+          "observationIds": [
+            "gyeongbokgung-palace-2026-foreign-adult"
+          ],
+          "medianLocal": 3000,
+          "q25Local": 3000,
+          "q75Local": 3000,
+          "medianAud": 2.898983
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "KRW",
+      "audPerLocalUnit": 0.0009663278121371531,
+      "medianLocal": 3000,
+      "q25Local": 3000,
+      "q75Local": 3000,
+      "minLocal": 3000,
+      "maxLocal": 3000,
+      "medianAud": 2.898983,
+      "q25Aud": 2.898983,
+      "q75Aud": 2.898983,
+      "minAud": 2.898983,
+      "maxAud": 2.898983,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Royal Palaces and Tombs Center, Korea Heritage Service"
+      ],
+      "sourceCurrencies": [
+        "KRW"
+      ],
+      "observationIds": [
+        "gyeongbokgung-palace-2026-foreign-adult"
+      ],
+      "availableObservationIds": [
+        "gyeongbokgung-palace-2026-foreign-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
       "city": "Shanghai",
       "country": "China",
       "region": "East Asia",
@@ -9638,6 +10793,224 @@
         },
         "activities_budget": {
           "amountAud": 84.82,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "localCurrency": "HUF",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 4.86,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 9.73,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 20.49,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 31.38,
           "formula": "2 * paid_attraction_adult_1",
           "parentMeasures": [
             "paid_attraction_adult_1"
@@ -12087,6 +13460,224 @@
     {
       "schemaVersion": "city-cost-materialization-v1",
       "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "localCurrency": "MXN",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 5.54,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 11.08,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 20.76,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 34.47,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Nairobi",
       "country": "Kenya",
       "region": "Africa",
@@ -13411,6 +15002,224 @@
     {
       "schemaVersion": "city-cost-materialization-v1",
       "calculatorVersion": "city-cost-v3-alpha-3",
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "localCurrency": "KRW",
+      "fxSnapshotId": "aud-reference-2026-07-22-v1",
+      "tiersAud": {
+        "accom_shared_hostel_dorm": {
+          "amountAud": null,
+          "formula": "2 * hostel_dorm_bed_1p",
+          "parentMeasures": [
+            "hostel_dorm_bed_1p"
+          ],
+          "missingMeasures": [
+            "hostel_dorm_bed_1p"
+          ]
+        },
+        "accom_hostel_private_room": {
+          "amountAud": null,
+          "formula": "hostel_private_room_2p",
+          "parentMeasures": [
+            "hostel_private_room_2p"
+          ],
+          "missingMeasures": [
+            "hostel_private_room_2p"
+          ]
+        },
+        "accom_1_star": {
+          "amountAud": null,
+          "formula": "hotel_1star_room_2p",
+          "parentMeasures": [
+            "hotel_1star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_1star_room_2p"
+          ]
+        },
+        "accom_2_star": {
+          "amountAud": null,
+          "formula": "hotel_2star_room_2p",
+          "parentMeasures": [
+            "hotel_2star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_2star_room_2p"
+          ]
+        },
+        "accom_3_star": {
+          "amountAud": null,
+          "formula": "hotel_3star_room_2p",
+          "parentMeasures": [
+            "hotel_3star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "accom_4_star": {
+          "amountAud": null,
+          "formula": "hotel_4star_room_2p",
+          "parentMeasures": [
+            "hotel_4star_room_2p"
+          ],
+          "missingMeasures": [
+            "hotel_4star_room_2p"
+          ]
+        },
+        "food_street_food": {
+          "amountAud": null,
+          "formula": "6 * street_food_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_budget": {
+          "amountAud": null,
+          "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_mid_range": {
+          "amountAud": null,
+          "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
+          "parentMeasures": [
+            "street_food_meal_1p",
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "street_food_meal_1p"
+          ]
+        },
+        "food_high_end": {
+          "amountAud": null,
+          "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
+          "parentMeasures": [
+            "inexpensive_restaurant_meal_1p",
+            "midrange_restaurant_meal_2p",
+            "premium_restaurant_meal_2p"
+          ],
+          "missingMeasures": [
+            "premium_restaurant_meal_2p"
+          ]
+        },
+        "drink_coffee": {
+          "amountAud": 5.25,
+          "formula": "cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_none": {
+          "amountAud": 10.5,
+          "formula": "2 * cappuccino_1",
+          "parentMeasures": [
+            "cappuccino_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_light": {
+          "amountAud": 20.16,
+          "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1"
+          ],
+          "missingMeasures": []
+        },
+        "drinks_moderate": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1"
+          ]
+        },
+        "drinks_heavy": {
+          "amountAud": null,
+          "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 + 2 * wine_glass_1",
+          "parentMeasures": [
+            "cappuccino_1",
+            "domestic_draft_beer_1",
+            "cocktail_1",
+            "wine_glass_1"
+          ],
+          "missingMeasures": [
+            "cocktail_1",
+            "wine_glass_1"
+          ]
+        },
+        "activities_free": {
+          "amountAud": 0,
+          "formula": "0",
+          "parentMeasures": [],
+          "missingMeasures": []
+        },
+        "activities_budget": {
+          "amountAud": 5.8,
+          "formula": "2 * paid_attraction_adult_1",
+          "parentMeasures": [
+            "paid_attraction_adult_1"
+          ],
+          "missingMeasures": []
+        },
+        "activities_mid_range": {
+          "amountAud": null,
+          "formula": "2 * half_day_group_activity_adult_1",
+          "parentMeasures": [
+            "half_day_group_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "half_day_group_activity_adult_1"
+          ]
+        },
+        "activities_high_end": {
+          "amountAud": null,
+          "formula": "2 * full_day_premium_activity_adult_1",
+          "parentMeasures": [
+            "full_day_premium_activity_adult_1"
+          ],
+          "missingMeasures": [
+            "full_day_premium_activity_adult_1"
+          ]
+        }
+      },
+      "materializedTierCount": 5,
+      "missingMeasures": [
+        "hostel_dorm_bed_1p",
+        "hostel_private_room_2p",
+        "hotel_1star_room_2p",
+        "hotel_2star_room_2p",
+        "hotel_3star_room_2p",
+        "hotel_4star_room_2p",
+        "street_food_meal_1p",
+        "premium_restaurant_meal_2p",
+        "cocktail_1",
+        "wine_glass_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "complete": false,
+      "wideRow": null
+    },
+    {
+      "schemaVersion": "city-cost-materialization-v1",
+      "calculatorVersion": "city-cost-v3-alpha-3",
       "city": "Shanghai",
       "country": "China",
       "region": "East Asia",
@@ -14302,7 +16111,9 @@
       "data/reference/observations/pilot-wave-01-day-05-activities.jsonl",
       "data/reference/observations/pilot-wave-01-day-05-food-drinks.jsonl",
       "data/reference/observations/pilot-wave-01-day-06-activities.jsonl",
-      "data/reference/observations/pilot-wave-01-day-06-food-drinks.jsonl"
+      "data/reference/observations/pilot-wave-01-day-06-food-drinks.jsonl",
+      "data/reference/observations/pilot-wave-01-day-07-activities.jsonl",
+      "data/reference/observations/pilot-wave-01-day-07-food-drinks.jsonl"
     ],
     "fxSnapshotFile": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   }

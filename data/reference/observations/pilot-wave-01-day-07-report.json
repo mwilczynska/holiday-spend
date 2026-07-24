@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "pilot-wave-01-day-07",
+  "checkpoint": "pilot_east_asia_europe_latin_america_food_drinks_and_attractions_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 6,
+  "cities": ["Seoul", "Budapest", "Mexico City"],
+  "acceptedObservations": 15,
+  "rejectedObservations": 0,
+  "sources": [
+    {"name":"Numbeo","accessBasis":"personal_use_with_attribution","termsUrl":"https://www.numbeo.com/common/terms_of_use.jsp","methodologyUrl":"https://www.numbeo.com/common/motivation_and_methodology.jsp"},
+    {"name":"Royal Palaces and Tombs Center, Korea Heritage Service","accessBasis":"public_official"},
+    {"name":"Hungarian National Museum","accessBasis":"public_official"},
+    {"name":"Instituto Nacional de Antropologia e Historia","accessBasis":"public_official"}
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 3,
+    "midrange_restaurant_meal_2p": 3,
+    "premium_restaurant_meal_2p": 0,
+    "domestic_draft_beer_1": 3,
+    "cappuccino_1": 3,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 3,
+    "half_day_group_activity_adult_1": 0,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {"city":"Seoul","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Seoul","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Seoul","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Seoul","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Seoul","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Seoul","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Budapest","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Budapest","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Budapest","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Budapest","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Budapest","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Budapest","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Mexico City","measure":"street_food_meal_1p","reason":"The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city":"Mexico City","measure":"premium_restaurant_meal_2p","reason":"A reproducible two-person premium meal definition has not yet been collected."},
+    {"city":"Mexico City","measure":"cocktail_1","reason":"Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city":"Mexico City","measure":"wine_glass_1","reason":"Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city":"Mexico City","measure":"half_day_group_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."},
+    {"city":"Mexico City","measure":"full_day_premium_activity_adult_1","reason":"No current directly priced official operator product was verified in this bounded call."}
+  ],
+  "remainingCategories": ["food_drink_menu_triangulation", "activity_products", "accommodation"],
+  "notes": "This batch adds 12 direct Numbeo food/drink primitives and three official paid-attraction prices. Seoul and Budapest use current localized pages with their contributor context retained. Mexico City's indexed current page was used after a temporary canonical-page 503 and retains its exact 12 June 2026 update date. No nearby-city substitution or uncited conversion occurred during collection."
+}
