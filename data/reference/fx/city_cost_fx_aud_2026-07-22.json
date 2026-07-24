@@ -145,6 +145,16 @@
       "derivation": "inverted_quote",
       "derivationFormula": "1 / 2.57268"
     },
+    "CAD": {
+      "currency": "CAD",
+      "audPerUnit": 1.0149959554477,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 1.6071 CAD",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 1.6071"
+    },
     "TRY": {
       "currency": "TRY",
       "audPerUnit": 0.0302826654389241,

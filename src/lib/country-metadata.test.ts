@@ -52,6 +52,7 @@ describe('canonical country metadata', () => {
     expect(findKnownCountryMetadata('Czechia')?.id).toBe('czech-republic');
     expect(findKnownCountryMetadata('AE')?.id).toBe('united-arab-emirates');
     expect(findKnownCountryById('united-arab-emirates')?.name).toBe('United Arab Emirates');
+    expect(findKnownCountryMetadata('Bulgaria')?.currencyCode).toBe('EUR');
   });
 
   it('returns canonical insert defaults from aliases and ids', () => {

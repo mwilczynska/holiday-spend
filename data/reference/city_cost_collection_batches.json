@@ -260,6 +260,42 @@
       ]
     },
     {
+      "batchId": "pilot-wave-01-day-06",
+      "status": "complete_with_missing",
+      "plannedCalls": 6,
+      "completedCalls": 6,
+      "acceptedObservations": 15,
+      "checkpoint": "pilot_east_asia_europe_north_america_food_drinks_and_attractions_complete",
+      "observationFiles": [
+        "data/reference/observations/pilot-wave-01-day-06-food-drinks.jsonl",
+        "data/reference/observations/pilot-wave-01-day-06-activities.jsonl"
+      ],
+      "reportFile": "data/reference/observations/pilot-wave-01-day-06-report.json",
+      "cities": [
+        {
+          "city": "Sendai",
+          "country": "Japan",
+          "region": "East Asia",
+          "categories": ["food_drinks", "activities"],
+          "reason": "third_unobserved_east_asia_cost_quantile_city"
+        },
+        {
+          "city": "Sofia",
+          "country": "Bulgaria",
+          "region": "Europe",
+          "categories": ["food_drinks", "activities"],
+          "reason": "first_unobserved_remaining_europe_cost_quantile_city"
+        },
+        {
+          "city": "Vancouver",
+          "country": "Canada",
+          "region": "North America",
+          "categories": ["food_drinks", "activities"],
+          "reason": "second_unobserved_north_america_cost_quantile_city"
+        }
+      ]
+    },
+    {
       "batchId": "batch-zero-accommodation",
       "status": "in_progress",
       "plannedCalls": 27,

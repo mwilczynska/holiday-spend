@@ -92,14 +92,14 @@ dated source observations
 ### Implementation Checkpoint
 
 The observation schema, JSONL validator, and batch manifest are now implemented. Batch zero plus the
-first five pilot-wave checkpoints contain 105 direct observations across 21 cities, representing every
-pilot region: 80 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, 18 official
+first six pilot-wave checkpoints contain 120 direct observations across 24 cities, representing every
+pilot region: 92 standardized Numbeo food/drink prices, one Pu Luong official-menu meal, 21 official
 paid-attraction prices, one
 operator-listed Pu Luong half-day group activity, and five exact-date official-property accommodation
 quotes. Every row retains its original EUR, CZK, DKK, THB, VND, USD, TZS, CNY, NZD, KES, JPY, COP, TRY,
-INR, or AED value, source URL,
+INR, AED, or CAD value, source URL,
 retrieval time, page-valid date where known, displayed range, source-access basis, and extraction version.
-The validator reports 105 valid direct rows
+The validator reports 120 valid direct rows
 and no schema errors.
 
 A provider-neutral local research runner now renders one versioned city/category assignment and validates
@@ -139,15 +139,15 @@ disagreement flag for review; this threshold is an operational diagnostic to val
 not an accuracy result.
 
 The current frozen snapshot uses the European Central Bank's 22 July 2026 euro reference rates for EUR,
-USD, CZK, DKK, THB, CNY, NZD, JPY, TRY, and INR; official central-bank references for VND, TZS, KES,
+USD, CAD, CZK, DKK, THB, CNY, NZD, JPY, TRY, and INR; official central-bank references for VND, TZS, KES,
 COP, AED, and CUP; and explicit cross-rate or inversion formulas where no direct AUD quote exists. CUP
 uses the natural-person segment because Havana's retained Numbeo prices are tourist-facing USD values.
 Each stored rate retains its source date, quote, URL, and derivation formula. The materializer verifies
 the snapshot and recomputes cross-rate arithmetic in automated tests.
 
-The current materialized artifact contains 21 cities and 105 accepted direct observations. It can
-calculate 100 of 399 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 20
-cities, free activities for all 21, budget paid-attraction baskets for 18, and one Pu Luong mid-range
+The current materialized artifact contains 24 cities and 120 accepted direct observations. It can
+calculate 115 of 456 possible city-tier cells: coffee and the coffee-only/light drinks baskets for 23
+cities, free activities for all 24, budget paid-attraction baskets for 21, and one Pu Luong mid-range
 half-day activity basket. It reports zero complete cities and emits no publishable wide row because
 the Copenhagen shoulder panel has reached five quotes but its low/high seasons and repeated-property
 overlap gate are still missing, while street/premium food, cocktail/wine, and many activity observations
