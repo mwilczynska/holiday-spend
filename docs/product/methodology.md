@@ -353,8 +353,15 @@ reports 13,212,666 domestic and international arrivals for an overnight stay at 
 tourism-operation and simple-accommodation establishments during 2023; TurkStat reports 15,655,924
 province residents at 31 December 2023. The resulting 0.84 arrivals per resident is `low`. The source
 counts establishment entries, not unique visitors, so repeat stays by the same person are separate
-arrivals; informal and other out-of-frame stays are excluded. The other 29 fields stay pending until an
-equally defensible same-year, same-geography pair is available.
+arrivals; informal and other out-of-frame stays are excluded.
+
+Two Croatian city records widen the upper tail. Dubrovnik's city government reports 1,397,052 eVisitor
+arrivals in 2024 against an official year-end municipal population estimate of 42,016, producing 33.25
+arrivals per resident (`very_high`). The Split Tourist Board reports 1,050,847 domestic and international
+eVisitor arrivals against 158,636 residents for the same city boundary, producing 6.62 (`high`). eVisitor
+counts registrations rather than unique people, so an accommodation change can register one person more
+than once; the ratios are tourism-pressure signals, not unique visitor counts. The other 27 fields stay
+pending until an equally defensible same-year, same-geography pair is available.
 
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current

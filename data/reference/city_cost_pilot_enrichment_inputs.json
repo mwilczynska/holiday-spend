@@ -152,6 +152,36 @@
       "populationSourceName": "TurkStat, Address Based Population Registration System results 2023",
       "populationSourceUrl": "https://veriportali.tuik.gov.tr/en/press/49684",
       "notes": "The numerator includes domestic and international arrivals at registered Ministry-certified accommodation but counts establishment entries rather than unique people: repeat stays by the same tourist are separate arrivals. Informal and other out-of-frame stays are excluded, so the result is a reproducible accommodation-pressure proxy rather than total unique visitation."
+    },
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "referenceYear": 2024,
+      "spatialUnit": "City of Dubrovnik administrative area",
+      "overnightArrivals": 1397052,
+      "residentPopulation": 42016,
+      "numeratorDefinition": "Registered tourist arrivals in the City of Dubrovnik recorded by the eVisitor system during 2024",
+      "denominatorDefinition": "Estimated population of the City of Dubrovnik administrative area at 31 December 2024",
+      "arrivalsSourceName": "City of Dubrovnik, 2024 tourism results",
+      "arrivalsSourceUrl": "https://www.dubrovnik.hr/vijesti/sampion-turizma-2024-18986",
+      "populationSourceName": "Croatian Bureau of Statistics PxWeb, population estimate by towns and municipalities at 31 December",
+      "populationSourceUrl": "https://web.dzs.hr/PXWeb/Selection.aspx?px_db=Stanovni%C5%A1tvo&px_language=en&px_path=Stanovni%C5%A1tvo__Procjene+stanovni%C5%A1tva&px_tableid=SP31_2.px",
+      "notes": "The numerator is an eVisitor registration count covering commercial and non-commercial accommodation. It records arrivals rather than unique tourists, so a guest who changes establishment can be registered more than once. The very high ratio is retained as a measured tourism-pressure signal for the same municipal boundary, not interpreted as unique visitors per resident."
+    },
+    {
+      "city": "Split",
+      "country": "Croatia",
+      "referenceYear": 2024,
+      "spatialUnit": "City of Split administrative area",
+      "overnightArrivals": 1050847,
+      "residentPopulation": 158636,
+      "numeratorDefinition": "Registered domestic and international tourist arrivals in the City of Split recorded by the eVisitor system during 2024",
+      "denominatorDefinition": "Estimated population of the City of Split administrative area at 31 December 2024",
+      "arrivalsSourceName": "Split Tourist Board, statistical analysis of tourism in Split during 2024",
+      "arrivalsSourceUrl": "https://visitsplit.com/clients/1/multimedia/6697rmdmcdnmvr0.pdf",
+      "populationSourceName": "Croatian Bureau of Statistics PxWeb, population estimate by towns and municipalities at 31 December",
+      "populationSourceUrl": "https://web.dzs.hr/PXWeb/Selection.aspx?px_db=Stanovni%C5%A1tvo&px_language=en&px_path=Stanovni%C5%A1tvo__Procjene+stanovni%C5%A1tva&px_tableid=SP31_2.px",
+      "notes": "The numerator is the Tourist Board's eVisitor extract processed on 27 January 2025 and includes both domestic and international registered arrivals. Subsequent registrations can revise eVisitor totals, and establishment changes can count the same tourist more than once; retain it as a reproducible accommodation-pressure proxy rather than a unique-person count."
     }
   ]
 }

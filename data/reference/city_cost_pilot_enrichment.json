@@ -486,14 +486,20 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 6.624265614362439,
+        "referenceYear": 2024,
+        "spatialUnit": "City of Split administrative area",
+        "band": "high",
+        "overnightArrivals": 1050847,
+        "residentPopulation": 158636,
+        "numeratorDefinition": "Registered domestic and international tourist arrivals in the City of Split recorded by the eVisitor system during 2024",
+        "denominatorDefinition": "Estimated population of the City of Split administrative area at 31 December 2024",
+        "arrivalsSourceName": "Split Tourist Board, statistical analysis of tourism in Split during 2024",
+        "arrivalsSourceUrl": "https://visitsplit.com/clients/1/multimedia/6697rmdmcdnmvr0.pdf",
+        "populationSourceName": "Croatian Bureau of Statistics PxWeb, population estimate by towns and municipalities at 31 December",
+        "populationSourceUrl": "https://web.dzs.hr/PXWeb/Selection.aspx?px_db=Stanovni%C5%A1tvo&px_language=en&px_path=Stanovni%C5%A1tvo__Procjene+stanovni%C5%A1tva&px_tableid=SP31_2.px",
+        "notes": "The numerator is the Tourist Board's eVisitor extract processed on 27 January 2025 and includes both domestic and international registered arrivals. Subsequent registrations can revise eVisitor totals, and establishment changes can count the same tourist more than once; retain it as a reproducible accommodation-pressure proxy rather than a unique-person count."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -610,14 +616,20 @@
         "notes": "No Dubrovnik record is present in WUP File 21; retain pending for a Croatian public-statistics source."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 33.250476009139376,
+        "referenceYear": 2024,
+        "spatialUnit": "City of Dubrovnik administrative area",
+        "band": "very_high",
+        "overnightArrivals": 1397052,
+        "residentPopulation": 42016,
+        "numeratorDefinition": "Registered tourist arrivals in the City of Dubrovnik recorded by the eVisitor system during 2024",
+        "denominatorDefinition": "Estimated population of the City of Dubrovnik administrative area at 31 December 2024",
+        "arrivalsSourceName": "City of Dubrovnik, 2024 tourism results",
+        "arrivalsSourceUrl": "https://www.dubrovnik.hr/vijesti/sampion-turizma-2024-18986",
+        "populationSourceName": "Croatian Bureau of Statistics PxWeb, population estimate by towns and municipalities at 31 December",
+        "populationSourceUrl": "https://web.dzs.hr/PXWeb/Selection.aspx?px_db=Stanovni%C5%A1tvo&px_language=en&px_path=Stanovni%C5%A1tvo__Procjene+stanovni%C5%A1tva&px_tableid=SP31_2.px",
+        "notes": "The numerator is an eVisitor registration count covering commercial and non-commercial accommodation. It records arrivals rather than unique tourists, so a guest who changes establishment can be registered more than once. The very high ratio is retained as a measured tourism-pressure signal for the same municipal boundary, not interpreted as unique visitors per resident."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

@@ -416,6 +416,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     exclusion of accommodation establishments with fewer than 10 bed places.
   - [x] Add Istanbul from official 2023 provincial accommodation and resident-population statistics as the
     second measured `low` case, retaining the repeat-entry and registered-establishment limitations.
+  - [x] Add Dubrovnik and Split from official 2024 eVisitor and municipal-population statistics, adding the
+    first `very_high` case while retaining eVisitor's repeat-registration limitation.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.
