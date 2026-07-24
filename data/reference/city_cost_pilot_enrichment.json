@@ -1604,17 +1604,20 @@
         "notes": "Goa is a state and multi-city destination; a single WUP city population would not represent the planner destination."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 6.575614024005054,
+        "referenceYear": 2024,
+        "spatialUnit": "Goa state",
+        "band": "high",
+        "overnightArrivals": 10409197,
+        "residentPopulation": 1583000,
+        "numeratorDefinition": "Domestic and foreign tourist arrivals to Goa state during calendar year 2024",
+        "denominatorDefinition": "Projected resident population of Goa state as at December 2024",
+        "arrivalsSourceName": "India Ministry of Tourism, State/UT-wise Domestic and Foreign Tourist Visits 2022-2024",
+        "arrivalsSourceUrl": "https://tourism.gov.in/sites/default/files/2025-12/usq.1411%20for%2011.12.2025.pdf",
+        "populationSourceName": "Goa Directorate of Planning, Statistics and Evaluation, Goa Economy in Figures 2025",
+        "populationSourceUrl": "https://www.dpse.goa.gov.in/GEIF-2025.pdf",
+        "notes": "The planner destination is Goa state, so the state numerator and denominator are geographically aligned even though Goa has no single-city size match. The numerator sums 9,941,286 domestic and 467,911 foreign tourist arrivals. The public table does not document its overnight filter, accommodation coverage, or repeat-visit deduplication inline; retain the official tourist-arrival series as a destination-pressure proxy rather than a unique-person census."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

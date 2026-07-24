@@ -515,6 +515,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     airport passenger series that includes residents, not full-year all-visitor overnight arrivals for the city.
   - [x] Record Delhi as a screened rejection because official State/UT tables expose domestic and
     foreign tourist visits, not an overnight-only accommodation-arrivals series.
+  - [x] Add Goa as a destination-level measured proxy from official 2024 state tourist arrivals and
+    same-period projected population, retaining the public table's limited inline methodology disclosure.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

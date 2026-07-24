@@ -512,6 +512,13 @@ arrivals. The project does not assume that every recorded visit includes a night
 total as accommodation arrivals; the current profile therefore contains 13 measured cities, nine screened
 rejections, and 14 unscreened gaps.
 
+Goa is measured at the whole-state destination level because that is the planner's actual geography. The
+official 2024 series reports 9,941,286 domestic and 467,911 foreign tourist arrivals; the state projects
+1,583,000 residents at December 2024. Their ratio is 6.58 arrivals per resident (`high`). The public arrival
+table does not document its overnight filter, coverage, or repeat-visit handling inline, so the value remains
+a destination-pressure proxy rather than a unique-person census. The current profile contains 14 measured
+cities, nine screened rejections, and 13 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are

@@ -388,6 +388,21 @@
       "populationSourceName": "BC Stats, Municipalities (Census Subdivisions) population estimates",
       "populationSourceUrl": "https://catalogue.data.gov.bc.ca/dataset/86839277-986a-4a29-9f70-fa9b1166f6cb/resource/0e15d04d-127c-457a-b999-20800c929927/download/municipality-population.csv",
       "notes": "The numerator is the sum of the twelve exact monthly values embedded in Destination Vancouver's public overnight-visitation chart; the page also rounds the annual result to 11.3 million. The denominator is BC Stats' total-gender 2024 estimate for Vancouver municipality (region 15022). The numerator is a destination-series measure rather than an accommodation-register count, and the public page does not expose detailed model methodology inline."
+    },
+    {
+      "city": "Goa",
+      "country": "India",
+      "referenceYear": 2024,
+      "spatialUnit": "Goa state",
+      "overnightArrivals": 10409197,
+      "residentPopulation": 1583000,
+      "numeratorDefinition": "Domestic and foreign tourist arrivals to Goa state during calendar year 2024",
+      "denominatorDefinition": "Projected resident population of Goa state as at December 2024",
+      "arrivalsSourceName": "India Ministry of Tourism, State/UT-wise Domestic and Foreign Tourist Visits 2022-2024",
+      "arrivalsSourceUrl": "https://tourism.gov.in/sites/default/files/2025-12/usq.1411%20for%2011.12.2025.pdf",
+      "populationSourceName": "Goa Directorate of Planning, Statistics and Evaluation, Goa Economy in Figures 2025",
+      "populationSourceUrl": "https://www.dpse.goa.gov.in/GEIF-2025.pdf",
+      "notes": "The planner destination is Goa state, so the state numerator and denominator are geographically aligned even though Goa has no single-city size match. The numerator sums 9,941,286 domestic and 467,911 foreign tourist arrivals. The public table does not document its overnight filter, accommodation coverage, or repeat-visit deduplication inline; retain the official tourist-arrival series as a destination-pressure proxy rather than a unique-person census."
     }
   ]
 }

@@ -241,10 +241,10 @@
     "tourismIntensity": [
       {
         "stratum": "measured_from_public_sources:high",
-        "cityCount": 6,
-        "representedCityCount": 6,
-        "materializedTierCells": 30,
-        "requiredTierCells": 114,
+        "cityCount": 7,
+        "representedCityCount": 7,
+        "materializedTierCells": 35,
+        "requiredTierCells": 133,
         "coveragePct": 26.32
       },
       {
@@ -273,11 +273,11 @@
       },
       {
         "stratum": "pending_source_collection:unknown:not_yet_screened",
-        "cityCount": 14,
-        "representedCityCount": 11,
-        "materializedTierCells": 46,
-        "requiredTierCells": 266,
-        "coveragePct": 17.29
+        "cityCount": 13,
+        "representedCityCount": 10,
+        "materializedTierCells": 41,
+        "requiredTierCells": 247,
+        "coveragePct": 16.6
       },
       {
         "stratum": "pending_source_collection:unknown:screened_no_compatible_value",
@@ -324,9 +324,9 @@
   "modelReadiness": {
     "status": "insufficient_for_fallback_model_selection",
     "measuredCitySizeCount": 29,
-    "measuredTourismIntensityCount": 13,
+    "measuredTourismIntensityCount": 14,
     "screenedRejectedTourismIntensityCount": 9,
-    "unscreenedTourismIntensityCount": 14,
+    "unscreenedTourismIntensityCount": 13,
     "measuredBothPredictorsCount": 12,
     "completeTargetCityCount": 0,
     "reasons": [

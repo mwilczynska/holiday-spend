@@ -41,7 +41,7 @@ describe('city cost pilot enrichment', () => {
       sourceRecordId: '5433',
     });
     expect(artifact.cities.find((city) => city.city === 'Goa')?.citySize.notes).toContain('state and multi-city');
-    expect(artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources')).toHaveLength(13);
+    expect(artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources')).toHaveLength(14);
     expect(artifact.cities.find((city) => city.city === 'Prague')?.tourismIntensity).toMatchObject({
       overnightArrivals: 8_063_367,
       residentPopulation: 1_397_880,
@@ -108,6 +108,12 @@ describe('city cost pilot enrichment', () => {
       residentPopulation: 748_777,
       band: 'very_high',
     });
+    expect(artifact.cities.find((city) => city.city === 'Goa')?.tourismIntensity).toMatchObject({
+      overnightArrivals: 10_409_197,
+      residentPopulation: 1_583_000,
+      band: 'high',
+    });
+    expect(artifact.cities.find((city) => city.city === 'Goa')?.tourismIntensity.value).toBeCloseTo(6.58, 2);
     expect(artifact.cities.find((city) => city.city === 'Queenstown')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       value: null,
