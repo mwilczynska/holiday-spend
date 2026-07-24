@@ -324,6 +324,7 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
   - [x] Freeze Lisbon from same-day official RNET/RNAL snapshots: 254 geolocated 1-4-star hotels, 242 within 5 km across four frozen hotel panels, and 113 explicit hostel registrations collapsed to 106 physical candidates with 97 in radius pending website/inventory verification
   - [x] Reject Lisbon's original 22-29 October shoulder window after its capture-day official event screen and move the stay and capture exactly seven days forward with the rejected dates, evidence, and reason retained in replacement history
   - [x] Reject Bangkok's original 22-29 October low-season window because it contains the official Friday 23 October public holiday, then move the stay and capture exactly seven days forward pending a fresh 31 July screen
+  - [x] Add an explicit blocking `inconclusive` event-review state and record source-attributed 24 July outcomes for Hanoi, Pu Luong, San Francisco, and Da Nang rather than treating incomplete official-calendar coverage as clearance
   - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations plus three official paid-attraction prices across Lisbon, Prague, and Hanoi
   - [x] Collect batch-zero day 02 across Copenhagen, Bangkok, and Pu Luong, bringing the store to 27 accepted direct observations across six cities while retaining sparse-city missingness
   - [x] Collect pilot wave 1 across Barcelona, San Francisco, and Da Nang, bringing the store to 42 accepted direct observations across nine cities

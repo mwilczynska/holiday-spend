@@ -345,6 +345,9 @@ The first accommodation schedule is now pre-registered for these nine cities in
 between quote capture and check-in, one low/shoulder/high stratum per city, and a capture-day event-screen
 gate with a deterministic same-season replacement rule. Several destination labels currently use
 official climate/travel guidance and are explicitly provisional until upgraded with monthly demand data.
+An event review has four distinct outcomes: pending, cleared, inconclusive, or replaced. `inconclusive`
+means the capture-day review was performed and source-attributed but could not support either clearance or
+deterministic replacement; it remains a blocking state and no price from that window can be accepted.
 
 The first four official-source sampling frames are also frozen in
 `data/reference/accommodation_property_panels_2026_2027.json`. Its generic version 2 contract stores
@@ -405,6 +408,14 @@ Bank of Thailand 2026 calendar places King Chulalongkorn Memorial Day on Friday 
 three-day public-holiday weekend inside the stay. The same frozen rule moves the stay to 29 October-5
 November and the capture to 31 July. The replacement remains pending a fresh official event and holiday
 screen, and no quote was collected against the rejected dates.
+
+Four other 24 July reviews are explicitly inconclusive rather than silently treated as clear. Hanoi's
+official calendar lists a month-long October craft-village and gastronomy festival without exact operating
+dates, venue, attendance, or demand evidence. The same national calendar provides no complete local view
+for Pu Luong. San Francisco's official convention inventory shows no qualifying meeting after 22 October
+until 1 November, but the registered major-sports and general-festival screen is incomplete. Da Nang's
+official second-half calendar lists no overlapping event, but a 90-day-ahead typhoon-disruption conclusion
+is not supportable. All four retain timestamps, evidence URLs, and reasons; none can accept a quote.
 
 The completed Copenhagen shoulder capture attempted ranks 1-10 in order. Five public official-site quotes
 were accepted, Absalon had no inventory for the exact reference week, and four booking paths failed the

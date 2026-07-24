@@ -24,3 +24,5 @@ console.log(
 );
 console.log(`Next quote capture: ${summary.nextQuoteCaptureDate ?? 'none'}`);
 console.log(`Pending capture-day event reviews: ${summary.pendingEventReviews}`);
+console.log(`Inconclusive capture-day event reviews: ${summary.inconclusiveEventReviews}`);
+console.log(`Total blocking event reviews: ${summary.blockingEventReviews}`);

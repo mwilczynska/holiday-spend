@@ -18,10 +18,11 @@ export type AccommodationPanelMeasure = (typeof ACCOMMODATION_PANEL_MEASURES)[nu
 
 const eventReviewSchema = z
   .object({
-    status: z.enum(['pending_final_check', 'cleared', 'replaced']),
+    status: z.enum(['pending_final_check', 'cleared', 'inconclusive', 'replaced']),
     dueDate: z.string().regex(isoDate),
     checkedAt: z.string().datetime().nullable(),
     notes: z.string().min(1),
+    sourceUrls: z.array(z.string().url()).min(1).optional(),
   })
   .superRefine((review, context) => {
     if (review.status === 'cleared' && review.checkedAt === null) {
@@ -37,6 +38,22 @@ const eventReviewSchema = z
         path: ['checkedAt'],
         message: 'A pending event review cannot have checkedAt',
       });
+    }
+    if (review.status === 'inconclusive') {
+      if (review.checkedAt === null) {
+        context.addIssue({
+          code: 'custom',
+          path: ['checkedAt'],
+          message: 'An inconclusive event review requires checkedAt',
+        });
+      }
+      if (!review.sourceUrls?.length) {
+        context.addIssue({
+          code: 'custom',
+          path: ['sourceUrls'],
+          message: 'An inconclusive event review requires at least one evidence URL',
+        });
+      }
     }
   });
 
@@ -271,6 +288,12 @@ export function summarizeAccommodationReferenceWindows(
       .sort()[0] ?? null,
     pendingEventReviews: windows.filter(
       (window) => window.eventReview.status === 'pending_final_check'
+    ).length,
+    inconclusiveEventReviews: windows.filter(
+      (window) => window.eventReview.status === 'inconclusive'
+    ).length,
+    blockingEventReviews: windows.filter(
+      (window) => !['cleared', 'replaced'].includes(window.eventReview.status)
     ).length,
   };
 }

@@ -270,6 +270,12 @@ three-day public-holiday weekend within the stay. The stay and capture therefore
 forward to 29 October-5 November and 31 July. The replacement is not pre-cleared: it requires a fresh
 official event and holiday review on its new capture date.
 
+The event review is fail-closed. A missing calendar listing is not proof of ordinary demand: a review is
+either cleared with evidence, replaced under the frozen seven-day rule, or retained as `inconclusive` when
+official sources cannot support either decision. Hanoi, Pu Luong, San Francisco, and Da Nang all produced
+source-attributed inconclusive outcomes on 24 July because the available calendars were incomplete for a
+required part of their registered screen. Pending and inconclusive windows cannot contribute a quote.
+
 The completed Copenhagen shoulder-season capture demonstrates the operational audit trail. Properties were
 attempted in the frozen order, independent of price. Ten official-property paths produced five accepted
 4-star quotes, one genuine no-availability result, and four booking-path failures: three could not preserve

@@ -88,7 +88,9 @@ describe('accommodation reference-window schedule', () => {
       windows: 27,
       seasons: { low: 9, shoulder: 9, high: 9 },
       nextQuoteCaptureDate: '2026-07-24',
-      pendingEventReviews: 25,
+      pendingEventReviews: 21,
+      inconclusiveEventReviews: 4,
+      blockingEventReviews: 25,
     });
     expect(
       parsed.cities
@@ -166,6 +168,17 @@ describe('accommodation reference-window schedule', () => {
           sourceUrls: ['https://example.com/events'],
         },
       ],
+    };
+    expect(accommodationReferenceWindowScheduleSchema.safeParse(data).success).toBe(false);
+  });
+
+  it('requires timestamped source evidence for an inconclusive event review', () => {
+    const data = fixture();
+    data.cities[0].windows[0].eventReview = {
+      status: 'inconclusive',
+      dueDate: '2026-07-24',
+      checkedAt: null,
+      notes: 'The official calendar did not provide enough information to clear the window.',
     };
     expect(accommodationReferenceWindowScheduleSchema.safeParse(data).success).toBe(false);
   });
