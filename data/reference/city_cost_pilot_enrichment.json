@@ -732,10 +732,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "Medellin Tourism Intelligence System, Bulletin No. 5",
+            "url": "https://sitmde-media.s3.us-east-2.amazonaws.com/Boletin_N_5_SIT_219bb9337a.pdf"
+          },
+          {
+            "name": "Medellin Economic Development Observatory, Labour Market Trends report",
+            "url": "https://www.medellin.gov.co/es/wp-content/uploads/2025/05/Informe-tendencia-Mercado-Laboral-Edicion-1.pdf"
+          }
+        ],
+        "notes": "Medellin's SIT bulletin reports 1,637,037 passengers through the Jose Maria Cordova airport immigration point from January through November 2024, of whom only 59% were non-resident visitors. The series is not a full-year count of all overnight arrivals, includes resident passenger movements, and is observed at an airport in Rionegro rather than through a complete Medellin accommodation or visitor frame. A separate municipal report publishes a 4.2-day average stay but does not transform the passenger total into the registered numerator. Retain tourism intensity as pending rather than treating airport traffic as city overnight arrivals."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",

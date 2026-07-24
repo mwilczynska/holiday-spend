@@ -167,6 +167,15 @@ describe('city cost pilot enrichment', () => {
         { name: expect.stringContaining('Economic Survey'), url: expect.stringContaining('knbs.or.ke') },
       ],
     });
+    expect(artifact.cities.find((city) => city.city === 'Medellin')?.tourismIntensity).toMatchObject({
+      status: 'pending_source_collection',
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Bulletin No. 5'), url: expect.stringContaining('sitmde-media') },
+        { name: expect.stringContaining('Labour Market Trends'), url: expect.stringContaining('medellin.gov.co') },
+      ],
+    });
     expect(artifact.cities.find((city) => city.city === 'Tokyo')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
       researchOutcome: 'screened_no_compatible_value',

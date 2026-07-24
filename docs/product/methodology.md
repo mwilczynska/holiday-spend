@@ -500,6 +500,12 @@ and accommodation occupancy nationally. The Nairobi-specific KNBS series is bed-
 national arrivals to Nairobi nor converts a partial nights series into arrivals; the current profile therefore
 contains 13 measured cities, seven screened rejections, and 16 unscreened gaps.
 
+Medellin is the eighth screened rejection. Its SIT bulletin reports January-November passenger traffic
+through the Jose Maria Cordova airport immigration point, says only 59% were non-resident visitors, and
+does not isolate all overnight arrivals for Medellin. The project does not reinterpret resident-inclusive,
+partial-year airport traffic as a city overnight-arrivals series; the current profile therefore contains
+13 measured cities, eight screened rejections, and 15 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
