@@ -124,6 +124,36 @@
       "sourceQuote": "1 USD = 129.30 KES on 2 July 2026 and 1 USD = 1.4298737727910238 AUD in the frozen 22 July snapshot",
       "derivation": "cross_rate",
       "derivationFormula": "1.4298737727910238 / 129.30"
+    },
+    "TRY": {
+      "currency": "TRY",
+      "audPerUnit": 0.0302826654389241,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 53.8658 TRY",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 53.8658"
+    },
+    "INR": {
+      "currency": "INR",
+      "audPerUnit": 0.0148066117802972,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 110.1670 INR",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 110.1670"
+    },
+    "COP": {
+      "currency": "COP",
+      "audPerUnit": 0.000438264739191383,
+      "sourceName": "Banco de la Republica and European Central Bank",
+      "sourceUrl": "https://suameca.banrep.gov.co/estadisticas-economicas/tablasPreconstruidas?idDashboard=41403",
+      "sourceDate": "2026-07-21",
+      "sourceQuote": "1 USD = 3,262.58 COP on 21 July 2026 and 1 USD = 1.4298737727910238 AUD in the frozen 22 July snapshot",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.4298737727910238 / 3262.58"
     }
   }
 }

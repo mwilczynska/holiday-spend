@@ -331,9 +331,9 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
   LLM call, verifies assignment identity and complete observed/missing measure coverage, and forces every
   returned observation to remain `unreviewed` for a separate evidence-review step.
 
-Checkpoint: batch zero and the first three pilot-wave checkpoints currently provide 76 accepted direct
-observations across 15 cities. The v3-alpha materializer aggregates in city-local currency, applies a
-frozen and source-attributed AUD FX snapshot, and materializes 71 of 285 possible
+Checkpoint: batch zero and the first four pilot-wave checkpoints currently provide 91 accepted direct
+observations across 18 cities, covering every pilot region. The v3-alpha materializer aggregates in
+city-local currency, applies a frozen and source-attributed AUD FX snapshot, and materializes 86 of 342 possible
 city-tier cells. No city is complete and no partial wide row is published.
 The pipeline is therefore reproducible and fail-closed, but it is not yet a replacement for the active
 121-city dataset.
@@ -409,6 +409,9 @@ flexible and non-refundable conditions; a true availability failure; and technic
 - [x] Add the next uncovered Africa, East Asia, and Oceania cities through Nairobi, Fukuoka, and
   Queenstown: 12 direct Numbeo food/drink observations and three official attraction prices; preserve
   localized Numbeo URLs, month-level validity, source density, and explicit unsupported measures.
+- [x] Add first pilot evidence for the remaining unrepresented regions through Medellin, Istanbul, and
+  Goa: 12 direct Numbeo food/drink observations and three official attraction prices; retain Goa's older
+  December 2025 freshness date and Medellin's source-access limitation explicitly.
 - [x] Freeze the first official-register accommodation sampling frame for Barcelona, including
   deterministic hotel panels, full reserve order, join coverage, and visible exclusions.
 - [x] Generalize the panel contract and freeze Copenhagen's Hotelstars hotel frame plus the official

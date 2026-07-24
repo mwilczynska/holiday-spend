@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "pilot-wave-01-day-04",
+  "checkpoint": "pilot_remaining_regions_food_drinks_and_attractions_complete",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 6,
+  "cities": ["Medellin", "Istanbul", "Goa"],
+  "acceptedObservations": 15,
+  "rejectedObservations": 0,
+  "sources": [
+    {
+      "name": "Numbeo",
+      "accessBasis": "personal_use_with_attribution",
+      "termsUrl": "https://www.numbeo.com/common/terms_of_use.jsp",
+      "methodologyUrl": "https://www.numbeo.com/common/motivation_and_methodology.jsp"
+    },
+    {"name": "Parque Explora", "accessBasis": "public_official"},
+    {"name": "Directorate of National Palaces of Türkiye", "accessBasis": "public_official"},
+    {"name": "Goa Tourism Development Corporation", "accessBasis": "public_official"}
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 3,
+    "midrange_restaurant_meal_2p": 3,
+    "premium_restaurant_meal_2p": 0,
+    "domestic_draft_beer_1": 3,
+    "cappuccino_1": 3,
+    "cocktail_1": 0,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 3,
+    "half_day_group_activity_adult_1": 0,
+    "full_day_premium_activity_adult_1": 0
+  },
+  "missing": [
+    {"city": "Medellin", "measure": "street_food_meal_1p", "reason": "The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city": "Medellin", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "Medellin", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "Medellin", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "Medellin", "measure": "half_day_group_activity_adult_1", "reason": "No current directly priced official operator product was verified in this bounded call."},
+    {"city": "Medellin", "measure": "full_day_premium_activity_adult_1", "reason": "No current directly priced official operator product was verified in this bounded call."},
+    {"city": "Istanbul", "measure": "street_food_meal_1p", "reason": "The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city": "Istanbul", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "Istanbul", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "Istanbul", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "Istanbul", "measure": "half_day_group_activity_adult_1", "reason": "No current directly priced official operator product was verified in this bounded call."},
+    {"city": "Istanbul", "measure": "full_day_premium_activity_adult_1", "reason": "No current directly priced official operator product was verified in this bounded call."},
+    {"city": "Goa", "measure": "street_food_meal_1p", "reason": "The standardized inexpensive-restaurant measure is not relabelled as street food; a separate current menu sample is required."},
+    {"city": "Goa", "measure": "premium_restaurant_meal_2p", "reason": "A reproducible two-person premium meal definition has not yet been collected."},
+    {"city": "Goa", "measure": "cocktail_1", "reason": "Not published on the Numbeo city page; requires an independent current menu sample."},
+    {"city": "Goa", "measure": "wine_glass_1", "reason": "Numbeo's retail bottle price is not comparable with a restaurant glass."},
+    {"city": "Goa", "measure": "half_day_group_activity_adult_1", "reason": "No current directly priced official operator product was verified in this bounded call."},
+    {"city": "Goa", "measure": "full_day_premium_activity_adult_1", "reason": "No current directly priced official operator product was verified in this bounded call."}
+  ],
+  "remainingCategories": ["food_drink_menu_triangulation", "activity_products", "accommodation"],
+  "notes": "This batch adds the first directly observed pilot evidence for Latin America, the Middle East, and South Asia: 12 Numbeo food/drink primitives plus three official paid-attraction prices. Medellin uses the current canonical June snapshot while retaining the failed direct re-open and unavailable page-level contributor count as limitations. Istanbul retains its large 3,471-entry/386-contributor context. Goa retains its December 2025 update and 339-entry/54-contributor context as visibly older evidence rather than being relabelled as current 2026 data. No nearby-city substitution or uncited conversion occurred during collection."
+}
