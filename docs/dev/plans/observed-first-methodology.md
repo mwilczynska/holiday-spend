@@ -497,6 +497,8 @@ flexible and non-refundable conditions; a true availability failure; and technic
     official evidence exposes guest nights and daily visitor populations for the wider district, not city arrivals.
   - [x] Preserve screened rejection outcome, reason, and source URLs in the validated enrichment artifact and
     report screened-versus-unscreened tourism gaps separately in the deterministic pilot profile.
+  - [x] Record Auckland as a screened rejection because its official destination evidence provides
+    international-only arrivals and total guest nights, not all overnight visitor arrivals.
   - [ ] Collect comparable city population and overnight-arrival values from the named public-source hierarchy.
 - [x] Collect the first batch-zero checkpoint: 12 directly inspected Numbeo food/drink observations and
   three official paid-attraction prices across Lisbon, Prague, and Hanoi.

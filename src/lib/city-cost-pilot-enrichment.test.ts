@@ -118,9 +118,12 @@ describe('city cost pilot enrichment', () => {
     );
     expect(artifact.cities.find((city) => city.city === 'Auckland')?.tourismIntensity).toMatchObject({
       status: 'pending_source_collection',
-      researchOutcome: 'not_yet_screened',
-      rejectionReason: null,
-      screenedSources: [],
+      researchOutcome: 'screened_no_compatible_value',
+      rejectionReason: 'incompatible_numerator',
+      screenedSources: [
+        { name: expect.stringContaining('Auckland Destination Overview'), url: expect.stringContaining('aucklandnz.com') },
+        { name: expect.stringContaining('Auckland Council'), url: expect.stringContaining('aucklandcouncil.govt.nz') },
+      ],
     });
   });
 });

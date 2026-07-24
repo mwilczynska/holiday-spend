@@ -447,6 +447,11 @@ None of those measures is converted into the required numerator. The published e
 the outcome, reason, and source URLs. The current profile therefore distinguishes 12 measured cities, one
 screened rejection, and 23 tourism-intensity cities still awaiting a compatible-source screen.
 
+Auckland is also screened and remains missing. Its official destination overview reports international
+visitor arrivals plus domestic and international guest nights. International arrivals omit domestic
+overnight visitors, while guest nights are not arrivals, so neither measure satisfies the registered
+numerator. With Auckland recorded, the profile distinguishes two screened rejections and 22 unscreened gaps.
+
 Public-source density is already reproducible from the observation store: zero retained measures is
 `none`, one or two is `sparse`, three to five is `moderate`, and six or more is `dense`. The current
 36-city candidate set contains three none, one sparse, 32 moderate, and zero dense cities. These are
