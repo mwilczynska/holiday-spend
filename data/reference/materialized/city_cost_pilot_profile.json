@@ -2,7 +2,7 @@
   "schemaVersion": "city-cost-pilot-profile-v2",
   "enrichmentId": "pilot-36-enrichment-2026-07-25-v4",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T14:35:00.000Z",
+  "dataCutoff": "2026-07-25T12:00:00.000Z",
   "pilotCityCount": 36,
   "representedCityCount": 32,
   "zeroMaterializedCityCount": 4,
@@ -20,9 +20,9 @@
       "country": "United Arab Emirates"
     }
   ],
-  "materializedTierCells": 151,
+  "materializedTierCells": 156,
   "requiredTierCells": 684,
-  "materializedTierCoveragePct": 22.08,
+  "materializedTierCoveragePct": 22.81,
   "completeCityCount": 0,
   "tierCoverage": {
     "accom_shared_hostel_dorm": {
@@ -71,9 +71,9 @@
       "coveragePct": 0
     },
     "food_high_end": {
-      "materializedCityCount": 0,
-      "missingCityCount": 36,
-      "coveragePct": 0
+      "materializedCityCount": 1,
+      "missingCityCount": 35,
+      "coveragePct": 2.78
     },
     "drink_coffee": {
       "materializedCityCount": 30,
@@ -91,9 +91,9 @@
       "coveragePct": 83.33
     },
     "drinks_moderate": {
-      "materializedCityCount": 0,
-      "missingCityCount": 36,
-      "coveragePct": 0
+      "materializedCityCount": 2,
+      "missingCityCount": 34,
+      "coveragePct": 5.56
     },
     "drinks_heavy": {
       "materializedCityCount": 0,
@@ -111,14 +111,14 @@
       "coveragePct": 72.22
     },
     "activities_mid_range": {
+      "materializedCityCount": 3,
+      "missingCityCount": 33,
+      "coveragePct": 8.33
+    },
+    "activities_high_end": {
       "materializedCityCount": 2,
       "missingCityCount": 34,
       "coveragePct": 5.56
-    },
-    "activities_high_end": {
-      "materializedCityCount": 1,
-      "missingCityCount": 35,
-      "coveragePct": 2.78
     }
   },
   "strata": {
@@ -167,9 +167,9 @@
         "stratum": "North America",
         "cityCount": 2,
         "representedCityCount": 2,
-        "materializedTierCells": 10,
+        "materializedTierCells": 14,
         "requiredTierCells": 38,
-        "coveragePct": 26.32
+        "coveragePct": 36.84
       },
       {
         "stratum": "Oceania",
@@ -183,9 +183,9 @@
         "stratum": "SEA",
         "cityCount": 11,
         "representedCityCount": 8,
-        "materializedTierCells": 33,
+        "materializedTierCells": 34,
         "requiredTierCells": 209,
-        "coveragePct": 15.79
+        "coveragePct": 16.27
       },
       {
         "stratum": "South Asia",
@@ -201,9 +201,9 @@
         "stratum": "measured_from_public_source:large",
         "cityCount": 15,
         "representedCityCount": 15,
-        "materializedTierCells": 72,
+        "materializedTierCells": 76,
         "requiredTierCells": 285,
-        "coveragePct": 25.26
+        "coveragePct": 26.67
       },
       {
         "stratum": "measured_from_public_source:medium",
@@ -217,9 +217,9 @@
         "stratum": "measured_from_public_source:megacity",
         "cityCount": 10,
         "representedCityCount": 9,
-        "materializedTierCells": 45,
+        "materializedTierCells": 46,
         "requiredTierCells": 190,
-        "coveragePct": 23.68
+        "coveragePct": 24.21
       },
       {
         "stratum": "measured_from_public_source:small",
@@ -291,27 +291,35 @@
         "stratum": "measured_from_public_sources:strict:very_high",
         "cityCount": 2,
         "representedCityCount": 2,
-        "materializedTierCells": 10,
+        "materializedTierCells": 14,
         "requiredTierCells": 38,
-        "coveragePct": 26.32
+        "coveragePct": 36.84
       },
       {
         "stratum": "pending_source_collection:unknown:screened_no_compatible_value",
         "cityCount": 18,
         "representedCityCount": 14,
-        "materializedTierCells": 64,
+        "materializedTierCells": 65,
         "requiredTierCells": 342,
-        "coveragePct": 18.71
+        "coveragePct": 19.01
       }
     ],
     "sourceDensity": [
       {
+        "stratum": "dense",
+        "cityCount": 2,
+        "representedCityCount": 2,
+        "materializedTierCells": 15,
+        "requiredTierCells": 38,
+        "coveragePct": 39.47
+      },
+      {
         "stratum": "moderate",
-        "cityCount": 32,
-        "representedCityCount": 31,
-        "materializedTierCells": 149,
-        "requiredTierCells": 608,
-        "coveragePct": 24.51
+        "cityCount": 30,
+        "representedCityCount": 29,
+        "materializedTierCells": 139,
+        "requiredTierCells": 570,
+        "coveragePct": 24.39
       },
       {
         "stratum": "none",

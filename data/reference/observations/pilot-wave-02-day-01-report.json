@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "city-cost-collection-report-v1",
+  "batchId": "pilot-wave-02-day-01",
+  "checkpoint": "venue_channel_first_yield",
+  "collectionPolicy": "free_llm_web_research_only",
+  "projectDailyCallCap": null,
+  "completedCityCategoryCalls": 5,
+  "cities": [
+    "Vancouver",
+    "Hanoi",
+    "Lisbon"
+  ],
+  "acceptedObservations": 5,
+  "rejectedObservations": 0,
+  "sources": [
+    {
+      "name": "Pourhouse Restaurant & Cocktail Bar, Gastown",
+      "accessBasis": "public_official"
+    },
+    {
+      "name": "Botanist Restaurant, Fairmont Pacific Rim",
+      "accessBasis": "public_official"
+    },
+    {
+      "name": "Prince of Whales Wildlife Tours",
+      "accessBasis": "public_official"
+    },
+    {
+      "name": "Moon Men Cocktail Bar, Hanoi",
+      "accessBasis": "public_official"
+    },
+    {
+      "name": "Hanoi Street Food Tour",
+      "accessBasis": "public_official",
+      "use": "inspected_but_not_numeric_input"
+    },
+    {
+      "name": "Arcana Spirit Lounge, Gastown",
+      "accessBasis": "public_official",
+      "use": "inspected_but_not_numeric_input"
+    },
+    {
+      "name": "Brix & Mortar, Yaletown",
+      "accessBasis": "public_official",
+      "use": "inspected_but_not_numeric_input"
+    },
+    {
+      "name": "JAPADOG",
+      "accessBasis": "public_official",
+      "use": "inspected_but_not_numeric_input"
+    }
+  ],
+  "coverage": {
+    "street_food_meal_1p": 0,
+    "inexpensive_restaurant_meal_1p": 0,
+    "midrange_restaurant_meal_2p": 0,
+    "premium_restaurant_meal_2p": 1,
+    "domestic_draft_beer_1": 0,
+    "cappuccino_1": 0,
+    "cocktail_1": 2,
+    "wine_glass_1": 0,
+    "paid_attraction_adult_1": 0,
+    "half_day_group_activity_adult_1": 1,
+    "full_day_premium_activity_adult_1": 1
+  },
+  "missing": [
+    {
+      "city": "Lisbon",
+      "measure": "cocktail_1",
+      "reason": "Zero official-source yield: Lisbon prices for this measure surfaced only through Tripadvisor, TheFork, menutoeat, and travel blogs, none of which is a venue-owned or operator-owned page. Retained as an explicit outcome rather than filled from a secondary aggregator; this is the regional venue-channel bias flagged in Amendment E4."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "wine_glass_1",
+      "reason": "Zero official-source yield: Lisbon prices for this measure surfaced only through Tripadvisor, TheFork, menutoeat, and travel blogs, none of which is a venue-owned or operator-owned page. Retained as an explicit outcome rather than filled from a secondary aggregator; this is the regional venue-channel bias flagged in Amendment E4."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "premium_restaurant_meal_2p",
+      "reason": "Zero official-source yield: Lisbon prices for this measure surfaced only through Tripadvisor, TheFork, menutoeat, and travel blogs, none of which is a venue-owned or operator-owned page. Retained as an explicit outcome rather than filled from a secondary aggregator; this is the regional venue-channel bias flagged in Amendment E4."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "street_food_meal_1p",
+      "reason": "Zero official-source yield: Lisbon prices for this measure surfaced only through Tripadvisor, TheFork, menutoeat, and travel blogs, none of which is a venue-owned or operator-owned page. Retained as an explicit outcome rather than filled from a secondary aggregator; this is the regional venue-channel bias flagged in Amendment E4."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "half_day_group_activity_adult_1",
+      "reason": "Zero official-source yield: Lisbon prices for this measure surfaced only through Tripadvisor, TheFork, menutoeat, and travel blogs, none of which is a venue-owned or operator-owned page. Retained as an explicit outcome rather than filled from a secondary aggregator; this is the regional venue-channel bias flagged in Amendment E4."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "full_day_premium_activity_adult_1",
+      "reason": "Zero official-source yield: Lisbon prices for this measure surfaced only through Tripadvisor, TheFork, menutoeat, and travel blogs, none of which is a venue-owned or operator-owned page. Retained as an explicit outcome rather than filled from a secondary aggregator; this is the regional venue-channel bias flagged in Amendment E4."
+    },
+    {
+      "city": "Vancouver",
+      "measure": "wine_glass_1",
+      "reason": "Pourhouse publishes no wine by the glass, and the Provence Marinaside by-the-glass list was reachable only through press coverage rather than its own priced menu."
+    },
+    {
+      "city": "Vancouver",
+      "measure": "street_food_meal_1p",
+      "reason": "JAPADOG's official site publishes menu categories but no prices, and every delivery platform carrying them is unretrievable. Stays missing under Amendment F pending the anchor set."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "wine_glass_1",
+      "reason": "No Hanoi venue publishing wine-by-the-glass prices on its own site was found in this pass."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "premium_restaurant_meal_2p",
+      "reason": "Fine-dining tasting-menu figures were available only through guide sites, not restaurant-owned pages."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "street_food_meal_1p",
+      "reason": "Street vendor prices appear only in travel guides and unretrievable delivery platforms. Stays missing under Amendment F pending the anchor set."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "half_day_group_activity_adult_1",
+      "reason": "Hanoi Street Food Tour publishes an exact USD 20 three-hour all-inclusive walking tour on its own site, but quoting it would introduce a second local currency for a city whose retained evidence is VND, which the aggregator rejects. Held pending an attributed VND cross-rate."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "full_day_premium_activity_adult_1",
+      "reason": "The operator publishes no product beyond four hours, so no full-day premium product is asserted."
+    }
+  ],
+  "notes": "First checkpoint of the Amendment A depth-first completion pass. Roughly 30 web calls produced five accepted observations, a yield of about one usable observation per six calls, which implies the full pass at the Amendment B three-venue threshold would need on the order of 4,000 calls. Every measure in this batch rests on a single venue and is therefore below that threshold and provisional. The two cocktail observations apply the Amendment E1 within-venue rule: median of the venue's standard classic section with reserve, low-ABV, and zero-proof tiers excluded, and the section range retained in reportedLow and reportedHigh.",
+  "remainingCategories": [
+    "food_drink_menu_triangulation",
+    "activity_products",
+    "accommodation"
+  ]
+}

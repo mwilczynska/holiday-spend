@@ -1,22 +1,22 @@
 {
   "schemaVersion": "city-cost-materialized-dataset-v1",
   "calculatorVersion": "city-cost-v3-alpha-3",
-  "dataCutoff": "2026-07-24T14:35:00.000Z",
+  "dataCutoff": "2026-07-25T12:00:00.000Z",
   "fxSnapshotId": "aud-reference-2026-07-22-v1",
   "fxAsOfDate": "2026-07-22",
   "observationSummary": {
-    "input": 171,
-    "accepted": 171,
+    "input": 176,
+    "accepted": 176,
     "rejected": 0,
     "unreviewed": 0,
-    "direct": 171,
+    "direct": 176,
     "derived": 0,
     "imputed": 0
   },
   "cityCount": 35,
   "completeCityCount": 0,
   "requiredTierCells": 665,
-  "materializedTierCells": 166,
+  "materializedTierCells": 171,
   "tierCoverage": {
     "accom_shared_hostel_dorm": 0,
     "accom_hostel_private_room": 0,
@@ -27,16 +27,16 @@
     "food_street_food": 0,
     "food_budget": 0,
     "food_mid_range": 0,
-    "food_high_end": 0,
+    "food_high_end": 1,
     "drink_coffee": 33,
     "drinks_none": 33,
     "drinks_light": 33,
-    "drinks_moderate": 0,
+    "drinks_moderate": 2,
     "drinks_heavy": 0,
     "activities_free": 35,
     "activities_budget": 29,
-    "activities_mid_range": 2,
-    "activities_high_end": 1
+    "activities_mid_range": 3,
+    "activities_high_end": 2
   },
   "qualitySummary": {
     "crossChannelMeasureCount": 0,
@@ -5482,6 +5482,83 @@
       ],
       "availableObservationIds": [
         "numbeo-hanoi-2026-07-14-cappuccino"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "category": "drinks",
+      "measure": "cocktail_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "manual_menu_sample",
+      "availableSourceChannels": [
+        "manual_menu_sample"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "manual_menu_sample",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Moon Men Cocktail Bar, Hanoi"
+          ],
+          "observationIds": [
+            "moon-men-hanoi-classic-median-2026-07-25"
+          ],
+          "medianLocal": 235000,
+          "q25Local": 235000,
+          "q75Local": 235000,
+          "medianAud": 12.907833
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "VND",
+      "audPerLocalUnit": 0.000054926947160276834,
+      "medianLocal": 235000,
+      "q25Local": 235000,
+      "q75Local": 235000,
+      "minLocal": 235000,
+      "maxLocal": 235000,
+      "medianAud": 12.907833,
+      "q25Aud": 12.907833,
+      "q75Aud": 12.907833,
+      "minAud": 12.907833,
+      "maxAud": 12.907833,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Moon Men Cocktail Bar, Hanoi"
+      ],
+      "sourceCurrencies": [
+        "VND"
+      ],
+      "observationIds": [
+        "moon-men-hanoi-classic-median-2026-07-25"
+      ],
+      "availableObservationIds": [
+        "moon-men-hanoi-classic-median-2026-07-25"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
@@ -11727,6 +11804,83 @@
       "country": "Canada",
       "region": "North America",
       "category": "drinks",
+      "measure": "cocktail_1",
+      "unit": "per_person_item",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "manual_menu_sample",
+      "availableSourceChannels": [
+        "manual_menu_sample"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "manual_menu_sample",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Pourhouse Restaurant & Cocktail Bar, Gastown"
+          ],
+          "observationIds": [
+            "pourhouse-vancouver-classics-median-2026-07-25"
+          ],
+          "medianLocal": 19,
+          "q25Local": 19,
+          "q75Local": 19,
+          "medianAud": 19.284923
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CAD",
+      "audPerLocalUnit": 1.0149959554477,
+      "medianLocal": 19,
+      "q25Local": 19,
+      "q75Local": 19,
+      "minLocal": 19,
+      "maxLocal": 19,
+      "medianAud": 19.284923,
+      "q25Aud": 19.284923,
+      "q75Aud": 19.284923,
+      "minAud": 19.284923,
+      "maxAud": 19.284923,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Pourhouse Restaurant & Cocktail Bar, Gastown"
+      ],
+      "sourceCurrencies": [
+        "CAD"
+      ],
+      "observationIds": [
+        "pourhouse-vancouver-classics-median-2026-07-25"
+      ],
+      "availableObservationIds": [
+        "pourhouse-vancouver-classics-median-2026-07-25"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "category": "drinks",
       "measure": "domestic_draft_beer_1",
       "unit": "per_person_item",
       "travellers": 1,
@@ -11796,6 +11950,160 @@
       ],
       "availableObservationIds": [
         "numbeo-vancouver-2026-04-domestic-draft-beer"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "category": "activities",
+      "measure": "full_day_premium_activity_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Prince of Whales Wildlife Tours"
+          ],
+          "observationIds": [
+            "prince-of-whales-vancouver-nature-combo-2026-07-25"
+          ],
+          "medianLocal": 319,
+          "q25Local": 319,
+          "q75Local": 319,
+          "medianAud": 323.78371
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CAD",
+      "audPerLocalUnit": 1.0149959554477,
+      "medianLocal": 319,
+      "q25Local": 319,
+      "q75Local": 319,
+      "minLocal": 319,
+      "maxLocal": 319,
+      "medianAud": 323.78371,
+      "q25Aud": 323.78371,
+      "q75Aud": 323.78371,
+      "minAud": 323.78371,
+      "maxAud": 323.78371,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Prince of Whales Wildlife Tours"
+      ],
+      "sourceCurrencies": [
+        "CAD"
+      ],
+      "observationIds": [
+        "prince-of-whales-vancouver-nature-combo-2026-07-25"
+      ],
+      "availableObservationIds": [
+        "prince-of-whales-vancouver-nature-combo-2026-07-25"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "category": "activities",
+      "measure": "half_day_group_activity_adult_1",
+      "unit": "per_person_ticket",
+      "travellers": 1,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "official_website",
+      "availableSourceChannels": [
+        "official_website"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "official_website",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Prince of Whales Wildlife Tours"
+          ],
+          "observationIds": [
+            "prince-of-whales-vancouver-half-day-2026-07-25"
+          ],
+          "medianLocal": 229,
+          "q25Local": 229,
+          "q75Local": 229,
+          "medianAud": 232.434074
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CAD",
+      "audPerLocalUnit": 1.0149959554477,
+      "medianLocal": 229,
+      "q25Local": 229,
+      "q75Local": 229,
+      "minLocal": 229,
+      "maxLocal": 229,
+      "medianAud": 232.434074,
+      "q25Aud": 232.434074,
+      "q75Aud": 232.434074,
+      "minAud": 232.434074,
+      "maxAud": 232.434074,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Prince of Whales Wildlife Tours"
+      ],
+      "sourceCurrencies": [
+        "CAD"
+      ],
+      "observationIds": [
+        "prince-of-whales-vancouver-half-day-2026-07-25"
+      ],
+      "availableObservationIds": [
+        "prince-of-whales-vancouver-half-day-2026-07-25"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
@@ -12027,6 +12335,83 @@
       ],
       "availableObservationIds": [
         "museum-of-vancouver-2026-general-adult"
+      ],
+      "fxSnapshotId": "aud-reference-2026-07-22-v1"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "category": "food",
+      "measure": "premium_restaurant_meal_2p",
+      "unit": "per_two_person_meal",
+      "travellers": 2,
+      "valueStatus": "direct",
+      "selectedSourceChannel": "manual_menu_sample",
+      "availableSourceChannels": [
+        "manual_menu_sample"
+      ],
+      "sourceChannelSummaries": [
+        {
+          "sourceChannel": "manual_menu_sample",
+          "observationCount": 1,
+          "sourceCount": 1,
+          "sourceNames": [
+            "Botanist Restaurant, Fairmont Pacific Rim"
+          ],
+          "observationIds": [
+            "botanist-vancouver-tasting-menu-2p-2026-07-25"
+          ],
+          "medianLocal": 360,
+          "q25Local": 360,
+          "q75Local": 360,
+          "medianAud": 365.398544
+        }
+      ],
+      "sourceDisagreement": {
+        "thresholdPct": 25,
+        "maxAbsoluteDifferencePct": 0,
+        "flagged": false
+      },
+      "seasonCoverage": {
+        "requiredSeasons": [],
+        "availableSeasons": [],
+        "minimumObservationsPerSeason": null,
+        "sampleSizeComplete": true,
+        "crossSeasonPanelOverlapPct": null,
+        "minimumCrossSeasonPanelOverlapPct": null,
+        "panelOverlapComplete": true,
+        "complete": true,
+        "weightingMethod": "not_applicable",
+        "summaries": []
+      },
+      "eligibleForMaterialization": true,
+      "localCurrency": "CAD",
+      "audPerLocalUnit": 1.0149959554477,
+      "medianLocal": 360,
+      "q25Local": 360,
+      "q75Local": 360,
+      "minLocal": 360,
+      "maxLocal": 360,
+      "medianAud": 365.398544,
+      "q25Aud": 365.398544,
+      "q75Aud": 365.398544,
+      "minAud": 365.398544,
+      "maxAud": 365.398544,
+      "observationCount": 1,
+      "availableObservationCount": 1,
+      "sourceCount": 1,
+      "sourceNames": [
+        "Botanist Restaurant, Fairmont Pacific Rim"
+      ],
+      "sourceCurrencies": [
+        "CAD"
+      ],
+      "observationIds": [
+        "botanist-vancouver-tasting-menu-2p-2026-07-25"
+      ],
+      "availableObservationIds": [
+        "botanist-vancouver-tasting-menu-2p-2026-07-25"
       ],
       "fxSnapshotId": "aud-reference-2026-07-22-v1"
     },
@@ -16712,17 +17097,15 @@
           "imputedMeasures": []
         },
         "drinks_moderate": {
-          "amountAud": null,
+          "amountAud": 37.31,
           "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
           "parentMeasures": [
             "cappuccino_1",
             "domestic_draft_beer_1",
             "cocktail_1"
           ],
-          "missingMeasures": [
-            "cocktail_1"
-          ],
-          "evidenceBasis": null,
+          "missingMeasures": [],
+          "evidenceBasis": "direct",
           "imputedMeasures": []
         },
         "drinks_heavy": {
@@ -16735,7 +17118,6 @@
             "wine_glass_1"
           ],
           "missingMeasures": [
-            "cocktail_1",
             "wine_glass_1"
           ],
           "evidenceBasis": null,
@@ -16784,7 +17166,7 @@
           "imputedMeasures": []
         }
       },
-      "materializedTierCount": 5,
+      "materializedTierCount": 6,
       "missingMeasures": [
         "hostel_dorm_bed_1p",
         "hostel_private_room_2p",
@@ -16794,7 +17176,6 @@
         "hotel_4star_room_2p",
         "street_food_meal_1p",
         "premium_restaurant_meal_2p",
-        "cocktail_1",
         "wine_glass_1",
         "half_day_group_activity_adult_1",
         "full_day_premium_activity_adult_1"
@@ -21038,17 +21419,15 @@
           "imputedMeasures": []
         },
         "food_high_end": {
-          "amountAud": null,
+          "amountAud": 548.1,
           "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
           "parentMeasures": [
             "inexpensive_restaurant_meal_1p",
             "midrange_restaurant_meal_2p",
             "premium_restaurant_meal_2p"
           ],
-          "missingMeasures": [
-            "premium_restaurant_meal_2p"
-          ],
-          "evidenceBasis": null,
+          "missingMeasures": [],
+          "evidenceBasis": "direct",
           "imputedMeasures": []
         },
         "drink_coffee": {
@@ -21083,17 +21462,15 @@
           "imputedMeasures": []
         },
         "drinks_moderate": {
-          "amountAud": null,
+          "amountAud": 82.76,
           "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
           "parentMeasures": [
             "cappuccino_1",
             "domestic_draft_beer_1",
             "cocktail_1"
           ],
-          "missingMeasures": [
-            "cocktail_1"
-          ],
-          "evidenceBasis": null,
+          "missingMeasures": [],
+          "evidenceBasis": "direct",
           "imputedMeasures": []
         },
         "drinks_heavy": {
@@ -21106,7 +21483,6 @@
             "wine_glass_1"
           ],
           "missingMeasures": [
-            "cocktail_1",
             "wine_glass_1"
           ],
           "evidenceBasis": null,
@@ -21131,31 +21507,27 @@
           "imputedMeasures": []
         },
         "activities_mid_range": {
-          "amountAud": null,
+          "amountAud": 464.87,
           "formula": "2 * half_day_group_activity_adult_1",
           "parentMeasures": [
             "half_day_group_activity_adult_1"
           ],
-          "missingMeasures": [
-            "half_day_group_activity_adult_1"
-          ],
-          "evidenceBasis": null,
+          "missingMeasures": [],
+          "evidenceBasis": "direct",
           "imputedMeasures": []
         },
         "activities_high_end": {
-          "amountAud": null,
+          "amountAud": 647.57,
           "formula": "2 * full_day_premium_activity_adult_1",
           "parentMeasures": [
             "full_day_premium_activity_adult_1"
           ],
-          "missingMeasures": [
-            "full_day_premium_activity_adult_1"
-          ],
-          "evidenceBasis": null,
+          "missingMeasures": [],
+          "evidenceBasis": "direct",
           "imputedMeasures": []
         }
       },
-      "materializedTierCount": 5,
+      "materializedTierCount": 9,
       "missingMeasures": [
         "hostel_dorm_bed_1p",
         "hostel_private_room_2p",
@@ -21164,11 +21536,7 @@
         "hotel_3star_room_2p",
         "hotel_4star_room_2p",
         "street_food_meal_1p",
-        "premium_restaurant_meal_2p",
-        "cocktail_1",
-        "wine_glass_1",
-        "half_day_group_activity_adult_1",
-        "full_day_premium_activity_adult_1"
+        "wine_glass_1"
       ],
       "complete": false,
       "wideRow": null
@@ -21985,7 +22353,8 @@
       "data/reference/observations/pilot-wave-01-day-09-food-drinks.jsonl",
       "data/reference/observations/pilot-wave-01-day-10-activities.jsonl",
       "data/reference/observations/pilot-wave-01-day-10-food-drinks.jsonl",
-      "data/reference/observations/pilot-wave-01-day-11-sparse-markets.jsonl"
+      "data/reference/observations/pilot-wave-01-day-11-sparse-markets.jsonl",
+      "data/reference/observations/pilot-wave-02-day-01-venue-measures.jsonl"
     ],
     "fxSnapshotFile": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   }
