@@ -41,8 +41,38 @@ describe('city cost pilot enrichment', () => {
       sourceRecordId: '5433',
     });
     expect(artifact.cities.find((city) => city.city === 'Goa')?.citySize.notes).toContain('state and multi-city');
-    expect(artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources')).toHaveLength(14);
+    const measuredTourism = artifact.cities.flatMap((city) =>
+      city.tourismIntensity.status === 'measured_from_public_sources' ? [city.tourismIntensity] : []
+    );
+    expect(measuredTourism).toHaveLength(18);
+    expect(measuredTourism.filter((tourism) => tourism.evidenceGrade === 'strict')).toHaveLength(14);
+    expect(measuredTourism.filter((tourism) => tourism.evidenceGrade === 'relaxed')).toHaveLength(4);
+    expect(
+      artifact.cities.filter(
+        (city) =>
+          city.tourismIntensity.status === 'pending_source_collection' &&
+          city.tourismIntensity.researchOutcome === 'not_yet_screened'
+      )
+    ).toHaveLength(0);
+    // A strict record must never carry relaxation reasons, and a relaxed one must always name them.
+    for (const tourism of measuredTourism) {
+      expect(tourism.relaxationReasons.length > 0).toBe(tourism.evidenceGrade === 'relaxed');
+    }
+    expect(artifact.cities.find((city) => city.city === 'Can Tho')?.tourismIntensity).toMatchObject({
+      evidenceGrade: 'relaxed',
+      relaxationReasons: ['numerator_rounded'],
+      overnightArrivals: 3_100_000,
+      residentPopulation: 1_268_514,
+      band: 'medium',
+    });
+    expect(artifact.cities.find((city) => city.city === 'Zanzibar')?.tourismIntensity).toMatchObject({
+      evidenceGrade: 'relaxed',
+      relaxationReasons: ['numerator_partial', 'reference_year_stale'],
+      band: 'low',
+    });
     expect(artifact.cities.find((city) => city.city === 'Prague')?.tourismIntensity).toMatchObject({
+      evidenceGrade: 'strict',
+      relaxationReasons: [],
       overnightArrivals: 8_063_367,
       residentPopulation: 1_397_880,
       band: 'high',

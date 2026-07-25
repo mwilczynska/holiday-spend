@@ -11,7 +11,7 @@ export type PilotProfileEnrichmentCity = {
   country: string;
   region: string;
   citySize: { status: string; band: string };
-  tourismIntensity: { status: string; band: string; researchOutcome?: string };
+  tourismIntensity: { status: string; band: string; researchOutcome?: string; evidenceGrade?: string };
   publicSourceDensity: { band: string };
 };
 
@@ -85,6 +85,8 @@ export function buildCityCostPilotProfile(
   const requiredTierCells = enrichment.cities.length * PILOT_TIER_NAMES.length;
   const measuredCitySize = enrichment.cities.filter((city) => city.citySize.status === 'measured_from_public_source').length;
   const measuredTourism = enrichment.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources').length;
+  const measuredTourismStrict = enrichment.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources' && city.tourismIntensity.evidenceGrade === 'strict').length;
+  const measuredTourismRelaxed = enrichment.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources' && city.tourismIntensity.evidenceGrade === 'relaxed').length;
   const screenedRejectedTourism = enrichment.cities.filter((city) => city.tourismIntensity.researchOutcome === 'screened_no_compatible_value').length;
   const unscreenedTourism = enrichment.cities.filter((city) => city.tourismIntensity.researchOutcome === 'not_yet_screened').length;
   const measuredBoth = enrichment.cities.filter((city) => city.citySize.status === 'measured_from_public_source' && city.tourismIntensity.status === 'measured_from_public_sources').length;
@@ -109,7 +111,7 @@ export function buildCityCostPilotProfile(
       citySize: summarizeStrata(enrichment.cities, materialized, (city) => `${city.citySize.status}:${city.citySize.band}`),
       tourismIntensity: summarizeStrata(enrichment.cities, materialized, (city) =>
         city.tourismIntensity.status === 'measured_from_public_sources'
-          ? `${city.tourismIntensity.status}:${city.tourismIntensity.band}`
+          ? `${city.tourismIntensity.status}:${city.tourismIntensity.evidenceGrade ?? 'grade_missing'}:${city.tourismIntensity.band}`
           : `${city.tourismIntensity.status}:${city.tourismIntensity.band}:${city.tourismIntensity.researchOutcome ?? 'outcome_missing'}`
       ),
       sourceDensity: summarizeStrata(enrichment.cities, materialized, (city) => city.publicSourceDensity.band),
@@ -119,6 +121,8 @@ export function buildCityCostPilotProfile(
       status: 'insufficient_for_fallback_model_selection',
       measuredCitySizeCount: measuredCitySize,
       measuredTourismIntensityCount: measuredTourism,
+      measuredTourismIntensityStrictCount: measuredTourismStrict,
+      measuredTourismIntensityRelaxedCount: measuredTourismRelaxed,
       screenedRejectedTourismIntensityCount: screenedRejectedTourism,
       unscreenedTourismIntensityCount: unscreenedTourism,
       measuredBothPredictorsCount: measuredBoth,
@@ -126,7 +130,7 @@ export function buildCityCostPilotProfile(
       reasons: [
         'No pilot city has all 19 tier targets materialized.',
         'Accommodation has no eligible annualized tier values yet.',
-        'Tourism intensity remains unmeasured for most pilot cities.',
+        `Tourism intensity is measured for ${measuredTourism} of ${enrichment.cities.length} pilot cities, of which ${measuredTourismRelaxed} are relaxed-grade and must be excluded from any strict-only fit.`,
         'Cross-channel disagreement cannot be estimated until overlapping independent source channels are collected.',
       ],
     },

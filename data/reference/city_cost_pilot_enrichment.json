@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "city-cost-pilot-enrichment-v3",
-  "enrichmentId": "pilot-36-enrichment-2026-07-24-v3",
+  "schemaVersion": "city-cost-pilot-enrichment-v4",
+  "enrichmentId": "pilot-36-enrichment-2026-07-25-v4",
   "pilotSource": "data/reference/city_cost_collection_pilot.json",
   "observationManifestSource": "data/reference/city_cost_collection_batches.json",
-  "generatedAt": "2026-07-24T15:00:00.000Z",
+  "generatedAt": "2026-07-25T11:00:00.000Z",
   "definitions": {
     "citySize": {
       "estimand": "Resident population of the smallest consistently defined city or urban-area geography containing the destination; geography and reference year must be retained.",
@@ -21,7 +21,7 @@
       }
     },
     "tourismIntensity": {
-      "estimand": "Annual overnight visitor arrivals divided by resident population for the same destination geography and a stated reference year.",
+      "estimand": "Annual overnight visitor arrivals divided by resident population for the same destination geography and a stated reference year. A strict record satisfies that estimand exactly; a relaxed record departs from it only in the ways named in relaxationReasons and must be separable from strict records in every downstream use.",
       "preferredSourceOrder": [
         "official destination or municipal statistics",
         "official national tourism statistics with destination table",
@@ -33,6 +33,16 @@
         "high": "5-14.99",
         "very_high": ">=15",
         "unknown": "No comparable public numerator and denominator retained"
+      },
+      "evidenceGrades": {
+        "strict": "Same-geography, full-period, all-visitor overnight arrivals with an exact published numerator.",
+        "relaxed": "Accepted under the Phase 6C throughput exception with every departure named; excludable from model fitting and required to be reported separately."
+      },
+      "relaxationReasons": {
+        "geography_approximate": "Numerator covers a province, region, or destination area larger than the planner city.",
+        "numerator_partial": "Numerator omits a visitor segment (for example international-only) or mixes overnight and same-day visits.",
+        "numerator_rounded": "Source publishes a rounded headline figure rather than an exact count.",
+        "reference_year_stale": "Numerator and denominator reference years differ, or the denominator predates the numerator."
       }
     },
     "publicSourceDensity": {
@@ -63,17 +73,25 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 0.3898642852871747,
+        "referenceYear": 2024,
+        "spatialUnit": "Zanzibar archipelago (Unguja and Pemba)",
+        "band": "low",
+        "evidenceGrade": "relaxed",
+        "relaxationReasons": [
+          "numerator_partial",
+          "reference_year_stale"
+        ],
+        "overnightArrivals": 736755,
+        "residentPopulation": 1889773,
+        "numeratorDefinition": "International visitor arrivals to Zanzibar during 2024 as published in the Zanzibar Annual Tourism Report 2024",
+        "denominatorDefinition": "Total resident population of Zanzibar enumerated in the 2022 Population and Housing Census",
+        "arrivalsSourceName": "Office of the Chief Government Statistician Zanzibar, Zanzibar Annual Tourism Report 2024, as reported by TanzaniaInvest",
+        "arrivalsSourceUrl": "https://www.tanzaniainvest.com/tourism/zanzibar-tourist-arrivals-2024",
+        "populationSourceName": "National Bureau of Statistics Tanzania, 2022 Population and Housing Census Initial Results",
+        "populationSourceUrl": "https://www.nbs.go.tz/uploads/statistics/documents/sw-1720088450-2022%20PHC%20Initial%20Results%20-%20English.pdf",
+        "notes": "The numerator counts international arrivals only and therefore omits mainland Tanzanian and domestic visitors; the source also does not state that arrivals are overnight-only. The denominator is the 2022 census count against a 2024 numerator, so the reference years differ and the ratio is a lower bound on both counts. The band therefore reads low despite Zanzibar being a tourism-dependent destination; do not interpret the band as economic dependence. The OCGS site was unreachable at capture time, so the figure is attributed through a secondary page that names the report."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -214,6 +232,8 @@
         "referenceYear": 2023,
         "spatialUnit": "Fukuoka city municipality",
         "band": "medium",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 5760000,
         "residentPopulation": 1642571,
         "numeratorDefinition": "Estimated overnight tourists visiting Fukuoka city during 2023",
@@ -260,6 +280,8 @@
         "referenceYear": 2024,
         "spatialUnit": "Sendai city municipality",
         "band": "high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 6508856,
         "residentPopulation": 1064142,
         "numeratorDefinition": "Guests staying in surveyed accommodation across all four Sendai city tourism districts during 2024",
@@ -410,6 +432,8 @@
         "referenceYear": 2024,
         "spatialUnit": "Sofia (Stolitsa) capital district",
         "band": "low",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 1185345,
         "residentPopulation": 1295931,
         "numeratorDefinition": "Arrivals in categorized accommodation establishments with 10 or more bed places in Sofia capital district during 2024",
@@ -456,6 +480,8 @@
         "referenceYear": 2024,
         "spatialUnit": "Budapest capital region",
         "band": "medium",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 6730727,
         "residentPopulation": 1686222,
         "numeratorDefinition": "Tourist arrivals at commercial, private, and other tourist accommodation establishments in Budapest during 2024",
@@ -502,6 +528,8 @@
         "referenceYear": 2024,
         "spatialUnit": "Capital City of Prague administrative region",
         "band": "high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 8063367,
         "residentPopulation": 1397880,
         "numeratorDefinition": "Guests staying in Prague collective accommodation establishments during 2024",
@@ -548,6 +576,8 @@
         "referenceYear": 2024,
         "spatialUnit": "City of Split administrative area",
         "band": "high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 1050847,
         "residentPopulation": 158636,
         "numeratorDefinition": "Registered domestic and international tourist arrivals in the City of Split recorded by the eVisitor system during 2024",
@@ -594,6 +624,8 @@
         "referenceYear": 2023,
         "spatialUnit": "Lisbon municipality",
         "band": "high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 6460430,
         "residentPopulation": 567131,
         "numeratorDefinition": "Guests recorded in tourist accommodation establishments located in Lisbon municipality during 2023",
@@ -640,6 +672,8 @@
         "referenceYear": 2024,
         "spatialUnit": "Barcelona city municipality",
         "band": "high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 12726360,
         "residentPopulation": 1702814,
         "numeratorDefinition": "Tourists in Barcelona city tourist accommodation during 2024, according to available accommodation-series data",
@@ -684,6 +718,8 @@
         "referenceYear": 2024,
         "spatialUnit": "City of Dubrovnik administrative area",
         "band": "very_high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 1397052,
         "residentPopulation": 42016,
         "numeratorDefinition": "Registered tourist arrivals in the City of Dubrovnik recorded by the eVisitor system during 2024",
@@ -833,6 +869,8 @@
         "referenceYear": 2023,
         "spatialUnit": "Ciudad de Mexico federal entity (all 16 boroughs)",
         "band": "medium",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 14403349,
         "residentPopulation": 9221637,
         "numeratorDefinition": "Tourists staying in Ciudad de Mexico hotels during 2023",
@@ -879,6 +917,8 @@
         "referenceYear": 2023,
         "spatialUnit": "Istanbul province",
         "band": "low",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 13212666,
         "residentPopulation": 15655924,
         "numeratorDefinition": "Arrivals for an overnight stay at Ministry-certified tourism-operation and simple-accommodation establishments in Istanbul province during 2023",
@@ -977,6 +1017,8 @@
         "referenceYear": 2024,
         "spatialUnit": "Vancouver municipality",
         "band": "very_high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 11271967,
         "residentPopulation": 748777,
         "numeratorDefinition": "Total monthly overnight visitation to Vancouver during 2024",
@@ -1023,6 +1065,8 @@
         "referenceYear": 2023,
         "spatialUnit": "City and County of San Francisco",
         "band": "high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 8000000,
         "residentPopulation": 808988,
         "numeratorDefinition": "Modelled domestic and international visitors staying at least one night in San Francisco during 2023",
@@ -1171,10 +1215,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_geography",
+        "screenedSources": [
+          {
+            "name": "Lao News Agency, Champassak expects to welcome a larger number of visitors",
+            "url": "https://kpl.gov.la/En/detail.aspx?id=80954"
+          },
+          {
+            "name": "Tourism Marketing Department, Laos, Statistical Report on Tourism 2024",
+            "url": "https://tdd.gov.la/media/attachments/2025/11/28/statistical-report-on-tourism-2024---eng-edit.pdf"
+          }
+        ],
+        "notes": "The only Champasak province figures retrieved are forward-looking targets (500,000 visitors expected in 2024 against 300,000 in 2023) rather than a published outturn series, and no arrivals series exists for Don Det, Khong district, or Si Phan Don. Official material for the area is a ten-year tourism master plan without visitor counts. Retain as missing rather than substituting a provincial target or a national total."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1203,17 +1256,24 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 2.443804325375991,
+        "referenceYear": 2024,
+        "spatialUnit": "Can Tho city (pre-2025 municipality)",
+        "band": "medium",
+        "evidenceGrade": "relaxed",
+        "relaxationReasons": [
+          "numerator_rounded"
+        ],
+        "overnightArrivals": 3100000,
+        "residentPopulation": 1268514,
+        "numeratorDefinition": "Accommodation guests (khach du lich luu tru) recorded in Can Tho city during 2024, covering domestic and international visitors",
+        "denominatorDefinition": "Residents of Can Tho city at 1 April 2024 from the mid-term population and housing survey",
+        "arrivalsSourceName": "Bao Phap luat, reporting the Can Tho Department of Culture, Sports and Tourism 2024 year-end result",
+        "arrivalsSourceUrl": "https://baophapluat.vn/du-lich-can-tho-thu-hut-63-trieu-du-khach-trong-nam-2024-post537696.html",
+        "populationSourceName": "danso.info, reproducing the General Statistics Office mid-term population survey 2024",
+        "populationSourceUrl": "https://danso.info/dan-so-can-tho/",
+        "notes": "The numerator is the overnight accommodation-guest series for the same city geography and reference year, so the estimand matches on geography, period, and visitor scope. It is graded relaxed only because the department publishes a rounded \"over 3.1 million\" headline rather than an exact count, and because a direct departmental URL was not retrievable at capture time; the figure is attributed through a national newspaper that names the issuing department. Treat 3,100,000 as a rounded lower bound."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1250,10 +1310,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incomplete_period",
+        "screenedSources": [
+          {
+            "name": "Truyen hinh Thanh Hoa, Pu Luong community eco-tourism area visitor report",
+            "url": "https://truyenhinhthanhhoa.vn/khu-du-lich-sinh-thai-cong-dong-pu-luong-huyen-ba-thuoc-mo-cua-thi-diem-don-khach-noi-tinh-tro-lai-1808365285.htm"
+          },
+          {
+            "name": "Bao Thanh Hoa, Thanh Hoa tourism exceeds its 2024 visitor target",
+            "url": "https://baothanhhoa.vn/du-lich-thanh-hoa-vuot-chi-tieu-luong-khach-nam-2024-225936.htm"
+          }
+        ],
+        "notes": "The only site-level figure retrieved for the Pu Luong community eco-tourism area in Ba Thuoc district is a single month, 59,500 guests in October 2024, which cannot be annualized for a destination with strong rice-season peaks. The alternative is Thanh Hoa province at 15.3 million visitors in 2024, which is an all-visitor count for a province far larger than the destination and includes the province coastal resorts. Retain as missing rather than scaling a single month or adopting the province total."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1285,17 +1354,25 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 5.583600084929496,
+        "referenceYear": 2024,
+        "spatialUnit": "Lam Dong province (pre-2025 boundaries)",
+        "band": "high",
+        "evidenceGrade": "relaxed",
+        "relaxationReasons": [
+          "geography_approximate",
+          "numerator_rounded"
+        ],
+        "overnightArrivals": 7600000,
+        "residentPopulation": 1361129,
+        "numeratorDefinition": "Accommodation guests (khach luu tru) recorded in Lam Dong province during 2024, covering domestic and international visitors",
+        "denominatorDefinition": "Residents of Lam Dong province at 1 April 2024 from the mid-term population and housing survey",
+        "arrivalsSourceName": "Thoi bao Tai chinh Viet Nam, reporting the Lam Dong Department of Culture, Information and Tourism 2024 result",
+        "arrivalsSourceUrl": "https://thoibaotaichinhvietnam.vn/lam-dong-don-vi-khach-thu-10-trieu-trong-nam-2024-167572.html",
+        "populationSourceName": "danso.info, reproducing the General Statistics Office mid-term population survey 2024",
+        "populationSourceUrl": "https://danso.info/dan-so-lam-dong/",
+        "notes": "The numerator counts overnight accommodation guests, which matches the estimand on visitor scope and period. Both numerator and denominator are the pre-2025 Lam Dong province rather than Da Lat city, so the ratio describes the province containing the planner destination and will understate Da Lat itself, where tourism concentrates. The 7.6 million figure is a rounded headline. Do not reuse this record after the 2025 provincial merger without recollecting both terms."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1333,10 +1410,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_geography",
+        "screenedSources": [
+          {
+            "name": "Lao News Agency, Vientiane Province to attract over 900,000 visitors this year",
+            "url": "https://kpl.gov.la/asean2024/En/detail.aspx?id=80798"
+          },
+          {
+            "name": "Tourism Marketing Department, Laos, Statistical Report on Tourism 2024",
+            "url": "https://tdd.gov.la/media/attachments/2025/11/28/statistical-report-on-tourism-2024---eng-edit.pdf"
+          }
+        ],
+        "notes": "Official Lao reporting gives Vientiane Province 1,900,119 visitors in 2024 but publishes no Vang Vieng district arrivals series, and the provincial figure is not split between overnight tourists and day visitors. Vang Vieng is one district inside a much larger province and the province is not a destination proxy for it in the way a single-destination state or island is. The national Statistical Report on Tourism 2024 PDF is image-based and yielded no extractable province or district table at capture time."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1373,10 +1459,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_geography",
+        "screenedSources": [
+          {
+            "name": "Province of Cebu, Sugbo News: Cebu island logs 5.1 million tourist arrivals in 2024",
+            "url": "https://www.cebu.gov.ph/sugbonews/story.php?id=938"
+          },
+          {
+            "name": "The Freeman, South Koreans still top foreign tourists in Cebu, reporting DOT-7 arrivals",
+            "url": "https://www.philstar.com/the-freeman/cebu-news/2025/03/07/2426651/south-koreans-still-top-foreign-tourists-cebu"
+          }
+        ],
+        "notes": "The Department of Tourism Region 7 publishes Cebu province arrivals of 5,077,727 for 2024 and Central Visayas totals, but no municipal series for Santa Fe or Bantayan Island. Cebu province spans Cebu City, Mactan, and the whole island chain, so its total cannot stand in for a single island municipality. No official municipal or island-level arrivals table was retrievable at capture time."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1457,17 +1552,25 @@
         "notes": "Converted the published 2025 value from thousands of residents to integer residents; matched by country and source city label."
       },
       "tourismIntensity": {
-        "status": "pending_source_collection",
-        "value": null,
-        "referenceYear": null,
-        "spatialUnit": null,
-        "band": "unknown",
-        "sourceName": null,
-        "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "status": "measured_from_public_sources",
+        "value": 4.773165790343673,
+        "referenceYear": 2024,
+        "spatialUnit": "Chiang Rai province",
+        "band": "medium",
+        "evidenceGrade": "relaxed",
+        "relaxationReasons": [
+          "geography_approximate",
+          "numerator_partial"
+        ],
+        "overnightArrivals": 6193932,
+        "residentPopulation": 1297657,
+        "numeratorDefinition": "Visitors recorded for Chiang Rai province in 2024 (2567) as reported from Ministry of Tourism and Sports data, without a published split between overnight tourists and same-day excursionists",
+        "denominatorDefinition": "Registered population of Chiang Rai province at the December 2024 Department of Provincial Administration snapshot",
+        "arrivalsSourceName": "Nakhon Chiang Rai News, reporting Center for Tourism Research and Development figures sourced from the Ministry of Tourism and Sports",
+        "arrivalsSourceUrl": "https://nakornchiangrainews.com/northern-thailand-tourism-statistics-2024-chiang-mai-top/",
+        "populationSourceName": "Chiang Rai province population, from the Thailand Department of Provincial Administration registered-population December snapshot",
+        "populationSourceUrl": "https://en.wikipedia.org/wiki/Chiang_Rai_province",
+        "notes": "The retrieved report presents 6,193,932 as a single aggregate and does not separate overnight tourists from same-day excursionists, so the numerator is not demonstrably overnight-only and will overstate the registered estimand. The geography is the province rather than Chiang Rai city. The denominator is a registered-population snapshot reached through a tertiary page citing the Department of Provincial Administration; replace both terms with a direct Ministry of Tourism and Sports provincial table and a direct DOPA table before any strict use."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1558,10 +1661,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_numerator",
+        "screenedSources": [
+          {
+            "name": "Ministry of Hotels and Tourism Myanmar, Statistics",
+            "url": "https://tourism.gov.mm/statistics/"
+          },
+          {
+            "name": "TTG Asia, Myanmar recovery still a long way, reporting Ministry of Hotels and Tourism figures",
+            "url": "https://www.ttgasia.com/2024/03/19/myanmar-recovery-still-a-long-way/"
+          }
+        ],
+        "notes": "The Ministry of Hotels and Tourism publishes arrivals at Yangon International Airport (240,219 in 2023) and national foreign tourist totals, but no all-visitor overnight arrivals series for Yangon Region or Yangon city. Airport arrivals include residents and transit passengers and exclude overland and domestic visitors, which is the same defect that blocked Medellin. Retain as missing rather than treating a gateway passenger count as destination arrivals."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1601,10 +1713,19 @@
         "band": "unknown",
         "sourceName": null,
         "sourceUrl": null,
-        "researchOutcome": "not_yet_screened",
-        "rejectionReason": null,
-        "screenedSources": [],
-        "notes": "Pending collection from a named public source; no intuitive or country-level label is permitted."
+        "researchOutcome": "screened_no_compatible_value",
+        "rejectionReason": "incompatible_geography",
+        "screenedSources": [
+          {
+            "name": "BPS-Statistics Indonesia Bali Province, Number of Foreign Visitor to Bali and Indonesia",
+            "url": "https://bali.bps.go.id/en/statistics-table/1/MjgjMQ==/number-of-foreign-visitor-to-bali-dan-indonesia--1969-2024.html"
+          },
+          {
+            "name": "BPS-Statistics Indonesia Bali Province, Number of Domestic Tourist Trips by Destination Regency/Municipality",
+            "url": "https://bali.bps.go.id/en/statistics-table/2/NDEzIzI=/jumlah-perjalanan-wisatawan-nusantara-menurut-kabupaten-kota-tujuan.html"
+          }
+        ],
+        "notes": "BPS Bali publishes foreign visitor arrivals and domestic tourist trips at province level; neither is available for Ubud or for Gianyar Regency as an overnight-arrivals series. The domestic series counts perjalanan wisatawan nusantara (tourist trips), which includes same-day visits, so combining it with the foreign series would not yield overnight arrivals. The province-level resident denominator table returned HTTP 403 at capture time and only derived secondary population figures were available, so no same-year official denominator could be retained. Reject rather than pairing a province numerator with an unsourced population."
       },
       "publicSourceDensity": {
         "status": "measured_from_retained_evidence",
@@ -1636,6 +1757,8 @@
         "referenceYear": 2024,
         "spatialUnit": "Goa state",
         "band": "high",
+        "evidenceGrade": "strict",
+        "relaxationReasons": [],
         "overnightArrivals": 10409197,
         "residentPopulation": 1583000,
         "numeratorDefinition": "Domestic and foreign tourist arrivals to Goa state during calendar year 2024",

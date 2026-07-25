@@ -35,13 +35,15 @@ const inputs = JSON.parse(fs.readFileSync(inputsPath, 'utf8')) as {
   }>;
   tourismIntensity: Array<{
     city: string; country: string; referenceYear: number; spatialUnit: string;
+    evidenceGrade: 'strict' | 'relaxed';
+    relaxationReasons: Array<'geography_approximate' | 'numerator_partial' | 'numerator_rounded' | 'reference_year_stale'>;
     overnightArrivals: number; residentPopulation: number;
     numeratorDefinition: string; denominatorDefinition: string;
     arrivalsSourceName: string; arrivalsSourceUrl: string;
     populationSourceName: string; populationSourceUrl: string; notes: string;
   }>;
 };
-if (inputs.schemaVersion !== 'city-cost-pilot-enrichment-inputs-v3') {
+if (inputs.schemaVersion !== 'city-cost-pilot-enrichment-inputs-v4') {
   throw new Error(`Unsupported enrichment inputs schema: ${inputs.schemaVersion}`);
 }
 const pilotKeys = new Set(pilot.cities.map((city) => `${city.city}|${city.country}`));
@@ -130,6 +132,8 @@ const cities = pilot.cities.map((candidate) => {
       referenceYear: tourismIntensityInput.referenceYear,
       spatialUnit: tourismIntensityInput.spatialUnit,
       band: tourismIntensityBand(tourismIntensityInput.overnightArrivals / tourismIntensityInput.residentPopulation),
+      evidenceGrade: tourismIntensityInput.evidenceGrade,
+      relaxationReasons: tourismIntensityInput.relaxationReasons,
       overnightArrivals: tourismIntensityInput.overnightArrivals,
       residentPopulation: tourismIntensityInput.residentPopulation,
       numeratorDefinition: tourismIntensityInput.numeratorDefinition,
@@ -165,11 +169,11 @@ const cities = pilot.cities.map((candidate) => {
 });
 
 const artifact = cityCostPilotEnrichmentSchema.parse({
-  schemaVersion: 'city-cost-pilot-enrichment-v3',
-  enrichmentId: 'pilot-36-enrichment-2026-07-24-v3',
+  schemaVersion: 'city-cost-pilot-enrichment-v4',
+  enrichmentId: 'pilot-36-enrichment-2026-07-25-v4',
   pilotSource: 'data/reference/city_cost_collection_pilot.json',
   observationManifestSource: 'data/reference/city_cost_collection_batches.json',
-  generatedAt: '2026-07-24T15:00:00.000Z',
+  generatedAt: '2026-07-25T11:00:00.000Z',
   definitions: {
     citySize: {
       estimand: 'Resident population of the smallest consistently defined city or urban-area geography containing the destination; geography and reference year must be retained.',
@@ -177,9 +181,19 @@ const artifact = cityCostPilotEnrichmentSchema.parse({
       bands: { small: '<100,000', medium: '100,000-499,999', large: '500,000-4,999,999', megacity: '>=5,000,000', unknown: 'No comparable public value retained' },
     },
     tourismIntensity: {
-      estimand: 'Annual overnight visitor arrivals divided by resident population for the same destination geography and a stated reference year.',
+      estimand: 'Annual overnight visitor arrivals divided by resident population for the same destination geography and a stated reference year. A strict record satisfies that estimand exactly; a relaxed record departs from it only in the ways named in relaxationReasons and must be separable from strict records in every downstream use.',
       preferredSourceOrder: ['official destination or municipal statistics', 'official national tourism statistics with destination table', 'public intergovernmental tourism dataset'],
       bands: { low: '<1 visitor per resident', medium: '1-4.99', high: '5-14.99', very_high: '>=15', unknown: 'No comparable public numerator and denominator retained' },
+      evidenceGrades: {
+        strict: 'Same-geography, full-period, all-visitor overnight arrivals with an exact published numerator.',
+        relaxed: 'Accepted under the Phase 6C throughput exception with every departure named; excludable from model fitting and required to be reported separately.',
+      },
+      relaxationReasons: {
+        geography_approximate: 'Numerator covers a province, region, or destination area larger than the planner city.',
+        numerator_partial: 'Numerator omits a visitor segment (for example international-only) or mixes overnight and same-day visits.',
+        numerator_rounded: 'Source publishes a rounded headline figure rather than an exact count.',
+        reference_year_stale: 'Numerator and denominator reference years differ, or the denominator predates the numerator.',
+      },
     },
     publicSourceDensity: {
       estimand: 'Number of distinct required measures with accepted numeric evidence in the retained Phase 6 observation store for the exact city-country key.',
@@ -204,6 +218,8 @@ console.log(JSON.stringify({ valid: true, mode: check ? 'check' : 'write', citie
   measuredCitySize: artifact.cities.filter((city) => city.citySize.status === 'measured_from_public_source').length,
   pendingCitySize: artifact.cities.filter((city) => city.citySize.status === 'pending_source_collection').length,
   measuredTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources').length,
+  measuredTourismIntensityStrict: artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources' && city.tourismIntensity.evidenceGrade === 'strict').length,
+  measuredTourismIntensityRelaxed: artifact.cities.filter((city) => city.tourismIntensity.status === 'measured_from_public_sources' && city.tourismIntensity.evidenceGrade === 'relaxed').length,
   pendingTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection').length,
   screenedRejectedTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection' && city.tourismIntensity.researchOutcome === 'screened_no_compatible_value').length,
   unscreenedTourismIntensity: artifact.cities.filter((city) => city.tourismIntensity.status === 'pending_source_collection' && city.tourismIntensity.researchOutcome === 'not_yet_screened').length }, null, 2));

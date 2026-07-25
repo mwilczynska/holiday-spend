@@ -34,12 +34,21 @@ const citySizeMetricSchema = z.discriminatedUnion('status', [
   measuredCitySizeSchema,
 ]);
 
+export const TOURISM_RELAXATION_REASONS = [
+  'geography_approximate',
+  'numerator_partial',
+  'numerator_rounded',
+  'reference_year_stale',
+] as const;
+
 const measuredTourismIntensitySchema = z.object({
   status: z.literal('measured_from_public_sources'),
   value: z.number().positive(),
   referenceYear: z.number().int().min(1900).max(2100),
   spatialUnit: z.string().min(1),
   band: z.enum(['low', 'medium', 'high', 'very_high']),
+  evidenceGrade: z.enum(['strict', 'relaxed']),
+  relaxationReasons: z.array(z.enum(TOURISM_RELAXATION_REASONS)),
   overnightArrivals: z.number().int().positive(),
   residentPopulation: z.number().int().positive(),
   numeratorDefinition: z.string().min(1),
@@ -49,6 +58,17 @@ const measuredTourismIntensitySchema = z.object({
   populationSourceName: z.string().min(1),
   populationSourceUrl: z.string().url(),
   notes: z.string().min(1),
+}).superRefine((row, context) => {
+  const unique = new Set(row.relaxationReasons);
+  if (unique.size !== row.relaxationReasons.length) {
+    context.addIssue({ code: 'custom', path: ['relaxationReasons'], message: 'Relaxation reasons must be unique' });
+  }
+  if (row.evidenceGrade === 'strict' && row.relaxationReasons.length > 0) {
+    context.addIssue({ code: 'custom', path: ['relaxationReasons'], message: 'A strict record cannot carry relaxation reasons' });
+  }
+  if (row.evidenceGrade === 'relaxed' && row.relaxationReasons.length === 0) {
+    context.addIssue({ code: 'custom', path: ['relaxationReasons'], message: 'A relaxed record requires at least one relaxation reason' });
+  }
 });
 
 const rejectedTourismSourceSchema = z.object({
@@ -95,7 +115,7 @@ const sourceDensitySchema = z.object({
 
 export const cityCostPilotEnrichmentSchema = z
   .object({
-    schemaVersion: z.literal('city-cost-pilot-enrichment-v3'),
+    schemaVersion: z.literal('city-cost-pilot-enrichment-v4'),
     enrichmentId: z.string().min(1),
     pilotSource: z.string().min(1),
     observationManifestSource: z.string().min(1),
@@ -110,6 +130,8 @@ export const cityCostPilotEnrichmentSchema = z
         estimand: z.string().min(1),
         preferredSourceOrder: z.array(z.string().min(1)).min(1),
         bands: z.record(z.string(), z.string().min(1)),
+        evidenceGrades: z.record(z.enum(['strict', 'relaxed']), z.string().min(1)),
+        relaxationReasons: z.record(z.enum(TOURISM_RELAXATION_REASONS), z.string().min(1)),
       }),
       publicSourceDensity: z.object({
         estimand: z.string().min(1),

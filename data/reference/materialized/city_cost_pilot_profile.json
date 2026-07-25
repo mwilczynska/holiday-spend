@@ -1,6 +1,6 @@
 {
   "schemaVersion": "city-cost-pilot-profile-v2",
-  "enrichmentId": "pilot-36-enrichment-2026-07-24-v3",
+  "enrichmentId": "pilot-36-enrichment-2026-07-25-v4",
   "calculatorVersion": "city-cost-v3-alpha-3",
   "dataCutoff": "2026-07-24T14:35:00.000Z",
   "pilotCityCount": 36,
@@ -240,7 +240,31 @@
     ],
     "tourismIntensity": [
       {
-        "stratum": "measured_from_public_sources:high",
+        "stratum": "measured_from_public_sources:relaxed:high",
+        "cityCount": 1,
+        "representedCityCount": 1,
+        "materializedTierCells": 5,
+        "requiredTierCells": 19,
+        "coveragePct": 26.32
+      },
+      {
+        "stratum": "measured_from_public_sources:relaxed:low",
+        "cityCount": 1,
+        "representedCityCount": 1,
+        "materializedTierCells": 4,
+        "requiredTierCells": 19,
+        "coveragePct": 21.05
+      },
+      {
+        "stratum": "measured_from_public_sources:relaxed:medium",
+        "cityCount": 2,
+        "representedCityCount": 2,
+        "materializedTierCells": 8,
+        "requiredTierCells": 38,
+        "coveragePct": 21.05
+      },
+      {
+        "stratum": "measured_from_public_sources:strict:high",
         "cityCount": 7,
         "representedCityCount": 7,
         "materializedTierCells": 35,
@@ -248,7 +272,7 @@
         "coveragePct": 26.32
       },
       {
-        "stratum": "measured_from_public_sources:low",
+        "stratum": "measured_from_public_sources:strict:low",
         "cityCount": 2,
         "representedCityCount": 2,
         "materializedTierCells": 10,
@@ -256,7 +280,7 @@
         "coveragePct": 26.32
       },
       {
-        "stratum": "measured_from_public_sources:medium",
+        "stratum": "measured_from_public_sources:strict:medium",
         "cityCount": 3,
         "representedCityCount": 3,
         "materializedTierCells": 15,
@@ -264,7 +288,7 @@
         "coveragePct": 26.32
       },
       {
-        "stratum": "measured_from_public_sources:very_high",
+        "stratum": "measured_from_public_sources:strict:very_high",
         "cityCount": 2,
         "representedCityCount": 2,
         "materializedTierCells": 10,
@@ -272,20 +296,12 @@
         "coveragePct": 26.32
       },
       {
-        "stratum": "pending_source_collection:unknown:not_yet_screened",
-        "cityCount": 10,
-        "representedCityCount": 7,
-        "materializedTierCells": 27,
-        "requiredTierCells": 190,
-        "coveragePct": 14.21
-      },
-      {
         "stratum": "pending_source_collection:unknown:screened_no_compatible_value",
-        "cityCount": 12,
-        "representedCityCount": 11,
-        "materializedTierCells": 54,
-        "requiredTierCells": 228,
-        "coveragePct": 23.68
+        "cityCount": 18,
+        "representedCityCount": 14,
+        "materializedTierCells": 64,
+        "requiredTierCells": 342,
+        "coveragePct": 18.71
       }
     ],
     "sourceDensity": [
@@ -324,15 +340,17 @@
   "modelReadiness": {
     "status": "insufficient_for_fallback_model_selection",
     "measuredCitySizeCount": 29,
-    "measuredTourismIntensityCount": 14,
-    "screenedRejectedTourismIntensityCount": 12,
-    "unscreenedTourismIntensityCount": 10,
-    "measuredBothPredictorsCount": 12,
+    "measuredTourismIntensityCount": 18,
+    "measuredTourismIntensityStrictCount": 14,
+    "measuredTourismIntensityRelaxedCount": 4,
+    "screenedRejectedTourismIntensityCount": 18,
+    "unscreenedTourismIntensityCount": 0,
+    "measuredBothPredictorsCount": 16,
     "completeTargetCityCount": 0,
     "reasons": [
       "No pilot city has all 19 tier targets materialized.",
       "Accommodation has no eligible annualized tier values yet.",
-      "Tourism intensity remains unmeasured for most pilot cities.",
+      "Tourism intensity is measured for 18 of 36 pilot cities, of which 4 are relaxed-grade and must be excluded from any strict-only fit.",
       "Cross-channel disagreement cannot be estimated until overlapping independent source channels are collected."
     ]
   }

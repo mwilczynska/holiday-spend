@@ -8,15 +8,30 @@ The current deterministic pilot profile is still `insufficient_for_fallback_mode
 
 - 36 pilot destinations
 - 29 measured city-size records
-- 14 measured tourism-intensity records
-- 12 destinations with both registered predictors
-- 12 structured tourism-intensity rejections
-- 10 tourism destinations not yet screened
+- 18 measured tourism-intensity records (14 strict, 4 relaxed)
+- 16 destinations with both registered predictors
+- 18 structured tourism-intensity rejections
+- 0 tourism destinations not yet screened
 - 151 of 684 required tier cells materialized (22.08%)
 - zero complete 19-cell destinations
 - zero eligible annualized accommodation measures
 
 Do not begin holdout selection or fallback-model comparison from this state.
+
+## Graded Tourism Evidence (Schema v4)
+
+Phase 6C now permits a relaxed measurement tier so throughput does not force silent contamination. Every measured tourism record carries:
+
+- `evidenceGrade`: `strict` or `relaxed`
+- `relaxationReasons`: empty for strict, non-empty for relaxed, drawn from `geography_approximate`, `numerator_partial`, `numerator_rounded`, `reference_year_stale`
+
+The invariant is enforced by a Zod `superRefine`, by `src/lib/city-cost-pilot-enrichment.test.ts`, and by the profile's tourism stratum key (`measured_from_public_sources:<grade>:<band>`), so relaxed rows can never merge into strict strata or into a strict-only fit.
+
+**Rule for Phase 6E and 6F:** relaxed records are excludable by construction. Any model comparison must report results both with and without them, and the frozen holdout design must state which grades it admits. A relaxed record is not a lower-confidence strict record; it is a measurement of a slightly different estimand, named in `relaxationReasons`.
+
+The four relaxed records are Can Tho (`numerator_rounded`), Da Lat (`geography_approximate`, `numerator_rounded`), Chiang Rai (`geography_approximate`, `numerator_partial`), and Zanzibar (`numerator_partial`, `reference_year_stale`).
+
+Bali (Ubud) was rejected rather than relaxed: BPS returned HTTP 403 for the province resident table and only derived secondary population figures were available. A measurement is never built on an unsourced denominator, however many relaxations are permitted.
 
 ## Latest Completed Tourism Work
 
@@ -47,20 +62,18 @@ Recent commits, newest first:
 
 ## Remaining Tourism Screens
 
-The ten `not_yet_screened` destinations are:
+None. All 36 pilot destinations are now either measured or explicitly screened and rejected.
 
-- Zanzibar
-- Don Det
-- Can Tho
-- Pu Luong
-- Da Lat
-- Vang Vieng
-- Santa Fe (Bantayan)
-- Chiang Rai
-- Yangon
-- Bali (Ubud)
+The six destinations rejected in the final pass, with reasons:
 
-For each destination, accept only a full-period all-visitor overnight-arrivals numerator and a same-geography resident denominator. Retain a structured rejection rather than substituting international-only arrivals, day visits, guest nights, airport traffic, nearby cities, national totals, or mismatched administrative units.
+- Bali (Ubud) — `incompatible_geography`: province-level foreign arrivals plus domestic *trips* including day visits; no retrievable official province denominator
+- Vang Vieng — `incompatible_geography`: Vientiane Province total only, no district series, no overnight split
+- Don Det — `incompatible_geography`: Champasak figures are forward-looking targets, not outturn
+- Pu Luong — `incomplete_period`: a single month (59,500 guests, October 2024) for a strongly seasonal destination
+- Santa Fe (Bantayan) — `incompatible_geography`: Cebu province only, no municipal or island table
+- Yangon — `incompatible_numerator`: gateway airport arrivals and national foreign totals only
+
+The screening rule is unchanged for any future recollection: a strict record needs a full-period all-visitor overnight-arrivals numerator and a same-geography resident denominator. Anything short of that is either a named relaxation or a rejection — never an unmarked measurement.
 
 ## Accommodation State And Blocker
 
@@ -107,4 +120,9 @@ Preserve those files unless their owning workstream explicitly requests changes.
 
 ## Recommended Next Step
 
-Continue the ten tourism screens, prioritizing destinations with official municipal or provincial accommodation-arrival tables (Chiang Rai or Zanzibar). In parallel, improve independent source overlap for food, drinks, and activities. Resume direct-property accommodation quotes only when the interactive browser runtime is functional.
+Tourism screening is done, so the binding constraints on Phase 6C are now category evidence and accommodation.
+
+1. **Category coverage.** Tier coverage is stuck at 151/684 cells (22.08%) with zero complete cities. This is the single largest blocker: cross-channel disagreement, source-age, robust-outlier, and systematic-missingness diagnostics all require overlapping *independent* source channels, and almost all current evidence is single-channel (largely Numbeo for food/drinks plus official attraction pages). Adding a second independent channel per city matters more than adding more cities.
+2. **Accommodation.** Still zero eligible annualized measures. Resume Barcelona exact-date direct-property quotes and Copenhagen low/high seasons when the interactive browser runtime works again.
+
+Consider whether the graded-evidence pattern should be extended to category observations as well. The same tension that produced it — throughput versus a frozen estimand — applies to food, drinks, and activities, and the tier cells are where the coverage shortfall actually is.

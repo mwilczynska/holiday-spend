@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "city-cost-pilot-enrichment-inputs-v3",
+  "schemaVersion": "city-cost-pilot-enrichment-inputs-v4",
   "source": {
     "name": "United Nations World Urbanization Prospects 2025, File 21",
     "url": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx",
@@ -8,44 +8,253 @@
     "rawUnit": "thousands of residents"
   },
   "citySize": [
-    { "city": "Zanzibar", "country": "Tanzania", "value": 966642, "sourceRecordId": "3670", "sourceLocation": "Zanzibar City" },
-    { "city": "Nairobi", "country": "Kenya", "value": 6134334, "sourceRecordId": "2033", "sourceLocation": "Nairobi" },
-    { "city": "Shanghai", "country": "China", "value": 29558908, "sourceRecordId": "11738", "sourceLocation": "Shanghai" },
-    { "city": "Fukuoka", "country": "Japan", "value": 2225078, "sourceRecordId": "884", "sourceLocation": "Fukuoka" },
-    { "city": "Sendai", "country": "Japan", "value": 1256440, "sourceRecordId": "5593", "sourceLocation": "Sendai" },
-    { "city": "Seoul", "country": "South Korea", "value": 22490482, "sourceRecordId": "332", "sourceLocation": "Seoul" },
-    { "city": "Tokyo", "country": "Japan", "value": 33412512, "sourceRecordId": "6030", "sourceLocation": "Tōkyō (Tokyo)" },
-    { "city": "Sofia", "country": "Bulgaria", "value": 1067136, "sourceRecordId": "100", "sourceLocation": "Sofia" },
-    { "city": "Budapest", "country": "Hungary", "value": 1609260, "sourceRecordId": "942", "sourceLocation": "Budapest" },
-    { "city": "Prague", "country": "Czech Republic", "value": 1197765, "sourceRecordId": "542", "sourceLocation": "Praha (Prague)" },
-    { "city": "Split", "country": "Croatia", "value": 190315, "sourceRecordId": "549", "sourceLocation": "Split" },
-    { "city": "Lisbon", "country": "Portugal", "value": 1913798, "sourceRecordId": "217", "sourceLocation": "Lisboa (Lisbon)" },
-    { "city": "Barcelona", "country": "Spain", "value": 3982704, "sourceRecordId": "5068", "sourceLocation": "Barcelona" },
-    { "city": "Medellin", "country": "Colombia", "value": 3350384, "sourceRecordId": "2525", "sourceLocation": "Medellín" },
-    { "city": "Havana", "country": "Cuba", "value": 1593580, "sourceRecordId": "350", "sourceLocation": "La Habana (Havana)" },
-    { "city": "Mexico City", "country": "Mexico", "value": 17734212, "sourceRecordId": "5439", "sourceLocation": "Ciudad de México (Mexico City)" },
-    { "city": "Istanbul", "country": "Turkey", "value": 15014763, "sourceRecordId": "2626", "sourceLocation": "Istanbul" },
-    { "city": "Dubai", "country": "UAE", "value": 5283789, "sourceRecordId": "865", "sourceLocation": "Dubai" },
-    { "city": "Vancouver", "country": "Canada", "value": 1707865, "sourceRecordId": "341", "sourceLocation": "Vancouver" },
-    { "city": "San Francisco", "country": "United States", "value": 3163486, "sourceRecordId": "1233", "sourceLocation": "San Francisco" },
-    { "city": "Auckland", "country": "New Zealand", "value": 1123094, "sourceRecordId": "1005", "sourceLocation": "Auckland" },
-    { "city": "Can Tho", "country": "Vietnam", "value": 1327741, "sourceRecordId": "4924", "sourceLocation": "Cần Thơ" },
-    { "city": "Da Lat", "country": "Vietnam", "value": 239212, "sourceRecordId": "6197", "sourceLocation": "Đà Lạt" },
-    { "city": "Da Nang", "country": "Vietnam", "value": 1142621, "sourceRecordId": "5489", "sourceLocation": "Đà Nẵng" },
-    { "city": "Chiang Rai", "country": "Thailand", "value": 112713, "sourceRecordId": "324", "sourceLocation": "Chiang Rai" },
-    { "city": "Hanoi", "country": "Vietnam", "value": 5068414, "sourceRecordId": "1975", "sourceLocation": "Hà Nội (Hanoi)" },
-    { "city": "Yangon", "country": "Myanmar", "value": 5618303, "sourceRecordId": "5433", "sourceLocation": "Yangon" },
-    { "city": "Bali (Ubud)", "country": "Indonesia", "value": 78960, "sourceRecordId": "8052", "sourceLocation": "Ubud" },
-    { "city": "Delhi", "country": "India", "value": 30222405, "sourceRecordId": "8364", "sourceLocation": "New Delhi" }
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "value": 966642,
+      "sourceRecordId": "3670",
+      "sourceLocation": "Zanzibar City"
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "value": 6134334,
+      "sourceRecordId": "2033",
+      "sourceLocation": "Nairobi"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "value": 29558908,
+      "sourceRecordId": "11738",
+      "sourceLocation": "Shanghai"
+    },
+    {
+      "city": "Fukuoka",
+      "country": "Japan",
+      "value": 2225078,
+      "sourceRecordId": "884",
+      "sourceLocation": "Fukuoka"
+    },
+    {
+      "city": "Sendai",
+      "country": "Japan",
+      "value": 1256440,
+      "sourceRecordId": "5593",
+      "sourceLocation": "Sendai"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "value": 22490482,
+      "sourceRecordId": "332",
+      "sourceLocation": "Seoul"
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "value": 33412512,
+      "sourceRecordId": "6030",
+      "sourceLocation": "Tōkyō (Tokyo)"
+    },
+    {
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "value": 1067136,
+      "sourceRecordId": "100",
+      "sourceLocation": "Sofia"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "value": 1609260,
+      "sourceRecordId": "942",
+      "sourceLocation": "Budapest"
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "value": 1197765,
+      "sourceRecordId": "542",
+      "sourceLocation": "Praha (Prague)"
+    },
+    {
+      "city": "Split",
+      "country": "Croatia",
+      "value": 190315,
+      "sourceRecordId": "549",
+      "sourceLocation": "Split"
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "value": 1913798,
+      "sourceRecordId": "217",
+      "sourceLocation": "Lisboa (Lisbon)"
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "value": 3982704,
+      "sourceRecordId": "5068",
+      "sourceLocation": "Barcelona"
+    },
+    {
+      "city": "Medellin",
+      "country": "Colombia",
+      "value": 3350384,
+      "sourceRecordId": "2525",
+      "sourceLocation": "Medellín"
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "value": 1593580,
+      "sourceRecordId": "350",
+      "sourceLocation": "La Habana (Havana)"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "value": 17734212,
+      "sourceRecordId": "5439",
+      "sourceLocation": "Ciudad de México (Mexico City)"
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "value": 15014763,
+      "sourceRecordId": "2626",
+      "sourceLocation": "Istanbul"
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "value": 5283789,
+      "sourceRecordId": "865",
+      "sourceLocation": "Dubai"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "value": 1707865,
+      "sourceRecordId": "341",
+      "sourceLocation": "Vancouver"
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "value": 3163486,
+      "sourceRecordId": "1233",
+      "sourceLocation": "San Francisco"
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "value": 1123094,
+      "sourceRecordId": "1005",
+      "sourceLocation": "Auckland"
+    },
+    {
+      "city": "Can Tho",
+      "country": "Vietnam",
+      "value": 1327741,
+      "sourceRecordId": "4924",
+      "sourceLocation": "Cần Thơ"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "value": 239212,
+      "sourceRecordId": "6197",
+      "sourceLocation": "Đà Lạt"
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "value": 1142621,
+      "sourceRecordId": "5489",
+      "sourceLocation": "Đà Nẵng"
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "value": 112713,
+      "sourceRecordId": "324",
+      "sourceLocation": "Chiang Rai"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "value": 5068414,
+      "sourceRecordId": "1975",
+      "sourceLocation": "Hà Nội (Hanoi)"
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "value": 5618303,
+      "sourceRecordId": "5433",
+      "sourceLocation": "Yangon"
+    },
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "value": 78960,
+      "sourceRecordId": "8052",
+      "sourceLocation": "Ubud"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "value": 30222405,
+      "sourceRecordId": "8364",
+      "sourceLocation": "New Delhi"
+    }
   ],
   "unmatchedCitySize": [
-    { "city": "Dubrovnik", "country": "Croatia", "reason": "no_matching_named_record", "notes": "No Dubrovnik record is present in WUP File 21; retain pending for a Croatian public-statistics source." },
-    { "city": "Queenstown", "country": "New Zealand", "reason": "no_matching_named_record", "notes": "No Queenstown record is present in WUP File 21; retain pending for a New Zealand public-statistics source." },
-    { "city": "Don Det", "country": "Laos", "reason": "no_matching_named_record", "notes": "No Don Det record is present in WUP File 21; do not substitute Pakse or another Lao destination." },
-    { "city": "Pu Luong", "country": "Vietnam", "reason": "no_matching_named_record", "notes": "No Pu Luong record is present in WUP File 21; do not use the fuzzy Phú Cường match." },
-    { "city": "Vang Vieng", "country": "Laos", "reason": "no_matching_named_record", "notes": "No Vang Vieng record is present in WUP File 21; do not substitute Vientiane." },
-    { "city": "Santa Fe (Bantayan)", "country": "Philippines", "reason": "no_matching_named_record", "notes": "No Santa Fe, Bantayan record is present in WUP File 21; do not substitute one of several unrelated Santa Cruz or San Jose records." },
-    { "city": "Goa", "country": "India", "reason": "destination_is_not_single_city", "notes": "Goa is a state and multi-city destination; a single WUP city population would not represent the planner destination." }
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "reason": "no_matching_named_record",
+      "notes": "No Dubrovnik record is present in WUP File 21; retain pending for a Croatian public-statistics source."
+    },
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "reason": "no_matching_named_record",
+      "notes": "No Queenstown record is present in WUP File 21; retain pending for a New Zealand public-statistics source."
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "reason": "no_matching_named_record",
+      "notes": "No Don Det record is present in WUP File 21; do not substitute Pakse or another Lao destination."
+    },
+    {
+      "city": "Pu Luong",
+      "country": "Vietnam",
+      "reason": "no_matching_named_record",
+      "notes": "No Pu Luong record is present in WUP File 21; do not use the fuzzy Phú Cường match."
+    },
+    {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "reason": "no_matching_named_record",
+      "notes": "No Vang Vieng record is present in WUP File 21; do not substitute Vientiane."
+    },
+    {
+      "city": "Santa Fe (Bantayan)",
+      "country": "Philippines",
+      "reason": "no_matching_named_record",
+      "notes": "No Santa Fe, Bantayan record is present in WUP File 21; do not substitute one of several unrelated Santa Cruz or San Jose records."
+    },
+    {
+      "city": "Goa",
+      "country": "India",
+      "reason": "destination_is_not_single_city",
+      "notes": "Goa is a state and multi-city destination; a single WUP city population would not represent the planner destination."
+    }
   ],
   "rejectedTourismIntensity": [
     {
@@ -239,6 +448,102 @@
           "url": "https://hanoi.gov.vn/tin-so-nganh/nganh-du-lich-thu-do-dat-muc-tieu-don-tren-30-trieu-luot-khach-trong-nam-2025-4241230131527382.htm"
         }
       ]
+    },
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "reason": "incompatible_geography",
+      "notes": "BPS Bali publishes foreign visitor arrivals and domestic tourist trips at province level; neither is available for Ubud or for Gianyar Regency as an overnight-arrivals series. The domestic series counts perjalanan wisatawan nusantara (tourist trips), which includes same-day visits, so combining it with the foreign series would not yield overnight arrivals. The province-level resident denominator table returned HTTP 403 at capture time and only derived secondary population figures were available, so no same-year official denominator could be retained. Reject rather than pairing a province numerator with an unsourced population.",
+      "sources": [
+        {
+          "name": "BPS-Statistics Indonesia Bali Province, Number of Foreign Visitor to Bali and Indonesia",
+          "url": "https://bali.bps.go.id/en/statistics-table/1/MjgjMQ==/number-of-foreign-visitor-to-bali-dan-indonesia--1969-2024.html"
+        },
+        {
+          "name": "BPS-Statistics Indonesia Bali Province, Number of Domestic Tourist Trips by Destination Regency/Municipality",
+          "url": "https://bali.bps.go.id/en/statistics-table/2/NDEzIzI=/jumlah-perjalanan-wisatawan-nusantara-menurut-kabupaten-kota-tujuan.html"
+        }
+      ]
+    },
+    {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "reason": "incompatible_geography",
+      "notes": "Official Lao reporting gives Vientiane Province 1,900,119 visitors in 2024 but publishes no Vang Vieng district arrivals series, and the provincial figure is not split between overnight tourists and day visitors. Vang Vieng is one district inside a much larger province and the province is not a destination proxy for it in the way a single-destination state or island is. The national Statistical Report on Tourism 2024 PDF is image-based and yielded no extractable province or district table at capture time.",
+      "sources": [
+        {
+          "name": "Lao News Agency, Vientiane Province to attract over 900,000 visitors this year",
+          "url": "https://kpl.gov.la/asean2024/En/detail.aspx?id=80798"
+        },
+        {
+          "name": "Tourism Marketing Department, Laos, Statistical Report on Tourism 2024",
+          "url": "https://tdd.gov.la/media/attachments/2025/11/28/statistical-report-on-tourism-2024---eng-edit.pdf"
+        }
+      ]
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "reason": "incompatible_geography",
+      "notes": "The only Champasak province figures retrieved are forward-looking targets (500,000 visitors expected in 2024 against 300,000 in 2023) rather than a published outturn series, and no arrivals series exists for Don Det, Khong district, or Si Phan Don. Official material for the area is a ten-year tourism master plan without visitor counts. Retain as missing rather than substituting a provincial target or a national total.",
+      "sources": [
+        {
+          "name": "Lao News Agency, Champassak expects to welcome a larger number of visitors",
+          "url": "https://kpl.gov.la/En/detail.aspx?id=80954"
+        },
+        {
+          "name": "Tourism Marketing Department, Laos, Statistical Report on Tourism 2024",
+          "url": "https://tdd.gov.la/media/attachments/2025/11/28/statistical-report-on-tourism-2024---eng-edit.pdf"
+        }
+      ]
+    },
+    {
+      "city": "Pu Luong",
+      "country": "Vietnam",
+      "reason": "incomplete_period",
+      "notes": "The only site-level figure retrieved for the Pu Luong community eco-tourism area in Ba Thuoc district is a single month, 59,500 guests in October 2024, which cannot be annualized for a destination with strong rice-season peaks. The alternative is Thanh Hoa province at 15.3 million visitors in 2024, which is an all-visitor count for a province far larger than the destination and includes the province coastal resorts. Retain as missing rather than scaling a single month or adopting the province total.",
+      "sources": [
+        {
+          "name": "Truyen hinh Thanh Hoa, Pu Luong community eco-tourism area visitor report",
+          "url": "https://truyenhinhthanhhoa.vn/khu-du-lich-sinh-thai-cong-dong-pu-luong-huyen-ba-thuoc-mo-cua-thi-diem-don-khach-noi-tinh-tro-lai-1808365285.htm"
+        },
+        {
+          "name": "Bao Thanh Hoa, Thanh Hoa tourism exceeds its 2024 visitor target",
+          "url": "https://baothanhhoa.vn/du-lich-thanh-hoa-vuot-chi-tieu-luong-khach-nam-2024-225936.htm"
+        }
+      ]
+    },
+    {
+      "city": "Santa Fe (Bantayan)",
+      "country": "Philippines",
+      "reason": "incompatible_geography",
+      "notes": "The Department of Tourism Region 7 publishes Cebu province arrivals of 5,077,727 for 2024 and Central Visayas totals, but no municipal series for Santa Fe or Bantayan Island. Cebu province spans Cebu City, Mactan, and the whole island chain, so its total cannot stand in for a single island municipality. No official municipal or island-level arrivals table was retrievable at capture time.",
+      "sources": [
+        {
+          "name": "Province of Cebu, Sugbo News: Cebu island logs 5.1 million tourist arrivals in 2024",
+          "url": "https://www.cebu.gov.ph/sugbonews/story.php?id=938"
+        },
+        {
+          "name": "The Freeman, South Koreans still top foreign tourists in Cebu, reporting DOT-7 arrivals",
+          "url": "https://www.philstar.com/the-freeman/cebu-news/2025/03/07/2426651/south-koreans-still-top-foreign-tourists-cebu"
+        }
+      ]
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "reason": "incompatible_numerator",
+      "notes": "The Ministry of Hotels and Tourism publishes arrivals at Yangon International Airport (240,219 in 2023) and national foreign tourist totals, but no all-visitor overnight arrivals series for Yangon Region or Yangon city. Airport arrivals include residents and transit passengers and exclude overland and domestic visitors, which is the same defect that blocked Medellin. Retain as missing rather than treating a gateway passenger count as destination arrivals.",
+      "sources": [
+        {
+          "name": "Ministry of Hotels and Tourism Myanmar, Statistics",
+          "url": "https://tourism.gov.mm/statistics/"
+        },
+        {
+          "name": "TTG Asia, Myanmar recovery still a long way, reporting Ministry of Hotels and Tourism figures",
+          "url": "https://www.ttgasia.com/2024/03/19/myanmar-recovery-still-a-long-way/"
+        }
+      ]
     }
   ],
   "tourismIntensity": [
@@ -247,6 +552,8 @@
       "country": "Czech Republic",
       "referenceYear": 2024,
       "spatialUnit": "Capital City of Prague administrative region",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 8063367,
       "residentPopulation": 1397880,
       "numeratorDefinition": "Guests staying in Prague collective accommodation establishments during 2024",
@@ -262,6 +569,8 @@
       "country": "Spain",
       "referenceYear": 2024,
       "spatialUnit": "Barcelona city municipality",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 12726360,
       "residentPopulation": 1702814,
       "numeratorDefinition": "Tourists in Barcelona city tourist accommodation during 2024, according to available accommodation-series data",
@@ -277,6 +586,8 @@
       "country": "Mexico",
       "referenceYear": 2023,
       "spatialUnit": "Ciudad de Mexico federal entity (all 16 boroughs)",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 14403349,
       "residentPopulation": 9221637,
       "numeratorDefinition": "Tourists staying in Ciudad de Mexico hotels during 2023",
@@ -292,6 +603,8 @@
       "country": "Japan",
       "referenceYear": 2023,
       "spatialUnit": "Fukuoka city municipality",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 5760000,
       "residentPopulation": 1642571,
       "numeratorDefinition": "Estimated overnight tourists visiting Fukuoka city during 2023",
@@ -307,6 +620,8 @@
       "country": "Japan",
       "referenceYear": 2024,
       "spatialUnit": "Sendai city municipality",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 6508856,
       "residentPopulation": 1064142,
       "numeratorDefinition": "Guests staying in surveyed accommodation across all four Sendai city tourism districts during 2024",
@@ -322,6 +637,8 @@
       "country": "Hungary",
       "referenceYear": 2024,
       "spatialUnit": "Budapest capital region",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 6730727,
       "residentPopulation": 1686222,
       "numeratorDefinition": "Tourist arrivals at commercial, private, and other tourist accommodation establishments in Budapest during 2024",
@@ -337,6 +654,8 @@
       "country": "Bulgaria",
       "referenceYear": 2024,
       "spatialUnit": "Sofia (Stolitsa) capital district",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 1185345,
       "residentPopulation": 1295931,
       "numeratorDefinition": "Arrivals in categorized accommodation establishments with 10 or more bed places in Sofia capital district during 2024",
@@ -352,6 +671,8 @@
       "country": "Turkey",
       "referenceYear": 2023,
       "spatialUnit": "Istanbul province",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 13212666,
       "residentPopulation": 15655924,
       "numeratorDefinition": "Arrivals for an overnight stay at Ministry-certified tourism-operation and simple-accommodation establishments in Istanbul province during 2023",
@@ -367,6 +688,8 @@
       "country": "Croatia",
       "referenceYear": 2024,
       "spatialUnit": "City of Dubrovnik administrative area",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 1397052,
       "residentPopulation": 42016,
       "numeratorDefinition": "Registered tourist arrivals in the City of Dubrovnik recorded by the eVisitor system during 2024",
@@ -382,6 +705,8 @@
       "country": "Croatia",
       "referenceYear": 2024,
       "spatialUnit": "City of Split administrative area",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 1050847,
       "residentPopulation": 158636,
       "numeratorDefinition": "Registered domestic and international tourist arrivals in the City of Split recorded by the eVisitor system during 2024",
@@ -397,6 +722,8 @@
       "country": "United States",
       "referenceYear": 2023,
       "spatialUnit": "City and County of San Francisco",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 8000000,
       "residentPopulation": 808988,
       "numeratorDefinition": "Modelled domestic and international visitors staying at least one night in San Francisco during 2023",
@@ -412,6 +739,8 @@
       "country": "Portugal",
       "referenceYear": 2023,
       "spatialUnit": "Lisbon municipality",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 6460430,
       "residentPopulation": 567131,
       "numeratorDefinition": "Guests recorded in tourist accommodation establishments located in Lisbon municipality during 2023",
@@ -427,6 +756,8 @@
       "country": "Canada",
       "referenceYear": 2024,
       "spatialUnit": "Vancouver municipality",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 11271967,
       "residentPopulation": 748777,
       "numeratorDefinition": "Total monthly overnight visitation to Vancouver during 2024",
@@ -442,6 +773,8 @@
       "country": "India",
       "referenceYear": 2024,
       "spatialUnit": "Goa state",
+      "evidenceGrade": "strict",
+      "relaxationReasons": [],
       "overnightArrivals": 10409197,
       "residentPopulation": 1583000,
       "numeratorDefinition": "Domestic and foreign tourist arrivals to Goa state during calendar year 2024",
@@ -451,6 +784,85 @@
       "populationSourceName": "Goa Directorate of Planning, Statistics and Evaluation, Goa Economy in Figures 2025",
       "populationSourceUrl": "https://www.dpse.goa.gov.in/GEIF-2025.pdf",
       "notes": "The planner destination is Goa state, so the state numerator and denominator are geographically aligned even though Goa has no single-city size match. The numerator sums 9,941,286 domestic and 467,911 foreign tourist arrivals. The public table does not document its overnight filter, accommodation coverage, or repeat-visit deduplication inline; retain the official tourist-arrival series as a destination-pressure proxy rather than a unique-person census."
+    },
+    {
+      "city": "Can Tho",
+      "country": "Vietnam",
+      "referenceYear": 2024,
+      "spatialUnit": "Can Tho city (pre-2025 municipality)",
+      "evidenceGrade": "relaxed",
+      "relaxationReasons": [
+        "numerator_rounded"
+      ],
+      "overnightArrivals": 3100000,
+      "residentPopulation": 1268514,
+      "numeratorDefinition": "Accommodation guests (khach du lich luu tru) recorded in Can Tho city during 2024, covering domestic and international visitors",
+      "denominatorDefinition": "Residents of Can Tho city at 1 April 2024 from the mid-term population and housing survey",
+      "arrivalsSourceName": "Bao Phap luat, reporting the Can Tho Department of Culture, Sports and Tourism 2024 year-end result",
+      "arrivalsSourceUrl": "https://baophapluat.vn/du-lich-can-tho-thu-hut-63-trieu-du-khach-trong-nam-2024-post537696.html",
+      "populationSourceName": "danso.info, reproducing the General Statistics Office mid-term population survey 2024",
+      "populationSourceUrl": "https://danso.info/dan-so-can-tho/",
+      "notes": "The numerator is the overnight accommodation-guest series for the same city geography and reference year, so the estimand matches on geography, period, and visitor scope. It is graded relaxed only because the department publishes a rounded \"over 3.1 million\" headline rather than an exact count, and because a direct departmental URL was not retrievable at capture time; the figure is attributed through a national newspaper that names the issuing department. Treat 3,100,000 as a rounded lower bound."
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "referenceYear": 2024,
+      "spatialUnit": "Lam Dong province (pre-2025 boundaries)",
+      "evidenceGrade": "relaxed",
+      "relaxationReasons": [
+        "geography_approximate",
+        "numerator_rounded"
+      ],
+      "overnightArrivals": 7600000,
+      "residentPopulation": 1361129,
+      "numeratorDefinition": "Accommodation guests (khach luu tru) recorded in Lam Dong province during 2024, covering domestic and international visitors",
+      "denominatorDefinition": "Residents of Lam Dong province at 1 April 2024 from the mid-term population and housing survey",
+      "arrivalsSourceName": "Thoi bao Tai chinh Viet Nam, reporting the Lam Dong Department of Culture, Information and Tourism 2024 result",
+      "arrivalsSourceUrl": "https://thoibaotaichinhvietnam.vn/lam-dong-don-vi-khach-thu-10-trieu-trong-nam-2024-167572.html",
+      "populationSourceName": "danso.info, reproducing the General Statistics Office mid-term population survey 2024",
+      "populationSourceUrl": "https://danso.info/dan-so-lam-dong/",
+      "notes": "The numerator counts overnight accommodation guests, which matches the estimand on visitor scope and period. Both numerator and denominator are the pre-2025 Lam Dong province rather than Da Lat city, so the ratio describes the province containing the planner destination and will understate Da Lat itself, where tourism concentrates. The 7.6 million figure is a rounded headline. Do not reuse this record after the 2025 provincial merger without recollecting both terms."
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "referenceYear": 2024,
+      "spatialUnit": "Chiang Rai province",
+      "evidenceGrade": "relaxed",
+      "relaxationReasons": [
+        "geography_approximate",
+        "numerator_partial"
+      ],
+      "overnightArrivals": 6193932,
+      "residentPopulation": 1297657,
+      "numeratorDefinition": "Visitors recorded for Chiang Rai province in 2024 (2567) as reported from Ministry of Tourism and Sports data, without a published split between overnight tourists and same-day excursionists",
+      "denominatorDefinition": "Registered population of Chiang Rai province at the December 2024 Department of Provincial Administration snapshot",
+      "arrivalsSourceName": "Nakhon Chiang Rai News, reporting Center for Tourism Research and Development figures sourced from the Ministry of Tourism and Sports",
+      "arrivalsSourceUrl": "https://nakornchiangrainews.com/northern-thailand-tourism-statistics-2024-chiang-mai-top/",
+      "populationSourceName": "Chiang Rai province population, from the Thailand Department of Provincial Administration registered-population December snapshot",
+      "populationSourceUrl": "https://en.wikipedia.org/wiki/Chiang_Rai_province",
+      "notes": "The retrieved report presents 6,193,932 as a single aggregate and does not separate overnight tourists from same-day excursionists, so the numerator is not demonstrably overnight-only and will overstate the registered estimand. The geography is the province rather than Chiang Rai city. The denominator is a registered-population snapshot reached through a tertiary page citing the Department of Provincial Administration; replace both terms with a direct Ministry of Tourism and Sports provincial table and a direct DOPA table before any strict use."
+    },
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "referenceYear": 2024,
+      "spatialUnit": "Zanzibar archipelago (Unguja and Pemba)",
+      "evidenceGrade": "relaxed",
+      "relaxationReasons": [
+        "numerator_partial",
+        "reference_year_stale"
+      ],
+      "overnightArrivals": 736755,
+      "residentPopulation": 1889773,
+      "numeratorDefinition": "International visitor arrivals to Zanzibar during 2024 as published in the Zanzibar Annual Tourism Report 2024",
+      "denominatorDefinition": "Total resident population of Zanzibar enumerated in the 2022 Population and Housing Census",
+      "arrivalsSourceName": "Office of the Chief Government Statistician Zanzibar, Zanzibar Annual Tourism Report 2024, as reported by TanzaniaInvest",
+      "arrivalsSourceUrl": "https://www.tanzaniainvest.com/tourism/zanzibar-tourist-arrivals-2024",
+      "populationSourceName": "National Bureau of Statistics Tanzania, 2022 Population and Housing Census Initial Results",
+      "populationSourceUrl": "https://www.nbs.go.tz/uploads/statistics/documents/sw-1720088450-2022%20PHC%20Initial%20Results%20-%20English.pdf",
+      "notes": "The numerator counts international arrivals only and therefore omits mainland Tanzanian and domestic visitors; the source also does not state that arrivals are overnight-only. The denominator is the 2022 census count against a 2024 numerator, so the reference years differ and the ratio is a lower bound on both counts. The band therefore reads low despite Zanzibar being a tourism-dependent destination; do not interpret the band as economic dependence. The OCGS site was unreachable at capture time, so the figure is attributed through a secondary page that names the report."
     }
   ]
 }
