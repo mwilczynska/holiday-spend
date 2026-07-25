@@ -35,30 +35,23 @@ Bali (Ubud) was rejected rather than relaxed: BPS returned HTTP 403 for the prov
 
 ## Latest Completed Tourism Work
 
-The most recent measured record is Goa, retained at the whole-state planner geography:
+Tourism-intensity screening finished in a single parallel pass that cleared the last ten unscreened destinations. That pass introduced the graded evidence tier described below, because four of the ten had usable evidence that departed from the frozen estimand in named, recordable ways.
+
+The last strict measured record remains Goa, retained at the whole-state planner geography:
 
 - 10,409,197 official 2024 tourist arrivals
 - 1,583,000 projected residents at December 2024
 - 6.58 arrivals per resident (`high`)
 - limited inline disclosure of overnight filtering, coverage, and repeat-visit handling is retained in the record
 
-The latest screened rejection is Hanoi:
-
-- the statistics office separates domestic overnight and day guests but does not split international accommodation guests by stay status
-- the tourism department separately publishes international overnight visitors but no domestic overnight component in the same series
-- the two official international totals differ, so combining components would splice non-reconciled systems
-- tourism intensity remains missing rather than manufacturing an all-visitor numerator
-
 Recent commits, newest first:
 
+- `8d5a959 feat: complete pilot tourism screening with graded evidence`
+- `6004339 feat: record hanoi tourism source gap`
 - `7c07841 feat: record da nang tourism source gap`
 - `e0820fd feat: record havana tourism source gap`
 - `2d09c68 feat: add goa tourism intensity`
 - `42952c4 feat: record delhi tourism source gap`
-- `93693f2 feat: record medellin tourism source gap`
-- `23eae52 feat: record nairobi tourism source gap`
-- `2e6475e feat: record dubai tourism source gap`
-- `1104151 feat: record shanghai tourism source gap`
 
 ## Remaining Tourism Screens
 
