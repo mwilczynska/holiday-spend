@@ -177,6 +177,14 @@ export interface MaterializedCityCostTier {
   formula: string;
   parentMeasures: CityCostObservation['measure'][];
   missingMeasures: CityCostObservation['measure'][];
+  /**
+   * Weakest valueStatus among the inputs that produced this cell. A tier resting
+   * on any imputed input is model-backed, not observed, and must never be
+   * presented as direct evidence. Null when the cell did not materialize.
+   */
+  evidenceBasis: CityCostObservation['valueStatus'] | null;
+  /** Inputs that were imputed rather than observed, empty when fully observed. */
+  imputedMeasures: CityCostObservation['measure'][];
 }
 
 export interface MaterializedCityCostV3 {
@@ -594,9 +602,35 @@ function tier(
   calculate: (value: (measure: CityCostObservation['measure']) => number) => number
 ): MaterializedCityCostTier {
   const missingMeasures = parentMeasures.filter((measure) => !measures.has(measure));
-  if (missingMeasures.length) return { amountAud: null, formula, parentMeasures, missingMeasures };
+  if (missingMeasures.length) {
+    return {
+      amountAud: null,
+      formula,
+      parentMeasures,
+      missingMeasures,
+      evidenceBasis: null,
+      imputedMeasures: [],
+    };
+  }
   const value = (measure: CityCostObservation['measure']) => measures.get(measure)!.medianAud;
-  return { amountAud: money(calculate(value)), formula, parentMeasures, missingMeasures: [] };
+  const inputs = parentMeasures.map((measure) => measures.get(measure)!);
+  const imputedMeasures = parentMeasures.filter(
+    (measure) => measures.get(measure)!.valueStatus === 'imputed'
+  );
+  // The cell is only as strong as its weakest input.
+  const evidenceBasis = inputs.some((input) => input.valueStatus === 'imputed')
+    ? ('imputed' as const)
+    : inputs.some((input) => input.valueStatus === 'derived')
+      ? ('derived' as const)
+      : ('direct' as const);
+  return {
+    amountAud: money(calculate(value)),
+    formula,
+    parentMeasures,
+    missingMeasures: [],
+    evidenceBasis,
+    imputedMeasures,
+  };
 }
 
 export function materializeCityCostV3(

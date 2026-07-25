@@ -147,6 +147,49 @@ Worked example: Pourhouse Classics Vol. 1 is 18, 19, 18, 22, 24, 19, 19 → medi
 
 The checkpoint found official priced venue menus readily in Vancouver and Hanoi but not in Lisbon, where cocktail prices surfaced only through Tripadvisor and travel blogs. If official-menu publication varies systematically by region or language, the venue channel introduces a coverage bias **correlated with region**, which is one of the model's stratification variables. Track official-menu availability by region during the completion pass and report it; do not assume the channel is regionally neutral.
 
+## Amendment F: Calibrated Street-Food Ratio Model
+
+Supersedes E2 and E3 as the resolution for `street_food_meal_1p`.
+
+### Why The Alternatives Failed
+
+The delivery channel authorised in E2 is unexecutable. Seven platforms were tested and none exposes prices in server-rendered HTML: Uber Eats returns 403 for both Canadian and Portuguese store URLs, Fantuan returns an obfuscated body, Bolt Food and Glovo and GrabFood are client-rendered and gate prices behind address entry, RestaurantGuru's certificate has expired, and StreetFoodApp returns 403. This is structural, not per-platform.
+
+Three fallbacks were then rejected on analysis, before any collection:
+
+- **Redefining the estimand to a casual-eatery main** collapses `street_food_meal_1p` into `inexpensive_restaurant_meal_1p`. The two would measure the same thing, and `food_budget = 4 * street + 2 * inexpensive` would double-count one price.
+- **Dropping the term from the baskets** destroys tier separation: `food_street_food` and `food_budget` both reduce to `6 * inexpensive_restaurant_meal_1p`, returning an identical value for two distinct planner tiers. Restoring separation requires a coefficient, which is a silent imputation.
+- **A standardized fast-food proxy** inverts by region. In Lisbon a McDonald's combo is EUR 10 against EUR 15 for an inexpensive restaurant meal; in Hanoi the same combo runs well above street pho at 40,000-50,000 VND. The proxy's relationship to street food is region-dependent, so it would inject bias correlated with region, the same stratification variable flagged in E4.
+
+### The Approach
+
+Collect direct street-food evidence wherever a genuine public source exists, then use those observations to calibrate an explicit ratio model that imputes the measure elsewhere. This is closer to the original anchor-and-derive methodology, but the multiplier is estimated from observed evidence rather than asserted.
+
+1. **Anchor set.** Collect direct `street_food_meal_1p` observations in every city where a genuine public source exists: market and hawker authority sites, food-hall stall menus, tourism-board cost guides, national statistics office prepared-food price series, and individual venue menus where a street-food dish is priced. Target at least 12 cities spanning all regions and the cost range.
+2. **Estimate the ratio.** For cities with both measures observed, compute `r = street_food_meal_1p / inexpensive_restaurant_meal_1p`. Estimate `r` per stratum, shrinking toward the global ratio where a stratum is thin. `inexpensive_restaurant_meal_1p` is the right denominator because it is observed in 35 of 36 cities, so the model applies almost everywhere.
+3. **Impute.** For cities with the denominator but no direct street-food observation, emit an observation with `valueStatus: 'imputed'`, populating `derivationMethod`, `modelVersion`, `parentObservationIds`, and `predictionLower` / `predictionUpper` from the stratum ratio's dispersion.
+4. **Supersession is automatic.** `valueStatusPriority` already ranks `direct` above `derived` above `imputed`, and the aggregator takes only the best-priority group. A later direct observation silently replaces the imputed value with no manual cleanup.
+
+### Required Guardrail, Implemented
+
+`MaterializedCityCostTier` previously carried no value-status field, so a tier resting on an imputed input would have been indistinguishable from a fully observed one. Two fields are added:
+
+- `evidenceBasis`: the weakest `valueStatus` among the inputs that produced the cell, or null when it did not materialize. A cell is only as strong as its weakest input.
+- `imputedMeasures`: the specific inputs that were imputed rather than observed.
+
+Without this, Amendment F would have quietly laundered modelled values into apparently observed tiers. **No imputation may run until this guardrail is in place**, which it now is.
+
+### Disclosure Obligations
+
+- The published quality summary already counts `direct`, `derived`, and `imputed` observations separately; imputed street-food values must appear there.
+- `/estimates` must state that street-food tiers are model-backed in cities without direct evidence, and publish the ratio model's uncertainty.
+- The data card must report the anchor-set size, its regional spread, the per-stratum ratios, and the number of cities relying on imputation.
+- Phase 6F must evaluate the ratio model against the same registered metrics as any other fallback, and must report subgroup performance by region given the known region-dependence of cheap-meal pricing.
+
+### Open Risk
+
+The model rests on the assumption that the street-food-to-restaurant ratio is reasonably stable within a stratum. That is untested. It must be validated on the anchor set itself via leave-one-city-out error before the imputation is applied broadly; if within-stratum dispersion is large relative to between-stratum differences, the ratio carries little information and the measure should revert to explicitly missing.
+
 ## Revised Phase 6C Exit Gate
 
 Phase 6C is complete when:
