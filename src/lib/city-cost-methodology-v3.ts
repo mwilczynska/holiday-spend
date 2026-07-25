@@ -299,7 +299,8 @@ const sourceChannelPriority: Record<
     marketplace_api: 3,
     crowdsourced_api: 4,
     manual_menu_sample: 5,
-    derived_model: 6,
+    delivery_platform_menu: 6,
+    derived_model: 7,
   },
   food: {
     published_dataset: 0,
@@ -308,7 +309,8 @@ const sourceChannelPriority: Record<
     official_api: 3,
     official_website: 4,
     marketplace_api: 5,
-    derived_model: 6,
+    delivery_platform_menu: 6,
+    derived_model: 7,
   },
   drinks: {
     published_dataset: 0,
@@ -317,7 +319,8 @@ const sourceChannelPriority: Record<
     official_api: 3,
     official_website: 4,
     marketplace_api: 5,
-    derived_model: 6,
+    delivery_platform_menu: 6,
+    derived_model: 7,
   },
   activities: {
     official_website: 0,
@@ -326,7 +329,8 @@ const sourceChannelPriority: Record<
     published_dataset: 3,
     crowdsourced_api: 4,
     manual_menu_sample: 5,
-    derived_model: 6,
+    delivery_platform_menu: 6,
+    derived_model: 7,
   },
 };
 

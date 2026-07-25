@@ -105,6 +105,12 @@ export const cityCostObservationSchema = z
       'crowdsourced_api',
       'published_dataset',
       'manual_menu_sample',
+      // A static vendor-published price list hosted on a delivery marketplace.
+      // Permitted for street-food measures only, where vendors do not run priced
+      // sites of their own. Distinct from marketplace_api and from the interactive
+      // booking flows excluded by the accommodation contract. Carries a known
+      // upward platform-markup bias that must be retained in notes.
+      'delivery_platform_menu',
       'derived_model',
     ]),
     sourceAccess: z

@@ -105,6 +105,48 @@ Phase 6G multiplies whatever per-city cost Phase 6D finishes with by 121. Reduci
 - they become the natural qualitative test of the fallback: the model must produce defensible values for them, and Phase 6G must report their predicted values with full uncertainty
 - Phase 6E holdout stratification must not be drawn from evidence density in a way that concentrates sparse destinations in the holdout
 
+## Amendment E: Within-Venue Selection And The Street-Food Channel
+
+Added after the three-city protocol checkpoint, which surfaced two gaps in Amendment B.
+
+### E1: Within-Venue Selection Rule
+
+**Problem:** Amendment B specified three venues median-aggregated but said nothing about *which line on the menu* to take. Venue menus carry internal price tiers that a crowd-sourced city median does not. Pourhouse Vancouver spans CAD 16 to 40 for a cocktail; Moon Men Hanoi spans 215,000 to 470,000 VND. Selection moves the measure by roughly 2.5x, which would destroy cross-city comparability.
+
+**Rule:** for venue-priced measures, take the **median of the venue's standard section**, excluding premium, reserve, rare-spirit, low-ABV, and zero-proof tiers. Record the section name and the full observed range in `notes` so the choice is auditable and reversible.
+
+**Rationale:** this mirrors how the dominant existing channel defines its items. Numbeo does not publish "a beer", it publishes *Domestic Draft Beer, 0.5 L* — a specified standard item. The equivalent discipline for venue data is to name the section rather than average the whole menu.
+
+Worked example: Pourhouse Classics Vol. 1 is 18, 19, 18, 22, 24, 19, 19 → median **CAD 19**, with the Fancy tier (35-40) excluded.
+
+### E2: Delivery-Platform Menus Permitted For Street Food
+
+**Problem:** `street_food_meal_1p` is the single highest-leverage measure, blocking 108 cells across three food tiers, and it cannot be sourced from official venue sites. Street vendors and food trucks structurally do not run priced websites. This was confirmed directly: Japadog's official site publishes menu categories but no prices, and Time Out Market Lisboa's official restaurant page publishes no stall prices.
+
+**Decision:** permit static vendor price lists hosted on delivery marketplaces, recorded under a new `sourceType` of `delivery_platform_menu`.
+
+**Rationale:** these are the vendor's own published prices. The accommodation contract excludes Booking.com and Hostelworld because interactive booking flows are not reproducible and their terms restrict extraction; a static delivery menu is a materially different artifact. The new type is ranked below `manual_menu_sample` and above `derived_model` in every category precedence table, so a direct venue menu always wins where one exists.
+
+**Known bias, to be retained in notes on every such observation:** delivery-platform prices typically carry a 10-20% markup over the in-person price. This is a directional bias, not noise, and must not be averaged away.
+
+### E3: The Delivery Channel Is Currently Unretrievable
+
+**Status: E2 is authorised but not executable with current tooling.** Every delivery and aggregator platform tested failed:
+
+| Platform | Outcome |
+| --- | --- |
+| Uber Eats | HTTP 403 |
+| Fantuan | obfuscated or encrypted response body, unparseable |
+| RestaurantGuru | expired TLS certificate |
+
+`street_food_meal_1p` therefore remains at zero observations and the 108 cells behind it remain blocked. The enum value and precedence ranks are retained because the decision stands and the channel may become reachable; they are not yet backed by any observation.
+
+**This must be resolved before the full completion pass**, since it determines whether the pass targets roughly 313 cells or roughly 412.
+
+### E4: Possible Regional Bias In The Venue Channel
+
+The checkpoint found official priced venue menus readily in Vancouver and Hanoi but not in Lisbon, where cocktail prices surfaced only through Tripadvisor and travel blogs. If official-menu publication varies systematically by region or language, the venue channel introduces a coverage bias **correlated with region**, which is one of the model's stratification variables. Track official-menu availability by region during the completion pass and report it; do not assume the channel is regionally neutral.
+
 ## Revised Phase 6C Exit Gate
 
 Phase 6C is complete when:
