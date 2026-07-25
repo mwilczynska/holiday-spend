@@ -111,11 +111,30 @@ The following dashboard work and archive are unrelated to Phase 6 and were delib
 
 Preserve those files unless their owning workstream explicitly requests changes.
 
+## Re-Scope, 25 July 2026
+
+A coverage analysis re-scoped Phase 6C and 6D. The dated amendment, with full rationale, arithmetic, and disclosure obligations, is `docs/dev/plans/phase-6-rescope-2026-07-25.md`. Read it before collecting anything.
+
+The four findings behind it:
+
+1. **Tiers are conjunctions**, so shallow breadth is the wrong shape. Four measures sit at zero observations and block 216 cells; `street_food_meal_1p` alone blocks 108 by zeroing three food tiers. 28 of 36 cities hold exactly five of seventeen measures. This is why food coverage is 0% despite food evidence in 35 cities.
+2. **Evidence is effectively single-channel.** 132 of 171 observations (77%) come from Numbeo. Cross-channel disagreement is *uncomputable*, not merely unmeasured. Numbeo's Restaurants section was inspected directly: eight items, four already harvested, and street food, cocktails, wine by the glass, and premium meals all absent. Every remaining measure needs a new channel, so the missing-measure gap and the independence gap share one solution.
+3. **The accommodation gate is not achievable as written.** 90 accepted quotes per city, ~180 attempts at Copenhagen's 50% yield, ~6,480 for the pilot and ~21,780 for 121 cities. Done so far: 1 of 648 pilot measure-seasons (0.15%).
+4. **Zero complete cities means zero training rows.** Coverage percentage was the wrong success metric.
+
+The four amendments: (A) depth-first collection, (B) three venues per venue-priced measure, (C) accommodation seasonality moves into the model via index cities plus a regional seasonal index, (D) structurally unobservable destinations leave the denominator.
+
 ## Recommended Next Step
 
-Tourism screening is done, so the binding constraints on Phase 6C are now category evidence and accommodation.
+Run the measure completion pass (Amendment A + B). It needs no interactive browser and no further design work.
 
-1. **Category coverage.** Tier coverage is stuck at 151/684 cells (22.08%) with zero complete cities. This is the single largest blocker: cross-channel disagreement, source-age, robust-outlier, and systematic-missingness diagnostics all require overlapping *independent* source channels, and almost all current evidence is single-channel (largely Numbeo for food/drinks plus official attraction pages). Adding a second independent channel per city matters more than adding more cities.
-2. **Accommodation.** Still zero eligible annualized measures. Resume Barcelona exact-date direct-property quotes and Copenhagen low/high seasons when the interactive browser runtime works again.
+- Target: all eleven non-accommodation measures on every viable city, three venues for `street_food_meal_1p`, `premium_restaurant_meal_2p`, `cocktail_1`, `wine_glass_1`, two for the activity products
+- Cost: roughly **530 observations**, not the ~198 a one-per-measure reading suggests. Amendment B is the reason; do not plan against the lower figure
+- Effect: every viable city reaches 13 of 19 tiers, complete except accommodation, so each becomes a usable training row the moment accommodation lands
+- Side effect, and the point: menu and operator sources are a genuinely independent second channel for the four Numbeo measures, which is what makes the disagreement diagnostics computable
 
-Consider whether the graded-evidence pattern should be extended to category observations as well. The same tension that produced it — throughput versus a frozen estimand — applies to food, drinks, and activities, and the tier cells are where the coverage shortfall actually is.
+Retrievability was sampled and confirmed: published venue menus with prices exist for cocktails, wine by the glass, and premium tasting menus, and the Vang Vieng precedent shows operator product pages are already accepted for activity measures.
+
+Accommodation stays blocked on the browser runtime, but index-city designation and seasonal-index design can proceed in parallel. **Do not let accommodation gate category work.**
+
+One assumption in Amendment C is untested and load-bearing: that seasonality is more regional than city-specific. Test it on the index cities before applying the index broadly; if it fails, the amendment needs revisiting rather than absorbing.

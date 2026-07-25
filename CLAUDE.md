@@ -260,13 +260,19 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [x] Retain secondary evidence, flag cross-channel medians differing by more than 25%, and keep research output unreviewed until evidence review
 - [x] Enforce fail-closed publication: unsupported cells remain missing and no incomplete wide city row is published
 
-#### Phase 6C: Build A Model-Ready 36-City Pilot (In Progress)
+#### Phase 6C: Build A Model-Ready Pilot (In Progress, Re-Scoped 25 July 2026)
 
-**Deliverable and exit gate:** a frozen 36-city pilot whose accepted food, drink, and activity evidence, registered predictors, source overlap, and unresolved missingness are sufficient to support whole-city model comparison. A completed first-pass search is evidence-discovery progress, not completion of this milestone.
+**Deliverable and exit gate:** a frozen pilot whose accepted food, drink, and activity evidence, registered predictors, source overlap, and unresolved missingness are sufficient to support whole-city model comparison. A completed first-pass search is evidence-discovery progress, not completion of this milestone.
+
+**Re-scope note:** the 25 July 2026 coverage analysis found that tiers are conjunctions of measures, so shallow breadth across cities yields disproportionately few cells; that 77% of evidence comes from a single channel, making cross-channel disagreement uncomputable; and that zero complete cities means zero usable training rows. Collection is now depth-first, coverage percentage is no longer an exit criterion, and structurally unobservable destinations leave the denominator. See `docs/dev/plans/phase-6-rescope-2026-07-25.md` for the full amendment and its disclosure obligations.
 
 - [x] Select a deterministic pilot spanning every region and the current cost range, then complete bounded first-pass research for all 36 candidates
 - [x] Retain explicit source-gap outcomes rather than substituting nearby cities, country averages, unlabeled prices, guest nights, or mixed day/overnight totals
-- [ ] Complete observation collection for food, drinks, and activities, prioritizing required-measure coverage, independent source overlap, freshness, and documented sparse-city exceptions
+- [x] Diagnose the collection/basket misalignment: four measures at zero observations block 216 cells, `street_food_meal_1p` alone blocks 108, and 28 of 36 cities sit at exactly five of seventeen measures
+- [x] Confirm by direct inspection that street food, cocktails, wine by the glass, and premium restaurant meals are absent from the single dominant channel, so every remaining measure needs a new source type
+- [ ] Complete the non-accommodation measure set on every viable city, at three independent venues for venue-priced measures and two for activity products (Amendments A and B)
+- [ ] Establish two independent source channels for at least one measure per category, in enough cities to compute cross-channel disagreement
+- [ ] Name, freeze, and exclude structurally unobservable destinations from the collection denominator rather than carrying them as backlog (Amendment D)
 - [x] Complete the population matching pass with 29 reviewed records and seven explicit unmatched or non-single-city outcomes
 - [ ] Complete comparable tourism intensity using same-geography overnight arrivals and resident population
   - [x] Measure tourism intensity for 18/36 cities and both registered predictors for 16/36
@@ -276,10 +282,13 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [x] Publish the deterministic baseline profile: 32/36 cities represented, 151/684 required tier cells materialized (22.08%), and zero complete cities
 - [ ] Reach sufficient city/category/source coverage to calculate cross-channel disagreement, source-age, robust-outlier, seasonal-completeness, and systematic-missingness diagnostics
 - [ ] Freeze the pilot dataset and its missingness report; document every unresolved cell before any model comparison begins
+- Success is measured in completed cities and computable diagnostics, not coverage percentage; coverage remains a reported figure only
 
-#### Phase 6D: Complete Observed-First Accommodation Panels (In Progress)
+#### Phase 6D: Complete Observed-First Accommodation Panels (In Progress, Re-Scoped 25 July 2026)
 
-**Deliverable and exit gate:** annualized accommodation measures built only from pre-registered seasonal windows, price-blind property frames, direct-property quotes, and panels that pass quote-count and cross-season-overlap gates. Unsupported star or hostel classes remain missing.
+**Deliverable and exit gate:** annualized accommodation measures built only from pre-registered seasonal windows, price-blind property frames, direct-property quotes, and panels that pass quote-count and, for index cities, cross-season-overlap gates. Unsupported star or hostel classes remain missing.
+
+**Re-scope note:** the original gate of five quotes across three seasons and six classes requires 90 accepted quotes per city, roughly 180 interactive attempts at Copenhagen's observed 50% yield, which is about 6,480 attempts for the pilot and 21,780 for the 121-city recollection. Progress after the entire project to date is one accepted observation, 1 of 648 pilot measure-seasons. Amendment C therefore moves seasonality into the model: index cities keep the original contract, every other city collects one anchor season at three quotes per class, and a seasonal index per `region x destination-type` scales the result. Per-city quotes fall from 90 to 18. Provenance rules are unchanged; only quote volume is reduced. Scaled measures are weaker evidence and must be labeled, separable, and disclosed on `/estimates`.
 
 - [x] Use official registers or destination directories for price-blind frames and direct property sites for quotes; exclude Booking.com and Hostelworld from LLM extraction
 - [x] Pre-register exact-90-day low/shoulder/high windows and require five accepted quotes per measure and season plus at least 60% cross-season property overlap
@@ -287,9 +296,10 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [x] Record website outcomes for all twelve Barcelona 4-star primary properties: verify eleven, resolve the legacy rank-7 identity through its matching registration id, retain rank 4 as a validated unresolved placeholder redirect, and do not count website verification as quote evidence
 - [x] Complete Copenhagen's 4-star shoulder checkpoint with five accepted quotes from ten rank-ordered attempts
 - [ ] Clear or replace every reference window through the event screen while preserving an auditable replacement history
-- [ ] Complete Copenhagen low/high seasons; collect eligible Barcelona, Da Nang, Lisbon, and Prague panels; resolve defensible hostel inventory; and expand reproducible property frames to the remaining pilot cities
-- [ ] For every materialized accommodation measure, obtain at least five accepted direct-property quotes in each season and at least 60% cross-season property overlap
-- [ ] Materialize and independently validate the first annualized accommodation measures; leave any measure that fails a gate explicitly missing
+- [ ] Designate Copenhagen, Barcelona, and Prague as index cities and complete their three-season, five-quote, 60%-overlap panels under the original contract
+- [ ] Estimate a seasonal index per `region x destination-type` from the index cities, with published uncertainty, and first test the assumption that seasonality is more regional than city-specific
+- [ ] Collect one pre-registered anchor season at three accepted quotes per class for every other viable city
+- [ ] Materialize and independently validate annualized accommodation measures, labeled by evidence path (direct panel versus scaled anchor); leave any measure that fails a gate explicitly missing
 
 #### Phase 6E: Freeze Validation Design And Independent Holdout (Blocked On 6C-6D)
 
@@ -298,6 +308,9 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - [ ] Confirm that pilot target coverage, regional representation, destination types, cost range, and independent-source overlap support defensible evaluation
 - [ ] Pre-register primary and subgroup metrics, provisional acceptance gates, uncertainty methods, and failure/remediation rules
 - [ ] Freeze a region/cost/source-density-stratified city holdout before fitting; prevent all holdout cities from influencing feature engineering, model choice, or tuning
+- [ ] Draw the holdout only from cities with complete observed rows; structurally unobservable destinations enter neither training nor holdout, and stratification must not concentrate sparse destinations in the holdout
+- [ ] Confirm the completed-city count actually supports whole-city cross-validation before freezing any design; re-scoping raised this risk and it is not yet retired
+- [ ] Decide and record whether the evaluation admits relaxed-grade predictors, and report primary metrics both with and without them
 - [ ] Version and hash the training/validation split plus the frozen pilot artifact so later evaluation is reproducible
 
 #### Phase 6F: Compare And Freeze The Missing-Data Method (Blocked On 6E)
@@ -315,6 +328,8 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 **Deliverable and exit gate:** a versioned 121-city dataset with direct evidence recollected under the frozen contract, deterministic observed tiers, limited and visible fallback use, calibrated uncertainty, subgroup validation, and a complete data card.
 
 - [ ] Recollect direct observations for all 121 cities in versioned, checkpointed, auditable batches using the frozen source and review contracts
+- [ ] Treat per-city collection cost as the binding constraint: Phase 6G multiplies whatever per-city cost Phase 6C and 6D finish with by 121, so cost reductions taken during the pilot pay 121 times over
+- [ ] Carry the venue-median versus crowd-sourced-median quality asymmetry, and the direct-panel versus scaled-anchor accommodation distinction, into the published evidence-quality score rather than averaging them away
 - [ ] Materialize observed tiers deterministically, apply the frozen fallback only to eligible missing cells, and publish calibrated uncertainty plus evidence-quality scores
 - [ ] Report achieved overall and subgroup metrics with city-cluster uncertainty intervals and run full-itinerary backtests against the current dataset
 - [ ] Produce a versioned data card containing coverage, provenance, missingness, model use, limitations, validation results, and rollback inputs
@@ -596,6 +611,14 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - Bali (Ubud), Vang Vieng, Don Det, Pu Luong, Santa Fe (Bantayan), and Yangon are structured rejections; Bali was rejected rather than relaxed because no same-year official province resident denominator was retrievable, and a measurement is never built on an unsourced denominator
 - Tourism screening is now complete for the pilot: 18 measured records (14 strict, four relaxed), 18 screened rejections, and zero unscreened cities, lifting both-predictor coverage from 12 to 16 of 36
 - Materialized tier coverage is unchanged at 151/684 cells (22.08%) with zero complete cities, so model readiness remains `insufficient_for_fallback_model_selection` and Phase 6E stays gated
+- A 25 July 2026 coverage analysis re-scoped Phase 6C and 6D; the dated amendment with full rationale, arithmetic, and disclosure obligations is `docs/dev/plans/phase-6-rescope-2026-07-25.md`
+- Tiers are conjunctions of measures, so shallow breadth is the wrong collection shape: four measures sit at zero observations and block 216 cells, `street_food_meal_1p` alone blocks 108 by zeroing three food tiers, and 28 of 36 cities hold exactly five of seventeen measures
+- Direct inspection of a Numbeo city page confirmed its Restaurants section carries eight items of which four are already harvested; street food, cocktails, wine by the glass, and premium restaurant meals are absent, so the missing-measure gap and the source-independence gap share one solution
+- 132 of 171 accepted observations (77%) come from Numbeo alone, so cross-channel disagreement is currently uncomputable rather than merely unmeasured
+- Amendment B requires three independent venues for venue-priced measures and two for activity products, which raises the honest cost of completing the non-accommodation set from roughly 198 observations to roughly 530
+- Amendment C moves accommodation seasonality into the model: Copenhagen, Barcelona, and Prague become index cities under the original contract, every other city collects one anchor season at three quotes per class, and a `region x destination-type` seasonal index scales the result, cutting per-city quotes from 90 to 18
+- Amendment D reclassifies destinations with no retrievable public evidence as structurally unobservable; they leave the collection denominator and enter neither training nor holdout, because they are the case the fallback model exists to serve
+- Phase 6C success is now measured in completed cities and computable diagnostics rather than coverage percentage, since 151 cells spread across 32 cities yield zero usable training rows
 - `data/reference/materialized/city_cost_pilot_profile.json` now joins enrichment and materialized evidence across the full 36-city denominator, reports coverage by region/city-size/tourism/source-density strata, and records that fallback-model selection is not yet defensible
 - Bulgaria's canonical country metadata now resolves to EUR rather than the retired BGN code, with generated metadata and tests refreshed from the explicit override
 - The frozen 22 July 2026 FX snapshot now covers CNY, NZD, JPY, TRY, INR, CAD, KRW, HUF, and MXN through ECB euro cross-rates, TZS through the Bank of Tanzania's published AUD mean rate, KES through the latest retained official CBK USD quote, COP through Banco de la Republica's 21 July TRM crossed with frozen USD/AUD, AED through the Central Bank of the UAE's published AUD mid-rate, CUP through the Banco Central de Cuba natural-person reference, MMK through the CBM bank-customer market rate published by Myanmar's Central Statistical Organization, and LAK through the latest Bank of the Lao P.D.R. reference preceding the snapshot
@@ -671,6 +694,7 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - `data/reference/methodology_page.md`
 - `data/reference/accuracy_audit.csv`
 - `docs/dev/plans/observed-first-methodology.md`
+- `docs/dev/plans/phase-6-rescope-2026-07-25.md`
 - `scripts/audit-city-cost-accuracy.mjs`
   - `data/reference/city_cost_collection_pilot.json`
   - `data/reference/city_cost_collection_batches.json`
