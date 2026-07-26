@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "city-cost-v4-dry-run-0b-v1",
+  "phase": "0b",
+  "description": "Accommodation reconnaissance for the five Phase 0 dry-run cities via the cascade level-4 path (LLM with web search). Run without any API key after SerpApi signup was blocked by SMS verification. Establishes whether accommodation prices are obtainable at all, and at what quality.",
+  "capturedAt": "2026-07-25T14:00:00.000Z",
+  "method": {
+    "cascadeLevel": 4,
+    "tool": "web search plus summarisation",
+    "reproducible": false,
+    "note": "This is reconnaissance, not a production method. Search results drift daily and carry no stable schema. It is a valid test of whether the data exists and of level-4 viability; it is not a validated measurement."
+  },
+  "cities": [
+    {
+      "city": "Copenhagen",
+      "currency": "USD",
+      "observed": {
+        "hotel_2star": { "from": 47 },
+        "hotel_3star": { "from": 83, "average": 111 },
+        "hotel_4star": { "from": 123, "average": 139 },
+        "hotel_5star": { "average": 334 },
+        "hostel_dorm": { "average": 14 },
+        "hostel_private": { "average": 129 }
+      },
+      "localCurrencyNotes": "Separately reported in DKK: dorm beds from 150 DKK, private rooms for two from 375 DKK off-season.",
+      "seasonalitySignal": "Cheapest month January at 142 USD average; December up to 475 USD. Roughly 3.3x intra-year spread on the all-hotel figure.",
+      "groundTruthCheck": {
+        "observedDirectQuotes": "5 accepted direct-property 4-star quotes, shoulder season, 90-day lead",
+        "observedMedianDkk": 1417,
+        "observedMedianUsdApprox": 205,
+        "searchDerived4StarAverageUsd": 139,
+        "discrepancyPct": 47.5,
+        "gate": "fail_as_specified",
+        "assessment": "Fails the plus-or-minus 30 percent gate, but the two figures are not like-for-like. The ground truth is a shoulder-season median of five specific central properties at a fixed 90-day lead. The search figure is an undated, blended, city-wide aggregate that mixes seasons and locations. The gate is measuring basis mismatch, not source error."
+      }
+    },
+    {
+      "city": "Lisbon",
+      "currency": "EUR",
+      "observed": {
+        "hotel_2star": { "range": [50, 120] },
+        "hotel_3star": { "range": [80, 150], "conflictingAverage": 158 },
+        "hotel_4star": { "range": [120, 250], "conflictingRange": [163, 201] },
+        "hostel_dorm": { "range": [15, 40], "conflictingAverageUsd": 10 },
+        "hostel_private": { "range": [40, 80], "conflictingAverageUsd": 77 }
+      },
+      "internalContradiction": "One source gives a 3-star range of 80-150 EUR while another reports a 3-star average of 158 EUR, which sits above the top of the first source's range. The two cannot both be right on the same basis."
+    },
+    {
+      "city": "Hanoi",
+      "currency": "USD",
+      "observed": {
+        "hotel_2star": { "average": 21, "conflictingAverage": 14 },
+        "hotel_3star": { "average": 28, "conflictingAverage": 56 },
+        "hotel_4star": { "average": 100, "conflictingAverage": 25 },
+        "hostel": { "average": 4, "conflictingAverage": 16 }
+      },
+      "internalContradiction": "The 4-star average is reported as both 100 USD and 25 USD, a 4x disagreement for the same city and star class. The hostel average is reported as both 4 and 16 USD."
+    },
+    {
+      "city": "Chiang Rai",
+      "currency": "USD",
+      "observed": {
+        "hotel_budget": { "average": 11 },
+        "hotel_3star": { "average": 18 },
+        "hotel_4star": { "average": 54 },
+        "hotel_all": { "average": 19, "median": 16, "highSeason": 36 },
+        "hostel_dorm": { "average": 8 },
+        "hostel_private": { "average": 9 }
+      },
+      "assessment": "Internally coherent and the most consistent of the five. Notably better accommodation data than its thin Numbeo food coverage, which had only 19 contributors and an estimated-data warning."
+    },
+    {
+      "city": "Don Det",
+      "currency": "LAK",
+      "observed": {
+        "budget_bungalow": { "typical": 40000, "range": [30000, 50000], "usdApprox": [3.5, 6.25] },
+        "midrange": { "usdRange": [20, 50] },
+        "luxury": { "usdApprox": 50, "example": "Sala Done Khon floating rooms" }
+      },
+      "assessment": "The critical result. Don Det has no Numbeo page, zero Phase 6 observations, and would return nothing from a GDS. Search returns usable, specific, named-property prices. The long tail is servable at cascade level 4.",
+      "sourceType": "travel guides and one property site (dondet.net)",
+      "starClassMapping": "Not available. Don Det inventory is guesthouses and bungalows with no star classification, so the 6-tier ladder does not map directly."
+    }
+  ],
+  "gateResults": {
+    "primaryCoverage": {
+      "criterion": "Lisbon, Copenhagen, Hanoi each return >=10 properties with a star class",
+      "result": "pass_in_substance",
+      "note": "Star-tiered aggregate prices returned for all three, though as averages rather than enumerated properties. A structured source would be needed to count properties."
+    },
+    "secondaryCoverage": {
+      "criterion": "Chiang Rai returns >=5 properties with a star class",
+      "result": "pass",
+      "note": "Star-tiered averages plus budget and hostel tiers, internally coherent."
+    },
+    "cascadeWorks": {
+      "criterion": "Don Det yields a value from some level or is cleanly marked missing",
+      "result": "pass",
+      "note": "Level 4 produced specific prices where levels 1-3 would all have failed."
+    },
+    "hostelAvailability": {
+      "criterion": "Determine empirically whether hostel and dorm prices are obtainable",
+      "result": "yes",
+      "note": "Dorm and hostel-private prices returned for Copenhagen, Lisbon, Hanoi and Chiang Rai. This closes the gap that made Amadeus unusable and removes the need to model the two hostel tiers from accom_1_star, provided a structured source carries the same fields."
+    },
+    "priceSanity": {
+      "criterion": "Copenhagen 4-star median within +/-30% of the observed DKK 1,417",
+      "result": "fail_as_specified",
+      "note": "47.5% above. See groundTruthCheck; the gate compares incompatible bases and needs restating before it can be a meaningful test."
+    },
+    "cost": {
+      "criterion": "Stay inside the free tier",
+      "result": "pass",
+      "note": "Zero API cost. Eight web searches."
+    }
+  },
+  "findings": [
+    {
+      "id": "long-tail-is-servable",
+      "severity": "resolves-biggest-unknown",
+      "finding": "Every one of the five cities returned accommodation prices, including Don Det. The plan's single largest open question was whether the SEA long tail could be covered at all. It can, at cascade level 4. This also means the 44-of-121 SEA weighting is not fatal to the methodology."
+    },
+    {
+      "id": "hostels-are-obtainable",
+      "severity": "resolves-open-question",
+      "finding": "Dorm and hostel-private prices are available for four of five cities. Amadeus could not represent hostels at all. The two hostel tiers can be measured rather than modelled, provided the production source exposes them."
+    },
+    {
+      "id": "cross-source-disagreement-is-the-real-problem",
+      "severity": "changes-the-plan",
+      "finding": "Coverage was never the binding constraint; consistency is. Hanoi 4-star is reported as both 100 and 25 USD, a 4x spread. Lisbon's 3-star average of 158 EUR exceeds another source's stated 3-star range of 80-150 EUR. Different aggregators publish 'from' prices, blended averages, seasonal or annual bases, and city or metro boundaries, without labelling which. A number cannot be used if its basis is unknown."
+    },
+    {
+      "id": "price-sanity-gate-is-mis-specified",
+      "severity": "fix-the-plan",
+      "finding": "The gate compares a shoulder-season median of five specific central 4-star properties against an undated city-wide blended average. Those differ by construction. The gate must specify basis: same star class, same date window, same city area, and median-across-properties rather than a headline average."
+    },
+    {
+      "id": "budgetyourtrip-is-the-leading-structured-candidate",
+      "severity": "new-lead",
+      "finding": "Budget Your Trip surfaced for every city searched, with a consistent URL schema of /hotels/<country>/<city> and /hostels/<country>/<city>, carrying hotel averages by tier plus separate dorm and private hostel prices. It is the accommodation analogue of Numbeo: one consistent methodology applied across all cities, which is exactly what the disagreement finding says is needed. It returned HTTP 403 to direct fetch but is reliably surfaced through search.",
+      "nextStep": "Verify its per-city schema, methodology statement, coverage of long-tail destinations, and terms of use."
+    },
+    {
+      "id": "star-ladder-does-not-map-to-the-long-tail",
+      "severity": "design-implication",
+      "finding": "Don Det inventory is guesthouses and bungalows with no star classification. The 6-tier accommodation ladder assumes a star system that does not exist in parts of SEA. Those destinations need a budget/midrange/luxury mapping rather than 1-4 stars."
+    }
+  ],
+  "callsConsumed": { "webSearches": 8, "apiCalls": 0, "cost": 0 },
+  "verdict": "Phase 0 coverage questions resolved positively. The blocking issue is no longer whether accommodation data exists but whether a source with one consistent, stated methodology can be found. Do not proceed to calibration until that source is identified and the price-sanity gate is restated on a like-for-like basis."
+}

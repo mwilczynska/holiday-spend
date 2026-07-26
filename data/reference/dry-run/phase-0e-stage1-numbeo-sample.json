@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "city-cost-v4-numbeo-sample-v1",
+  "phase": "0e",
+  "description": "Stage 1 sample expansion. Band-stratified draw from the 63 cities in the 121-city production dataset not yet pooled, plus documented substitutes where the drawn city had no source page. One page fetch per city, five measures each. Purpose: lift mcmeal_combo from n=27 so that R1 band coefficients rest on ~20 cities per band rather than ~9, and make R3 fittable for the first time.",
+  "capturedAt": "2026-07-26T00:00:00.000Z",
+  "source": "https://www.numbeo.com/cost-of-living/in/<slug>",
+  "measures": ["inexpensive_restaurant_meal_1p", "midrange_restaurant_meal_2p", "mcmeal_combo", "domestic_draft_beer_1", "cappuccino_1"],
+  "selectionRule": "data/reference/dry-run/phase-0e-stage1-selection.json",
+  "acceptanceRule": "Retained if the page carries all five measures and reports a non-zero contributor count. Cities with a low contributor count are retained but flagged lowConfidence so the fit can be run with and without them; cities with zero recent contributors or a stale-year update are rejected outright.",
+  "cities": [
+    { "city": "Amsterdam", "region": "Europe", "currency": "EUR", "inexp": 22, "midrange": 80, "mcmeal": 14, "beer": 6.6, "cappuccino": 4.03, "contributors": 250, "lastUpdate": "2026-07-17" },
+    { "city": "Berlin", "region": "Europe", "currency": "EUR", "inexp": 15, "midrange": 74.25, "mcmeal": 12, "beer": 4.9, "cappuccino": 4.08, "contributors": 311, "lastUpdate": "2026-07-20" },
+    { "city": "Edinburgh", "region": "Europe", "currency": "GBP", "inexp": 18, "midrange": 80, "mcmeal": 7.68, "beer": 6, "cappuccino": 3.87, "contributors": 120, "lastUpdate": "2026-07-14" },
+    { "city": "London", "region": "Europe", "currency": "GBP", "inexp": 20, "midrange": 80, "mcmeal": 8, "beer": 7, "cappuccino": 4.13, "contributors": 443, "lastUpdate": "2026-07-24" },
+    { "city": "Madrid", "region": "Europe", "currency": "EUR", "inexp": 16, "midrange": 60, "mcmeal": 10, "beer": 3.5, "cappuccino": 2.72, "contributors": 274, "lastUpdate": "2026-07-24" },
+    { "city": "Paris", "region": "Europe", "currency": "EUR", "inexp": 15, "midrange": 70, "mcmeal": 12, "beer": 7, "cappuccino": 4.45, "contributors": 258, "lastUpdate": "2026-07-24" },
+    { "city": "Porto", "region": "Europe", "currency": "EUR", "inexp": 12, "midrange": 50, "mcmeal": 8, "beer": 3, "cappuccino": 2.32, "contributors": 119, "lastUpdate": "2026-06-29" },
+    { "city": "Rome", "region": "Europe", "currency": "EUR", "inexp": 15, "midrange": 60, "mcmeal": 10, "beer": 5, "cappuccino": 1.93, "contributors": 179, "lastUpdate": "2026-07-24" },
+    { "city": "Stockholm", "region": "Europe", "currency": "SEK", "inexp": 177.5, "midrange": 1000, "mcmeal": 110.57, "beer": 77, "cappuccino": 50.41, "contributors": 152, "lastUpdate": "2026-07-25" },
+    { "city": "Cairns", "region": "Oceania", "currency": "AUD", "inexp": 25, "midrange": 140, "mcmeal": 18, "beer": 10, "cappuccino": 6.25, "contributors": 16, "lastUpdate": "2026-06-19", "lowConfidence": true, "lowConfidenceReason": "16 contributors" },
+    { "city": "Taipei", "region": "East Asia", "currency": "TWD", "inexp": 150, "midrange": 1500, "mcmeal": 184.81, "beer": 85, "cappuccino": 109.7, "contributors": 151, "lastUpdate": "2026-07-17" },
+    { "city": "Bucharest", "region": "Europe", "currency": "RON", "inexp": 60, "midrange": 275, "mcmeal": 34.5, "beer": 16.5, "cappuccino": 15.99, "contributors": 314, "lastUpdate": "2026-07-25" },
+    { "city": "Krakow", "region": "Europe", "currency": "PLN", "inexp": 47, "midrange": 200, "mcmeal": 38, "beer": 18, "cappuccino": 16.73, "contributors": 187, "lastUpdate": "2026-07-21", "slugResolution": "corrected_after_404", "slug": "Krakow-Poland" },
+    { "city": "Amman", "region": "Middle East", "currency": "JOD", "inexp": 5, "midrange": 47.5, "mcmeal": 5, "beer": 6, "cappuccino": 3.17, "contributors": 74, "lastUpdate": "2026-06-24" },
+    { "city": "Cartagena", "region": "Latin America", "currency": "COP", "inexp": 25000, "midrange": 207500, "mcmeal": 40000, "beer": 3500, "cappuccino": 7600, "contributors": 20, "lastUpdate": "2026-07-18", "lowConfidence": true, "lowConfidenceReason": "20 contributors, 102 entries" },
+    { "city": "Hiroshima", "region": "East Asia", "currency": "JPY", "inexp": 950, "midrange": 5000, "mcmeal": 700, "beer": 400, "cappuccino": 437.5, "contributors": 17, "contributorWindowMonths": 18, "lastUpdate": "2026-06-19", "estimatedDataWarning": true, "lowConfidence": true, "lowConfidenceReason": "17 contributors over 18 months, explicit estimated-data warning", "slugResolution": "corrected_after_404", "slug": "Hiroshima-Japan" },
+    { "city": "Nara", "region": "East Asia", "currency": "JPY", "inexp": 1000, "midrange": 5000, "mcmeal": 750, "beer": 500, "cappuccino": 366.67, "contributors": 15, "contributorWindowMonths": 18, "lastUpdate": "2026-06-19", "estimatedDataWarning": true, "lowConfidence": true, "lowConfidenceReason": "15 contributors over 18 months, explicit estimated-data warning", "slugResolution": "corrected_after_404", "slug": "Nara-Japan" },
+    { "city": "Phuket", "region": "SEA", "currency": "THB", "inexp": 150, "midrange": 1350, "mcmeal": 300, "beer": 80, "cappuccino": 100.09, "contributors": 43, "lastUpdate": "2026-07-11" },
+    { "city": "Phnom Penh", "region": "SEA", "currency": "USD", "inexp": 3.5, "midrange": 35, "mcmeal": 7, "beer": 1.5, "cappuccino": 2.88, "contributors": 35, "lastUpdate": "2026-06-23" },
+    { "city": "Yogyakarta", "region": "SEA", "currency": "IDR", "inexp": 20000, "midrange": 245000, "mcmeal": 55000, "beer": 52500, "cappuccino": 21750, "contributors": 18, "lastUpdate": "2026-06-19", "lowConfidence": true, "lowConfidenceReason": "18 contributors" },
+    { "city": "Ho Chi Minh City", "region": "SEA", "currency": "VND", "inexp": 50000, "midrange": 600000, "mcmeal": 120000, "beer": 30000, "cappuccino": 46818.18, "contributors": 109, "lastUpdate": "2026-07-23" },
+    { "city": "Nha Trang", "region": "SEA", "currency": "VND", "inexp": 75000, "midrange": 550000, "mcmeal": 118000, "beer": 16000, "cappuccino": 46461.54, "contributors": 25, "lastUpdate": "2026-07-22" },
+    { "city": "Siem Reap", "region": "SEA", "currency": "USD", "inexp": 2.5, "midrange": 24, "mcmeal": 8, "beer": 1, "cappuccino": 1.67, "contributors": 22, "lastUpdate": "2026-07-10" },
+    { "city": "Chiang Mai", "region": "SEA", "currency": "THB", "inexp": 70, "midrange": 650, "mcmeal": 192.5, "beer": 80, "cappuccino": 57.33, "contributors": 54, "lastUpdate": "2026-07-02" },
+    { "city": "Manila", "region": "SEA", "currency": "PHP", "inexp": 350, "midrange": 1600, "mcmeal": 250, "beer": 72.5, "cappuccino": 154.23, "contributors": 81, "lastUpdate": "2026-07-12" },
+    { "city": "Lima", "region": "Latin America", "currency": "PEN", "inexp": 15, "midrange": 120, "mcmeal": 23.45, "beer": 10, "cappuccino": 10.88, "contributors": 84, "lastUpdate": "2026-07-07" },
+    { "city": "Denpasar", "region": "SEA", "currency": "IDR", "inexp": 32500, "midrange": 500000, "mcmeal": 57500, "beer": 35000, "cappuccino": 31500, "contributors": 15, "lastUpdate": "2026-06-19", "lowConfidence": true, "lowConfidenceReason": "15 contributors; substituted for the drawn city Bali (Canggu), which has no source page. Geography approximate: same island, different settlement. Banded using the Bali (Canggu) production row.", "bandProxyCity": "Bali (Canggu)", "geographyApproximate": true }
+  ],
+  "rejected": [
+    { "city": "Kanazawa", "reason": "5 contributors over 18 months, last update 24 January 2025, explicit estimated-data warning", "slug": "Kanazawa-Japan" },
+    { "city": "Cusco", "reason": "6 contributors", "slug": "Cusco-Peru" },
+    { "city": "Pai", "reason": "0 contributors in the past 12 months, last update 23 January 2025, explicit estimated-data warning", "slug": "Pai-Thailand" },
+    { "city": "Aomori", "reason": "page exists but reports 0 entries by 0 contributors in the past 12 months; no prices published" }
+  ],
+  "noSourcePage": ["Lombok", "Luang Prabang", "Hoi An", "Kampot", "Mui Ne"],
+  "notCollectedRateLimited": ["Buenos Aires", "Belgrade", "Busan", "Osaka"],
+  "findings": [
+    {
+      "id": "slug-suffix-rule-is-bidirectional",
+      "finding": "The country suffix is required for ambiguous city names and breaks unambiguous ones. Hiroshima, Kanazawa, Nara, Krakow and Cusco all 404 bare and resolve with a country suffix; Aomori, Cartagena and Phuket resolve bare and 404 with the suffix. Slug resolution must therefore try both forms rather than applying one rule, and the source's error page names the correct target in both directions, which makes it automatable."
+    },
+    {
+      "id": "rate-limit-observed",
+      "finding": "The source returned HTTP 429 after roughly 40 page fetches in quick succession. A full 121-city refresh must be paced or checkpointed rather than issued as one burst. This is an operational constraint on the refresh design, not on feasibility."
+    },
+    {
+      "id": "long-tail-attrition-quantified",
+      "finding": "Of the drawn low-band destinations, five had no source page at all (Lombok, Luang Prabang, Hoi An, Kampot, Mui Ne) and three more were rejected for zero or near-zero contributors (Pai, Aomori, Cusco). Level-1 coverage is effectively complete for cities and sparse for village and island destinations, which is the same boundary the earlier reconnaissance found and the reason the cascade exists."
+    },
+    {
+      "id": "thin-source-cities-retained-not-dropped",
+      "finding": "Seven retained cities carry a low contributor count. Rather than applying a hard floor, they are flagged so the fit can be run with and without them. Whether thin sources move the coefficients is an empirical question the sample can now answer, and a hard cut would discard exactly the low-band cities the mcmeal relationship most needs."
+    }
+  ]
+}

@@ -1,0 +1,915 @@
+{
+  "schemaVersion": "city-cost-v4-ratio-fit-v2",
+  "generatedFrom": {
+    "observations": "data/reference/city_cost_collection_batches.json",
+    "costBandSource": "data/reference/city_costs_app_aud.csv",
+    "anchorSamples": [
+      "data/reference/dry-run/phase-0d-numbeo-expanded-sample.json",
+      "data/reference/dry-run/phase-0e-stage1-numbeo-sample.json",
+      "data/reference/dry-run/phase-0f-stage2-numbeo-sample.json"
+    ]
+  },
+  "cityCountTotal": 99,
+  "lowConfidenceCityCount": 10,
+  "unbandedExcluded": [],
+  "bandThresholdsAud": {
+    "lowMax": 46.5,
+    "midMax": 101.68,
+    "basis": "terciles of all 121 production rows"
+  },
+  "relations": [
+    {
+      "key": "midrange~inexpensive",
+      "A": "inexpensive_restaurant_meal_1p",
+      "T": "midrange_restaurant_meal_2p",
+      "proxyFor": "premium_restaurant_meal_2p ~ midrange_restaurant_meal_2p",
+      "n": 97,
+      "bands": {
+        "low": 23,
+        "mid": 35,
+        "high": 39
+      },
+      "holdoutCities": [
+        "Auckland",
+        "Beijing",
+        "Bucharest",
+        "Cairns",
+        "Cartagena",
+        "Colombo",
+        "Delhi",
+        "Edinburgh",
+        "Hanoi",
+        "Ho Chi Minh City",
+        "Kathmandu",
+        "Kyoto",
+        "Los Angeles",
+        "Medellin",
+        "Mumbai",
+        "New York City",
+        "Penang",
+        "Prague",
+        "Rome",
+        "Seoul",
+        "Sofia",
+        "Taipei",
+        "Vancouver",
+        "Yogyakarta"
+      ],
+      "observedRatio": {
+        "min": 2.776,
+        "median": 5.333,
+        "max": 15.385,
+        "geometricMean": 5.739,
+        "spreadFactor": 5.54,
+        "byBand": {
+          "low": 7.418,
+          "mid": 5.985,
+          "high": 4.75
+        }
+      },
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 21.29,
+          "medianSignedLogError": 0.074,
+          "p90ApePct": 53.71,
+          "n": 97
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 20.34,
+          "medianSignedLogError": 0.0097,
+          "p90ApePct": 46.1,
+          "n": 97
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 21.27,
+          "medianSignedLogError": 0.0515,
+          "p90ApePct": 47.75,
+          "n": 97
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 21.05,
+          "medianSignedLogError": 0.0351,
+          "p90ApePct": 46.63,
+          "n": 97
+        }
+      },
+      "fixedHoldout": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 26.33,
+          "medianSignedLogError": 0.0793,
+          "p90ApePct": 52.49,
+          "n": 24
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 27.25,
+          "medianSignedLogError": -0.0101,
+          "p90ApePct": 42.29,
+          "n": 24
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 20.27,
+          "medianSignedLogError": 0.0555,
+          "p90ApePct": 45.39,
+          "n": 24
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 24.78,
+          "medianSignedLogError": -0.0022,
+          "p90ApePct": 47.38,
+          "n": 24
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 5.738818825113702
+        },
+        "R1": {
+          "byBand": {
+            "low": 7.417645017632336,
+            "mid": 5.985061623895689,
+            "high": 4.750339946568359
+          },
+          "global": 5.738818825113702
+        },
+        "R2": {
+          "a": 1.510973013539389,
+          "b": 1.044600595234792
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 1.8069639314850505,
+              "b": 1.0279000225031374
+            },
+            "mid": {
+              "a": 1.7439275148411388,
+              "b": 1.00786155231524
+            },
+            "high": {
+              "a": 1.4230030232277295,
+              "b": 1.0352240714007854
+            }
+          },
+          "global": {
+            "a": 1.510973013539389,
+            "b": 1.044600595234792
+          }
+        }
+      },
+      "selection": {
+        "bestByLoo": "R1",
+        "bestByHoldout": "R2",
+        "qualifiedOverR0": [],
+        "selected": "R0",
+        "rule": "A richer model must beat R0 by at least 10% relative on BOTH leave-one-out and the fixed holdout to qualify; among qualifiers take the fewest parameters within 10% of the best leave-one-out score.",
+        "materialityThreshold": 0.9
+      }
+    },
+    {
+      "key": "mcmeal~inexpensive",
+      "A": "inexpensive_restaurant_meal_1p",
+      "T": "mcmeal_combo",
+      "proxyFor": "street_food_meal_1p ~ mcmeal_combo (the band-separation question)",
+      "n": 68,
+      "bands": {
+        "low": 17,
+        "mid": 23,
+        "high": 28
+      },
+      "holdoutCities": [
+        "Bali (Ubud)",
+        "Bogota",
+        "Cairns",
+        "Cebu",
+        "Copenhagen",
+        "Hanoi",
+        "Hong Kong",
+        "Krakow",
+        "Lisbon",
+        "Manila",
+        "Mumbai",
+        "Nha Trang",
+        "Phnom Penh",
+        "Rio de Janeiro",
+        "Singapore",
+        "Tbilisi",
+        "Yogyakarta"
+      ],
+      "observedRatio": {
+        "min": 0.4,
+        "median": 0.821,
+        "max": 3.333,
+        "geometricMean": 0.985,
+        "spreadFactor": 8.33,
+        "byBand": {
+          "low": 1.726,
+          "mid": 1.09,
+          "high": 0.645
+        }
+      },
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 43.17,
+          "medianSignedLogError": 0.1853,
+          "p90ApePct": 72.73,
+          "n": 68
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 22.02,
+          "medianSignedLogError": -0.0121,
+          "p90ApePct": 59.68,
+          "n": 68
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 34.82,
+          "medianSignedLogError": 0.1681,
+          "p90ApePct": 67.33,
+          "n": 68
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 23.14,
+          "medianSignedLogError": -0.0059,
+          "p90ApePct": 62.24,
+          "n": 68
+        }
+      },
+      "fixedHoldout": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 34.92,
+          "medianSignedLogError": 0.0663,
+          "p90ApePct": 55.46,
+          "n": 17
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 21.94,
+          "medianSignedLogError": 0.0571,
+          "p90ApePct": 82.72,
+          "n": 17
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 25.54,
+          "medianSignedLogError": 0.1128,
+          "p90ApePct": 50.17,
+          "n": 17
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 22.96,
+          "medianSignedLogError": 0.0915,
+          "p90ApePct": 84.85,
+          "n": 17
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 0.9852342965056398
+        },
+        "R1": {
+          "byBand": {
+            "low": 1.7260227852057646,
+            "mid": 1.0898048859587939,
+            "high": 0.6452229868779554
+          },
+          "global": 0.9852342965056398
+        },
+        "R2": {
+          "a": -0.3713368915619304,
+          "b": 1.0693801117210424
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 0.5478932141695569,
+              "b": 0.9996995838666957
+            },
+            "mid": {
+              "a": 0.028357326646518466,
+              "b": 1.0102358026250913
+            },
+            "high": {
+              "a": -0.5205409761498125,
+              "b": 1.022500241130003
+            }
+          },
+          "global": {
+            "a": -0.3713368915619304,
+            "b": 1.0693801117210424
+          }
+        }
+      },
+      "selection": {
+        "bestByLoo": "R1",
+        "bestByHoldout": "R1",
+        "qualifiedOverR0": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "selected": "R1",
+        "rule": "A richer model must beat R0 by at least 10% relative on BOTH leave-one-out and the fixed holdout to qualify; among qualifiers take the fewest parameters within 10% of the best leave-one-out score.",
+        "materialityThreshold": 0.9
+      }
+    },
+    {
+      "key": "cappuccino~beer",
+      "A": "domestic_draft_beer_1",
+      "T": "cappuccino_1",
+      "proxyFor": "cocktail_1 and wine_glass_1 ~ domestic_draft_beer_1",
+      "n": 97,
+      "bands": {
+        "low": 23,
+        "mid": 35,
+        "high": 39
+      },
+      "holdoutCities": [
+        "Auckland",
+        "Beijing",
+        "Bucharest",
+        "Cairns",
+        "Cartagena",
+        "Colombo",
+        "Delhi",
+        "Edinburgh",
+        "Hanoi",
+        "Ho Chi Minh City",
+        "Kathmandu",
+        "Kyoto",
+        "Los Angeles",
+        "Medellin",
+        "Mumbai",
+        "New York City",
+        "Penang",
+        "Prague",
+        "Rome",
+        "Seoul",
+        "Sofia",
+        "Taipei",
+        "Vancouver",
+        "Yogyakarta"
+      ],
+      "observedRatio": {
+        "min": 0.333,
+        "median": 0.898,
+        "max": 2.904,
+        "geometricMean": 0.892,
+        "spreadFactor": 8.71,
+        "byBand": {
+          "low": 1.13,
+          "mid": 1.061,
+          "high": 0.663
+        }
+      },
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 25.41,
+          "medianSignedLogError": -0.0078,
+          "p90ApePct": 77.6,
+          "n": 97
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 18.23,
+          "medianSignedLogError": 0.0128,
+          "p90ApePct": 62.62,
+          "n": 97
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 25.66,
+          "medianSignedLogError": 0.0244,
+          "p90ApePct": 71.13,
+          "n": 97
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 20.2,
+          "medianSignedLogError": -0.0074,
+          "p90ApePct": 65.14,
+          "n": 97
+        }
+      },
+      "fixedHoldout": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 25.89,
+          "medianSignedLogError": -0.1568,
+          "p90ApePct": 73.14,
+          "n": 24
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 20.86,
+          "medianSignedLogError": -0.043,
+          "p90ApePct": 66,
+          "n": 24
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 23.36,
+          "medianSignedLogError": -0.0623,
+          "p90ApePct": 71.22,
+          "n": 24
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 23.23,
+          "medianSignedLogError": -0.0414,
+          "p90ApePct": 65.27,
+          "n": 24
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 0.8916090275184297
+        },
+        "R1": {
+          "byBand": {
+            "low": 1.1304170245800576,
+            "mid": 1.0613734263819756,
+            "high": 0.6629224023157176
+          },
+          "global": 0.8916090275184297
+        },
+        "R2": {
+          "a": -0.30678490369377975,
+          "b": 1.0431145778524749
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 0.19435720058065442,
+              "b": 0.9890791169083237
+            },
+            "mid": {
+              "a": 0.016653001723545557,
+              "b": 1.008848747093753
+            },
+            "high": {
+              "a": -0.5657314994395288,
+              "b": 1.0542264807170598
+            }
+          },
+          "global": {
+            "a": -0.30678490369377975,
+            "b": 1.0431145778524749
+          }
+        }
+      },
+      "selection": {
+        "bestByLoo": "R1",
+        "bestByHoldout": "R1",
+        "qualifiedOverR0": [
+          "R1",
+          "R3"
+        ],
+        "selected": "R1",
+        "rule": "A richer model must beat R0 by at least 10% relative on BOTH leave-one-out and the fixed holdout to qualify; among qualifiers take the fewest parameters within 10% of the best leave-one-out score.",
+        "materialityThreshold": 0.9
+      }
+    },
+    {
+      "key": "attraction~inexpensive",
+      "A": "inexpensive_restaurant_meal_1p",
+      "T": "paid_attraction_adult_1",
+      "proxyFor": "half_day and full_day activity ~ paid_attraction_adult_1",
+      "n": 29,
+      "bands": {
+        "low": 6,
+        "mid": 10,
+        "high": 13
+      },
+      "holdoutCities": [
+        "Budapest",
+        "Delhi",
+        "Goa",
+        "Medellin",
+        "Queenstown",
+        "Shanghai",
+        "Vancouver"
+      ],
+      "observedRatio": {
+        "min": 0.025,
+        "median": 1.05,
+        "max": 6,
+        "geometricMean": 1.057,
+        "spreadFactor": 241.67,
+        "byBand": {
+          "low": 1.055,
+          "mid": 1.027,
+          "high": 1.082
+        }
+      },
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 47.15,
+          "medianSignedLogError": 0.007,
+          "p90ApePct": 154.74,
+          "n": 29
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 50.78,
+          "medianSignedLogError": -0.0246,
+          "p90ApePct": 164.07,
+          "n": 29
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 55.43,
+          "medianSignedLogError": -0.025,
+          "p90ApePct": 227.03,
+          "n": 29
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 57.63,
+          "medianSignedLogError": -0.0117,
+          "p90ApePct": 227.03,
+          "n": 29
+        }
+      },
+      "fixedHoldout": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 54.74,
+          "medianSignedLogError": -0.4406,
+          "p90ApePct": 83.91,
+          "n": 7
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 51,
+          "medianSignedLogError": -0.1516,
+          "p90ApePct": 87.96,
+          "n": 7
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 47.33,
+          "medianSignedLogError": -0.4854,
+          "p90ApePct": 80.36,
+          "n": 7
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 53.7,
+          "medianSignedLogError": -0.4854,
+          "p90ApePct": 80.36,
+          "n": 7
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 1.0570946655653364
+        },
+        "R1": {
+          "byBand": {
+            "low": 1.0551809331823299,
+            "mid": 1.0269927768204776,
+            "high": 1.0817533156466639
+          },
+          "global": 1.0570946655653364
+        },
+        "R2": {
+          "a": 0.5111331722103962,
+          "b": 0.9183341804367109
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 0.5111331722103962,
+              "b": 0.9183341804367109
+            },
+            "mid": {
+              "a": 0.4440330748389538,
+              "b": 0.9320373720582599
+            },
+            "high": {
+              "a": 0.7924837072073987,
+              "b": 0.8309772361366711
+            }
+          },
+          "global": {
+            "a": 0.5111331722103962,
+            "b": 0.9183341804367109
+          }
+        }
+      },
+      "selection": {
+        "bestByLoo": "R0",
+        "bestByHoldout": "R2",
+        "qualifiedOverR0": [],
+        "selected": "R0",
+        "rule": "A richer model must beat R0 by at least 10% relative on BOTH leave-one-out and the fixed holdout to qualify; among qualifiers take the fewest parameters within 10% of the best leave-one-out score.",
+        "materialityThreshold": 0.9
+      }
+    }
+  ],
+  "sensitivityExcludingLowConfidence": [
+    {
+      "key": "midrange~inexpensive",
+      "n": 87,
+      "selected": "R0",
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 19.71,
+          "medianSignedLogError": 0.0936,
+          "p90ApePct": 50.62,
+          "n": 87
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 19.96,
+          "medianSignedLogError": 0.0131,
+          "p90ApePct": 47.99,
+          "n": 87
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 21.18,
+          "medianSignedLogError": 0.0518,
+          "p90ApePct": 46.08,
+          "n": 87
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 15.92,
+          "medianSignedLogError": 0.0235,
+          "p90ApePct": 44.15,
+          "n": 87
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 5.621669173001493
+        },
+        "R1": {
+          "byBand": {
+            "low": 7.262560415294916,
+            "mid": 5.75174938488447,
+            "high": 4.774756701443655
+          },
+          "global": 5.621669173001493
+        },
+        "R2": {
+          "a": 1.5401015082863116,
+          "b": 1.037381016244152
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 1.810936224388751,
+              "b": 1.025479386573636
+            },
+            "mid": {
+              "a": 1.8854949381846282,
+              "b": 0.9742829594899233
+            },
+            "high": {
+              "a": 1.3630240737364332,
+              "b": 1.0532550464542902
+            }
+          },
+          "global": {
+            "a": 1.5401015082863116,
+            "b": 1.037381016244152
+          }
+        }
+      }
+    },
+    {
+      "key": "mcmeal~inexpensive",
+      "n": 58,
+      "selected": "R1",
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 44.51,
+          "medianSignedLogError": 0.1841,
+          "p90ApePct": 71.71,
+          "n": 58
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 18.78,
+          "medianSignedLogError": -0.0137,
+          "p90ApePct": 60.67,
+          "n": 58
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 34.15,
+          "medianSignedLogError": 0.1517,
+          "p90ApePct": 67.04,
+          "n": 58
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 21.14,
+          "medianSignedLogError": -0.0033,
+          "p90ApePct": 62.4,
+          "n": 58
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 0.9637935948590448
+        },
+        "R1": {
+          "byBand": {
+            "low": 1.7296222426981513,
+            "mid": 1.057714114835889,
+            "high": 0.6472311138171807
+          },
+          "global": 0.9637935948590448
+        },
+        "R2": {
+          "a": -0.3759484820275567,
+          "b": 1.0729415700311538
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 0.5311171408264039,
+              "b": 1.0026062935470395
+            },
+            "mid": {
+              "a": 0.10582008071824855,
+              "b": 0.9895696320628299
+            },
+            "high": {
+              "a": -0.594178740337874,
+              "b": 1.0449773840509455
+            }
+          },
+          "global": {
+            "a": -0.3759484820275567,
+            "b": 1.0729415700311538
+          }
+        }
+      }
+    },
+    {
+      "key": "cappuccino~beer",
+      "n": 87,
+      "selected": "R1",
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 28.15,
+          "medianSignedLogError": 0.0357,
+          "p90ApePct": 77.58,
+          "n": 87
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 17.58,
+          "medianSignedLogError": 0.0063,
+          "p90ApePct": 63.11,
+          "n": 87
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 24.57,
+          "medianSignedLogError": 0.0375,
+          "p90ApePct": 71.8,
+          "n": 87
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 19.77,
+          "medianSignedLogError": -0.0071,
+          "p90ApePct": 65,
+          "n": 87
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 0.8908738236371443
+        },
+        "R1": {
+          "byBand": {
+            "low": 1.1989684325184058,
+            "mid": 1.0618732247192435,
+            "high": 0.6558978265959278
+          },
+          "global": 0.8908738236371443
+        },
+        "R2": {
+          "a": -0.33540935651817616,
+          "b": 1.0533718108786407
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 0.13154884169317338,
+              "b": 1.0080822358439196
+            },
+            "mid": {
+              "a": 0.02821027027796852,
+              "b": 1.0073247119261985
+            },
+            "high": {
+              "a": -0.549304209637449,
+              "b": 1.0459557234143297
+            }
+          },
+          "global": {
+            "a": -0.33540935651817616,
+            "b": 1.0533718108786407
+          }
+        }
+      }
+    },
+    {
+      "key": "attraction~inexpensive",
+      "n": 29,
+      "selected": "R0",
+      "leaveOneOut": {
+        "R0": {
+          "params": 1,
+          "medianApePct": 47.15,
+          "medianSignedLogError": 0.007,
+          "p90ApePct": 154.74,
+          "n": 29
+        },
+        "R1": {
+          "params": 3,
+          "medianApePct": 50.78,
+          "medianSignedLogError": -0.0246,
+          "p90ApePct": 164.07,
+          "n": 29
+        },
+        "R2": {
+          "params": 2,
+          "medianApePct": 55.43,
+          "medianSignedLogError": -0.025,
+          "p90ApePct": 227.03,
+          "n": 29
+        },
+        "R3": {
+          "params": 6,
+          "medianApePct": 57.63,
+          "medianSignedLogError": -0.0117,
+          "p90ApePct": 227.03,
+          "n": 29
+        }
+      },
+      "fittedFullSample": {
+        "R0": {
+          "k": 1.0570946655653364
+        },
+        "R1": {
+          "byBand": {
+            "low": 1.0551809331823299,
+            "mid": 1.0269927768204776,
+            "high": 1.0817533156466639
+          },
+          "global": 1.0570946655653364
+        },
+        "R2": {
+          "a": 0.5111331722103962,
+          "b": 0.9183341804367109
+        },
+        "R3": {
+          "byBand": {
+            "low": {
+              "a": 0.5111331722103962,
+              "b": 0.9183341804367109
+            },
+            "mid": {
+              "a": 0.4440330748389538,
+              "b": 0.9320373720582599
+            },
+            "high": {
+              "a": 0.7924837072073987,
+              "b": 0.8309772361366711
+            }
+          },
+          "global": {
+            "a": 0.5111331722103962,
+            "b": 0.9183341804367109
+          }
+        }
+      }
+    }
+  ]
+}

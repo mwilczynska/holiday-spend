@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "city-cost-v4-numbeo-sample-v1",
+  "description": "Expanded Numbeo anchor sample for ratio-model fitting. One page fetch per city. Adds mcmeal_combo, which the Phase 6 observation store does not carry. Values are as published, in local currency; all modelled relationships are within-city ratios so currency cancels.",
+  "capturedAt": "2026-07-25T15:00:00.000Z",
+  "source": "https://www.numbeo.com/cost-of-living/in/<slug>",
+  "measures": ["inexpensive_restaurant_meal_1p", "midrange_restaurant_meal_2p", "mcmeal_combo", "domestic_draft_beer_1", "cappuccino_1"],
+  "slugFailures": [
+    { "attempted": "Cairo", "corrected": "Cairo-Egypt" },
+    { "attempted": "Chiang-Rai", "corrected": "Chiang-Rai-Thailand" },
+    { "attempted": "Tel-Aviv", "suggested": "Tel Aviv-Yafo, Israel", "status": "not_collected" }
+  ],
+  "cities": [
+    { "city": "Singapore", "region": "SEA", "currency": "SGD", "inexp": 15, "midrange": 80, "mcmeal": 10, "beer": 10, "cappuccino": 6.49, "contributors": 318, "lastUpdate": "2026-07-23" },
+    { "city": "Kuala Lumpur", "region": "SEA", "currency": "MYR", "inexp": 18, "midrange": 100, "mcmeal": 20, "beer": 18, "cappuccino": 12.78, "contributors": 161, "lastUpdate": "2026-07-24" },
+    { "city": "Jakarta", "region": "SEA", "currency": "IDR", "inexp": 40000, "midrange": 300000, "mcmeal": 60000, "beer": 47500, "cappuccino": 35535.95, "contributors": 170, "lastUpdate": "2026-07-20" },
+    { "city": "Hanoi", "region": "SEA", "currency": "VND", "inexp": 50000, "midrange": 550000, "mcmeal": 114500, "beer": 28163.5, "cappuccino": 48817.05, "contributors": 88, "lastUpdate": "2026-07-25" },
+    { "city": "Chiang Rai", "region": "SEA", "currency": "THB", "inexp": 70, "midrange": 500, "mcmeal": 180, "beer": 55, "cappuccino": 45, "contributors": 19, "lastUpdate": "2026-03-30", "estimatedDataWarning": true },
+    { "city": "Vientiane", "region": "SEA", "currency": "LAK", "inexp": 55000, "midrange": 400000, "mcmeal": 120000, "beer": 30500, "cappuccino": 38200, "contributors": 11, "lastUpdate": "2026-06-19" },
+    { "city": "Hong Kong", "region": "East Asia", "currency": "HKD", "inexp": 60, "midrange": 500, "mcmeal": 50, "beer": 52.79, "cappuccino": 39.16, "contributors": 266, "lastUpdate": "2026-07-24" },
+    { "city": "Beijing", "region": "East Asia", "currency": "CNY", "inexp": 30, "midrange": 200, "mcmeal": 35, "beer": 8, "cappuccino": 22.25, "contributors": 134, "lastUpdate": "2026-07-18" },
+    { "city": "Mumbai", "region": "South Asia", "currency": "INR", "inexp": 500, "midrange": 2000, "mcmeal": 400, "beer": 250, "cappuccino": 267.47, "contributors": 265, "lastUpdate": "2026-07-21" },
+    { "city": "Kathmandu", "region": "South Asia", "currency": "NPR", "inexp": 300, "midrange": 2850, "mcmeal": 1000, "beer": 500, "cappuccino": 242.86, "contributors": 68, "lastUpdate": "2026-07-04" },
+    { "city": "Colombo", "region": "South Asia", "currency": "LKR", "inexp": 1450, "midrange": 8500, "mcmeal": 2500, "beer": 730, "cappuccino": 832.18, "contributors": 96, "lastUpdate": "2026-07-17" },
+    { "city": "Vienna", "region": "Europe", "currency": "EUR", "inexp": 18, "midrange": 80, "mcmeal": 12, "beer": 5.5, "cappuccino": 4.67, "contributors": 238, "lastUpdate": "2026-07-23" },
+    { "city": "Helsinki", "region": "Europe", "currency": "EUR", "inexp": 16, "midrange": 100, "mcmeal": 12.5, "beer": 8, "cappuccino": 4.74, "contributors": 132, "lastUpdate": "2026-07-24" },
+    { "city": "Tbilisi", "region": "Europe", "currency": "GEL", "inexp": 27.5, "midrange": 100, "mcmeal": 25, "beer": 7, "cappuccino": 9, "contributors": 155, "lastUpdate": "2026-07-16" },
+    { "city": "Copenhagen", "region": "Europe", "currency": "DKK", "inexp": 150, "midrange": 800, "mcmeal": 90, "beer": 60, "cappuccino": 45.45, "contributors": 154, "lastUpdate": "2026-07-19" },
+    { "city": "Lisbon", "region": "Europe", "currency": "EUR", "inexp": 15, "midrange": 55, "mcmeal": 10, "beer": 3, "cappuccino": 2.58, "contributors": 230, "lastUpdate": "2026-07-25" },
+    { "city": "Sydney", "region": "Oceania", "currency": "AUD", "inexp": 25, "midrange": 136.43, "mcmeal": 16, "beer": 10.03, "cappuccino": 5.58, "contributors": 180, "lastUpdate": "2026-07-23" },
+    { "city": "Melbourne", "region": "Oceania", "currency": "AUD", "inexp": 25, "midrange": 120, "mcmeal": 17.1, "beer": 14, "cappuccino": 5.72, "contributors": 232, "lastUpdate": "2026-07-24" },
+    { "city": "New York City", "region": "North America", "currency": "USD", "inexp": 25, "midrange": 145, "mcmeal": 13, "beer": 8, "cappuccino": 6.1, "contributors": 223, "lastUpdate": "2026-07-25" },
+    { "city": "Los Angeles", "region": "North America", "currency": "USD", "inexp": 25, "midrange": 120, "mcmeal": 14, "beer": 8, "cappuccino": 5.78, "contributors": 179, "lastUpdate": "2026-07-24" },
+    { "city": "Montreal", "region": "North America", "currency": "CAD", "inexp": 24.5, "midrange": 105, "mcmeal": 15, "beer": 9, "cappuccino": 5.54, "contributors": 257, "lastUpdate": "2026-07-24" },
+    { "city": "Cape Town", "region": "Africa", "currency": "ZAR", "inexp": 200, "midrange": 780, "mcmeal": 100, "beer": 50, "cappuccino": 40.46, "contributors": 128, "lastUpdate": "2026-07-13" },
+    { "city": "Marrakech", "region": "Africa", "currency": "MAD", "inexp": 35, "midrange": 300, "mcmeal": 60, "beer": 65, "cappuccino": 21.78, "contributors": 33, "lastUpdate": "2026-06-28" },
+    { "city": "Cairo", "region": "Africa", "currency": "EGP", "inexp": 250, "midrange": 1500, "mcmeal": 300, "beer": 77.5, "cappuccino": 92.36, "contributors": 294, "lastUpdate": "2026-07-23" },
+    { "city": "Bogota", "region": "Latin America", "currency": "COP", "inexp": 25000, "midrange": 140000, "mcmeal": 30000, "beer": 6000, "cappuccino": 8068.61, "contributors": 134, "lastUpdate": "2026-07-25" },
+    { "city": "Santiago", "region": "Latin America", "currency": "CLP", "inexp": 10000, "midrange": 50000, "mcmeal": 8695, "beer": 4000, "cappuccino": 3174, "contributors": 89, "lastUpdate": "2026-07-23" },
+    { "city": "Rio de Janeiro", "region": "Latin America", "currency": "BRL", "inexp": 40, "midrange": 205, "mcmeal": 40, "beer": 12, "cappuccino": 12.82, "contributors": 92, "lastUpdate": "2026-07-24" }
+  ]
+}

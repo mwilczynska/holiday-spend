@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "city-cost-v4-numbeo-sample-v1",
+  "phase": "0f",
+  "description": "Stage 2 expansion. Attempts every remaining unpooled city in the 121-city production dataset, completing the census attempt. Purpose: raise mcmeal_combo density further and settle the midrange~inexpensive model choice, which was unresolved at n=85 because it selected R1 on the full sample and R0 with thin-source cities excluded.",
+  "capturedAt": "2026-07-26T12:00:00.000Z",
+  "source": "https://www.numbeo.com/cost-of-living/in/<slug>",
+  "measures": ["inexpensive_restaurant_meal_1p", "midrange_restaurant_meal_2p", "mcmeal_combo", "domestic_draft_beer_1", "cappuccino_1"],
+  "acceptanceRule": "Retained if the page carries all five measures AND reports at least 10 contributors AND was updated within the last 12 months. Cities between 10 and 20 contributors, or on an 18-month contributor window, or carrying an explicit estimated-data warning, are retained but flagged lowConfidence so the fit can be run with and without them. The 10-contributor floor is stated here because Stage 1 rejected cities at 5 and 6 contributors without recording a threshold; it is applied consistently to both stages.",
+  "cities": [
+    { "city": "Osaka", "region": "East Asia", "currency": "JPY", "inexp": 1000, "midrange": 5000, "mcmeal": 700, "beer": 400, "cappuccino": 473.95, "contributors": 33, "lastUpdate": "2026-06-19" },
+    { "city": "Kyoto", "region": "East Asia", "currency": "JPY", "inexp": 1500, "midrange": 5000, "mcmeal": 800, "beer": 500, "cappuccino": 521.43, "contributors": 16, "lastUpdate": "2026-06-19", "lowConfidence": true, "lowConfidenceReason": "16 contributors" },
+    { "city": "Florence", "region": "Europe", "currency": "EUR", "inexp": 24.5, "midrange": 68, "mcmeal": 13, "beer": 6, "cappuccino": 2, "contributors": 63, "lastUpdate": "2026-07-25" },
+    { "city": "Athens", "region": "Europe", "currency": "EUR", "inexp": 15, "midrange": 60, "mcmeal": 9.25, "beer": 5, "cappuccino": 3.66, "contributors": 313, "lastUpdate": "2026-07-24" },
+    { "city": "Munich", "region": "Europe", "currency": "EUR", "inexp": 17, "midrange": 80, "mcmeal": 12, "beer": 5, "cappuccino": 3.85, "contributors": 269, "lastUpdate": "2026-07-20" },
+    { "city": "Reykjavik", "region": "Europe", "currency": "ISK", "inexp": 3500, "midrange": 16500, "mcmeal": 3250, "beer": 1690, "cappuccino": 816.67, "contributors": 91, "lastUpdate": "2026-07-25" },
+    { "city": "Busan", "region": "East Asia", "currency": "KRW", "inexp": 10000, "midrange": 65000, "mcmeal": 8900, "beer": 5000, "cappuccino": 5006.34, "contributors": 16, "lastUpdate": "2026-07-12", "lowConfidence": true, "lowConfidenceReason": "16 contributors" },
+    { "city": "Belgrade", "region": "Europe", "currency": "RSD", "inexp": 1200, "midrange": 5800, "mcmeal": 1340, "beer": 350, "cappuccino": 321.43, "contributors": 294, "lastUpdate": "2026-07-20" },
+    { "city": "Buenos Aires", "region": "Latin America", "currency": "USD", "inexp": 19.02, "midrange": 70, "mcmeal": 13.25, "beer": 4, "cappuccino": 4.06, "contributors": 163, "lastUpdate": "2026-07-08", "notes": "Source page quotes this city in USD rather than ARS. Retained as published; all modelled relationships are within-city ratios so the quotation currency cancels." },
+    { "city": "Tel Aviv", "region": "Middle East", "currency": "ILS", "inexp": 80, "midrange": 400, "mcmeal": 60, "beer": 33, "cappuccino": 16.88, "contributors": 68, "lastUpdate": "2026-07-16", "slugResolution": "corrected_after_404", "slug": "Tel-Aviv-Yafo" },
+    { "city": "Penang", "region": "SEA", "currency": "MYR", "inexp": 15, "midrange": 80, "mcmeal": 19, "beer": 17, "cappuccino": 12.27, "contributors": 24, "lastUpdate": "2026-07-17" },
+    { "city": "Cebu", "region": "SEA", "currency": "PHP", "inexp": 250, "midrange": 1500, "mcmeal": 250, "beer": 110, "cappuccino": 158.33, "contributors": 44, "lastUpdate": "2026-07-17" },
+    { "city": "Koh Samui", "region": "SEA", "currency": "THB", "inexp": 150, "midrange": 1000, "mcmeal": 300, "beer": 80, "cappuccino": 71.88, "contributors": 38, "contributorWindowMonths": 18, "lastUpdate": "2026-07-03", "estimatedDataWarning": true, "lowConfidence": true, "lowConfidenceReason": "38 contributors but over an 18-month window with an explicit estimated-data warning" },
+    { "city": "Bali (Ubud)", "region": "SEA", "currency": "IDR", "inexp": 50000, "midrange": 350000, "mcmeal": 52500, "beer": 40000, "cappuccino": 35833.33, "contributors": 22, "contributorWindowMonths": 18, "lastUpdate": "2026-06-28", "estimatedDataWarning": true, "lowConfidence": true, "lowConfidenceReason": "22 contributors over an 18-month window with an explicit estimated-data warning", "slugResolution": "corrected_after_404", "slug": "Ubud-Indonesia", "notes": "Supersedes the Phase 6 fail-closed source-gap outcome for Ubud, which was recorded when only an unlabelled-currency menu was found. This page carries labelled IDR prices." }
+  ],
+  "rejected": [
+    { "city": "Krabi", "reason": "9 contributors, below the 10-contributor floor", "slug": "Krabi-Thailand" },
+    { "city": "Langkawi", "reason": "5 contributors", "slug": "Langkawi-Malaysia" },
+    { "city": "Phu Quoc", "reason": "2 entries in the past 12 months, last update 9 November 2025, and three of five measures absent", "slug": "Phu-Quoc-Vietnam" },
+    { "city": "Palawan (El Nido)", "reason": "3 contributors, and the domestic beer measure is absent", "slug": "El-Nido-Philippines" },
+    { "city": "Bali (Kuta)", "reason": "2 contributors over 18 months, last update 24 January 2025, explicit estimated-data warning", "slug": "Kuta-Indonesia" },
+    { "city": "Nikko", "reason": "no page; the source suggested Nikopol, Ukraine, confirming no Japanese entry exists" }
+  ],
+  "noSourcePage": ["Cat Ba", "Ninh Binh", "Sa Pa", "Don Det", "Bagan", "Siargao", "Santa Fe (Bantayan)"],
+  "findings": [
+    {
+      "id": "census-attempt-complete",
+      "finding": "Every one of the 27 remaining unpooled production cities was attempted. 14 were retained, 6 rejected on the contributor floor, and 7 have no source page. The 121-city dataset is now fully screened: no city remains untried."
+    },
+    {
+      "id": "contributor-floor-now-explicit",
+      "finding": "Stage 1 rejected cities at 5 and 6 contributors without recording a threshold, which left the boundary undefined. A 10-contributor floor plus a 12-month freshness requirement is stated here and applied to both stages. Krabi at 9 falls just below it and is rejected; the alternative was an undocumented case-by-case judgement."
+    },
+    {
+      "id": "attrition-is-a-cliff-not-a-slope",
+      "finding": "The retained cities are dense (median 63 contributors) and the rejected ones are extremely thin (2 to 9). Almost nothing sits between. Public price coverage is close to binary by destination type: established cities have usable pages and small island or village destinations have none, or a page with single-digit contributors. This is why the cascade needs a genuine search path rather than a lower-quality version of the same source."
+    },
+    {
+      "id": "low-band-remains-the-thinnest",
+      "finding": "Of 13 unpooled low-band cities, only 4 were retained. The low band therefore stays the least-covered despite Stage 2 attempting every candidate, and it is the band where the mcmeal coefficient does its work. No further collection can fix this from this source; the remaining low-band destinations have no public aggregation to collect."
+    },
+    {
+      "id": "ubud-supersedes-a-phase-6-gap",
+      "finding": "Ubud was recorded in the Phase 6 programme as a fail-closed source gap because the only page inspected had an unlabelled currency scale. The country-suffixed page carries labelled IDR prices, so the gap was a slug-resolution failure rather than an absence of evidence. The bidirectional slug rule found in Stage 1 recovered it."
+    }
+  ]
+}

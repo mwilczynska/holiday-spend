@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "city-cost-v4-dry-run-0a-v1",
+  "phase": "0a",
+  "description": "Numbeo anchor collection for the five Phase 0 dry-run cities. Level 1 of the food/drinks cascade. No API key required.",
+  "capturedAt": "2026-07-25T13:00:00.000Z",
+  "source": {
+    "name": "Numbeo",
+    "urlPattern": "https://www.numbeo.com/cost-of-living/in/<slug>",
+    "cascadeLevel": 1,
+    "retrieval": "single page fetch per city"
+  },
+  "cities": [
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "region": "Europe",
+      "sourceLevel": 1,
+      "slug": "Copenhagen",
+      "slugResolution": "direct",
+      "currency": "DKK",
+      "anchors": {
+        "inexp_meal_1p": 150.0,
+        "midrange_meal_2p": 800.0,
+        "mcmeal_combo": 90.0,
+        "beer_draft_0_5l": 60.0,
+        "cappuccino": 45.45
+      },
+      "quality": {
+        "contributors": 154,
+        "contributorWindow": "12 months",
+        "entries": 1174,
+        "lastUpdate": "2026-07-19",
+        "estimatedDataWarning": false
+      },
+      "role": "ground_truth_price_sanity_check"
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "sourceLevel": 1,
+      "slug": "Lisbon",
+      "slugResolution": "direct",
+      "currency": "EUR",
+      "anchors": {
+        "inexp_meal_1p": 15.0,
+        "midrange_meal_2p": 55.0,
+        "mcmeal_combo": 10.0,
+        "beer_draft_0_5l": 3.0,
+        "cappuccino": 2.58
+      },
+      "quality": {
+        "contributors": 230,
+        "contributorWindow": "12 months",
+        "entries": 1978,
+        "lastUpdate": "2026-07-25",
+        "estimatedDataWarning": false
+      },
+      "role": "best_case_dense_source"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "sourceLevel": 1,
+      "slug": "Hanoi",
+      "slugResolution": "direct",
+      "currency": "VND",
+      "anchors": {
+        "inexp_meal_1p": 50000.0,
+        "midrange_meal_2p": 550000.0,
+        "mcmeal_combo": 114500.0,
+        "beer_draft_0_5l": 28163.5,
+        "cappuccino": 48817.05
+      },
+      "quality": {
+        "contributors": 88,
+        "contributorWindow": "12 months",
+        "entries": 877,
+        "lastUpdate": "2026-07-25",
+        "estimatedDataWarning": false
+      },
+      "role": "major_sea_city"
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "region": "SEA",
+      "sourceLevel": 1,
+      "slug": "Chiang-Rai-Thailand",
+      "slugResolution": "corrected_after_404",
+      "slugNote": "The naive slug 'Chiang-Rai' returns 'Cannot find city id'. Numbeo's error page suggests the correct target, so slug resolution is a required harness step rather than a direct city-name mapping.",
+      "currency": "THB",
+      "anchors": {
+        "inexp_meal_1p": 70.0,
+        "midrange_meal_2p": 500.0,
+        "mcmeal_combo": 180.0,
+        "beer_draft_0_5l": 55.0,
+        "cappuccino": 45.0
+      },
+      "quality": {
+        "contributors": 19,
+        "contributorWindow": "18 months",
+        "entries": null,
+        "lastUpdate": "2026-03-30",
+        "estimatedDataWarning": true,
+        "warningText": "Some data are estimated due to a low number of contributors."
+      },
+      "role": "secondary_sea_city_coverage_thinning",
+      "assessment": "Marginal. Three independent quality signals fire together: only 19 contributors, an 18-month rather than 12-month window, a four-month-old update, and an explicit estimated-data warning. This is exactly the case the contributor floor is designed to catch."
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "region": "SEA",
+      "sourceLevel": null,
+      "level1Outcome": "no_page",
+      "level1Evidence": "Numbeo returns \"Our system cannot find city named with 'Don-Det'.\"",
+      "currency": null,
+      "anchors": null,
+      "quality": null,
+      "role": "near_impossible_cascade_test",
+      "fallbackCandidate": {
+        "level": 3,
+        "method": "regional_index_scaling_from_nearest_covered_city",
+        "donorCity": "Vientiane",
+        "donorCountry": "Laos",
+        "donorCurrency": "LAK",
+        "donorAnchors": {
+          "inexp_meal_1p": 55000.0,
+          "midrange_meal_2p": 400000.0,
+          "mcmeal_combo": 120000.0,
+          "beer_draft_0_5l": 30500.0,
+          "cappuccino": 38200.0
+        },
+        "donorQuality": {
+          "contributors": 11,
+          "contributorWindow": "12 months",
+          "entries": 96,
+          "lastUpdate": "2026-06-19",
+          "estimatedDataWarning": false
+        },
+        "donorAssessment": "Viable but thin at 11 contributors. Same country and currency as Don Det, which is the best available donor, but a village destination is not a capital city and a scaling factor would itself need calibrating.",
+        "status": "candidate_not_yet_applied"
+      }
+    }
+  ],
+  "derivedRatios": {
+    "note": "Computed from the anchors above. These are the empirical basis for choosing between model forms R0 (global constant) and R1 (band-varying constant).",
+    "mcmeal_over_inexp_meal": {
+      "Copenhagen": 0.6,
+      "Lisbon": 0.67,
+      "Hanoi": 2.29,
+      "Chiang Rai": 2.57,
+      "Vientiane": 2.18,
+      "europeRange": [0.6, 0.67],
+      "seaRange": [2.18, 2.57],
+      "betweenBandFactor": 3.6
+    },
+    "midrange_over_inexp_meal": {
+      "Copenhagen": 5.33,
+      "Lisbon": 3.67,
+      "Hanoi": 11.0,
+      "Chiang Rai": 7.14,
+      "Vientiane": 7.27
+    },
+    "cappuccino_over_beer": {
+      "Copenhagen": 0.76,
+      "Lisbon": 0.86,
+      "Hanoi": 1.73,
+      "Chiang Rai": 0.82,
+      "Vientiane": 1.25
+    }
+  },
+  "findings": [
+    {
+      "id": "slug-resolution-required",
+      "severity": "implementation",
+      "finding": "City name to Numbeo slug is not a direct mapping. 'Chiang-Rai' fails; 'Chiang-Rai-Thailand' succeeds. The harness needs a resolution step, and Numbeo's own error page suggests the correct target, which makes this automatable."
+    },
+    {
+      "id": "contributor-signal-works",
+      "severity": "validates-design",
+      "finding": "The free quality metadata discriminates sharply and correctly. Lisbon 230 contributors over 12 months with a same-day update, against Chiang Rai's 19 over 18 months with an explicit estimated-data warning and a four-month-old update. The contributor floor is a usable gate, not a theoretical one."
+    },
+    {
+      "id": "mcmeal-ratio-inverts-by-region",
+      "severity": "changes-model-selection",
+      "finding": "The McDonald's-to-cheap-restaurant ratio is 0.60-0.67 in Europe and 2.18-2.57 in SEA: a 3.6x between-band difference with tight within-band clustering. This empirically confirms the regional inversion argued for on theoretical grounds, and it means R0 (a single global constant) will fail for the street-food ratio. R1 with cost bands is the minimum defensible form. Low within-band variance and high between-band variance is the ideal signature for a band-calibrated model."
+    },
+    {
+      "id": "level-1-covers-4-of-5",
+      "severity": "informational",
+      "finding": "Four of five cities resolve at cascade level 1 with a single fetch each. Only the village destination falls through, which is the expected and designed behaviour."
+    }
+  ],
+  "callsConsumed": {
+    "numbeoFetches": 6,
+    "note": "Five target cities plus one failed slug attempt for Chiang Rai, plus Vientiane as a level-3 donor candidate. No paid API calls."
+  },
+  "gateStatus": {
+    "foodDrinkCoverage": "pass_for_4_of_5",
+    "accommodationGates": "blocked_pending_serpapi_key",
+    "priceSanityCheck": "blocked_pending_serpapi_key",
+    "hostelAvailability": "blocked_pending_serpapi_key"
+  }
+}
