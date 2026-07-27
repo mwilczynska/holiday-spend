@@ -1,0 +1,381 @@
+{
+  "schemaVersion": "city-cost-v4-stage1-analysis-v1",
+  "generatedAt": "2026-07-27T12:07:37.061Z",
+  "q1_depth": {
+    "note": "Prices are stored in page order under the platform default sort, so the first-n median is exactly what a shallow collector would report.",
+    "curves": [
+      {
+        "label": "Copenhagen 4-star, booking, date-controlled",
+        "propertyCount": 108,
+        "fullMedian": 417,
+        "curve": [
+          {
+            "n": 5,
+            "median": 414,
+            "errPct": -0.7
+          },
+          {
+            "n": 10,
+            "median": 395.5,
+            "errPct": -5.2
+          },
+          {
+            "n": 15,
+            "median": 318,
+            "errPct": -23.7
+          },
+          {
+            "n": 20,
+            "median": 300,
+            "errPct": -28.1
+          },
+          {
+            "n": 25,
+            "median": 304,
+            "errPct": -27.1
+          },
+          {
+            "n": 30,
+            "median": 309,
+            "errPct": -25.9
+          },
+          {
+            "n": 40,
+            "median": 309,
+            "errPct": -25.9
+          },
+          {
+            "n": 50,
+            "median": 330.5,
+            "errPct": -20.7
+          },
+          {
+            "n": 75,
+            "median": 370,
+            "errPct": -11.3
+          },
+          {
+            "n": 100,
+            "median": 403,
+            "errPct": -3.4
+          },
+          {
+            "n": 108,
+            "median": 417,
+            "errPct": 0
+          }
+        ]
+      },
+      {
+        "label": "Copenhagen 3-star, booking, date-controlled (25 of 44 retrievable)",
+        "propertyCount": 25,
+        "fullMedian": 273,
+        "curve": [
+          {
+            "n": 5,
+            "median": 215,
+            "errPct": -21.2
+          },
+          {
+            "n": 10,
+            "median": 231,
+            "errPct": -15.4
+          },
+          {
+            "n": 15,
+            "median": 269,
+            "errPct": -1.5
+          },
+          {
+            "n": 20,
+            "median": 278.5,
+            "errPct": 2
+          },
+          {
+            "n": 25,
+            "median": 273,
+            "errPct": 0
+          },
+          {
+            "n": 25,
+            "median": 273,
+            "errPct": 0
+          }
+        ]
+      }
+    ],
+    "windowSpread": [
+      {
+        "windowSize": 10,
+        "windows": 99,
+        "minMedian": 275,
+        "maxMedian": 1085,
+        "spreadX": 3.945,
+        "worstErrPct": 160.2
+      },
+      {
+        "windowSize": 20,
+        "windows": 89,
+        "minMedian": 296.5,
+        "maxMedian": 830.5,
+        "spreadX": 2.801,
+        "worstErrPct": 99.2
+      },
+      {
+        "windowSize": 30,
+        "windows": 79,
+        "minMedian": 302,
+        "maxMedian": 720.5,
+        "spreadX": 2.386,
+        "worstErrPct": 72.8
+      }
+    ]
+  },
+  "q2_ratios": [
+    {
+      "city": "Copenhagen",
+      "platform": "booking",
+      "basis": "full-list, date-controlled",
+      "pair": "4/3",
+      "ratio": 1.527
+    },
+    {
+      "city": "Lisbon",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "4/3",
+      "ratio": 1.3
+    },
+    {
+      "city": "Lisbon",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "3/2",
+      "ratio": 1.415
+    },
+    {
+      "city": "Lisbon",
+      "platform": "booking",
+      "basis": "headline average",
+      "pair": "4/3",
+      "ratio": 1.356
+    },
+    {
+      "city": "Lisbon",
+      "platform": "trip",
+      "basis": "from-price median",
+      "pair": "4/3",
+      "ratio": 1.336
+    },
+    {
+      "city": "Bangkok",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "4/3",
+      "ratio": 1.828
+    },
+    {
+      "city": "Bangkok",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "3/2",
+      "ratio": 1.329
+    },
+    {
+      "city": "Bangkok",
+      "platform": "booking",
+      "basis": "headline average",
+      "pair": "4/3",
+      "ratio": 0.98
+    },
+    {
+      "city": "Bangkok",
+      "platform": "trip",
+      "basis": "from-price median",
+      "pair": "4/3",
+      "ratio": 2.382
+    },
+    {
+      "city": "Tokyo",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "4/3",
+      "ratio": 1.713
+    },
+    {
+      "city": "Tokyo",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "3/2",
+      "ratio": 0.884
+    },
+    {
+      "city": "Tokyo",
+      "platform": "booking",
+      "basis": "headline average",
+      "pair": "4/3",
+      "ratio": 2.088
+    },
+    {
+      "city": "Hanoi",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "4/3",
+      "ratio": 1.054
+    },
+    {
+      "city": "Hanoi",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "3/2",
+      "ratio": 2.298
+    },
+    {
+      "city": "Hanoi",
+      "platform": "booking",
+      "basis": "headline average",
+      "pair": "4/3",
+      "ratio": 2.056
+    },
+    {
+      "city": "Vancouver",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "4/3",
+      "ratio": 1.462
+    },
+    {
+      "city": "Vancouver",
+      "platform": "booking",
+      "basis": "first-page list median",
+      "pair": "3/2",
+      "ratio": 1.012
+    },
+    {
+      "city": "Vancouver",
+      "platform": "booking",
+      "basis": "headline average",
+      "pair": "4/3",
+      "ratio": 1.557
+    }
+  ],
+  "q3_headline": [
+    {
+      "city": "Lisbon",
+      "star": "s4",
+      "headline": 240,
+      "listMedian": 202.35,
+      "headlineOverListX": 1.186
+    },
+    {
+      "city": "Lisbon",
+      "star": "s3",
+      "headline": 177,
+      "listMedian": 155.66,
+      "headlineOverListX": 1.137
+    },
+    {
+      "city": "Bangkok",
+      "star": "s4",
+      "headline": 49,
+      "listMedian": 62.56,
+      "headlineOverListX": 0.783
+    },
+    {
+      "city": "Bangkok",
+      "star": "s3",
+      "headline": 50,
+      "listMedian": 34.23,
+      "headlineOverListX": 1.461
+    },
+    {
+      "city": "Tokyo",
+      "star": "s4",
+      "headline": 286,
+      "listMedian": 162.95,
+      "headlineOverListX": 1.755
+    },
+    {
+      "city": "Tokyo",
+      "star": "s3",
+      "headline": 137,
+      "listMedian": 95.13,
+      "headlineOverListX": 1.44
+    },
+    {
+      "city": "Hanoi",
+      "star": "s4",
+      "headline": 37,
+      "listMedian": 42.1,
+      "headlineOverListX": 0.879
+    },
+    {
+      "city": "Hanoi",
+      "star": "s3",
+      "headline": 18,
+      "listMedian": 39.94,
+      "headlineOverListX": 0.451
+    },
+    {
+      "city": "Vancouver",
+      "star": "s4",
+      "headline": 461,
+      "listMedian": 251.39,
+      "headlineOverListX": 1.834
+    },
+    {
+      "city": "Vancouver",
+      "star": "s3",
+      "headline": 296,
+      "listMedian": 171.91,
+      "headlineOverListX": 1.722
+    }
+  ],
+  "q2_summary": [
+    {
+      "pair": "3/2",
+      "basis": "first-page list median",
+      "n": 5,
+      "median": 1.329,
+      "min": 0.884,
+      "max": 2.298,
+      "spreadX": 2.6
+    },
+    {
+      "pair": "4/3",
+      "basis": "first-page list median",
+      "n": 5,
+      "median": 1.462,
+      "min": 1.054,
+      "max": 1.828,
+      "spreadX": 1.734
+    },
+    {
+      "pair": "4/3",
+      "basis": "from-price median",
+      "n": 2,
+      "median": 1.859,
+      "min": 1.336,
+      "max": 2.382,
+      "spreadX": 1.783
+    },
+    {
+      "pair": "4/3",
+      "basis": "full-list, date-controlled",
+      "n": 1,
+      "median": 1.527,
+      "min": 1.527,
+      "max": 1.527,
+      "spreadX": 1
+    },
+    {
+      "pair": "4/3",
+      "basis": "headline average",
+      "n": 5,
+      "median": 1.557,
+      "min": 0.98,
+      "max": 2.088,
+      "spreadX": 2.131
+    }
+  ]
+}

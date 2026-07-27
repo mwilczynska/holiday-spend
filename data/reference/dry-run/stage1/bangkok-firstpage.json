@@ -1,0 +1,101 @@
+{
+  "city": "Bangkok",
+  "countryCode": "th",
+  "capturedAt": "2026-07-27T04:19:12.550Z",
+  "method": "first-page SEO class-page property list, no date control",
+  "booking": {
+    "currency": "USD",
+    "s4": {
+      "prices": [
+        62.46,
+        86.48,
+        105.22,
+        51.32,
+        59.19,
+        85.23,
+        62.66,
+        26.87,
+        44.72,
+        79.32
+      ],
+      "headlineGeneral": 49,
+      "headlineWeekend": 124,
+      "listMedian": 62.56
+    },
+    "s3": {
+      "prices": [
+        43.55,
+        58.98,
+        69.43,
+        28.87,
+        14.99,
+        30.37,
+        33.49,
+        23.19,
+        34.98,
+        84.1
+      ],
+      "headlineGeneral": 50,
+      "headlineWeekend": 66,
+      "listMedian": 34.23
+    },
+    "s2": {
+      "prices": [
+        28.26,
+        25.06,
+        33.65,
+        16.91,
+        32.72,
+        31.09,
+        11.92,
+        17.81,
+        26.46,
+        22.49
+      ],
+      "headlineGeneral": null,
+      "listMedian": 25.76
+    }
+  },
+  "trip": {
+    "currency": "USD",
+    "basis": "FROM price, uncontrolled dates",
+    "s4": {
+      "from": [
+        19,
+        60,
+        44,
+        53,
+        28,
+        63,
+        27,
+        48,
+        67,
+        30,
+        37,
+        33
+      ],
+      "headlineWeekday": 143,
+      "fromMedian": 40.5
+    },
+    "s3": {
+      "from": [
+        22.5,
+        31.5,
+        15,
+        13,
+        14,
+        16,
+        61,
+        17,
+        9,
+        18,
+        19
+      ],
+      "headlineWeekday": 73,
+      "rangeMidpointsUsed": true,
+      "fromMedian": 17
+    }
+  },
+  "anomaly": "booking.com general-average headline is incoherent here: 4-star $49 is BELOW 3-star $50. Weekend/tonight headlines behave normally. Do not use the general-average field.",
+  "estimandNote": "2-star and parts of 3-star are hostels/guesthouses/poshtels. In SEA the star-equivalent classes blend into hostel inventory, unlike Europe."
+}
