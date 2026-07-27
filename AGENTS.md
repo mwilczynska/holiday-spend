@@ -290,7 +290,7 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 
 **Re-scope note:** the original gate of five quotes across three seasons and six classes requires 90 accepted quotes per city, roughly 180 interactive attempts at Copenhagen's observed 50% yield, which is about 6,480 attempts for the pilot and 21,780 for the 121-city recollection. Progress after the entire project to date is one accepted observation, 1 of 648 pilot measure-seasons. Amendment C therefore moves seasonality into the model: index cities keep the original contract, every other city collects one anchor season at three quotes per class, and a seasonal index per `region x destination-type` scales the result. Per-city quotes fall from 90 to 18. Provenance rules are unchanged; only quote volume is reduced. Scaled measures are weaker evidence and must be labeled, separable, and disclosed on `/estimates`.
 
-- [x] Use official registers or destination directories for price-blind frames and direct property sites for quotes; exclude Booking.com and Hostelworld from LLM extraction
+- [x] Use official registers or destination directories for price-blind frames and direct property sites for quotes; exclude Booking.com and Hostelworld from LLM extraction (**superseded 27 July 2026** — Booking.com and Trip.com are now the primary accommodation channels)
 - [x] Pre-register exact-90-day low/shoulder/high windows and require five accepted quotes per measure and season plus at least 60% cross-season property overlap
 - [x] Freeze reproducible Barcelona, Copenhagen, Da Nang, Lisbon, and Prague frames and add an append-only quote-attempt ledger
 - [x] Record website outcomes for all twelve Barcelona 4-star primary properties: verify eleven, resolve the legacy rank-7 identity through its matching registration id, retain rank 4 as a validated unresolved placeholder redirect, and do not count website verification as quote evidence
@@ -358,7 +358,7 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
   - [x] Add a provider-neutral source-research runner that renders bounded assignments, validates saved free-call JSON, requires explicit measure coverage, and keeps all returned rows unreviewed pending evidence review
   - [x] Add extraction-batch validation plus deterministic local-currency aggregation, frozen FX, and v3-alpha basket materialization
   - [x] Add source-channel-aware aggregation that retains secondary evidence and flags cross-channel medians differing by more than the provisional 25% review threshold
-  - [x] Review accommodation source access, exclude Booking.com/Hostelworld from LLM extraction, and route the new panel through official registers plus direct property sites
+  - [x] Review accommodation source access, exclude Booking.com/Hostelworld from LLM extraction, and route the new panel through official registers plus direct property sites (**superseded 27 July 2026**)
   - [x] Pre-register and validate 27 exact-90-day accommodation reference windows across the first nine observed cities
   - [x] Require five direct property quotes per low/shoulder/high season and 60% cross-season panel overlap before an accommodation measure can materialize
   - [x] Freeze the first official-register property frame for Barcelona: 344 active standard hotels, 322 in-radius candidates, 48 price-blind primary selections, and 274 ordered reserves
@@ -490,6 +490,26 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 
 ## Recent Important Changes
 
+### Accommodation Class Ladder Fitted (27 July 2026)
+- Full plan and evidence: `docs/dev/plans/accommodation-collection-v4.md`
+- The collection channel is the booking.com SEO star-class city page, `booking.com/{fourstars|threestars|twostars}/city/{cc}/{slug}.html`, read signed out on a plain fetch; it is the only accommodation channel a small model can drive without browser automation
+- Booking.com live search renders no list without a browser, and Trip.com silently ignores `sort` and `star` URL parameters while returning different prices on repeat fetches of the same URL
+- The first-page read is a biased estimator of the level: sliding a 10-property window across Copenhagen's 108 in-page-order prices gives medians from 275 to 1085 AUD, a 3.945x spread and 160.2% worst-case error, because the commercial sort orders price along the page
+- The platform headline average is erratic rather than merely inflated, ranging 0.451x to 1.834x of the list median, and Bangkok prints a 4-star headline below its 3-star one; headlines are never read as values
+- The class ladder fits from a single anchor across 16 cities: `4star/3star` median 1.297 (R0 leave-one-out 12.6%, holdout 16.9%) and `2star/3star` median 0.734 (15.8% / 14.1%); cost bands make both worse on both metrics so the one-parameter form stands
+- Copenhagen's independent full-inventory date-controlled read gives 1.527, inside the observed range, so a ladder fitted on the biased estimator transfers to an unbiased one
+- The incumbent asserted `accom_4_star = hotel_3star x 1.80` overpredicts 14 of these 16 cities with a median absolute error of 38.8%, reaching +80.1% in San Francisco, and 1.800 lies outside the observed IQR of 1.257-1.555
+- Mandatory rejection rules: confirm the page names the requested city, because both `mexico-city` and `ciudad-de-mexico` silently returned Mexico-wide content with plausible prices; drop room nights below USD 12; reject class lists under four priced properties; flag single-brand lists
+- Open limitation: only the ratios are claimed to transfer. The anchor level remains undated, property-type contaminated, and validated in one city only, so the current position is a modelled ladder on an unmodelled level
+
+### Accommodation Source Reversal (27 July 2026)
+- Booking.com and Trip.com are now the **primary accommodation price channels**; the v3 terms-based exclusion is reversed by owner decision
+- Binding constraints remain: signed out, no member/login rates, no bypassing blocks or CAPTCHAs, browsing pace with checkpointing, blocks recorded as missing observations
+- Prior exclusion text is retained and marked superseded rather than deleted, in `docs/dev/plans/city-cost-source-access.md`, `observed-first-methodology.md`, `docs/product/methodology.md`, and `phase-6-rescope-2026-07-25.md`
+- Driving evidence: a public Booking.com class page returned ten named properties whose median sat 13.4% from Copenhagen's direct-quote ground truth, while the same page's headline average was 54.4% high; the v3 register-first path produced five accepted quotes in one city across five frozen frames
+- The headline-vs-list gap is class-invariant in Copenhagen: 4-star/3-star is 1.358 from headlines and 1.353 from list medians, against the incumbent dataset's asserted 1.800
+- Reading the page-level headline average rather than the property list is an unapplied Amendment E1: a selection rule existed for cocktails and never for hotels
+
 ### Native Account Expansion
 - Added native email/password accounts alongside Google OAuth using dedicated `user_passwords`, `auth_tokens`, and `auth_rate_limits` tables plus `argon2id` password hashing
 - Added public auth flows for signup, check-email, verify-email, forgot-password, reset-password, and resend-verification, with verification required before native sign-in succeeds
@@ -565,7 +585,7 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - Removed the legacy `/api/cities/estimate` route, unused hybrid/Xotelo estimation library, and the inactive anchor-input / legacy estimator components that no longer back any active UI flow
 - The generation UI now surfaces the implied AUD/USD rate directly in the result panel, and dataset history exposes the stored inferred rate per estimate record
 - Older pre-methodology estimate history is retained as read-only audit history rather than being auto-migrated or pruned; the active city row remains the canonical planner source
-- Phase 6 accommodation collection now uses a deterministic repeated-property panel rather than Booking.com/Hostelworld extraction: official registers or classification directories define the sampling frame and selected property sites provide public dated quotes
+- Accommodation collection now reads public search-result listings on Booking.com and Trip.com, signed out, filtered to hotels and star class with taxes and fees included; the v3 register-plus-direct-property panel is retained as a fallback and as the provenance model for quote records
 - `npm run methodology:research` renders one bounded source-research assignment or validates a saved raw/fenced JSON response from a free web-enabled LLM; assignment mismatches, unaccounted measures, duplicate ids, and self-accepted rows fail closed
 - The second pilot checkpoint adds Zanzibar, Shanghai, and Auckland: 12 direct Numbeo food/drink primitives and official paid-attraction prices for Shanghai Tower and Auckland MOTAT; Zanzibar retains explicit attraction missingness and its sparse eight-contributor context
 - The third pilot checkpoint adds Nairobi, Fukuoka, and Queenstown: 12 direct Numbeo food/drink primitives and three official paid-attraction prices; localized Numbeo URLs remain explicit where canonical English pages returned temporary 503 responses
