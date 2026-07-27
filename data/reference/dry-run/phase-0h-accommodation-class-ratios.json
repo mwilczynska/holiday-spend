@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "city-cost-v4-accommodation-ratios-v1",
+  "generatedAt": "2026-07-27T12:14:38.168Z",
+  "estimator": "median of the first-page booking.com star-class property list, signed out, undated, implausible values below USD 12 dropped",
+  "cityCount": 16,
+  "relations": [
+    {
+      "label": "hotel_4star / hotel_3star",
+      "n": 16,
+      "ratio": {
+        "median": 1.2972,
+        "min": 0.9995,
+        "max": 1.8887,
+        "spreadX": 1.89,
+        "iqr": [
+          1.2568,
+          1.5548
+        ]
+      },
+      "bandCuts": [
+        74.51,
+        102.65
+      ],
+      "R1coefficients": {
+        "low": 1.3485468088213817,
+        "low_n": 5,
+        "mid": 1.5022912825915198,
+        "mid_n": 5,
+        "high": 1.2405723869953769,
+        "high_n": 6
+      },
+      "performance": {
+        "n": 16,
+        "holdoutCities": [
+          "Bangkok",
+          "Hanoi",
+          "Prague",
+          "Split"
+        ],
+        "R0": {
+          "loo": 12.6,
+          "holdout": 16.9
+        },
+        "R1": {
+          "loo": 17.2,
+          "holdout": 21.8
+        }
+      },
+      "selected": "R0",
+      "perCity": [
+        {
+          "city": "San Francisco",
+          "anchor": 220.31,
+          "target": 220.2,
+          "ratio": 1
+        },
+        {
+          "city": "Hanoi",
+          "anchor": 39.94,
+          "target": 42.1,
+          "ratio": 1.054
+        },
+        {
+          "city": "Budapest",
+          "anchor": 102.65,
+          "target": 117.25,
+          "ratio": 1.142
+        },
+        {
+          "city": "Split",
+          "anchor": 124.03,
+          "target": 151.85,
+          "ratio": 1.224
+        },
+        {
+          "city": "Barcelona",
+          "anchor": 182.06,
+          "target": 228.82,
+          "ratio": 1.257
+        },
+        {
+          "city": "Sofia",
+          "anchor": 85.09,
+          "target": 107.5,
+          "ratio": 1.263
+        },
+        {
+          "city": "Auckland",
+          "anchor": 73.3,
+          "target": 92.69,
+          "ratio": 1.264
+        },
+        {
+          "city": "Prague",
+          "anchor": 90.41,
+          "target": 117.03,
+          "ratio": 1.294
+        },
+        {
+          "city": "Lisbon",
+          "anchor": 155.66,
+          "target": 202.35,
+          "ratio": 1.3
+        },
+        {
+          "city": "Dubai",
+          "anchor": 68.47,
+          "target": 92.34,
+          "ratio": 1.349
+        },
+        {
+          "city": "Vancouver",
+          "anchor": 171.91,
+          "target": 251.39,
+          "ratio": 1.462
+        },
+        {
+          "city": "Seoul",
+          "anchor": 94.92,
+          "target": 142.61,
+          "ratio": 1.502
+        },
+        {
+          "city": "Istanbul",
+          "anchor": 74.51,
+          "target": 115.85,
+          "ratio": 1.555
+        },
+        {
+          "city": "Tokyo",
+          "anchor": 95.13,
+          "target": 162.95,
+          "ratio": 1.713
+        },
+        {
+          "city": "Bangkok",
+          "anchor": 34.23,
+          "target": 62.56,
+          "ratio": 1.827
+        },
+        {
+          "city": "Nairobi",
+          "anchor": 64.26,
+          "target": 121.36,
+          "ratio": 1.889
+        }
+      ]
+    },
+    {
+      "label": "hotel_2star / hotel_3star",
+      "n": 16,
+      "ratio": {
+        "median": 0.7341,
+        "min": 0.4351,
+        "max": 1.1317,
+        "spreadX": 2.6,
+        "iqr": [
+          0.6785,
+          0.9032
+        ]
+      },
+      "bandCuts": [
+        74.51,
+        102.65
+      ],
+      "R1coefficients": {
+        "low": 0.7617204615159925,
+        "low_n": 5,
+        "mid": 0.7945242249362503,
+        "mid_n": 5,
+        "high": 0.6962023626556884,
+        "high_n": 6
+      },
+      "performance": {
+        "n": 16,
+        "holdoutCities": [
+          "Bangkok",
+          "Hanoi",
+          "Prague",
+          "Split"
+        ],
+        "R0": {
+          "loo": 15.8,
+          "holdout": 14.1
+        },
+        "R1": {
+          "loo": 22.5,
+          "holdout": 15.1
+        }
+      },
+      "selected": "R0",
+      "perCity": [
+        {
+          "city": "Hanoi",
+          "anchor": 39.94,
+          "target": 17.38,
+          "ratio": 0.435
+        },
+        {
+          "city": "San Francisco",
+          "anchor": 220.31,
+          "target": 109.53,
+          "ratio": 0.497
+        },
+        {
+          "city": "Nairobi",
+          "anchor": 64.26,
+          "target": 36.19,
+          "ratio": 0.563
+        },
+        {
+          "city": "Budapest",
+          "anchor": 102.65,
+          "target": 67.11,
+          "ratio": 0.654
+        },
+        {
+          "city": "Prague",
+          "anchor": 90.41,
+          "target": 61.34,
+          "ratio": 0.678
+        },
+        {
+          "city": "Sofia",
+          "anchor": 85.09,
+          "target": 57.84,
+          "ratio": 0.68
+        },
+        {
+          "city": "Split",
+          "anchor": 124.03,
+          "target": 85.06,
+          "ratio": 0.686
+        },
+        {
+          "city": "Lisbon",
+          "anchor": 155.66,
+          "target": 109.98,
+          "ratio": 0.707
+        },
+        {
+          "city": "Dubai",
+          "anchor": 68.47,
+          "target": 52.16,
+          "ratio": 0.762
+        },
+        {
+          "city": "Bangkok",
+          "anchor": 34.23,
+          "target": 26.46,
+          "ratio": 0.773
+        },
+        {
+          "city": "Istanbul",
+          "anchor": 74.51,
+          "target": 59.2,
+          "ratio": 0.795
+        },
+        {
+          "city": "Auckland",
+          "anchor": 73.3,
+          "target": 60.96,
+          "ratio": 0.832
+        },
+        {
+          "city": "Barcelona",
+          "anchor": 182.06,
+          "target": 164.44,
+          "ratio": 0.903
+        },
+        {
+          "city": "Seoul",
+          "anchor": 94.92,
+          "target": 88.43,
+          "ratio": 0.932
+        },
+        {
+          "city": "Vancouver",
+          "anchor": 171.91,
+          "target": 169.82,
+          "ratio": 0.988
+        },
+        {
+          "city": "Tokyo",
+          "anchor": 95.13,
+          "target": 107.66,
+          "ratio": 1.132
+        }
+      ]
+    }
+  ],
+  "independentCheck": {
+    "city": "Copenhagen",
+    "basis": "full-inventory, date-controlled browser read (108 four-star, 25 three-star), AUD",
+    "s4": 417,
+    "s3": 273,
+    "ratio": 1.527,
+    "note": "Held out of the fit because its estimator is full-inventory rather than first-page. Used to ask whether the ladder fitted on a biased estimator transfers to an unbiased one."
+  },
+  "incumbentComparison": {
+    "assertedFourOverThree": 1.8,
+    "source": "docs/prompts/llm_prompt_new_cities_1.md, applied to all 121 rows of city_costs_app_aud.csv"
+  }
+}
