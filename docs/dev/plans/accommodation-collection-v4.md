@@ -57,6 +57,49 @@ currency and city price level cancel and no FX is involved.
 Cost bands make both relations worse on leave-one-out *and* holdout, so the one-parameter form stands
 under the Phase 0d rule that a more complex form is adopted only when both agree.
 
+### Hostels — one blended measure, not two
+
+`https://www.booking.com/hostels/city/{cc}/{slug}.html` renders on the same plain fetch. It supports a
+hostel ratio, but **not the dorm-versus-private split the planner tiers assume.**
+
+| Relation | n | Median ratio | IQR | R0 LOO / holdout |
+| --- | --- | --- | --- | --- |
+| `hostel / 3star` | 13 | **0.592** | 0.517–0.647 | 16.6% / **36.6%** |
+| `hostel / 2star` | 13 | **0.807** | 0.752–0.863 | 7.9% / 4.9% |
+
+**Why a ratio is valid despite an unknown unit.** The page never says whether a price is a dorm bed or
+a private room, and the mix genuinely differs by city — Dubai names bed-space units at USD 14–17 while
+Lisbon lists USD 67–109. But a property carries the **same price on the hostels page and on whichever
+star-class page also lists it**, verified across five cities and eight properties (Prague Hostel EMMA
+40.64, Prague Charles Bridge 59.69, Prague White Wolf 80.42, Barcelona B-Garden 280.09, San Francisco
+Samesun 122.60 / HI Downtown 88.20 / Orange Village 102.06, Auckland Verandahs Parkside 46.25 / Newton
+Lodge 71.52). Both sides of the ratio therefore share one unit, even though that unit is unnamed.
+
+**The ladder is internally coherent.** `2star/3star × hostel/2star = 0.5926` against a directly fitted
+`hostel/3star` of `0.5919`. The chain and the direct fit agree to four decimal places, which is a real
+consistency check rather than an assumption.
+
+**Two cautions that must not be dropped.**
+
+- `hostel / 2star` looks like the best relation in the whole study at 7.9% / 4.9%, but it is **partly
+  tautological**: the 2-star and hostel pages share properties outright, so part of that accuracy is
+  the same numbers appearing on both sides. Prefer `hostel / 3star` as the published relation.
+- `hostel / 3star` has a **36.6% holdout against a 16.6% leave-one-out**. At n=13 the holdout is three
+  cities — Bangkok, Istanbul, San Francisco — and Bangkok is the extreme (0.891 against a 0.592 median).
+  This relation is materially weaker than the hotel ladder and should carry a wider published interval.
+
+**What cannot be done here.** `accom_shared_hostel_dorm` and `accom_hostel_private_room` cannot both be
+derived from this channel — there is one blended measure, and deriving two tiers from it would
+manufacture a distinction the evidence does not contain. Separating them needs either a dated
+signed-out search at one-adult versus two-adult occupancy (browser, fails the small-model requirement)
+or a channel that labels the unit, such as Hostelworld — whose exclusion has **not** been reversed and
+would need the same owner decision Booking.com received.
+
+The incumbent's hostel values are not a hard-coded constant like 1.800: `dorm/3star` carries 47 distinct
+values across 121 rows (IQR 0.400–0.455) and `private/3star` 37 (IQR 0.509–0.582), because both are
+pass-throughs of recalled anchors rather than asserted multipliers. They are unverified rather than
+refuted, and the observed blended 0.592 sits between them, which is what a dorm/private blend should do.
+
 **Independent check.** Copenhagen's full-inventory, date-controlled read gives `417 / 273 = 1.527`,
 inside the observed range. A ladder fitted on the biased first-page estimator transfers to an unbiased
 one — which is the level-versus-structure separation working again: the estimator's bias is largely

@@ -38,27 +38,29 @@ const clean = (xs) => (xs ?? []).filter((x) => typeof x === 'number' && x >= IMP
 // ------------------------------------------------------------ assemble cities
 function loadCities() {
   const out = {};
-  const put = (city, s4, s3, s2, source) => {
-    const c4 = clean(s4); const c3 = clean(s3); const c2 = clean(s2);
+  const put = (city, s4, s3, s2, hostel, source) => {
+    const c4 = clean(s4); const c3 = clean(s3); const c2 = clean(s2); const ch = clean(hostel);
     if (c3.length < 4) return; // no usable anchor
+    const prev = out[city];
     out[city] = {
       source,
-      n: { s4: c4.length, s3: c3.length, s2: c2.length },
-      med: { s4: median(c4), s3: median(c3), s2: median(c2) },
+      n: { s4: c4.length, s3: c3.length, s2: c2.length, hostel: ch.length },
+      med: { s4: median(c4), s3: median(c3), s2: median(c2), hostel: median(ch) ?? prev?.med?.hostel ?? null },
     };
   };
 
   const b = read('stage-b-class-pages.json');
   for (const [city, c] of Object.entries(b.cities)) {
-    put(city, c.prices.s4, c.prices.s3, c.prices.s2, 'stage-b class page');
+    put(city, c.prices.s4, c.prices.s3, c.prices.s2, c.prices.hostel, 'stage-b class page');
   }
+  const hostelOf = (city) => b.cities[city]?.prices?.hostel;
   for (const f of ['lisbon-firstpage.json', 'bangkok-firstpage.json']) {
     const j = read(f);
-    put(j.city, j.booking.s4?.prices, j.booking.s3?.prices, j.booking.s2?.prices, 'stage-a class page');
+    put(j.city, j.booking.s4?.prices, j.booking.s3?.prices, j.booking.s2?.prices, hostelOf(j.city), 'stage-a class page');
   }
   const w2 = read('wave2-firstpage.json');
   for (const [city, c] of Object.entries(w2.cities)) {
-    put(city, c.prices.s4, c.prices.s3, c.prices.s2, 'stage-a class page');
+    put(city, c.prices.s4, c.prices.s3, c.prices.s2, hostelOf(city), 'stage-a class page');
   }
   // Copenhagen is the only full-inventory, date-controlled read. It is held
   // out of the fit and used as the independent level check, because its
@@ -152,7 +154,14 @@ const result = {
   relations: [
     relation(cities, 's4', 's3', 'hotel_4star / hotel_3star'),
     relation(cities, 's2', 's3', 'hotel_2star / hotel_3star'),
+    relation(cities, 'hostel', 's3', 'hostel_blended / hotel_3star'),
+    relation(cities, 'hostel', 's2', 'hostel_blended / hotel_2star'),
   ],
+  hostelCaveat: {
+    unit: 'unknown and city-dependent: the hostels page never states dorm bed versus private room, and Dubai names bed-space units at USD 14-17 while Lisbon lists USD 67-109',
+    whyTheRatioIsStillValid: 'a property carries the same price on the hostels page and on whichever star-class page also lists it, verified across five cities and eight properties, so both sides of the ratio share one unit even though that unit is unnamed',
+    notSeparable: 'this fits ONE blended hostel measure. accom_shared_hostel_dorm and accom_hostel_private_room cannot be separated on this channel and must not both be derived from it.',
+  },
   independentCheck: {
     city: 'Copenhagen',
     basis: 'full-inventory, date-controlled browser read (108 four-star, 25 three-star), AUD',

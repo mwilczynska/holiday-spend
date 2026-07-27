@@ -500,6 +500,12 @@ Phase 6 replaces the current anchor-and-derive city costs with directly observed
 - Copenhagen's independent full-inventory date-controlled read gives 1.527, inside the observed range, so a ladder fitted on the biased estimator transfers to an unbiased one
 - The incumbent asserted `accom_4_star = hotel_3star x 1.80` overpredicts 14 of these 16 cities with a median absolute error of 38.8%, reaching +80.1% in San Francisco, and 1.800 lies outside the observed IQR of 1.257-1.555
 - Mandatory rejection rules: confirm the page names the requested city, because both `mexico-city` and `ciudad-de-mexico` silently returned Mexico-wide content with plausible prices; drop room nights below USD 12; reject class lists under four priced properties; flag single-brand lists
+- Hostels use `booking.com/hostels/city/{cc}/{slug}.html` on the same plain fetch and yield ONE blended measure: `hostel/3star` median 0.592 (LOO 16.6%, holdout 36.6%, n=13) and `hostel/2star` median 0.807 (7.9% / 4.9%)
+- The hostels page never states dorm bed versus private room and the mix differs by city, but a property carries the same price on the hostels page and on whichever star-class page also lists it, verified across five cities and eight properties, so both sides of the ratio share one unnamed unit
+- The ladder is internally coherent: `2star/3star x hostel/2star` = 0.5926 against a directly fitted `hostel/3star` of 0.5919
+- `hostel/2star` is partly tautological because the two pages share properties outright, so `hostel/3star` is the relation to publish despite its weaker holdout
+- `accom_shared_hostel_dorm` and `accom_hostel_private_room` must not both be derived from this channel; separating them needs occupancy-controlled search (browser) or a unit-labelling channel such as Hostelworld, whose exclusion has not been reversed
+- The incumbent hostel values are unverified rather than refuted: `dorm/3star` has 47 distinct values across 121 rows (IQR 0.400-0.455) and `private/3star` 37 (IQR 0.509-0.582) because both are pass-throughs of recalled anchors, not asserted multipliers
 - Open limitation: only the ratios are claimed to transfer. The anchor level remains undated, property-type contaminated, and validated in one city only, so the current position is a modelled ladder on an unmodelled level
 
 ### Accommodation Source Reversal (27 July 2026)

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "city-cost-v4-accommodation-ratios-v1",
-  "generatedAt": "2026-07-27T12:14:38.168Z",
+  "generatedAt": "2026-07-27T12:25:12.213Z",
   "estimator": "median of the first-page booking.com star-class property list, signed out, undated, implausible values below USD 12 dropped",
   "cityCount": 16,
   "relations": [
@@ -287,8 +287,259 @@
           "ratio": 1.132
         }
       ]
+    },
+    {
+      "label": "hostel_blended / hotel_3star",
+      "n": 13,
+      "ratio": {
+        "median": 0.5919,
+        "min": 0.4014,
+        "max": 0.8906,
+        "spreadX": 2.22,
+        "iqr": [
+          0.5165,
+          0.6471
+        ]
+      },
+      "bandCuts": [
+        74.51,
+        102.65
+      ],
+      "R1coefficients": {
+        "low": 0.5600633740670923,
+        "low_n": 4,
+        "mid": 0.6736920260741701,
+        "mid_n": 4,
+        "high": 0.5372625426205553,
+        "high_n": 5
+      },
+      "performance": {
+        "n": 13,
+        "holdoutCities": [
+          "Bangkok",
+          "Istanbul",
+          "San Francisco"
+        ],
+        "R0": {
+          "loo": 16.6,
+          "holdout": 36.6
+        },
+        "R1": {
+          "loo": 13.9,
+          "holdout": 36.6
+        }
+      },
+      "selected": "R0",
+      "perCity": [
+        {
+          "city": "San Francisco",
+          "anchor": 220.31,
+          "target": 88.43,
+          "ratio": 0.401
+        },
+        {
+          "city": "Nairobi",
+          "anchor": 64.26,
+          "target": 27.63,
+          "ratio": 0.43
+        },
+        {
+          "city": "Dubai",
+          "anchor": 68.47,
+          "target": 34.31,
+          "ratio": 0.501
+        },
+        {
+          "city": "Barcelona",
+          "anchor": 182.06,
+          "target": 94.04,
+          "ratio": 0.517
+        },
+        {
+          "city": "Sofia",
+          "anchor": 85.09,
+          "target": 45.42,
+          "ratio": 0.534
+        },
+        {
+          "city": "Budapest",
+          "anchor": 102.65,
+          "target": 55.15,
+          "ratio": 0.537
+        },
+        {
+          "city": "Split",
+          "anchor": 124.03,
+          "target": 73.41,
+          "ratio": 0.592
+        },
+        {
+          "city": "Lisbon",
+          "anchor": 155.66,
+          "target": 95.3,
+          "ratio": 0.612
+        },
+        {
+          "city": "Auckland",
+          "anchor": 73.3,
+          "target": 45.38,
+          "ratio": 0.619
+        },
+        {
+          "city": "Istanbul",
+          "anchor": 74.51,
+          "target": 48.22,
+          "ratio": 0.647
+        },
+        {
+          "city": "Seoul",
+          "anchor": 94.92,
+          "target": 66.47,
+          "ratio": 0.7
+        },
+        {
+          "city": "Prague",
+          "anchor": 90.41,
+          "target": 64.21,
+          "ratio": 0.71
+        },
+        {
+          "city": "Bangkok",
+          "anchor": 34.23,
+          "target": 30.49,
+          "ratio": 0.891
+        }
+      ]
+    },
+    {
+      "label": "hostel_blended / hotel_2star",
+      "n": 13,
+      "ratio": {
+        "median": 0.8073,
+        "min": 0.5719,
+        "max": 1.1523,
+        "spreadX": 2.01,
+        "iqr": [
+          0.7517,
+          0.863
+        ]
+      },
+      "bandCuts": [
+        59.2,
+        85.06
+      ],
+      "R1coefficients": {
+        "low": 0.7743794211794719,
+        "low_n": 4,
+        "mid": 0.818113848230215,
+        "mid_n": 4,
+        "high": 0.8073218605925048,
+        "high_n": 5
+      },
+      "performance": {
+        "n": 13,
+        "holdoutCities": [
+          "Bangkok",
+          "Istanbul",
+          "San Francisco"
+        ],
+        "R0": {
+          "loo": 7.9,
+          "holdout": 4.9
+        },
+        "R1": {
+          "loo": 9.7,
+          "holdout": 4.9
+        }
+      },
+      "selected": "R0",
+      "perCity": [
+        {
+          "city": "Barcelona",
+          "anchor": 164.44,
+          "target": 94.04,
+          "ratio": 0.572
+        },
+        {
+          "city": "Dubai",
+          "anchor": 52.16,
+          "target": 34.31,
+          "ratio": 0.658
+        },
+        {
+          "city": "Auckland",
+          "anchor": 60.96,
+          "target": 45.38,
+          "ratio": 0.744
+        },
+        {
+          "city": "Seoul",
+          "anchor": 88.43,
+          "target": 66.47,
+          "ratio": 0.752
+        },
+        {
+          "city": "Nairobi",
+          "anchor": 36.19,
+          "target": 27.63,
+          "ratio": 0.763
+        },
+        {
+          "city": "Sofia",
+          "anchor": 57.84,
+          "target": 45.42,
+          "ratio": 0.785
+        },
+        {
+          "city": "San Francisco",
+          "anchor": 109.53,
+          "target": 88.43,
+          "ratio": 0.807
+        },
+        {
+          "city": "Istanbul",
+          "anchor": 59.2,
+          "target": 48.22,
+          "ratio": 0.814
+        },
+        {
+          "city": "Budapest",
+          "anchor": 67.11,
+          "target": 55.15,
+          "ratio": 0.822
+        },
+        {
+          "city": "Split",
+          "anchor": 85.06,
+          "target": 73.41,
+          "ratio": 0.863
+        },
+        {
+          "city": "Lisbon",
+          "anchor": 109.98,
+          "target": 95.3,
+          "ratio": 0.867
+        },
+        {
+          "city": "Prague",
+          "anchor": 61.34,
+          "target": 64.21,
+          "ratio": 1.047
+        },
+        {
+          "city": "Bangkok",
+          "anchor": 26.46,
+          "target": 30.49,
+          "ratio": 1.152
+        }
+      ]
     }
   ],
+  "hostelCaveat": {
+    "unit": "unknown and city-dependent: the hostels page never states dorm bed versus private room, and Dubai names bed-space units at USD 14-17 while Lisbon lists USD 67-109",
+    "whyTheRatioIsStillValid": "a property carries the same price on the hostels page and on whichever star-class page also lists it, verified across five cities and eight properties, so both sides of the ratio share one unit even though that unit is unnamed",
+    "notSeparable": "this fits ONE blended hostel measure. accom_shared_hostel_dorm and accom_hostel_private_room cannot be separated on this channel and must not both be derived from it."
+  },
   "independentCheck": {
     "city": "Copenhagen",
     "basis": "full-inventory, date-controlled browser read (108 four-star, 25 three-star), AUD",
