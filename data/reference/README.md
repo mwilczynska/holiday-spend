@@ -40,6 +40,18 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 | `dry-run/stage1/bangkok-firstpage.json` | **LIVE** | Kept for the **class-inversion anomaly** — 4-star headline below 3-star | provenance |
 | `dry-run/stage1/lisbon-firstpage.json` | **LIVE** | First-page capture | provenance |
 
+## CURRENT — v5 methodology evidence
+
+V5 contracts and experiments are kept under `data/reference/v5/`. The workstream is not yet integrated
+into the app and does not replace the live v1 CSV.
+
+| Path | Status | What it is | Read by |
+| --- | --- | --- | --- |
+| `v5/data-dictionary-v5.md` | **CURRENT** | Frozen v5 estimands, units, source bases, and missingness semantics | v5 experiments |
+| `v5/validation-manifest-v5.json` | **CURRENT** | City-level validation split and acceptance gates | v5 experiments |
+| `v5/experiments/000-baseline-reassessment/` | **IN PROGRESS** | Deterministic audit of retained v3/v4 evidence | `methodology:v5:baseline` |
+| `v5/experiments/001-one-call-harness/` | **IN PROGRESS** | Target-model extractor prompt, schema fixture, and one-call telemetry outputs | `run-city-cost-v5-one-call.mjs` |
+
 ## LIVE — v3 evidence that v4 runs on
 
 Collected under the abandoned programme, but **still active input**. Do not treat as stale.

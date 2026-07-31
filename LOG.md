@@ -610,3 +610,27 @@ Superseded material sits under `archive/` folders and carries a `> **SUPERSEDED*
 | `docs/product/archive/estimates-page-v3-draft.md` | An `/estimates` draft that was never wired up |
 | `docs/dev/archive/plans/`, `docs/dev/archive/handoffs/` | Completed app workstreams and their handoffs |
 | `docs/dev/archive/PLAN-initial-spec.md` | The original project spec |
+
+---
+
+# Part 5 — City cost methodology v5 workstream
+
+## Experiment 000 — deterministic baseline reassessment (31 July 2026)
+
+The first v5 experiment audited the retained v3/v4 evidence without treating the asserted production CSV
+as ground truth. It read 176 accepted observation rows with zero duplicate observation IDs and found
+evidence for **99 cities across all nine regions**. The generated report reproduced byte-identically on a
+second run.
+
+Direct evidence counts were: inexpensive meal 99, mid-range meal 97, fast-food combo 68, beer 97,
+cappuccino 97, paid attraction 29, half-day activity 3, full-day activity 2, and direct 4-star
+accommodation 1. Dorm, private-hostel, 1-star, 2-star, and 3-star accommodation had **zero** direct
+observations. Street food, premium meal, cocktail, and wine were absent at the density needed to calibrate
+their proposed v4 proxy coefficients.
+
+The v4 proxy partition reaches 68 cities for the street/budget/mid-range food path, 97 for high-end food,
+and 97 for coffee/beer drink baskets. Those are input-availability counts, not shipped-target validation.
+The baseline is therefore **retained as reusable evidence but rejected as a complete production method**.
+It also has no target-model one-call result because the environment has no configured Luna/Haiku provider
+credential. The machine-readable report and verdict are in
+`data/reference/v5/experiments/000-baseline-reassessment/`.

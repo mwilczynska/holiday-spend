@@ -10,7 +10,8 @@ change history.
 | --- | --- |
 | What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
 | What was built, what methodologies were tried and what they produced, dataset inventory | **[LOG.md](LOG.md)** |
-| The active city cost methodology in full | `docs/product/methodology-v4.md` |
+| The active city cost methodology workstream | `docs/dev/plans/city-cost-methodology-v5.md` |
+| Prior methodology evidence | `docs/product/methodology-v4.md` |
 
 ---
 
@@ -70,7 +71,8 @@ Recharts · NextAuth · Vitest + Playwright
 | Path | Contents |
 | --- | --- |
 | repo root | App code |
-| `docs/product/methodology-v4.md` | **The active methodology** |
+| `docs/dev/plans/city-cost-methodology-v5.md` | **The active methodology workstream** |
+| `docs/product/methodology-v4.md` | Prior methodology evidence; not integrated |
 | `docs/dev/plans/`, `docs/dev/handoffs/` | **Only current** workstream documents |
 | `docs/prompts/` | Versioned LLM prompt contracts — see its `README.md` for status |
 | `docs/ops/` | Deployment runbooks |
@@ -112,9 +114,10 @@ ten anchor prices and asserted multipliers derive 19 tiers.
 > measured and refuted — it overpredicts 14 of 16 tested cities with a median absolute error of 38.8%.
 > The replacement is designed but not integrated. See PLAN.md.
 
-### The active design (v4)
+### The prior design (v4)
 
-Documented in full in `docs/product/methodology-v4.md`. Its governing principle:
+Documented in full in `docs/product/methodology-v4.md`. Its governing principle remains valuable evidence,
+but v4 is not integrated and is not presumed to be the v5 answer:
 
 > **Measure what is cheap to measure. Model only the gaps. Never assert a constant.**
 
@@ -135,7 +138,9 @@ conversion, and never emits a tier. All derivation is a pure server-side functio
 | The dataset | **By persistence** | Anchors stored with provenance; a city never changes until a deliberate refresh |
 
 **`docs/prompts/llm_prompt_city_anchors_v4.md` is generated from methodology-v4.md §9.1.** Never edit it
-directly — edit the methodology and regenerate, or the two will drift.
+directly — edit the methodology and regenerate, or the two will drift. The active replacement workstream is
+`docs/dev/plans/city-cost-methodology-v5.md`; v5 contracts and experiments live under
+`data/reference/v5/` and must pass their locked gates before app integration.
 
 ### Transport is out of scope
 
@@ -244,14 +249,15 @@ login page shows provider-specific guidance instead.
 
 | Path | Purpose |
 | --- | --- |
-| `docs/product/methodology-v4.md` | The active methodology; §9.1 is the prompt's source of truth |
+| `docs/dev/plans/city-cost-methodology-v5.md` | Active v5 methodology workstream and acceptance gates |
+| `docs/product/methodology-v4.md` | Prior methodology evidence; §9.1 is the v4 prompt's source of truth |
 | `data/reference/city_costs_app_aud.csv` | The live 121-city dataset |
 | `src/lib/city-generation-config.ts` | Provider/model defaults, migrations, validation |
 | `src/lib/city-generation.ts`, `city-llm-client.ts` | Current generation path |
 | `src/lib/provider-model-discovery.ts` | Three-tier model discovery |
 | `src/lib/country-metadata.ts` | Canonical country resolution |
 | `src/lib/plan-comparison.ts` | The canonical planned-allocation engine |
-| `src/lib/city-cost-methodology-v3.ts` | `evidenceBasis`, FX, `money`/`quantile` helpers — reused by v4 |
+| `src/lib/city-cost-methodology-v3.ts` | `evidenceBasis`, FX, `money`/`quantile` helpers — candidates for v5 reuse |
 | `src/lib/transport-estimation.ts` | Web-search wiring, prompt versioning, JSON parse fallbacks, retry |
 | `src/lib/wise-csv-parser.ts`, `wise-import.ts` | Wise import |
 | `scripts/fit-city-cost-ratios.mjs` | Deterministic ratio fitting — reproduces methodology-v4.md §6–§7 |

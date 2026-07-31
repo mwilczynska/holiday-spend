@@ -32,6 +32,16 @@ re-derive is a claim you cannot audit.
 > The two accommodation scripts embed a `generatedAt` timestamp, so their artifacts differ by that one
 > line on re-run while every computed value reproduces exactly.
 
+## CURRENT — methodology v5
+
+| Command (`npm run …`) | Script | Purpose |
+| --- | --- | --- |
+| `methodology:v5:baseline` | `audit-city-cost-v5-baseline.mjs` | Experiment 000: deterministic coverage and provenance audit of the retained v3/v4 evidence; does not treat the shipping CSV as ground truth |
+| `node scripts/run-city-cost-v5-one-call.mjs` | `run-city-cost-v5-one-call.mjs` | Experiment 001: exactly one OpenAI Responses or Anthropic Messages request with built-in web search, telemetry, and strict local validation; requires a provider key |
+
+V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
+inputs, raw evidence, deterministic results, and verdict.
+
 ## HISTORICAL — v1 audit
 
 | Command | Script | Purpose |

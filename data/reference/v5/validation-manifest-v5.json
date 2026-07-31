@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v5-validation-manifest-v1",
+  "status": "frozen-for-experiment-000",
+  "dataDictionary": "data/reference/v5/data-dictionary-v5.md",
+  "citySplit": {
+    "unit": "city",
+    "development": "existing v3/v4 evidence; no final holdout tuning",
+    "validation": "pre-registered city-level sample to be populated",
+    "holdout": "locked city-level sample, revealed once per candidate freeze"
+  },
+  "coverageTargets": {
+    "regions": 9,
+    "costBands": ["low", "mid", "high"],
+    "completeMatchedCitiesPerMaterialRelationship": 30,
+    "lockedHoldoutCitiesPerMultiTierClaim": 10
+  },
+  "acceptanceGates": {
+    "medianAbsolutePercentageErrorMax": 25,
+    "p90AbsolutePercentageErrorMax": 50,
+    "absoluteMedianSignedErrorMax": 10,
+    "oneCallPipelineSuccessMin": 0.95,
+    "auditedCitationCorrectnessMin": 0.95,
+    "activitiesFreeScored": false
+  },
+  "productionConstraint": {
+    "llmRequestsPerCity": 1,
+    "targetModels": ["GPT-5.6 Luna", "Claude Haiku-class"],
+    "sourceApiKeysAllowed": false,
+    "sourceAccountsAllowed": false,
+    "paidDataApisAllowed": false,
+    "retriesOrFollowUpLlmCallsAllowed": false
+  },
+  "status": "live-call test pending target-model credentials"
+}
