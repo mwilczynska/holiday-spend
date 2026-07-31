@@ -26,6 +26,7 @@
 | `llm_prompt_city_cost_v5_experiment_024_accommodation_ground_truth.md` | **EXPERIMENT — complete; strict route rejected** | one city per delegated GPT-5.6 Luna-class invocation | Strict six-class accommodation panel; retrieval evidence only, revised boundary follows |
 | `llm_prompt_city_cost_v5_experiment_025_accommodation_bed_boundary.md` | **EXPERIMENT — complete; boundary promoted** | one city per delegated GPT-5.6 Luna-class invocation | Tests explicit one-bed dorm inputs with deterministic two-traveller scaling |
 | `llm_prompt_city_cost_v5_experiment_027_hotevi_tiers.md` | **EXPERIMENT — complete; production source rejected** | one city per delegated GPT-5.6 Luna-class invocation | Tests HOTEVI grouped 1–2/3/4–5-star source rows without mapping them to product classes |
+| `llm_prompt_city_cost_v5_experiment_028_expedia_class_trends.md` | **EXPERIMENT — complete; 2–4-star route promoted for validation** | one city per delegated GPT-5.6 Luna-class invocation | Tests Expedia two-adult class-specific trend snippets; rejects from/lowest/event prices |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The v5 experiment prompt includes auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

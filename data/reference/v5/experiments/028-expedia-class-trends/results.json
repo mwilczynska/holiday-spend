@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "status": "complete_promising_source_incomplete_protocol_deviation",
+  "citiesPlanned": ["Lisbon", "Hanoi", "Copenhagen"],
+  "citiesTested": 3,
+  "acceptedCells": 7,
+  "totalCells": 12,
+  "completeCities": [],
+  "byMeasure": {
+    "expedia_1_star": {"acceptedRows": 0, "cities": 0},
+    "expedia_2_star": {"acceptedRows": 2, "cities": 2},
+    "expedia_3_star": {"acceptedRows": 3, "cities": 3},
+    "expedia_4_star": {"acceptedRows": 2, "cities": 2}
+  },
+  "protocolDeviation": {
+    "city": "Copenhagen",
+    "uniqueQueries": 4,
+    "actualSearchOperations": 8,
+    "description": "The delegated call repeated the identical four-query search batch. Its first unique batch is retained as feasibility evidence; the invocation is not counted as production-compliant."
+  },
+  "measures": ["expedia_1_star", "expedia_2_star", "expedia_3_star", "expedia_4_star"],
+  "note": "All accepted rows are Expedia trend averages based on two-adult base rates and exclude taxes/fees. USD is normalized from the Expedia.com dollar display and remains a source-locale inference requiring FX review. No 1-star row was found and no accommodation model is fitted."
+}

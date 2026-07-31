@@ -274,6 +274,11 @@ Experiment 027 tested HOTEVI grouped 1–2/3/4–5-star rows and accepted only H
 occupancy was unknown and the grouped tiers cannot map to product star classes. Reject HOTEVI for production
 and test another public source or an explicitly validated occupancy hypothesis.
 
+Experiment 028 found a promising Expedia route: 7/12 2–4-star trend cells across Lisbon, Hanoi, and
+Copenhagen, with no 1-star and no complete city. Copenhagen repeated its four-query batch (8 actual search
+operations), so retain that protocol deviation. Broaden the 2–4-star route, solve 1-star separately, and keep
+strict one-city/search-count/currency provenance.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

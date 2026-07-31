@@ -1028,3 +1028,16 @@ star observations.
 **Verdict:** reject HOTEVI as a production accommodation source; retain it only as a calibration benchmark
 candidate. Do not map grouped tiers to `accom_1_star`–`accom_4_star` or treat them as two-adult evidence.
 Read `data/reference/v5/experiments/027-hotevi-tier-feasibility/`.
+
+## Experiment 028 — Expedia class trends (31 July 2026)
+
+Three independent GPT-5.6 Luna-class one-city calls tested four Expedia class-trend searches each. Lisbon and
+Hanoi each issued exactly four searches; Copenhagen repeated the identical batch, creating eight actual search
+operations for four unique queries. The duplicate is recorded as a protocol deviation and not counted as
+production-compliant. First-batch coverage was **7/12**: Lisbon 2/3/4-star, Hanoi 2/3/4-star, Copenhagen
+3-star. No 1-star row and no complete city were found.
+
+Accepted snippets explicitly state city/class, two-adult nightly trend basis, reference window, and taxes/fees
+excluded. USD is normalized from Expedia.com dollar display and remains a source-locale inference for FX
+review. **Verdict:** promote the 2–4-star route for broader testing, solve 1-star separately, and do not fit
+accommodation models until the 30-city/10-holdout gate. Read `data/reference/v5/experiments/028-expedia-class-trends/`.

@@ -260,12 +260,19 @@ lacked a visible row month and Copenhagen lacked exact city rows. Accepted cover
 occupancy basis and no valid mapping to the four product star classes. Retain HOTEVI only as a possible
 calibration benchmark, not as a production anchor. See `data/reference/v5/experiments/027-hotevi-tier-feasibility/`.
 
+**Experiment 028 — Expedia class trends — complete; promote 2–4-star candidate, reject complete route.** Three
+one-city calls issued four class searches each; 7/12 cells passed (Lisbon 2/3/4-star, Hanoi 2/3/4-star,
+Copenhagen 3-star). No 1-star row and no complete city. Copenhagen repeated the identical batch, so it has
+eight actual search operations for four unique queries and is not production-compliant. Accepted snippets
+state two-adult trend bases and excluded taxes/fees; source-locale USD needs FX review. See
+`data/reference/v5/experiments/028-expedia-class-trends/`.
+
 ### Next experiments, in order
 
-1. Test a separately declared hotel-class occupancy-basis hypothesis or another public source family in
-   independent one-city calls; never silently reinterpret missing occupancy as two-adult evidence. Retain the
-   one-bed dorm input boundary, require 30 complete cities and 10 locked holdouts before any fit, and preserve
-   source/display currency, exact query provenance, and all missingness.
+1. Broaden the Expedia 2–4-star route across independent cities and solve 1-star separately; enforce one
+   search batch per city, preserve duplicate-call deviations, and require 30 complete cities plus 10 locked
+   holdouts before any accommodation model is promoted. Retain the one-bed dorm boundary and all currency/
+   missingness provenance.
 2. Continue the official attraction-ticket panel and timed-activity source tests only after recording the
    revised accommodation boundary; do not silently substitute another city.
 3. Replace or calibrate the rejected Booking city-average basis using independently collected matched
@@ -345,6 +352,8 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/026-accommodation-broader-panel/`
 - `data/reference/v5/experiments/027-hotevi-tier-feasibility/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_027_hotevi_tiers.md`
+- `data/reference/v5/experiments/028-expedia-class-trends/`
+- `docs/prompts/llm_prompt_city_cost_v5_experiment_028_expedia_class_trends.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

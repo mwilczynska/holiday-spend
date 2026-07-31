@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "expedia_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Copenhagen Denmark Expedia 1-star hotel average nightly price two adults",
+      "reason": "The permitted Expedia-only search returned a single-property 1 Hotel Copenhagen result with a lowest/start-from price. It did not provide a Copenhagen 1-star class average or trend, so the property quote was rejected."
+    },
+    "expedia_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Copenhagen Denmark Expedia 2-star hotel average nightly price two adults",
+      "reason": "The Expedia 2-star page exposed a from/lowest price and individual property quotes for two adults, but no numeric city-class average or price trend with a reference window."
+    },
+    "expedia_3_star": {
+      "status": "found",
+      "value": 218,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "referencePeriod": "August 2026 (next month in the trend table; base rates found in the last 7 days)",
+      "sourceUrl": "https://www.expedia.com/3Star-Copenhagen-Hotels.s30-0-d178252.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Copenhagen from $68 | Expedia",
+      "evidenceText": "Expedia trend: August $218; base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Copenhagen.",
+      "searchQuery": "site:expedia.com Copenhagen Denmark Expedia 3-star hotel average nightly price two adults",
+      "reason": "Accepted as an Expedia Copenhagen 3-star price-trend observation. The trend excludes taxes and fees and reports base nightly rates for two adults over the stated seven-day window."
+    },
+    "expedia_4_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Copenhagen Denmark Expedia 4-star hotel average nightly price two adults",
+      "reason": "The Expedia 4-star result exposed individual property nightly/from prices, but no visible Copenhagen 4-star class average or price trend with a reference window. Individual-property and lowest quotes were rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 8,
+    "uniqueQueries": 4,
+    "searchOperations": 8,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": false,
+    "protocolDeviation": "The four permitted Expedia-restricted queries were submitted twice as an identical duplicate batch while inspecting the first result. The second batch added no evidence; the candidate must not be counted as an exact-four-search production pass."
+  }
+}

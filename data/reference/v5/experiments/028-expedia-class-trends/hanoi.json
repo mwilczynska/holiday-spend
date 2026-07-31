@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "expedia_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Hanoi Vietnam 1-star hotels average nightly price two adults Expedia",
+      "reason": "The Expedia-restricted search did not expose a qualifying Hanoi 1-star price-trend result with a numeric non-from nightly value. No other source or class was substituted."
+    },
+    "expedia_2_star": {
+      "status": "found",
+      "value": 23,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/es/2Estrellas-Hanoi-Hoteles.s20-0-d1428.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "Hoteles de 2 estrellas en Hanói, Vietnam | Expedia",
+      "evidenceText": "Price trends for 2-star properties in Hanoi show July $23; the trend excludes taxes and fees and is based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 2-star properties in Hanoi.",
+      "searchQuery": "site:expedia.com Hanoi Vietnam 2-star hotels average nightly price two adults Expedia",
+      "reason": "Exact Expedia result identifies Hanoi/Vietnam and 2-star properties, gives a numeric monthly trend, and explicitly states a nightly two-adult average and seven-day source window. The Expedia.com dollar display is recorded as USD."
+    },
+    "expedia_3_star": {
+      "status": "found",
+      "value": 31,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Hanoi from $8 | Expedia",
+      "evidenceText": "Price trends for properties with 3 Stars in Hanoi show July $31; the trend excludes taxes and fees and is based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 3-star properties in Hanoi.",
+      "searchQuery": "site:expedia.com Hanoi Vietnam 3-star hotels average nightly price two adults Expedia",
+      "reason": "Exact Expedia result identifies Hanoi/Vietnam and 3-star properties, gives a numeric monthly trend, and explicitly states a nightly two-adult average and seven-day source window. The Expedia.com dollar display is recorded as USD."
+    },
+    "expedia_4_star": {
+      "status": "found",
+      "value": 58,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-Hanoi-Hotels.s40-0-d1428.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Hanoi | Expedia",
+      "evidenceText": "Price trends for properties with 4 Stars in Hanoi show July $58; the trend excludes taxes and fees and is based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 4-star properties in Hanoi.",
+      "searchQuery": "site:expedia.com Hanoi Vietnam 4-star hotels average nightly price two adults Expedia",
+      "reason": "Exact Expedia result identifies Hanoi/Vietnam and 4-star properties, gives a numeric monthly trend, and explicitly states a nightly two-adult average and seven-day source window. The Expedia.com dollar display is recorded as USD."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

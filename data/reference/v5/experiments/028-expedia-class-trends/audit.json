@@ -1,0 +1,105 @@
+﻿{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-audit-v1",
+  "citiesTested": 3,
+  "acceptedCells": 7,
+  "totalCells": 12,
+  "accepted": [
+    {
+      "city": "Copenhagen",
+      "measure": "expedia_3_star",
+      "value": 218,
+      "currency": "USD",
+      "referencePeriod": "August 2026 (next month in the trend table; base rates found in the last 7 days)",
+      "sourceUrl": "https://www.expedia.com/3Star-Copenhagen-Hotels.s30-0-d178252.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Copenhagen Denmark Expedia 3-star hotel average nightly price two adults"
+    },
+    {
+      "city": "Hanoi",
+      "measure": "expedia_2_star",
+      "value": 23,
+      "currency": "USD",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/es/2Estrellas-Hanoi-Hoteles.s20-0-d1428.Guia-Viajes-Filter-Hoteles",
+      "searchQuery": "site:expedia.com Hanoi Vietnam 2-star hotels average nightly price two adults Expedia"
+    },
+    {
+      "city": "Hanoi",
+      "measure": "expedia_3_star",
+      "value": 31,
+      "currency": "USD",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Hanoi Vietnam 3-star hotels average nightly price two adults Expedia"
+    },
+    {
+      "city": "Hanoi",
+      "measure": "expedia_4_star",
+      "value": 58,
+      "currency": "USD",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-Hanoi-Hotels.s40-0-d1428.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Hanoi Vietnam 4-star hotels average nightly price two adults Expedia"
+    },
+    {
+      "city": "Lisbon",
+      "measure": "expedia_2_star",
+      "value": 102,
+      "currency": "USD",
+      "referencePeriod": "next month; trend based on base rates found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/2Star-Lisbon-Hotels.s20-0-d2080.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Lisbon Portugal Expedia 2-star hotels average nightly price two adults price trend"
+    },
+    {
+      "city": "Lisbon",
+      "measure": "expedia_3_star",
+      "value": 137,
+      "currency": "USD",
+      "referencePeriod": "next month; trend based on base rates found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Lisbon Portugal Expedia 3-star hotels average nightly price two adults price trend"
+    },
+    {
+      "city": "Lisbon",
+      "measure": "expedia_4_star",
+      "value": 179,
+      "currency": "USD",
+      "referencePeriod": "next month; trend based on base rates found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-Lisbon-Hotels.s40-0-d2080.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Lisbon Portugal Expedia 4-star hotels average nightly price two adults price trend"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Copenhagen",
+      "measure": "expedia_1_star",
+      "status": "not_found",
+      "reason": "The permitted Expedia-only search returned a single-property 1 Hotel Copenhagen result with a lowest/start-from price. It did not provide a Copenhagen 1-star class average or trend, so the property quote was rejected."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "expedia_2_star",
+      "status": "not_found",
+      "reason": "The Expedia 2-star page exposed a from/lowest price and individual property quotes for two adults, but no numeric city-class average or price trend with a reference window."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "expedia_4_star",
+      "status": "not_found",
+      "reason": "The Expedia 4-star result exposed individual property nightly/from prices, but no visible Copenhagen 4-star class average or price trend with a reference window. Individual-property and lowest quotes were rejected."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "expedia_1_star",
+      "status": "not_found",
+      "reason": "The Expedia-restricted search did not expose a qualifying Hanoi 1-star price-trend result with a numeric non-from nightly value. No other source or class was substituted."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "expedia_1_star",
+      "status": "not_found",
+      "reason": "The permitted Expedia-restricted search returned no exact Lisbon 1-star price-trend row with a numeric average or trend value. No 2-star, generic Lisbon, lowest/from, or other-class result was substituted."
+    }
+  ],
+  "completeCities": [],
+  "note": "Rows are retrieval feasibility evidence only; no accommodation ratio is fitted."
+}

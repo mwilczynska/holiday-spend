@@ -119,6 +119,11 @@ Experiment 027 tested HOTEVI's free grouped hotel tiers in three one-city calls.
 1–2/3/4–5-star row set; Lisbon lacked a visible month and Copenhagen lacked exact city rows. The accepted rows
 have unknown occupancy and cannot map to product star classes. Reject HOTEVI for production; retain only as a
 possible calibration benchmark.
+Experiment 028 tested Expedia class-trend snippets in three one-city calls. First-batch coverage was 7/12:
+Lisbon and Hanoi supplied 2/3/4-star rows, Copenhagen supplied 3-star, and 1-star was absent. Accepted rows
+state two-adult trend bases and tax exclusion; one duplicate Copenhagen search batch is a protocol deviation.
+Promote 2–4-star Expedia as a candidate for broader validation, but solve 1-star and require the full
+30-city/10-holdout gate.
 
 ## Restart rule
 

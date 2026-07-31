@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "expedia_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Lisbon Portugal Expedia 1-star hotels average nightly price two adults price trend",
+      "reason": "The permitted Expedia-restricted search returned no exact Lisbon 1-star price-trend row with a numeric average or trend value. No 2-star, generic Lisbon, lowest/from, or other-class result was substituted."
+    },
+    "expedia_2_star": {
+      "status": "found",
+      "value": 102,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "referencePeriod": "next month; trend based on base rates found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/2Star-Lisbon-Hotels.s20-0-d2080.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Lisbon from $37 | Expedia",
+      "evidenceText": "Price trends for properties with 2 Stars in Lisbon: Next month $102. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 2 stars in Lisbon.",
+      "searchQuery": "site:expedia.com Lisbon Portugal Expedia 2-star hotels average nightly price two adults price trend",
+      "reason": "Accepted as an Expedia city/class price-trend observation; taxes and fees are excluded as stated by the source."
+    },
+    "expedia_3_star": {
+      "status": "found",
+      "value": 137,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "referencePeriod": "next month; trend based on base rates found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Lisbon from $44 | Expedia",
+      "evidenceText": "Price trends for properties with 3 Stars in Lisbon: Next month $137. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Lisbon.",
+      "searchQuery": "site:expedia.com Lisbon Portugal Expedia 3-star hotels average nightly price two adults price trend",
+      "reason": "Accepted as an Expedia city/class price-trend observation; taxes and fees are excluded as stated by the source."
+    },
+    "expedia_4_star": {
+      "status": "found",
+      "value": 179,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "referencePeriod": "next month; trend based on base rates found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-Lisbon-Hotels.s40-0-d2080.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Lisbon from $108 | Expedia",
+      "evidenceText": "Price trends for properties with 4 Stars in Lisbon: Next month $179. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 4 stars in Lisbon.",
+      "searchQuery": "site:expedia.com Lisbon Portugal Expedia 4-star hotels average nightly price two adults price trend",
+      "reason": "Accepted as an Expedia city/class price-trend observation; taxes and fees are excluded as stated by the source."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

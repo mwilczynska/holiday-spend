@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-telemetry-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:expedia.com Hanoi Vietnam 1-star hotels average nightly price two adults Expedia",
+    "site:expedia.com Hanoi Vietnam 2-star hotels average nightly price two adults Expedia",
+    "site:expedia.com Hanoi Vietnam 3-star hotels average nightly price two adults Expedia",
+    "site:expedia.com Hanoi Vietnam 4-star hotels average nightly price two adults Expedia"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 3,
+  "notFoundMeasures": 1,
+  "notes": "Single-city search-only run using exactly four Expedia-restricted queries. Three class-specific trend rows were found (2-, 3-, and 4-star); the 1-star query produced no qualifying numeric non-from trend. No direct reads, retries, fallback sources, arithmetic, FX, or cross-city evidence were used. The rows are retrieval-feasibility observations, not independently validated ground truth. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}
