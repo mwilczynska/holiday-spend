@@ -55,6 +55,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-activity-definition-matched.mjs` | `analyze-v5-activity-definition-matched.mjs` | Experiment 037: audits low-cost ticket, half-day, and full-day premium activity anchors |
 | `node scripts/analyze-v5-one-star-budgetyourtrip-panel.mjs` | `analyze-v5-one-star-budgetyourtrip-panel.mjs` | Experiment 038: audits guarded BudgetYourTrip 1-star coverage with zero-denominator checks |
 | `node scripts/analyze-v5-hostel-private-boundary.mjs` | `analyze-v5-hostel-private-boundary.mjs` | Experiment 039: audits one-bed dorm inputs and explicit two-adult private-hostel rows |
+| `node scripts/analyze-v5-private-two-guest-search.mjs` | `analyze-v5-private-two-guest-search.mjs` | Experiment 040: audits explicit two-adult named-hostel quotes; no city-wide mapping |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-audit-v1",
+  "citiesTested": 6,
+  "acceptedCells": 3,
+  "acceptedCities": ["Hanoi", "Lisbon", "London"],
+  "rejectedCities": ["Melbourne", "New York City", "Tokyo"],
+  "acceptedRowsAre": "named_property_quotes_only",
+  "cityAverageRows": 0,
+  "searchesAttempted": 12,
+  "searchOperations": 12,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "productMapping": "none_source_feasibility_only",
+  "verdict": "promote_property_panel_reject_city_anchor"
+}

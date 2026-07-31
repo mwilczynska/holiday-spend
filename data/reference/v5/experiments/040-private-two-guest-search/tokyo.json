@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-07-31",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_private_room_per_night",
+    "occupancyBasis": "two_adults",
+    "class": "hostel_private_room",
+    "statistic": "property_quote",
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": "The Hostelworld-targeted search exposed no qualifying Tokyo private-hostel result. Booking.com exposed Tokyo hostel listings with 1-night/2-adult context, but the numeric city average was not private-room-specific and the named property snippets did not provide both an explicit private-room class and an eligible non-login price.",
+    "referencePeriod": "Search results crawled last week before 2026-07-31; no qualifying dated source row",
+    "searchQuery": "site:booking.com Tokyo Japan hostel private room 2 adults price per night",
+    "reason": "Not found under the strict contract. Generic Tokyo hostel averages, capsule/private-bed descriptions, and property rows lacking an explicit private-room class were rejected; no qualifying two-adult private-hostel one-night price was substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -38,6 +38,7 @@
 | `llm_prompt_city_cost_v5_experiment_037_activity_definition_matched.md` | **EXPERIMENT — complete; route rejected** | one city per delegated GPT-5.6 Luna-class invocation | Tests low-cost ticket, half-day group, and full-day premium activity anchors against frozen definitions |
 | `llm_prompt_city_cost_v5_experiment_038_one_star_budgetyourtrip_panel.md` | **EXPERIMENT — complete; guarded fallback only** | one city per delegated GPT-5.6 Luna-class invocation | Twenty-city one-star source expansion with zero-denominator and sample-size guards |
 | `llm_prompt_city_cost_v5_experiment_039_hostel_private_boundary.md` | **EXPERIMENT — complete; retain dorm input, reject private mapping** | one city per delegated GPT-5.6 Luna-class invocation | Six-city hostel dorm/private boundary test with explicit occupancy gate |
+| `llm_prompt_city_cost_v5_experiment_040_private_two_guest_search.md` | **EXPERIMENT — complete; promote property panel only** | one city per delegated GPT-5.6 Luna-class invocation | Six-city explicit two-guest private-hostel search; dated property quotes are not city averages |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had

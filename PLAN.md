@@ -312,6 +312,12 @@ coverage was 6/6, but private-room coverage was 0/6 because no source explicitly
 occupancy. Retain the one-bed dorm boundary for deterministic scaling; reject private-room source mapping and
 correction fitting. The private-hostel gap remains a top validation blocker.
 
+Experiment 040 met its pre-registered source-feasibility threshold: 3/6 one-city calls returned explicit
+two-adult named-hostel quotes from Booking snippets (London, Lisbon, Hanoi), while Melbourne, New York City,
+and Tokyo failed closed. These are dated property observations, not city averages. Promote only as a frozen
+property-panel/ground-truth collection route; do not map directly to `accom_hostel_private_room` or fit a
+city-wide correction before the 30-city/10-holdout aggregation and accuracy gates.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.

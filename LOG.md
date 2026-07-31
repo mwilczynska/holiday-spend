@@ -1173,3 +1173,16 @@ hostel-room measure passed the strict two-adult/two-guest occupancy contract in 
 **Verdict:** retain the dorm-bed observation boundary for deterministic two-traveller scaling, but reject the
 private-room route as a production anchor or fitted correction. Unknown-occupancy private-room numbers remain
 source evidence only. Read `data/reference/v5/experiments/039-hostel-private-boundary/`.
+
+## Experiment 040 — explicit private-hostel two-guest search (31 July 2026)
+
+Six independent one-city Luna calls issued exactly two ordered searches each: Hostelworld followed by
+Booking.com. All 12 search operations were compliant with no reads, retries, fallback sources, arithmetic, FX
+conversion, or cross-city evidence. Three cities passed the strict two-adult/two-guest contract (London, Lisbon,
+and Hanoi); three failed closed (Melbourne, New York City, and Tokyo).
+
+The accepted rows are dated named-property quotes, not city averages. They preserve source currency, dates,
+tax/fee exclusions, occupancy, and property identity. **Verdict:** promote the route only as an independent
+property-panel/ground-truth candidate; reject direct city-wide mapping and any correction fit until a broader
+city-stratified panel and aggregation rule pass the 30-city/10-holdout accuracy gates. Read
+`data/reference/v5/experiments/040-private-two-guest-search/`.

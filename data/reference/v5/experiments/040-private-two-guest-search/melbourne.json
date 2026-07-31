@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-v1",
+  "city": "Melbourne",
+  "country": "Australia",
+  "retrievalDate": "2026-07-31",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_private_room_per_night",
+    "occupancyBasis": "two_adults",
+    "class": "hostel_private_room",
+    "statistic": "property_quote",
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": null,
+    "referencePeriod": null,
+    "searchQuery": "site:booking.com Melbourne Australia hostel private room 2 adults price per night",
+    "reason": "The Hostelworld search returned hostel private-room from-prices only, with no explicit two-guest basis or non-from one-night quote. The Booking.com search returned hotels and properties in other cities, but no Melbourne hostel private room with an explicit two-adult/two-guest non-from nightly price. No generic private-room, hotel, regional, or other-city result was substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

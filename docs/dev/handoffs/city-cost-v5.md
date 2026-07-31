@@ -327,6 +327,12 @@ strict city-level one-adult dorm-bed input; none returned a private-room row wit
 occupancy. Retain deterministic two-traveller dorm scaling, but reject unknown-basis private-room values as
 observations, corrections, or product mappings.
 
+Experiment 040 found explicit two-adult named-hostel quotes in 3/6 one-city calls (London, Lisbon, Hanoi) using
+ordered Hostelworld/Booking searches. The rows are dated property observations with source currency and
+tax/fee exclusions, not city averages. Promote only as a ground-truth/property-panel collection candidate and
+keep direct city-wide private-room mapping rejected until the 30-city/10-holdout aggregation and accuracy gates
+pass.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

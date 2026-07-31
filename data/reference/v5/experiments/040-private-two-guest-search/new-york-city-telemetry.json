@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:hostelworld.com New York City United States private room 2 guests price per night",
+    "site:booking.com New York City United States hostel private room 2 adults price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "notes": "Single-city search-only private two-guest run with exactly two ordered searches. Hostelworld exposed only from-prices and generic private-room listings; Booking.com exposed 1-night/2-adult context but no qualifying non-from price for a clearly identified hostel private room. The West Side YMCA snippet was rejected because the extracted source did not clearly establish hostel class. No page reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

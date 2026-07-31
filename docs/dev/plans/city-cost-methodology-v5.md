@@ -171,6 +171,11 @@ two-guest occupancy. Retain the one-bed dorm input boundary for deterministic sc
 mapping and correction fitting. The next package must test explicitly two-guest private-room wording or a
 definition-matched model against independent observations.
 
+Experiment 040 met the explicit two-guest source-feasibility threshold at 3/6 cities. London, Lisbon, and Hanoi
+returned dated named-hostel Booking quotes for two adults/max two; Melbourne, New York City, and Tokyo failed
+closed. Treat these as property-panel ground-truth candidates only, preserving dates, taxes/fees, and currency;
+they are not city-wide anchors or a fitted private-room correction.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

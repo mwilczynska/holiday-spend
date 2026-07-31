@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_private_room_per_night",
+    "occupancyBasis": "two_adults",
+    "class": "hostel_private_room",
+    "statistic": "property_quote",
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": null,
+    "referencePeriod": null,
+    "searchQuery": "site:booking.com New York City United States hostel private room 2 adults price per night",
+    "reason": "The Hostelworld search returned only from-prices and generic private-room listings, without a dated non-from price tied to two guests. The Booking.com search showed hostel-list pages with 1-night/2-adult context but only from-prices or generic private-room comments; a West Side YMCA private double room snippet showed max adults 2 and $223 per night, but the extracted source did not clearly establish the property as a hostel under this contract. Other exact New York results were guest houses or hotels rather than hostels. No qualifying two-adult hostel private-room value was retained."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

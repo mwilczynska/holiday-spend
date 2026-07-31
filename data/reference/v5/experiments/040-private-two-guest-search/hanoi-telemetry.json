@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-telemetry-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:hostelworld.com Hanoi Vietnam private room 2 guests price per night",
+    "site:booking.com Hanoi Vietnam hostel private room 2 adults price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 0,
+  "notes": "Single-city search-only private two-guest run using exactly two ordered searches (Hostelworld, then Booking.com). Booking.com exposed one qualifying Hanoi City Backpackers Hostel private double-room quote at CNY 132 per night for 2 adults; it is retained as a dated discounted property observation, not a city average. No reads, retries, fallback, arithmetic, FX, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

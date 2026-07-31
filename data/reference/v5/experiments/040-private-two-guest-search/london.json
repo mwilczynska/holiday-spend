@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-07-31",
+  "measure": {
+    "status": "found",
+    "value": 158,
+    "currency": "USD",
+    "unit": "per_private_room_per_night",
+    "occupancyBasis": "two_adults",
+    "class": "hostel_private_room",
+    "statistic": "property_quote",
+    "sourceUrl": "https://www.booking.com/hotel/gb/backpac-hostel.html",
+    "sourceTitle": "BacPac Hostel, London (updated prices 2026)",
+    "evidenceText": "Booking.com shows BacPac Hostel, London with 2 adults, 0 children, 1 room; its Double Room (1 full bed, private bathroom, max. people 2) is $158 per night, excluding taxes and fees.",
+    "referencePeriod": "Booking.com search dates Thu 23 Jul–Sun 26 Jul 2026 (3 nights); displayed USD price excludes taxes and fees",
+    "searchQuery": "site:booking.com London United Kingdom hostel private room 2 adults price per night",
+    "reason": "The exact London property is explicitly named BacPac Hostel. The Booking.com snippet states 2 adults, 1 room, a private Double Room with maximum occupancy 2, and a numeric non-from per-night price. It is retained as a named-property two-adult observation; no arithmetic or currency conversion was performed."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "measure": {
+    "status": "found",
+    "value": 132,
+    "currency": "CNY",
+    "unit": "per_private_room_per_night",
+    "occupancyBasis": "two_adults",
+    "class": "hostel_private_room",
+    "statistic": "property_quote",
+    "sourceUrl": "https://www.booking.com/hotel/vn/joy.html",
+    "sourceTitle": "Hanoi City Backpackers Hostel, Hanoi (updated prices 2026) | Booking.com",
+    "evidenceText": "Hanoi City Backpackers Hostel: 2 adults, 0 children, 1 room. Deluxe Double Room with Private Bathroom, max people 2; CNY 132 per night, CNY 1,383 for 3 nights, excluding 8% VAT. The page states CNY 132 is the average price per night.",
+    "referencePeriod": "Booking.com availability result crawled last week; displayed dates Sat Jul 25–Tue Jul 28, 2026; 2 adults, 0 children, 1 room; discounted property quote before taxes",
+    "searchQuery": "site:booking.com Hanoi Vietnam hostel private room 2 adults price per night",
+    "reason": "Accepted as a named-hostel private-room property quote: the evidence identifies Hanoi, a hostel, a private double room, explicit two-adult/maximum-two occupancy, and a numeric one-night CNY price. The dated discounted quote is retained as observed source evidence only; no central city estimate or currency conversion is made."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

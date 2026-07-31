@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-private-two-guest-search-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "measure": {
+    "status": "found",
+    "value": 59,
+    "currency": "USD",
+    "unit": "per_private_room_per_night",
+    "occupancyBasis": "two_adults",
+    "class": "hostel_private_room",
+    "statistic": "property_quote",
+    "sourceUrl": "https://www.booking.com/hotel/pt/origami-lisbon-hostel.html",
+    "sourceTitle": "Shangri-La Hostel Anjos, Lisbon (updated prices 2026)",
+    "evidenceText": "Booking.com shows Shangri-La Hostel Anjos, Lisbon with 2 adults, 0 children, 1 room; its Deluxe Double Room (1 full bed, max. people 2) is $59 per night, excluding taxes and fees.",
+    "referencePeriod": "Booking.com search dates Sat 25 Jul–Tue 28 Jul 2026 (3 nights); displayed USD price excludes €4 city tax per person per night and 6% VAT",
+    "searchQuery": "site:booking.com Lisbon Portugal hostel private room 2 adults price per night",
+    "reason": "The exact Lisbon property is explicitly named Shangri-La Hostel Anjos. The Booking.com snippet states 2 adults, 1 room, a private Deluxe Double Room with maximum occupancy 2, and a numeric non-from per-night price. It is retained as a named-property two-adult observation; no arithmetic or currency conversion was performed."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
