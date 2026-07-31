@@ -146,13 +146,21 @@ differed by 0.8% across retrieval dates; McMeal has no prior retained row. Copen
 URLs were blocked before page content. The source is retained, but URL normalization must be retested.
 Read `data/reference/v5/experiments/014-single-city-numbeo-food-drink/`.
 
+## Experiment 015 result
+
+Canonical direct Numbeo calls for Copenhagen and Prague were run separately, with no lowercase retry or
+fallback. Copenhagen returned HTTP 503 and Prague HTTP 429; all **10/10** measure cells were blocked before
+page rows were available. This rejects direct Numbeo page retrieval as reliable production infrastructure,
+although Lisbon's Experiment 014 page success remains valid evidence. Read
+`data/reference/v5/experiments/015-numbeo-canonical-url-retest/`.
+
 ## Next action
 
-Retest Numbeo with canonical city-name URLs for Copenhagen and Prague in separate one-city calls. Find or
+Test a search-result extraction route or another free food/drink source, recording 429/503 as blocked. Find or
 calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a
-correction from Copenhagen alone. Direct booking-engine URLs are rejected for the target web path. Keep the
-one-city prompt shape mandatory and test safe stable templates or a curated benchmark for unresolved lower
-classes and hostels; search-index date injection is rejected.
+correction from Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the
+target web path. Keep the one-city prompt shape mandatory and test safe stable templates or a curated
+benchmark for unresolved lower classes and hostels; search-index date injection is rejected.
 Continue definition-matched panels for the other omitted anchors. Do not use the shipping CSV as ground truth
 and do not infer dorm/private separation from the blended hostel channel. The derivation contract remains out
 of the shipping path until source feasibility and accuracy gates pass.

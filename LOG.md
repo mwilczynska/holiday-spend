@@ -809,3 +809,14 @@ Prague lowercase URLs were blocked before page content.
 Copenhagen and Prague as separate one-city calls. No arithmetic, FX, search fallback, or unsupported values
 were emitted; exact provider telemetry was unavailable. Artifacts are under
 `data/reference/v5/experiments/014-single-city-numbeo-food-drink/`.
+
+## Experiment 015 â€— canonical Numbeo URL retest (31 July 2026)
+
+Two separate one-city Luna calls opened only canonical Numbeo URLs: `/in/Copenhagen` returned HTTP 503 and
+`/in/Prague` returned HTTP 429. All **10/10** requested food/drink cells were blocked, with no lowercase
+retry, search fallback, arithmetic, or estimate. The failures are rate/access outcomes, not missing data.
+
+**Verdict:** reject direct Numbeo page retrieval as a reliable production route in the target web environment.
+Retain the Lisbon success from Experiment 014, but test search-result extraction or another free source and
+measure its rate-limit behaviour. Artifacts are under
+`data/reference/v5/experiments/015-numbeo-canonical-url-retest/`.

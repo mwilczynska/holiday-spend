@@ -1,0 +1,55 @@
+{
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "referenceDate": "2026-07-31",
+  "source": {
+    "name": "Numbeo",
+    "url": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+    "retrievedAt": "2026-07-31",
+    "pageContext": "Unavailable: canonical page retrieval returned HTTP 503 Service Unavailable."
+  },
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "sourceUrl": null,
+      "sourceNote": "Canonical Numbeo Copenhagen page returned HTTP 503 before the inexpensive restaurant row was available."
+    },
+    "midrange_restaurant_meal_2p": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "sourceUrl": null,
+      "sourceNote": "Canonical Numbeo Copenhagen page returned HTTP 503 before the three-course mid-range meal-for-two row was available."
+    },
+    "mcmeal_combo_1p": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "sourceUrl": null,
+      "sourceNote": "Canonical Numbeo Copenhagen page returned HTTP 503 before the McMeal-equivalent combo row was available."
+    },
+    "cappuccino_1": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "sourceUrl": null,
+      "sourceNote": "Canonical Numbeo Copenhagen page returned HTTP 503 before the regular cappuccino row was available."
+    },
+    "domestic_draft_beer_1": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "sourceUrl": null,
+      "sourceNote": "Canonical Numbeo Copenhagen page returned HTTP 503 before the 0.5 litre domestic draft beer row was available."
+    }
+  },
+  "outcome": "blocked",
+  "notes": "The canonical capitalization URL was opened exactly once and returned HTTP 503 Service Unavailable. No lowercase retry, search, alternate city, arithmetic, FX, or estimate was used."
+}

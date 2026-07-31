@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "015-numbeo-canonical-url-retest",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "promptShape": "one city per invocation",
+  "invocationCount": 2,
+  "cities": ["Copenhagen", "Prague"],
+  "measuresPerCity": 5,
+  "foundCells": 0,
+  "blockedCells": 10,
+  "coverageRate": 0,
+  "byCity": {
+    "Copenhagen": {"status":"blocked","httpStatus":503,"attempts":1},
+    "Prague": {"status":"blocked","httpStatus":429,"attempts":1}
+  },
+  "telemetry": {
+    "agentTasks": 2,
+    "directPageReadCalls": 2,
+    "directUrlAttempts": 2,
+    "directUrlSuccesses": 0,
+    "directUrlFailures": 2,
+    "httpStatuses": [503,429],
+    "generalSearchCalls": 0,
+    "fallbackAttempts": 0,
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "verdict": "reject_direct_numbeo_page_path_for_target_reliability"
+}

@@ -52,8 +52,10 @@ one-city calls; all 15 URLs were blocked by the delegated web safety boundary. T
 target web path, while the one-city invocation shape is mandatory for all target-model tests. The next work
 item is a matched-basis source or model tested through separate one-city calls and a 30-city/10-holdout
 validation design. Experiment 014 retained Numbeo for food/drink extraction after one canonical-case Lisbon
-call returned all five rows and matched the retained observations; two lowercase city URLs were blocked. The
-next experiment is a canonical URL-normalization retest, still one city per target-model invocation.
+call returned all five rows and matched the retained observations; two lowercase city URLs were blocked.
+Experiment 015 then tested canonical Copenhagen and Prague URLs and received HTTP 503 and HTTP 429. Direct
+Numbeo retrieval is therefore rejected for target reliability; the next experiment must test search-result
+extraction or another free source, with blocked/rate-limited outcomes retained separately.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

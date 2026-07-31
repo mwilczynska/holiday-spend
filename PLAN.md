@@ -163,10 +163,15 @@ retry and returned all five rows; Copenhagen and Prague lowercase URLs were bloc
 were source-audited and matched prior observations for three rows exactly (cappuccino differed 0.8% across
 dates). Do not reject Numbeo; retest canonical city-name URLs explicitly.
 
+**Experiment 015 — canonical Numbeo URL retest — complete; direct page route rejected.** Separate Copenhagen
+and Prague calls opened only `/in/Copenhagen` and `/in/Prague`; the pages returned HTTP 503 and HTTP 429,
+respectively. All ten cells were blocked with no fallback. Lisbon's Experiment 014 success is retained, but
+direct page retrieval is not reliable enough for production at the required steady-state volume.
+
 ### Next experiments, in order
 
-1. Retest Numbeo with canonical city-name URLs in separate one-city calls for Copenhagen and Prague, then
-   promote only if URL normalization is deterministic and coverage is stable.
+1. Test a search-result extraction route or another free source for food/drink, with explicit rate-limit and
+   citation checks; do not relabel Numbeo 429/503 as missing data.
 2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -228,6 +233,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/012-single-city-production-shape/`
 - `data/reference/v5/experiments/013-interactive-official-quote-extraction/`
 - `data/reference/v5/experiments/014-single-city-numbeo-food-drink/`
+- `data/reference/v5/experiments/015-numbeo-canonical-url-retest/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
