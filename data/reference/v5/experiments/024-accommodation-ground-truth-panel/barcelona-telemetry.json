@@ -1,0 +1,23 @@
+{
+  "invocations": 1,
+  "citiesInspected": 1,
+  "city": "Barcelona",
+  "country": "Spain",
+  "targetModelClass": "gpt-5.6-luna",
+  "queriesAttempted": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCitiesInspected": 0,
+  "foundMeasures": 1,
+  "notFoundMeasures": 5,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "exactProviderModelId": null,
+  "parameters": null,
+  "acceptedMeasures": ["accom_3_star"],
+  "note": "One independent search was issued for each of the six measures. Search snippets only were used; no pages were opened, no retries or fallback searches were made, and incompatible occupancy, from-price, regional, range, or unclassified results were rejected. Exact provider token, latency, cost, model-id, and parameter telemetry is unavailable for delegated Luna orchestration."
+}

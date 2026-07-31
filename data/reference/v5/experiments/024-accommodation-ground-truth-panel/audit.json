@@ -1,0 +1,149 @@
+﻿{
+  "schemaVersion": "city-cost-v5-accommodation-panel-audit-v1",
+  "source": "data/reference/v5/experiments/024-accommodation-ground-truth-panel/*.json",
+  "citiesTested": 3,
+  "acceptedCells": 3,
+  "totalCells": 18,
+  "completeCities": [],
+  "cities": [
+    {
+      "city": "Barcelona",
+      "acceptedCells": 1,
+      "complete": false
+    },
+    {
+      "city": "Nairobi",
+      "acceptedCells": 1,
+      "complete": false
+    },
+    {
+      "city": "Prague",
+      "acceptedCells": 1,
+      "complete": false
+    }
+  ],
+  "byMeasure": {
+    "accom_shared_hostel_dorm": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_hostel_private_room": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_1_star": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_2_star": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_3_star": {
+      "acceptedRows": 2,
+      "cities": 2
+    },
+    "accom_4_star": {
+      "acceptedRows": 1,
+      "cities": 1
+    }
+  },
+  "rejected": [
+    {
+      "city": "Barcelona",
+      "measure": "accom_shared_hostel_dorm",
+      "status": "not_found",
+      "reason": "Search results exposed per-bed values or hostel from-prices, but no non-from nightly central price explicitly covering two adult dorm beds. Per-bed values cannot be doubled under the no-arithmetic contract."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "City results were ranges, hostel from-prices, or averages without explicit two-adult one-room nightly occupancy; no definition-compatible central price was accepted."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "Results supplied regional Catalonia/Spain ADR values or unclassified Barcelona rates, not an explicitly Barcelona 1-star two-adult one-room nightly central price."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Trip.com exposed Barcelona 2-star weekday/weekend averages but did not state two-adult one-room occupancy; other results were from-prices or regional data."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_4_star",
+      "status": "not_found",
+      "reason": "Booking.com exposed a Barcelona 4-star weekend average without explicit two-adult one-room occupancy; other results were ranges, from-prices, or averages without the required occupancy."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_shared_hostel_dorm",
+      "status": "not_found",
+      "reason": "BudgetYourTrip reported an average $12 dorm-bed price for Nairobi, but the snippet did not explicitly state a two-adult basis; Hostelworld results exposed only prohibited from prices. The strict two-adult contract therefore failed closed."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "BudgetYourTrip reported a $21 Nairobi private-hostel-room average, but the snippet did not explicitly establish two-adult occupancy; Hostelworld and Hostelz results were from or otherwise lacked a compatible two-adult central price."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "BudgetYourTrip's Nairobi table exposed one 1-star hotel at an average $37 and Momondo exposed a $243 1-star average, but neither snippet explicitly supplied a two-adult per-room nightly basis."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Momondo reported a $26 Nairobi 2-star average and Trip.com reported weekday/weekend averages, but neither snippet explicitly supplied the required two-adult per-room basis; other results were generic or not central."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_3_star",
+      "status": "not_found",
+      "reason": "Booking.com and KAYAK exposed Nairobi 3-star averages but no explicit two-adult occupancy in the snippets; Expedia mentioned two adults only for a lowest/current quote rather than a qualifying central average."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_shared_hostel_dorm",
+      "status": "not_found",
+      "reason": "Budget Your Trip exposed a Prague average dorm-bed price ($27), but the search evidence did not explicitly state the required two-adult basis and did not provide a central price for two adults; Hostelworld results were From prices. Failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "Budget Your Trip mixed hostel and guesthouse private-room averages and did not explicitly state the required two-adult nightly basis; Hostelworld exposed only Privates From prices. Failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "Momondo exposed a Prague 1-star average nightly price ($32), but the search evidence did not establish two adults in one room. Expedia established a two-adult averaging basis but exposed no numeric 1-star price in the result. Failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Trip.com exposed weekday/weekend 2-star averages without an explicit two-adult one-room basis; Expedia exposed the two-adult basis but no numeric price. Other results were generic or district-level. Failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_4_star",
+      "status": "not_found",
+      "reason": "Booking.com exposed a Prague 4-star weekend average ($240), which is event/date-specific and did not explicitly state the two-adult basis in the search evidence. Skyscanner exposed a current average ($113) without explicit occupancy. Expedia established the two-adult averaging basis but no numeric price. Failed closed."
+    }
+  ],
+  "modelGate": {
+    "matchedCitiesRequired": 30,
+    "lockedHoldoutRequired": 10,
+    "completeCityCountMeets30": false,
+    "verdict": "retrieval_panel_incomplete_until_30_complete_cities"
+  }
+}

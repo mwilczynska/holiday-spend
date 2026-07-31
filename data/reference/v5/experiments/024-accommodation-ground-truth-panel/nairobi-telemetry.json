@@ -1,0 +1,67 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Nairobi",
+  "country": "Kenya",
+  "queriesAttempted": 6,
+  "searchOperations": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "retries": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 1,
+  "notFoundMeasures": 5,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "exactProviderModelId": "GPT-5.6 Luna-class delegated invocation",
+  "parameters": null,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "queries": [
+    {
+      "measure": "accom_shared_hostel_dorm",
+      "query": "Nairobi Kenya hostel dorm average price per night two adults",
+      "status": "not_found",
+      "reason": "Dorm-bed average lacked explicit two-adult basis; other results were from prices."
+    },
+    {
+      "measure": "accom_hostel_private_room",
+      "query": "Nairobi Kenya hostel private room average price per night two adults",
+      "status": "not_found",
+      "reason": "Private-room average lacked explicit two-adult basis; other results were from or non-central."
+    },
+    {
+      "measure": "accom_1_star",
+      "query": "Nairobi Kenya 1-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "Class averages lacked explicit two-adult per-room basis."
+    },
+    {
+      "measure": "accom_2_star",
+      "query": "Nairobi Kenya 2-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "Class averages lacked explicit two-adult per-room basis."
+    },
+    {
+      "measure": "accom_3_star",
+      "query": "Nairobi Kenya 3-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "Class averages lacked explicit two-adult occupancy; Expedia exposed only a lowest/current quote."
+    },
+    {
+      "measure": "accom_4_star",
+      "query": "Nairobi Kenya 4-star hotel city average price per room per night two adults",
+      "status": "found",
+      "sourceUrl": "https://www.skyscanner.gg/hotels/kenya/nairobi-hotels/four-star/ci-27536215/sr-4",
+      "value": 4031,
+      "currency": "TRY",
+      "reason": "Skyscanner snippet explicitly showed 2 adults, 1 room and a Nairobi 4-star average of 4,031 TL per night."
+    }
+  ],
+  "note": "Exactly one city and six independent targeted searches. No direct reads, retries, fallback sources, arithmetic, currency conversion, or cross-city evidence. Exact provider token, latency, cost, and runtime parameters are unavailable through delegated orchestration."
+}

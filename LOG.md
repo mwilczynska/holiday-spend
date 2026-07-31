@@ -971,3 +971,20 @@ Vancouver contains all three activity anchors. The accepted-direct ledger theref
 **Verdict:** reject activity model fitting. Do not fit a ratio or impute timed activities from this ledger;
 `activities_free = 0` remains definitional. Experiment 020 remains the separate target-model retrieval
 feasibility result and is not ground truth. Read `data/reference/v5/experiments/023-activity-ground-truth-audit/`.
+
+## Experiment 024 — strict accommodation panel (31 July 2026)
+
+Three independent GPT-5.6 Luna-class one-city calls (Barcelona, Prague, and Nairobi) used the same six-class
+search-only prompt. They issued 18 searches and 18 search operations with no direct reads, retries, fallback
+sources, arithmetic, currency conversion, or cross-city evidence. Only **3/18 cells** passed: Barcelona and
+Prague 3-star Skyscanner averages with explicit two-adult/one-room identity, and Nairobi's 4-star Skyscanner
+average displayed in TRY with the same occupancy identity. No city was complete. Hostel dorm/private results
+were per-bed, `from`, mixed, or missing two-adult identity; 1-star/2-star results lacked compatible
+class/occupancy evidence. Nairobi's raw response omitted per-measure query fields, but its standalone
+telemetry preserved the exact query list and the deterministic audit records that join.
+
+**Verdict:** reject the strict six-class panel route; it cannot reach the 30-city/10-holdout gate. This is
+target-model retrieval evidence, not ground truth or fitted accommodation coefficients. Revise the boundary
+in the next experiment to accept an explicit one-bed dorm price as an observed input and scale it to two
+travellers in deterministic code, while preserving strict per-room hotel identity and display-currency review.
+Read `data/reference/v5/experiments/024-accommodation-ground-truth-panel/`.

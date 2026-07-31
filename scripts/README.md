@@ -41,6 +41,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/run-city-cost-v5-one-call.mjs` | `run-city-cost-v5-one-call.mjs` | Experiment 001: exactly one OpenAI Responses or Anthropic Messages request with built-in web search, telemetry, and strict local validation; requires a provider key |
 | `npx vitest run src/lib/city-cost-methodology-v5.test.ts` | `src/lib/city-cost-methodology-v5.ts` | Experiment 003: deterministic 19-tier derivation boundary with fail-closed provenance propagation |
 | `node scripts/analyze-v5-activity-ground-truth.mjs` | `analyze-v5-activity-ground-truth.mjs` | Experiment 023: deterministic audit of definition-compatible direct activity observations; refuses to fit below the 30-city/10-holdout gate |
+| `node scripts/analyze-v5-accommodation-panel.mjs` | `analyze-v5-accommodation-panel.mjs` | Experiment 024: strict acceptance audit for single-city accommodation panel rows; no fit below the 30-city/10-holdout gate |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

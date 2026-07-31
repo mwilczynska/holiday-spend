@@ -233,14 +233,22 @@ activity cities, and only one city with all three. This cannot satisfy the froze
 no activity ratio or imputation is fitted; `activities_free = 0` remains definitional. See
 `data/reference/v5/experiments/023-activity-ground-truth-audit/`.
 
+**Experiment 024 — strict accommodation panel — complete; reject and revise.** Three independent one-city
+calls (Barcelona, Prague, Nairobi) issued 18 bounded searches and accepted only 3/18 cells: two 3-star
+averages and one 4-star average. No city was complete. Hostel values were per-bed, `from`, mixed, or missing
+two-adult identity; lower hotel classes lacked compatible class/occupancy evidence. The route cannot create a
+30-city/10-holdout panel. Nairobi's raw response omitted per-measure query fields, but its standalone
+telemetry preserved the exact six queries and the audit records that exception. See
+`data/reference/v5/experiments/024-accommodation-ground-truth-panel/`.
+
 ### Next experiments, in order
 
-1. Build a separately curated, definition-matched accommodation ground-truth panel around the retained
-   class-average candidates; require the 30-city/10-holdout gate before fitting any ratio or imputation. Keep
-   the bounded identity cascade for food/drink, dedicated-query provenance, explicit native-currency checks,
-   and fail-closed missingness. Do not tune the locked 018 holdout or average away failures.
+1. Test a revised accommodation boundary in independent one-city calls: accept explicit one-bed dorm prices
+   as observed inputs and scale to two travellers in deterministic code, while retaining strict two-adult
+   per-room rules for hotel classes. Preserve source currency, display-currency warnings, exact query
+   provenance, and fail-closed missingness; do not fit ratios before the 30-city/10-holdout gate.
 2. Continue the official attraction-ticket panel and timed-activity source tests only after recording the
-   accommodation ground-truth design; do not silently substitute another city.
+   revised accommodation boundary; do not silently substitute another city.
 3. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -311,6 +319,8 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`
 - `data/reference/v5/experiments/022-numbeo-identity-cascade/`
 - `data/reference/v5/experiments/023-activity-ground-truth-audit/`
+- `data/reference/v5/experiments/024-accommodation-ground-truth-panel/`
+- `docs/prompts/llm_prompt_city_cost_v5_experiment_024_accommodation_ground_truth.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

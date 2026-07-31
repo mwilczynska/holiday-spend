@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-panel-v1",
+  "status": "rejected_strict_panel_route",
+  "citiesPlanned": ["Barcelona", "Prague", "Nairobi"],
+  "citiesTested": 3,
+  "acceptedCells": 3,
+  "totalCells": 18,
+  "completeCities": [],
+  "byMeasure": {
+    "accom_shared_hostel_dorm": {"acceptedRows": 0, "cities": 0},
+    "accom_hostel_private_room": {"acceptedRows": 0, "cities": 0},
+    "accom_1_star": {"acceptedRows": 0, "cities": 0},
+    "accom_2_star": {"acceptedRows": 0, "cities": 0},
+    "accom_3_star": {"acceptedRows": 2, "cities": 2},
+    "accom_4_star": {"acceptedRows": 1, "cities": 1}
+  },
+  "modelGate": {
+    "matchedCitiesRequired": 30,
+    "lockedHoldoutRequired": 10,
+    "completeCityCountMeets30": false
+  },
+  "measures": [
+    "accom_shared_hostel_dorm",
+    "accom_hostel_private_room",
+    "accom_1_star",
+    "accom_2_star",
+    "accom_3_star",
+    "accom_4_star"
+  ],
+  "note": "Three independent one-city Luna calls produced only two 3-star rows and one 4-star row. Search feasibility is insufficient for an accommodation panel; no ratio or imputation is fitted. Nairobi's exact queries are recovered from its standalone telemetry because the raw response omitted per-measure searchQuery fields."
+}

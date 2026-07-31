@@ -255,9 +255,15 @@ Experiment 023 confirms that the retained activity ledger cannot support a model
 cities, 3 half-day cities, 2 full-day cities, and only one complete city. Keep `activities_free = 0`
 definitional and do not fit timed-activity ratios from this evidence.
 
-Build a separately curated, definition-matched accommodation ground-truth panel around the retained
-class-average candidates; require the 30-city/10-holdout gate before fitting ratios or imputations. Retain
-dedicated-query provenance, explicit native-currency checks, and fail-closed missingness. Direct booking-engine
-URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked 018 holdout,
-use the shipping CSV as ground truth, or infer dorm/private separation from the blended hostel channel. The
-derivation contract remains out of the shipping path until source feasibility and accuracy gates pass.
+Experiment 024 rejected the strict accommodation panel route after three independent one-city calls accepted
+3/18 cells and no complete city. The next accommodation test may accept explicit per-bed dorm prices as
+observed one-bed inputs for deterministic scaling, but must retain strict two-adult per-room hotel rules,
+exact query provenance, source currency, and a display-currency warning. Do not fit before 30 complete cities
+and 10 locked holdout cities exist.
+
+Next, test the revised accommodation boundary: accept explicit per-bed dorm prices as observed one-bed inputs
+for deterministic scaling to two travellers, while retaining strict two-adult per-room hotel rules, exact
+query provenance, source currency, and display-currency warnings. Direct booking-engine URLs and direct
+Numbeo retrieval remain rejected for the target web path. Do not tune the locked 018 holdout, use the shipping
+CSV as ground truth, or infer dorm/private separation from the blended hostel channel. The derivation contract
+remains out of the shipping path until source feasibility and accuracy gates pass.

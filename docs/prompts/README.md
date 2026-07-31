@@ -23,6 +23,7 @@
 | `llm_prompt_city_cost_v5_experiment_020_activities.md` | **EXPERIMENT — complete; promote attraction pattern only** | one city per delegated GPT-5.6 Luna-class invocation | Activity anchor search feasibility |
 | `llm_prompt_city_cost_v5_experiment_021_accommodation_search.md` | **EXPERIMENT — complete; reject complete route** | one city per delegated GPT-5.6 Luna-class invocation | Accommodation class search feasibility |
 | `llm_prompt_city_cost_v5_experiment_022_identity_cascade.md` | **EXPERIMENT — complete; promote bounded route** | one city per delegated GPT-5.6 Luna-class invocation | Bounded Numbeo city-identity cascade |
+| `llm_prompt_city_cost_v5_experiment_024_accommodation_ground_truth.md` | **EXPERIMENT — complete; strict route rejected** | one city per delegated GPT-5.6 Luna-class invocation | Strict six-class accommodation panel; retrieval evidence only, revised boundary follows |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The v5 experiment prompt includes auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

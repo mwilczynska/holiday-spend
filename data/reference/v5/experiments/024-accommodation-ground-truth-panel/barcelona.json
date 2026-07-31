@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-panel-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "shared_hostel_dorm",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain hostel dorm bed two adults nightly price city average",
+      "reason": "Search results exposed per-bed values or hostel from-prices, but no non-from nightly central price explicitly covering two adult dorm beds. Per-bed values cannot be doubled under the no-arithmetic contract."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain private hostel room average nightly price two adults",
+      "reason": "City results were ranges, hostel from-prices, or averages without explicit two-adult one-room nightly occupancy; no definition-compatible central price was accepted."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain 1 star hotel average nightly price two adults city average",
+      "reason": "Results supplied regional Catalonia/Spain ADR values or unclassified Barcelona rates, not an explicitly Barcelona 1-star two-adult one-room nightly central price."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain 2 star hotel average nightly price two adults city average",
+      "reason": "Trip.com exposed Barcelona 2-star weekday/weekend averages but did not state two-adult one-room occupancy; other results were from-prices or regional data."
+    },
+    "accom_3_star": {
+      "status": "found",
+      "value": 176,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": "https://www.skyscanner.ie/hotels/spain/barcelona-hotels/three-star/ci-27548283/sr-3",
+      "sourceTitle": "3-star Hotels in Barcelona | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room ... The average price of a 3-star hotel in Barcelona is currently around 176 € per night.",
+      "referencePeriod": "Current listing; search result crawled 3 days before retrieval",
+      "searchQuery": "Barcelona Spain 3 star hotel average nightly price two adults one room city average",
+      "reason": null
+    },
+    "accom_4_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "4_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain 4 star hotel average nightly price two adults one room city average",
+      "reason": "Booking.com exposed a Barcelona 4-star weekend average without explicit two-adult one-room occupancy; other results were ranges, from-prices, or averages without the required occupancy."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "crossCityEvidence": 0
+  }
+}

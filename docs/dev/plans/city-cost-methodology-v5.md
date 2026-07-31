@@ -103,6 +103,10 @@ Experiment 023 audited the accepted-direct activity ledger before any fitting. I
 cities, 3 half-day group-activity cities, 2 full-day premium-activity cities, and only one complete city, so
 the 30-city/10-holdout gate is impossible. Reject activity model fitting; retain `activities_free = 0` as
 definitional and treat Experiment 020 as retrieval feasibility only.
+Experiment 024 then tested a strict six-class accommodation panel across three independent one-city calls.
+Only 3/18 cells passed and no city was complete; the route cannot supply the 30-city/10-holdout panel needed
+for fitting. Revise by allowing explicit one-bed dorm observations to be scaled deterministically to two
+travellers, while retaining strict per-room hotel identity, query provenance, and display-currency review.
 
 ## Restart rule
 

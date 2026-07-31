@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-panel-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "shared_hostel_dorm",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "reason": "BudgetYourTrip reported an average $12 dorm-bed price for Nairobi, but the snippet did not explicitly state a two-adult basis; Hostelworld results exposed only prohibited from prices. The strict two-adult contract therefore failed closed."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "reason": "BudgetYourTrip reported a $21 Nairobi private-hostel-room average, but the snippet did not explicitly establish two-adult occupancy; Hostelworld and Hostelz results were from or otherwise lacked a compatible two-adult central price."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "reason": "BudgetYourTrip's Nairobi table exposed one 1-star hotel at an average $37 and Momondo exposed a $243 1-star average, but neither snippet explicitly supplied a two-adult per-room nightly basis."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "reason": "Momondo reported a $26 Nairobi 2-star average and Trip.com reported weekday/weekend averages, but neither snippet explicitly supplied the required two-adult per-room basis; other results were generic or not central."
+    },
+    "accom_3_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "reason": "Booking.com and KAYAK exposed Nairobi 3-star averages but no explicit two-adult occupancy in the snippets; Expedia mentioned two adults only for a lowest/current quote rather than a qualifying central average."
+    },
+    "accom_4_star": {
+      "status": "found",
+      "value": 4031,
+      "currency": "TRY",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "sourceUrl": "https://www.skyscanner.gg/hotels/kenya/nairobi-hotels/four-star/ci-27536215/sr-4",
+      "sourceTitle": "4-star Hotels in Nairobi | Skyscanner",
+      "evidenceText": "Skyscanner's Nairobi 4-star result shows Guests and rooms: 2 adults, 1 room, and states: The average price of a 4-star hotel in Nairobi is currently around 4,031 TL per night.",
+      "referencePeriod": "current average; no explicit date in search snippet",
+      "reason": null
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "crossCityEvidence": 0
+  }
+}

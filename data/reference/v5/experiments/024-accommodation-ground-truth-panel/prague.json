@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-panel-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "shared_hostel_dorm",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czechia shared hostel dorm bed price per night two adults city average non-from",
+      "reason": "Budget Your Trip exposed a Prague average dorm-bed price ($27), but the search evidence did not explicitly state the required two-adult basis and did not provide a central price for two adults; Hostelworld results were From prices. Failed closed."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czechia private hostel room average price per night two adults central non-from",
+      "reason": "Budget Your Trip mixed hostel and guesthouse private-room averages and did not explicitly state the required two-adult nightly basis; Hostelworld exposed only Privates From prices. Failed closed."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czech Republic 1-star hotel average nightly price two adults one room city average",
+      "reason": "Momondo exposed a Prague 1-star average nightly price ($32), but the search evidence did not establish two adults in one room. Expedia established a two-adult averaging basis but exposed no numeric 1-star price in the result. Failed closed."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czech Republic 2-star hotel average nightly price two adults one room city average",
+      "reason": "Trip.com exposed weekday/weekend 2-star averages without an explicit two-adult one-room basis; Expedia exposed the two-adult basis but no numeric price. Other results were generic or district-level. Failed closed."
+    },
+    "accom_3_star": {
+      "status": "found",
+      "value": 88,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": "https://www.skyscanner.ie/hotels/czechia/prague-hotels/three-star/ci-27546033/sr-3",
+      "sourceTitle": "3-star Hotels in Prague | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room ... The average price of a 3-star hotel in Prague is currently around 88 € per night.",
+      "referencePeriod": "current (search result crawled 5 days ago; no fixed stay dates stated)",
+      "searchQuery": "Prague Czech Republic 3-star hotel average nightly price two adults one room city average",
+      "reason": null
+    },
+    "accom_4_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "4_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czech Republic 4-star hotel average nightly price two adults one room city average",
+      "reason": "Booking.com exposed a Prague 4-star weekend average ($240), which is event/date-specific and did not explicitly state the two-adult basis in the search evidence. Skyscanner exposed a current average ($113) without explicit occupancy. Expedia established the two-adult averaging basis but no numeric price. Failed closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "crossCityEvidence": 0
+  }
+}

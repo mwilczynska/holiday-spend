@@ -1,0 +1,22 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Prague",
+  "queriesAttempted": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 1,
+  "notFoundMeasures": 5,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "exactProviderModelId": null,
+  "parameters": null,
+  "note": "Exactly one independent Prague invocation with six targeted searches. Only the Skyscanner 3-star result explicitly exposed Prague, 3-star class, 2 adults/1 room, and a current nightly central price. Hostel classes, 1-star, 2-star, and 4-star failed closed under the strict identity/occupancy/date rules. Exact provider telemetry is unavailable through the delegated target-model surface."
+}
