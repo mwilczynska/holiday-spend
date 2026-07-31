@@ -1077,3 +1077,15 @@ calibration coverage was **0/9** and no matched city existed.
 Do not fit a correction or map a value to `accom_1_star`. Test a different direct one-star source or an
 independently curated two-adult property panel. Read
 `data/reference/v5/experiments/031-one-star-occupancy-calibration/`.
+
+## Experiment 032 — explicit one-star property basket (31 July 2026)
+
+Barcelona, Prague, and Nairobi each received one compliant one-city call with four bounded source searches
+(Booking.com, Hotels.com, Trip.com, Agoda). Across 12 searches, **zero** named property quotes passed the joint
+1-star, explicit-two-adult/one-room, non-`from`, exact-city, date-aware contract. The sources exposed occupancy
+without class, class without occupancy, or `from`/range prices. No reads, retries, arithmetic, FX, averaging, or
+cross-city evidence were used.
+
+**Verdict:** reject the property-basket route; no basket statistic or `accom_1_star` value is produced. Pivot to
+a different source or separately curated ground truth. Read
+`data/reference/v5/experiments/032-one-star-property-basket/`.

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-property-basket-telemetry-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:booking.com Prague Czechia 1-star hotel 2 adults 1 room nightly price",
+    "site:hotels.com Prague Czechia 1-star hotel 2 adults 1 room nightly price",
+    "site:trip.com Prague Czechia 1-star hotel 2 adults 1 room nightly price",
+    "site:agoda.com Prague Czechia 1-star hotel 2 adults 1 room nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "propertyQuotesAccepted": 0,
+  "rejectedSources": 4,
+  "notes": "Single-city search-only property-basket run using exactly four source-restricted queries. No qualifying explicit two-adult named 1-star property quote was found. No page reads, retries, fallback sources, arithmetic, FX, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

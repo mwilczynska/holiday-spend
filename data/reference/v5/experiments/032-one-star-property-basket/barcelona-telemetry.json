@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-property-basket-telemetry-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:booking.com Barcelona Spain 1-star hotel 2 adults 1 room nightly price",
+    "site:hotels.com Barcelona Spain 1-star hotel 2 adults 1 room nightly price",
+    "site:trip.com Barcelona Spain 1-star hotel 2 adults 1 room nightly price",
+    "site:agoda.com Barcelona Spain 1-star hotel 2 adults 1 room nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedPropertyQuotes": 0,
+  "rejectedCandidates": 4,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only property-basket run using exactly four restricted queries. No property met every requirement simultaneously: explicit one-star class, explicit two-adult/one-room occupancy, numeric non-from nightly price, exact Barcelona identity, and date/window. Trip.com supplied explicit one-star properties but only starting-from rates; Hotels.com supplied a one-star property without explicit occupancy; Booking.com lacked an explicit one-star class; Agoda supplied no qualifying property. No direct reads, retries, fallback sources, arithmetic, FX, averaging, or cross-city evidence were used. This is retrieval-feasibility evidence, not a city-level product value; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

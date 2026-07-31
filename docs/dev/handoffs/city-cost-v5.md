@@ -292,6 +292,11 @@ searches each (Momondo, Skyscanner, Expedia), nine searches total. It produced t
 rows and zero explicit two-adult rows. Reject the route; retain candidates only as unresolved evidence and test
 a different direct 1-star source or a separately curated two-adult property panel.
 
+Experiment 032 tested that property panel in Barcelona, Prague, and Nairobi: four bounded source searches per
+city, 12 total, zero qualifying named 1-star quotes. Occupancy, class, and non-`from` price did not co-occur.
+Reject the route and pivot to a different source or separately curated ground truth; do not map any one-star
+value.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

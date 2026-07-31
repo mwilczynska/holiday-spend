@@ -137,6 +137,10 @@ Experiment 031 tested that calibration panel shape with Momondo, Skyscanner, and
 calls. It produced two source-default Momondo rows and zero explicit two-adult 1-star rows. Reject the route
 without fitting; pivot to a different direct source or an independently curated two-adult property panel.
 
+Experiment 032 tested that property-panel pivot across Barcelona, Prague, and Nairobi. Twelve bounded searches
+produced zero qualifying named 1-star property quotes: occupancy, class, and non-`from` price never co-occurred
+in the same evidence. Reject the route and retain the failure reasons for source selection.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

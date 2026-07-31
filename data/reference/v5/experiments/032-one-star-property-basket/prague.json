@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-property-basket-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-07-31",
+  "propertyQuotes": [],
+  "rejected": [
+    {
+      "source": "Booking.com",
+      "reason": "The permitted search returned Prague 1 district listings and individual Prague properties with two adults/one room and prices, but no same-snippet explicit 1-star class for a named property. District-only results, unclassified properties, and from prices were rejected."
+    },
+    {
+      "source": "Hotels.com",
+      "reason": "The permitted search returned a generic Hotels.com one-star Prague page and Prague 1/2 two-star pages. No named exact-city 1-star property snippet contained a qualifying non-from nightly price with the required occupancy and date identity."
+    },
+    {
+      "source": "Trip.com",
+      "reason": "The permitted search returned a Prague 2-star listing page rather than a 1-star property basket. It was rejected for the wrong class and for lacking qualifying explicit property-level evidence."
+    },
+    {
+      "source": "Agoda",
+      "reason": "The permitted search returned an Agoda Prague 1 district property page without a 1-star classification, qualifying numeric nightly price, and explicit two-adult occupancy in the same evidence. It was rejected."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

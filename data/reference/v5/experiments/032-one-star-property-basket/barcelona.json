@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-property-basket-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-07-31",
+  "propertyQuotes": [],
+  "rejected": [
+    {
+      "source": "Booking.com",
+      "reason": "The Barcelona property result showed 2 adults/1 room and nightly pricing, but Hotel Best Aranea had no explicit 1-star class in the returned evidence; it was rejected rather than inferred."
+    },
+    {
+      "source": "Hotels.com",
+      "reason": "A Hostal Sant Antoni result identified a 1.0-star Barcelona property and a nightly price, but did not state two adults/one room in the evidence. Occupancy cannot be inferred from the query, so it was rejected."
+    },
+    {
+      "source": "Trip.com",
+      "reason": "Trip.com returned 1-star Barcelona properties with explicit occupancy, including Hotel Cantón (2 adults/1 child) and Arte Suites/Hotel Casa Trafalgar (2 adults/1 room), but each price was a 'starting from' rate. City-level 1-star averages were also returned, but generic averages are outside this property-basket experiment. All were rejected."
+    },
+    {
+      "source": "Agoda",
+      "reason": "The Agoda-restricted search returned documentation and unrelated results, not a named Barcelona 1-star property with explicit two-adult/one-room non-from nightly pricing and a date/window."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

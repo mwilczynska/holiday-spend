@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-property-basket-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "propertyQuotes": [],
+  "rejected": [
+    {
+      "source": "Booking.com",
+      "reason": "The city result explicitly showed 1 night, 2 adults, but the named priced properties were not identified as 1-star. A separate Celine & Lolo property snippet showed 2 adults and nightly prices but no 1-star class, so no property quote qualified."
+    },
+    {
+      "source": "Hotels.com",
+      "reason": "The Nairobi restricted results were 2-star or 2.5-star property listings, not 1-star properties."
+    },
+    {
+      "source": "Trip.com",
+      "reason": "The exact Nairobi 1-star page listed properties with price ranges or prices starting from, and did not state two adults and one room in the same evidence. Ranges/from prices and inferred occupancy were rejected."
+    },
+    {
+      "source": "Agoda",
+      "reason": "The Agoda-restricted search returned no qualifying exact-city 1-star named property with explicit two-adult/one-room occupancy and a non-from nightly price."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

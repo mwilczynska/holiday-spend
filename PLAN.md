@@ -292,6 +292,10 @@ explicit two-adult 1-star rows. Momondo's two source-default candidates remain u
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not
 fit a correction from this tranche.
 
+Experiment 032 rejected the direct property-basket pivot: three one-city calls and 12 bounded searches produced
+zero named 1-star quotes with the joint explicit-two-adult/non-`from` contract. The next run must test a different
+source or a separately curated ground-truth collection; no one-star value is currently promotable.
+
 1. Run a separately declared 1-star source test while continuing the Expedia 2–4-star panel. Enforce one
    search batch per city, preserve duplicate-call deviations, and require 30 complete cities plus 10 locked
    holdouts before any accommodation model is promoted. Retain the one-bed dorm boundary and all currency/
