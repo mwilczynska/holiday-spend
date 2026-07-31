@@ -90,13 +90,12 @@ The project has so far held a "no browser automation" line for the small-model r
 | v4 ratio model selection | Four relationships settled; forms stable under strict-sample re-fit |
 | v4 collection contract | Tested end to end; 0.0% error on 29/29 measures when direct lookup succeeds |
 | v4 accommodation class ladder | 1.297 / 0.734 / 0.592 fitted; incumbent 1.800 refuted |
+| Documentation restructure | CLAUDE.md 868 → 260 lines; LOG.md and PLAN.md created; superseded docs archived with status banners; inventories added for `data/reference/`, `scripts/` and `docs/prompts/` |
+| Dashboard as-of date | Dashboard figures now anchor on the last transaction date rather than today |
 
 ### In progress
 
-| Milestone | State |
-| --- | --- |
-| **Documentation restructure** | This pass — CLAUDE.md rewritten (868 → ~260 lines), LOG.md and PLAN.md created, superseded docs moved under `archive/` with status banners, and inventories added for `data/reference/`, `scripts/` and `docs/prompts/` |
-| **Dashboard as-of date** | Code complete and tested, **uncommitted**. Switches the dashboard from `today` to the last transaction date. New `src/lib/dashboard-as-of.ts` + tests |
+Nothing. `main` is clean and green as of 31 July 2026 — the next methodology starts here.
 
 ### To do — v4, in dependency order
 
