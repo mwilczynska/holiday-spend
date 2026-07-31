@@ -1,0 +1,70 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Nairobi",
+  "country": "Kenya",
+  "queriesAttempted": 6,
+  "searchOperations": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "retries": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 2,
+  "notFoundMeasures": 4,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "exactProviderModelId": "GPT-5.6 Luna-class delegated invocation",
+  "parameters": null,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "queries": [
+    {
+      "measure": "accom_shared_hostel_dorm",
+      "query": "site:hostelworld.com Nairobi dorm bed per night price",
+      "status": "not_found",
+      "reason": "Hostelworld exposed only Dorms From prices; no non-from central per-bed price."
+    },
+    {
+      "measure": "accom_hostel_private_room",
+      "query": "site:hostelworld.com Nairobi private room per night price",
+      "status": "not_found",
+      "reason": "Hostelworld exposed only Privates From prices and did not establish an explicit two-adult central price."
+    },
+    {
+      "measure": "accom_1_star",
+      "query": "site:booking.com Nairobi 1-star hotels average price per night 2 adults",
+      "status": "not_found",
+      "reason": "No exact one-star class average with a qualifying two-adult per-room basis was found."
+    },
+    {
+      "measure": "accom_2_star",
+      "query": "site:booking.com Nairobi 2-star hotels average price per night 2 adults",
+      "status": "not_found",
+      "reason": "No exact two-star class average with a qualifying two-adult per-room basis was found."
+    },
+    {
+      "measure": "accom_3_star",
+      "query": "site:booking.com Nairobi 3-star hotels average price per night 2 adults",
+      "status": "found",
+      "sourceUrl": "https://www.booking.com/city/ke/nairobi.html",
+      "value": 60,
+      "currency": "USD",
+      "reason": "Booking.com city result exposed 1 night, 2 adults and the all-year average for 3-star hotels as US$60 per night."
+    },
+    {
+      "measure": "accom_4_star",
+      "query": "site:booking.com Nairobi 4-star hotels average price per night 2 adults",
+      "status": "found",
+      "sourceUrl": "https://www.booking.com/city/ke/nairobi.html",
+      "value": 96,
+      "currency": "USD",
+      "reason": "Booking.com city result exposed 1 night, 2 adults and the all-year average for 4-star hotels as US$96 per night."
+    }
+  ],
+  "note": "Exactly one city and six independent targeted searches. Shared dorm is allowed to be one adult per bed, but no qualifying non-from central dorm value was found. No direct reads, retries, fallback sources, arithmetic, currency conversion, or cross-city evidence. Exact provider token, latency, cost, and runtime parameters are unavailable through delegated orchestration."
+}

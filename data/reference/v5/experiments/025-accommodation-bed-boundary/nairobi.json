@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "shared_hostel_dorm",
+      "sourceUrl": "https://www.hostelworld.com/hostels/africa/kenya/nairobi/",
+      "sourceTitle": "Best Hostels in Nairobi from £0.31 | 2026",
+      "evidenceText": "Search results list only Dorms From prices (for example £8.35 and £9.10), not a non-from central price explicitly per dorm bed/night.",
+      "referencePeriod": "2026 search result; dates not specified",
+      "searchQuery": "site:hostelworld.com Nairobi dorm bed per night price",
+      "reason": "Only lowest/from prices were exposed; the experiment rejects them."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "hostel_private_room",
+      "sourceUrl": "https://www.hostelworld.com/hostels/africa/kenya/nairobi/",
+      "sourceTitle": "Best Hostels in Nairobi from £0.31 | 2026",
+      "evidenceText": "Search results list only Privates From prices (for example £11.38 and £14.04), without an explicit two-adult private-room central price.",
+      "referencePeriod": "2026 search result; dates not specified",
+      "searchQuery": "site:hostelworld.com Nairobi private room per night price",
+      "reason": "Only lowest/from prices and ambiguous occupancy were exposed; the experiment rejects them."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "1_star",
+      "sourceUrl": "https://www.booking.com/budget/city/ke/nairobi.html",
+      "sourceTitle": "The 10 best cheap hotels in Nairobi, Kenya",
+      "evidenceText": "The result describes cheap hotels and an average price but does not identify an exact one-star hotel class average.",
+      "referencePeriod": "2026 search result; dates not specified",
+      "searchQuery": "site:booking.com Nairobi 1-star hotels average price per night 2 adults",
+      "reason": "No exact one-star class result with a qualifying central price was found."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "2_star",
+      "sourceUrl": "https://www.booking.com/budget/city/ke/nairobi.html",
+      "sourceTitle": "The 10 best cheap hotels in Nairobi, Kenya",
+      "evidenceText": "The result describes cheap hotels and an average price but does not identify an exact two-star hotel class average.",
+      "referencePeriod": "2026 search result; dates not specified",
+      "searchQuery": "site:booking.com Nairobi 2-star hotels average price per night 2 adults",
+      "reason": "No exact two-star class result with a qualifying central price was found."
+    },
+    "accom_3_star": {
+      "status": "found",
+      "value": 60,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": "https://www.booking.com/city/ke/nairobi.html",
+      "sourceTitle": "10 Best Nairobi Hotels, Kenya",
+      "evidenceText": "Booking.com Nairobi city result shows 1 night, 2 adults and states: On average, 3-star hotels in Nairobi cost US$60 per night (based on Booking.com prices).",
+      "referencePeriod": "2026 current average; the page also exposes a separate weekend figure, which was not used",
+      "searchQuery": "site:booking.com Nairobi 3-star hotels average price per night 2 adults",
+      "reason": ""
+    },
+    "accom_4_star": {
+      "status": "found",
+      "value": 96,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "sourceUrl": "https://www.booking.com/city/ke/nairobi.html",
+      "sourceTitle": "10 Best Nairobi Hotels, Kenya",
+      "evidenceText": "Booking.com Nairobi city result shows 1 night, 2 adults and states: On average, 4-star hotels in Nairobi are $96 per night (based on Booking.com prices).",
+      "referencePeriod": "2026 current average; the page also exposes a separate weekend figure, which was not used",
+      "searchQuery": "site:booking.com Nairobi 4-star hotels average price per night 2 adults",
+      "reason": ""
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,192 @@
+﻿{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-audit-v1",
+  "citiesTested": 3,
+  "acceptedCells": 6,
+  "totalCells": 18,
+  "accepted": [
+    {
+      "city": "Barcelona",
+      "measure": "accom_shared_hostel_dorm",
+      "value": 15,
+      "currency": "EUR",
+      "unit": "per_dorm_bed_per_night",
+      "scaledTwoPerson": 30,
+      "sourceUrl": "https://www.hostelz.com/hostels/Spain/Barcelona?filter%5Bactivities%5D%5B%5D=tours&filter%5Brating%5D%5B%5D=8",
+      "searchQuery": "Barcelona Spain hostel dorm bed average price per night one adult"
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_3_star",
+      "value": 176,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "scaledTwoPerson": null,
+      "sourceUrl": "https://www.skyscanner.ie/hotels/spain/barcelona-hotels/three-star/ci-27548283/sr-3",
+      "searchQuery": "Barcelona Spain 3-star hotel city average price per room per night two adults"
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_4_star",
+      "value": 829,
+      "currency": "PLN",
+      "unit": "per_room_per_night",
+      "scaledTwoPerson": null,
+      "sourceUrl": "https://www.skyscanner.gg/hotels/spain/barcelona-hotels/four-star/ci-27548283/sr-4",
+      "searchQuery": "Barcelona Spain 4-star hotel city average price per room per night two adults"
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_3_star",
+      "value": 60,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "scaledTwoPerson": null,
+      "sourceUrl": "https://www.booking.com/city/ke/nairobi.html",
+      "searchQuery": "site:booking.com Nairobi 3-star hotels average price per night 2 adults"
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_4_star",
+      "value": 96,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "scaledTwoPerson": null,
+      "sourceUrl": "https://www.booking.com/city/ke/nairobi.html",
+      "searchQuery": "site:booking.com Nairobi 4-star hotels average price per night 2 adults"
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_4_star",
+      "value": 111,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "scaledTwoPerson": null,
+      "sourceUrl": "https://www.skyscanner.ie/hotels/czechia/prague-hotels/four-star/ci-27546033/sr-4",
+      "searchQuery": "Prague Czechia 4 star hotel room two adults one night price"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Barcelona",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "Hostelz and BudgetYourTrip exposed private-room averages, but neither snippet explicitly established two-adult occupancy; Hostelworld exposed only prohibited from prices."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "Search results did not expose a central Barcelona 1-star price with explicit two-adult, one-room occupancy; regional ADR and general hotel prices were not class- and occupancy-compatible."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Momondo and Trip.com exposed 2-star averages, but neither snippet explicitly supplied two-adult, one-room occupancy; lowest or weekday/weekend quotes were not central contract matches."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_shared_hostel_dorm",
+      "status": "not_found",
+      "reason": "Only lowest/from prices were exposed; the experiment rejects them."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "Only lowest/from prices and ambiguous occupancy were exposed; the experiment rejects them."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "No exact one-star class result with a qualifying central price was found."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "No exact two-star class result with a qualifying central price was found."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_shared_hostel_dorm",
+      "status": "not_found",
+      "reason": "Search results exposed only Hostelworld Dorms From prices or student/university residence bed rates. No non-from central shared-hostel dorm bed price for Prague was identified. Failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "Hostelworld and Hostel Seven exposed Privates From/from prices, which are not accepted central prices. No non-from private hostel room price explicitly for two adults was identified. Failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "Expedia exposed a two-adult one-night starting price for Hotel Praga 1, but the result did not establish that the property is a 1-star hotel. The class identity requirement therefore failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Results identified Prague 2-star hotel listings but supplied no compatible numeric nightly room price with explicit two-adult occupancy. Failed closed."
+    },
+    {
+      "city": "Prague",
+      "measure": "accom_3_star",
+      "status": "not_found",
+      "reason": "Booking.com exposed a 3-star weekend average without explicit two-adult occupancy in the search evidence; Expedia exposed a lowest price for two adults, which is a lowest/from value. No compatible central price was retained. Failed closed."
+    }
+  ],
+  "cities": [
+    {
+      "city": "Barcelona",
+      "acceptedCells": 3,
+      "complete": false
+    },
+    {
+      "city": "Nairobi",
+      "acceptedCells": 2,
+      "complete": false
+    },
+    {
+      "city": "Prague",
+      "acceptedCells": 1,
+      "complete": false
+    }
+  ],
+  "byMeasure": {
+    "accom_shared_hostel_dorm": {
+      "acceptedRows": 1,
+      "cities": 1
+    },
+    "accom_hostel_private_room": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_1_star": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_2_star": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_3_star": {
+      "acceptedRows": 2,
+      "cities": 2
+    },
+    "accom_4_star": {
+      "acceptedRows": 3,
+      "cities": 3
+    }
+  },
+  "modelGate": {
+    "matchedCitiesRequired": 30,
+    "lockedHoldoutRequired": 10,
+    "completeCityCount": 0,
+    "completeCityCountMeets30": false,
+    "note": "Dorm values remain one-bed observed inputs; scaledTwoPerson is a deterministic audit preview, not LLM arithmetic."
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 15,
+      "currency": "EUR",
+      "unit": "per_dorm_bed_per_night",
+      "occupancy": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "sourceUrl": "https://www.hostelz.com/hostels/Spain/Barcelona?filter%5Bactivities%5D%5B%5D=tours&filter%5Brating%5D%5B%5D=8",
+      "sourceTitle": "Hostels in Barcelona from €5 — City Tours",
+      "evidenceText": "On average, hostels in Barcelona cost around €15 per dorm bed and €134 per private room per night.",
+      "referencePeriod": "Published 7 months ago; crawled 5 days ago; current city average",
+      "searchQuery": "Barcelona Spain hostel dorm bed average price per night one adult",
+      "reason": null
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain hostel private room average price per night two adults",
+      "reason": "Hostelz and BudgetYourTrip exposed private-room averages, but neither snippet explicitly established two-adult occupancy; Hostelworld exposed only prohibited from prices."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain 1-star hotel city average price per room per night two adults",
+      "reason": "Search results did not expose a central Barcelona 1-star price with explicit two-adult, one-room occupancy; regional ADR and general hotel prices were not class- and occupancy-compatible."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Barcelona Spain 2-star hotel city average price per room per night two adults",
+      "reason": "Momondo and Trip.com exposed 2-star averages, but neither snippet explicitly supplied two-adult, one-room occupancy; lowest or weekday/weekend quotes were not central contract matches."
+    },
+    "accom_3_star": {
+      "status": "found",
+      "value": 176,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": "https://www.skyscanner.ie/hotels/spain/barcelona-hotels/three-star/ci-27548283/sr-3",
+      "sourceTitle": "3-star Hotels in Barcelona | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room ... The average price of a 3-star hotel in Barcelona is currently around 176 € per night.",
+      "referencePeriod": "Crawled 3 days ago; current average; no explicit stay dates",
+      "searchQuery": "Barcelona Spain 3-star hotel city average price per room per night two adults",
+      "reason": null
+    },
+    "accom_4_star": {
+      "status": "found",
+      "value": 829,
+      "currency": "PLN",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "sourceUrl": "https://www.skyscanner.gg/hotels/spain/barcelona-hotels/four-star/ci-27548283/sr-4",
+      "sourceTitle": "4-star Hotels in Barcelona | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room ... The average price of a 4-star hotel in Barcelona is currently around 829 zł per night.",
+      "referencePeriod": "Crawled 3 days ago; current average; no explicit stay dates",
+      "searchQuery": "Barcelona Spain 4-star hotel city average price per room per night two adults",
+      "reason": null
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

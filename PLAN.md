@@ -241,12 +241,19 @@ two-adult identity; lower hotel classes lacked compatible class/occupancy eviden
 telemetry preserved the exact six queries and the audit records that exception. See
 `data/reference/v5/experiments/024-accommodation-ground-truth-panel/`.
 
+**Experiment 025 — one-bed dorm boundary — complete; promote boundary, reject complete route.** Three paired
+one-city calls used the revised prompt and accepted 6/18 cells, including one explicit Barcelona dorm price
+of EUR15 per bed/night that can be scaled deterministically to two travellers. Hotel/private-hostel rules
+remained unchanged. No city was complete; private hostel, 1-star, and 2-star remained unresolved. Retain
+source/display currency exactly and flag non-local currency for FX review. See
+`data/reference/v5/experiments/025-accommodation-bed-boundary/`.
+
 ### Next experiments, in order
 
-1. Test a revised accommodation boundary in independent one-city calls: accept explicit one-bed dorm prices
-   as observed inputs and scale to two travellers in deterministic code, while retaining strict two-adult
-   per-room rules for hotel classes. Preserve source currency, display-currency warnings, exact query
-   provenance, and fail-closed missingness; do not fit ratios before the 30-city/10-holdout gate.
+1. Broaden the promoted accommodation boundary across independently collected cities, retaining one-bed dorm
+   inputs plus strict two-adult hotel/private-room identity. Require 30 complete cities and 10 locked holdout
+   cities before any ratio or imputation; preserve source/display currency, exact query provenance, and all
+   missingness. Do not tune the locked 018 holdout.
 2. Continue the official attraction-ticket panel and timed-activity source tests only after recording the
    revised accommodation boundary; do not silently substitute another city.
 3. Replace or calibrate the rejected Booking city-average basis using independently collected matched
@@ -321,6 +328,8 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/023-activity-ground-truth-audit/`
 - `data/reference/v5/experiments/024-accommodation-ground-truth-panel/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_024_accommodation_ground_truth.md`
+- `data/reference/v5/experiments/025-accommodation-bed-boundary/`
+- `docs/prompts/llm_prompt_city_cost_v5_experiment_025_accommodation_bed_boundary.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

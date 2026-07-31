@@ -261,9 +261,13 @@ observed one-bed inputs for deterministic scaling, but must retain strict two-ad
 exact query provenance, source currency, and a display-currency warning. Do not fit before 30 complete cities
 and 10 locked holdout cities exist.
 
-Next, test the revised accommodation boundary: accept explicit per-bed dorm prices as observed one-bed inputs
-for deterministic scaling to two travellers, while retaining strict two-adult per-room hotel rules, exact
-query provenance, source currency, and display-currency warnings. Direct booking-engine URLs and direct
+Experiment 025 promoted the one-bed dorm boundary: paired Barcelona, Prague, and Nairobi calls accepted 6/18
+cells (up from 3/18), including Barcelona's explicit EUR15 per-bed input. No city was complete; private
+hostel, 1-star, and 2-star remain unresolved. Broaden this boundary with additional independent cities, keep
+strict hotel/private-room occupancy, and require 30 complete cities plus 10 locked holdouts before fitting.
+
+Next, broaden the promoted one-bed dorm boundary across independent cities while retaining strict two-adult
+per-room hotel/private-room identity and exact source/display currency. Direct booking-engine URLs and direct
 Numbeo retrieval remain rejected for the target web path. Do not tune the locked 018 holdout, use the shipping
 CSV as ground truth, or infer dorm/private separation from the blended hostel channel. The derivation contract
 remains out of the shipping path until source feasibility and accuracy gates pass.

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "shared_hostel_dorm",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czechia shared hostel dorm bed per night one adult price non-from",
+      "reason": "Search results exposed only Hostelworld Dorms From prices or student/university residence bed rates. No non-from central shared-hostel dorm bed price for Prague was identified. Failed closed."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czechia private hostel room two adults one night price non-from",
+      "reason": "Hostelworld and Hostel Seven exposed Privates From/from prices, which are not accepted central prices. No non-from private hostel room price explicitly for two adults was identified. Failed closed."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czechia 1 star hotel room two adults one night price",
+      "reason": "Expedia exposed a two-adult one-night starting price for Hotel Praga 1, but the result did not establish that the property is a 1-star hotel. The class identity requirement therefore failed closed."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czechia 2 star hotel room two adults one night price",
+      "reason": "Results identified Prague 2-star hotel listings but supplied no compatible numeric nightly room price with explicit two-adult occupancy. Failed closed."
+    },
+    "accom_3_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": null,
+      "class": "3_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Prague Czechia 3 star hotel room two adults one night price",
+      "reason": "Booking.com exposed a 3-star weekend average without explicit two-adult occupancy in the search evidence; Expedia exposed a lowest price for two adults, which is a lowest/from value. No compatible central price was retained. Failed closed."
+    },
+    "accom_4_star": {
+      "status": "found",
+      "value": 111,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "sourceUrl": "https://www.skyscanner.ie/hotels/czechia/prague-hotels/four-star/ci-27546033/sr-4",
+      "sourceTitle": "4-star Hotels in Prague | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room ... The average price of a 4-star hotel in Prague is currently around 111 € per night.",
+      "referencePeriod": "current (search result crawled 5 days ago; no fixed stay dates stated)",
+      "searchQuery": "Prague Czechia 4 star hotel room two adults one night price",
+      "reason": null
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

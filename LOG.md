@@ -988,3 +988,17 @@ target-model retrieval evidence, not ground truth or fitted accommodation coeffi
 in the next experiment to accept an explicit one-bed dorm price as an observed input and scale it to two
 travellers in deterministic code, while preserving strict per-room hotel identity and display-currency review.
 Read `data/reference/v5/experiments/024-accommodation-ground-truth-panel/`.
+
+## Experiment 025 — one-bed dorm boundary (31 July 2026)
+
+Three paired GPT-5.6 Luna-class one-city calls repeated Barcelona, Prague, and Nairobi with the only changed
+boundary being explicit one-adult dorm-bed prices. They issued 18 searches and 18 search operations with no
+direct reads, retries, fallbacks, arithmetic, FX, or cross-city evidence. Coverage rose from **3/18 to 6/18**:
+Barcelona dorm EUR15 per bed, Barcelona 3/4-star, Nairobi 3/4-star, and Prague 4-star. No city was complete;
+private-hostel, 1-star, and 2-star classes remained unresolved. The dorm value is an observed one-bed input;
+only deterministic code may multiply it by two. Barcelona 4-star was displayed in PLN and Nairobi values in
+USD; source display currencies are retained and flagged for FX review.
+
+**Verdict:** promote the one-bed dorm boundary for broader collection, but do not fit accommodation ratios or
+call the route complete. Require 30 complete cities and 10 locked holdout cities with definition-matched
+inputs. Read `data/reference/v5/experiments/025-accommodation-bed-boundary/`.

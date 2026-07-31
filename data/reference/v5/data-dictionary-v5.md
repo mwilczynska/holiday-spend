@@ -26,7 +26,7 @@ affected holdout is used.
 
 | Field | Frozen estimand | Direct unit / evidence basis |
 | --- | --- | --- |
-| `accom_shared_hostel_dorm` | Two separately purchasable dorm beds in an eligible hostel for one night | `per_person_bed_night`; dorm label or equivalent occupancy evidence required |
+| `accom_shared_hostel_dorm` | Two separately purchasable dorm beds in an eligible hostel for one night | `per_person_bed_night`; dorm label or equivalent occupancy evidence required. A one-bed observed input may be multiplied by two only in deterministic code |
 | `accom_hostel_private_room` | One private hostel room for two travellers for one night | `per_room_night`; private-room occupancy required |
 | `accom_1_star` | Standard room for two in an eligible one-star class for one night | `per_room_night`; explicit class evidence required |
 | `accom_2_star` | Standard room for two in an eligible two-star class for one night | `per_room_night`; explicit class evidence required |
@@ -52,3 +52,11 @@ Derivation may use only named observed inputs and versioned coefficients. A mode
 values created by the same model family, asserted constants in the shipping CSV, or incompatible source
 bases. A genuinely absent class is not silently filled. If the product ultimately requires a number for an
 absent class, that product decision and its modelled semantics must be separately documented and validated.
+
+## Dated collection amendment — 31 July 2026
+
+Experiment 025 confirms that the shared-dorm product estimand remains two beds for two travellers, while the
+collection contract may retain an explicit one-adult bed/night observation and apply the fixed factor of two
+in deterministic code. This changes the direct input unit, not the product estimand; it introduces no fitted
+parameter. Source currency, tax status, retrieval date, and display-currency warnings remain attached to the
+one-bed observation. See `data/reference/v5/experiments/025-accommodation-bed-boundary/`.

@@ -1,0 +1,76 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Barcelona",
+  "country": "Spain",
+  "queriesAttempted": 6,
+  "searchOperations": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "retries": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 3,
+  "notFoundMeasures": 3,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "exactProviderModelId": "GPT-5.6 Luna-class delegated invocation",
+  "parameters": null,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "queries": [
+    {
+      "measure": "accom_shared_hostel_dorm",
+      "query": "Barcelona Spain hostel dorm bed average price per night one adult",
+      "status": "found",
+      "sourceUrl": "https://www.hostelz.com/hostels/Spain/Barcelona?filter%5Bactivities%5D%5B%5D=tours&filter%5Brating%5D%5B%5D=8",
+      "value": 15,
+      "currency": "EUR",
+      "unit": "per_dorm_bed_per_night",
+      "reason": "Hostelz snippet explicitly reported an average €15 per dorm bed per night; the one-bed observation is retained without multiplication."
+    },
+    {
+      "measure": "accom_hostel_private_room",
+      "query": "Barcelona Spain hostel private room average price per night two adults",
+      "status": "not_found",
+      "reason": "Private-room averages lacked explicit two-adult occupancy; available Hostelworld prices were from prices."
+    },
+    {
+      "measure": "accom_1_star",
+      "query": "Barcelona Spain 1-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "No central 1-star result supplied explicit two-adult, one-room occupancy."
+    },
+    {
+      "measure": "accom_2_star",
+      "query": "Barcelona Spain 2-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "2-star averages lacked explicit two-adult, one-room occupancy or were weekday/weekend/lowest quotes."
+    },
+    {
+      "measure": "accom_3_star",
+      "query": "Barcelona Spain 3-star hotel city average price per room per night two adults",
+      "status": "found",
+      "sourceUrl": "https://www.skyscanner.ie/hotels/spain/barcelona-hotels/three-star/ci-27548283/sr-3",
+      "value": 176,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "reason": "Skyscanner snippet explicitly showed Guests and rooms: 2 adults, 1 room, and a Barcelona 3-star average of €176 per night."
+    },
+    {
+      "measure": "accom_4_star",
+      "query": "Barcelona Spain 4-star hotel city average price per room per night two adults",
+      "status": "found",
+      "sourceUrl": "https://www.skyscanner.gg/hotels/spain/barcelona-hotels/four-star/ci-27548283/sr-4",
+      "value": 829,
+      "currency": "PLN",
+      "unit": "per_room_per_night",
+      "reason": "Skyscanner snippet explicitly showed Guests and rooms: 2 adults, 1 room, and a Barcelona 4-star average of 829 zł per night."
+    }
+  ],
+  "note": "Exactly one city and six independent targeted searches. No direct reads, retries, fallback sources, arithmetic, currency conversion, or cross-city evidence. A one-bed dorm value remains an observed one-adult input; deterministic code must multiply it for the two-traveller product value. Exact provider token, latency, cost, and runtime parameters are unavailable through delegated orchestration."
+}

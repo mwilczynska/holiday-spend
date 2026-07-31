@@ -107,6 +107,10 @@ Experiment 024 then tested a strict six-class accommodation panel across three i
 Only 3/18 cells passed and no city was complete; the route cannot supply the 30-city/10-holdout panel needed
 for fitting. Revise by allowing explicit one-bed dorm observations to be scaled deterministically to two
 travellers, while retaining strict per-room hotel identity, query provenance, and display-currency review.
+Experiment 025 tested that revised bed boundary on paired Barcelona, Prague, and Nairobi calls. Coverage rose
+from 3/18 to 6/18: one explicit Barcelona dorm bed plus five hotel class averages. No city was complete and
+private hostel, 1-star, and 2-star remained missing. Promote the bed input boundary for a broader panel, but
+do not fit until the 30-city/10-holdout gate; retain source display currencies for deterministic FX review.
 
 ## Restart rule
 

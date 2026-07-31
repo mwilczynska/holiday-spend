@@ -1,0 +1,22 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Prague",
+  "queriesAttempted": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 1,
+  "notFoundMeasures": 5,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "exactProviderModelId": null,
+  "parameters": null,
+  "note": "Exactly one independent Prague invocation with six targeted searches under the bed-boundary prompt. One 4-star Skyscanner average explicitly exposed Prague, 4-star class, 2 adults/1 room, and a current nightly central price. The one-bed dorm boundary did not produce an acceptable shared-hostel row; private hostel, 1-star, 2-star, and 3-star classes failed closed. Exact provider telemetry is unavailable through the delegated target-model surface."
+}
