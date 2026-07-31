@@ -701,3 +701,16 @@ unsupported facts appeared.
 anchors still need definition-matched model accuracy, the 3-star anchor is weak, sparse-city fallback is
 unresolved, and source basis heterogeneity must be controlled. Artifacts are under
 `data/reference/v5/experiments/007-minimal-anchor-retest/`.
+
+## Experiment 008 — omitted-anchor ground-truth feasibility (31 July 2026)
+
+A bounded ten-city delegated Luna-class task searched for the nine omitted anchors needed by the minimal
+contract. Only **4/90 cells (4.4%)** met the frozen basis: one street-food item, one cocktail, and two
+half-day group activities. No compatible 1/2/4-star two-adult rooms, premium meals, wine glasses, or full-
+day premium activities were found. Thirty-one near-misses were rejected for ranges, private/package rates,
+missing class or occupancy, stale promotions, or named venues without item prices.
+
+**Verdict:** reject broad direct collection as the model-fitting method. The low result is predominantly a
+definition/basis problem rather than a claim that the classes do not exist. Narrow source-specific panels or
+revised estimands are required before any 30-city model validation. Artifacts are under
+`data/reference/v5/experiments/008-omitted-anchor-ground-truth/`.

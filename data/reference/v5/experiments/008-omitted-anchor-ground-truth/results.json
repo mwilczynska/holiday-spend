@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "008-omitted-anchor-ground-truth",
+  "date": "2026-07-31",
+  "pilotType": "bounded model-boundary ground-truth feasibility; not acceptance evidence",
+  "targetClass": "GPT-5.6 Luna",
+  "cityCount": 10,
+  "totalCells": 90,
+  "foundCells": 4,
+  "coverageRate": 0.0444,
+  "notFoundCells": 86,
+  "blockedCells": 0,
+  "byAnchor": {
+    "street_food_meal_1p": {
+      "found": 1,
+      "possible": 10
+    },
+    "premium_restaurant_meal_2p": {
+      "found": 0,
+      "possible": 10
+    },
+    "hotel_1star_room_2p": {
+      "found": 0,
+      "possible": 10
+    },
+    "hotel_2star_room_2p": {
+      "found": 0,
+      "possible": 10
+    },
+    "hotel_4star_room_2p": {
+      "found": 0,
+      "possible": 10
+    },
+    "cocktail_1": {
+      "found": 1,
+      "possible": 10
+    },
+    "wine_glass_1": {
+      "found": 0,
+      "possible": 10
+    },
+    "half_day_group_activity_adult_1": {
+      "found": 2,
+      "possible": 10
+    },
+    "full_day_premium_activity_adult_1": {
+      "found": 0,
+      "possible": 10
+    }
+  },
+  "byCity": [
+    {
+      "city": "Lisbon",
+      "found": 0,
+      "possible": 9
+    },
+    {
+      "city": "Copenhagen",
+      "found": 0,
+      "possible": 9
+    },
+    {
+      "city": "Hanoi",
+      "found": 0,
+      "possible": 9
+    },
+    {
+      "city": "Prague",
+      "found": 0,
+      "possible": 9
+    },
+    {
+      "city": "Bangkok",
+      "found": 1,
+      "possible": 9
+    },
+    {
+      "city": "Barcelona",
+      "found": 1,
+      "possible": 9
+    },
+    {
+      "city": "San Francisco",
+      "found": 1,
+      "possible": 9
+    },
+    {
+      "city": "Da Nang",
+      "found": 0,
+      "possible": 9
+    },
+    {
+      "city": "Nairobi",
+      "found": 1,
+      "possible": 9
+    },
+    {
+      "city": "Don Det",
+      "found": 0,
+      "possible": 9
+    }
+  ],
+  "foundBasisSummary": {
+    "streetFood": 1,
+    "cocktail": 1,
+    "halfDayGroupActivity": 2,
+    "hotelClasses": 0,
+    "premiumMeal": 0,
+    "wineGlass": 0,
+    "fullDayPremiumActivity": 0
+  },
+  "incompatibilitySummary": {
+    "dominantReasons": [
+      "price range rather than one observation",
+      "private/package price rather than adult group place",
+      "missing hotel class or two-adult occupancy",
+      "stale or promotional basis",
+      "named venue without displayed item price"
+    ],
+    "basisCompatibleFoundFacts": 4,
+    "basisMismatchCandidatesRecorded": 31
+  },
+  "sourceAudit": {
+    "foundFacts": 4,
+    "verifiedAgainstRetrievedResultOrOpenedPage": 4,
+    "unsupportedFoundFacts": 0
+  },
+  "telemetry": {
+    "agentTasks": 1,
+    "webSearchToolCalls": 3,
+    "searchQueries": 10,
+    "pageReadToolCalls": 1,
+    "directPageReadAttempts": 6,
+    "directPageReadFailures": 2,
+    "directPageReadFailureKinds": [
+      "Axios San Francisco cache miss",
+      "Booknbook Nairobi cache miss"
+    ],
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "verdict": "reject_direct_collection_as_general_ground_truth_method",
+  "interpretation": "The omitted anchors are not feasibly collected as definition-compatible city ground truth through one broad target-class web task. Narrow source-specific panels or separately designed target definitions/models are required before 30-city validation."
+}
+

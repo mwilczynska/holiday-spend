@@ -1,0 +1,983 @@
+{
+  "schemaVersion": "city-cost-v5-omitted-anchor-pilot-v1",
+  "model": {
+    "requestedClass": "GPT-5.6 Luna",
+    "executionSurface": "Codex spawned sub-agent",
+    "exactProviderModelId": "not exposed by orchestration surface",
+    "parameters": "not exposed"
+  },
+  "collectionRule": "Exact displayed facts only; ranges, packages with incompatible basis, private tours, stale promotions, and unclassified hotel rates remain not_found.",
+  "observations": [
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved guide gave per-person dinner bands, not a definition-compatible two-person premium meal."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved city guide gave only a €7–15 combined wine/beer range, not one exact wine-glass price."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved half-day pricing was a private-group package, not an adult group-place price."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved full-day pricing was a private package or old tour material."
+        }
+      }
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved itinerary gave a general lunch amount, not a named street-food serving."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No exact two-person premium meal was retrieved."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Named cocktail venues were retrieved without displayed prices."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Named wine bars were retrieved without displayed glass prices."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved 2026 guide gave dish ranges such as bún chả 40,000–65,000 VND, not one city point observation."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved guide gave a 100,000–200,000 VND tourist-restaurant range."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved guide gave a 150,000–300,000 VND imported-wine range."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved half-day sources lacked an exact compatible public adult group price."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No exact full-day premium adult group-place price was retrieved."
+        }
+      }
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved guide gave a 50–120 CZK street-food range."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Dinner in the Sky showed CZK 1,990 from per person, not a two-person target price."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No exact standard cocktail source fact was retrieved."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No exact standard wine-glass source fact was retrieved."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "City guide gave a 2,200–3,800 THB band without dated occupancy query."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "City guide stated 450 THB but did not identify a named serving/source venue."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "found",
+          "value": 1900,
+          "currency": "THB",
+          "unit": "per_person_activity",
+          "basis": "Joined half-day Train Market and Damnoen Saduak Floating Market trip; 06:30–13:30",
+          "sourceUrl": "https://www.plumsiamtravelthailand.com/half-day-tour",
+          "retrievedAt": "2026-07-31",
+          "note": "Official operator page opened; joined-trip per-person price."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved sources supplied ranges or private-tuk-tuk multiples, not an exact group adult price."
+        }
+      }
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved food tours are activities, not a standard premium restaurant meal for two."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "found",
+          "value": 60,
+          "currency": "EUR",
+          "unit": "per_person_activity",
+          "basis": "Barcelona tapas and market tour, 3 hours, adult-suitable, price from per person including taxes",
+          "sourceUrl": "https://www.spain.info/en/activities/barcelona-catalan-tapas-tour/",
+          "retrievedAt": "2026-07-31",
+          "note": "Official Spain tourism page opened; provider-supplied public activity."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Tourism guide gave a €120–200 premium range, not an exact published activity price."
+        }
+      }
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible two-person premium meal was retrieved."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "found",
+          "value": 18,
+          "currency": "USD",
+          "unit": "per_person_item",
+          "basis": "Cubita housemade ZunZun cocktail",
+          "sourceUrl": "https://www.axios.com/newsletters/axios-san-francisco-afba60e9-6ed9-4493-bf2c-b5eee7f50bf4",
+          "retrievedAt": "2026-07-31",
+          "note": "Named city venue and cocktail price appeared in retrieved result; direct open returned cache miss."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved wine article named venues and a tasting, not a standard glass price."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved private food-tour rate was not a standard group-place basis."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Sources described cheap street food or tours without one exact meal price."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved reports lacked a current dated public two-adult 4-star room rate."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Named cocktail bars were retrieved without a displayed standard cocktail price."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "found",
+          "value": 150,
+          "currency": "KES",
+          "unit": "per_person_item",
+          "basis": "Nairobi guide sample street-food breakfast",
+          "sourceUrl": "https://bestkenya.ke/guides/what-things-cost-in-nairobi",
+          "retrievedAt": "2026-07-31",
+          "note": "Guide states prices verified March 2026; single low-cost street-food item basis, not a meal median."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "A KES 12,000 Valentine four-course couple package included wine and was stale/promotional, so it is basis-incompatible."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Retrieved source gave only a KES 750–1,200 cocktail range."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Exact safari prices were for two sharing a private vehicle, not a group-place activity."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Exact safari prices were for a private vehicle, not a group-place activity."
+        }
+      }
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "referenceDate": "2026-07-31",
+      "measures": {
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No exact current city street-food item was retrieved."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible published premium meal was retrieved."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit current star-class, two-adult room rate was retrieved."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published fact was retrieved in the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Tour pages described activities without an exact price."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Tour pages described activities without an exact price."
+        }
+      }
+    }
+  ]
+}
+

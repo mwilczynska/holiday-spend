@@ -80,10 +80,19 @@ three-star hotel 1/5, each food/drink anchor 4/5, and paid attraction 4/5. Promo
 boundary validation, but do not treat it as final: nine omitted anchors, sparse fallback, basis consistency,
 and hotel-anchor reliability remain open. Read `data/reference/v5/experiments/007-minimal-anchor-retest/`.
 
+## Experiment 008 result
+
+A bounded ten-city Luna-class ground-truth task for the nine omitted anchors found only 4/90
+definition-compatible facts: one street-food item, one cocktail, and two half-day group activities. It
+found no compatible hotel 1/2/4-star rooms, premium meals, wine glasses, or full-day premium activities;
+31 near-misses were rejected for range, occupancy, package, stale, or missing-price basis mismatches. Broad
+collection is rejected for model fitting. Read `data/reference/v5/experiments/008-omitted-anchor-ground-truth/`.
+
 ## Next action
 
-Validate the nine-anchor candidate against definition-matched city data, starting with direct ground truth
-for each proposed model: food/drink omitted measures, hotel-star relations, and activity duration tiers.
+Design narrow source-specific panels for each proposed model and collect definition-matched ground truth;
+the broad omitted-anchor task is rejected. Do not use the shipping CSV as ground truth and do not infer
+dorm/private separation from the blended hostel channel.
 Do not use the shipping CSV as ground truth and do not infer dorm/private separation from the blended hostel
 channel. The new derivation contract is deliberately not integrated into the shipping path until source
 feasibility and accuracy gates pass.

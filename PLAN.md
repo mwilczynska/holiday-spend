@@ -121,9 +121,10 @@ the active experiment.
 
 ### Next experiments, in order
 
-1. Validate the nine-anchor candidate from Experiment 007 against definition-matched city data, beginning
-   with the nine omitted food/drink, hotel-star, and activity-duration anchors.
-2. Resolve accommodation measurement and dorm/private identifiability with independent ground truth;
+1. Design narrow source-specific panels for the nine omitted anchors; broad one-task collection found only
+   4/90 definition-compatible facts and is rejected for model fitting.
+2. Validate the nine-anchor candidate from Experiment 007 against those definition-matched panels, then
+   resolve accommodation measurement and dorm/private identifiability with independent ground truth;
    do not infer two hostel tiers from one blended channel without matched evidence.
 3. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
 4. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
@@ -169,6 +170,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/005-target-model-subagent/`
 - `data/reference/v5/experiments/006-source-cascade-retest/`
 - `data/reference/v5/experiments/007-minimal-anchor-retest/`
+- `data/reference/v5/experiments/008-omitted-anchor-ground-truth/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
