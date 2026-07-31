@@ -1,0 +1,15 @@
+{
+  "city": "Cape Town",
+  "country": "South Africa",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":200,"currency":"ZAR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Cape-Town","searchQuery":"site:numbeo.com/cost-of-living/in/Cape-Town \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Cape Town. Jun 2026. Prices in Cape Town — Meal at an Inexpensive Restaurant | R200.00 | 120.00-400.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":800,"currency":"ZAR","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Cape-Town","searchQuery":"site:numbeo.com/cost-of-living/in/Cape-Town \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Cape Town. Jun 2026. Prices in Cape Town — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | R800.00 | 500.00-1,200.00"},
+    "mcmeal_combo_1p": {"status":"found","value":100,"currency":"ZAR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Cape-Town","searchQuery":"site:numbeo.com/cost-of-living/in/Cape-Town \"McDonald's\"","resultEvidence":"Cost of Living in Cape Town. Jun 2026. Prices in Cape Town — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | R100.00 | 85.00-120.00"},
+    "cappuccino_1": {"status":"found","value":40.39,"currency":"ZAR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Cape-Town","searchQuery":"site:numbeo.com/cost-of-living/in/Cape-Town \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Cape Town. Jun 2026. Prices in Cape Town — Cappuccino (Regular Size) | R40.39 | 30.00-60.00"},
+    "domestic_draft_beer_1": {"status":"found","value":50,"currency":"ZAR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Cape-Town","searchQuery":"site:numbeo.com/cost-of-living/in/Cape-Town \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Cape Town. Jun 2026. Prices in Cape Town — Domestic Draft Beer (0.5 Liter) | R50.00 | 40.00-70.00"}
+  },
+  "outcome": "accepted",
+  "notes": "Locked-holdout run with the frozen Experiment 016 prompt/source route. All five restricted searches exposed canonical Cape Town Numbeo snippets with exact row labels, central values, and ZAR source currency; no displayCurrency parameter was used. The selected June 2026 snippet uses the target 0.5-liter beer label (an older May result rendered pints but was not used). No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

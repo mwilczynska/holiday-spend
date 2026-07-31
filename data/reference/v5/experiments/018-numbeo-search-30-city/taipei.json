@@ -1,0 +1,15 @@
+{
+  "city": "Taipei",
+  "country": "Taiwan",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":160,"currency":"TWD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Taipei","searchQuery":"site:numbeo.com/cost-of-living/in/Taipei \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Taipei. Jun 2026. Prices in Taipei — Meal at an Inexpensive Restaurant | NT$160.00 | 120.00-300.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":1500,"currency":"TWD","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Taipei","searchQuery":"site:numbeo.com/cost-of-living/in/Taipei \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Taipei. Jun 2026. Prices in Taipei — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | NT$1,500.00 | 1,000.00-2,000.00"},
+    "mcmeal_combo_1p": {"status":"found","value":182.59,"currency":"TWD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Taipei","searchQuery":"site:numbeo.com/cost-of-living/in/Taipei \"McDonald's\"","resultEvidence":"Cost of Living in Taipei. Jun 2026. Prices in Taipei — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | NT$182.59 | 160.00-200.00"},
+    "cappuccino_1": {"status":"found","value":113.05,"currency":"TWD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Taipei","searchQuery":"site:numbeo.com/cost-of-living/in/Taipei \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Taipei. Jun 2026. Prices in Taipei — Cappuccino (Regular Size) | NT$113.05 | 50.00-160.00"},
+    "domestic_draft_beer_1": {"status":"found","value":90,"currency":"TWD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Taipei","searchQuery":"site:numbeo.com/cost-of-living/in/Taipei \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Taipei. Jun 2026. Prices in Taipei — Domestic Draft Beer (0.5 Liter) | NT$90.00 | 45.00-180.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches were evaluated against the canonical Taipei Numbeo city page, with exact city identity, row labels, central values, and native NT$ symbols. No displayCurrency parameter or native-currency ambiguity was present; TWD was preserved. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

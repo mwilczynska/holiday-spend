@@ -175,13 +175,29 @@ not the locked validation. Provider model ID, parameters, tokens, latency, and c
 Promote the route for larger food/drink validation, but preserve Don Det as `not_found` and do not use
 nearby-city substitution.
 
+## Experiment 018 result
+
+Thirty independent one-city GPT-5.6 Luna-class calls used the unchanged Experiment 016 prompt and source
+policy: 20 development cities and 10 locked holdout cities. Development returned 100/100 facts and 20/20
+complete cities. The holdout returned 44/50 facts and 8/10 complete cities; Helsinki's beer was `not_found`
+and Kyoto was 0/5 because all queries returned only other-city/comparison pages. Overall coverage was
+144/150 (96%) and 28/30 complete cities (93.3%). There were 150 queries, 60 search operations, zero direct
+reads/fallbacks/arithmetic/cross-city evidence, and 144 accepted records with exact city/row/value/currency/
+URL evidence. One hundred thirty-nine rows across 28 cities matched retained observations
+with 0% median absolute error, 7.14% p90, and 16.88% maximum; holdout rows were 0.54%/7.22%/16.67%. This
+is a source/date audit, not 19-tier model validation. Nha Trang's explicit `displayCurrency=USD` records and
+symbol-to-ISO context mappings remain provenance review items. Exact provider telemetry was unavailable.
+
+**Verdict:** promote Numbeo search snippets for continued food/drink work, but reject the complete pipeline:
+complete-city success is below the 95% gate, the holdout is 44/50, and accommodation, activities, and
+derivation remain unresolved. Read `data/reference/v5/experiments/018-numbeo-search-30-city/`.
+
 ## Next action
 
-Expand the promoted Numbeo search-snippet route to at least 30 definition-compatible cities with at least 10
-locked holdout cities; measure citation correctness, date drift, query/search counts, and throttling. Keep
-the one-city prompt shape mandatory and treat panels only as orchestrations of independent calls. Test a
-separately validated sparse-city fallback rather than cross-city substitution. Find or calibrate a
-matched-basis accommodation source using separately recorded one-city calls; do not fit a correction from
+Repeat the frozen one-city route three independent times on Kyoto, Helsinki beer, Don Det, and currency /
+provenance edge cases. Preserve dispersion and failures rather than averaging them away; do not tune the
+locked 018 holdout. Test a separately validated sparse-city fallback rather than cross-city substitution.
+Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a correction from
 Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the target web
 path. Keep the one-city shape for safe stable templates or curated benchmarks for unresolved lower classes
 and hostels; search-index date injection is rejected. Continue definition-matched panels for activities and

@@ -1,0 +1,15 @@
+{
+  "city": "New York City",
+  "country": "United States",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":25,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/New-York","searchQuery":"site:numbeo.com/cost-of-living/in/New-York \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in New York, New York. Jun 2026. Prices in New York — Meal at an Inexpensive Restaurant | $25.00 | 15.00-45.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":150,"currency":"USD","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/New-York","searchQuery":"site:numbeo.com/cost-of-living/in/New-York \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in New York, New York. Jun 2026. Prices in New York — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | $150.00 | 80.00-200.00"},
+    "mcmeal_combo_1p": {"status":"found","value":13,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/New-York","searchQuery":"site:numbeo.com/cost-of-living/in/New-York \"McDonald's\"","resultEvidence":"Cost of Living in New York, New York. Jun 2026. Prices in New York — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | $13.00 | 12.00-15.00"},
+    "cappuccino_1": {"status":"found","value":5.89,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/New-York","searchQuery":"site:numbeo.com/cost-of-living/in/New-York \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in New York, New York. Jun 2026. Prices in New York — Cappuccino (Regular Size) | $5.89 | 4.00-8.00"},
+    "domestic_draft_beer_1": {"status":"found","value":8,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/New-York","searchQuery":"site:numbeo.com/cost-of-living/in/New-York \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in New York, New York. Jun 2026. Prices in New York — Domestic Draft Beer (0.5 Liter) | $8.00 | 6.00-11.00"}
+  },
+  "outcome": "accepted",
+  "notes": "Locked-holdout run with the frozen Experiment 016 prompt/source route. The requested display name New York City is represented by Numbeo's canonical New York, NY / New York, New York city page; this is recorded as a city-name alias, not other-city evidence. All five snippets exposed exact row labels, central values, USD currency, and the canonical source URL. No displayCurrency parameter, direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

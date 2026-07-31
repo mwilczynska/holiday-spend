@@ -185,12 +185,22 @@ cost remain unavailable through the delegated execution surface. Promote the rou
 food/drink validation; retain sparse `not_found` and do not impute Don Det from another city. See
 `data/reference/v5/experiments/017-numbeo-search-broad-panel/`.
 
+**Experiment 018 — 30-city Numbeo search validation — complete; promote food/drink route, reject complete
+pipeline.** The frozen manifest separated 20 development cities from 10 locked holdout cities. Independent
+Luna calls returned 144/150 cells (96%) and 28/30 complete cities (93.3%): development was 100/100, while
+the holdout was 44/50 (88%) with Helsinki beer `not_found` and Kyoto 0/5. There were 150 queries and 60
+search operations, no direct reads/fallbacks/arithmetic/cross-city evidence, and all accepted facts met the
+search evidence contract. The 139 compatible retained rows had median absolute error 0%, p90 7.14%, max
+16.88%; holdout rows had 0.54% median, 7.22% p90, 16.67% max. These are source/date audits, not final
+19-tier model validation. Overall complete-city success is below the 95% gate and exact provider telemetry
+remains unavailable. See `data/reference/v5/experiments/018-numbeo-search-30-city/`.
+
 ### Next experiments, in order
 
-1. Expand the promoted Numbeo search-snippet route to at least 30 definition-compatible cities, with a locked
-   city-level holdout of at least 10. Measure citation correctness, date drift, query/search counts, and
-   throttling; do not relabel Numbeo 429/503 or wrong-city snippets as missing data. Keep Don Det as a known
-   sparse failure and test a separately validated sparse-city fallback rather than cross-city substitution.
+1. Repeat the frozen one-city route on the difficult failures (Kyoto no-result, Helsinki beer, Don Det
+   sparse) and currency/provenance edge cases with three independent calls each. Measure repeatability and
+   dispersion without averaging away failures; do not tune the locked 018 holdout. Then test a separately
+   validated sparse-city fallback rather than cross-city substitution.
 2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -255,6 +265,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/015-numbeo-canonical-url-retest/`
 - `data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`
 - `data/reference/v5/experiments/017-numbeo-search-broad-panel/`
+- `data/reference/v5/experiments/018-numbeo-search-30-city/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

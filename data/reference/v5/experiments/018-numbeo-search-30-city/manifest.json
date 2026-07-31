@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-manifest-v1",
+  "experiment": "018-numbeo-search-30-city",
+  "frozenAt": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_016.md",
+  "invocationShape": "one city per independent invocation",
+  "development": [
+    {"city":"Berlin","country":"Germany","region":"Europe","costBand":"mid"},
+    {"city":"Edinburgh","country":"United Kingdom","region":"Europe","costBand":"mid"},
+    {"city":"London","country":"United Kingdom","region":"Europe","costBand":"high"},
+    {"city":"Madrid","country":"Spain","region":"Europe","costBand":"mid"},
+    {"city":"Porto","country":"Portugal","region":"Europe","costBand":"low_mid"},
+    {"city":"Rome","country":"Italy","region":"Europe","costBand":"mid"},
+    {"city":"Vienna","country":"Austria","region":"Europe","costBand":"mid_high"},
+    {"city":"Singapore","country":"Singapore","region":"Southeast Asia","costBand":"high"},
+    {"city":"Kuala Lumpur","country":"Malaysia","region":"Southeast Asia","costBand":"low_mid"},
+    {"city":"Jakarta","country":"Indonesia","region":"Southeast Asia","costBand":"low"},
+    {"city":"Vientiane","country":"Laos","region":"Southeast Asia","costBand":"low"},
+    {"city":"Ho Chi Minh City","country":"Vietnam","region":"Southeast Asia","costBand":"low"},
+    {"city":"Nha Trang","country":"Vietnam","region":"Southeast Asia","costBand":"low"},
+    {"city":"Siem Reap","country":"Cambodia","region":"Southeast Asia","costBand":"low"},
+    {"city":"Chiang Mai","country":"Thailand","region":"Southeast Asia","costBand":"low_mid"},
+    {"city":"Hong Kong","country":"Hong Kong","region":"East Asia","costBand":"high"},
+    {"city":"Beijing","country":"China","region":"East Asia","costBand":"mid"},
+    {"city":"Taipei","country":"Taiwan","region":"East Asia","costBand":"mid"},
+    {"city":"Osaka","country":"Japan","region":"East Asia","costBand":"mid"},
+    {"city":"Busan","country":"South Korea","region":"East Asia","costBand":"mid"}
+  ],
+  "holdout": [
+    {"city":"Amsterdam","country":"Netherlands","region":"Europe","costBand":"high"},
+    {"city":"Paris","country":"France","region":"Europe","costBand":"high"},
+    {"city":"Helsinki","country":"Finland","region":"Europe","costBand":"high"},
+    {"city":"Sydney","country":"Australia","region":"Oceania","costBand":"high"},
+    {"city":"Melbourne","country":"Australia","region":"Oceania","costBand":"high"},
+    {"city":"New York City","country":"United States","region":"North America","costBand":"high"},
+    {"city":"Marrakech","country":"Morocco","region":"Africa","costBand":"low_mid"},
+    {"city":"Cape Town","country":"South Africa","region":"Africa","costBand":"mid"},
+    {"city":"Bogota","country":"Colombia","region":"Latin America","costBand":"low_mid"},
+    {"city":"Kyoto","country":"Japan","region":"East Asia","costBand":"mid_high"}
+  ]
+}

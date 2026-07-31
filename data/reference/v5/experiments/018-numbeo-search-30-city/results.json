@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-results-v1",
+  "experiment": "018-numbeo-search-30-city",
+  "runDate": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_016.md",
+  "invocationShape": "one city per independent invocation",
+  "targetModelClass": "GPT-5.6 Luna-class delegated invocation",
+  "citiesRequested": 30,
+  "measureCellsRequested": 150,
+  "measureCellsFound": 144,
+  "measureCellCoverage": 0.96,
+  "completeCities": 28,
+  "completeCityRate": 0.9333333333,
+  "partialCities": 1,
+  "noResultCities": 1,
+  "splitResults": {
+    "development": {"cities":20,"cellsFound":100,"cellsRequested":100,"cellCoverage":1,"completeCities":20},
+    "holdout": {"cities":10,"cellsFound":44,"cellsRequested":50,"cellCoverage":0.88,"completeCities":8,"partialCities":1,"noResultCities":1}
+  },
+  "cityFailures": {
+    "Helsinki": {"split":"holdout","found":4,"requested":5,"missingMeasures":["domestic_draft_beer_1"],"outcome":"partial"},
+    "Kyoto": {"split":"holdout","found":0,"requested":5,"missingMeasures":["inexpensive_restaurant_meal_1p","midrange_restaurant_meal_2p","mcmeal_combo_1p","cappuccino_1","domestic_draft_beer_1"],"outcome":"no_result"}
+  },
+  "telemetryTotals": {
+    "invocations":30,
+    "queriesAttempted":150,
+    "webSearchToolCalls":60,
+    "directPageReads":0,
+    "fallbackAttempts":0,
+    "fallbackSourcesUsed":0,
+    "arithmeticOperations":0,
+    "otherCityEvidenceUsed":0,
+    "providerTokens":null,
+    "latencyMs":null,
+    "providerCost":null,
+    "exactProviderModelId":null,
+    "parameters":null
+  },
+  "coverageByRegion": {
+    "Europe":{"cities":10,"cellsFound":49,"cellsRequested":50,"completeCities":9},
+    "Southeast Asia":{"cities":8,"cellsFound":40,"cellsRequested":40,"completeCities":8},
+    "East Asia":{"cities":6,"cellsFound":25,"cellsRequested":30,"completeCities":5},
+    "Oceania":{"cities":2,"cellsFound":10,"cellsRequested":10,"completeCities":2},
+    "North America":{"cities":1,"cellsFound":5,"cellsRequested":5,"completeCities":1},
+    "Africa":{"cities":2,"cellsFound":10,"cellsRequested":10,"completeCities":2},
+    "Latin America":{"cities":1,"cellsFound":5,"cellsRequested":5,"completeCities":1}
+  },
+  "coverageByCostBand": {
+    "low":{"cities":5,"cellsFound":25,"cellsRequested":25,"completeCities":5},
+    "low_mid":{"cities":5,"cellsFound":25,"cellsRequested":25,"completeCities":5},
+    "mid":{"cities":9,"cellsFound":45,"cellsRequested":45,"completeCities":9},
+    "mid_high":{"cities":2,"cellsFound":5,"cellsRequested":10,"completeCities":1},
+    "high":{"cities":9,"cellsFound":44,"cellsRequested":45,"completeCities":8}
+  },
+  "citationContractAudit": {
+    "acceptedFacts":144,
+    "factsWithExactCityRowValueCurrencyAndUrlEvidence":144,
+    "contractComplianceRate":1,
+    "displayCurrencyParameterCells":5,
+    "nativeCurrencyBasisReviewCells":["Nha Trang"],
+    "symbolToIsoContextReviewCities":["Beijing","Osaka","Busan","Melbourne","Bogota"],
+    "independentPageVerification":false,
+    "note":"All accepted records include exact city/row/value/currency/source-URL evidence in the search result. Five Nha Trang cells used an explicit displayCurrency=USD URL; symbol-to-ISO mappings were context-resolved for several cities. These are provenance-basis review items, not hidden conversions."
+  },
+  "retainedGroundTruthComparison": {
+    "definitionAndCurrencyCompatibleMatchedRows":139,
+    "matchedCities":28,
+    "developmentRows":95,
+    "holdoutRows":44,
+    "allRows":{"medianAbsolutePercentError":0,"p90AbsolutePercentError":7.1428571429,"maxAbsolutePercentError":16.8831168831,"absoluteMedianSignedPercentError":0},
+    "development":{"medianAbsolutePercentError":0,"p90AbsolutePercentError":6.25,"maxAbsolutePercentError":16.8831168831},
+    "holdout":{"medianAbsolutePercentError":0.5376344086,"p90AbsolutePercentError":7.2153846154,"maxAbsolutePercentError":16.6666666667},
+    "note":"This compares retrieved Numbeo snippets with retained definition-compatible observations and is a source/date-drift audit. It is not validation of the 19-tier derivation models and does not use the shipping CSV as ground truth. Nha Trang's USD-rendered cells were excluded where retained observations were VND."
+  },
+  "verdict":"promote_food_drink_route_but_reject_complete_pipeline",
+  "rejectionReasonsForFinalAcceptance":[
+    "The 10-city holdout has 44/50 cells (88%) and only 8/10 complete cities; the complete-city one-call success is 93.3% overall, below the 95% gate.",
+    "Kyoto is a complete five-cell no-result and Helsinki is a one-cell no-result in the locked holdout; no substitute was used.",
+    "Exact provider model ID, parameters, tokens, latency, and monetary cost remain unavailable through delegated execution.",
+    "The route covers only five food/drink anchors; accommodation, activities, and deterministic derivation of all 19 fields remain unresolved."
+  ]
+}

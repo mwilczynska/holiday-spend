@@ -1,0 +1,15 @@
+{
+  "city": "Osaka",
+  "country": "Japan",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":1000,"currency":"JPY","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Osaka","searchQuery":"site:numbeo.com/cost-of-living/in/Osaka \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Osaka. May 2026. Prices in Osaka — Meal at an Inexpensive Restaurant | ¥1,000.00 | 900.00-1,500.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":5000,"currency":"JPY","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Osaka","searchQuery":"site:numbeo.com/cost-of-living/in/Osaka \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Osaka. May 2026. Prices in Osaka — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | ¥5,000.00 | 3,000.00-12,000.00"},
+    "mcmeal_combo_1p": {"status":"found","value":700,"currency":"JPY","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Osaka","searchQuery":"site:numbeo.com/cost-of-living/in/Osaka \"McDonald's\"","resultEvidence":"Cost of Living in Osaka. May 2026. Prices in Osaka — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | ¥700.00 | 650.00-800.00"},
+    "cappuccino_1": {"status":"found","value":472.48,"currency":"JPY","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Osaka","searchQuery":"site:numbeo.com/cost-of-living/in/Osaka \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Osaka. May 2026. Prices in Osaka — Cappuccino (Regular Size) | ¥472.48 | 300.00-700.00"},
+    "domestic_draft_beer_1": {"status":"found","value":400,"currency":"JPY","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Osaka","searchQuery":"site:numbeo.com/cost-of-living/in/Osaka \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Osaka. May 2026. Prices in Osaka — Domestic Draft Beer (0.5 Liter) | ¥400.00 | 290.00-600.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical Osaka Numbeo page with exact row labels, central values, and the ¥ symbol. No displayCurrency parameter was used; the Osaka, Japan identity makes native JPY the recorded source code, but the symbol/code ambiguity remains visible and no conversion was performed. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

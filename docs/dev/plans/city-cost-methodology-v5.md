@@ -65,6 +65,15 @@ retained matched rows had 0% median absolute error, 9.09% p90, and 10% maximum; 
 date-drifting source audit, not a holdout. Promote the route to a 30-city/10-holdout validation while
 retaining sparse-city failure, exact citation checks, and missingness; exact provider telemetry remains
 unavailable through delegated execution.
+Experiment 018 then ran the frozen route on 30 independent one-city calls (20 development, 10 locked
+holdout). It returned 144/150 cells (96%) and 28/30 complete cities (93.3%): development was 100/100,
+holdout 44/50 (88%), with Helsinki beer missing and Kyoto entirely `not_found`. There were 150 restricted
+queries and 60 search operations, no direct reads/fallbacks/arithmetic/cross-city evidence. One hundred
+thirty-nine definition/currency-compatible retained rows had 0% median absolute error, 7.14% p90, and
+16.88% maximum; holdout rows had 0.54% median, 7.22% p90, and 16.67% maximum. These are source/date audits,
+not model validation. The route is promoted for food/drink work but the complete pipeline is rejected because
+complete-city success is below 95%, provider telemetry is unavailable, and the other 14 product fields remain
+unresolved. Nha Trang's five USD-rendered cells and several symbol-to-ISO mappings require provenance review.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

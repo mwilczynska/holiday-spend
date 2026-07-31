@@ -1,0 +1,15 @@
+{
+  "city": "Chiang Mai",
+  "country": "Thailand",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":65,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Chiang-Mai","searchQuery":"site:numbeo.com/cost-of-living/in/Chiang-Mai \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Chiang Mai. Jun 2026. Prices in Chiang Mai — Meal at an Inexpensive Restaurant | ฿65.00 | 50.00-120.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":650,"currency":"THB","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Chiang-Mai","searchQuery":"site:numbeo.com/cost-of-living/in/Chiang-Mai \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Chiang Mai. Jun 2026. Prices in Chiang Mai — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | ฿650.00 | 500.00-1,305.16"},
+    "mcmeal_combo_1p": {"status":"found","value":225,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Chiang-Mai","searchQuery":"site:numbeo.com/cost-of-living/in/Chiang-Mai \"McDonald's\"","resultEvidence":"Cost of Living in Chiang Mai. Jun 2026. Prices in Chiang Mai — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | ฿225.00 | 175.00-275.00"},
+    "cappuccino_1": {"status":"found","value":58.75,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Chiang-Mai","searchQuery":"site:numbeo.com/cost-of-living/in/Chiang-Mai \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Chiang Mai. Jun 2026. Prices in Chiang Mai — Cappuccino (Regular Size) | ฿58.75 | 35.00-100.00"},
+    "domestic_draft_beer_1": {"status":"found","value":80,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Chiang-Mai","searchQuery":"site:numbeo.com/cost-of-living/in/Chiang-Mai \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Chiang Mai. Jun 2026. Prices in Chiang Mai — Domestic Draft Beer (0.5 Liter) | ฿80.00 | 50.00-120.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical Chiang Mai Numbeo page with exact row labels, central values, and THB source currency. No displayCurrency parameter was used. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

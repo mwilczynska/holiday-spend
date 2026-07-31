@@ -1,0 +1,15 @@
+{
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":60,"currency":"HKD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hong-Kong","searchQuery":"site:numbeo.com/cost-of-living/in/Hong-Kong \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Hong Kong. May 2026. Prices in Hong Kong — Meal at an Inexpensive Restaurant | HK$60.00 | 45.00-100.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":500,"currency":"HKD","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hong-Kong","searchQuery":"site:numbeo.com/cost-of-living/in/Hong-Kong \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Hong Kong. May 2026. Prices in Hong Kong — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | HK$500.00 | 300.00-800.00"},
+    "mcmeal_combo_1p": {"status":"found","value":50,"currency":"HKD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hong-Kong","searchQuery":"site:numbeo.com/cost-of-living/in/Hong-Kong \"McDonald's\"","resultEvidence":"Cost of Living in Hong Kong. May 2026. Prices in Hong Kong — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | HK$50.00 | 45.00-55.00"},
+    "cappuccino_1": {"status":"found","value":39.16,"currency":"HKD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hong-Kong","searchQuery":"site:numbeo.com/cost-of-living/in/Hong-Kong \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Hong Kong. May 2026. Prices in Hong Kong — Cappuccino (Regular Size) | HK$39.16 | 25.00-50.00"},
+    "domestic_draft_beer_1": {"status":"found","value":50.58,"currency":"HKD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hong-Kong","searchQuery":"site:numbeo.com/cost-of-living/in/Hong-Kong \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Hong Kong. May 2026. Prices in Hong Kong — Domestic Draft Beer (0.5 Liter) | HK$50.58 | 30.00-88.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches were evaluated against the canonical Hong Kong Numbeo city page, with exact city identity, row labels, central values, and native HKD symbols. No displayCurrency parameter or currency-conversion ambiguity was present; HKD was preserved. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

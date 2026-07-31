@@ -1,0 +1,40 @@
+{
+  "city": "Sydney",
+  "country": "Australia",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status":"found","value":25,"currency":"AUD","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Sydney",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Sydney \"Meal at an Inexpensive Restaurant\"",
+      "resultEvidence":"Cost of Living in Sydney. Jun 2026. Prices in Sydney — Meal at an Inexpensive Restaurant | A$25.00 | 18.00-40.00"
+    },
+    "midrange_restaurant_meal_2p": {
+      "status":"found","value":122.13,"currency":"AUD","unit":"per_two_person_meal",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Sydney",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Sydney \"Meal for Two at a Mid-Range Restaurant\"",
+      "resultEvidence":"Cost of Living in Sydney. Jun 2026. Prices in Sydney — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | A$122.13 | 80.00-200.00"
+    },
+    "mcmeal_combo_1p": {
+      "status":"found","value":16.16,"currency":"AUD","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Sydney",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Sydney \"McDonald's\"",
+      "resultEvidence":"Cost of Living in Sydney. Jun 2026. Prices in Sydney — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | A$16.16 | 15.00-18.50"
+    },
+    "cappuccino_1": {
+      "status":"found","value":5.55,"currency":"AUD","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Sydney",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Sydney \"Cappuccino (Regular Size)\"",
+      "resultEvidence":"Cost of Living in Sydney. Jun 2026. Prices in Sydney — Cappuccino (Regular Size) | A$5.55 | 4.90-7.00"
+    },
+    "domestic_draft_beer_1": {
+      "status":"found","value":10,"currency":"AUD","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Sydney",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Sydney \"Domestic Draft Beer\"",
+      "resultEvidence":"Cost of Living in Sydney. Jun 2026. Prices in Sydney — Domestic Draft Beer (0.5 Liter) | A$10.00 | 7.00-16.00"
+    }
+  },
+  "outcome":"accepted",
+  "notes":"Locked-holdout invocation was run without changing the frozen prompt or source policy. All five restricted searches were evaluated against the canonical Sydney Numbeo city page, with exact city identity, row labels, central values, and native AUD symbols. No displayCurrency parameter or native-currency ambiguity was present; no conversion, direct page read, fallback, arithmetic, or other-city evidence was used."
+}

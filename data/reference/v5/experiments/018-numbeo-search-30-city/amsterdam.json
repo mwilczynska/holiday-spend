@@ -1,0 +1,15 @@
+{
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":22,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Amsterdam","searchQuery":"site:numbeo.com/cost-of-living/in/Amsterdam \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Amsterdam. Jun 2026. Prices in Amsterdam — Meal at an Inexpensive Restaurant | €22.00 | 15.00-50.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":90,"currency":"EUR","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Amsterdam","searchQuery":"site:numbeo.com/cost-of-living/in/Amsterdam \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Amsterdam. Jun 2026. Prices in Amsterdam — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | €90.00 | 60.00-140.00"},
+    "mcmeal_combo_1p": {"status":"found","value":14,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Amsterdam","searchQuery":"site:numbeo.com/cost-of-living/in/Amsterdam \"McDonald's\"","resultEvidence":"Cost of Living in Amsterdam. Jun 2026. Prices in Amsterdam — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | €14.00 | 12.00-15.00"},
+    "cappuccino_1": {"status":"found","value":4.22,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Amsterdam","searchQuery":"site:numbeo.com/cost-of-living/in/Amsterdam \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Amsterdam. Jun 2026. Prices in Amsterdam — Cappuccino (Regular Size) | €4.22 | 3.00-6.00"},
+    "domestic_draft_beer_1": {"status":"found","value":7,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Amsterdam","searchQuery":"site:numbeo.com/cost-of-living/in/Amsterdam \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Amsterdam. Jun 2026. Prices in Amsterdam — Domestic Draft Beer (0.5 Liter) | €7.00 | 4.00-8.50"}
+  },
+  "outcome": "accepted",
+  "notes": "Locked-holdout invocation was run without changing the frozen prompt or source policy. All five restricted searches were evaluated against the canonical Amsterdam Numbeo city page, with exact city identity, row labels, central values, and native EUR symbols. No displayCurrency parameter or native-currency ambiguity was present; no conversion, direct page read, fallback, arithmetic, or other-city evidence was used."
+}

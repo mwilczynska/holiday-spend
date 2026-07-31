@@ -1,0 +1,15 @@
+{
+  "city": "Rome",
+  "country": "Italy",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":15,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Rome","searchQuery":"site:numbeo.com/cost-of-living/in/Rome \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Rome. Jun 2026. Prices in Rome — Meal at an Inexpensive Restaurant | €15.00 | 12.00-24.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":60,"currency":"EUR","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Rome","searchQuery":"site:numbeo.com/cost-of-living/in/Rome \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Rome. Jun 2026. Prices in Rome — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | €60.00 | 45.00-80.00"},
+    "mcmeal_combo_1p": {"status":"found","value":10,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Rome","searchQuery":"site:numbeo.com/cost-of-living/in/Rome \"McDonald's\"","resultEvidence":"Cost of Living in Rome. Jun 2026. Prices in Rome — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | €10.00 | 9.00-12.00"},
+    "cappuccino_1": {"status":"found","value":1.93,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Rome","searchQuery":"site:numbeo.com/cost-of-living/in/Rome \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Rome. Jun 2026. Prices in Rome — Cappuccino (Regular Size) | €1.93 | 1.20-3.00"},
+    "domestic_draft_beer_1": {"status":"found","value":5,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Rome","searchQuery":"site:numbeo.com/cost-of-living/in/Rome \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Rome. Jun 2026. Prices in Rome — Domestic Draft Beer (0.5 Liter) | €5.00 | 3.00-7.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical Rome Numbeo page with exact row labels, central values, and EUR source currency. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

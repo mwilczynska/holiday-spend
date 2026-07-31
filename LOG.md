@@ -854,3 +854,27 @@ model ID, parameters, tokens, latency, or cost.
 the exact source contract and fail-closed sparse-city `not_found`. Do not substitute nearby-city evidence for
 Don Det. Accommodation, activities, complete 19-field coverage, and provider telemetry remain unresolved.
 Artifacts are under `data/reference/v5/experiments/017-numbeo-search-broad-panel/`.
+
+## Experiment 018 — 30-city Numbeo search validation (31 July 2026)
+
+Thirty independent delegated GPT-5.6 Luna-class invocations used the unchanged Experiment 016 prompt:
+20 development cities and 10 locked holdout cities. Development returned **100/100 cells** and 20/20
+complete cities. The holdout returned **44/50 cells** and 8/10 complete cities: Helsinki's beer query was
+`not_found`, and Kyoto returned no exact city page for any of five queries. Overall coverage was **144/150
+cells (96%)** and **28/30 complete cities (93.3%)**. Failures remained explicit missing outcomes.
+
+The calls issued 150 restricted queries and 60 search operations, with zero direct page reads, fallback
+sources, arithmetic, or cross-city evidence. Every accepted record contained exact city, row, central value,
+currency, and canonical URL evidence in the search response. Nha Trang had five explicit `displayCurrency=USD`
+records, and symbol-to-ISO context mappings were retained as provenance review items rather than hidden
+conversions. Direct page verification was intentionally not part of this route.
+
+Against retained definition- and currency-compatible observations, 139 rows across 28 cities had median
+absolute error 0%, p90 7.14%, and maximum 16.88%; the 44 holdout rows had 0.54% median, 7.22% p90, and
+16.67% maximum. These are source/date-drift audits, not 19-tier model accuracy. Exact provider model ID,
+parameters, tokens, latency, and cost were not exposed by the delegated execution surface.
+
+**Verdict:** promote the route for continued food/drink anchor work, but reject it as the complete pipeline.
+The overall complete-city success rate is below the 95% gate, holdout coverage is 44/50, and accommodation,
+activities, complete derivation, and provider telemetry remain unresolved. Artifacts are under
+`data/reference/v5/experiments/018-numbeo-search-30-city/`.

@@ -1,0 +1,15 @@
+{
+  "city": "Edinburgh",
+  "country": "United Kingdom",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":18,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Edinburgh","searchQuery":"site:numbeo.com/cost-of-living/in/Edinburgh \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Edinburgh. Jun 2026. Prices in Edinburgh — Meal at an Inexpensive Restaurant | £18.00 | 14.00-30.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":80,"currency":"GBP","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Edinburgh","searchQuery":"site:numbeo.com/cost-of-living/in/Edinburgh \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Edinburgh. Jun 2026. Prices in Edinburgh — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | £80.00 | 70.00-90.00"},
+    "mcmeal_combo_1p": {"status":"found","value":7.69,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Edinburgh","searchQuery":"site:numbeo.com/cost-of-living/in/Edinburgh \"McDonald's\"","resultEvidence":"Cost of Living in Edinburgh. Jun 2026. Prices in Edinburgh — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | £7.69 | 7.00-9.00"},
+    "cappuccino_1": {"status":"found","value":3.85,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Edinburgh","searchQuery":"site:numbeo.com/cost-of-living/in/Edinburgh \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Edinburgh. Jun 2026. Prices in Edinburgh — Cappuccino (Regular Size) | £3.85 | 3.00-4.50"},
+    "domestic_draft_beer_1": {"status":"found","value":6,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Edinburgh","searchQuery":"site:numbeo.com/cost-of-living/in/Edinburgh \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Edinburgh. Jun 2026. Prices in Edinburgh — Domestic Draft Beer (0.5 Liter) | £6.00 | 4.30-7.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical Edinburgh Numbeo page with exact row labels, central values, and GBP source currency. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

@@ -1,0 +1,15 @@
+{
+  "city": "Porto",
+  "country": "Portugal",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":12,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Porto","searchQuery":"site:numbeo.com/cost-of-living/in/Porto \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Porto. Jun 2026. Prices in Porto — Meal at an Inexpensive Restaurant | €12.00 | 9.00-20.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":50,"currency":"EUR","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Porto","searchQuery":"site:numbeo.com/cost-of-living/in/Porto \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Porto. Jun 2026. Prices in Porto — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | €50.00 | 35.00-70.00"},
+    "mcmeal_combo_1p": {"status":"found","value":8,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Porto","searchQuery":"site:numbeo.com/cost-of-living/in/Porto \"McDonald's\"","resultEvidence":"Cost of Living in Porto. Jun 2026. Prices in Porto — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | €8.00 | 8.00-10.00"},
+    "cappuccino_1": {"status":"found","value":2.3,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Porto","searchQuery":"site:numbeo.com/cost-of-living/in/Porto \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Porto. Jun 2026. Prices in Porto — Cappuccino (Regular Size) | €2.30 | 0.80-4.50"},
+    "domestic_draft_beer_1": {"status":"found","value":3,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Porto","searchQuery":"site:numbeo.com/cost-of-living/in/Porto \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Porto. Jun 2026. Prices in Porto — Domestic Draft Beer (0.5 Liter) | €3.00 | 2.00-4.50"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical Porto Numbeo page with exact city identity, row labels, central values, and EUR symbols. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

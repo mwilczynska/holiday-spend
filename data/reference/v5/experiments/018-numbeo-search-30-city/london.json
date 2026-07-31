@@ -1,0 +1,15 @@
+{
+  "city": "London",
+  "country": "United Kingdom",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":20,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/London","searchQuery":"site:numbeo.com/cost-of-living/in/London \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in London. Jun 2026. Prices in London — Meal at an Inexpensive Restaurant | £20.00 | 15.00-30.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":80,"currency":"GBP","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/London","searchQuery":"site:numbeo.com/cost-of-living/in/London \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in London. Jun 2026. Prices in London — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | £80.00 | 60.00-130.00"},
+    "mcmeal_combo_1p": {"status":"found","value":8,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/London","searchQuery":"site:numbeo.com/cost-of-living/in/London \"McDonald's\"","resultEvidence":"Cost of Living in London. Jun 2026. Prices in London — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | £8.00 | 7.00-10.00"},
+    "cappuccino_1": {"status":"found","value":4.14,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/London","searchQuery":"site:numbeo.com/cost-of-living/in/London \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in London. Jun 2026. Prices in London — Cappuccino (Regular Size) | £4.14 | 3.00-5.00"},
+    "domestic_draft_beer_1": {"status":"found","value":7,"currency":"GBP","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/London","searchQuery":"site:numbeo.com/cost-of-living/in/London \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in London. Jun 2026. Prices in London — Domestic Draft Beer (0.5 Liter) | £7.00 | 5.00-8.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical London Numbeo page with exact city identity, row labels, central values, and GBP symbols. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

@@ -1,0 +1,15 @@
+{
+  "city": "Paris",
+  "country": "France",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":15,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Paris","searchQuery":"site:numbeo.com/cost-of-living/in/Paris \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Paris. May 2026. Prices in Paris — Meal at an Inexpensive Restaurant | €15.00 | 12.00-20.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":70,"currency":"EUR","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Paris","searchQuery":"site:numbeo.com/cost-of-living/in/Paris \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Paris. May 2026. Prices in Paris — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | €70.00 | 60.00-100.00"},
+    "mcmeal_combo_1p": {"status":"found","value":12,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Paris","searchQuery":"site:numbeo.com/cost-of-living/in/Paris \"McDonald's\"","resultEvidence":"Cost of Living in Paris. May 2026. Prices in Paris — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | €12.00 | 10.00-13.00"},
+    "cappuccino_1": {"status":"found","value":4.47,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Paris","searchQuery":"site:numbeo.com/cost-of-living/in/Paris \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Paris. May 2026. Prices in Paris — Cappuccino (Regular Size) | €4.47 | 2.50-6.00"},
+    "domestic_draft_beer_1": {"status":"found","value":7,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Paris","searchQuery":"site:numbeo.com/cost-of-living/in/Paris \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Paris. May 2026. Prices in Paris — Domestic Draft Beer (0.5 Liter) | €7.00 | 6.00-8.00"}
+  },
+  "outcome": "accepted",
+  "notes": "Locked-holdout run: the unchanged Experiment 016 prompt and source route were used. All five restricted searches exposed canonical Paris Numbeo snippets with exact row labels, central values, and EUR source currency; no displayCurrency ambiguity was present. Ranges were not used. No direct page read, fallback source, arithmetic, FX, or other-city evidence was used."
+}

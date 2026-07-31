@@ -1,0 +1,40 @@
+{
+  "city": "Bogota",
+  "country": "Colombia",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status":"found","value":25000,"currency":"COP","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bogota",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Bogota \"Meal at an Inexpensive Restaurant\"",
+      "resultEvidence":"Cost of Living in Bogota. Jun 2026. Prices in Bogota — Meal at an Inexpensive Restaurant | Col$25,000.00 | 15,000.00-40,000.00"
+    },
+    "midrange_restaurant_meal_2p": {
+      "status":"found","value":150000,"currency":"COP","unit":"per_two_person_meal",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bogota",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Bogota \"Meal for Two at a Mid-Range Restaurant\"",
+      "resultEvidence":"Cost of Living in Bogota. Jun 2026. Prices in Bogota — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | Col$150,000.00 | 80,000.00-200,000.00"
+    },
+    "mcmeal_combo_1p": {
+      "status":"found","value":30000,"currency":"COP","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bogota",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Bogota \"McDonald's\"",
+      "resultEvidence":"Cost of Living in Bogota. Jun 2026. Prices in Bogota — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | Col$30,000.00 | 25,000.00-35,000.00"
+    },
+    "cappuccino_1": {
+      "status":"found","value":8287.25,"currency":"COP","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bogota",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Bogota \"Cappuccino (Regular Size)\"",
+      "resultEvidence":"Cost of Living in Bogota. Jun 2026. Prices in Bogota — Cappuccino (Regular Size) | Col$8,287.25 | 4,500.00-14,000.00"
+    },
+    "domestic_draft_beer_1": {
+      "status":"found","value":6000,"currency":"COP","unit":"per_person_item",
+      "sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bogota",
+      "searchQuery":"site:numbeo.com/cost-of-living/in/Bogota \"Domestic Draft Beer\"",
+      "resultEvidence":"Cost of Living in Bogota. Jun 2026. Prices in Bogota — Domestic Draft Beer (0.5 Liter) | Col$6,000.00 | 3,500.00-12,000.00"
+    }
+  },
+  "outcome":"accepted",
+  "notes":"Locked-holdout invocation was run without changing the frozen prompt or source policy. All five restricted searches were evaluated against the canonical Bogota Numbeo city page, with exact city identity, row labels, central values, and native Colombian peso symbols. The result URL had no displayCurrency parameter and rendered native COP (Col$); no conversion, direct page read, fallback, arithmetic, or other-city evidence was used."
+}
