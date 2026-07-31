@@ -734,3 +734,18 @@ one-night totals, class labels, currency, and retrieval date. The delegated exec
 calls, ten queries, and one page-read call with three attempts; exact provider model/parameter/token/
 latency/cost telemetry was not exposed. Artifacts are under
 `data/reference/v5/experiments/009-accommodation-panel-feasibility/`.
+
+## Experiment 010 â€” date-fixed accommodation source contract (31 July 2026)
+
+A five-city delegated GPT-5.6 Luna-class task tested a fixed 15–16 September 2026 one-night stay for two
+adults, with Hostelworld/property pages restricted to hostel classes and Booking.com/Hotels.com pages
+restricted to hotel classes. Strict compatibility produced **0/30 facts** and zero complete cities.
+Hostelworld results exposed undated `from` rates; Booking/Hotels results exposed different dates,
+promotions, or multi-night totals. No page-read candidate met the date contract.
+
+**Verdict:** reject date injection into broad indexed searches as a production accommodation source
+contract. This does not rule out interactive public pages that preserve query state, nor a separately
+curated benchmark. Retain the frozen class, occupancy, one-night, currency, and provenance rules. The
+delegated task counted three search calls and eleven queries; exact provider model/parameter/token/latency/
+cost telemetry was not exposed. Artifacts are under
+`data/reference/v5/experiments/010-date-fixed-accommodation-contract/`.

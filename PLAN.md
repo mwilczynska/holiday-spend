@@ -131,12 +131,18 @@ missing occupancy/class labels, stale promotions, and arithmetic bundles were th
 This is feasibility evidence only; the four surviving facts must not be fitted. The next candidate must
 use a date-fixed, source-specific contract or a separately curated benchmark.
 
+**Experiment 010 — date-fixed source contract — complete; search-index path rejected.** A five-city Luna
+pilot used a fixed 15–16 September 2026 one-night/two-adult stay and source-family restrictions. It found
+0/30 compatible facts: Hostelworld exposed undated `from` rates, while Booking/Hotels results exposed
+other dates, promotions, or multi-night totals. This rejects the assumption that date parameters in broad
+indexed searches preserve the accommodation estimand. Interactive provider pages and curated benchmarks
+remain open; the result is not evidence that every public accommodation page is unusable.
+
 ### Next experiments, in order
 
-1. Test a date-fixed, source-specific accommodation contract (or a separately curated benchmark) on a
-   bounded city panel. Require explicit two-adult occupancy, one-night totals, class labels, currency,
-   retrieval date, and no `from`/range/package prices; reject any apparent coverage that violates the
-   frozen estimand.
+1. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
+   one-call target-model path, or pivot to a separately curated benchmark. Search-index date injection is
+   rejected; retain the same strict class, currency, one-night, and occupancy rules.
 2. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
    drinks, and activities, while resolving accommodation measurement and dorm/private identifiability
    with independent ground truth. Do not infer two hostel tiers from one blended channel.
@@ -186,6 +192,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/007-minimal-anchor-retest/`
 - `data/reference/v5/experiments/008-omitted-anchor-ground-truth/`
 - `data/reference/v5/experiments/009-accommodation-panel-feasibility/`
+- `data/reference/v5/experiments/010-date-fixed-accommodation-contract/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

@@ -98,10 +98,20 @@ or formal class, stale promotions, and prices requiring arithmetic. The four sur
 feasibility evidence only and must not be fitted. Read
 `data/reference/v5/experiments/009-accommodation-panel-feasibility/`.
 
+## Experiment 010 result
+
+A five-city Luna task tested fixed check-in 2026-09-15, check-out 2026-09-16, two adults, and restricted
+source families (Hostelworld/property pages for hostels; Booking.com/Hotels.com for hotels). It found
+**0/30** compatible facts and no complete city. Search-index retrieval did not preserve the requested dates:
+Hostelworld exposed undated `from` rates, while Booking/Hotels results exposed different dates, promotions,
+or multi-night totals. Three search calls and eleven queries produced no page-read candidate. This rejects
+the indexed-search date-fixed contract, but does not rule out interactive public pages or a curated benchmark.
+Read `data/reference/v5/experiments/010-date-fixed-accommodation-contract/`.
+
 ## Next action
 
-Test a date-fixed, source-specific accommodation contract or a separately curated benchmark, with explicit
-two-adult occupancy, one-night totals, class labels, currency, retrieval date, and no `from`/range/package
-prices. Continue definition-matched panels for the other omitted anchors. Do not use the shipping CSV as
-ground truth and do not infer dorm/private separation from the blended hostel channel. The derivation
-contract remains out of the shipping path until source feasibility and accuracy gates pass.
+Test an interactive public accommodation page in the one-call target-model path, or design a separately
+curated benchmark. Search-index date injection is rejected. Continue definition-matched panels for the other
+omitted anchors. Do not use the shipping CSV as ground truth and do not infer dorm/private separation from
+the blended hostel channel. The derivation contract remains out of the shipping path until source
+feasibility and accuracy gates pass.
