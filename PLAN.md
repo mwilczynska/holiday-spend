@@ -248,12 +248,18 @@ remained unchanged. No city was complete; private hostel, 1-star, and 2-star rem
 source/display currency exactly and flag non-local currency for FX review. See
 `data/reference/v5/experiments/025-accommodation-bed-boundary/`.
 
+**Experiment 026 — broader accommodation panel — complete; retain dorm boundary, pivot hotel coverage.** Three
+new independent one-city calls (Lisbon, Hanoi, Copenhagen) used the unchanged Experiment 025 contract and
+accepted 5/18 cells: one dorm bed in each city plus Copenhagen 3/4-star. No city was complete; private hostel,
+1-star, and 2-star remained missing. The repeated dorm boundary is useful, but the hotel-class source/model
+route cannot yet form a 30-city/10-holdout panel. See `data/reference/v5/experiments/026-accommodation-broader-panel/`.
+
 ### Next experiments, in order
 
-1. Broaden the promoted accommodation boundary across independently collected cities, retaining one-bed dorm
-   inputs plus strict two-adult hotel/private-room identity. Require 30 complete cities and 10 locked holdout
-   cities before any ratio or imputation; preserve source/display currency, exact query provenance, and all
-   missingness. Do not tune the locked 018 holdout.
+1. Test a separately declared hotel-class occupancy-basis hypothesis or another public source family in
+   independent one-city calls; never silently reinterpret missing occupancy as two-adult evidence. Retain the
+   one-bed dorm input boundary, require 30 complete cities and 10 locked holdouts before any fit, and preserve
+   source/display currency, exact query provenance, and all missingness.
 2. Continue the official attraction-ticket panel and timed-activity source tests only after recording the
    revised accommodation boundary; do not silently substitute another city.
 3. Replace or calibrate the rejected Booking city-average basis using independently collected matched
@@ -330,6 +336,7 @@ Current v5 artifacts:
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_024_accommodation_ground_truth.md`
 - `data/reference/v5/experiments/025-accommodation-bed-boundary/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_025_accommodation_bed_boundary.md`
+- `data/reference/v5/experiments/026-accommodation-broader-panel/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

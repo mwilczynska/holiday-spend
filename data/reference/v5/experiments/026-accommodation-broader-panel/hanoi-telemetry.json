@@ -1,0 +1,68 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "queriesAttempted": 6,
+  "searchOperations": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "retries": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 1,
+  "notFoundMeasures": 5,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "exactProviderModelId": "GPT-5.6 Luna-class delegated invocation",
+  "parameters": null,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "queries": [
+    {
+      "measure": "accom_shared_hostel_dorm",
+      "query": "Hanoi Vietnam hostel dorm bed average price per night one adult",
+      "status": "found",
+      "sourceUrl": "https://www.budgetyourtrip.com/hostels/vietnam/hanoi-1581130",
+      "value": 8,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "reason": "Budget Your Trip reported an $8 average for a dorm bed in Hanoi based on 79 hostels; the one-bed observation is retained without multiplication."
+    },
+    {
+      "measure": "accom_hostel_private_room",
+      "query": "Hanoi Vietnam hostel private room average price per night two adults",
+      "status": "not_found",
+      "reason": "No central non-from private-hostel price explicitly identified one room for two adults."
+    },
+    {
+      "measure": "accom_1_star",
+      "query": "Hanoi Vietnam 1-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "Available 1-star values lacked explicit two-adult, one-room identity or were from/event-specific quotes."
+    },
+    {
+      "measure": "accom_2_star",
+      "query": "Hanoi Vietnam 2-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "Available 2-star values lacked explicit two-adult, one-room identity or were weekday/weekend/lowest quotes."
+    },
+    {
+      "measure": "accom_3_star",
+      "query": "Hanoi Vietnam 3-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "Booking exposed a 2-adult weekend average, not the required central non-event price."
+    },
+    {
+      "measure": "accom_4_star",
+      "query": "Hanoi Vietnam 4-star hotel city average price per room per night two adults",
+      "status": "not_found",
+      "reason": "Available results were weekend averages or lacked explicit two-adult, one-room occupancy and a class-specific central value."
+    }
+  ],
+  "note": "Exactly one city and six independent targeted searches. No direct reads, retries, fallback sources, arithmetic, currency conversion, or cross-city evidence. The dorm result is an observed one-adult bed input; deterministic code must scale it for the two-traveller product value. Exact provider token, latency, cost, and runtime parameters are unavailable through delegated orchestration."
+}

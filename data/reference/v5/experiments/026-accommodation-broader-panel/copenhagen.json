@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 14,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "occupancy": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "sourceUrl": "https://www.hostelz.com/hostels/Denmark/Copenhagen",
+      "sourceTitle": "Hostels in Copenhagen from $6 — Solo Travel 2026",
+      "evidenceText": "On average, hostels in Copenhagen cost around $14 per dorm bed and $129 per private room per night.",
+      "referencePeriod": "Crawled 3 weeks ago; current city average; dollar display retained as USD",
+      "searchQuery": "Copenhagen Denmark hostel dorm bed average price per night one adult",
+      "reason": null
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Copenhagen Denmark hostel private room average price per night two adults",
+      "reason": "Hostelz and BudgetYourTrip exposed private-room averages, but the snippets did not explicitly establish two-adult occupancy; Hostelworld exposed only prohibited from prices."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Copenhagen Denmark 1-star hotel city average price per room per night two adults",
+      "reason": "Search results did not expose a central Copenhagen 1-star price with explicit two-adult, one-room occupancy; Momondo's result was a per-person estimate based on mixed hostel and low-star hotels."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Copenhagen Denmark 2-star hotel city average price per room per night two adults",
+      "reason": "Momondo exposed a 2-star average without explicit two-adult occupancy, while Expedia exposed a lowest nightly price; neither was a compatible central two-adult room average."
+    },
+    "accom_3_star": {
+      "status": "found",
+      "value": 216,
+      "currency": "CHF",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": "https://www.skyscanner.ch/ch/en-gb/chf/hotels/denmark/copenhagen-hotels/three-star/ci-27539902/sr-3",
+      "sourceTitle": "3-star Hotels in Copenhagen | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room ... The average price of a 3-star hotel in Copenhagen is currently around CHF 216 per night.",
+      "referencePeriod": "Crawled 4 days ago; current average; no fixed stay dates",
+      "searchQuery": "Copenhagen Denmark 3-star hotel city average price per room per night two adults",
+      "reason": null
+    },
+    "accom_4_star": {
+      "status": "found",
+      "value": 321,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "sourceUrl": "https://www.skyscanner.ie/hotels/denmark/copenhagen-hotels/four-star/ci-27539902/sr-4",
+      "sourceTitle": "4-star Hotels in Copenhagen | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room ... The average price of a 4-star hotel in Copenhagen is currently around €321 per night.",
+      "referencePeriod": "Crawled 3 days ago; current average; no fixed stay dates",
+      "searchQuery": "Copenhagen Denmark 4-star hotel city average price per room per night two adults",
+      "reason": null
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

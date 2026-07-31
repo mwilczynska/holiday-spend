@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const dir = path.join(root, 'data', 'reference', 'v5', 'experiments', '025-accommodation-bed-boundary');
+const experimentName = process.env.CITY_COST_V5_ACCOM_EXPERIMENT ?? '025-accommodation-bed-boundary';
+const dir = path.join(root, 'data', 'reference', 'v5', 'experiments', experimentName);
 const measures = [
   'accom_shared_hostel_dorm',
   'accom_hostel_private_room',
@@ -69,6 +70,7 @@ const byMeasure = Object.fromEntries(measures.map((measure) => [measure, {
 const completeCount = cities.filter((city) => city.complete).length;
 console.log(JSON.stringify({
   schemaVersion: 'city-cost-v5-accommodation-bed-boundary-audit-v1',
+  experiment: experimentName,
   citiesTested: cities.length,
   acceptedCells: accepted.length,
   totalCells: cities.length * measures.length,

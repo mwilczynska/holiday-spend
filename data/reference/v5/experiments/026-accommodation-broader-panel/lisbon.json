@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 9,
+      "currency": "EUR",
+      "unit": "per_dorm_bed_per_night",
+      "occupancy": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "sourceUrl": "https://www.hostelz.com/hostels/Portugal/Lisbon?filter%5BsuitableFor%5D%5B%5D=couples",
+      "sourceTitle": "Hostels in Lisbon from €4 — Couples",
+      "evidenceText": "On average, hostels in Lisbon cost around €9 per dorm bed and €71 per private room per night.",
+      "referencePeriod": "Published 7 months ago; crawled 3 weeks ago; current city average",
+      "searchQuery": "Lisbon Portugal shared hostel dorm bed price per night EUR one bed hostel",
+      "reason": null
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal private hostel room for two adults price per night EUR",
+      "reason": "Hostelz exposed a Lisbon private-room average, but the snippet did not explicitly establish two-adult occupancy; Lisbon Lounge and Hostelworld exposed prohibited from prices."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal 1 star hotel average room price per night two adults",
+      "reason": "Search results did not expose a central Lisbon 1-star price with explicit two-adult, one-room occupancy."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal 2 star hotel average room price per night two adults",
+      "reason": "Search results did not expose a central Lisbon 2-star price with explicit two-adult, one-room occupancy."
+    },
+    "accom_3_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal 3 star hotel average room price per night two adults",
+      "reason": "The Lisbon hotel-data result identified 3-star average-rate data but did not expose a numeric value in the search result; other results were general or quote-based rather than a central two-adult room average."
+    },
+    "accom_4_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal 4 star hotel average room price per night two adults",
+      "reason": "Expedia exposed a two-adult 4-star average-price description but only a prohibited from-price was numeric; no central non-from Lisbon value was returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

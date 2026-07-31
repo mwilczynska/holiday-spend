@@ -266,8 +266,13 @@ cells (up from 3/18), including Barcelona's explicit EUR15 per-bed input. No cit
 hostel, 1-star, and 2-star remain unresolved. Broaden this boundary with additional independent cities, keep
 strict hotel/private-room occupancy, and require 30 complete cities plus 10 locked holdouts before fitting.
 
-Next, broaden the promoted one-bed dorm boundary across independent cities while retaining strict two-adult
-per-room hotel/private-room identity and exact source/display currency. Direct booking-engine URLs and direct
-Numbeo retrieval remain rejected for the target web path. Do not tune the locked 018 holdout, use the shipping
-CSV as ground truth, or infer dorm/private separation from the blended hostel channel. The derivation contract
-remains out of the shipping path until source feasibility and accuracy gates pass.
+Experiment 026 broadened the boundary to Lisbon, Hanoi, and Copenhagen and accepted 5/18 cells: three dorm
+inputs plus Copenhagen 3/4-star. No city was complete; private hostel, 1-star, and 2-star remain unresolved.
+Retain deterministic dorm scaling and pivot to a separately declared hotel occupancy/source hypothesis.
+
+Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
+dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
+booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked
+018 holdout, use the shipping CSV as ground truth, or infer dorm/private separation from the blended hostel
+channel. The derivation contract remains out of the shipping path until source feasibility and accuracy gates
+pass.

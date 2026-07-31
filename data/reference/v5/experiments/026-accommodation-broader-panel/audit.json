@@ -1,0 +1,189 @@
+﻿{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-audit-v1",
+  "experiment": "026-accommodation-broader-panel",
+  "citiesTested": 3,
+  "acceptedCells": 5,
+  "totalCells": 18,
+  "accepted": [
+    {
+      "city": "Copenhagen",
+      "measure": "accom_shared_hostel_dorm",
+      "value": 14,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "scaledTwoPerson": 28,
+      "sourceUrl": "https://www.hostelz.com/hostels/Denmark/Copenhagen",
+      "searchQuery": "Copenhagen Denmark hostel dorm bed average price per night one adult"
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "accom_3_star",
+      "value": 216,
+      "currency": "CHF",
+      "unit": "per_room_per_night",
+      "scaledTwoPerson": null,
+      "sourceUrl": "https://www.skyscanner.ch/ch/en-gb/chf/hotels/denmark/copenhagen-hotels/three-star/ci-27539902/sr-3",
+      "searchQuery": "Copenhagen Denmark 3-star hotel city average price per room per night two adults"
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "accom_4_star",
+      "value": 321,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "scaledTwoPerson": null,
+      "sourceUrl": "https://www.skyscanner.ie/hotels/denmark/copenhagen-hotels/four-star/ci-27539902/sr-4",
+      "searchQuery": "Copenhagen Denmark 4-star hotel city average price per room per night two adults"
+    },
+    {
+      "city": "Hanoi",
+      "measure": "accom_shared_hostel_dorm",
+      "value": 8,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "scaledTwoPerson": 16,
+      "sourceUrl": "https://www.budgetyourtrip.com/hostels/vietnam/hanoi-1581130",
+      "searchQuery": "Hanoi Vietnam hostel dorm bed average price per night one adult"
+    },
+    {
+      "city": "Lisbon",
+      "measure": "accom_shared_hostel_dorm",
+      "value": 9,
+      "currency": "EUR",
+      "unit": "per_dorm_bed_per_night",
+      "scaledTwoPerson": 18,
+      "sourceUrl": "https://www.hostelz.com/hostels/Portugal/Lisbon?filter%5BsuitableFor%5D%5B%5D=couples",
+      "searchQuery": "Lisbon Portugal shared hostel dorm bed price per night EUR one bed hostel"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Copenhagen",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "Hostelz and BudgetYourTrip exposed private-room averages, but the snippets did not explicitly establish two-adult occupancy; Hostelworld exposed only prohibited from prices."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "Search results did not expose a central Copenhagen 1-star price with explicit two-adult, one-room occupancy; Momondo's result was a per-person estimate based on mixed hostel and low-star hotels."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Momondo exposed a 2-star average without explicit two-adult occupancy, while Expedia exposed a lowest nightly price; neither was a compatible central two-adult room average."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "Search results exposed hostel private-room averages or individual prices, but none explicitly established a central non-from price for one private room occupied by two adults; the available Hostelworld prices were from prices and other snippets lacked the required occupancy identity."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "Search results supplied 1-star averages or from prices without an explicit two-adult, one-room central price; weekend/weekday rates and generic hotel averages were not compatible with the contract."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Search results exposed 2-star city or weekday/weekend averages, but no central non-from price explicitly identified one room for two adults; generic hotel rates and lowest/from quotes were rejected."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "accom_3_star",
+      "status": "not_found",
+      "reason": "Booking snippets included 2-adult context but reported a this-weekend price rather than a central non-event average; other results were generic or lowest/from quotes, so the definition-compatible value is not found."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "accom_4_star",
+      "status": "not_found",
+      "reason": "Search results supplied Booking weekend averages or KAYAK/HotelsCombined averages without explicit two-adult, one-room occupancy; Expedia described a 2-adult price trend but exposed no class-specific central numeric value."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "accom_hostel_private_room",
+      "status": "not_found",
+      "reason": "Hostelz exposed a Lisbon private-room average, but the snippet did not explicitly establish two-adult occupancy; Lisbon Lounge and Hostelworld exposed prohibited from prices."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "accom_1_star",
+      "status": "not_found",
+      "reason": "Search results did not expose a central Lisbon 1-star price with explicit two-adult, one-room occupancy."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "accom_2_star",
+      "status": "not_found",
+      "reason": "Search results did not expose a central Lisbon 2-star price with explicit two-adult, one-room occupancy."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "accom_3_star",
+      "status": "not_found",
+      "reason": "The Lisbon hotel-data result identified 3-star average-rate data but did not expose a numeric value in the search result; other results were general or quote-based rather than a central two-adult room average."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "accom_4_star",
+      "status": "not_found",
+      "reason": "Expedia exposed a two-adult 4-star average-price description but only a prohibited from-price was numeric; no central non-from Lisbon value was returned."
+    }
+  ],
+  "cities": [
+    {
+      "city": "Copenhagen",
+      "acceptedCells": 3,
+      "complete": false
+    },
+    {
+      "city": "Hanoi",
+      "acceptedCells": 1,
+      "complete": false
+    },
+    {
+      "city": "Lisbon",
+      "acceptedCells": 1,
+      "complete": false
+    }
+  ],
+  "byMeasure": {
+    "accom_shared_hostel_dorm": {
+      "acceptedRows": 3,
+      "cities": 3
+    },
+    "accom_hostel_private_room": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_1_star": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_2_star": {
+      "acceptedRows": 0,
+      "cities": 0
+    },
+    "accom_3_star": {
+      "acceptedRows": 1,
+      "cities": 1
+    },
+    "accom_4_star": {
+      "acceptedRows": 1,
+      "cities": 1
+    }
+  },
+  "modelGate": {
+    "matchedCitiesRequired": 30,
+    "lockedHoldoutRequired": 10,
+    "completeCityCount": 0,
+    "completeCityCountMeets30": false,
+    "note": "Dorm values remain one-bed observed inputs; scaledTwoPerson is a deterministic audit preview, not LLM arithmetic."
+  }
+}

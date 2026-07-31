@@ -1,0 +1,68 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Lisbon",
+  "country": "Portugal",
+  "queriesAttempted": 6,
+  "searchOperations": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "retries": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 1,
+  "notFoundMeasures": 5,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "exactProviderModelId": "GPT-5.6 Luna-class delegated invocation",
+  "parameters": null,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "queries": [
+    {
+      "measure": "accom_shared_hostel_dorm",
+      "query": "Lisbon Portugal shared hostel dorm bed price per night EUR one bed hostel",
+      "status": "found",
+      "sourceUrl": "https://www.hostelz.com/hostels/Portugal/Lisbon?filter%5BsuitableFor%5D%5B%5D=couples",
+      "value": 9,
+      "currency": "EUR",
+      "unit": "per_dorm_bed_per_night",
+      "reason": "Hostelz reported a Lisbon city average of €9 per dorm bed per night; the one-bed observation is retained without multiplication."
+    },
+    {
+      "measure": "accom_hostel_private_room",
+      "query": "Lisbon Portugal private hostel room for two adults price per night EUR",
+      "status": "not_found",
+      "reason": "A private-room average was visible, but no result explicitly established two-adult occupancy; available named-hostel values were from prices."
+    },
+    {
+      "measure": "accom_1_star",
+      "query": "Lisbon Portugal 1 star hotel average room price per night two adults",
+      "status": "not_found",
+      "reason": "No central Lisbon 1-star result supplied explicit two-adult, one-room occupancy and a non-from numeric price."
+    },
+    {
+      "measure": "accom_2_star",
+      "query": "Lisbon Portugal 2 star hotel average room price per night two adults",
+      "status": "not_found",
+      "reason": "No central Lisbon 2-star result supplied explicit two-adult, one-room occupancy and a non-from numeric price."
+    },
+    {
+      "measure": "accom_3_star",
+      "query": "Lisbon Portugal 3 star hotel average room price per night two adults",
+      "status": "not_found",
+      "reason": "The official Lisbon hotel-data result lacked a numeric value in the search result; other results did not meet the central two-adult room-average contract."
+    },
+    {
+      "measure": "accom_4_star",
+      "query": "Lisbon Portugal 4 star hotel average room price per night two adults",
+      "status": "not_found",
+      "reason": "Expedia described a two-adult 4-star average but exposed only a prohibited from-price, not a central non-from value."
+    }
+  ],
+  "note": "Exactly one city and six independent targeted searches. No direct reads, retries, fallback sources, arithmetic, currency conversion, or cross-city evidence. A one-bed dorm value remains an observed one-adult input; deterministic code must multiply it for the two-traveller product value. Exact provider token, latency, cost, and runtime parameters are unavailable through delegated orchestration."
+}

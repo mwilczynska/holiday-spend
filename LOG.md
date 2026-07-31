@@ -1002,3 +1002,16 @@ USD; source display currencies are retained and flagged for FX review.
 **Verdict:** promote the one-bed dorm boundary for broader collection, but do not fit accommodation ratios or
 call the route complete. Require 30 complete cities and 10 locked holdout cities with definition-matched
 inputs. Read `data/reference/v5/experiments/025-accommodation-bed-boundary/`.
+
+## Experiment 026 — broader accommodation panel (31 July 2026)
+
+Three new independent GPT-5.6 Luna-class one-city calls (Lisbon, Hanoi, Copenhagen) reused the unchanged
+Experiment 025 prompt. They issued 18 searches and 18 search operations with no direct reads, retries,
+fallbacks, arithmetic, FX, or cross-city evidence. The tranche accepted **5/18 cells**: one explicit dorm bed
+in each city, plus Copenhagen 3-star and 4-star. Lisbon and Hanoi supplied no qualifying hotel class rows;
+private hostel, 1-star, and 2-star remained missing in all three cities. No city was complete.
+
+**Verdict:** retain the one-bed dorm boundary, but reject complete accommodation coverage and pivot the
+hotel-class occupancy/source hypothesis. These are retrieval-feasibility rows, not ground truth or fitted
+coefficients. Copenhagen's non-local display currencies remain source facts and require deterministic FX
+review. Read `data/reference/v5/experiments/026-accommodation-broader-panel/`.

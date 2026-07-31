@@ -40,6 +40,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/023-activity-ground-truth-audit/` | **COMPLETE — reject activity model fit** | Accepted-direct ledger has 29 paid-attraction cities, 3 half-day, 2 full-day, and one complete city |
 | `experiments/024-accommodation-ground-truth-panel/` | **COMPLETE — reject strict route; revise boundary** | Three one-city calls: 3/18 strict cells, no complete city; test per-bed dorm scaling next |
 | `experiments/025-accommodation-bed-boundary/` | **COMPLETE — promote boundary; route incomplete** | Three paired one-city calls: 6/18 cells, one explicit dorm-bed input, no complete city |
+| `experiments/026-accommodation-broader-panel/` | **COMPLETE — retain dorm boundary; pivot hotel coverage** | Three new one-city calls: 5/18 cells, dorm in all three, no complete city |
 | `experiments/024-accommodation-ground-truth-panel/` | **COMPLETE — reject strict route; revise boundary** | Three one-city calls: 3/18 strict cells, no complete city; test per-bed dorm scaling next |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the

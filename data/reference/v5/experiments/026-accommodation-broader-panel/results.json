@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-v1",
+  "status": "complete_boundary_still_incomplete",
+  "citiesPlanned": ["Lisbon", "Hanoi", "Copenhagen"],
+  "citiesTested": 3,
+  "acceptedCells": 5,
+  "totalCells": 18,
+  "completeCities": [],
+  "byMeasure": {
+    "accom_shared_hostel_dorm": {"acceptedRows": 3, "cities": 3},
+    "accom_hostel_private_room": {"acceptedRows": 0, "cities": 0},
+    "accom_1_star": {"acceptedRows": 0, "cities": 0},
+    "accom_2_star": {"acceptedRows": 0, "cities": 0},
+    "accom_3_star": {"acceptedRows": 1, "cities": 1},
+    "accom_4_star": {"acceptedRows": 1, "cities": 1}
+  },
+  "modelGate": {
+    "matchedCitiesRequired": 30,
+    "lockedHoldoutRequired": 10,
+    "completeCityCountMeets30": false
+  },
+  "promptSource": "docs/prompts/llm_prompt_city_cost_v5_experiment_025_accommodation_bed_boundary.md",
+  "measures": [
+    "accom_shared_hostel_dorm",
+    "accom_hostel_private_room",
+    "accom_1_star",
+    "accom_2_star",
+    "accom_3_star",
+    "accom_4_star"
+  ],
+  "note": "The unchanged Experiment 025 boundary accepted dorm beds in all three cities, but only Copenhagen supplied hotel class rows; no city was complete. Do not fit accommodation ratios. Source display currencies are retained for deterministic FX review."
+}

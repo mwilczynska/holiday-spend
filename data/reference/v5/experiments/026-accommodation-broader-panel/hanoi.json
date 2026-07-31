@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-bed-boundary-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 8,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "occupancy": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "sourceUrl": "https://www.budgetyourtrip.com/hostels/vietnam/hanoi-1581130",
+      "sourceTitle": "Hanoi Average Hostel Prices | Budget Your Trip",
+      "evidenceText": "The average price for a dorm bed in a hostel in Hanoi (based on data from 79 hostels with dorms) is an affordable $8.",
+      "referencePeriod": "Crawled 3 weeks ago; current city average; source also notes taxes and fees are excluded from weekly figures",
+      "searchQuery": "Hanoi Vietnam hostel dorm bed average price per night one adult",
+      "reason": null
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "hostel_private_room",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Hanoi Vietnam hostel private room average price per night two adults",
+      "reason": "Search results exposed hostel private-room averages or individual prices, but none explicitly established a central non-from price for one private room occupied by two adults; the available Hostelworld prices were from prices and other snippets lacked the required occupancy identity."
+    },
+    "accom_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Hanoi Vietnam 1-star hotel city average price per room per night two adults",
+      "reason": "Search results supplied 1-star averages or from prices without an explicit two-adult, one-room central price; weekend/weekday rates and generic hotel averages were not compatible with the contract."
+    },
+    "accom_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Hanoi Vietnam 2-star hotel city average price per room per night two adults",
+      "reason": "Search results exposed 2-star city or weekday/weekend averages, but no central non-from price explicitly identified one room for two adults; generic hotel rates and lowest/from quotes were rejected."
+    },
+    "accom_3_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Hanoi Vietnam 3-star hotel city average price per room per night two adults",
+      "reason": "Booking snippets included 2-adult context but reported a this-weekend price rather than a central non-event average; other results were generic or lowest/from quotes, so the definition-compatible value is not found."
+    },
+    "accom_4_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Hanoi Vietnam 4-star hotel city average price per room per night two adults",
+      "reason": "Search results supplied Booking weekend averages or KAYAK/HotelsCombined averages without explicit two-adult, one-room occupancy; Expedia described a 2-adult price trend but exposed no class-specific central numeric value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 6,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

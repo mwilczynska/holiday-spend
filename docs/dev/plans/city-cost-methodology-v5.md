@@ -111,6 +111,10 @@ Experiment 025 tested that revised bed boundary on paired Barcelona, Prague, and
 from 3/18 to 6/18: one explicit Barcelona dorm bed plus five hotel class averages. No city was complete and
 private hostel, 1-star, and 2-star remained missing. Promote the bed input boundary for a broader panel, but
 do not fit until the 30-city/10-holdout gate; retain source display currencies for deterministic FX review.
+Experiment 026 broadened the same boundary to Lisbon, Hanoi, and Copenhagen. It accepted 5/18 cells: dorm
+inputs in all three cities plus Copenhagen 3/4-star; no city was complete and private hostel, 1-star, and
+2-star remained absent. Retain the dorm boundary, but pivot hotel-class occupancy/source testing rather than
+calling the accommodation route complete.
 
 ## Restart rule
 
