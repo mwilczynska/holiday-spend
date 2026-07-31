@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "city-cost-v5-repeatability-results-v1",
+  "experiment": "019-numbeo-repeatability-edge-cases",
+  "runDate": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_016.md",
+  "invocationShape": "one city per independent invocation",
+  "targetModelClass": "GPT-5.6 Luna-class delegated invocation",
+  "invocations": 15,
+  "queriesAttempted": 75,
+  "webSearchToolCalls": 36,
+  "directPageReads": 0,
+  "fallbackAttempts": 0,
+  "arithmeticOperations": 0,
+  "otherCityEvidenceUsed": 0,
+  "providerTokens": null,
+  "latencyMs": null,
+  "providerCost": null,
+  "exactProviderModelId": null,
+  "broadSameCallEvidencePolicy": {
+    "foundCells": 42,
+    "requestedCells": 75,
+    "coverage": 0.56,
+    "completeRuns": 7,
+    "runs": 15,
+    "citySummary": {
+      "Kyoto": {"runs":"0/5,0/5,0/5","completeRuns":0,"outcomes":["no_result","no_result","no_result"]},
+      "Helsinki": {"runs":"5/5,3/5,4/5","completeRuns":1,"outcomes":["accepted","partial","partial"]},
+      "Don Det": {"runs":"0/5,0/5,0/5","completeRuns":0,"outcomes":["no_result","no_result","no_result"]},
+      "Nha Trang": {"runs":"5/5,5/5,5/5","completeRuns":3,"outcomes":["accepted","accepted","accepted"]},
+      "Beijing": {"runs":"5/5,5/5,5/5","completeRuns":3,"outcomes":["accepted","accepted","accepted"]}
+    }
+  },
+  "dedicatedQuerySensitivityPolicy": {
+    "definition": "A measure is found only when its own targeted query returns the canonical city/row; a row co-displayed under another measure query is not counted.",
+    "foundCellsAfterNormalizingNonDedicatedHelsinkiBeer": 41,
+    "requestedCells": 75,
+    "coverage": 0.5466666667,
+    "helsinkiRuns": "4/5,3/5,4/5",
+    "note": "Helsinki repeat 1 followed the broad 018 same-call policy and accepted beer from a canonical snippet returned in another query batch; repeats 2 and 3 enforced dedicated-query provenance. This policy sensitivity is retained rather than averaged away."
+  },
+  "valueDispersion": {
+    "Kyoto": "no values observed",
+    "Helsinki": {"stableValues":{"inexpensive_restaurant_meal_1p":[15,15,15],"midrange_restaurant_meal_2p":[90,90],"mcmeal_combo_1p":[13,13,13],"cappuccino_1":[4.71,4.71,4.71]},"beer":"observed once under broad policy; not observed under dedicated-query policy"},
+    "Don Det": "no values observed",
+    "Nha Trang": {"allFiveValuesIdenticalAcrossThreeRuns":true,"basis":"USD displayCurrency page; native VND snippets explicitly rejected to avoid mixing"},
+    "Beijing": {"allFiveValuesIdenticalAcrossThreeRuns":true,"basis":"CNY mapped from ¥ plus explicit Beijing, China context; no conversion"}
+  },
+  "verdict":"repeatability_confirmed_for_some_bases_but_query_provenance_and_coverage_block_promotion",
+  "rejectionReasonsForFinalAcceptance":[
+    "Kyoto and Don Det were 0/5 in all three repeats; the frozen search route has a stable sparse/no-result failure.",
+    "Helsinki coverage changed from 5/5 broad same-call evidence to 3/5 and 4/5 under dedicated-query provenance; the 5th measure is not repeatably query-addressable.",
+    "Only Nha Trang and Beijing had 5/5 in all three runs, and both carry currency-basis review requirements.",
+    "Exact provider model ID, parameters, tokens, latency, and cost remain unavailable through delegated execution."
+  ]
+}

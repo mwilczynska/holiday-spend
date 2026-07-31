@@ -74,6 +74,12 @@ thirty-nine definition/currency-compatible retained rows had 0% median absolute 
 not model validation. The route is promoted for food/drink work but the complete pipeline is rejected because
 complete-city success is below 95%, provider telemetry is unavailable, and the other 14 product fields remain
 unresolved. Nha Trang's five USD-rendered cells and several symbol-to-ISO mappings require provenance review.
+Experiment 019 then repeated five edge cases three times each with the frozen prompt. Kyoto and Don Det were
+0/5 in all repeats; Nha Trang and Beijing were 5/5 with identical values in all repeats; Helsinki was
+provenance-sensitive (5/5 under broad same-call evidence, then 3/5 and 4/5 when dedicated-query provenance
+was enforced). Broad repeat coverage was 42/75; strict normalization gives 41/75. Keep dedicated-query
+provenance and fail-closed missingness as the source contract. This confirms bounded food/drink repeatability
+for some cities, not complete reliability or 19-field methodology acceptance.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

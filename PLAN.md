@@ -195,12 +195,19 @@ search evidence contract. The 139 compatible retained rows had median absolute e
 19-tier model validation. Overall complete-city success is below the 95% gate and exact provider telemetry
 remains unavailable. See `data/reference/v5/experiments/018-numbeo-search-30-city/`.
 
+**Experiment 019 — edge-case repeatability — complete; mixed result.** Fifteen independent calls (three per
+city) kept Kyoto and Don Det at 0/5 in every run, kept Nha Trang and Beijing at 5/5 with identical values, and
+made Helsinki provenance-sensitive: broad same-call policy gave 5/5 once, while dedicated-query policy gave
+3/5 and 4/5. Broad coverage was 42/75; normalizing Helsinki's non-dedicated beer gives 41/75. There were
+36 search operations, no direct reads/retries/fallbacks/arithmetic/cross-city evidence, and no exact provider
+telemetry. Keep the route bounded to ordinary food/drink cities with dedicated-query provenance; do not claim
+complete reliability. See `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`.
+
 ### Next experiments, in order
 
-1. Repeat the frozen one-city route on the difficult failures (Kyoto no-result, Helsinki beer, Don Det
-   sparse) and currency/provenance edge cases with three independent calls each. Measure repeatability and
-   dispersion without averaging away failures; do not tune the locked 018 holdout. Then test a separately
-   validated sparse-city fallback rather than cross-city substitution.
+1. Test a separately validated sparse-city fallback rather than cross-city substitution, while keeping
+   dedicated-query provenance and explicit native-currency checks. In parallel, attack accommodation and
+   activities with independent one-city calls; do not tune the locked 018 holdout or average away failures.
 2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -266,6 +273,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`
 - `data/reference/v5/experiments/017-numbeo-search-broad-panel/`
 - `data/reference/v5/experiments/018-numbeo-search-30-city/`
+- `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

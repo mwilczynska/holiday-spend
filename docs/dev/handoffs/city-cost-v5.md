@@ -192,11 +192,28 @@ symbol-to-ISO context mappings remain provenance review items. Exact provider te
 complete-city success is below the 95% gate, the holdout is 44/50, and accommodation, activities, and
 derivation remain unresolved. Read `data/reference/v5/experiments/018-numbeo-search-30-city/`.
 
+## Experiment 019 result
+
+Fifteen fresh independent calls (three repeats each for Kyoto, Helsinki, Don Det, Nha Trang, and Beijing)
+used the unchanged Experiment 016 prompt. Kyoto and Don Det were stable no-result failures: 0/5 in all
+three repeats. Nha Trang returned the same five USD-rendered values in all three runs, while native VND
+alternatives were recorded and rejected rather than mixed. Beijing returned the same five CNY values in all
+three runs, with `¥` mapped from explicit Beijing/China context. Helsinki was provenance-sensitive: repeat 1
+followed the broad 018 same-call policy and counted 5/5, but its dedicated beer query did not return the row;
+repeats 2 and 3 enforced dedicated-query provenance and returned 3/5 and 4/5. Broad coverage was 42/75;
+strictly normalizing the non-dedicated Helsinki beer gives 41/75. The calls used 75 queries and 36 search
+operations, with no direct reads, retries, fallbacks, arithmetic, or cross-city evidence; provider telemetry
+was unavailable.
+
+**Verdict:** retain Numbeo only as a bounded ordinary-city food/drink candidate with dedicated-query
+provenance, native-currency checks, and fail-closed missingness. Do not average away Kyoto/Don Det failures.
+Read `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`.
+
 ## Next action
 
-Repeat the frozen one-city route three independent times on Kyoto, Helsinki beer, Don Det, and currency /
-provenance edge cases. Preserve dispersion and failures rather than averaging them away; do not tune the
-locked 018 holdout. Test a separately validated sparse-city fallback rather than cross-city substitution.
+Test a separately validated sparse-city fallback rather than cross-city substitution, retaining dedicated-query
+provenance, explicit native-currency checks, and fail-closed missingness. In parallel, attack accommodation
+and activities with independent one-city calls; do not tune the locked 018 holdout or average away failures.
 Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a correction from
 Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the target web
 path. Keep the one-city shape for safe stable templates or curated benchmarks for unresolved lower classes

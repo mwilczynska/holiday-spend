@@ -33,6 +33,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/016-numbeo-search-snippet-fallback/` | **COMPLETE — promote to broader validation** | Two one-city search-only calls returned 10/10 food/drink anchors |
 | `experiments/017-numbeo-search-broad-panel/` | **COMPLETE — promote with sparse-city failure** | Six independent one-city calls returned 25/30 exact food/drink anchors; Don Det 0/5 |
 | `experiments/018-numbeo-search-30-city/` | **COMPLETE — promote food/drink route; reject complete pipeline** | 30 independent one-city calls: 144/150 cells, 28/30 complete; locked holdout 44/50 |
+| `experiments/019-numbeo-repeatability-edge-cases/` | **COMPLETE — mixed; dedicated-query provenance required** | 15 repeats: Kyoto/Don Det stable no-result, Nha Trang/Beijing stable values, Helsinki query-sensitive |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

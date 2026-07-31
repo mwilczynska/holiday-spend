@@ -1,0 +1,21 @@
+{
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Helsinki",
+  "repeatIndex": 2,
+  "queriesAttempted": 5,
+  "webSearchToolCalls": 5,
+  "directPageReads": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": 0,
+  "foundMeasures": 3,
+  "notFoundMeasures": 2,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "exactProviderModelId": null,
+  "parameters": null,
+  "note": "Repeatability 2/3 under the frozen one-city route. Each frozen query was executed as its own search operation to preserve dedicated-query provenance; delegated execution exposed no exact provider telemetry. No displayCurrency parameter was used and source values remain native EUR."
+}

@@ -1,0 +1,15 @@
+{
+  "city": "Helsinki",
+  "country": "Finland",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":15,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Helsinki","searchQuery":"site:numbeo.com/cost-of-living/in/Helsinki \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Helsinki. May 2026. Prices in Helsinki — Meal at an Inexpensive Restaurant | €15.00 | 12.00-25.00"},
+    "midrange_restaurant_meal_2p": {"status":"not_found","value":null,"currency":null,"unit":null,"sourceUrl":null,"searchQuery":null,"resultEvidence":null},
+    "mcmeal_combo_1p": {"status":"found","value":13,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Helsinki","searchQuery":"site:numbeo.com/cost-of-living/in/Helsinki \"McDonald's\"","resultEvidence":"Cost of Living in Helsinki. Jun 2026. Prices in Helsinki — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | €13.00 | 11.00-14.00"},
+    "cappuccino_1": {"status":"found","value":4.71,"currency":"EUR","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Helsinki","searchQuery":"site:numbeo.com/cost-of-living/in/Helsinki \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Helsinki. Jun 2026. Prices in Helsinki — Cappuccino (Regular Size) | €4.71 | 3.00-5.50"},
+    "domestic_draft_beer_1": {"status":"not_found","value":null,"currency":null,"unit":null,"sourceUrl":null,"searchQuery":null,"resultEvidence":null}
+  },
+  "outcome": "partial",
+  "notes": "Repeatability run 2/3 with the unchanged Experiment 016 one-city prompt and canonical Numbeo search route. The inexpensive-meal, McDonald's, and cappuccino values came from their dedicated canonical Helsinki search results. The dedicated mid-range and beer searches returned no canonical Helsinki result; co-displayed rows seen under other dedicated queries were deliberately not reused. No direct page read, retry, fallback source, arithmetic, FX, tuning, or other-city evidence was used; native EUR was retained without conversion."
+}

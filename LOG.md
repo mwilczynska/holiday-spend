@@ -878,3 +878,27 @@ parameters, tokens, latency, and cost were not exposed by the delegated executio
 The overall complete-city success rate is below the 95% gate, holdout coverage is 44/50, and accommodation,
 activities, complete derivation, and provider telemetry remain unresolved. Artifacts are under
 `data/reference/v5/experiments/018-numbeo-search-30-city/`.
+
+## Experiment 019 — Numbeo edge-case repeatability (31 July 2026)
+
+Fifteen fresh one-city GPT-5.6 Luna-class calls repeated Kyoto, Helsinki, Don Det, Nha Trang, and Beijing
+three times each with the unchanged Experiment 016 prompt. Kyoto and Don Det were stable failures: 0/5 in
+all three repeats. Nha Trang returned identical five-value USD-rendered results in all three runs, while
+native VND alternatives were recorded and rejected rather than mixed. Beijing returned identical five-value
+CNY results in all three runs; the `¥` symbol was mapped from explicit Beijing/China context without conversion.
+
+Helsinki exposed query-provenance sensitivity. Repeat 1 followed Experiment 018's broad same-call policy and
+counted 5/5 because a canonical beer row appeared in another query batch, although the dedicated beer query
+did not return it. Repeats 2 and 3 enforced dedicated-query provenance and returned 3/5 and 4/5. Broad
+coverage was 42/75 cells; normalizing the non-dedicated beer to `not_found` gives 41/75. The protocol
+amendment and both scores are retained in the experiment artifacts; dedicated-query provenance is the
+production recommendation.
+
+The 15 calls issued 75 queries and 36 search operations, with zero direct reads, retries, fallback sources,
+arithmetic, or cross-city evidence. Exact provider model ID, parameters, tokens, latency, and cost were not
+exposed.
+
+**Verdict:** repeatability is mixed. Keep Numbeo as a bounded ordinary-city food/drink candidate only with
+dedicated-query provenance, native-currency checks, and fail-closed missingness. Do not average away Kyoto
+or Don Det failures. Accommodation, activities, complete derivation, and provider telemetry remain open.
+Artifacts are under `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`.

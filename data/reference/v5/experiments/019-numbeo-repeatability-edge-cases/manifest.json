@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "city-cost-v5-repeatability-manifest-v1",
+  "experiment": "019-numbeo-repeatability-edge-cases",
+  "frozenAt": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_016.md",
+  "invocationShape": "one city per independent invocation",
+  "repeatsPerCity": 3,
+  "cities": [
+    {"city":"Kyoto","country":"Japan","reason":"locked-holdout no-result"},
+    {"city":"Helsinki","country":"Finland","reason":"locked-holdout beer no-result"},
+    {"city":"Don Det","country":"Laos","reason":"sparse-city no-result"},
+    {"city":"Nha Trang","country":"Vietnam","reason":"displayCurrency source-basis edge"},
+    {"city":"Beijing","country":"China","reason":"currency-symbol/ISO edge"}
+  ]
+}
