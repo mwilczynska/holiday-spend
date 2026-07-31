@@ -132,7 +132,7 @@ export function buildCountryBands(points: BurnRatePoint[]): CountryBand[] {
 export function calcBurnRate(
   totalSpent: number,
   daysElapsed: number,
-  window?: { expenses: DailyExpense[]; days: number }
+  window?: { expenses: DailyExpense[]; days: number; asOfDate?: string }
 ): { tripAvg: number; windowAvg: number | null } {
   const tripAvg = daysElapsed > 0 ? totalSpent / daysElapsed : 0;
 
@@ -140,8 +140,13 @@ export function calcBurnRate(
     return { tripAvg, windowAvg: null };
   }
 
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - window.days);
+  const cutoff = window.asOfDate
+    ? new Date(`${window.asOfDate}T00:00:00Z`)
+    : new Date();
+  if (!Number.isFinite(cutoff.getTime())) {
+    return { tripAvg, windowAvg: null };
+  }
+  cutoff.setUTCDate(cutoff.getUTCDate() - window.days);
   const cutoffStr = cutoff.toISOString().split('T')[0];
 
   const windowTotal = window.expenses

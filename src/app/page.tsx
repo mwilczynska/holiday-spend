@@ -30,6 +30,8 @@ interface Summary {
   forecastVariance: number;
   remainingLegBudget: number;
   remaining: number;
+  asOfDate: string;
+  asOfSource: 'last_transaction' | 'today';
   daysElapsed: number;
   daysRemaining: number;
   totalNights: number;
@@ -117,6 +119,17 @@ const BURN_COUNTRY_LABEL_ROW_GAP = 4;
 
 const fmtAud = (n: number) => `$${n.toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
 const fmtAudSigned = (n: number) => `${n > 0 ? '+' : n < 0 ? '-' : ''}$${Math.abs(n).toLocaleString('en-AU', { maximumFractionDigits: 0 })}`;
+
+function formatDashboardDate(value: string) {
+  const date = new Date(`${value}T00:00:00Z`);
+  if (!Number.isFinite(date.getTime())) return value;
+  return date.toLocaleDateString('en-AU', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+}
 
 function getBurnChartMetrics(mode: ChartRenderMode) {
   return mode === 'expanded'
@@ -235,9 +248,9 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
     ],
   },
   plannedSpendToDate: {
-    summary: 'How much the itinerary plan says you would have spent by today.',
+    summary: 'How much the itinerary plan says you would have spent by the dashboard cutoff date.',
     items: [
-      { label: 'Formula', description: 'sum of planned daily leg costs up to today, including intercity transport on the first day of each leg' },
+      { label: 'Formula', description: 'sum of planned daily leg costs through the latest transaction date, including intercity transport on the first day of each leg' },
       { label: 'Scope', description: 'This covers itinerary leg spend only. Fixed costs are shown separately.' },
     ],
   },
@@ -256,28 +269,28 @@ const SUMMARY_HELP: Record<string, StatHelp> = {
     ],
   },
   daysElapsed: {
-    summary: 'Whole calendar days between the trip start date and today.',
+    summary: 'Whole calendar days between the trip start date and the dashboard cutoff date.',
     items: [
-      { label: 'Formula', description: 'today - trip start date' },
+      { label: 'Formula', description: 'dashboard cutoff date - trip start date' },
     ],
   },
   daysLeft: {
-    summary: 'Whole calendar days from today to the trip end date.',
+    summary: 'Whole calendar days from the dashboard cutoff date to the trip end date.',
     items: [
-      { label: 'Formula', description: 'trip end date - today' },
+      { label: 'Formula', description: 'trip end date - dashboard cutoff date' },
     ],
   },
   plannedPerDayToDate: {
-    summary: 'Average planned daily spend based on the cities visited so far.',
+    summary: 'Average planned daily spend based on the cities visited through the dashboard cutoff date.',
     items: [
-      { label: 'Formula', description: 'planned spend to date / days elapsed' },
+      { label: 'Formula', description: 'planned spend through cutoff / elapsed days through cutoff' },
       { label: 'Why it differs from Planned $/day', description: 'Planned $/day is the full-trip average. This metric reflects the cost mix of cities you have actually been through.' },
     ],
   },
   actualPerDay: {
-    summary: 'Average actual spend per elapsed trip day so far.',
+    summary: 'Average actual spend per elapsed trip day through the dashboard cutoff date.',
     items: [
-      { label: 'Formula', description: 'actual spent to date / days elapsed' },
+      { label: 'Formula', description: 'actual spent through cutoff / elapsed days through cutoff' },
     ],
   },
 };
@@ -644,6 +657,9 @@ export default function DashboardPage() {
   }
 
   const selectedCategoryTotals = categoryMode === 'planned' ? plannedCategoryTotals : actualCategoryTotals;
+  const asOfLabel = summary
+    ? `${summary.asOfSource === 'last_transaction' ? 'Last transaction' : 'Today'} · ${formatDashboardDate(summary.asOfDate)}`
+    : '';
   const totalCategorySpend = Object.values(selectedCategoryTotals).reduce((sum, value) => sum + value, 0);
 
   const categoryChartData = Object.entries(selectedCategoryTotals)
@@ -1044,20 +1060,20 @@ export default function DashboardPage() {
             label="Actual Spent To Date"
             help={SUMMARY_HELP.actualSpentToDate}
             value={fmtAud(summary.totalSpent)}
-            subtext={`${summary.expenseCount} trip expenses logged`}
+            subtext={`${summary.expenseCount} trip expenses logged · ${asOfLabel}`}
           />
           <SummaryStatCard
             label="Planned Spend To Date"
             help={SUMMARY_HELP.plannedSpendToDate}
             value={fmtAud(summary.plannedToDate)}
-            subtext="Cumulative itinerary plan through today"
+            subtext={`Cumulative itinerary plan through ${formatDashboardDate(summary.asOfDate)}`}
           />
           <SummaryStatCard
             label="Variance To Date"
             help={SUMMARY_HELP.varianceToDate}
             value={fmtAudSigned(summary.varianceToDate)}
             valueClassName={summary.varianceToDate > 0 ? 'text-red-600' : summary.varianceToDate < 0 ? 'text-green-600' : ''}
-            subtext={summary.varianceToDate > 0 ? 'Over plan so far' : summary.varianceToDate < 0 ? 'Under plan so far' : 'Exactly on plan so far'}
+            subtext={`${summary.varianceToDate > 0 ? 'Over plan so far' : summary.varianceToDate < 0 ? 'Under plan so far' : 'Exactly on plan so far'} · ${asOfLabel}`}
           />
         </div>
       )}
@@ -1074,13 +1090,13 @@ export default function DashboardPage() {
             label="Plan $/day to Date"
             help={SUMMARY_HELP.plannedPerDayToDate}
             value={summary.daysElapsed > 0 ? `${fmtAud(summary.plannedToDate / summary.daysElapsed)}/day` : '—'}
-            subtext={`Over ${summary.daysElapsed} days elapsed`}
+            subtext={`Over ${summary.daysElapsed} days elapsed · ${asOfLabel}`}
           />
           <SummaryStatCard
             label="Actual $/day"
             help={SUMMARY_HELP.actualPerDay}
             value={`${fmtAud(summary.burnRate.tripAvg)}/day`}
-            subtext={`Over ${summary.daysElapsed} days elapsed`}
+            subtext={`Over ${summary.daysElapsed} days elapsed · ${asOfLabel}`}
           />
           <SummaryStatCard
             label="Days Elapsed"
@@ -1088,9 +1104,10 @@ export default function DashboardPage() {
             value={String(summary.daysElapsed)}
           />
           <SummaryStatCard
-            label="Days Left"
+            label="Days Remaining at Cutoff"
             help={SUMMARY_HELP.daysLeft}
             value={String(summary.daysRemaining)}
+            subtext={asOfLabel}
           />
         </div>
       )}

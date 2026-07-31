@@ -9,6 +9,7 @@ import { groupIntercityTransportsByLegId } from '@/lib/intercity-transport';
 import { deriveLegDates } from '@/lib/itinerary-leg-dates';
 import { getPlannerGroupSize } from '@/lib/planner-settings';
 import { getTripWindow, isWithinTripWindow } from '@/lib/trip-window';
+import { resolveDashboardAsOfDate, wholeCalendarDaysBetween } from '@/lib/dashboard-as-of';
 import { requireCurrentUserId } from '@/lib/auth';
 import { success, handleError } from '@/lib/api-helpers';
 import type { AccomTier, FoodTier, DrinksTier, ActivitiesTier } from '@/types';
@@ -73,17 +74,22 @@ export async function GET() {
     const totalSpent = activeExpenses.reduce((s, e) => s + getExpenseAudAmount(e), 0);
 
     const today = new Date().toISOString().split('T')[0];
+    const expenseData = activeExpenses.map((expense) => ({
+      date: getExpenseReportingDate(expense, allLegs),
+      amountAud: getExpenseAudAmount(expense),
+    }));
+    const { date: asOfDate, source: asOfSource } = resolveDashboardAsOfDate(
+      expenseData.map((expense) => expense.date),
+      today
+    );
     const totalNights = allLegs.reduce((s, l) => s + l.nights, 0);
 
     let daysElapsed = 0;
     let daysRemaining = 0;
     if (tripStart) {
-      const start = new Date(tripStart);
-      const now = new Date(today);
-      daysElapsed = Math.max(0, Math.floor((now.getTime() - start.getTime()) / 86400000));
+      daysElapsed = wholeCalendarDaysBetween(tripStart, asOfDate);
       if (tripEnd) {
-        const end = new Date(tripEnd);
-        daysRemaining = Math.max(0, Math.floor((end.getTime() - now.getTime()) / 86400000));
+        daysRemaining = wholeCalendarDaysBetween(asOfDate, tripEnd);
       } else {
         daysRemaining = Math.max(0, totalNights - daysElapsed);
       }
@@ -120,24 +126,21 @@ export async function GET() {
       }
     }
 
-    const plannedDatesElapsed = Array.from(plannedByDate.keys()).filter((date) => date <= today);
+    const plannedDatesElapsed = Array.from(plannedByDate.keys()).filter((date) => date <= asOfDate);
     const plannedToDate = plannedDatesElapsed.reduce((sum, date) => sum + (plannedByDate.get(date) || 0), 0);
     const plannedAvgSoFar = plannedDatesElapsed.length > 0 ? plannedToDate / plannedDatesElapsed.length : 0;
     const varianceToDate = totalSpent - plannedToDate;
 
     // Burn rates
-    const expenseData = activeExpenses.map(e => ({
-      date: getExpenseReportingDate(e, allLegs),
-      amountAud: getExpenseAudAmount(e),
-    }));
-
     const { tripAvg, windowAvg: sevenDayAvg } = calcBurnRate(totalSpent, daysElapsed, {
       expenses: expenseData,
       days: 7,
+      asOfDate,
     });
     const { windowAvg: thirtyDayAvg } = calcBurnRate(totalSpent, daysElapsed, {
       expenses: expenseData,
       days: 30,
+      asOfDate,
     });
 
     // Projection using 7-day average if available, else trip average
@@ -168,6 +171,8 @@ export async function GET() {
       remainingLegBudget,
       tripStart,
       tripEnd,
+      asOfDate,
+      asOfSource,
       totalNights,
       daysElapsed,
       daysRemaining,
