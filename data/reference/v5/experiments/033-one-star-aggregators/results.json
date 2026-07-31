@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "status": "promote_calibration_candidate_reject_product_mapping",
+  "citiesPlanned": ["Lisbon", "Barcelona", "Hanoi"],
+  "citiesTested": 3,
+  "acceptedCells": 8,
+  "totalCells": 9,
+  "explicitTwoAdultRows": 0,
+  "sourceDefaultOrUnknownRows": 8,
+  "completeCities": 2,
+  "measures": ["trip_one_star_average", "hotelscombined_one_star_average", "budgetyourtrip_one_star_average"],
+  "note": "Aggregator snippets provide useful class-specific city statistics, but every row lacks explicit two-adult occupancy. Lisbon and Hanoi show materially different source levels; Barcelona Budget Your Trip reports zero hotels. Retain for a broader calibration panel only."
+}

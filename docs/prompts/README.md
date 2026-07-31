@@ -31,6 +31,7 @@
 | `llm_prompt_city_cost_v5_experiment_030_one_star_source.md` | **EXPERIMENT — complete; calibration only** | one city per delegated GPT-5.6 Luna-class invocation | Momondo candidates retained; occupancy unresolved, no product mapping |
 | `llm_prompt_city_cost_v5_experiment_031_one_star_occupancy_calibration.md` | **EXPERIMENT — complete; route rejected** | one city per delegated GPT-5.6 Luna-class invocation | Tests Momondo candidates against explicit two-adult Skyscanner/Expedia rows; no calibration matches |
 | `llm_prompt_city_cost_v5_experiment_032_one_star_property_basket.md` | **EXPERIMENT — complete; route rejected** | one city per delegated GPT-5.6 Luna-class invocation | Tests explicit two-adult named 1-star property quotes; no qualifying basket rows |
+| `llm_prompt_city_cost_v5_experiment_033_one_star_aggregators.md` | **EXPERIMENT — complete; calibration candidate only** | one city per delegated GPT-5.6 Luna-class invocation | Tests city-level 1-star statistics from Trip.com, HotelsCombined, and Budget Your Trip |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had

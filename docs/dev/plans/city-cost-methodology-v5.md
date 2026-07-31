@@ -141,6 +141,10 @@ Experiment 032 tested that property-panel pivot across Barcelona, Prague, and Na
 produced zero qualifying named 1-star property quotes: occupancy, class, and non-`from` price never co-occurred
 in the same evidence. Reject the route and retain the failure reasons for source selection.
 
+Experiment 033 tested Trip.com, HotelsCombined, and Budget Your Trip and accepted 8/9 city-level 1-star rows in
+three one-city calls. Every row lacked explicit two-adult occupancy and source levels diverged materially. Promote
+the aggregator route only for calibration and agreement testing; reject product mapping and fitting for now.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

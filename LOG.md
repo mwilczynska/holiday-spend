@@ -1089,3 +1089,15 @@ cross-city evidence were used.
 **Verdict:** reject the property-basket route; no basket statistic or `accom_1_star` value is produced. Pivot to
 a different source or separately curated ground truth. Read
 `data/reference/v5/experiments/032-one-star-property-basket/`.
+
+## Experiment 033 — one-star aggregator sources (31 July 2026)
+
+Three independent one-city Luna calls tested Trip.com, HotelsCombined, and Budget Your Trip for Lisbon,
+Barcelona, and Hanoi. Eight of nine strict city/class/date-aware cells passed; no call used reads, retries,
+fallbacks, arithmetic, FX, averaging, or cross-city evidence. All eight rows had `source_default_room` or
+`unknown` occupancy, so explicit two-adult coverage was **0/9**. Cross-source values diverged materially (Lisbon
+USD101–207; Hanoi USD24–53), and Barcelona's Budget Your Trip row reported zero hotels.
+
+**Verdict:** promote these aggregators as calibration candidates only; reject product mapping and fitting until
+occupancy and held-out city-level accuracy are demonstrated. Read
+`data/reference/v5/experiments/033-one-star-aggregators/`.

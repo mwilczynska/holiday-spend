@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "found",
+      "value": 218,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Trip.com weekday average; weekend (Friday-Saturday) average separately reported as $276; result crawled 2 weeks before 2026-07-31",
+      "sourceUrl": "https://es.trip.com/hotels/star1/city/es/barcelona.html",
+      "sourceTitle": "Mejores hoteles de 1 estrellas en Barcelona | Trip.com",
+      "evidenceText": "El precio medio de una habitación en un hotel de 1 estrella(s) en Barcelona es de 218 US$ entre semana, y de 276 US$ durante los fines de semana (viernes y sábado).",
+      "searchQuery": "site:trip.com Barcelona Spain 1-star hotel average nightly price",
+      "reason": "Accepted as an exact Barcelona city-wide 1-star room statistic. The source does not state two-adult/one-room occupancy, so source-default-room evidence is preserved. The weekday value is retained without averaging it with the separately reported weekend value."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "found",
+      "value": 210,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "HotelsCombined city-average FAQ last updated July 13, 2026; property search context Mon 2026-07-20 to Tue 2026-07-21; result crawled 2 weeks before retrieval",
+      "sourceUrl": "https://www.hotelscombined.com/Hotel/Hotel_Annex_Rey_Don_Jaime_I.htm",
+      "sourceTitle": "Hotel Annex, Barcelona | HotelsCombined",
+      "evidenceText": "In Barcelona, the average nightly rate for 1 star hotels is $210. The expected nightly rate for Hotel Annex is around $123; Hotel Annex is a 1 star property in Barcelona. The page search context shows 2 guests, 1 room.",
+      "searchQuery": "site:hotelscombined.com Barcelona Spain 1-star hotel average nightly price",
+      "reason": "Accepted as a city-level Barcelona 1-star average stated in HotelsCombined evidence. The page shows a 2-guest/1-room search context but does not identify those guests as two adults, so occupancy remains source-default-room. The property quote itself was not used."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 184,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Barcelona hotel-by-star table; result crawled 3 weeks before 2026-07-31",
+      "sourceUrl": "https://www.budgetyourtrip.com/spain/barcelona/trip-cost-3128760",
+      "sourceTitle": "How much does a trip to Barcelona Cost? | Budget Your Trip",
+      "evidenceText": "Hotels by star rating in Barcelona: 1 star | Number of Hotels 0 | Average Hotel Price $184.",
+      "searchQuery": "site:budgetyourtrip.com Barcelona Spain 1-star hotel average nightly price",
+      "reason": "The class-specific Barcelona table supplies a numeric 1-star hotel price statistic. The displayed hotel count is zero, which is a material quality warning; the row is retained only as source-feasibility evidence and is not mapped to the product or treated as two-adult ground truth."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

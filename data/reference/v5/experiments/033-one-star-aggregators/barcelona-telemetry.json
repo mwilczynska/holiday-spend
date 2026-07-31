@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-telemetry-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com Barcelona Spain 1-star hotel average nightly price",
+    "site:hotelscombined.com Barcelona Spain 1-star hotel average nightly price",
+    "site:budgetyourtrip.com Barcelona Spain 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 3,
+  "notFoundMeasures": 0,
+  "notes": "Single-city search-only aggregator run using exactly three source-restricted queries. Trip.com, HotelsCombined, and Budget Your Trip each exposed a city-level 1-star statistic. Occupancy is source-default-room for all three; Budget Your Trip reports zero hotels in its table and is retained only as a flagged feasibility observation. No source values were averaged, converted, or mapped to accom_1_star. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

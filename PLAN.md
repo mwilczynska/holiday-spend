@@ -283,6 +283,10 @@ panel; do not map them to `accom_1_star` or fit from this tranche. See
 
 ### Next experiments, in order
 
+Experiment 033 found 8/9 class-specific one-star aggregator rows across Lisbon, Barcelona, and Hanoi. All are
+source-default/unknown occupancy and disagree materially by source, so promote Trip.com, HotelsCombined, and
+Budget Your Trip only to a larger calibration/agreement panel; do not map them to `accom_1_star`.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.

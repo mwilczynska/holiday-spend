@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-telemetry-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com Lisbon Portugal 1-star hotel average nightly price",
+    "site:hotelscombined.com Lisbon Portugal 1-star hotel average nightly price",
+    "site:budgetyourtrip.com Lisbon Portugal 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 3,
+  "notFoundMeasures": 0,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only aggregator run using exactly three restricted queries. All three sources returned a qualifying city-level 1-star statistic, but none stated two-adult occupancy, so each occupancyBasis is unknown. Trip.com supplied separate weekday and weekend values; only the weekday statistic is represented as the measure value and no cross-source or within-source averaging was performed. This is source-feasibility evidence, not a product mapping or independently validated ground-truth panel; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

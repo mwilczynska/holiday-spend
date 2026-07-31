@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "found",
+      "value": 207,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Trip.com weekday average; weekend (Friday-Saturday) average is $216; search result crawled last month (source period otherwise not stated)",
+      "sourceUrl": "https://us.trip.com/hotels/star1/city/pt/lisbon.html",
+      "sourceTitle": "Top 1-Star hotels in Lisbon | Trip.com",
+      "evidenceText": "For 1 star hotels in Lisbon, the average cost on weekdays is $207, and the usual price on weekends (Friday-Saturday) is $216.",
+      "searchQuery": "site:trip.com Lisbon Portugal 1-star hotel average nightly price",
+      "reason": "The result identifies Lisbon and the 1-star class and gives a city-level non-from nightly statistic. Occupancy is not stated, so it remains unknown; weekday and weekend values are retained as source evidence without averaging."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "found",
+      "value": 122,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Recent nightly comparison; source result crawled 6 days ago and says landmark data was updated July 19, 2026 (comparison period otherwise not stated)",
+      "sourceUrl": "https://www.hotelscombined.com/Hotel/The_Postcard_Lisbon.htm",
+      "sourceTitle": "The Postcard Lisbon, Lisbon | HotelsCombined",
+      "evidenceText": "Hotels in Lisbon that are rated 1 star generally cost $122/night.",
+      "searchQuery": "site:hotelscombined.com Lisbon Portugal 1-star hotel average nightly price",
+      "reason": "The HotelsCombined result identifies Lisbon and a city-level 1-star nightly statistic. The evidence does not state two-adult occupancy, so it remains unknown."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 101,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip analysis of 184 Lisbon 1-star hotels; prices before taxes and fees; search result crawled last month (analysis period otherwise not stated)",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/portugal/lisbon-2267057",
+      "sourceTitle": "How Much Do Hotels Cost in Lisbon? Hotel Prices for Lisbon, Portugal | Budget Your Trip",
+      "evidenceText": "With data for 184 fantastic hotels, $101 is the average price for 1-star hotels in Lisbon, and the median price is $92.",
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal 1-star hotel average nightly price",
+      "reason": "The result identifies Lisbon, the 1-star class, and a city-level non-from nightly average based on 184 hotels. Occupancy is not stated, so it remains unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

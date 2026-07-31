@@ -297,6 +297,11 @@ city, 12 total, zero qualifying named 1-star quotes. Occupancy, class, and non-`
 Reject the route and pivot to a different source or separately curated ground truth; do not map any one-star
 value.
 
+Experiment 033 found a better one-star retrieval candidate: Trip.com, HotelsCombined, and Budget Your Trip
+returned 8/9 exact city/class statistics across Lisbon, Barcelona, and Hanoi. All occupancy bases were
+source-default/unknown; Lisbon and Hanoi had large cross-source spreads. Promote only to a broader calibration
+panel, not to product mapping.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked
