@@ -1015,3 +1015,16 @@ private hostel, 1-star, and 2-star remained missing in all three cities. No city
 hotel-class occupancy/source hypothesis. These are retrieval-feasibility rows, not ground truth or fitted
 coefficients. Copenhagen's non-local display currencies remain source facts and require deterministic FX
 review. Read `data/reference/v5/experiments/026-accommodation-broader-panel/`.
+
+## Experiment 027 — HOTEVI grouped hotel tiers (31 July 2026)
+
+Three independent GPT-5.6 Luna-class one-city calls issued three HOTEVI-restricted searches each. There were
+nine searches and nine search operations, with no page reads, retries, fallbacks, arithmetic, FX, or cross-city
+evidence. Only Hanoi returned all three exact grouped rows (Budget 1–2 star $30, Mid-Range 3 star $65, Luxury
+4–5 star $150, July 2026). Lisbon lacked a visible row month/date and Copenhagen lacked exact city rows, for
+3/9 strict coverage. The accepted Hanoi rows have unknown occupancy basis and are grouped tiers, not product
+star observations.
+
+**Verdict:** reject HOTEVI as a production accommodation source; retain it only as a calibration benchmark
+candidate. Do not map grouped tiers to `accom_1_star`–`accom_4_star` or treat them as two-adult evidence.
+Read `data/reference/v5/experiments/027-hotevi-tier-feasibility/`.

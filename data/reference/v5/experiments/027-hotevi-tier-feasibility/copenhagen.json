@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-tier-feasibility-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "hotevi_budget_1_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "tier": "budget_1_2_star",
+      "occupancyBasis": "unknown",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "HOTEVI Copenhagen Denmark Budget 1-2 star average nightly rate reference month",
+      "reason": "The permitted search returned HOTEVI global/region/sample-table material and non-HOTEVI Copenhagen pages, but no result explicitly naming HOTEVI, Copenhagen, Denmark, the Budget 1-2 star tier, a numeric nightly value, and a reference month/date. No value inferred from global, regional, or non-HOTEVI results."
+    },
+    "hotevi_mid_3_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "tier": "mid_3_star",
+      "occupancyBasis": "unknown",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "HOTEVI Copenhagen Denmark Mid-Range 3 star average nightly rate reference month",
+      "reason": "The permitted search returned HOTEVI global/region/sample-table material and non-HOTEVI Copenhagen pages, but no result explicitly naming HOTEVI, Copenhagen, Denmark, the Mid-Range 3 star tier, a numeric nightly value, and a reference month/date. No value inferred from global, regional, or non-HOTEVI results."
+    },
+    "hotevi_luxury_4_5_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "tier": "luxury_4_5_star",
+      "occupancyBasis": "unknown",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "HOTEVI Copenhagen Denmark Luxury 4-5 star average nightly rate reference month",
+      "reason": "The permitted search returned HOTEVI global/region/sample-table material and non-HOTEVI Copenhagen pages, but no result explicitly naming HOTEVI, Copenhagen, Denmark, the Luxury 4-5 star tier, a numeric nightly value, and a reference month/date. No value inferred from global, regional, or non-HOTEVI results."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-tier-feasibility-telemetry-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:hotevi.com Hanoi Vietnam HOTEVI Budget 1-2 star average nightly rate 2026",
+    "site:hotevi.com Hanoi Vietnam HOTEVI Mid-Range 3 star average nightly rate July 2026",
+    "site:hotevi.com Hanoi Vietnam HOTEVI Luxury 4-5 star average nightly rate July 2026"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 3,
+  "notFoundMeasures": 0,
+  "notes": "Search-only run. All three accepted rows came from an exact HOTEVI Hanoi/Vietnam row in the search result for the HOTEVI research table. Grouped tiers and unknown occupancy basis remain limitations; these are not product accom_1_star through accom_4_star observations. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

@@ -270,6 +270,10 @@ Experiment 026 broadened the boundary to Lisbon, Hanoi, and Copenhagen and accep
 inputs plus Copenhagen 3/4-star. No city was complete; private hostel, 1-star, and 2-star remain unresolved.
 Retain deterministic dorm scaling and pivot to a separately declared hotel occupancy/source hypothesis.
 
+Experiment 027 tested HOTEVI grouped 1–2/3/4–5-star rows and accepted only Hanoi's dated set (3/9 cells);
+occupancy was unknown and the grouped tiers cannot map to product star classes. Reject HOTEVI for production
+and test another public source or an explicitly validated occupancy hypothesis.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-tier-feasibility-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "hotevi_budget_1_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "tier": "budget_1_2_star",
+      "occupancyBasis": "unknown",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotevi.com Lisbon Portugal HOTEVI Budget 1-2 star average nightly rate reference month",
+      "reason": "The search result exposes the exact Lisbon, Portugal row and grouped budget value, but does not expose an exact reference month/date for that row; fail closed."
+    },
+    "hotevi_mid_3_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "tier": "mid_3_star",
+      "occupancyBasis": "unknown",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotevi.com Lisbon Portugal HOTEVI Mid-Range 3 star average nightly rate reference month",
+      "reason": "The search result exposes the exact Lisbon, Portugal row and grouped mid-range value, but does not expose an exact reference month/date for that row; fail closed."
+    },
+    "hotevi_luxury_4_5_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "tier": "luxury_4_5_star",
+      "occupancyBasis": "unknown",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotevi.com Lisbon Portugal HOTEVI Luxury 4-5 star average nightly rate reference month",
+      "reason": "The search result exposes the exact Lisbon, Portugal row and grouped luxury value, but does not expose an exact reference month/date for that row; fail closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

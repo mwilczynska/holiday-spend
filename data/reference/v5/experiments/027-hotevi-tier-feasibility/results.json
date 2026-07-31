@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-tier-feasibility-v1",
+  "status": "complete_reject_production_source",
+  "citiesPlanned": ["Lisbon", "Hanoi", "Copenhagen"],
+  "citiesTested": 3,
+  "acceptedCells": 3,
+  "totalCells": 9,
+  "acceptedCities": ["Hanoi"],
+  "occupancyBasis": "unknown_for_all_accepted_rows",
+  "productMapping": "none_without_definition_matched_calibration",
+  "measures": ["hotevi_budget_1_2_star", "hotevi_mid_3_star", "hotevi_luxury_4_5_star"],
+  "note": "Only Hanoi returned all three grouped rows. Lisbon lacked a visible reference month and Copenhagen lacked exact city rows. Grouped tiers are not product star classes and cannot be accepted as two-adult accommodation values without separate calibration."
+}

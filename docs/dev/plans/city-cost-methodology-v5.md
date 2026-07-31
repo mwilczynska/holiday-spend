@@ -115,6 +115,10 @@ Experiment 026 broadened the same boundary to Lisbon, Hanoi, and Copenhagen. It 
 inputs in all three cities plus Copenhagen 3/4-star; no city was complete and private hostel, 1-star, and
 2-star remained absent. Retain the dorm boundary, but pivot hotel-class occupancy/source testing rather than
 calling the accommodation route complete.
+Experiment 027 tested HOTEVI's free grouped hotel tiers in three one-city calls. Only Hanoi returned a dated
+1–2/3/4–5-star row set; Lisbon lacked a visible month and Copenhagen lacked exact city rows. The accepted rows
+have unknown occupancy and cannot map to product star classes. Reject HOTEVI for production; retain only as a
+possible calibration benchmark.
 
 ## Restart rule
 

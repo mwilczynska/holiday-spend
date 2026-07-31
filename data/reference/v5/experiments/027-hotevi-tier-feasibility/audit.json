@@ -1,0 +1,92 @@
+﻿{
+  "schemaVersion": "city-cost-v5-hotevi-tier-feasibility-audit-v1",
+  "citiesTested": 3,
+  "acceptedCells": 3,
+  "totalCells": 9,
+  "accepted": [
+    {
+      "city": "Hanoi",
+      "measure": "hotevi_budget_1_2_star",
+      "value": 30,
+      "currency": "USD",
+      "occupancyBasis": "unknown",
+      "referencePeriod": "July 2026",
+      "sourceUrl": "https://hotevi.com/research",
+      "searchQuery": "site:hotevi.com Hanoi Vietnam HOTEVI Budget 1-2 star average nightly rate 2026"
+    },
+    {
+      "city": "Hanoi",
+      "measure": "hotevi_mid_3_star",
+      "value": 65,
+      "currency": "USD",
+      "occupancyBasis": "unknown",
+      "referencePeriod": "July 2026",
+      "sourceUrl": "https://hotevi.com/research",
+      "searchQuery": "site:hotevi.com Hanoi Vietnam HOTEVI Mid-Range 3 star average nightly rate July 2026"
+    },
+    {
+      "city": "Hanoi",
+      "measure": "hotevi_luxury_4_5_star",
+      "value": 150,
+      "currency": "USD",
+      "occupancyBasis": "unknown",
+      "referencePeriod": "July 2026",
+      "sourceUrl": "https://hotevi.com/research",
+      "searchQuery": "site:hotevi.com Hanoi Vietnam HOTEVI Luxury 4-5 star average nightly rate July 2026"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Copenhagen",
+      "measure": "hotevi_budget_1_2_star",
+      "status": "not_found",
+      "reason": "The permitted search returned HOTEVI global/region/sample-table material and non-HOTEVI Copenhagen pages, but no result explicitly naming HOTEVI, Copenhagen, Denmark, the Budget 1-2 star tier, a numeric nightly value, and a reference month/date. No value inferred from global, regional, or non-HOTEVI results."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "hotevi_mid_3_star",
+      "status": "not_found",
+      "reason": "The permitted search returned HOTEVI global/region/sample-table material and non-HOTEVI Copenhagen pages, but no result explicitly naming HOTEVI, Copenhagen, Denmark, the Mid-Range 3 star tier, a numeric nightly value, and a reference month/date. No value inferred from global, regional, or non-HOTEVI results."
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "hotevi_luxury_4_5_star",
+      "status": "not_found",
+      "reason": "The permitted search returned HOTEVI global/region/sample-table material and non-HOTEVI Copenhagen pages, but no result explicitly naming HOTEVI, Copenhagen, Denmark, the Luxury 4-5 star tier, a numeric nightly value, and a reference month/date. No value inferred from global, regional, or non-HOTEVI results."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "hotevi_budget_1_2_star",
+      "status": "not_found",
+      "reason": "The search result exposes the exact Lisbon, Portugal row and grouped budget value, but does not expose an exact reference month/date for that row; fail closed."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "hotevi_mid_3_star",
+      "status": "not_found",
+      "reason": "The search result exposes the exact Lisbon, Portugal row and grouped mid-range value, but does not expose an exact reference month/date for that row; fail closed."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "hotevi_luxury_4_5_star",
+      "status": "not_found",
+      "reason": "The search result exposes the exact Lisbon, Portugal row and grouped luxury value, but does not expose an exact reference month/date for that row; fail closed."
+    }
+  ],
+  "byMeasure": {
+    "hotevi_budget_1_2_star": {
+      "acceptedRows": 1,
+      "cities": 1
+    },
+    "hotevi_mid_3_star": {
+      "acceptedRows": 1,
+      "cities": 1
+    },
+    "hotevi_luxury_4_5_star": {
+      "acceptedRows": 1,
+      "cities": 1
+    }
+  },
+  "productMapping": "none_without_definition-matched_calibration",
+  "note": "Grouped HOTEVI tiers remain source facts only; they are not accom_1_star–accom_4_star observations."
+}

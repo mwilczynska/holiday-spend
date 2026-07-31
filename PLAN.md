@@ -254,6 +254,12 @@ accepted 5/18 cells: one dorm bed in each city plus Copenhagen 3/4-star. No city
 1-star, and 2-star remained missing. The repeated dorm boundary is useful, but the hotel-class source/model
 route cannot yet form a 30-city/10-holdout panel. See `data/reference/v5/experiments/026-accommodation-broader-panel/`.
 
+**Experiment 027 — HOTEVI grouped tiers — complete; reject production source.** Three independent one-city
+calls issued nine HOTEVI searches. Only Hanoi returned all three grouped rows (1–2, 3, and 4–5 star); Lisbon
+lacked a visible row month and Copenhagen lacked exact city rows. Accepted coverage was 3/9, with unknown
+occupancy basis and no valid mapping to the four product star classes. Retain HOTEVI only as a possible
+calibration benchmark, not as a production anchor. See `data/reference/v5/experiments/027-hotevi-tier-feasibility/`.
+
 ### Next experiments, in order
 
 1. Test a separately declared hotel-class occupancy-basis hypothesis or another public source family in
@@ -337,6 +343,8 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/025-accommodation-bed-boundary/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_025_accommodation_bed_boundary.md`
 - `data/reference/v5/experiments/026-accommodation-broader-panel/`
+- `data/reference/v5/experiments/027-hotevi-tier-feasibility/`
+- `docs/prompts/llm_prompt_city_cost_v5_experiment_027_hotevi_tiers.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
