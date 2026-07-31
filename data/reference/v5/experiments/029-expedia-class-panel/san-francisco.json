@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "expedia_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com San Francisco United States Expedia 1-star hotel average nightly price two adults",
+      "reason": "The permitted Expedia-only search returned a 1 Hotel San Francisco property result and other classes, but no qualifying San Francisco 1-star class average or price trend. The property result was a lowest/start-from quote and was rejected."
+    },
+    "expedia_2_star": {
+      "status": "found",
+      "value": 133,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "referencePeriod": "July 2026 row in Expedia monthly price-trend table; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/es/2Estrellas-San-Francisco-Hoteles.s20-0-d178305.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "Hoteles de 2 estrellas en San Francisco, California | Expedia",
+      "evidenceText": "Price trends for 2-star properties in San Francisco show July $133; the trend excludes taxes and fees and is based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 2-star properties in San Francisco.",
+      "searchQuery": "site:expedia.com San Francisco United States Expedia 2-star hotel average nightly price two adults",
+      "reason": "The Expedia result identifies San Francisco and 2-star properties, gives a numeric monthly trend, and states that the value is an average nightly base rate for 2 adults over the preceding seven-day observation window. The Expedia.com display currency is USD."
+    },
+    "expedia_3_star": {
+      "status": "found",
+      "value": 168,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "referencePeriod": "July 2026 row in Expedia monthly price-trend table; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/es/3Estrellas-San-Francisco-Hoteles.s30-0-d178305.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "Hoteles de 3 estrellas en San Francisco, California | Expedia",
+      "evidenceText": "Price trends for 3-star properties in San Francisco show July $168; the trend excludes taxes and fees and is based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 3-star properties in San Francisco.",
+      "searchQuery": "site:expedia.com San Francisco United States Expedia 3-star hotel average nightly price two adults",
+      "reason": "The Expedia result identifies San Francisco and 3-star properties, gives a numeric monthly trend, and states that the value is an average nightly base rate for 2 adults over the preceding seven-day observation window. The Expedia.com display currency is USD."
+    },
+    "expedia_4_star": {
+      "status": "found",
+      "value": 192,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "referencePeriod": "August 2026 next-month row in Expedia monthly price-trend table; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-San-Francisco-Hotels.s40-0-d178305.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in San Francisco, CA from $126 | Expedia",
+      "evidenceText": "Price trends for properties with 4 Stars in San Francisco show August $192; the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in San Francisco.",
+      "searchQuery": "site:expedia.com San Francisco United States Expedia 4-star hotel average nightly price two adults",
+      "reason": "The Expedia result identifies San Francisco and 4-star properties, gives a numeric monthly trend, and states that the value is an average nightly base rate for 2 adults over the preceding seven-day observation window. The Expedia.com display currency is USD."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

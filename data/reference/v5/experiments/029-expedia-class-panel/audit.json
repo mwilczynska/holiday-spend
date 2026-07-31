@@ -1,0 +1,109 @@
+﻿{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-audit-v1",
+  "experiment": "029-expedia-class-panel",
+  "citiesTested": 3,
+  "acceptedCells": 8,
+  "totalCells": 12,
+  "accepted": [
+    {
+      "city": "Bangkok",
+      "measure": "expedia_2_star",
+      "value": 25,
+      "currency": "USD",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the past 7 days (search result crawled 4 months ago)",
+      "sourceUrl": "https://www.expedia.com/cn/2Star-Bangkok-Hotels.s20-0-d178236.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Bangkok Thailand 2-star hotels average nightly price two adults Expedia"
+    },
+    {
+      "city": "Bangkok",
+      "measure": "expedia_3_star",
+      "value": 31,
+      "currency": "USD",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+      "searchQuery": "site:expedia.com Bangkok Thailand 3-star hotels average nightly price two adults Expedia"
+    },
+    {
+      "city": "Bangkok",
+      "measure": "expedia_4_star",
+      "value": 53,
+      "currency": "USD",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-Bangkok-Hotels.s40-0-d178236.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Bangkok Thailand 4-star hotels average nightly price two adults Expedia"
+    },
+    {
+      "city": "Nairobi",
+      "measure": "expedia_3_star",
+      "value": 51,
+      "currency": "USD",
+      "referencePeriod": "July (current month in the trend table; base rates found in the last 7 days)",
+      "sourceUrl": "https://www.expedia.com/3Star-Nairobi-Hotels.s30-0-d178290.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com Nairobi Kenya Expedia 3-star hotels average nightly price 2 adults"
+    },
+    {
+      "city": "Nairobi",
+      "measure": "expedia_4_star",
+      "value": 97,
+      "currency": "USD",
+      "referencePeriod": "December (trend table; base rates found in the last 7 days)",
+      "sourceUrl": "https://www.expedia.com/es/4Estrellas-Nairobi-Hoteles.s40-0-d178290.Guia-Viajes-Filter-Hoteles",
+      "searchQuery": "site:expedia.com Nairobi Kenya Expedia 4-star hotels average nightly price 2 adults"
+    },
+    {
+      "city": "San Francisco",
+      "measure": "expedia_2_star",
+      "value": 133,
+      "currency": "USD",
+      "referencePeriod": "July 2026 row in Expedia monthly price-trend table; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/es/2Estrellas-San-Francisco-Hoteles.s20-0-d178305.Guia-Viajes-Filter-Hoteles",
+      "searchQuery": "site:expedia.com San Francisco United States Expedia 2-star hotel average nightly price two adults"
+    },
+    {
+      "city": "San Francisco",
+      "measure": "expedia_3_star",
+      "value": 168,
+      "currency": "USD",
+      "referencePeriod": "July 2026 row in Expedia monthly price-trend table; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/es/3Estrellas-San-Francisco-Hoteles.s30-0-d178305.Guia-Viajes-Filter-Hoteles",
+      "searchQuery": "site:expedia.com San Francisco United States Expedia 3-star hotel average nightly price two adults"
+    },
+    {
+      "city": "San Francisco",
+      "measure": "expedia_4_star",
+      "value": 192,
+      "currency": "USD",
+      "referencePeriod": "August 2026 next-month row in Expedia monthly price-trend table; base rates averaged from properties viewed in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-San-Francisco-Hotels.s40-0-d178305.Travel-Guide-Filter-Hotels",
+      "searchQuery": "site:expedia.com San Francisco United States Expedia 4-star hotel average nightly price two adults"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Bangkok",
+      "measure": "expedia_1_star",
+      "status": "not_found",
+      "reason": "The Expedia-restricted search returned a Ratchadaphisek (Bangkok) 1-star page, not an exact city-wide Bangkok 1-star class trend. Its numeric trend was for the named district, so it was rejected rather than substituted for the city."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "expedia_1_star",
+      "status": "not_found",
+      "reason": "The permitted Expedia-only search returned a generic Nairobi hotel page, individual properties, and a from price, but no explicit 1-star city-class average or price trend for two adults."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "expedia_2_star",
+      "status": "not_found",
+      "reason": "The Expedia result mentioned 2-star hotels but exposed a generic Nairobi trend rather than a numeric 2-star city-class average or trend tied to two adults; the generic and individual-property prices were rejected."
+    },
+    {
+      "city": "San Francisco",
+      "measure": "expedia_1_star",
+      "status": "not_found",
+      "reason": "The permitted Expedia-only search returned a 1 Hotel San Francisco property result and other classes, but no qualifying San Francisco 1-star class average or price trend. The property result was a lowest/start-from quote and was rejected."
+    }
+  ],
+  "completeCities": [],
+  "note": "Rows are retrieval feasibility evidence only; no accommodation ratio is fitted."
+}

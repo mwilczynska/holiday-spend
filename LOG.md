@@ -1041,3 +1041,14 @@ Accepted snippets explicitly state city/class, two-adult nightly trend basis, re
 excluded. USD is normalized from Expedia.com dollar display and remains a source-locale inference for FX
 review. **Verdict:** promote the 2–4-star route for broader testing, solve 1-star separately, and do not fit
 accommodation models until the 30-city/10-holdout gate. Read `data/reference/v5/experiments/028-expedia-class-trends/`.
+
+## Experiment 029 — broader Expedia class panel (31 July 2026)
+
+Bangkok, San Francisco, and Nairobi each received one compliant four-query Expedia invocation. The tranche
+issued 12 searches and 12 search operations with no reads, retries, fallbacks, arithmetic, FX, or cross-city
+evidence. It accepted **8/12** cells: Bangkok 2/3/4-star, San Francisco 2/3/4-star, and Nairobi 3/4-star.
+No 1-star row was found anywhere; Nairobi 2-star was also missing. No city was complete.
+
+**Verdict:** promote 2–4-star Expedia for broader validation, but reject complete coverage and solve 1-star
+separately. Across Experiments 028–029 this is six-city source feasibility only, not ground truth or fitted
+accuracy. Read `data/reference/v5/experiments/029-expedia-class-panel/`.

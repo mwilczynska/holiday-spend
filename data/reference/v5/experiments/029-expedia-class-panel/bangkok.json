@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "expedia_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Bangkok Thailand 1-star hotels average nightly price two adults Expedia",
+      "reason": "The Expedia-restricted search returned a Ratchadaphisek (Bangkok) 1-star page, not an exact city-wide Bangkok 1-star class trend. Its numeric trend was for the named district, so it was rejected rather than substituted for the city."
+    },
+    "expedia_2_star": {
+      "status": "found",
+      "value": 25,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the past 7 days (search result crawled 4 months ago)",
+      "sourceUrl": "https://www.expedia.com/cn/2Star-Bangkok-Hotels.s20-0-d178236.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "2 星级酒店订房与住宿预约 | Expedia",
+      "evidenceText": "Expedia's Bangkok 2-star trend table lists July $25; the result says trend information excludes taxes and fees and is based on average nightly base rates for 2 adults found in the past 7 days for commonly viewed 2-star properties in Bangkok.",
+      "searchQuery": "site:expedia.com Bangkok Thailand 2-star hotels average nightly price two adults Expedia",
+      "reason": "The search result identifies Bangkok and 2-star properties, gives a numeric monthly trend, and explicitly states a nightly two-adult average and seven-day source window. The Expedia.com display is recorded as USD."
+    },
+    "expedia_3_star": {
+      "status": "found",
+      "value": 31,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+      "sourceTitle": "The Best 3 Star Hotels in Bangkok from $17 | Expedia",
+      "evidenceText": "Price trends for properties with 3 Stars in Bangkok list July $31; Expedia says the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Bangkok.",
+      "searchQuery": "site:expedia.com Bangkok Thailand 3-star hotels average nightly price two adults Expedia",
+      "reason": "The exact-city Expedia result identifies Bangkok and 3-star properties, gives a numeric monthly trend, and states the two-adult nightly averaging and seven-day window. The Expedia.com display is recorded as USD."
+    },
+    "expedia_4_star": {
+      "status": "found",
+      "value": 53,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "referencePeriod": "July 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days",
+      "sourceUrl": "https://www.expedia.com/4Star-Bangkok-Hotels.s40-0-d178236.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Bangkok from $38 | Expedia",
+      "evidenceText": "Price trends for properties with 4 Stars in Bangkok list July $53; Expedia says the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in Bangkok.",
+      "searchQuery": "site:expedia.com Bangkok Thailand 4-star hotels average nightly price two adults Expedia",
+      "reason": "The exact-city Expedia result identifies Bangkok and 4-star properties, gives a numeric monthly trend, and states the two-adult nightly averaging and seven-day window. The Expedia.com display is recorded as USD."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

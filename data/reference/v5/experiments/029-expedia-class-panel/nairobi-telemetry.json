@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-telemetry-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:expedia.com Nairobi Kenya Expedia 1-star hotels average nightly price 2 adults",
+    "site:expedia.com Nairobi Kenya Expedia 2-star hotels average nightly price 2 adults",
+    "site:expedia.com Nairobi Kenya Expedia 3-star hotels average nightly price 2 adults",
+    "site:expedia.com Nairobi Kenya Expedia 4-star hotels average nightly price 2 adults"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 2,
+  "notFoundMeasures": 2,
+  "notes": "Single-city search-only run using exactly four Expedia-restricted queries, one per star class. Qualifying 3-star and 4-star trend rows were found; 1-star and 2-star results were rejected for lacking an explicit class-specific numeric average/trend. No direct reads, retries, fallback sources, arithmetic, FX, or cross-city evidence were used. Rows are retrieval-feasibility observations, not independently validated ground truth. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

@@ -124,6 +124,9 @@ Lisbon and Hanoi supplied 2/3/4-star rows, Copenhagen supplied 3-star, and 1-sta
 state two-adult trend bases and tax exclusion; one duplicate Copenhagen search batch is a protocol deviation.
 Promote 2–4-star Expedia as a candidate for broader validation, but solve 1-star and require the full
 30-city/10-holdout gate.
+Experiment 029 broadened Expedia to Bangkok, San Francisco, and Nairobi with 8/12 accepted 2–4-star rows;
+1-star was absent in all three and Nairobi 2-star was missing. Together 028–029 support a six-city source
+candidate, not a complete method. Run a separate 1-star source test before any fitting.
 
 ## Restart rule
 

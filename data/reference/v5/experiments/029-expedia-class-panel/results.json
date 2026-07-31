@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "status": "complete_promote_route_incomplete",
+  "citiesPlanned": ["Bangkok", "San Francisco", "Nairobi"],
+  "citiesTested": 3,
+  "acceptedCells": 8,
+  "totalCells": 12,
+  "completeCities": [],
+  "byMeasure": {
+    "expedia_1_star": {"acceptedRows": 0, "cities": 0},
+    "expedia_2_star": {"acceptedRows": 2, "cities": 2},
+    "expedia_3_star": {"acceptedRows": 3, "cities": 3},
+    "expedia_4_star": {"acceptedRows": 3, "cities": 3}
+  },
+  "promptSource": "docs/prompts/llm_prompt_city_cost_v5_experiment_028_expedia_class_trends.md",
+  "measures": ["expedia_1_star", "expedia_2_star", "expedia_3_star", "expedia_4_star"],
+  "note": "The broader tranche accepted 2–4-star trend rows in all three cities except Nairobi 2-star; 1-star was absent in every city. These are source-feasibility rows only and no model is fitted."
+}

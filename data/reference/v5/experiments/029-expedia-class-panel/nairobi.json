@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-trend-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "expedia_1_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Nairobi Kenya Expedia 1-star hotels average nightly price 2 adults",
+      "reason": "The permitted Expedia-only search returned a generic Nairobi hotel page, individual properties, and a from price, but no explicit 1-star city-class average or price trend for two adults."
+    },
+    "expedia_2_star": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "2_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Nairobi Kenya Expedia 2-star hotels average nightly price 2 adults",
+      "reason": "The Expedia result mentioned 2-star hotels but exposed a generic Nairobi trend rather than a numeric 2-star city-class average or trend tied to two adults; the generic and individual-property prices were rejected."
+    },
+    "expedia_3_star": {
+      "status": "found",
+      "value": 51,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "3_star",
+      "referencePeriod": "July (current month in the trend table; base rates found in the last 7 days)",
+      "sourceUrl": "https://www.expedia.com/3Star-Nairobi-Hotels.s30-0-d178290.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Nairobi from $16 | Expedia",
+      "evidenceText": "Expedia 3-star trend lists July at $51; base nightly rates for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Nairobi.",
+      "searchQuery": "site:expedia.com Nairobi Kenya Expedia 3-star hotels average nightly price 2 adults",
+      "reason": "Accepted as an Expedia Nairobi 3-star price-trend observation. The trend excludes taxes and fees and reports base nightly rates for two adults over the stated seven-day window."
+    },
+    "expedia_4_star": {
+      "status": "found",
+      "value": 97,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancy": "two_adults",
+      "class": "4_star",
+      "referencePeriod": "December (trend table; base rates found in the last 7 days)",
+      "sourceUrl": "https://www.expedia.com/es/4Estrellas-Nairobi-Hoteles.s40-0-d178290.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "Hoteles de 4 estrellas en Nairobi, Kiambu County | Expedia",
+      "evidenceText": "Expedia 4-star trend lists December at $97; base nightly rates for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in Nairobi.",
+      "searchQuery": "site:expedia.com Nairobi Kenya Expedia 4-star hotels average nightly price 2 adults",
+      "reason": "Accepted as an Expedia Nairobi 4-star price-trend observation. The Spanish Expedia page explicitly identifies 4-star Nairobi properties and the two-adult seven-day base-rate trend; taxes and fees are excluded."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

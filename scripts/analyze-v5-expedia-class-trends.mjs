@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const dir = path.join(root, 'data', 'reference', 'v5', 'experiments', '028-expedia-class-trends');
+const experimentName = process.env.CITY_COST_V5_EXPEDIA_EXPERIMENT ?? '028-expedia-class-trends';
+const dir = path.join(root, 'data', 'reference', 'v5', 'experiments', experimentName);
 const measures = ['expedia_1_star', 'expedia_2_star', 'expedia_3_star', 'expedia_4_star'];
 const files = fs.readdirSync(dir)
   .filter((name) => name.endsWith('.json') && !name.endsWith('-telemetry.json') && name !== 'results.json' && name !== 'audit.json')
@@ -44,6 +45,7 @@ for (const file of files) {
 
 console.log(JSON.stringify({
   schemaVersion: 'city-cost-v5-expedia-class-trend-audit-v1',
+  experiment: experimentName,
   citiesTested: files.length,
   acceptedCells: rows.length,
   totalCells: files.length * measures.length,

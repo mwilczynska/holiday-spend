@@ -278,6 +278,9 @@ Experiment 028 found a promising Expedia route: 7/12 2–4-star trend cells acro
 Copenhagen, with no 1-star and no complete city. Copenhagen repeated its four-query batch (8 actual search
 operations), so retain that protocol deviation. Broaden the 2–4-star route, solve 1-star separately, and keep
 strict one-city/search-count/currency provenance.
+Experiment 029 added compliant Bangkok, San Francisco, and Nairobi calls: 8/12 2–4-star cells, no 1-star, no
+complete city. Treat 028–029 as six-city source feasibility only. Next, test a separately declared 1-star
+source while retaining the Expedia 2–4-star route and the 30-city/10-holdout gate.
 
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct

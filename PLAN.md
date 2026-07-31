@@ -267,9 +267,15 @@ eight actual search operations for four unique queries and is not production-com
 state two-adult trend bases and excluded taxes/fees; source-locale USD needs FX review. See
 `data/reference/v5/experiments/028-expedia-class-trends/`.
 
+**Experiment 029 — broader Expedia class panel — complete; promote 2–4-star route, reject complete coverage.**
+Bangkok, San Francisco, and Nairobi each passed one compliant four-query call. Coverage was 8/12: 2/3/4-star
+in Bangkok and San Francisco, 3/4-star in Nairobi; 1-star was absent everywhere and Nairobi 2-star was missing.
+No city was complete. Together with 028 this is promising six-city source feasibility, not accuracy or a
+1-star solution. See `data/reference/v5/experiments/029-expedia-class-panel/`.
+
 ### Next experiments, in order
 
-1. Broaden the Expedia 2–4-star route across independent cities and solve 1-star separately; enforce one
+1. Run a separately declared 1-star source test while continuing the Expedia 2–4-star panel. Enforce one
    search batch per city, preserve duplicate-call deviations, and require 30 complete cities plus 10 locked
    holdouts before any accommodation model is promoted. Retain the one-bed dorm boundary and all currency/
    missingness provenance.
@@ -354,6 +360,7 @@ Current v5 artifacts:
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_027_hotevi_tiers.md`
 - `data/reference/v5/experiments/028-expedia-class-trends/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_028_expedia_class_trends.md`
+- `data/reference/v5/experiments/029-expedia-class-panel/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
