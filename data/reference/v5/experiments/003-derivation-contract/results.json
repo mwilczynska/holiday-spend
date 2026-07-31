@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "city-cost-v5-derivation-contract-v1",
+  "experiment": "003-derivation-contract",
+  "implementation": "src/lib/city-cost-methodology-v5.ts",
+  "test": "src/lib/city-cost-methodology-v5.test.ts",
+  "anchorCount": 18,
+  "productTierCount": 19,
+  "testCases": {
+    "completePanel": "pass: 19/19 tiers and all formulas evaluate",
+    "missingAndBlocked": "pass: affected tiers are null and statuses remain unresolved",
+    "provenancePropagation": "pass: modelled/imputed inputs never become observed",
+    "contradictoryInputValidation": "pass: status/value contradictions are rejected",
+    "mcmealIsNotStreetFoodFallback": "pass: missing street-food anchor remains missing"
+  },
+  "formulaPolicy": "fixed basket quantities only; no statistical coefficients selected",
+  "verdict": "retain as the v5 deterministic derivation boundary; do not treat this as accuracy validation"
+}

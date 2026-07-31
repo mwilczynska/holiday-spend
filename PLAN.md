@@ -93,7 +93,14 @@ Food/drink proxy-input counts are not shipped-target calibration. Full details a
 **Experiment 002 — accommodation ladder reassessment — complete, candidate rejected.** The retained hotel
 ladder has only 16 cities, the blended-hostel relation 13, first-page windows vary up to 3.945×, and the
 hostel source cannot identify dorm versus private room. See
-`data/reference/v5/experiments/002-accommodation-ladder/verdict` in the generated report.
+`data/reference/v5/experiments/002-accommodation-ladder/verdict.md`.
+
+**Experiment 003 — deterministic derivation contract — complete, contract retained.** The isolated v5
+function materializes all 19 tiers from post-FX anchors, fails closed on missing or blocked inputs, and
+propagates source IDs, model versions, and imputed measures. It deliberately does not select statistical
+coefficients; `mcmeal_combo` remains an auxiliary collected anchor and is never substituted for street food.
+See `data/reference/v5/experiments/003-derivation-contract/` and
+`src/lib/city-cost-methodology-v5.ts`.
 
 **Experiment 001 — target-model one-call harness — built, live test pending.** The candidate 18-measure
 extractor and provider-neutral OpenAI/Anthropic telemetry harness make exactly one request and do not retry
@@ -150,6 +157,10 @@ Current v5 artifacts:
 - `data/reference/v5/data-dictionary-v5.md`
 - `data/reference/v5/validation-manifest-v5.json`
 - `data/reference/v5/experiments/000-baseline-reassessment/`
+- `data/reference/v5/experiments/001-one-call-harness/`
+- `data/reference/v5/experiments/002-accommodation-ladder/`
+- `data/reference/v5/experiments/003-derivation-contract/`
+- `src/lib/city-cost-methodology-v5.ts` and its contract test
 
 When `CLAUDE.md` changes, run `npm run docs:sync-memory` and `npm run docs:check-memory`; `AGENTS.md`
 must remain byte-for-byte identical. Update the data, prompt, and script inventories when new artifacts

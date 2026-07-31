@@ -14,6 +14,8 @@
 - Re-ran the v4 ratio fit and confirmed its output is reproducible; the v5 baseline report also reproduces
   byte-identically.
 - Added the Experiment 001 candidate extractor prompt and a provider-neutral one-call harness.
+- Added Experiment 003, an isolated deterministic derivation contract and tests for all 19 tiers,
+  fail-closed missingness, and provenance propagation.
 - Updated the data, script, and prompt inventories; synchronized `AGENTS.md` from `CLAUDE.md`.
 
 ## Experiment 000 result
@@ -55,7 +57,8 @@ retained only as evidence. Read `data/reference/v5/experiments/002-accommodation
 
 ## Next action
 
-Build the deterministic target-measure derivation and scoring harness while the live credential blocker is
-pending. In parallel, design independent accommodation and activity ground-truth collection with complete
-matched city records. Do not use the shipping CSV as ground truth and do not infer dorm/private separation
-from the blended hostel channel.
+Build the scoring and target-model evaluation harness while the live credential blocker is pending. In
+parallel, design independent accommodation and activity ground-truth collection with complete matched city
+records. Do not use the shipping CSV as ground truth and do not infer dorm/private separation from the
+blended hostel channel. The new derivation contract is deliberately not integrated into the shipping path
+until source feasibility and accuracy gates pass.

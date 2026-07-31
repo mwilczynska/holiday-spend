@@ -15,7 +15,10 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 
 | Path | Status | Purpose |
 | --- | --- | --- |
-| `experiments/000-baseline-reassessment/` | **IN PROGRESS** | Reproducible audit of what v3/v4 evidence can and cannot support |
+| `experiments/000-baseline-reassessment/` | **COMPLETE — candidate baseline rejected** | Reproducible audit of what v3/v4 evidence can and cannot support |
+| `experiments/001-one-call-harness/` | **IN PROGRESS — credential gated** | One-call extractor contract, fixture, and provider telemetry harness |
+| `experiments/002-accommodation-ladder/` | **COMPLETE — candidate rejected** | Accommodation ratio and hostel-unit identifiability audit |
+| `experiments/003-derivation-contract/` | **COMPLETE — contract retained** | Pure 19-tier derivation and provenance propagation contract |
 
 Raw model responses, source captures, and generated reports must retain retrieval dates, schema/version
 metadata, source URLs, currencies, and evidence basis. Do not store copied page content when a URL and

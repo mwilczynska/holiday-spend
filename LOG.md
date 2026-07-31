@@ -647,3 +647,16 @@ Headline/list ratios vary from **0.451× to 1.834×** across the retained city c
 contains one blended unit and does not identify dorm beds versus private rooms. The candidate is therefore
 **rejected as a final v5 accommodation method but retained as evidence**. The machine-readable report is
 `data/reference/v5/experiments/002-accommodation-ladder/results.json`.
+
+## Experiment 003 — deterministic derivation contract (31 July 2026)
+
+The isolated `src/lib/city-cost-methodology-v5.ts` function accepts only post-FX anchors and provenance
+metadata. It materializes all 19 product tiers with fixed basket quantities, records parent anchors and
+formulas, and fails closed when an input is missing, blocked, not found, or class-absent. Direct one-anchor
+tiers retain `observed`; baskets made from observed anchors are labelled `derived`; modelled and imputed
+inputs propagate those weaker bases; `activities_free = 0` is `definitional`.
+
+The contract tests also reject contradictory status/value pairs and verify that the auxiliary
+`mcmeal_combo` anchor is never silently substituted for a missing street-food measure. This is schema and
+provenance evidence only — no statistical coefficients were fitted or promoted. The machine-readable
+result and verdict are in `data/reference/v5/experiments/003-derivation-contract/`.
