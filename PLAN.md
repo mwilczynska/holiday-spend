@@ -121,8 +121,8 @@ the active experiment.
 
 ### Next experiments, in order
 
-1. Freeze the minimal observed-anchor candidate suggested by Experiment 006, then validate models for
-   omitted food/drink, hotel-star, and activity-duration targets using definition-matched city data.
+1. Validate the nine-anchor candidate from Experiment 007 against definition-matched city data, beginning
+   with the ten omitted food/drink, hotel-star, and activity-duration targets.
 2. Resolve accommodation measurement and dorm/private identifiability with independent ground truth;
    do not infer two hostel tiers from one blended channel without matched evidence.
 3. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
@@ -168,7 +168,9 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/001-one-call-harness/`
 - `data/reference/v5/experiments/005-target-model-subagent/`
 - `data/reference/v5/experiments/006-source-cascade-retest/`
+- `data/reference/v5/experiments/007-minimal-anchor-retest/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
+- `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
 - `data/reference/v5/experiments/003-derivation-contract/`
 - `src/lib/city-cost-methodology-v5.ts` and its contract test

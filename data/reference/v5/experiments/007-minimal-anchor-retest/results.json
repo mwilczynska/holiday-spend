@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "007-minimal-anchor-retest",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "executionSurface": "Codex spawned sub-agent",
+  "cityCount": 5,
+  "responseSchemaComplete": 5,
+  "totalMeasures": 45,
+  "foundMeasures": 32,
+  "notFoundMeasures": 13,
+  "blockedMeasures": 0,
+  "classAbsentMeasures": 0,
+  "coverageRate": 0.7111,
+  "comparison": {
+    "experiment005": {
+      "all18Found": 20,
+      "all18Possible": 90,
+      "sameNineSubsetFound": 20,
+      "sameNineSubsetPossible": 45,
+      "sameNineCoverageRate": 0.4444
+    },
+    "experiment006": {
+      "all18Found": 30,
+      "all18Possible": 90,
+      "sameNineSubsetFound": 30,
+      "sameNineSubsetPossible": 45,
+      "sameNineCoverageRate": 0.6667
+    },
+    "experiment007": {
+      "sameNineSubsetFound": 32,
+      "sameNineSubsetPossible": 45,
+      "sameNineCoverageRate": 0.7111
+    },
+    "absoluteDeltaVs006SameSubset": 2,
+    "cities": [
+      {
+        "city": "Lisbon",
+        "experiment005All18Found": 5,
+        "experiment006All18Found": 7,
+        "experiment007NineAnchorFound": 8,
+        "experiment007Possible": 9,
+        "deltaAgainst006SameNineSubset": 1
+      },
+      {
+        "city": "Copenhagen",
+        "experiment005All18Found": 5,
+        "experiment006All18Found": 8,
+        "experiment007NineAnchorFound": 8,
+        "experiment007Possible": 9,
+        "deltaAgainst006SameNineSubset": 0
+      },
+      {
+        "city": "Hanoi",
+        "experiment005All18Found": 5,
+        "experiment006All18Found": 7,
+        "experiment007NineAnchorFound": 7,
+        "experiment007Possible": 9,
+        "deltaAgainst006SameNineSubset": 0
+      },
+      {
+        "city": "Prague",
+        "experiment005All18Found": 5,
+        "experiment006All18Found": 7,
+        "experiment007NineAnchorFound": 8,
+        "experiment007Possible": 9,
+        "deltaAgainst006SameNineSubset": 1
+      },
+      {
+        "city": "Don Det",
+        "experiment005All18Found": 0,
+        "experiment006All18Found": 1,
+        "experiment007NineAnchorFound": 1,
+        "experiment007Possible": 9,
+        "deltaAgainst006SameNineSubset": 0
+      }
+    ],
+    "measures": {
+      "hostel_dorm_bed_1p": {
+        "experiment005": 0,
+        "experiment006": 5,
+        "experiment007": 4
+      },
+      "hostel_private_room_2p": {
+        "experiment005": 0,
+        "experiment006": 1,
+        "experiment007": 3
+      },
+      "hotel_3star_room_2p": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "experiment007": 1
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "experiment007": 4
+      },
+      "midrange_restaurant_meal_2p": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "experiment007": 4
+      },
+      "mcmeal_combo": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "experiment007": 4
+      },
+      "cappuccino_1": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "experiment007": 4
+      },
+      "domestic_draft_beer_1": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "experiment007": 4
+      },
+      "paid_attraction_adult_1": {
+        "experiment005": 0,
+        "experiment006": 4,
+        "experiment007": 4
+      }
+    }
+  },
+  "sourceAudit": {
+    "foundFacts": 32,
+    "verifiedAgainstRetrievedSearchResultOrOpenedCanonicalPage": 32,
+    "unsupportedFoundFacts": 0,
+    "limitations": [
+      "Lisbon three-star value is a published city average, not a dated booking quote.",
+      "Several hostel values are undated from rates.",
+      "Prague Numbeo search surfaces showed small retrieval-time variation versus Experiment 006."
+    ]
+  },
+  "telemetry": {
+    "agentTasks": 1,
+    "webSearchToolCalls": 4,
+    "searchQueries": 16,
+    "pageReadToolCalls": 1,
+    "directPageReadAttempts": 10,
+    "directPageReadFailures": 1,
+    "directPageReadFailureKinds": [
+      "Hostelz Don Det cache miss"
+    ],
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "contractChecks": {
+    "exactlyNineMeasureKeys": true,
+    "noOmittedAnchorNames": true,
+    "noTierValues": true,
+    "noFxConversion": true,
+    "noArithmetic": true,
+    "unsupportedFactsInvented": false
+  },
+  "verdict": "promote_to_model_boundary_validation",
+  "interpretation": "The nine-anchor prompt is feasible for well-covered cities and substantially improves requested-anchor coverage, but sparse-city completeness and the accuracy of models for ten omitted targets remain unproven."
+}
+

@@ -688,3 +688,16 @@ failed, and the orchestration surface still exposes no exact provider model ID, 
 latency, or monetary cost. **Verdict:** retain the cascade as evidence, reject 18-anchor direct extraction
 as production-ready, and test a smaller observed-anchor set with validated deterministic models. Artifacts
 are under `data/reference/v5/experiments/006-source-cascade-retest/`.
+
+## Experiment 007 — minimal observed-anchor retest (31 July 2026)
+
+The nine-anchor prompt (dorm, private hostel, 3-star hotel, five food/drink anchors, and paid attraction)
+returned **32/45 facts (71.1%)** on the same five-city Luna-class panel. The 18-anchor prompt found 20/45
+on this subset and the explicit cascade found 30/45. Four ordinary cities returned 7–8 anchors; Don Det
+returned only its dorm. Found facts were source-audited, and no omitted anchors, tiers, arithmetic, FX, or
+unsupported facts appeared.
+
+**Verdict:** promote the prompt to model-boundary validation. This is not final acceptance: ten omitted
+targets still need definition-matched model accuracy, the 3-star anchor is weak, sparse-city fallback is
+unresolved, and source basis heterogeneity must be controlled. Artifacts are under
+`data/reference/v5/experiments/007-minimal-anchor-retest/`.

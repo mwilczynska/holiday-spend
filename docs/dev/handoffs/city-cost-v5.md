@@ -72,9 +72,17 @@ anchors. It added six accommodation facts and four adult attraction tickets; all
 audited against retrieved search results or canonical pages. Hotel-star classes and half/full-day activity
 prices remained at zero. Read `data/reference/v5/experiments/006-source-cascade-retest/`.
 
+## Experiment 007 result
+
+The minimal nine-anchor prompt returned 32/45 facts (71.1%) across the same five cities: four ordinary
+cities returned 7–8 anchors and Don Det returned one. Dorm coverage was 4/5, private-hostel 3/5,
+three-star hotel 1/5, each food/drink anchor 4/5, and paid attraction 4/5. Promote this prompt to model-
+boundary validation, but do not treat it as final: ten omitted targets, sparse fallback, basis consistency,
+and hotel-anchor reliability remain open. Read `data/reference/v5/experiments/007-minimal-anchor-retest/`.
+
 ## Next action
 
-Use the 006 result to define a smaller observed-anchor candidate and collect definition-matched ground truth
+Validate the nine-anchor candidate against definition-matched city data, starting with direct ground truth
 for each proposed model: food/drink omitted measures, hotel-star relations, and activity duration tiers.
 Do not use the shipping CSV as ground truth and do not infer dorm/private separation from the blended hostel
 channel. The new derivation contract is deliberately not integrated into the shipping path until source

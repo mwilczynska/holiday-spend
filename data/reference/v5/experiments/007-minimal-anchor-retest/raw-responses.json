@@ -1,0 +1,524 @@
+{
+  "schemaVersion": "city-cost-v5-minimal-anchor-raw-v1",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_007.md",
+  "model": {
+    "requestedClass": "GPT-5.6 Luna",
+    "executionSurface": "Codex spawned sub-agent",
+    "exactProviderModelId": "not exposed by orchestration surface",
+    "parameters": "not exposed",
+    "caveat": "One no-API-key delegated target-class task; not the production provider endpoint."
+  },
+  "responses": [
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Minimal cascade found 8 of 9 anchors."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible per-bed dorm rate was retrieved."
+        },
+        "hostel_private_room_2p": {
+          "status": "found",
+          "value": 55,
+          "currency": "EUR",
+          "unit": "per_room_night",
+          "basis": "Lisbon Lounge Hostel private room for 2 guests with shared bathroom, from rate",
+          "sourceUrl": "https://lisbonlounge.com/private-rooms",
+          "retrievedAt": "2026-07-31",
+          "note": "Official property page opened; breakfast included and best direct rate stated."
+        },
+        "hotel_3star_room_2p": {
+          "status": "found",
+          "value": 153,
+          "currency": "EUR",
+          "unit": "per_room_night",
+          "basis": "Published Lisbon 2026 average for a standard 3-star double room for two, including breakfast",
+          "sourceUrl": "https://lisbonlisboaportugal.com/lisbon-tour/cost-of-hotels-in-lisbon-accommodation-price-guide.html",
+          "retrievedAt": "2026-07-31",
+          "note": "Page opened; this is a city-level published average, not a dated booking quote."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 15,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Numbeo Lisbon Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 55,
+          "currency": "EUR",
+          "unit": "per_two_person_meal",
+          "basis": "Numbeo Lisbon Meal for Two at a Mid-Range Restaurant, Three Courses, Without Drinks",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 10,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Numbeo Lisbon McDonald's or equivalent combo meal",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 2.58,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Numbeo Lisbon regular cappuccino",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 3,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Numbeo Lisbon domestic draft beer, 0.5 litre",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "paid_attraction_adult_1": {
+          "status": "found",
+          "value": 31,
+          "currency": "EUR",
+          "unit": "per_person_ticket",
+          "basis": "Lisbon Zoo adult admission, valid from 1 January 2026",
+          "sourceUrl": "https://www.zoo.pt/en/visit/entry-costs/",
+          "retrievedAt": "2026-07-31",
+          "note": "Official page opened and value verified."
+        }
+      }
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Minimal cascade found 8 of 9 anchors."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "found",
+          "value": 154,
+          "currency": "DKK",
+          "unit": "per_person_bed_night",
+          "basis": "Danhostel Copenhagen City dormitory bed, price per night from",
+          "sourceUrl": "https://danhostelcopenhagencity.dk/en/accommodation",
+          "retrievedAt": "2026-07-31",
+          "note": "Official property page opened."
+        },
+        "hostel_private_room_2p": {
+          "status": "found",
+          "value": 450,
+          "currency": "DKK",
+          "unit": "per_room_night",
+          "basis": "Danhostel Copenhagen City Standard Double private room, price per night from",
+          "sourceUrl": "https://danhostelcopenhagencity.dk/en/accommodation",
+          "retrievedAt": "2026-07-31",
+          "note": "Official page states private rooms for 2–10 guests."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit compatible city three-star double-room price was retrieved."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 150,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Copenhagen Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 800,
+          "currency": "DKK",
+          "unit": "per_two_person_meal",
+          "basis": "Numbeo Copenhagen Meal for Two at a Mid-Range Restaurant, Three Courses, Without Drinks",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 90,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Copenhagen McDonald's or equivalent combo meal",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 45.1,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Copenhagen regular cappuccino",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 60,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Copenhagen domestic draft beer, 0.5 litre",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "paid_attraction_adult_1": {
+          "status": "found",
+          "value": 135,
+          "currency": "DKK",
+          "unit": "per_person_ticket",
+          "basis": "National Museum of Denmark adult online admission",
+          "sourceUrl": "https://nationalmuseet.dk/billetter?force=desktop",
+          "retrievedAt": "2026-07-31",
+          "note": "Official search retrieval displayed adult price; page opened but visible excerpt emphasized annual tickets."
+        }
+      }
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Minimal cascade found 7 of 9 anchors."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "found",
+          "value": 5.04,
+          "currency": "EUR",
+          "unit": "per_person_bed_night",
+          "basis": "Hanoi Buffalo Hostel dorm from rate",
+          "sourceUrl": "https://www.hostelworld.com/hostels/asia/vietnam/hanoi/f/city-centre/",
+          "retrievedAt": "2026-07-31",
+          "note": "City listing opened; named property and dorm rate verified."
+        },
+        "hostel_private_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit private hostel room for two was retrieved."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit compatible city three-star double-room price was retrieved."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 55000,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Numbeo Hanoi Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 500000,
+          "currency": "VND",
+          "unit": "per_two_person_meal",
+          "basis": "Numbeo Hanoi Meal for Two at a Mid-Range Restaurant, Three Courses, Without Drinks",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 119000,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Numbeo Hanoi McDonald's or equivalent combo meal",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 48364.37,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Numbeo Hanoi regular cappuccino",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 26322.72,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Numbeo Hanoi domestic draft beer, 0.5 litre",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "paid_attraction_adult_1": {
+          "status": "found",
+          "value": 40000,
+          "currency": "VND",
+          "unit": "per_person_ticket",
+          "basis": "Vietnam Museum of Ethnology general admission per person",
+          "sourceUrl": "https://vme-en.vass.gov.vn/admission-and-fees",
+          "retrievedAt": "2026-07-31",
+          "note": "Official page opened; exact admission previously visible in canonical page retrieval."
+        }
+      }
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Minimal cascade found 8 of 9 anchors."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "found",
+          "value": 14.89,
+          "currency": "GBP",
+          "unit": "per_person_bed_night",
+          "basis": "Hostel IN school dorm from rate",
+          "sourceUrl": "https://www.hostelworld.com/hostels/europe/czech-republic/prague/f/city-center/",
+          "retrievedAt": "2026-07-31",
+          "note": "Named city property and dorm basis displayed in retrieval."
+        },
+        "hostel_private_room_2p": {
+          "status": "found",
+          "value": 1030,
+          "currency": "CZK",
+          "unit": "per_room_night",
+          "basis": "Hostel Altis double bedroom with private facilities, price per room per night",
+          "sourceUrl": "https://www.hostelaltis.cz/en/rates/",
+          "retrievedAt": "2026-07-31",
+          "note": "Official property page opened and unit verified."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit compatible city three-star double-room price was retrieved."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 230,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Prague Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 1200,
+          "currency": "CZK",
+          "unit": "per_two_person_meal",
+          "basis": "Numbeo Prague Meal for Two at a Mid-Range Restaurant, Three Courses, Without Drinks",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/city-basket-analysis/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city input value retrieved; no basket arithmetic used."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 220,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Prague McDonald's or equivalent combo meal",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 82.94,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Prague regular cappuccino",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 60,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Numbeo Prague domestic draft beer, 0.5 litre",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/price-rankings/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city value retrieved."
+        },
+        "paid_attraction_adult_1": {
+          "status": "found",
+          "value": 330,
+          "currency": "CZK",
+          "unit": "per_person_ticket",
+          "basis": "Prague Zoo adult single entrance at cash register",
+          "sourceUrl": "https://www.zoopraha.cz/en/before-visit/admission-prices",
+          "retrievedAt": "2026-07-31",
+          "note": "Official search result displayed price and canonical page opened."
+        }
+      }
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Minimal cascade found 1 of 9 anchors."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "found",
+          "value": 4,
+          "currency": "USD",
+          "unit": "per_person_bed_night",
+          "basis": "Don Det hostel city listing states prices from $4 per dorm bed",
+          "sourceUrl": "https://www.hostelz.com/pt-br/hostels/Rep%C3%BAblica-Popular-Democr%C3%A1tica-do-Laos/Don-Det",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact city/unit retrieved; direct open returned cache miss."
+        },
+        "hostel_private_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit private hostel room for two was retrieved."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No explicit compatible city three-star double-room price was retrieved."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible official adult attraction price was retrieved."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible official adult attraction price was retrieved."
+        },
+        "mcmeal_combo": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible official adult attraction price was retrieved."
+        },
+        "cappuccino_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible official adult attraction price was retrieved."
+        },
+        "domestic_draft_beer_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible official adult attraction price was retrieved."
+        },
+        "paid_attraction_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No compatible official adult attraction price was retrieved."
+        }
+      }
+    }
+  ]
+}
+
