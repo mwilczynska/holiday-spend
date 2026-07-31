@@ -1,0 +1,15 @@
+{
+  "city": "Bangkok",
+  "country": "Thailand",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":110,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bangkok","searchQuery":"site:numbeo.com/cost-of-living/in/Bangkok \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Bangkok. Jun 2026. Prices in Bangkok — Meal at an Inexpensive Restaurant | ฿110.00 | 60.00-200.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":1200,"currency":"THB","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bangkok","searchQuery":"site:numbeo.com/cost-of-living/in/Bangkok \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Bangkok. Jun 2026. Prices in Bangkok — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | ฿1,200.00 | 700.00-2,500.00"},
+    "mcmeal_combo_1p": {"status":"found","value":230,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bangkok","searchQuery":"site:numbeo.com/cost-of-living/in/Bangkok \"McDonald's\"","resultEvidence":"Cost of Living in Bangkok. Jun 2026. Prices in Bangkok — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | ฿230.00 | 180.00-260.00"},
+    "cappuccino_1": {"status":"found","value":96.3,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bangkok","searchQuery":"site:numbeo.com/cost-of-living/in/Bangkok \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Bangkok. Jun 2026. Prices in Bangkok — Cappuccino (Regular Size) | ฿96.30 | 50.00-150.00"},
+    "domestic_draft_beer_1": {"status":"found","value":100,"currency":"THB","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Bangkok","searchQuery":"site:numbeo.com/cost-of-living/in/Bangkok \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Bangkok. Jun 2026. Prices in Bangkok — Domestic Draft Beer (0.5 Liter) | ฿100.00 | 60.00-150.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical Bangkok Numbeo page with exact row labels, central values, and THB symbols. Ranges were not used. No direct read, fallback source, arithmetic, or FX was used."
+}

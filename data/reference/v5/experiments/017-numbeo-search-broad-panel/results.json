@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-results-v1",
+  "experiment": "017-numbeo-search-broad-panel",
+  "runDate": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_016.md",
+  "targetModelClass": "GPT-5.6 Luna-class delegated invocation",
+  "invocationShape": "one city per independent invocation",
+  "citiesRequested": 6,
+  "citiesWithCompleteFiveMeasureCoverage": 5,
+  "measureCellsRequested": 30,
+  "measureCellsFound": 25,
+  "measureCellCoverage": 0.8333333333,
+  "cityResults": {
+    "Lisbon": {"country":"Portugal","region":"Europe","costBand":"mid","found":5,"requested":5,"outcome":"accepted","webSearchToolCalls":2},
+    "Hanoi": {"country":"Vietnam","region":"Southeast Asia","costBand":"low","found":5,"requested":5,"outcome":"accepted","webSearchToolCalls":1},
+    "Bangkok": {"country":"Thailand","region":"Southeast Asia","costBand":"mid","found":5,"requested":5,"outcome":"accepted","webSearchToolCalls":2},
+    "San Francisco": {"country":"United States","region":"North America","costBand":"high","found":5,"requested":5,"outcome":"accepted","webSearchToolCalls":2},
+    "Nairobi": {"country":"Kenya","region":"Africa","costBand":"low_mid","found":5,"requested":5,"outcome":"accepted","webSearchToolCalls":2},
+    "Don Det": {"country":"Laos","region":"Southeast Asia","costBand":"sparse","found":0,"requested":5,"outcome":"no_result","webSearchToolCalls":2}
+  },
+  "telemetryTotals": {
+    "queriesAttempted": 30,
+    "webSearchToolCalls": 11,
+    "directPageReads": 0,
+    "fallbackAttempts": 0,
+    "fallbackSourcesUsed": 0,
+    "arithmeticOperations": 0,
+    "otherCityEvidenceUsed": 0,
+    "providerTokens": null,
+    "latencyMs": null,
+    "providerCost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "citationContractAudit": {
+    "acceptedFacts": 25,
+    "factsWithExactCityAndRowEvidence": 25,
+    "factsWithCanonicalNumbeoUrl": 25,
+    "contractComplianceRate": 1,
+    "independentPageVerification": false,
+    "note": "The delegated search result contained the required city, row label, central value, currency, and canonical URL fields. Direct page retrieval was intentionally prohibited by this experiment, so this is a contract audit rather than an independent page-read audit."
+  },
+  "retainedGroundTruthComparison": {
+    "matchedRows": 10,
+    "cities": ["Lisbon","Hanoi"],
+    "definitionCompatible": true,
+    "medianAbsolutePercentError": 0,
+    "p90AbsolutePercentError": 9.0909090909,
+    "maxAbsolutePercentError": 10,
+    "absoluteMedianSignedPercentError": 0,
+    "errorsPercent": [0,0,0,0,0,0.9668343335,3.9301310044,6.5237630266,9.0909090909,10],
+    "note": "This is a small date-drift/source-audit comparison, not the locked city-level holdout or a model-accuracy claim."
+  },
+  "verdict": "promote_with_sparse_city_failure",
+  "rejectionReasonsForFinalAcceptance": [
+    "Sparse Don Det had 0/5 exact city-level Numbeo facts, so search-only Numbeo is not a complete-city method.",
+    "Only six cities and ten retained matched rows were tested; the pre-registered 30-city/10-holdout gates are not met.",
+    "Delegated execution did not expose exact provider model ID, parameters, tokens, latency, or cost.",
+    "Accommodation, activities, and the remaining food/drink-to-19-tier derivations are unresolved."
+  ]
+}

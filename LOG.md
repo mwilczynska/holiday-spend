@@ -833,3 +833,24 @@ in June/July, so date drift is visible. McMeal had no prior retained row.
 rejected after 503/429 outcomes. This pilot does not establish final citation correctness, regional coverage,
 or throttling behaviour at steady state. Artifacts are under
 `data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`.
+
+## Experiment 017 — broad one-city Numbeo search validation (31 July 2026)
+
+Six independent delegated GPT-5.6 Luna-class invocations each received one city only: Lisbon, Hanoi,
+Bangkok, San Francisco, Nairobi, or sparse Don Det. Each issued exactly five Numbeo-restricted search
+queries using the Experiment 016 prompt. Five cities returned all five exact food/drink facts (25/25);
+Don Det returned 0/5 because results were unrelated similarly prefixed locations. Overall coverage was
+25/30 cells (83.3%) and 5/6 complete cities (83.3%). There were 30 queries and 11 search operations,
+with zero direct page reads, fallback sources, arithmetic, or cross-city evidence.
+
+Every accepted fact carried exact city identity, row label, central value, source currency, and canonical
+Numbeo URL in the returned evidence. This is a contract/citation audit, not an independent page-read audit,
+because direct retrieval was intentionally prohibited. Ten definition-compatible rows from Lisbon and Hanoi
+matched retained observations with 0% median absolute error, 9.09% p90, and 10% maximum; this is a small
+date-drift source comparison, not the locked 30-city holdout. The delegated surface exposed no exact provider
+model ID, parameters, tokens, latency, or cost.
+
+**Verdict:** promote the search-only Numbeo route to a 30-city/10-holdout food/drink validation, preserving
+the exact source contract and fail-closed sparse-city `not_found`. Do not substitute nearby-city evidence for
+Don Det. Accommodation, activities, complete 19-field coverage, and provider telemetry remain unresolved.
+Artifacts are under `data/reference/v5/experiments/017-numbeo-search-broad-panel/`.

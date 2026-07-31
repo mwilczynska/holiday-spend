@@ -162,14 +162,29 @@ or cross-city facts were accepted. Eight matched retained observations had media
 and p90 7.66%; page-date drift is visible and McMeal lacks a prior row. Promote the search-snippet route to
 broader validation. Read `data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`.
 
+## Experiment 017 result
+
+Six separate one-city GPT-5.6 Luna-class calls used the exact Experiment 016 prompt and five
+Numbeo-restricted searches per city. Lisbon, Hanoi, Bangkok, San Francisco, and Nairobi each returned 5/5
+exact facts; sparse Don Det returned 0/5 because search results were unrelated similarly prefixed locations.
+Coverage was therefore 25/30 cells (83.3%) and 5/6 complete cities. Across the calls there were 30 queries,
+11 search operations, no direct reads, no fallback sources, no arithmetic, and no cross-city evidence. All 25
+accepted facts met the exact city/row/central value/currency/canonical URL contract. Ten retained matched
+rows had median absolute error 0%, p90 9.09%, and maximum 10%; this is a small date-drift source audit,
+not the locked validation. Provider model ID, parameters, tokens, latency, and cost were not exposed.
+Promote the route for larger food/drink validation, but preserve Don Det as `not_found` and do not use
+nearby-city substitution.
+
 ## Next action
 
-Expand the promoted Numbeo search-snippet route across regions, cost bands, sparse cities, and a locked
-city-level holdout; measure citation correctness, date drift, query/search counts, and throttling. Find or
-calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a
-correction from Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the
-target web path. Keep the one-city prompt shape mandatory and test safe stable templates or a curated
-benchmark for unresolved lower classes and hostels; search-index date injection is rejected.
-Continue definition-matched panels for the other omitted anchors. Do not use the shipping CSV as ground truth
-and do not infer dorm/private separation from the blended hostel channel. The derivation contract remains out
-of the shipping path until source feasibility and accuracy gates pass.
+Expand the promoted Numbeo search-snippet route to at least 30 definition-compatible cities with at least 10
+locked holdout cities; measure citation correctness, date drift, query/search counts, and throttling. Keep
+the one-city prompt shape mandatory and treat panels only as orchestrations of independent calls. Test a
+separately validated sparse-city fallback rather than cross-city substitution. Find or calibrate a
+matched-basis accommodation source using separately recorded one-city calls; do not fit a correction from
+Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the target web
+path. Keep the one-city shape for safe stable templates or curated benchmarks for unresolved lower classes
+and hostels; search-index date injection is rejected. Continue definition-matched panels for activities and
+other omitted anchors. Do not use the shipping CSV as ground truth and do not infer dorm/private separation
+from the blended hostel channel. The derivation contract remains out of the shipping path until source
+feasibility and accuracy gates pass.

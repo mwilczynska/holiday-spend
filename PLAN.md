@@ -173,11 +173,24 @@ Copenhagen and Prague calls returned 10/10 food/drink anchors from five Numbeo-r
 zero direct page reads. Eight matched prior rows had median absolute difference 0.79% and p90 7.66%; date
 drift is visible and McMeal has no prior row. No third-party or cross-city values were accepted.
 
+**Experiment 017 — broad one-city Numbeo search validation — complete; promote with a sparse-city failure.**
+Six independent calls covered Lisbon, Hanoi, Bangkok, San Francisco, Nairobi, and sparse Don Det across
+regions and cost bands. Five cities returned all five exact Numbeo food/drink facts (25/25); Don Det returned
+0/5 because every result was an unrelated similarly prefixed location. Overall coverage was 25/30 cells
+(83.3%), with 11 search operations, no direct reads, no fallback sources, and no cross-city substitution.
+The accepted facts all met the exact-city/row/value/currency/canonical-URL contract. Ten retained
+definition-compatible rows had median absolute error 0%, p90 9.09%, and maximum 10.0%, but this is a small
+date-drift source audit, not the locked validation. Exact provider model, parameters, tokens, latency, and
+cost remain unavailable through the delegated execution surface. Promote the route for a larger city-level
+food/drink validation; retain sparse `not_found` and do not impute Don Det from another city. See
+`data/reference/v5/experiments/017-numbeo-search-broad-panel/`.
+
 ### Next experiments, in order
 
-1. Expand the promoted Numbeo search-snippet route across regions, cost bands, sparse cities, and a locked
-   city-level holdout. Measure citation correctness, date drift, query/search counts, and throttling; do not
-   relabel Numbeo 429/503 as missing data.
+1. Expand the promoted Numbeo search-snippet route to at least 30 definition-compatible cities, with a locked
+   city-level holdout of at least 10. Measure citation correctness, date drift, query/search counts, and
+   throttling; do not relabel Numbeo 429/503 or wrong-city snippets as missing data. Keep Don Det as a known
+   sparse failure and test a separately validated sparse-city fallback rather than cross-city substitution.
 2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -241,6 +254,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/014-single-city-numbeo-food-drink/`
 - `data/reference/v5/experiments/015-numbeo-canonical-url-retest/`
 - `data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`
+- `data/reference/v5/experiments/017-numbeo-search-broad-panel/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

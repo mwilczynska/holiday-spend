@@ -57,8 +57,14 @@ Experiment 015 then tested canonical Copenhagen and Prague URLs and received HTT
 Numbeo retrieval is therefore rejected for target reliability; the next experiment must test search-result
 extraction or another free source, with blocked/rate-limited outcomes retained separately. Experiment 016
 promoted the Numbeo-restricted search-snippet route after two separate one-city calls returned 10/10 facts;
-eight matched prior rows had median absolute difference 0.79% and p90 7.66%. Broader regional, sparse-city,
-date-drift, citation, and throttling validation is still required.
+eight matched prior rows had median absolute difference 0.79% and p90 7.66%. Experiment 017 broadened this
+to six separate one-city calls: Lisbon, Hanoi, Bangkok, San Francisco, and Nairobi returned 25/25 facts,
+while sparse Don Det returned 0/5 wrong-city search results. The route therefore has 25/30 cell coverage
+and 5/6 complete-city coverage, with 11 search operations and no direct reads or fallback sources. Ten
+retained matched rows had 0% median absolute error, 9.09% p90, and 10% maximum; this remains a small
+date-drifting source audit, not a holdout. Promote the route to a 30-city/10-holdout validation while
+retaining sparse-city failure, exact citation checks, and missingness; exact provider telemetry remains
+unavailable through delegated execution.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

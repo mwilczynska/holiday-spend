@@ -1,0 +1,15 @@
+{
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted": 5, "directPageReads": 0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":55000,"currency":"VND","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hanoi","searchQuery":"site:numbeo.com/cost-of-living/in/Hanoi \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in Hanoi. Jun 2026. Prices in Hanoi — Meal at an Inexpensive Restaurant | ₫55,000.00 | 40,000.00-100,000.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":500000,"currency":"VND","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hanoi","searchQuery":"site:numbeo.com/cost-of-living/in/Hanoi \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in Hanoi — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | ₫500,000.00 | 400,000.00-1,200,000.00"},
+    "mcmeal_combo_1p": {"status":"found","value":119000,"currency":"VND","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hanoi","searchQuery":"site:numbeo.com/cost-of-living/in/Hanoi \"McDonald's\"","resultEvidence":"Cost of Living in Hanoi — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | ₫119,000.00 | 100,000.00-130,000.00"},
+    "cappuccino_1": {"status":"found","value":48345.07,"currency":"VND","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hanoi","searchQuery":"site:numbeo.com/cost-of-living/in/Hanoi \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in Hanoi — Cappuccino (Regular Size) | ₫48,345.07 | 35,000.00-60,000.00"},
+    "domestic_draft_beer_1": {"status":"found","value":26326.18,"currency":"VND","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/Hanoi","searchQuery":"site:numbeo.com/cost-of-living/in/Hanoi \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in Hanoi. Jun 2026. Prices in Hanoi — Domestic Draft Beer (0.5 Liter) | ₫26,326.18 | 15,000.00-50,000.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical Hanoi Numbeo page with explicit city, exact row labels, central values, and VND currency evidence. Ranges were not used. No direct read, fallback source, arithmetic, FX, or other city was used."
+}

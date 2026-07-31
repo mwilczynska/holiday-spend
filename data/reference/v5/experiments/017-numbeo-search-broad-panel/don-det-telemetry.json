@@ -1,0 +1,28 @@
+{
+  "invocations":1,
+  "citiesRequested":1,
+  "city":"Don Det",
+  "queriesAttempted":5,
+  "webSearchToolCalls":2,
+  "directPageReads":0,
+  "fallbackAttempts":0,
+  "fallbackSourcesUsed":0,
+  "otherCityEvidenceUsed":false,
+  "foundMeasures":0,
+  "notFoundMeasures":5,
+  "blockedMeasures":0,
+  "arithmeticOperations":0,
+  "tokens":null,
+  "latencyMs":null,
+  "cost":null,
+  "exactProviderModelId":null,
+  "parameters":null,
+  "queryAudit":[
+    {"measure":"inexpensive_restaurant_meal_1p","query":"site:numbeo.com/cost-of-living/in/Don-Det \"Meal at an Inexpensive Restaurant\"","accepted":false,"sourceUrl":null,"resultEvidence":null,"currency":null,"reason":"Returned similarly prefixed but non-Don-Det pages; no exact city identity."},
+    {"measure":"midrange_restaurant_meal_2p","query":"site:numbeo.com/cost-of-living/in/Don-Det \"Meal for Two at a Mid-Range Restaurant\"","accepted":false,"sourceUrl":null,"resultEvidence":null,"currency":null,"reason":"Returned similarly prefixed but non-Don-Det pages; no exact city identity."},
+    {"measure":"mcmeal_combo_1p","query":"site:numbeo.com/cost-of-living/in/Don-Det \"McDonald's\"","accepted":false,"sourceUrl":null,"resultEvidence":null,"currency":null,"reason":"Returned similarly prefixed but non-Don-Det pages; no exact city identity."},
+    {"measure":"cappuccino_1","query":"site:numbeo.com/cost-of-living/in/Don-Det \"Cappuccino (Regular Size)\"","accepted":false,"sourceUrl":null,"resultEvidence":null,"currency":null,"reason":"Returned similarly prefixed but non-Don-Det pages; no exact city identity."},
+    {"measure":"domestic_draft_beer_1","query":"site:numbeo.com/cost-of-living/in/Don-Det \"Domestic Draft Beer\"","accepted":false,"sourceUrl":null,"resultEvidence":null,"currency":null,"reason":"Returned similarly prefixed but non-Don-Det pages; no exact city identity."}
+  ],
+  "note":"The delegated target-class execution exposed search-operation counts but not exact provider tokens, latency, cost, or model parameters. Every query was evaluated independently and rejected because no result supplied exact Don Det evidence."
+}

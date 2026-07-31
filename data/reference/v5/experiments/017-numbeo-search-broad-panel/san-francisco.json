@@ -1,0 +1,15 @@
+{
+  "city": "San Francisco",
+  "country": "United States",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":5,"directPageReads":0},
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {"status":"found","value":25,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/San-Francisco","searchQuery":"site:numbeo.com/cost-of-living/in/San-Francisco \"Meal at an Inexpensive Restaurant\"","resultEvidence":"Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco — Meal at an Inexpensive Restaurant | $25.00 | 17.78-45.00"},
+    "midrange_restaurant_meal_2p": {"status":"found","value":127.5,"currency":"USD","unit":"per_two_person_meal","sourceUrl":"https://www.numbeo.com/cost-of-living/in/San-Francisco","searchQuery":"site:numbeo.com/cost-of-living/in/San-Francisco \"Meal for Two at a Mid-Range Restaurant\"","resultEvidence":"Cost of Living in San Francisco — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | $127.50 | 80.00-200.00"},
+    "mcmeal_combo_1p": {"status":"found","value":15,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/San-Francisco","searchQuery":"site:numbeo.com/cost-of-living/in/San-Francisco \"McDonald's\"","resultEvidence":"Cost of Living in San Francisco — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | $15.00 | 11.46-17.00"},
+    "cappuccino_1": {"status":"found","value":5.94,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/San-Francisco","searchQuery":"site:numbeo.com/cost-of-living/in/San-Francisco \"Cappuccino (Regular Size)\"","resultEvidence":"Cost of Living in San Francisco — Cappuccino (Regular Size) | $5.94 | 3.72-7.50"},
+    "domestic_draft_beer_1": {"status":"found","value":8,"currency":"USD","unit":"per_person_item","sourceUrl":"https://www.numbeo.com/cost-of-living/in/San-Francisco","searchQuery":"site:numbeo.com/cost-of-living/in/San-Francisco \"Domestic Draft Beer\"","resultEvidence":"Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco — Domestic Draft Beer (0.5 Liter) | $8.00 | 6.00-12.00"}
+  },
+  "outcome": "accepted",
+  "notes": "All five restricted searches exposed the canonical San Francisco Numbeo page with exact row labels, central values, and USD symbols. Ranges were not used. No direct read, fallback source, arithmetic, or other-city evidence was used."
+}
