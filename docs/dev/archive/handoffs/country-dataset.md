@@ -1,17 +1,23 @@
 # Handoff to Codex - Holiday Spend Country Dataset Workstream
 
+<!-- status-banner -->
+> **COMPLETE — not current.** Branch handoff for work that has shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 This workstream is now complete through Phase 6. The branch is in merge-ready shape.
 
 ## Current branch
 
 - Branch: `feat/country-dataset`
 - Base: `main`
-- Plan file: `docs/dev/plans/country-dataset.md`
+- Plan file: `docs/dev/archive/plans/country-dataset.md`
 - PR: #4
 
 ## Final phase status
 
-From `docs/dev/plans/country-dataset.md`:
+From `docs/dev/archive/plans/country-dataset.md`:
 
 - [x] Phase 0 - Branch + plan doc
 - [x] Phase 1 - Canonical dataset files + generator scaffold
@@ -72,7 +78,7 @@ Coverage includes:
 - `CLAUDE.md` updated to reflect the completed canonical-country workflow
 - `AGENTS.md` resynced from `CLAUDE.md`
 - `README.md` now includes a short canonical-country metadata note and regeneration command
-- `docs/dev/plans/country-dataset.md` marked complete
+- `docs/dev/archive/plans/country-dataset.md` marked complete
 
 ## Verification completed
 
@@ -101,7 +107,7 @@ Notes:
 - `src/app/plan/page.tsx`
 - `src/lib/country-metadata.test.ts`
 - `src/lib/country-routes.test.ts`
-- `docs/dev/plans/country-dataset.md`
+- `docs/dev/archive/plans/country-dataset.md`
 
 ## Recommended next action
 

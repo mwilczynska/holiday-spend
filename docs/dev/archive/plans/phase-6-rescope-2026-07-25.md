@@ -1,5 +1,11 @@
 # Phase 6 Re-Scope, 25 July 2026
 
+<!-- status-banner -->
+> **ABANDONED — not current.** Amendments A-F to the v3 programme. The programme was dropped entirely two days later. Several conclusions carried into v4 — see `/LOG.md` Part 1.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 This document amends the Phase 6A frozen specification. Phase 6A was deliberately frozen before evidence collection so that results could not drift the rules. These amendments are therefore recorded as dated, rationale-bearing changes rather than silent edits, and every one of them weakens or re-shapes an acceptance rule in a way that must be disclosed on `/estimates` and in the eventual data card.
 
 ## Why This Amendment Exists
@@ -90,6 +96,8 @@ Phase 6G multiplies whatever per-city cost Phase 6D finishes with by 121. Reduci
 
 **Explicitly unchanged:** price-blind official property frames, direct-property quotes only, the exclusion of Booking.com and Hostelworld from LLM extraction, the event-screen gate on every window, and the append-only quote-attempt ledger. This amendment reduces quote volume; it does not relax provenance.
 
+> **Superseded 27 July 2026.** The Booking.com/Hostelworld exclusion named above has been reversed by owner decision, and Booking.com and Trip.com are now the primary accommodation channels — which also removes the direct-property-quotes-only constraint for those channels. The other four items in this list stand. See `docs/dev/plans/city-cost-source-access.md`.
+
 ## Amendment D: Sparse Destinations Are A Model Target, Not Collection Debt
 
 **Was:** all 36 pilot destinations were treated as pending collection.
@@ -125,7 +133,7 @@ Worked example: Pourhouse Classics Vol. 1 is 18, 19, 18, 22, 24, 19, 19 → medi
 
 **Decision:** permit static vendor price lists hosted on delivery marketplaces, recorded under a new `sourceType` of `delivery_platform_menu`.
 
-**Rationale:** these are the vendor's own published prices. The accommodation contract excludes Booking.com and Hostelworld because interactive booking flows are not reproducible and their terms restrict extraction; a static delivery menu is a materially different artifact. The new type is ranked below `manual_menu_sample` and above `derived_model` in every category precedence table, so a direct venue menu always wins where one exists.
+**Rationale:** these are the vendor's own published prices. The accommodation contract excludes Booking.com and Hostelworld because interactive booking flows are not reproducible and their terms restrict extraction (**superseded 27 July 2026** — that exclusion has been reversed; see `docs/dev/plans/city-cost-source-access.md`); a static delivery menu is a materially different artifact. The new type is ranked below `manual_menu_sample` and above `derived_model` in every category precedence table, so a direct venue menu always wins where one exists.
 
 **Known bias, to be retained in notes on every such observation:** delivery-platform prices typically carry a 10-20% markup over the in-person price. This is a directional bias, not noise, and must not be averaged away.
 

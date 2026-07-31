@@ -1,5 +1,11 @@
 # Live LLM Model Discovery - Implementation Plan
 
+<!-- status-banner -->
+> **COMPLETE — not current.** Three-tier LLM model discovery shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 > **Branch**: `feat/live-model-discovery` off `main`
 > **PR target**: `main`
 > **Status**: COMPLETE - implemented, verified, and ready for review
@@ -478,7 +484,7 @@ This workstream is successful when:
 
 ## Likely Files
 
-- `docs/dev/plans/live-model-discovery.md`
+- `docs/dev/archive/plans/live-model-discovery.md`
 - `src/lib/city-generation-config.ts`
 - new shared model discovery libs under `src/lib/`
 - new route under `src/app/api/llm/models/route.ts`

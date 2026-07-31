@@ -1,5 +1,11 @@
 # Phase 6: Observed-First City Cost Methodology And Validation
 
+<!-- status-banner -->
+> **ABANDONED — not current.** The full v3 observed-first programme design. Abandoned at 156/684 tier cells and zero complete cities. See `/LOG.md` Part 1 for why.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 ## Status
 
 In progress. The baseline assessment and version 3 design were completed in July 2026. Data collection,
@@ -124,8 +130,10 @@ Every published number must answer: “the expected cost of what, for whom, wher
 - Dorm tier is per bed; private tiers are per room.
 
 The free-only collection path uses LLM web research against each selected property's public official
-booking page. Booking.com and Hostelworld are not extraction sources because their reviewed current terms
-restrict automated/assistant extraction. Search dates and the displayed mandatory-charge treatment must
+booking page. (**Superseded 27 July 2026:** Booking.com and Trip.com are now the primary accommodation
+channels. See `docs/dev/plans/city-cost-source-access.md` for the reversal and its operating constraints.
+The original v3 text follows.) Booking.com and Hostelworld are not extraction sources because their
+reviewed current terms restrict automated/assistant extraction. Search dates and the displayed mandatory-charge treatment must
 be retained. If a payable total cannot be verified without a login, partner API, member/mobile rate, or
 access-control bypass, the observation is recorded as missing and the next property in the frozen reserve
 order is tried.
@@ -322,7 +330,7 @@ for FX and seasonality context. The free-call, checkpointed protocol is specifie
 - [x] Define a free-only LLM research protocol with adaptive throughput and no project-imposed call cap.
 - [ ] Confirm public-page usage and retention constraints before scaling each source.
   - [x] Retain page-by-page Numbeo use with attribution for this private project.
-  - [x] Exclude Booking.com and Hostelworld as LLM extraction sources after reviewing their current terms.
+  - [x] Exclude Booking.com and Hostelworld as LLM extraction sources after reviewing their current terms. (**Superseded 27 July 2026** — reversed by owner decision; Booking.com and Trip.com are now the primary accommodation channels.)
   - [x] Route accommodation through official registers plus direct property pages, subject to a per-page
     access check.
   - [ ] Complete the same access review for every secondary menu/activity source before scaling it.

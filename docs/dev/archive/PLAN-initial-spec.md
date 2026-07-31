@@ -1,5 +1,11 @@
 # Holiday Spend — Travel Budget Planner & Tracker
 
+<!-- status-banner -->
+> **COMPLETE — not current.** The original project spec. Retained for historical context only.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 ## Technical Specification & Claude Code Build Plan
 
 ---

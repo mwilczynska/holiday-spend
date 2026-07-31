@@ -1,5 +1,11 @@
 # Handoff: Phase 6 Observed-First City Cost Methodology
 
+<!-- status-banner -->
+> **ABANDONED — not current.** Handoff for the v3 programme, which was abandoned. Its "next steps" are not to be actioned.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 ## Current Position
 
 Phase 6A (methodology/acceptance rules) and 6B (reproducible evidence pipeline) are complete. Phase 6C (model-ready 36-city pilot) and 6D (observed-first accommodation panels) remain active. Phase 6E onward must stay gated until the combined pilot has sufficient coverage, independent source overlap, seasonal accommodation evidence, and a frozen missingness report.
@@ -113,7 +119,7 @@ Preserve those files unless their owning workstream explicitly requests changes.
 
 ## Re-Scope, 25 July 2026
 
-A coverage analysis re-scoped Phase 6C and 6D. The dated amendment, with full rationale, arithmetic, and disclosure obligations, is `docs/dev/plans/phase-6-rescope-2026-07-25.md`. Read it before collecting anything.
+A coverage analysis re-scoped Phase 6C and 6D. The dated amendment, with full rationale, arithmetic, and disclosure obligations, is `docs/dev/archive/plans/phase-6-rescope-2026-07-25.md`. Read it before collecting anything.
 
 The four findings behind it:
 

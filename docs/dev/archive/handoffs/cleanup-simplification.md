@@ -1,17 +1,23 @@
 # Handoff to Claude Code - Cleanup / Simplification
 
+<!-- status-banner -->
+> **COMPLETE — not current.** Branch handoff for work that has shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 This handoff covers the current state of the `feat/cleanup-simplification` branch after the first two implementation checkpoints. The branch is pushed and verified, but Phase 4 merge-readiness work is still open.
 
 ## Current branch
 
 - Branch: `feat/cleanup-simplification`
 - Base: `main`
-- Plan file: `docs/dev/plans/cleanup-simplification.md`
+- Plan file: `docs/dev/archive/plans/cleanup-simplification.md`
 - Current HEAD: `5f80220`
 
 ## Branch status
 
-From `docs/dev/plans/cleanup-simplification.md`:
+From `docs/dev/archive/plans/cleanup-simplification.md`:
 
 - [x] Phase 0 - Plan doc + cleanup inventory
 - [x] Phase 1 - Seed/dataset/methodology legacy-path cleanup
@@ -66,7 +72,7 @@ From `docs/dev/plans/cleanup-simplification.md`:
 
 ### Documentation already updated
 
-- `docs/dev/plans/cleanup-simplification.md`
+- `docs/dev/archive/plans/cleanup-simplification.md`
 - `CLAUDE.md`
 - `AGENTS.md`
 - `docs/dev/handoffs/dataset-methodology-split.md`
@@ -97,7 +103,7 @@ The branch is already in good shape, so keep this narrow. Good candidates to ins
 
 - whether any remaining historical docs in root should also move to `docs/dev/`
 - whether any branch docs or README notes should reference `docs/dev/handoffs/cleanup-simplification.md`
-- whether `docs/dev/plans/saved-plans-comparison.md` should keep the old `saved-plan-migration.ts` creation step untouched as historical context, or gain a short note that the shim was later removed
+- whether `docs/dev/archive/plans/saved-plans-comparison.md` should keep the old `saved-plan-migration.ts` creation step untouched as historical context, or gain a short note that the shim was later removed
 
 Bias toward minimal churn. Do not rewrite historical plan docs unless the stale reference is actively misleading in the current branch.
 
@@ -126,7 +132,7 @@ PR summary should call out:
 
 Update:
 
-- `docs/dev/plans/cleanup-simplification.md`
+- `docs/dev/archive/plans/cleanup-simplification.md`
 - optionally `CLAUDE.md` / `AGENTS.md` if you want the branch memory to reflect PR-open state
 
 Then commit the final docs-only checkpoint.
@@ -137,7 +143,7 @@ Suggested commit:
 
 ## Files most relevant for review
 
-- `docs/dev/plans/cleanup-simplification.md`
+- `docs/dev/archive/plans/cleanup-simplification.md`
 - `src/db/seed.ts`
 - `src/db/schema.ts`
 - `src/db/index.ts`

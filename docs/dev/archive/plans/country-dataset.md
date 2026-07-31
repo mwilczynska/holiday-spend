@@ -1,5 +1,11 @@
 # Canonical Country Dataset - Implementation Plan
 
+<!-- status-banner -->
+> **COMPLETE — not current.** The canonical country dataset shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 > **Branch**: `feat/country-dataset` off `main`
 > **PR target**: `main`
 > **Status**: COMPLETE -- Phases 0-6 complete, branch ready for review/merge
@@ -303,7 +309,7 @@ Document:
 
 - `npm run docs:check-memory` passes
 - README includes a canonical-country dataset/regeneration note
-- PR is open and references `docs/dev/plans/country-dataset.md`
+- PR is open and references `docs/dev/archive/plans/country-dataset.md`
 - Branch is pushed with Phases 1-6 commits on `feat/country-dataset`
 
 **Commit**: `docs(country-data): document canonical dataset workflow`
@@ -342,7 +348,7 @@ This is out of scope for the first implementation.
 
 ## Key Files
 
-- `docs/dev/plans/country-dataset.md`
+- `docs/dev/archive/plans/country-dataset.md`
 - `src/lib/country-metadata.ts`
 - `src/app/api/countries/route.ts`
 - `src/app/dataset/page.tsx`

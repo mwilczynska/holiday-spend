@@ -21,7 +21,7 @@ Research or estimate these 10 anchor prices for the city (all in USD):
 
 ### Source priority:
 1. Numbeo.com (city-level data, most recent)
-2. Official accommodation registers to define the property sample, then each property's public official booking page. Do not extract prices from Booking.com or Hostelworld.
+2. Public booking-platform search listings (Booking.com, Trip.com), read signed out, filtered to hotels and to the star class, taxes and fees included. A property's own public booking page is also acceptable.
 3. If no direct data: find the nearest city WITH data in Numbeo. Apply Numbeo's relative cost-of-living index to scale. Note this in your confidence field.
 4. For very small/remote places: use the nearest regional hub and adjust down 10-30% based on remoteness.
 

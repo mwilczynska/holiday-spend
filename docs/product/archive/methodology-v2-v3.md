@@ -1,5 +1,11 @@
 # Holiday Spend Tracker — City Cost Database Methodology
 
+<!-- status-banner -->
+> **SUPERSEDED — not current.** The v2.1/v3 public methodology. Replaced by `docs/product/methodology-v4.md`. Its text still matches the `/estimates` page, which has not yet been rewritten.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 **Version 2.1 baseline + Version 3 redesign | Reference dataset: April 2026 | Review: July 2026**
 
 All tier values are for **TWO people**, per night (accommodation) or per day (food/drinks/activities).  
@@ -131,7 +137,9 @@ Calculator `city-cost-v3-alpha-3` also treats source types as measurement channe
 pooling them. Food and drink use the retained city-level published dataset channel as the primary point
 estimate, with menu samples retained as triangulation evidence. Activities prefer the attraction or
 operator's official site. Accommodation uses direct property sites selected from a deterministic panel
-drawn from official accommodation registers or classification directories. Booking.com and Hostelworld are excluded as extraction
+drawn from official accommodation registers or classification directories. (**Superseded 27 July 2026:**
+Booking.com and Trip.com are now the primary accommodation channels; see
+`docs/dev/plans/city-cost-source-access.md`. The v3 text follows.) Booking.com and Hostelworld are excluded as extraction
 sources after review of their current restrictions on automated/assistant use.
 Every available channel keeps its own observation count, source names, median, interquartile range, and
 lineage. A secondary-channel median more than 25% from the selected primary median receives a provisional
@@ -571,7 +579,7 @@ not results the current dataset claims to have achieved.
 
 The detailed execution plan, source feasibility assessment, and frozen first nine-city accommodation
 schedule are recorded in
-`docs/dev/plans/observed-first-methodology.md`.
+`docs/dev/archive/plans/observed-first-methodology.md`.
 
 ## Version 2.1 Baseline (Retained For Reproducibility)
 

@@ -1700,5 +1700,3 @@ The app records actual spend by city and category. Because the accommodation est
 **The prompt file is generated, not authored.** §9.1 of this document is the source of truth; the standalone file is extracted from its fenced block so the two cannot drift. Edit the methodology, then regenerate.
 
 The fitting script is deterministic: the holdout split is a fixed alphabetical rule, and re-running reproduces every figure in §6 and §7 exactly. The scoring scripts take a `TEST_DIR` environment variable pointing at a directory of prompt outputs.
-
-claude --resume 8246b550-fed3-456c-91ed-ce2595bc4016

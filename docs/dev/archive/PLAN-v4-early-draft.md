@@ -1,5 +1,11 @@
 # City Cost Methodology v4 — Search-Anchored, Deterministically Derived
 
+<!-- status-banner -->
+> **SUPERSEDED — not current.** An early draft of methodology v4. Replaced by `docs/product/methodology-v4.md`, which is fitted on the closed 99-city sample rather than this draft's 58-city one. Figures here are stale.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 **Status:** draft 3. Incorporates Phase 0 dry-run results. No paid data APIs.
 
 ## Context
@@ -204,7 +210,10 @@ Below a contributor floor, drop to level 2 rather than publishing a thin crowd m
 
 **Rejected:** Amadeus (star not returned, no property-type field, GDS coverage wrong for a 44/121-SEA dataset), SerpApi (SMS verification), Makcorps ($1,200+/mo beyond 30 calls), Bright Data and Apify (not pursued — no paid APIs).
 
-**Excluded on terms:** Booking.com and Hostelworld consumer sites.
+**In scope from 27 July 2026:** Booking.com and Trip.com, as the primary accommodation channels. They were
+excluded on terms grounds in v3; that exclusion has been reversed by owner decision. See
+`docs/dev/plans/city-cost-source-access.md` for the reasoning and the operating constraints that remain
+binding (signed out, browsing pace, no bypassing blocks).
 
 ### Activities
 
@@ -289,7 +298,7 @@ Destinations with no star system map to `budget / midrange / luxury`, then onto 
 1. ~~Does "no API" include Numbeo?~~ **Resolved: Numbeo is in scope.**
 2. **No relationship meets the ≤15% food gate on the expanded sample.** Best results are `mcmeal` R1 at 18.1% LOO, `cappuccino` R1 at 18.6%, `midrange` R0 at 18.0% holdout. The gates need widening to roughly 20% for food and drinks, or the accuracy target is simply not reachable from a single anchor. Decide before shipping, and publish whichever is chosen.
 3. **Activities now have no derivation path.** Phase 0c removed the ratio route. `activities_mid_range` and `activities_high_end` are currently at 3 and 2 cities out of 121. They must be collected via search extraction or published as missing.
-4. **The public methodology at `docs/product/methodology.md` (978 lines) still documents v2.1/v3** and backs `/estimates`. It must be rewritten at ship time, not before validation.
+4. **The public methodology at `docs/product/archive/methodology-v2-v3.md` (978 lines) still documents v2.1/v3** and backs `/estimates`. It must be rewritten at ship time, not before validation.
 5. **Which provider key does extraction use?** `transport-estimation.ts` supports OpenAI, Anthropic and Gemini web search, but no provider key is currently in `.env.local`. Extraction needs at least one server-side key.
 3. **Budget Your Trip terms** for automated search-derived use.
 4. **Unstarred-market mapping** needs calibrating against cities that have both a star system and guesthouse inventory.

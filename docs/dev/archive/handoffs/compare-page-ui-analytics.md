@@ -1,12 +1,18 @@
 # Handoff - Compare Page UI And Analytics
 
+<!-- status-banner -->
+> **COMPLETE — not current.** Branch handoff for work that has shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 This handoff captures the current state of the `feat/compare-page-ui-analytics` branch after Phases 1 through 4 have been implemented locally, with a new pre-wrap-up visual-alignment phase (`Phase 4.5`) added but not yet executed.
 
 ## Current branch
 
 - Branch: `feat/compare-page-ui-analytics`
 - Base: `main`
-- Plan file: `docs/dev/plans/compare-page-ui-analytics.md`
+- Plan file: `docs/dev/archive/plans/compare-page-ui-analytics.md`
 - Current HEAD: `63f1a77`
 - Local branch upstream: none configured
 
@@ -32,7 +38,7 @@ Local-only implementation commits not yet pushed:
 
 At the time of this handoff:
 
-- `docs/dev/plans/compare-page-ui-analytics.md` is modified but uncommitted
+- `docs/dev/archive/plans/compare-page-ui-analytics.md` is modified but uncommitted
 
 That uncommitted plan-doc edit adds a new pending `Phase 4.5` for chart visual alignment and explicitly delays `Phase 5c` until after manual review.
 
@@ -40,7 +46,7 @@ No additional code changes are left unstaged beyond that plan-doc update.
 
 ## Branch status
 
-From `docs/dev/plans/compare-page-ui-analytics.md`:
+From `docs/dev/archive/plans/compare-page-ui-analytics.md`:
 
 - [x] Phase 0 - Create implementation plan and branch scaffold
 - [x] Phase 1 - Extend the canonical compare payload for richer charting
@@ -225,7 +231,7 @@ When the user approves:
 
 ## Files most relevant for the next pass
 
-- `docs/dev/plans/compare-page-ui-analytics.md`
+- `docs/dev/archive/plans/compare-page-ui-analytics.md`
 - `docs/dev/handoffs/compare-page-ui-analytics.md`
 - `src/app/plan/compare/page.tsx`
 - `src/components/itinerary/ComparisonSummaryCards.tsx`
@@ -250,4 +256,4 @@ Additional targeted compare verification already run earlier in the branch:
 
 If resuming in a later session, the immediate task is:
 
-> Continue on `feat/compare-page-ui-analytics`. Read `docs/dev/plans/compare-page-ui-analytics.md` and `docs/dev/handoffs/compare-page-ui-analytics.md`. Implement the pending `Phase 4.5` visual-alignment pass only. Do not proceed to `Phase 5c` until after manual review.
+> Continue on `feat/compare-page-ui-analytics`. Read `docs/dev/archive/plans/compare-page-ui-analytics.md` and `docs/dev/handoffs/compare-page-ui-analytics.md`. Implement the pending `Phase 4.5` visual-alignment pass only. Do not proceed to `Phase 5c` until after manual review.

@@ -1,5 +1,14 @@
 # Free-Only City Cost Collection And Batch Zero
 
+<!-- status-banner -->
+> **PARTLY ACTIVE.** The source-access decisions are current and binding — in particular the
+> 27 July 2026 reversal that made Booking.com and Trip.com the primary accommodation channels, and the
+> constraints that survive it (signed out, no member rates, no bypassing blocks, browsing pace).
+> Hostelworld's exclusion has **not** been reversed.
+>
+> The surrounding v3 collection programme it was written for is **abandoned**. Read this for the source
+> rules only, not for the collection plan. See `/LOG.md` Part 1 and `/PLAN.md` decisions D3 and D4.
+
 ## Constraint
 
 Phase 6 will not use paid data APIs. Collection must run through no-cost LLM calls with web access,
@@ -62,21 +71,45 @@ record contains facts needed for audit, not copied page content.
 
 ### Accommodation source-access decision
 
-Booking.com and Hostelworld are excluded as price-extraction sources for the version 3 accommodation
-panel. Booking.com's current consumer terms expressly cover unauthorized use by automated means or an
-automated assistant, including assistants that interact with a browser. Hostelworld permits personal,
-non-commercial booking use but restricts robots, scrapers, automated means, and manual processes used for
-purposes outside its terms. The reviewed terms are retained as the decision evidence:
+**Superseded 27 July 2026. Booking.com and Trip.com are now in scope as accommodation price sources.**
+The v3 exclusion below is retained as the record of what was decided and why, because the reasoning that
+replaced it depends on knowing what it replaced.
+
+**Current position.** Booking.com and Trip.com are the primary accommodation channels. The decision is
+the project owner's, is deliberate, and rests on the facts of this project rather than on a reading of
+the terms: Holiday Spend is a private budget tool for two travellers, collection runs at browsing scale
+and pace against pages any visitor is served, and the stored record holds extracted facts with
+provenance, not copied page content. The terms text below has not changed and has not been reinterpreted
+— the tradeoff has been weighed and accepted.
+
+Operating constraints that remain binding:
+
+- Signed out. No member, login-gated, or account-conditional rates.
+- No bypassing blocks, CAPTCHAs, rate limits, or access controls. A block is a missing observation.
+- Browsing pace and volume, with checkpointing. No crawler, no bulk harvesting, no paid scraping proxy.
+- Terms are re-reviewed before any material expansion of use.
+
+The reviewed terms are retained as evidence of what was weighed:
 
 - https://www.booking.com/content/terms.en-gb.html
 - https://www.hostelworld.com/legal/hostel-terms-and-conditions/
 
-This is a source-design decision, not a claim that publicly displayed prices cannot be factual evidence.
-The project does not need those channels: each city's sampling frame will instead be built from an
-official tourism/accommodation register or official classification directory, frozen with a deterministic selection seed and reserve
-order, and the price will be read from the selected property's own public booking page. Property pages
-are still checked individually for access conditions. Login-only, member-only, mobile-only, blocked, or
-tax-ambiguous rates are missing observations, not invitations to work around the restriction.
+**Superseded v3 text.** Booking.com and Hostelworld were excluded as price-extraction sources for the
+version 3 accommodation panel. Booking.com's consumer terms expressly cover unauthorized use by automated
+means or an automated assistant, including assistants that interact with a browser. Hostelworld permits
+personal, non-commercial booking use but restricts robots, scrapers, automated means, and manual
+processes used for purposes outside its terms. Each city's sampling frame was instead built from an
+official tourism/accommodation register or official classification directory, frozen with a deterministic
+selection seed and reserve order, with the price read from the selected property's own public booking
+page.
+
+**Why it was reversed.** That design was executed across five frozen city frames and produced five
+accepted quotes in one city. In the same period, a single public Booking.com class page returned ten
+named properties with prices whose median landed 13.4% from Copenhagen's direct-quote ground truth, while
+the headline average on that same page was 54.4% high. The register-first path was not more accurate; it
+was differently sourced and far more expensive. Property pages are still checked individually for access
+conditions, and login-only, member-only, mobile-only, blocked, or tax-ambiguous rates remain missing
+observations rather than invitations to work around a restriction.
 
 The panel design follows the same properties through low, shoulder, and high seasons where availability
 allows. This reduces property-mix confounding. Each city/measure/season targets 12 properties, requires at

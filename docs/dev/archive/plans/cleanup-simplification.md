@@ -1,5 +1,11 @@
 # Cleanup & Simplification - Implementation Plan
 
+<!-- status-banner -->
+> **COMPLETE — not current.** The legacy-code cleanup pass is done.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 > **Branch**: `feat/cleanup-simplification` off `main`
 > **PR target**: `main`
 > **Status**: COMPLETE -- verification passed and PR #5 is open
@@ -392,7 +398,7 @@ The following are explicitly out of scope for this cleanup branch unless they be
 
 ## Likely Files
 
-- `docs/dev/plans/cleanup-simplification.md`
+- `docs/dev/archive/plans/cleanup-simplification.md`
 - `src/db/seed.ts`
 - `src/db/schema.ts`
 - `src/components/cities/CostEditor.tsx`

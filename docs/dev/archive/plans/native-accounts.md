@@ -1,3 +1,10 @@
+
+<!-- status-banner -->
+> **COMPLETE — not current.** Native email/password accounts shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 ﻿# Native Email/Password Accounts - Implementation Plan
 
 > **Branch**: `feat/native-accounts` off `main`

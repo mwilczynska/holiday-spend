@@ -1,10 +1,16 @@
 # Compare Page UI And Analytics Expansion - Implementation Plan
 
+<!-- status-banner -->
+> **COMPLETE — not current.** Compare-page analytics shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 > **Branch**: `feat/compare-page-ui-analytics` off `main`
 > **PR target**: `main`
 > **Status**: IN PROGRESS - planning and branch setup
 > **Related**:
-> - `docs/dev/plans/compare-planned-allocations.md`
+> - `docs/dev/archive/plans/compare-planned-allocations.md`
 > - `src/app/plan/compare/page.tsx`
 > - `src/components/itinerary/ComparisonSummaryCards.tsx`
 > - `src/components/itinerary/ComparisonChart.tsx`
@@ -811,7 +817,7 @@ This workstream is successful when:
 
 ## Likely Files
 
-- `docs/dev/plans/compare-page-ui-analytics.md`
+- `docs/dev/archive/plans/compare-page-ui-analytics.md`
 - `src/lib/plan-comparison.ts`
 - `src/app/api/saved-plans/compare/route.ts`
 - `src/app/plan/compare/page.tsx`

@@ -1,10 +1,16 @@
 # Compare Page Planned Allocations - Implementation Plan
 
+<!-- status-banner -->
+> **COMPLETE — not current.** The canonical planned-allocation engine shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 > **Branch**: `feat/compare-planned-allocations` off `main`
 > **PR target**: `main`
 > **Status**: IN PROGRESS - planning and branch setup
 > **Related**:
-> - `docs/dev/plans/saved-plans-comparison.md`
+> - `docs/dev/archive/plans/saved-plans-comparison.md`
 > - `src/lib/plan-comparison.ts`
 > - `/plan/compare`
 
@@ -438,7 +444,7 @@ This branch is successful when all of the following are true:
 
 ## Likely Files
 
-- `docs/dev/plans/compare-planned-allocations.md`
+- `docs/dev/archive/plans/compare-planned-allocations.md`
 - `src/lib/plan-comparison.ts`
 - `src/app/api/saved-plans/compare/route.ts`
 - `src/app/plan/compare/page.tsx`

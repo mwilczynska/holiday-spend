@@ -1,6 +1,6 @@
 # Handover — City Cost Methodology v4
 
-**As at 27 July 2026.** Read `docs/product/METHODOLOGY-new.md` first; this note covers what is done, what is blocked, and what to do next.
+**As at 27 July 2026.** Read `docs/product/methodology-v4.md` first; this note covers what is done, what is blocked, and what to do next.
 
 ## Where things stand
 
@@ -13,7 +13,10 @@ Two halves, at very different maturity:
 | **Collection contract** (`docs/prompts/llm_prompt_city_anchors_v4.md`) | Tested end to end across 20+ runs on five cities with a small, fast model |
 | **App integration** | Not started. No v4 calculator, no anchor schema, no ingestion route |
 
-Nothing is committed. The working tree holds the methodology, the prompt, three scoring scripts, and the dry-run artifacts.
+~~Nothing is committed.~~ **Corrected 31 July 2026:** that work landed in commits `7db267f`..`63d873a`. The
+methodology, the prompt, the scoring scripts, and the dry-run artifacts are all committed. Note also that
+`METHODOLOGY-new.md` was renamed to `docs/product/methodology-v4.md` in the same cleanup, and that its
+§9.4.4 conflicts with `docs/dev/plans/accommodation-collection-v4.md` — see decision **D1** in `/PLAN.md`.
 
 ## What is settled
 
@@ -47,7 +50,7 @@ This was the single highest-value change made. Prague went from 0, 1, 2, 2, 2 ac
 1. **Collect accommodation ground truth in three or four cities** by whatever mechanism works — browser automation, or by hand. This unblocks both the bias figure and the geometric-mean test, and it is the highest-value work outstanding.
 2. **Calibrate the four shipped ratios** (§7.8). The fitted relationships are *proxies* — they settle whether each model needs cost bands, not the coefficient values. ~160 paired observations across 20 cities, one-off.
 3. **Build the ingestion path**: an anchor schema with the validation gates of §9.2, the deterministic 19-tier calculator of §7.1, and persistence. Then build the paced 121-city batch collector.
-4. **Rewrite `docs/product/methodology.md`** at ship time. It still documents v2.1/v3 and backs `/estimates`.
+4. **Rewrite `docs/product/archive/methodology-v2-v3.md`** at ship time. It still documents v2.1/v3 and backs `/estimates`.
 
 ## Traps worth knowing before you touch this
 
@@ -73,7 +76,7 @@ The anchor source limits by IP: ~40 rapid fetches triggered 429, escalating to 5
 
 | Path | What it is |
 | --- | --- |
-| `docs/product/METHODOLOGY-new.md` | The methodology. §9.1 is the prompt's source of truth |
+| `docs/product/methodology-v4.md` | The methodology. §9.1 is the prompt's source of truth |
 | `docs/prompts/llm_prompt_city_anchors_v4.md` | Generated from §9.1 — never edit directly, regenerate |
 | `scripts/fit-city-cost-ratios.mjs` | Ratio model fitting; deterministic |
 | `scripts/score-anchor-prompt-test.mjs` | Scores prompt output against ground truth |

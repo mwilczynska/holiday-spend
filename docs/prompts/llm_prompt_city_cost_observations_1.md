@@ -21,9 +21,11 @@ One call covers one city and one category. Keep the search bounded to the reques
 1. Browse current publicly accessible pages. Do not use remembered prices.
 2. Prefer a public Numbeo city page for standardized food/drink items in this private project,
    direct/official venue pages for attractions, and the selected property's own public booking page for
-   accommodation. Accommodation properties must come from the assigned versioned panel drawn from an
-   official accommodation register. Booking.com and Hostelworld are not extraction sources because their
-   current terms restrict automated/assistant extraction; they may not be used to fill a price. Use normal
+   accommodation. For accommodation, public search-result listings on Booking.com and Trip.com are the
+   primary channel as of 27 July 2026: read them signed out, filtered to hotels and to the star class, with
+   taxes and fees included. A property's own public booking page, or a property drawn from an assigned
+   versioned panel, remains acceptable. Never sign in, never use member or account-conditional rates, and
+   never work around a block or CAPTCHA — a blocked page is a missing observation. Use normal
    page-by-page research with attribution; do not build or invoke a scraper/crawler or the paid Numbeo API.
 3. Every numeric observation requires the exact source URL and retrieval timestamp.
 4. Preserve the displayed currency, unit, tax/fee treatment, range, count, and price-valid dates where

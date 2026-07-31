@@ -1,5 +1,11 @@
 # Handoff: Dataset / Methodology Split
 
+<!-- status-banner -->
+> **COMPLETE — not current.** Branch handoff for work that has shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 Historical note: this handoff describes the earlier split that introduced `/dataset`. The temporary `/settings/cities` compatibility route mentioned below was later removed during the cleanup/simplification pass.
 
 ## What Was Done

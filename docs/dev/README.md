@@ -2,25 +2,27 @@
 
 This folder holds developer-facing planning and historical context that is useful for implementation work but is not part of the app's public product or operations documentation.
 
+**Almost everything in this folder is historical.** For current work, read `/PLAN.md`. For what was
+tried and what it produced, read `/LOG.md`. For the active methodology, read
+`docs/product/methodology-v4.md`.
+
 Structure:
 
-- `plans/` - tracked implementation plans for major workstreams
-- `handoffs/` - branch handoff notes and implementation summaries
+- `plans/` - implementation plans for major workstreams. All are complete or abandoned; see `/LOG.md`
+  for which is which
+- `handoffs/` - branch handoff notes. `city-cost-v4.md` is the most recent and most useful, though its
+  "nothing is committed" line is stale — that work landed in commits `7db267f`..`63d873a`
 - `PLAN-initial-spec.md` - the original historical project spec retained for context
+- `PLAN-new-methodology.md` - an early v4 draft, **superseded by** `docs/product/methodology-v4.md`
 
-Repo-root docs should stay minimal and public-facing:
+Repo-root docs should stay minimal:
 
 - `README.md` as the main project entry point
-- `CLAUDE.md` and `AGENTS.md` as project memory
+- `CLAUDE.md` / `AGENTS.md` as project memory
+- `PLAN.md` for current work, `LOG.md` for history
 - app/config files only
 
-Current product, ops, and prompt assets live elsewhere:
-
-- `docs/product/`
-- `docs/ops/`
-- `docs/prompts/`
-
-Documents in `docs/dev/` are intentionally kept out of the repo root to reduce clutter while preserving useful build history and implementation context.
+Current product, ops, and prompt assets live in `docs/product/`, `docs/ops/`, and `docs/prompts/`.
 
 ## Refreshing model suggestions
 

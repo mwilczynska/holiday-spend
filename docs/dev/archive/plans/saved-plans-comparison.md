@@ -1,5 +1,11 @@
 # Saved Plans & Comparison View — Implementation Plan
 
+<!-- status-banner -->
+> **COMPLETE — not current.** Saved plans and multi-plan comparison shipped.
+>
+> Retained for provenance. This document does not describe how the project works today.
+> Current state: `/CLAUDE.md` · current plan: `/PLAN.md` · history and results: `/LOG.md`
+
 > **Branch**: `feat/saved-plans-comparison` off `main`
 > **PR target**: `main`
 > **Status**: COMPLETE — all phases done including Phase 8 UI refinements

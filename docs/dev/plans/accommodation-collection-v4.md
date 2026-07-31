@@ -1,5 +1,14 @@
 # Accommodation Collection And Class Ladder — v4
 
+<!-- status-banner -->
+> **ACTIVE — but conflicts with `docs/product/methodology-v4.md` §9.4.4.**
+>
+> This document says **never read the headline average**. §9.4.4 of the methodology says headline
+> averages **are adopted**. Both were committed on 27 July 2026; this one is the later commit
+> (`5c57719` against `7db267f`) and rests on the stronger evidence — a full 108-property inventory read
+> against two Copenhagen runs — so it should win. **That has not been formally decided.** Tracked as
+> open decision **D1** in `/PLAN.md`. Do not start collection until it is settled.
+
 **Status:** Stages A–D complete, 27 July 2026. Evidence: `data/reference/dry-run/stage1/`,
 `phase-0g-stage1-analysis.json`, `phase-0h-accommodation-class-ratios.json`.
 
