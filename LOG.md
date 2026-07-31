@@ -820,3 +820,16 @@ retry, search fallback, arithmetic, or estimate. The failures are rate/access ou
 Retain the Lisbon success from Experiment 014, but test search-result extraction or another free source and
 measure its rate-limit behaviour. Artifacts are under
 `data/reference/v5/experiments/015-numbeo-canonical-url-retest/`.
+
+## Experiment 016 â€— Numbeo search-snippet fallback (31 July 2026)
+
+Two separate one-city Luna calls (Copenhagen and Prague) issued five Numbeo-restricted searches each and
+returned **10/10** exact row/value/currency/URL facts. Direct page reads were zero; no fallback source,
+arithmetic, FX, cross-city value, or unsupported fact was accepted. Eight matched retained observations had
+median absolute difference 0.79% and p90 7.66%; snippets were dated June 2026 while prior rows were captured
+in June/July, so date drift is visible. McMeal had no prior retained row.
+
+**Verdict:** promote the search-only route to broader one-city validation. The direct Numbeo page route remains
+rejected after 503/429 outcomes. This pilot does not establish final citation correctness, regional coverage,
+or throttling behaviour at steady state. Artifacts are under
+`data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`.

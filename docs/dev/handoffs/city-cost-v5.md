@@ -154,9 +154,18 @@ page rows were available. This rejects direct Numbeo page retrieval as reliable 
 although Lisbon's Experiment 014 page success remains valid evidence. Read
 `data/reference/v5/experiments/015-numbeo-canonical-url-retest/`.
 
+## Experiment 016 result
+
+Two separate one-city search-only calls (Copenhagen and Prague) issued five Numbeo-restricted queries each
+and returned **10/10** exact row/value/currency/URL facts. No direct page reads, fallback sources, arithmetic,
+or cross-city facts were accepted. Eight matched retained observations had median absolute difference 0.79%
+and p90 7.66%; page-date drift is visible and McMeal lacks a prior row. Promote the search-snippet route to
+broader validation. Read `data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`.
+
 ## Next action
 
-Test a search-result extraction route or another free food/drink source, recording 429/503 as blocked. Find or
+Expand the promoted Numbeo search-snippet route across regions, cost bands, sparse cities, and a locked
+city-level holdout; measure citation correctness, date drift, query/search counts, and throttling. Find or
 calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a
 correction from Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the
 target web path. Keep the one-city prompt shape mandatory and test safe stable templates or a curated

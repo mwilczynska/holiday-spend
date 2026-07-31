@@ -1,0 +1,58 @@
+{
+  "city": "Prague",
+  "country": "Czech Republic",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {
+    "queriesAttempted": 5,
+    "directPageReads": 0
+  },
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status": "found",
+      "value": 240,
+      "currency": "CZK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Prague \"Meal at an Inexpensive Restaurant\"",
+      "resultEvidence": "Cost of Living in Prague. Jun 2026. Prices in Prague - Meal at an Inexpensive Restaurant | 240.00 Kč | 180.00-400.00"
+    },
+    "midrange_restaurant_meal_2p": {
+      "status": "found",
+      "value": 1200,
+      "currency": "CZK",
+      "unit": "per_two_person_meal",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Prague \"Meal for Two at a Mid-Range Restaurant\"",
+      "resultEvidence": "Cost of Living in Prague. Jun 2026. Prices in Prague - Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | 1,200.00 Kč | 800.00-2,000.00"
+    },
+    "mcmeal_combo_1p": {
+      "status": "found",
+      "value": 220,
+      "currency": "CZK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Prague \"McDonald's\"",
+      "resultEvidence": "Cost of Living in Prague. Jun 2026. Prices in Prague - Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | 220.00 Kč | 180.00-270.00"
+    },
+    "cappuccino_1": {
+      "status": "found",
+      "value": 81.28,
+      "currency": "CZK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Prague \"Cappuccino (Regular Size)\"",
+      "resultEvidence": "Cost of Living in Prague. Jun 2026. Prices in Prague - Cappuccino (Regular Size) | 81.28 Kč | 50.00-110.00"
+    },
+    "domestic_draft_beer_1": {
+      "status": "found",
+      "value": 65,
+      "currency": "CZK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Prague \"Domestic Draft Beer\"",
+      "resultEvidence": "Cost of Living in Prague. Jun 2026. Prices in Prague - Domestic Draft Beer (0.5 Liter) | 65.00 Kč | 55.00-75.00"
+    }
+  },
+  "outcome": "accepted",
+  "notes": "Five Numbeo-restricted searches returned the canonical Prague URL with explicit city, row, value, and Kč currency evidence. The central displayed values were preserved; ranges were not used. No direct page read, fallback source, other city, arithmetic, or FX was used."
+}

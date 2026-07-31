@@ -168,10 +168,16 @@ and Prague calls opened only `/in/Copenhagen` and `/in/Prague`; the pages return
 respectively. All ten cells were blocked with no fallback. Lisbon's Experiment 014 success is retained, but
 direct page retrieval is not reliable enough for production at the required steady-state volume.
 
+**Experiment 016 — Numbeo search-snippet fallback — complete; promote to broader validation.** Separate
+Copenhagen and Prague calls returned 10/10 food/drink anchors from five Numbeo-restricted searches each, with
+zero direct page reads. Eight matched prior rows had median absolute difference 0.79% and p90 7.66%; date
+drift is visible and McMeal has no prior row. No third-party or cross-city values were accepted.
+
 ### Next experiments, in order
 
-1. Test a search-result extraction route or another free source for food/drink, with explicit rate-limit and
-   citation checks; do not relabel Numbeo 429/503 as missing data.
+1. Expand the promoted Numbeo search-snippet route across regions, cost bands, sparse cities, and a locked
+   city-level holdout. Measure citation correctness, date drift, query/search counts, and throttling; do not
+   relabel Numbeo 429/503 as missing data.
 2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -234,6 +240,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/013-interactive-official-quote-extraction/`
 - `data/reference/v5/experiments/014-single-city-numbeo-food-drink/`
 - `data/reference/v5/experiments/015-numbeo-canonical-url-retest/`
+- `data/reference/v5/experiments/016-numbeo-search-snippet-fallback/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

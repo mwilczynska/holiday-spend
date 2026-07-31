@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "016-numbeo-search-snippet-fallback",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "promptShape": "one city per invocation",
+  "invocationCount": 2,
+  "cities": ["Copenhagen", "Prague"],
+  "measuresPerCity": 5,
+  "foundCells": 10,
+  "blockedCells": 0,
+  "notFoundCells": 0,
+  "coverageRate": 1,
+  "sourceAudit": {"foundFacts":10,"verifiedSearchEvidence":10,"unsupportedFoundFacts":0,"directPageReads":0},
+  "priorObservationComparison": {
+    "matchedRows": 8,
+    "absolutePercentageErrors": [0,0,0,0,4.35,9.09,0,1.23],
+    "medianAbsolutePercentageError": 0.79,
+    "p90AbsolutePercentageError": 7.66,
+    "missingPriorRows": ["copenhagen.mcmeal_combo_1p","prague.mcmeal_combo_1p"],
+    "note": "Prior observations were retrieved on 2026-06-13 or 2026-07-23; snippets were dated Jun 2026 and retrieved 2026-07-31. Errors reflect page-date drift as well as extraction."
+  },
+  "telemetry": {
+    "agentTasks": 2,
+    "citiesInspected": 2,
+    "queriesAttempted": 10,
+    "webSearchToolCalls": 3,
+    "directPageReads": 0,
+    "fallbackSourcesUsed": 0,
+    "arithmeticOperations": 0,
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "verdict": "promote_to_broader_one_city_source_validation"
+}

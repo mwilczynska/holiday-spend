@@ -30,6 +30,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/013-interactive-official-quote-extraction/` | **COMPLETE — target web route rejected** | Three one-city Copenhagen calls against known official booking engines |
 | `experiments/014-single-city-numbeo-food-drink/` | **COMPLETE — revise URL normalization** | Three one-city Numbeo calls; Lisbon succeeded via canonical case-correct URL |
 | `experiments/015-numbeo-canonical-url-retest/` | **COMPLETE — direct page route rejected** | Canonical Copenhagen/Prague Numbeo calls returned 503/429 |
+| `experiments/016-numbeo-search-snippet-fallback/` | **COMPLETE — promote to broader validation** | Two one-city search-only calls returned 10/10 food/drink anchors |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

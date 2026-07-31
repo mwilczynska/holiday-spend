@@ -1,0 +1,58 @@
+{
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {
+    "queriesAttempted": 5,
+    "directPageReads": 0
+  },
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status": "found",
+      "value": 150,
+      "currency": "DKK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Copenhagen \"Meal at an Inexpensive Restaurant\"",
+      "resultEvidence": "Cost of Living in Copenhagen. Jun 2026. Prices in Copenhagen — Meal at an Inexpensive Restaurant | 150.00 kr | 90.51-300.00"
+    },
+    "midrange_restaurant_meal_2p": {
+      "status": "found",
+      "value": 800,
+      "currency": "DKK",
+      "unit": "per_two_person_meal",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Copenhagen \"Meal for Two at a Mid-Range Restaurant\"",
+      "resultEvidence": "Cost of Living in Copenhagen — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | 800.00 kr | 600.00-1,500.00"
+    },
+    "mcmeal_combo_1p": {
+      "status": "found",
+      "value": 90,
+      "currency": "DKK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Copenhagen \"McDonald's\"",
+      "resultEvidence": "Cost of Living in Copenhagen — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | 90.00 kr | 85.00-120.00"
+    },
+    "cappuccino_1": {
+      "status": "found",
+      "value": 45.1,
+      "currency": "DKK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Copenhagen \"Cappuccino (Regular Size)\"",
+      "resultEvidence": "Cost of Living in Copenhagen — Cappuccino (Regular Size) | 45.10 kr | 30.00-60.00"
+    },
+    "domestic_draft_beer_1": {
+      "status": "found",
+      "value": 60,
+      "currency": "DKK",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Copenhagen \"Domestic Draft Beer\"",
+      "resultEvidence": "Cost of Living in Copenhagen. Jun 2026. Prices in Copenhagen — Domestic Draft Beer (0.5 Liter) | 60.00 kr | 40.00-75.00"
+    }
+  },
+  "outcome": "accepted",
+  "notes": "Five Numbeo-restricted searches returned the canonical Copenhagen URL with explicit city, row, value, and kr currency evidence. The central displayed values were preserved; ranges were not used. No direct page read, fallback source, other city, arithmetic, or FX was used."
+}

@@ -55,7 +55,10 @@ validation design. Experiment 014 retained Numbeo for food/drink extraction afte
 call returned all five rows and matched the retained observations; two lowercase city URLs were blocked.
 Experiment 015 then tested canonical Copenhagen and Prague URLs and received HTTP 503 and HTTP 429. Direct
 Numbeo retrieval is therefore rejected for target reliability; the next experiment must test search-result
-extraction or another free source, with blocked/rate-limited outcomes retained separately.
+extraction or another free source, with blocked/rate-limited outcomes retained separately. Experiment 016
+promoted the Numbeo-restricted search-snippet route after two separate one-city calls returned 10/10 facts;
+eight matched prior rows had median absolute difference 0.79% and p90 7.66%. Broader regional, sparse-city,
+date-drift, citation, and throttling validation is still required.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 
