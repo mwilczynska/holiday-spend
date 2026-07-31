@@ -251,15 +251,13 @@ Read `data/reference/v5/experiments/022-numbeo-identity-cascade/`.
 
 ## Next action
 
+Experiment 023 confirms that the retained activity ledger cannot support a model: there are 29 paid-attraction
+cities, 3 half-day cities, 2 full-day cities, and only one complete city. Keep `activities_free = 0`
+definitional and do not fit timed-activity ratios from this evidence.
+
 Build a separately curated, definition-matched accommodation ground-truth panel around the retained
 class-average candidates; require the 30-city/10-holdout gate before fitting ratios or imputations. Retain
-dedicated-query provenance, explicit native-currency checks, and fail-closed missingness. Expand the official
-attraction-ticket pattern only after this blocker is scored; do not tune the locked 018 holdout or average away
-failures.
-Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a correction from
-Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the target web
-path. Keep the one-city shape for safe stable templates or curated benchmarks for unresolved lower classes
-and hostels; search-index date injection is rejected. Continue definition-matched panels for activities and
-other omitted anchors. Do not use the shipping CSV as ground truth and do not infer dorm/private separation
-from the blended hostel channel. The derivation contract remains out of the shipping path until source
-feasibility and accuracy gates pass.
+dedicated-query provenance, explicit native-currency checks, and fail-closed missingness. Direct booking-engine
+URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked 018 holdout,
+use the shipping CSV as ground truth, or infer dorm/private separation from the blended hostel channel. The
+derivation contract remains out of the shipping path until source feasibility and accuracy gates pass.

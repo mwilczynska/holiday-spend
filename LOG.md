@@ -959,3 +959,15 @@ nearest-city substitution was accepted.
 provenance and fail-closed sparse missingness. It remains source-feasibility evidence, not independent price
 accuracy or complete 19-field validation. Artifacts are under
 `data/reference/v5/experiments/022-numbeo-identity-cascade/`.
+
+## Experiment 023 — activity ground-truth audit (31 July 2026)
+
+The deterministic audit `scripts/analyze-v5-activity-ground-truth.mjs` counted only accepted, direct,
+definition-compatible rows in `data/reference/observations/*.jsonl`. It found 29 paid-attraction cities, 3
+half-day group-activity cities, and 2 full-day premium-activity cities (34 rows across 31 cities). Only
+Vancouver contains all three activity anchors. The accepted-direct ledger therefore cannot supply the frozen
+30 matched-city and 10 locked-holdout gate for any material activity relationship.
+
+**Verdict:** reject activity model fitting. Do not fit a ratio or impute timed activities from this ledger;
+`activities_free = 0` remains definitional. Experiment 020 remains the separate target-model retrieval
+feasibility result and is not ground truth. Read `data/reference/v5/experiments/023-activity-ground-truth-audit/`.

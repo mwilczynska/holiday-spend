@@ -99,6 +99,10 @@ third queries, retries, fallback sources, arithmetic, FX, or cross-city evidence
 food/drink cities with a fixed cap and fail-closed sparse missingness; it is not complete validation.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
+Experiment 023 audited the accepted-direct activity ledger before any fitting. It contains 29 paid-attraction
+cities, 3 half-day group-activity cities, 2 full-day premium-activity cities, and only one complete city, so
+the 30-city/10-holdout gate is impossible. Reject activity model fitting; retain `activities_free = 0` as
+definitional and treat Experiment 020 as retrieval feasibility only.
 
 ## Restart rule
 

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "city-cost-v5-activity-ground-truth-audit-v1",
+  "source": "data/reference/observations/*.jsonl",
+  "acceptedDirectActivityRows": 34,
+  "activityCities": 31,
+  "byMeasure": {
+    "paid_attraction_adult_1": {"rows":29,"cities":29},
+    "half_day_group_activity_adult_1": {"rows":3,"cities":3},
+    "full_day_premium_activity_adult_1": {"rows":2,"cities":2}
+  },
+  "completeCities": ["Vancouver"],
+  "modelGate": {
+    "matchedCitiesRequired":30,
+    "lockedHoldoutRequired":10,
+    "allMeasuresHaveAtLeast30Cities":false,
+    "completeCityCountMeets30":false
+  },
+  "verdict":"reject_activity_model_fit",
+  "note":"This audit counts accepted direct observations only. activities_free remains definitional zero; search feasibility is documented separately in Experiment 020."
+}

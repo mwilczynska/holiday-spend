@@ -227,6 +227,12 @@ reads/third queries/retries/fallbacks/arithmetic/cross-city evidence. Promote th
 food/drink cities with a fixed search cap, but retain sparse/partial missingness. See
 `data/reference/v5/experiments/022-numbeo-identity-cascade/`.
 
+**Experiment 023 — activity ground-truth audit — complete; reject activity model fit.** The accepted-direct
+observation ledger contains 29 paid-attraction cities, 3 half-day group-activity cities, 2 full-day premium
+activity cities, and only one city with all three. This cannot satisfy the frozen 30-city/10-holdout gate, so
+no activity ratio or imputation is fitted; `activities_free = 0` remains definitional. See
+`data/reference/v5/experiments/023-activity-ground-truth-audit/`.
+
 ### Next experiments, in order
 
 1. Build a separately curated, definition-matched accommodation ground-truth panel around the retained
@@ -235,20 +241,20 @@ food/drink cities with a fixed search cap, but retain sparse/partial missingness
    and fail-closed missingness. Do not tune the locked 018 holdout or average away failures.
 2. Continue the official attraction-ticket panel and timed-activity source tests only after recording the
    accommodation ground-truth design; do not silently substitute another city.
-2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
+3. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
    rejected in the target web path after Experiment 013.
-3. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
+4. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
    one-call target-model path, or pivot to a separately curated benchmark. Search-index date injection is
    rejected; retain the same strict class, currency, one-night, and occupancy rules.
-4. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
+5. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
    drinks, and activities, while resolving accommodation measurement and dorm/private identifiability
    with independent ground truth. Do not infer two hostel tiers from one blended channel.
-5. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
-6. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
+6. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
+7. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
    manifest.
-7. Run the full one-call blind evaluation, freeze the winning methodology, and only then plan integration,
+8. Run the full one-call blind evaluation, freeze the winning methodology, and only then plan integration,
    121-city migration, and rollback.
 
 ---
@@ -304,7 +310,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/020-activities-search-feasibility/`
 - `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`
 - `data/reference/v5/experiments/022-numbeo-identity-cascade/`
-- `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`
+- `data/reference/v5/experiments/023-activity-ground-truth-audit/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

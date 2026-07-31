@@ -37,6 +37,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/020-activities-search-feasibility/` | **COMPLETE — promote attraction pattern only** | Six one-city calls: strict activity coverage 6/18; Hanoi only complete |
 | `experiments/021-accommodation-class-search-feasibility/` | **COMPLETE — reject complete route** | Six one-city calls: 7/36 class cells, no complete city; retain source candidates |
 | `experiments/022-numbeo-identity-cascade/` | **COMPLETE — promote bounded route** | Six one-city calls: 21/30 cells, four complete; Don Det 0/5 |
+| `experiments/023-activity-ground-truth-audit/` | **COMPLETE — reject activity model fit** | Accepted-direct ledger has 29 paid-attraction cities, 3 half-day, 2 full-day, and one complete city |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.
