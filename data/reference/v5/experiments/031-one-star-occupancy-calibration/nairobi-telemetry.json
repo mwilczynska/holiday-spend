@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-occupancy-telemetry-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:momondo.com Nairobi Kenya 1-star hotel average nightly price",
+    "site:skyscanner.com Nairobi Kenya 1-star hotel average nightly price 2 adults 1 room",
+    "site:expedia.com Nairobi Kenya 1-star hotel average nightly price 2 adults 1 room"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 2,
+  "explicitTwoAdultMeasures": 0,
+  "notes": "Single-city search-only calibration run using exactly three independent source-restricted queries. Momondo yielded one source-default-room 1-star average; Skyscanner and Expedia yielded no qualifying exact city-wide 1-star average with explicit two-adult/one-room occupancy. No occupancy mapping or fit was attempted. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

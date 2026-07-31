@@ -133,6 +133,10 @@ candidate per city and KAYAK supplied none, but all three Momondo rows used unkn
 occupancy. Retain the source rows for calibration only; they cannot be mapped to the two-adult `accom_1_star`
 estimand. The next experiment is an explicit occupancy-calibration panel with the 30-city/10-holdout gate.
 
+Experiment 031 tested that calibration panel shape with Momondo, Skyscanner, and Expedia in three one-city
+calls. It produced two source-default Momondo rows and zero explicit two-adult 1-star rows. Reject the route
+without fitting; pivot to a different direct source or an independently curated two-adult property panel.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

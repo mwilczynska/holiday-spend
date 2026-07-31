@@ -1064,3 +1064,16 @@ arithmetic, FX, or cross-city evidence were used.
 **Verdict:** retain Momondo rows as calibration candidates, reject them as product observations, and design a
 definition-matched occupancy panel before any 1-star mapping or fit. Read
 `data/reference/v5/experiments/030-one-star-source-cascade/`.
+
+## Experiment 031 — one-star occupancy calibration (31 July 2026)
+
+Three independent one-city GPT-5.6 Luna-class calls tested Momondo, Skyscanner, and Expedia for Bangkok, San
+Francisco, and Nairobi. All nine bounded searches were protocol-compliant. Only two cells passed strict source
+validation, both Momondo source-default-room rows (Nairobi USD243 and San Francisco USD54). No Skyscanner or
+Expedia result supplied an exact city-wide 1-star row with explicit two-adult/one-room occupancy, so explicit
+calibration coverage was **0/9** and no matched city existed.
+
+**Verdict:** reject this occupancy-calibration route; retain the two Momondo rows as unresolved evidence only.
+Do not fit a correction or map a value to `accom_1_star`. Test a different direct one-star source or an
+independently curated two-adult property panel. Read
+`data/reference/v5/experiments/031-one-star-occupancy-calibration/`.

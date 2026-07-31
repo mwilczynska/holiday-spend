@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-occupancy-calibration-v1",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "momondo_one_star_source_default": {
+      "status": "found",
+      "value": 54,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Search result crawled 3 days ago; Momondo states hotel prices refresh daily (July 2026)",
+      "sourceUrl": "https://www.momondo.com/hotels/san-francisco",
+      "sourceTitle": "Hotels in San Francisco from $34 - Find Cheap Hotels with momondo",
+      "evidenceText": "In San Francisco, the least expensive option is a 1 star hotel, with average nightly prices of $54.",
+      "searchQuery": "site:momondo.com San Francisco United States 1-star hotel average nightly price",
+      "reason": "The Momondo result identifies San Francisco and 1-star hotels and reports an average nightly price in USD. It does not state two adults and one room, so this remains source_default_room and is not an explicit occupancy calibration observation."
+    },
+    "skyscanner_one_star_explicit_two_adults": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:skyscanner.com San Francisco 1-star hotel 2 adults 1 room average nightly price",
+      "reason": "The Skyscanner-restricted search returned no qualifying exact-city 1-star result that stated a numeric non-from nightly room price with two adults and one room. No source or occupancy evidence was retained."
+    },
+    "expedia_one_star_explicit_two_adults": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com San Francisco 1-star hotel 2 adults 1 room average nightly price",
+      "reason": "The Expedia-restricted search returned a San Francisco 1-star filtered page with a lowest/from price ($26) but no average and no explicit two-adult/one-room statement. Other Expedia citywide trend snippets stated two adults but did not identify the 1-star class. Both were rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

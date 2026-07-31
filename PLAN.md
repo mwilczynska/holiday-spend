@@ -287,6 +287,11 @@ Priority update: Experiment 030 is complete. The next run is a definition-matche
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.
 
+Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
+explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
+next run must test a different direct 1-star source or a separately curated two-adult property panel; do not
+fit a correction from this tranche.
+
 1. Run a separately declared 1-star source test while continuing the Expedia 2–4-star panel. Enforce one
    search batch per city, preserve duplicate-call deviations, and require 30 complete cities plus 10 locked
    holdouts before any accommodation model is promoted. Retain the one-bed dorm boundary and all currency/

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-occupancy-calibration-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "momondo_one_star_source_default": {
+      "status": "found",
+      "value": 243,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Current Momondo city-average nightly price; search result crawled 4 days before 2026-07-31; Momondo says prices refresh daily",
+      "sourceUrl": "https://www.momondo.com/hotels/nairobi",
+      "sourceTitle": "Hotels in Nairobi from $8 - Find Cheap Hotels with momondo",
+      "evidenceText": "In Nairobi, the least expensive option is a 2 star hotel, with average nightly prices of $26. Staying at a 3 star hotel will cost you about $61 per night, while the highest rates are found in 1 star hotels, averaging $243 per night.",
+      "searchQuery": "site:momondo.com Nairobi Kenya 1-star hotel average nightly price",
+      "reason": "Exact Nairobi city-wide 1-star class average with a numeric nightly room price and USD currency. The snippet does not state two adults or one room, so the source-default-room basis is preserved and is not an explicit occupancy calibration observation."
+    },
+    "skyscanner_one_star_explicit_two_adults": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:skyscanner.com Nairobi Kenya 1-star hotel average nightly price 2 adults 1 room",
+      "reason": "The Skyscanner-restricted search returned a Golden Tulip Nairobi property page and generic Nairobi hotel pages, but no exact city-wide 1-star class average with an explicit two-adult, one-room basis. Property and non-1-star results were rejected."
+    },
+    "expedia_one_star_explicit_two_adults": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Nairobi Kenya 1-star hotel average nightly price 2 adults 1 room",
+      "reason": "The Expedia-restricted search returned a generic Nairobi trend with a two-adult basis and star filters, but no numeric city-wide 1-star trend or average. Generic, property, and other-star results were rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

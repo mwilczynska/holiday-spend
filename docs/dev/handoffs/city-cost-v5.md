@@ -287,6 +287,11 @@ returned Bangkok, San Francisco, and Nairobi rows (3/6 candidate cells); KAYAK r
 row had unknown or source-default-room occupancy, so zero rows are valid two-adult observations. Keep these
 rows only for an explicit occupancy-calibration panel; do not map them to `accom_1_star`.
 
+Experiment 031 tested the explicit occupancy panel in the same one-city shape: three cities, three bounded
+searches each (Momondo, Skyscanner, Expedia), nine searches total. It produced two Momondo source-default
+rows and zero explicit two-adult rows. Reject the route; retain candidates only as unresolved evidence and test
+a different direct 1-star source or a separately curated two-adult property panel.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

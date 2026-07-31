@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-occupancy-calibration-v1",
+  "status": "reject_explicit_occupancy_route",
+  "citiesPlanned": ["Bangkok", "San Francisco", "Nairobi"],
+  "citiesTested": 3,
+  "acceptedCells": 2,
+  "totalCells": 9,
+  "explicitTwoAdultRows": 0,
+  "sourceDefaultOrUnknownRows": 2,
+  "matchedMomondoExplicitCities": 0,
+  "protocolCompliantCities": 3,
+  "measures": ["momondo_one_star_source_default", "skyscanner_one_star_explicit_two_adults", "expedia_one_star_explicit_two_adults"],
+  "note": "Momondo returned source-default candidates in Nairobi and San Francisco; Bangkok and both explicit-occupancy routes failed. No candidate is an observed two-adult product value. Do not fit a correction from this tranche."
+}

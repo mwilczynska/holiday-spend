@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-occupancy-calibration-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "momondo_one_star_source_default": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:momondo.com Bangkok Thailand 1-star hotel average nightly price",
+      "reason": "The Momondo-restricted result identified the Bangkok hotel page but did not expose an exact city-wide 1-star average in the returned snippet. Other returned snippets were generic hotel, hostel, or property results and were rejected."
+    },
+    "skyscanner_one_star_explicit_two_adults": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:skyscanner.com Bangkok Thailand 1-star hotel average nightly price 2 adults 1 room",
+      "reason": "The Skyscanner result identified Bangkok and explicitly showed 2 adults/1 room, but the snippet supplied only a 3-star average and all-hotel prices, not a 1-star class price. It was rejected."
+    },
+    "expedia_one_star_explicit_two_adults": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:expedia.com Bangkok Thailand 1-star hotel average nightly price 2 adults 1 room",
+      "reason": "The Expedia result identified Bangkok and stated a two-adult one-room basis, but its city-wide page listed no 1-star class trend or numeric 1-star average. A returned 1-star Ratchadaphisek page was district-only and rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

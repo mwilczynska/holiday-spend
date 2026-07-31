@@ -29,6 +29,7 @@
 | `llm_prompt_city_cost_v5_experiment_028_expedia_class_trends.md` | **EXPERIMENT — complete; 2–4-star route promoted for validation** | one city per delegated GPT-5.6 Luna-class invocation | Tests Expedia two-adult class-specific trend snippets; rejects from/lowest/event prices |
 | `llm_prompt_city_cost_v5_experiment_030_one_star_source.md` | **EXPERIMENT — in progress** | one city per delegated GPT-5.6 Luna-class invocation | Tests Momondo/KAYAK 1-star candidates while preserving occupancy ambiguity |
 | `llm_prompt_city_cost_v5_experiment_030_one_star_source.md` | **EXPERIMENT — complete; calibration only** | one city per delegated GPT-5.6 Luna-class invocation | Momondo candidates retained; occupancy unresolved, no product mapping |
+| `llm_prompt_city_cost_v5_experiment_031_one_star_occupancy_calibration.md` | **EXPERIMENT — complete; route rejected** | one city per delegated GPT-5.6 Luna-class invocation | Tests Momondo candidates against explicit two-adult Skyscanner/Expedia rows; no calibration matches |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
