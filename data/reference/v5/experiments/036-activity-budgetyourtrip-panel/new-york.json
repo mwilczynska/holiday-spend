@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 180,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip New York City travel-cost page; travel cost data last updated May 18, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/new-york-city",
+      "sourceTitle": "New York City Travel Cost - Average Price of a Vacation to New York City: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in New York City typically cost an average of $180 per person, per day based on the spending of previous travelers. This includes fees paid for admission tickets to museums and attractions, day tours, and other sightseeing expenses.",
+      "searchQuery": "site:budgetyourtrip.com New York City United States travel cost sightseeing activities entertainment entrance tickets per person per day",
+      "reason": "Accepted as an exact New York City activity/entertainment city statistic with explicit per-person-per-day basis. No multiplication or mapping to the two-traveller product value was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 44,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip New York City budget/mid-range/luxury table; result crawled 3 weeks before 2026-07-31",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/new-york-city/trip-cost-5128581",
+      "sourceTitle": "How much does a trip to New York City Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $44, Mid-Range $180, Luxury $846.",
+      "searchQuery": "site:budgetyourtrip.com New York City United States budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the budget entertainment tier and states that the category table is per person per day. No scaling or tier modelling was performed."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 180,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip New York City budget/mid-range/luxury table; result crawled 3 weeks before 2026-07-31",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/new-york-city/trip-cost-5128581",
+      "sourceTitle": "How much does a trip to New York City Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $44, Mid-Range $180, Luxury $846.",
+      "searchQuery": "site:budgetyourtrip.com New York City United States budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the mid-range entertainment tier and states that the category table is per person per day. No scaling or cross-tier arithmetic was performed."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 846,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip New York City budget/mid-range/luxury table; result crawled 3 weeks before 2026-07-31",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/new-york-city/trip-cost-5128581",
+      "sourceTitle": "How much does a trip to New York City Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $44, Mid-Range $180, Luxury $846.",
+      "searchQuery": "site:budgetyourtrip.com New York City United States budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the luxury entertainment tier and states that the category table is per person per day. No scaling or product mapping was performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-panel-v1",
+  "status": "promote_source_contract_retain_scaling_validation_gate",
+  "citiesTested": 10,
+  "developmentCities": 7,
+  "holdoutCities": ["Helsinki", "New York City", "Sydney"],
+  "acceptedCells": 40,
+  "totalCells": 40,
+  "completeCities": 10,
+  "onePersonRows": 40,
+  "twoPersonRows": 0,
+  "note": "Every city supplied an exact-city activity average and budget/mid/high entertainment rows on one-person/day basis. The average equals the mid-range row in every city, so this is a source relationship, not an independently fitted model. Product mapping still requires deterministic scaling and independent held-out accuracy."
+}

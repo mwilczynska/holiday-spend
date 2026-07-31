@@ -1125,3 +1125,14 @@ and budget, mid-range, and luxury entertainment rows for every city. Every basis
 **Verdict:** promote the source contract to a broader validation panel. Keep `activities_free = 0` definitional;
 do not yet scale to two people or map entertainment tiers to product values. Read
 `data/reference/v5/experiments/035-activity-budgetyourtrip/`.
+
+## Experiment 036 — activity Budget Your Trip panel (31 July 2026)
+
+Ten independent one-city Luna calls covered seven development cities and three locked holdouts. Each issued
+exactly two BudgetYourTrip-restricted searches; all 20 searches/operations were compliant. Strict coverage was
+**40/40**, with every city complete and all rows explicitly one-person/day. No reads, retries, fallback, scaling,
+arithmetic, FX, averaging, or cross-city evidence were used.
+
+**Verdict:** promote the source contract to a methodology candidate. Keep `activities_free = 0` definitional and
+apply two-person scaling only in deterministic code; independent tier semantics, date drift, and held-out accuracy
+remain acceptance gates. Read `data/reference/v5/experiments/036-activity-budgetyourtrip-panel/`.

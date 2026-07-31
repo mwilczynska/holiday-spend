@@ -153,6 +153,10 @@ Experiment 035 tested BudgetYourTrip activity pages in three one-city calls and 
 Every source value is explicitly one person/day. Promote the contract to a broader panel, but validate two-person
 scaling, tier semantics, and independent accuracy before product mapping.
 
+Experiment 036 broadened the activity contract to ten cities with locked holdouts and accepted 40/40 rows. All
+values were one-person/day; promote the source contract but retain deterministic scaling, tier semantics, and
+independent accuracy gates.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

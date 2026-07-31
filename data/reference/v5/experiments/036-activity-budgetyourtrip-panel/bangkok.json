@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 17,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip travel-cost data last updated July 6, 2026; reported-spend average",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+      "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Bangkok typically cost an average of $17 (฿572) per person, per day based on the spending of previous travelers.",
+      "searchQuery": "site:budgetyourtrip.com Bangkok Thailand travel cost sightseeing activities entertainment entrance ticket per person per day",
+      "reason": "The exact-city page explicitly identifies the activity scope and a per-person-per-day average in USD. No scaling to two travellers was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 7,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled last month (source period otherwise not stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok/trip-cost-1609350",
+      "sourceTitle": "How much does a trip to Bangkok Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $7, Mid-Range $18, Luxury $50.",
+      "searchQuery": "site:budgetyourtrip.com Bangkok Thailand budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Budget, with an explicit per-person daily basis."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 18,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled last month (source period otherwise not stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok/trip-cost-1609350",
+      "sourceTitle": "How much does a trip to Bangkok Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $7, Mid-Range $18, Luxury $50.",
+      "searchQuery": "site:budgetyourtrip.com Bangkok Thailand budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Mid-Range, with an explicit per-person daily basis."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 50,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled last month (source period otherwise not stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok/trip-cost-1609350",
+      "sourceTitle": "How much does a trip to Bangkok Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $7, Mid-Range $18, Luxury $50.",
+      "searchQuery": "site:budgetyourtrip.com Bangkok Thailand budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Luxury; it is retained as the high-end candidate without relabelling arithmetic or modelling."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

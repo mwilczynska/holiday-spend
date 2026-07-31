@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-telemetry-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com Cape Town South Africa travel cost sightseeing activities entertainment entrance tickets per person per day",
+    "site:budgetyourtrip.com Cape Town South Africa budget mid-range luxury entertainment activities cost per day"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 4,
+  "notFoundMeasures": 0,
+  "notes": "Single-city development-panel search-only run using exactly two BudgetYourTrip-restricted queries. The exact Cape Town city page supplied the activity/sightseeing/entrance-ticket average ($26 per person per day); the exact-city trip-cost table supplied explicitly labelled entertainment tiers ($9/$26/$79 per person per day). No values were scaled, converted, averaged, or mapped to two-traveller product fields. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

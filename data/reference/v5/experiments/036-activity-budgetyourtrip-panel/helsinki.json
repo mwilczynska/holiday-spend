@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "Helsinki",
+  "country": "Finland",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 31,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip travel-cost data last updated April 27, 2026; reported-spend average",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/finland/helsinki",
+      "sourceTitle": "Helsinki Travel Cost - Average Price of a Vacation to Helsinki | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Helsinki typically cost an average of $31 (€27) per person, per day based on the spending of previous travelers.",
+      "searchQuery": "site:budgetyourtrip.com Helsinki Finland travel cost sightseeing activities entertainment entrance ticket per person per day",
+      "reason": "The exact-city page explicitly identifies the activity scope and a per-person-per-day average in USD. No scaling to two travellers was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 13,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled 5 months before retrieval (source period otherwise not stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/finland/helsinki/trip-cost-658225",
+      "sourceTitle": "How much does a trip to Helsinki Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $13, Mid-Range $32, Luxury $66.",
+      "searchQuery": "site:budgetyourtrip.com Helsinki Finland budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Budget, with an explicit per-person daily basis."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 32,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled 5 months before retrieval (source period otherwise not stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/finland/helsinki/trip-cost-658225",
+      "sourceTitle": "How much does a trip to Helsinki Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $13, Mid-Range $32, Luxury $66.",
+      "searchQuery": "site:budgetyourtrip.com Helsinki Finland budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Mid-Range, with an explicit per-person daily basis."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 66,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled 5 months before retrieval (source period otherwise not stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/finland/helsinki/trip-cost-658225",
+      "sourceTitle": "How much does a trip to Helsinki Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $13, Mid-Range $32, Luxury $66.",
+      "searchQuery": "site:budgetyourtrip.com Helsinki Finland budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Luxury; it is retained as the high-end candidate without relabelling arithmetic or modelling."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

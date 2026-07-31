@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 46,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip reported travel-cost data; page states data last updated May 5, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi",
+      "sourceTitle": "Nairobi Travel Cost - Average Price of a Vacation to Nairobi | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Nairobi typically cost an average of $46 (KES5,998) per person, per day based on the spending of previous travelers.",
+      "searchQuery": "site:budgetyourtrip.com Nairobi Kenya travel cost sightseeing activities entertainment entrance tickets per person per day",
+      "reason": "The exact Nairobi travel-cost page explicitly identifies sightseeing, entertainment, and entrance tickets and gives a numeric USD amount per person per day. No scaling to two travellers was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 17,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Nairobi independent-traveller category table; travel-cost data last updated May 5, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+      "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $17, Mid-Range $46, Luxury $129.",
+      "searchQuery": "site:budgetyourtrip.com Nairobi Kenya budget mid range luxury entertainment activities cost per day",
+      "reason": "The exact Nairobi table labels the Entertainment category and budget tier and reports $17 per person per day."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 46,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Nairobi independent-traveller category table; travel-cost data last updated May 5, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+      "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $17, Mid-Range $46, Luxury $129.",
+      "searchQuery": "site:budgetyourtrip.com Nairobi Kenya budget mid range luxury entertainment activities cost per day",
+      "reason": "The exact Nairobi table labels the Entertainment category and mid-range tier and reports $46 per person per day."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 129,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Nairobi independent-traveller category table; travel-cost data last updated May 5, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/trip-cost-184745",
+      "sourceTitle": "How much does a trip to Nairobi Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $17, Mid-Range $46, Luxury $129.",
+      "searchQuery": "site:budgetyourtrip.com Nairobi Kenya budget mid range luxury entertainment activities cost per day",
+      "reason": "The exact Nairobi table labels the Entertainment category and luxury tier and reports $129 per person per day."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

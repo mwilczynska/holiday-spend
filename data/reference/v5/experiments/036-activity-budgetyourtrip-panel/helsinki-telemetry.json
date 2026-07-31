@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-panel-telemetry-v1",
+  "city": "Helsinki",
+  "country": "Finland",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com Helsinki Finland travel cost sightseeing activities entertainment entrance ticket per person per day",
+    "site:budgetyourtrip.com Helsinki Finland budget mid-range luxury entertainment activities per person per day"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 4,
+  "notFoundMeasures": 0,
+  "protocolCompliant": true,
+  "notes": "Single-city locked-holdout search-only activity-panel run using exactly two Budget Your Trip-restricted searches. The city travel-cost page supplied a $31/person/day sightseeing/entertainment/entrance-ticket average with data last updated April 27, 2026. The exact-city trip-cost page supplied explicit per-person daily Entertainment tiers of $13 budget, $32 mid-range, and $66 luxury. No scaling to two travellers, arithmetic, FX, source averaging, direct reads, retries, fallback sources, or cross-city evidence were used. These are source-feasibility observations, not product mappings; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

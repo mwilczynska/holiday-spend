@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 33,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip reported travel-cost data; page states data last updated May 20, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/australia/sydney",
+      "sourceTitle": "Sydney Travel Cost - Average Price of a Vacation to Sydney | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Sydney typically cost an average of $33 (AU$48) per person, per day based on the spending of previous travelers.",
+      "searchQuery": "site:budgetyourtrip.com Sydney Australia travel cost sightseeing activities entertainment entrance tickets per person per day",
+      "reason": "The exact Sydney travel-cost page explicitly identifies sightseeing, entertainment, and entrance tickets and gives a numeric USD amount per person per day. No scaling to two travellers was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 13,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Sydney independent-traveller category table; result crawled last month (July 2026)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/australia/sydney/trip-cost-2147714",
+      "sourceTitle": "How much does a trip to Sydney Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $13, Mid-Range $35, Luxury $97.",
+      "searchQuery": "site:budgetyourtrip.com Sydney Australia budget mid range luxury entertainment activities cost per day",
+      "reason": "The exact Sydney table labels the Entertainment category and budget tier and reports $13 per person per day."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 35,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Sydney independent-traveller category table; result crawled last month (July 2026)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/australia/sydney/trip-cost-2147714",
+      "sourceTitle": "How much does a trip to Sydney Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $13, Mid-Range $35, Luxury $97.",
+      "searchQuery": "site:budgetyourtrip.com Sydney Australia budget mid range luxury entertainment activities cost per day",
+      "reason": "The exact Sydney table labels the Entertainment category and mid-range tier and reports $35 per person per day."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 97,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Sydney independent-traveller category table; result crawled last month (July 2026)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/australia/sydney/trip-cost-2147714",
+      "sourceTitle": "How much does a trip to Sydney Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $13, Mid-Range $35, Luxury $97.",
+      "searchQuery": "site:budgetyourtrip.com Sydney Australia budget mid range luxury entertainment activities cost per day",
+      "reason": "The exact Sydney table labels the Entertainment category and luxury tier and reports $97 per person per day."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

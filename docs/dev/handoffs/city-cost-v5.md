@@ -310,6 +310,10 @@ Experiment 035 is the strongest new route: BudgetYourTrip returned exact-city ac
 mid-range, and luxury entertainment values for Lisbon, Hanoi, and Copenhagen (12/12), all explicitly one
 person/day. Broaden the panel next; no two-person scaling or product mapping has been accepted.
 
+Experiment 036 passed a 10-city activity panel (40/40, 7 development/3 holdout), all one-person/day. The source
+contract is a methodology candidate; next validate deterministic two-person scaling and tier semantics against
+independent ground truth before mapping.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

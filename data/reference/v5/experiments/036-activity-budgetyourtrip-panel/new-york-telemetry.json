@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com New York City United States travel cost sightseeing activities entertainment entrance tickets per person per day",
+    "site:budgetyourtrip.com New York City United States budget mid-range luxury entertainment activities cost per day"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 4,
+  "notFoundMeasures": 0,
+  "notes": "Single-city locked-holdout search-only run using exactly two BudgetYourTrip-restricted queries. The exact New York City page supplied the activity/sightseeing/entrance-ticket average ($180 per person per day); the exact-city trip-cost table supplied explicitly labelled entertainment tiers ($44/$180/$846 per person per day). No values were scaled, converted, averaged, or mapped to two-traveller product fields. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

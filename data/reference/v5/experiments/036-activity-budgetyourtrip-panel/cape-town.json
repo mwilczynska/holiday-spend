@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 26,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip Cape Town travel-cost page; travel cost data last updated May 21, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town",
+      "sourceTitle": "Cape Town Travel Cost - Average Price of a Vacation to Cape Town: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Cape Town typically cost an average of $26 (R427) per person, per day based on the spending of previous travelers. This includes fees paid for admission tickets to museums and attractions, day tours, and other sightseeing expenses.",
+      "searchQuery": "site:budgetyourtrip.com Cape Town South Africa travel cost sightseeing activities entertainment entrance tickets per person per day",
+      "reason": "Accepted as an exact Cape Town activity/entertainment city statistic with explicit per-person-per-day basis. No multiplication or mapping to the two-traveller product value was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 9,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Cape Town budget/mid-range/luxury table; result crawled last month",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $9, Mid-Range $26, Luxury $79.",
+      "searchQuery": "site:budgetyourtrip.com Cape Town South Africa budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the budget entertainment tier and states that the category table is per person per day. No scaling or tier modelling was performed."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 26,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Cape Town budget/mid-range/luxury table; result crawled last month",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $9, Mid-Range $26, Luxury $79.",
+      "searchQuery": "site:budgetyourtrip.com Cape Town South Africa budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the mid-range entertainment tier and states that the category table is per person per day. No scaling or cross-tier arithmetic was performed."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 79,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Cape Town budget/mid-range/luxury table; result crawled last month",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $9, Mid-Range $26, Luxury $79.",
+      "searchQuery": "site:budgetyourtrip.com Cape Town South Africa budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the luxury entertainment tier and states that the category table is per person per day. No scaling or product mapping was performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

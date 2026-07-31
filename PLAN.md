@@ -295,6 +295,10 @@ Experiment 035 found a strong activity source shape: BudgetYourTrip returned 12/
 activity and budget/mid/luxury entertainment rows across Lisbon, Hanoi, and Copenhagen. Broaden this panel, then
 validate deterministic two-person scaling and tier semantics against independent ground truth; do not map yet.
 
+Experiment 036 passed the activity source panel: 40/40 rows across 10 cities (7 development, 3 holdout), all
+one-person/day and every city complete. Promote the extraction contract, then run independent ground-truth
+scaling/tier validation before mapping activity product values.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.

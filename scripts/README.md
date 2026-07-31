@@ -51,6 +51,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-one-star-aggregators.mjs` | `analyze-v5-one-star-aggregators.mjs` | Experiment 033: audits Trip.com/HotelsCombined/Budget Your Trip city-level 1-star candidates |
 | `node scripts/analyze-v5-one-star-aggregator-panel.mjs` | `analyze-v5-one-star-aggregator-panel.mjs` | Experiment 034: audits 10-city aggregator coverage and source agreement with city holdouts |
 | `node scripts/analyze-v5-activity-budgetyourtrip.mjs` | `analyze-v5-activity-budgetyourtrip.mjs` | Experiment 035: audits Budget Your Trip per-person activity/entertainment rows without scaling or fitting |
+| `node scripts/analyze-v5-activity-budgetyourtrip-panel.mjs` | `analyze-v5-activity-budgetyourtrip-panel.mjs` | Experiment 036: audits 10-city activity coverage with locked holdouts |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.
