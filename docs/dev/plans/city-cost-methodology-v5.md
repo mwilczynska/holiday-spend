@@ -165,6 +165,12 @@ Experiment 038 expanded the guarded BudgetYourTrip one-star fallback to 20 new o
 rows, zero explicit two-adult occupancy, two tiny samples, one zero-denominator rejection, and one blocked search.
 Retain only as quality-guarded imputation/fallback; no product mapping or correction fit is accepted.
 
+Experiment 039 tested the hostel dorm/private boundary in six independent one-city calls. Dorm-bed input
+coverage was 6/6, while private-room coverage was 0/6 because no source explicitly established two-adult or
+two-guest occupancy. Retain the one-bed dorm input boundary for deterministic scaling; reject private-room
+mapping and correction fitting. The next package must test explicitly two-guest private-room wording or a
+definition-matched model against independent observations.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

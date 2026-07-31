@@ -1162,3 +1162,14 @@ conflicting values for some cities; alternatives were rejected rather than avera
 **Verdict:** retain BudgetYourTrip only as a guarded imputation/fallback candidate with zero-denominator,
 minimum-sample, page-family, provenance, and uncertainty checks. Do not treat it as observed `accom_1_star` or
 fit a correction. Read `data/reference/v5/experiments/038-one-star-budgetyourtrip-panel/`.
+
+## Experiment 039 — hostel dorm/private boundary (31 July 2026)
+
+Six independent one-city Luna calls issued exactly two targeted source searches each. All 12 search operations
+were compliant with no page reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence.
+The dorm input was found in **6/6** cities as an exact city-level central one-adult-bed statistic. The private
+hostel-room measure passed the strict two-adult/two-guest occupancy contract in **0/6** cities.
+
+**Verdict:** retain the dorm-bed observation boundary for deterministic two-traveller scaling, but reject the
+private-room route as a production anchor or fitted correction. Unknown-occupancy private-room numbers remain
+source evidence only. Read `data/reference/v5/experiments/039-hostel-private-boundary/`.

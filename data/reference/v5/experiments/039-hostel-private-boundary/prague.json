@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-hostel-private-boundary-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 12,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "occupancyBasis": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "statistic": "city_average",
+      "sourceUrl": "https://www.hostelz.com/hostels/Czech-Republic/Prague?filter%5Bcomfort%5D%5B%5D=privacyCurtains&filter%5BsuitableFor%5D%5B%5D=socializing&filter%5BsuitableFor%5D%5B%5D=youth_hostels&filter%5BtypeOfDormRoom%5D%5B%5D=femaleOnly",
+      "sourceTitle": "Hostels in Prague from $4 - Hostelz.com",
+      "evidenceText": "On average, hostels in Prague cost around $12 per dorm bed and $100 per private room per night. Hostelz.com Price Comparison.",
+      "referencePeriod": "Hostelz city comparison result crawled 3 weeks before retrieval (July 2026); city-level average, source period otherwise not stated",
+      "searchQuery": "site:hostelz.com Prague hostel dorm bed average nightly price Hostelz",
+      "reason": "The Hostelz result identifies Prague and gives an explicit city-level average for one dorm bed per night in USD. It is a one-adult bed observation; no two-traveller scaling was performed."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_private_room_per_night",
+      "occupancyBasis": "two_adults",
+      "class": "hostel_private_room",
+      "statistic": "city_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:budgetyourtrip.com Prague hostel dorm private room average nightly price",
+      "reason": "The two targeted searches returned city-level private-room prices ($100 from Hostelz and $26 from Budget Your Trip), but neither source explicitly establishes two-adult or two-guest occupancy. The private-room measure therefore fails closed; no value is substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -322,6 +322,11 @@ Experiment 038 broadened the guarded one-star BudgetYourTrip candidate to 20 new
 but zero had explicit two-adult occupancy; Manila/Mumbai were tiny samples, Taipei failed a zero denominator, and
 Paris was blocked without retry. Keep only as guarded imputation/fallback; do not present it as observed.
 
+Experiment 039 tested six one-city hostel boundary calls with two targeted searches each. All six returned a
+strict city-level one-adult dorm-bed input; none returned a private-room row with explicit two-adult/two-guest
+occupancy. Retain deterministic two-traveller dorm scaling, but reject unknown-basis private-room values as
+observations, corrections, or product mappings.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

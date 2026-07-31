@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-hostel-private-boundary-telemetry-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:hostelz.com Nairobi Kenya hostel dorm private room average price",
+    "site:budgetyourtrip.com Nairobi Kenya hostel dorm private room average price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 1,
+  "notes": "Single-city search-only hostel boundary run using exactly two targeted source queries. Hostelz exposed a $9 city-average dorm bed based on 10 Nairobi hostels. Budget Your Trip exposed a $21 private-room average based on 24 hostels/guesthouses, but occupancy was not explicitly two adults/two guests and was rejected fail-closed. No page reads, retries, fallback, arithmetic, FX, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

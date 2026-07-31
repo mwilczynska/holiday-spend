@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-hostel-private-boundary-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 14,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "occupancyBasis": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "statistic": "city_average",
+      "sourceUrl": "https://www.hostelz.com/hostels/Denmark/Copenhagen",
+      "sourceTitle": "Hostels in Copenhagen from $6 - Hostelz.com",
+      "evidenceText": "On average, hostels in Copenhagen cost around $14 per dorm bed and $129 per private room per night. Hostelz.com compares prices for 16 hostels in Copenhagen, Denmark.",
+      "referencePeriod": "Hostelz city comparison result crawled 3 weeks before retrieval (July 2026); city-level average, 16-hostel comparison",
+      "searchQuery": "site:hostelz.com Copenhagen hostel dorm bed average nightly price Hostelz",
+      "reason": "The Hostelz result identifies Copenhagen and gives an explicit city-level average for one dorm bed per night in USD. It is a one-adult bed observation; no two-traveller scaling was performed."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_private_room_per_night",
+      "occupancyBasis": "two_adults",
+      "class": "hostel_private_room",
+      "statistic": "city_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:budgetyourtrip.com Copenhagen hostel dorm private room average nightly price",
+      "reason": "The two targeted searches returned city-level private-room prices ($129 from Hostelz and $31 from Budget Your Trip), but neither source explicitly establishes two-adult or two-guest occupancy. The private-room measure therefore fails closed; no value is substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

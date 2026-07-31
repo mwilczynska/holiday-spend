@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-hostel-private-boundary-v1",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 33,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "occupancyBasis": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "statistic": "city_average",
+      "sourceUrl": "https://www.budgetyourtrip.com/hostels/united-states-of-america/san-francisco-5391959",
+      "sourceTitle": "San Francisco Average Hostel Prices | Budget Your Trip",
+      "evidenceText": "The average price for a dorm bed in a hostel in San Francisco (based on data from 15 hostels with dorms) is an affordable $33.",
+      "referencePeriod": "Budget Your Trip hostel-price analysis; result crawled last week before 2026-07-31; prices before taxes and fees",
+      "searchQuery": "site:budgetyourtrip.com San Francisco United States hostel private room average nightly price",
+      "reason": "The exact San Francisco Budget Your Trip page gives a numeric city-level average for a dorm bed, with a 15-hostel sample and a one-bed sleeping unit. No two-traveller scaling or currency conversion was performed. The same page's private-room figure was not used because two-adult occupancy is not explicit."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_private_room_per_night",
+      "occupancyBasis": null,
+      "class": "hostel_private_room",
+      "statistic": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:budgetyourtrip.com San Francisco United States hostel private room average nightly price",
+      "reason": "Budget Your Trip exposed an exact San Francisco private-room average of $36 based on 24 hostels and guesthouses, while an independent Hostelz result exposed $84 under a female-only filter; neither result explicitly establishes two-adult/two-guest occupancy and the filtered result is not a general city basket. The strict private-room contract therefore fails closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

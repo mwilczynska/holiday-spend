@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-hostel-private-boundary-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 9,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "occupancyBasis": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "statistic": "city_average",
+      "sourceUrl": "https://www.hostelz.com/hostels/Kenya/Nairobi?filter%5BtypeOfDormRoom%5D%5B%5D=mixed",
+      "sourceTitle": "Hostels Nairobi from $4 — Hostelz.com",
+      "evidenceText": "On average, hostels in Nairobi cost around $9 per dorm bed per night. Hostelz.com compares prices for 10 hostels in Nairobi, Kenya.",
+      "referencePeriod": "Hostelz Nairobi city comparison; result crawled 2 months before 2026-07-31; source period otherwise not stated",
+      "searchQuery": "site:hostelz.com Nairobi Kenya hostel dorm private room average price",
+      "reason": "Accepted as an exact Nairobi city-level central dorm-bed statistic in USD with one-adult bed basis and a stated 10-hostel comparison. This is a one-adult source input, not a two-traveller product value."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_private_room_per_night",
+      "occupancyBasis": "two_adults",
+      "class": "hostel_private_room",
+      "statistic": "city_average",
+      "sourceUrl": "https://www.budgetyourtrip.com/hostels/kenya/nairobi-184745",
+      "sourceTitle": "Nairobi Average Hostel Prices | Budget Your Trip",
+      "evidenceText": "The source reports an average private-room price of $21 based on 24 hostels and guesthouses, but does not explicitly establish two-adult or two-guest occupancy.",
+      "referencePeriod": "Budget Your Trip Nairobi hostel comparison; result crawled last month before 2026-07-31; source period otherwise not stated",
+      "searchQuery": "site:budgetyourtrip.com Nairobi Kenya hostel dorm private room average price",
+      "reason": "Rejected under the strict private-room contract because occupancy is ambiguous. A source-default or unknown-occupancy private-room price cannot be upgraded to two adults/two guests; no private product value is substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

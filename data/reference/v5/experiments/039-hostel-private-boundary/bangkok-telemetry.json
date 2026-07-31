@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-hostel-private-boundary-telemetry-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:hostelz.com Bangkok Thailand hostel dorm bed average nightly price",
+    "site:budgetyourtrip.com Bangkok Thailand hostel private room average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only hostel boundary run using exactly two targeted searches. The Hostelz city page exposed a $4 city-average dorm-bed statistic; Budget Your Trip exposed a $19 private-room average but neither source established two-adult occupancy, so private-room output is not_found. No page reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

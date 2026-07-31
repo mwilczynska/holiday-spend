@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-hostel-private-boundary-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "accom_shared_hostel_dorm": {
+      "status": "found",
+      "value": 4,
+      "currency": "USD",
+      "unit": "per_dorm_bed_per_night",
+      "occupancyBasis": "one_adult_bed",
+      "class": "shared_hostel_dorm",
+      "statistic": "city_average",
+      "sourceUrl": "https://www.hostelz.com/hostels/Thailand/Bangkok?filter%5BpropertyType%5D%5B%5D=Hotel",
+      "sourceTitle": "Hostels in Bangkok from $4 - Hotels | Hostelz.com",
+      "evidenceText": "On average, hostels in Bangkok cost around $4 per dorm bed and $30 per private room per night.",
+      "referencePeriod": "Hostelz price-statistics page; published 7 months ago and crawled 3 weeks before 2026-07-31; dates and tax treatment not stated",
+      "searchQuery": "site:hostelz.com Bangkok Thailand hostel dorm bed average nightly price",
+      "reason": "The exact Bangkok Hostelz page gives a numeric city-level average for a dorm bed, not a from/lowest quote. A dorm bed is a one-adult sleeping unit; no two-traveller scaling was performed. The page's private-room figure was not used because two-adult occupancy is not explicit."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_private_room_per_night",
+      "occupancyBasis": null,
+      "class": "hostel_private_room",
+      "statistic": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:budgetyourtrip.com Bangkok Thailand hostel private room average nightly price",
+      "reason": "Budget Your Trip exposed an exact Bangkok private-room average of $19 based on 366 hostels and guesthouses, but neither the result nor the independent Hostelz result explicitly establishes two-adult/two-guest occupancy. The strict private-room contract therefore fails closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

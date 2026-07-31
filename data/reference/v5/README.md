@@ -58,6 +58,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/036-activity-budgetyourtrip-panel/` | **COMPLETE — promote source contract; scaling/accuracy gates remain** | Ten one-city calls: 40/40 rows, 7 development/3 holdout, all one-person/day |
 | `experiments/037-activity-definition-matched/` | **COMPLETE — reject definition-matched route** | Three one-city calls: 0/9 ticket/half-day/full-day rows passed frozen definitions |
 | `experiments/038-one-star-budgetyourtrip-panel/` | **COMPLETE — retain guarded fallback; reject product mapping** | Twenty one-city calls: 17/20 rows, zero explicit two-adult occupancy |
+| `experiments/039-hostel-private-boundary/` | **COMPLETE — retain dorm input; reject private mapping** | Six one-city calls: 6/6 dorm-bed inputs, 0/6 explicit two-adult private-room rows |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

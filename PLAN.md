@@ -307,6 +307,11 @@ Experiment 038 expanded the guarded BudgetYourTrip 1-star fallback to 20 new cit
 explicit two-adult occupancy, two tiny samples, one zero-denominator rejection, and one blocked search. Retain
 only as imputation/fallback with hard quality guards; no product mapping or correction fit is allowed.
 
+Experiment 039 tested the hostel dorm/private boundary across six independent one-city calls: dorm-bed input
+coverage was 6/6, but private-room coverage was 0/6 because no source explicitly established two-adult/two-guest
+occupancy. Retain the one-bed dorm boundary for deterministic scaling; reject private-room source mapping and
+correction fitting. The private-hostel gap remains a top validation blocker.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.
