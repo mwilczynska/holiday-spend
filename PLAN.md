@@ -157,22 +157,30 @@ occupancy. All 15 quote cells were blocked at the delegated web safety boundary 
 available. Manual ground truth proves the pages themselves can work, so this rejects the target web-tool URL
 route rather than the sites intrinsically; retain the blocked telemetry and fail closed.
 
+**Experiment 014 — single-city Numbeo food/drink extraction — complete; revise URL normalization.** Three
+separate one-city calls tested the direct Numbeo page. Lisbon succeeded after a canonical case-correct URL
+retry and returned all five rows; Copenhagen and Prague lowercase URLs were blocked. The five Lisbon facts
+were source-audited and matched prior observations for three rows exactly (cappuccino differed 0.8% across
+dates). Do not reject Numbeo; retest canonical city-name URLs explicitly.
+
 ### Next experiments, in order
 
-1. Replace or calibrate the rejected Booking city-average basis using independently collected matched
+1. Retest Numbeo with canonical city-name URLs in separate one-city calls for Copenhagen and Prague, then
+   promote only if URL normalization is deterministic and coverage is stable.
+2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
    rejected in the target web path after Experiment 013.
-2. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
+3. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
    one-call target-model path, or pivot to a separately curated benchmark. Search-index date injection is
    rejected; retain the same strict class, currency, one-night, and occupancy rules.
-3. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
+4. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
    drinks, and activities, while resolving accommodation measurement and dorm/private identifiability
    with independent ground truth. Do not infer two hostel tiers from one blended channel.
-4. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
-5. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
+5. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
+6. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
    manifest.
-6. Run the full one-call blind evaluation, freeze the winning methodology, and only then plan integration,
+7. Run the full one-call blind evaluation, freeze the winning methodology, and only then plan integration,
    121-city migration, and rollback.
 
 ---
@@ -219,6 +227,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/011-direct-class-page-templates/`
 - `data/reference/v5/experiments/012-single-city-production-shape/`
 - `data/reference/v5/experiments/013-interactive-official-quote-extraction/`
+- `data/reference/v5/experiments/014-single-city-numbeo-food-drink/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

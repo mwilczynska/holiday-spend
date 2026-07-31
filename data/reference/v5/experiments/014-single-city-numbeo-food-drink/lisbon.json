@@ -1,0 +1,55 @@
+{
+  "city": "Lisbon",
+  "country": "Portugal",
+  "referenceDate": "2026-07-31",
+  "source": {
+    "name": "Numbeo",
+    "url": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+    "retrievedAt": "2026-07-31",
+    "pageContext": "This city had 1986 entries in the past 12 months by 231 different contributors. Last update: 30 July 2026."
+  },
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status": "found",
+      "value": 15.0,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+      "sourceNote": "Meal at an Inexpensive Restaurant — €15.00."
+    },
+    "midrange_restaurant_meal_2p": {
+      "status": "found",
+      "value": 55.0,
+      "currency": "EUR",
+      "unit": "per_two_person_meal",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+      "sourceNote": "Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) — €55.00."
+    },
+    "mcmeal_combo_1p": {
+      "status": "found",
+      "value": 10.0,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+      "sourceNote": "Combo Meal at McDonald's (or Equivalent Fast-Food Meal) — €10.00."
+    },
+    "cappuccino_1": {
+      "status": "found",
+      "value": 2.56,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+      "sourceNote": "Cappuccino (Regular Size) — €2.56."
+    },
+    "domestic_draft_beer_1": {
+      "status": "found",
+      "value": 3.0,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+      "sourceNote": "Domestic Draft Beer (0.5 Liter) — €3.00."
+    }
+  },
+  "outcome": "accepted",
+  "notes": "The initial requested URL https://www.numbeo.com/cost-of-living/in/lisbon returned a 503/cache miss and did not resolve a city id. The same direct Numbeo source was then opened at its canonical case-correct URL https://www.numbeo.com/cost-of-living/in/Lisbon; all five requested rows were present in EUR."
+}

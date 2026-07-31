@@ -137,10 +137,20 @@ produced. Manual v3 ground truth proves the pages themselves can work, so this r
 URL route rather than the sites intrinsically. Read
 `data/reference/v5/experiments/013-interactive-official-quote-extraction/`.
 
+## Experiment 014 result
+
+Three separate one-city calls tested the direct Numbeo food/drink page for five anchors. Lisbon initially
+hit a lowercase URL cache miss, then succeeded on the canonical case-correct `/in/Lisbon` page with all five
+rows. Inexpensive meal, mid-range meal, and beer matched retained Lisbon observations exactly; cappuccino
+differed by 0.8% across retrieval dates; McMeal has no prior retained row. Copenhagen and Prague lowercase
+URLs were blocked before page content. The source is retained, but URL normalization must be retested.
+Read `data/reference/v5/experiments/014-single-city-numbeo-food-drink/`.
+
 ## Next action
 
-Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit
-a correction from Copenhagen alone. Direct booking-engine URLs are rejected for the target web path. Keep the
+Retest Numbeo with canonical city-name URLs for Copenhagen and Prague in separate one-city calls. Find or
+calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a
+correction from Copenhagen alone. Direct booking-engine URLs are rejected for the target web path. Keep the
 one-city prompt shape mandatory and test safe stable templates or a curated benchmark for unresolved lower
 classes and hostels; search-index date injection is rejected.
 Continue definition-matched panels for the other omitted anchors. Do not use the shipping CSV as ground truth

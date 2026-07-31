@@ -28,6 +28,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/011-direct-class-page-templates/` | **COMPLETE — partial promotion** | Direct class-page URL template feasibility; Booking 3/4-star averages promoted for broader audit |
 | `experiments/012-single-city-production-shape/` | **COMPLETE — shape promoted, source rejected** | Three independent one-city Copenhagen calls, repeatability, and 4-star basis comparison |
 | `experiments/013-interactive-official-quote-extraction/` | **COMPLETE — target web route rejected** | Three one-city Copenhagen calls against known official booking engines |
+| `experiments/014-single-city-numbeo-food-drink/` | **COMPLETE — revise URL normalization** | Three one-city Numbeo calls; Lisbon succeeded via canonical case-correct URL |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

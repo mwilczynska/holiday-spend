@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "014-single-city-numbeo-food-drink",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "promptShape": "one city per invocation",
+  "invocationCount": 3,
+  "cities": ["Copenhagen", "Lisbon", "Prague"],
+  "measureCountPerCity": 5,
+  "foundCells": 5,
+  "blockedCells": 10,
+  "coverageRate": 0.3333,
+  "byCity": {
+    "Copenhagen": {"found":0,"blocked":5,"urlOutcome":"lowercase direct URL unsafe-to-open"},
+    "Lisbon": {"found":5,"blocked":0,"urlOutcome":"lowercase cache miss; canonical case-correct URL succeeded"},
+    "Prague": {"found":0,"blocked":5,"urlOutcome":"lowercase direct URL unsafe-to-open"}
+  },
+  "sourceAudit": {
+    "foundFacts": 5,
+    "verifiedAgainstRetrievedPage": 5,
+    "unsupportedFoundFacts": 0,
+    "knownObservationMatches": {
+      "lisbon.inexpensive_restaurant_meal_1p": {"sourceValue":15,"priorValue":15,"currency":"EUR","comparison":"exact"},
+      "lisbon.midrange_restaurant_meal_2p": {"sourceValue":55,"priorValue":55,"currency":"EUR","comparison":"exact"},
+      "lisbon.domestic_draft_beer_1": {"sourceValue":3,"priorValue":3,"currency":"EUR","comparison":"exact"},
+      "lisbon.cappuccino_1": {"sourceValue":2.56,"priorValue":2.58,"currency":"EUR","comparison":"0.8% lower; retrieval dates differ"},
+      "lisbon.mcmeal_combo_1p": {"sourceValue":10,"priorValue":null,"currency":"EUR","comparison":"no prior retained observation"}
+    }
+  },
+  "telemetry": {
+    "agentTasks": 3,
+    "directPageReadCalls": 3,
+    "directUrlAttempts": 4,
+    "directUrlSuccesses": 1,
+    "directUrlFailures": 3,
+    "generalSearchCalls": 0,
+    "arithmeticOperations": 0,
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "verdict": "revise_url_normalization_and_retest"
+}

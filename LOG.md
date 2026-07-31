@@ -796,3 +796,16 @@ same engines and produced accepted ground truth. It proves the target web-tool r
 arbitrary long booking-engine URLs, so the route is rejected for production and blocks are retained as blocks.
 Next test safe stable templates or another free source that the target tool can open. Artifacts are under
 `data/reference/v5/experiments/013-interactive-official-quote-extraction/`.
+
+## Experiment 014 â€” single-city Numbeo food/drink extraction (31 July 2026)
+
+Three separate one-city Luna calls tested the direct Numbeo page for inexpensive meal, mid-range meal,
+McMeal, cappuccino, and domestic draft beer. Lisbon's lowercase URL initially returned a 503/cache miss;
+the canonical case-correct `/in/Lisbon` page then returned all five rows. Three Lisbon rows matched retained
+observations exactly, cappuccino differed by 0.8% across dates, and McMeal had no prior row. Copenhagen and
+Prague lowercase URLs were blocked before page content.
+
+**Verdict:** retain Numbeo, revise the URL contract to try the canonical city-name path once, and retest
+Copenhagen and Prague as separate one-city calls. No arithmetic, FX, search fallback, or unsupported values
+were emitted; exact provider telemetry was unavailable. Artifacts are under
+`data/reference/v5/experiments/014-single-city-numbeo-food-drink/`.
