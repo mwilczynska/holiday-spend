@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-activity-definition-matched-telemetry-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:budgetyourtrip.com Lisbon Portugal low cost paid attraction entrance ticket adult price",
+    "site:budgetyourtrip.com Lisbon Portugal half-day group tour activity duration price",
+    "site:budgetyourtrip.com Lisbon Portugal full-day premium tour activity duration price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 2,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only definition-matched activity run using exactly three Budget Your Trip-restricted searches. No qualifying low-cost paid ticket or half-day group activity was found. One exact-city full-day private tour with explicit private/premium basis and included entrance tickets was retained at $251 per activity, but its party size is unknown. No direct reads, retries, fallback sources, arithmetic, FX, averaging, or cross-city evidence were used. This is source-feasibility/ground-truth evidence, not a product mapping; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

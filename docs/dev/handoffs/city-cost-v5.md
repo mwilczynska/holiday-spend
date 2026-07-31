@@ -314,6 +314,10 @@ Experiment 036 passed a 10-city activity panel (40/40, 7 development/3 holdout),
 contract is a methodology candidate; next validate deterministic two-person scaling and tier semantics against
 independent ground truth before mapping.
 
+Experiment 037 tested the frozen activity definitions directly and accepted 0/9 rows. Reject BudgetYourTrip for
+ticket/half-day/full-day anchors; generic entertainment rows from 036 remain separate and must not be silently
+substituted.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

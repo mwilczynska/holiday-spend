@@ -1136,3 +1136,15 @@ arithmetic, FX, averaging, or cross-city evidence were used.
 **Verdict:** promote the source contract to a methodology candidate. Keep `activities_free = 0` definitional and
 apply two-person scaling only in deterministic code; independent tier semantics, date drift, and held-out accuracy
 remain acceptance gates. Read `data/reference/v5/experiments/036-activity-budgetyourtrip-panel/`.
+
+## Experiment 037 — definition-matched activity anchors (31 July 2026)
+
+Three independent one-city Luna calls tested BudgetYourTrip for Lisbon, Hanoi, and Copenhagen with exactly three
+restricted searches each. All nine searches/operations were compliant. Zero of nine rows matched the frozen
+activity definitions: ticket candidates lacked adult/two-person basis, half-day group rows were absent, and
+full-day private tours had unspecified group size or incompatible duration. No reads, retries, fallback,
+arithmetic, FX, averaging, or cross-city evidence were used.
+
+**Verdict:** reject BudgetYourTrip for definition-matched activity anchors. Preserve the generic entertainment
+source as a separate candidate only; do not weaken party/duration gates or map it to the current activity tiers.
+Read `data/reference/v5/experiments/037-activity-definition-matched/`.

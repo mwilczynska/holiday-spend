@@ -299,6 +299,10 @@ Experiment 036 passed the activity source panel: 40/40 rows across 10 cities (7 
 one-person/day and every city complete. Promote the extraction contract, then run independent ground-truth
 scaling/tier validation before mapping activity product values.
 
+Experiment 037 rejected the definition-matched BudgetYourTrip activity route: 0/9 rows met ticket party-basis,
+half-day group, or full-day premium duration gates. Keep the generic 036 entertainment contract separate and
+unmapped; test an independent activity source or revisit the product interpretation explicitly before mapping.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.

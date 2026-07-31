@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "city-cost-v5-activity-definition-matched-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_budget_ticket": {
+      "status": "found",
+      "value": 3.92,
+      "currency": "USD",
+      "unit": "per_ticket",
+      "partyBasis": "single_ticket",
+      "duration": "single_entry",
+      "activityBasis": "low_cost_paid_attraction_entry",
+      "referencePeriod": "Budget Your Trip Copenhagen activity listing; result crawled last month (July 2026)",
+      "sourceUrl": "https://www.budgetyourtrip.com/denmark/copenhagen/trip-cost-2618425",
+      "sourceTitle": "How much does a trip to Copenhagen Cost? | Budget Your Trip",
+      "evidenceText": "Copenhagen: Copenhagen Zoo Tower Entry Ticket: $3.92.",
+      "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark low-cost paid attraction entrance ticket adult price",
+      "reason": "The exact Copenhagen activity listing gives a numeric non-from ticket price and identifies the attraction. The source does not state an adult or two-person basis; it is retained explicitly as one ticket and must not be scaled or treated as a two-adult observation."
+    },
+    "activity_mid_half_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "partyBasis": "unknown",
+      "duration": null,
+      "activityBasis": null,
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark half-day group tour price duration",
+      "reason": "The Budget Your Trip-restricted search returned a full-day private Malmö excursion and multi-day organized tours, but no exact-city half-day group activity with explicit duration and a qualifying non-from price."
+    },
+    "activity_high_full_day": {
+      "status": "found",
+      "value": 146,
+      "currency": "USD",
+      "unit": "per_private_group",
+      "partyBasis": "private_group_unspecified",
+      "duration": "full_day",
+      "activityBasis": "premium_private_sightseeing_lunch",
+      "referencePeriod": "Budget Your Trip Copenhagen activity listing; result crawled last month (July 2026)",
+      "sourceUrl": "https://www.budgetyourtrip.com/denmark/copenhagen/expensive-2618425",
+      "sourceTitle": "Is Copenhagen Expensive to Visit? | Budget Your Trip",
+      "evidenceText": "Malmö Full Day Private Trip, Sightseeing Tour & Lunch Option: $146.",
+      "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark full-day premium private tour price duration",
+      "reason": "The Copenhagen page lists a numeric non-from full-day private sightseeing trip with lunch. The private-group party size is unspecified; the value remains a group-price observation and is not converted to a two-adult amount."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

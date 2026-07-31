@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "city-cost-v5-activity-definition-matched-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_budget_ticket": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "partyBasis": "unknown",
+      "duration": null,
+      "activityBasis": null,
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal low cost paid attraction entrance ticket adult price",
+      "reason": "The exact-city Budget Your Trip results exposed generic activity averages and tour/property prices but no qualifying low-cost paid attraction or entrance-ticket price with an explicit adult party basis and non-from value."
+    },
+    "activity_mid_half_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "partyBasis": "unknown",
+      "duration": null,
+      "activityBasis": null,
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal half-day group tour activity duration price",
+      "reason": "The Lisbon results included a half-day private tuk-tuk tour and half-day private Sintra/Cascais tour, but no half-day group activity with explicit group basis. Comparison-page results for another city were rejected as cross-city evidence."
+    },
+    "activity_high_full_day": {
+      "status": "found",
+      "value": 251,
+      "currency": "USD",
+      "unit": "per_activity",
+      "partyBasis": "unknown",
+      "duration": "full_day",
+      "activityBasis": "private_premium_tour_with_entrance_tickets",
+      "referencePeriod": "Budget Your Trip activity listing; search result crawled 3 weeks before retrieval (booking date/window not stated)",
+      "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon/trip-cost-2267057",
+      "sourceTitle": "How much does a trip to Lisbon Cost? | Budget Your Trip",
+      "evidenceText": "Sintra, Roca and Cascais Full-Day Private Tour with Pena Tickets: $251.",
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal full-day premium tour activity duration price",
+      "reason": "The exact-city listing provides a numeric non-from price, explicitly labels the tour Full-Day and Private, and names included Pena entrance tickets. Party size is not stated and remains unknown; no per-person conversion was performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

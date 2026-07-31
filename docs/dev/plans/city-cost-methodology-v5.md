@@ -157,6 +157,10 @@ Experiment 036 broadened the activity contract to ten cities with locked holdout
 values were one-person/day; promote the source contract but retain deterministic scaling, tier semantics, and
 independent accuracy gates.
 
+Experiment 037 rejected BudgetYourTrip as a definition-matched activity source (0/9). Ticket party basis,
+half-day group identity, and full-day premium group size/duration failed. Keep generic entertainment rows unmapped
+unless a product-definition decision is made and independently validated.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

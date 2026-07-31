@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "city-cost-v5-activity-definition-matched-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_budget_ticket": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "partyBasis": null,
+      "duration": null,
+      "activityBasis": null,
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Hanoi Vietnam low cost paid attraction entrance ticket two adult tickets price",
+      "reason": "The exact Hanoi page listed attraction prices such as Puppet Theater and Hanoi Hilton Entrance, but the snippets did not state an adult/two-ticket party basis or an unambiguous named currency, and the values were not explicitly suitable for two adult tickets. The low-cost ticket anchor therefore failed closed."
+    },
+    "activity_mid_half_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "partyBasis": null,
+      "duration": null,
+      "activityBasis": null,
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Hanoi Vietnam half day group activity tour duration price",
+      "reason": "The permitted Budget Your Trip search exposed $5 half-day private walking-tour snippets and separate $5 small-group tour snippets, but no single exact-city row stated both a half-day duration and group basis. Private-tour prices without party identity were rejected."
+    },
+    "activity_high_full_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "partyBasis": null,
+      "duration": null,
+      "activityBasis": null,
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Hanoi Vietnam full day premium activity tour duration price",
+      "reason": "The permitted search returned a Standard/Luxury Ha Long Bay cruise at $33 without an explicit duration, and multi-day tour results without a single full-day duration. No exact-city full-day premium activity with duration and premium basis was accepted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

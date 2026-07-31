@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-activity-definition-matched-telemetry-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:budgetyourtrip.com Hanoi Vietnam low cost paid attraction entrance ticket two adult tickets price",
+    "site:budgetyourtrip.com Hanoi Vietnam half day group activity tour duration price",
+    "site:budgetyourtrip.com Hanoi Vietnam full day premium activity tour duration price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "notFoundMeasures": 3,
+  "notes": "Single-city search-only definition-matched activity run using exactly three BudgetYourTrip-restricted queries. No row met all party, duration, activity-basis, date, and exact-city requirements. Generic entertainment averages, private-tour prices lacking group basis, and multi-day/undated tours were rejected. No product mapping was attempted; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}
