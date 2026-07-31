@@ -1,0 +1,9 @@
+{
+  "city":"Bangkok","country":"Thailand","referenceDate":"2026-07-31","searchOnly":{"queriesAttempted":3,"directPageReads":0},
+  "measures":{
+    "paid_attraction_adult_1":{"status":"found","value":150,"currency":"THB","unit":"per_person_ticket","activityName":"Queen Sirikit Museum of Textiles adult admission","durationHours":null,"sourceUrl":"https://www.royalgrandpalace.th/th/attraction/queen-sirikit","searchQuery":"site:royalgrandpalace.th Bangkok entrance fee adult THB","resultEvidence":"Official Royal Grand Palace result for the Queen Sirikit Museum of Textiles states adult admission 150 baht and identifies its location within the Grand Palace in Bangkok."},
+    "half_day_group_activity_adult_1":{"status":"not_found","value":null,"currency":null,"unit":null,"activityName":null,"durationHours":null,"sourceUrl":null,"searchQuery":"site:getyourguide.com Bangkok group activity \"4 hours\" price per person","resultEvidence":null},
+    "full_day_premium_activity_adult_1":{"status":"not_found","value":null,"currency":null,"unit":null,"activityName":null,"durationHours":null,"sourceUrl":null,"searchQuery":"site:viator.com Bangkok premium full day tour \"8 hours\" price per adult","resultEvidence":null}
+  },
+  "outcome":"partial","notes":"The official Royal Grand Palace domain exposed an explicit adult museum admission price in Bangkok. Half-day results exposed suitable 4-hour shared/group activities only with prohibited 'From' prices. The full-day query did not expose a qualifying Viator result with an explicit non-from adult price, duration, and premium organised basis. The Thai baht amount was recorded as THB without conversion. No direct reads, retries, fallbacks, arithmetic, FX, or other-city evidence were used."
+}

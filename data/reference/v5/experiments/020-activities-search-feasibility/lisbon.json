@@ -1,0 +1,13 @@
+{
+  "city": "Lisbon",
+  "country": "Portugal",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {"queriesAttempted":3,"directPageReads":0},
+  "measures": {
+    "paid_attraction_adult_1": {"status":"found","value":10,"currency":"EUR","unit":"per_person_ticket","activityName":"National Pantheon standard ticket","durationHours":null,"sourceUrl":"https://panteaonacional.gov.pt/en/visitar","searchQuery":"Lisbon official museum standard adult ticket price EUR","resultEvidence":"National Pantheon, Lisbon — Price: Standard ticket: €10.00. The official visit result identifies the Lisbon attraction and its standard ticket."},
+    "half_day_group_activity_adult_1": {"status":"found","value":41,"currency":"EUR","unit":"per_person_activity","activityName":"Lisbon Half Day City Tour","durationHours":4,"sourceUrl":"https://www.thompsons.co.za/assets/Uploads/Portugal-Lisbon_Sightseeing.pdf","searchQuery":"Lisbon shared group half day tour 4 hours per person price EUR","resultEvidence":"LISBON TOUR DESCRIPTION — Lisbon Half Day City Tour | Duration: 4 Hours | Price per person: €41.00. The public tour brochure names Lisbon, the four-hour organized tour, and the explicit per-person price."},
+    "full_day_premium_activity_adult_1": {"status":"not_found","value":null,"currency":null,"unit":null,"activityName":null,"durationHours":null,"sourceUrl":null,"searchQuery":"Lisbon premium full day tour 8 hours per person price EUR","resultEvidence":null}
+  },
+  "outcome":"partial",
+  "notes":"One independent one-city run with the frozen Experiment 020 prompt. The official National Pantheon result exposed a standard Lisbon ticket at EUR 10, and a public Lisbon tour brochure exposed an explicit four-hour per-person city-tour price of EUR 41 (the brochure is older but has no from/range/package basis). Full-day results were from prices, group totals, or otherwise lacked a qualifying non-promotional premium per-person fact, so full_day_premium_activity_adult_1 remains not_found. No direct reads, retries, fallback sources, arithmetic, FX, or other-city evidence were used."
+}

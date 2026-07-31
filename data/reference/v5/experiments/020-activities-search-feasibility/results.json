@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "city-cost-v5-activity-results-v1",
+  "experiment": "020-activities-search-feasibility",
+  "runDate": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_020_activities.md",
+  "invocationShape": "one city per independent invocation",
+  "targetModelClass": "GPT-5.6 Luna-class delegated invocation",
+  "citiesRequested": 6,
+  "measureCellsRequested": 18,
+  "rawFoundCells": 7,
+  "rawCellCoverage": 0.3888888889,
+  "strictFoundCells": 6,
+  "strictCellCoverage": 0.3333333333,
+  "completeCitiesRaw": 1,
+  "completeCitiesStrict": 1,
+  "cityResults": {
+    "Copenhagen": {"foundRaw":1,"foundStrict":1,"measures":["paid_attraction_adult_1"],"outcome":"partial"},
+    "Lisbon": {"foundRaw":2,"foundStrict":1,"measuresRaw":["paid_attraction_adult_1","half_day_group_activity_adult_1"],"strictNormalization":"half_day_group_activity_adult_1 not_found because source did not explicitly state shared/group","outcome":"partial"},
+    "Hanoi": {"foundRaw":3,"foundStrict":3,"measures":["paid_attraction_adult_1","half_day_group_activity_adult_1","full_day_premium_activity_adult_1"],"outcome":"accepted"},
+    "Bangkok": {"foundRaw":1,"foundStrict":1,"measures":["paid_attraction_adult_1"],"outcome":"partial"},
+    "San Francisco": {"foundRaw":0,"foundStrict":0,"outcome":"no_result"},
+    "Don Det": {"foundRaw":0,"foundStrict":0,"outcome":"no_result"}
+  },
+  "telemetryTotals": {
+    "invocations":6,
+    "queriesAttempted":18,
+    "webSearchToolCalls":12,
+    "directPageReads":0,
+    "retryAttempts":0,
+    "fallbackSourcesUsed":0,
+    "arithmeticOperations":0,
+    "otherCityEvidenceUsed":0,
+    "providerTokens":null,
+    "latencyMs":null,
+    "providerCost":null,
+    "exactProviderModelId":null,
+    "parameters":null
+  },
+  "evidenceAudit": {
+    "strictAcceptedCells":6,
+    "cityAndActivityIdentityPresent":6,
+    "adultOrPerPersonBasisPresent":6,
+    "durationPresentForTimedActivities":3,
+    "currencyAndCentralValuePresent":6,
+    "sourceUrlPresent":6,
+    "contractComplianceRate":1,
+    "note":"The strict set excludes Lisbon's half-day result because its public brochure gave a 4-hour EUR41/person price but did not explicitly state shared/group status. Raw and normalized outcomes are retained."
+  },
+  "verdict":"promote_low_cost_attraction_source_pattern_only",
+  "rejectionReasonsForFinalAcceptance":[
+    "Strict activity coverage was 6/18 cells (33.3%) and only Hanoi was complete.",
+    "Half-day and full-day organized activity anchors were absent in four of six cities; `from`, package, other-city, and missing-duration results were rejected.",
+    "The one complete Hanoi result is not enough to fit a cross-city activity model or claim production reliability.",
+    "Exact provider model ID, parameters, tokens, latency, and cost remain unavailable through delegated execution."
+  ]
+}

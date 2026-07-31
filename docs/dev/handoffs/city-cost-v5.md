@@ -209,11 +209,25 @@ was unavailable.
 provenance, native-currency checks, and fail-closed missingness. Do not average away Kyoto/Don Det failures.
 Read `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`.
 
+## Experiment 020 result
+
+Six independent one-city Luna calls issued exactly three activity searches each: standard low-cost attraction,
+3–5 hour group activity, and 6–10 hour premium activity. Strictly, 6/18 cells were found and only Hanoi was
+complete. Copenhagen, Bangkok, and Lisbon supplied one attraction ticket each; Hanoi supplied all three
+anchors; San Francisco and Don Det supplied none. Lisbon's four-hour EUR41/person brochure result was kept in
+raw evidence but normalized to `not_found` because it did not explicitly say shared/group. There were 18
+queries and 12 search operations, with no direct reads/retries/fallbacks/arithmetic/FX/cross-city evidence.
+
+**Verdict:** promote official attraction-ticket sources for a larger activity panel; keep half-day/full-day
+activities fail-closed unless duration, adult basis, organized/group status, and non-`from` price are explicit.
+Do not fit a model from Hanoi alone. Read `data/reference/v5/experiments/020-activities-search-feasibility/`.
+
 ## Next action
 
-Test a separately validated sparse-city fallback rather than cross-city substitution, retaining dedicated-query
-provenance, explicit native-currency checks, and fail-closed missingness. In parallel, attack accommodation
-and activities with independent one-city calls; do not tune the locked 018 holdout or average away failures.
+Expand the official attraction-ticket pattern to a definition-matched activity panel and test whether timed
+group/premium activities can be sourced without `from` or package prices. Retain dedicated-query provenance,
+explicit native-currency checks, and fail-closed missingness. Continue accommodation work; do not tune the
+locked 018 holdout or average away failures.
 Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a correction from
 Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the target web
 path. Keep the one-city shape for safe stable templates or curated benchmarks for unresolved lower classes

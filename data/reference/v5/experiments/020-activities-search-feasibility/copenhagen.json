@@ -1,0 +1,9 @@
+{
+  "city":"Copenhagen","country":"Denmark","referenceDate":"2026-07-31","searchOnly":{"queriesAttempted":3,"directPageReads":0},
+  "measures":{
+    "paid_attraction_adult_1":{"status":"found","value":150,"currency":"DKK","unit":"per_person_ticket","activityName":"Glyptoteket standard adult admission","durationHours":null,"sourceUrl":"https://glyptoteket.com/visit/tickets","searchQuery":"site:glyptoteket.com Copenhagen adult admission ticket DKK","resultEvidence":"Tickets for the Glyptotek — Ticket Adult | DKK 135 online | DKK 150 Standard. The official result identifies the museum and labels DKK 150 as the standard adult price."},
+    "half_day_group_activity_adult_1":{"status":"not_found","value":null,"currency":null,"unit":null,"activityName":null,"durationHours":null,"sourceUrl":null,"searchQuery":"site:getyourguide.com Copenhagen group activity \"4 hours\" price per person","resultEvidence":null},
+    "full_day_premium_activity_adult_1":{"status":"not_found","value":null,"currency":null,"unit":null,"activityName":null,"durationHours":null,"sourceUrl":null,"searchQuery":"site:viator.com Copenhagen premium full day tour \"8 hours\" price per adult","resultEvidence":null}
+  },
+  "outcome":"partial","notes":"The official Glyptoteket search result exposed an explicit standard adult ticket price. Half-day results exposed suitable 4-hour shared/group activities only with prohibited 'From' prices. The full-day query did not expose a qualifying Viator result with an explicit non-from adult price, duration, and premium organised basis. No direct reads, retries, fallbacks, arithmetic, FX, or other-city evidence were used."
+}

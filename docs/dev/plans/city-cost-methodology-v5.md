@@ -80,6 +80,12 @@ provenance-sensitive (5/5 under broad same-call evidence, then 3/5 and 4/5 when 
 was enforced). Broad repeat coverage was 42/75; strict normalization gives 41/75. Keep dedicated-query
 provenance and fail-closed missingness as the source contract. This confirms bounded food/drink repeatability
 for some cities, not complete reliability or 19-field methodology acceptance.
+Experiment 020 tested three activity anchors on six independent one-city calls. Strict coverage was 6/18
+cells (33.3%): Copenhagen, Bangkok, and Lisbon supplied low-cost attraction tickets; Hanoi supplied a museum
+ticket plus four-hour group and eight-hour premium organized tours; San Francisco and Don Det supplied none.
+Lisbon's half-day brochure price was normalized to `not_found` because shared/group status was not explicit.
+Promote official attraction-ticket pages for broader validation, but keep timed activity anchors fail-closed
+unless duration, adult basis, organized/group status, and a non-`from` price are explicit.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

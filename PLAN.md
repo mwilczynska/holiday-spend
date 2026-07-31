@@ -203,11 +203,20 @@ made Helsinki provenance-sensitive: broad same-call policy gave 5/5 once, while 
 telemetry. Keep the route bounded to ordinary food/drink cities with dedicated-query provenance; do not claim
 complete reliability. See `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`.
 
+**Experiment 020 — activity anchor search feasibility — complete; promote attraction pattern only.** Six
+independent calls issued three targeted searches each. Strict coverage was 6/18 cells (33.3%), with only
+Hanoi complete: Copenhagen, Bangkok, and Lisbon supplied low-cost attraction tickets; Hanoi supplied all
+three anchors; San Francisco and Don Det supplied none. Lisbon's half-day result was normalized to `not_found`
+because shared/group status was not explicit. There were 18 queries and 12 search operations, no direct
+reads/retries/fallbacks/arithmetic/cross-city evidence. Promote official attraction-ticket sources for a
+broader panel; keep timed organized activities fail-closed. See `data/reference/v5/experiments/020-activities-search-feasibility/`.
+
 ### Next experiments, in order
 
-1. Test a separately validated sparse-city fallback rather than cross-city substitution, while keeping
-   dedicated-query provenance and explicit native-currency checks. In parallel, attack accommodation and
-   activities with independent one-city calls; do not tune the locked 018 holdout or average away failures.
+1. Expand the official attraction-ticket pattern to a definition-matched activity panel and test whether
+   timed group/premium activities can be sourced without `from` or package prices. Keep dedicated-query
+   provenance, explicit native-currency checks, and fail-closed missingness. Continue accommodation work;
+   do not tune the locked 018 holdout or average away failures.
 2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -274,6 +283,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/017-numbeo-search-broad-panel/`
 - `data/reference/v5/experiments/018-numbeo-search-30-city/`
 - `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`
+- `data/reference/v5/experiments/020-activities-search-feasibility/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

@@ -902,3 +902,23 @@ exposed.
 dedicated-query provenance, native-currency checks, and fail-closed missingness. Do not average away Kyoto
 or Don Det failures. Accommodation, activities, complete derivation, and provider telemetry remain open.
 Artifacts are under `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`.
+
+## Experiment 020 — activity anchor search feasibility (31 July 2026)
+
+Six independent one-city GPT-5.6 Luna-class calls issued exactly three targeted searches each for a standard
+paid attraction, a 3–5 hour group activity, and a 6–10 hour premium activity. Strict coverage was **6/18
+cells (33.3%)**, with only Hanoi complete. Copenhagen, Bangkok, and Lisbon supplied one low-cost attraction
+ticket each; Hanoi supplied a museum ticket, a four-hour group tour, and an eight-hour premium organized tour;
+San Francisco and Don Det supplied no qualifying cells. Lisbon's four-hour EUR41/person brochure result was
+retained raw but normalized to `not_found` because shared/group status was not explicit.
+
+The six calls issued 18 searches and 12 search operations, with zero direct reads, retries, fallback sources,
+arithmetic, FX, or cross-city evidence. Six strict accepted facts carried city/activity identity, adult or
+per-person basis, duration where required, central value, currency, and source URL. The Hanoi result is a
+feasibility observation only; one city cannot fit or validate a cross-city activity model.
+
+**Verdict:** promote official attraction-ticket sources for a larger activity panel. Keep half-day/full-day
+activities fail-closed unless duration, adult basis, organized/group status, and a non-`from` price are
+explicit. Do not infer all activity tiers from Hanoi or use nearby-city/package evidence. Accommodation,
+complete food/drink derivation, provider telemetry, and the remaining methodology gates remain open. Artifacts
+are under `data/reference/v5/experiments/020-activities-search-feasibility/`.
