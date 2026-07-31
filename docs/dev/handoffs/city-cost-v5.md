@@ -88,11 +88,20 @@ found no compatible hotel 1/2/4-star rooms, premium meals, wine glasses, or full
 31 near-misses were rejected for range, occupancy, package, stale, or missing-price basis mismatches. Broad
 collection is rejected for model fitting. Read `data/reference/v5/experiments/008-omitted-anchor-ground-truth/`.
 
+## Experiment 009 result
+
+A bounded ten-city narrow accommodation panel searched for dorm, private-hostel, and hotel 1–4-star
+rooms. Only **4/60 cells (6.7%)** met the frozen definition: Prague private hostel, Nairobi dorm and
+private hostel, and Don Det 1-star. No city had all six classes; hotel 2-, 3-, and 4-star coverage was
+zero. The dominant failures were `from`/range prices, multi-night or package bundles, missing occupancy
+or formal class, stale promotions, and prices requiring arithmetic. The four surviving facts are
+feasibility evidence only and must not be fitted. Read
+`data/reference/v5/experiments/009-accommodation-panel-feasibility/`.
+
 ## Next action
 
-Design narrow source-specific panels for each proposed model and collect definition-matched ground truth;
-the broad omitted-anchor task is rejected. Do not use the shipping CSV as ground truth and do not infer
-dorm/private separation from the blended hostel channel.
-Do not use the shipping CSV as ground truth and do not infer dorm/private separation from the blended hostel
-channel. The new derivation contract is deliberately not integrated into the shipping path until source
-feasibility and accuracy gates pass.
+Test a date-fixed, source-specific accommodation contract or a separately curated benchmark, with explicit
+two-adult occupancy, one-night totals, class labels, currency, retrieval date, and no `from`/range/package
+prices. Continue definition-matched panels for the other omitted anchors. Do not use the shipping CSV as
+ground truth and do not infer dorm/private separation from the blended hostel channel. The derivation
+contract remains out of the shipping path until source feasibility and accuracy gates pass.

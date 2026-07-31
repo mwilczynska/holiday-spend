@@ -631,8 +631,9 @@ their proposed v4 proxy coefficients.
 The v4 proxy partition reaches 68 cities for the street/budget/mid-range food path, 97 for high-end food,
 and 97 for coffee/beer drink baskets. Those are input-availability counts, not shipped-target validation.
 The baseline is therefore **retained as reusable evidence but rejected as a complete production method**.
-It also has no target-model one-call result because the environment has no configured Luna/Haiku provider
-credential. The machine-readable report and verdict are in
+It has no target-model one-call result because this baseline audit predates the delegated Luna prompt tests.
+Provider credentials are not required for those prompt-feasibility experiments; exact production-provider
+telemetry and the locked holdout remain separate gates. The machine-readable report and verdict are in
 `data/reference/v5/experiments/000-baseline-reassessment/`.
 
 ## Experiment 002 — accommodation ladder reassessment (31 July 2026)
@@ -714,3 +715,22 @@ missing class or occupancy, stale promotions, or named venues without item price
 definition/basis problem rather than a claim that the classes do not exist. Narrow source-specific panels or
 revised estimands are required before any 30-city model validation. Artifacts are under
 `data/reference/v5/experiments/008-omitted-anchor-ground-truth/`.
+
+## Experiment 009 â€” accommodation panel feasibility (31 July 2026)
+
+A bounded ten-city delegated GPT-5.6 Luna-class task used a narrow prompt for six accommodation
+classes: dorm, private hostel, and hotel 1–4-star rooms. Only **4/60 cells (6.7%)** survived the frozen
+definition: Prague private hostel, Nairobi dorm and private hostel, and Don Det 1-star. Three cities had
+any compatible fact, and no city had all six classes; hotel 2-, 3-, and 4-star coverage was zero.
+
+The dominant failures were structural: `from` prices and ranges, multi-night or package bundles, missing
+occupancy or formal class labels, stale/promotional prices, and prices requiring arithmetic. Relaxing those
+rules would change the estimand, so the near-misses remain rejected. The four surviving facts are feasibility
+evidence only and must not be used for fitted coefficients.
+
+**Verdict:** reject broad accommodation-panel collection as a general ground-truth method. Test a
+date-fixed, source-specific contract or a separately curated benchmark with explicit two-adult occupancy,
+one-night totals, class labels, currency, and retrieval date. The delegated execution counted three search
+calls, ten queries, and one page-read call with three attempts; exact provider model/parameter/token/
+latency/cost telemetry was not exposed. Artifacts are under
+`data/reference/v5/experiments/009-accommodation-panel-feasibility/`.

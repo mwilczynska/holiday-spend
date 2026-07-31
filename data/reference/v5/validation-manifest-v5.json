@@ -1,6 +1,6 @@
 {
   "schemaVersion": "city-cost-v5-validation-manifest-v1",
-  "status": "frozen-for-experiment-000",
+  "status": "frozen-for-experiment-000; target-class sub-agent prompt testing enabled",
   "dataDictionary": "data/reference/v5/data-dictionary-v5.md",
   "citySplit": {
     "unit": "city",
@@ -30,5 +30,5 @@
     "paidDataApisAllowed": false,
     "retriesOrFollowUpLlmCallsAllowed": false
   },
-  "status": "live-call test pending target-model credentials"
+  "status": "target-class prompt tests may use delegated GPT-5.6 Luna without provider API credentials; exact provider telemetry and the locked holdout remain pending"
 }

@@ -32,11 +32,13 @@ validation of the shipped target measures.
    their proposed v4 proxy coefficients.
 5. The v4 ratio fit uses proxy targets and the shipping CSV contains asserted/derived values; neither is
    independent ground truth for the v5 product fields.
-6. No target-model one-call request was possible because this environment has no configured Luna/Haiku
-   provider credential.
+6. The original baseline audit did not include a target-model call. Provider credentials are not required
+   for subsequent prompt-feasibility work because a delegated GPT-5.6 Luna-class sub-agent can execute the
+   prompt; exact production-provider telemetry and the locked holdout remain separate gates.
 
 ## Consequence
 
 Retain the v4 source and provenance artifacts as reusable evidence. Do not call the proxy-input counts
 complete product coverage and do not use this report as final validation. The next highest-value experiment
-is a target-model one-call harness plus independent accommodation/activity ground truth collection.
+is target-class prompt testing plus independent accommodation/activity ground-truth collection. The
+target-class test does not require a provider API key.

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "009-accommodation-panel-feasibility",
+  "date": "2026-07-31",
+  "pilotType": "bounded accommodation source-feasibility; not acceptance evidence",
+  "targetClass": "GPT-5.6 Luna",
+  "cityCount": 10,
+  "totalCells": 60,
+  "foundCells": 4,
+  "coverageRate": 0.0667,
+  "notFoundCells": 56,
+  "classAbsentCells": 0,
+  "blockedCells": 0,
+  "byMeasure": {
+    "hostel_dorm_bed_1p": {"found":1,"possible":10,"coverageRate":0.1},
+    "hostel_private_room_2p": {"found":2,"possible":10,"coverageRate":0.2},
+    "hotel_1star_room_2p": {"found":1,"possible":10,"coverageRate":0.1},
+    "hotel_2star_room_2p": {"found":0,"possible":10,"coverageRate":0},
+    "hotel_3star_room_2p": {"found":0,"possible":10,"coverageRate":0},
+    "hotel_4star_room_2p": {"found":0,"possible":10,"coverageRate":0}
+  },
+  "byCity": [
+    {"city":"Lisbon","found":0,"possible":6}, {"city":"Copenhagen","found":0,"possible":6},
+    {"city":"Hanoi","found":0,"possible":6}, {"city":"Prague","found":1,"possible":6},
+    {"city":"Bangkok","found":0,"possible":6}, {"city":"Barcelona","found":0,"possible":6},
+    {"city":"San Francisco","found":0,"possible":6}, {"city":"Da Nang","found":0,"possible":6},
+    {"city":"Nairobi","found":2,"possible":6}, {"city":"Don Det","found":1,"possible":6}
+  ],
+  "completeCaseCities": 0,
+  "citiesWithAnyFact": 3,
+  "incompatibilitySummary": {
+    "dominantReasons": ["range or 'from' price","multi-night/package total","occupancy or class not explicit","stale or promotional result","value required arithmetic"],
+    "basisCompatibleFoundFacts": 4
+  },
+  "sourceAudit": {"foundFacts":4,"verifiedAgainstRetrievedResultOrOpenedPage":4,"unsupportedFoundFacts":0},
+  "telemetry": {
+    "agentTasks": 1,
+    "webSearchToolCalls": 3,
+    "searchQueries": 10,
+    "pageReadToolCalls": 1,
+    "directPageReadAttempts": 3,
+    "directPageReadFailures": 0,
+    "contentLimitedPageReads": 1,
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "verdict": "reject_broad_accommodation_panel_collection",
+  "interpretation": "Strict one-call broad web research produced only 4/60 compatible facts, no complete city, and no 2-, 3-, or 4-star observation. This cannot support the required 30-city complete-case accommodation fit without a materially narrower source/date/query design."
+}

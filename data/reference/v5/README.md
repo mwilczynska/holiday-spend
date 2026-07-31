@@ -23,6 +23,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/006-source-cascade-retest/` | **COMPLETE — revise and retest** | Explicit source-cascade retest on the same five difficult cities |
 | `experiments/007-minimal-anchor-retest/` | **COMPLETE — promote to model-boundary validation** | Nine-anchor prompt feasibility and coverage comparison |
 | `experiments/008-omitted-anchor-ground-truth/` | **COMPLETE — broad collection rejected** | Omitted-anchor ground-truth feasibility and basis audit |
+| `experiments/009-accommodation-panel-feasibility/` | **COMPLETE — broad accommodation panel rejected** | Narrow six-class accommodation collection feasibility and basis audit |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

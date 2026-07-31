@@ -109,7 +109,7 @@ blocker: a delegated GPT-5.6 Luna-class sub-agent is the target-model prompt-tes
 remain useful for real web-tool telemetry when credentials are supplied, but a stronger model or manual web
 run is not counted as target-model evidence.
 
-**Experiment 005 — target-model sub-agent prompt feasibility — in progress.** A low-latency GPT-5.6
+**Experiment 005 — target-model sub-agent prompt feasibility — complete; candidate rejected.** A low-latency GPT-5.6
 target-model sub-agent ran the exact candidate prompt against five difficult cities. All five responses
 passed the local schema validator, but only 20/90 anchors were found; direct page reads returned HTTP 503
 and the orchestration surface exposed no exact provider telemetry. This removes API-key absence as a
@@ -119,13 +119,27 @@ prompt-iteration blocker but rejects the candidate as production-ready. See
 Status correction: this pilot is complete with a `revise_and_retest` verdict; the next prompt iteration is
 the active experiment.
 
+**Experiments 006–008 — source cascade, minimal anchors, and omitted-anchor ground truth — complete.**
+The explicit cascade improved extraction, and the nine-anchor prompt reached 32/45 facts on the small
+five-city panel. However, the ten-city omitted-anchor task found only 4/90 definition-compatible facts,
+so broad collection is rejected as a model-fitting route. See the experiment directories and `LOG.md`.
+
+**Experiment 009 — accommodation panel feasibility — complete; candidate rejected.** A narrow six-class
+accommodation prompt was tested on ten cities. Only 4/60 cells (6.7%) met the frozen basis, no city had
+all six classes, and the 2-, 3-, and 4-star classes had zero coverage. Ranges, `from` prices, packages,
+missing occupancy/class labels, stale promotions, and arithmetic bundles were the dominant failure modes.
+This is feasibility evidence only; the four surviving facts must not be fitted. The next candidate must
+use a date-fixed, source-specific contract or a separately curated benchmark.
+
 ### Next experiments, in order
 
-1. Design narrow source-specific panels for the nine omitted anchors; broad one-task collection found only
-   4/90 definition-compatible facts and is rejected for model fitting.
-2. Validate the nine-anchor candidate from Experiment 007 against those definition-matched panels, then
-   resolve accommodation measurement and dorm/private identifiability with independent ground truth;
-   do not infer two hostel tiers from one blended channel without matched evidence.
+1. Test a date-fixed, source-specific accommodation contract (or a separately curated benchmark) on a
+   bounded city panel. Require explicit two-adult occupancy, one-night totals, class labels, currency,
+   retrieval date, and no `from`/range/package prices; reject any apparent coverage that violates the
+   frozen estimand.
+2. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
+   drinks, and activities, while resolving accommodation measurement and dorm/private identifiability
+   with independent ground truth. Do not infer two hostel tiers from one blended channel.
 3. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
 4. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
    manifest.
@@ -171,6 +185,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/006-source-cascade-retest/`
 - `data/reference/v5/experiments/007-minimal-anchor-retest/`
 - `data/reference/v5/experiments/008-omitted-anchor-ground-truth/`
+- `data/reference/v5/experiments/009-accommodation-panel-feasibility/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
