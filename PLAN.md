@@ -138,16 +138,25 @@ other dates, promotions, or multi-night totals. This rejects the assumption that
 indexed searches preserve the accommodation estimand. Interactive provider pages and curated benchmarks
 remain open; the result is not evidence that every public accommodation page is unusable.
 
+**Experiment 011 — direct class-page templates — complete; partial promotion.** Direct URL templates were
+tested on five cities. Booking 3-star and 4-star pages returned explicit USD city averages for all five
+cities (10/30 facts, 33.3%); 1-star pages were blocked, 2-star pages yielded no compatible average, and
+Hostelworld returned only prohibited `from` values. Promote only the Booking 3/4-star average templates
+to a broader definition/stability audit; do not treat this as complete accommodation coverage.
+
 ### Next experiments, in order
 
-1. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
+1. Audit the promoted Booking 3/4-star city-average templates on a broader held-out panel: verify exact
+   class, per-room/night unit, default occupancy, currency, reference date, source correctness, and
+   repeatability. Keep 1/2-star and hostel measures unresolved until a separate source contract succeeds.
+2. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
    one-call target-model path, or pivot to a separately curated benchmark. Search-index date injection is
    rejected; retain the same strict class, currency, one-night, and occupancy rules.
-2. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
+3. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
    drinks, and activities, while resolving accommodation measurement and dorm/private identifiability
    with independent ground truth. Do not infer two hostel tiers from one blended channel.
-3. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
-4. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
+4. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
+5. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
    manifest.
 5. Run the full one-call blind evaluation, freeze the winning methodology, and only then plan integration,
    121-city migration, and rollback.
@@ -193,6 +202,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/008-omitted-anchor-ground-truth/`
 - `data/reference/v5/experiments/009-accommodation-panel-feasibility/`
 - `data/reference/v5/experiments/010-date-fixed-accommodation-contract/`
+- `data/reference/v5/experiments/011-direct-class-page-templates/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

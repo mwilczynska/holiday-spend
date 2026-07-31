@@ -749,3 +749,17 @@ curated benchmark. Retain the frozen class, occupancy, one-night, currency, and 
 delegated task counted three search calls and eleven queries; exact provider model/parameter/token/latency/
 cost telemetry was not exposed. Artifacts are under
 `data/reference/v5/experiments/010-date-fixed-accommodation-contract/`.
+
+## Experiment 011 â€” direct class-page templates (31 July 2026)
+
+A five-city delegated GPT-5.6 Luna-class task opened the known Booking.com, Trip.com, and Hostelworld
+class-page templates directly before searching. It found **10/30 facts (33.3%)**: Booking 3-star and
+4-star pages returned explicit USD city averages for all five cities, with default two-adult/one-room
+wording. Booking 1-star pages were blocked, 2-star pages yielded no compatible average, and Hostelworld
+returned only prohibited `Dorms From`/`Privates From` values.
+
+**Verdict:** partially promote only the Booking 3/4-star average templates to a broader definition and
+stability audit. This is not complete accommodation coverage and does not validate accuracy. The task used
+four direct page-read calls, 35 URL attempts, two find calls, and no general search; exact provider
+model/parameter/token/latency/cost telemetry was not exposed. Artifacts are under
+`data/reference/v5/experiments/011-direct-class-page-templates/`.

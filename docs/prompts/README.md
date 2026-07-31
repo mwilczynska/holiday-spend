@@ -14,6 +14,7 @@
 | `llm_prompt_city_cost_v5_experiment_007.md` | **EXPERIMENT — unvalidated** | delegated GPT-5.6 Luna-class sub-agent | Minimal nine-anchor candidate; tests whether modelling omitted targets is more feasible than direct 18-anchor extraction |
 | `llm_prompt_city_cost_v5_experiment_009.md` | **EXPERIMENT — unvalidated** | delegated GPT-5.6 Luna-class sub-agent | Narrow accommodation panel for class/occupancy source feasibility |
 | `llm_prompt_city_cost_v5_experiment_010.md` | **EXPERIMENT — unvalidated** | delegated GPT-5.6 Luna-class sub-agent | Date-fixed source-family contract for six accommodation classes |
+| `llm_prompt_city_cost_v5_experiment_011.md` | **EXPERIMENT — unvalidated** | delegated GPT-5.6 Luna-class sub-agent | Direct Booking/Trip/Hostelworld class-page template test |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The v5 experiment prompt includes auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

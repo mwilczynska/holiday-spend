@@ -40,6 +40,16 @@ Promote a candidate only when it passes the pre-registered gates in `PLAN.md` an
 reliably in one cheap-model request is not production-ready. A candidate with broad coverage but unvalidated
 imputation is not production-ready.
 
+## Latest evidence
+
+Experiments 009 and 010 rejected broad and indexed date-fixed accommodation collection: strict coverage was
+4/60 and 0/30 respectively. Experiment 011 partially promoted only the direct Booking 3-star and 4-star
+city-average templates, which returned 10/30 facts on five cities; lower classes and Hostelworld `from`
+prices remain unresolved. The next work item is a broader stability/definition audit of those promoted
+templates while testing an independent source or curated benchmark for the remaining accommodation classes.
+Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
+separate acceptance gate.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

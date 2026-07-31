@@ -25,6 +25,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/008-omitted-anchor-ground-truth/` | **COMPLETE — broad collection rejected** | Omitted-anchor ground-truth feasibility and basis audit |
 | `experiments/009-accommodation-panel-feasibility/` | **COMPLETE — broad accommodation panel rejected** | Narrow six-class accommodation collection feasibility and basis audit |
 | `experiments/010-date-fixed-accommodation-contract/` | **COMPLETE — search-index contract rejected** | Date-fixed source-family accommodation feasibility |
+| `experiments/011-direct-class-page-templates/` | **COMPLETE — partial promotion** | Direct class-page URL template feasibility; Booking 3/4-star averages promoted for broader audit |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

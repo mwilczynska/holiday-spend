@@ -108,10 +108,21 @@ or multi-night totals. Three search calls and eleven queries produced no page-re
 the indexed-search date-fixed contract, but does not rule out interactive public pages or a curated benchmark.
 Read `data/reference/v5/experiments/010-date-fixed-accommodation-contract/`.
 
+## Experiment 011 result
+
+A five-city Luna task opened the known Booking.com, Trip.com, and Hostelworld class-page templates directly.
+It found **10/30** compatible facts (33.3%): Booking 3-star and 4-star pages returned explicit USD city
+averages for every city, with default two-adult/one-room wording. Booking 1-star pages were blocked;
+2-star pages yielded no compatible average; and Hostelworld exposed only prohibited `Dorms From`/
+`Privates From` values. There were four direct page-read calls, 35 URL attempts, two find calls, and no
+general searches. Promote only the Booking 3/4-star templates to broader stability and definition audit.
+Read `data/reference/v5/experiments/011-direct-class-page-templates/`.
+
 ## Next action
 
-Test an interactive public accommodation page in the one-call target-model path, or design a separately
-curated benchmark. Search-index date injection is rejected. Continue definition-matched panels for the other
-omitted anchors. Do not use the shipping CSV as ground truth and do not infer dorm/private separation from
-the blended hostel channel. The derivation contract remains out of the shipping path until source
+Audit Booking 3/4-star averages on a broader held-out panel for class/unit/currency/occupancy/source
+correctness and repeatability. Test an interactive public page or curated benchmark for unresolved lower
+classes and hostels; search-index date injection is rejected. Continue definition-matched panels for the
+other omitted anchors. Do not use the shipping CSV as ground truth and do not infer dorm/private separation
+from the blended hostel channel. The derivation contract remains out of the shipping path until source
 feasibility and accuracy gates pass.
