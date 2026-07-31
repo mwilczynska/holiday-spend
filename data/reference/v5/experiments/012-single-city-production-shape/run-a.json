@@ -1,0 +1,72 @@
+{
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "referenceDate": "2026-07-31",
+  "directLookup": {
+    "attempted": true,
+    "outcome": "partial",
+    "notes": "Booking 3- and 4-star class pages exposed exact Copenhagen city averages. Booking 1- and 2-star templates failed to open. Hostelworld exposed only prohibited From prices."
+  },
+  "measures": {
+    "hostel_dorm_bed_1p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "retrievedAt": "2026-07-31",
+      "sourceNote": "The Copenhagen Hostelworld page listed at least five dorm prices, but every candidate was explicitly labelled Dorms From and was rejected."
+    },
+    "hostel_private_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "retrievedAt": "2026-07-31",
+      "sourceNote": "The Copenhagen private-room Hostelworld page listed at least five private prices, but every candidate was explicitly labelled Privates From and was rejected."
+    },
+    "hotel_1star_room_2p": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "retrievedAt": "2026-07-31",
+      "sourceNote": "The direct Booking one-star Copenhagen URL returned a non-retryable unsafe-to-open error."
+    },
+    "hotel_2star_room_2p": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "retrievedAt": "2026-07-31",
+      "sourceNote": "The direct Booking two-star Copenhagen URL returned a non-retryable unsafe-to-open error."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 254,
+      "currency": "USD",
+      "unit": "per_room_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.booking.com/threestars/city/dk/copenhagen.html",
+      "retrievedAt": "2026-07-31",
+      "sourceNote": "Booking states: On average, a 3-star hotel in Copenhagen costs $254 per night; the page shows 2 adults, 0 children, 1 room."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 347,
+      "currency": "USD",
+      "unit": "per_room_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.booking.com/fourstars/city/dk/copenhagen.html",
+      "retrievedAt": "2026-07-31",
+      "sourceNote": "Booking states: On average, a 4-star hotel in Copenhagen costs $347 per night; the page shows 2 adults, 0 children, 1 room."
+    }
+  }
+}

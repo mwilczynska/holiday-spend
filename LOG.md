@@ -763,3 +763,23 @@ stability audit. This is not complete accommodation coverage and does not valida
 four direct page-read calls, 35 URL attempts, two find calls, and no general search; exact provider
 model/parameter/token/latency/cost telemetry was not exposed. Artifacts are under
 `data/reference/v5/experiments/011-direct-class-page-templates/`.
+
+## Experiment 012 â€” single-city production-shape repeatability (31 July 2026)
+
+Three independent delegated GPT-5.6 Luna-class invocations each received **one city only**: Copenhagen.
+Every run passed the six-measure contract and returned the same 3-star city average (USD 254), 4-star city
+average (USD 347), Hostelworld `From`-price rejection, and Booking 1-/2-star blocked statuses. All six
+found facts (two per run) were audited against the retrieved pages; no arithmetic, FX, tiers, or unsupported
+facts were emitted.
+
+The 4-star city average converts to AUD 496.17 under the frozen 2026-07-22 FX snapshot. The existing five
+accepted direct-property quotes have a median of AUD 309.28, giving **+60.4% signed and absolute error**.
+The bases differ (city average versus dated direct-property median), so this is a basis warning rather than
+a final multi-city accuracy estimate. It exceeds the v5 25% gate and cannot be corrected from one city.
+
+**Verdict:** reject the Booking city-average source as a final accommodation anchor, but promote the
+single-city invocation shape. Any future multi-city panel must be an explicit set of separately recorded
+one-city calls. Telemetry counted three delegated tasks, 18 direct URL attempts, 12 successes, six failures,
+three page-read calls, three find calls, and one fallback search with two queries; exact provider
+model/parameter/token/latency/cost telemetry was not exposed. Artifacts are under
+`data/reference/v5/experiments/012-single-city-production-shape/`.

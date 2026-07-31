@@ -118,11 +118,21 @@ averages for every city, with default two-adult/one-room wording. Booking 1-star
 general searches. Promote only the Booking 3/4-star templates to broader stability and definition audit.
 Read `data/reference/v5/experiments/011-direct-class-page-templates/`.
 
+## Experiment 012 result
+
+Three independent invocations of the same prompt each inspected **Copenhagen only**. All passed the JSON
+contract and returned identical 3-star (USD 254) and 4-star (USD 347) city averages, identical Hostelworld
+`From`-price rejection, and identical 1-/2-star blocked statuses. The 4-star average converts to AUD 496.17,
+versus the existing five-quote direct-property median AUD 309.28: **+60.4%**. The source bases differ, so
+this is a basis warning rather than a final accuracy estimate; it nevertheless exceeds the v5 25% gate and
+rejects the city-average source as a final anchor. Read
+`data/reference/v5/experiments/012-single-city-production-shape/`.
+
 ## Next action
 
-Audit Booking 3/4-star averages on a broader held-out panel for class/unit/currency/occupancy/source
-correctness and repeatability. Test an interactive public page or curated benchmark for unresolved lower
-classes and hostels; search-index date injection is rejected. Continue definition-matched panels for the
-other omitted anchors. Do not use the shipping CSV as ground truth and do not infer dorm/private separation
-from the blended hostel channel. The derivation contract remains out of the shipping path until source
-feasibility and accuracy gates pass.
+Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit
+a correction from Copenhagen alone. Keep the one-city prompt shape mandatory. Test an interactive public page
+or curated benchmark for unresolved lower classes and hostels; search-index date injection is rejected.
+Continue definition-matched panels for the other omitted anchors. Do not use the shipping CSV as ground truth
+and do not infer dorm/private separation from the blended hostel channel. The derivation contract remains out
+of the shipping path until source feasibility and accuracy gates pass.

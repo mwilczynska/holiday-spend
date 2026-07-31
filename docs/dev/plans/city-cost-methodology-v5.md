@@ -44,9 +44,12 @@ imputation is not production-ready.
 
 Experiments 009 and 010 rejected broad and indexed date-fixed accommodation collection: strict coverage was
 4/60 and 0/30 respectively. Experiment 011 partially promoted only the direct Booking 3-star and 4-star
-city-average templates, which returned 10/30 facts on five cities; lower classes and Hostelworld `from`
-prices remain unresolved. The next work item is a broader stability/definition audit of those promoted
-templates while testing an independent source or curated benchmark for the remaining accommodation classes.
+city-average templates, which returned 10/30 facts on five separately tested cities; lower classes and
+Hostelworld `from` prices remain unresolved. Experiment 012 enforced the production shape: three independent
+Copenhagen-only calls were identical, but the 4-star city average was +60.4% against the existing dated
+direct-property median. The source is rejected as final, while the one-city invocation shape is now mandatory
+for all target-model tests. The next work item is a matched-basis source or model tested through separate
+one-city calls and a 30-city/10-holdout validation design.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

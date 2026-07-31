@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "012-single-city-production-shape",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "invocationCount": 3,
+  "cityCount": 1,
+  "city": "Copenhagen",
+  "promptShape": "one city per independent invocation",
+  "schemaValidRuns": 3,
+  "measuresPerRun": 6,
+  "foundPerRun": 2,
+  "notFoundPerRun": 2,
+  "blockedPerRun": 2,
+  "foundCells": 6,
+  "totalCells": 18,
+  "coverageRate": 0.3333,
+  "betweenRun": {
+    "hotel_3star_room_2p": {"values":[254,254,254],"currency":"USD","basis":"city_average","identical":true},
+    "hotel_4star_room_2p": {"values":[347,347,347],"currency":"USD","basis":"city_average","identical":true},
+    "hostel_dorm_bed_1p": {"statuses":["not_found","not_found","not_found"],"identical":true},
+    "hostel_private_room_2p": {"statuses":["not_found","not_found","not_found"],"identical":true},
+    "hotel_1star_room_2p": {"statuses":["blocked","blocked","blocked"],"identical":true},
+    "hotel_2star_room_2p": {"statuses":["blocked","blocked","blocked"],"identical":true}
+  },
+  "groundTruthComparison": {
+    "measure": "hotel_4star_room_2p",
+    "sourceValue": 347,
+    "sourceCurrency": "USD",
+    "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json",
+    "sourceAud": 496.17,
+    "directPropertyMedian": 1417.428571,
+    "directPropertyCurrency": "DKK",
+    "directPropertyMedianAud": 309.28,
+    "absolutePercentageError": 60.4,
+    "signedPercentageError": 60.4,
+    "groundTruthProvenance": "five accepted official-property quotes, fixed 90-day lead, shoulder window",
+    "comparabilityCaveat": "The Booking city average and dated direct-property median are different source bases; this is a basis audit, not a final multi-city accuracy estimate."
+  },
+  "sourceAudit": {
+    "foundFacts": 6,
+    "verifiedAgainstRetrievedPage": 6,
+    "unsupportedFoundFacts": 0
+  },
+  "telemetry": {
+    "agentTasks": 3,
+    "directPageReadCalls": 3,
+    "directUrlAttempts": 18,
+    "directUrlSuccesses": 12,
+    "directUrlFailures": 6,
+    "findCalls": 3,
+    "findOperations": 18,
+    "generalSearchCalls": 1,
+    "generalSearchQueries": 2,
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "verdict": "reject_as_production_ready_promote_shape_only"
+}
