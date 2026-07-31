@@ -634,3 +634,16 @@ The baseline is therefore **retained as reusable evidence but rejected as a comp
 It also has no target-model one-call result because the environment has no configured Luna/Haiku provider
 credential. The machine-readable report and verdict are in
 `data/reference/v5/experiments/000-baseline-reassessment/`.
+
+## Experiment 002 — accommodation ladder reassessment (31 July 2026)
+
+The retained Booking.com class-page evidence was re-audited independently. The 4-star/3-star and
+2-star/3-star global ratios use 16 cities; the blended-hostel relations use 13. The v5 requirement is at
+least 30 complete matched cities and 10 locked holdout cities for a multi-tier claim, so these figures are
+candidate evidence rather than final calibration.
+
+The only full-inventory check shows a **3.945×** sliding-window spread for a 10-property first-page read.
+Headline/list ratios vary from **0.451× to 1.834×** across the retained city captures. The hostel page
+contains one blended unit and does not identify dorm beds versus private rooms. The candidate is therefore
+**rejected as a final v5 accommodation method but retained as evidence**. The machine-readable report is
+`data/reference/v5/experiments/002-accommodation-ladder/results.json`.

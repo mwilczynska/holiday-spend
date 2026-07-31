@@ -46,6 +46,13 @@ node scripts/run-city-cost-v5-one-call.mjs --provider anthropic --model <haiku-m
 The output is written under `data/reference/v5/experiments/001-one-call-harness/` and must be treated as
 unvalidated until source/citation correctness, one-call reliability, and target accuracy are scored.
 
+## Experiment 002 result
+
+The retained accommodation ladder was independently summarized from the raw v4 artifacts. Hotel class
+relations have n=16, the blended-hostel relation n=13, and the first-page window check spans 3.945x. The
+hostel source has no dorm/private occupancy label. The candidate is rejected as final v5 methodology and
+retained only as evidence. Read `data/reference/v5/experiments/002-accommodation-ladder/`.
+
 ## Next action
 
 Build the deterministic target-measure derivation and scoring harness while the live credential blocker is

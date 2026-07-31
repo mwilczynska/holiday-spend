@@ -20,6 +20,7 @@
     "methodology:v4:combine-samples": "node scripts/combine-anchor-samples.mjs",
     "methodology:v4:score-accommodation-bias": "node scripts/score-accommodation-bias.mjs",
     "methodology:v5:baseline": "node scripts/audit-city-cost-v5-baseline.mjs",
+    "methodology:v5:accommodation": "node scripts/audit-city-cost-v5-accommodation.mjs",
     "methodology:pilot": "node scripts/select-city-cost-pilot.mjs",
     "methodology:pilot:enrich": "tsx scripts/build-city-cost-pilot-enrichment.ts",
     "methodology:pilot:enrich:check": "tsx scripts/build-city-cost-pilot-enrichment.ts --check",

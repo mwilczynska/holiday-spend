@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-audit-v1",
+  "experiment": "002-accommodation-ladder",
+  "sourceArtifacts": [
+    "data/reference/dry-run/phase-0h-accommodation-class-ratios.json",
+    "data/reference/dry-run/phase-0g-stage1-analysis.json"
+  ],
+  "sample": {
+    "hotelClassRatioCities": 16,
+    "hostelBlendedRatioCities": 13,
+    "requiredCompleteMatchedCitiesForV5": 30,
+    "requiredLockedHoldoutCitiesForMultiTierClaim": 10
+  },
+  "relations": [
+    {
+      "label": "hotel_4star / hotel_3star",
+      "n": 16,
+      "ratio": {
+        "median": 1.2972,
+        "min": 0.9995,
+        "max": 1.8887,
+        "spreadX": 1.89,
+        "iqr": [
+          1.2568,
+          1.5548
+        ]
+      },
+      "selected": "R0",
+      "leaveOneOutMedianApePct": 12.6,
+      "holdoutMedianApePct": 16.9,
+      "holdoutCities": [
+        "Bangkok",
+        "Hanoi",
+        "Prague",
+        "Split"
+      ]
+    },
+    {
+      "label": "hotel_2star / hotel_3star",
+      "n": 16,
+      "ratio": {
+        "median": 0.7341,
+        "min": 0.4351,
+        "max": 1.1317,
+        "spreadX": 2.6,
+        "iqr": [
+          0.6785,
+          0.9032
+        ]
+      },
+      "selected": "R0",
+      "leaveOneOutMedianApePct": 15.8,
+      "holdoutMedianApePct": 14.1,
+      "holdoutCities": [
+        "Bangkok",
+        "Hanoi",
+        "Prague",
+        "Split"
+      ]
+    },
+    {
+      "label": "hostel_blended / hotel_3star",
+      "n": 13,
+      "ratio": {
+        "median": 0.5919,
+        "min": 0.4014,
+        "max": 0.8906,
+        "spreadX": 2.22,
+        "iqr": [
+          0.5165,
+          0.6471
+        ]
+      },
+      "selected": "R0",
+      "leaveOneOutMedianApePct": 16.6,
+      "holdoutMedianApePct": 36.6,
+      "holdoutCities": [
+        "Bangkok",
+        "Istanbul",
+        "San Francisco"
+      ]
+    },
+    {
+      "label": "hostel_blended / hotel_2star",
+      "n": 13,
+      "ratio": {
+        "median": 0.8073,
+        "min": 0.5719,
+        "max": 1.1523,
+        "spreadX": 2.01,
+        "iqr": [
+          0.7517,
+          0.863
+        ]
+      },
+      "selected": "R0",
+      "leaveOneOutMedianApePct": 7.9,
+      "holdoutMedianApePct": 4.9,
+      "holdoutCities": [
+        "Bangkok",
+        "Istanbul",
+        "San Francisco"
+      ]
+    }
+  ],
+  "estimatorStability": {
+    "firstPageWindowSpread": [
+      {
+        "windowSize": 10,
+        "windows": 99,
+        "minMedian": 275,
+        "maxMedian": 1085,
+        "spreadX": 3.945,
+        "worstErrPct": 160.2
+      },
+      {
+        "windowSize": 20,
+        "windows": 89,
+        "minMedian": 296.5,
+        "maxMedian": 830.5,
+        "spreadX": 2.801,
+        "worstErrPct": 99.2
+      },
+      {
+        "windowSize": 30,
+        "windows": 79,
+        "minMedian": 302,
+        "maxMedian": 720.5,
+        "spreadX": 2.386,
+        "worstErrPct": 72.8
+      }
+    ],
+    "headlineVsList": [
+      {
+        "city": "Lisbon",
+        "star": "s4",
+        "headline": 240,
+        "listMedian": 202.35,
+        "headlineOverListX": 1.186
+      },
+      {
+        "city": "Lisbon",
+        "star": "s3",
+        "headline": 177,
+        "listMedian": 155.66,
+        "headlineOverListX": 1.137
+      },
+      {
+        "city": "Bangkok",
+        "star": "s4",
+        "headline": 49,
+        "listMedian": 62.56,
+        "headlineOverListX": 0.783
+      },
+      {
+        "city": "Bangkok",
+        "star": "s3",
+        "headline": 50,
+        "listMedian": 34.23,
+        "headlineOverListX": 1.461
+      },
+      {
+        "city": "Tokyo",
+        "star": "s4",
+        "headline": 286,
+        "listMedian": 162.95,
+        "headlineOverListX": 1.755
+      },
+      {
+        "city": "Tokyo",
+        "star": "s3",
+        "headline": 137,
+        "listMedian": 95.13,
+        "headlineOverListX": 1.44
+      },
+      {
+        "city": "Hanoi",
+        "star": "s4",
+        "headline": 37,
+        "listMedian": 42.1,
+        "headlineOverListX": 0.879
+      },
+      {
+        "city": "Hanoi",
+        "star": "s3",
+        "headline": 18,
+        "listMedian": 39.94,
+        "headlineOverListX": 0.451
+      },
+      {
+        "city": "Vancouver",
+        "star": "s4",
+        "headline": 461,
+        "listMedian": 251.39,
+        "headlineOverListX": 1.834
+      },
+      {
+        "city": "Vancouver",
+        "star": "s3",
+        "headline": 296,
+        "listMedian": 171.91,
+        "headlineOverListX": 1.722
+      }
+    ],
+    "independentCopenhagenCheck": {
+      "city": "Copenhagen",
+      "basis": "full-inventory, date-controlled browser read (108 four-star, 25 three-star), AUD",
+      "s4": 417,
+      "s3": 273,
+      "ratio": 1.527,
+      "note": "Held out of the fit because its estimator is full-inventory rather than first-page. Used to ask whether the ladder fitted on a biased estimator transfers to an unbiased one."
+    }
+  },
+  "identifiability": {
+    "hostelChannelMeasure": "hostel_blended",
+    "dormDirectEvidenceCities": 0,
+    "privateRoomDirectEvidenceCities": 0,
+    "conclusion": "The blended hostel channel cannot identify dorm and private-room tiers separately."
+  },
+  "verdict": {
+    "status": "reject-as-final-model; retain-as-candidate-evidence",
+    "reasons": [
+      "Hotel ladder sample n=16 is below the v5 complete-matched-city requirement of 30.",
+      "Hostel ratio is a blended unit and cannot support two separately named hostel tiers.",
+      "First-page windows vary by up to 3.945x in the only full-inventory check.",
+      "Headline averages vary from 0.451x to 1.834x of list medians in the retained sample.",
+      "One Copenhagen independent check cannot establish a general level correction."
+    ],
+    "nextExperiment": "Collect independent, definition-matched accommodation ground truth across at least 30 cities and test a source that labels occupancy."
+  }
+}

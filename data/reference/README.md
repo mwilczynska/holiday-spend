@@ -51,6 +51,7 @@ into the app and does not replace the live v1 CSV.
 | `v5/validation-manifest-v5.json` | **CURRENT** | City-level validation split and acceptance gates | v5 experiments |
 | `v5/experiments/000-baseline-reassessment/` | **IN PROGRESS** | Deterministic audit of retained v3/v4 evidence | `methodology:v5:baseline` |
 | `v5/experiments/001-one-call-harness/` | **IN PROGRESS** | Target-model extractor prompt, schema fixture, and one-call telemetry outputs | `run-city-cost-v5-one-call.mjs` |
+| `v5/experiments/002-accommodation-ladder/` | **COMPLETE — candidate rejected** | Independent audit of the retained accommodation ladder and hostel identifiability | `methodology:v5:accommodation` |
 
 ## LIVE — v3 evidence that v4 runs on
 

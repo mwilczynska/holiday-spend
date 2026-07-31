@@ -90,6 +90,11 @@ observations, one direct 4-star city, three half-day activity cities, and two fu
 Food/drink proxy-input counts are not shipped-target calibration. Full details are in
 `data/reference/v5/experiments/000-baseline-reassessment/verdict.md`.
 
+**Experiment 002 — accommodation ladder reassessment — complete, candidate rejected.** The retained hotel
+ladder has only 16 cities, the blended-hostel relation 13, first-page windows vary up to 3.945×, and the
+hostel source cannot identify dorm versus private room. See
+`data/reference/v5/experiments/002-accommodation-ladder/verdict` in the generated report.
+
 **Experiment 001 — target-model one-call harness — built, live test pending.** The candidate 18-measure
 extractor and provider-neutral OpenAI/Anthropic telemetry harness make exactly one request and do not retry
 or fall back. No provider credentials are configured in this environment, so target-model feasibility

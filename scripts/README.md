@@ -37,6 +37,7 @@ re-derive is a claim you cannot audit.
 | Command (`npm run …`) | Script | Purpose |
 | --- | --- | --- |
 | `methodology:v5:baseline` | `audit-city-cost-v5-baseline.mjs` | Experiment 000: deterministic coverage and provenance audit of the retained v3/v4 evidence; does not treat the shipping CSV as ground truth |
+| `methodology:v5:accommodation` | `audit-city-cost-v5-accommodation.mjs` | Experiment 002: reassesses the retained hotel ladder, estimator stability, and hostel-unit identifiability |
 | `node scripts/run-city-cost-v5-one-call.mjs` | `run-city-cost-v5-one-call.mjs` | Experiment 001: exactly one OpenAI Responses or Anthropic Messages request with built-in web search, telemetry, and strict local validation; requires a provider key |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
