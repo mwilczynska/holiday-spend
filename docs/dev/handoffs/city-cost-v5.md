@@ -318,6 +318,10 @@ Experiment 037 tested the frozen activity definitions directly and accepted 0/9 
 ticket/half-day/full-day anchors; generic entertainment rows from 036 remain separate and must not be silently
 substituted.
 
+Experiment 038 broadened the guarded one-star BudgetYourTrip candidate to 20 new cities. It accepted 17/20 rows,
+but zero had explicit two-adult occupancy; Manila/Mumbai were tiny samples, Taipei failed a zero denominator, and
+Paris was blocked without retry. Keep only as guarded imputation/fallback; do not present it as observed.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

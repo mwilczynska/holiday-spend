@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-budgetyourtrip-panel-v1",
+  "status": "promote_guarded_fallback_reject_product_mapping",
+  "citiesTested": 20,
+  "acceptedCells": 17,
+  "totalCells": 20,
+  "explicitTwoAdultRows": 0,
+  "smallSampleAcceptedCities": ["Manila", "Mumbai"],
+  "zeroDenominatorRejectedCities": ["Taipei"],
+  "blockedCities": ["Paris"],
+  "note": "The expanded BudgetYourTrip route provides broad one-star source coverage but no explicit two-adult occupancy. Page-family conflicts, tiny samples, and a blocked city require guarded fallback handling. No ratio, correction, or product value is fitted."
+}

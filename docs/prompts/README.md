@@ -36,6 +36,7 @@
 | `llm_prompt_city_cost_v5_experiment_035_activity_budgetyourtrip.md` | **EXPERIMENT — complete; promote broader validation** | one city per delegated GPT-5.6 Luna-class invocation | Tests BudgetYourTrip per-person activity average and budget/mid/luxury entertainment rows |
 | `llm_prompt_city_cost_v5_experiment_036_activity_budgetyourtrip_panel.md` | **EXPERIMENT — complete; promote source contract** | one city per delegated GPT-5.6 Luna-class invocation | Ten-city activity coverage panel with locked holdouts; all rows one-person/day |
 | `llm_prompt_city_cost_v5_experiment_037_activity_definition_matched.md` | **EXPERIMENT — complete; route rejected** | one city per delegated GPT-5.6 Luna-class invocation | Tests low-cost ticket, half-day group, and full-day premium activity anchors against frozen definitions |
+| `llm_prompt_city_cost_v5_experiment_038_one_star_budgetyourtrip_panel.md` | **EXPERIMENT — complete; guarded fallback only** | one city per delegated GPT-5.6 Luna-class invocation | Twenty-city one-star source expansion with zero-denominator and sample-size guards |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had

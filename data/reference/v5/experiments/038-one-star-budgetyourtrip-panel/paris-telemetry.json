@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-budgetyourtrip-panel-telemetry-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com Paris France 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "notFoundMeasures": 0,
+  "blockedMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only BudgetYourTrip panel run using exactly one restricted query. The web-tool response was truncated before the result could be inspected, so the measure is blocked rather than accepted or counted as a source no-result. No retry, direct read, fallback source, arithmetic, FX conversion, or cross-city evidence was used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

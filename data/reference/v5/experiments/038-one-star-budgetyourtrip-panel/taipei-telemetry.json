@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-budgetyourtrip-telemetry-v1",
+  "city": "Taipei",
+  "country": "Taiwan",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com Taipei Taiwan 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "notFoundMeasures": 1,
+  "notes": "Single-city search-only Budget Your Trip panel run using exactly one restricted query. Exact Taipei 1-star values appeared only in zero-denominator tables and were rejected; no supported city-level 1-star statistic was retained. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

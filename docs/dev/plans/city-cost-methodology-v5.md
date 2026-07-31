@@ -161,6 +161,10 @@ Experiment 037 rejected BudgetYourTrip as a definition-matched activity source (
 half-day group identity, and full-day premium group size/duration failed. Keep generic entertainment rows unmapped
 unless a product-definition decision is made and independently validated.
 
+Experiment 038 expanded the guarded BudgetYourTrip one-star fallback to 20 new one-city calls: 17/20 strict
+rows, zero explicit two-adult occupancy, two tiny samples, one zero-denominator rejection, and one blocked search.
+Retain only as quality-guarded imputation/fallback; no product mapping or correction fit is accepted.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

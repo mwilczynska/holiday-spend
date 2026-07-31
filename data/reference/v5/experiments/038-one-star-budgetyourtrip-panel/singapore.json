@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Singapore",
+  "country": "Singapore",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 111,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Singapore hotel star-rating table; result crawled 4 days before 2026-07-31; prices before taxes and fees",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/singapore/singapore-1880252",
+      "sourceTitle": "How Much Do Hotels Cost in Singapore? Hotel Prices for Singapore, Singapore | Budget Your Trip",
+      "evidenceText": "Average 1-Star Hotel Price in Singapore, Singapore: With data for 71 fantastic hotels, $111 is the average price for 1-star hotels in Singapore, and the median price is $90. The average prices by star rating list 1-Star Hotels: $111.",
+      "searchQuery": "site:budgetyourtrip.com Singapore Singapore 1-star hotel average nightly price",
+      "sampleSize": 71,
+      "reason": "Accepted as an exact Singapore city-wide 1-star nightly statistic with a visible 71-hotel sample and USD currency. Occupancy is source-default-room because the snippet does not establish two-adult/one-room occupancy. The median is retained in evidence but was not averaged or substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

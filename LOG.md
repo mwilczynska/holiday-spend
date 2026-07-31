@@ -1148,3 +1148,17 @@ arithmetic, FX, averaging, or cross-city evidence were used.
 **Verdict:** reject BudgetYourTrip for definition-matched activity anchors. Preserve the generic entertainment
 source as a separate candidate only; do not weaken party/duration gates or map it to the current activity tiers.
 Read `data/reference/v5/experiments/037-activity-definition-matched/`.
+
+## Experiment 038 — one-star BudgetYourTrip broad panel (31 July 2026)
+
+Twenty independent one-city Luna calls each issued exactly one BudgetYourTrip-restricted search. All 20
+searches/operations were compliant with no reads, retries, fallback, arithmetic, FX, or cross-city evidence.
+Strict coverage was **17/20**: Buenos Aires and Taipei failed closed, and Paris was blocked by a truncated result
+without retry. All accepted rows had unknown/source-default occupancy; explicit two-adult coverage was **0**.
+
+Manila (n=2) and Mumbai (n=3) are tiny-sample warnings. Multiple BudgetYourTrip page families also expose
+conflicting values for some cities; alternatives were rejected rather than averaged.
+
+**Verdict:** retain BudgetYourTrip only as a guarded imputation/fallback candidate with zero-denominator,
+minimum-sample, page-family, provenance, and uncertainty checks. Do not treat it as observed `accom_1_star` or
+fit a correction. Read `data/reference/v5/experiments/038-one-star-budgetyourtrip-panel/`.

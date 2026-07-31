@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Buenos Aires Argentina 1-star hotel average nightly price",
+      "sampleSize": null,
+      "reason": "The single exact-city BudgetYourTrip-restricted search returned no qualifying Buenos Aires 1-star average. Results for the exact Buenos Aires one-night, overall, and budget pages did not expose a 1-star class statistic. An Argentina country-level result reported a 1-star average of $84 across 787 hotels, but it was rejected because the geography did not match Buenos Aires. Other returned pages were for different cities or did not provide a 1-star class value. No unsupported value was substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

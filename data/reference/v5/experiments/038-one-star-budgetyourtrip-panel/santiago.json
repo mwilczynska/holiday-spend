@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Santiago",
+  "country": "Chile",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 62,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Santiago hotel-by-star table; result crawled 3 weeks before 2026-07-31; prices before taxes and fees",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/chile/santiago-3871336",
+      "sourceTitle": "How Much Do Hotels Cost in Santiago? Hotel Prices for Santiago, Chile | Budget Your Trip",
+      "evidenceText": "Average 1-Star Hotel Price in Santiago, Chile: with data for 76 hotels, the average price for 1-star hotels is $62 and the median price is $57. The star-rating table also lists 1-star hotels at $62 before taxes and fees.",
+      "searchQuery": "site:budgetyourtrip.com Santiago Chile 1-star hotel average nightly price",
+      "sampleSize": 76,
+      "reason": "Accepted as an exact Santiago city-wide 1-star nightly statistic with a visible 76-hotel sample and USD currency. Occupancy remains source-default-room because the result does not establish a two-adult/one-room basis. The median is retained in evidence but was not averaged or substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

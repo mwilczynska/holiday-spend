@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-budgetyourtrip-telemetry-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com Rome Italy 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 0,
+  "notes": "Single-city search-only Budget Your Trip panel run using exactly one restricted query. The exact Rome hotel-price page exposed a $137 USD 1-star average based on 2,061 hotels, so it is retained with unknown occupancy. A separate expensive-page result showed zero 1-star hotels and was rejected. No generic or zero-denominator value was used; this is source evidence only and not an observed two-adult product value. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

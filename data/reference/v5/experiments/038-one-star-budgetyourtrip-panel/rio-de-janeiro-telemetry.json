@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-budgetyourtrip-panel-telemetry-v1",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com Rio de Janeiro Brazil 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 0,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only Budget Your Trip panel run using exactly one restricted query. The result supplied a Rio de Janeiro 1-star average of $81/night based on 293 hotels, with median $62 and occupancy unknown. No direct reads, retries, fallback sources, arithmetic, FX, or cross-city evidence were used. This is source-feasibility/calibration evidence only, not an observed two-adult product value; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

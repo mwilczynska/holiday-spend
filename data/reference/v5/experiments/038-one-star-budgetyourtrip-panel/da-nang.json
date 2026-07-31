@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Da Nang",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 11,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip hotel-price analysis; search result crawled last month (source period otherwise not stated)",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang/expensive-1583992",
+      "sourceTitle": "Is Da Nang Expensive to Visit? | Budget Your Trip",
+      "evidenceText": "Hotels by star rating in Da Nang — 1 star | 15 hotels | $11 average hotel price.",
+      "searchQuery": "site:budgetyourtrip.com Da Nang Vietnam 1-star hotel average nightly price",
+      "sampleSize": 15,
+      "reason": "The result identifies Da Nang and the 1-star class and gives a non-from nightly average based on 15 hotels. Occupancy is not stated, so it remains unknown; this is source evidence only and not a two-adult product value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

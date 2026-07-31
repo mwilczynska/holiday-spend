@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 96,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Vienna trip-cost hotel-by-star table; result crawled last month before 2026-07-31; source period and tax treatment otherwise not stated",
+      "sourceUrl": "https://www.budgetyourtrip.com/austria/vienna/trip-cost-2761369",
+      "sourceTitle": "How much does a trip to Vienna Cost? | Budget Your Trip",
+      "evidenceText": "Hotels by star rating in Vienna: 1 star | Number of Hotels 55 | Average Hotel Price $96.",
+      "searchQuery": "site:budgetyourtrip.com Vienna Austria 1-star hotel average nightly price",
+      "sampleSize": 55,
+      "reason": "Accepted as an exact Vienna city-wide 1-star nightly statistic with a visible 55-hotel sample and USD currency. Occupancy is unknown because the result does not establish a two-adult/one-room basis. The separate expensive-page and testing trip-cost tables showed zero denominators and were not used."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

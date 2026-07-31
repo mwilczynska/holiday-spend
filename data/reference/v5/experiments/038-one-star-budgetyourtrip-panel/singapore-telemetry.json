@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-budgetyourtrip-telemetry-v1",
+  "city": "Singapore",
+  "country": "Singapore",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com Singapore Singapore 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 0,
+  "notes": "Single-city search-only Budget Your Trip panel run using exactly one restricted query. The exact Singapore hotel page exposed a $111 USD 1-star average based on 71 hotels. No zero-denominator or generic average was used; occupancy remains source-default-room and the value is not an observed two-adult product value. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

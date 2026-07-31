@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Kuala Lumpur",
+  "country": "Malaysia",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 17,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip hotel-price analysis; search result crawled 2 months before retrieval (source period otherwise not stated)",
+      "sourceUrl": "https://www.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161",
+      "sourceTitle": "How much does a trip to Kuala Lumpur Cost? | Budget Your Trip",
+      "evidenceText": "Hotels by star rating in Kuala Lumpur — 1 star | 6 hotels | $17 average hotel price.",
+      "searchQuery": "site:budgetyourtrip.com Kuala Lumpur Malaysia 1-star hotel average nightly price",
+      "sampleSize": 6,
+      "reason": "The result identifies Kuala Lumpur and the 1-star class and gives a non-from nightly average based on six hotels. Occupancy is not stated, so it remains unknown; this is source evidence only and not a two-adult product value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

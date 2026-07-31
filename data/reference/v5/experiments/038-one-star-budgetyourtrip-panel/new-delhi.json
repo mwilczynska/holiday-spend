@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "New Delhi",
+  "country": "India",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 27,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip hotel-price analysis; search result crawled last month (source period otherwise not stated)",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/india/new-delhi-1261481",
+      "sourceTitle": "How Much Do Hotels Cost in New Delhi? Hotel Prices for New Delhi, India | Budget Your Trip",
+      "evidenceText": "With data for 14 great hotels, the average price for 1-star hotels in New Delhi is $27, and the median price is $23.",
+      "searchQuery": "site:budgetyourtrip.com New Delhi India 1-star hotel average nightly price",
+      "sampleSize": 14,
+      "reason": "The result identifies New Delhi and the 1-star class and gives a non-from nightly average based on 14 hotels. Occupancy is not stated, so it remains unknown; this is source evidence only and not a two-adult product value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

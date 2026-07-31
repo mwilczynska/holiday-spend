@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-budgetyourtrip-telemetry-v1",
+  "city": "Mumbai",
+  "country": "India",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com Mumbai India 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 0,
+  "notes": "Single-city search-only Budget Your Trip panel run using exactly one restricted query. The exact Mumbai expensive-page result exposed a $24 USD 1-star average based on only three hotels, so it is retained with a small-sample quality warning and unknown occupancy. A separate trip-cost result showed zero hotels and was rejected. No generic or zero-denominator value was used; this is source evidence only and not an observed two-adult product value. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

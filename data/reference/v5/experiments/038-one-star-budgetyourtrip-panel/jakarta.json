@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Jakarta",
+  "country": "Indonesia",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 17,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip hotel-price analysis; result crawled last week (July 2026); 1-star sample of 252 hotels",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/indonesia/jakarta-1642911",
+      "sourceTitle": "How Much Do Hotels Cost in Jakarta? Hotel Prices for Jakarta, Indonesia | Budget Your Trip",
+      "evidenceText": "With data for 252 great hotels, the average price for 1-star hotels in Jakarta is $17, and the median price is $14.",
+      "searchQuery": "site:budgetyourtrip.com Jakarta Indonesia 1-star hotel average nightly price",
+      "sampleSize": 252,
+      "reason": "The result identifies the exact city and 1-star class, provides a numeric non-from average nightly room statistic in USD, and exposes a 252-hotel sample. Occupancy is not stated, so it remains unknown; the value is not treated as observed two-adult product evidence."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

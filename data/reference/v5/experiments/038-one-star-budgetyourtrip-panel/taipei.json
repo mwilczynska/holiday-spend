@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Taipei",
+  "country": "Taiwan",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com Taipei Taiwan 1-star hotel average nightly price",
+      "sampleSize": null,
+      "reason": "The exact-city Budget Your Trip results exposed 1-star Taipei values only in zero-denominator tables (Number of Hotels 0, average $47). The nonzero city hotel page did not expose a 1-star row. The zero-denominator value was rejected as unsupported under the strict contract."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

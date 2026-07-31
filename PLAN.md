@@ -303,6 +303,10 @@ Experiment 037 rejected the definition-matched BudgetYourTrip activity route: 0/
 half-day group, or full-day premium duration gates. Keep the generic 036 entertainment contract separate and
 unmapped; test an independent activity source or revisit the product interpretation explicitly before mapping.
 
+Experiment 038 expanded the guarded BudgetYourTrip 1-star fallback to 20 new cities: 17/20 strict rows, zero
+explicit two-adult occupancy, two tiny samples, one zero-denominator rejection, and one blocked search. Retain
+only as imputation/fallback with hard quality guards; no product mapping or correction fit is allowed.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.

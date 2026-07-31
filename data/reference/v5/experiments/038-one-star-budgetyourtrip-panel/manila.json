@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Manila",
+  "country": "Philippines",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 28,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Manila hotel-by-star table; result crawled last month; prices before taxes and fees",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/manila/trip-cost-1701668",
+      "sourceTitle": "How much does a trip to Manila Cost? | Budget Your Trip",
+      "evidenceText": "Hotels by star rating in Manila: 1 star | Number of Hotels 2 | Average Hotel Price $28.",
+      "searchQuery": "site:budgetyourtrip.com Manila Philippines 1-star hotel average nightly price",
+      "sampleSize": 2,
+      "reason": "Accepted as an exact Manila city-wide 1-star nightly statistic with visible two-hotel sample and USD currency. The small sample is a quality warning; occupancy remains source-default-room because the snippet does not establish two-adult/one-room occupancy."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
