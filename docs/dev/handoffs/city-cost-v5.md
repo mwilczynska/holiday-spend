@@ -65,10 +65,17 @@ relations have n=16, the blended-hostel relation n=13, and the first-page window
 hostel source has no dorm/private occupancy label. The candidate is rejected as final v5 methodology and
 retained only as evidence. Read `data/reference/v5/experiments/002-accommodation-ladder/`.
 
+## Experiment 006 result
+
+The explicit source-cascade prompt improved the same five-city Luna-class pilot from 20/90 to 30/90
+anchors. It added six accommodation facts and four adult attraction tickets; all 30 found facts were
+audited against retrieved search results or canonical pages. Hotel-star classes and half/full-day activity
+prices remained at zero. Read `data/reference/v5/experiments/006-source-cascade-retest/`.
+
 ## Next action
 
-Score the delegated target-model outputs and audit each cited source, then design independent accommodation
-and activity ground-truth collection with complete matched city records. Do not use the shipping CSV as
-ground truth and do not infer dorm/private separation from the blended hostel channel. The new derivation
-contract is deliberately not integrated into the shipping path until source feasibility and accuracy gates
-pass.
+Use the 006 result to define a smaller observed-anchor candidate and collect definition-matched ground truth
+for each proposed model: food/drink omitted measures, hotel-star relations, and activity duration tiers.
+Do not use the shipping CSV as ground truth and do not infer dorm/private separation from the blended hostel
+channel. The new derivation contract is deliberately not integrated into the shipping path until source
+feasibility and accuracy gates pass.

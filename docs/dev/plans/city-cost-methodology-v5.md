@@ -17,7 +17,9 @@ every material model on definition-matched city data.
 - source currency and published facts are retained; deterministic code owns FX, arithmetic, models, and tiers;
 - missing, blocked, stale, and class-absent are distinct outcomes;
 - a modelled or imputed value is never presented as observed;
-- ground truth may use manual/browser research, but that does not prove target-model feasibility;
+- ground truth may use manual/browser research, but that does not prove target-model feasibility; the
+  delegated GPT-5.6 Luna-class sub-agent is now the no-key prompt-feasibility path, while provider telemetry
+  and the locked holdout remain separate gates;
 - the final holdout is city-level and locked before final tuning.
 
 ## Work packages

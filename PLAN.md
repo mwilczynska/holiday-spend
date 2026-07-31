@@ -102,7 +102,7 @@ coefficients; `mcmeal_combo` remains an auxiliary collected anchor and is never 
 See `data/reference/v5/experiments/003-derivation-contract/` and
 `src/lib/city-cost-methodology-v5.ts`.
 
-**Experiment 001 — target-model one-call harness — built, live test pending.** The candidate 18-measure
+**Experiment 001 — target-model one-call harness — built; provider telemetry optional.** The candidate 18-measure
 extractor and provider-neutral OpenAI/Anthropic telemetry harness make exactly one request and do not retry
 or fall back. Provider API credentials are not configured locally, but that is no longer a methodology
 blocker: a delegated GPT-5.6 Luna-class sub-agent is the target-model prompt-test path. Provider API runs
@@ -121,8 +121,8 @@ the active experiment.
 
 ### Next experiments, in order
 
-1. Audit Experiment 005's target-model outputs, then revise the source cascade and retest the unresolved
-   accommodation/activity anchors with the same Luna-class sub-agent.
+1. Freeze the minimal observed-anchor candidate suggested by Experiment 006, then validate models for
+   omitted food/drink, hotel-star, and activity-duration targets using definition-matched city data.
 2. Resolve accommodation measurement and dorm/private identifiability with independent ground truth;
    do not infer two hostel tiers from one blended channel without matched evidence.
 3. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
@@ -167,6 +167,8 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/000-baseline-reassessment/`
 - `data/reference/v5/experiments/001-one-call-harness/`
 - `data/reference/v5/experiments/005-target-model-subagent/`
+- `data/reference/v5/experiments/006-source-cascade-retest/`
+- `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
 - `data/reference/v5/experiments/003-derivation-contract/`
 - `src/lib/city-cost-methodology-v5.ts` and its contract test

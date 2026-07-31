@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "006-source-cascade-retest",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "executionSurface": "Codex spawned sub-agent",
+  "cityCount": 5,
+  "responseSchemaComplete": 5,
+  "totalMeasures": 90,
+  "foundMeasures": 30,
+  "notFoundMeasures": 60,
+  "blockedMeasures": 0,
+  "classAbsentMeasures": 0,
+  "comparison": {
+    "experiment005Found": 20,
+    "experiment006Found": 30,
+    "absoluteDelta": 10,
+    "relativeCoverageIncrease": 0.5,
+    "coverageRate005": 0.2222,
+    "coverageRate006": 0.3333,
+    "cities": [
+      {
+        "city": "Lisbon",
+        "experiment005": 5,
+        "experiment006": 7,
+        "delta": 2
+      },
+      {
+        "city": "Copenhagen",
+        "experiment005": 5,
+        "experiment006": 8,
+        "delta": 3
+      },
+      {
+        "city": "Hanoi",
+        "experiment005": 5,
+        "experiment006": 7,
+        "delta": 2
+      },
+      {
+        "city": "Prague",
+        "experiment005": 5,
+        "experiment006": 7,
+        "delta": 2
+      },
+      {
+        "city": "Don Det",
+        "experiment005": 0,
+        "experiment006": 1,
+        "delta": 1
+      }
+    ],
+    "measures": {
+      "hostel_dorm_bed_1p": {
+        "experiment005": 0,
+        "experiment006": 5,
+        "delta": 5
+      },
+      "hostel_private_room_2p": {
+        "experiment005": 0,
+        "experiment006": 1,
+        "delta": 1
+      },
+      "hotel_1star_room_2p": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "hotel_2star_room_2p": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "hotel_3star_room_2p": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "hotel_4star_room_2p": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "delta": 0
+      },
+      "midrange_restaurant_meal_2p": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "delta": 0
+      },
+      "mcmeal_combo": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "delta": 0
+      },
+      "street_food_meal_1p": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "premium_restaurant_meal_2p": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "cappuccino_1": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "delta": 0
+      },
+      "domestic_draft_beer_1": {
+        "experiment005": 4,
+        "experiment006": 4,
+        "delta": 0
+      },
+      "cocktail_1": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "wine_glass_1": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "paid_attraction_adult_1": {
+        "experiment005": 0,
+        "experiment006": 4,
+        "delta": 4
+      },
+      "half_day_group_activity_adult_1": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      },
+      "full_day_premium_activity_adult_1": {
+        "experiment005": 0,
+        "experiment006": 0,
+        "delta": 0
+      }
+    },
+    "accommodation": {
+      "experiment005": 0,
+      "experiment006": 6,
+      "delta": 6
+    },
+    "activities": {
+      "experiment005": 0,
+      "experiment006": 4,
+      "delta": 4
+    },
+    "hotelStarClasses": {
+      "experiment005": 0,
+      "experiment006": 0,
+      "delta": 0
+    },
+    "halfOrFullDayActivities": {
+      "experiment005": 0,
+      "experiment006": 0,
+      "delta": 0
+    }
+  },
+  "sourceAudit": {
+    "foundFacts": 30,
+    "verifiedAgainstRetrievedSearchResultOrOpenedCanonicalPage": 30,
+    "unsupportedFoundFacts": 0,
+    "notes": "Twenty Numbeo facts were re-retrieved. New sources were checked against displayed search results; five canonical pages opened successfully and two relevant canonical opens failed."
+  },
+  "telemetry": {
+    "agentTasks": 1,
+    "webSearchToolCalls": 5,
+    "searchQueries": 20,
+    "pageReadToolCalls": 1,
+    "directPageReadAttempts": 8,
+    "directPageReadFailures": 2,
+    "directPageReadFailureKinds": [
+      "Hostelz Don Det cache miss",
+      "National Museum of Denmark internal error"
+    ],
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "contractChecks": {
+    "allMeasureKeysPresent": true,
+    "noTierValues": true,
+    "noFxConversion": true,
+    "noArithmetic": true,
+    "unsupportedFactsInvented": false
+  },
+  "verdict": "revise_and_retest",
+  "interpretation": "The explicit cascade raised fact coverage from 22.2% to 33.3% and added accommodation/activity evidence, but did not retrieve any hotel-star class or duration-compatible half/full-day activity. It remains far below complete one-call coverage."
+}
+

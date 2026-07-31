@@ -674,3 +674,17 @@ did not expose exact provider model ID, parameters, token use, latency, or monet
 prompt is rejected as production-ready. Revise the source cascade and test accommodation/activity anchors
 before attempting the locked accuracy holdout. Artifacts are under
 `data/reference/v5/experiments/005-target-model-subagent/`.
+
+## Experiment 006 — explicit source-cascade retest (31 July 2026)
+
+The v006 prompt made the source cascade and hard-category query templates explicit, then reran the same
+five-city delegated GPT-5.6 Luna-class pilot. Complete contracts rose from **20/90 (22.2%)** to
+**30/90 (33.3%)**. Accommodation rose from zero to six facts (five dorm beds and one private double), and
+adult attraction tickets rose from zero to four. All 30 found facts were audited against a retrieved search
+result or canonical page; no unsupported facts, arithmetic, FX, or tier values appeared.
+
+Hotel 1–4-star classes remained zero, as did half-day and full-day activity prices. Two relevant page reads
+failed, and the orchestration surface still exposes no exact provider model ID, parameters, token count,
+latency, or monetary cost. **Verdict:** retain the cascade as evidence, reject 18-anchor direct extraction
+as production-ready, and test a smaller observed-anchor set with validated deterministic models. Artifacts
+are under `data/reference/v5/experiments/006-source-cascade-retest/`.
