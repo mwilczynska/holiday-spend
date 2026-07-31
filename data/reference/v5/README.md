@@ -16,9 +16,13 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | Path | Status | Purpose |
 | --- | --- | --- |
 | `experiments/000-baseline-reassessment/` | **COMPLETE — candidate baseline rejected** | Reproducible audit of what v3/v4 evidence can and cannot support |
-| `experiments/001-one-call-harness/` | **IN PROGRESS — credential gated** | One-call extractor contract, fixture, and provider telemetry harness |
+| `experiments/001-one-call-harness/` | **CURRENT — API telemetry optional** | One-call extractor contract, fixture, and provider telemetry harness |
 | `experiments/002-accommodation-ladder/` | **COMPLETE — candidate rejected** | Accommodation ratio and hostel-unit identifiability audit |
 | `experiments/003-derivation-contract/` | **COMPLETE — contract retained** | Pure 19-tier derivation and provenance propagation contract |
+| `experiments/005-target-model-subagent/` | **COMPLETE — revise and retest** | GPT-5.6 Luna-class prompt-feasibility outputs for difficult cities |
+
+The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
+candidate contract without a provider credential. Provider API telemetry remains separately pending.
 
 Raw model responses, source captures, and generated reports must retain retrieval dates, schema/version
 metadata, source URLs, currencies, and evidence basis. Do not store copied page content when a URL and

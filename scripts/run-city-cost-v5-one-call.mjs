@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { pathToFileURL } from 'node:url';
 
 const ROOT = process.cwd();
 const PROMPT_PATH = 'docs/prompts/llm_prompt_city_cost_v5_experiment_001.md';
@@ -221,7 +222,12 @@ async function run() {
   if (validationErrors.length) process.exitCode = 1;
 }
 
-run().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exitCode = 1;
-});
+const invokedPath = process.argv[1]
+  ? pathToFileURL(path.resolve(process.argv[1])).href
+  : null;
+if (invokedPath === import.meta.url) {
+  run().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  });
+}

@@ -36,10 +36,12 @@ Verdict: retain the evidence and provenance model; reject v4 as a complete produ
 
 The candidate prompt asks the model to extract 18 source measures, not calculate tiers. The runner supports
 OpenAI Responses web search and Anthropic server web search, with no retries or provider fallback. The
-schema-only fixture passes validation. No live test was possible because `OPENAI_API_KEY`,
-`ANTHROPIC_API_KEY`, and `GEMINI_API_KEY` are absent from the environment.
+schema-only fixture passes validation. Provider API keys are absent from the environment, but the delegated
+GPT-5.6 Luna-class sub-agent is now the target-model prompt-test path; the absence of API keys is not a
+blocker for prompt feasibility.
 
-Run a live test when credentials are available:
+Run a provider-telemetry test when credentials are available (the target-model prompt test does not require
+provider API credentials):
 
 ```text
 node scripts/run-city-cost-v5-one-call.mjs --provider anthropic --model <haiku-model-id> --city Lisbon --country Portugal
@@ -47,6 +49,14 @@ node scripts/run-city-cost-v5-one-call.mjs --provider anthropic --model <haiku-m
 
 The output is written under `data/reference/v5/experiments/001-one-call-harness/` and must be treated as
 unvalidated until source/citation correctness, one-call reliability, and target accuracy are scored.
+
+## Experiment 005 result
+
+The delegated GPT-5.6 Luna-class sub-agent ran the exact v5 extraction prompt against five difficult cities.
+All five responses passed local schema validation, but only 20/90 anchors were found and direct page reads
+returned HTTP 503. Its raw JSON, source outcomes, and limitations belong under
+`data/reference/v5/experiments/005-target-model-subagent/`. This is prompt-feasibility evidence only; it
+does not replace the locked city-level accuracy holdout.
 
 ## Experiment 002 result
 
@@ -57,8 +67,8 @@ retained only as evidence. Read `data/reference/v5/experiments/002-accommodation
 
 ## Next action
 
-Build the scoring and target-model evaluation harness while the live credential blocker is pending. In
-parallel, design independent accommodation and activity ground-truth collection with complete matched city
-records. Do not use the shipping CSV as ground truth and do not infer dorm/private separation from the
-blended hostel channel. The new derivation contract is deliberately not integrated into the shipping path
-until source feasibility and accuracy gates pass.
+Score the delegated target-model outputs and audit each cited source, then design independent accommodation
+and activity ground-truth collection with complete matched city records. Do not use the shipping CSV as
+ground truth and do not infer dorm/private separation from the blended hostel channel. The new derivation
+contract is deliberately not integrated into the shipping path until source feasibility and accuracy gates
+pass.

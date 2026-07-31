@@ -1,0 +1,973 @@
+{
+  "schemaVersion": "city-cost-v5-subagent-raw-v1",
+  "model": {
+    "requestedClass": "GPT-5.6 Luna",
+    "executionSurface": "Codex spawned sub-agent",
+    "exactProviderModelId": "not exposed by orchestration surface",
+    "parameters": "not exposed",
+    "caveat": "This is a no-API-key sub-agent prompt-feasibility run, not evidence from the production provider endpoint."
+  },
+  "responses": [
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Search retrieval returned compatible Numbeo restaurant facts; direct URL page-read attempts returned HTTP 503 and other categories remained unresolved."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hostel_private_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 15,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 55,
+          "currency": "EUR",
+          "unit": "per_two_person_meal",
+          "basis": "Web-search retrieval displayed: Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 10,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Combo Meal at McDonald's (or Equivalent Fast-Food Meal)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 2.58,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Cappuccino (Regular Size)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 3,
+          "currency": "EUR",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Domestic Draft Beer (0.5 Liter)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "paid_attraction_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Search retrieval returned compatible Numbeo restaurant facts; direct URL page-read attempts returned HTTP 503 and other categories remained unresolved."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hostel_private_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 150,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 800,
+          "currency": "DKK",
+          "unit": "per_two_person_meal",
+          "basis": "Web-search retrieval displayed: Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 90,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Combo Meal at McDonald's (or Equivalent Fast-Food Meal)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 45.1,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Cappuccino (Regular Size)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 60,
+          "currency": "DKK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Domestic Draft Beer (0.5 Liter)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "paid_attraction_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Search retrieval returned compatible Numbeo restaurant facts; direct URL page-read attempts returned HTTP 503 and other categories remained unresolved."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hostel_private_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 55000,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 500000,
+          "currency": "VND",
+          "unit": "per_two_person_meal",
+          "basis": "Web-search retrieval displayed: Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 119000,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Combo Meal at McDonald's (or Equivalent Fast-Food Meal)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 48345.07,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Cappuccino (Regular Size)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 26326.18,
+          "currency": "VND",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Domestic Draft Beer (0.5 Liter)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "paid_attraction_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "partial",
+        "notes": "Search retrieval returned compatible Numbeo restaurant facts; direct URL page-read attempts returned HTTP 503 and other categories remained unresolved."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hostel_private_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "Search results did not provide a dated, occupancy- and class-compatible standard public rate."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "found",
+          "value": 240,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Meal at an Inexpensive Restaurant",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "found",
+          "value": 1200,
+          "currency": "CZK",
+          "unit": "per_two_person_meal",
+          "basis": "Web-search retrieval displayed: Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "mcmeal_combo": {
+          "status": "found",
+          "value": 220,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Combo Meal at McDonald's (or Equivalent Fast-Food Meal)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "cappuccino_1": {
+          "status": "found",
+          "value": 81.28,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Cappuccino (Regular Size)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "domestic_draft_beer_1": {
+          "status": "found",
+          "value": 65,
+          "currency": "CZK",
+          "unit": "per_person_item",
+          "basis": "Web-search retrieval displayed: Domestic Draft Beer (0.5 Liter)",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+          "retrievedAt": "2026-07-31",
+          "note": "Exact displayed city value; no arithmetic or FX applied."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "paid_attraction_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible displayed price was retrieved within the bounded search."
+        }
+      }
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "referenceDate": "2026-07-31",
+      "directLookup": {
+        "attempted": true,
+        "outcome": "no_page",
+        "notes": "Sparse-city searches returned no definition-compatible price page."
+      },
+      "measures": {
+        "hostel_dorm_bed_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "hostel_private_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "hotel_1star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "hotel_2star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "hotel_3star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "hotel_4star_room_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "inexpensive_restaurant_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "midrange_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "mcmeal_combo": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "street_food_meal_1p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "premium_restaurant_meal_2p": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "cappuccino_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "domestic_draft_beer_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "cocktail_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "wine_glass_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "paid_attraction_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "half_day_group_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        },
+        "full_day_premium_activity_adult_1": {
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "unit": null,
+          "basis": null,
+          "sourceUrl": null,
+          "retrievedAt": "2026-07-31",
+          "note": "No definition-compatible published city price was retrieved by the bounded search."
+        }
+      }
+    }
+  ]
+}
+

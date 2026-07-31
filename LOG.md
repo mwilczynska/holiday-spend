@@ -660,3 +660,17 @@ The contract tests also reject contradictory status/value pairs and verify that 
 `mcmeal_combo` anchor is never silently substituted for a missing street-food measure. This is schema and
 provenance evidence only — no statistical coefficients were fitted or promoted. The machine-readable
 result and verdict are in `data/reference/v5/experiments/003-derivation-contract/`.
+
+## Experiment 005 — target-model sub-agent prompt feasibility (31 July 2026)
+
+A delegated GPT-5.6 Luna-class sub-agent ran the exact v5 18-anchor extraction prompt for Lisbon,
+Copenhagen, Hanoi, Prague, and sparse Don Det without a user-supplied provider API key. All five response
+objects passed the local one-call schema validator and emitted no tiers, arithmetic, FX conversion, or
+invented sparse-city facts. It found 20 of 90 anchors (22.2%): five food/drink facts in each of the four
+well-covered cities and none in Don Det. Four direct page reads returned HTTP 503; the orchestration surface
+did not expose exact provider model ID, parameters, token use, latency, or monetary cost.
+
+**Verdict:** the delegated route removes API-key absence as a prompt-iteration blocker, but the candidate
+prompt is rejected as production-ready. Revise the source cascade and test accommodation/activity anchors
+before attempting the locked accuracy holdout. Artifacts are under
+`data/reference/v5/experiments/005-target-model-subagent/`.

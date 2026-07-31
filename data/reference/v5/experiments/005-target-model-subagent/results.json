@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "005-target-model-subagent",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "executionSurface": "Codex spawned sub-agent",
+  "cityCount": 5,
+  "responseSchemaComplete": 5,
+  "totalMeasures": 90,
+  "foundMeasures": 20,
+  "notFoundMeasures": 70,
+  "blockedMeasures": 0,
+  "classAbsentMeasures": 0,
+  "cities": [
+    {
+      "city": "Lisbon",
+      "found": 5
+    },
+    {
+      "city": "Copenhagen",
+      "found": 5
+    },
+    {
+      "city": "Hanoi",
+      "found": 5
+    },
+    {
+      "city": "Prague",
+      "found": 5
+    },
+    {
+      "city": "Don Det",
+      "found": 0
+    }
+  ],
+  "telemetry": {
+    "agentTasks": 1,
+    "webSearchToolCalls": 3,
+    "searchQueries": 11,
+    "directPageReadAttempts": 4,
+    "directPageReadHttp503": 4,
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "contractChecks": {
+    "allMeasureKeysPresent": true,
+    "localHarnessValidator": "pass: 5/5 responses validated by scripts/run-city-cost-v5-one-call.mjs",
+    "noTierValues": true,
+    "noFxConversion": true,
+    "noArithmetic": true,
+    "unsupportedFactsInvented": false
+  },
+  "verdict": "revise_and_retest",
+  "interpretation": "The prompt is feasible as a no-key spawned-agent schema/extraction pilot, but the 22.2% fact coverage, direct-read failures, and absent provider telemetry do not satisfy production acceptance gates."
+}

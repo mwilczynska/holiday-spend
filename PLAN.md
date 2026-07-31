@@ -104,17 +104,25 @@ See `data/reference/v5/experiments/003-derivation-contract/` and
 
 **Experiment 001 — target-model one-call harness — built, live test pending.** The candidate 18-measure
 extractor and provider-neutral OpenAI/Anthropic telemetry harness make exactly one request and do not retry
-or fall back. No provider credentials are configured in this environment, so target-model feasibility
-cannot yet be measured.
+or fall back. Provider API credentials are not configured locally, but that is no longer a methodology
+blocker: a delegated GPT-5.6 Luna-class sub-agent is the target-model prompt-test path. Provider API runs
+remain useful for real web-tool telemetry when credentials are supplied, but a stronger model or manual web
+run is not counted as target-model evidence.
 
-**Live-call blocker:** no `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` is configured in this environment. The
-first target-model prompt test is queued, but no stronger model or manual web run will be counted as
-production evidence. Offline schema, data, source, and deterministic work continues meanwhile.
+**Experiment 005 — target-model sub-agent prompt feasibility — in progress.** A low-latency GPT-5.6
+target-model sub-agent ran the exact candidate prompt against five difficult cities. All five responses
+passed the local schema validator, but only 20/90 anchors were found; direct page reads returned HTTP 503
+and the orchestration surface exposed no exact provider telemetry. This removes API-key absence as a
+prompt-iteration blocker but rejects the candidate as production-ready. See
+`data/reference/v5/experiments/005-target-model-subagent/`.
+
+Status correction: this pilot is complete with a `revise_and_retest` verdict; the next prompt iteration is
+the active experiment.
 
 ### Next experiments, in order
 
-1. Build a target-model web-enabled one-call runner and test the smallest useful anchor contract when
-   Luna/Haiku credentials are available.
+1. Audit Experiment 005's target-model outputs, then revise the source cascade and retest the unresolved
+   accommodation/activity anchors with the same Luna-class sub-agent.
 2. Resolve accommodation measurement and dorm/private identifiability with independent ground truth;
    do not infer two hostel tiers from one blended channel without matched evidence.
 3. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
@@ -158,6 +166,7 @@ Current v5 artifacts:
 - `data/reference/v5/validation-manifest-v5.json`
 - `data/reference/v5/experiments/000-baseline-reassessment/`
 - `data/reference/v5/experiments/001-one-call-harness/`
+- `data/reference/v5/experiments/005-target-model-subagent/`
 - `data/reference/v5/experiments/002-accommodation-ladder/`
 - `data/reference/v5/experiments/003-derivation-contract/`
 - `src/lib/city-cost-methodology-v5.ts` and its contract test
