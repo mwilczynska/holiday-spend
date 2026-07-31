@@ -1,0 +1,12 @@
+{
+  "city":"Bangkok","country":"Thailand","referenceDate":"2026-07-31","searchOnly":{"queriesAttempted":6,"directPageReads":0},
+  "measures":{
+    "hostel_dorm_bed_1p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:hostelworld.com Bangkok dorm bed per night price","resultEvidence":null},
+    "hostel_private_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:hostelworld.com Bangkok private room per night price","resultEvidence":null},
+    "hotel_1star_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:booking.com Bangkok 1-star hotels average price per night","resultEvidence":null},
+    "hotel_2star_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:booking.com Bangkok 2-star hotels average price per night","resultEvidence":null},
+    "hotel_3star_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:booking.com Bangkok 3-star hotels average price per night","resultEvidence":null},
+    "hotel_4star_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:booking.com Bangkok 4-star hotels average price per night","resultEvidence":null}
+  },
+  "outcome":"no_result","notes":"Hostelworld results used prohibited From prices. Searches for 1-star and 2-star averages returned no qualifying exact-class city-average result. Booking.com search evidence exposed Bangkok 3-star and 4-star city averages with currency and per-night basis, but did not explicitly establish two-adult occupancy, so both were rejected. No direct reads, retries, fallbacks, arithmetic, FX, or other-city evidence were used."
+}

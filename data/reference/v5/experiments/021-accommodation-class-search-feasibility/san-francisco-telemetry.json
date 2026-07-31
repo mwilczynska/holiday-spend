@@ -1,0 +1,22 @@
+{
+  "split": "development",
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "San Francisco",
+  "queriesAttempted": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "fallbackAttempts": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": false,
+  "foundMeasures": 3,
+  "notFoundMeasures": 3,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "exactProviderModelId": null,
+  "parameters": null,
+  "note": "One-city Experiment 021 run; six dedicated searches, no direct/fallback/retry/arithmetic/FX; delegated surface lacks provider telemetry. Dorm-bed and 3-/4-star room averages were retained; private-hostel, 1-star, and 2-star measures failed closed under the strict class/per-room rule."
+}

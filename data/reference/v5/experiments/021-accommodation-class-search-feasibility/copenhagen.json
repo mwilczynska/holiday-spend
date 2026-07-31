@@ -1,0 +1,12 @@
+{
+  "city":"Copenhagen","country":"Denmark","referenceDate":"2026-07-31","searchOnly":{"queriesAttempted":6,"directPageReads":0},
+  "measures":{
+    "hostel_dorm_bed_1p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:hostelworld.com Copenhagen dorm bed per night price","resultEvidence":null},
+    "hostel_private_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:hostelworld.com Copenhagen private room per night price","resultEvidence":null},
+    "hotel_1star_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:booking.com Copenhagen 1-star hotels average price per night","resultEvidence":null},
+    "hotel_2star_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:booking.com Copenhagen 2-star hotels average price per night","resultEvidence":null},
+    "hotel_3star_room_2p":{"status":"found","value":246,"currency":"USD","unit":"per_room_night","basis":"city_average","sourceUrl":"https://www.booking.com/threestars/city/dk/copenhagen.html","searchQuery":"site:booking.com Copenhagen 3-star hotels average price per night","resultEvidence":"Booking.com 3-Star Hotels in Copenhagen result identifies Copenhagen, formal 3-star class, search occupancy of 1 night and 2 adults, and states: On average, a 3-star hotel in Copenhagen costs $246 per night."},
+    "hotel_4star_room_2p":{"status":"not_found","value":null,"currency":null,"unit":null,"basis":null,"sourceUrl":null,"searchQuery":"site:booking.com Copenhagen 4-star hotels average price per night","resultEvidence":null}
+  },
+  "outcome":"partial","notes":"The 3-star Booking.com class result exposed a Copenhagen city average, per-night basis, formal class, currency, and two-adult search occupancy. Hostel results used prohibited From prices. Searches for 1-star and 2-star averages returned no qualifying class-average result. The 4-star results exposed class averages but no explicit two-adult occupancy in the accepted search evidence, so they were rejected. No direct reads, retries, fallbacks, arithmetic, FX, or other-city evidence were used."
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-experiment-manifest-v1",
+  "experiment": "021-accommodation-class-search-feasibility",
+  "frozenAt": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_021_accommodation_search.md",
+  "invocationShape": "one city per independent invocation",
+  "cities": [
+    {"city":"Copenhagen","country":"Denmark","costBand":"high"},
+    {"city":"Lisbon","country":"Portugal","costBand":"mid"},
+    {"city":"Hanoi","country":"Vietnam","costBand":"low"},
+    {"city":"Bangkok","country":"Thailand","costBand":"mid"},
+    {"city":"San Francisco","country":"United States","costBand":"high"},
+    {"city":"Don Det","country":"Laos","costBand":"sparse"}
+  ]
+}

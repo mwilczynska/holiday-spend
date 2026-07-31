@@ -211,12 +211,21 @@ because shared/group status was not explicit. There were 18 queries and 12 searc
 reads/retries/fallbacks/arithmetic/cross-city evidence. Promote official attraction-ticket sources for a
 broader panel; keep timed organized activities fail-closed. See `data/reference/v5/experiments/020-activities-search-feasibility/`.
 
+**Experiment 021 — accommodation class search feasibility — complete; reject complete route.** Six
+independent calls issued six targeted search-only queries. Only 7/36 cells (19.4%) were accepted and no city
+was complete: Copenhagen supplied 3-star; Lisbon 2/3/4-star; San Francisco dorm/3/4-star; Hanoi, Bangkok,
+and Don Det were 0/6. Hostel `From`, mixed classes, missing occupancy/per-room basis, generic, and wrong-city
+results were rejected. Retain the heterogeneous class-average sources only for a separately matched panel;
+do not fit accommodation ratios from these seven feasibility observations. See
+`data/reference/v5/experiments/021-accommodation-class-search-feasibility/`.
+
 ### Next experiments, in order
 
-1. Expand the official attraction-ticket pattern to a definition-matched activity panel and test whether
-   timed group/premium activities can be sourced without `from` or package prices. Keep dedicated-query
-   provenance, explicit native-currency checks, and fail-closed missingness. Continue accommodation work;
-   do not tune the locked 018 holdout or average away failures.
+1. Build a separately curated, definition-matched accommodation ground-truth panel around the retained
+   class-average candidates; require the 30-city/10-holdout gate before fitting any ratio or imputation. Keep
+   dedicated-query provenance, explicit native-currency checks, and fail-closed missingness. Expand the official
+   attraction-ticket pattern only after this blocker is scored; do not tune the locked 018 holdout or average
+   away failures.
 2. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -284,6 +293,8 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/018-numbeo-search-30-city/`
 - `data/reference/v5/experiments/019-numbeo-repeatability-edge-cases/`
 - `data/reference/v5/experiments/020-activities-search-feasibility/`
+- `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`
+- `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

@@ -1,0 +1,73 @@
+{
+  "city": "Lisbon",
+  "country": "Portugal",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {
+    "queriesAttempted": 6,
+    "directPageReads": 0
+  },
+  "measures": {
+    "hostel_dorm_bed_1p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "searchQuery": "Lisbon Hostelworld dorm bed price per night Lisbon hostel",
+      "resultEvidence": null
+    },
+    "hostel_private_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "searchQuery": "Lisbon Hostelworld private hostel room price per night Lisbon",
+      "resultEvidence": null
+    },
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "searchQuery": "Lisbon 1 star hotel city average price per night",
+      "resultEvidence": null
+    },
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 70,
+      "currency": "USD",
+      "unit": "per_room_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.momondo.com/hotels/lisbon",
+      "searchQuery": "Lisbon 2 star hotel city average price per room per night",
+      "resultEvidence": "Momondo's Lisbon result asks 'What is the average price per room type in Lisbon?' and states: 'A 2 star hotel in Lisbon costs an average of $70/night, and a 5 star hotel is the most expensive at $276.'"
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 122,
+      "currency": "EUR",
+      "unit": "per_room_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.kayak.ie/Lisbon-Hotels_3-stars.Hts.2172.hotel.ksp",
+      "searchQuery": "Lisbon 3 star hotel average price per room per night",
+      "resultEvidence": "KAYAK's Lisbon 3-star result asks 'How much does a 3-star hotel room in Lisbon cost?' and states: 'The average price for a 3-star hotel in Lisbon is €122.'"
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 111,
+      "currency": "USD",
+      "unit": "per_room_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.kayak.com/Lisbon-Hotels_4-stars.Hfos.2172.hotel.ksp",
+      "searchQuery": "Lisbon 4 star hotel average price per room per night",
+      "resultEvidence": "KAYAK's Lisbon 4-star result asks 'How much does a 4-star hotel room in Lisbon cost?' and states: 'The average price for a 4-star hotel in Lisbon is $111.'"
+    }
+  },
+  "outcome": "partial",
+  "notes": "The six dedicated searches found explicit city-average per-room nightly values for 2-star ($70, Momondo), 3-star (€122, KAYAK), and 4-star ($111, KAYAK) hotels. The 1-star Momondo result gave a city/class nightly average but did not explicitly establish the required per-room basis, so it was rejected. Hostelworld results exposed property-level From prices rather than qualifying central dorm-bed or private-room values and were rejected. No direct reads, retries, fallbacks, arithmetic, FX, or other-city evidence were used."
+}

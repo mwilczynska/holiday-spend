@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-results-v1",
+  "experiment": "021-accommodation-class-search-feasibility",
+  "runDate": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_021_accommodation_search.md",
+  "invocationShape": "one city per independent invocation",
+  "targetModelClass": "GPT-5.6 Luna-class delegated invocation",
+  "citiesRequested": 6,
+  "measureCellsRequested": 36,
+  "foundCells": 7,
+  "cellCoverage": 0.1944444444,
+  "completeCities": 0,
+  "cityResults": {
+    "Copenhagen": {"found":1,"measures":["hotel_3star_room_2p"],"outcome":"partial"},
+    "Lisbon": {"found":3,"measures":["hotel_2star_room_2p","hotel_3star_room_2p","hotel_4star_room_2p"],"outcome":"partial"},
+    "Hanoi": {"found":0,"outcome":"no_result"},
+    "Bangkok": {"found":0,"outcome":"no_result"},
+    "San Francisco": {"found":3,"measures":["hostel_dorm_bed_1p","hotel_3star_room_2p","hotel_4star_room_2p"],"outcome":"partial"},
+    "Don Det": {"found":0,"outcome":"no_result"}
+  },
+  "acceptedFacts": [
+    {"city":"Copenhagen","measure":"hotel_3star_room_2p","value":246,"currency":"USD","basis":"Booking city_average"},
+    {"city":"Lisbon","measure":"hotel_2star_room_2p","value":70,"currency":"USD","basis":"Momondo city_average"},
+    {"city":"Lisbon","measure":"hotel_3star_room_2p","value":122,"currency":"EUR","basis":"KAYAK city_average"},
+    {"city":"Lisbon","measure":"hotel_4star_room_2p","value":111,"currency":"USD","basis":"KAYAK city_average"},
+    {"city":"San Francisco","measure":"hostel_dorm_bed_1p","value":33,"currency":"USD","basis":"Budget Your Trip dorm_average"},
+    {"city":"San Francisco","measure":"hotel_3star_room_2p","value":324,"currency":"USD","basis":"KAYAK city_average"},
+    {"city":"San Francisco","measure":"hotel_4star_room_2p","value":262,"currency":"USD","basis":"KAYAK city_average"}
+  ],
+  "telemetryTotals": {
+    "invocations":6,
+    "queriesAttempted":36,
+    "webSearchToolCalls":17,
+    "directPageReads":0,
+    "retryAttempts":0,
+    "fallbackSourcesUsed":0,
+    "arithmeticOperations":0,
+    "otherCityEvidenceUsed":0,
+    "providerTokens":null,
+    "latencyMs":null,
+    "providerCost":null,
+    "exactProviderModelId":null,
+    "parameters":null
+  },
+  "evidenceAudit": {
+    "acceptedFacts":7,
+    "exactCityClassOccupancyNightlyEvidence":7,
+    "canonicalSourceUrlEvidence":7,
+    "contractComplianceRate":1,
+    "basisFamilies":{"Booking":1,"Momondo":1,"KAYAK":4,"BudgetYourTrip":1},
+    "note":"Accepted facts are source-contract observations, not a matched accuracy sample. Currency and source-family differences remain visible."
+  },
+  "verdict":"reject_complete_accommodation_route_retain_class_average_candidates",
+  "rejectionReasonsForFinalAcceptance":[
+    "Only 7/36 cells (19.4%) were accepted and no city had all six classes.",
+    "Hostel private rooms, hotel 1-star, and most hotel 2-star classes remained unresolved; Don Det and two other cities were 0/6.",
+    "Accepted class averages come from heterogeneous providers and currencies; no 30-city/10-holdout matched basis exists.",
+    "Exact provider model ID, parameters, tokens, latency, and cost remain unavailable through delegated execution."
+  ]
+}

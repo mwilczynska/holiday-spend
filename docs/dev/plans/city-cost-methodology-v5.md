@@ -86,6 +86,11 @@ ticket plus four-hour group and eight-hour premium organized tours; San Francisc
 Lisbon's half-day brochure price was normalized to `not_found` because shared/group status was not explicit.
 Promote official attraction-ticket pages for broader validation, but keep timed activity anchors fail-closed
 unless duration, adult basis, organized/group status, and a non-`from` price are explicit.
+Experiment 021 tested a materially different accommodation route: public search snippets for hostel dorm /
+private and hotel 1–4-star city averages, without direct URLs or date injection. Six independent calls accepted
+7/36 cells (19.4%) and no city was complete: Copenhagen 3-star, Lisbon 2/3/4-star, San Francisco dorm/3/4-star;
+Hanoi, Bangkok, and Don Det were 0/6. Retain the heterogeneous class-average sources only for a curated,
+definition-matched ground-truth panel; do not fit ratios from these seven feasibility facts.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

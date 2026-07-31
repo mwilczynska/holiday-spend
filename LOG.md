@@ -922,3 +922,22 @@ activities fail-closed unless duration, adult basis, organized/group status, and
 explicit. Do not infer all activity tiers from Hanoi or use nearby-city/package evidence. Accommodation,
 complete food/drink derivation, provider telemetry, and the remaining methodology gates remain open. Artifacts
 are under `data/reference/v5/experiments/020-activities-search-feasibility/`.
+
+## Experiment 021 — accommodation class search feasibility (31 July 2026)
+
+Six independent one-city GPT-5.6 Luna-class calls issued six search-only queries each for hostel dorm/private
+and hotel 1–4-star city averages, deliberately avoiding direct pages and date injection. Only **7/36 cells
+(19.4%)** were accepted and no city was complete: Copenhagen supplied a 3-star average; Lisbon supplied
+2/3/4-star averages; San Francisco supplied a dorm average and 3/4-star averages; Hanoi, Bangkok, and Don
+Det were 0/6. Hostel `From` prices, mixed hostel/guesthouse values, missing occupancy/per-room basis, generic
+or wrong-city results, and event-specific prices were rejected.
+
+The calls issued 36 queries and 17 search operations, with zero direct reads, retries, fallback sources,
+arithmetic, FX, or cross-city evidence. Seven accepted observations carried exact city/class or occupancy,
+nightly value, currency, and URL evidence. They come from heterogeneous source families and are feasibility
+observations, not ground truth or fitted coefficients.
+
+**Verdict:** reject the complete accommodation route. Retain KAYAK/Momondo/Booking/Budget Your Trip class-
+average patterns only for a separately curated, definition-matched 30-city/10-holdout panel. Do not infer
+hostel private rooms, 1-star, or missing classes from these seven facts. Artifacts are under
+`data/reference/v5/experiments/021-accommodation-class-search-feasibility/`.

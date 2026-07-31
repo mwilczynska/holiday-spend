@@ -222,12 +222,27 @@ queries and 12 search operations, with no direct reads/retries/fallbacks/arithme
 activities fail-closed unless duration, adult basis, organized/group status, and non-`from` price are explicit.
 Do not fit a model from Hanoi alone. Read `data/reference/v5/experiments/020-activities-search-feasibility/`.
 
+## Experiment 021 result
+
+Six independent one-city calls issued six accommodation searches each for hostel dorm/private and hotel
+1–4-star city averages, without direct page reads or date injection. Only 7/36 cells (19.4%) were accepted
+and no city was complete: Copenhagen supplied 3-star; Lisbon 2/3/4-star; San Francisco dorm/3/4-star;
+Hanoi, Bangkok, and Don Det were 0/6. Hostel `From` prices, mixed hostel/guesthouse values, missing
+occupancy/per-room basis, generic or wrong-city results, and event-specific prices were rejected. The calls
+used 36 queries and 17 search operations, with no direct reads/retries/fallbacks/arithmetic/FX/cross-city
+evidence; exact provider telemetry was unavailable.
+
+**Verdict:** reject the complete accommodation route. Retain the KAYAK/Momondo/Booking/Budget Your Trip
+class-average patterns only for a separately curated, definition-matched ground-truth panel; do not fit
+ratios from seven feasibility observations. Read `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`.
+
 ## Next action
 
-Expand the official attraction-ticket pattern to a definition-matched activity panel and test whether timed
-group/premium activities can be sourced without `from` or package prices. Retain dedicated-query provenance,
-explicit native-currency checks, and fail-closed missingness. Continue accommodation work; do not tune the
-locked 018 holdout or average away failures.
+Build a separately curated, definition-matched accommodation ground-truth panel around the retained
+class-average candidates; require the 30-city/10-holdout gate before fitting ratios or imputations. Retain
+dedicated-query provenance, explicit native-currency checks, and fail-closed missingness. Expand the official
+attraction-ticket pattern only after this blocker is scored; do not tune the locked 018 holdout or average away
+failures.
 Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit a correction from
 Copenhagen alone. Direct booking-engine URLs and direct Numbeo retrieval are rejected for the target web
 path. Keep the one-city shape for safe stable templates or curated benchmarks for unresolved lower classes

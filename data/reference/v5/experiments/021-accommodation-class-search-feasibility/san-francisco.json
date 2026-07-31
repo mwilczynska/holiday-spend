@@ -1,0 +1,73 @@
+{
+  "city": "San Francisco",
+  "country": "United States",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {
+    "queriesAttempted": 6,
+    "directPageReads": 0
+  },
+  "measures": {
+    "hostel_dorm_bed_1p": {
+      "status": "found",
+      "value": 33,
+      "currency": "USD",
+      "unit": "per_person_bed_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.budgetyourtrip.com/hostels/united-states-of-america/san-francisco-5391959",
+      "searchQuery": "San Francisco Hostelworld dorm bed price per night hostel",
+      "resultEvidence": "Budget Your Trip's San Francisco hostel result states: 'The average price for a dorm bed in a hostel in San Francisco (based on data from 15 hostels with dorms) is an affordable $33.' The result labels the displayed dorm-bed range as per night."
+    },
+    "hostel_private_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "searchQuery": "San Francisco hostel private room average price per night",
+      "resultEvidence": null
+    },
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "searchQuery": "San Francisco 1 star hotel average price per room per night",
+      "resultEvidence": null
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "basis": null,
+      "sourceUrl": null,
+      "searchQuery": "San Francisco 2 star hotel average price per room per night",
+      "resultEvidence": null
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 324,
+      "currency": "USD",
+      "unit": "per_room_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.kayak.com/San-Francisco-Hotels_3-stars.Hts.13852.hotel.ksp",
+      "searchQuery": "San Francisco 3 star hotel average price per room per night",
+      "resultEvidence": "KAYAK's San Francisco 3-star result asks 'How much does a hotel room cost in a 3-star hotel in San Francisco?' and states: 'The average price for a 3-star hotel in San Francisco is $324.'"
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 262,
+      "currency": "USD",
+      "unit": "per_room_night",
+      "basis": "city_average",
+      "sourceUrl": "https://www.kayak.com/San-Francisco-Hotels_4-stars.Hfos.13852.hotel.ksp",
+      "searchQuery": "San Francisco 4 star hotel average price per room per night",
+      "resultEvidence": "KAYAK's San Francisco 4-star result asks 'How much does a 4-star hotel room in San Francisco cost?' and states: 'The average price for a 4-star hotel in San Francisco is $262.'"
+    }
+  },
+  "outcome": "partial",
+  "notes": "The six dedicated searches found an explicit city-average dorm-bed value ($33, Budget Your Trip) and explicit 3-star ($324, KAYAK) and 4-star ($262, KAYAK) hotel-room averages. The private-room result mixed hostel and guesthouse data ($36) and was rejected as not an exact hostel class. The 1-star result supplied hotel-class values without explicit per-room wording. The 2-star results supplied a Momondo 'typically costs' value and a Budget Your Trip hotel average, but neither was an explicit per-room city/class average under the strict rule; an event-specific SFGATE two-star room rate was also rejected. No direct reads, retries, fallbacks, arithmetic, FX, or other-city evidence were used."
+}
