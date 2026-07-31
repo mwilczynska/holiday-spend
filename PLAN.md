@@ -291,6 +291,10 @@ Experiment 034 rejected that full panel: 12/30 cells, one complete city, and onl
 Budget Your Trip as a guarded fallback candidate (9/10 rows, but zero/one-hotel quality failures); explicit
 occupancy and held-out accuracy remain unresolved.
 
+Experiment 035 found a strong activity source shape: BudgetYourTrip returned 12/12 exact-city per-person/day
+activity and budget/mid/luxury entertainment rows across Lisbon, Hanoi, and Copenhagen. Broaden this panel, then
+validate deterministic two-person scaling and tier semantics against independent ground truth; do not map yet.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.

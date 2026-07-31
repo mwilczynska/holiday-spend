@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 28,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip reported-spend average; search result crawled 3 weeks before retrieval (source period not otherwise stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon",
+      "sourceTitle": "Lisbon Travel Cost - Average Price of a Vacation to Lisbon: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Lisbon typically cost an average of $28 (€24) per person, per day based on the spending of previous travelers.",
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal travel cost sightseeing activities entertainment entrance ticket per person per day",
+      "reason": "The exact-city page explicitly identifies sightseeing, entertainment, and entrance-ticket spend as a per-person-per-day average in USD. No scaling to two travellers was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 11,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled 3 weeks before retrieval (source period not otherwise stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon/trip-cost-2267057",
+      "sourceTitle": "How much does a trip to Lisbon Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $11, Mid-Range $28, Luxury $73.",
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Budget, with an explicit per-person daily basis."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 28,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled 3 weeks before retrieval (source period not otherwise stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon/trip-cost-2267057",
+      "sourceTitle": "How much does a trip to Lisbon Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $11, Mid-Range $28, Luxury $73.",
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Mid-Range, with an explicit per-person daily basis."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 73,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip reported-spend daily category table; search result crawled 3 weeks before retrieval (source period not otherwise stated)",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon/trip-cost-2267057",
+      "sourceTitle": "How much does a trip to Lisbon Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $11, Mid-Range $28, Luxury $73.",
+      "searchQuery": "site:budgetyourtrip.com Lisbon Portugal budget mid-range luxury entertainment activities per person per day",
+      "reason": "The exact-city table labels the row Entertainment and the spend tier Luxury; it is retained as the high-end candidate without relabelling arithmetic or modelling."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

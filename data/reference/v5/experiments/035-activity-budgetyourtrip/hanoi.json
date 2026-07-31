@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 8.1,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "Budget Your Trip Hanoi travel-cost page; result crawled last month; based on spending of previous travelers",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Hanoi typically cost an average of $8.10 per person, per day based on the spending of previous travelers. This includes fees paid for admission tickets to museums and attractions, day tours, and other sightseeing expenses.",
+      "searchQuery": "site:budgetyourtrip.com Hanoi Vietnam travel cost sightseeing activities entertainment entrance fees per person per day",
+      "reason": "Accepted as an exact Hanoi activity/entertainment city statistic with explicit per-person-per-day basis. No multiplication to the two-traveller product value was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 3,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Hanoi budget/mid-range/luxury table; travel-cost data last updated June 5, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://testing.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per Person, per day — Entertainment: Budget $3, Mid-Range $8, Luxury $28.",
+      "searchQuery": "site:budgetyourtrip.com Hanoi Vietnam budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the entertainment spend tiers and states the table is per person per day. The testing subdomain is retained as provenance; no tier value was modelled or scaled."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 8,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Hanoi budget/mid-range/luxury table; travel-cost data last updated June 5, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://testing.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per Person, per day — Entertainment: Budget $3, Mid-Range $8, Luxury $28.",
+      "searchQuery": "site:budgetyourtrip.com Hanoi Vietnam budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the mid-range entertainment tier and states the table is per person per day. No cross-tier arithmetic or product mapping was performed."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 28,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "Budget Your Trip Hanoi budget/mid-range/luxury table; travel-cost data last updated June 5, 2026",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://testing.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per Person, per day — Entertainment: Budget $3, Mid-Range $8, Luxury $28.",
+      "searchQuery": "site:budgetyourtrip.com Hanoi Vietnam budget mid-range luxury entertainment activities cost per day",
+      "reason": "Accepted because the source explicitly labels the luxury entertainment tier and states the table is per person per day. No product mapping or scaling was performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -306,6 +306,10 @@ Experiment 034 broadened this to ten cities with a 7/3 development/holdout split
 complete city, and 2/9 holdout cells. Budget Your Trip supplied 9/10 rows but had zero/one-hotel quality failures;
 keep it as a guarded fallback candidate only and do not map it to `accom_1_star`.
 
+Experiment 035 is the strongest new route: BudgetYourTrip returned exact-city activity average plus budget,
+mid-range, and luxury entertainment values for Lisbon, Hanoi, and Copenhagen (12/12), all explicitly one
+person/day. Broaden the panel next; no two-person scaling or product mapping has been accepted.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

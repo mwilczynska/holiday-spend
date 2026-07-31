@@ -1114,3 +1114,14 @@ one hotel; Trip.com/HotelsCombined were sparse.
 **Verdict:** reject the complete source-agreement panel; retain Budget Your Trip only as a guarded fallback/
 calibration candidate with minimum-sample and zero-denominator checks. No `accom_1_star` mapping or fit is
 promoted. Read `data/reference/v5/experiments/034-one-star-aggregator-panel/`.
+
+## Experiment 035 — Budget Your Trip activity spend (31 July 2026)
+
+Three independent one-city Luna calls tested BudgetYourTrip for Lisbon, Hanoi, and Copenhagen. Each issued
+exactly two restricted searches; all six searches/operations were compliant with no reads, retries, fallback,
+arithmetic, FX, averaging, or cross-city evidence. All **12/12** rows passed: a per-person/day activity average
+and budget, mid-range, and luxury entertainment rows for every city. Every basis was explicitly one person/day.
+
+**Verdict:** promote the source contract to a broader validation panel. Keep `activities_free = 0` definitional;
+do not yet scale to two people or map entertainment tiers to product values. Read
+`data/reference/v5/experiments/035-activity-budgetyourtrip/`.

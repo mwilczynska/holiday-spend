@@ -54,6 +54,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/032-one-star-property-basket/` | **COMPLETE — reject property-basket route** | Three one-city calls: zero qualifying explicit-two-adult named 1-star quotes across 12 searches |
 | `experiments/033-one-star-aggregators/` | **COMPLETE — promote calibration candidate; reject product mapping** | Three one-city calls: 8/9 city-level rows, zero explicit two-adult occupancy |
 | `experiments/034-one-star-aggregator-panel/` | **COMPLETE — reject complete panel; retain guarded fallback** | Ten one-city calls: 12/30 cells, one complete city, 2/9 holdout cells |
+| `experiments/035-activity-budgetyourtrip/` | **COMPLETE — promote broader source validation; no product mapping** | Three one-city calls: 12/12 activity rows, all one-person/day |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

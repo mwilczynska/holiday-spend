@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "city-cost-v5-activity-budgetyourtrip-v1",
+  "status": "promote_broader_source_validation_reject_product_mapping",
+  "citiesPlanned": ["Lisbon", "Hanoi", "Copenhagen"],
+  "citiesTested": 3,
+  "acceptedCells": 12,
+  "totalCells": 12,
+  "completeCities": ["Lisbon", "Hanoi", "Copenhagen"],
+  "onePersonRows": 12,
+  "twoPersonRows": 0,
+  "measures": ["activity_average_per_person_day", "activities_budget_per_person_day", "activities_mid_per_person_day", "activities_high_per_person_day"],
+  "note": "BudgetYourTrip supplied exact-city activity/entertainment rows for every tested city. All rows are one-person/day; no scaling, model fit, or product mapping is performed. The average equals the mid-range entertainment row in all three cities, which is a source-contract relationship to audit rather than a free model parameter."
+}

@@ -149,6 +149,10 @@ Experiment 034 broadened the aggregator panel to ten cities (seven development, 
 accepted 12/30 cells, only Tokyo was complete, and holdout coverage was 2/9. Budget Your Trip covered 9/10 but
 included zero/one-hotel quality failures; retain it only as a guarded fallback and reject the complete route.
 
+Experiment 035 tested BudgetYourTrip activity pages in three one-city calls and accepted all 12 activity rows.
+Every source value is explicitly one person/day. Promote the contract to a broader panel, but validate two-person
+scaling, tier semantics, and independent accuracy before product mapping.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and
