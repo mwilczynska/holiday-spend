@@ -1,0 +1,21 @@
+{
+  "invocations": 1,
+  "citiesRequested": 1,
+  "city": "Helsinki",
+  "queriesAttempted": 6,
+  "webSearchToolCalls": 6,
+  "directPageReads": 0,
+  "fallbackSourcesUsed": 0,
+  "otherCityEvidenceUsed": 0,
+  "foundMeasures": 5,
+  "notFoundMeasures": 0,
+  "blockedMeasures": 0,
+  "arithmeticOperations": 0,
+  "identityQueriesUsed": 1,
+  "tokens": null,
+  "latencyMs": null,
+  "cost": null,
+  "exactProviderModelId": null,
+  "parameters": null,
+  "note": "One-city Experiment 022 run; four canonical-slug searches and one allowed identity-query recovery, with six search tool calls total. No direct reads, third query, retries, fallback sources, arithmetic, FX, or other-city evidence. The delegated surface exposed search counts but not exact provider telemetry."
+}

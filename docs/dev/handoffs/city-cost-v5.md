@@ -236,6 +236,19 @@ evidence; exact provider telemetry was unavailable.
 class-average patterns only for a separately curated, definition-matched ground-truth panel; do not fit
 ratios from seven feasibility observations. Read `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`.
 
+## Experiment 022 result
+
+Six independent one-city calls used a canonical Numbeo query plus at most one city+country identity query per
+measure. The route returned 21/30 cells (70%) and four complete cities: Lisbon, Hanoi, Helsinki, and San
+Francisco. Kyoto recovered only domestic beer (1/5); Don Det remained 0/5 after ten searches. Hanoi's
+identity query recovered a canonical mid-range page after the first result was a noncanonical ranking page.
+There were 41 searches and 12 search operations, with no direct reads, third queries, retries, fallback
+sources, arithmetic, FX, or cross-city evidence; exact provider telemetry was unavailable.
+
+**Verdict:** promote a fixed two-query identity cascade for ordinary food/drink cities, with dedicated-query
+provenance and fail-closed sparse missingness. Do not use country averages or nearest-city substitutions.
+Read `data/reference/v5/experiments/022-numbeo-identity-cascade/`.
+
 ## Next action
 
 Build a separately curated, definition-matched accommodation ground-truth panel around the retained

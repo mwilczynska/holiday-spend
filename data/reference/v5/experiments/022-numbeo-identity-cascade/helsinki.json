@@ -1,0 +1,84 @@
+{
+  "city": "Helsinki",
+  "country": "Finland",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {
+    "queriesAttempted": 6,
+    "directPageReads": 0
+  },
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status": "found",
+      "value": 15,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Helsinki",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Helsinki \"Meal at an Inexpensive Restaurant\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Helsinki \"Meal at an Inexpensive Restaurant\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Helsinki. May 2026. Prices in Helsinki — Meal at an Inexpensive Restaurant | €15.00 | 12.00-25.00"
+    },
+    "midrange_restaurant_meal_2p": {
+      "status": "found",
+      "value": 90,
+      "currency": "EUR",
+      "unit": "per_two_person_meal",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Helsinki",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Helsinki \"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Helsinki \"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Helsinki. May 2026. Prices in Helsinki — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | €90.00 | 50.00-110.00"
+    },
+    "mcmeal_combo_1p": {
+      "status": "found",
+      "value": 13,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Helsinki",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Helsinki \"McDonald's\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Helsinki \"McDonald's\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Helsinki. May 2026. Prices in Helsinki — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | €13.00 | 11.00-14.00"
+    },
+    "cappuccino_1": {
+      "status": "found",
+      "value": 4.71,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Helsinki",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Helsinki \"Cappuccino (Regular Size)\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Helsinki \"Cappuccino (Regular Size)\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Helsinki. Jun 2026. Prices in Helsinki — Cappuccino (Regular Size) | €4.71 | 3.00-5.50"
+    },
+    "domestic_draft_beer_1": {
+      "status": "found",
+      "value": 8,
+      "currency": "EUR",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Helsinki",
+      "searchQuery": "Numbeo Helsinki Finland \"Domestic Draft Beer (0.5 Liter)\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Helsinki \"Domestic Draft Beer\"",
+        "Numbeo Helsinki Finland \"Domestic Draft Beer (0.5 Liter)\""
+      ],
+      "queriesAttemptedPerMeasure": 2,
+      "identityQueryUsed": true,
+      "resultEvidence": "Cost of Living in Helsinki. Jun 2026. Prices in Helsinki — Domestic Draft Beer (0.5 Liter) | €8.00 | 4.00-10.00"
+    }
+  },
+  "outcome": "accepted",
+  "notes": "Four canonical-slug searches returned the canonical Helsinki Numbeo URL with exact row labels and central values. The canonical draft-beer query returned no exact Helsinki result, so one country-qualified identity query recovered the same canonical URL and explicit Domestic Draft Beer (0.5 Liter) value. Ranges were recorded only as surrounding evidence and not used. No direct page reads, third queries, retries, fallback sources, arithmetic, FX, or other-city evidence were used."
+}

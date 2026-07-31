@@ -1,0 +1,84 @@
+{
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "referenceDate": "2026-07-31",
+  "searchOnly": {
+    "queriesAttempted": 6,
+    "directPageReads": 0
+  },
+  "measures": {
+    "inexpensive_restaurant_meal_1p": {
+      "status": "found",
+      "value": 55000,
+      "currency": "VND",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Hanoi \"Meal at an Inexpensive Restaurant\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Hanoi \"Meal at an Inexpensive Restaurant\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Hanoi. Jun 2026. Prices in Hanoi — Meal at an Inexpensive Restaurant | ₫55,000.00 | 40,000.00-100,000.00"
+    },
+    "midrange_restaurant_meal_2p": {
+      "status": "found",
+      "value": 500000,
+      "currency": "VND",
+      "unit": "per_two_person_meal",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+      "searchQuery": "Numbeo Hanoi Vietnam \"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Hanoi \"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)\"",
+        "Numbeo Hanoi Vietnam \"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)\""
+      ],
+      "queriesAttemptedPerMeasure": 2,
+      "identityQueryUsed": true,
+      "resultEvidence": "Cost of Living in Hanoi. Jun 2026. Prices in Hanoi — Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | ₫500,000.00 | 400,000.00-1,200,000.00"
+    },
+    "mcmeal_combo_1p": {
+      "status": "found",
+      "value": 119000,
+      "currency": "VND",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Hanoi \"McDonald's\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Hanoi \"McDonald's\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Hanoi. Jun 2026. Prices in Hanoi — Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | ₫119,000.00 | 100,000.00-130,000.00"
+    },
+    "cappuccino_1": {
+      "status": "found",
+      "value": 48345.07,
+      "currency": "VND",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Hanoi \"Cappuccino (Regular Size)\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Hanoi \"Cappuccino (Regular Size)\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Hanoi. Jun 2026. Prices in Hanoi — Cappuccino (Regular Size) | ₫48,345.07 | 35,000.00-60,000.00"
+    },
+    "domestic_draft_beer_1": {
+      "status": "found",
+      "value": 26326.18,
+      "currency": "VND",
+      "unit": "per_person_item",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+      "searchQuery": "site:numbeo.com/cost-of-living/in/Hanoi \"Domestic Draft Beer\"",
+      "attemptedQueries": [
+        "site:numbeo.com/cost-of-living/in/Hanoi \"Domestic Draft Beer\""
+      ],
+      "queriesAttemptedPerMeasure": 1,
+      "identityQueryUsed": false,
+      "resultEvidence": "Cost of Living in Hanoi. Jun 2026. Prices in Hanoi — Domestic Draft Beer (0.5 Liter) | ₫26,326.18 | 15,000.00-50,000.00"
+    }
+  },
+  "outcome": "accepted",
+  "notes": "The canonical-slug search found the canonical Hanoi URL for inexpensive meal, McDonald's, cappuccino, and domestic draft beer. The canonical mid-range query returned only non-canonical ranking/comparison evidence, so one country-qualified identity query recovered the canonical Hanoi page and exact row. Ranges were not used. No direct page reads, third queries, retries, fallback sources, arithmetic, FX, or other-city evidence were used."
+}

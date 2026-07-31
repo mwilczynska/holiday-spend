@@ -941,3 +941,21 @@ observations, not ground truth or fitted coefficients.
 average patterns only for a separately curated, definition-matched 30-city/10-holdout panel. Do not infer
 hostel private rooms, 1-star, or missing classes from these seven facts. Artifacts are under
 `data/reference/v5/experiments/021-accommodation-class-search-feasibility/`.
+
+## Experiment 022 — bounded Numbeo identity cascade (31 July 2026)
+
+Six independent one-city GPT-5.6 Luna-class calls used a canonical Numbeo query plus at most one different
+city+country identity query per measure. The route returned **21/30 cells (70%)** and four complete cities:
+Lisbon, Hanoi, Helsinki, and San Francisco. Kyoto recovered only domestic beer (1/5); Don Det remained 0/5
+after ten searches. Hanoi's identity query recovered a canonical mid-range page after the first result was a
+noncanonical ranking page; Helsinki's identity query recovered beer.
+
+The six calls issued 30 canonical and 11 identity searches (41 total) and 12 search operations, with zero
+direct reads, third queries, retries, fallback sources, arithmetic, FX, or cross-city evidence. All 21 accepted
+facts contained exact city, row, central value, currency, and canonical URL evidence. No country-average or
+nearest-city substitution was accepted.
+
+**Verdict:** promote the fixed two-query identity cascade for ordinary food/drink cities with dedicated-query
+provenance and fail-closed sparse missingness. It remains source-feasibility evidence, not independent price
+accuracy or complete 19-field validation. Artifacts are under
+`data/reference/v5/experiments/022-numbeo-identity-cascade/`.

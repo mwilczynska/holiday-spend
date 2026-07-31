@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "city-cost-v5-identity-cascade-manifest-v1",
+  "experiment": "022-numbeo-identity-cascade",
+  "frozenAt": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_022_identity_cascade.md",
+  "invocationShape": "one city per independent invocation",
+  "cities": [
+    {"city":"Kyoto","country":"Japan","reason":"018/019 stable no-result"},
+    {"city":"Helsinki","country":"Finland","reason":"019 beer query-sensitive"},
+    {"city":"Don Det","country":"Laos","reason":"018/019 sparse no-result"},
+    {"city":"Lisbon","country":"Portugal","reason":"ordinary control"},
+    {"city":"Hanoi","country":"Vietnam","reason":"ordinary control"},
+    {"city":"San Francisco","country":"United States","reason":"high-cost control"}
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-identity-cascade-results-v1",
+  "experiment": "022-numbeo-identity-cascade",
+  "runDate": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_022_identity_cascade.md",
+  "invocationShape": "one city per independent invocation",
+  "targetModelClass": "GPT-5.6 Luna-class delegated invocation",
+  "citiesRequested": 6,
+  "measureCellsRequested": 30,
+  "foundCells": 21,
+  "cellCoverage": 0.7,
+  "completeCities": 4,
+  "cityResults": {
+    "Kyoto": {"found":1,"requested":5,"outcome":"partial","identityQueries":4,"recovered":["domestic_draft_beer_1"]},
+    "Helsinki": {"found":5,"requested":5,"outcome":"accepted","identityQueries":1,"recovered":["domestic_draft_beer_1"]},
+    "Don Det": {"found":0,"requested":5,"outcome":"no_result","identityQueries":5,"recovered":[]},
+    "Lisbon": {"found":5,"requested":5,"outcome":"accepted","identityQueries":0,"recovered":[]},
+    "Hanoi": {"found":5,"requested":5,"outcome":"accepted","identityQueries":1,"recovered":["midrange_restaurant_meal_2p"]},
+    "San Francisco": {"found":5,"requested":5,"outcome":"accepted","identityQueries":0,"recovered":[]}
+  },
+  "incrementalRecovery": {
+    "versusExperiment018": {"Kyoto":1,"Helsinki":1,"Don Det":0,"Lisbon":0,"Hanoi":0,"San Francisco":0},
+    "versusExperiment019EdgeRuns": {"Kyoto":1,"Helsinki":1,"Don Det":0},
+    "newQueriesUsed":11,
+    "newFactsRecoveredByIdentityQuery":2,
+    "note":"The cascade recovered Kyoto beer and Helsinki beer, and recovered Hanoi mid-range in the controls. It spent identity searches on all five Don Det measures without recovering a fact."
+  },
+  "telemetryTotals": {
+    "invocations":6,
+    "queriesAttempted":41,
+    "canonicalQueries":30,
+    "identityQueries":11,
+    "webSearchToolCalls":12,
+    "directPageReads":0,
+    "thirdQueries":0,
+    "retryAttempts":0,
+    "fallbackSourcesUsed":0,
+    "arithmeticOperations":0,
+    "otherCityEvidenceUsed":0,
+    "providerTokens":null,
+    "latencyMs":null,
+    "providerCost":null,
+    "exactProviderModelId":null,
+    "parameters":null
+  },
+  "evidenceAudit": {
+    "acceptedFacts":21,
+    "exactCityRowValueCurrencyAndCanonicalUrl":21,
+    "contractComplianceRate":1,
+    "identityRecoveredFacts":3,
+    "note":"Identity recovery was accepted only when the result contained the exact requested city, row, central value, currency, and canonical Numbeo URL. No nearest-city or country-average evidence was accepted."
+  },
+  "verdict":"promote_bounded_identity_cascade_with_cost_and_sparse_failure",
+  "rejectionReasonsForFinalAcceptance":[
+    "Don Det remained 0/5 after ten searches; the cascade cannot make sparse absence complete.",
+    "Kyoto remained 1/5, so two searches per measure do not guarantee complete city coverage.",
+    "The six-city panel is not the locked 30-city/10-holdout validation, and no independent price ground truth was collected.",
+    "Exact provider model ID, parameters, tokens, latency, and cost remain unavailable through delegated execution."
+  ]
+}

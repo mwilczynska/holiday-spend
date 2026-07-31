@@ -91,6 +91,12 @@ private and hotel 1–4-star city averages, without direct URLs or date injectio
 7/36 cells (19.4%) and no city was complete: Copenhagen 3-star, Lisbon 2/3/4-star, San Francisco dorm/3/4-star;
 Hanoi, Bangkok, and Don Det were 0/6. Retain the heterogeneous class-average sources only for a curated,
 definition-matched ground-truth panel; do not fit ratios from these seven feasibility facts.
+Experiment 022 tested a bounded identity cascade: one exact canonical query plus at most one city+country
+query per measure. Six independent calls returned 21/30 food/drink cells (70%) and four complete cities.
+Helsinki recovered beer, Hanoi recovered its noncanonical mid-range result, Kyoto recovered only beer, and Don
+Det remained 0/5 after ten searches. The route used 41 queries and 12 search operations with no direct reads,
+third queries, retries, fallback sources, arithmetic, FX, or cross-city evidence. Promote it for ordinary
+food/drink cities with a fixed cap and fail-closed sparse missingness; it is not complete validation.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

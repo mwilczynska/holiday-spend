@@ -36,6 +36,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/019-numbeo-repeatability-edge-cases/` | **COMPLETE — mixed; dedicated-query provenance required** | 15 repeats: Kyoto/Don Det stable no-result, Nha Trang/Beijing stable values, Helsinki query-sensitive |
 | `experiments/020-activities-search-feasibility/` | **COMPLETE — promote attraction pattern only** | Six one-city calls: strict activity coverage 6/18; Hanoi only complete |
 | `experiments/021-accommodation-class-search-feasibility/` | **COMPLETE — reject complete route** | Six one-city calls: 7/36 class cells, no complete city; retain source candidates |
+| `experiments/022-numbeo-identity-cascade/` | **COMPLETE — promote bounded route** | Six one-city calls: 21/30 cells, four complete; Don Det 0/5 |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.
