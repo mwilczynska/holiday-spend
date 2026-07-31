@@ -13,11 +13,10 @@ profile is now clear:
 - paid attraction: 4/5.
 
 This is feasible enough to promote the nine-anchor prompt to model-boundary validation. It is not a final
-methodology verdict: complete product coverage depends on deterministic models for ten omitted inputs,
+methodology verdict: complete product coverage depends on deterministic models for nine omitted inputs,
 three-star accommodation remains a weak direct anchor, sparse-city fallback is unresolved, and this pilot
 does not measure model accuracy. The Lisbon hotel value is also a city average rather than a dated quote,
 so basis heterogeneity must be addressed before final validation.
 
 No-key delegated testing is demonstrated again. Exact provider identity, parameters, tokens, latency, and
 cost remain unavailable through orchestration.
-

@@ -697,7 +697,7 @@ on this subset and the explicit cascade found 30/45. Four ordinary cities return
 returned only its dorm. Found facts were source-audited, and no omitted anchors, tiers, arithmetic, FX, or
 unsupported facts appeared.
 
-**Verdict:** promote the prompt to model-boundary validation. This is not final acceptance: ten omitted
-targets still need definition-matched model accuracy, the 3-star anchor is weak, sparse-city fallback is
+**Verdict:** promote the prompt to model-boundary validation. This is not final acceptance: nine omitted
+anchors still need definition-matched model accuracy, the 3-star anchor is weak, sparse-city fallback is
 unresolved, and source basis heterogeneity must be controlled. Artifacts are under
 `data/reference/v5/experiments/007-minimal-anchor-retest/`.

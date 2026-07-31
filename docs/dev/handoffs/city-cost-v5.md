@@ -77,7 +77,7 @@ prices remained at zero. Read `data/reference/v5/experiments/006-source-cascade-
 The minimal nine-anchor prompt returned 32/45 facts (71.1%) across the same five cities: four ordinary
 cities returned 7–8 anchors and Don Det returned one. Dorm coverage was 4/5, private-hostel 3/5,
 three-star hotel 1/5, each food/drink anchor 4/5, and paid attraction 4/5. Promote this prompt to model-
-boundary validation, but do not treat it as final: ten omitted targets, sparse fallback, basis consistency,
+boundary validation, but do not treat it as final: nine omitted anchors, sparse fallback, basis consistency,
 and hotel-anchor reliability remain open. Read `data/reference/v5/experiments/007-minimal-anchor-retest/`.
 
 ## Next action

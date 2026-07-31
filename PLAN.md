@@ -122,7 +122,7 @@ the active experiment.
 ### Next experiments, in order
 
 1. Validate the nine-anchor candidate from Experiment 007 against definition-matched city data, beginning
-   with the ten omitted food/drink, hotel-star, and activity-duration targets.
+   with the nine omitted food/drink, hotel-star, and activity-duration anchors.
 2. Resolve accommodation measurement and dorm/private identifiability with independent ground truth;
    do not infer two hostel tiers from one blended channel without matched evidence.
 3. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
