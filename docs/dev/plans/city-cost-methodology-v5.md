@@ -47,9 +47,11 @@ Experiments 009 and 010 rejected broad and indexed date-fixed accommodation coll
 city-average templates, which returned 10/30 facts on five separately tested cities; lower classes and
 Hostelworld `from` prices remain unresolved. Experiment 012 enforced the production shape: three independent
 Copenhagen-only calls were identical, but the 4-star city average was +60.4% against the existing dated
-direct-property median. The source is rejected as final, while the one-city invocation shape is now mandatory
-for all target-model tests. The next work item is a matched-basis source or model tested through separate
-one-city calls and a 30-city/10-holdout validation design.
+direct-property median. Experiment 013 then attempted the known official booking engines in three separate
+one-city calls; all 15 URLs were blocked by the delegated web safety boundary. The source is rejected for the
+target web path, while the one-city invocation shape is mandatory for all target-model tests. The next work
+item is a matched-basis source or model tested through separate one-city calls and a 30-city/10-holdout
+validation design.
 Delegated GPT-5.6 Luna tasks are the no-key target-class prompt-test path; exact provider telemetry remains a
 separate acceptance gate.
 

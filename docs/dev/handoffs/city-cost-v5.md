@@ -128,11 +128,21 @@ this is a basis warning rather than a final accuracy estimate; it nevertheless e
 rejects the city-average source as a final anchor. Read
 `data/reference/v5/experiments/012-single-city-production-shape/`.
 
+## Experiment 013 result
+
+Three independent Copenhagen-only calls attempted five known official booking-engine URLs with the fixed
+2026-10-22 to 2026-10-29 stay, two adults, and one room. All **15/15 quote cells were blocked** at the
+delegated web safety boundary before page content was available. No totals or substitute searches were
+produced. Manual v3 ground truth proves the pages themselves can work, so this rejects the target web-tool
+URL route rather than the sites intrinsically. Read
+`data/reference/v5/experiments/013-interactive-official-quote-extraction/`.
+
 ## Next action
 
 Find or calibrate a matched-basis accommodation source using separately recorded one-city calls; do not fit
-a correction from Copenhagen alone. Keep the one-city prompt shape mandatory. Test an interactive public page
-or curated benchmark for unresolved lower classes and hostels; search-index date injection is rejected.
+a correction from Copenhagen alone. Direct booking-engine URLs are rejected for the target web path. Keep the
+one-city prompt shape mandatory and test safe stable templates or a curated benchmark for unresolved lower
+classes and hostels; search-index date injection is rejected.
 Continue definition-matched panels for the other omitted anchors. Do not use the shipping CSV as ground truth
 and do not infer dorm/private separation from the blended hostel channel. The derivation contract remains out
 of the shipping path until source feasibility and accuracy gates pass.

@@ -151,11 +151,18 @@ frozen FX conversion. This is a narrow basis comparison, not a final multi-city 
 exceeds the 25% gate and rejects the Booking city-average source as a final anchor. All future target-model
 tests must use one city per invocation; a panel is only a set of separately recorded calls.
 
+**Experiment 013 — interactive official quote extraction — complete; target web route rejected.** Three
+independent Copenhagen-only calls attempted five known official booking-engine URLs with fixed dates and
+occupancy. All 15 quote cells were blocked at the delegated web safety boundary before page content was
+available. Manual ground truth proves the pages themselves can work, so this rejects the target web-tool URL
+route rather than the sites intrinsically; retain the blocked telemetry and fail closed.
+
 ### Next experiments, in order
 
 1. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
-   alone; require the pre-registered 30-city/10-holdout relationship gate.
+   alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
+   rejected in the target web path after Experiment 013.
 2. Test whether an interactive public accommodation page can preserve fixed dates and occupancy in the
    one-call target-model path, or pivot to a separately curated benchmark. Search-index date injection is
    rejected; retain the same strict class, currency, one-night, and occupancy rules.
@@ -211,6 +218,7 @@ Current v5 artifacts:
 - `data/reference/v5/experiments/010-date-fixed-accommodation-contract/`
 - `data/reference/v5/experiments/011-direct-class-page-templates/`
 - `data/reference/v5/experiments/012-single-city-production-shape/`
+- `data/reference/v5/experiments/013-interactive-official-quote-extraction/`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_006.md`
 - `docs/prompts/llm_prompt_city_cost_v5_experiment_007.md`
 - `data/reference/v5/experiments/002-accommodation-ladder/`

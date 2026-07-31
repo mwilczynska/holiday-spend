@@ -1,0 +1,54 @@
+{
+  "run": "run-b",
+  "city": "Copenhagen",
+  "referenceDate": "2026-07-31",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_013.md",
+  "targetClass": "GPT-5.6 Luna",
+  "stay": {
+    "checkIn": "2026-10-22",
+    "checkOut": "2026-10-29",
+    "nights": 7,
+    "adults": 2,
+    "rooms": 1
+  },
+  "urlAttempts": [
+    {
+      "propertyName": "Andersen Boutique Hotel",
+      "attempted": true,
+      "access": "blocked",
+      "reason": "Browser runtime unavailable; web direct-open rejected URL as unsafe"
+    },
+    {
+      "propertyName": "Hotel Alexandra",
+      "attempted": true,
+      "access": "blocked",
+      "reason": "Browser runtime unavailable; web direct-open rejected URL as unsafe"
+    },
+    {
+      "propertyName": "Wide Hotel",
+      "attempted": true,
+      "access": "blocked",
+      "reason": "Browser runtime unavailable; web direct-open rejected URL as unsafe"
+    },
+    {
+      "propertyName": "Hotel Skt. Ann\u00e6",
+      "attempted": true,
+      "access": "blocked",
+      "reason": "Browser runtime unavailable; web direct-open rejected URL as unsafe"
+    },
+    {
+      "propertyName": "The Huxley Copenhagen",
+      "attempted": true,
+      "access": "blocked",
+      "reason": "Browser runtime unavailable; web direct-open rejected URL as unsafe"
+    }
+  ],
+  "pageReads": 0,
+  "blockedOutcomes": 5,
+  "wrongDateOutcomes": 0,
+  "modelMetadata": {
+    "exposed": false,
+    "model": "GPT-5.6 Luna"
+  },
+  "notes": "No provider token, latency, cost, or exact invocation parameters inferred."
+}

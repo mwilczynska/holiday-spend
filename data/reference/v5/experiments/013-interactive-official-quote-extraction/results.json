@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "city-cost-v5-experiment-result-v1",
+  "experiment": "013-interactive-official-quote-extraction",
+  "date": "2026-07-31",
+  "targetClass": "GPT-5.6 Luna",
+  "promptShape": "one city per independent invocation",
+  "city": "Copenhagen",
+  "invocationCount": 3,
+  "propertiesPerRun": 5,
+  "totalQuoteCells": 15,
+  "foundQuotes": 0,
+  "blockedQuotes": 15,
+  "wrongDateQuotes": 0,
+  "completeRuns": 0,
+  "betweenRun": {"statusesIdentical": true, "allRunsBlocked": true},
+  "groundTruthComparison": {
+    "available": false,
+    "reason": "No target-model quote was retrieved; no totals were compared. Existing manual direct-property quotes remain the benchmark only."
+  },
+  "sourceAudit": {"foundFacts":0,"verifiedAgainstRetrievedPage":0,"unsupportedFoundFacts":0},
+  "telemetry": {
+    "agentTasks": 3,
+    "directUrlAttempts": 15,
+    "directUrlSuccesses": 0,
+    "directUrlFailures": 15,
+    "directPageReadCalls": 2,
+    "browserRuntimeAvailable": false,
+    "failureKind": "non_retryable_unsafe_to_open",
+    "generalSearchCalls": 0,
+    "tokens": null,
+    "latencyMs": null,
+    "cost": null,
+    "exactProviderModelId": null,
+    "parameters": null
+  },
+  "interpretation": "All supplied official booking-engine URLs were blocked at the delegated web safety boundary. This measures target-tool incompatibility, not whether the public pages are intrinsically inaccessible.",
+  "verdict": "reject_interactive_booking_urls_for_target_web_path"
+}

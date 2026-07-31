@@ -783,3 +783,16 @@ one-city calls. Telemetry counted three delegated tasks, 18 direct URL attempts,
 three page-read calls, three find calls, and one fallback search with two queries; exact provider
 model/parameter/token/latency/cost telemetry was not exposed. Artifacts are under
 `data/reference/v5/experiments/012-single-city-production-shape/`.
+
+## Experiment 013 â€” interactive official quote extraction (31 July 2026)
+
+Three independent delegated GPT-5.6 Luna-class calls each inspected Copenhagen only and attempted five known
+official booking-engine URLs for a fixed seven-night, two-adult stay. All **15/15 quote cells were blocked**
+at the delegated web safety boundary before page content was available. No totals, tax facts, arithmetic, or
+substitute searches were emitted. The runs agreed on the blocked result.
+
+This does not prove the pages intrinsically fail: the existing manual direct-property capture opened these
+same engines and produced accepted ground truth. It proves the target web-tool route cannot currently use
+arbitrary long booking-engine URLs, so the route is rejected for production and blocks are retained as blocks.
+Next test safe stable templates or another free source that the target tool can open. Artifacts are under
+`data/reference/v5/experiments/013-interactive-official-quote-extraction/`.

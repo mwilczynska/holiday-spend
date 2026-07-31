@@ -1,0 +1,76 @@
+{
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "referenceDate": "2026-07-31",
+  "stay": {
+    "checkIn": "2026-10-22",
+    "checkOut": "2026-10-29",
+    "nights": 7,
+    "adults": 2,
+    "rooms": 1
+  },
+  "quotes": [
+    {
+      "propertyName": "Andersen Boutique Hotel",
+      "status": "blocked",
+      "total": null,
+      "currency": null,
+      "nights": null,
+      "roomName": null,
+      "rateName": null,
+      "taxStatus": null,
+      "sourceUrl": null,
+      "evidenceNote": "The supplied Mews URL preserved 2026-10-22 to 2026-10-29 and two adults in its query, but retrieval returned a non-retryable unsafe-to-open error before page evidence was available."
+    },
+    {
+      "propertyName": "Hotel Alexandra",
+      "status": "blocked",
+      "total": null,
+      "currency": null,
+      "nights": null,
+      "roomName": null,
+      "rateName": null,
+      "taxStatus": null,
+      "sourceUrl": null,
+      "evidenceNote": "The supplied SimpleBooking URL preserved the dates, two-adult guest encoding, and DKK query, but retrieval returned a non-retryable unsafe-to-open error before page evidence was available."
+    },
+    {
+      "propertyName": "Wide Hotel",
+      "status": "blocked",
+      "total": null,
+      "currency": null,
+      "nights": null,
+      "roomName": null,
+      "rateName": null,
+      "taxStatus": null,
+      "sourceUrl": null,
+      "evidenceNote": "The supplied SynXis URL preserved 2026-10-22 to 2026-10-29, two adults, hotel identifier, and DKK query, but retrieval returned a non-retryable unsafe-to-open error."
+    },
+    {
+      "propertyName": "Hotel Skt. Annæ",
+      "status": "blocked",
+      "total": null,
+      "currency": null,
+      "nights": null,
+      "roomName": null,
+      "rateName": null,
+      "taxStatus": null,
+      "sourceUrl": null,
+      "evidenceNote": "The supplied Mews URL preserved 2026-10-22 to 2026-10-29 and two adults in its query, but retrieval returned a non-retryable unsafe-to-open error before page evidence was available."
+    },
+    {
+      "propertyName": "The Huxley Copenhagen",
+      "status": "blocked",
+      "total": null,
+      "currency": null,
+      "nights": null,
+      "roomName": null,
+      "rateName": null,
+      "taxStatus": null,
+      "sourceUrl": null,
+      "evidenceNote": "The supplied Best Western URL preserved 2026-10-22 to 2026-10-29, two adults, and one room, but retrieval returned a non-retryable unsafe-to-open error before page evidence was available."
+    }
+  ],
+  "outcome": "blocked",
+  "notes": "All five supplied official booking URLs were attempted directly in the supplied order. Every retrieval failed at the URL safety boundary; no prices, room names, rates, or tax facts were inferred or substituted."
+}
