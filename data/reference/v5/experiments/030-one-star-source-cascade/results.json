@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-source-v1",
+  "status": "complete_source_candidates_occupancy_unresolved",
+  "citiesPlanned": ["Bangkok", "San Francisco", "Nairobi"],
+  "citiesTested": 3,
+  "acceptedCells": 3,
+  "totalCells": 6,
+  "explicitTwoAdultRows": 0,
+  "sourceDefaultOrUnknownRows": 3,
+  "productMapping": "none_without_occupancy_calibration",
+  "measures": ["one_star_candidate_momondo", "one_star_candidate_kayak"],
+  "note": "Momondo returned one candidate in each city; all occupancy bases were unknown or source-default-room. KAYAK returned no exact city-wide 1-star row. No candidate is an observed two-adult product value."
+}

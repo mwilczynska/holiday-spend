@@ -45,6 +45,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-accommodation-bed-boundary.mjs` | `analyze-v5-accommodation-bed-boundary.mjs` | Experiment 025: accepts only explicit one-bed dorm inputs for deterministic scaling; hotel classes remain two-adult per-room |
 | `node scripts/analyze-v5-hotevi-tier-feasibility.mjs` | `analyze-v5-hotevi-tier-feasibility.mjs` | Experiment 027: audits exact HOTEVI city/tier/month rows; grouped tiers never map directly to product star classes |
 | `node scripts/analyze-v5-expedia-class-trends.mjs` | `analyze-v5-expedia-class-trends.mjs` | Experiment 028: audits exact Expedia two-adult class-trend rows and rejects from/lowest/event prices |
+| `node scripts/analyze-v5-one-star-source.mjs` | `analyze-v5-one-star-source.mjs` | Experiment 030: audits Momondo/KAYAK 1-star candidates without upgrading unknown occupancy |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

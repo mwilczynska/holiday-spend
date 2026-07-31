@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-source-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "one_star_candidate_momondo": {
+      "status": "found",
+      "value": 4,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Momondo current average-rate context; search result crawled 4 days before retrieval (source period not otherwise stated)",
+      "sourceUrl": "https://www.momondo.com/hotels/bangkok",
+      "sourceTitle": "Hotels in Bangkok from $11 - Find Cheap Hotels with momondo",
+      "evidenceText": "The most affordable choice in Bangkok is a 1 star hotel, with average rates of $4 per night.",
+      "searchQuery": "site:momondo.com Bangkok Thailand 1-star hotel average nightly price",
+      "reason": "The Momondo search result identifies Bangkok and 1-star hotels and gives a numeric non-from average nightly room price. It does not state two-adult occupancy, so occupancyBasis remains unknown."
+    },
+    "one_star_candidate_kayak": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:kayak.com Bangkok Thailand 1-star hotel average nightly price",
+      "reason": "The KAYAK-restricted search returned generic budget, 2-star-and-below, and all-hotel snippets but no exact city-wide 1-star class average. Those results were rejected rather than substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

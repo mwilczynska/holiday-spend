@@ -1052,3 +1052,15 @@ No 1-star row was found anywhere; Nairobi 2-star was also missing. No city was c
 **Verdict:** promote 2–4-star Expedia for broader validation, but reject complete coverage and solve 1-star
 separately. Across Experiments 028–029 this is six-city source feasibility only, not ground truth or fitted
 accuracy. Read `data/reference/v5/experiments/029-expedia-class-panel/`.
+
+## Experiment 030 — one-star source cascade (31 July 2026)
+
+Three independent GPT-5.6 Luna-class one-city calls tested one Momondo and one KAYAK query each for Bangkok,
+San Francisco, and Nairobi. Momondo returned one city-wide 1-star candidate in each city; KAYAK returned no
+exact city-wide 1-star row. Coverage was **3/6** candidate cells. All accepted rows had `unknown` or
+`source_default_room` occupancy, so none matched the frozen two-adult product estimand. No retries, reads,
+arithmetic, FX, or cross-city evidence were used.
+
+**Verdict:** retain Momondo rows as calibration candidates, reject them as product observations, and design a
+definition-matched occupancy panel before any 1-star mapping or fit. Read
+`data/reference/v5/experiments/030-one-star-source-cascade/`.

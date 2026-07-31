@@ -1,0 +1,61 @@
+﻿{
+  "schemaVersion": "city-cost-v5-one-star-source-audit-v1",
+  "citiesTested": 3,
+  "acceptedCells": 3,
+  "totalCells": 6,
+  "accepted": [
+    {
+      "city": "Bangkok",
+      "measure": "one_star_candidate_momondo",
+      "value": 4,
+      "currency": "USD",
+      "occupancyBasis": "unknown",
+      "referencePeriod": "Momondo current average-rate context; search result crawled 4 days before retrieval (source period not otherwise stated)",
+      "sourceUrl": "https://www.momondo.com/hotels/bangkok",
+      "searchQuery": "site:momondo.com Bangkok Thailand 1-star hotel average nightly price"
+    },
+    {
+      "city": "Nairobi",
+      "measure": "one_star_candidate_momondo",
+      "value": 243,
+      "currency": "USD",
+      "occupancyBasis": "source_default_room",
+      "referencePeriod": "Current Momondo city-average nightly price; search result crawled 4 days before 2026-07-31; Momondo says prices refresh daily",
+      "sourceUrl": "https://www.momondo.com/hotels/nairobi",
+      "searchQuery": "site:momondo.com Nairobi 1-star hotels average price per night"
+    },
+    {
+      "city": "San Francisco",
+      "measure": "one_star_candidate_momondo",
+      "value": 54,
+      "currency": "USD",
+      "occupancyBasis": "source_default_room",
+      "referencePeriod": "Search result crawled 3 days ago; Momondo states hotel prices refresh daily (July 2026)",
+      "sourceUrl": "https://www.momondo.com/hotels/san-francisco",
+      "searchQuery": "site:momondo.com San Francisco United States 1-star hotel average nightly price"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Bangkok",
+      "measure": "one_star_candidate_kayak",
+      "status": "not_found",
+      "reason": "The KAYAK-restricted search returned generic budget, 2-star-and-below, and all-hotel snippets but no exact city-wide 1-star class average. Those results were rejected rather than substituted."
+    },
+    {
+      "city": "Nairobi",
+      "measure": "one_star_candidate_kayak",
+      "status": "not_found",
+      "reason": "The KAYAK-restricted search returned a generic Nairobi double-room average, 3-star and 4-star material, and individual low-price properties, but no exact city-wide 1-star class average. Those results were rejected rather than substituted."
+    },
+    {
+      "city": "San Francisco",
+      "measure": "one_star_candidate_kayak",
+      "status": "not_found",
+      "reason": "The KAYAK-restricted search returned a specific 1 Hotel San Francisco property, generic city averages, and a 3-star class page, but no city-wide 1-star class average. Property, overall, and other-star-class results were rejected."
+    }
+  ],
+  "explicitTwoAdultRows": 0,
+  "sourceDefaultOrUnknownRows": 3,
+  "productMapping": "none_without_occupancy_calibration"
+}

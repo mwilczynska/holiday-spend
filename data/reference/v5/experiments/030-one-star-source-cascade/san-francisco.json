@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-source-v1",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "one_star_candidate_momondo": {
+      "status": "found",
+      "value": 54,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Search result crawled 3 days ago; Momondo states hotel prices refresh daily (July 2026)",
+      "sourceUrl": "https://www.momondo.com/hotels/san-francisco",
+      "sourceTitle": "Hotels in San Francisco from $34 - Find Cheap Hotels with momondo",
+      "evidenceText": "In San Francisco, the least expensive option is a 1 star hotel, with average nightly prices of $54.",
+      "searchQuery": "site:momondo.com San Francisco United States 1-star hotel average nightly price",
+      "reason": "The Momondo result identifies the exact city and 1-star class and reports a numeric average nightly price. It does not state a two-adult occupancy, so the candidate remains source_default_room rather than explicit two-adult evidence. The page result displayed dollars and was crawled in July 2026."
+    },
+    "one_star_candidate_kayak": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:kayak.com San Francisco United States 1-star hotel average nightly price",
+      "reason": "The KAYAK-restricted search returned a specific 1 Hotel San Francisco property, generic city averages, and a 3-star class page, but no city-wide 1-star class average. Property, overall, and other-star-class results were rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

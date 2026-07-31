@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-source-telemetry-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:momondo.com Nairobi 1-star hotels average price per night",
+    "site:kayak.com Nairobi 1-star hotels average price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 1,
+  "notes": "Single-city search-only run using exactly two source-restricted queries. Momondo yielded a city-wide 1-star average, retained with source-default-room occupancy; KAYAK yielded no qualifying 1-star city average. No direct reads, retries, fallback sources, arithmetic, FX, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

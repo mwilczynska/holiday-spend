@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-source-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "one_star_candidate_momondo": {
+      "status": "found",
+      "value": 243,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Current Momondo city-average nightly price; search result crawled 4 days before 2026-07-31; Momondo says prices refresh daily",
+      "sourceUrl": "https://www.momondo.com/hotels/nairobi",
+      "sourceTitle": "Hotels in Nairobi from $8 - Find Cheap Hotels with momondo",
+      "evidenceText": "In Nairobi, the least expensive option is a 2 star hotel, with average nightly prices of $26. Staying at a 3 star hotel will cost you about $61 per night, while the highest rates are found in 1 star hotels, averaging $243 per night.",
+      "searchQuery": "site:momondo.com Nairobi 1-star hotels average price per night",
+      "reason": "Accepted as an exact Nairobi city-wide 1-star class average with a central nightly room price and USD currency. The snippet does not state two-adult occupancy, so the observation remains source-default-room evidence rather than explicit two-adult evidence."
+    },
+    "one_star_candidate_kayak": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:kayak.com Nairobi 1-star hotels average price per night",
+      "reason": "The KAYAK-restricted search returned a generic Nairobi double-room average, 3-star and 4-star material, and individual low-price properties, but no exact city-wide 1-star class average. Those results were rejected rather than substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

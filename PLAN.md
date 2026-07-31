@@ -273,7 +273,19 @@ in Bangkok and San Francisco, 3/4-star in Nairobi; 1-star was absent everywhere 
 No city was complete. Together with 028 this is promising six-city source feasibility, not accuracy or a
 1-star solution. See `data/reference/v5/experiments/029-expedia-class-panel/`.
 
+**Experiment 030 — one-star source cascade — complete; retain calibration candidates, reject product mapping.**
+Three independent one-city Luna calls (Bangkok, San Francisco, Nairobi) issued exactly one Momondo and one
+KAYAK search each. Momondo returned one 1-star candidate in every city, but all three had unknown or
+source-default-room occupancy; KAYAK returned no exact city-wide 1-star row. Coverage was 3/6 candidate
+cells, with zero explicit two-adult rows. Retain the rows only for a separately declared occupancy-calibration
+panel; do not map them to `accom_1_star` or fit from this tranche. See
+`data/reference/v5/experiments/030-one-star-source-cascade/`.
+
 ### Next experiments, in order
+
+Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
+panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
+before mapping any candidate to `accom_1_star`.
 
 1. Run a separately declared 1-star source test while continuing the Expedia 2–4-star panel. Enforce one
    search batch per city, preserve duplicate-call deviations, and require 30 complete cities plus 10 locked

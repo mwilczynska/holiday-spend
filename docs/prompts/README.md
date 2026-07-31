@@ -27,9 +27,13 @@
 | `llm_prompt_city_cost_v5_experiment_025_accommodation_bed_boundary.md` | **EXPERIMENT — complete; boundary promoted** | one city per delegated GPT-5.6 Luna-class invocation | Tests explicit one-bed dorm inputs with deterministic two-traveller scaling |
 | `llm_prompt_city_cost_v5_experiment_027_hotevi_tiers.md` | **EXPERIMENT — complete; production source rejected** | one city per delegated GPT-5.6 Luna-class invocation | Tests HOTEVI grouped 1–2/3/4–5-star source rows without mapping them to product classes |
 | `llm_prompt_city_cost_v5_experiment_028_expedia_class_trends.md` | **EXPERIMENT — complete; 2–4-star route promoted for validation** | one city per delegated GPT-5.6 Luna-class invocation | Tests Expedia two-adult class-specific trend snippets; rejects from/lowest/event prices |
+| `llm_prompt_city_cost_v5_experiment_030_one_star_source.md` | **EXPERIMENT — in progress** | one city per delegated GPT-5.6 Luna-class invocation | Tests Momondo/KAYAK 1-star candidates while preserving occupancy ambiguity |
+| `llm_prompt_city_cost_v5_experiment_030_one_star_source.md` | **EXPERIMENT — complete; calibration only** | one city per delegated GPT-5.6 Luna-class invocation | Momondo candidates retained; occupancy unresolved, no product mapping |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
-The v5 experiment prompt includes auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.
+The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
+unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
+auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.
 
 ## Known defect in the shipping prompt
 

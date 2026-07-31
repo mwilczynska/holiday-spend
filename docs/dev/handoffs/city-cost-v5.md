@@ -282,6 +282,11 @@ Experiment 029 added compliant Bangkok, San Francisco, and Nairobi calls: 8/12 2
 complete city. Treat 028–029 as six-city source feasibility only. Next, test a separately declared 1-star
 source while retaining the Expedia 2–4-star route and the 30-city/10-holdout gate.
 
+Experiment 030 tested Momondo/KAYAK 1-star search candidates in three independent one-city calls. Momondo
+returned Bangkok, San Francisco, and Nairobi rows (3/6 candidate cells); KAYAK returned none. Every retained
+row had unknown or source-default-room occupancy, so zero rows are valid two-adult observations. Keep these
+rows only for an explicit occupancy-calibration panel; do not map them to `accom_1_star`.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

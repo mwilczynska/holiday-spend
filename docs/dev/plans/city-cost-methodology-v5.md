@@ -128,6 +128,11 @@ Experiment 029 broadened Expedia to Bangkok, San Francisco, and Nairobi with 8/1
 1-star was absent in all three and Nairobi 2-star was missing. Together 028–029 support a six-city source
 candidate, not a complete method. Run a separate 1-star source test before any fitting.
 
+Experiment 030 tested a one-star source cascade in three independent one-city calls. Momondo supplied one
+candidate per city and KAYAK supplied none, but all three Momondo rows used unknown or source-default-room
+occupancy. Retain the source rows for calibration only; they cannot be mapped to the two-adult `accom_1_star`
+estimand. The next experiment is an explicit occupancy-calibration panel with the 30-city/10-holdout gate.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

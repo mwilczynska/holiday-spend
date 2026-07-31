@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-source-telemetry-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:momondo.com Bangkok Thailand 1-star hotel average nightly price",
+    "site:kayak.com Bangkok Thailand 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only run using exactly two restricted queries. Momondo supplied a Bangkok 1-star average of $4/night, but no occupancy basis was stated, so the candidate is marked unknown rather than explicit two-adult. KAYAK produced no exact city-wide 1-star class average. No direct reads, retries, fallback sources, arithmetic, FX, or cross-city evidence were used. This is retrieval-feasibility evidence, not independently validated ground truth; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}
