@@ -287,6 +287,10 @@ Experiment 033 found 8/9 class-specific one-star aggregator rows across Lisbon, 
 source-default/unknown occupancy and disagree materially by source, so promote Trip.com, HotelsCombined, and
 Budget Your Trip only to a larger calibration/agreement panel; do not map them to `accom_1_star`.
 
+Experiment 034 rejected that full panel: 12/30 cells, one complete city, and only 2/9 locked holdout cells. Keep
+Budget Your Trip as a guarded fallback candidate (9/10 rows, but zero/one-hotel quality failures); explicit
+occupancy and held-out accuracy remain unresolved.
+
 Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
 panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
 before mapping any candidate to `accom_1_star`.

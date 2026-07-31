@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-telemetry-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com Tokyo Japan 1-star hotel average nightly price",
+    "site:hotelscombined.com Tokyo Japan 1-star hotel average nightly price",
+    "site:budgetyourtrip.com Tokyo Japan 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 3,
+  "notFoundMeasures": 0,
+  "notes": "Single-city development-panel search-only run using exactly three source-restricted queries. Trip.com, HotelsCombined, and Budget Your Trip each exposed an exact Tokyo 1-star statistic, all retained with source-default-room occupancy. Budget Your Trip's qualifying result is on its testing subdomain and reports both mean and median; only the stated mean was retained. No source values were averaged or mapped to accom_1_star. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

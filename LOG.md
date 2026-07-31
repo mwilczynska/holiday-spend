@@ -1101,3 +1101,16 @@ USD101–207; Hanoi USD24–53), and Barcelona's Budget Your Trip row reported z
 **Verdict:** promote these aggregators as calibration candidates only; reject product mapping and fitting until
 occupancy and held-out city-level accuracy are demonstrated. Read
 `data/reference/v5/experiments/033-one-star-aggregators/`.
+
+## Experiment 034 — one-star aggregator panel (31 July 2026)
+
+Ten independent one-city Luna calls tested the pre-registered seven development cities and three locked
+holdouts. Each issued exactly three restricted searches; 30 searches/operations were protocol-compliant with no
+reads, retries, fallback, arithmetic, FX, averaging, or cross-city evidence. Strict coverage was **12/30 (40%)**,
+only Tokyo was complete, development coverage was 10/21, and holdout coverage was 2/9. All rows had
+source-default/unknown occupancy. Budget Your Trip returned 9/10 rows, but Helsinki had zero hotels and Nairobi
+one hotel; Trip.com/HotelsCombined were sparse.
+
+**Verdict:** reject the complete source-agreement panel; retain Budget Your Trip only as a guarded fallback/
+calibration candidate with minimum-sample and zero-denominator checks. No `accom_1_star` mapping or fit is
+promoted. Read `data/reference/v5/experiments/034-one-star-aggregator-panel/`.

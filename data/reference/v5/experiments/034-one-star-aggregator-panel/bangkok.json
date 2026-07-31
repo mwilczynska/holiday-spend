@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "found",
+      "value": 39,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Trip.com weekday average; weekend (Friday-Saturday) average separately shown as EUR41; result crawled last week (July 2026)",
+      "sourceUrl": "https://www.trip.com/hotels/star1/city/th/bangkok.html",
+      "sourceTitle": "Top 1-Star hotels in Bangkok | Trip.com",
+      "evidenceText": "For 1 star hotels in Bangkok, the average cost on weekdays is €39, and the usual price on weekends (Friday–Saturday) is €41.",
+      "searchQuery": "site:trip.com Bangkok Thailand 1-star hotel average nightly price",
+      "reason": "The Trip.com result identifies Bangkok and the 1-star class and reports numeric weekday and weekend nightly averages. No two-adult/one-room occupancy is stated, so the occupancy basis remains unknown; the weekend value was retained in evidence and not averaged."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com Bangkok Thailand 1-star hotel average nightly price",
+      "reason": "HotelsCombined results reported overall Bangkok averages, 3- to 5-star trends, and property-level comparisons, but no exact-city 1-star statistic. Overall, other-class, and property values were rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 28,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip current hotel-price analysis; 139 1-star hotels; prices before taxes and fees; result crawled 2 weeks ago (July 2026)",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/thailand/bangkok-1609350",
+      "sourceTitle": "How Much Do Hotels Cost in Bangkok? Hotel Prices for Bangkok, Thailand | Budget Your Trip",
+      "evidenceText": "$28 is the average price of the 139 1-star hotels in Bangkok. The median price for these great hotels is $22.",
+      "searchQuery": "site:budgetyourtrip.com Bangkok Thailand 1-star hotel average nightly price",
+      "reason": "The Budget Your Trip result identifies Bangkok and 1-star hotels and reports a numeric average nightly price in USD. It does not state two adults and one room, so occupancy remains unknown; the separately reported median was not substituted or averaged."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

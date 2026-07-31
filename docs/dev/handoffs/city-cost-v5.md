@@ -302,6 +302,10 @@ returned 8/9 exact city/class statistics across Lisbon, Barcelona, and Hanoi. Al
 source-default/unknown; Lisbon and Hanoi had large cross-source spreads. Promote only to a broader calibration
 panel, not to product mapping.
 
+Experiment 034 broadened this to ten cities with a 7/3 development/holdout split. It accepted 12/30 cells, one
+complete city, and 2/9 holdout cells. Budget Your Trip supplied 9/10 rows but had zero/one-hotel quality failures;
+keep it as a guarded fallback candidate only and do not map it to `accom_1_star`.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Helsinki",
+  "country": "Finland",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:trip.com Helsinki Finland 1-star hotel average nightly price",
+      "reason": "The Trip.com-restricted search returned generic Helsinki hotel pages and other-star material but no exact city-wide 1-star nightly statistic. Property and other-class results were rejected."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com Helsinki Finland 1-star hotel average nightly price",
+      "reason": "The HotelsCombined-restricted search returned generic Helsinki hotel averages and a Hotel Finn 2-star comparison, but no exact city-wide 1-star statistic. Generic, property, and wrong-class results were rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 384,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Helsinki hotel-by-star table; result crawled 3 weeks before 2026-07-31; prices before taxes and fees",
+      "sourceUrl": "https://www.budgetyourtrip.com/finland/helsinki/expensive-658225",
+      "sourceTitle": "Is Helsinki Expensive to Visit? | Budget Your Trip",
+      "evidenceText": "Hotels by star rating in Helsinki: 5 stars $243, 4 stars $121, 3 stars $162, 2 stars $116, 1 star $384, No rating $175. The table displays Number of Hotels 0 for each class.",
+      "searchQuery": "site:budgetyourtrip.com Helsinki Finland 1-star hotel average nightly price",
+      "reason": "The class-specific Helsinki table supplies a numeric 1-star hotel price statistic. Its displayed hotel count is zero and the $384 value is therefore a material quality warning; it is retained only as source-feasibility evidence, not two-adult ground truth or a product value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-telemetry-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com Prague Czechia 1-star hotel average nightly price",
+    "site:hotelscombined.com Prague Czechia 1-star hotel average nightly price",
+    "site:budgetyourtrip.com Prague Czechia 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 2,
+  "notes": "Single-city development-panel search-only run using exactly three source-restricted queries. Budget Your Trip exposed a Prague 1-star statistic ($76 USD) and is retained with source-default-room occupancy plus a definitional warning; Trip.com and HotelsCombined exposed no qualifying exact city-wide 1-star statistic. No source values were averaged or mapped to accom_1_star. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:trip.com Mexico City Mexico 1-star hotel average nightly price",
+      "reason": "The Trip.com-restricted results returned a 2-star Mexico City page and unrelated general material, not an exact city-wide 1-star numeric statistic."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com Mexico City Mexico 1-star hotel average nightly price",
+      "reason": "HotelsCombined returned generic city and budget-hotel pages and property comparisons, but no exact city-wide 1-star class statistic. Generic averages and property-specific comparisons were rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 51,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip analysis of 11 Mexico City 1-star hotels; prices before taxes and fees and seasonally variable; search result crawled last month",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/mexico/mexico-city-3530597",
+      "sourceTitle": "How Much Do Hotels Cost in Mexico City? Hotel Prices for Mexico City, Mexico | Budget Your Trip",
+      "evidenceText": "With data for 11 fantastic hotels, $51 is the average price for 1-star hotels in Mexico City, and the median price is $50.",
+      "searchQuery": "site:budgetyourtrip.com Mexico City Mexico 1-star hotel average nightly price",
+      "reason": "The result identifies Mexico City and the 1-star class and provides a city-level non-from nightly average and median based on 11 hotels. Occupancy is not stated, so it remains unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

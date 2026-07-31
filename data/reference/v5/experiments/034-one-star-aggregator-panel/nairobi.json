@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:trip.com Nairobi Kenya 1-star hotel average nightly price",
+      "reason": "Trip.com returned a Nairobi 1-star class page but exposed only 3-star price statistics and from-price property snippets; no exact 1-star nightly statistic was found."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com Nairobi Kenya 1-star hotel average nightly price",
+      "reason": "HotelsCombined returned generic and budget/luxury city pages without a numeric 1-star class statistic. Generic averages and property-specific comparisons were rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 37,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip analysis showing 1 Nairobi 1-star hotel; prices seasonally variable; search result crawled 3 months before retrieval",
+      "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi/expensive-184745",
+      "sourceTitle": "Is Nairobi Expensive to Visit? | Budget Your Trip",
+      "evidenceText": "Hotels by star rating in Nairobi: 1 star | 1 | $37.",
+      "searchQuery": "site:budgetyourtrip.com Nairobi Kenya 1-star hotel average nightly price",
+      "reason": "The result identifies Nairobi and the 1-star class and provides a city-level nightly statistic of $37 based on one hotel. Occupancy is not stated, so it remains unknown. The very small sample is retained as source evidence but is not a quality endorsement."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

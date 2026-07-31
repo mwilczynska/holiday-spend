@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:trip.com San Francisco United States 1-star hotel average nightly price",
+      "reason": "The Trip.com-restricted results returned generic San Francisco pages and 3-star/5-star price snippets, but no exact-city 1-star nightly statistic. Other-class and generic values were rejected."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com San Francisco United States 1-star hotel average nightly price",
+      "reason": "HotelsCombined returned generic city averages, budget/other-class trends, and a single 1-star property (Winsor Hotel) with a cheapest/from-style price. No city-wide 1-star statistic qualified; property and overall values were rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 73,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip current hotel-price analysis; 5 1-star hotels; prices before taxes and fees; result crawled last month (July 2026)",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/united-states-of-america/san-francisco-5391959",
+      "sourceTitle": "How Much Do Hotels Cost in San Francisco? Hotel Prices for San Francisco, California | Budget Your Trip",
+      "evidenceText": "The average price of the 5 terrific 1-star hotels in San Francisco is $73, and the median price is $65.",
+      "searchQuery": "site:budgetyourtrip.com San Francisco United States 1-star hotel average nightly price",
+      "reason": "The Budget Your Trip result identifies San Francisco and 1-star hotels and reports a numeric average nightly price in USD. It does not state two adults and one room, so occupancy remains unknown; the separately reported median was not substituted or averaged."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

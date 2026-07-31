@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+/** Deterministic audit for Experiment 034; source agreement only, no product mapping. */
+import fs from 'node:fs';
+import path from 'node:path';
+const root = process.cwd();
+const dir = path.join(root, 'data', 'reference', 'v5', 'experiments', '034-one-star-aggregator-panel');
+const measures = ['trip_one_star_average', 'hotelscombined_one_star_average', 'budgetyourtrip_one_star_average'];
+const holdouts = new Set(['San Francisco', 'Helsinki', 'New York City']);
+const files = fs.readdirSync(dir).filter((name) => name.endsWith('.json') && !name.endsWith('-telemetry.json') && name !== 'results.json' && name !== 'audit.json').sort();
+const accepted = []; const rejected = []; const byCity = {};
+function valid(row) { return Boolean(row?.status === 'found' && typeof row.value === 'number' && Number.isFinite(row.value) && row.value > 0 && /^[A-Z]{3}$/.test(row.currency ?? '') && row.unit === 'per_room_per_night' && row.class === '1_star' && row.referencePeriod && row.sourceUrl?.startsWith('http') && row.sourceTitle && row.evidenceText && row.searchQuery); }
+for (const file of files) { const payload = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')); const city = payload.city ?? file.replace(/\.json$/, ''); byCity[city] = []; for (const measure of measures) { const row = payload.measures?.[measure]; if (valid(row)) { const item = { city, measure, value: row.value, currency: row.currency, occupancyBasis: row.occupancyBasis, referencePeriod: row.referencePeriod, sourceUrl: row.sourceUrl, sourceTitle: row.sourceTitle, evidenceText: row.evidenceText, searchQuery: row.searchQuery }; accepted.push(item); byCity[city].push(item); } else rejected.push({ city, measure, status: row?.status ?? 'missing', reason: row?.reason ?? 'strict aggregator contract failed' }); } }
+const completeCities = Object.entries(byCity).filter(([, rows]) => new Set(rows.map((row) => row.measure)).size === measures.length).map(([city]) => city);
+const sourceAgreement = Object.fromEntries(Object.entries(byCity).map(([city, rows]) => { const values = rows.filter((row) => row.currency === 'USD').map((row) => row.value); return [city, values.length >= 2 ? { min: Math.min(...values), max: Math.max(...values), maxToMinRatio: Math.max(...values) / Math.min(...values) } : { comparableRows: values.length }]; }));
+const qualityWarnings = accepted.filter((row) => /number of hotels\s*0|zero hotels/i.test(row.evidenceText ?? ''));
+console.log(JSON.stringify({ schemaVersion: 'city-cost-v5-one-star-aggregator-panel-audit-v1', citiesTested: files.length, developmentCities: files.map((file) => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')).city).filter((city) => !holdouts.has(city)), holdoutCitiesTested: files.map((file) => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')).city).filter((city) => holdouts.has(city)), acceptedCells: accepted.length, qualityEligibleCells: accepted.length - qualityWarnings.length, totalCells: files.length * measures.length, completeCities, accepted, rejected, sourceAgreement, qualityWarnings, explicitTwoAdultRows: accepted.filter((row) => row.occupancyBasis === 'explicit_two_adults').length, sourceDefaultOrUnknownRows: accepted.filter((row) => row.occupancyBasis !== 'explicit_two_adults').length, productMapping: 'none_source_agreement_only' }, null, 2));

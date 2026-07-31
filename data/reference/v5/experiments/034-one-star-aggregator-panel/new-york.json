@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:trip.com New York City United States 1-star hotel average nightly price",
+      "reason": "The Trip.com-restricted results returned generic New York hotel pages and 2-star/3-star/4-star snippets, but no exact-city 1-star nightly statistic. Other-class and generic values were rejected."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com New York City United States 1-star hotel average nightly price",
+      "reason": "The HotelsCombined-restricted results did not provide a qualifying exact-city 1-star nightly statistic. A localized generic city-average page had no 1-star class evidence and was rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:budgetyourtrip.com New York City United States 1-star hotel average nightly price",
+      "reason": "The exact New York City Budget Your Trip page showed a 1-star row with zero hotels and therefore no supported observation; its displayed $261 value was rejected as unsupported. A separate New York (not New York City) page reported $246 for 69 1-star hotels, but its city identity did not match the requested city and was not used."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:trip.com Prague Czechia 1-star hotel average nightly price",
+      "reason": "The Trip.com-restricted search returned generic Prague hotel pages and 3-star/other-class material, but no exact city-wide 1-star nightly statistic. Property and other-class prices were rejected."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com Prague Czechia 1-star hotel average nightly price",
+      "reason": "The HotelsCombined-restricted search returned individual Prague properties and generic or Prague 1 district hotel averages, including a 4-star comparison, but no exact city-wide 1-star statistic. District, property, and wrong-class results were rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 76,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Prague average star-rating table; result crawled 3 weeks before 2026-07-31; prices before taxes and fees",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/czech-republic/prague-3067696",
+      "sourceTitle": "How Much Do Hotels Cost in Prague? Hotel Prices for Prague, Czech Republic | Budget Your Trip",
+      "evidenceText": "The average prices by star rating for hotels in Prague are: 5-Star Hotels $147, 4-Star $101, 3-Star $95, 2-Star $84, 1-Star Hotels $76. Prices are in US Dollars before taxes and fees.",
+      "searchQuery": "site:budgetyourtrip.com Prague Czechia 1-star hotel average nightly price",
+      "reason": "Accepted as an exact Prague city-level 1-star price statistic with USD currency and a dated source window. Occupancy is source-default-room; the source separately reports $76 for one person sharing a room, so the row carries a definitional warning and is not an observed two-adult value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "found",
+      "value": 94,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Trip.com weekday average; weekend (Friday-Saturday) average separately reported as $107; result crawled 3 weeks before 2026-07-31",
+      "sourceUrl": "https://sg.trip.com/hotels/star1/city/jp/tokyo.html",
+      "sourceTitle": "東京熱門 1 星級酒店 | Trip.com",
+      "evidenceText": "東京的 1 星級飯店，平日均價約 USD94，而週末 (週五到六) 均價則約 USD107. 東京酒店相關資訊: 飯店數量 70, 平均價格 (平日) USD94, 平均價格 (週末) USD107.",
+      "searchQuery": "site:trip.com Tokyo Japan 1-star hotel average nightly price",
+      "reason": "Accepted as an exact Tokyo city-wide 1-star room statistic. The source does not state two-adult/one-room occupancy, so source-default-room evidence is preserved. The weekday value is retained without averaging it with the separately reported weekend value."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "found",
+      "value": 141,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "HotelsCombined FAQ last updated July 19, 2026; result crawled last week",
+      "sourceUrl": "https://www.hotelscombined.com/Hotel/Shinjuku_Hotel_Park_Inn.htm",
+      "sourceTitle": "Shinjuku Hotel Parkinn, Tokyo | HotelsCombined",
+      "evidenceText": "Shinjuku Hotel Parkinn is generally less than the average price of 1 star hotels in Tokyo. On average, you can expect to pay $141 per night in Tokyo.",
+      "searchQuery": "site:hotelscombined.com Tokyo Japan 1-star hotel average nightly price",
+      "reason": "Accepted as a city-level Tokyo 1-star average stated in HotelsCombined evidence. The source does not state two-adult/one-room occupancy, so occupancy remains source-default-room; the named property comparison is not used as the product value."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 104,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_default_room",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip Tokyo star-rating table; result crawled 3 weeks before 2026-07-31; average for one-night hotel prices before taxes and fees",
+      "sourceUrl": "https://testing.budgetyourtrip.com/hotels/japan/tokyo-1850147",
+      "sourceTitle": "How Much Do Hotels Cost in Tokyo? Hotel Prices for Tokyo, Japan | Budget Your Trip",
+      "evidenceText": "Average 1-Star Hotel Price in Tokyo, Japan: With data for 312 fantastic hotels, $104 is the average price for 1-star hotels in Tokyo, and the median price is $77.",
+      "searchQuery": "site:budgetyourtrip.com Tokyo Japan 1-star hotel average nightly price",
+      "reason": "Accepted as an exact Tokyo city-level 1-star price statistic with a stated 312-hotel base. Occupancy is source-default-room; the testing subdomain and separate median are retained as provenance/quality warnings, and no product mapping is performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

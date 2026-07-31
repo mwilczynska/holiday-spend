@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-07-31",
+  "measures": {
+    "trip_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:trip.com Copenhagen Denmark 1-star hotel average nightly price",
+      "reason": "Trip.com returned a Copenhagen 1-star class page, but the numeric statistics in the snippet were for 3-, 4-, and 5-star hotels; no exact 1-star nightly statistic was exposed."
+    },
+    "hotelscombined_one_star_average": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "searchQuery": "site:hotelscombined.com Copenhagen Denmark 1-star hotel average nightly price",
+      "reason": "HotelsCombined returned a generic Copenhagen city page with overall and selected 3- to 5-star prices, but no numeric 1-star class statistic. Property pages and generic city averages were rejected."
+    },
+    "budgetyourtrip_one_star_average": {
+      "status": "found",
+      "value": 131,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "referencePeriod": "Budget Your Trip analysis of 9 Copenhagen 1-star hotels; prices before taxes and fees and seasonally variable; search result crawled 2 weeks before retrieval",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/denmark/copenhagen-2618425",
+      "sourceTitle": "How Much Do Hotels Cost in Copenhagen? Hotel Prices for Copenhagen, Denmark | Budget Your Trip",
+      "evidenceText": "$131 is the average price of the 9 1-star hotels in Copenhagen, and the median price is $123.",
+      "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark 1-star hotel average nightly price",
+      "reason": "The result identifies Copenhagen and the 1-star class and provides a city-level non-from nightly average and median based on 9 hotels. Occupancy is not stated, so it remains unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

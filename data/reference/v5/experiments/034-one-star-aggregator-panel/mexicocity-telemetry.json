@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-aggregator-panel-telemetry-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com Mexico City Mexico 1-star hotel average nightly price",
+    "site:hotelscombined.com Mexico City Mexico 1-star hotel average nightly price",
+    "site:budgetyourtrip.com Mexico City Mexico 1-star hotel average nightly price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 2,
+  "protocolCompliant": true,
+  "notes": "Single-city development-panel run using exactly three restricted searches. Budget Your Trip supplied a Mexico City 1-star average of $51/night based on 11 hotels, with median $50 and occupancy unknown. Trip.com and HotelsCombined supplied no qualifying 1-star numeric statistic. No direct reads, retries, fallback sources, arithmetic, FX, cross-city evidence, or source averaging were used. This is source-feasibility evidence only and is not mapped to the two-adult product estimand; provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

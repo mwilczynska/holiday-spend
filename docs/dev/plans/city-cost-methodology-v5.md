@@ -145,6 +145,10 @@ Experiment 033 tested Trip.com, HotelsCombined, and Budget Your Trip and accepte
 three one-city calls. Every row lacked explicit two-adult occupancy and source levels diverged materially. Promote
 the aggregator route only for calibration and agreement testing; reject product mapping and fitting for now.
 
+Experiment 034 broadened the aggregator panel to ten cities (seven development, three locked holdouts). It
+accepted 12/30 cells, only Tokyo was complete, and holdout coverage was 2/9. Budget Your Trip covered 9/10 but
+included zero/one-hotel quality failures; retain it only as a guarded fallback and reject the complete route.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and
