@@ -556,3 +556,10 @@ Promote only to definition-matched validation; do not accept final activity mapp
 Experiment 081 completed with 15/15 compliant calls. Mumbai, Dubai, Paris, and Copenhagen returned identical complete
 tiers in all three calls (0% dispersion); Fukuoka was not-found in all three. The five-city repeatability gate failed;
 retain ordinary-city extraction with sparse fail-closed behavior and no cross-call averaging or product mapping.
+
+Experiment 082 is the next active package. It tests World Stay Tracker with twelve independent one-city Luna contexts,
+four ordered operations per city (3-star search/read, then 4-star search/read), and no retries, fallback, arithmetic,
+FX conversion, or cross-city evidence. Strict rows require exact city/rating, daily USD average, dates/window, property
+count, and explicit 2-adult/1-night/breakfast-included/review-7+ evidence. The screen gate is 10/12 complete cities and
+10/12 compliant calls. A pass authorizes only a 30-city semantic calibration against room-only observations; retain
+breakfast and popular-property warnings explicitly.

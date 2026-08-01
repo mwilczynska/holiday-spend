@@ -552,6 +552,15 @@ The panel completed with 15/15 compliant calls. Four cities had identical comple
 ordinary covered cities with explicit sparse fail-closed behavior. **Verdict:** reject complete repeatability promotion;
 do not average calls or map missing values.
 
+### Experiment 082 - World Stay Tracker accommodation panel
+
+Twelve independent one-city Luna contexts are being tested with exactly four ordered operations per city: World Stay
+Tracker 3-star search/read, followed by 4-star search/read. A strict row requires exact city/rating, a daily USD
+average, check-in and booking/advance dates, property count, and explicit 2-adult/1-night/breakfast-included/review-7+
+source evidence. The screen gate is 10/12 complete cities and 10/12 protocol-compliant calls. Breakfast inclusion and
+popular-property selection are retained as semantic warnings; even a screen pass cannot map these rows to room-only
+product tiers without a separately pre-registered 30-city calibration.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

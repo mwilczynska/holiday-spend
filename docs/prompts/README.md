@@ -171,6 +171,11 @@ using the 080 two-search contract. It records dispersion and missingness only; n
 or product mapping is authorized. The run completed 15/15 compliant calls; four cities were stable and Fukuoka was
 not-found in all three calls, so the five-city repeatability gate failed.
 
+The 082 World Stay Tracker accommodation prompt is active: twelve independent one-city calls perform exactly four
+ordered operations (3-star search/read, then 4-star search/read). Strict rows require the source's exact-city daily
+USD average and explicit 2-adult/1-night/breakfast/review-7+ basis. No fallback, arithmetic, FX conversion, or mapping
+is authorized; a screen pass only permits a separate room-only semantic calibration.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

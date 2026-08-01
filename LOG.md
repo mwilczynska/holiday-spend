@@ -1715,3 +1715,12 @@ Experiment 081 completed with 15/15 protocol-compliant calls. Mumbai, Dubai, Par
 identical complete tiers in all three calls (0% within-city relative range); Fukuoka was `not_found` in every call.
 The pre-registered five-city repeatability gate failed. **Verdict:** retain the ordinary-city route with explicit
 sparse fail-closed behavior; do not average calls or map missing values. Read `data/reference/v5/experiments/081-activity-repeatability/`.
+
+## Experiment 082 - World Stay Tracker accommodation panel (1 August 2026)
+
+This experiment is in progress. Twelve independent one-city Luna contexts issue exactly four ordered operations per
+city: World Stay Tracker 3-star search/read, then 4-star search/read. Strict rows require an exact city and selected
+rating, a daily USD city average, check-in/advance dates, property count, and the source's explicit 2-adult/1-night,
+breakfast-included, review-score-7+ basis. No retries, fallback, arithmetic, FX conversion, or cross-city evidence is
+allowed. The screen requires 10/12 complete cities and 10/12 protocol-compliant calls. A pass authorizes only a
+separate 30-city semantic calibration against room-only observations; breakfast must not be silently removed or mapped.
