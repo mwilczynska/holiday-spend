@@ -60,6 +60,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/038-one-star-budgetyourtrip-panel/` | **COMPLETE — retain guarded fallback; reject product mapping** | Twenty one-city calls: 17/20 rows, zero explicit two-adult occupancy |
 | `experiments/039-hostel-private-boundary/` | **COMPLETE — retain dorm input; reject private mapping** | Six one-city calls: 6/6 dorm-bed inputs, 0/6 explicit two-adult private-room rows |
 | `experiments/040-private-two-guest-search/` | **COMPLETE — promote property panel; reject city anchor** | Six one-city calls: 3/6 explicit two-adult named-hostel quotes, no city averages |
+| `experiments/041-one-star-paired-calibration/` | **COMPLETE — reject paired calibration; retain guarded statistic** | Six one-city calls: 5/6 city statistics, 0/6 explicit two-adult one-star quotes |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

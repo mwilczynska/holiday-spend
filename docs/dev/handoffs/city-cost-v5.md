@@ -333,6 +333,11 @@ tax/fee exclusions, not city averages. Promote only as a ground-truth/property-p
 keep direct city-wide private-room mapping rejected until the 30-city/10-holdout aggregation and accuracy gates
 pass.
 
+Experiment 041 tested one-star pairing in six one-city calls. BudgetYourTrip returned five city statistics, but
+Booking/Hotels.com returned zero explicit two-adult one-star quotes. Reject occupancy calibration and direct
+mapping; Tokyo's testing-subdomain row and Rome's conflicting page families require guarded provenance. The
+remaining path is independent definition-matched ground truth or a separately validated imputation model.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

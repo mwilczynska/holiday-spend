@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-paired-calibration-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "cityStatistic": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown_source_default",
+    "class": "1_star",
+    "statistic": "city_average",
+    "sampleSize": null,
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": "Budget Your Trip's exact New York City trip-cost table reported 1 star | 0 hotels | $261, which is a zero-denominator row. A separate New York (not explicitly New York City) hotel page reported $246 across 69 hotels and was rejected for geography mismatch.",
+    "referencePeriod": "Search results crawled last week to 3 weeks before 2026-07-31; no qualifying exact-city nonzero row",
+    "searchQuery": "site:budgetyourtrip.com New York City United States 1 star hotel average price",
+    "reason": "Not found under the strict city-statistic contract. The exact New York City row had zero hotels and was rejected; the separate New York result was not accepted as an exact New York City geography. No source value was substituted."
+  },
+  "explicitQuotes": [
+    {
+      "propertyName": null,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "Booking.com returned New York hotel properties with explicit two-adult rooms but no one-star class. Hotels.com returned no numeric eligible one-star property quote; nonnumeric or lowest/from category results were not usable.",
+      "referencePeriod": "Search results crawled last week to 6 months before 2026-07-31; no qualifying dated quote",
+      "searchQuery": "site:hotels.com New York City United States 1-star hotel 2 adults 1 room price",
+      "reason": "Not found under the strict paired contract. Generic or class-ambiguous Booking.com properties and Hotels.com lowest/from or nonnumeric results were rejected; no explicit two-adult one-star property quote was promoted."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

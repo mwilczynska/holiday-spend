@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-paired-calibration-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-07-31",
+  "cityStatistic": {
+    "status": "found",
+    "value": 104,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown_source_default",
+    "class": "1_star",
+    "statistic": "city_average",
+    "sampleSize": 312,
+    "sourceUrl": "https://testing.budgetyourtrip.com/hotels/japan/tokyo-1850147",
+    "sourceTitle": "How Much Do Hotels Cost for Tokyo? Hotel Prices for Tokyo, Japan | Budget Your Trip",
+    "evidenceText": "Average 1-Star Hotel Price in Tokyo, Japan: with data for 312 hotels, $104 is the average price for 1-star hotels in Tokyo, and the median price is $77.",
+    "referencePeriod": "Budget Your Trip Tokyo hotel-price analysis; testing subdomain result crawled 3 weeks before 2026-07-31; one-night prices before taxes and fees",
+    "searchQuery": "site:budgetyourtrip.com Tokyo Japan 1 star hotel average price",
+    "reason": "Accepted as an exact Tokyo city-level Budget Your Trip 1-star average with a visible 312-hotel sample and USD currency. The testing subdomain is retained as a provenance warning; occupancy remains source-default and this calibration row is not an observed two-adult product anchor."
+  },
+  "explicitQuotes": [
+    {
+      "propertyName": null,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "Booking.com returned Tokyo properties with 2-adult/1-room contexts but no explicit one-star class; Hotels.com returned a one-star category page with a lowest-nightly-price statement but no eligible numeric named-property quote.",
+      "referencePeriod": "Search results crawled 6 days to last week before 2026-07-31; no qualifying dated quote",
+      "searchQuery": "site:hotels.com Tokyo Japan 1-star hotel 2 adults 1 room price",
+      "reason": "Not found under the strict paired contract. Generic or class-ambiguous Booking.com properties and Hotels.com lowest/from category results were rejected; no explicit two-adult one-star property quote was promoted."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

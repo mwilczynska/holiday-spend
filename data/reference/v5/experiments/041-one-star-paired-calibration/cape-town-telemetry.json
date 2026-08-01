@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-paired-calibration-telemetry-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:budgetyourtrip.com Cape Town South Africa 1 star hotel average price",
+    "site:booking.com Cape Town South Africa 1-star hotel 2 adults 1 room price",
+    "site:hotels.com Cape Town South Africa 1-star hotel 2 adults 1 room price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "cityStatisticFound": true,
+  "explicitQuoteCount": 0,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only paired calibration run with exactly three ordered searches (BudgetYourTrip, Booking.com, Hotels.com). BudgetYourTrip produced an exact-city 1-star city average of $69 USD from 38 hotels. Booking.com produced two-adult prices without explicit 1-star class; Hotels.com produced 2-star/higher and one-star-filter results but no qualifying named one-star two-adult quote. Evidence channels remain separate; no averaging, mapping, page reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

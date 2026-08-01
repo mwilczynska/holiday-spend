@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-paired-calibration-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-07-31",
+  "cityStatistic": {
+    "status": "found",
+    "value": 51,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown_source_default",
+    "class": "1_star",
+    "statistic": "city_average",
+    "sampleSize": 11,
+    "sourceUrl": "https://www.budgetyourtrip.com/hotels/mexico/mexico-city-3530597",
+    "sourceTitle": "How Much Do Hotels Cost in Mexico City? Hotel Prices for Mexico City, Mexico | Budget Your Trip",
+    "evidenceText": "With data for 11 great hotels, the average price for 1-star hotels in Mexico City is $51, and the median price is $50.",
+    "referencePeriod": "Budget Your Trip hotel-price analysis; result crawled last month (July 2026); 1-star sample of 11 hotels",
+    "searchQuery": "site:budgetyourtrip.com Mexico City Mexico 1 star hotel average price",
+    "reason": "The exact-city BudgetYourTrip hotel analysis identifies the 1-star class, gives a non-from city average in USD, and exposes an 11-hotel sample. Occupancy remains unknown_source_default; this is calibration evidence only and is not an observed two-adult product anchor."
+  },
+  "explicitQuotes": [],
+  "explicitQuotesStatus": "not_found",
+  "explicitQuotesReason": "The Booking.com search returned exact Mexico City properties with two-adult room prices, but none was explicitly identified as a 1-star property. The Hotels.com search returned one-star-filter and 2-star listings, but no named property simultaneously had an explicit 1-star class, two-adult/one-room basis, and qualifying non-from nightly price. No generic hotel or class-ambiguous quote was retained, and no value was mapped to the city statistic.",
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

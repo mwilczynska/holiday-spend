@@ -176,6 +176,12 @@ returned dated named-hostel Booking quotes for two adults/max two; Melbourne, Ne
 closed. Treat these as property-panel ground-truth candidates only, preserving dates, taxes/fees, and currency;
 they are not city-wide anchors or a fitted private-room correction.
 
+Experiment 041 rejected the paired one-star calibration route: five of six BudgetYourTrip city statistics were
+retrieved, but zero of six cities had an explicit two-adult one-star property quote. Keep source-default rows
+guarded and preserve Tokyo testing-subdomain/Rome page-family provenance warnings; do not fit occupancy or map
+these rows to the product. The next one-star step must use independent definition-matched ground truth or a
+pre-registered imputation model.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

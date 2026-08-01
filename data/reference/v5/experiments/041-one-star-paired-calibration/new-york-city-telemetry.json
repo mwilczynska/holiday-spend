@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-paired-calibration-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-07-31",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:budgetyourtrip.com New York City United States 1 star hotel average price",
+    "site:booking.com New York City United States 1-star hotel 2 adults 1 room price",
+    "site:hotels.com New York City United States 1-star hotel 2 adults 1 room price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "cityStatisticStatus": "not_found",
+  "explicitQuoteCount": 0,
+  "notes": "Single-city search-only paired calibration run using exactly three ordered queries (BudgetYourTrip, Booking.com, Hotels.com). The exact New York City BudgetYourTrip row had zero hotels and was rejected; a separate New York page failed exact-city geography. Booking and Hotels.com results lacked explicit two-adult one-star property quotes. Values were not averaged, converted, or mapped to product anchors. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

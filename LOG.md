@@ -1186,3 +1186,16 @@ tax/fee exclusions, occupancy, and property identity. **Verdict:** promote the r
 property-panel/ground-truth candidate; reject direct city-wide mapping and any correction fit until a broader
 city-stratified panel and aggregation rule pass the 30-city/10-holdout accuracy gates. Read
 `data/reference/v5/experiments/040-private-two-guest-search/`.
+
+## Experiment 041 — paired one-star source/calibration search (31 July 2026)
+
+Six independent one-city Luna calls issued exactly three ordered searches each: BudgetYourTrip, Booking.com,
+and Hotels.com. All 18 searches/operations were compliant with no reads, retries, fallback sources, arithmetic,
+FX conversion, averaging, or cross-city evidence. Five cities returned an exact-city BudgetYourTrip one-star
+statistic; New York City failed on a zero-hotels result. No city returned an explicit two-adult one-star quote,
+so paired calibration coverage was **0/6**.
+
+**Verdict:** reject the paired occupancy-calibration route. Retain compatible BudgetYourTrip statistics only as
+guarded source evidence; Tokyo's testing-subdomain result and Rome's conflicting page families carry explicit
+provenance warnings. Do not map source-default rows to `accom_1_star` or fit a correction. Read
+`data/reference/v5/experiments/041-one-star-paired-calibration/`.

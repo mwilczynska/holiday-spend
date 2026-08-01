@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-paired-calibration-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-07-31",
+  "cityStatistic": {
+    "status": "found",
+    "value": 137,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown_source_default",
+    "class": "1_star",
+    "statistic": "city_average",
+    "sampleSize": null,
+    "sourceUrl": "https://www.budgetyourtrip.com/hotels/italy/rome-3169070",
+    "sourceTitle": "How Much Do Hotels Cost in Rome? Hotel Prices for Rome, Italy | Budget Your Trip",
+    "evidenceText": "Average prices by star rating in Rome: 1-Star Hotels: $137.",
+    "referencePeriod": "Budget Your Trip Rome hotel-by-star page; result crawled 3 weeks before 2026-07-31; page states prices before taxes and fees",
+    "searchQuery": "site:budgetyourtrip.com Rome Italy 1 star hotel average price",
+    "reason": "The exact Rome Budget Your Trip hotel page identifies the 1-star class and a numeric city-level USD average, with a current retrieval reference period. Occupancy remains source-default/unknown, so this is calibration evidence only. A separate same-domain trip-cost page exposed $101 for 1,297 hotels and was not averaged, mapped, or substituted."
+  },
+  "explicitQuotes": [],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

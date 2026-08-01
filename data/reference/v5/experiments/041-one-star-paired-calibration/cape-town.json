@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-paired-calibration-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-07-31",
+  "cityStatistic": {
+    "status": "found",
+    "value": 69,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown_source_default",
+    "class": "1_star",
+    "statistic": "city_average",
+    "sampleSize": 38,
+    "sourceUrl": "https://www.budgetyourtrip.com/hotels/south-africa/cape-town-3369157",
+    "sourceTitle": "How Much Do Hotels Cost in Cape Town? Hotel Prices for Cape Town, South Africa | Budget Your Trip",
+    "evidenceText": "With data for 38 fantastic hotels, $69 is the average price for 1-star hotels in Cape Town, and the median price is $55.",
+    "referencePeriod": "Budget Your Trip hotel-price analysis; result crawled last month (July 2026); 1-star sample of 38 hotels",
+    "searchQuery": "site:budgetyourtrip.com Cape Town South Africa 1 star hotel average price",
+    "reason": "The exact-city BudgetYourTrip hotel analysis identifies the 1-star class, gives a non-from city average in USD, and exposes a 38-hotel sample. Occupancy remains unknown_source_default; this is calibration evidence only and is not an observed two-adult product anchor."
+  },
+  "explicitQuotes": [],
+  "explicitQuotesStatus": "not_found",
+  "explicitQuotesReason": "The Booking.com search returned exact Cape Town properties with two-adult room prices, but none was explicitly identified as a 1-star property. The Hotels.com search returned 2-star and higher properties and one-star-filter results without a qualifying named one-star two-adult quote. Generic hotel and non-one-star results were rejected, and no value was mapped to the city statistic.",
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

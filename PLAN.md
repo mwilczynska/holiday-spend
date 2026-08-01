@@ -318,9 +318,16 @@ and Tokyo failed closed. These are dated property observations, not city average
 property-panel/ground-truth collection route; do not map directly to `accom_hostel_private_room` or fit a
 city-wide correction before the 30-city/10-holdout aggregation and accuracy gates.
 
-Priority update: Experiment 030 is complete. The next run is a definition-matched 1-star occupancy-calibration
-panel with one Luna call per city; require explicit two-adult matched rows and the 30-city/10-holdout gate
-before mapping any candidate to `accom_1_star`.
+Experiment 041 rejected the paired one-star calibration hypothesis: five of six calls found guarded
+BudgetYourTrip city statistics, but zero of six found an explicit two-adult one-star quote from Booking or
+Hotels.com. Do not fit an occupancy correction or map source-default rows to `accom_1_star`; retain testing-
+subdomain/page-family warnings and pivot to independently curated definition-matched ground truth or a
+validated imputation model.
+
+Priority update: Experiments 030–041 have not produced an explicit two-adult one-star panel. The next run must
+either collect independently curated definition-matched one-star ground truth or pre-register a guarded
+imputation model with a separate validation sample; require the 30-city/10-holdout gate before mapping any
+candidate to `accom_1_star`.
 
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
