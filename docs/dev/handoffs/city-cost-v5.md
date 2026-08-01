@@ -536,3 +536,8 @@ explicit in the raw evidence and must remain explicit in any future join.
 Experiment 077 completed with 12/12 compliant calls, 0/12 strict rows in every class, and zero complete cities.
 Wrong-city pages, grouped research-page leakage, cache misses, and missing date/tax evidence dominated. Reject the
 direct HOTEVI property boundary; retain grouped HOTEVI values as proxy-only and do not relax the frozen contract.
+
+Experiment 078 completed with 12/12 compliant calls and eight strict new rows. The pooled audit now has 89 strict
+rows across 41 cities, with 20 matched 2-star/3-star cities and 26 matched 3-star/4-star cities. Both 30-city
+relationship gates failed. Reject pooled fitting promotion; retain all rows as source evidence only. The next
+experiment must use a materially different source or a pre-registered changed query hypothesis.

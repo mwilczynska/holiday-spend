@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-v1",
+  "city": "Valencia",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Valencia-Hotels.d3713.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Valencia 2026 - Expedia",
+      "evidenceText": "Expedia's generic Valencia hotel page exposes an all-hotel monthly trend (August $158), not a 2-star class trend. The requested city/class measure is absent.",
+      "referencePeriod": "Expedia result crawled last week; aggregate trend based on nightly two-adult base rates found in the prior 7 days; no class-specific window",
+      "searchQuery": "site:expedia.com Valencia Spain 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Fail closed: generic city trend and individual property quotes do not establish a 2-star city/class average."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 147,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/cn/3Star-Valencia-Hotels.s30-0-d3713.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "3 星级酒店订房与住宿预约 | Expedia",
+      "evidenceText": "Expedia's exact Valencia 3-star page lists August at $147 in its monthly price-trend table. Trend information excludes taxes and fees and uses nightly base rates for 2 adults found in the last 7 days, averaged for commonly viewed 3-star properties in Valencia.",
+      "referencePeriod": "August 2026 monthly price trend; nightly base rates for 2 adults found in the last 7 days and averaged over commonly viewed 3-star properties",
+      "searchQuery": "site:expedia.com Valencia Spain 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source evidence: exact city/class page, numeric August trend, two-adult basis, USD display, seven-day window, and tax exclusion are present."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 161,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Valencia-Hotels.s40-0-d3713.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Valencia from $115 | Expedia",
+      "evidenceText": "Expedia's exact Valencia 4-star page lists August at $161 in its monthly price-trend table. Trend information excludes taxes and fees and uses nightly base rates for 2 adults found in the last 7 days, averaged for commonly viewed 4-star properties in Valencia.",
+      "referencePeriod": "August 2026 monthly price trend; nightly base rates for 2 adults found in the last 7 days and averaged over commonly viewed 4-star properties",
+      "searchQuery": "site:expedia.com Valencia Spain 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source evidence: exact city/class, numeric August trend, two-adult basis, USD display, seven-day window, and tax exclusion are present."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

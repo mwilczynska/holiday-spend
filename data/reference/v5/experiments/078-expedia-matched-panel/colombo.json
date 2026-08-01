@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-v1",
+  "city": "Colombo",
+  "country": "Sri Lanka",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/Colombo-Hotels.d869.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Colombo | Expedia",
+      "evidenceText": "The Expedia result provides a Colombo-wide trend but does not establish a 2-star class-specific average; taxes and fees are excluded and prices use only a dollar symbol.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Colombo Sri Lanka 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Generic city trend did not establish a 2-star class average with a named currency; fail closed."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Colombo | Expedia",
+      "evidenceText": "Expedia shows a Colombo 3-star monthly base-rate trend for two adults and says taxes and fees are excluded, but the result labels prices only with a dollar symbol and does not name a currency code.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Colombo Sri Lanka 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Strict row rejected because the result does not name the currency; no source-compatible numeric observation is persisted."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Colombo-Hotels.s40-0-d869.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Colombo | Expedia",
+      "evidenceText": "Expedia shows a Colombo 4-star monthly base-rate trend for two adults and says taxes and fees are excluded, but the result labels prices only with a dollar symbol and does not name a currency code.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Colombo Sri Lanka 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Strict row rejected because the result does not name the currency; no source-compatible numeric observation is persisted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

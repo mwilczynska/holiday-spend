@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-telemetry-v1",
+  "city": "Edinburgh",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_078_expedia_matched_panel.md",
+  "calls": 1,
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "directReads": 0,
+  "queries": [
+    "site:expedia.com Edinburgh United Kingdom 2-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Edinburgh United Kingdom 3-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Edinburgh United Kingdom 4-star hotels average nightly price trend 2 adults taxes fees"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city; exactly three ordered Expedia-restricted searches with snippets only. No reads, retries, fallback, arithmetic, FX conversion, or cross-city evidence."
+}

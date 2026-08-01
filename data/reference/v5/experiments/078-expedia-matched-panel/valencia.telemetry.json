@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-telemetry-v1",
+  "city": "Valencia",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "directReads": 0,
+  "queries": [
+    "site:expedia.com Valencia Spain 2-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Valencia Spain 3-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Valencia Spain 4-star hotels average nightly price trend 2 adults taxes fees"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city, exactly three ordered Expedia-restricted searches, snippets only; no reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence."
+}

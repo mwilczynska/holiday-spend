@@ -1670,3 +1670,13 @@ treatment and an unspecified calendar index month; New York City is represented 
 
 **Verdict:** promote to independent proxy calibration only. Do not split groups, infer two-adult occupancy/taxes, fit,
 or map product tiers. Read `data/reference/v5/experiments/076-hotevi-grouped-tier-panel/`.
+## Experiment 078 - Expedia matched 2-4-star panel (1 August 2026)
+
+This experiment used twelve independent single-city Luna contexts. Each call
+must issue exactly three ordered Expedia-restricted searches for 2-, 3-, and 4-star city-class averages and must not
+read pages, retry, use fallbacks, calculate, convert currencies, or use cross-city evidence. A deterministic audit will
+pool strict rows with experiments 028, 029, 059-063, and 075 and check whether both the 2-star/3-star and 3-star/4-star
+relationships reach the frozen 30-city matched-city gate. The calls were 12/12 protocol-compliant and yielded eight
+strict new rows. Pooling reached 89 strict rows across 41 cities, with 20 matched 2-star/3-star cities and 26 matched
+3-star/4-star cities. Both gates failed. **Verdict:** reject pooled fitting promotion; retain rows as source evidence
+only and do not fit or map hotel classes. Read `data/reference/v5/experiments/078-expedia-matched-panel/`.

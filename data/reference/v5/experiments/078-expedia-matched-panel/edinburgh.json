@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-v1",
+  "city": "Edinburgh",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/Edinburgh-Hotels.d6069845.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Edinburgh | Expedia",
+      "evidenceText": "The Expedia result lists Edinburgh 2-star properties but reports only a city-wide trend, not a strict 2-star class average; taxes are excluded and the dollar symbol has no named currency.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Edinburgh United Kingdom 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No strict 2-star city-class average with a named currency was established; fail closed."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Edinburgh-Hotels.s30-0-d6069845.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Edinburgh | Expedia",
+      "evidenceText": "Expedia shows an Edinburgh 3-star monthly base-rate trend for two adults and says taxes and fees are excluded, but the result labels prices only with a dollar symbol and does not name a currency code.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Edinburgh United Kingdom 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Strict row rejected because the result does not name the currency; no source-compatible numeric observation is persisted."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/Edinburgh-Hotels.d6069845.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Edinburgh | Expedia",
+      "evidenceText": "The Expedia result lists Edinburgh 4-star properties but reports only a city-wide trend, not a strict 4-star class average; taxes are excluded and the dollar symbol has no named currency.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Edinburgh United Kingdom 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No strict 4-star city-class average with a named currency was established; fail closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -504,6 +504,15 @@ The panel failed completely: 12/12 calls were compliant, but strict coverage was
 were complete. **Verdict:** reject the direct HOTEVI page boundary; retain only the grouped proxy evidence and keep all
 product mapping blocked.
 
+### Experiment 078 - Expedia matched 2-4-star panel
+
+Twelve new cities were tested with one independent Luna context each and exactly three ordered Expedia-restricted
+searches for 2-, 3-, and 4-star city-class averages. All calls were compliant and eight strict rows were accepted.
+The deterministic analyzer pooled strict rows with experiments 028, 029, 059-063, and 075, deduplicating by city and
+class. The result was 89 rows across 41 cities, with 20 matched 2-star/3-star cities and 26 matched 3-star/4-star
+cities. Both 30-city gates failed. **Verdict:** reject pooled fitting promotion; retain source evidence only and do
+not map hotel classes.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -151,6 +151,10 @@ The 077 HOTEVI explicit-class prompt is complete and rejected: twelve one-city c
 search/read pairs each, with 12/12 protocol compliance but 0/12 strict rows for every class. Grouped research rows,
 wrong-city pages, cache misses, and missing date/tax evidence dominated; no mapping follows.
 
+The 078 Expedia matched-panel prompt is complete and rejected for promotion: twelve new one-city contexts performed
+exactly three ordered Expedia 2-/3-/4-star searches and produced eight strict rows. Pooling reached 20 matched 2↔3
+and 26 matched 3↔4 cities, below the 30-city gate; no fitting or product mapping is authorized.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

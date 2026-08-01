@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-v1",
+  "city": "Almaty",
+  "country": "Kazakhstan",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Destinations-In-Kazakhstan.d91.Hotel-Destinations",
+      "sourceTitle": "Top Kazakhstan Hotels: 2026 Best Hotels in Kazakhstan - Expedia",
+      "evidenceText": "The returned Expedia result provides a Kazakhstan-wide generic trend and mentions Almaty properties, but it does not establish a numeric Almaty 2-star class trend. Country-wide and class-ambiguous values cannot substitute for the requested city/class average.",
+      "referencePeriod": "Result crawled last week; generic country trend based on base rates observed in the last 7 days",
+      "searchQuery": "site:expedia.com Almaty Kazakhstan 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "not_found: no exact-city 2-star numeric average or trend; country-wide generic trend rejected."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Destinations-In-Kazakhstan.d91.Hotel-Destinations",
+      "sourceTitle": "Top Kazakhstan Hotels: 2026 Best Hotels in Kazakhstan - Expedia",
+      "evidenceText": "The returned Expedia result provides a Kazakhstan-wide generic trend and mentions Almaty properties, but it does not establish a numeric Almaty 3-star class trend. Country-wide and class-ambiguous values cannot substitute for the requested city/class average.",
+      "referencePeriod": "Result crawled last week; generic country trend based on base rates observed in the last 7 days",
+      "searchQuery": "site:expedia.com Almaty Kazakhstan 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "not_found: no exact-city 3-star numeric average or trend; country-wide generic trend rejected."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/4Star-Almaty-Hotels.s40-0-d354.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Almaty from $38 | Expedia",
+      "evidenceText": "The returned Expedia 4-star filter snippet shows individual Almaty property quotes and total prices, but no city/class average or trend. Single-property quotes are not a qualifying matched-panel observation.",
+      "referencePeriod": "Result crawled last week; individual stay snippets have property-specific dates",
+      "searchQuery": "site:expedia.com Almaty Kazakhstan 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "not_found: no numeric city-level 4-star average or trend; individual property quote rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

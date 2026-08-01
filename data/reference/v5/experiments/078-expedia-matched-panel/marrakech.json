@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-v1",
+  "city": "Marrakech",
+  "country": "Morocco",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Marrakech-Hotels.d6084756.Travel-Guide-Hotels?equalTargetTab=tab-3",
+      "sourceTitle": "Top 10 Hotels in Marrakech 2026 - Expedia",
+      "evidenceText": "Expedia's generic Marrakech hotel page exposes an all-hotel monthly trend (August $115), not a 2-star class trend. The requested city/class measure is absent.",
+      "referencePeriod": "Expedia result crawled last week; aggregate trend based on nightly two-adult base rates found in the prior 7 days; no class-specific window",
+      "searchQuery": "site:expedia.com Marrakech Morocco 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Fail closed: generic city trend and individual property quotes do not establish a 2-star city/class average."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Marrakech-Hotels.d6084756.Travel-Guide-Hotels?equalTargetTab=tab-3",
+      "sourceTitle": "Top 10 Hotels in Marrakech 2026 - Expedia",
+      "evidenceText": "Expedia's generic Marrakech hotel page exposes an all-hotel monthly trend (August $115), not a 3-star class trend. The requested city/class measure is absent.",
+      "referencePeriod": "Expedia result crawled last week; aggregate trend based on nightly two-adult base rates found in the prior 7 days; no class-specific window",
+      "searchQuery": "site:expedia.com Marrakech Morocco 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Fail closed: a regional trend and individual properties do not establish a 3-star city/class average."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Marrakech-Hotels.d6084756.Travel-Guide-Hotels?equalTargetTab=tab-3",
+      "sourceTitle": "Top 10 Hotels in Marrakech 2026 - Expedia",
+      "evidenceText": "Expedia's generic Marrakech hotel page exposes an all-hotel monthly trend (August $115), not a 4-star class trend. The requested city/class measure is absent.",
+      "referencePeriod": "Expedia result crawled last week; aggregate trend based on nightly two-adult base rates found in the prior 7 days; no class-specific window",
+      "searchQuery": "site:expedia.com Marrakech Morocco 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Fail closed: no exact Marrakech 4-star city/class trend was exposed by the bounded search."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

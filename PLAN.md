@@ -635,6 +635,14 @@ Experiment 077 completed with 12/12 protocol-compliant calls but 0/12 strict row
 complete cities. Reject the direct HOTEVI property boundary. Keep the grouped table proxy-only and do not relax
 occupancy, class, date, or tax evidence.
 
+Experiment 078 completed with 12/12 protocol-compliant calls and eight strict new rows. Pooling now contains 89
+strict rows across 41 cities, but only 20 matched 2-star/3-star cities and 26 matched 3-star/4-star cities. Both
+30-city relationship gates failed. Reject pooled fitting promotion; retain rows as source evidence only and do not
+fit coefficients or map hotel classes.
+
+The next accommodation experiment must test a materially different anchor or explicitly pre-register another
+bounded source-panel attempt; repeating the same Expedia query contract without a changed hypothesis is not justified.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

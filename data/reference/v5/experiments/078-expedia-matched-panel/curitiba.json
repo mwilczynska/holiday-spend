@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-v1",
+  "city": "Curitiba",
+  "country": "Brazil",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Curitiba-Hotels.s20-0-d951.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Curitiba | Expedia",
+      "evidenceText": "Expedia shows a Curitiba 2-star listing and monthly base-rate trend for two adults with taxes excluded, but prices use only a dollar symbol and no named currency code is provided.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Curitiba Brazil 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Strict row rejected because the result does not name the currency; no source-compatible numeric observation is persisted."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/Curitiba-Hotels.d951.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Curitiba | Expedia",
+      "evidenceText": "The Expedia result lists Curitiba 3-star properties but provides only a city-wide trend rather than a 3-star class-specific average; taxes are excluded and the dollar symbol has no named currency.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Curitiba Brazil 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No strict 3-star city-class average with a named currency was established; fail closed."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/4Star-Curitiba-Hotels.s40-0-d951.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Curitiba | Expedia",
+      "evidenceText": "The Expedia 4-star Curitiba result did not expose a complete class-specific numeric trend with a named currency; nearby regional results were not used.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Curitiba Brazil 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No strict 4-star city-class average with a named currency was established; fail closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

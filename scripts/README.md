@@ -94,6 +94,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-expedia-gap-panel.mjs` | `analyze-v5-expedia-gap-panel.mjs` | Experiment 075: pools fresh Expedia class rows and checks 30-city relationship eligibility without fitting |
 | `node scripts/analyze-v5-hotevi-grouped-tier-panel.mjs` | `analyze-v5-hotevi-grouped-tier-panel.mjs` | Experiment 076: audits HOTEVI grouped hotel-rate proxy coverage without splitting or mapping |
 | `node scripts/analyze-v5-hotevi-explicit-class-panel.mjs` | `analyze-v5-hotevi-explicit-class-panel.mjs` | Experiment 077: audits HOTEVI named-property class quotes without mapping |
+| `node scripts/analyze-v5-expedia-matched-panel.mjs` | `analyze-v5-expedia-matched-panel.mjs` | Experiment 078: pools a new single-city Expedia 2-/3-/4-star panel and checks the 30-city relationship ceiling without fitting |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

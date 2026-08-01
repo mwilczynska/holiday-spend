@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-audit-v1",
+  "newCitiesTested": 12,
+  "newRows": 8,
+  "newCities": [
+    {
+      "city": "Accra",
+      "strictRows": 1,
+      "classes": [
+        "2"
+      ]
+    },
+    {
+      "city": "Addis Ababa",
+      "strictRows": 2,
+      "classes": [
+        "3",
+        "4"
+      ]
+    },
+    {
+      "city": "Almaty",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Antalya",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Chiang Mai",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Colombo",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Curitiba",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Edinburgh",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Fukuoka",
+      "strictRows": 1,
+      "classes": [
+        "3"
+      ]
+    },
+    {
+      "city": "Krakow",
+      "strictRows": 2,
+      "classes": [
+        "3",
+        "4"
+      ]
+    },
+    {
+      "city": "Marrakech",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Valencia",
+      "strictRows": 2,
+      "classes": [
+        "3",
+        "4"
+      ]
+    }
+  ],
+  "protocolCompliant": 12,
+  "pooledRows": 89,
+  "pooledCities": 41,
+  "pooledMatchedCities": {
+    "hotel_2_from_3": 20,
+    "hotel_4_from_3": 26
+  },
+  "pooledGate": "hotel_2_from_3>=30 and hotel_4_from_3>=30 and protocolCompliant>=10",
+  "pooledGatePassed": false,
+  "productMapping": "none_pooled_ceiling_only",
+  "protocol": [
+    {
+      "city": "Accra",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Addis Ababa",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Almaty",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Antalya",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Chiang Mai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Colombo",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Curitiba",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Edinburgh",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Fukuoka",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Krakow",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Marrakech",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Valencia",
+      "protocolCompliant": true
+    }
+  ],
+  "pairs": {
+    "hotel_2_from_3": [
+      "Amsterdam",
+      "Auckland",
+      "Bangkok",
+      "Budapest",
+      "Buenos Aires",
+      "Chicago",
+      "Hanoi",
+      "Istanbul",
+      "Lima",
+      "Lisbon",
+      "London",
+      "Mexico City",
+      "Miami",
+      "New York",
+      "Prague",
+      "San Francisco",
+      "Stockholm",
+      "Toronto",
+      "Vancouver",
+      "Vienna"
+    ],
+    "hotel_4_from_3": [
+      "Addis Ababa",
+      "Amsterdam",
+      "Bangkok",
+      "Belgrade",
+      "Brisbane",
+      "Chicago",
+      "Dubai",
+      "Hanoi",
+      "Istanbul",
+      "Krakow",
+      "Lima",
+      "Lisbon",
+      "London",
+      "Mexico City",
+      "New York",
+      "Perth",
+      "Prague",
+      "San Francisco",
+      "Seoul",
+      "Singapore",
+      "Stockholm",
+      "Sydney",
+      "Toronto",
+      "Valencia",
+      "Vancouver",
+      "Vienna"
+    ]
+  }
+}

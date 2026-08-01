@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-matched-panel-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Accra","country":"Ghana"},
+    {"city":"Addis Ababa","country":"Ethiopia"},
+    {"city":"Almaty","country":"Kazakhstan"},
+    {"city":"Antalya","country":"Türkiye"},
+    {"city":"Chiang Mai","country":"Thailand"},
+    {"city":"Colombo","country":"Sri Lanka"},
+    {"city":"Curitiba","country":"Brazil"},
+    {"city":"Edinburgh","country":"United Kingdom"},
+    {"city":"Fukuoka","country":"Japan"},
+    {"city":"Krakow","country":"Poland"},
+    {"city":"Marrakech","country":"Morocco"},
+    {"city":"Valencia","country":"Spain"}
+  ],
+  "sourceExperiments": ["028","029","059","060","061","063","075"],
+  "pooledGate": {"hotel_2_from_3":30,"hotel_4_from_3":30,"protocolCompliant":10},
+  "maximumCalls": 12
+}
