@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-telemetry-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "privateHostelStatus": "not_found",
+  "oneStarStatus": "not_found",
+  "notes": "Single-city accommodation panel using exactly four ordered restricted searches. Booking exposed a Paris hostel with explicit occupancy and tax exclusions but no explicit private-room class; Google exposed a 3-star property rather than 1-star, and Hotels.com had no qualifying row. No reads, retries, arithmetic, FX, averaging, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

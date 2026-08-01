@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-v1",
+  "city": "Madrid",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "privateHostelQuote": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/es/petit-hostel.html",
+    "sourceTitle": "Petit Hostel La Latina, Madrid | Booking.com",
+    "evidenceText": "Petit Hostel La Latina shows Private Room (6 Adults), max people 2, and $147 per night, but the result does not establish a compatible two-adult private-room basis or tax/fee treatment; the discounted original/current prices are not a clean non-from quote.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Booking result crawled last week before 2026-08-01; dates and tax treatment not stated",
+    "searchQuery": "site:booking.com Madrid Spain hostel private room 2 adults price per night",
+    "reason": "Not found under the strict private-hostel contract: room occupancy/class evidence is contradictory (Private Room 6 Adults versus max 2), and tax/fee treatment is not stated. No private-hostel quote was substituted."
+  },
+  "oneStarQuote": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": "Google Hotels results returned help/policy pages rather than an exact Madrid 1-star property; Hotels.com results did not expose an eligible exact-property 1-star two-adult nightly price with tax treatment.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Search results crawled 4 days to last week before 2026-08-01; no qualifying exact-property row",
+    "searchQuery": "site:hotels.com Madrid Spain 1-star hotel 2 adults nightly price taxes",
+    "reason": "Not found under the strict one-star contract. No exact Madrid property with explicit 1-star class, two-adult/one-room occupancy, non-from one-night price, and tax/fee treatment was exposed."
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

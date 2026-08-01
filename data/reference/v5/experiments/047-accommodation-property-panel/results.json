@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-audit-v1",
+  "citiesTested": 6,
+  "cities": [
+    {
+      "city": "Berlin",
+      "accepted": {
+        "privateHostelQuote": true,
+        "oneStarQuote": false
+      }
+    },
+    {
+      "city": "Madrid",
+      "accepted": {
+        "privateHostelQuote": false,
+        "oneStarQuote": false
+      }
+    },
+    {
+      "city": "Mexico City",
+      "accepted": {
+        "privateHostelQuote": true,
+        "oneStarQuote": false
+      }
+    },
+    {
+      "city": "Paris",
+      "accepted": {
+        "privateHostelQuote": false,
+        "oneStarQuote": false
+      }
+    },
+    {
+      "city": "Rome",
+      "accepted": {
+        "privateHostelQuote": false,
+        "oneStarQuote": false
+      }
+    },
+    {
+      "city": "Tokyo",
+      "accepted": {
+        "privateHostelQuote": true,
+        "oneStarQuote": true
+      }
+    }
+  ],
+  "acceptedCells": {
+    "privateHostelQuote": 3,
+    "oneStarQuote": 1
+  },
+  "accepted": {
+    "privateHostelQuote": [
+      {
+        "city": "Berlin",
+        "value": 69,
+        "currency": "USD",
+        "propertyName": "Metropol Hostel Berlin",
+        "sourceUrl": "https://www.booking.com/hotel/de/metropolhostel-berlin.html"
+      },
+      {
+        "city": "Mexico City",
+        "value": 43,
+        "currency": "USD",
+        "propertyName": "Mexico City Hostel",
+        "sourceUrl": "https://www.booking.com/hotel/mx/mexico-city-hostel.html"
+      },
+      {
+        "city": "Tokyo",
+        "value": 1025,
+        "currency": "CNY",
+        "propertyName": "Turn Table",
+        "sourceUrl": "https://www.booking.com/hotel/jp/turn-table-hostel.html"
+      }
+    ],
+    "oneStarQuote": [
+      {
+        "city": "Tokyo",
+        "value": 39,
+        "currency": "USD",
+        "propertyName": "OCICA OSHIAGE TOKYO by R HOTEL",
+        "sourceUrl": "https://www.google.com/travel/hotels/entity/ChkI3-mEg8KJp6lpGg0vZy8xMWx5dHRtdHpyEAE"
+      }
+    ]
+  },
+  "rejected": [
+    {
+      "city": "Berlin",
+      "measure": "oneStarQuote",
+      "status": "not_found",
+      "reason": "Rejected: the named exact-city property has a numeric tax-inclusive nightly quote but no explicit 1-star classification or explicit two-adult/one-room occupancy. Class and occupancy cannot be inferred from the query or property name."
+    },
+    {
+      "city": "Madrid",
+      "measure": "privateHostelQuote",
+      "status": "not_found",
+      "reason": "Not found under the strict private-hostel contract: room occupancy/class evidence is contradictory (Private Room 6 Adults versus max 2), and tax/fee treatment is not stated. No private-hostel quote was substituted."
+    },
+    {
+      "city": "Madrid",
+      "measure": "oneStarQuote",
+      "status": "not_found",
+      "reason": "Not found under the strict one-star contract. No exact Madrid property with explicit 1-star class, two-adult/one-room occupancy, non-from one-night price, and tax/fee treatment was exposed."
+    },
+    {
+      "city": "Mexico City",
+      "measure": "oneStarQuote",
+      "status": "not_found",
+      "reason": "Rejected: the named exact-city candidate is explicitly 2-star rather than 1-star. Other returned rows had wrong star classes or lacked a qualifying explicit 1-star quote; class cannot be inferred from the query."
+    },
+    {
+      "city": "Paris",
+      "measure": "privateHostelQuote",
+      "status": "not_found",
+      "reason": "Not found under the strict private-hostel contract: despite explicit occupancy and taxes, the snippet does not identify the room as a private room (only a private bathroom), so class cannot be inferred. No private-hostel quote was substituted."
+    },
+    {
+      "city": "Paris",
+      "measure": "oneStarQuote",
+      "status": "not_found",
+      "reason": "Not found under the strict one-star contract: the exact-property Google result was explicitly 3-star, not 1-star, and no Hotels.com result supplied a qualifying 1-star property row."
+    },
+    {
+      "city": "Rome",
+      "measure": "privateHostelQuote",
+      "status": "not_found",
+      "reason": "Rejected: the exact-city hostel result uses a From price and does not establish explicit two-adult/one-room occupancy or tax/fee treatment."
+    },
+    {
+      "city": "Rome",
+      "measure": "oneStarQuote",
+      "status": "not_found",
+      "reason": "Rejected: the named property result lacks a numeric non-from one-night price, explicit 1-star class, and explicit two-adult/one-room occupancy."
+    }
+  ],
+  "productMapping": "none_property_ground_truth_only"
+}

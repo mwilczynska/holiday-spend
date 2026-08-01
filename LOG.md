@@ -1270,3 +1270,18 @@ observed inputs.
 **Verdict:** reject the official-page route as a complete production activity source. A future tax-resolved
 budget-only test would require a new pre-registered experiment. Read
 `data/reference/v5/experiments/046-official-activity-pages/`.
+
+## Experiment 047 — accommodation property panel (1 August 2026)
+
+Six independent single-city Luna-class contexts (Berlin, Rome, Madrid, Paris, Tokyo, and Mexico City) issued
+exactly four ordered searches each: Hostelworld private room, Booking private room, Google Hotels one-star, and
+Hotels.com one-star (24 searches total). No page reads, retries, arithmetic, FX conversion, averaging, or
+cross-city evidence occurred.
+
+Strict explicit-two-adult, named-property, non-`from`, tax-resolved quotes were **3/6 for private hostels**
+(Berlin, Mexico City, Tokyo) and **1/6 for one-star hotels** (Tokyo). The private route meets its 3/6 promotion
+gate only as property-level ground-truth collection; one-star coverage fails.
+
+**Verdict:** promote the private-hostel route to a broader property panel, with a separately declared property
+selection and aggregation rule before any city mapping. Reject the one-star route for now. No product values were
+mapped. Read `data/reference/v5/experiments/047-accommodation-property-panel/`.

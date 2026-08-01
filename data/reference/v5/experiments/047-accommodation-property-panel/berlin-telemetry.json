@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-telemetry-v1",
+  "city": "Berlin",
+  "country": "Germany",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:hostelworld.com Berlin Germany private room 2 guests price per night",
+    "site:booking.com Berlin Germany hostel private room 2 adults price per night",
+    "site:google.com/travel/hotels Berlin Germany 1-star hotel 2 adults price taxes",
+    "site:hotels.com Berlin Germany 1-star hotel 2 adults nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundQuotes": 1,
+  "notFoundQuotes": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only accommodation property panel with exactly four ordered searches. Berlin yielded one qualifying Booking private-hostel quote and no qualifying explicit 1-star quote. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

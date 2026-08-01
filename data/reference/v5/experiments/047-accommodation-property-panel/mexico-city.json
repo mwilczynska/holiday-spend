@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "privateHostelQuote": {
+    "status": "found",
+    "propertyName": "Mexico City Hostel",
+    "value": 43,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/mx/mexico-city-hostel.html",
+    "sourceTitle": "Mexico City Hostel, Mexico City (updated prices 2026)",
+    "evidenceText": "Booking result identifies Mexico City Hostel and shows 2 adults, 0 children, 1 room. The Double Room with Two Double Beds and Private Bathroom has max people 2 and is priced at $43 per night; the result states this excludes taxes and fees, specifically 16% VAT and 3.5% city tax.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Thu 2026-07-23 to Sun 2026-07-26; result crawled last week",
+    "searchQuery": "site:booking.com Mexico City Mexico hostel private room 2 adults price per night",
+    "reason": "Accepted: named exact-Mexico-City hostel and private double room, explicit two-adult/one-room occupancy, numeric non-from nightly price, and explicit excluded tax treatment."
+  },
+  "oneStarQuote": {
+    "status": "not_found",
+    "propertyName": "Hotel Florida, Centro Histórico",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgI8Zrfi4jn0dLdARoLL2cvMXRmbDBrMnEQAQ",
+    "sourceTitle": "Hotel Florida, Centro Histórico - Google hotels",
+    "evidenceText": "Google Hotels returned Hotel Florida, Centro Histórico in Mexico City as a 2-star hotel, with $17 nightly and $20 total for 1 night with taxes and fees. Other exact-city results were 3-, 4-, or 5-star properties; no explicit 1-star property with the required occupancy and quote was returned.",
+    "taxStatus": "included",
+    "referencePeriod": "Result crawled 4 weeks before 2026-08-01; 2026-07-08 to 2026-07-09 dates shown",
+    "searchQuery": "site:google.com/travel/hotels Mexico City Mexico 1-star hotel 2 adults price taxes",
+    "reason": "Rejected: the named exact-city candidate is explicitly 2-star rather than 1-star. Other returned rows had wrong star classes or lacked a qualifying explicit 1-star quote; class cannot be inferred from the query."
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

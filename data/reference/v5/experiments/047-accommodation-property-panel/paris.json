@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "privateHostelQuote": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/fr/ucpa-sport-station-hostel-paris.html",
+    "sourceTitle": "UCPA SPORT STATION HOSTEL PARIS | Booking.com",
+    "evidenceText": "UCPA SPORT STATION HOSTEL PARIS shows 2 adults, 0 children, 1 room, max people 2, private bathroom, and $64 per night for three nights, with €2.60 city tax per person/night and 10% VAT excluded; the room type is not explicitly identified as a private hostel room.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Booking result crawled last week before 2026-08-01; displayed three-night availability; tax exclusions stated",
+    "searchQuery": "site:booking.com Paris France hostel private room 2 adults price per night",
+    "reason": "Not found under the strict private-hostel contract: despite explicit occupancy and taxes, the snippet does not identify the room as a private room (only a private bathroom), so class cannot be inferred. No private-hostel quote was substituted."
+  },
+  "oneStarQuote": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChcItYGH8dOFk74cGgsvZy8xdjNscDd6ehAB",
+    "sourceTitle": "Hôtel La Petite Rosa — Google Hotels",
+    "evidenceText": "Google Hotels exact Paris result Hôtel La Petite Rosa is a 3-star tourist hotel at $90/night with taxes included for 1 night; Hotels.com 1-star search results likewise did not expose an eligible exact 1-star property.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result crawled 3 weeks before 2026-08-01; displayed 2–3 August, 1 night, taxes included",
+    "searchQuery": "site:google.com/travel/hotels Paris France 1-star hotel 2 adults price taxes",
+    "reason": "Not found under the strict one-star contract: the exact-property Google result was explicitly 3-star, not 1-star, and no Hotels.com result supplied a qualifying 1-star property row."
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

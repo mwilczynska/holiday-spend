@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-audit-v1",
+  "citiesTested": 6,
+  "searchesAttempted": 24,
+  "searchOperations": 24,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedCells": {"privateHostelQuote": 3, "oneStarQuote": 1},
+  "promotionGateRule": "at least 3 of 6 cities per measure with strict explicit-two-adult, non-from, tax-resolved quote",
+  "promotionGate": {"privateHostelQuote": "passed", "oneStarQuote": "failed"},
+  "productMapping": "none; property-level ground-truth candidates only",
+  "cities": ["Berlin", "Madrid", "Paris", "Rome", "Tokyo", "Mexico City"]
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "privateHostelQuote": {
+    "status": "found",
+    "propertyName": "Turn Table",
+    "value": 1025,
+    "currency": "CNY",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/jp/turn-table-hostel.html",
+    "sourceTitle": "Turn Table, Tokyo (updated prices 2026)",
+    "evidenceText": "Booking result identifies Turn Table in Tokyo and shows 2 adults, 0 children, 1 room. The selected Twin Room has max people 2 and is priced at CNY 1,025 per night; the result states this excludes taxes and fees (10% VAT excluded).",
+    "taxStatus": "excluded",
+    "referencePeriod": "Sat 2026-07-25 to Tue 2026-07-28; result crawled last week",
+    "searchQuery": "site:booking.com Tokyo Japan hostel private room 2 adults price per night",
+    "reason": "Accepted: named exact-Tokyo hostel/private twin room, explicit two-adult/one-room occupancy, numeric non-from nightly price, and explicit excluded tax treatment."
+  },
+  "oneStarQuote": {
+    "status": "found",
+    "propertyName": "OCICA OSHIAGE TOKYO by R HOTEL",
+    "value": 39,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChkI3-mEg8KJp6lpGg0vZy8xMWx5dHRtdHpyEAE",
+    "sourceTitle": "OCICA OSHIAGE TOKYO by R HOTEL - Google hotels",
+    "evidenceText": "Google Hotels identifies OCICA OSHIAGE TOKYO by R HOTEL in Tokyo and labels it 1 star. The panel shows 2 adults, $39 nightly, and $46 total for 1 night with taxes and fees; the nightly base is therefore recorded as excluding taxes and fees.",
+    "taxStatus": "excluded",
+    "referencePeriod": "2026-07-14 to 2026-07-15; result crawled 3 weeks before 2026-08-01",
+    "searchQuery": "site:google.com/travel/hotels Tokyo Japan 1-star hotel 2 adults price taxes",
+    "reason": "Accepted: exact-Tokyo named property, explicit 1-star class, explicit two-adult one-room panel, numeric non-from nightly price, and explicit tax-inclusive total distinguishing the base nightly quote."
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

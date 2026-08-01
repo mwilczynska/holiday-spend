@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-v1",
+  "city": "Berlin",
+  "country": "Germany",
+  "retrievalDate": "2026-08-01",
+  "privateHostelQuote": {
+    "status": "found",
+    "propertyName": "Metropol Hostel Berlin",
+    "value": 69,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/de/metropolhostel-berlin.html",
+    "sourceTitle": "Metropol Hostel Berlin, Berlin (updated prices 2026)",
+    "evidenceText": "Booking result shows 2 adults, 0 children, 1 room; Double Room with 2 twin beds, max people 2; $69 per night for the selected 3-night stay; 7% VAT and 7.5% city tax excluded.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Sat 2026-07-25 to Tue 2026-07-28; result crawled last week",
+    "searchQuery": "site:booking.com Berlin Germany hostel private room 2 adults price per night",
+    "reason": "Accepted: named exact-Berlin hostel, private double room, explicit two-adult/one-room occupancy, numeric non-from nightly price, and stated excluded taxes."
+  },
+  "oneStarQuote": {
+    "status": "not_found",
+    "propertyName": "Hotel Motel One Berlin-Alexanderplatz",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChkIs57a75i1-Z8pGg0vZy8xMWYwM21senczEAE",
+    "sourceTitle": "Hotel Motel One Berlin-Alexanderplatz - Google hotels",
+    "evidenceText": "Google Hotels result shows $86 nightly and $101 total for 1 night with taxes and fees, but does not explicitly identify 1-star class or two-adult/one-room occupancy.",
+    "taxStatus": "included",
+    "referencePeriod": "2026-07-27 to 2026-07-28; result crawled 2 weeks before 2026-08-01",
+    "searchQuery": "site:google.com/travel/hotels Berlin Germany 1-star hotel 2 adults price taxes",
+    "reason": "Rejected: the named exact-city property has a numeric tax-inclusive nightly quote but no explicit 1-star classification or explicit two-adult/one-room occupancy. Class and occupancy cannot be inferred from the query or property name."
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

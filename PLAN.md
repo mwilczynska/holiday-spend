@@ -354,6 +354,11 @@ calls. Strict compatibility was 0/18 (0/6 per activity measure): two budget tick
 mid-range or high-end row passed. Reject this route as a complete activity source; retain the two unknown-tax
 budget rows only as rejected evidence.
 
+Experiment 047 tested a six-city explicit two-adult accommodation property panel. Private-hostel quotes passed in
+3/6 cities (Berlin, Mexico City, Tokyo), meeting the source-feasibility promotion threshold for a broader
+property/ground-truth panel. One-star quotes passed in only 1/6, so the one-star blocker remains. No city average or
+product mapping is permitted yet.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not

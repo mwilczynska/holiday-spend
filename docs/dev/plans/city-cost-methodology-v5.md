@@ -206,6 +206,11 @@ calls. Strict compatibility was 0/18: budget 0/6, mid-range 0/6, and high-end 0/
 otherwise-compatible budget tickets but unknown tax treatment; no timed activity row passed. Reject the route as a
 complete activity source and retain only rejected evidence.
 
+Experiment 047 tested explicit two-adult accommodation property quotes in Berlin, Rome, Madrid, Paris, Tokyo, and
+Mexico City. Private-hostel quotes passed in 3/6 cities (Berlin, Mexico City, Tokyo), meeting the source-feasibility
+promotion threshold for a broader property/ground-truth panel. One-star quotes passed in 1/6, so the one-star blocker
+remains. The private rows are property observations only; define selection and aggregation before any city mapping.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

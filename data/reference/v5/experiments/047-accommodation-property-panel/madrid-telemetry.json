@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-telemetry-v1",
+  "city": "Madrid",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:hostelworld.com Madrid Spain private room 2 guests price per night",
+    "site:booking.com Madrid Spain hostel private room 2 adults price per night",
+    "site:google.com/travel/hotels Madrid Spain 1-star hotel 2 adults price taxes",
+    "site:hotels.com Madrid Spain 1-star hotel 2 adults nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "privateHostelStatus": "not_found",
+  "oneStarStatus": "not_found",
+  "notes": "Single-city accommodation panel using exactly four ordered restricted searches. Booking returned a contradictory/ambiguous Madrid hostel private-room row; Google/Hotels.com produced no qualifying exact 1-star property. No reads, retries, arithmetic, FX, averaging, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

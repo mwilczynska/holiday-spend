@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-accommodation-property-panel-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "privateHostelQuote": {
+    "status": "not_found",
+    "propertyName": "Free Hostels Roma",
+    "value": null,
+    "currency": "GBP",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.hostelworld.com/hostels/europe/italy/rome/f/private-rooms/",
+    "sourceTitle": "Best Hostels in Rome with private rooms from £12.48 | 2026",
+    "evidenceText": "Hostelworld result lists Free Hostels Roma private rooms From £28.71 and dorms From £25.85; no explicit two-adult/one-room occupancy or non-from one-night price is shown.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Result crawled last week; dates and tax treatment not stated",
+    "searchQuery": "site:hostelworld.com Rome Italy private room 2 guests price per night",
+    "reason": "Rejected: the exact-city hostel result uses a From price and does not establish explicit two-adult/one-room occupancy or tax/fee treatment."
+  },
+  "oneStarQuote": {
+    "status": "not_found",
+    "propertyName": "A Star Inn",
+    "value": null,
+    "currency": "EUR",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.hotels.com/ho581438/a-star-inn-rome-italy/?equalTargetTab=tab-0",
+    "sourceTitle": "A Star Inn, Rome: Hotel Reviews, Rooms & Prices",
+    "evidenceText": "Hotels.com result states Rome city tax EUR 5.00 per person per night up to 10 nights, but provides no numeric nightly room price, explicit 1-star classification, or two-adult/one-room quote.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Result crawled 2 months before 2026-08-01; stay dates and price not stated",
+    "searchQuery": "site:hotels.com Rome Italy 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: the named property result lacks a numeric non-from one-night price, explicit 1-star class, and explicit two-adult/one-room occupancy."
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

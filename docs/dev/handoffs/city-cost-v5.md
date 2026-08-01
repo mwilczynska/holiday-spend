@@ -364,6 +364,12 @@ All 18 searches were compliant, but strict compatibility was 0/18 (0/6 per activ
 had unknown tax treatment; no mid-range or high-end row passed. Reject the route as a complete activity source and
 retain raw rejected evidence only. A future tax-resolved budget-only test needs a new pre-registration.
 
+Experiment 047 tested explicit two-adult private-hostel and one-star property quotes in six independent one-city
+calls. Exactly 24 searches were compliant. Private-hostel quotes passed in 3/6 (Berlin, Mexico City, Tokyo), so
+promote that route only to a broader property/ground-truth panel. One-star quotes passed in 1/6 and remain rejected.
+No city aggregation, correction, or product mapping is allowed until property selection, aggregation, and the
+30-city/10-holdout gates are pre-registered.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked
