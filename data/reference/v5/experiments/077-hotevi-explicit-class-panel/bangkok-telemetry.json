@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-telemetry-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_077_hotevi_explicit_class_panel.md",
+  "calls": 1,
+  "searchesAttempted": 6,
+  "searchOperations": 3,
+  "queries": [
+    "site:hotevi.com/hotel Bangkok Thailand \"1-Star Hotel\" HOTEVI room price 2 adults",
+    "site:hotevi.com/hotel Bangkok Thailand \"3-Star Hotel\" HOTEVI room price 2 adults",
+    "site:hotevi.com/hotel Bangkok Thailand \"4-Star Hotel\" HOTEVI room price 2 adults"
+  ],
+  "directReads": 3,
+  "directReadUrls": [
+    null,
+    "https://hotevi.com/hotel/mystay-porto-centro-3679906",
+    "https://hotevi.com/hotel/shilla-stay-haeundae-87565605"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One-city explicit-class HOTEVI extraction. Three class-specific searches and one direct read per search; no qualifying Bangkok quote was found. Other-city pages were inspected only to reject them, not as evidence."
+}

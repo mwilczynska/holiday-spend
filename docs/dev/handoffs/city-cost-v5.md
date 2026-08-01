@@ -532,3 +532,7 @@ Experiment 076 completed with 12/12 compliant calls and 12/12 complete cities. A
 standard-room proxies with unknown tax and an unspecified calendar index month. Promote only to independent calibration;
 do not split the grouped tiers or map any product field. The New York City → `New York | United States` alias is
 explicit in the raw evidence and must remain explicit in any future join.
+
+Experiment 077 completed with 12/12 compliant calls, 0/12 strict rows in every class, and zero complete cities.
+Wrong-city pages, grouped research-page leakage, cache misses, and missing date/tax evidence dominated. Reject the
+direct HOTEVI property boundary; retain grouped HOTEVI values as proxy-only and do not relax the frozen contract.

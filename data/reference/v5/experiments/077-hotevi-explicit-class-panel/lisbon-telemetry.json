@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-telemetry-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_077_hotevi_explicit_class_panel.md",
+  "calls": 1,
+  "searchesAttempted": 6,
+  "searchOperations": 3,
+  "queries": [
+    "site:hotevi.com/hotel Lisbon Portugal \"1-Star Hotel\" HOTEVI room price 2 adults",
+    "site:hotevi.com/hotel Lisbon Portugal \"3-Star Hotel\" HOTEVI room price 2 adults",
+    "site:hotevi.com/hotel Lisbon Portugal \"4-Star Hotel\" HOTEVI room price 2 adults"
+  ],
+  "directReads": 3,
+  "directReadUrls": [
+    "https://hotevi.com/hotel/hostel-sui-kyoto-45079414",
+    "https://hotevi.com/hotel/bb-hotel-setubal-bonfim-46850497",
+    "https://hotevi.com/hotel/hotel-hafnia-4012252"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One-city explicit-class HOTEVI extraction. Three class-specific searches and one direct read per search; no qualifying Lisbon quote was found. Setúbal and other-city pages were rejected rather than used as Lisbon evidence."
+}

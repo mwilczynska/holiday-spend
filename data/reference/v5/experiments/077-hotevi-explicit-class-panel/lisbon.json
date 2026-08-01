@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hostel-sui-kyoto-45079414",
+      "sourceTitle": "Hostel Sui Kyoto | 1-Star Hotel in Kyoto | HOTEVI",
+      "propertyName": "Hostel Sui Kyoto",
+      "evidenceText": "The selected HOTEVI result was Hostel Sui Kyoto in Kyoto, not Lisbon, and its direct read failed with a cache miss. No exact Lisbon 1-star, two-adult, date-bound nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Lisbon Portugal \"1-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was in Kyoto rather than Lisbon; direct page read failed with cache miss and no qualifying quote was available."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/bb-hotel-setubal-bonfim-46850497",
+      "sourceTitle": "B&B HOTEL Setúbal Bonfim | 3-Star Hotel in Lisbon | HOTEVI",
+      "propertyName": "B&B HOTEL Setúbal Bonfim",
+      "evidenceText": "The direct page was labelled as a 3-star hotel in Lisbon, but its address was Setúbal, a different city. The page exposed two-adult and check-in/check-out controls but stated that a room must be selected to see a total price; no selected dates, numeric one-night quote, or explicit tax treatment was visible. The nearby/other-city page was not used as Lisbon evidence.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Lisbon Portugal \"3-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was in Setúbal rather than Lisbon and had no qualifying date-bound price or tax treatment."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hotel-hafnia-4012252",
+      "sourceTitle": "Hotel Hafnia | 4-Star Hotel in Torshavn | HOTEVI",
+      "propertyName": "Hotel Hafnia",
+      "evidenceText": "The selected HOTEVI result was Hotel Hafnia in Torshavn, not Lisbon, and its direct read failed with a cache miss. No exact Lisbon 4-star, two-adult, date-bound nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Lisbon Portugal \"4-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was in Torshavn rather than Lisbon; direct page read failed with cache miss and no qualifying quote was available."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

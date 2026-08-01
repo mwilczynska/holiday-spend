@@ -147,6 +147,10 @@ The 076 HOTEVI grouped-tier prompt is complete and passes its source screen: twe
 grouped rows with 12/12 protocol compliance. All rows remain source-defined standard-room proxies with unknown tax and
 no individual-star or two-adult basis; only independent calibration is authorized.
 
+The 077 HOTEVI explicit-class prompt is complete and rejected: twelve one-city contexts performed three HOTEVI class
+search/read pairs each, with 12/12 protocol compliance but 0/12 strict rows for every class. Grouped research rows,
+wrong-city pages, cache misses, and missing date/tax evidence dominated; no mapping follows.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

@@ -109,6 +109,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/074-hostelworld-shared-dorm-panel/` | **COMPLETE - reject source boundary** | Twelve one-city one-search calls; 0/12 strict current rows, 12/12 protocol-compliant; no scaling or mapping |
 | `experiments/075-expedia-gap-panel/` | **COMPLETE - reject pooled fitting ceiling** | Twelve fresh one-city calls, 15 strict rows; pooled 20 2↔3 and 23 3↔4 matched cities, below 30; no fitting or mapping |
 | `experiments/076-hotevi-grouped-tier-panel/` | **COMPLETE - promote to proxy calibration** | Twelve one-city HOTEVI calls, 36/36 grouped rows and 12/12 protocol-compliant; unknown occupancy/tax, no splitting or mapping |
+| `experiments/077-hotevi-explicit-class-panel/` | **COMPLETE - reject direct page boundary** | Twelve one-city six-operation calls; 0/12 strict rows in every class and zero complete cities; grouped proxy remains only |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

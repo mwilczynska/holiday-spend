@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-telemetry-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 6,
+  "searchOperations": 3,
+  "directReads": 3,
+  "queries": [
+    "site:hotevi.com Sydney Australia 1-star hotel two adults nightly price taxes dates",
+    "site:hotevi.com Sydney Australia 3-star hotel two adults nightly price taxes dates",
+    "site:hotevi.com Sydney Australia 4-star hotel two adults nightly price taxes dates"
+  ],
+  "pageReads": [
+    "https://hotevi.com/research",
+    "https://hotevi.com/research",
+    "https://hotevi.com/research"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city; 1-star, 3-star, and 4-star search/read pairs in order. Search results exposed the grouped research page rather than a named class/property quote; no retry or fallback was made."
+}

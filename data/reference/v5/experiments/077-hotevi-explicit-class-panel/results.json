@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictByClass": {
+    "1_star": 0,
+    "3_star": 0,
+    "4_star": 0
+  },
+  "completeCities": 0,
+  "screeningGate": "completeCities>=6 and every strictByClass>=8 and protocolCompliant>=10",
+  "screeningGatePassed": false,
+  "productMapping": "none_source_screen_only",
+  "rows": [
+    {
+      "city": "Bangkok",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "not_found: returned property was 5-star, not the requested 1-star class; direct page read also failed with cache miss, so no qualifying quote was available.",
+        "3_star": "not_found: returned 3-star property was in Porto rather than Bangkok and lacked a qualifying date-bound price and tax treatment.",
+        "4_star": "not_found: returned 4-star property was in Busan rather than Bangkok and lacked a qualifying date-bound price and tax treatment."
+      }
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "not_found: returned property was in Kyoto rather than Lisbon; direct page read failed with cache miss and no qualifying quote was available.",
+        "3_star": "not_found: returned property was in Setúbal rather than Lisbon and had no qualifying date-bound price or tax treatment.",
+        "4_star": "not_found: returned property was in Torshavn rather than Lisbon; direct page read failed with cache miss and no qualifying quote was available."
+      }
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "not_found: returned property was in Kyoto rather than London; direct page read failed with cache miss and no qualifying quote was available.",
+        "3_star": "not_found: returned property was in Phu Quoc rather than London; direct page read failed with cache miss and no qualifying quote was available.",
+        "4_star": "not_found: returned property was in Torshavn rather than London; direct page read failed with cache miss and no qualifying quote was available."
+      }
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "not_found: returned property was in Kyoto rather than Paris; direct page read failed with cache miss and no qualifying quote was available.",
+        "3_star": "not_found: exact city/class property was returned, but no date-bound numeric two-adult nightly quote or explicit tax treatment was visible.",
+        "4_star": "not_found: selected property is outside the exact Paris city target and its direct page read failed with cache miss; no qualifying quote was available."
+      }
+    },
+    {
+      "city": "Rome",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "No exact-city 1-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed.",
+        "3_star": "No exact-city 3-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed.",
+        "4_star": "No exact-city 4-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+      }
+    },
+    {
+      "city": "Prague",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "No exact-city 1-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed.",
+        "3_star": "Wrong-city page and no explicit two-adult dated nightly amount with tax treatment; fail closed.",
+        "4_star": "No exact-city 4-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+      }
+    },
+    {
+      "city": "Tokyo",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "No exact-city 1-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed.",
+        "3_star": "No exact-city 3-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed.",
+        "4_star": "The exact-city property page could not be read and no explicit two-adult dated nightly amount with tax treatment was established; fail closed."
+      }
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "No exact-city 1-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed.",
+        "3_star": "The exact-city property page could not be read and no explicit two-adult dated nightly amount with tax treatment was established; fail closed.",
+        "4_star": "No exact-city 4-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+      }
+    },
+    {
+      "city": "New York City",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "The exact HOTEVI New York city page was returned by search but the required page read failed with a cache-miss error; no named property quote was available.",
+        "3_star": "The exact HOTEVI New York city page was returned by search but the required page read failed with a cache-miss error; no named property quote was available.",
+        "4_star": "The exact HOTEVI New York city page was returned by search but the required page read failed with a cache-miss error; no named property quote was available."
+      }
+    },
+    {
+      "city": "Sydney",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "The HOTEVI search/read returned the grouped research page, not a named Sydney 1-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment.",
+        "3_star": "The HOTEVI search/read returned the grouped research page, not a named Sydney 3-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment.",
+        "4_star": "The HOTEVI search/read returned the grouped research page, not a named Sydney 4-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment."
+      }
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "The HOTEVI search/read returned the grouped research page, not a named Cape Town 1-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment.",
+        "3_star": "The HOTEVI search/read returned the grouped research page, not a named Cape Town 3-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment.",
+        "4_star": "The HOTEVI search/read returned the grouped research page, not a named Cape Town 4-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment."
+      }
+    },
+    {
+      "city": "Mexico City",
+      "protocolCompliant": true,
+      "accepted": {
+        "1_star": false,
+        "3_star": false,
+        "4_star": false
+      },
+      "complete": false,
+      "reasons": {
+        "1_star": "The HOTEVI search/read returned the grouped research page, not a named Mexico City 1-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment.",
+        "3_star": "The HOTEVI search/read returned the grouped research page, not a named Mexico City 3-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment.",
+        "4_star": "The HOTEVI search/read returned the grouped research page, not a named Mexico City 4-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment."
+      }
+    }
+  ]
+}

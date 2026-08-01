@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/luxury-old-quarter-hotel-65448347",
+      "sourceTitle": "Luxury Old Quarter Hotel | 3-Star Hotel in Hanoi | HOTEVI",
+      "propertyName": "Luxury Old Quarter Hotel",
+      "evidenceText": "The search returned an exact Hanoi 3-star property rather than a 1-star property; the direct page read returned a cache miss.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel/ Hanoi Vietnam HOTEVI 1 star hotel 2 adults nightly price taxes dates",
+      "reason": "No exact-city 1-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/luxury-old-quarter-hotel-65448347",
+      "sourceTitle": "Luxury Old Quarter Hotel | 3-Star Hotel in Hanoi | HOTEVI",
+      "propertyName": "Luxury Old Quarter Hotel",
+      "evidenceText": "The search returned an exact Hanoi 3-star property, but the direct page read returned a cache miss; no dated amount, occupancy-specific quote, or tax basis is available.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel/ Hanoi Vietnam HOTEVI 3 star hotel 2 adults nightly price taxes dates",
+      "reason": "The exact-city property page could not be read and no explicit two-adult dated nightly amount with tax treatment was established; fail closed."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hotel-hafnia-4012252",
+      "sourceTitle": "Hotel Hafnia | 4-Star Hotel in Torshavn | HOTEVI",
+      "propertyName": "Hotel Hafnia",
+      "evidenceText": "The search returned a Torshavn 4-star property rather than a Hanoi property; the direct page read returned a cache miss.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel/ Hanoi Vietnam HOTEVI 4 star hotel 2 adults nightly price taxes dates",
+      "reason": "No exact-city 4-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_077_hotevi_explicit_class_panel.md",
+    "calls": 1,
+    "searchesAttempted": 6,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

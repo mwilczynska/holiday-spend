@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hotel-hafnia-4012252",
+      "sourceTitle": "Hotel Hafnia | 4-Star Hotel in Torshavn | HOTEVI",
+      "propertyName": "Hotel Hafnia",
+      "evidenceText": "The search returned a Torshavn 4-star property rather than a Rome 1-star property; the direct page read returned a cache miss.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel/ Rome Italy HOTEVI 1 star hotel 2 adults nightly price taxes dates",
+      "reason": "No exact-city 1-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/st-catherines-on-park-43307762",
+      "sourceTitle": "St Catherine's on Park | 3-Star Hotel in Crawley | HOTEVI",
+      "propertyName": "St Catherine's on Park",
+      "evidenceText": "The search returned a Crawley 3-star property rather than a Rome property; the direct page read returned a cache miss.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel/ Rome Italy HOTEVI 3 star hotel 2 adults nightly price taxes dates",
+      "reason": "No exact-city 3-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hotel-hafnia-4012252",
+      "sourceTitle": "Hotel Hafnia | 4-Star Hotel in Torshavn | HOTEVI",
+      "propertyName": "Hotel Hafnia",
+      "evidenceText": "The search returned a Torshavn 4-star property rather than a Rome property; the direct page read returned a cache miss.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel/ Rome Italy HOTEVI 4 star hotel 2 adults nightly price taxes dates",
+      "reason": "No exact-city 4-star property page established a dated, two-adult nightly room amount with explicit tax treatment; fail closed."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_077_hotevi_explicit_class_panel.md",
+    "calls": 1,
+    "searchesAttempted": 6,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

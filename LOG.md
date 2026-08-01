@@ -1650,3 +1650,23 @@ treatment and an unspecified calendar index month; New York City is represented 
 
 **Verdict:** promote to independent proxy calibration only. Do not split groups, infer two-adult occupancy/taxes, fit,
 or map product tiers. Read `data/reference/v5/experiments/076-hotevi-grouped-tier-panel/`.
+
+## Experiment 077 - HOTEVI explicit class/property quote panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts each issued exactly six HOTEVI operations (search/read for
+1-star, 3-star, and 4-star). All calls were protocol-compliant, but strict coverage was 0/12 for every class and zero
+cities were complete. Wrong-city pages, grouped research rows, cache misses, and missing two-adult/date/tax evidence
+caused fail-closed results.
+
+**Verdict:** reject the direct HOTEVI property boundary. Keep the grouped HOTEVI table proxy-only; no mapping, split,
+or fitting follows. Read `data/reference/v5/experiments/077-hotevi-explicit-class-panel/`.
+
+## Experiment 076 - HOTEVI grouped-tier proxy panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts each issued exactly one HOTEVI research search and one
+exact-page read. All calls were protocol-compliant and all 12 cities produced all three grouped rows (36/36): budget
+(1–2★), mid-range (3★), and luxury (4–5★). Every row is a source-defined standard-room proxy with unknown tax
+treatment and an unspecified calendar index month; New York City is represented by an explicit `New York` source alias.
+
+**Verdict:** promote to independent proxy calibration only. Do not split groups, infer two-adult occupancy/taxes, fit,
+or map product tiers. Read `data/reference/v5/experiments/076-hotevi-grouped-tier-panel/`.

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hostel-sui-kyoto-45079414",
+      "sourceTitle": "Hostel Sui Kyoto | 1-Star Hotel in Kyoto | HOTEVI",
+      "propertyName": "Hostel Sui Kyoto",
+      "evidenceText": "The selected HOTEVI result was Hostel Sui Kyoto in Kyoto, not London, and its direct read failed with a cache miss. No exact London 1-star, two-adult, date-bound nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel London United Kingdom \"1-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was in Kyoto rather than London; direct page read failed with cache miss and no qualifying quote was available."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/coral-bay-resort-2690418",
+      "sourceTitle": "Coral Bay Resort | 3-Star Hotel in Phu Quoc | HOTEVI",
+      "propertyName": "Coral Bay Resort",
+      "evidenceText": "The selected HOTEVI result was Coral Bay Resort in Phu Quoc, not London, and its direct read failed with a cache miss. No exact London 3-star, two-adult, date-bound nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel London United Kingdom \"3-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was in Phu Quoc rather than London; direct page read failed with cache miss and no qualifying quote was available."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hotel-hafnia-4012252",
+      "sourceTitle": "Hotel Hafnia | 4-Star Hotel in Torshavn | HOTEVI",
+      "propertyName": "Hotel Hafnia",
+      "evidenceText": "The selected HOTEVI result was Hotel Hafnia in Torshavn, not London, and its direct read failed with a cache miss. No exact London 4-star, two-adult, date-bound nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel London United Kingdom \"4-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was in Torshavn rather than London; direct page read failed with cache miss and no qualifying quote was available."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

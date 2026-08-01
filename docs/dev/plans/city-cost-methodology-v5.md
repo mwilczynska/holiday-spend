@@ -494,6 +494,16 @@ The screen passed: 12/12 compliant calls and 12/12 complete cities (36/36 groupe
 independent proxy calibration. Preserve unknown tax, unspecified index month, and the documented New York alias; do not
 split groups, infer two-adult occupancy, fit, or map.
 
+### Experiment 077 - HOTEVI explicit class/property quote panel
+
+Test the same source's individual hotel pages with one search/read pair for each 1-, 3-, and 4-star class per city.
+Require explicit two-adult occupancy, class, dates, non-`from` nightly price, and tax basis. A pass could replace the
+grouped proxy; a failure closes the direct HOTEVI page boundary while leaving the grouped table proxy-only.
+
+The panel failed completely: 12/12 calls were compliant, but strict coverage was 0/12 for each class and zero cities
+were complete. **Verdict:** reject the direct HOTEVI page boundary; retain only the grouped proxy evidence and keep all
+product mapping blocked.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

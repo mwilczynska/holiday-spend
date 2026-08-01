@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "propertyName": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com Sydney Australia 1-star hotel two adults nightly price taxes dates",
+      "reason": "The HOTEVI search/read returned the grouped research page, not a named Sydney 1-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "propertyName": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com Sydney Australia 3-star hotel two adults nightly price taxes dates",
+      "reason": "The HOTEVI search/read returned the grouped research page, not a named Sydney 3-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "propertyName": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com Sydney Australia 4-star hotel two adults nightly price taxes dates",
+      "reason": "The HOTEVI search/read returned the grouped research page, not a named Sydney 4-star property page; it has no explicit two-adult quote, visible stay dates, or tax treatment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

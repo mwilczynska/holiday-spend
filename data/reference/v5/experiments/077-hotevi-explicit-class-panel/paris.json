@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/hostel-sui-kyoto-45079414",
+      "sourceTitle": "Hostel Sui Kyoto | 1-Star Hotel in Kyoto | HOTEVI",
+      "propertyName": "Hostel Sui Kyoto",
+      "evidenceText": "The selected HOTEVI result was Hostel Sui Kyoto in Kyoto, not Paris, and its direct read failed with a cache miss. No exact Paris 1-star, two-adult, date-bound nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Paris France \"1-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was in Kyoto rather than Paris; direct page read failed with cache miss and no qualifying quote was available."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/le-belgrand-hotel-paris-champs-elysees-tapestry-collection-by-hilton-3520958",
+      "sourceTitle": "Le Belgrand Hotel Paris Champs Elysees, Tapestry Collection by Hilton | 3-Star Hotel in Paris | HOTEVI",
+      "propertyName": "Le Belgrand Hotel Paris Champs Elysees, Tapestry Collection by Hilton",
+      "evidenceText": "The direct HOTEVI result was a Paris 3-star property, but the page showed no selected stay dates or numeric one-night room quote; it only stated that a room must be selected to see the total price. Explicit tax treatment was not visible, so the page did not meet the named two-adult quote protocol.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Paris France \"3-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: exact city/class property was returned, but no date-bound numeric two-adult nightly quote or explicit tax treatment was visible."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/sheraton-paris-charles-de-gaulle-airport-hotel-1151494",
+      "sourceTitle": "Sheraton Paris Charles de Gaulle Airport Hotel | 4-Star Hotel in Paris | HOTEVI",
+      "propertyName": "Sheraton Paris Charles de Gaulle Airport Hotel",
+      "evidenceText": "The search result identified a 4-star HOTEVI property labelled in Paris, but its location is Tremblay-en-France near the airport rather than an exact Paris city address. The direct read also failed with a cache miss, so no exact-city, date-bound two-adult nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Paris France \"4-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: selected property is outside the exact Paris city target and its direct page read failed with cache miss; no qualifying quote was available."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

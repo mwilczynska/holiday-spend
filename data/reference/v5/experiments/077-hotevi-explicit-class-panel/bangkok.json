@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": null,
+      "sourceTitle": "Grande Centre Point Surawong Bangkok | 5-Star Hotel in Bangkok | HOTEVI",
+      "propertyName": null,
+      "evidenceText": "The search returned a Bangkok HOTEVI hotel page, but the selected result was a 5-star property rather than the requested 1-star class and its direct read failed with a cache miss. No exact 1-star, two-adult, date-bound nightly quote or tax treatment was established.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Bangkok Thailand \"1-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned property was 5-star, not the requested 1-star class; direct page read also failed with cache miss, so no qualifying quote was available."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/mystay-porto-centro-3679906",
+      "sourceTitle": "MyStay Porto Centro | 3-Star Hotel in Porto | HOTEVI",
+      "propertyName": "MyStay Porto Centro",
+      "evidenceText": "The direct HOTEVI page was for MyStay Porto Centro in Porto, not Bangkok. It showed two-adult controls but no selected stay dates, visible numeric room quote, or explicit tax treatment. The other-city page was not used as Bangkok evidence.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Bangkok Thailand \"3-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned 3-star property was in Porto rather than Bangkok and lacked a qualifying date-bound price and tax treatment."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": null,
+      "occupancyBasis": null,
+      "class": null,
+      "statistic": null,
+      "taxStatus": null,
+      "sourceUrl": "https://hotevi.com/hotel/shilla-stay-haeundae-87565605",
+      "sourceTitle": "Shilla Stay Haeundae | 4-Star Hotel in Busan | HOTEVI",
+      "propertyName": "Shilla Stay Haeundae",
+      "evidenceText": "The direct HOTEVI page was for Shilla Stay Haeundae in Busan, not Bangkok. It showed a 4-star hotel page but no selected stay dates, visible numeric room quote, or explicit tax treatment. The other-city page was not used as Bangkok evidence.",
+      "referencePeriod": null,
+      "searchQuery": "site:hotevi.com/hotel Bangkok Thailand \"4-Star Hotel\" HOTEVI room price 2 adults",
+      "reason": "not_found: returned 4-star property was in Busan rather than Bangkok and lacked a qualifying date-bound price and tax treatment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 6,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

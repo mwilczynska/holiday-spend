@@ -631,6 +631,10 @@ Experiment 076 completed with 12/12 protocol-compliant calls and 12/12 complete 
 HOTEVI only to independent proxy calibration. Its occupancy is source-defined standard-room, tax status is unknown,
 the index month is not exposed, and grouped 1–2★/4–5★ tiers cannot be split. Do not map or fit.
 
+Experiment 077 completed with 12/12 protocol-compliant calls but 0/12 strict rows for 1★, 3★, and 4★, and zero
+complete cities. Reject the direct HOTEVI property boundary. Keep the grouped table proxy-only and do not relax
+occupancy, class, date, or tax evidence.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.
