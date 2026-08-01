@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-accommodation-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "found", "value": 283.15, "currency": "USD", "unit": "per_room_per_night", "class": "3_star", "occupancyBasis": "explicit_two_adults_source_average", "statistic": "city_average", "breakfastIncluded": true, "reviewScoreMinimum": 7, "propertyCount": 31,
+      "checkInDate": "2026-08-02", "bookedOnDate": "2026-07-18", "advancePeriod": "15 days",
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=08d578b7-8155-49d3-9795-2caf658a14d6&rating=3", "sourceTitle": "Copenhagen, Denmark — 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": "2 adults / 1 night / Breakfast included / Review score: Good (7+) / Rating: 3 stars",
+      "evidenceText": "World Stay Tracker exact Copenhagen page: USD 283.15; average of 31 properties; check-in 2 August 2026; booked on 18 July 2026 (15 days in advance); 2 adults / 1 night / breakfast included / review score Good (7+) / rating 3 stars.",
+      "referencePeriod": "Check-in 2026-08-02; retrieved 2026-08-01", "searchQuery": "site:worldstaytracker.com/city Copenhagen Denmark World Stay Tracker 3-star hotel prices", "reason": null
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found", "value": null, "currency": null, "unit": "per_room_per_night", "class": "4_star", "occupancyBasis": null, "statistic": null, "breakfastIncluded": null, "reviewScoreMinimum": null, "propertyCount": null,
+      "checkInDate": null, "bookedOnDate": null, "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=d765db1b-e6c5-4f34-93f0-c0579d65f44d&rating=3", "sourceTitle": "Copenhagen, Denmark — 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": null,
+      "evidenceText": "The 4-star search snippet returned a Copenhagen page marked rating 3 stars (USD 401.28; average of 16 properties), and the required exact-page read failed with a cache-miss error; no exact 4-star value was accepted.",
+      "referencePeriod": "Search and read attempted 2026-08-01; returned result rating 3 stars and read failed cache miss", "searchQuery": "site:worldstaytracker.com/city Copenhagen Denmark World Stay Tracker 4-star hotel prices", "reason": "No exact 4-star result returned; the returned 3-star result could not be read (cache miss)."
+    }
+  },
+  "telemetry": {"searchesAttempted": 2, "searchOperations": 2, "directReads": 2, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

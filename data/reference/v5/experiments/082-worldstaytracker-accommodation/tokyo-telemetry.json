@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-accommodation-telemetry-v1",
+  "city": "Tokyo", "country": "Japan", "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent", "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2, "searchOperations": 2, "directReads": 2,
+  "queries": ["site:worldstaytracker.com/city Tokyo Japan World Stay Tracker 3-star hotel prices", "site:worldstaytracker.com/city Tokyo Japan World Stay Tracker 4-star hotel prices"],
+  "pageReads": ["https://worldstaytracker.com/city?advanceperiod=15+days&cityid=1707e7f2-b1ad-4afd-a38e-be24ba066c0f&rating=3", "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=1707e7f2-b1ad-4afd-a38e-be24ba066c0f&rating=3"],
+  "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true,
+  "notes": "One city; four ordered operations. The second search returned a 3-star page, which was read and rejected for the 4-star measure."
+}

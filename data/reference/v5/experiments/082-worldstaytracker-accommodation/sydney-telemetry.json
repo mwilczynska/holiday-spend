@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-accommodation-telemetry-v1",
+  "city": "Sydney", "country": "Australia", "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent", "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2, "searchOperations": 2, "directReads": 2,
+  "queries": ["site:worldstaytracker.com/city Sydney Australia World Stay Tracker 3-star hotel prices", "site:worldstaytracker.com/city Sydney Australia World Stay Tracker 4-star hotel prices"],
+  "pageReads": ["https://worldstaytracker.com/city?advanceperiod=15+days&cityid=c19c27ab-d381-4c12-9aa3-f9f131501d98&rating=3", "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=3cc5dd08-d9f2-4c1c-9474-8a08fc375cc8&rating=3"],
+  "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true,
+  "notes": "One city; four ordered operations. Both page reads were attempted once; the first failed cache miss and the second returned a 3-star page, so both measures remain not_found."
+}

@@ -1718,9 +1718,11 @@ sparse fail-closed behavior; do not average calls or map missing values. Read `d
 
 ## Experiment 082 - World Stay Tracker accommodation panel (1 August 2026)
 
-This experiment is in progress. Twelve independent one-city Luna contexts issue exactly four ordered operations per
-city: World Stay Tracker 3-star search/read, then 4-star search/read. Strict rows require an exact city and selected
-rating, a daily USD city average, check-in/advance dates, property count, and the source's explicit 2-adult/1-night,
-breakfast-included, review-score-7+ basis. No retries, fallback, arithmetic, FX conversion, or cross-city evidence is
-allowed. The screen requires 10/12 complete cities and 10/12 protocol-compliant calls. A pass authorizes only a
-separate 30-city semantic calibration against room-only observations; breakfast must not be silently removed or mapped.
+Twelve independent one-city Luna contexts issued exactly four ordered operations per city: World Stay Tracker 3-star
+search/read, then 4-star search/read. All 12 calls were protocol-compliant after normalizing telemetry so
+`searchesAttempted` counts the two search queries and `searchOperations` plus `directReads` represent the four total
+operations. The strict audit accepted five canonical 3-star rows and zero 4-star rows, with zero complete cities; two
+additional semantically equivalent 3-star rows failed canonical field validation. The 10/12 complete-city screen failed.
+Breakfast-included, review-7+, popular-property averages remain labelled source evidence only. **Verdict:** reject
+promotion; do not remove breakfast, fit coefficients, or map product tiers. Read
+`data/reference/v5/experiments/082-worldstaytracker-accommodation/`.

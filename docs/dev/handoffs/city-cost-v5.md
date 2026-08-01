@@ -557,9 +557,8 @@ Experiment 081 completed with 15/15 compliant calls. Mumbai, Dubai, Paris, and C
 tiers in all three calls (0% dispersion); Fukuoka was not-found in all three. The five-city repeatability gate failed;
 retain ordinary-city extraction with sparse fail-closed behavior and no cross-call averaging or product mapping.
 
-Experiment 082 is the next active package. It tests World Stay Tracker with twelve independent one-city Luna contexts,
-four ordered operations per city (3-star search/read, then 4-star search/read), and no retries, fallback, arithmetic,
-FX conversion, or cross-city evidence. Strict rows require exact city/rating, daily USD average, dates/window, property
-count, and explicit 2-adult/1-night/breakfast-included/review-7+ evidence. The screen gate is 10/12 complete cities and
-10/12 compliant calls. A pass authorizes only a 30-city semantic calibration against room-only observations; retain
-breakfast and popular-property warnings explicitly.
+Experiment 082 completed with 12/12 protocol-compliant one-city calls, but 0/12 complete cities. Five canonical
+3-star rows passed and no 4-star row passed; two semantically equivalent 3-star rows failed canonical field validation.
+The 10/12 complete-city screen failed. Retain World Stay Tracker rows as labelled breakfast-included/popular-property
+source evidence only; do not remove breakfast, fit coefficients, or map product tiers. Next restart action: test a
+materially different accommodation source or query boundary and enforce canonical schema compliance.

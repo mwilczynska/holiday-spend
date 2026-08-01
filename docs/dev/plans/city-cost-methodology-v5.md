@@ -554,12 +554,13 @@ do not average calls or map missing values.
 
 ### Experiment 082 - World Stay Tracker accommodation panel
 
-Twelve independent one-city Luna contexts are being tested with exactly four ordered operations per city: World Stay
-Tracker 3-star search/read, followed by 4-star search/read. A strict row requires exact city/rating, a daily USD
-average, check-in and booking/advance dates, property count, and explicit 2-adult/1-night/breakfast-included/review-7+
-source evidence. The screen gate is 10/12 complete cities and 10/12 protocol-compliant calls. Breakfast inclusion and
-popular-property selection are retained as semantic warnings; even a screen pass cannot map these rows to room-only
-product tiers without a separately pre-registered 30-city calibration.
+The twelve independent one-city contexts completed the four-operation contract (3-star search/read, then 4-star
+search/read) with 12/12 protocol compliance. The strict audit accepted five canonical 3-star rows and zero 4-star rows;
+zero cities were complete, and two semantically equivalent 3-star rows failed canonical field validation. The 10/12
+complete-city screen failed. Breakfast inclusion, review-7+, and popular-property selection remain semantic mismatches
+for room-only product values. **Verdict:** reject promotion; retain labelled source evidence only, with no breakfast
+adjustment, coefficient fitting, or product mapping. The next accommodation experiment must change source or query
+boundary and measure schema compliance explicitly.
 
 ## Restart rule
 

@@ -663,12 +663,12 @@ identical complete tiers across three calls (0% dispersion); Fukuoka was `not_fo
 pre-registered five-city repeatability gate therefore failed. Retain the ordinary-city route with explicit sparse
 fail-closed behavior; do not average calls or map missing values. This remains a dispersion result, not accuracy.
 
-Experiment 082 is in progress. It tests World Stay Tracker as a materially different accommodation anchor using
-twelve independent one-city Luna contexts and exactly four ordered operations per city: a 3-star search/read followed
-by a 4-star search/read. Strict rows require exact city/rating, daily USD average, dates/window, property count, and
-the source's explicit 2-adult/1-night/breakfast-included/review-7+ basis. The pre-registered screen requires at least
-10/12 complete cities and 10/12 protocol-compliant calls. Breakfast inclusion and popular-property selection remain
-semantic warnings; a screen pass authorizes only a 30-city room-only calibration, not product mapping.
+Experiment 082 completed with 12/12 protocol-compliant one-city calls, but 0/12 complete 3-/4-star cities. The strict
+audit accepted five canonical 3-star rows and zero 4-star rows; other 3-star observations used non-canonical field
+aliases and were rejected by the schema. The pre-registered 10/12 complete-city screen failed. World Stay Tracker's
+breakfast-included, review-7+, popular-property averages are retained as labelled source evidence only; do not remove
+breakfast, fit coefficients, or map product tiers. The next accommodation experiment must test a materially different
+source or query boundary, with prompt/schema compliance measured explicitly.
 
 ## Unrelated app backlog
 

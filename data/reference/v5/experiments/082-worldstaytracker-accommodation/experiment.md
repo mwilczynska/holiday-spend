@@ -1,6 +1,6 @@
 # Experiment 082 — World Stay Tracker explicit 3-/4-star accommodation panel
 
-**Status:** In progress
+**Status:** Complete — reject promotion
 
 ## Question
 
@@ -11,7 +11,9 @@ occupancy in one bounded production-shaped call, at coverage high enough to beco
 
 The documented World Stay Tracker city pages will produce strict 3-star and 4-star rows for at least 10/12 cities and
 10/12 protocol-compliant calls. The source's breakfast inclusion and popular-property selection will remain explicit;
-this experiment will not silently treat those rows as room-only ground truth.
+this experiment will not silently treat those rows as room-only ground truth. **Rejected:** the panel produced 0/12
+complete 3-/4-star city rows, although all 12 calls were protocol-compliant; only five rows passed the canonical strict
+schema, all 3-star, and no 4-star row passed.
 
 ## Pre-registered protocol
 
