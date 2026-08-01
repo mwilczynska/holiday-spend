@@ -191,6 +191,11 @@ Experiment 043 tested Google Hotels one-star snippets across six one-city calls.
 property contract (1/6); reject the route as a productive panel and retain that row only as an independent
 ground-truth candidate.
 
+Experiment 045 tested Trip.com activity pages in six independent one-city calls. Exactly 18 searches were
+compliant, but strict coverage was 0/18: budget 0/6, mid-range 0/6, and high-end 0/6. “From” prices, unknown
+taxes, incompatible durations, and missing adult/party or premium basis caused the failures. Reject Trip.com for
+the frozen activity source route; retain raw failures only and do not map or fit any activity tier.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

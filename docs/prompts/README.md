@@ -44,6 +44,9 @@
 | `llm_prompt_city_cost_v5_experiment_043_google_hotels_one_star.md` | **EXPERIMENT — complete; reject broader route** | one city per delegated GPT-5.6 Luna-class invocation | Six-city Google Hotels one-star property search with explicit tax/occupancy gates |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
+| `llm_prompt_city_cost_v5_experiment_044_activity_operator_sources.md` | **EXPERIMENT — queued** | one city per delegated GPT-5.6 Luna-class invocation | GetYourGuide/Viator activity-definition source feasibility |
+| `llm_prompt_city_cost_v5_experiment_045_trip_activity_definitions.md` | **EXPERIMENT — complete; reject route** | one city per delegated GPT-5.6 Luna-class invocation | Six-city Trip.com activity-definition search; 0/18 strict cells |
+
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
 auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

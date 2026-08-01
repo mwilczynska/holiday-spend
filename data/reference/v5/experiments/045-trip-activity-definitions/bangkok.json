@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/bangkok-attractionsandtickets/",
+      "sourceTitle": "Top 10 Attractions and Tickets in Bangkok [2026] - Trip.com",
+      "evidenceText": "Bangkok attraction results showed Grand Palace from US$15.02, Safari World from US$24.00, and other ticket rows labelled From; no non-from adult-ticket price or explicit tax status was exposed.",
+      "referencePeriod": "Trip.com Bangkok attractions page crawled 3 weeks before 2026-08-01; dates and tax treatment not stated for eligible adult tickets",
+      "searchQuery": "site:trip.com/things-to-do Bangkok Thailand attraction ticket adult price",
+      "reason": "Not found under the frozen budget definition: all visible attraction prices were lowest/from offers or lacked an explicit adult basis and tax status. No standard paid-attraction adult ticket was substituted."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": null,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/69912808",
+      "sourceTitle": "Bangkok Elephant Camp Half-Day Tour | Trip.com",
+      "evidenceText": "Bangkok Elephant Camp Half-Day Tour is a join-in tour with duration 3 hr(s)–5h 30m, but the only numeric price shown is From ZAR 924.48 per person; tax treatment is not stated.",
+      "referencePeriod": "Trip.com result crawled 2 weeks before 2026-08-01; duration 3–5.5 hours; dated availability not stated",
+      "searchQuery": "site:trip.com/things-to-do Bangkok Thailand half day group tour adult price duration",
+      "reason": "Not found under the frozen half-day group definition: despite join-in/group basis and compatible duration, the only price was a From offer and tax status was unknown."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/bangkok-activities/",
+      "sourceTitle": "Top Activities and Things to Do in Bangkok [2026] - Trip.com",
+      "evidenceText": "The Bangkok activities result listed a high-quality small-group Damnoen Saduak/Maeklong day tour with duration 7 hours, but no numeric price was exposed in the snippet; other full-day listings were From offers or lacked premium/private basis.",
+      "referencePeriod": "Trip.com Bangkok activities page crawled 4 days before 2026-08-01; duration 7 hours for one candidate; price/tax status not stated",
+      "searchQuery": "site:trip.com/things-to-do Bangkok Thailand full day premium tour adult price duration",
+      "reason": "Not found under the frozen full-day premium definition: the only compatible-duration candidate lacked a numeric non-from adult price and explicit tax status, so no premium activity quote was substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

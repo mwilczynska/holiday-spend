@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/barcelona-attractionsandtickets/",
+      "sourceTitle": "Top 10 Attractions in Barcelona [2026] - Book Now on Trip.com",
+      "evidenceText": "Trip.com exposed Barcelona attraction listings including Sagrada Familia Admission Ticket Without Tower Access (From US$77.37), Sagrada Familia Fast Track Ticket (From US$39.16), and other attraction products. The displayed prices were explicitly From prices and the result did not provide a qualifying non-from adult ticket or tax treatment.",
+      "referencePeriod": "Trip.com attraction result crawled 4 months before 2026-08-01; package date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Barcelona Spain attraction ticket adult price",
+      "reason": "Exact-city attraction products were available, but every numeric candidate was a lowest/from price and no non-from adult-ticket price with usable tax status was shown. The strict budget-ticket definition therefore fails closed."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": null,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/50037030/",
+      "sourceTitle": "Barcelona Half-Day Tour: La Pedrera – Casa Milà + Casa Vicens + Casa Batlló|Includes admission ticket + guide | Trip.com",
+      "evidenceText": "Barcelona Half-Day Tour: La Pedrera – Casa Milà + Casa Vicens + Casa Batlló is labelled Duration: 3h 5m, Join-in tour, and From US$145.20 per person. The explicit From price is not an eligible non-from price; the source does not state tax treatment.",
+      "referencePeriod": "Trip.com product result crawled 2 months before 2026-08-01; package date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Barcelona Spain half day group tour adult price duration",
+      "reason": "The exact-city join-in half-day activity meets the group/duration concept, but its only numeric price is explicitly From and tax status is unknown. No non-from compatible observation is retained."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": 9,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/barcelona-day-tour/",
+      "sourceTitle": "Top Barcelona Day Tours [2026], Deals and Discounts | Trip.com",
+      "evidenceText": "TOUR COSTA BRAVA WITH BOAT TRIP is listed for Barcelona with Duration: 9 hrs and From US$64.80. The result does not establish a premium/private basis and the displayed price is explicitly From, so it cannot be retained as the frozen full-day premium measure.",
+      "referencePeriod": "Trip.com day-tour result published 5 days before 2026-08-01; booking date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Barcelona Spain full day premium tour adult price duration",
+      "reason": "A 9-hour exact-city tour was visible, but no candidate jointly supplied explicit premium/private status, a non-from per-person adult price, and tax treatment. The high-end definition fails closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

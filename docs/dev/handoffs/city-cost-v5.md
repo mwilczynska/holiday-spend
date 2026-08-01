@@ -347,6 +347,12 @@ Experiment 043 tested Google Hotels as another one-star source family: 1/6 stric
 only. The route fails the 3/6 promotion gate; preserve the all-in USD63 row as ground-truth candidate evidence,
 but no one-star mapping, basket, or correction is allowed.
 
+Experiment 045 tested Trip.com for activity definitions in six independent one-city calls. All 18 ordered searches
+were compliant, but strict coverage was 0/18 (0/6 budget, 0/6 mid-range, 0/6 high-end). “From” pricing dominated;
+other failures lacked tax, adult/party, duration, or premium evidence. Reject the route and preserve raw failure
+artifacts only. The next activity step must test a materially different source or explicitly revise the estimand
+before a new pre-registered panel.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

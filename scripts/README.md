@@ -60,6 +60,9 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-registry-class-property-quotes.mjs` | `analyze-v5-registry-class-property-quotes.mjs` | Experiment 042: audits official-register class joins to property quotes without basket aggregation |
 | `node scripts/analyze-v5-google-hotels-one-star.mjs` | `analyze-v5-google-hotels-one-star.mjs` | Experiment 043: audits Google Hotels one-star property quotes without basket aggregation |
 
+| `node scripts/analyze-v5-activity-operator-sources.mjs` | `analyze-v5-activity-operator-sources.mjs` | Experiment 044: audits GetYourGuide/Viator activity-definition rows without scaling or product mapping |
+| `node scripts/analyze-v5-trip-activity-definitions.mjs` | `analyze-v5-trip-activity-definitions.mjs` | Experiment 045: audits Trip.com activity-definition rows without scaling or product mapping |
+
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.
 

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "KWD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/97947756/",
+      "sourceTitle": "Lisboa Story Centre: 1-Day Admission Ticket | Trip.com",
+      "evidenceText": "Lisboa Story Centre 1-Day Admission Ticket — From KWD 2.510; the result is a ‘From’ package price.",
+      "referencePeriod": "Trip.com result crawled 4 months before 2026-08-01; package date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Lisbon Portugal attraction ticket adult price",
+      "reason": "The exact Lisbon attraction was identifiable, but only a lowest/from package price was exposed and no qualifying non-from adult ticket with usable tax status was shown. The strict budget-ticket definition therefore fails closed."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "ILS",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 4,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://sg.trip.com/things-to-do/detail/97805853/",
+      "sourceTitle": "Lisbon Half-day Tour: The Ultimate Cruise Shore Excursion | Trip.com",
+      "evidenceText": "Lisbon Half-day Tour: 4h duration, From ILS 1,204.42 per person.",
+      "referencePeriod": "Trip.com result crawled 4 months before 2026-08-01; booking/package date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Lisbon Portugal half day group tour adult price duration",
+      "reason": "The result has an exact-city half-day duration, but the price is explicitly From and the tax status is not stated. A from price cannot be retained as the frozen non-from group-tour measure."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": 8,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/lisbon-group-tour/",
+      "sourceTitle": "Top Lisbon Group Tours [2025], Deals and Discounts | Trip.com",
+      "evidenceText": "Sintra Private Trip from Lisbon Customizable Dreamlike Experience: 8 hrs, From €254.73.",
+      "referencePeriod": "Trip.com group-tour page published 7 months before retrieval and crawled 7 months before 2026-08-01; date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Lisbon Portugal full day premium tour adult price duration",
+      "reason": "The private 8-hour activity has a potentially premium basis, but the only price is explicitly From and the result does not provide a qualifying non-from per-person price or tax status. No high-end activity value is retained."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

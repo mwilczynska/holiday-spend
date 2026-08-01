@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com/things-to-do New York City United States attraction ticket adult price",
+    "site:trip.com/things-to-do New York City United States half day group tour adult price duration",
+    "site:trip.com/things-to-do New York City United States full day premium tour adult price duration"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only Trip.com activity-definition run with exactly three ordered restricted searches. New York exposed exact-city attraction tickets, a 3.6-hour premium small-group tour, and a 9h 30m premium private tour, but every numeric price was From and tax status was not stated; no measure passed the strict non-from/tax gates. No page reads, retries, fallback sources, arithmetic, FX conversion, aggregation, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

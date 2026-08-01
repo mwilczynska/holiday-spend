@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/85229164/",
+      "sourceTitle": "Highlights Hanoi City Old Quarter Half Day Tour | Trip.com",
+      "evidenceText": "Highlights Hanoi City Old Quarter Half Day Tour: duration 5h 30m, From US$21.20 per person.",
+      "referencePeriod": "Trip.com result crawled 2 months before 2026-08-01; date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Hanoi Vietnam attraction ticket adult price",
+      "reason": "The result is a tour rather than a standard paid-attraction adult ticket and exposes only a From price. It cannot satisfy the frozen budget-ticket definition; no ticket value is retained."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 4.25,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/95633780/",
+      "sourceTitle": "Hanoi Half-Day Tour: Quang Phu Cau Incense Village and Chuong Hat Village Tour | Trip.com",
+      "evidenceText": "Join-in Hanoi Half-Day Tour, duration 4h 15m–5h, From US$26.75 per person.",
+      "referencePeriod": "Trip.com result crawled last month before 2026-08-01; booking date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Hanoi Vietnam half day group tour adult price duration",
+      "reason": "The exact-city join-in duration fits the half-day group definition, but the price is explicitly From and tax status is not stated. The strict non-from measure therefore fails closed."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "AUD",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": 12.7,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/hanoi-group-tour/",
+      "sourceTitle": "2026 Things to do in Hanoi | Trip.com",
+      "evidenceText": "Apollo Premium 5-Star Ha Long Bay Cruise: duration 12.7 hrs, From AU$68.13.",
+      "referencePeriod": "Trip.com Hanoi group-tour page crawled 2 weeks before 2026-08-01; date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Hanoi Vietnam full day premium tour adult price duration",
+      "reason": "The result is explicitly From, exceeds the frozen 6–12 hour full-day window at 12.7 hours, and does not establish a qualifying per-person non-from price or tax status. No high-end activity value is retained."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

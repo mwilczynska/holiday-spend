@@ -1224,3 +1224,18 @@ on class, identity, occupancy, or tax/price evidence.
 **Verdict:** reject Google Hotels as a productive one-star panel (1/6 strict quotes); retain Cape Town only as
 independent ground-truth candidate evidence. Do not map it to `accom_1_star` or fit a correction. Read
 `data/reference/v5/experiments/043-google-hotels-one-star/`.
+
+## Experiment 045 — Trip.com activity-definition route (1 August 2026)
+
+Six independent single-city Luna-class contexts (Lisbon, Hanoi, Bangkok, Cape Town, Barcelona, and New York
+City) issued exactly three ordered Trip.com-restricted searches each: 18 searches total. No page reads, retries,
+fallback sources, arithmetic, FX conversion, aggregation, or cross-city evidence occurred. The strict contract
+accepted **0/18 cells**: budget 0/6, mid-range 0/6, and high-end 0/6.
+
+Most results exposed lowest/“From” prices. Remaining failures lacked tax status, explicit adult/party basis,
+compatible duration, or premium status. No row is ground truth, and no value was scaled, averaged, or mapped to a
+product tier.
+
+**Verdict:** reject Trip.com as a production source route for the frozen activity definitions. Preserve the raw
+failure reasons and URLs as source-feasibility evidence only. A materially different retrieval contract would
+require a new pre-registered panel. Read `data/reference/v5/experiments/045-trip-activity-definitions/`.

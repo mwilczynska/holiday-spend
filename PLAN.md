@@ -337,6 +337,18 @@ Experiment 043 tested Google Hotels snippets as a new one-star source family. On
 exact-city, explicit-two-adult, non-`from`, tax-resolved quote. Reject the broader route; retain the Cape Town
 row only as independent ground-truth evidence and do not map or fit it.
 
+Experiment 045 tested Trip.com for the frozen activity definitions in six independent one-city calls. All 18
+searches were compliant, but strict coverage was 0/18 (0/6 for each activity measure). “From” prices dominated;
+other rows lacked tax, adult/party, duration, or premium evidence. Reject Trip.com for this production route and
+retain only the failure evidence. No activity value is currently promotable.
+
+The one-star priority statement above predates Experiments 042–043; those experiments also failed to produce a
+promotable explicit-two-adult one-star panel. The current one-star blocker is therefore unchanged.
+
+The next activity experiment is the queued operator-source panel 044 (GetYourGuide/Viator). It must use the same
+single-city Luna shape and strict ticket, half-day-group, and full-day-premium definitions; Trip.com’s 0/18 result
+is not a reason to weaken those gates.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not
@@ -350,8 +362,8 @@ source or a separately curated ground-truth collection; no one-star value is cur
    search batch per city, preserve duplicate-call deviations, and require 30 complete cities plus 10 locked
    holdouts before any accommodation model is promoted. Retain the one-bed dorm boundary and all currency/
    missingness provenance.
-2. Continue the official attraction-ticket panel and timed-activity source tests only after recording the
-   revised accommodation boundary; do not silently substitute another city.
+2. Test a new activity source or an explicitly different activity estimand; Trip.com (Experiment 045) is rejected
+   under the frozen contract. Do not silently substitute “From” prices or generic entertainment rows.
 3. Replace or calibrate the rejected Booking city-average basis using independently collected matched
    direct-property quotes across separately recorded one-city calls. Do not fit a correction from Copenhagen
    alone; require the pre-registered 30-city/10-holdout relationship gate. Direct booking-engine URLs are
@@ -362,7 +374,8 @@ source or a separately curated ground-truth collection; no one-star value is cur
 5. Validate the nine-anchor candidate from Experiment 007 against definition-matched panels for food,
    drinks, and activities, while resolving accommodation measurement and dorm/private identifiability
    with independent ground truth. Do not infer two hostel tiers from one blended channel.
-6. Establish direct ground truth for activity tiers or prove a simple model with held-out cities.
+6. Establish direct ground truth for activity tiers or prove a simple model with held-out cities. The 045 Trip.com
+   panel supplied no compatible rows.
 7. Compare the simplest direct/modelled partition against v4 using city-level validation and the locked
    manifest.
 8. Run the full one-call blind evaluation, freeze the winning methodology, and only then plan integration,

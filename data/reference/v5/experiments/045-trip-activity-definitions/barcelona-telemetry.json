@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-telemetry-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com/things-to-do Barcelona Spain attraction ticket adult price",
+    "site:trip.com/things-to-do Barcelona Spain half day group tour adult price duration",
+    "site:trip.com/things-to-do Barcelona Spain full day premium tour adult price duration"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only Trip.com activity-definition run with exactly three ordered restricted searches. Barcelona exposed exact-city tickets, a join-in 3h 5m half-day product, and a 9-hour tour, but all numeric prices were From and the high-end candidate lacked explicit premium/private status; no measure passed the strict non-from/tax gates. No page reads, retries, fallback sources, arithmetic, FX conversion, aggregation, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

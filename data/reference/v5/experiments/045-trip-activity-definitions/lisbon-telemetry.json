@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-telemetry-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com/things-to-do Lisbon Portugal attraction ticket adult price",
+    "site:trip.com/things-to-do Lisbon Portugal half day group tour adult price duration",
+    "site:trip.com/things-to-do Lisbon Portugal full day premium tour adult price duration"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only Trip.com activity-definition run with exactly three ordered restricted searches. Lisbon produced no compatible rows: the ticket and half-day results were From prices, while the premium private result was also From and lacked tax status. No page reads, retries, fallback sources, arithmetic, FX conversion, aggregation, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

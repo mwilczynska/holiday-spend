@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/97852861/",
+      "sourceTitle": "Cape Town: Table Mountain Cable Car Ticket | Trip.com",
+      "evidenceText": "The Table Mountain Cable Car Ticket is an exact Cape Town attraction ticket, but the visible price is From SGD 69.94 and no explicit adult basis or tax status is provided.",
+      "referencePeriod": "Trip.com result crawled 2 months before 2026-08-01; ticket date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do Cape Town South Africa attraction ticket adult price",
+      "reason": "Not found under the frozen budget definition because the only exact-city ticket result was a From offer without a compatible explicit adult/tax basis. No standard paid-attraction ticket value was substituted."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": null,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/85140707/",
+      "sourceTitle": "Cape Town City Half-Day Tour with Optional Table Mountain Visit | Trip.com",
+      "evidenceText": "The Cape Town City Half-Day Tour shows duration 0–270 minutes and From US$30.00; the range is not an explicit 3–6 hour duration and the price is From with no tax status.",
+      "referencePeriod": "Trip.com result crawled last month before 2026-08-01; displayed duration 0–270 minutes; dated availability not stated",
+      "searchQuery": "site:trip.com/things-to-do Cape Town South Africa half day group tour adult price duration",
+      "reason": "Not found under the frozen half-day group definition: duration was a 0–270-minute range rather than explicit 3–6 hours, and the only price was a From offer with unknown taxes."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/capetown-group-tour/",
+      "sourceTitle": "Top Cape Town Group Tours [2026], Deals and Discounts | Trip.com",
+      "evidenceText": "The Cape Town group-tour results included a 9.5-hour Table Mountain/Penguins/Cape Point group tour, but its price was From TWD 1,672 and no premium/private basis or tax status was stated.",
+      "referencePeriod": "Trip.com Cape Town group-tour page crawled 4 months before 2026-08-01; duration 9.5 hours; price displayed as From offer",
+      "searchQuery": "site:trip.com/things-to-do Cape Town South Africa full day premium tour adult price duration",
+      "reason": "Not found under the frozen full-day premium definition: duration was compatible but the result was a From group-tour offer without explicit premium/private basis, adult pricing, or tax status."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

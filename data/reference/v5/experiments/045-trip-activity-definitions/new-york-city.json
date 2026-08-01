@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/newyork-attractions/",
+      "sourceTitle": "Top 10 Attractions in New York [2026] - Book Now on Trip.com",
+      "evidenceText": "Trip.com listed New York attractions including Statue of Liberty (From US$28.00), Empire State Building (From US$47.91), The Metropolitan Museum of Art (From US$59.02), and Museum of Modern Art (From US$27.00). These are explicitly From prices; no qualifying non-from adult ticket or tax treatment was shown.",
+      "referencePeriod": "Trip.com attraction result crawled last week before 2026-08-01; package date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do New York City United States attraction ticket adult price",
+      "reason": "Exact-city attraction products were present, but only lowest/from prices were exposed and the snippets did not provide a compatible non-from adult-ticket price with tax status. The strict budget definition fails closed."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 3.6,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/experiences/newyork-day-tour/",
+      "sourceTitle": "Top New York Day Tours [2026], Deals and Discounts | Trip.com",
+      "evidenceText": "New York City Half-Day Tour | Premium Small Group (Max 14 People) + Statue of Liberty Cruise Ticket Included is listed with Duration: 3.6 hrs and From US$110.81. The small-group basis and duration are explicit, but the price is explicitly From and tax status is not stated.",
+      "referencePeriod": "Trip.com day-tour result published 4 days before 2026-08-01; package date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do New York City United States half day group tour adult price duration",
+      "reason": "The exact-city small-group half-day candidate meets the duration and group concepts, but its only numeric price is From and tax status is unknown. It is not retained as a compatible observed row."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.trip.com/things-to-do/detail/102898207/",
+      "sourceTitle": "New York day tour with 3 classic attractions of your choice | Trip.com",
+      "evidenceText": "New York day tour with 3 classic attractions of your choice is listed with Duration: 9h 30m, Private tour, and highlights describing a premium private charter and exclusive space. The price is From US$129.04 per person, so it is not an eligible non-from price; tax status is not stated.",
+      "referencePeriod": "Trip.com product result crawled 3 months before 2026-08-01; package date and tax treatment not stated",
+      "searchQuery": "site:trip.com/things-to-do New York City United States full day premium tour adult price duration",
+      "reason": "The exact-city private full-day premium candidate is definition-compatible on duration and premium basis, but only a From price was exposed and tax treatment is unknown. The strict high-end definition fails closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

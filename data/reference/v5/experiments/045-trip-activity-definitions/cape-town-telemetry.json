@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-trip-activity-definitions-telemetry-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:trip.com/things-to-do Cape Town South Africa attraction ticket adult price",
+    "site:trip.com/things-to-do Cape Town South Africa half day group tour adult price duration",
+    "site:trip.com/things-to-do Cape Town South Africa full day premium tour adult price duration"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "notes": "Single-city Trip.com search-only run using exactly three ordered queries. Cape Town ticket, half-day, and full-day candidates were all rejected for From pricing and/or incompatible duration, party/tax basis, or premium definition. No measure passed the frozen definition. No reads, retries, fallback, arithmetic, FX, aggregation, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}
