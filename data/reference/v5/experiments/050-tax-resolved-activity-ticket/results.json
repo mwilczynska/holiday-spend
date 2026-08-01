@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-audit-v1",
+  "citiesTested": 6,
+  "acceptedCities": 2,
+  "promotionGate": "4 of 6 strict tickets",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Bangkok",
+      "accepted": true
+    },
+    {
+      "city": "Barcelona",
+      "accepted": false
+    },
+    {
+      "city": "Cape Town",
+      "accepted": false
+    },
+    {
+      "city": "Hanoi",
+      "accepted": false
+    },
+    {
+      "city": "Lisbon",
+      "accepted": true
+    },
+    {
+      "city": "New York City",
+      "accepted": false
+    }
+  ],
+  "accepted": [
+    {
+      "city": "Bangkok",
+      "value": 290,
+      "currency": "THB",
+      "sourceUrl": "https://www.expedia.co.th/things-to-do/a.a46770885.activity-details?endDate=2025-10-01&langid=2057&location=Bangkok+City+Centre%2C+Bangkok%2C+Bangkok+Province%2C+Thailand&rid=6200258&startDate=2025-09-17&swp=off"
+    },
+    {
+      "city": "Lisbon",
+      "value": 25,
+      "currency": "EUR",
+      "sourceUrl": "https://oceanario.pt/wp-content/uploads/2024/10/Lisbon-Top-Attraction-Oceanario-Lisboa_Brochure.pdf"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Barcelona",
+      "status": "not_found",
+      "reason": "Not found under the strict contract: no single exact-city official attraction result supplied an explicit adult ticket, numeric non-from price, named currency, and included/excluded tax treatment. No page read or cross-result arithmetic was used."
+    },
+    {
+      "city": "Cape Town",
+      "status": "not_found",
+      "reason": "Rejected: although the named Cape Town venue and adult price are explicit, tax/fee treatment is unknown. The strict contract requires included or excluded treatment, so this remains not_found."
+    },
+    {
+      "city": "Hanoi",
+      "status": "not_found",
+      "reason": "The exact-city official venue exposes an explicit adult, non-from price and currency, but tax/fee treatment is unknown. Unknown tax rows are incompatible with this tax-resolved experiment, so no value is accepted."
+    },
+    {
+      "city": "New York City",
+      "status": "not_found",
+      "reason": "Not found under the strict contract: the strongest exact-city official ticket is a starting-from amount and lacks an explicit adult basis; the processing fee is stated but tax-inclusive/exclusive treatment of the ticket price is not. Bundled/range and nearby-city results were rejected."
+    }
+  ],
+  "productMapping": "none_source_feasibility_only"
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 25,
+    "currency": "EUR",
+    "unit": "per_person_ticket",
+    "basis": "adult_ticket",
+    "partyBasis": "individual_ticket",
+    "taxStatus": "included",
+    "sourceUrl": "https://oceanario.pt/wp-content/uploads/2024/10/Lisbon-Top-Attraction-Oceanario-Lisboa_Brochure.pdf",
+    "sourceTitle": "Oceanário de Lisboa A WINDOW",
+    "evidenceText": "Official Oceanário de Lisboa brochure search result lists Adult (13–64 years old) €25.00 and explicitly states VAT included at the current legal rate (6%).",
+    "referencePeriod": "Brochure published 4 months before 2026-08-01; current legal VAT rate stated in source",
+    "searchQuery": "Lisbon Portugal official attraction adult admission ticket price taxes included",
+    "reason": "Accepted: exact-city official attraction, explicit adult basis and named currency, non-from €25 ticket, and explicit VAT-included treatment in the same evidence. This remains a one-person source input; no scaling or FX conversion was performed."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

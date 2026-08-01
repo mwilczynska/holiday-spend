@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_person_ticket",
+    "basis": "adult_ticket",
+    "partyBasis": "individual_ticket",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.ctsc.org.za/visit-us/",
+    "sourceTitle": "Visit us | Cape Town Science Centre",
+    "evidenceText": "The official Cape Town Science Centre result lists Adult R95, but does not state whether taxes or fees are included or excluded.",
+    "referencePeriod": "Result crawled 3 weeks ago; page published 13.2 years ago",
+    "searchQuery": "Cape Town South Africa official attraction adult admission ticket price taxes included",
+    "reason": "Rejected: although the named Cape Town venue and adult price are explicit, tax/fee treatment is unknown. The strict contract requires included or excluded treatment, so this remains not_found."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -367,6 +367,10 @@ Experiment 049 broadened the one-star property search to 12 cities and three pub
 strict quotes passed (Amsterdam), far below the 6/12 gate. The direct one-star route remains rejected; no class
 substitution or correction fit is allowed.
 
+Experiment 050 isolated tax-resolved official attraction tickets across six cities. Only 2/6 strict tickets passed
+(Bangkok via Expedia and Lisbon first-party), below the 4/6 gate. Retain these as direct source candidates but do
+not map `activities_budget`; timed activity and complete activity coverage remain unresolved.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not

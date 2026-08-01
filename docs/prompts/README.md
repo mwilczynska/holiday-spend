@@ -50,6 +50,7 @@
 | `llm_prompt_city_cost_v5_experiment_047_accommodation_property_panel.md` | **EXPERIMENT — complete; promote private panel** | one city per delegated GPT-5.6 Luna-class invocation | Six-city explicit two-adult private-hostel and one-star property panel; private 3/6, one-star 1/6 |
 | `llm_prompt_city_cost_v5_experiment_048_private_hostel_broad_panel.md` | **EXPERIMENT — complete; reject promotion gate** | one city per delegated GPT-5.6 Luna-class invocation | Twelve-city private-hostel panel; 4/12 strict quotes |
 | `llm_prompt_city_cost_v5_experiment_049_one_star_broad_panel.md` | **EXPERIMENT — complete; reject promotion gate** | one city per delegated GPT-5.6 Luna-class invocation | Twelve-city one-star panel; 1/12 strict quotes |
+| `llm_prompt_city_cost_v5_experiment_050_tax_resolved_activity_ticket.md` | **EXPERIMENT — complete; reject promotion gate** | one city per delegated GPT-5.6 Luna-class invocation | Six-city tax-resolved ticket test; 2/6 strict tickets |
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes

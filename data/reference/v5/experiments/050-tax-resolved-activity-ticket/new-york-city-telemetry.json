@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "New York City United States official attraction adult admission ticket price taxes included"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city, one-search tax-resolved activity-ticket run. New York City search exposed an exact-city official starting-from ticket with a processing fee but no explicit adult basis or resolved ticket tax status; bundles, ranges, and nearby-city results were rejected. No page reads, retries, fallback, arithmetic, FX, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

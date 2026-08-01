@@ -378,6 +378,10 @@ Experiment 049 tested one-star properties in 12 independent one-city calls with 
 Google Hotels, Expedia, and Hotels.com. Only Amsterdam passed (1/12), below the 6/12 gate. Keep it as a single
 ground-truth candidate; do not map, substitute classes, or fit a correction.
 
+Experiment 050 tested tax-resolved official adult tickets in six independent one-city calls. Six searches were
+compliant; Bangkok (Expedia SeaLife, taxes included) and Lisbon (Oceanário brochure, VAT included) passed, for 2/6,
+below the 4/6 gate. Keep both as direct candidates only; no `activities_budget` mapping or complete activity claim.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

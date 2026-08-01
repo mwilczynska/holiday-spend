@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_person_ticket",
+    "basis": "adult_ticket",
+    "partyBasis": "individual_ticket",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.oneworldobservatory.com/buy-tickets/",
+    "sourceTitle": "Buy Tickets for One World Observatory in New York City",
+    "evidenceText": "The official One World Observatory result is exact New York City and shows General Admission Starting at $44, with an additional $3.50 processing fee plus tax. The amount is a from/starting price and the adult basis is not explicitly stated. Other results were bundles/ranges (CityPASS), nearby Goshen (LEGOLAND New York), or had no numeric adult price.",
+    "referencePeriod": "Result crawled 4 days before 2026-08-01; no qualifying non-from adult row",
+    "searchQuery": "New York City United States official attraction adult admission ticket price taxes included",
+    "reason": "Not found under the strict contract: the strongest exact-city official ticket is a starting-from amount and lacks an explicit adult basis; the processing fee is stated but tax-inclusive/exclusive treatment of the ticket price is not. Bundled/range and nearby-city results were rejected."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": "EUR",
+    "unit": "per_person_ticket",
+    "basis": "adult_ticket",
+    "partyBasis": "individual_ticket",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.barcelonabusturistic.cat/en/fares-and-prices",
+    "sourceTitle": "Fares and prices | Barcelona Bus Turístic",
+    "evidenceText": "The official Barcelona Bus Turístic fares page exposes an Adult (13 to 64 years) category but the search result provides no numeric ticket price. Official FC Barcelona ticket results similarly expose named tickets without an explicit adult numeric quote or tax treatment; an official Barcelona terms result states prices are tax-inclusive but contains no ticket amount.",
+    "referencePeriod": "Results crawled last week to 3 months before 2026-08-01; no qualifying numeric row",
+    "searchQuery": "Barcelona Spain official attraction adult admission ticket price taxes included",
+    "reason": "Not found under the strict contract: no single exact-city official attraction result supplied an explicit adult ticket, numeric non-from price, named currency, and included/excluded tax treatment. No page read or cross-result arithmetic was used."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

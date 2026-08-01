@@ -1313,3 +1313,15 @@ prices, missing tax treatment, or no numeric nightly quote.
 
 **Verdict:** reject the broad one-star route. Preserve Amsterdam as a ground-truth candidate only; do not map or
 fit `accom_1_star`. Read `data/reference/v5/experiments/049-one-star-broad-panel/`.
+
+## Experiment 050 — tax-resolved official activity ticket (1 August 2026)
+
+Six independent single-city Luna-class contexts issued exactly one targeted search each (six searches total), with
+no page reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence. Strict tax-resolved
+adult-ticket coverage was **2/6**: Bangkok (SeaLife Bangkok via Expedia, taxes/fees included) and Lisbon (Oceanário
+de Lisboa first-party brochure, VAT included). Four cities failed on unknown tax, from/starting prices, absent
+numeric adult prices, or bundles.
+
+**Verdict:** reject the 4/6 promotion gate. Retain Bangkok and Lisbon as direct one-person ticket candidates only;
+do not map `activities_budget` or claim complete production coverage. Read
+`data/reference/v5/experiments/050-tax-resolved-activity-ticket/`.

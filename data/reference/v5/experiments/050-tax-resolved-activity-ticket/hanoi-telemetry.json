@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-telemetry-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "Hanoi Vietnam official attraction adult admission ticket price taxes included"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city single-search official activity-ticket run. Hanoi's Van Mieu Night Tour had an adult price but no explicit tax/fee treatment, so it failed the tax-resolved contract. No page reads, retries, fallback, arithmetic, FX conversion, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

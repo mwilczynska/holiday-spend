@@ -219,6 +219,10 @@ Experiment 049 broadened the one-star property panel to 12 cities and three publ
 strict quotes passed (Amsterdam), far below the 6/12 gate. Reject the direct one-star route; no class substitution
 or correction fit is allowed.
 
+Experiment 050 isolated tax-resolved official attraction tickets across six cities. Only 2/6 strict tickets passed
+(Bangkok via Expedia and Lisbon first-party), below the 4/6 gate. Retain these as direct source candidates but do
+not map `activities_budget`; timed activity and complete activity coverage remain unresolved.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

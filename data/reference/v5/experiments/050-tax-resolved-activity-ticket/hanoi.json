@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": "VND",
+    "unit": "per_person_ticket",
+    "basis": "adult_ticket",
+    "partyBasis": "individual_ticket",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.vanmieu.gov.vn/en/experience/night-tour",
+    "sourceTitle": "Văn Miếu Night Tour | Van Mieu",
+    "evidenceText": "Official Van Mieu search result lists Adult ticket 299,000 VND for the Hanoi night tour, but no tax or fee treatment is stated in the search evidence.",
+    "referencePeriod": "Result crawled 6 days before 2026-08-01; tax treatment not stated",
+    "searchQuery": "Hanoi Vietnam official attraction adult admission ticket price taxes included",
+    "reason": "The exact-city official venue exposes an explicit adult, non-from price and currency, but tax/fee treatment is unknown. Unknown tax rows are incompatible with this tax-resolved experiment, so no value is accepted."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

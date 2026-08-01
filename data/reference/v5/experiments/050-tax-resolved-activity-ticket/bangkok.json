@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-tax-resolved-activity-ticket-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 290,
+    "currency": "THB",
+    "unit": "per_person_ticket",
+    "basis": "adult_ticket",
+    "partyBasis": "individual_ticket",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.expedia.co.th/things-to-do/a.a46770885.activity-details?endDate=2025-10-01&langid=2057&location=Bangkok+City+Centre%2C+Bangkok%2C+Bangkok+Province%2C+Thailand&rid=6200258&startDate=2025-09-17&swp=off",
+    "sourceTitle": "SeaLife Bangkok Entry Ticket",
+    "evidenceText": "Price is ฿290 per adult; ฿290 includes taxes & fees. Adult admission ticket is for individuals aged 12-59 years old. The named venue is SeaLife Bangkok in Pathum Wan, Bangkok, Thailand.",
+    "referencePeriod": "Stay/visit dates shown September 17-October 1, 2025; result crawled 4 days ago",
+    "searchQuery": "Bangkok Thailand official attraction adult admission ticket price taxes included",
+    "reason": "Accepted: named Bangkok attraction, explicit individual adult ticket, numeric non-from price, named currency, and explicit taxes-and-fees included treatment."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

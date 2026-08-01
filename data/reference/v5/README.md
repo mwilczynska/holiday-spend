@@ -70,6 +70,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/047-accommodation-property-panel/` | **COMPLETE — promote private panel; reject one-star route** | Six one-city calls: private 3/6, one-star 1/6 strict quotes |
 | `experiments/048-private-hostel-broad-panel/` | **COMPLETE — reject promotion gate** | Twelve one-city calls: 4/12 strict private-hostel quotes; no aggregation |
 | `experiments/049-one-star-broad-panel/` | **COMPLETE — reject promotion gate** | Twelve one-city calls: 1/12 strict one-star quotes; no mapping |
+| `experiments/050-tax-resolved-activity-ticket/` | **COMPLETE — reject promotion gate** | Six one-city calls: 2/6 strict tax-resolved tickets; no mapping |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.
