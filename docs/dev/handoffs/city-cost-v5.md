@@ -382,6 +382,11 @@ Experiment 050 tested tax-resolved official adult tickets in six independent one
 compliant; Bangkok (Expedia SeaLife, taxes included) and Lisbon (Oceanário brochure, VAT included) passed, for 2/6,
 below the 4/6 gate. Keep both as direct candidates only; no `activities_budget` mapping or complete activity claim.
 
+Experiment 051 retested nine raw anchors in six independent one-city calls with 24 compliant searches. No city was
+complete; non-sparse coverage was 5/9–8/9 and Don Det was 0/9. Food/drink and attraction inputs are promising,
+but three-star hotel coverage was 0/6 and hostel gaps remain. Do not promote the complete extraction contract or
+hide missingness through modelling until independent validation is available.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

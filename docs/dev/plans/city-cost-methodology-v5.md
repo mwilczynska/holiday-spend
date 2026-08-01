@@ -223,6 +223,10 @@ Experiment 050 isolated tax-resolved official attraction tickets across six citi
 (Bangkok via Expedia and Lisbon first-party), below the 4/6 gate. Retain these as direct source candidates but do
 not map `activities_budget`; timed activity and complete activity coverage remain unresolved.
 
+Experiment 051 retested the nine-anchor shape in six one-city calls with a fixed four-search budget. No city was
+complete; non-sparse coverage was 5/9–8/9 and Don Det was 0/9. Food/drink and attraction inputs are promising,
+but three-star hotel coverage was 0/6 and accommodation/sparse gaps remain. Do not promote the complete contract.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

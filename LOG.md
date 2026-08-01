@@ -1325,3 +1325,15 @@ numeric adult prices, or bundles.
 **Verdict:** reject the 4/6 promotion gate. Retain Bangkok and Lisbon as direct one-person ticket candidates only;
 do not map `activities_budget` or claim complete production coverage. Read
 `data/reference/v5/experiments/050-tax-resolved-activity-ticket/`.
+
+## Experiment 051 — one-city minimal anchor panel (1 August 2026)
+
+Six independent single-city Luna-class contexts issued exactly four ordered searches each (24 searches total),
+with six returned-current-city page reads, no retries, arithmetic, FX conversion, averaging, or cross-city evidence.
+The nine-anchor contract returned no complete city. Non-sparse coverage ranged from 5/9 to 8/9; Don Det returned
+0/9.
+
+Across the panel, food/drink anchors reached 4–5/6 and paid attractions 5/6, while three-star hotel coverage was
+0/6, dorm 2/6, and private hostel 1/6. **Verdict:** reject promotion as a complete source boundary; retain
+food/drink and attraction source patterns, but do not hide accommodation, hotel-class, or sparse-city gaps.
+Read `data/reference/v5/experiments/051-minimal-anchor-panel/`.

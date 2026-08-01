@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-minimal-anchor-panel-telemetry-v1",
+  "city": "Don Det",
+  "country": "Laos",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:numbeo.com/cost-of-living/in/ Don Det Laos food cappuccino beer meal price",
+    "Don Det Laos hostel dorm bed private room two adults price per night",
+    "Don Det Laos 3 star hotel two adults price per night",
+    "Don Det official adult attraction ticket price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundAnchors": 0,
+  "notFoundAnchors": 9,
+  "protocolCompliant": true,
+  "notes": "Single-city four-search minimal anchor panel. Don Det had no exact Numbeo city row, only From hostel offers, no clean two-adult three-star room-total quote, and no exact official adult attraction ticket. Country-level Laos data, Vientiane data, guesthouse prices, per-person hotel pricing, and unrelated attraction results were rejected. No retries, arithmetic, FX conversion, averaging, or tier construction were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

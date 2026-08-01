@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-minimal-anchor-panel-telemetry-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:numbeo.com/cost-of-living/in/ Copenhagen food cappuccino beer meal price",
+    "Copenhagen hostel dorm bed private room two adults price per night",
+    "Copenhagen 3 star hotel two adults price per night",
+    "Copenhagen official adult attraction ticket price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundAnchors": 5,
+  "notFoundAnchors": 4,
+  "protocolCompliant": true,
+  "notes": "Single-city four-search minimal anchor panel. Copenhagen returned one inexpensive-meal, three other Numbeo food/drink rows, and an official Copenhagen Zoo adult ticket; hostel and 3-star hotel anchors, plus the mid-range meal row, lacked strict evidence. No page reads beyond returned current-city search evidence, retries, other-city evidence, arithmetic, FX conversion, averaging, or tier construction were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

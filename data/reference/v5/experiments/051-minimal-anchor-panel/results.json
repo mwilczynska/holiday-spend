@@ -1,0 +1,465 @@
+{
+  "schemaVersion": "city-cost-v5-minimal-anchor-panel-audit-v1",
+  "citiesTested": 6,
+  "anchors": [
+    "hostel_dorm_bed_1p",
+    "hostel_private_room_2p",
+    "hotel_3star_room_2p",
+    "inexpensive_restaurant_meal_1p",
+    "midrange_restaurant_meal_2p",
+    "mcmeal_combo",
+    "cappuccino_1",
+    "domestic_draft_beer_1",
+    "paid_attraction_adult_1"
+  ],
+  "acceptedCells": {
+    "hostel_dorm_bed_1p": 2,
+    "hostel_private_room_2p": 1,
+    "hotel_3star_room_2p": 0,
+    "inexpensive_restaurant_meal_1p": 5,
+    "midrange_restaurant_meal_2p": 4,
+    "mcmeal_combo": 5,
+    "cappuccino_1": 5,
+    "domestic_draft_beer_1": 5,
+    "paid_attraction_adult_1": 5
+  },
+  "completeCities": [],
+  "cities": [
+    {
+      "city": "Copenhagen",
+      "accepted": {
+        "hostel_dorm_bed_1p": false,
+        "hostel_private_room_2p": false,
+        "hotel_3star_room_2p": false,
+        "inexpensive_restaurant_meal_1p": true,
+        "midrange_restaurant_meal_2p": false,
+        "mcmeal_combo": true,
+        "cappuccino_1": true,
+        "domestic_draft_beer_1": true,
+        "paid_attraction_adult_1": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Don Det",
+      "accepted": {
+        "hostel_dorm_bed_1p": false,
+        "hostel_private_room_2p": false,
+        "hotel_3star_room_2p": false,
+        "inexpensive_restaurant_meal_1p": false,
+        "midrange_restaurant_meal_2p": false,
+        "mcmeal_combo": false,
+        "cappuccino_1": false,
+        "domestic_draft_beer_1": false,
+        "paid_attraction_adult_1": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Hanoi",
+      "accepted": {
+        "hostel_dorm_bed_1p": true,
+        "hostel_private_room_2p": false,
+        "hotel_3star_room_2p": false,
+        "inexpensive_restaurant_meal_1p": true,
+        "midrange_restaurant_meal_2p": true,
+        "mcmeal_combo": true,
+        "cappuccino_1": true,
+        "domestic_draft_beer_1": true,
+        "paid_attraction_adult_1": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Lisbon",
+      "accepted": {
+        "hostel_dorm_bed_1p": false,
+        "hostel_private_room_2p": false,
+        "hotel_3star_room_2p": false,
+        "inexpensive_restaurant_meal_1p": true,
+        "midrange_restaurant_meal_2p": true,
+        "mcmeal_combo": true,
+        "cappuccino_1": true,
+        "domestic_draft_beer_1": true,
+        "paid_attraction_adult_1": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Mexico City",
+      "accepted": {
+        "hostel_dorm_bed_1p": true,
+        "hostel_private_room_2p": true,
+        "hotel_3star_room_2p": false,
+        "inexpensive_restaurant_meal_1p": true,
+        "midrange_restaurant_meal_2p": true,
+        "mcmeal_combo": true,
+        "cappuccino_1": true,
+        "domestic_draft_beer_1": true,
+        "paid_attraction_adult_1": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Prague",
+      "accepted": {
+        "hostel_dorm_bed_1p": false,
+        "hostel_private_room_2p": false,
+        "hotel_3star_room_2p": false,
+        "inexpensive_restaurant_meal_1p": true,
+        "midrange_restaurant_meal_2p": true,
+        "mcmeal_combo": true,
+        "cappuccino_1": true,
+        "domestic_draft_beer_1": true,
+        "paid_attraction_adult_1": true
+      },
+      "complete": false
+    }
+  ],
+  "accepted": {
+    "hostel_dorm_bed_1p": [
+      {
+        "city": "Hanoi",
+        "value": 46,
+        "currency": "CNY",
+        "sourceUrl": "https://www.booking.com/hotel/vn/the-world.html"
+      },
+      {
+        "city": "Mexico City",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.booking.com/hotel/mx/mexico-city-hostel.html"
+      }
+    ],
+    "hostel_private_room_2p": [
+      {
+        "city": "Mexico City",
+        "value": 43,
+        "currency": "USD",
+        "sourceUrl": "https://www.booking.com/hotel/mx/mexico-city-hostel.html"
+      }
+    ],
+    "hotel_3star_room_2p": [],
+    "inexpensive_restaurant_meal_1p": [
+      {
+        "city": "Copenhagen",
+        "value": 150,
+        "currency": "DKK",
+        "sourceUrl": "https://de.numbeo.com/lebenshaltungskosten/stadt/Kopenhagen"
+      },
+      {
+        "city": "Hanoi",
+        "value": 55000,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi"
+      },
+      {
+        "city": "Lisbon",
+        "value": 15,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon"
+      },
+      {
+        "city": "Mexico City",
+        "value": 201.19,
+        "currency": "MXN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City/"
+      },
+      {
+        "city": "Prague",
+        "value": 240,
+        "currency": "CZK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague"
+      }
+    ],
+    "midrange_restaurant_meal_2p": [
+      {
+        "city": "Hanoi",
+        "value": 500000,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi"
+      },
+      {
+        "city": "Lisbon",
+        "value": 55,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon"
+      },
+      {
+        "city": "Mexico City",
+        "value": 1000,
+        "currency": "MXN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City/"
+      },
+      {
+        "city": "Prague",
+        "value": 1200,
+        "currency": "CZK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague"
+      }
+    ],
+    "mcmeal_combo": [
+      {
+        "city": "Copenhagen",
+        "value": 90,
+        "currency": "DKK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen/"
+      },
+      {
+        "city": "Hanoi",
+        "value": 119000,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi"
+      },
+      {
+        "city": "Lisbon",
+        "value": 10,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon"
+      },
+      {
+        "city": "Mexico City",
+        "value": 180,
+        "currency": "MXN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City/"
+      },
+      {
+        "city": "Prague",
+        "value": 220,
+        "currency": "CZK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague"
+      }
+    ],
+    "cappuccino_1": [
+      {
+        "city": "Copenhagen",
+        "value": 45.32,
+        "currency": "DKK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen/"
+      },
+      {
+        "city": "Hanoi",
+        "value": 48345.07,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi"
+      },
+      {
+        "city": "Lisbon",
+        "value": 2.58,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon"
+      },
+      {
+        "city": "Mexico City",
+        "value": 68.25,
+        "currency": "MXN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City/"
+      },
+      {
+        "city": "Prague",
+        "value": 81.28,
+        "currency": "CZK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague"
+      }
+    ],
+    "domestic_draft_beer_1": [
+      {
+        "city": "Copenhagen",
+        "value": 60,
+        "currency": "DKK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Copenhagen/"
+      },
+      {
+        "city": "Hanoi",
+        "value": 26326.18,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi"
+      },
+      {
+        "city": "Lisbon",
+        "value": 3,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon"
+      },
+      {
+        "city": "Mexico City",
+        "value": 60,
+        "currency": "MXN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City/"
+      },
+      {
+        "city": "Prague",
+        "value": 65,
+        "currency": "CZK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague"
+      }
+    ],
+    "paid_attraction_adult_1": [
+      {
+        "city": "Copenhagen",
+        "value": 260,
+        "currency": "DKK",
+        "sourceUrl": "https://www.zoo.dk/en/ticket"
+      },
+      {
+        "city": "Hanoi",
+        "value": 299000,
+        "currency": "VND",
+        "sourceUrl": "https://www.vanmieu.gov.vn/en/experience/night-tour"
+      },
+      {
+        "city": "Lisbon",
+        "value": 25,
+        "currency": "EUR",
+        "sourceUrl": "https://oceanario.pt/wp-content/uploads/2024/10/Lisbon-Top-Attraction-Oceanario-Lisboa_Brochure.pdf"
+      },
+      {
+        "city": "Mexico City",
+        "value": 180,
+        "currency": "MXN",
+        "sourceUrl": "https://sic.cultura.gob.mx/ficha.php?estado_id=9&table=museo&table_id=15"
+      },
+      {
+        "city": "Prague",
+        "value": 330,
+        "currency": "CZK",
+        "sourceUrl": "https://www.zoopraha.cz/navsteva/vstupne?device=xhtml"
+      }
+    ]
+  },
+  "rejected": [
+    {
+      "city": "Copenhagen",
+      "anchor": "hostel_dorm_bed_1p",
+      "status": "not_found",
+      "reason": "Only From prices were returned; the strict dorm-bed anchor cannot use a lowest/from offer or infer a one-night quote."
+    },
+    {
+      "city": "Copenhagen",
+      "anchor": "hostel_private_room_2p",
+      "status": "not_found",
+      "reason": "The capsule result is not an explicit private-room observation with the required occupancy evidence; it is rejected without mapping a different accommodation class."
+    },
+    {
+      "city": "Copenhagen",
+      "anchor": "hotel_3star_room_2p",
+      "status": "not_found",
+      "reason": "The 3-star hotel search did not return a current-city result containing explicit 3-star class, two-adult occupancy, and a numeric nightly quote. No other source or city was used."
+    },
+    {
+      "city": "Copenhagen",
+      "anchor": "midrange_restaurant_meal_2p",
+      "status": "not_found",
+      "reason": "No compatible mid-range meal-for-two value was present in returned Copenhagen evidence."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "hostel_dorm_bed_1p",
+      "status": "not_found",
+      "reason": "Only a From price without strict occupancy and tax evidence was returned; guesthouse prices and other-city evidence were not substituted."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "hostel_private_room_2p",
+      "status": "not_found",
+      "reason": "The returned private offer is a From price without explicit two-adult occupancy; nearby guesthouse rows were not treated as hostel evidence."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "hotel_3star_room_2p",
+      "status": "not_found",
+      "reason": "The only exact-class evidence was per person or starting-from; doubling a per-person value or accepting a from-price is prohibited."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "inexpensive_restaurant_meal_1p",
+      "status": "not_found",
+      "reason": "Country-level and other-city evidence cannot be substituted for an exact Don Det city observation."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "midrange_restaurant_meal_2p",
+      "status": "not_found",
+      "reason": "Country-level and other-city evidence cannot be substituted for an exact Don Det city observation."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "mcmeal_combo",
+      "status": "not_found",
+      "reason": "Country-level and other-city evidence cannot be substituted for an exact Don Det city observation."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "cappuccino_1",
+      "status": "not_found",
+      "reason": "Country-level and other-city evidence cannot be substituted for an exact Don Det city observation."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "domestic_draft_beer_1",
+      "status": "not_found",
+      "reason": "Country-level and other-city evidence cannot be substituted for an exact Don Det city observation."
+    },
+    {
+      "city": "Don Det",
+      "anchor": "paid_attraction_adult_1",
+      "status": "not_found",
+      "reason": "No exact-city official adult ticket evidence was returned; no tour, boat fare, or unrelated attraction was substituted."
+    },
+    {
+      "city": "Hanoi",
+      "anchor": "hostel_private_room_2p",
+      "status": "not_found",
+      "reason": "Rejected because the returned two-guest quote is a mixed dormitory room, not an explicit private hostel room. Other private-room results were from/average prices."
+    },
+    {
+      "city": "Hanoi",
+      "anchor": "hotel_3star_room_2p",
+      "status": "blocked",
+      "reason": "Blocked/insufficient: canonical page fetch required robot verification, and the returned quote lacks an explicit 3-star class in the same evidence. No compatible exact 3-star two-adult quote is accepted."
+    },
+    {
+      "city": "Lisbon",
+      "anchor": "hostel_dorm_bed_1p",
+      "status": "not_found",
+      "reason": "Only From prices were returned; the strict one-person dorm-bed anchor cannot use a lowest/from offer or infer a one-night quote."
+    },
+    {
+      "city": "Lisbon",
+      "anchor": "hostel_private_room_2p",
+      "status": "not_found",
+      "reason": "The returned private-room offers are From prices without explicit two-adult occupancy and cannot satisfy the strict private-room anchor."
+    },
+    {
+      "city": "Lisbon",
+      "anchor": "hotel_3star_room_2p",
+      "status": "not_found",
+      "reason": "The 3-star hotel search did not return a current-city result containing explicit 3-star class, two-adult occupancy, and a numeric nightly quote. No other source or city was used."
+    },
+    {
+      "city": "Mexico City",
+      "anchor": "hotel_3star_room_2p",
+      "status": "not_found",
+      "reason": "No exact named three-star property with a non-from, two-adult room quote was available; generic/from values and an unclassified hotel rate cannot satisfy the strict anchor."
+    },
+    {
+      "city": "Prague",
+      "anchor": "hostel_dorm_bed_1p",
+      "status": "not_found",
+      "reason": "Rejected from/lowest dorm prices; no exact non-from one-bed nightly observation was returned."
+    },
+    {
+      "city": "Prague",
+      "anchor": "hostel_private_room_2p",
+      "status": "blocked",
+      "reason": "Blocked: the returned snippet contains an otherwise compatible two-bed private-room quote, but the source page could not be fetched (502), so it is not promoted to an observed anchor."
+    },
+    {
+      "city": "Prague",
+      "anchor": "hotel_3star_room_2p",
+      "status": "not_found",
+      "reason": "Rejected generic average/from values; no exact named three-star property with a non-from two-adult nightly quote was returned."
+    }
+  ],
+  "productMapping": "none_source_boundary_only"
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "city-cost-v5-minimal-anchor-panel-audit-v1",
+  "citiesTested": 6,
+  "searchesAttempted": 24,
+  "searchOperations": 24,
+  "directReads": 6,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedCells": {
+    "hostel_dorm_bed_1p": 2,
+    "hostel_private_room_2p": 1,
+    "hotel_3star_room_2p": 0,
+    "inexpensive_restaurant_meal_1p": 5,
+    "midrange_restaurant_meal_2p": 4,
+    "mcmeal_combo": 5,
+    "cappuccino_1": 5,
+    "domestic_draft_beer_1": 5,
+    "paid_attraction_adult_1": 5
+  },
+  "completeCities": [],
+  "promotionRule": "at least 80% of anchors in four non-sparse cities",
+  "promotionGatePassed": false,
+  "sparseCity": "Don Det",
+  "productMapping": "none; source-boundary evidence only"
+}

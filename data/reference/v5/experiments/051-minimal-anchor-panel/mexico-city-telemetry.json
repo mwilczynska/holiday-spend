@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-minimal-anchor-panel-telemetry-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:numbeo.com/cost-of-living/in/ Mexico City Mexico food cappuccino beer meal price",
+    "Mexico City hostel dorm bed private room two adults price per night",
+    "Mexico City 3 star hotel two adults price per night",
+    "Mexico City official adult attraction ticket price"
+  ],
+  "directReads": 1,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundAnchors": 8,
+  "notFoundAnchors": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city four-search minimal anchor panel. Mexico City returned five exact Numbeo food/drink rows, two named-hostel nightly quotes, and one public-authority adult attraction ticket. The 3-star page was generic/from and its attempted page read returned a cache miss; it was not treated as evidence. No retries, other-city evidence, arithmetic, FX conversion, averaging, or tier construction were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}
