@@ -114,6 +114,10 @@ The 068 BudgetYourTrip snippet-proxy prompt is complete and passes its screening
 exactly two ordered searches and no page reads, yielding 10/12 proxy candidates and 12/12 protocol compliance. This
 only authorizes independent calibration; snippets remain lower-evidence proxies and cannot be mapped or fitted.
 
+The 069 BudgetYourTrip explicit-calibration prompt is complete and rejected at its screening gate. Twelve one-city
+contexts issued exactly five searches each; 11/12 had a proxy, but 0/12 had an independent explicit candidate. The
+rejected direct-source evidence and all proxy rows remain labelled evidence only; no mapping or fitting follows.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

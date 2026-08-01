@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-explicit-calibration-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "proxyCandidates": 11,
+  "explicitDirectCandidates": 0,
+  "matchedCities": 0,
+  "screeningGate": "matchedCities>=6 and protocolCompliant>=10",
+  "screeningGatePassed": false,
+  "finalCalibrationReminder": "At least 30 definition-compatible matched cities including at least 10 locked holdout cities are required before fitting or product mapping.",
+  "cities": [
+    {
+      "city": "Madrid",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Rome",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Copenhagen",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Berlin",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Athens",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Budapest",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Istanbul",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Singapore",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Rio de Janeiro",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Mexico City",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true,
+      "proxyCandidate": true,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    },
+    {
+      "city": "Mumbai",
+      "protocolCompliant": true,
+      "proxyCandidate": false,
+      "directCandidates": 0,
+      "directSources": [],
+      "matched": false
+    }
+  ],
+  "productMapping": "none_explicit_calibration_screen_only"
+}

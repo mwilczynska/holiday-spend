@@ -101,6 +101,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/066-budgetyourtrip-one-star-semantics/` | **COMPLETE - reject strict direct route** | Twelve one-city search+page-read calls: 0/12 explicit; source-defined double-occupancy proxy remains open; no mapping |
 | `experiments/067-budgetyourtrip-double-occupancy-proxy/` | **COMPLETE - reject proxy gate** | Twelve one-city two-search/two-read calls: 1/12 proxy candidates, 12/12 protocol-compliant; no mapping |
 | `experiments/068-budgetyourtrip-snippet-proxy/` | **COMPLETE - promote to calibration only** | Twelve one-city two-search calls: 10/12 proxy candidates, 12/12 protocol-compliant; no mapping |
+| `experiments/069-budgetyourtrip-explicit-calibration/` | **COMPLETE - reject proxy calibration** | Twelve one-city five-search calls: 11/12 proxies, 0/12 matched explicit candidates, 12/12 protocol-compliant; no mapping |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

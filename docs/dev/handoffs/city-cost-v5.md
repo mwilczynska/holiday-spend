@@ -480,3 +480,10 @@ Experiment 068 completed twelve one-city Luna contexts with exactly two ordered 
 cities produced complete snippet proxy candidates and all calls were protocol-compliant, so the screening gate passed.
 Promote only to independent explicit-two-adult calibration/page-backed validation; snippets remain proxy-only and
 cannot be mapped or fitted.
+
+Experiment 069 completed twelve one-city Luna contexts with exactly five ordered searches and no page reads. Eleven
+cities produced the BudgetYourTrip proxy pair, but no independent explicit-two-adult one-star named-property
+candidate was found. Thus matched coverage was 0/12
+and the calibration screen failed. Reject this proxy route and retain the rows as labelled evidence only; no property-
+basket aggregation, mapping, or fitting is authorized. The next experiment must choose a materially different
+one-star/hostel anchor or a newly declared benchmark with independent city-level ground truth.

@@ -575,6 +575,12 @@ Experiment 068 completed with 10/12 proxy candidates and 12/12 protocol-complian
 Promote only to independent explicit-two-adult calibration/page-backed validation; snippets remain proxy-only and no
 mapping or fitting is allowed.
 
+Experiment 069 completed with 12/12 protocol-compliant calls, 11/12 proxy candidates, and 0/12 matched cities with an
+independent explicit-two-adult one-star named-property candidate. The 6/12 matched-city gate failed. Reject this
+BudgetYourTrip proxy calibration route; retain the proxy rows and rejected direct-source evidence as labelled records
+only. Do not map or fit. Any future property-basket calibration must be a new design and still meet the
+30-city plus 10-locked-holdout gate.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

@@ -85,6 +85,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-budgetyourtrip-one-star-semantics.mjs` | `analyze-v5-budgetyourtrip-one-star-semantics.mjs` | Experiment 066: audits BudgetYourTrip one-star room/tax semantics without mapping |
 | `node scripts/analyze-v5-budgetyourtrip-double-occupancy-proxy.mjs` | `analyze-v5-budgetyourtrip-double-occupancy-proxy.mjs` | Experiment 067: screens same-source double-occupancy proxy semantics without fitting |
 | `node scripts/analyze-v5-budgetyourtrip-snippet-proxy.mjs` | `analyze-v5-budgetyourtrip-snippet-proxy.mjs` | Experiment 068: screens snippet-only double-occupancy proxy semantics without fitting |
+| `node scripts/analyze-v5-budgetyourtrip-explicit-calibration.mjs` | `analyze-v5-budgetyourtrip-explicit-calibration.mjs` | Experiment 069: audits independent explicit two-adult one-star candidates without fitting |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

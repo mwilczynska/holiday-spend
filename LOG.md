@@ -1558,3 +1558,16 @@ snippets are lower-evidence than page reads and every value remains `proxy_candi
 **Verdict:** promote only to independent explicit-two-adult calibration or page-backed validation. Do not map, fit,
 tax-normalize, or present snippets as product observations. Read
 `data/reference/v5/experiments/068-budgetyourtrip-snippet-proxy/`.
+
+## Experiment 069 - BudgetYourTrip one-star proxy explicit calibration screen (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts repeated the two-search BudgetYourTrip proxy pair and
+then issued one search each for Google Hotels, Expedia, and Hotels.com (60 searches total). There were no page reads,
+retries, fallbacks, arithmetic, FX conversions, or cross-city evidence; all 12 calls were protocol-compliant.
+
+Eleven cities produced a complete source-defined proxy candidate. No independent explicit-two-adult one-star named-
+property candidate was found, leaving 0/12 matched cities. Google Hotels usually lacked occupancy wording; Expedia and
+Hotels.com mostly exposed from/lowest
+prices or the wrong class. **Verdict:** reject this proxy calibration route at the screening gate (required 6/12
+matched cities and 10/12 compliant). Retain rows as labelled evidence only; no correction, property-basket
+aggregation, mapping, or fitting. Read `data/reference/v5/experiments/069-budgetyourtrip-explicit-calibration/`.

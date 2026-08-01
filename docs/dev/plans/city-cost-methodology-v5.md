@@ -401,6 +401,22 @@ the screening gate. Paris lacked explicit two-person wording and Mumbai lacked a
 promote only to an independent explicit-two-adult calibration/page-backed validation stage; do not map, fit, or treat
 snippets as observed.
 
+### Experiment 069 - BudgetYourTrip one-star proxy explicit calibration screen
+
+This follow-up kept the production-shaped single-city context and paired the 068 proxy searches with three
+independent search-only checks: Google Hotels, Expedia, and Hotels.com. A direct candidate required an exact-city
+named property, explicit one-star class, standard non-`from` nightly price, two adults/one room, and tax basis. The
+pre-registered screen required 6/12 matched proxy-plus-direct cities and 10/12 protocol-compliant calls. Direct
+named-property rows were retained as calibration candidates, not city-level ground truth; no aggregation or ratio was
+allowed.
+
+Results: all twelve calls were protocol-compliant and eleven produced a BudgetYourTrip proxy. Only one direct
+explicit-two-adult one-star candidate was found (Mumbai), where the proxy was missing, so matched coverage was 0/12.
+The gate failed. **Verdict:** reject this proxy calibration route. Preserve the labelled proxy rows and the unpaired
+direct candidate, but do not compute a correction, design a property basket retrospectively, map a product tier, or fit.
+Any future calibration must be pre-registered with definition-compatible city-level aggregation and at least 30
+matched cities including 10 locked holdout cities.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

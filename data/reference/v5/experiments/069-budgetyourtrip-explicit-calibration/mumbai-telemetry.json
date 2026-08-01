@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-explicit-calibration-telemetry-v1",
+  "city": "Mumbai",
+  "country": "India",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 5,
+  "searchOperations": 5,
+  "queries": [
+    "site:budgetyourtrip.com/hotels Mumbai India 1-star hotel average price one night before taxes",
+    "site:budgetyourtrip.com Mumbai India \"two people\" \"double-occupancy\" hotel price",
+    "Mumbai India Google Hotels 1-star hotel two adults one room one night price taxes",
+    "site:expedia.com Mumbai India 1-star hotel two adults one room nightly price taxes",
+    "site:hotels.com Mumbai India 1-star hotel two adults one room nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "proxyStatus": "not_found",
+  "directStatuses": {
+    "google_hotels": "class_ambiguous",
+    "expedia": "not_found",
+    "hotels_com": "class_ambiguous"
+  },
+  "protocolCompliant": true,
+  "notes": "Exactly five ordered search operations; snippets only; no page reads, retries, fallback sources, arithmetic, FX, or cross-city evidence. Mumbai's required BudgetYourTrip 1-star proxy contract was not met."
+}
