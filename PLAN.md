@@ -591,6 +591,16 @@ property rows. The 6/12 gate failed. Reject this search-only private-hostel rout
 as property-level evidence only and do not aggregate, scale, map, or fit. The next private-hostel attempt must be a
 materially different source or aggregation design and still meet the 30-city plus 10-locked-holdout gate.
 
+Experiment 071 is active: twelve one-city Luna contexts issue exactly three searches for an adult attraction ticket,
+a half-day group activity, and a full-day premium activity. The source reports explicit per-person adult prices; any
+factor-of-two scaling is deferred to deterministic code. The screen requires 8/12 strict rows per category, 6/12
+complete cities, and 10/12 protocol-compliant calls. No product mapping or accuracy claim follows this screen.
+
+Experiment 071 completed with 12/12 protocol-compliant calls but strict coverage of budget 3/12, mid-range 0/12,
+high-end 1/12, and zero complete cities. Reject this per-person activity screen; retain four source facts only and do
+not apply the factor of two, map tiers, or fit. The next activity attempt must use a materially different source or
+contract and independently validate scaling.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

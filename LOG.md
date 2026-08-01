@@ -1583,3 +1583,14 @@ other eight cities failed on from/sale prices, ambiguous room/property class, mi
 or no result. The 4/12 city gate failed (required 6/12). **Verdict:** reject this search-only three-source route at
 current reliability. Keep the five rows as property-level evidence only; no basket aggregation, correction, or product
 mapping. Read `data/reference/v5/experiments/070-private-hostel-three-source-panel/`.
+
+## Experiment 071 - activity per-person adult scaling panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly three ordered searches each (standard adult
+attraction, half-day group activity, full-day premium activity; 36 searches total). All calls were protocol-compliant;
+there were no page reads, retries, fallbacks, arithmetic, FX conversions, averaging, or cross-city evidence.
+
+Strict coverage was only 3/12 budget-ticket rows, 0/12 half-day group rows, and 1/12 full-day premium rows; no city was
+complete. Unknown taxes, from/discount prices, missing duration, and group/party ambiguity dominated failures.
+**Verdict:** reject this per-person screen at the feasibility gate. Retain four one-person/per-person source facts only;
+do not apply the factor of two, map tiers, or claim accuracy. Read `data/reference/v5/experiments/071-activity-per-person-scaling-panel/`.

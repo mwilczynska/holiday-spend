@@ -1,0 +1,20 @@
+{
+  "schemaVersion":"city-cost-v5-activity-per-person-scaling-panel-inputs-v1",
+  "retrievalDate":"2026-08-01",
+  "cities":[
+    {"city":"Lisbon","country":"Portugal"},
+    {"city":"Hanoi","country":"Vietnam"},
+    {"city":"Copenhagen","country":"Denmark"},
+    {"city":"Bangkok","country":"Thailand"},
+    {"city":"Prague","country":"Czechia"},
+    {"city":"Mexico City","country":"Mexico"},
+    {"city":"Tokyo","country":"Japan"},
+    {"city":"Cape Town","country":"South Africa"},
+    {"city":"Nairobi","country":"Kenya"},
+    {"city":"San Francisco","country":"United States"},
+    {"city":"New York City","country":"United States"},
+    {"city":"Sydney","country":"Australia"}
+  ],
+  "sources":["citywide_attraction_search","getyourguide","viator"],
+  "deterministicScalingFactor":2
+}

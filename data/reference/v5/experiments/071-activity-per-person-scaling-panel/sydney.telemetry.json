@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-telemetry-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "Sydney Australia standard attraction adult ticket price per person taxes",
+    "site:getyourguide.com Sydney Australia half-day group tour adult price per person taxes",
+    "site:viator.com Sydney Australia full-day premium tour adult price per person taxes"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city, exactly three ordered searches, snippets only; no reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence."
+}

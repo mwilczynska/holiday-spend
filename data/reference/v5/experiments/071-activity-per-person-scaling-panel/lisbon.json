@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "tax_unknown",
+      "value": 31,
+      "currency": "EUR",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://www.zoo.pt/en/visit/entry-costs/",
+      "sourceTitle": "Entry Costs - Jardim Zoológico",
+      "taxStatus": "unknown",
+      "evidenceText": "Lisbon Zoo lists Adult (13 to 64 years) at €31 and states the price is per person.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "Lisbon Portugal standard attraction adult ticket price per person taxes",
+      "reason": "Rejected because the snippet does not state whether taxes or fees are included or excluded."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 94,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": 5.5,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/en-gb/lisbon-l42/half-day-sintra-with-pena-and-regaleira-t568499/",
+      "sourceTitle": "Lisbon: Half-Day Sintra Tour with Pena Palace and Regaleira - GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "The 5.5-hour Lisbon half-day Sintra tour lists $94 per person, but the displayed amount is From $94 and no tax basis is stated.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:getyourguide.com Lisbon Portugal half-day group tour adult price per person taxes",
+      "reason": "Rejected because the price is a from price and taxes/fees are not explicit."
+    },
+    "activities_high_end": {
+      "status": "duration_unknown",
+      "value": 15,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/en-CA/tours/Lisbon/Sintra-Full-Day-Trip-A-Journey-through-Wonderland/d538-71457P5",
+      "sourceTitle": "Sintra Full-Day Private Tour - A Journey through Wonderland 2026 - Viator",
+      "taxStatus": "unknown",
+      "evidenceText": "The full-day Sintra private tour lists €15 per person for a standard-price entrance fee and €20 per person for Pena Palace entrance; the snippet does not give a total tour price or explicit duration in hours.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:viator.com Lisbon Portugal full-day premium tour adult price per person taxes",
+      "reason": "Rejected because the numeric amounts are component entrance fees rather than a complete activity price and duration is not explicitly quantified."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

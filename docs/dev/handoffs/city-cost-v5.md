@@ -493,3 +493,9 @@ Google Hotels searches and no page reads. Four cities yielded five strict privat
 6/12 screen gate. Reject the search-only three-source route; retain the five rows as property-level evidence only. Do
 not aggregate or map `accom_hostel_private_room`. The next attempt must use a materially different source or a
 pre-registered city-level basket design.
+
+Experiment 071 completed twelve one-city Luna contexts with exactly three ordered searches for an adult attraction,
+half-day group activity, and full-day premium activity. All calls were protocol-compliant, but strict coverage was
+budget 3/12, mid-range 0/12, high-end 1/12, and zero complete cities. Reject the per-person screen; retain four
+one-person/per-person source facts only. Do not apply factor-of-two scaling or map activity tiers until a materially
+different source/contract passes independent scaling validation.

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-telemetry-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "Tokyo Japan standard attraction adult ticket price per person taxes",
+    "site:getyourguide.com Tokyo Japan half-day group tour adult price per person taxes",
+    "site:viator.com Tokyo Japan full-day premium tour adult price per person taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "Exactly three ordered search operations; snippets only; no reads, retries, fallback sources, arithmetic, FX, or cross-city evidence."
+}

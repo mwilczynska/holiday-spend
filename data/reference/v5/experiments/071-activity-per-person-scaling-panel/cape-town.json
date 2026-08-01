@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "tax_unknown",
+      "value": 275,
+      "currency": "ZAR",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://capewheel.co.za/tickets-prices/",
+      "sourceTitle": "TICKETS & PRICES - Cape Town Wheel",
+      "taxStatus": "unknown",
+      "evidenceText": "Cape Wheel lists the standard ticket for non-South African resident adults (18+) at R275; taxes/fees are not stated.",
+      "referencePeriod": "search snippet crawled 5 days before 2026-08-01",
+      "searchQuery": "Cape Town South Africa standard attraction adult ticket price per person taxes",
+      "reason": "Exact-city named attraction and adult per-person ticket are explicit, but tax treatment is absent."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "unknown",
+      "durationHours": null,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/cape-town-l103/half-day-township-tour-t12503/",
+      "sourceTitle": "Cape Town: Half-Day Guided Township Tour",
+      "taxStatus": "unknown",
+      "evidenceText": "GetYourGuide identifies an exact-city half-day tour and per-person wording, but no numeric price or tax/fee basis appears in the snippet.",
+      "referencePeriod": "search snippet crawled 5 months before 2026-08-01",
+      "searchQuery": "site:getyourguide.com Cape Town South Africa half-day group tour adult price per person taxes",
+      "reason": "No numeric adult price and tax basis were exposed."
+    },
+    "activities_high_end": {
+      "status": "tax_unknown",
+      "value": 490,
+      "currency": "ZAR",
+      "unit": "per_person_activity",
+      "partyBasis": "per_person_group",
+      "durationHours": null,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/tours/Cape-Town/Full-Day-Best-of-Cape-Town-Tour/d318-12189P4",
+      "sourceTitle": "Best of Cape Town Full-Day Private Tour with Table Mountain 2026 - BOOK NOW",
+      "taxStatus": "unknown",
+      "evidenceText": "Viator names a full-day Best of Cape Town Private Tour and shows ZAR490.00 per person; the snippet lists adult entrance items but does not state whether taxes/fees are included or excluded.",
+      "referencePeriod": "search snippet crawled 2 months before 2026-08-01",
+      "searchQuery": "site:viator.com Cape Town South Africa full-day premium tour adult price per person taxes",
+      "reason": "Exact-city full-day premium per-person amount is present, but tax/fee treatment is unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

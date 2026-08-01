@@ -1,0 +1,12 @@
+{
+  "schemaVersion":"city-cost-v5-activity-per-person-scaling-panel-audit-v1",
+  "citiesTested":12,
+  "protocolCompliant":12,
+  "strictCoverage":{"activities_budget":3,"activities_mid_range":0,"activities_high_end":1},
+  "completeCities":0,
+  "screeningGate":"each category>=8, completeCities>=6, protocolCompliant>=10",
+  "screeningGatePassed":false,
+  "deterministicScalingFactor":2,
+  "productMapping":"none_activity_screening_only",
+  "verdict":"reject_per_person_activity_screen"
+}

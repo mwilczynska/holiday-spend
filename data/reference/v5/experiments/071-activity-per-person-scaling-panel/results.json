@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictCoverage": {
+    "activities_budget": 3,
+    "activities_mid_range": 0,
+    "activities_high_end": 1
+  },
+  "completeCities": 0,
+  "screeningGate": "each category>=8, completeCities>=6, protocolCompliant>=10",
+  "screeningGatePassed": false,
+  "deterministicScalingFactor": 2,
+  "productMapping": "none_activity_screening_only",
+  "cities": [
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": true,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Copenhagen",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Bangkok",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": true,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Prague",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Mexico City",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": true,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Tokyo",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Nairobi",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "San Francisco",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": true
+      },
+      "complete": false
+    },
+    {
+      "city": "New York City",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Sydney",
+      "protocolCompliant": true,
+      "found": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      },
+      "complete": false
+    }
+  ]
+}

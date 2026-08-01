@@ -417,6 +417,19 @@ direct candidate, but do not compute a correction, design a property basket retr
 Any future calibration must be pre-registered with definition-compatible city-level aggregation and at least 30
 matched cities including 10 locked holdout cities.
 
+### Experiment 071 - activity per-person adult scaling panel
+
+This screen tested a deliberate boundary amendment already compatible with the frozen basket units: collect an explicit
+adult/per-person source price and defer the fixed factor of two to deterministic code. The three searches per city
+targeted a standard attraction ticket, a 3-6 hour group activity, and a 6+ hour premium activity. The LLM did no
+arithmetic or scaling.
+
+Results: all 12 calls were protocol-compliant, but strict coverage was budget 3/12, mid-range 0/12, and high-end 1/12,
+with no complete city. Unknown taxes, from/discount rates, missing duration, and group/party ambiguity dominated.
+**Verdict:** reject this per-person source screen at current reliability. Four source facts remain evidence only; no
+factor-of-two scaling, product mapping, or accuracy claim is authorized. A future activity method must use a materially
+different source or contract and independently validate scaling against two-adult benchmarks.
+
 ### Experiment 070 - explicit two-guest private-hostel three-source panel
 
 This follow-up broadened Experiment 040 from two to three signed-out search sources (Hostelworld, Booking.com, and

@@ -122,6 +122,10 @@ The 070 private-hostel prompt is complete and rejected at its screening gate. Tw
 three ordered search-only operations (Hostelworld, Booking.com, Google Hotels); 4/12 cities yielded five qualifying
 property rows. No basket aggregation or product mapping follows.
 
+The 071 activity prompt is complete and rejected at its feasibility gate. Twelve one-city contexts issued exactly three
+searches; strict coverage was budget 3/12, mid-range 0/12, and high-end 1/12, with no complete city. Per-person facts
+remain evidence only; no factor-of-two scaling or product mapping follows.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

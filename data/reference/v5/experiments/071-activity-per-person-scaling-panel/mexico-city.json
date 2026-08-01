@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "found",
+      "value": 220,
+      "currency": "MXN",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://www.miradortorrelatino.com/en/boletos",
+      "sourceTitle": "TICKETS | Mirador Torre Latino",
+      "taxStatus": "included",
+      "evidenceText": "Mexico City's Mirador Torre Latino lists an adult ticket at MXN $220 per person and explicitly says VAT included; the ticket includes the observation deck and museum.",
+      "referencePeriod": "search snippet crawled 5 days before 2026-08-01",
+      "searchQuery": "Mexico City Mexico standard attraction adult ticket price per person taxes",
+      "reason": "Exact-city named attraction, adult per-person numeric standard ticket, and VAT-inclusive basis are explicit."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "unknown",
+      "durationHours": null,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/mexico-city-l194/mexico-city-teotihuacan-early-morning-access-half-day-tour-t957622/",
+      "sourceTitle": "Mexico City: Teotihuacan Morning Half-Day Tour with Lunch",
+      "taxStatus": "unknown",
+      "evidenceText": "GetYourGuide identifies an exact-city half-day tour and says per person, but the returned snippet exposes no numeric price or tax/fee basis.",
+      "referencePeriod": "search snippet crawled 5 months before 2026-08-01",
+      "searchQuery": "site:getyourguide.com Mexico City Mexico half-day group tour adult price per person taxes",
+      "reason": "Duration and city are present but numeric adult price and tax treatment are missing."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "unknown",
+      "durationHours": null,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "taxStatus": "unknown",
+      "evidenceText": null,
+      "referencePeriod": "search response did not expose a numeric qualifying Viator result",
+      "searchQuery": "site:viator.com Mexico City Mexico full-day premium tour adult price per person taxes",
+      "reason": "No exact-city full-day premium activity with numeric adult price and tax basis was returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

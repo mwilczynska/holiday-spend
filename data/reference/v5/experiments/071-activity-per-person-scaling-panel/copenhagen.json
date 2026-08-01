@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "price_type_rejected",
+      "value": 135,
+      "currency": "DKK",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://nationalmuseet.dk/en/tickets",
+      "sourceTitle": "Tickets - National Museum of Denmark",
+      "taxStatus": "unknown",
+      "evidenceText": "The National Museum of Denmark lists Adult (buy online) at 135 DKK, allows access for one person, and states the online price carries a 10% discount.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "Copenhagen Denmark standard attraction adult ticket price per person taxes",
+      "reason": "Rejected because the displayed adult price is explicitly an online-discounted rate and taxes are not stated."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 217,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": 5,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/copenhagen-l12/copenhagen-private-full-day-city-tour-t399207/",
+      "sourceTitle": "Copenhagen: Private Full-Day City Tour with Lunch Option - GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "The Copenhagen tour offers a 5-hour Standard Option at From $217 per person and a 6.5-hour Full Option at From $330 per person; taxes are not stated.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:getyourguide.com Copenhagen Denmark half-day group tour adult price per person taxes",
+      "reason": "Rejected because the 5-hour price is a from price and the listing is private rather than a standard group quote."
+    },
+    "activities_high_end": {
+      "status": "party_unknown",
+      "value": 113,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "unknown",
+      "durationHours": 7,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/tours/Copenhagen/Full-Day-Private-Walking-Tour-in-Copenhagen/d463-382657P1",
+      "sourceTitle": "Full Day Private Walking Tour in Copenhagen 2026 - Viator",
+      "taxStatus": "included",
+      "evidenceText": "The exact Viator product is a 7-hour full-day private walking tour and states all fees and taxes are included, but the only $113 per-person value in the snippet belongs to a promoted Copenhagen Walking Tour whose price varies by group size, not the exact product.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:viator.com Copenhagen Denmark full-day premium tour adult price per person taxes",
+      "reason": "Rejected because the numeric promoted price is not tied to the exact named product and party basis is unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

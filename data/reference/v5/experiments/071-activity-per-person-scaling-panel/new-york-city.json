@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "class_ambiguous",
+      "value": 114,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://www.citypass.com/new-york-c3?campaign=buytickets%2Bofficial",
+      "sourceTitle": "Official New York C3® by CityPASS | Choose 3 Iconic New York Attractions for $114",
+      "taxStatus": "included",
+      "evidenceText": "CityPASS New York C3 page gives Adult $114 and says prices include applicable sales taxes, but this is a bundled pass for three attractions rather than a standard single-attraction ticket.",
+      "referencePeriod": "Crawled three weeks ago",
+      "searchQuery": "New York City United States standard attraction adult ticket price per person taxes",
+      "reason": "Numeric adult tax-inclusive price exists, but it is a multi-attraction bundle and therefore fails the standard-attraction estimand."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 79,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": 5,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/new-york-city-l59/bronx-queens-and-brooklyn-new-york-triboro-half-day-tour-t19665/",
+      "sourceTitle": "From Manhattan: Bronx, Queens and Brooklyn Half-Day Tour | GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "GetYourGuide lists the Bronx, Queens and Brooklyn Half-Day Tour as 5 hours and $79 per person from; tax treatment is not stated.",
+      "referencePeriod": "Crawled four months ago",
+      "searchQuery": "site:getyourguide.com New York City United States half-day group tour adult price per person taxes",
+      "reason": "Exact-city duration and per-person group evidence are present, but the displayed price is explicitly from and taxes are unknown."
+    },
+    "activities_high_end": {
+      "status": "price_type_rejected",
+      "value": 275,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/tours/New-York-City/Full-Day-in-New-York-Tour-NYC-in-1-Day/d687-108074P5",
+      "sourceTitle": "New York City Full-Day Private Tour: Hidden Gems & Local Highlights 2026 - BOOK NOW",
+      "taxStatus": "unknown",
+      "evidenceText": "Viator describes a private full-day New York tour and shows from $275 per person; the snippet does not provide an explicit duration in hours or tax treatment.",
+      "referencePeriod": "Crawled five months ago",
+      "searchQuery": "site:viator.com New York City United States full-day premium tour adult price per person taxes",
+      "reason": "Full-day named per-person tour is present, but from pricing is disallowed and duration/tax basis are incomplete."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

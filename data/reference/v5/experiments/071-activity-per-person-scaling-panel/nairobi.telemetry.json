@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-telemetry-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "directReads": 0,
+  "queries": [
+    "Nairobi Kenya standard attraction adult ticket price per person taxes",
+    "site:getyourguide.com Nairobi Kenya half-day group tour adult price per person taxes",
+    "site:viator.com Nairobi Kenya full-day premium tour adult price per person taxes"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city, exactly three ordered searches, snippets only; no reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence."
+}

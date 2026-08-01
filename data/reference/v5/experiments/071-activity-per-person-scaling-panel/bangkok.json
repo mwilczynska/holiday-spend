@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "found",
+      "value": 290,
+      "currency": "THB",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://www.expedia.co.th/things-to-do/a.a46770885.activity-details?endDate=2025-10-01&langid=2057&location=Bangkok+City+Centre%2C+Bangkok%2C+Bangkok+Province%2C+Thailand&rid=6200258&startDate=2025-09-17&swp=off",
+      "sourceTitle": "SeaLife Bangkok Entry Ticket - Expedia",
+      "taxStatus": "included",
+      "evidenceText": "Expedia lists the SeaLife Bangkok standard admission at ฿290 per adult and states ฿290 includes taxes and fees; adult admission is defined for ages 12–59.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "Bangkok Thailand standard attraction adult ticket price per person taxes",
+      "reason": "Meets the source-input criteria; it remains a one-adult ticket input and is not yet scaled to two travellers."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 113,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "per_person_group",
+      "durationHours": 4,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/bangkok-l169/bangkok-grand-palace-wat-pho-half-day-private-tour-t425854/",
+      "sourceTitle": "Bangkok: Grand Palace & Wat Pho Half-Day Private Tour - GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "The 4-hour Bangkok half-day private tour is shown at From $113 per group up to 2; entry fees are listed but taxes and fees for the tour price are not stated.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:getyourguide.com Bangkok Thailand half-day group tour adult price per person taxes",
+      "reason": "Rejected because the price is a from price and the private group unit is not a standard non-sale per-person quote."
+    },
+    "activities_high_end": {
+      "status": "duration_unknown",
+      "value": 2000,
+      "currency": "THB",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/tours/Bangkok/Highlights-of-Krung-Thep-Maha-Nakhon/d343-51641P41",
+      "sourceTitle": "Bangkok Highlights Private Full-Day Tour with Hotel Pickup - Viator",
+      "taxStatus": "unknown",
+      "evidenceText": "Viator describes a private full-day Bangkok highlights tour and lists THB2,000 per person, but the snippet does not state duration in hours or taxes/fees for that amount.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:viator.com Bangkok Thailand full-day premium tour adult price per person taxes",
+      "reason": "Rejected because the exact duration and tax basis are not explicit."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

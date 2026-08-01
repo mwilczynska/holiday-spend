@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "found",
+      "value": 9,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://www.expedia.com/things-to-do/thang-long-water-puppet-theater-tickets.a50842442.activity-details?location=%E7%BB%9F%E4%B8%80%E5%85%AC%E5%9B%AD&rid=6286794&swp=off",
+      "sourceTitle": "Thang Long Water Puppet Theater Tickets - Expedia",
+      "taxStatus": "included",
+      "evidenceText": "Expedia lists the Thang Long Water Puppet Theater admission at $9 per adult and $9 including taxes and fees in Hanoi; standard admission is offered.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "Hanoi Vietnam standard attraction adult ticket price per person taxes",
+      "reason": "Meets the source-input criteria; it remains a one-adult ticket input and is not yet scaled to two travellers."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 42,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": 4,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/hanoi-l205/hanoi-half-day-small-group-tour-t202912/",
+      "sourceTitle": "Hanoi: Guided Half-Day City Highlights Tour with Transfers - GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "The small-group half-day Hanoi city tour is 4 hours and lists From $42 per person; no tax or fee basis is stated.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:getyourguide.com Hanoi Vietnam half-day group tour adult price per person taxes",
+      "reason": "Rejected because the price is a from price and tax/fee treatment is unknown."
+    },
+    "activities_high_end": {
+      "status": "price_type_rejected",
+      "value": 300000,
+      "currency": "VND",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": 8,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/tours/Hanoi/Mua-Cave-and-Trang-An-day-tour-from-Hanoi-City/d351-88894P32",
+      "sourceTitle": "From Hanoi: Trang An, Tam Coc, Mua Cave and Hoa Lu Tour 2026 - Viator",
+      "taxStatus": "unknown",
+      "evidenceText": "The day tour itinerary covers 3h Hoa Lu, 2h Trang An, 2h Tam Coc, and 1h Mua Cave. Viator shows ₫300,000 per person for an entry component and separately lists VAT and contractor tax, but no complete standard tour price.",
+      "referencePeriod": "Search result retrieved 2026-08-01.",
+      "searchQuery": "site:viator.com Hanoi Vietnam full-day premium tour adult price per person taxes",
+      "reason": "Rejected because the observed amount is an entrance component rather than the full activity price."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

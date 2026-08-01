@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "tax_unknown",
+      "value": 18,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://museums.or.ke/wp-content/uploads/2026/04/Revision-of-NMK-admission-fees-2026-Website.pdf",
+      "sourceTitle": "Revision Of Heritage Facilities Admission Fees - National Museums of Kenya",
+      "taxStatus": "unknown",
+      "evidenceText": "National Museums of Kenya fee table lists Nairobi National Museum adult admission as USD 18 for foreigners outside Africa (USD 9 for residents/rest of Africa); the snippet does not state tax treatment.",
+      "referencePeriod": "Fees effective 7 May 2026; crawled three months ago",
+      "searchQuery": "Nairobi Kenya standard attraction adult ticket price per person taxes",
+      "reason": "Exact Nairobi attraction and adult per-person price are present, but inclusion or exclusion of taxes is not stated."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 50,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": 5,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/nairobi-l267/nairobi-national-park-half-day-group-tour-with-pickup-t511447/",
+      "sourceTitle": "Nairobi National Park: Half-Day Group Tour with Pickup | GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "GetYourGuide lists a Nairobi National Park Half-Day Group Tour with pickup, 5 hours, per person, from $50. The result does not state tax treatment and the price is explicitly from.",
+      "referencePeriod": "Crawled four months ago",
+      "searchQuery": "site:getyourguide.com Nairobi Kenya half-day group tour adult price per person taxes",
+      "reason": "Duration and per-person group format match, but a from price is disallowed and taxes are unknown."
+    },
+    "activities_high_end": {
+      "status": "duration_unknown",
+      "value": 90,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/tours/Nairobi/Amboseli-Park-Classic-Day-tour/d5280-73433P184",
+      "sourceTitle": "Private Adventure: Amboseli Park & Kilimanjaro views Day tour 2026 - Nairobi - BOOK NOW",
+      "taxStatus": "unknown",
+      "evidenceText": "Viator describes a full-day Amboseli excursion from Nairobi and shows $90 per person, but no explicit duration in hours or tax treatment is included in the search snippet.",
+      "referencePeriod": "Crawled five months ago",
+      "searchQuery": "site:viator.com Nairobi Kenya full-day premium tour adult price per person taxes",
+      "reason": "Named full-day per-person tour has a numeric quote, but the required explicit six-hour duration and known tax basis are missing."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

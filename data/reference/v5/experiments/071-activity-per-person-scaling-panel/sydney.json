@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "tax_unknown",
+      "value": 124,
+      "currency": "AUD",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://www.taronga.org.au/sydney-zoo/plan/visitor-information/ticket-prices",
+      "sourceTitle": "Ticket Prices & Concessions | Taronga Zoo Sydney",
+      "taxStatus": "unknown",
+      "evidenceText": "Taronga Zoo Sydney ticket table lists an Individual ticket at $124 per adult; the snippet does not state tax treatment.",
+      "referencePeriod": "Crawled five days ago",
+      "searchQuery": "Sydney Australia standard attraction adult ticket price per person taxes",
+      "reason": "Exact-city named attraction and adult per-person gate price are present, but tax inclusion/exclusion is not stated."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 426,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "per_person_group",
+      "durationHours": 5,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/en-gb/sydney-l200/half-day-private-tour-of-sydney-s-northern-beaches-t445604/",
+      "sourceTitle": "Sydney: Half-Day Private Tour of Sydney's Northern Beaches | GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "GetYourGuide lists Sydney's Northern Beaches half-day private tour as 5 hours and $426 per person from; taxes are not stated.",
+      "referencePeriod": "Crawled four months ago",
+      "searchQuery": "site:getyourguide.com Sydney Australia half-day group tour adult price per person taxes",
+      "reason": "Exact-city 5-hour per-person activity is present, but from pricing is disallowed and tax treatment is unknown."
+    },
+    "activities_high_end": {
+      "status": "party_unknown",
+      "value": 242,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "unknown",
+      "durationHours": null,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/en-AU/tours/Sydney/Blue-Mountains-Day-Trip-from-Sydney-Including-Scenic-World/d357-8129P1",
+      "sourceTitle": "Sydney to Blue Mountains, Scenic World Trip with Entry Fees 2026",
+      "taxStatus": "included",
+      "evidenceText": "Viator describes a full-day Blue Mountains tour from Sydney, shows a special-offer USD 242 price that varies by group size, and identifies GST as included; no explicit duration hours or fixed adult party basis is given.",
+      "referencePeriod": "Crawled two months ago",
+      "searchQuery": "site:viator.com Sydney Australia full-day premium tour adult price per person taxes",
+      "reason": "Full-day named tour and GST basis are present, but price varies by group size and the fixed adult per-person party basis/duration are not explicit."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

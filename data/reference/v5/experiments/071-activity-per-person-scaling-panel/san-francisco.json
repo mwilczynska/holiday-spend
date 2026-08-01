@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-activity-per-person-scaling-panel-v1",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "tax_unknown",
+      "value": 30,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "durationHours": null,
+      "statistic": "named_attraction_ticket",
+      "sourceUrl": "https://www.sfmoma.org/visit/",
+      "sourceTitle": "SFMOMA · Visitor's Guide",
+      "taxStatus": "unknown",
+      "evidenceText": "SFMOMA general admission pricing lists Adult $30. The search snippet does not state whether taxes or fees are included.",
+      "referencePeriod": "Crawled last week",
+      "searchQuery": "San Francisco United States standard attraction adult ticket price per person taxes",
+      "reason": "Exact city attraction and adult per-person standard ticket are present, but tax treatment is unknown."
+    },
+    "activities_mid_range": {
+      "status": "price_type_rejected",
+      "value": 79,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "durationHours": 5,
+      "statistic": "half_day_group_activity",
+      "sourceUrl": "https://www.getyourguide.com/san-francisco-l61/bronx-queens-and-brooklyn-new-york-triboro-half-day-tour-t19665/",
+      "sourceTitle": "From Manhattan: Bronx, Queens and Brooklyn Half-Day Tour | GetYourGuide",
+      "taxStatus": "unknown",
+      "evidenceText": "The returned GetYourGuide half-day result is for New York rather than San Francisco and shows $79 per person from for a 5-hour tour.",
+      "referencePeriod": "Crawled four months ago",
+      "searchQuery": "site:getyourguide.com San Francisco United States half-day group tour adult price per person taxes",
+      "reason": "Wrong-city result; preserved as rejected evidence rather than substituting another city or running another search."
+    },
+    "activities_high_end": {
+      "status": "found",
+      "value": 100,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "per_person_group",
+      "durationHours": 13,
+      "statistic": "full_day_premium_activity",
+      "sourceUrl": "https://www.viator.com/tours/San-Francisco/Yosemite-Full-Day-Private-Tour-from-San-Francisco/d651-19582P8",
+      "sourceTitle": "Yosemite National Park Private Day Trip From San Francisco 2026 - BOOK NOW",
+      "taxStatus": "included",
+      "evidenceText": "Viator lists a private Yosemite full-day tour from San Francisco, 13 hours, $100 per person, with all fees and taxes included; the tour is for groups/families up to five.",
+      "referencePeriod": "Crawled two months ago",
+      "searchQuery": "site:viator.com San Francisco United States full-day premium tour adult price per person taxes",
+      "reason": "Exact-city named premium private tour has explicit 13-hour duration, per-person price, and all-fees/taxes-included wording."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}
