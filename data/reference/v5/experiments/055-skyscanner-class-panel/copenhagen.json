@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Copenhagen Denmark 1-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No returned Skyscanner result supplied an exact-city 1-star class-average row with the required evidence. No absence claim is made."
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Copenhagen Denmark 2-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No returned Skyscanner result supplied an exact-city 2-star class-average row with the required evidence. No absence claim is made."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 188,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/denmark/copenhagen-hotels/three-star/ci-27539902/sr-3",
+      "sourceTitle": "3-sterrenhotels in Kopenhagen | Skyscanner",
+      "evidenceText": "The Skyscanner Copenhagen 3-star result shows Gasten en kamers: 2 volwassenen, 1 kamer and states: 'De gemiddelde prijs van een driesterrenhotel in Kopenhagen ligt momenteel rond de 188 € per nacht.' No tax/fee treatment is stated.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 3 weeks ago; check-in 15 July 2026, check-out 16 July 2026; FAQ says currently",
+      "searchQuery": "site:skyscanner.net/hotels Copenhagen Denmark 3-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected under the strict row contract because tax/fee treatment is unknown."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 422511,
+      "currency": "RWF",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/denmark/copenhagen-hotels/four-star/ci-27539902/sr-4",
+      "sourceTitle": "4-star Hotels in Copenhagen | Skyscanner",
+      "evidenceText": "Skyscanner identifies 4-star hotels in Copenhagen, shows Guests and rooms: 2 adults, 1 room, and states: 'The average price of a 4-star hotel in Copenhagen is currently around RWF 422 511 per night.' No tax/fee treatment is stated.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; check-in 23 July 2026, check-out 24 July 2026; FAQ says currently",
+      "searchQuery": "site:skyscanner.net/hotels Copenhagen Denmark 4-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected under the strict row contract because the current class average has unknown tax/fee treatment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

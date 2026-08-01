@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Amsterdam Netherlands 1-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No returned Skyscanner result supplied an exact-city 1-star class-average row with the required evidence. No absence claim is made."
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Amsterdam Netherlands 2-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No returned Skyscanner result supplied an exact-city 2-star class-average row with the required evidence. No absence claim is made."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 18923,
+      "currency": "INR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/netherlands/amsterdam-hotels/four-star/ci-27536561/sr-4",
+      "sourceTitle": "4-star Hotels in Amsterdam | Skyscanner",
+      "evidenceText": "The Amsterdam Skyscanner result shows Guests and rooms: 2 adults, 1 room and states in its FAQ: 'The average price of a 3-star hotel in Amsterdam is currently around ₹ 18,923 per night.' The page itself is a 4-star panel; no tax/fee treatment is stated for this 3-star average.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; page dates 25–26 July 2026; FAQ says currently",
+      "searchQuery": "site:skyscanner.net/hotels Amsterdam Netherlands 3-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected under the strict row contract because tax/fee treatment is unknown and the returned page is a 4-star panel whose FAQ contains the 3-star average rather than a dedicated 3-star result."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 23328,
+      "currency": "INR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/netherlands/amsterdam-hotels/four-star/ci-27536561/sr-4",
+      "sourceTitle": "4-star Hotels in Amsterdam | Skyscanner",
+      "evidenceText": "Skyscanner identifies 4-star hotels in Amsterdam, shows Guests and rooms: 2 adults, 1 room, and states: 'The average price of a 4-star hotel in Amsterdam is currently around ₹ 23,328 per night.' No tax/fee treatment is stated for the average.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; check-in 25 July 2026, check-out 26 July 2026",
+      "searchQuery": "site:skyscanner.net/hotels Amsterdam Netherlands 4-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected under the strict row contract because the current class average has unknown tax/fee treatment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

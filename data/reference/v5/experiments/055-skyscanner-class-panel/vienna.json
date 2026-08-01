@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Vienna Austria 1-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Vienna 1-star class-average row was returned."
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Vienna Austria 2-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Vienna 2-star class-average row was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/austria/vienna-hotels/three-star/ci-27547395/sr-3",
+      "sourceTitle": "3-star Hotels in Vienna | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room. The average price of a 3-star hotel in Vienna is currently around 102 € per night.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; page dates not shown in class snippet",
+      "searchQuery": "site:skyscanner.net/hotels Vienna Austria 3-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected because the current class average has no explicit tax/fee treatment. Unknown taxes are incompatible with the strict row contract."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/austria/vienna-hotels/four-star/ci-27547395/sr-4",
+      "sourceTitle": "4-star Hotels in Vienna | Skyscanner",
+      "evidenceText": "Guests and rooms 2 adults, 1 room. The average price of a 4-star hotel in Vienna is currently around 266 Cg per night, with a malformed/unidentified currency symbol and no tax statement.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 3 weeks ago; check-in July 16, 2026 and check-out July 17, 2026",
+      "searchQuery": "site:skyscanner.net/hotels Vienna Austria 4-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected for unknown/malformed currency and absent tax/fee treatment; the row cannot be used as a strict observed class average."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

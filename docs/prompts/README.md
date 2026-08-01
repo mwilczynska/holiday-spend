@@ -68,6 +68,9 @@ explicit-room validation.
 The 053 run has completed and failed promotion at 7/12 relaxed candidates; keep the relaxed label as a hypothesis
 until an independent explicit-room validation panel passes.
 
+The 055 Skyscanner class-panel prompt is complete and rejected: twelve one-city contexts produced 0/48 strict
+class rows because tax treatment or class/currency evidence failed; no city was complete.
+
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
 auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-v1",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Istanbul Turkey 1-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Istanbul 1-star class-average row was returned."
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Istanbul Turkey 2-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Istanbul 2-star class-average row was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/turkiye-%28turkey%29/istanbul-hotels/three-star/ci-27542903/sr-3",
+      "sourceTitle": "3-sterrenhotels in Istanboel | Skyscanner",
+      "evidenceText": "Skyscanner's Istanbul three-star page shows 2 adults, 1 room, but no numeric current class-average price or tax/fee treatment in the result.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 3 months ago",
+      "searchQuery": "site:skyscanner.net/hotels Istanbul Turkey 3-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected because the class page has no numeric current city-average row and no tax/fee evidence."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/turkiye-turkey/istanbul-hotels/four-star/ci-27542903/sr-4",
+      "sourceTitle": "4-sterrenhotels in Istanboel | Skyscanner",
+      "evidenceText": "Skyscanner's Istanbul four-star page shows 2 adults, 1 room, but no numeric current class-average price or tax/fee treatment in the result.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago",
+      "searchQuery": "site:skyscanner.net/hotels Istanbul Turkey 4-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected because the class page has no numeric current city-average row and no tax/fee evidence."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

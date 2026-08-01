@@ -406,6 +406,11 @@ three hotel-class relationships and private-hostel/dorm had zero matched cities;
 attraction each had one matched city (Vancouver). All six failed the 30-city/10-holdout gate. No model was fitted.
 Next work must collect definition-compatible paired observations or test a materially different source/estimand.
 
+Experiment 055 completed its test of Skyscanner's 1-4-star city-class averages across twelve independent one-city
+Luna contexts. Strict rows require exact class/city, explicit two-adult one-room occupancy, numeric current average,
+and known tax treatment. Coverage was 0/48 and no city was complete; tax was unknown or class/currency evidence was
+malformed. Reject mapping and fitting; a different estimand needs a new pre-registration.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

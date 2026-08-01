@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-telemetry-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 4,
+  "searchOperations": 4,
+  "queries": [
+    "site:skyscanner.net/hotels Dublin Ireland 1-star hotels 2 adults 1 room average nightly price taxes",
+    "site:skyscanner.net/hotels Dublin Ireland 2-star hotels 2 adults 1 room average nightly price taxes",
+    "site:skyscanner.net/hotels Dublin Ireland 3-star hotels 2 adults 1 room average nightly price taxes",
+    "site:skyscanner.net/hotels Dublin Ireland 4-star hotels 2 adults 1 room average nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 0,
+  "notFoundRows": 4,
+  "protocolCompliant": true,
+  "notes": "One-city, four-search Skyscanner class panel. 3-star and 4-star class-average pages supplied explicit two-adult/one-room selectors but no tax/fee treatment; 1-star and 2-star rows were not returned. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

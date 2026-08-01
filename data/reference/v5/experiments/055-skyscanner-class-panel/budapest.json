@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Budapest Hungary 1-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Budapest 1-star class-average row was returned."
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Budapest Hungary 2-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Budapest 2-star class-average row was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/hungary/budapest/district-7-hotels/ne-27562242",
+      "sourceTitle": "Find District 7 Hotels | Skyscanner",
+      "evidenceText": "A district page states the average price of a 3-star hotel in Budapest is around 16,182 G per night and shows 2 adults, 1 room, but the result is district-specific, has an unidentified currency, and lacks tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; district page dates not shown",
+      "searchQuery": "site:skyscanner.net/hotels Budapest Hungary 3-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected because evidence is a district page rather than an exact city class page, currency is malformed/unidentified, and tax/fee treatment is unknown."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/hungary/budapest-hotels/ci-27539604",
+      "sourceTitle": "Cheap Budapest Hotels | Skyscanner",
+      "evidenceText": "The Budapest results show 2 adults, 1 room and property prices, but no exact current 4-star city-class average with known currency and tax treatment; displayed values use an unidentified Cg currency.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; check-in July 25, 2026 and check-out July 26, 2026",
+      "searchQuery": "site:skyscanner.net/hotels Budapest Hungary 4-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected missing exact class-average statistic, malformed currency, and unknown taxes."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

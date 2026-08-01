@@ -263,6 +263,16 @@ city. All failed the 30-city/10-holdout gate. **Decision:** reject model fitting
 collect definition-compatible paired observations before tuning any coefficient.
 Read `data/reference/v5/experiments/054-model-fit-adequacy/`.
 
+### Experiment 055 - Skyscanner hotel-class average panel
+
+Twelve one-city Luna calls are testing all four Skyscanner class pages with exact city/class, explicit 2 adults and
+1 room, numeric current class-average, and known tax requirements. Promotion requires 1-star and 2-star coverage in
+at least 6/12 cities, 3-star and 4-star coverage in at least 8/12, and six complete cities. This remains source
+feasibility only; no product mapping or ratio fit follows automatically.
+
+The panel completed with 0/48 strict rows and no complete city. The route is rejected because tax treatment was
+unknown or class/currency evidence was malformed, even where 3-/4-star selectors and prices appeared.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

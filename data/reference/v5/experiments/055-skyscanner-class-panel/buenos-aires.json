@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Buenos Aires Argentina 1-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "The ordered 1-star search returned no exact-city 1-star class-average row. No positive evidence established that the class is absent."
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Buenos Aires Argentina 2-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "The ordered 2-star search returned no exact-city 2-star class-average row. No positive evidence established that the class is absent."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 66,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/argentina/buenos-aires-hotels/ci-27536465",
+      "sourceTitle": "Cheap hotels in Buenos Aires | Skyscanner",
+      "evidenceText": "Skyscanner's Buenos Aires city page shows Guests and rooms: 2 adults, 1 room; check-in 25–07–2026 and check-out 26–07–2026; and states the average price of a 3-star hotel in Buenos Aires is currently around €66 per night. No tax or fee treatment is stated.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner page crawled last week; 25–26 July 2026 selector",
+      "searchQuery": "site:skyscanner.net/hotels Buenos Aires Argentina 3-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "The city, class, occupancy, and current class-average statistic are explicit, but taxes/fees are unknown; strict acceptance therefore fails."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 86,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/argentina/buenos-aires-hotels/ci-27536465",
+      "sourceTitle": "Cheap hotels in Buenos Aires | Skyscanner",
+      "evidenceText": "Skyscanner's Buenos Aires city page shows Guests and rooms: 2 adults, 1 room; check-in 25–07–2026 and check-out 26–07–2026; and states the average price of a 4-star hotel in Buenos Aires is currently around €86 per night. No tax or fee treatment is stated.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner page crawled last week; 25–26 July 2026 selector",
+      "searchQuery": "site:skyscanner.net/hotels Buenos Aires Argentina 4-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "The city, class, occupancy, and current class-average statistic are explicit, but taxes/fees are unknown; strict acceptance therefore fails."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

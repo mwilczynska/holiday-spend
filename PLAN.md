@@ -508,10 +508,10 @@ accommodation relationship had a matched city; each activity-tier relationship h
 failed the 30-city/10-holdout gate. Reject fitting until definition-compatible paired observations or a materially
 different source/estimand is found. The v5 methodology remains unaccepted.
 
-Experiment 054 scanned 176 accepted direct ledger rows and tested six material relationships without fitting. No
-accommodation relationship had a matched city; each activity-tier relationship had only one (Vancouver). All
-failed the 30-city/10-holdout gate. Reject fitting until definition-compatible paired observations or a materially
-different source/estimand is found. The v5 methodology remains unaccepted.
+Experiment 055 completed twelve independent one-city Luna contexts and 48 ordered Skyscanner class searches. Strict
+coverage was 0/48 (1-star 0/12, 2-star 0/12, 3-star 0/12, 4-star 0/12); no city was complete. Exact class,
+selector, and price snippets generally lacked tax treatment or had malformed currency/class evidence. Reject the
+route and do not map or fit. A different tax or price-statistic estimand requires a new pre-registration.
 
 ## Unrelated app backlog
 

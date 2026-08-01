@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "city-cost-v5-skyscanner-class-panel-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Seoul South Korea 1-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Seoul 1-star class-average row was returned."
+    },
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:skyscanner.net/hotels Seoul South Korea 2-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "No exact Seoul 2-star class-average row was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/south-korea/seoul-hotels/rg-44292722",
+      "sourceTitle": "Hotels in Seoul, South Korea | Skyscanner",
+      "evidenceText": "The Seoul city page shows 2 adults, 1 room and a current average 3-star price of €92 per night, but does not state tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; check-in July 23, 2026 and check-out July 24, 2026",
+      "searchQuery": "site:skyscanner.net/hotels Seoul South Korea 3-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected because tax/fee treatment is unknown; the strict contract requires known taxes."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.skyscanner.net/hotels/south-korea/seoul-hotels/rg-44292722",
+      "sourceTitle": "Hotels in Seoul, South Korea | Skyscanner",
+      "evidenceText": "The Seoul city page shows 2 adults, 1 room and a current average 4-star price of €158 per night, but does not state tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Skyscanner result crawled 2 weeks ago; check-in July 23, 2026 and check-out July 24, 2026",
+      "searchQuery": "site:skyscanner.net/hotels Seoul South Korea 4-star hotels 2 adults 1 room average nightly price taxes",
+      "reason": "Rejected because tax/fee treatment is unknown; the strict contract requires known taxes."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 4,
+    "searchOperations": 4,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

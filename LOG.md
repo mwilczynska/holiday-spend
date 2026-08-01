@@ -1383,14 +1383,17 @@ this evidence boundary. No coefficient, correction, or product mapping was creat
 paid-attraction rows remain useful direct inputs for deterministic baskets, but they do not validate accommodation
 or activity tier models. Read `data/reference/v5/experiments/054-model-fit-adequacy/`.
 
-## Experiment 054 - model-fit adequacy audit (1 August 2026)
+## Experiment 055 - Skyscanner hotel-class average panel (1 August 2026)
 
-The deterministic audit scanned 176 accepted direct rows in `data/reference/observations/*.jsonl` and tested six
-pre-registered relationships without fitting a model. The canonical ledger contains one direct 4-star city and no
-direct 1-star, 2-star, or 3-star class rows; no private-hostel/dorm pair; and only one matched city for each
-definition-compatible half-day-from-attraction and full-day-from-attraction relationship.
+Twelve independent single-city Luna-class contexts issued exactly four ordered searches each for Skyscanner 1-,
+2-, 3-, and 4-star class pages (48 searches total). No page reads, retries, arithmetic, FX conversion, averaging,
+fallback sources, or cross-city evidence occurred.
 
-All six relationships failed the 30 matched-city plus 10 locked-holdout gate. **Verdict:** reject model fitting for
-this evidence boundary. No coefficient, correction, or product mapping was created. Food/drink primitives and
-paid-attraction rows remain useful direct inputs for deterministic baskets, but they do not validate accommodation
-or activity tier models. Read `data/reference/v5/experiments/054-model-fit-adequacy/`.
+Strict coverage was **0/48**: 1-star 0/12, 2-star 0/12, 3-star 0/12, and 4-star 0/12; no city was complete.
+Several 3-/4-star snippets had exact city/class, explicit two-adult/one-room selectors, and numeric averages, but
+tax treatment was unknown or currency/class evidence was malformed. Lower classes were absent or ambiguous, not
+positively established as class absence.
+
+**Verdict:** reject the Skyscanner class-average route under the frozen contract. Do not map, aggregate, or fit from
+these snippets. A materially different tax or price-statistic estimand requires a new pre-registered experiment.
+Read `data/reference/v5/experiments/055-skyscanner-class-panel/`.
