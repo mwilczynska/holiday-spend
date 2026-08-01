@@ -573,10 +573,11 @@ must use a materially different source or access boundary.
 
 ### Experiment 084 - Nomadlio food/drink structured-page proxy panel
 
-Twelve independent one-city contexts are testing one Nomadlio search and one page read per city. The panel measures
-coverage for six exact labels and separately scores definition-compatible rows versus source-defined proxies. Missing
-unit, party, tax, cappuccino, wine-by-glass, street-food, or premium-meal semantics cannot be inferred. A screen pass
-authorizes only a later semantic/accuracy calibration and no product mapping.
+The twelve independent one-city contexts completed one Nomadlio search and one page read each. The audit found 64
+labelled cells and nine complete cities, but zero definition-compatible rows because unit, party, tax/fee, and statistic
+semantics were absent. Dubai was a guide-page misroute; London and Prague each missed one label. **Verdict:** retain
+all values as source-defined proxies only; no substitution, product mapping, or fitting. A future proxy calibration
+requires independent definition-matched ground truth.
 
 ## Restart rule
 

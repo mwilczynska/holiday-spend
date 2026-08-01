@@ -1,6 +1,6 @@
 # Experiment 084 — Nomadlio food/drink structured-page proxy panel
 
-**Status:** In progress
+**Status:** Complete — reject product mapping
 
 ## Question
 
@@ -11,7 +11,8 @@ do the pages define enough unit and party semantics to be product-compatible rat
 
 Nomadlio pages will provide all six requested labels for at least 10/12 cities and 10/12 protocol-compliant calls.
 The screen is deliberately split: a row may be source-observed only when the page states its exact unit/party/tax
-basis; otherwise it is a source-defined proxy and cannot be mapped or used as definition-matched ground truth.
+basis; otherwise it is a source-defined proxy and cannot be mapped or used as definition-matched ground truth. **The
+panel produced 64 proxy cells, zero definition-compatible cells, and nine complete cities; reject product mapping.**
 
 ## Pre-registered protocol
 

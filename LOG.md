@@ -1746,8 +1746,14 @@ evidence only, with no fallback search, breakfast adjustment, fitting, or produc
 
 ## Experiment 084 - Nomadlio food/drink structured-page proxy panel (1 August 2026)
 
-This experiment is in progress. Twelve independent one-city Luna contexts perform exactly one Nomadlio city-page
+The pre-registered panel used twelve independent one-city Luna contexts, each performing exactly one Nomadlio city-page
 search and one exact-page read. The panel records six labels (inexpensive meal, mid-range meal, coffee, beer, cocktail,
 wine bottle) while preserving whether the page defines serving size, party size, taxes, and statistic. Undefined labels
 remain source-defined proxies; no wine-bottle-to-wine-glass, coffee-to-cappuccino, street-food, or premium-meal
 substitution is allowed.
+
+Experiment 084 completed with 12/12 protocol-compliant calls. The audit found 64 labelled cells and nine complete
+cities, but zero definition-compatible rows: page units, party size, taxes/fees, and statistic were not stated. Dubai
+returned a guide-page misroute; London and Prague each missed one label. **Verdict:** retain all values as
+`source_defined_proxy` only; do not map, substitute, or fit from them. Read
+`data/reference/v5/experiments/084-nomadlio-food-drink/`.

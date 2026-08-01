@@ -569,7 +569,8 @@ passed; zero cities were complete because every direct 4-star read was unsafe or
 labelled source/access evidence only; do not fall back to search, remove breakfast, fit coefficients, or map tiers. The
 next restart action is a materially different accommodation source or access boundary.
 
-Experiment 084 is now active. It tests Nomadlio structured food/drink pages with twelve independent one-city contexts,
-exactly one search and one page read per city, and six labelled rows. The analyzer distinguishes definition-compatible
-observations from source-defined proxies; no units, party sizes, taxes, cappuccino, wine-by-glass, street-food, or
-premium-meal semantics may be inferred. A screen pass permits only independent calibration.
+Experiment 084 completed with 12/12 protocol-compliant one-city calls. It found 64 labelled cells and nine complete
+cities, but zero definition-compatible rows because page units, party size, taxes/fees, and statistic semantics were
+absent. Dubai was a guide-page misroute; London and Prague each missed one label. Retain all values as
+`source_defined_proxy` only; no substitution, product mapping, or fitting. Next action: definition-matched evidence or
+a pre-registered proxy calibration with independent ground truth.

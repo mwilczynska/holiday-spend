@@ -181,9 +181,9 @@ one search, one returned-page read, and one direct read after substituting only 
 strict 3-star rows and zero 4-star rows passed; every direct 4-star read was unsafe or unavailable. No fallback or
 product mapping is authorized.
 
-The 084 Nomadlio food/drink prompt is active: twelve independent one-city calls perform one exact-page search and read,
-recording six labels while refusing to infer serving, party, tax, cappuccino, wine-by-glass, street-food, or
-premium-meal semantics. It is a proxy/coverage screen only; no product mapping is authorized.
+The 084 Nomadlio food/drink prompt is complete and rejected for mapping: twelve independent one-city calls produced 64
+labelled cells and nine complete cities, but zero definition-compatible rows. Page serving, party, tax, and statistic
+semantics were absent; no cappuccino, wine-by-glass, street-food, or premium-meal substitution is authorized.
 
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.

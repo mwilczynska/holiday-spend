@@ -100,7 +100,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-activity-repeatability.mjs` | `analyze-v5-activity-repeatability.mjs` | Experiment 081: measures three-call single-city activity extraction dispersion without averaging it away |
 | `node scripts/analyze-v5-worldstaytracker-accommodation.mjs` | `analyze-v5-worldstaytracker-accommodation.mjs` | Experiment 082: audits exact-city World Stay Tracker 3-/4-star coverage and four-operation protocol compliance (rejected) |
 | `node scripts/analyze-v5-worldstaytracker-cityid-rating.mjs` | `analyze-v5-worldstaytracker-cityid-rating.mjs` | Experiment 083: audits one-search cityid URL navigation for World Stay Tracker 3-/4-star coverage (rejected) |
-| `node scripts/analyze-v5-nomadlio-food-drink.mjs` | `analyze-v5-nomadlio-food-drink.mjs` | Experiment 084: audits Nomadlio six-label food/drink coverage and semantic proxy status |
+| `node scripts/analyze-v5-nomadlio-food-drink.mjs` | `analyze-v5-nomadlio-food-drink.mjs` | Experiment 084: audits Nomadlio six-label food/drink coverage and semantic proxy status (rejected mapping) |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

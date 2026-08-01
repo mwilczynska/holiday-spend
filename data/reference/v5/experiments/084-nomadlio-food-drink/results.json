@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "city-cost-v5-nomadlio-food-drink-audit-v1",
+  "citiesTested": 12,
+  "completeCities": 9,
+  "foundCells": 64,
+  "observedCells": 0,
+  "proxyCells": 64,
+  "protocolCompliant": 12,
+  "screenGate": "completeCities>=10 and protocolCompliant>=10",
+  "screenGatePassed": false,
+  "productMapping": "none_proxy_screen_only",
+  "rows": [
+    {
+      "city": "Amsterdam",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Bangkok",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Copenhagen",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "complete": false,
+      "found": 0,
+      "observed": 0,
+      "proxies": 0,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Hanoi",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "complete": false,
+      "found": 5,
+      "observed": 0,
+      "proxies": 5,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Paris",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Prague",
+      "complete": false,
+      "found": 5,
+      "observed": 0,
+      "proxies": 5,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Rome",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Sydney",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    },
+    {
+      "city": "Tokyo",
+      "complete": true,
+      "found": 6,
+      "observed": 0,
+      "proxies": 6,
+      "protocolCompliant": true
+    }
+  ]
+}
