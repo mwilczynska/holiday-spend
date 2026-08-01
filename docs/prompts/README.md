@@ -101,9 +101,14 @@ The 065 Expedia one-star paired-panel prompt is complete and rejected: twelve on
 two ordered Expedia searches each and produced 0/12 strict 1-star rows, 9/12 strict 3-star rows, and no complete
 pair. It does not authorize mapping or fitting; source-default one-star averages remain ineligible.
 
-The 066 BudgetYourTrip one-star semantics prompt is active. It tests one city per delegated GPT-5.6 Luna-class
-invocation with exactly one search and one exact-city page read. The same page must explicitly define the one-star
-numeric room statistic, two-person occupancy, and tax treatment; otherwise the row remains an ineligible proxy.
+The 066 BudgetYourTrip one-star semantics prompt is complete for its strict direct-source question: twelve one-city
+contexts used exactly one search and one exact-city page read, producing 0/12 explicit two-person rows. Eight pages
+lacked row-level occupancy and four were blocked. This rejects direct observation, but source-level double-occupancy
+proxy calibration remains a separate active question; numeric values are not yet product outputs.
+
+The 067 BudgetYourTrip double-occupancy proxy prompt is active. Each one-city Luna context issues exactly two searches
+and two page reads: the one-star page and the same-source destination page that must explicitly define typical
+double-occupancy hotel prices. Proxy candidates remain labelled and cannot be mapped or fitted by this experiment.
 
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.

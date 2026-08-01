@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-telemetry-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com/hotels Amsterdam Netherlands 1-star hotel average price room for two taxes fees"
+  ],
+  "directReads": 1,
+  "pageReadStatus": "blocked_http_429",
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "notFoundMeasures": 0,
+  "blockedMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "One-city, exactly one BudgetYourTrip search followed by exactly one exact-city page-read attempt. The page read returned HTTP 429 Too Many Requests. No retry, second page, fallback, arithmetic, FX, or cross-city evidence was used."
+}

@@ -1518,3 +1518,17 @@ excluded; no one-star row satisfied the frozen explicit class/occupancy/tax cont
 **Verdict:** reject promotion of the Expedia one-star route. Retain the nine three-star rows as source evidence only;
 do not map or fit. A materially different one-star/hostel source or explicitly amended estimand requires a new
 pre-registered validation panel. Read `data/reference/v5/experiments/065-expedia-one-star-paired-panel/`.
+
+## Experiment 066 - BudgetYourTrip one-star semantic-basis audit (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly one BudgetYourTrip search and one
+exact-city page read each (24 web operations total). No second search/read, retries, arithmetic, FX conversion,
+averaging, fallback sources, or cross-city evidence occurred.
+
+Strict coverage was **0/12 explicit two-person rows**. Eight exact-city pages exposed numeric one-star averages but
+did not state row-level occupancy; four page reads were blocked or timed out. The numeric rows remain unvalidated
+source-level proxy candidates and cannot be promoted to `accom_1_star` or used as model ground truth.
+
+**Verdict:** reject BudgetYourTrip as a direct one-star source, but test a source-level
+`source_defined_double_occupancy` convention separately. It requires independent explicit-two-adult calibration;
+any resulting product value must be labelled `modelled`. Read `data/reference/v5/experiments/066-budgetyourtrip-one-star-semantics/`.

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "not_found",
+      "value": 147,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/australia/sydney-2147714",
+      "sourceTitle": "How Much Do Hotels Cost in Sydney? Hotel Prices for Sydney, Australia | Budget Your Trip",
+      "evidenceText": "The exact-city page reports an average price of $147 for 1-star hotels in Sydney based on 21 hotels, with a median of $124. It labels the section as an average hotel price for one night and states that all hotel prices are in US Dollars before taxes. The page does not explicitly state that the statistic is for a room for two people or two adults.",
+      "occupancyEvidence": "No explicit two-person, two-adult, or room-occupancy basis appears on the opened page; a generic one-night hotel price is not sufficient.",
+      "taxEvidence": "The page states that all hotel prices are in US Dollars before taxes and fees.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; page crawled yesterday; page says prices change based on seasons.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Sydney Australia 1-star hotel average price room for two taxes fees",
+      "sampleSize": 21,
+      "reason": "Exact city/class, numeric average, one-night context, currency, and tax exclusion were found, but explicit two-person occupancy is absent. Source-default or unspecified occupancy fails this semantic experiment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 1,
+    "blockedMeasures": 0,
+    "protocolCompliant": true
+  }
+}

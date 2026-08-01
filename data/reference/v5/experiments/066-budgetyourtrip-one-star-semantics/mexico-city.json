@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/mexico/mexico-city-3530597",
+      "sourceTitle": "How Much Do Hotels Cost in Mexico City? Hotel Prices for Mexico City, Mexico | Budget Your Trip",
+      "evidenceText": "The mandated search returned the exact Mexico City BudgetYourTrip hotel page and its search result exposed an Average 1-Star Hotel Price of $51 based on 11 hotels. The single mandated page read returned HTTP 429 Too Many Requests, so the same-page occupancy, unit, and tax semantics could not be inspected.",
+      "referencePeriod": "Search result crawled 2 weeks before retrieval; mandated page read attempted 2026-08-01 and blocked by HTTP 429.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Mexico City Mexico 1-star hotel average price room for two taxes fees",
+      "sampleSize": 11,
+      "reason": "Blocked page read; the search-snippet statistic is not promoted because the strict contract requires inspectable same-page two-person occupancy and tax treatment. No value is counted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "blocked_http_429",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 0,
+    "blockedMeasures": 1,
+    "protocolCompliant": true
+  }
+}

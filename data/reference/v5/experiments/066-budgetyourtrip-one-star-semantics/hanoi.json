@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "not_found",
+      "value": 24,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/vietnam/hanoi-1581130",
+      "sourceTitle": "How Much Do Hotels Cost in Hanoi? Hotel Prices for Hanoi, Vietnam | Budget Your Trip",
+      "evidenceText": "On the exact-city page, BudgetYourTrip reports an average 1-star hotel price of $24 based on 184 hotels and a median of $19. The page describes a one-night room-price range, states that prices are in US Dollars before taxes and fees, and identifies the star-rating class. It does not explicitly state two-person or two-adult occupancy.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; page crawled today; prices are before taxes and fees and vary by season.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Hanoi Vietnam 1-star hotel average price room for two taxes fees",
+      "sampleSize": 184,
+      "reason": "Exact city/class, numeric nightly statistic, currency, sample, and tax exclusion were visible, but the page gives no explicit two-person occupancy. Source-default or unspecified occupancy fails this semantic experiment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 1,
+    "blockedMeasures": 0,
+    "protocolCompliant": true
+  }
+}

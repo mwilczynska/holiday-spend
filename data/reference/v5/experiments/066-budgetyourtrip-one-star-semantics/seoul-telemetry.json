@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-telemetry-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": [
+    "site:budgetyourtrip.com/hotels Seoul South Korea 1-star hotel average price room for two taxes fees"
+  ],
+  "directReads": 1,
+  "pageReadStatus": "success",
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "notFoundMeasures": 1,
+  "blockedMeasures": 0,
+  "protocolCompliant": true,
+  "notes": "One-city, exactly one BudgetYourTrip search followed by exactly one exact-city page read. The page exposed a 1-star average of $55 based on 383 hotels and before-tax pricing, but no explicit two-person occupancy. No retry, second page, fallback, arithmetic, FX, or cross-city evidence was used."
+}

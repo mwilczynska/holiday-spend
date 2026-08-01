@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/canada/vancouver-6173331",
+      "sourceTitle": "How Much Do Hotels Cost in Vancouver? Hotel Prices for Vancouver, British Columbia | Budget Your Trip",
+      "evidenceText": "The mandated exact-city Vancouver BudgetYourTrip page was returned by the search, but the single mandated page read failed with HTTP 429 Too Many Requests. The search result mentioned generic hotel values and tax exclusion, but no source-page semantic row was inspected or promoted.",
+      "occupancyEvidence": "Unavailable because the exact-city page read was blocked; no source-default occupancy is assumed.",
+      "taxEvidence": "Unavailable from the blocked page read; search-result text is not used as a source-page tax basis.",
+      "referencePeriod": "Search result crawled last month; mandated page read attempted 2026-08-01 and blocked by HTTP 429.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Vancouver Canada 1-star hotel average price room for two taxes fees",
+      "reason": "Blocked page read; no value is counted and no search-snippet value or source-default occupancy is promoted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "blocked_http_429",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 0,
+    "blockedMeasures": 1,
+    "protocolCompliant": true
+  }
+}

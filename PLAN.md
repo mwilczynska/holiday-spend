@@ -562,9 +562,13 @@ Experiment 065 completed twelve fresh one-city Luna contexts with exactly two or
 gates failed. Generic all-hotel, district, class-ambiguous, and non-numeric one-star results were rejected. Pivot
 to a materially different one-star/hostel source or an explicitly amended estimand; do not map or fit.
 
-Experiment 066 is active: twelve one-city Luna contexts will perform one BudgetYourTrip search and one exact-city
-page read to audit whether the broad one-star statistic explicitly defines two-person room occupancy and tax status.
-Promotion requires at least 8/12 strict same-page semantic rows; source-default/unknown occupancy remains ineligible.
+Experiment 066 completed with 0/12 explicit two-person rows: eight numeric pages lacked row-level occupancy and four
+page reads were blocked or timed out. Reject BudgetYourTrip as a direct one-star source, but test a source-level
+double-occupancy proxy calibration before closing the route. No mapping or fitting is allowed yet.
+
+Experiment 067 is active: twelve one-city Luna contexts will join an exact-city one-star page with a same-source
+destination page that explicitly defines typical double-occupancy hotel prices. The screen requires 8/12 complete
+proxy candidates and 10/12 protocol-compliant calls; a pass authorizes calibration only, never direct observation.
 
 ## Unrelated app backlog
 

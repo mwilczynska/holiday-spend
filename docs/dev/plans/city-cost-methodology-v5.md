@@ -368,6 +368,21 @@ statistic, per-room/night unit, two-person occupancy, named currency, reference 
 promotion gate is 8/12 strict rows (with six accepted cities). Source-default or unknown occupancy cannot pass and
 cannot be used as ground truth for a one-star model.
 
+Results: the twelve-city panel produced 0/12 explicit two-person rows. Eight exact-city pages exposed numeric
+one-star averages but no row-level occupancy, and four page reads were blocked or timed out. **Verdict:** reject
+BudgetYourTrip as a direct one-star source. Retain numeric observations as unvalidated proxy candidates while
+testing whether the same source explicitly defines its hotel statistics as double occupancy; they remain ineligible
+as model ground truth until independent calibration passes.
+
+### Experiment 067 - BudgetYourTrip source-level double-occupancy proxy
+
+This controlled relaxation tests twelve fresh one-city Luna contexts with exactly two searches and two page reads:
+the exact-city one-star page and the same-source destination page that explicitly defines typical double-occupancy
+hotel prices. A candidate requires both pages, exact city/class, numeric one-night statistic, named currency, tax
+basis, and source-level two-person wording. The screening gate is 8/12 proxy candidates with at least 10/12
+protocol-compliant calls. A pass authorizes only independent calibration against explicit-two-adult observations;
+it never authorizes mapping, fitting, or presenting a proxy as observed.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

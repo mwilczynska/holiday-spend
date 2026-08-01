@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "not_found",
+      "value": 81,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/hungary/budapest-3054643",
+      "sourceTitle": "How Much Do Hotels Cost in Budapest? Hotel Prices for Budapest, Hungary | Budget Your Trip",
+      "evidenceText": "On the exact-city page, BudgetYourTrip reports an average price of $81 for 1-star hotels based on 234 hotels, with a median of $67. The page describes one-night hotel-price ranges and states that prices are in US Dollars before taxes and fees, but it does not explicitly state two-person or two-adult occupancy.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; page crawled today; page states values change with seasons and are before taxes and fees.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Budapest Hungary 1-star hotel average price room for two taxes fees",
+      "sampleSize": 234,
+      "reason": "Exact city/class, statistic, unit context, currency, and tax basis were found, but explicit two-person occupancy is absent. Source-default or unspecified occupancy fails this semantic experiment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 1,
+    "blockedMeasures": 0,
+    "protocolCompliant": true
+  }
+}

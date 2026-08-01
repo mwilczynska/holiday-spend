@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 12,
+  "searchOperations": 12,
+  "directReads": 12,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedRows": 0,
+  "acceptedCities": [],
+  "promotionGate": "strict semantic rows>=8, accepted cities>=6",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Amsterdam",
+      "accepted": false,
+      "status": "blocked",
+      "reason": "Blocked page read; no value is counted and no source-default occupancy or search-snippet value is promoted."
+    },
+    {
+      "city": "Budapest",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city/class, statistic, unit context, currency, and tax basis were found, but explicit two-person occupancy is absent. Source-default or unspecified occupancy fails this semantic experiment."
+    },
+    {
+      "city": "Buenos Aires",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city page was available but contained no hotel data, so no one-star numeric row or compatible semantic basis can be accepted."
+    },
+    {
+      "city": "Cape Town",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city/class, numeric average, one-night context, currency, and tax exclusion were found, but explicit two-person occupancy is absent. Source-default or unspecified occupancy fails this semantic experiment."
+    },
+    {
+      "city": "Dublin",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city/class, statistic, unit context, currency, and tax basis were found, but explicit two-person occupancy is absent. Source-default or unspecified occupancy fails this semantic experiment."
+    },
+    {
+      "city": "Hanoi",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city/class, numeric nightly statistic, currency, sample, and tax exclusion were visible, but the page gives no explicit two-person occupancy. Source-default or unspecified occupancy fails this semantic experiment."
+    },
+    {
+      "city": "Jakarta",
+      "accepted": false,
+      "status": "blocked",
+      "reason": "Blocked page read (timeout); search-snippet evidence is not promoted because the strict contract requires inspectable same-page two-person occupancy and tax treatment. No value is counted."
+    },
+    {
+      "city": "Mexico City",
+      "accepted": false,
+      "status": "blocked",
+      "reason": "Blocked page read; the search-snippet statistic is not promoted because the strict contract requires inspectable same-page two-person occupancy and tax treatment. No value is counted."
+    },
+    {
+      "city": "Seoul",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city/class, statistic, unit context, currency, and tax basis were found, but explicit two-person occupancy is absent. Source-default or unspecified occupancy fails this semantic experiment."
+    },
+    {
+      "city": "Sydney",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city/class, numeric average, one-night context, currency, and tax exclusion were found, but explicit two-person occupancy is absent. Source-default or unspecified occupancy fails this semantic experiment."
+    },
+    {
+      "city": "Tokyo",
+      "accepted": false,
+      "status": "not_found",
+      "reason": "Exact city/class, numeric nightly statistic, currency, sample, and tax exclusion were visible, but the page gives no explicit two-person occupancy. Source-default or unspecified occupancy fails this semantic experiment."
+    },
+    {
+      "city": "Vancouver",
+      "accepted": false,
+      "status": "blocked",
+      "reason": "Blocked page read; no value is counted and no search-snippet value or source-default occupancy is promoted."
+    }
+  ],
+  "productMapping": "none_source_semantics_only"
+}

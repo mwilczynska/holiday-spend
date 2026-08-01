@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-audit-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 12,
+  "searchOperations": 12,
+  "directReads": 12,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedRows": 0,
+  "blockedPages": 4,
+  "promotionGate": "strict semantic rows>=8, accepted cities>=6",
+  "promotionGatePassed": false,
+  "productMapping": "none; source semantics only"
+}

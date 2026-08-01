@@ -465,6 +465,11 @@ Experiment 065 completed twelve fresh one-city Luna contexts with exactly two or
 Generic all-hotel, district, class-ambiguous, and non-numeric one-star results were rejected. Do not map or fit;
 pivot to a materially different one-star/hostel source or an explicitly amended estimand.
 
-Experiment 066 is active. It audits whether BudgetYourTrip's one-star city averages explicitly define a two-person
-room and tax basis on the same exact-city page. Each city uses one search followed by one page read, with no retry,
-fallback, arithmetic, FX, or cross-city evidence. Do not treat source-default occupancy as an observed product value.
+Experiment 066 completed twelve one-city search+page-read contexts. It found 0/12 explicit two-person rows: eight
+numeric pages lacked row-level occupancy and four reads were blocked or timed out. Reject BudgetYourTrip as a direct
+one-star source. A source-level double-occupancy proxy calibration is now the next experiment; do not map or fit
+until that proxy is independently calibrated.
+
+Experiment 067 is active. It tests twelve fresh one-city Luna contexts with exactly two searches and two page reads:
+the exact-city one-star BudgetYourTrip page and the same-source destination page defining typical double occupancy.
+The output is a labelled proxy candidate only; no mapping, tax normalization, or fitting follows this screen.

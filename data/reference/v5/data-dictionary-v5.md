@@ -53,6 +53,26 @@ values created by the same model family, asserted constants in the shipping CSV,
 bases. A genuinely absent class is not silently filled. If the product ultimately requires a number for an
 absent class, that product decision and its modelled semantics must be separately documented and validated.
 
+## Dated requirements review — 1 August 2026
+
+The product estimand remains unchanged: accommodation is the price of one standard room for two travellers for
+one night. The collection contract now distinguishes evidence levels rather than treating occupancy as a binary
+source failure:
+
+1. `explicit_two_adult` is a directly observed product-compatible anchor. The row itself states two adults/two
+   people in one room (or an equivalent occupancy selector) and may be used as observed ground truth.
+2. `source_defined_double_occupancy` is a proxy candidate. The same source must explicitly define its hotel-room
+   statistics as typical double occupancy at source level, and the star-specific page must identify the class,
+   room/night statistic, currency, reference period, and tax basis. It is not an observed product anchor and cannot
+   validate a model by itself.
+3. `unknown_source_default` remains ineligible for product materialization and model fitting. A room price must not
+   be multiplied by two merely because the product has two travellers; room prices are not per-person beds.
+
+A source-defined proxy may enter a production derivation only through a named, versioned calibration/model against
+independent explicit-two-adult observations. Its final evidence basis must be `modelled` (or `imputed`), with the
+proxy input and uncertainty retained. This review relaxes collection evidence where source semantics are explicit;
+it does not relax the held-out accuracy, bias, provenance, or one-call reliability gates.
+
 ## Dated collection amendment — 31 July 2026
 
 Experiment 025 confirms that the shared-dorm product estimand remains two beds for two travellers, while the

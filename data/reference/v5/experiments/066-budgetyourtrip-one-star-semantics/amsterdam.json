@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/netherlands/amsterdam-2759794",
+      "sourceTitle": "How Much Do Hotels Cost in Amsterdam? Hotel Prices for Amsterdam, Netherlands | Budget Your Trip",
+      "evidenceText": "The exact-city BudgetYourTrip hotel page was returned by the mandated search, but the single mandated page read failed with HTTP 429 Too Many Requests. Search output mentioned a 1-star section but the same-page semantic contract could not be inspected.",
+      "referencePeriod": "Search result crawled 3 weeks ago; mandated page read attempted 2026-08-01 and blocked by HTTP 429.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Amsterdam Netherlands 1-star hotel average price room for two taxes fees",
+      "reason": "Blocked page read; no value is counted and no source-default occupancy or search-snippet value is promoted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "blocked_http_429",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 0,
+    "blockedMeasures": 1,
+    "protocolCompliant": true
+  }
+}

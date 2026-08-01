@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/argentina/buenos-aires-argentina-3435910",
+      "sourceTitle": "How Much Do Hotels Cost in Buenos Aires, Argentina? Hotel Prices for Buenos Aires, Argentina, Argentina | Budget Your Trip",
+      "evidenceText": "The exact-city page was opened successfully, but it says 'Hotel data coming soon, please check back later.' It provides no one-star numeric statistic and no usable source-page occupancy or tax definition.",
+      "occupancyEvidence": "No occupancy basis is stated because the page contains no hotel data.",
+      "taxEvidence": "No tax or fee treatment is stated on the opened page.",
+      "referencePeriod": "BudgetYourTrip exact-city hotel page crawled 6 days ago; page displayed no hotel data at retrieval.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Buenos Aires Argentina 1-star hotel average price room for two taxes fees",
+      "reason": "Exact city page was available but contained no hotel data, so no one-star numeric row or compatible semantic basis can be accepted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 1,
+    "blockedMeasures": 0,
+    "protocolCompliant": true
+  }
+}

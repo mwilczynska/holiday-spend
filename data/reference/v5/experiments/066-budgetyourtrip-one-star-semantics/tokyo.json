@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-one-star-semantics-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_semantic": {
+      "status": "not_found",
+      "value": 29,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/japan/tokyo-1850147",
+      "sourceTitle": "How Much Do Hotels Cost in Tokyo? Hotel Prices for Tokyo, Japan | Budget Your Trip",
+      "evidenceText": "On the exact-city page, BudgetYourTrip reports an average 1-star hotel price of $29 based on 32 hotels and a median of $23. The page describes hotel prices per night, in US Dollars before taxes and fees, with a Kayak base price. It does not explicitly state two-person or two-adult occupancy.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; page crawled 2 weeks before retrieval; prices are before taxes and fees and vary seasonally.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Tokyo Japan 1-star hotel average price room for two taxes fees",
+      "sampleSize": 32,
+      "reason": "Exact city/class, numeric nightly statistic, currency, sample, and tax exclusion were visible, but the page gives no explicit two-person occupancy. Source-default or unspecified occupancy fails this semantic experiment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "pageReadStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "notFoundMeasures": 1,
+    "blockedMeasures": 0,
+    "protocolCompliant": true
+  }
+}
