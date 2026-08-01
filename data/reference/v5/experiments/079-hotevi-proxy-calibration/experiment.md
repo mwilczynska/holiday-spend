@@ -1,6 +1,6 @@
 # Experiment 079 — HOTEVI grouped proxy calibration panel
 
-**Status:** In progress
+**Status:** Complete - reject proxy calibration
 
 ## Question
 
@@ -26,3 +26,15 @@ score them on the locked city holdout. If not, reject the proxy calibration rout
   the remaining eight new cities are validation rows. A city cannot appear in more than one partition.
 - The 30-city matched relationship and 10-city locked-holdout gates are mandatory. No production mapping follows
   a coverage-only pass.
+
+## Results
+
+All 18 new calls were protocol-compliant and all 18 produced complete grouped proxy rows. When combined with the
+12 development rows from Experiment 076, only 19 cities matched an explicit Expedia 3-star row and 15 matched an
+explicit Expedia 4-star row. The locked holdout contributed eight 3-star and five 4-star matches, below both the
+30-city relationship and ten-city holdout requirements.
+
+The descriptive, unfitted proxy screen was also poor: 3-star proxy versus Expedia had median absolute percentage
+error 17.65% and p90 109.68% overall (holdout median 23.46%, p90 197.30%); 4-star had median absolute percentage
+error 35.92% and p90 183.02% overall (holdout median 56.46%, p90 431.91%). These are diagnostics only, not a fitted
+model or product accuracy claim. No coefficients, grouped-class split, or product mapping was produced.

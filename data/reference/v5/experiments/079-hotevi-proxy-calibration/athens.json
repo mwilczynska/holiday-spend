@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-proxy-calibration-v1",
+  "city": "Athens",
+  "country": "Greece",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "budget_1_2_star": {
+      "status": "found",
+      "value": 45,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "budget_1_2_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "The HOTEVI research table shows Athens | Greece | 625 hotels | Budget $45. The page defines Budget as the 1-2-star grouped tier and describes the figures as average nightly rates in USD by star tier; occupancy and tax treatment are not stated.",
+      "referencePeriod": "Monthly average; HOTEVI citation identifies the Hotel Price Index retrieval as July 30, 2026.",
+      "searchQuery": "site:hotevi.com/research Athens Greece HOTEVI hotel price index budget mid-range luxury",
+      "reason": "Exact city/country row, positive USD grouped budget value, source-defined class, and monthly statistic are present. This is a grouped proxy, not an observed two-adult product tier."
+    },
+    "mid_3_star": {
+      "status": "found",
+      "value": 80,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "mid_3_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "The HOTEVI research table shows Athens | Greece | 625 hotels | Mid-Range $80. The page defines Mid-Range as the 3-star grouped tier and describes the figures as average nightly rates in USD by star tier; occupancy and tax treatment are not stated.",
+      "referencePeriod": "Monthly average; HOTEVI citation identifies the Hotel Price Index retrieval as July 30, 2026.",
+      "searchQuery": "site:hotevi.com/research Athens Greece HOTEVI hotel price index budget mid-range luxury",
+      "reason": "Exact city/country row, positive USD grouped mid-range value, source-defined class, and monthly statistic are present. This is a grouped proxy, not an observed two-adult product tier."
+    },
+    "luxury_4_5_star": {
+      "status": "found",
+      "value": 140,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "luxury_4_5_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "The HOTEVI research table shows Athens | Greece | 625 hotels | Luxury $140. The page defines Luxury as the 4-5-star grouped tier and describes the figures as average nightly rates in USD by star tier; occupancy and tax treatment are not stated.",
+      "referencePeriod": "Monthly average; HOTEVI citation identifies the Hotel Price Index retrieval as July 30, 2026.",
+      "searchQuery": "site:hotevi.com/research Athens Greece HOTEVI hotel price index budget mid-range luxury",
+      "reason": "Exact city/country row, positive USD grouped luxury value, source-defined class, and monthly statistic are present. This is a grouped proxy, not an observed two-adult product tier."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

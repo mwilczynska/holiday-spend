@@ -1697,3 +1697,10 @@ BudgetYourTrip-restricted searches for Budget, Mid-Range, and Luxury entertainme
 explicitly one person per day; deterministic code may multiply them by two for the two-traveller product. Ten cities
 are locked holdout. The source screen does not yet establish that reported-spend entertainment tiers equal the
 product's ticket or duration-specific activity estimands.
+
+Experiment 080 completed with 30/30 protocol-compliant calls and 28/30 complete exact-city per-person/day tier sets,
+passing the registered source screen. Fukuoka was `not_found`; Rome's multi-city itinerary rows were rejected. The
+analyzer doubled accepted inputs deterministically and performed no fitted scaling. Holdout completeness was 8/10,
+below the final 95% gate, and no independent ground truth validates the reported-spend activity semantics.
+**Verdict:** promote deterministic scaling only to definition-matched validation; do not accept product mapping.
+Read `data/reference/v5/experiments/080-activity-scaling-panel/`.

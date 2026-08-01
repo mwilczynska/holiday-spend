@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "city-cost-v5-activity-scaling-panel-v1",
+  "city": "Chicago",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found",
+      "value": 47,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "average",
+      "scope": "sightseeing_activities_entertainment_entrance_tickets",
+      "referencePeriod": "BudgetYourTrip Chicago travel-cost page; result crawled 3 weeks before 2026-08-01; based on spending of previous travelers",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/chicago",
+      "sourceTitle": "Chicago Travel Cost - Average Price of a Vacation to Chicago: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Chicago typically cost an average of $47 per person, per day based on the spending of previous travelers.",
+      "searchQuery": "site:budgetyourtrip.com Chicago United States sightseeing activities entertainment entrance tickets per person per day",
+      "reason": "Accepted as an exact Chicago activity/entertainment city statistic with an explicit per-person-per-day basis. No multiplication or mapping to the two-traveller product value was performed."
+    },
+    "activities_budget_per_person_day": {
+      "status": "found",
+      "value": 18,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "budget",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "BudgetYourTrip Chicago budget/mid-range/luxury table; result crawled 1 month before 2026-08-01",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/chicago/trip-cost-4887398",
+      "sourceTitle": "How much does a trip to Chicago Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $18, Mid-Range $47, Luxury $129.",
+      "searchQuery": "site:budgetyourtrip.com Chicago United States budget mid-range luxury entertainment per person per day",
+      "reason": "Accepted because the exact-city table explicitly labels the budget entertainment tier and states the category table is per person per day. No scaling or tier modelling was performed."
+    },
+    "activities_mid_per_person_day": {
+      "status": "found",
+      "value": 47,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "mid_range",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "BudgetYourTrip Chicago budget/mid-range/luxury table; result crawled 1 month before 2026-08-01",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/chicago/trip-cost-4887398",
+      "sourceTitle": "How much does a trip to Chicago Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $18, Mid-Range $47, Luxury $129.",
+      "searchQuery": "site:budgetyourtrip.com Chicago United States budget mid-range luxury entertainment per person per day",
+      "reason": "Accepted because the exact-city table explicitly labels the mid-range entertainment tier and states the category table is per person per day. No scaling or tier modelling was performed."
+    },
+    "activities_high_per_person_day": {
+      "status": "found",
+      "value": 129,
+      "currency": "USD",
+      "unit": "per_person_per_day",
+      "tier": "high_end",
+      "scope": "entertainment_or_sightseeing",
+      "referencePeriod": "BudgetYourTrip Chicago budget/mid-range/luxury table; result crawled 1 month before 2026-08-01",
+      "partyBasis": "one_person",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/chicago/trip-cost-4887398",
+      "sourceTitle": "How much does a trip to Chicago Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $18, Mid-Range $47, Luxury $129.",
+      "searchQuery": "site:budgetyourtrip.com Chicago United States budget mid-range luxury entertainment per person per day",
+      "reason": "Accepted because the exact-city table explicitly labels the luxury entertainment tier and states the category table is per person per day. No scaling or product mapping was performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

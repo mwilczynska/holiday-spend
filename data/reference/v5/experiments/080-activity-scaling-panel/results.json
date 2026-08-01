@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "city-cost-v5-activity-scaling-panel-audit-v1",
+  "citiesTested": 30,
+  "completeCities": 28,
+  "completeDevelopmentCities": 20,
+  "completeHoldoutCities": 8,
+  "tierCoverage": {
+    "budget": 28,
+    "mid": 28,
+    "high": 28
+  },
+  "protocolCompliant": 30,
+  "screenGate": "completeCities>=28 and protocolCompliant>=28",
+  "screenGatePassed": true,
+  "derivation": "activities_free=0; each accepted per-person/day tier is doubled exactly in deterministic code",
+  "productMapping": "none_until_definition_review_and_source_audit",
+  "rows": [
+    {
+      "city": "Amsterdam",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 34,
+        "activities_mid": 84,
+        "activities_high": 204
+      }
+    },
+    {
+      "city": "Athens",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 34,
+        "activities_mid": 82,
+        "activities_high": 202
+      }
+    },
+    {
+      "city": "Barcelona",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 30,
+        "activities_mid": 76,
+        "activities_high": 182
+      }
+    },
+    {
+      "city": "Beijing",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 20,
+        "activities_mid": 52,
+        "activities_high": 130
+      }
+    },
+    {
+      "city": "Berlin",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 20,
+        "activities_mid": 52,
+        "activities_high": 130
+      }
+    },
+    {
+      "city": "Budapest",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 20,
+        "activities_mid": 54,
+        "activities_high": 154
+      }
+    },
+    {
+      "city": "Buenos Aires",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 28,
+        "activities_mid": 64,
+        "activities_high": 122
+      }
+    },
+    {
+      "city": "Chicago",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 36,
+        "activities_mid": 94,
+        "activities_high": 258
+      }
+    },
+    {
+      "city": "Copenhagen",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 24,
+        "activities_mid": 66,
+        "activities_high": 186
+      }
+    },
+    {
+      "city": "Dubai",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 12,
+        "activities_mid": 38,
+        "activities_high": 154
+      }
+    },
+    {
+      "city": "Fukuoka",
+      "complete": false,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": false,
+        "mid": false,
+        "high": false
+      },
+      "scaled": {
+        "activities_budget": null,
+        "activities_mid": null,
+        "activities_high": null
+      }
+    },
+    {
+      "city": "Hanoi",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 6,
+        "activities_mid": 16,
+        "activities_high": 56
+      }
+    },
+    {
+      "city": "Istanbul",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 30,
+        "activities_mid": 78,
+        "activities_high": 190
+      }
+    },
+    {
+      "city": "Lisbon",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 22,
+        "activities_mid": 56,
+        "activities_high": 144
+      }
+    },
+    {
+      "city": "London",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 30,
+        "activities_mid": 88,
+        "activities_high": 280
+      }
+    },
+    {
+      "city": "Madrid",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 30,
+        "activities_mid": 76,
+        "activities_high": 186
+      }
+    },
+    {
+      "city": "Melbourne",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 24,
+        "activities_mid": 60,
+        "activities_high": 140
+      }
+    },
+    {
+      "city": "Miami",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 24,
+        "activities_mid": 62,
+        "activities_high": 172
+      }
+    },
+    {
+      "city": "Mumbai",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 2,
+        "activities_mid": 4,
+        "activities_high": 12
+      }
+    },
+    {
+      "city": "Paris",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 62,
+        "activities_mid": 176,
+        "activities_high": 562
+      }
+    },
+    {
+      "city": "Rome",
+      "complete": false,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": false,
+        "mid": false,
+        "high": false
+      },
+      "scaled": {
+        "activities_budget": null,
+        "activities_mid": null,
+        "activities_high": null
+      }
+    },
+    {
+      "city": "Seoul",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 18,
+        "activities_mid": 48,
+        "activities_high": 144
+      }
+    },
+    {
+      "city": "Singapore",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 26,
+        "activities_mid": 68,
+        "activities_high": 176
+      }
+    },
+    {
+      "city": "Stockholm",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 24,
+        "activities_mid": 56,
+        "activities_high": 118
+      }
+    },
+    {
+      "city": "Toronto",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 22,
+        "activities_mid": 62,
+        "activities_high": 186
+      }
+    },
+    {
+      "city": "Vancouver",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 26,
+        "activities_mid": 72,
+        "activities_high": 232
+      }
+    },
+    {
+      "city": "Vienna",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 36,
+        "activities_mid": 88,
+        "activities_high": 226
+      }
+    },
+    {
+      "city": "Auckland",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 22,
+        "activities_mid": 54,
+        "activities_high": 108
+      }
+    },
+    {
+      "city": "Lima",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 6,
+        "activities_mid": 18,
+        "activities_high": 58
+      }
+    },
+    {
+      "city": "Krakow",
+      "complete": true,
+      "protocolCompliant": true,
+      "accepted": {
+        "budget": true,
+        "mid": true,
+        "high": true
+      },
+      "scaled": {
+        "activities_budget": 14,
+        "activities_mid": 44,
+        "activities_high": 160
+      }
+    }
+  ]
+}

@@ -112,7 +112,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/077-hotevi-explicit-class-panel/` | **COMPLETE - reject direct page boundary** | Twelve one-city six-operation calls; 0/12 strict rows in every class and zero complete cities; grouped proxy remains only |
 | `experiments/078-expedia-matched-panel/` | **COMPLETE - reject pooled fitting ceiling** | Twelve new one-city calls, eight strict rows; pooled 20 2↔3 and 26 3↔4 matched cities, below 30 |
 | `experiments/079-hotevi-proxy-calibration/` | **COMPLETE - reject proxy calibration** | Eighteen complete grouped rows; 19 3-star and 15 4-star Expedia matches, below 30/10 gates |
-| `experiments/080-activity-scaling-panel/` | **IN PROGRESS** | Thirty new one-city per-person/day activity calls; deterministic two-person scaling screen |
+| `experiments/080-activity-scaling-panel/` | **COMPLETE - promote scaling to definition validation** | 30/30 compliant, 28/30 complete tier sets; two-person scaling candidate, independent ground truth still missing |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

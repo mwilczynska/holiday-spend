@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-activity-scaling-panel-v1",
+  "city": "Singapore",
+  "country": "Singapore",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found", "value": 34, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "average", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore", "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Singapore typically cost an average of $34 per person, per day based on reported traveler spending.",
+      "referencePeriod": "Page crawled 3 weeks ago; current 2026 travel-cost page", "searchQuery": "site:budgetyourtrip.com Singapore Singapore sightseeing activities entertainment entrance tickets per person per day", "reason": null
+    },
+    "activities_budget_per_person_day": {
+      "status": "found", "value": 13, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "budget", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore", "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact-city Budget Your Trip table reports Singapore Entertainment at $13 for the Budget tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Page crawled 3 weeks ago; current 2026 travel-cost page", "searchQuery": "site:budgetyourtrip.com Singapore Singapore budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_mid_per_person_day": {
+      "status": "found", "value": 34, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "mid_range", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore", "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact-city Budget Your Trip table reports Singapore Entertainment at $34 for the Mid-Range tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Page crawled 3 weeks ago; current 2026 travel-cost page", "searchQuery": "site:budgetyourtrip.com Singapore Singapore budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_high_per_person_day": {
+      "status": "found", "value": 88, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "high_end", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore", "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact-city Budget Your Trip table reports Singapore Entertainment at $88 for the Luxury tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Page crawled 3 weeks ago; current 2026 travel-cost page", "searchQuery": "site:budgetyourtrip.com Singapore Singapore budget mid-range luxury entertainment per person per day", "reason": null
+    }
+  },
+  "telemetry": {"searchesAttempted": 2, "searchOperations": 2, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

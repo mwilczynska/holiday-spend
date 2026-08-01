@@ -14,7 +14,7 @@ for (const {city} of inputs.cities) {
   const m = p.measures ?? {};
   const strict = (x, tier) => x?.status === "found" && Number.isFinite(x.value) && x.value > 0 && x.currency === "USD" &&
     x.unit === "per_person_per_day" && x.partyBasis === "one_person" && x.tier === tier && x.scope === "entertainment_or_sightseeing" &&
-    x.sourceUrl?.startsWith("http") && x.sourceTitle && x.referencePeriod && x.searchQuery &&
+    x.sourceUrl?.startsWith("http") && !/\/trip-itineraries\//i.test(x.sourceUrl) && x.sourceTitle && x.referencePeriod && x.searchQuery &&
     !/\b(?:from|starting|lowest|nearby|other city|per trip|per tour)\b/i.test(`${x.evidenceText ?? ""}`);
   const accepted = { budget: strict(m.activities_budget_per_person_day, "budget"), mid: strict(m.activities_mid_per_person_day, "mid_range"), high: strict(m.activities_high_per_person_day, "high_end") };
   const t = p.telemetry ?? {};

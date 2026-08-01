@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-proxy-calibration-telemetry-v1",
+  "city": "Athens",
+  "country": "Greece",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_079_hotevi_proxy_calibration.md",
+  "calls": 1,
+  "searchesAttempted": 2,
+  "searchOperations": 1,
+  "queries": ["site:hotevi.com/research Athens Greece HOTEVI hotel price index budget mid-range luxury"],
+  "directReads": 1,
+  "directReadUrl": "https://hotevi.com/research",
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One-city HOTEVI grouped-proxy extraction. One search returned the public research page and one direct read inspected it. Only Athens's exact row was extracted; grouped values remain source-defined proxies."
+}

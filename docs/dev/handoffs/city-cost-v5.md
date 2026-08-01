@@ -548,7 +548,7 @@ The 30-city/10-holdout gates failed, and the unfitted proxy error was unstable. 
 retain source-defined grouped values as labelled research evidence only. The next experiment must use a materially
 different anchor or hypothesis.
 
-Experiment 080 is active. Thirty new one-city contexts issue exactly two ordered BudgetYourTrip-restricted searches
-for explicit Budget/Mid-Range/Luxury entertainment rows on a one-person/day basis. The analyzer accepts only exact
-city, USD, per-person/day, non-from rows and records the deterministic two-person scaling outputs. Ten cities are
-locked holdout; no LLM arithmetic, source fallback, or product mapping is allowed.
+Experiment 080 completed with 30/30 compliant calls and 28/30 complete exact-city per-person/day tier sets. Fukuoka
+was `not_found`; Rome's multi-city itinerary rows were rejected. Deterministic two-person scaling is reproducible,
+but holdout completeness was 8/10 and no independent ground truth validates the reported-spend activity semantics.
+Promote only to definition-matched validation; do not accept final activity mapping.

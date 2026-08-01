@@ -162,7 +162,9 @@ matched strict Expedia targets, below the 30-city/10-holdout gates; no grouped c
 The 080 activity-scaling prompt is active: thirty new one-city contexts perform exactly two BudgetYourTrip searches
 for Budget/Mid-Range/Luxury entertainment rows explicitly priced per person per day. Deterministic code may multiply
 accepted inputs by two; the LLM may not calculate, and no product mapping is authorized before the source screen and
-definition review.
+definition review. The screen completed with 30/30 compliant calls and 28/30 complete tier sets; it promotes only the
+deterministic scaling candidate, not the product mapping. Fukuoka was not-found and Rome's multi-city itinerary rows
+were rejected; independent activity ground truth remains required.
 
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.

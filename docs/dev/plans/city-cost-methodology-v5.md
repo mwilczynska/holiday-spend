@@ -535,6 +535,11 @@ code doubles each accepted input for the two-traveller product; no coefficient i
 arithmetic. Ten cities are locked holdout. A pass only establishes source/scaling feasibility; reported-spend
 entertainment is not automatically equivalent to a paid-ticket or duration-specific activity estimand.
 
+The panel completed with 30/30 compliant calls and 28/30 complete exact-city tier sets, passing the registered source
+screen. Fukuoka was not-found and Rome's multi-city itinerary rows were rejected. Deterministic factor-of-two scaling
+is retained as a candidate, but holdout completeness was 8/10 and no independent ground truth exists for the reported-
+spend activity semantics. **Verdict:** promote only to definition-matched validation; do not accept product mapping.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

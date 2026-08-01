@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-proxy-calibration-telemetry-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 1,
+  "directReads": 1,
+  "queries": ["site:hotevi.com/research Vienna Austria HOTEVI hotel price index budget mid-range luxury"],
+  "pageReads": ["https://hotevi.com/research"],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city; one HOTEVI research search followed by one exact research-page read; no fallback, retry, arithmetic, FX, or cross-city evidence."
+}

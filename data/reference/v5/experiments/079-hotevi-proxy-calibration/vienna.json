@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-proxy-calibration-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "sourceCityName": "Vienna",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "budget_1_2_star": {
+      "status": "found",
+      "value": 70,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "budget_1_2_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI sample dataset row: Vienna | Austria | 398 hotels | $70 budget. The page defines budget as 1-2 star, reports monthly average prices, and labels the table average nightly rates in USD by star tier.",
+      "referencePeriod": "2026; page citation says retrieved July 30, 2026 (month not specified)",
+      "searchQuery": "site:hotevi.com/research Vienna Austria HOTEVI hotel price index budget mid-range luxury",
+      "reason": null
+    },
+    "mid_3_star": {
+      "status": "found",
+      "value": 120,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "mid_3_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI sample dataset row: Vienna | Austria | 398 hotels | $120 mid-range. The page defines mid-range as 3 star, reports monthly average prices, and labels the table average nightly rates in USD by star tier.",
+      "referencePeriod": "2026; page citation says retrieved July 30, 2026 (month not specified)",
+      "searchQuery": "site:hotevi.com/research Vienna Austria HOTEVI hotel price index budget mid-range luxury",
+      "reason": null
+    },
+    "luxury_4_5_star": {
+      "status": "found",
+      "value": 230,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "luxury_4_5_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI sample dataset row: Vienna | Austria | 398 hotels | $230 luxury. The page defines luxury as 4-5 star, reports monthly average prices, and labels the table average nightly rates in USD by star tier.",
+      "referencePeriod": "2026; page citation says retrieved July 30, 2026 (month not specified)",
+      "searchQuery": "site:hotevi.com/research Vienna Austria HOTEVI hotel price index budget mid-range luxury",
+      "reason": null
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

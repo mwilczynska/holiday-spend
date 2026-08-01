@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "city-cost-v5-activity-scaling-panel-telemetry-v1",
+  "city": "Vienna", "country": "Austria", "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent", "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2, "searchOperations": 2, "directReads": 0,
+  "queries": ["site:budgetyourtrip.com Vienna Austria budget mid-range luxury entertainment per person per day", "site:budgetyourtrip.com Vienna Austria sightseeing activities entertainment entrance tickets per person per day"], "pageReads": [],
+  "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true,
+  "notes": "One city; exactly two ordered BudgetYourTrip-restricted searches; no reads, retries, fallback, arithmetic, FX, or cross-city evidence."
+}

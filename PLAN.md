@@ -652,11 +652,11 @@ HOTEVI as labelled research evidence only and do not split, fit, or map grouped 
 The next accommodation experiment must test a materially different anchor, not repeat Expedia/HOTEVI grouped
 semantics without a changed hypothesis.
 
-Experiment 080 is active: thirty new one-city Luna contexts test BudgetYourTrip's explicit per-person/day activity
-tiers. The only proposed transformation is deterministic multiplication by two in server-side code; the model may not
-perform arithmetic. A source screen requires 28/30 complete cities and 28/30 compliant calls, with ten locked
-holdouts retained for the semantic/source audit. This route does not yet establish that reported-spend entertainment
-tiers equal the product's ticket/activity estimands.
+Experiment 080 completed with 30/30 protocol-compliant calls and 28/30 complete exact-city per-person/day tier sets,
+passing its source screen. Fukuoka was `not_found`; Rome's multi-city itinerary rows were rejected. Deterministic
+factor-of-two scaling produced candidate two-traveller values, but the locked holdout was only 8/10 complete and no
+independent ground truth establishes equivalence to ticket, half-day, or full-day activity estimands. Promote only to
+definition-matched validation; do not accept final activity mapping.
 
 ## Unrelated app backlog
 

@@ -53,6 +53,12 @@ for (const row of rows) {
   if (e["3"] && row.measures.mid_3_star) matched.threeStar.push({ city: row.city, split: holdout.has(row.city) ? "holdout" : row.experiment === "076" ? "development" : "validation", proxy: row.measures.mid_3_star.value, target: e["3"].value, targetCurrency: e["3"].currency });
   if (e["4"] && row.measures.luxury_4_5_star) matched.fourStar.push({ city: row.city, split: holdout.has(row.city) ? "holdout" : row.experiment === "076" ? "development" : "validation", proxy: row.measures.luxury_4_5_star.value, target: e["4"].value, targetCurrency: e["4"].currency });
 }
+const describe = (items) => {
+  const ape = items.map((r) => Math.abs(r.proxy - r.target) / r.target * 100).sort((a,b) => a-b);
+  const signed = items.map((r) => (r.proxy - r.target) / r.target * 100).sort((a,b) => a-b);
+  const quantile = (values, q) => values.length ? values[Math.min(values.length - 1, Math.floor(q * values.length))] : null;
+  return { n: items.length, medianAbsolutePercentageError: quantile(ape, 0.5), p90AbsolutePercentageError: quantile(ape, 0.9), medianSignedPercentageError: quantile(signed, 0.5) };
+};
 const protocol = hoteviRows.filter((r) => r.experiment === "079" && r.protocolCompliant).length;
 const result = {
   schemaVersion: "city-cost-v5-hotevi-proxy-calibration-audit-v1",
@@ -62,6 +68,8 @@ const result = {
   developmentProxyCities: hoteviRows.filter((r) => r.experiment === "076" && r.accepted).length,
   matchedCities: { threeStar: matched.threeStar.length, fourStar: matched.fourStar.length },
   matchedHoldoutCities: { threeStar: matched.threeStar.filter((r) => r.split === "holdout").length, fourStar: matched.fourStar.filter((r) => r.split === "holdout").length },
+  descriptiveProxyVsExpediaError: { threeStar: describe(matched.threeStar), fourStar: describe(matched.fourStar),
+    holdoutThreeStar: describe(matched.threeStar.filter((r) => r.split === "holdout")), holdoutFourStar: describe(matched.fourStar.filter((r) => r.split === "holdout")) },
   calibrationGate: "each relationship >=30 matched cities and >=10 locked holdout cities and >=16 compliant new calls",
   calibrationGatePassed: matched.threeStar.length >= 30 && matched.fourStar.length >= 30 &&
     matched.threeStar.filter((r) => r.split === "holdout").length >= 10 && matched.fourStar.filter((r) => r.split === "holdout").length >= 10 && protocol >= 16,

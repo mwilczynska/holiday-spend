@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-activity-scaling-panel-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found", "value": 44, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "average", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/austria/vienna", "sourceTitle": "Vienna Travel Cost - Average Price of a Vacation to Vienna: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Vienna typically cost an average of $44 per person, per day based on reported traveler spending.",
+      "referencePeriod": "Current 2026 travel-cost page", "searchQuery": "site:budgetyourtrip.com Vienna Austria sightseeing activities entertainment entrance tickets per person per day", "reason": null
+    },
+    "activities_budget_per_person_day": {
+      "status": "found", "value": 18, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "budget", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/austria/vienna/trip-cost-2761369", "sourceTitle": "How much does a trip to Vienna Cost? | Budget Your Trip",
+      "evidenceText": "The exact-city Budget Your Trip table reports Vienna Entertainment at $18 for the Budget tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Travel-cost page crawled last month; 2026 table", "searchQuery": "site:budgetyourtrip.com Vienna Austria budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_mid_per_person_day": {
+      "status": "found", "value": 44, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "mid_range", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/austria/vienna/trip-cost-2761369", "sourceTitle": "How much does a trip to Vienna Cost? | Budget Your Trip",
+      "evidenceText": "The exact-city Budget Your Trip table reports Vienna Entertainment at $44 for the Mid-Range tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Travel-cost page crawled last month; 2026 table", "searchQuery": "site:budgetyourtrip.com Vienna Austria budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_high_per_person_day": {
+      "status": "found", "value": 113, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "high_end", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/austria/vienna/trip-cost-2761369", "sourceTitle": "How much does a trip to Vienna Cost? | Budget Your Trip",
+      "evidenceText": "The exact-city Budget Your Trip table reports Vienna Entertainment at $113 for the Luxury tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Travel-cost page crawled last month; 2026 table", "searchQuery": "site:budgetyourtrip.com Vienna Austria budget mid-range luxury entertainment per person per day", "reason": null
+    }
+  },
+  "telemetry": {"searchesAttempted": 2, "searchOperations": 2, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

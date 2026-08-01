@@ -1,6 +1,6 @@
 # Experiment 080 — BudgetYourTrip per-person activity scaling panel
 
-**Status:** In progress
+**Status:** Complete - promote deterministic scaling to definition validation
 
 ## Question
 
@@ -23,3 +23,16 @@ arithmetic or fitted scaling coefficient is allowed. The ten named cities are lo
 - The 30 cities are split into 20 development, 10 locked holdout. No city-level source tuning after holdout reveal.
 - A pass authorizes only deterministic `2 * per_person_per_day` materialization and a separate product-definition review;
   it does not claim that BudgetYourTrip's reported-spend tiers are independently observed attraction tickets.
+
+## Results
+
+All 30 calls were protocol-compliant. Twenty-eight cities supplied all three strict per-person/day tiers (28/30 for
+each tier), so the pre-registered source screen passed. The two failures were fail-closed: Fukuoka returned only
+nearby/Japan-level results, and Rome's tier rows came from a multi-city itinerary URL and were rejected by the exact-city
+analyzer. The locked holdout had 8/10 complete cities, below the final 95% one-call/complete-city gate.
+
+The analyzer materialized the candidate two-traveller values by deterministic multiplication by two; no response
+performed arithmetic and no free scaling parameter was fitted. This is a collection/scaling result only. There is
+still no independent, definition-matched ground-truth panel proving that BudgetYourTrip reported-spend entertainment
+tiers equal the product's ticket, half-day, or full-day activity estimands. Do not present these values as final product
+observations until that validation and the activity-definition decision pass.

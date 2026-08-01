@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-proxy-calibration-audit-v1",
+  "newCitiesTested": 18,
+  "newCompleteProxyRows": 18,
+  "newProtocolCompliant": 18,
+  "developmentProxyCities": 12,
+  "matchedCities": {
+    "threeStar": 19,
+    "fourStar": 15
+  },
+  "matchedHoldoutCities": {
+    "threeStar": 8,
+    "fourStar": 5
+  },
+  "descriptiveProxyVsExpediaError": {
+    "threeStar": {
+      "n": 19,
+      "medianAbsolutePercentageError": 17.647058823529413,
+      "p90AbsolutePercentageError": 109.6774193548387,
+      "medianSignedPercentageError": -2.7777777777777777
+    },
+    "fourStar": {
+      "n": 15,
+      "medianAbsolutePercentageError": 35.92233009708738,
+      "p90AbsolutePercentageError": 183.0188679245283,
+      "medianSignedPercentageError": 35.92233009708738
+    },
+    "holdoutThreeStar": {
+      "n": 8,
+      "medianAbsolutePercentageError": 23.456790123456788,
+      "p90AbsolutePercentageError": 197.2972972972973,
+      "medianSignedPercentageError": 6.1946902654867255
+    },
+    "holdoutFourStar": {
+      "n": 5,
+      "medianAbsolutePercentageError": 56.4625850340136,
+      "p90AbsolutePercentageError": 431.9148936170213,
+      "medianSignedPercentageError": 56.4625850340136
+    }
+  },
+  "calibrationGate": "each relationship >=30 matched cities and >=10 locked holdout cities and >=16 compliant new calls",
+  "calibrationGatePassed": false,
+  "productMapping": "none_until_calibration_and_accuracy_fit",
+  "matched": {
+    "threeStar": [
+      {
+        "city": "Bangkok",
+        "split": "development",
+        "proxy": 65,
+        "target": 31,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Cape Town",
+        "split": "development",
+        "proxy": 75,
+        "target": 85,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Hanoi",
+        "split": "development",
+        "proxy": 65,
+        "target": 31,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Lisbon",
+        "split": "development",
+        "proxy": 120,
+        "target": 137,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "London",
+        "split": "development",
+        "proxy": 120,
+        "target": 141,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Mexico City",
+        "split": "development",
+        "proxy": 70,
+        "target": 79,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Prague",
+        "split": "development",
+        "proxy": 80,
+        "target": 104,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Sydney",
+        "split": "development",
+        "proxy": 130,
+        "target": 126,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Amsterdam",
+        "split": "holdout",
+        "proxy": 120,
+        "target": 157,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Budapest",
+        "split": "holdout",
+        "proxy": 80,
+        "target": 128,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Buenos Aires",
+        "split": "holdout",
+        "proxy": 70,
+        "target": 72,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Dubai",
+        "split": "holdout",
+        "proxy": 110,
+        "target": 37,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Fukuoka",
+        "split": "validation",
+        "proxy": 100,
+        "target": 96,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Istanbul",
+        "split": "holdout",
+        "proxy": 80,
+        "target": 80,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Krakow",
+        "split": "validation",
+        "proxy": 80,
+        "target": 103,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Miami",
+        "split": "holdout",
+        "proxy": 140,
+        "target": 119,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Seoul",
+        "split": "holdout",
+        "proxy": 100,
+        "target": 81,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Singapore",
+        "split": "validation",
+        "proxy": 65,
+        "target": 110,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Vienna",
+        "split": "holdout",
+        "proxy": 120,
+        "target": 113,
+        "targetCurrency": "USD"
+      }
+    ],
+    "fourStar": [
+      {
+        "city": "Bangkok",
+        "split": "development",
+        "proxy": 150,
+        "target": 53,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Hanoi",
+        "split": "development",
+        "proxy": 150,
+        "target": 58,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Lisbon",
+        "split": "development",
+        "proxy": 230,
+        "target": 179,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "London",
+        "split": "development",
+        "proxy": 230,
+        "target": 218,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Mexico City",
+        "split": "development",
+        "proxy": 140,
+        "target": 141,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Prague",
+        "split": "development",
+        "proxy": 160,
+        "target": 119,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Sydney",
+        "split": "development",
+        "proxy": 260,
+        "target": 158,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Amsterdam",
+        "split": "holdout",
+        "proxy": 230,
+        "target": 169,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Dubai",
+        "split": "holdout",
+        "proxy": 250,
+        "target": 47,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Istanbul",
+        "split": "holdout",
+        "proxy": 140,
+        "target": 103,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Krakow",
+        "split": "validation",
+        "proxy": 160,
+        "target": 132,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Mumbai",
+        "split": "validation",
+        "proxy": 115,
+        "target": 92,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Seoul",
+        "split": "holdout",
+        "proxy": 200,
+        "target": 124,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Singapore",
+        "split": "validation",
+        "proxy": 150,
+        "target": 175,
+        "targetCurrency": "USD"
+      },
+      {
+        "city": "Vienna",
+        "split": "holdout",
+        "proxy": 230,
+        "target": 147,
+        "targetCurrency": "USD"
+      }
+    ]
+  }
+}

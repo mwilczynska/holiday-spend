@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-activity-scaling-panel-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found", "value": 41, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "average", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/italy/rome", "sourceTitle": "Rome Travel Cost - Average Price of a Vacation to Rome: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Rome typically cost an average of $41 per person, per day based on reported traveler spending.",
+      "referencePeriod": "Travel cost page crawled last week; data updated May 2026", "searchQuery": "site:budgetyourtrip.com Rome Italy sightseeing activities entertainment entrance tickets per person per day", "reason": null
+    },
+    "activities_budget_per_person_day": {
+      "status": "found", "value": 15, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "budget", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/trip-itineraries/21-a-one-week-itinerary-of-italy-rome-and-the-amalfi-coast", "sourceTitle": "A One-Week Itinerary of Italy: Rome and the Amalfi Coast - Costs, Activities, & Transportation | Budget Your Trip",
+      "evidenceText": "The exact-city Budget Your Trip table reports Rome Entertainment at $15 for the Budget tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Travel Costs Last Updated: May 21, 2026", "searchQuery": "site:budgetyourtrip.com Rome Italy budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_mid_per_person_day": {
+      "status": "found", "value": 42, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "mid_range", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/trip-itineraries/21-a-one-week-itinerary-of-italy-rome-and-the-amalfi-coast", "sourceTitle": "A One-Week Itinerary of Italy: Rome and the Amalfi Coast - Costs, Activities, & Transportation | Budget Your Trip",
+      "evidenceText": "The exact-city Budget Your Trip table reports Rome Entertainment at $42 for the Mid-Range tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Travel Costs Last Updated: May 21, 2026", "searchQuery": "site:budgetyourtrip.com Rome Italy budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_high_per_person_day": {
+      "status": "found", "value": 126, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "high_end", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/trip-itineraries/21-a-one-week-itinerary-of-italy-rome-and-the-amalfi-coast", "sourceTitle": "A One-Week Itinerary of Italy: Rome and the Amalfi Coast - Costs, Activities, & Transportation | Budget Your Trip",
+      "evidenceText": "The exact-city Budget Your Trip table reports Rome Entertainment at $126 for the Luxury tier and identifies the category as a daily amount per person.",
+      "referencePeriod": "Travel Costs Last Updated: May 21, 2026", "searchQuery": "site:budgetyourtrip.com Rome Italy budget mid-range luxury entertainment per person per day", "reason": null
+    }
+  },
+  "telemetry": {"searchesAttempted": 2, "searchOperations": 2, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}
