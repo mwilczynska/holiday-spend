@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Bangkok-Hotels.d178236.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Bangkok | Expedia",
+      "evidenceText": "The returned Expedia result exposes a generic all-hotel Bangkok trend and star counts, but no exact-city 1-star class trend. Individual cheap properties and the generic trend cannot substitute for a one-star class average.",
+      "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+      "searchQuery": "site:expedia.com Bangkok Thailand 1-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No exact-city 1-star numeric average or trend was returned; generic all-hotel and single-property values were rejected as class-ambiguous."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Bangkok-Hotels.d178236.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Bangkok | Expedia",
+      "evidenceText": "The returned Expedia result exposes a generic all-hotel Bangkok trend and 3-star property counts; only district-level 3-star pages supplied class trends. District values cannot substitute for an exact-city 3-star class average.",
+      "referencePeriod": "Expedia result crawled last week; generic or district trend based on base rates found in the last 7 days.",
+      "searchQuery": "site:expedia.com Bangkok Thailand 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No exact-city 3-star numeric average or trend was returned; generic and district-level values were rejected as not exact-city."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

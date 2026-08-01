@@ -97,6 +97,8 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/062-expedia-three-star-gap-panel/` | **COMPLETE - reject recovery gate** | Twelve one-city calls: 4/12 strict, 0/4 prior misses recovered; no mapping |
 | `experiments/063-expedia-paired-panel-2/` | **COMPLETE - reject paired gate** | Twelve new one-city calls: 15/36 strict rows, one complete; no mapping |
 | `experiments/064-expedia-pooled-ceiling-audit/` | **COMPLETE - reject fitting ceiling** | 80 rows/36 cities; 16 complete 2-/3-/4-star, no relationship fit-eligible |
+| `experiments/065-expedia-one-star-paired-panel/` | **COMPLETE - reject one-star route** | Twelve one-city calls: 0/12 strict 1-star, 9/12 strict 3-star, no complete pair; no mapping |
+| `experiments/066-budgetyourtrip-one-star-semantics/` | **IN PROGRESS** | Twelve one-city search+page-read calls auditing one-star room and tax semantics; no mapping |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

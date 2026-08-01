@@ -346,6 +346,28 @@ zero eligible rows. No relationship reached 30 matched cities plus ten holdouts.
 **Decision:** reject fitting from the current pool and pivot the missing-class data boundary. Do not use shipping
 asserted values as ground truth.
 
+### Experiment 065 - Expedia one-star/three-star paired panel
+
+The next source-boundary test is twelve fresh one-city Luna contexts with exactly two ordered Expedia searches per
+city: explicit 1-star, then 3-star. Strict acceptance requires exact city/class, a numeric non-from nightly
+city-class average or trend for two adults in one room, named currency and reference window, and explicit tax
+treatment. Promotion requires 8/12 strict rows for each class and six complete paired cities. A pass authorizes
+only a larger source-and-basis validation panel; it never authorizes mapping or fitting. Source-default occupancy,
+generic budget labels, and unknown tax remain ineligible under the frozen dictionary.
+
+Results: the twelve-city panel produced 0/12 strict one-star rows, 9/12 strict three-star rows, and zero complete
+pairs. Generic all-hotel, district, class-ambiguous, and non-numeric results were rejected. **Verdict:** reject the
+Expedia one-star route and pivot to a materially different one-star/hostel source or explicitly amended estimand;
+retain the nine three-star rows as source evidence only.
+
+### Experiment 066 - BudgetYourTrip one-star semantic-basis audit
+
+This source-semantics test uses twelve fresh one-city Luna contexts, exactly one BudgetYourTrip search and one
+exact-city page read per city. A row is strict only when the same page explicitly provides the one-star numeric city
+statistic, per-room/night unit, two-person occupancy, named currency, reference period, and tax/fee status. The
+promotion gate is 8/12 strict rows (with six accepted cities). Source-default or unknown occupancy cannot pass and
+cannot be used as ground truth for a one-star model.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

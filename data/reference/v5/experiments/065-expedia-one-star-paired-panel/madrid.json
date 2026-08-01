@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "city": "Madrid",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Madrid-Hotels.d178281.Travel-Guide-Hotels?msockid=360281f944516ff5227696fc45a46eb3",
+      "sourceTitle": "Top 10 Hotels in Madrid (from $53) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Madrid city page lists 2-, 3-, 4-, and 5-star property counts and a generic August trend of $116, but no 1-star class trend. A separate Community of Madrid result mentions a 1-star property but provides no exact city 1-star trend. Neither is accepted.",
+      "referencePeriod": "August 2026 generic Madrid hotel trend; result crawled last week",
+      "searchQuery": "site:expedia.com Madrid Spain 1-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because no exact Madrid 1-star class trend was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 112,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Madrid from $49 | Expedia",
+      "evidenceText": "Expedia's exact Madrid 3-star trend table lists August $112. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Madrid.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Madrid Spain 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

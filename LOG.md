@@ -1503,3 +1503,18 @@ It found **80 rows across 36 unique cities**, all explicitly tax-excluded: 1-sta
 22. Hostel/private and one-star relationships had zero eligible rows. **Verdict:** no relationship meets the
 30-city plus 10-holdout gate; do not fit or map. Pivot the missing-class boundary and retain Expedia only as a
 candidate 2-/3-/4-star source. Read `data/reference/v5/experiments/064-expedia-pooled-ceiling-audit/`.
+
+## Experiment 065 - Expedia one-star/three-star paired panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly two ordered Expedia searches each
+(1-star, then 3-star; 24 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
+sources, or cross-city evidence occurred.
+
+Strict coverage was **0/12 one-star** and **9/12 three-star**, with **zero complete paired cities**. Generic
+all-hotel trends, district or nearby results, class-ambiguous snippets, and non-numeric exact-city results were
+rejected. The nine accepted three-star rows explicitly state two-adult nightly base-rate trends with taxes/fees
+excluded; no one-star row satisfied the frozen explicit class/occupancy/tax contract.
+
+**Verdict:** reject promotion of the Expedia one-star route. Retain the nine three-star rows as source evidence only;
+do not map or fit. A materially different one-star/hostel source or explicitly amended estimand requires a new
+pre-registered validation panel. Read `data/reference/v5/experiments/065-expedia-one-star-paired-panel/`.

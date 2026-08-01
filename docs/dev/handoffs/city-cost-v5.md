@@ -459,3 +459,12 @@ Experiment 064 completed the deterministic pooled Expedia audit: 80 rows across 
 cities, 20 matched 2↔3 cities, 22 matched 3↔4 cities, and zero one-star/hostel rows. No relationship reached the
 30-city plus 10-holdout gate. Do not fit or map; pivot the missing-class boundary while retaining Expedia as a
 candidate source for 2-/3-/4-star values.
+
+Experiment 065 completed twelve fresh one-city Luna contexts with exactly two ordered Expedia searches (1-star then
+3-star). Strict coverage was 0/12 one-star, 9/12 three-star, and zero complete pairs; all promotion gates failed.
+Generic all-hotel, district, class-ambiguous, and non-numeric one-star results were rejected. Do not map or fit;
+pivot to a materially different one-star/hostel source or an explicitly amended estimand.
+
+Experiment 066 is active. It audits whether BudgetYourTrip's one-star city averages explicitly define a two-person
+room and tax basis on the same exact-city page. Each city uses one search followed by one page read, with no retry,
+fallback, arithmetic, FX, or cross-city evidence. Do not treat source-default occupancy as an observed product value.

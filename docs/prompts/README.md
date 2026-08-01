@@ -97,6 +97,14 @@ and recovered 0/4 prior misses. Retain four rows as evidence; do not map or fit.
 The 063 Expedia paired-panel tranche-2 prompt is complete and rejected: twelve entirely new cities produced 15/36
 strict rows and one complete city. Retain rows for the pooled source-ceiling audit; no mapping or fitting.
 
+The 065 Expedia one-star paired-panel prompt is complete and rejected: twelve one-city Luna contexts issued exactly
+two ordered Expedia searches each and produced 0/12 strict 1-star rows, 9/12 strict 3-star rows, and no complete
+pair. It does not authorize mapping or fitting; source-default one-star averages remain ineligible.
+
+The 066 BudgetYourTrip one-star semantics prompt is active. It tests one city per delegated GPT-5.6 Luna-class
+invocation with exactly one search and one exact-city page read. The same page must explicitly define the one-star
+numeric room statistic, two-person occupancy, and tax treatment; otherwise the row remains an ineligible proxy.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

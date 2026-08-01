@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 24,
+  "searchOperations": 24,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "classCoverage": {
+    "1": 0,
+    "3": 9
+  },
+  "completeCities": [],
+  "promotionGate": "1-star>=8, 3-star>=8, complete cities>=6",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Bangkok",
+      "measures": {
+        "1": false,
+        "3": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Berlin",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Copenhagen",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Istanbul",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Lisbon",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Madrid",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Nairobi",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Paris",
+      "measures": {
+        "1": false,
+        "3": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Prague",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Rome",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    },
+    {
+      "city": "San Francisco",
+      "measures": {
+        "1": false,
+        "3": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Vienna",
+      "measures": {
+        "1": false,
+        "3": true
+      },
+      "complete": false
+    }
+  ],
+  "byClass": {
+    "1": [],
+    "3": [
+      {
+        "city": "Berlin",
+        "value": 102,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Berlin-Hotels.s30-0-d179892.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Copenhagen",
+        "value": 218,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Copenhagen-Hotels.s30-0-d178252.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Istanbul",
+        "value": 80,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Lisbon",
+        "value": 137,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Madrid",
+        "value": 112,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Nairobi",
+        "value": 49,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Nairobi-Hotels.s30-0-d178290.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Prague",
+        "value": 104,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Prague-Hotels.s30-0-d180014.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Rome",
+        "value": 129,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Rome-Hotels.s30-0-d179899.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Vienna",
+        "value": 113,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/es/3Estrellas-Viena-Hoteles.s30-0-d178316.Guia-Viajes-Filter-Hoteles"
+      }
+    ]
+  },
+  "productMapping": "none_source_feasibility_only"
+}

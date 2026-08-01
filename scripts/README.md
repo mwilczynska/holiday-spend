@@ -81,6 +81,8 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-expedia-three-star-gap.mjs` | `analyze-v5-expedia-three-star-gap.mjs` | Experiment 062: audits Expedia 3-star gap recovery without mapping |
 | `node scripts/analyze-v5-expedia-paired-panel-2.mjs` | `analyze-v5-expedia-paired-panel-2.mjs` | Experiment 063: audits second paired Expedia 2-/3-/4-star tranche |
 | `node scripts/analyze-v5-expedia-pooled-ceiling.mjs` | `analyze-v5-expedia-pooled-ceiling.mjs` | Experiment 064: audits pooled Expedia coverage and model eligibility without fitting |
+| `node scripts/analyze-v5-expedia-one-star-paired-panel.mjs` | `analyze-v5-expedia-one-star-paired-panel.mjs` | Experiment 065: audits explicit Expedia 1-/3-star paired coverage without mapping |
+| `node scripts/analyze-v5-budgetyourtrip-one-star-semantics.mjs` | `analyze-v5-budgetyourtrip-one-star-semantics.mjs` | Experiment 066: audits BudgetYourTrip one-star room/tax semantics without mapping |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

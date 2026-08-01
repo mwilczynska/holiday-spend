@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Rome-Hotels.d179899.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Rome () 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Rome city page lists 2-, 3-, 4-, and 5-star property counts and a generic August trend of $147, but no 1-star class trend. The generic trend cannot be used for the requested 1-star row.",
+      "referencePeriod": "August 2026 generic Rome hotel trend; result crawled last week",
+      "searchQuery": "site:expedia.com Rome Italy 1-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because no exact 1-star class trend was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 129,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Rome-Hotels.s30-0-d179899.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Rome from $80 | Expedia",
+      "evidenceText": "Expedia's exact Rome 3-star trend table lists August $129. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Rome.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Rome Italy 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

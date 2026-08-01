@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": 119,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/Vienna-Hotels.d178316.Travel-Guide-Hotels?c=a7aa34a5-6fb9-4f24-b391-78ddbf0e8803",
+      "sourceTitle": "Top 10 Hotels in Vienna (from $52) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Vienna Expedia trend shows August $119 and states that it is based on nightly base rates for 2 adults found in the last 7 days, excluding taxes and fees. It is an all-hotel trend and does not identify the requested 1-star class.",
+      "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Vienna Austria 1-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Generic all-hotel trend was rejected as class-ambiguous; no exact-city 1-star trend was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 113,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/es/3Estrellas-Viena-Hoteles.s30-0-d178316.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "Hoteles de 3 estrellas en Viena, Austria | Expedia",
+      "evidenceText": "The returned Expedia 3-star Vienna trend table (Spanish locale) shows August $113. It states that the trend excludes taxes and fees and is based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 3-star properties in Vienna.",
+      "referencePeriod": "Expedia result crawled 2 months ago; page states the trend uses base rates found in the last 7 days; August monthly value. The live search result also reports the page as published 5 days ago.",
+      "searchQuery": "site:expedia.com Vienna Austria 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as exact-city/class source-feasibility evidence with a known excluded-tax base-rate basis; language locale is Spanish but the class, city, occupancy, currency, and window are explicit."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

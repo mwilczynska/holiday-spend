@@ -557,6 +557,15 @@ unique cities, all tax-excluded; 16 cities were complete for 2-/3-/4-star, with 
 3↔4 cities. No relationship reached the 30-city plus 10-holdout gate, and one-star/hostel had zero eligible rows.
 Do not fit or map. Pivot the missing-class boundary while retaining Expedia as a candidate 2-/3-/4-star source.
 
+Experiment 065 completed twelve fresh one-city Luna contexts with exactly two ordered Expedia searches per city
+(1-star then 3-star). Strict coverage was 0/12 one-star, 9/12 three-star, and zero complete pairs; all promotion
+gates failed. Generic all-hotel, district, class-ambiguous, and non-numeric one-star results were rejected. Pivot
+to a materially different one-star/hostel source or an explicitly amended estimand; do not map or fit.
+
+Experiment 066 is active: twelve one-city Luna contexts will perform one BudgetYourTrip search and one exact-city
+page read to audit whether the broad one-star statistic explicitly defines two-person room occupancy and tax status.
+Promotion requires at least 8/12 strict same-page semantic rows; source-default/unknown occupancy remains ineligible.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

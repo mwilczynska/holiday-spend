@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Paris-Hotels.d179898.Travel-Guide-Hotels?msockid=3760a50cc563607934ccb39fc4db6122",
+      "sourceTitle": "Top 10 Hotels in Paris (from $48) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Paris city page lists 2-, 3-, 4-, and 5-star property counts and a generic August trend of $139, but no 1-star class trend. The generic trend cannot be used for the requested 1-star row.",
+      "referencePeriod": "August 2026 generic Paris hotel trend; result crawled last week",
+      "searchQuery": "site:expedia.com Paris France 1-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because no exact 1-star class trend was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Paris-Hotels.s30-0-d179898.Travel-Guide-Filter-Hotels?adobe_mc=MCMID%3D81490540568399952874937841860946487674%7CMCORGID%3DC00802BE5330A8350A490D4C%2540AdobeOrg%7CTS%3D1737072000",
+      "sourceTitle": "The Best 3 Star Hotels in Paris from $78 | Expedia",
+      "evidenceText": "The exact Paris 3-star result explicitly states that Expedia price trends exclude taxes and fees and are based on nightly base rates for 2 adults found in the last 7 days, but the returned snippet does not include a numeric class trend table. No value is accepted without the numeric trend.",
+      "referencePeriod": "Expedia 3-star Paris class page crawled last week; numeric trend not present in returned evidence",
+      "searchQuery": "site:expedia.com Paris France 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because the exact class result did not return a numeric non-from average/trend in the same evidence."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

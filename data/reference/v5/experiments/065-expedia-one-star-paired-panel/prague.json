@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": 111,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/Prague-Hotels.d180014.Travel-Guide-Hotels?msockid=3eca295d524a6f251ab53f2a53166e69",
+      "sourceTitle": "Top 10 Hotels in Prague () 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Prague Expedia trend shows August $111 and states that it is based on nightly base rates for 2 adults found in the last 7 days, excluding taxes and fees. It is an all-hotel trend and does not identify the requested 1-star class.",
+      "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Prague Czech Republic 1-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Generic all-hotel trend was rejected as class-ambiguous; no exact-city 1-star trend was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 104,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Prague-Hotels.s30-0-d180014.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Prague from $34 | Expedia",
+      "evidenceText": "Expedia's 3-star Prague trend table shows August $104. It explicitly says the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 3 stars in Prague.",
+      "referencePeriod": "Expedia result crawled last week; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Prague Czech Republic 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as exact-city/class source-feasibility evidence with a known excluded-tax base-rate basis; it is not an inclusive product observation."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-one-star-paired-panel-v1",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/San-Francisco-Hotels.d178305.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in San Francisco, CA | Expedia",
+      "evidenceText": "The returned Expedia result exposes a generic all-hotel San Francisco trend and star counts beginning at 2 stars, but no exact-city 1-star class trend. Generic budget and individual property values cannot substitute for a one-star class average.",
+      "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+      "searchQuery": "site:expedia.com San Francisco United States 1-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No exact-city 1-star numeric average or trend was returned; generic all-hotel and single-property values were rejected as class-ambiguous."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/San-Francisco-Hotels.d178305.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in San Francisco, CA | Expedia",
+      "evidenceText": "The returned Expedia results expose a generic all-hotel San Francisco trend and individual 3-star properties; only a Downtown San Francisco district page supplied a 3-star trend. District and generic values cannot substitute for an exact-city 3-star class average.",
+      "referencePeriod": "Expedia result crawled last week; generic or district trend based on base rates found in the last 7 days.",
+      "searchQuery": "site:expedia.com San Francisco United States 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No exact-city 3-star numeric average or trend was returned; district, generic, and single-property values were rejected as not exact-city."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
