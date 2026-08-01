@@ -1,6 +1,6 @@
 # Experiment 085 — Expedia exact-heading query contract
 
-**Status:** In progress
+**Status:** Complete — reject pooled fitting ceiling
 
 ## Question
 
@@ -37,3 +37,9 @@ acceptance rules are unchanged.
 These Expedia trends are not independent ground truth for the final product. They become eligible for a
 relationship fit only if the pooled complete-case rows satisfy the frozen city-level development/validation/
 holdout contract. No fitting occurs in this experiment.
+
+## Result
+
+The twelve calls were protocol-compliant but produced zero strict rows. The exact-heading query did not recover
+the missing Expedia classes: results were commonly generic/district/wrong-city or displayed a bare `$` without a
+named currency. The pooled audit therefore remains below both 30-city matched gates; see `verdict.md`.

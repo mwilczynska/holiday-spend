@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-query-contract-v1",
+  "city": "Cairo",
+  "country": "Egypt",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/2Star-Cairo-Hotels.s20-0-d178243.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Cairo from $6 | Expedia",
+      "evidenceText": "The returned Expedia result establishes the exact Cairo 2-star filter and the heading, Price trends for properties with 2 Stars in Cairo. It lists monthly trend values and states the base-rate trend excludes taxes and fees for a nightly stay for 2 adults averaged for commonly viewed 2-star properties in Cairo, but prices use a bare dollar sign without a named currency.",
+      "referencePeriod": "Monthly 2-star trend; base rates for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com \"Cairo\" \"Price trends for properties with 2 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "not_found: unnamed bare-dollar currency fails the named-currency requirement despite exact city/class and explicit two-adult/tax wording."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Cairo-Hotels.d178243.Travel-Guide-Hotels?equalTargetTab=tab-0",
+      "sourceTitle": "Top 10 Hotels in Cairo (from $6) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned Expedia result shows 3-star inventory and a generic heading, Price trends for hotels in Cairo. It reports monthly bare-dollar values and says the base-rate trend excludes taxes and fees for a nightly stay for 2 adults averaged for commonly viewed hotels in Cairo, but it does not establish a 3-star-specific trend or a named currency.",
+      "referencePeriod": "Monthly generic city trend; base rates for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com \"Cairo\" \"Price trends for properties with 3 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "not_found: generic all-hotel trend, no exact Cairo 3-star trend, and unnamed bare-dollar currency."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/4Star-Cairo-Hotels.s40-0-d178243.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Cairo from $29 | Expedia",
+      "evidenceText": "The returned Expedia result establishes the exact Cairo 4-star filter and the heading, Price trends for properties with 4 Stars in Cairo. It lists monthly trend values and states the base-rate trend excludes taxes and fees for a nightly stay for 2 adults averaged for commonly viewed 4-star properties in Cairo, but prices use a bare dollar sign without a named currency.",
+      "referencePeriod": "Monthly 4-star trend; base rates for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com \"Cairo\" \"Price trends for properties with 4 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "not_found: unnamed bare-dollar currency fails the named-currency requirement despite exact city/class and explicit two-adult/tax wording."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_085_expedia_query_contract.md",
+    "calls": 1,
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "queries": [
+      "site:expedia.com \"Cairo\" \"Price trends for properties with 2 Stars\" \"2 adults\" \"taxes and fees\"",
+      "site:expedia.com \"Cairo\" \"Price trends for properties with 3 Stars\" \"2 adults\" \"taxes and fees\"",
+      "site:expedia.com \"Cairo\" \"Price trends for properties with 4 Stars\" \"2 adults\" \"taxes and fees\""
+    ],
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "aggregationOperations": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true,
+    "notes": "Single-city search-only extraction. Exactly three ordered Expedia-restricted searches; no page reads, retries, fallback, arithmetic, FX, aggregation, or cross-city evidence."
+  }
+}

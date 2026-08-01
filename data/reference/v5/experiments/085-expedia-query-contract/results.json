@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-query-contract-audit-v1",
+  "newCitiesTested": 12,
+  "newRows": 0,
+  "newCities": [
+    {
+      "city": "Cape Town",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Cairo",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Mumbai",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Nairobi",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Rio de Janeiro",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Sofia",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Santiago",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Kuala Lumpur",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Tokyo",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Athens",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Osaka",
+      "strictRows": 0,
+      "classes": []
+    }
+  ],
+  "protocolCompliant": 12,
+  "pooledRows": 89,
+  "pooledCities": 41,
+  "pooledMatchedCities": {
+    "hotel_2_from_3": 20,
+    "hotel_4_from_3": 26
+  },
+  "pooledGate": "hotel_2_from_3>=30 and hotel_4_from_3>=30 and protocolCompliant>=10",
+  "pooledGatePassed": false,
+  "productMapping": "none_pooled_ceiling_only",
+  "protocol": [
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Cairo",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Mumbai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Nairobi",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Rio de Janeiro",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Sofia",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Santiago",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Kuala Lumpur",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Tokyo",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Athens",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Osaka",
+      "protocolCompliant": true
+    }
+  ],
+  "pairs": {
+    "hotel_2_from_3": [
+      "Amsterdam",
+      "Auckland",
+      "Bangkok",
+      "Budapest",
+      "Buenos Aires",
+      "Chicago",
+      "Hanoi",
+      "Istanbul",
+      "Lima",
+      "Lisbon",
+      "London",
+      "Mexico City",
+      "Miami",
+      "New York",
+      "Prague",
+      "San Francisco",
+      "Stockholm",
+      "Toronto",
+      "Vancouver",
+      "Vienna"
+    ],
+    "hotel_4_from_3": [
+      "Addis Ababa",
+      "Amsterdam",
+      "Bangkok",
+      "Belgrade",
+      "Brisbane",
+      "Chicago",
+      "Dubai",
+      "Hanoi",
+      "Istanbul",
+      "Krakow",
+      "Lima",
+      "Lisbon",
+      "London",
+      "Mexico City",
+      "New York",
+      "Perth",
+      "Prague",
+      "San Francisco",
+      "Seoul",
+      "Singapore",
+      "Stockholm",
+      "Sydney",
+      "Toronto",
+      "Valencia",
+      "Vancouver",
+      "Vienna"
+    ]
+  }
+}

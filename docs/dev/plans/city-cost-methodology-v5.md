@@ -581,12 +581,13 @@ requires independent definition-matched ground truth.
 
 ### Experiment 085 - Expedia exact-heading query contract
 
-This active experiment changes the Expedia retrieval hypothesis rather than relaxing the estimand. Twelve one-city
-Luna contexts use exactly three search-only queries anchored to Expedia's indexed `Price trends for properties with
-N Stars` heading, with explicit two-adult and tax wording. Exact-city, exact-class, named-currency, non-`from`,
-reference-window, and tax-status requirements remain unchanged. The deterministic analyzer pools new rows with
-028/029/059-063/075/078 and authorizes no fitting or product mapping. Promotion requires both 30-city matched
-relationships and at least 10 compliant new calls; otherwise the source ceiling is rejected.
+Twelve independent one-city Luna contexts used exactly three search-only queries anchored to Expedia's indexed
+`Price trends for properties with N Stars` heading, with explicit two-adult and tax wording. All 12 calls were
+protocol-compliant but produced zero strict rows: exact pages commonly exposed bare `$` currency, generic/district
+pages, or wrong-city/class results. The pooled audit remains 20 matched 2-star/3-star cities and 26 matched
+4-star/3-star cities, below both 30-city gates. **Verdict:** reject the changed query contract and pooled fitting;
+retain negative source/access records only and do not map or fit. Read
+`data/reference/v5/experiments/085-expedia-query-contract/`.
 
 ## Restart rule
 

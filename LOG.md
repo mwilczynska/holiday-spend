@@ -1769,3 +1769,10 @@ The deterministic analyzer will pool new rows with 028/029/059-063/075/078 and w
 requires at least 10 compliant calls and at least 30 matched cities for both 2-star←3-star and 4-star←3-star;
 otherwise the changed query ceiling is rejected. Read
 `data/reference/v5/experiments/085-expedia-query-contract/`.
+
+Experiment 085 completed with 12/12 protocol-compliant calls and zero strict new rows. Exact class pages often
+exposed a bare `$` without a named currency; generic, district, wrong-city, and class-ambiguous results were also
+rejected. The pooled audit remains 89 rows across 41 cities, with 20 matched 2-star/3-star cities and 26 matched
+4-star/3-star cities, below both frozen 30-city gates. **Verdict:** reject the changed query contract and pooled
+fitting; retain negative source/access evidence only and pivot to a materially different anchor or independently
+validated estimand. Read `data/reference/v5/experiments/085-expedia-query-contract/verdict.md`.

@@ -575,10 +575,10 @@ absent. Dubai was a guide-page misroute; London and Prague each missed one label
 `source_defined_proxy` only; no substitution, product mapping, or fitting. Next action: definition-matched evidence or
 a pre-registered proxy calibration with independent ground truth.
 
-Experiment 085 is the active restart package. It tests a materially changed Expedia query contract: one city per
-Luna context, exactly three search-only queries using the indexed heading `Price trends for properties with N Stars`
-plus two-adult and tax terms, and no reads, retries, fallback, arithmetic, FX, or cross-city evidence. The strict
-2-/3-/4-star row contract and pooled 30-city/10-holdout gates are unchanged. Files are in
-`data/reference/v5/experiments/085-expedia-query-contract/`; run
-`node scripts/analyze-v5-expedia-query-contract.mjs` after all twelve city JSON files arrive. No mapping or fitting
-is authorized before the audit verdict.
+Experiment 085 completed with 12/12 protocol-compliant one-city calls and zero strict new rows. The exact-heading
+Expedia query did not recover the missing classes: bare `$` currency, generic/district pages, and wrong-city/class
+results were rejected. The pooled audit remains at 20 matched 2-star/3-star cities and 26 matched 4-star/3-star
+cities, below both 30-city gates. **Verdict:** reject the changed query contract and pooled fitting; retain negative
+source/access records only. The next restart action is a materially different anchor or an explicitly amended,
+independently validated estimand. Read `data/reference/v5/experiments/085-expedia-query-contract/` and its
+`verdict.md`.
