@@ -65,6 +65,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-official-activity-pages.mjs` | `analyze-v5-official-activity-pages.mjs` | Experiment 046: audits official activity-page rows without scaling or product mapping |
 | `node scripts/analyze-v5-accommodation-property-panel.mjs` | `analyze-v5-accommodation-property-panel.mjs` | Experiment 047: audits explicit two-adult private-hostel and one-star property quotes without aggregation |
 | `node scripts/analyze-v5-private-hostel-broad-panel.mjs` | `analyze-v5-private-hostel-broad-panel.mjs` | Experiment 048: audits a twelve-city explicit two-adult private-hostel panel without aggregation |
+| `node scripts/analyze-v5-one-star-broad-panel.mjs` | `analyze-v5-one-star-broad-panel.mjs` | Experiment 049: audits a twelve-city explicit two-adult one-star property panel without aggregation |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

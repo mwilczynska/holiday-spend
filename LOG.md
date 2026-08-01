@@ -1300,3 +1300,16 @@ and `from` prices.
 **Verdict:** do not promote the private-hostel route to aggregation or product mapping. Preserve the four accepted
 property-level ground-truth candidates and the failure reasons. Read
 `data/reference/v5/experiments/048-private-hostel-broad-panel/`.
+
+## Experiment 049 — broad one-star property panel (1 August 2026)
+
+Twelve independent single-city Luna-class contexts issued exactly three ordered searches each (Google Hotels,
+Expedia, Hotels.com), 36 searches total. No page reads, retries, arithmetic, FX conversion, averaging, or
+cross-city evidence occurred.
+
+Strict explicit-one-star, two-adult, non-`from`, nightly, tax-resolved quotes passed in **1/12** cities (Amsterdam).
+The pre-registered 6/12 promotion gate failed. Other rows failed on absent occupancy, wrong star class, from/lowest
+prices, missing tax treatment, or no numeric nightly quote.
+
+**Verdict:** reject the broad one-star route. Preserve Amsterdam as a ground-truth candidate only; do not map or
+fit `accom_1_star`. Read `data/reference/v5/experiments/049-one-star-broad-panel/`.

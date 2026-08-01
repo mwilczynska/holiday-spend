@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "HOTEL EMBASSY",
+    "value": null,
+    "currency": "KES",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgI9Mviv8Dyg9WzARoLL2cvMXRnZHdkNmQQAQ",
+    "sourceTitle": "HOTEL EMBASSY - Nairobi, Kenya - Google hotels",
+    "evidenceText": "Google returned HOTEL EMBASSY in Nairobi with Ksh 3,515 nightly and Ksh 4,147 total for 1 night with taxes and fees, but explicitly labels it 2-star and does not show the required explicit two-adult/one-room occupancy. Expedia returned start-from prices without one-star class; Hotels.com returned 2-star listings.",
+    "taxStatus": "excluded",
+    "referencePeriod": "2026-06-30 to 2026-07-01; result crawled last month",
+    "searchQuery": "site:google.com/travel/hotels Nairobi Kenya 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: the exact-city Google candidate is explicitly 2-star, not 1-star, and occupancy is not explicit. No same-evidence one-star property quote with the required occupancy and tax basis was exposed."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

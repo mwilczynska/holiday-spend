@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-telemetry-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels Amsterdam Netherlands 1-star hotel 2 adults nightly price taxes",
+    "site:expedia.com Amsterdam Netherlands 1-star hotel 2 adults nightly price taxes",
+    "site:hotels.com Amsterdam Netherlands 1-star hotel 2 adults nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundQuotes": 1,
+  "notFoundQuotes": 0,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only one-star property panel with exactly three ordered searches. Amsterdam produced one qualifying Google Hotels quote for Hotel Not Hotel. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

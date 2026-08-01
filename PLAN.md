@@ -363,6 +363,10 @@ Experiment 048 broadened the private-hostel property panel to 12 new cities. Onl
 below the 6/12 promotion gate. The route remains a ground-truth candidate, not a production anchor; resolve
 members-only, tax, one-night, and class failures before defining aggregation.
 
+Experiment 049 broadened the one-star property search to 12 cities and three public source families. Only 1/12
+strict quotes passed (Amsterdam), far below the 6/12 gate. The direct one-star route remains rejected; no class
+substitution or correction fit is allowed.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not

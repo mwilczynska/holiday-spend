@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-telemetry-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels Vancouver Canada 1-star hotel 2 adults nightly price taxes",
+    "site:expedia.com Vancouver Canada 1-star hotel 2 adults nightly price taxes",
+    "site:hotels.com Vancouver Canada 1-star hotel 2 adults nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only one-star panel with exactly three ordered searches. Vancouver Google returned a 3-star candidate with explicit occupancy/taxes; Expedia and Hotels.com had wrong classes or start-from prices. No qualifying one-star quote was accepted. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

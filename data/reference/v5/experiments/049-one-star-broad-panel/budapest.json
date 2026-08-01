@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/landingpage/budapest-hotels",
+    "sourceTitle": "Find Cheap Hotels in Budapest hotels & Book Your Room - Google Hotels",
+    "evidenceText": "The Google Hotels result showed named Budapest properties in 2-, 3-, 4-, and 5-star classes, but no explicit 1-star property with a two-adult, one-room numeric nightly quote and tax treatment.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Google result crawled date not specified",
+    "searchQuery": "site:google.com/travel/hotels Budapest Hungary 1-star hotel 2 adults nightly price taxes",
+    "reason": "No strict one-star property quote was returned. Two- to five-star results and generic listings cannot be substituted for an explicit 1-star, two-adult, one-room observation."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

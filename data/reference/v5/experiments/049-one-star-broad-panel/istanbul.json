@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.expedia.com/Istanbul-Hotels-Star-Hotel-Istanbul.h2529099.Hotel-Information?equalTargetTab=tab-3",
+    "sourceTitle": "Star Hotel Istanbul - Special Class - Expedia",
+    "evidenceText": "Expedia reports a 1-night stay for 2 adults at Star Hotel Istanbul starting from $45, including taxes and fees.",
+    "taxStatus": "included",
+    "referencePeriod": "Expedia result crawled last week; stay date shown as July 25, 2026",
+    "searchQuery": "site:expedia.com Istanbul Turkey 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: the numeric quote is explicitly start-from/lowest and the property is presented as Special Class rather than an explicit 1-star class. No result met all strict requirements."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Sydney Hotel QVB",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChoI_dvpsOv92NidARoNL2cvMTFma3M2Ynk1bhAB/prices",
+    "sourceTitle": "Sydney Hotel QVB - Google hotels",
+    "evidenceText": "Google returned Sydney Hotel QVB in Sydney with a $72 nightly base and $80 total for 1 night with taxes and fees, and the result snippet labels 1 star. However, the same evidence does not expose explicit two-adult/two-guest one-room occupancy. Other Google, Expedia, and Hotels.com rows were wrong star classes or lowest/from prices.",
+    "taxStatus": "excluded",
+    "referencePeriod": "2026-07-19 to 2026-07-20; result crawled 3 weeks before 2026-08-01",
+    "searchQuery": "site:google.com/travel/hotels Sydney Australia 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: although the exact-city candidate is labelled 1 star with a numeric tax-inclusive total, explicit two-adult/one-room occupancy is absent from the same evidence. Expedia results used start-from prices and Hotels.com returned other star classes."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

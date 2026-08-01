@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Hotel Pedraza",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/CgoIs_r_-K314qI4EAE",
+    "sourceTitle": "Hotel Pedraza - Google hotels",
+    "evidenceText": "Google returned Hotel Pedraza in Buenos Aires and explicitly labels it 1-star, with Booking.com total-per-night $80 and nightly price with taxes and fees. The result does not expose explicit two-adult/two-guest one-room occupancy. Expedia rows had explicit two adults but were start-from prices and did not identify one-star class; Hotels.com rows were wrong or unspecified classes.",
+    "taxStatus": "included",
+    "referencePeriod": "Result crawled 3 weeks before 2026-08-01; Booking quote shown without a one-night date",
+    "searchQuery": "site:google.com/travel/hotels Buenos Aires Argentina 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: the exact-city one-star candidate lacks explicit two-adult/one-room occupancy. Expedia's explicit-occupancy rows were start-from prices and had no one-star class, so no strict quote was accepted."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

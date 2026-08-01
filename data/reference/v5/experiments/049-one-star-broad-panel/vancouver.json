@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Samesun Vancouver",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgIn9SqqMrnxs7BARoLL2cvMXRmMDI0em4QAQ/prices",
+    "sourceTitle": "Samesun Vancouver - Google hotels",
+    "evidenceText": "Google returned Samesun Vancouver in exact Vancouver with explicit 2 adults and $135 nightly/$160 total with taxes and fees, but explicitly labels the property 3-star (not 1-star). Other Google rows were 2–4 stars; Expedia results were start-from prices without one-star class; Hotels.com returned 2-star pages.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Result crawled 3 weeks before 2026-08-01; one-night dates shown",
+    "searchQuery": "site:google.com/travel/hotels Vancouver Canada 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: the strongest exact-city candidate has explicit occupancy and tax treatment but is explicitly 3-star. No same-evidence one-star property quote was returned by Google, Expedia, or Hotels.com."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

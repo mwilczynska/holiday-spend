@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Hotel Prague Star",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgIw-i9jd_587w3GgwvZy8xcHR4cWI4OTIQAQ?g2lb=2502548%2C4258168%2C4306835%2C4308227%2C4317915%2C4328159%2C4371334%2C4401769%2C4419364%2C4495816%2C4496891%2C4270859%2C4284970",
+    "sourceTitle": "Hotel Prague Star - Google hotels",
+    "evidenceText": "Google Hotels result identifies Hotel Prague Star in Prague and shows 1 star, but no numeric nightly price or explicit two-adult/one-room occupancy in the evidence.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Result crawled 3 weeks before 2026-08-01; stay dates and tax treatment not stated",
+    "searchQuery": "site:google.com/travel/hotels Prague Czech Republic 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: although the exact-city property is identified as 1 star, the same evidence has no numeric non-from nightly price, explicit two-adult/one-room occupancy, or tax/fee treatment. Expedia exposed a 4-star property with a start-from price and was not substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

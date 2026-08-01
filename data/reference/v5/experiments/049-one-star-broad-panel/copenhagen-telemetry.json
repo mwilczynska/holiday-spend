@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-telemetry-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels Copenhagen Denmark 1-star hotel 2 adults nightly price taxes",
+    "site:expedia.com Copenhagen Denmark 1-star hotel 2 adults nightly price taxes",
+    "site:hotels.com Copenhagen Denmark 1-star hotel 2 adults nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundQuotes": 0,
+  "notFoundQuotes": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only one-star property panel with exactly three ordered searches. Copenhagen's exact-city 1 Hotel result had price and occupancy but no explicit one-star class; Copenhagen GO Hotel was explicitly 2 star. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

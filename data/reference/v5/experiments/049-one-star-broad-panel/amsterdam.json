@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "propertyName": "Hotel Not Hotel",
+    "value": 51,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgI3PLi4-CVhJxAGgwvZy8xcHY1eG1nX3kQAQ",
+    "sourceTitle": "Hotel Not Hotel - Google hotels",
+    "evidenceText": "Google Hotels result identifies Hotel Not Hotel in Amsterdam and shows 1 star, 2 adults, $51 nightly, $70 total for 1 night with taxes and fees.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels dates shown as 1 night; result crawled 3 weeks before 2026-08-01",
+    "searchQuery": "site:google.com/travel/hotels Amsterdam Netherlands 1-star hotel 2 adults nightly price taxes",
+    "reason": "Accepted: same exact-city Google Hotels evidence identifies the property as 1 star, shows explicit two-adult occupancy in the availability controls, gives a non-from nightly price, and states taxes and fees are included."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

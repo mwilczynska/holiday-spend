@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Dublin One Hotel",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/CgsIq8Di5-25h7bhARAB",
+    "sourceTitle": "Dublin One Hotel - Google hotels",
+    "evidenceText": "Google Hotels result identifies Dublin One Hotel, shows 4-star class, $99 nightly/$113 total with taxes and fees for 1 night; Expedia also describes a 1-night stay for 2 adults with taxes and fees but a start-from price.",
+    "taxStatus": "included",
+    "referencePeriod": "Google result crawled 3 weeks before 2026-08-01; Expedia result dated Jul 21, 2026",
+    "searchQuery": "site:google.com/travel/hotels Dublin Ireland 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: the exact-city named property has explicit occupancy, nightly price, and taxes/fees but is explicitly 4 star, not 1 star. Expedia's candidate is also a start-from price and cannot be substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

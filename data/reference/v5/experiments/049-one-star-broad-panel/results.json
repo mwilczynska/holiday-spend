@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-audit-v1",
+  "citiesTested": 12,
+  "acceptedCities": 1,
+  "promotionGate": "6 of 12 strict quotes",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Amsterdam",
+      "accepted": true
+    },
+    {
+      "city": "Budapest",
+      "accepted": false
+    },
+    {
+      "city": "Buenos Aires",
+      "accepted": false
+    },
+    {
+      "city": "Copenhagen",
+      "accepted": false
+    },
+    {
+      "city": "Dublin",
+      "accepted": false
+    },
+    {
+      "city": "Istanbul",
+      "accepted": false
+    },
+    {
+      "city": "Nairobi",
+      "accepted": false
+    },
+    {
+      "city": "Prague",
+      "accepted": false
+    },
+    {
+      "city": "Seoul",
+      "accepted": false
+    },
+    {
+      "city": "Sydney",
+      "accepted": false
+    },
+    {
+      "city": "Vancouver",
+      "accepted": false
+    },
+    {
+      "city": "Vienna",
+      "accepted": false
+    }
+  ],
+  "accepted": [
+    {
+      "city": "Amsterdam",
+      "value": 51,
+      "currency": "USD",
+      "propertyName": "Hotel Not Hotel",
+      "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgI3PLi4-CVhJxAGgwvZy8xcHY1eG1nX3kQAQ"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Budapest",
+      "status": "not_found",
+      "reason": "No strict one-star property quote was returned. Two- to five-star results and generic listings cannot be substituted for an explicit 1-star, two-adult, one-room observation."
+    },
+    {
+      "city": "Buenos Aires",
+      "status": "not_found",
+      "reason": "Rejected: the exact-city one-star candidate lacks explicit two-adult/one-room occupancy. Expedia's explicit-occupancy rows were start-from prices and had no one-star class, so no strict quote was accepted."
+    },
+    {
+      "city": "Copenhagen",
+      "status": "not_found",
+      "reason": "Rejected: the exact-city named property has explicit two-adult occupancy, a non-from nightly price, and taxes/fees, but no explicit 1-star classification. The name '1 Hotel' cannot be used to infer a one-star class."
+    },
+    {
+      "city": "Dublin",
+      "status": "not_found",
+      "reason": "Rejected: the exact-city named property has explicit occupancy, nightly price, and taxes/fees but is explicitly 4 star, not 1 star. Expedia's candidate is also a start-from price and cannot be substituted."
+    },
+    {
+      "city": "Istanbul",
+      "status": "not_found",
+      "reason": "Rejected: the numeric quote is explicitly start-from/lowest and the property is presented as Special Class rather than an explicit 1-star class. No result met all strict requirements."
+    },
+    {
+      "city": "Nairobi",
+      "status": "not_found",
+      "reason": "Rejected: the exact-city Google candidate is explicitly 2-star, not 1-star, and occupancy is not explicit. No same-evidence one-star property quote with the required occupancy and tax basis was exposed."
+    },
+    {
+      "city": "Prague",
+      "status": "not_found",
+      "reason": "Rejected: although the exact-city property is identified as 1 star, the same evidence has no numeric non-from nightly price, explicit two-adult/one-room occupancy, or tax/fee treatment. Expedia exposed a 4-star property with a start-from price and was not substituted."
+    },
+    {
+      "city": "Seoul",
+      "status": "not_found",
+      "reason": "Rejected wrong-star and start-from evidence. No result supplied an exact Seoul 1-star property with explicit two-adult/one-room occupancy, numeric non-from nightly price, and compatible tax treatment."
+    },
+    {
+      "city": "Sydney",
+      "status": "not_found",
+      "reason": "Rejected: although the exact-city candidate is labelled 1 star with a numeric tax-inclusive total, explicit two-adult/one-room occupancy is absent from the same evidence. Expedia results used start-from prices and Hotels.com returned other star classes."
+    },
+    {
+      "city": "Vancouver",
+      "status": "not_found",
+      "reason": "Rejected: the strongest exact-city candidate has explicit occupancy and tax treatment but is explicitly 3-star. No same-evidence one-star property quote was returned by Google, Expedia, or Hotels.com."
+    },
+    {
+      "city": "Vienna",
+      "status": "not_found",
+      "reason": "Rejected: the only property quote is a start-from/lowest price, and the evidence does not establish an explicit 1-star class. No result met all strict property, class, occupancy, nightly-price, and tax requirements."
+    }
+  ],
+  "productMapping": "none_property_ground_truth_only"
+}

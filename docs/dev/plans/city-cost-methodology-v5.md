@@ -215,6 +215,10 @@ Experiment 048 broadened the private-hostel panel to 12 new cities. Only 4/12 st
 6/12 promotion gate. Retain the four property-level ground-truth candidates, but do not promote to aggregation or
 map the route; members-only, tax, one-night, and class failures remain unresolved.
 
+Experiment 049 broadened the one-star property panel to 12 cities and three public source families. Only 1/12
+strict quotes passed (Amsterdam), far below the 6/12 gate. Reject the direct one-star route; no class substitution
+or correction fit is allowed.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

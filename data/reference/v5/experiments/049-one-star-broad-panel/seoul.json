@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChcIhYvTzreaq_hkGgsvZy8xdGoyOHlsbBAB/prices",
+    "sourceTitle": "Hotel S Seoul - Google hotels",
+    "evidenceText": "Google identifies Hotel S Seoul as a 3-star hotel and shows $31 nightly ($38 with taxes and fees), so it is not a 1-star observation; the Expedia result for Hotel Star is a start-from price without an explicit 1-star class.",
+    "taxStatus": "included",
+    "referencePeriod": "Google result crawled three weeks ago; shown dates July 13-14; Expedia result crawled last week",
+    "searchQuery": "site:google.com/travel/hotels Seoul South Korea 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected wrong-star and start-from evidence. No result supplied an exact Seoul 1-star property with explicit two-adult/one-room occupancy, numeric non-from nightly price, and compatible tax treatment."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

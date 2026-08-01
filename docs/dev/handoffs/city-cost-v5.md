@@ -374,6 +374,10 @@ Experiment 048 broadened the private-hostel route to 12 cities with 24 compliant
 passed (Nairobi, Prague, Seoul, Sydney), below the 6/12 promotion gate. Do not aggregate or map the private-room
 route; preserve these property candidates and the failure reasons while resolving login/tax/one-night/class gaps.
 
+Experiment 049 tested one-star properties in 12 independent one-city calls with 36 compliant searches across
+Google Hotels, Expedia, and Hotels.com. Only Amsterdam passed (1/12), below the 6/12 gate. Keep it as a single
+ground-truth candidate; do not map, substitute classes, or fit a correction.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

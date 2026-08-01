@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-one-star-broad-panel-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "1 Hotel Copenhagen",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "1_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChoIsNysytb9zb6_ARoNL2cvMTFndGdibWd5cxAB",
+    "sourceTitle": "1 Hotel Copenhagen - Google hotels",
+    "evidenceText": "Google Hotels result identifies 1 Hotel Copenhagen at Krystalgade 22, shows 2 adults and $301 nightly/$376 total with taxes and fees for 1 night, but does not explicitly state the property's star class.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels dates Jul 26–27; result crawled 2 weeks before 2026-08-01",
+    "searchQuery": "site:google.com/travel/hotels Copenhagen Denmark 1-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: the exact-city named property has explicit two-adult occupancy, a non-from nightly price, and taxes/fees, but no explicit 1-star classification. The name '1 Hotel' cannot be used to infer a one-star class."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
