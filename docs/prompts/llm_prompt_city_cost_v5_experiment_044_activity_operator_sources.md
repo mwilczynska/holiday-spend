@@ -13,7 +13,8 @@ source URL/title and evidence.
 
 Return one row for each frozen activity definition:
 
-- `activities_budget`: two adult tickets to a standard low-cost paid attraction. Accept a per-person adult ticket
+- `activities_budget`: one adult ticket to a standard low-cost paid attraction (a source input later scaled
+  deterministically for two travellers). Accept a per-person adult ticket
   only when the exact city/attraction and ticket basis are explicit; exclude tours, bundles, and from prices.
 - `activities_mid_range`: one adult place on a half-day group activity. Require explicit 3–6 hour duration,
   group/shared basis (or a clearly stated group-equivalent), per-person/adult price, exact city, and non-from

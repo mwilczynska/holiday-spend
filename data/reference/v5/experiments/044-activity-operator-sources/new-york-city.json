@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/en-au/new-york-city-l59/entry-tickets-tc123/",
+      "sourceTitle": "The best New York City Entry tickets 2026 - Free cancellation | GetYourGuide",
+      "evidenceText": "GetYourGuide listed exact-New-York attraction tickets including 9/11 Memorial & Museum (From $25), Empire State Building (From $48), American Museum of Natural History (From $37), and MoMA (From $30). All displayed prices were explicitly From prices and tax treatment was not stated.",
+      "referencePeriod": "GetYourGuide entry-ticket result crawled 4 months before 2026-08-01; availability date and tax treatment not stated",
+      "searchQuery": "site:getyourguide.com New York City adult attraction ticket price",
+      "reason": "Exact-city adult-ticket products were available, but every numeric candidate was a lowest/from price and no tax treatment was shown. The strict one-person budget ticket input fails closed and is not doubled."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 3,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.viator.com/New-York-City-tours/Half-day-Tours/d687-g12-c95",
+      "sourceTitle": "THE BEST 10 New York City Half-day Tours in 2026 (Prices from $5) | Viator",
+      "evidenceText": "NYC: Chinatown & Little Italy Food Tour with 6 Flavorful Dishes is listed as 3 hours, with a small-group description, from $85 (shown against $97) and price varying by group size. The price is from/range-variable rather than a fixed non-from adult per-person amount; taxes are not stated.",
+      "referencePeriod": "Viator result crawled 2 months before 2026-08-01; dates and tax treatment not stated",
+      "searchQuery": "site:viator.com New York City half day group tour adult price",
+      "reason": "An exact-city three-hour small-group activity was visible, but the displayed price is explicitly from and variable by group size, with unknown tax treatment. It cannot satisfy the frozen non-from adult-place definition."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": 8,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/new-york-city-l59/nyc-full-day-city-sightseeing-tour-with-hotel-pickup-t569388/",
+      "sourceTitle": "NYC: Full-Day City Sightseeing Tour with Hotel Pickup | GetYourGuide",
+      "evidenceText": "NYC: Full-Day City Sightseeing Tour with Hotel Pickup shows Duration 8 hours, private or small groups available, and an option priced From $380 per person. The price is explicitly From and tax treatment is not stated.",
+      "referencePeriod": "GetYourGuide result crawled 5 months before 2026-08-01; displayed dates and tax treatment not stated",
+      "searchQuery": "site:getyourguide.com New York City full day premium tour adult price",
+      "reason": "The exact-city 8-hour private/small-group activity has a compatible duration and premium-style basis, but only a From price is shown and taxes are unknown. No high-end value is retained."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

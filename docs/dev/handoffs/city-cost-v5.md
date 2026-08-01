@@ -353,6 +353,12 @@ other failures lacked tax, adult/party, duration, or premium evidence. Reject th
 artifacts only. The next activity step must test a materially different source or explicitly revise the estimand
 before a new pre-registered panel.
 
+Experiment 044 tested GetYourGuide/Viator activity operator sources in six independent one-city calls. All 18
+ordered searches were compliant, but strict coverage was 0/18 (0/6 budget, 0/6 mid-range, 0/6 high-end). “From”
+or variable group prices, tour-versus-ticket mismatch, unknown taxes, and incomplete duration/premium evidence
+caused the failures. Reject the route and preserve raw failure artifacts only; a new activity source or revised
+estimand requires a new pre-registered panel.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

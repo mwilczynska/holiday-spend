@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/en-gb/cape-town-l103/cape-town-cape-point-full-day-tour-t589660/",
+      "sourceTitle": "Cape Town: Cape Point Full Day Tour - GetYourGuide",
+      "evidenceText": "The GetYourGuide Cape Point result describes a Cape Town tour and adult seal-island entrance fee, but no standalone standard attraction ticket with a non-from adult price and tax status was shown.",
+      "referencePeriod": "GetYourGuide Cape Town result crawled 5 months before 2026-08-01; ticket/price tax treatment not stated",
+      "searchQuery": "site:getyourguide.com Cape Town adult attraction ticket price",
+      "reason": "Not found under the frozen budget definition: the exact-city operator result was a tour rather than a standalone ticket and did not expose an eligible non-from adult price with tax treatment."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": null,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.viator.com/en-ZA/Cape-Town-tours/Half-day-Tours/d318-g12-c95",
+      "sourceTitle": "The Best 10 Cape Town Half-day Tours - Viator",
+      "evidenceText": "Viator lists Cape Town small-group half-day tours of 5–6 hours, including Boulders Penguins and Cape Point, but prices are From US$50/US$62 and vary by group size; no non-from adult price or tax status is given.",
+      "referencePeriod": "Viator Cape Town half-day results crawled 2 months before 2026-08-01; durations 3.5–6 hours; tax treatment not stated",
+      "searchQuery": "site:viator.com Cape Town half day group tour adult price",
+      "reason": "Not found under the frozen half-day group definition because all numeric prices were From offers or varied by group size, with no compatible non-from adult price and tax basis."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/cape-town-l103/cape-peninsula-full-day-tour-in-private-car-t565014/",
+      "sourceTitle": "Cape Peninsula Full Day Tour In Private Car - GetYourGuide",
+      "evidenceText": "The GetYourGuide Cape Peninsula full-day private-car result establishes a premium/private-style tour, but no numeric non-from adult package price was shown; only separate adult attraction fees appeared.",
+      "referencePeriod": "GetYourGuide result crawled 5 months before 2026-08-01; full-day/private basis shown; package price/tax treatment not stated",
+      "searchQuery": "site:getyourguide.com Cape Town full day premium tour adult price",
+      "reason": "Not found under the frozen full-day premium definition because the qualifying private-style tour had no numeric non-from adult price or explicit package tax treatment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

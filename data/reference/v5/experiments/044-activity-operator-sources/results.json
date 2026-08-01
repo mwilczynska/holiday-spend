@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-audit-v1",
+  "citiesTested": 6,
+  "cities": [
+    {
+      "city": "Bangkok",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Barcelona",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Cape Town",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Hanoi",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Lisbon",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "New York City",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    }
+  ],
+  "acceptedCells": {
+    "activities_budget": 0,
+    "activities_mid_range": 0,
+    "activities_high_end": 0
+  },
+  "accepted": {
+    "activities_budget": [],
+    "activities_mid_range": [],
+    "activities_high_end": []
+  },
+  "rejected": [
+    {
+      "city": "Bangkok",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "Not found under the frozen budget definition: the operator search returned tours/experiences and From offers rather than an exact standard attraction adult-ticket price. No ticket value was substituted or doubled."
+    },
+    {
+      "city": "Bangkok",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "Not found under the frozen half-day group definition because all numeric prices were From/lowest offers or varied by group size, with no compatible non-from adult price and tax basis."
+    },
+    {
+      "city": "Bangkok",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "Not found under the frozen full-day premium definition: no eligible 6–12-hour premium/private activity with a non-from adult price and tax treatment was exposed."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "The exact-city adult ticket basis is explicit, but the only numeric price is a lowest/from price and tax status is unknown. The strict budget ticket input fails closed; it is not doubled or substituted."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "The exact-city 5-hour small-group activity meets the duration concept, but its displayed price is explicitly from and varies by group size, with unknown tax treatment. It cannot be retained as a compatible adult-place observation."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "The exact-city private 8-hour adult activity has the required duration and premium/private basis, but only a From price is shown and taxes are unknown. No high-end value is retained."
+    },
+    {
+      "city": "Cape Town",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "Not found under the frozen budget definition: the exact-city operator result was a tour rather than a standalone ticket and did not expose an eligible non-from adult price with tax treatment."
+    },
+    {
+      "city": "Cape Town",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "Not found under the frozen half-day group definition because all numeric prices were From offers or varied by group size, with no compatible non-from adult price and tax basis."
+    },
+    {
+      "city": "Cape Town",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "Not found under the frozen full-day premium definition because the qualifying private-style tour had no numeric non-from adult price or explicit package tax treatment."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "The GetYourGuide-restricted search did not expose a qualifying exact-Hanoi standard paid-attraction adult ticket with a non-from price and stated tax treatment. Tour listings and unrelated attraction snippets were not substituted."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "The exact-city half-day results have compatible durations, but their prices are explicitly from and/or vary by group size; tax treatment is not stated. No non-from adult group-place value is retained."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "The private full-day candidate is explicitly From and lacks a precise duration and tax status in the search evidence. It cannot satisfy the frozen 6–12-hour, non-from premium definition."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "The GetYourGuide-restricted search did not expose a qualifying exact-Lisbon standard paid-attraction adult ticket with a non-from price and stated tax treatment. Tour and premium-tour results were rejected as the wrong frozen definition."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "The exact-city small-group half-day result has a compatible duration and group basis, but the price is explicitly from and varies by group size; tax treatment is not stated. It therefore fails the strict non-from adult-place definition."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "The exact-Lisbon private premium activity has an eligible 8-hour duration and per-person basis, but only a From price is shown and tax treatment is not stated. No high-end activity value is retained."
+    },
+    {
+      "city": "New York City",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "Exact-city adult-ticket products were available, but every numeric candidate was a lowest/from price and no tax treatment was shown. The strict one-person budget ticket input fails closed and is not doubled."
+    },
+    {
+      "city": "New York City",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "An exact-city three-hour small-group activity was visible, but the displayed price is explicitly from and variable by group size, with unknown tax treatment. It cannot satisfy the frozen non-from adult-place definition."
+    },
+    {
+      "city": "New York City",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "The exact-city 8-hour private/small-group activity has a compatible duration and premium-style basis, but only a From price is shown and taxes are unknown. No high-end value is retained."
+    }
+  ],
+  "productMapping": "none_source_feasibility_only"
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/en-gb/bangkok-l169/for-adults-tc1101/",
+      "sourceTitle": "The Best Bangkok For Adults 2026 - GetYourGuide",
+      "evidenceText": "GetYourGuide Bangkok results listed tours and experiences with From prices (for example, White Orchid cruise From $35 and food tours From $62), but no standard paid-attraction adult ticket with a non-from price and tax status.",
+      "referencePeriod": "GetYourGuide Bangkok results crawled 4 months before 2026-08-01; no qualifying ticket date or tax treatment",
+      "searchQuery": "site:getyourguide.com Bangkok adult attraction ticket price",
+      "reason": "Not found under the frozen budget definition: the operator search returned tours/experiences and From offers rather than an exact standard attraction adult-ticket price. No ticket value was substituted or doubled."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": null,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.viator.com/en-GB/Bangkok-tours/Half-day-Tours/d343-g12-c95",
+      "sourceTitle": "The Best 10 Bangkok Half-day Tours - Viator",
+      "evidenceText": "Viator lists Bangkok Grand Palace and temple half-day tours with 4–5 hour durations, but prices are From US$21/US$113 and may vary by group size; no non-from adult group price or tax status is given.",
+      "referencePeriod": "Viator Bangkok half-day results crawled 3 months before 2026-08-01; durations 4–5 hours; tax treatment not stated",
+      "searchQuery": "site:viator.com Bangkok half day group tour adult price",
+      "reason": "Not found under the frozen half-day group definition because all numeric prices were From/lowest offers or varied by group size, with no compatible non-from adult price and tax basis."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/en-gb/bangkok-l169/for-adults-tc1101/",
+      "sourceTitle": "The Best Bangkok For Adults 2026 - GetYourGuide",
+      "evidenceText": "GetYourGuide Bangkok results included a 6–7.5-hour rooftop/pub crawl and luxury cruise listings, but all prices were From offers and the snippets did not provide a full-day 6–12-hour premium/private activity with a non-from adult price and tax status.",
+      "referencePeriod": "GetYourGuide Bangkok results crawled 4 months before 2026-08-01; durations and price offers varied; tax status not stated",
+      "searchQuery": "site:getyourguide.com Bangkok full day premium tour adult price",
+      "reason": "Not found under the frozen full-day premium definition: no eligible 6–12-hour premium/private activity with a non-from adult price and tax treatment was exposed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

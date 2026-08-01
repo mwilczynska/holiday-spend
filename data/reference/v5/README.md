@@ -64,10 +64,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/042-registry-class-property-quotes/` | **COMPLETE — reject productive panel; retain guarded candidate** | Three one-city calls: 1/9 strict registry-joined property quotes, one identity warning |
 | `experiments/043-google-hotels-one-star/` | **COMPLETE — reject broader route; retain single candidate** | Six one-city calls: 1/6 strict Google Hotels one-star quotes |
 
-| `experiments/044-activity-operator-sources/` | **IN PROGRESS — source feasibility** | Pre-registered GetYourGuide/Viator activity-definition panel; no results yet |
-| `experiments/044-activity-operator-sources/` | **IN PROGRESS — source feasibility** | Pre-registered GetYourGuide/Viator activity-definition panel; no results yet |
-| `experiments/045-trip-activity-definitions/` | **COMPLETE — reject Trip.com activity route** | Six one-city calls, 18 searches: 0/18 strict activity cells; “From” prices and missing definition fields |
-
+| `experiments/044-activity-operator-sources/` | **COMPLETE — reject operator route** | Six one-city calls, 18 searches: 0/18 strict activity cells; “From”/variable group prices |
 | `experiments/045-trip-activity-definitions/` | **COMPLETE — reject Trip.com activity route** | Six one-city calls, 18 searches: 0/18 strict activity cells; “From” prices and missing definition fields |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the

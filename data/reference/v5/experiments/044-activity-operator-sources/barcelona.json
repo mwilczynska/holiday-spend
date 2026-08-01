@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/barcelona-l45/tibidabo-amusement-park-entrance-ticket-t54571/",
+      "sourceTitle": "Barcelona: Tibidabo Amusement Park Admission Ticket | GetYourGuide",
+      "evidenceText": "Tibidabo Amusement Park Admission Ticket is an exact-Barcelona attraction. GetYourGuide states that anyone over 120 cm must pay the adult price and displays From $46 per person. The price is explicitly From and tax treatment is not stated.",
+      "referencePeriod": "GetYourGuide result crawled 5 months before 2026-08-01; availability date and tax treatment not stated",
+      "searchQuery": "site:getyourguide.com Barcelona adult attraction ticket price",
+      "reason": "The exact-city adult ticket basis is explicit, but the only numeric price is a lowest/from price and tax status is unknown. The strict budget ticket input fails closed; it is not doubled or substituted."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 5,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.viator.com/Barcelona-tours/Half-day-Tours/d562-g12-c95",
+      "sourceTitle": "THE BEST 10 Barcelona Half-day Tours in 2026 (Prices from $4) | Viator",
+      "evidenceText": "Barcelona Highlights Small Group Tour with Hotel Pick Up is listed as 5 hours, small-group, with Free Cancellation from US$95 and price varying by group size. The duration and group basis are explicit, but the price is from/variable rather than a fixed non-from per-person adult price; taxes are not stated.",
+      "referencePeriod": "Viator result crawled 2 months before 2026-08-01; dates and tax treatment not stated",
+      "searchQuery": "site:viator.com Barcelona half day group tour adult price",
+      "reason": "The exact-city 5-hour small-group activity meets the duration concept, but its displayed price is explicitly from and varies by group size, with unknown tax treatment. It cannot be retained as a compatible adult-place observation."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": 8,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/barcelona-l45/barcelona-in-one-day-private-tour-t446581/",
+      "sourceTitle": "Barcelona: City Highlights Full-Day Private Guided Tour | GetYourGuide",
+      "evidenceText": "Barcelona: City Highlights Full-Day Private Guided Tour shows Adult x 1, Duration 8 hours, and Private group. The listed price is From $1,109 per person, so it is explicitly a lowest/from value; tax treatment is not stated.",
+      "referencePeriod": "GetYourGuide result crawled 4 months before 2026-08-01; displayed dates and tax treatment not stated",
+      "searchQuery": "site:getyourguide.com Barcelona full day premium tour adult price",
+      "reason": "The exact-city private 8-hour adult activity has the required duration and premium/private basis, but only a From price is shown and taxes are unknown. No high-end value is retained."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

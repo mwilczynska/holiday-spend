@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:getyourguide.com Hanoi Vietnam adult attraction ticket price",
+      "reason": "The GetYourGuide-restricted search did not expose a qualifying exact-Hanoi standard paid-attraction adult ticket with a non-from price and stated tax treatment. Tour listings and unrelated attraction snippets were not substituted."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 4.5,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.viator.com/en-SG/Hanoi-tours/Half-day-Tours/d351-g12-c95",
+      "sourceTitle": "THE BEST 10 Hanoi Half-day Tours (Prices from US$5) | Viator",
+      "evidenceText": "Hanoi Highlights: Half-day City Tour: 4 hours, from US$33; another private half-day listing is 4–5 hours from US$45 and prices vary by group size.",
+      "referencePeriod": "Viator result crawled 4 months before 2026-08-01; dates and tax treatment not stated",
+      "searchQuery": "site:viator.com Hanoi Vietnam half day group tour adult price",
+      "reason": "The exact-city half-day results have compatible durations, but their prices are explicitly from and/or vary by group size; tax treatment is not stated. No non-from adult group-place value is retained."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.getyourguide.com/hanoi-l205/hanoi-city-tour-full-day-private-tour-t772464/",
+      "sourceTitle": "Hanoi City Tour Full Day - Private Tour | GetYourGuide",
+      "evidenceText": "Hanoi City Tour Full Day - Private Tour: From $104 per person; the snippet does not provide a precise duration or tax treatment.",
+      "referencePeriod": "GetYourGuide result crawled 4 months before 2026-08-01; date and tax treatment not stated",
+      "searchQuery": "site:getyourguide.com Hanoi Vietnam full day premium tour adult price",
+      "reason": "The private full-day candidate is explicitly From and lacks a precise duration and tax status in the search evidence. It cannot satisfy the frozen 6–12-hour, non-from premium definition."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

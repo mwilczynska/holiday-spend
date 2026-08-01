@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-telemetry-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:getyourguide.com Barcelona adult attraction ticket price",
+    "site:viator.com Barcelona half day group tour adult price",
+    "site:getyourguide.com Barcelona full day premium tour adult price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only operator-source activity run with exactly three ordered restricted searches. Barcelona exposed an exact-city adult ticket, a 5-hour small-group activity, and an 8-hour private tour, but all numeric prices were From or variable-by-group-size and tax treatment was not stated. No page reads, retries, fallback sources, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

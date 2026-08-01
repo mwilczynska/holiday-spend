@@ -1239,3 +1239,18 @@ product tier.
 **Verdict:** reject Trip.com as a production source route for the frozen activity definitions. Preserve the raw
 failure reasons and URLs as source-feasibility evidence only. A materially different retrieval contract would
 require a new pre-registered panel. Read `data/reference/v5/experiments/045-trip-activity-definitions/`.
+
+## Experiment 044 — operator activity-source route (1 August 2026)
+
+Six independent single-city Luna-class contexts (Lisbon, Hanoi, Bangkok, Cape Town, Barcelona, and New York
+City) issued exactly three ordered searches each: GetYourGuide ticket, Viator half-day group, and GetYourGuide
+full-day premium (18 searches total). No page reads, retries, fallback sources, arithmetic, FX conversion,
+averaging, or cross-city evidence occurred. Strict coverage was **0/18**: budget 0/6, mid-range 0/6, and high-end
+0/6.
+
+“From”/lowest prices and variable group pricing dominated. Other failures included tour-versus-ticket mismatch,
+unknown taxes, incomplete or incompatible duration, and missing adult/premium/package basis.
+
+**Verdict:** reject this GetYourGuide/Viator route for the frozen activity definitions. Preserve raw failure
+evidence only; no activity value is observed, scaled, averaged, or mapped. Read
+`data/reference/v5/experiments/044-activity-operator-sources/`.

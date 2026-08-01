@@ -19,3 +19,13 @@ than the generic BudgetYourTrip entertainment route, while preserving duration a
   entertainment rows.
 - Any accepted row remains a one-person source input. A future product mapping requires deterministic scaling and
   independent 30-city/10-holdout accuracy validation.
+
+## Results
+
+The six-city panel produced **0/18 accepted cells**: budget 0/6, mid-range 0/6, and high-end 0/6. Each city used
+exactly three ordered operator searches (18 total), with no page reads, retries, fallback sources, arithmetic, FX,
+averaging, or cross-city evidence. “From”/lowest prices and variable group pricing were the dominant failures;
+other rows lacked a standalone ticket, tax status, compatible duration, or explicit adult/premium basis.
+
+**Verdict:** reject the tested GetYourGuide/Viator route for the frozen activity definitions. Preserve raw failure
+reasons and URLs as source-feasibility evidence only. Do not map a row or fit an activity model from this panel.

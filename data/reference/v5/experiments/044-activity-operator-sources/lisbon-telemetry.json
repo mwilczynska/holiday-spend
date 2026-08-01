@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-activity-operator-sources-telemetry-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:getyourguide.com Lisbon Portugal adult attraction ticket price",
+    "site:viator.com Lisbon Portugal half day group tour adult price",
+    "site:getyourguide.com Lisbon Portugal full day premium tour adult price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only operator-source activity run with exactly three ordered restricted searches. Lisbon had no compatible adult attraction ticket; its half-day group and full-day premium candidates were From prices with unknown tax treatment. No page reads, retries, fallback sources, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}
