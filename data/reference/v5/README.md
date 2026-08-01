@@ -87,6 +87,8 @@ The inventory row for 052 above is a stale status label; the experiment director
 The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-relaxed candidates, below the
 8/12 promotion gate. Its relaxed label remains a hypothesis only.
 
+| `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
+
 The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-relaxed candidates, below the
 8/12 promotion gate. Its relaxed label remains a hypothesis only.
 

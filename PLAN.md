@@ -503,6 +503,16 @@ reached 7/12, below its 8/12 promotion gate (the six strict-failure condition pa
 the relaxed rows remain hypotheses, not observed two-person rooms. Any future semantic amendment requires a dated
 estimand decision and a new 30-city/10-holdout explicit-room validation panel.
 
+Experiment 054 scanned 176 accepted direct ledger rows and tested six material relationships without fitting. No
+accommodation relationship had a matched city; each activity-tier relationship had only one (Vancouver). All
+failed the 30-city/10-holdout gate. Reject fitting until definition-compatible paired observations or a materially
+different source/estimand is found. The v5 methodology remains unaccepted.
+
+Experiment 054 scanned 176 accepted direct ledger rows and tested six material relationships without fitting. No
+accommodation relationship had a matched city; each activity-tier relationship had only one (Vancouver). All
+failed the 30-city/10-holdout gate. Reject fitting until definition-compatible paired observations or a materially
+different source/estimand is found. The v5 methodology remains unaccepted.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

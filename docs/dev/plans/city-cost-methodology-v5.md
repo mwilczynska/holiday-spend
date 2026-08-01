@@ -255,6 +255,14 @@ The panel completed with 0/12 strict rows and 7/12 selector-relaxed rows. The st
 the 8/12 relaxed-coverage gate failed. **Decision:** reject promotion; retain the seven rows as semantic hypotheses
 only and do not map or fit `accom_3_star`.
 
+### Experiment 054 - model-fit adequacy audit
+
+The accepted direct ledger was scanned without fitting. Of six pre-registered relationships, accommodation class
+relations had zero matched cities, hostel private/dorm had zero, and each activity-tier relation had one matched
+city. All failed the 30-city/10-holdout gate. **Decision:** reject model fitting for this evidence boundary and
+collect definition-compatible paired observations before tuning any coefficient.
+Read `data/reference/v5/experiments/054-model-fit-adequacy/`.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

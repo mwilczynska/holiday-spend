@@ -401,6 +401,11 @@ Strict coverage was 0/12 and relaxed coverage 7/12, so the 8/12 plus 6/12 promot
 is not observed occupancy and cannot be mapped or fitted. Any future amendment requires a dated estimand decision
 and a separate 30-city/10-holdout explicit-room validation panel.
 
+Experiment 054 completed the deterministic model-fit adequacy audit. Among 176 accepted direct ledger rows, all
+three hotel-class relationships and private-hostel/dorm had zero matched cities; activity mid/high from paid
+attraction each had one matched city (Vancouver). All six failed the 30-city/10-holdout gate. No model was fitted.
+Next work must collect definition-compatible paired observations or test a materially different source/estimand.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

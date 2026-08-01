@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "city-cost-v5-model-fit-adequacy-v1",
+  "source": "data/reference/observations/*.jsonl",
+  "rowsScanned": 176,
+  "directMeasureCoverage": [
+    {
+      "measure": "cappuccino_1",
+      "cities": 33,
+      "cityNames": [
+        "Auckland",
+        "Bangkok",
+        "Barcelona",
+        "Budapest",
+        "Can Tho",
+        "Chiang Rai",
+        "Copenhagen",
+        "Da Lat",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Dubrovnik",
+        "Fukuoka",
+        "Goa",
+        "Hanoi",
+        "Havana",
+        "Istanbul",
+        "Lisbon",
+        "Medellin",
+        "Mexico City",
+        "Nairobi",
+        "Prague",
+        "Queenstown",
+        "San Francisco",
+        "Sendai",
+        "Seoul",
+        "Shanghai",
+        "Sofia",
+        "Split",
+        "Tokyo",
+        "Vancouver",
+        "Yangon",
+        "Zanzibar"
+      ]
+    },
+    {
+      "measure": "cocktail_1",
+      "cities": 2,
+      "cityNames": [
+        "Hanoi",
+        "Vancouver"
+      ]
+    },
+    {
+      "measure": "domestic_draft_beer_1",
+      "cities": 33,
+      "cityNames": [
+        "Auckland",
+        "Bangkok",
+        "Barcelona",
+        "Budapest",
+        "Can Tho",
+        "Chiang Rai",
+        "Copenhagen",
+        "Da Lat",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Dubrovnik",
+        "Fukuoka",
+        "Goa",
+        "Hanoi",
+        "Havana",
+        "Istanbul",
+        "Lisbon",
+        "Medellin",
+        "Mexico City",
+        "Nairobi",
+        "Prague",
+        "Queenstown",
+        "San Francisco",
+        "Sendai",
+        "Seoul",
+        "Shanghai",
+        "Sofia",
+        "Split",
+        "Tokyo",
+        "Vancouver",
+        "Yangon",
+        "Zanzibar"
+      ]
+    },
+    {
+      "measure": "full_day_premium_activity_adult_1",
+      "cities": 2,
+      "cityNames": [
+        "Vancouver",
+        "Vang Vieng"
+      ]
+    },
+    {
+      "measure": "half_day_group_activity_adult_1",
+      "cities": 3,
+      "cityNames": [
+        "Pu Luong",
+        "Vancouver",
+        "Vang Vieng"
+      ]
+    },
+    {
+      "measure": "hotel_4star_room_2p",
+      "cities": 1,
+      "cityNames": [
+        "Copenhagen"
+      ]
+    },
+    {
+      "measure": "inexpensive_restaurant_meal_1p",
+      "cities": 35,
+      "cityNames": [
+        "Auckland",
+        "Bangkok",
+        "Barcelona",
+        "Budapest",
+        "Can Tho",
+        "Chiang Rai",
+        "Copenhagen",
+        "Da Lat",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Dubrovnik",
+        "Fukuoka",
+        "Goa",
+        "Hanoi",
+        "Havana",
+        "Istanbul",
+        "Lisbon",
+        "Medellin",
+        "Mexico City",
+        "Nairobi",
+        "Prague",
+        "Pu Luong",
+        "Queenstown",
+        "San Francisco",
+        "Sendai",
+        "Seoul",
+        "Shanghai",
+        "Sofia",
+        "Split",
+        "Tokyo",
+        "Vancouver",
+        "Vang Vieng",
+        "Yangon",
+        "Zanzibar"
+      ]
+    },
+    {
+      "measure": "midrange_restaurant_meal_2p",
+      "cities": 33,
+      "cityNames": [
+        "Auckland",
+        "Bangkok",
+        "Barcelona",
+        "Budapest",
+        "Can Tho",
+        "Chiang Rai",
+        "Copenhagen",
+        "Da Lat",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Dubrovnik",
+        "Fukuoka",
+        "Goa",
+        "Hanoi",
+        "Havana",
+        "Istanbul",
+        "Lisbon",
+        "Medellin",
+        "Mexico City",
+        "Nairobi",
+        "Prague",
+        "Queenstown",
+        "San Francisco",
+        "Sendai",
+        "Seoul",
+        "Shanghai",
+        "Sofia",
+        "Split",
+        "Tokyo",
+        "Vancouver",
+        "Yangon",
+        "Zanzibar"
+      ]
+    },
+    {
+      "measure": "paid_attraction_adult_1",
+      "cities": 29,
+      "cityNames": [
+        "Auckland",
+        "Bangkok",
+        "Barcelona",
+        "Budapest",
+        "Copenhagen",
+        "Da Lat",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Dubrovnik",
+        "Fukuoka",
+        "Goa",
+        "Hanoi",
+        "Istanbul",
+        "Lisbon",
+        "Medellin",
+        "Mexico City",
+        "Nairobi",
+        "Prague",
+        "Queenstown",
+        "San Francisco",
+        "Sendai",
+        "Seoul",
+        "Shanghai",
+        "Sofia",
+        "Split",
+        "Tokyo",
+        "Vancouver",
+        "Yangon"
+      ]
+    },
+    {
+      "measure": "premium_restaurant_meal_2p",
+      "cities": 1,
+      "cityNames": [
+        "Vancouver"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "name": "hotel_1star_room_2p <- hotel_3star_room_2p",
+      "target": "hotel_1star_room_2p",
+      "predictor": "hotel_3star_room_2p",
+      "matchedCities": 0,
+      "matchedCityNames": [],
+      "requiredMatchedCities": 30,
+      "requiredLockedHoldoutCities": 10,
+      "eligibleForFit": false
+    },
+    {
+      "name": "hotel_2star_room_2p <- hotel_3star_room_2p",
+      "target": "hotel_2star_room_2p",
+      "predictor": "hotel_3star_room_2p",
+      "matchedCities": 0,
+      "matchedCityNames": [],
+      "requiredMatchedCities": 30,
+      "requiredLockedHoldoutCities": 10,
+      "eligibleForFit": false
+    },
+    {
+      "name": "hotel_4star_room_2p <- hotel_3star_room_2p",
+      "target": "hotel_4star_room_2p",
+      "predictor": "hotel_3star_room_2p",
+      "matchedCities": 0,
+      "matchedCityNames": [],
+      "requiredMatchedCities": 30,
+      "requiredLockedHoldoutCities": 10,
+      "eligibleForFit": false
+    },
+    {
+      "name": "hostel_private_room_2p <- hostel_dorm_bed_1p",
+      "target": "hostel_private_room_2p",
+      "predictor": "hostel_dorm_bed_1p",
+      "matchedCities": 0,
+      "matchedCityNames": [],
+      "requiredMatchedCities": 30,
+      "requiredLockedHoldoutCities": 10,
+      "eligibleForFit": false
+    },
+    {
+      "name": "half_day_group_activity_adult_1 <- paid_attraction_adult_1",
+      "target": "half_day_group_activity_adult_1",
+      "predictor": "paid_attraction_adult_1",
+      "matchedCities": 1,
+      "matchedCityNames": [
+        "Vancouver"
+      ],
+      "requiredMatchedCities": 30,
+      "requiredLockedHoldoutCities": 10,
+      "eligibleForFit": false
+    },
+    {
+      "name": "full_day_premium_activity_adult_1 <- paid_attraction_adult_1",
+      "target": "full_day_premium_activity_adult_1",
+      "predictor": "paid_attraction_adult_1",
+      "matchedCities": 1,
+      "matchedCityNames": [
+        "Vancouver"
+      ],
+      "requiredMatchedCities": 30,
+      "requiredLockedHoldoutCities": 10,
+      "eligibleForFit": false
+    }
+  ],
+  "anyFitEligible": false,
+  "modelFitted": false,
+  "productMapping": "none",
+  "verdict": "reject_model_fit_adequacy"
+}

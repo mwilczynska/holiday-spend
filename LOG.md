@@ -1370,3 +1370,27 @@ for at least six strict failures attributable solely to omitted room wording was
 prices. Do not map `accom_3_star`, fit a correction, or infer one room. Any future change requires a dated
 estimand decision and a new 30-city/10-holdout explicit-room validation panel. Read
 `data/reference/v5/experiments/053-selector-occupancy-audit/`.
+
+## Experiment 054 - model-fit adequacy audit (1 August 2026)
+
+The deterministic audit scanned 176 accepted direct rows in `data/reference/observations/*.jsonl` and tested six
+pre-registered relationships without fitting a model. The canonical ledger contains one direct 4-star city and no
+direct 1-star, 2-star, or 3-star class rows; no private-hostel/dorm pair; and only one matched city for each
+definition-compatible half-day-from-attraction and full-day-from-attraction relationship.
+
+All six relationships failed the 30 matched-city plus 10 locked-holdout gate. **Verdict:** reject model fitting for
+this evidence boundary. No coefficient, correction, or product mapping was created. Food/drink primitives and
+paid-attraction rows remain useful direct inputs for deterministic baskets, but they do not validate accommodation
+or activity tier models. Read `data/reference/v5/experiments/054-model-fit-adequacy/`.
+
+## Experiment 054 - model-fit adequacy audit (1 August 2026)
+
+The deterministic audit scanned 176 accepted direct rows in `data/reference/observations/*.jsonl` and tested six
+pre-registered relationships without fitting a model. The canonical ledger contains one direct 4-star city and no
+direct 1-star, 2-star, or 3-star class rows; no private-hostel/dorm pair; and only one matched city for each
+definition-compatible half-day-from-attraction and full-day-from-attraction relationship.
+
+All six relationships failed the 30 matched-city plus 10 locked-holdout gate. **Verdict:** reject model fitting for
+this evidence boundary. No coefficient, correction, or product mapping was created. Food/drink primitives and
+paid-attraction rows remain useful direct inputs for deterministic baskets, but they do not validate accommodation
+or activity tier models. Read `data/reference/v5/experiments/054-model-fit-adequacy/`.
