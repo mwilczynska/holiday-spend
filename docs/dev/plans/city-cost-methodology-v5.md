@@ -201,6 +201,11 @@ were compliant, but strict coverage was also 0/18 (0/6 for each activity measure
 tour-versus-ticket mismatches, unknown taxes, and incomplete duration or premium evidence caused the failures.
 Reject the operator route under the frozen contract; no activity value is promotable.
 
+Experiment 046 tested official attraction/authority/museum/named-operator pages in six independent one-city
+calls. Strict compatibility was 0/18: budget 0/6, mid-range 0/6, and high-end 0/6. Bangkok and Cape Town had
+otherwise-compatible budget tickets but unknown tax treatment; no timed activity row passed. Reject the route as a
+complete activity source and retain only rejected evidence.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

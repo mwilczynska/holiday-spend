@@ -46,6 +46,7 @@
 
 | `llm_prompt_city_cost_v5_experiment_044_activity_operator_sources.md` | **EXPERIMENT — complete; reject route** | one city per delegated GPT-5.6 Luna-class invocation | Six-city GetYourGuide/Viator activity-definition test; 0/18 strict cells |
 | `llm_prompt_city_cost_v5_experiment_045_trip_activity_definitions.md` | **EXPERIMENT — complete; reject route** | one city per delegated GPT-5.6 Luna-class invocation | Six-city Trip.com activity-definition search; 0/18 strict cells |
+| `llm_prompt_city_cost_v5_experiment_046_official_activity_pages.md` | **EXPERIMENT — complete; reject complete route** | one city per delegated GPT-5.6 Luna-class invocation | Six-city official activity-page test; 0/18 strict cells |
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes

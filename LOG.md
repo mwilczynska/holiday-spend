@@ -1254,3 +1254,19 @@ unknown taxes, incomplete or incompatible duration, and missing adult/premium/pa
 **Verdict:** reject this GetYourGuide/Viator route for the frozen activity definitions. Preserve raw failure
 evidence only; no activity value is observed, scaled, averaged, or mapped. Read
 `data/reference/v5/experiments/044-activity-operator-sources/`.
+
+## Experiment 046 — official activity pages (1 August 2026)
+
+Six independent single-city Luna-class contexts (Lisbon, Hanoi, Bangkok, Cape Town, Barcelona, and New York
+City) issued exactly three ordered searches each for an official attraction ticket, official half-day group
+activity, and official full-day premium activity (18 searches total). No page reads, retries, marketplace fallbacks,
+arithmetic, FX conversion, averaging, or cross-city evidence occurred.
+
+Strict compatible coverage was **0/18**: budget 0/6, mid-range 0/6, and high-end 0/6. Bangkok and Cape Town each
+had an otherwise compatible budget ticket, but tax treatment was unknown; all other cells failed on tax, adult or
+party basis, duration, premium status, or numeric price. Unknown-tax rows remain rejected evidence and are not
+observed inputs.
+
+**Verdict:** reject the official-page route as a complete production activity source. A future tax-resolved
+budget-only test would require a new pre-registered experiment. Read
+`data/reference/v5/experiments/046-official-activity-pages/`.

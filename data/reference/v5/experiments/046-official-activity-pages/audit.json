@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-audit-v1",
+  "citiesTested": 6,
+  "searchesAttempted": 18,
+  "searchOperations": 18,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedCells": {
+    "activities_budget": 0,
+    "activities_mid_range": 0,
+    "activities_high_end": 0
+  },
+  "compatibleEvidenceCellsBeforeTaxGate": {
+    "activities_budget": 2,
+    "activities_mid_range": 0,
+    "activities_high_end": 0
+  },
+  "promotionGate": "at least 3 of 6 cities per measure with compatible tax status",
+  "promotionGatePassed": false,
+  "productMapping": "none",
+  "groundTruth": "none; source-feasibility evidence only",
+  "cities": ["Lisbon", "Hanoi", "Bangkok", "Cape Town", "Barcelona", "New York City"]
+}

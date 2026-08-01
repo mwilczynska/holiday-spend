@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "found",
+      "value": 275,
+      "currency": "ZAR",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://capewheel.co.za/tickets-prices/",
+      "sourceTitle": "Tickets & Prices - Cape Town Wheel",
+      "evidenceText": "Cape Wheel standard rides: Non-South African residents aged 18 years and above pay R275. The page labels standard rides and gives an adult ticket price.",
+      "referencePeriod": "Cape Wheel official ticket page; result crawled 4 days before 2026-08-01; tax treatment not stated",
+      "searchQuery": "Cape Town South Africa official attraction standard adult ticket price",
+      "reason": "Accepted as a one-person source input: exact Cape Town standard attraction, explicit adult/non-South-African ticket price of ZAR 275, and no from/range price. Tax treatment is unknown, so deterministic validation must keep this row incompatible until resolved. No two-person scaling or FX conversion was performed."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": null,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://legendtours.co.za/cape-town-package-rates/",
+      "sourceTitle": "Cape Town Package Rates – Legend Travel and Tours",
+      "evidenceText": "The official operator search result identifies a Cape Town half-day package and a duration of approximately 3.5 hours, but no per-person adult price appears in the snippet; another named half-day operator result has a price but no explicit hours.",
+      "referencePeriod": "Cape Town operator results crawled 6 months before 2026-08-01; duration/price evidence split across results; tax treatment not stated",
+      "searchQuery": "Cape Town South Africa official half day group tour adult price duration",
+      "reason": "Not found under the frozen half-day definition because no single official source snippet contained both explicit 3–6-hour duration and a non-from per-person adult price. No cross-page combination or estimate was made."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.visitthecape.co.za/",
+      "sourceTitle": "Visit the Cape — Private Cape Town Experiences",
+      "evidenceText": "Visit the Cape advertises a premium chauffeur-driven full-day experience of approximately 8 hours at From R2,250 per person; the price is explicitly From and therefore not eligible.",
+      "referencePeriod": "Visit the Cape operator result crawled 2 weeks before 2026-08-01; full-day ±8 hours; taxes/fees not stated",
+      "searchQuery": "Cape Town South Africa official full day premium tour adult price duration",
+      "reason": "Not found under the frozen full-day premium definition because the only compatible-duration premium/private operator result used a From price with unknown tax treatment."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

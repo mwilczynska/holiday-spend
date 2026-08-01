@@ -359,6 +359,11 @@ or variable group prices, tour-versus-ticket mismatch, unknown taxes, and incomp
 caused the failures. Reject the route and preserve raw failure artifacts only; a new activity source or revised
 estimand requires a new pre-registered panel.
 
+Experiment 046 tested official attraction/authority/museum/named-operator pages in six independent one-city calls.
+All 18 searches were compliant, but strict compatibility was 0/18 (0/6 per activity measure). Two budget tickets
+had unknown tax treatment; no mid-range or high-end row passed. Reject the route as a complete activity source and
+retain raw rejected evidence only. A future tax-resolved budget-only test needs a new pre-registration.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

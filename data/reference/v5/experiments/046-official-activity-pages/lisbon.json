@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "EUR",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.zoo.pt/en/visit/entry-costs/",
+      "sourceTitle": "Entry Costs - Jardim Zoológico",
+      "evidenceText": "Official Lisbon Zoo search result lists Adult (13 to 64 years) at 31 €; prices valid from 1 January 2026.",
+      "referencePeriod": "Prices valid from 2026-01-01; tax treatment not stated in search evidence",
+      "searchQuery": "Lisbon Portugal official attraction standard adult ticket price",
+      "reason": "The official exact-city attraction exposes an explicit non-from adult ticket price, but tax treatment is unknown. The row is retained as evidence but fails the strict compatible-row gate."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 4,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.ctuk.pt/en/grupo-tour/tour-half-day-lisbon",
+      "sourceTitle": "Half Day Lisbon Tour",
+      "evidenceText": "Named Lisbon operator result states 4h Half Day Lisbon Tour and Price: 350€ on a 100% electric Tuk Tuk.",
+      "referencePeriod": "Search result crawled 2 weeks before 2026-08-01; tax treatment and per-person/group basis not stated",
+      "searchQuery": "Lisbon Portugal official half day group tour adult price duration",
+      "reason": "The 4-hour named-operator result gives a group vehicle price, but it does not establish a shared/group per-person adult basis or tax treatment. No numeric compatible row is retained."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal official full day premium tour adult price duration",
+      "reason": "The official/named-operator search did not expose an exact-city 6–12 hour premium activity with an explicit non-from per-person adult price and stated basis. Half-day and generic luxury results were not substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

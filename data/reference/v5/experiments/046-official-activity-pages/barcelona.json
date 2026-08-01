@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "EUR",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://tickets-official.fcbarcelona.com/fcbmuseu/select/2677695?hl=en-US",
+      "sourceTitle": "Tickets Basic ticket Basic Ticket Barcelona - Museum | FC Barcelona",
+      "evidenceText": "The official FC Barcelona ticket page identifies the Barça Immersive Tour in Barcelona and displays a General ticket at €31.00 plus €2.10 administration fees. Child and senior categories are also shown, but the adult label is not explicit; the date selector also shows From prices. Tax treatment is not stated.",
+      "referencePeriod": "Official FC Barcelona result crawled 2 months before 2026-08-01; selected date Jun 26 2026 and tax treatment not stated",
+      "searchQuery": "Barcelona Spain official attraction standard adult ticket price",
+      "reason": "An official exact-city attraction and non-from General price were visible, but the source does not explicitly identify the General row as an adult ticket and does not state tax treatment. The strict adult-ticket definition therefore fails closed."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 1.5,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.fcbarcelona.com/en/tickets/camp-nou-experience/847857",
+      "sourceTitle": "CAMP NOU GUIDED TOUR | FC Barcelona Official Channel",
+      "evidenceText": "The official Camp Nou Guided Tour has a group maximum of 6, duration 1 hour 30 mins, and a General ticket price of €45. The group basis and price are explicit, but duration is below the frozen 3–6-hour half-day window and tax treatment is not stated.",
+      "referencePeriod": "Official FC Barcelona result crawled 5 days before 2026-08-01; page describes a 2018 tour date and tax treatment not stated",
+      "searchQuery": "Barcelona Spain official half day group tour adult price duration",
+      "reason": "The exact-city official group activity has a numeric General price but only 1.5 hours, which is outside the frozen half-day duration; adult labelling and tax treatment are also not fully compatible. No mid-range value is retained."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": 10,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.livingtoursgroup.com/catalogs/1.-Barcelona-Shared-Tours-Descriptions-2025-2026.pdf",
+      "sourceTitle": "BARCELONA SHARED TOURS | Living Tours Group",
+      "evidenceText": "The named Barcelona operator's shared-tours brochure snippet lists a Montserrat & Penedés full-day tour with duration 10h and adult-price wording, but no numeric per-person price is exposed in the search evidence. Premium/private status and tax treatment are not stated.",
+      "referencePeriod": "Named-operator brochure published 1.1 years before 2026-08-01; pricing and tax treatment not stated in snippet",
+      "searchQuery": "Barcelona Spain official full day premium tour adult price duration",
+      "reason": "A named-operator 10-hour shared tour was visible, but no numeric non-from per-person adult price, explicit premium/private basis, or tax treatment was provided. The strict high-end definition fails closed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

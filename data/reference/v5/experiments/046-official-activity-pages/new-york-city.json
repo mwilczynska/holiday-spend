@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.mcny.org/visit",
+      "sourceTitle": "Visit Us | Museum of the City of New York",
+      "evidenceText": "The official Museum of the City of New York page lists admission for Adults at $23, at 1220 Fifth Ave, New York, NY 10029. The exact-city standard attraction and adult ticket price are explicit, but tax treatment is not stated.",
+      "referencePeriod": "Official museum result crawled last week before 2026-08-01; current admission page and tax treatment not stated",
+      "searchQuery": "New York City United States official attraction standard adult ticket price",
+      "reason": "The official exact-city adult ticket meets the attraction and non-from price requirements, but tax treatment is unknown. Unknown tax status is retained as evidence but cannot be counted as a compatible observed row."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 3.5,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.iknowaguy.nyc/",
+      "sourceTitle": "Walking Tours New York City | I Know A Guy NYC Tours",
+      "evidenceText": "The named NYC operator lists a HALF DAY tour of 3.5 hours with per-person prices by group size ($180 per person for 2 people, $155 for 3–5, $135 for 6–8, $125 for 9–12), plus a 6% booking fee. Groups are not combined and the maximum is 12 people. Tax treatment is not stated.",
+      "referencePeriod": "Named-operator page crawled 4 days before 2026-08-01; pricing page current at crawl and tax treatment not stated",
+      "searchQuery": "New York City United States official half day group tour adult price duration",
+      "reason": "The exact-city named-operator half-day group activity has explicit duration and per-person group pricing, but tax treatment is unknown and the additional booking fee is not a stated tax basis. It is retained as an unverified candidate, not a compatible observed row."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": 1.5,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.esbnyc.com/buy-tickets/premium-experience",
+      "sourceTitle": "Premium Guided Tour Experience | Empire State Building",
+      "evidenceText": "The official Empire State Building Premium Experience is a private guided tour with a Book Tour from $175 price and a $5 booking charge. Its explicit duration is 90 minutes, not 6–12 hours, and no per-person basis or tax treatment is stated.",
+      "referencePeriod": "Official Empire State Building result crawled 6 days before 2026-08-01; current price from $175 and tax treatment not stated",
+      "searchQuery": "New York City United States official full day premium tour adult price duration",
+      "reason": "The official premium/private candidate fails the frozen full-day definition because its duration is 90 minutes, below 6 hours; its price is From and tax treatment is unknown. No high-end value is retained."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

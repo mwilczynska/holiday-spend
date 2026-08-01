@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-audit-v1",
+  "citiesTested": 6,
+  "cities": [
+    {
+      "city": "Bangkok",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Barcelona",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Cape Town",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Hanoi",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "Lisbon",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    },
+    {
+      "city": "New York City",
+      "accepted": {
+        "activities_budget": false,
+        "activities_mid_range": false,
+        "activities_high_end": false
+      }
+    }
+  ],
+  "acceptedCells": {
+    "activities_budget": 0,
+    "activities_mid_range": 0,
+    "activities_high_end": 0
+  },
+  "accepted": {
+    "activities_budget": [],
+    "activities_mid_range": [],
+    "activities_high_end": []
+  },
+  "rejected": [
+    {
+      "city": "Bangkok",
+      "measure": "activities_budget",
+      "status": "found",
+      "reason": "Accepted as a one-person source input: exact Bangkok Wat Pho attraction, explicit foreign-adult admission price of THB 200, and no from/range price. Tax treatment is unknown, so deterministic validation must keep this row incompatible until resolved. No two-person scaling or FX conversion was performed."
+    },
+    {
+      "city": "Bangkok",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "Not found under the frozen half-day definition because the priced operator result lacked explicit hours and the duration-qualified result lacked a price. No cross-page combination or estimate was made."
+    },
+    {
+      "city": "Bangkok",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "Not found under the frozen full-day premium definition. No compatible official named-operator quote was substituted."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "An official exact-city attraction and non-from General price were visible, but the source does not explicitly identify the General row as an adult ticket and does not state tax treatment. The strict adult-ticket definition therefore fails closed."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "The exact-city official group activity has a numeric General price but only 1.5 hours, which is outside the frozen half-day duration; adult labelling and tax treatment are also not fully compatible. No mid-range value is retained."
+    },
+    {
+      "city": "Barcelona",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "A named-operator 10-hour shared tour was visible, but no numeric non-from per-person adult price, explicit premium/private basis, or tax treatment was provided. The strict high-end definition fails closed."
+    },
+    {
+      "city": "Cape Town",
+      "measure": "activities_budget",
+      "status": "found",
+      "reason": "Accepted as a one-person source input: exact Cape Town standard attraction, explicit adult/non-South-African ticket price of ZAR 275, and no from/range price. Tax treatment is unknown, so deterministic validation must keep this row incompatible until resolved. No two-person scaling or FX conversion was performed."
+    },
+    {
+      "city": "Cape Town",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "Not found under the frozen half-day definition because no single official source snippet contained both explicit 3–6-hour duration and a non-from per-person adult price. No cross-page combination or estimate was made."
+    },
+    {
+      "city": "Cape Town",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "Not found under the frozen full-day premium definition because the only compatible-duration premium/private operator result used a From price with unknown tax treatment."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "The official exact-city attraction exposes a standard ticket price, but the search evidence does not state adult tax treatment. The row is retained as evidence but fails the strict compatible-row gate."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "The result has a compatible duration and group-price table but no explicit currency, adult per-person basis, or tax treatment, and the document is not a clearly identified named tour operator page. It cannot supply a compatible numeric row."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "The official/named-operator search did not expose an exact-city 6–12 hour premium activity with an explicit non-from per-person adult price, duration, and premium/private basis. No lower-tier or marketplace result was substituted."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "The official exact-city attraction exposes an explicit non-from adult ticket price, but tax treatment is unknown. The row is retained as evidence but fails the strict compatible-row gate."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "The 4-hour named-operator result gives a group vehicle price, but it does not establish a shared/group per-person adult basis or tax treatment. No numeric compatible row is retained."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "The official/named-operator search did not expose an exact-city 6–12 hour premium activity with an explicit non-from per-person adult price and stated basis. Half-day and generic luxury results were not substituted."
+    },
+    {
+      "city": "New York City",
+      "measure": "activities_budget",
+      "status": "not_found",
+      "reason": "The official exact-city adult ticket meets the attraction and non-from price requirements, but tax treatment is unknown. Unknown tax status is retained as evidence but cannot be counted as a compatible observed row."
+    },
+    {
+      "city": "New York City",
+      "measure": "activities_mid_range",
+      "status": "not_found",
+      "reason": "The exact-city named-operator half-day group activity has explicit duration and per-person group pricing, but tax treatment is unknown and the additional booking fee is not a stated tax basis. It is retained as an unverified candidate, not a compatible observed row."
+    },
+    {
+      "city": "New York City",
+      "measure": "activities_high_end",
+      "status": "not_found",
+      "reason": "The official premium/private candidate fails the frozen full-day definition because its duration is 90 minutes, below 6 hours; its price is From and tax treatment is unknown. No high-end value is retained."
+    }
+  ],
+  "productMapping": "none_source_feasibility_only"
+}

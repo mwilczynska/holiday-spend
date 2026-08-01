@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "New York City United States official attraction standard adult ticket price",
+    "New York City United States official half day group tour adult price duration",
+    "New York City United States official full day premium tour adult price duration"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only official-source activity run using exactly three ordered searches. New York produced an official adult museum ticket with unknown taxes, a named-operator 3.5-hour group tour with a booking fee and unknown taxes, and an official premium private tour lasting only 90 minutes. No measure met all frozen gates. No page reads, retries, marketplace fallback, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

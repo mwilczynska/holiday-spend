@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "found",
+      "value": 200,
+      "currency": "THB",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://thailand.go.th/public/issue-focus-detail/002_006",
+      "sourceTitle": "Bangkok Cultural Travel Guide - THAILAND.GO.TH",
+      "evidenceText": "The official Thailand government Bangkok cultural guide states Wat Pho admission: 100 baht per Thai adult and 200 baht per foreigner.",
+      "referencePeriod": "Thailand.go.th official Bangkok guide; result crawled 4 days before 2026-08-01; tax treatment not stated",
+      "searchQuery": "Bangkok Thailand official attraction standard adult ticket price",
+      "reason": "Accepted as a one-person source input: exact Bangkok Wat Pho attraction, explicit foreign-adult admission price of THB 200, and no from/range price. Tax treatment is unknown, so deterministic validation must keep this row incompatible until resolved. No two-person scaling or FX conversion was performed."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": null,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.thaicanaltours.com/bkk-classic-half-day-tour",
+      "sourceTitle": "BKK Classic Half Day Small Group Tour — Small Teak Boat Canal Adventure",
+      "evidenceText": "The named Bangkok operator lists a small-group half-day tour at 1,795 THB per adult, but the search evidence does not state an explicit 3–6 hour duration; a separate four-hour result had no price.",
+      "referencePeriod": "Thai Canal Tours result crawled 4 days before 2026-08-01; date and tax treatment not stated",
+      "searchQuery": "Bangkok Thailand official half day group tour adult price duration",
+      "reason": "Not found under the frozen half-day definition because the priced operator result lacked explicit hours and the duration-qualified result lacked a price. No cross-page combination or estimate was made."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "No official Bangkok full-day premium/private activity search result exposed an exact 6–12-hour duration with a non-from per-person price and tax treatment; returned results were half-day programs, generic guides, or unrelated transport/attraction pages.",
+      "referencePeriod": "Official-source search results crawled 4 days to last month before 2026-08-01; no qualifying dated price",
+      "searchQuery": "Bangkok Thailand official full day premium tour adult price duration",
+      "reason": "Not found under the frozen full-day premium definition. No compatible official named-operator quote was substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

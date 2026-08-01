@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-telemetry-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "Barcelona Spain official attraction standard adult ticket price",
+    "Barcelona Spain official half day group tour adult price duration",
+    "Barcelona Spain official full day premium tour adult price duration"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only official-source activity run using exactly three ordered searches. Barcelona yielded an official ticket with a non-from General price but no explicit adult label/tax status, an official 1.5-hour group tour outside the half-day window, and a named-operator 10-hour tour without a numeric price or explicit premium basis. No page reads, retries, marketplace fallback, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

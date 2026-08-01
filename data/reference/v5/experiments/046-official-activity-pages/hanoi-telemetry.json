@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-telemetry-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "Hanoi Vietnam official attraction standard adult ticket price",
+    "Hanoi Vietnam official half day group tour adult price duration",
+    "Hanoi Vietnam official full day premium tour adult price duration"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only official-source activity run with exactly three ordered searches. Hanoi had an official Temple of Literature standard ticket price, but tax status was unknown; a half-day group PDF lacked currency and a clear operator/adult basis; no qualifying full-day premium result was exposed. No page reads, retries, marketplace fallbacks, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

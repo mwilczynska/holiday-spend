@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-official-activity-pages-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activities_budget": {
+      "status": "not_found",
+      "value": null,
+      "currency": "VND",
+      "unit": "per_person_ticket",
+      "basis": "adult_ticket",
+      "durationHours": null,
+      "partyBasis": "individual_ticket",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://vanmieu.gov.vn/en/visitor-information",
+      "sourceTitle": "Visitor Information | Van Mieu",
+      "evidenceText": "Official Temple of Literature visitor information lists STANDARD TICKET 70.000 VNĐ.",
+      "referencePeriod": "Search result crawled 6 days before 2026-08-01; tax treatment not stated in search evidence",
+      "searchQuery": "Hanoi Vietnam official attraction standard adult ticket price",
+      "reason": "The official exact-city attraction exposes a standard ticket price, but the search evidence does not state adult tax treatment. The row is retained as evidence but fails the strict compatible-row gate."
+    },
+    "activities_mid_range": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "half_day_group",
+      "durationHours": 4,
+      "partyBasis": "group",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://iop.vast.vn/theor/conferences/apwmp/files/HAN001-Half day city tour.pdf",
+      "sourceTitle": "Microsoft Word - HAN001-Half day city tour x.doc",
+      "evidenceText": "Search result shows Half-day Hanoi City Tour, duration 4 hours, and group-price rows (1 pax 59; 2 pax 33; 3 pax 29; 4–6 pax 23; etc.), but no currency is stated in the result.",
+      "referencePeriod": "Search result published last month; tax treatment and currency not stated",
+      "searchQuery": "Hanoi Vietnam official half day group tour adult price duration",
+      "reason": "The result has a compatible duration and group-price table but no explicit currency, adult per-person basis, or tax treatment, and the document is not a clearly identified named tour operator page. It cannot supply a compatible numeric row."
+    },
+    "activities_high_end": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "basis": "full_day_premium",
+      "durationHours": null,
+      "partyBasis": "individual",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "Hanoi Vietnam official full day premium tour adult price duration",
+      "reason": "The official/named-operator search did not expose an exact-city 6–12 hour premium activity with an explicit non-from per-person adult price, duration, and premium/private basis. No lower-tier or marketplace result was substituted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

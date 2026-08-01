@@ -349,6 +349,11 @@ The next activity experiment is the queued operator-source panel 044 (GetYourGui
 single-city Luna shape and strict ticket, half-day-group, and full-day-premium definitions; Trip.com’s 0/18 result
 is not a reason to weaken those gates.
 
+Experiment 046 tested official attraction, authority, museum, and named-operator pages in six independent one-city
+calls. Strict compatibility was 0/18 (0/6 per activity measure): two budget tickets lacked tax treatment, and no
+mid-range or high-end row passed. Reject this route as a complete activity source; retain the two unknown-tax
+budget rows only as rejected evidence.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not
