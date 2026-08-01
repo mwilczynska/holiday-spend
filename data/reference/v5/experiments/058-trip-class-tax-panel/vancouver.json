@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-tax-panel-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": 305,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://ca.trip.com/hotels/star2/city/ca/vancouver.html",
+      "sourceTitle": "Best 2-Star Hotels in Vancouver - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "Trip.com’s Vancouver 2-star page lists a weekday average price of US$305 and a weekend average of US$322. It does not state 2 adults and 1 room or whether taxes and fees are included.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com page crawled last month; weekday/weekend averages",
+      "searchQuery": "site:trip.com/hotels/star2/city Vancouver Canada 2-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Exact city/class and weekday/weekend averages were returned, but same-evidence occupancy and tax/fee treatment are absent and no unqualified current class-average is given; strict acceptance fails."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 445,
+      "currency": "CAD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://ca.trip.com/hotels/star3/city/ca/vancouver.html",
+      "sourceTitle": "Best 3-star Hotels in Vancouver - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "Trip.com’s Vancouver 3-star page states that the average price is CAD 445 on weekdays and CAD 500 on weekends (Friday–Saturday). It does not state 2 adults and 1 room or whether taxes and fees are included.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com page crawled 4 days before retrieval; weekday/weekend averages",
+      "searchQuery": "site:trip.com/hotels/star3/city Vancouver Canada 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Exact city/class and weekday/weekend averages were returned, but same-evidence occupancy and tax/fee treatment are absent and no unqualified current class-average is given; strict acceptance fails."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 3370,
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.trip.com/hotels/star4/city/ca/vancouver.html",
+      "sourceTitle": "Best 4-Star Hotels in Vancouver (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com’s Vancouver 4-star page lists a weekday average price of CNY 3,370 and a weekend average of CNY 3,744; it says featured prices were for July 10–16. It does not state 2 adults and 1 room or whether taxes and fees are included.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com page crawled 3 weeks before retrieval; featured prices July 10–16 2026 and weekday/weekend averages",
+      "searchQuery": "site:trip.com/hotels/star4/city Vancouver Canada 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Exact city/class and weekday/weekend averages were returned, but the displayed rates are tied to a past date range and same-evidence occupancy and tax/fee treatment are absent; strict acceptance fails."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

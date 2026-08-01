@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-tax-panel-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://au.trip.com/hotels/star2/city/at/vienna.html",
+      "sourceTitle": "Top 2-Star Hotels in Vienna | Trip.com",
+      "evidenceText": "The exact Vienna 2-star class page reports average weekday price RUB 8,986 and weekend price RUB 10,450, based on Trip.com hotel prices. The snippet does not state 2 adults and 1 room or tax/fee inclusion.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 4 weeks ago; weekday and Friday-Saturday averages",
+      "searchQuery": "site:trip.com/hotels/star2/city Vienna Austria 2-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the average has no explicit two-adult one-room occupancy and tax/fee treatment is unknown."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://in.trip.com/hotels/star3/city/at/vienna.html",
+      "sourceTitle": "Best 3-star Hotels in Vienna - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The exact Vienna 3-star class page reports average weekday price INR 17,844 and weekend price INR 19,729. The snippet does not state 2 adults and 1 room or tax/fee inclusion.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 2 months ago; weekday and Friday-Saturday averages",
+      "searchQuery": "site:trip.com/hotels/star3/city Vienna Austria 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the average has no explicit two-adult one-room occupancy and tax/fee treatment is unknown."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://us.trip.com/hotels/star4/city/at/vienna.html",
+      "sourceTitle": "Top 4-Star Hotels in Vienna | Trip.com",
+      "evidenceText": "The exact Vienna 4-star class page lists property prices from US$106, US$118, and US$109. These are from/starting prices rather than a city-class average, and the snippet does not state 2 adults and 1 room or tax/fee inclusion.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled last month; property from-prices",
+      "searchQuery": "site:trip.com/hotels/star4/city Vienna Austria 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because only from/starting property prices were returned, not a city-class average; occupancy and tax treatment are also unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1424,3 +1424,17 @@ selector, but the same evidence did not state whether tax or fees were included.
 had a wrong city/class, or lacked same-evidence occupancy. **Verdict:** reject the Booking class-average route
 under the frozen contract. Do not map 3- or 4-star prices, infer tax treatment, or fit a class ratio from these
 rows. Read `data/reference/v5/experiments/057-booking-class-tax-panel/`.
+
+
+## Experiment 058 - Trip.com hotel-class tax panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly three ordered Trip.com searches each
+(star-2, star-3, star-4; 36 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
+sources, or cross-city evidence occurred. Strict coverage was **0/36**: 2-star 0/12, 3-star 0/12, and 4-star
+0/12, with no complete city.
+
+Trip.com often exposed exact class pages and weekday/weekend averages, but the same evidence did not establish
+explicit two-adult/one-room occupancy and tax/fee treatment. Other results were from prices, localized/stale
+displays, or lacked a numeric class average. **Verdict:** reject the Trip.com class-page route under the frozen
+contract. Do not map 2-/3-/4-star prices, infer occupancy/tax basis, or fit a class ratio. Read
+`data/reference/v5/experiments/058-trip-class-tax-panel/`.

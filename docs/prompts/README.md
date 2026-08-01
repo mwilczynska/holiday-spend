@@ -78,6 +78,10 @@ The 057 Booking class-average tax panel is complete and rejected: twelve one-cit
 3-/4-star rows; class pages sometimes exposed numeric averages and selectors but not tax/fee treatment in the same
 evidence. Do not map or fit from these rows.
 
+The 058 Trip.com hotel-class tax panel is complete and rejected: twelve one-city contexts produced 0/36 strict
+2-/3-/4-star rows because occupancy and tax evidence did not co-occur with the class averages. Do not map or fit
+from these rows.
+
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
 auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

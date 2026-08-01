@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-tax-panel-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": 19,
+      "currency": "BHD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.trip.com/hotels/star2/city/ke/nairobi.html",
+      "sourceTitle": "Best 2-Star Hotels in Nairobi (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com’s Nairobi 2-star page states that the average price is BHD 19 on weekdays and BHD 19 on weekends (Friday–Saturday). It does not state 2 adults and 1 room or whether taxes and fees are included.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com page crawled 4 days before retrieval; weekday/weekend averages",
+      "searchQuery": "site:trip.com/hotels/star2/city Nairobi Kenya 2-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Exact city/class and weekday/weekend averages were returned, but same-evidence occupancy and tax/fee treatment are absent and the localized BHD display is not the local Nairobi currency; strict acceptance fails."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 74,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.trip.com/hotels/star3/city/ke/nairobi.html",
+      "sourceTitle": "Best 3-Star Hotels in Nairobi (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com’s Nairobi 3-star page states that the average price is €74 on weekdays and €74 on weekends (Friday–Saturday). It says all prices shown for featured hotels are for July 29–August 4. The result does not state 2 adults and 1 room or whether taxes and fees are included.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com page crawled 4 days before retrieval; featured dates July 29–August 4 2026 and weekday/weekend averages",
+      "searchQuery": "site:trip.com/hotels/star3/city Nairobi Kenya 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Exact city/class and weekday/weekend averages were returned, but same-evidence occupancy and tax/fee treatment are absent and the evidence is tied to a displayed date range; strict acceptance fails."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 758,
+      "currency": "BRL",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://us.trip.com/hotels/star4/city/ke/nairobi.html",
+      "sourceTitle": "Top 4-Star Hotels in Nairobi | Trip.com",
+      "evidenceText": "Trip.com’s Nairobi 4-star page states that the average cost is BRL 758 on weekdays and BRL 754 on weekends (Friday–Saturday). It does not state 2 adults and 1 room or whether taxes and fees are included.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com page crawled 5 days before retrieval; weekday/weekend averages",
+      "searchQuery": "site:trip.com/hotels/star4/city Nairobi Kenya 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Exact city/class and weekday/weekend averages were returned, but same-evidence occupancy and tax/fee treatment are absent and the localized BRL display is not the local Nairobi currency; strict acceptance fails."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

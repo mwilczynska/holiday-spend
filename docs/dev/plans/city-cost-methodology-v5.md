@@ -292,6 +292,15 @@ numeric average but omitted tax/fee treatment; other rows lacked class or same-e
 **Decision:** reject the route. Do not map or fit from these rows. A different tax or price-statistic estimand needs
 new pre-registration and independent validation. Read `data/reference/v5/experiments/057-booking-class-tax-panel/`.
 
+### Experiment 058 - Trip.com hotel-class tax panel
+
+Twelve one-city Luna calls issued exactly three ordered Trip.com searches each (star-2, star-3, star-4; 36 total).
+Strict coverage was 0/36 (0/12 per class), with no complete city. Class-page averages lacked same-evidence explicit
+two-adult/one-room occupancy and tax status, or were from/localized/stale values.
+
+**Decision:** reject the route. Do not map or fit from Trip.com class pages; a different tax or price-statistic
+estimand needs new pre-registration and independent validation. Read `data/reference/v5/experiments/058-trip-class-tax-panel/`.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -422,6 +422,11 @@ Coverage was 0/24 (3-star 0/12, 4-star 0/12), with no complete city. Reject the 
 numeric averages/selectors but not tax treatment, and other rows lacked class or same-evidence occupancy. No mapping
 or fitting is allowed.
 
+Experiment 058 completed twelve independent one-city Luna contexts and 36 ordered Trip.com star-2/3/4 searches.
+Strict coverage was 0/36 (0/12 per class), with no complete city. Class-page averages lacked same-evidence explicit
+two-adult/one-room occupancy and tax status, or were from/localized/stale values. Reject the route; no row is mapped
+or fitted.
+
 Next, test a materially different hotel-class source or a separately declared tax/price-statistic estimand while
 retaining the one-bed dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display
 currency. Direct booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not

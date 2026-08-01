@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-tax-panel-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": 1215,
+      "currency": "DKK",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://dk.trip.com/hotels/star2/city/dk/copenhagen.html",
+      "sourceTitle": "De bedste 2-stjernede hoteller i København | Trip.com",
+      "evidenceText": "Trip.com identifies 2-star hotels in Copenhagen and reports average weekday price DKK 1,215 and weekend price DKK 1,372. It does not state 2 adults, 1 room, or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled last month; weekday/weekend FAQ average.",
+      "searchQuery": "site:trip.com/hotels/star2/city Copenhagen Denmark 2-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because occupancy and tax/fee treatment are not explicit in the same evidence."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 414,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.trip.com/hotels/star3/city/dk/copenhagen.html",
+      "sourceTitle": "Best 3-Star Hotels in Copenhagen (Prices & Reviews) | Trip.com",
+      "evidenceText": "For 3-star hotels in Copenhagen, Trip.com reports average weekday price US$414 and weekend price US$431. No explicit two-adult/one-room occupancy or tax/fee status is shown.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 4 days ago; weekday/weekend FAQ average.",
+      "searchQuery": "site:trip.com/hotels/star3/city Copenhagen Denmark 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the city-class average lacks explicit two-adult one-room occupancy and included/excluded tax treatment."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 539,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://us.trip.com/hotels/star4/city/dk/copenhagen.html",
+      "sourceTitle": "Top 4-Star Hotels in Copenhagen | Trip.com",
+      "evidenceText": "Trip.com identifies 4-star hotels in Copenhagen and reports weekday average US$539 and weekend average US$568. The result does not state 2 adults, 1 room, or taxes/fees.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled last week; weekday/weekend FAQ average.",
+      "searchQuery": "site:trip.com/hotels/star4/city Copenhagen Denmark 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because occupancy and tax/fee treatment are unknown, despite an exact city/class average snippet."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

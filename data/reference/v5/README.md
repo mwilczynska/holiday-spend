@@ -90,6 +90,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/055-skyscanner-class-panel/` | **COMPLETE - reject promotion** | Twelve one-city calls: 0/48 strict class rows; tax/class evidence blocked all |
 | `experiments/056-agoda-one-three-star-panel/` | **COMPLETE - reject promotion** | Twelve one-city calls: 0/24 strict 1-/3-star rows; date/price/tax evidence blocked |
 | `experiments/057-booking-class-tax-panel/` | **COMPLETE - reject promotion** | Twelve one-city calls: 0/24 strict 3-/4-star rows; class-page tax evidence blocked |
+| `experiments/058-trip-class-tax-panel/` | **COMPLETE - reject promotion** | Twelve one-city calls: 0/36 strict 2-/3-/4-star rows; occupancy/tax evidence blocked |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

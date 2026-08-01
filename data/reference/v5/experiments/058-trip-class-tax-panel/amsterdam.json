@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-tax-panel-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": 134,
+      "currency": "GBP",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://uk.trip.com/hotels/star2/city/nl/amsterdam.html",
+      "sourceTitle": "Best 2-Star Hotels in Amsterdam - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "Trip.com identifies 2-star hotels in Amsterdam and reports a weekday average of £134 and weekend average of £192. The result does not state 2 adults, 1 room, or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 3 weeks ago; page reports weekday/weekend averages and a July 9-15 search period.",
+      "searchQuery": "site:trip.com/hotels/star2/city Amsterdam Netherlands 2-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because occupancy and tax/fee treatment are not explicit in the same evidence; the page also reports weekday/weekend averages rather than a selected two-adult one-room quote."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 220,
+      "currency": "GBP",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.trip.com/hotels/star3/city/nl/amsterdam.html",
+      "sourceTitle": "Top 3-Star Hotels in Amsterdam | Trip.com",
+      "evidenceText": "For 3-star hotels in Amsterdam, Trip.com reports an average weekday cost of £220 and usual weekend price of £292. No two-adult/one-room selector wording or tax/fee status is present.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 4 days ago; weekday/weekend FAQ average.",
+      "searchQuery": "site:trip.com/hotels/star3/city Amsterdam Netherlands 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the city-class average lacks explicit two-adult one-room occupancy and included/excluded tax treatment."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 3024,
+      "currency": "MOP",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.trip.com/hotels/star4/city/nl/amsterdam.html",
+      "sourceTitle": "Best 4-Star Hotels in Amsterdam (Prices & Reviews) | Trip.com",
+      "evidenceText": "For 4-star hotels in Amsterdam, Trip.com reports a weekday average of MOP 3,024 and weekend average of MOP 3,924. The result does not state 2 adults, 1 room, or taxes/fees.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 4 days ago; weekday/weekend FAQ average.",
+      "searchQuery": "site:trip.com/hotels/star4/city Amsterdam Netherlands 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because occupancy and tax/fee treatment are unknown, despite an exact city/class average snippet."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

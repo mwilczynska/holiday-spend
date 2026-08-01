@@ -524,6 +524,11 @@ averages and selectors but not tax/fee treatment in the same evidence; other row
 Reject the route and do not map or fit. A materially different tax or price-statistic estimand requires a new
 pre-registration.
 
+Experiment 058 completed twelve independent one-city Luna contexts and 36 ordered Trip.com star-2/3/4 searches.
+Strict coverage was 0/36 (0/12 for each class), with no complete city. Class pages exposed weekday/weekend or
+localized averages but not same-evidence explicit two-adult/one-room occupancy and tax status. Reject the route and
+do not map or fit; a materially different tax or price-statistic estimand requires new pre-registration.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

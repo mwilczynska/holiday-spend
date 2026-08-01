@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-tax-panel-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://us.trip.com/hotels/star2/city/hu/budapest.html",
+      "sourceTitle": "Top 2-Star Hotels in Budapest | Trip.com",
+      "evidenceText": "The exact Budapest 2-star class page reports average weekday price JPY 14,465 and weekend price JPY 18,015. The snippet does not state 2 adults and 1 room or tax/fee inclusion.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 3 weeks ago; weekday and Friday-Saturday averages",
+      "searchQuery": "site:trip.com/hotels/star2/city Budapest Hungary 2-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the average has no explicit two-adult one-room occupancy and tax/fee treatment is unknown."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://sg.trip.com/hotels/star3/city/hu/budapest.html",
+      "sourceTitle": "Best 3-Star Hotels in Budapest - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The exact Budapest 3-star class page reports average weekday price INR 14,307 and weekend price INR 17,317. The snippet does not state 2 adults and 1 room or tax/fee inclusion.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 3 weeks ago; weekday and Friday-Saturday averages",
+      "searchQuery": "site:trip.com/hotels/star3/city Budapest Hungary 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the average has no explicit two-adult one-room occupancy and tax/fee treatment is unknown."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.trip.com/hotels/star4/city/hu/budapest.html",
+      "sourceTitle": "Top 4-Star Hotels in Budapest | Trip.com",
+      "evidenceText": "The exact Budapest 4-star class page shows 1 night and a property from-price of LAK 2,554,360. It does not provide a city-class average, explicit 2-adult one-room occupancy, or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Trip.com result crawled 4 days ago; property from-price",
+      "searchQuery": "site:trip.com/hotels/star4/city Budapest Hungary 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the result is a property from/starting price rather than a city-class average, and occupancy and tax treatment are unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
