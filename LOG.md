@@ -1619,3 +1619,13 @@ or scale the Price of Travel index. Retain the source rows and current snippets 
 deterministic-FX audit may test the CNY rows, but it must preserve strict property/occupancy/tax/date semantics and
 the 30-city/10-locked-holdout validation gate. Read
 `data/reference/v5/experiments/073-priceoftravel-hostel-index-calibration/`.
+
+## Experiment 074 - Hostelworld current shared-dorm panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts each issued exactly one public Hostelworld search. All
+calls were protocol-compliant, but strict shared-dorm coverage was **0/12**. Search results exposed `From`/seasonal
+prices, city-list summaries, or omitted dates and tax/fee basis; no values were inferred.
+
+**Verdict:** reject this source/query boundary. Retain not-found reasons as access evidence only; do not map, scale,
+or fit a dorm value. The next accommodation experiment is a targeted pooled Expedia 3↔4-star completion panel.
+Read `data/reference/v5/experiments/074-hostelworld-shared-dorm-panel/`.

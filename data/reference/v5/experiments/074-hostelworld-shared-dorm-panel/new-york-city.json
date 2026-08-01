@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-hostelworld-shared-dorm-panel-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.hostelworld.com/hostels/p/801/chelsea-international-hostel/",
+    "sourceTitle": "Chelsea International Hostel, New York - 2026 Prices & Reviews",
+    "propertyName": "Chelsea International Hostel",
+    "evidenceText": "The exact Hostelworld property result identifies Chelsea International Hostel in New York and shared rooms/single beds and states hotel taxes are added, but it provides no numeric nightly quote. The city results expose only Dorms From prices, not a standard selected nightly price, and no stay dates are visible.",
+    "referencePeriod": "Hostelworld result crawled 2026; retrieval date 2026-08-01; no selected stay dates visible",
+    "searchQuery": "site:hostelworld.com/hostels New York City United States hostel shared dorm one person nightly price taxes",
+    "reason": "No strict value: numeric standard nightly price and visible stay dates are missing; city-page Dorms From prices are explicitly rejected."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

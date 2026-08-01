@@ -512,3 +512,8 @@ joined the same property, and only Lisbon had matching currency; its absolute pe
 same-currency gate failed. Reject this calibration boundary; retain all rows as labelled evidence only and do not map,
 fit, or scale the index. The next experiment is a pre-registered deterministic-FX audit, not an implicit relaxation of
 this result.
+
+Experiment 074 completed twelve one-city Luna contexts with exactly one public Hostelworld search each. All calls were
+protocol-compliant, but strict shared-dorm coverage was 0/12 because results were `From`/seasonal prices or lacked
+dates and tax/fee basis. Reject this source/query boundary; retain not-found evidence only. The next restart action is
+a targeted pooled Expedia 3↔4-star completion panel, with no mapping or fitting until the 30-city/10-holdout gate.

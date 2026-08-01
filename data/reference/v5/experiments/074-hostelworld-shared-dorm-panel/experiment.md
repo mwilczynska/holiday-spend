@@ -32,5 +32,10 @@ evidence only.
 
 ## Results
 
-Pending completion of the twelve one-city contexts.
+All twelve calls were protocol-compliant, but zero strict current shared-dorm rows were returned. Hostelworld exposed
+`From`/city-list prices, seasonal ranges, or named listings without the required dates and tax/fee basis. No value was
+recovered from a range endpoint or inferred from a listing.
 
+**Verdict:** reject this one-search Hostelworld boundary at the source screen (0/12 versus the 8/12 gate). Retain the
+not-found reasons and any URLs as access evidence only; do not map, scale, or fit a dorm value. A future attempt would
+need a materially different source and a new pre-registered contract.

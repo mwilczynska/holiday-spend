@@ -106,7 +106,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/071-activity-per-person-scaling-panel/` | **COMPLETE - reject per-person screen** | Twelve one-city three-search calls: budget 3/12, mid 0/12, high 1/12, zero complete; no scaling or mapping |
 | `experiments/072-priceoftravel-hostel-index-dorm/` | **COMPLETE - promote to scaling validation** | Twelve one-city search+page-read calls: 12/12 strict, 12/12 protocol-compliant; source window April 2023; no mapping |
 | `experiments/073-priceoftravel-hostel-index-calibration/` | **COMPLETE - reject same-currency calibration** | Twelve one-city three-operation calls; 12/12 protocol-compliant, but only 1/12 same-currency matched pairs; no fitting or mapping |
-| `experiments/074-hostelworld-shared-dorm-panel/` | **IN PROGRESS - current shared-dorm source screen** | Twelve one-city one-search calls for strict current Hostelworld dorm-bed rows; no scaling or mapping |
+| `experiments/074-hostelworld-shared-dorm-panel/` | **COMPLETE - reject source boundary** | Twelve one-city one-search calls; 0/12 strict current rows, 12/12 protocol-compliant; no scaling or mapping |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

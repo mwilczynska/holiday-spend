@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "city-cost-v5-hostelworld-shared-dorm-panel-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictRows": 0,
+  "screeningGate": "strictRows>=8 and protocolCompliant>=10",
+  "screeningGatePassed": false,
+  "productMapping": "none_screening_only",
+  "rows": [
+    {
+      "city": "Bangkok",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "Not found: the single public search result lacked both a numeric standard non-sale nightly price and visible stay/reference dates; no value was inferred."
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "Not found: the single public search result lacked a numeric standard non-sale nightly price and visible stay/reference dates; tax presentation was also inconsistent, so no value was inferred."
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "Not found: no strict named-property result in the single search had a numeric standard non-sale nightly price together with visible stay/reference dates; 'From' city-list prices were rejected."
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "Not found: the result supplied only a seasonal range and lacked a current standard nightly price and visible stay/reference dates; no range endpoint was used."
+    },
+    {
+      "city": "Rome",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "not_found: the only result uses from-prices and omits visible stay/reference dates and a tax/fee basis."
+    },
+    {
+      "city": "Prague",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "not_found: the only visible PLUS Prague price is a from-price and required dates and tax/fee basis are absent."
+    },
+    {
+      "city": "Tokyo",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "not_found: no fixed numeric Sakura Hostel Asakusa dorm quote with dates and tax/fee basis was exposed; visible alternatives are from-prices."
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "not_found: visible values are from-prices and the result omits required dates and tax/fee basis; the target index property is not present."
+    },
+    {
+      "city": "New York City",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "No strict value: numeric standard nightly price and visible stay dates are missing; city-page Dorms From prices are explicitly rejected."
+    },
+    {
+      "city": "Sydney",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "No strict value: only From prices were visible, and dates and tax/fee basis were missing. No price was inferred from the listing."
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "No strict value: the available listing is From-price-only and lacks visible dates and tax/fee basis; no value was inferred."
+    },
+    {
+      "city": "Mexico City",
+      "protocolCompliant": true,
+      "strict": false,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "propertyName": null,
+      "sourceUrl": null,
+      "reason": "No strict value: only From-price snippets or no price were returned, with missing visible stay dates and tax/fee basis. No value was inferred."
+    }
+  ]
+}

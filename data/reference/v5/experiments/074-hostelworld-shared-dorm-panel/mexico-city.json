@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-hostelworld-shared-dorm-panel-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.hostelworld.com/hostels/north-america/mexico/mexico-city/",
+    "sourceTitle": "Best Hostels in Mexico City from £0.78 | 2026",
+    "propertyName": "Mexico City Hostel",
+    "evidenceText": "The one-search Hostelworld results identify Mexico City properties and shared dorms. The city page shows Dorms From prices (for example, Mexico City Hostel Dorms From £13.73), while the direct property results do not show a numeric nightly quote. No selected stay dates or strict standard quote is visible.",
+    "referencePeriod": "Hostelworld result crawled 2026; retrieval date 2026-08-01; no selected stay dates visible",
+    "searchQuery": "site:hostelworld.com/hostels Mexico City Mexico hostel shared dorm one person nightly price taxes",
+    "reason": "No strict value: only From-price snippets or no price were returned, with missing visible stay dates and tax/fee basis. No value was inferred."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

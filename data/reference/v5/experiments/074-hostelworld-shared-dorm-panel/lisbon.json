@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-hostelworld-shared-dorm-panel-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.hostelworld.com/hostels/p/280573/live-lisboa-hostel/",
+    "sourceTitle": "Live Lisboa Hostel, Lisbon - 2026 Prices & Reviews",
+    "propertyName": "Live Lisboa Hostel",
+    "evidenceText": "The one-search Hostelworld result identifies Live Lisboa Hostel in Lisbon, Portugal, describes six-person dorms, and states an occupancy tax of EUR 1 per person per night (with conflicting generic tax labels elsewhere in the result). It does not expose a numeric standard nightly price or visible stay/reference dates.",
+    "referencePeriod": null,
+    "searchQuery": "site:hostelworld.com/hostels/p Lisbon Portugal hostel shared dorm bed price taxes included dates",
+    "reason": "Not found: the single public search result lacked a numeric standard non-sale nightly price and visible stay/reference dates; tax presentation was also inconsistent, so no value was inferred."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

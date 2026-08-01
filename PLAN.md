@@ -613,6 +613,11 @@ The same-currency calibration gate (8/12) failed; Lisbon's one scored pair had 3
 Reject this calibration boundary. Do not map or fit the index. A separate deterministic-FX audit may test the retained
 definition-compatible CNY rows, but it must be pre-registered and still meet the 30-city/10-holdout gate.
 
+Experiment 074 completed twelve one-city Luna contexts with exactly one public Hostelworld search each. All calls were
+protocol-compliant, but strict shared-dorm coverage was 0/12: results were `From`/seasonal prices or lacked visible
+dates and tax/fee basis. Reject this source/query boundary; do not map or scale it. The next accommodation priority is
+the closest viable model-evidence package, beginning with a targeted pooled Expedia 3↔4-star completion audit.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

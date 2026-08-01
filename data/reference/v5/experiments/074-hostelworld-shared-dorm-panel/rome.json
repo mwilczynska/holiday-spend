@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-hostelworld-shared-dorm-panel-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.hostelworld.com/hostels/europe/italy/rome/",
+    "sourceTitle": "Best Hostels in Rome from £11.20 | 2026",
+    "propertyName": "YellowSquare Rome",
+    "evidenceText": "The one allowed Hostelworld city search identifies Rome, Italy and lists named properties, including YellowSquare Rome, but only exposes dorm rates as 'From£19.51' (and other properties similarly as 'Dorms From'). It provides no fixed non-sale nightly value, stay dates, or tax/fee basis in the result.",
+    "referencePeriod": null,
+    "searchQuery": "site:hostelworld.com/hostels Rome Italy Hostelworld shared dorm bed price per night taxes dates",
+    "reason": "not_found: the only result uses from-prices and omits visible stay/reference dates and a tax/fee basis."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

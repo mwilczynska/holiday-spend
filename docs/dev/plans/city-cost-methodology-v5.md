@@ -463,6 +463,14 @@ scored Lisbon pair had a 38.76% absolute percentage error. **Verdict:** reject t
 pre-registered experiment with explicit source, tax, occupancy, and date checks and the unchanged 30-city/10-holdout
 accuracy requirement.
 
+### Experiment 074 - Hostelworld current shared-dorm panel
+
+Twelve independent one-city Luna contexts each issued one public Hostelworld search. All calls were protocol-
+compliant, but strict shared-dorm coverage was **0/12**. Search results exposed `From`/seasonal prices or omitted
+dates and tax/fee basis. **Verdict:** reject this source/query boundary; no mapping or scaling is authorized. Pivot to
+the nearest viable accommodation model evidence: complete the pooled Expedia 3↔4-star relationship panel before
+revisiting one-star/private/dorm source semantics.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

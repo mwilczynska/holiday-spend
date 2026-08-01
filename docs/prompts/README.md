@@ -135,9 +135,9 @@ one index search, one exact-page read, and one current exact-property dorm searc
 1/12 strict same-currency pairs were available (Lisbon's paired error was 38.76%). No correction, scaling, mapping,
 or fitting follows. A deterministic-FX audit would be a separate experiment.
 
-The 074 Hostelworld shared-dorm prompt is active: twelve one-city contexts each perform exactly one public
-Hostelworld search for a current one-person shared-dorm bed. Strict acceptance requires an exact city/property,
-non-`from` nightly numeric price, occupancy, currency, tax basis, and dates; no scaling or mapping follows the screen.
+The 074 Hostelworld shared-dorm prompt is complete and rejected: twelve one-city contexts each performed exactly one
+public Hostelworld search, with 12/12 protocol compliance but 0/12 strict rows. `From`/seasonal prices and missing
+dates or tax basis dominated. No scaling or mapping follows.
 
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
