@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-telemetry-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:agoda.com Dublin Ireland 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+    "site:agoda.com Dublin Ireland 3-star hotel 2 adults 1 room one night nightly price taxes fees included"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 0,
+  "notFoundRows": 2,
+  "protocolCompliant": true,
+  "notes": "One-city, two-search Agoda 1-/3-star panel. A named Dublin 3-star property had Max 2 adults but no selected nightly price, room selector, or tax treatment. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

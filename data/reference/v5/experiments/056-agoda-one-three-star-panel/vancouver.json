@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "named_property",
+      "propertyName": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:agoda.com Vancouver Canada 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "The ordered Agoda 1-star search returned no exact-city 1-star property or class-average row with a numeric nightly price and tax treatment."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": "Victorian Hotel",
+      "sourceUrl": "https://www.agoda.com/en-ca/victorian-hotel/hotel/vancouver-bc-ca.html",
+      "sourceTitle": "Victorian Hotel | FREE Cancellation 2026 Vancouver (BC) Deals",
+      "evidenceText": "Agoda identifies Victorian Hotel in Vancouver as a 3-star property and lists a Standard Room with a maximum of 3 adults. The result says to enter dates to see prices and provides no numeric nightly price or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Agoda result crawled last week; dates not selected",
+      "searchQuery": "site:agoda.com Vancouver Canada 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Exact city/class are present, but the returned room capacity is not an explicit two-adult/one-room booking and no numeric nightly price or known tax treatment was returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

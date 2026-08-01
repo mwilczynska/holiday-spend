@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "propertyName": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:agoda.com Budapest Hungary 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "No exact Budapest 1-star Agoda row with class, occupancy, nightly price, and taxes was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": "Hotel Abel Pension",
+      "sourceUrl": "https://www.agoda.com/hotel-abel-pension/hotel/budapest-hu.html",
+      "sourceTitle": "Hotel Abel Pension, Budapest | 2026 Updated Prices, Deals",
+      "evidenceText": "Hotel Abel Pension is a 3-star Budapest hotel, but its room listings say Enter dates to see prices; no numeric one-night two-adult quote or tax treatment is provided.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Result crawled last month",
+      "searchQuery": "site:agoda.com Budapest Hungary 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected named property because no numeric nightly price or tax/fee treatment was returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "named_property",
+      "propertyName": "Hotel O'Rei",
+      "sourceUrl": "https://www.agoda.com/nl-nl/hotel-o-rei/hotel/buenos-aires-ar.html",
+      "sourceTitle": "Hotel O'Rei, Buenos Aires | 2026 Updated Prices, Deals",
+      "evidenceText": "Agoda identifies Hotel O'Rei as a 1-star hotel in Buenos Aires and lists double and single room types. All displayed room options say to enter dates to see prices; no numeric nightly price, two-adult one-room booking basis, or tax/fee treatment is returned.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Agoda result crawled 2 months before retrieval; dates not selected",
+      "searchQuery": "site:agoda.com Buenos Aires Argentina 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Exact city/class are present, but no numeric one-night price, explicit two-adult/one-room booking basis, or known tax treatment was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": "Hotel La Perla",
+      "sourceUrl": "https://www.agoda.com/es-ar/hotel-la-perla/hotel/buenos-aires-ar.html",
+      "sourceTitle": "Hotel La Perla Buenos Aires",
+      "evidenceText": "Agoda identifies Hotel La Perla as a 3-star hotel in Buenos Aires and lists a standard offer with max 2 adults and a queen bed. The result says to enter dates to see prices and provides no numeric nightly price or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Agoda result; dates not selected",
+      "searchQuery": "site:agoda.com Buenos Aires Argentina 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Exact city/class and a room capacity are present, but no numeric one-night price, explicit one-room booking basis, or known tax treatment was returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

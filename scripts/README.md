@@ -72,6 +72,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-selector-occupancy-audit.mjs` | `analyze-v5-selector-occupancy-audit.mjs` | Experiment 053: compares strict and selector-relaxed three-star occupancy semantics without mapping |
 | `node scripts/analyze-v5-model-fit-adequacy.mjs` | `analyze-v5-model-fit-adequacy.mjs` | Experiment 054: counts definition-compatible city pairs without fitting or mapping |
 | `node scripts/analyze-v5-skyscanner-class-panel.mjs` | `analyze-v5-skyscanner-class-panel.mjs` | Experiment 055: audits four Skyscanner hotel-class averages without mapping |
+| `node scripts/analyze-v5-agoda-one-three-star-panel.mjs` | `analyze-v5-agoda-one-three-star-panel.mjs` | Experiment 056: audits Agoda 1-/3-star class prices without mapping |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

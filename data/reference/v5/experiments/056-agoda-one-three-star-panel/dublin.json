@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "named_property",
+      "propertyName": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:agoda.com Dublin Ireland 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "No returned Agoda result supplied an exact-city 1-star property or class average with a numeric two-adult one-room nightly quote and tax treatment."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": "Almanii B & B",
+      "sourceUrl": "https://www.agoda.com/en-ie/almanii-b-b/hotel/dublin-ie.html",
+      "sourceTitle": "Almanii B & B, Dublin - Agoda",
+      "evidenceText": "Agoda identifies Almanii B & B as a 3-star hotel in Dublin and lists Double en suite and En Suite Twin rooms with Max 2 adults, but the returned evidence says Enter dates to see prices and gives no selected one-night price, one-room selector, or tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Agoda result crawled 2 months ago; dates not selected",
+      "searchQuery": "site:agoda.com Dublin Ireland 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected because no numeric non-from nightly quote, explicit one-room booking, or tax/fee treatment was present in the same evidence."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

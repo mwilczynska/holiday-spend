@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "named_property",
+      "propertyName": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:agoda.com Sydney Australia 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "The ordered Agoda 1-star search returned no exact-city 1-star property or class-average row with a numeric nightly price and tax treatment."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": "Darling Harbour Boutique Hotel",
+      "sourceUrl": "https://www.agoda.com/en-au/peg-leg-darling-harbour/hotel/sydney-au.html",
+      "sourceTitle": "Darling Harbour Boutique Hotel, Sydney | 2026 Updated Prices, Deals",
+      "evidenceText": "Agoda identifies Darling Harbour Boutique Hotel in Sydney as a 3-star property and lists a Double Room with max 2 adults. The result says to enter dates to see prices and provides no numeric nightly price or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Agoda result crawled 3 weeks before retrieval; dates not selected",
+      "searchQuery": "site:agoda.com Sydney Australia 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Exact city/class and room capacity are present, but no numeric one-night price or known tax treatment was returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

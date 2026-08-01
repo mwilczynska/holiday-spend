@@ -411,6 +411,11 @@ Luna contexts. Strict rows require exact class/city, explicit two-adult one-room
 and known tax treatment. Coverage was 0/48 and no city was complete; tax was unknown or class/currency evidence was
 malformed. Reject mapping and fitting; a different estimand needs a new pre-registration.
 
+Experiment 056 completed its test of an untried Agoda 1-star/3-star source route across twelve independent one-city
+Luna contexts. Strict rows require exact city/class, two adults and one room, non-from nightly price, and known tax.
+Coverage was 0/24 and no city was complete; Agoda required date entry before price and tax evidence appeared. No
+source row is mapped or used for a ratio fit.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

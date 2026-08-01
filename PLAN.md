@@ -513,6 +513,11 @@ coverage was 0/48 (1-star 0/12, 2-star 0/12, 3-star 0/12, 4-star 0/12); no city 
 selector, and price snippets generally lacked tax treatment or had malformed currency/class evidence. Reject the
 route and do not map or fit. A different tax or price-statistic estimand requires a new pre-registration.
 
+Experiment 056 completed twelve independent one-city Luna contexts and 24 ordered Agoda searches. Strict coverage
+was 0/24 (1-star 0/12 and 3-star 0/12), with no complete city. Agoda exposed some class or maximum-occupancy facts,
+but selected dates were required before a numeric nightly price, one-room basis, and tax treatment appeared. Reject
+the route and do not map or fit; a different retrieval shape or estimand requires a new pre-registration.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "propertyName": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:agoda.com Vienna Austria 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "No exact Vienna 1-star Agoda row with class, occupancy, nightly price, and taxes was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "propertyName": null,
+      "sourceUrl": "https://www.agoda.com/de-de/city/vienna-at.html",
+      "sourceTitle": "Die 12 besten Hotels in Wien günstig ab 6 € - Agoda",
+      "evidenceText": "Agoda's Vienna city result says the average price of a 3-star hotel is 91 EUR, but does not show two adults, one room, a one-night basis, or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Result crawled last week",
+      "searchQuery": "site:agoda.com Vienna Austria 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected generic class average because explicit occupancy and tax/fee treatment are absent."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

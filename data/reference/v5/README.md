@@ -88,6 +88,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 8/12 promotion gate. Its relaxed label remains a hypothesis only.
 
 | `experiments/055-skyscanner-class-panel/` | **COMPLETE - reject promotion** | Twelve one-city calls: 0/48 strict class rows; tax/class evidence blocked all |
+| `experiments/056-agoda-one-three-star-panel/` | **COMPLETE - reject promotion** | Twelve one-city calls: 0/24 strict 1-/3-star rows; date/price/tax evidence blocked |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

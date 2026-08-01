@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "named_property",
+      "propertyName": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:agoda.com Prague Czechia 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "No returned Agoda result supplied an exact-city 1-star property or class average with a numeric two-adult one-room nightly quote and tax treatment."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": "Hotel Claris",
+      "sourceUrl": "https://www.agoda.com/hotel-claris/hotel/prague-cz.html",
+      "sourceTitle": "Hotel Claris, Prague | Agoda",
+      "evidenceText": "Agoda identifies Hotel Claris as a 3-star property in Prague and lists a Superior double room with Max 2 adults, but the returned evidence says Enter dates to see prices and gives no selected one-night price, one-room selector, or tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Agoda result crawled 5 days ago; dates not selected",
+      "searchQuery": "site:agoda.com Prague Czechia 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected because no numeric non-from nightly quote, explicit one-room booking, or tax/fee treatment was present in the same evidence."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

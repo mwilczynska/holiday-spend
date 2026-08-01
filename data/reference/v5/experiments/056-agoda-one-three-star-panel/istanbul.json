@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "named_property",
+      "propertyName": "Star Hotel Istanbul",
+      "sourceUrl": "https://www.agoda.com/en-sg/star-hotel-istanbul/hotel/istanbul-tr.html",
+      "sourceTitle": "Book Star Hotel Istanbul in İstanbul, Türkiye - 2026 Promos",
+      "evidenceText": "Star Hotel Istanbul has a Standard Double Room for max 2 adults, but the Agoda result says Enter dates to see prices and does not explicitly identify a 1-star class or tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Result crawled last week",
+      "searchQuery": "site:agoda.com Istanbul Turkey 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected because class, numeric nightly price, and tax/fee treatment are not all present."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": "Rooms Inn Taxim",
+      "sourceUrl": "https://www.agoda.com/rooms-inn-taxim/hotel/istanbul-tr.html",
+      "sourceTitle": "Rooms Inn Taxim, İstanbul | 2026 Updated Prices, Deals",
+      "evidenceText": "Rooms Inn Taxim is a 3-star Istanbul property with rooms up to 2 adults, but Agoda says Enter dates to see prices and gives no numeric one-night quote or tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Result crawled 5 days ago",
+      "searchQuery": "site:agoda.com Istanbul Turkey 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected named property because no numeric nightly price or tax/fee treatment was returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

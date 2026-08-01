@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-agoda-one-three-star-panel-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "named_property",
+      "propertyName": "H2O Guesthouse",
+      "sourceUrl": "https://www.agoda.com/h2o-guesthouse/hotel/seoul-kr.html",
+      "sourceTitle": "H2O Guesthouse, Seoul | 2026 Updated Prices, Deals",
+      "evidenceText": "H2O Guesthouse is identified as a 1-star Seoul hotel and its Twin private room is max 2 adults, but Agoda says Enter dates to see prices and gives no numeric nightly price or tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Result crawled 3 weeks ago",
+      "searchQuery": "site:agoda.com Seoul South Korea 1-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected named property because no numeric nightly price or tax/fee treatment was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "named_property",
+      "propertyName": null,
+      "sourceUrl": "https://www.agoda.com/3s-hotel-yeonsinnae/hotel/seoul-kr.html",
+      "sourceTitle": "3S HOTEL - yeonsinnae Entire apartment (Seoul) - Deals, Photos & Reviews",
+      "evidenceText": "The Seoul 3S HOTEL result contains no explicit 3-star class, two-adult one-room quote, numeric nightly price, or tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Result crawled 4 weeks ago",
+      "searchQuery": "site:agoda.com Seoul South Korea 3-star hotel 2 adults 1 room one night nightly price taxes fees included",
+      "reason": "Rejected because class, occupancy, numeric nightly price, and tax/fee treatment were not jointly evidenced."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

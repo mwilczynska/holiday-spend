@@ -273,6 +273,15 @@ feasibility only; no product mapping or ratio fit follows automatically.
 The panel completed with 0/48 strict rows and no complete city. The route is rejected because tax treatment was
 unknown or class/currency evidence was malformed, even where 3-/4-star selectors and prices appeared.
 
+### Experiment 056 - Agoda one-/three-star class panel
+
+Twelve one-city Luna calls are testing Agoda 1-star and 3-star class prices with exact city/class, explicit
+two-adult/one-room one-night basis, numeric non-from nightly price, and known tax. Promotion requires 6/12 strict
+rows per class and four complete cities; a pass only authorizes a separate validation or paired-model experiment.
+
+The panel completed with 0/24 strict rows and no complete city. Agoda required date entry before exposing a numeric
+nightly price and did not provide the complete occupancy/tax evidence in search results. Reject promotion.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

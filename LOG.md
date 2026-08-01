@@ -1397,3 +1397,17 @@ positively established as class absence.
 **Verdict:** reject the Skyscanner class-average route under the frozen contract. Do not map, aggregate, or fit from
 these snippets. A materially different tax or price-statistic estimand requires a new pre-registered experiment.
 Read `data/reference/v5/experiments/055-skyscanner-class-panel/`.
+
+## Experiment 056 - Agoda one-/three-star class panel (1 August 2026)
+
+Twelve independent single-city Luna-class contexts issued exactly two ordered searches each (Agoda 1-star then
+3-star; 24 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback sources, or
+cross-city evidence occurred.
+
+Strict coverage was **0/24**: one-star 0/12 and three-star 0/12; no city was complete. Agoda exposed some class or
+maximum-occupancy facts, but selected dates were required before a numeric nightly price, explicit one-room basis,
+and tax treatment appeared.
+
+**Verdict:** reject the Agoda route under the frozen contract. Do not map or fit from these results; a different
+retrieval shape or estimand requires a new pre-registration. Read
+`data/reference/v5/experiments/056-agoda-one-three-star-panel/`.
