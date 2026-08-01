@@ -118,6 +118,10 @@ The 069 BudgetYourTrip explicit-calibration prompt is complete and rejected at i
 contexts issued exactly five searches each; 11/12 had a proxy, but 0/12 had an independent explicit candidate. The
 rejected direct-source evidence and all proxy rows remain labelled evidence only; no mapping or fitting follows.
 
+The 070 private-hostel prompt is complete and rejected at its screening gate. Twelve one-city contexts issued exactly
+three ordered search-only operations (Hostelworld, Booking.com, Google Hotels); 4/12 cities yielded five qualifying
+property rows. No basket aggregation or product mapping follows.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

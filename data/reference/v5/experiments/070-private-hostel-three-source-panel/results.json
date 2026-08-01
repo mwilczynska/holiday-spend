@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-three-source-panel-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "citiesWithDirectCandidate": 4,
+  "acceptedDirectCandidates": 5,
+  "screeningGate": "citiesWithDirectCandidate>=6 and protocolCompliant>=10",
+  "screeningGatePassed": false,
+  "finalValidationReminder": "A pass authorizes only a new property-basket design; at least 30 definition-compatible matched cities and 10 locked holdout cities remain required.",
+  "cities": [
+    {
+      "city": "London",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true,
+      "directCandidates": 1,
+      "sources": [
+        "booking"
+      ],
+      "passed": true
+    },
+    {
+      "city": "Tokyo",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true,
+      "directCandidates": 1,
+      "sources": [
+        "booking"
+      ],
+      "passed": true
+    },
+    {
+      "city": "New York City",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    },
+    {
+      "city": "Melbourne",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    },
+    {
+      "city": "Bangkok",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    },
+    {
+      "city": "Nairobi",
+      "protocolCompliant": true,
+      "directCandidates": 1,
+      "sources": [
+        "booking"
+      ],
+      "passed": true
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true,
+      "directCandidates": 2,
+      "sources": [
+        "booking",
+        "google_hotels"
+      ],
+      "passed": true
+    },
+    {
+      "city": "Madrid",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    },
+    {
+      "city": "Rome",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true,
+      "directCandidates": 0,
+      "sources": [],
+      "passed": false
+    }
+  ],
+  "productMapping": "none_private_hostel_screening_only"
+}

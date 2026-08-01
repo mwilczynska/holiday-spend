@@ -417,6 +417,19 @@ direct candidate, but do not compute a correction, design a property basket retr
 Any future calibration must be pre-registered with definition-compatible city-level aggregation and at least 30
 matched cities including 10 locked holdout cities.
 
+### Experiment 070 - explicit two-guest private-hostel three-source panel
+
+This follow-up broadened Experiment 040 from two to three signed-out search sources (Hostelworld, Booking.com, and
+Google Hotels) while preserving the strict product boundary: named hostel/private room, two adults or guests, standard
+non-`from` nightly price, and known taxes. Twelve single-city Luna contexts issued exactly three searches each; the
+analyzer retained all candidates but did no basket aggregation.
+
+Results: 12/12 calls were protocol-compliant, but only 4/12 cities produced a candidate (five rows total: Lisbon,
+Hanoi, Nairobi, and Cape Town). The 6/12 screening gate failed. **Verdict:** reject this search-only three-source
+route at current reliability. The five rows remain property-level evidence only; no city estimate, scaling, mapping,
+or fitting is authorized. A future private-hostel method needs a materially different source or aggregation design and
+the unchanged 30-city/10-locked-holdout validation gate.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -487,3 +487,9 @@ candidate was found. Thus matched coverage was 0/12
 and the calibration screen failed. Reject this proxy route and retain the rows as labelled evidence only; no property-
 basket aggregation, mapping, or fitting is authorized. The next experiment must choose a materially different
 one-star/hostel anchor or a newly declared benchmark with independent city-level ground truth.
+
+Experiment 070 completed twelve one-city Luna contexts with exactly three ordered Hostelworld, Booking.com, and
+Google Hotels searches and no page reads. Four cities yielded five strict private-hostel property rows, below the
+6/12 screen gate. Reject the search-only three-source route; retain the five rows as property-level evidence only. Do
+not aggregate or map `accom_hostel_private_room`. The next attempt must use a materially different source or a
+pre-registered city-level basket design.

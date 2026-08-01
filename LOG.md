@@ -1571,3 +1571,15 @@ Hotels.com mostly exposed from/lowest
 prices or the wrong class. **Verdict:** reject this proxy calibration route at the screening gate (required 6/12
 matched cities and 10/12 compliant). Retain rows as labelled evidence only; no correction, property-basket
 aggregation, mapping, or fitting. Read `data/reference/v5/experiments/069-budgetyourtrip-explicit-calibration/`.
+
+## Experiment 070 - explicit two-guest private-hostel three-source panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly three ordered search-only operations each
+(Hostelworld, Booking.com, and Google Hotels; 36 searches total). All calls were protocol-compliant, with no page
+reads, retries, fallbacks, arithmetic, FX conversion, averaging, or cross-city evidence.
+
+Four cities produced five qualifying named private-hostel property rows: Lisbon, Hanoi, Nairobi, and Cape Town. The
+other eight cities failed on from/sale prices, ambiguous room/property class, missing occupancy, missing numeric price,
+or no result. The 4/12 city gate failed (required 6/12). **Verdict:** reject this search-only three-source route at
+current reliability. Keep the five rows as property-level evidence only; no basket aggregation, correction, or product
+mapping. Read `data/reference/v5/experiments/070-private-hostel-three-source-panel/`.

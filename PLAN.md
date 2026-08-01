@@ -581,6 +581,16 @@ BudgetYourTrip proxy calibration route; retain the proxy rows and rejected direc
 only. Do not map or fit. Any future property-basket calibration must be a new design and still meet the
 30-city plus 10-locked-holdout gate.
 
+Experiment 070 is active: twelve one-city Luna contexts issue exactly three ordered Hostelworld, Booking.com, and
+Google Hotels searches for explicit two-guest private-hostel room candidates. The screen requires at least 6/12
+cities with one qualifying standard non-from candidate and 10/12 protocol-compliant calls. A pass authorizes only a
+new city-level property-basket design; no product mapping or fitting is allowed.
+
+Experiment 070 completed with 12/12 protocol-compliant calls, 4/12 cities with strict candidates, and five accepted
+property rows. The 6/12 gate failed. Reject this search-only private-hostel route; retain the five named-property rows
+as property-level evidence only and do not aggregate, scale, map, or fit. The next private-hostel attempt must be a
+materially different source or aggregation design and still meet the 30-city plus 10-locked-holdout gate.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

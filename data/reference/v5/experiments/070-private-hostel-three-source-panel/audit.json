@@ -1,0 +1,12 @@
+{
+  "schemaVersion":"city-cost-v5-private-hostel-three-source-panel-audit-v1",
+  "citiesTested":12,
+  "protocolCompliant":12,
+  "citiesWithDirectCandidate":4,
+  "acceptedDirectCandidates":5,
+  "acceptedCities":["Lisbon","Hanoi","Nairobi","Cape Town"],
+  "screeningGate":"citiesWithDirectCandidate>=6 and protocolCompliant>=10",
+  "screeningGatePassed":false,
+  "productMapping":"none_private_hostel_screening_only",
+  "verdict":"reject_search_only_three_source_route"
+}

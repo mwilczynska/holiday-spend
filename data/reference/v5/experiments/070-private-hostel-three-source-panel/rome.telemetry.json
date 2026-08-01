@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-three-source-panel-telemetry-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:hostelworld.com Rome Italy private hostel room 2 guests one night price taxes",
+    "site:booking.com Rome Italy hostel private room 2 adults one night price taxes",
+    "Rome Italy Google Hotels hostel private room 2 adults one night price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city, exactly three ordered searches, snippets only; no page reads, retries, fallbacks, arithmetic, FX, or cross-city evidence."
+}
