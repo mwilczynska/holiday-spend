@@ -1337,3 +1337,20 @@ Across the panel, food/drink anchors reached 4–5/6 and paid attractions 5/6, w
 0/6, dorm 2/6, and private hostel 1/6. **Verdict:** reject promotion as a complete source boundary; retain
 food/drink and attraction source patterns, but do not hide accommodation, hotel-class, or sparse-city gaps.
 Read `data/reference/v5/experiments/051-minimal-anchor-panel/`.
+
+## Experiment 052 - broad three-star property panel (1 August 2026)
+
+Twelve independent single-city Luna-class contexts (Amsterdam, Prague, Copenhagen, Dublin, Vienna, Budapest,
+Istanbul, Seoul, Sydney, Vancouver, Nairobi, and Buenos Aires) issued exactly three ordered searches each:
+Google Hotels, Expedia, and Booking.com (36 searches total). No page reads, retries, arithmetic, FX conversion,
+averaging, or cross-city evidence occurred.
+
+Strict explicit-three-star, two-adult, one-room, non-from, nightly, tax-resolved quotes passed in **0/12**
+cities, below the pre-registered 6/12 promotion gate. Most candidates contained an exact class, price, and tax
+but did not explicitly establish one room; other failures were from prices, generic averages, wrong classes,
+nearby cities, or absent class labels.
+
+**Verdict:** reject the broad three-star property route. Do not map `accom_3_star`, aggregate properties, or infer
+one-room occupancy from a two-adult selector. A relaxed occupancy interpretation would change the estimand and
+requires a new pre-registered experiment with independent accuracy validation. Read
+`data/reference/v5/experiments/052-three-star-broad-panel/`.

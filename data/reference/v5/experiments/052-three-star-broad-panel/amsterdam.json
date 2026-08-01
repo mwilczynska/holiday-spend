@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-three-star-broad-panel-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Hotel D'Amsterdam",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "3_star",
+    "sourceUrl": "https://www.expedia.com/Amsterdam-Hotels-Hotel-DAmsterdam.h2685796.Hotel-Information?equalTargetTab=tab-3",
+    "sourceTitle": "Hotel D'Amsterdam Reviews, Deals & Photos 2026 - Expedia",
+    "evidenceText": "Expedia identifies Hotel D'Amsterdam in Amsterdam as a 3-star hotel and shows a 1-night stay for 2 adults, but the displayed offer is 'start from $107' including taxes and fees.",
+    "taxStatus": "included",
+    "referencePeriod": "Expedia result crawled 3 weeks ago; one-night stay; 2 adults",
+    "searchQuery": "site:expedia.com Amsterdam Netherlands 3-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: a named exact-city 3-star property, explicit two-adult occupancy, numeric nightly amount, and tax treatment are present, but the price is a lowest/from offer. The strict panel excludes from/starting prices. No qualifying Google Hotels or Booking result was returned."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

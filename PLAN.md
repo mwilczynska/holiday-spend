@@ -486,6 +486,17 @@ shipping v1 prompt, and 121-row production CSV remain unchanged.
 
 ---
 
+Experiment 052 broadened the three-star property panel to 12 independent one-city calls and 36 ordered searches
+across Google Hotels, Expedia, and Booking.com. Strict explicit-three-star, two-adult, one-room, non-from,
+nightly, tax-resolved coverage was **0/12**, so the 6/12 promotion gate failed. Exact class/price/tax snippets
+often omitted one-room occupancy; other failures were from prices, generic averages, wrong classes, nearby cities,
+or missing class labels. Reject the route and do not map `accom_3_star` or infer one room from a two-adult selector.
+
+The next highest-value experiment must explicitly test a declared occupancy semantic or a deterministic model/data
+boundary. Any relaxed occupancy rule is an estimand amendment, not an implementation detail, and must be validated
+against independent named-property observations before use. The v5 methodology remains unaccepted and the shipping
+v1 path remains unchanged.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-three-star-broad-panel-telemetry-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels Sydney Australia 3-star hotel 2 adults nightly price taxes",
+    "site:expedia.com Sydney Australia 3-star hotel 2 adults nightly price taxes",
+    "site:booking.com Sydney Australia 3-star hotel 2 adults nightly price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundAnchors": 0,
+  "notFoundAnchors": 1,
+  "protocolCompliant": true,
+  "notes": "One-city, three-search broad three-star panel. Google returned a strong Hotel Hacienda candidate but omitted an explicit one-room count; it remains not_found under the strict contract. No pages were opened and no retries, fallback, arithmetic, FX, or cross-city evidence were used."
+}

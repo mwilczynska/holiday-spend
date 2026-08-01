@@ -387,6 +387,13 @@ complete; non-sparse coverage was 5/9–8/9 and Don Det was 0/9. Food/drink and 
 but three-star hotel coverage was 0/6 and hostel gaps remain. Do not promote the complete extraction contract or
 hide missingness through modelling until independent validation is available.
 
+Experiment 052 broadened the three-star property route to 12 independent one-city calls with 36 compliant searches
+(Google Hotels, Expedia, Booking.com). Strict explicit-three-star, two-adult, one-room, non-from, nightly,
+tax-resolved coverage was **0/12**. Most exact class/price/tax candidates omitted explicit one-room occupancy;
+remaining failures included from prices, generic averages, wrong/nearby class, and absent class. Reject the route,
+do not map `accom_3_star`, and do not infer one room from a two-adult selector. A relaxed occupancy semantic must
+be a new pre-registered estimand experiment with independent validation.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

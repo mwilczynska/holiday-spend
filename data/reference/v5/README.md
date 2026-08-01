@@ -72,9 +72,16 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/049-one-star-broad-panel/` | **COMPLETE — reject promotion gate** | Twelve one-city calls: 1/12 strict one-star quotes; no mapping |
 | `experiments/050-tax-resolved-activity-ticket/` | **COMPLETE — reject promotion gate** | Six one-city calls: 2/6 strict tax-resolved tickets; no mapping |
 | `experiments/051-minimal-anchor-panel/` | **COMPLETE — reject complete promotion** | Six one-city calls: no complete city; food/drink and attractions retained |
+| `experiments/052-three-star-broad-panel/` | **IN PROGRESS — three-star ground truth** | Twelve-city explicit two-adult three-star property panel; results pending |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.
+
+Experiment 052 is complete: its twelve one-city three-star property calls produced 0/12 strict quotes, so the
+property route was rejected and one-room occupancy remains an explicit evidence requirement.
+
+The inventory row for 052 above is a stale status label; the experiment directory and verdict are authoritative:
+052 is complete and rejected (0/12 strict quotes).
 
 Raw model responses, source captures, and generated reports must retain retrieval dates, schema/version
 metadata, source URLs, currencies, and evidence basis. Do not store copied page content when a URL and

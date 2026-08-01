@@ -227,6 +227,19 @@ Experiment 051 retested the nine-anchor shape in six one-city calls with a fixed
 complete; non-sparse coverage was 5/9–8/9 and Don Det was 0/9. Food/drink and attraction inputs are promising,
 but three-star hotel coverage was 0/6 and accommodation/sparse gaps remain. Do not promote the complete contract.
 
+### Experiment 052 - broad three-star property panel
+
+Twelve independent one-city Luna contexts issued exactly three ordered searches each (Google Hotels, Expedia,
+Booking.com; 36 searches). Strict explicit-three-star, two-adult, one-room, non-from, nightly, tax-resolved
+coverage was **0/12**, below the 6/12 promotion gate. Most candidates had class, price, and tax but no explicit
+one-room occupancy; the remainder failed on from pricing, generic averages, wrong/nearby class, or missing class.
+
+**Decision:** reject this source route for `accom_3_star`. The one-room requirement remains part of the frozen
+estimand. Treating a two-adult selector as proof of one room would be a separately pre-registered estimand change,
+not a silent parser relaxation, and would need independent property-level accuracy validation. The next experiment
+should test that semantic question or move the boundary to a modelled tier while preserving evidence-basis labels.
+Read `data/reference/v5/experiments/052-three-star-broad-panel/`.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "city-cost-v5-three-star-broad-panel-audit-v1",
+  "citiesTested": 12,
+  "acceptedCities": 0,
+  "promotionGate": "6 of 12 strict quotes",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Amsterdam",
+      "accepted": false
+    },
+    {
+      "city": "Budapest",
+      "accepted": false
+    },
+    {
+      "city": "Buenos Aires",
+      "accepted": false
+    },
+    {
+      "city": "Copenhagen",
+      "accepted": false
+    },
+    {
+      "city": "Dublin",
+      "accepted": false
+    },
+    {
+      "city": "Istanbul",
+      "accepted": false
+    },
+    {
+      "city": "Nairobi",
+      "accepted": false
+    },
+    {
+      "city": "Prague",
+      "accepted": false
+    },
+    {
+      "city": "Seoul",
+      "accepted": false
+    },
+    {
+      "city": "Sydney",
+      "accepted": false
+    },
+    {
+      "city": "Vancouver",
+      "accepted": false
+    },
+    {
+      "city": "Vienna",
+      "accepted": false
+    }
+  ],
+  "accepted": [],
+  "rejected": [
+    {
+      "city": "Amsterdam",
+      "status": "not_found",
+      "reason": "Rejected: a named exact-city 3-star property, explicit two-adult occupancy, numeric nightly amount, and tax treatment are present, but the price is a lowest/from offer. The strict panel excludes from/starting prices. No qualifying Google Hotels or Booking result was returned."
+    },
+    {
+      "city": "Budapest",
+      "status": "not_found",
+      "reason": "Rejected: explicit 3-star class and a tax-inclusive nightly quote are present, but occupancy is not explicitly two adults in one room. Other returned results were wrong class or generic listings."
+    },
+    {
+      "city": "Buenos Aires",
+      "status": "not_found",
+      "reason": "The exact-city class, two-adult occupancy and taxes-included nightly quote are present, but one room is not explicit in the same evidence. The strict contract does not allow inferring a room count."
+    },
+    {
+      "city": "Copenhagen",
+      "status": "not_found",
+      "reason": "Rejected: exact-city class and tax-inclusive numeric nightly quote are present, but explicit two-adult/one-room occupancy is absent in the same evidence. Query terms cannot supply occupancy evidence. Other returned results were wrong class or class-ambiguous."
+    },
+    {
+      "city": "Dublin",
+      "status": "not_found",
+      "reason": "Rejected: explicit occupancy, numeric nightly price, and tax treatment are present, but the same evidence lacks an explicit 3-star class. The Google airport results were nearby-city/area results and did not provide a strict exact-city three-star quote."
+    },
+    {
+      "city": "Istanbul",
+      "status": "not_found",
+      "reason": "Rejected: exact city, class, numeric nightly price, and tax treatment are present, but explicit two-adult/one-room occupancy is missing. A query cannot be used to infer it."
+    },
+    {
+      "city": "Nairobi",
+      "status": "not_found",
+      "reason": "The exact-city class, two-adult occupancy and taxes-included nightly quote are present, but one room is not explicit in the same evidence. The strict contract does not allow inferring a room count."
+    },
+    {
+      "city": "Prague",
+      "status": "not_found",
+      "reason": "Rejected: returned candidates were wrong-class, lacked an explicit 3-star designation, or used a from/lowest price. No exact-city named property in the three searches satisfied class, occupancy, non-from nightly price, and tax requirements simultaneously."
+    },
+    {
+      "city": "Seoul",
+      "status": "not_found",
+      "reason": "Rejected generic city average. Expedia's exact 2-adult result was for nearby Incheon and start-from; no exact Seoul named property met the non-from strict contract."
+    },
+    {
+      "city": "Sydney",
+      "status": "not_found",
+      "reason": "A named exact-city 3-star property and two-adult price were returned, but the same evidence does not explicitly state one room. The strict contract forbids inferring one room from a two-adult control; no Expedia or Booking snippet supplied all required fields."
+    },
+    {
+      "city": "Vancouver",
+      "status": "not_found",
+      "reason": "The exact-city class, two-adult occupancy and taxes-included nightly quote are present, but the same evidence does not explicitly state one room. Inferring one room is prohibited, so the candidate is not accepted."
+    },
+    {
+      "city": "Vienna",
+      "status": "not_found",
+      "reason": "Rejected: exact city, class, price, and tax are present, but explicit two-adult/one-room occupancy is absent. Query terms cannot supply occupancy evidence."
+    }
+  ],
+  "productMapping": "none_property_ground_truth_only"
+}

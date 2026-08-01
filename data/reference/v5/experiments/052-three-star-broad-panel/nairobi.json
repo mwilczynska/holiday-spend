@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-three-star-broad-panel-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "The Monarch Hotel",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChkI39Pr8N7n64JvGg8vZy8xMWI2Mzc3cjNuEAE?ts=CAEaIAoCGgASGhIUCgcI6A8QBBgDEgcI6A8QBBgEGAEyAhAAKgkKBToDVVNEGgA",
+    "sourceTitle": "The Monarch Hotel - Google hotels",
+    "evidenceText": "Google Hotels identifies The Monarch Hotel at Rose Ave, Nairobi as a 3-star hotel. The result shows $55 nightly and $66 total for 1 night with taxes + fees, with a 2 Adults control. The returned evidence does not explicitly state one room.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result for 28–29 July 2026; 2 adults shown",
+    "searchQuery": "site:google.com/travel/hotels Nairobi Kenya 3-star hotel 2 adults nightly price taxes",
+    "reason": "The exact-city class, two-adult occupancy and taxes-included nightly quote are present, but one room is not explicit in the same evidence. The strict contract does not allow inferring a room count."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

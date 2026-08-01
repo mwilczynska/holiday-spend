@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-three-star-broad-panel-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Hotel Praga 1",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "3_star",
+    "sourceUrl": null,
+    "sourceTitle": "Hotel Praga 1 - Expedia",
+    "evidenceText": "The returned Expedia result identifies Hotel Praga 1 in Prague as a 4-star hotel and shows a start-from price for a 1-night stay for 2 adults including taxes; the Google results with numeric nightly prices did not state an explicit 3-star class.",
+    "taxStatus": "included",
+    "referencePeriod": "Search results crawled 3 weeks ago; one-night stay; 2 adults where shown",
+    "searchQuery": "site:expedia.com Prague Czechia 3-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: returned candidates were wrong-class, lacked an explicit 3-star designation, or used a from/lowest price. No exact-city named property in the three searches satisfied class, occupancy, non-from nightly price, and tax requirements simultaneously."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-three-star-broad-panel-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChkI_9L74eGtzPdlGgsvZy8xMWxyM3l4NGIwEAE",
+    "sourceTitle": "H2 Hotel Budapest - Google hotels",
+    "evidenceText": "H2 Hotel Budapest is identified as a 3-star hotel and Google shows $140 total per night with taxes and fees, but no two-adult/one-room occupancy appears in the same evidence.",
+    "taxStatus": "included",
+    "referencePeriod": "Google result crawled 3 weeks ago; dates not shown",
+    "searchQuery": "site:google.com/travel/hotels Budapest Hungary 3-star hotel 2 adults nightly price taxes",
+    "reason": "Rejected: explicit 3-star class and a tax-inclusive nightly quote are present, but occupancy is not explicitly two adults in one room. Other returned results were wrong class or generic listings."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

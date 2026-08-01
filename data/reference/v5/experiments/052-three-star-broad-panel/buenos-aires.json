@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-three-star-broad-panel-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Sarmiento Palace Hotel",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/CgsI_7iXj6Lzn6nMARAB",
+    "sourceTitle": "Sarmiento Palace Hotel - Google hotels",
+    "evidenceText": "Google Hotels identifies Sarmiento Palace Hotel at Sarmiento 1953, Buenos Aires as a 3-star hotel. The result shows $56 nightly and $68 total for 1 night with taxes + fees, with a 2 Adults control. The returned evidence does not explicitly state one room.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result for 29–30 July 2026; 2 adults shown",
+    "searchQuery": "site:google.com/travel/hotels Buenos Aires Argentina 3-star hotel 2 adults nightly price taxes",
+    "reason": "The exact-city class, two-adult occupancy and taxes-included nightly quote are present, but one room is not explicit in the same evidence. The strict contract does not allow inferring a room count."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

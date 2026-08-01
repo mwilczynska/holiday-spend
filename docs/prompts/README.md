@@ -56,6 +56,10 @@
 The 051 minimal-anchor prompt is complete as a source-boundary experiment: no city returned all nine anchors, so
 the complete-contract promotion gate was rejected. The prompt remains reusable for model-boundary validation.
 
+The 052 three-star property panel is complete and rejected: twelve independent one-city contexts returned 0/12
+strict explicit-three-star/two-adult/one-room quotes. Do not infer one room from a two-adult selector; any relaxed
+occupancy rule needs a new pre-registered estimand experiment and independent validation.
+
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
 auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.
