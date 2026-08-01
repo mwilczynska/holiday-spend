@@ -670,6 +670,12 @@ breakfast-included, review-7+, popular-property averages are retained as labelle
 breakfast, fit coefficients, or map product tiers. The next accommodation experiment must test a materially different
 source or query boundary, with prompt/schema compliance measured explicitly.
 
+Experiment 083 is in progress. It tests the World Stay Tracker `cityid`/`rating` URL boundary on twelve independent
+one-city Luna contexts. Each call performs exactly one city search, reads the returned page, then reads the same URL
+with only `rating=4` substituted. The strict screen requires 10/12 complete 3-/4-star cities and 10/12 compliant calls.
+Breakfast-included and popular-property semantics remain explicit; a pass authorizes only independent room-only
+calibration, not product mapping.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

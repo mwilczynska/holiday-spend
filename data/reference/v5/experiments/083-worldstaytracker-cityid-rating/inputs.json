@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Amsterdam","country":"Netherlands"},
+    {"city":"Bangkok","country":"Thailand"},
+    {"city":"Copenhagen","country":"Denmark"},
+    {"city":"Dubai","country":"United Arab Emirates"},
+    {"city":"Istanbul","country":"Türkiye"},
+    {"city":"Lisbon","country":"Portugal"},
+    {"city":"London","country":"United Kingdom"},
+    {"city":"Paris","country":"France"},
+    {"city":"Prague","country":"Czech Republic"},
+    {"city":"Rome","country":"Italy"},
+    {"city":"Sydney","country":"Australia"},
+    {"city":"Tokyo","country":"Japan"}
+  ],
+  "source": "WorldStayTracker.com",
+  "sourceContract": "daily USD average across qualifying Booking.com properties; selected star rating; 2 adults, 1 night, breakfast included, review score >=7; 15-day advance window",
+  "operations": ["one city search", "read returned city page", "read same cityid URL with rating=4"],
+  "screenGate": {"completeCities":10,"protocolCompliant":10},
+  "semanticWarnings": ["breakfast included; room-only product comparison requires explicit treatment", "selection is popular qualifying properties, not all city inventory"]
+}

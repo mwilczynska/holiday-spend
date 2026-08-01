@@ -176,6 +176,11 @@ exactly four ordered operations (3-star search/read, then 4-star search/read). T
 3-star rows and zero 4-star rows, with zero complete cities; two equivalent 3-star rows failed canonical field
 validation. Breakfast-included/popular-property semantics remain labelled evidence only, with no mapping authorized.
 
+The 083 World Stay Tracker cityid/rating prompt is active: twelve independent one-city calls perform one search, one
+returned-page read, and one direct read after substituting only the URL's `rating=4` parameter. It tests a changed
+retrieval boundary after 082's search-index mismatch; no second search, fallback, arithmetic, FX, or product mapping
+is authorized.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

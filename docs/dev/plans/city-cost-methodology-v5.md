@@ -562,6 +562,14 @@ for room-only product values. **Verdict:** reject promotion; retain labelled sou
 adjustment, coefficient fitting, or product mapping. The next accommodation experiment must change source or query
 boundary and measure schema compliance explicitly.
 
+### Experiment 083 - World Stay Tracker cityid/rating URL panel
+
+The next active package tests a materially different World Stay Tracker retrieval boundary: one exact-city search,
+one read of the returned city page, and one direct read with only the returned URL's `rating` parameter changed to 4.
+The panel has twelve independent one-city contexts and a 10/12 complete-city, 10/12 protocol-compliance screen gate.
+Breakfast-included/popular-property semantics remain labelled warnings; no product mapping or breakfast adjustment is
+authorized by a screen pass.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

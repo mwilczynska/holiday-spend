@@ -1726,3 +1726,12 @@ additional semantically equivalent 3-star rows failed canonical field validation
 Breakfast-included, review-7+, popular-property averages remain labelled source evidence only. **Verdict:** reject
 promotion; do not remove breakfast, fit coefficients, or map product tiers. Read
 `data/reference/v5/experiments/082-worldstaytracker-accommodation/`.
+
+## Experiment 083 - World Stay Tracker cityid/rating URL panel (1 August 2026)
+
+This experiment is in progress. Twelve independent one-city Luna contexts perform exactly one World Stay Tracker
+search, one read of the returned city page, and one read of the same `cityid` URL with only `rating=4` substituted.
+The changed URL boundary tests whether direct parameter navigation avoids the search index's repeated 4-star-to-3-star
+misrouting. No second search, retry, fallback, arithmetic, FX conversion, or cross-city evidence is allowed. Strict
+rows retain the source's explicit 2-adult/1-night/breakfast/review-7+ basis; a screen pass authorizes only a later
+room-only semantic calibration.

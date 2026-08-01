@@ -562,3 +562,9 @@ Experiment 082 completed with 12/12 protocol-compliant one-city calls, but 0/12 
 The 10/12 complete-city screen failed. Retain World Stay Tracker rows as labelled breakfast-included/popular-property
 source evidence only; do not remove breakfast, fit coefficients, or map product tiers. Next restart action: test a
 materially different accommodation source or query boundary and enforce canonical schema compliance.
+
+Experiment 083 is now active. It tests the World Stay Tracker cityid/rating URL boundary with twelve independent
+one-city contexts and exactly three ordered operations per city: one search, one returned-page read, and one direct
+read after substituting only `rating=4` in the same cityid URL. No second search, retry, fallback, arithmetic, FX, or
+cross-city evidence is allowed. The screen gate is 10/12 complete cities and 10/12 compliant calls; a pass permits
+only separate room-only semantic calibration.
