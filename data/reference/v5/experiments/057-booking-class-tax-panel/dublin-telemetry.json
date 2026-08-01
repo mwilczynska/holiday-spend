@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-telemetry-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:booking.com/threestars/city Dublin Ireland 3-star hotels 2 adults 1 room average nightly price taxes fees",
+    "site:booking.com/fourstars/city Dublin Ireland 4-star hotels 2 adults 1 room average nightly price taxes fees"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 0,
+  "notFoundRows": 2,
+  "protocolCompliant": true,
+  "notes": "One-city, two-search Booking class-average tax panel. Returned Dublin results were property-specific and did not provide a qualifying exact-city 3-/4-star current class average with explicit occupancy and tax treatment. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

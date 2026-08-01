@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:booking.com/threestars/city Istanbul Turkey 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "No exact Istanbul 3-star class-page result was returned with the required numeric average, occupancy, and tax treatment."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/fourstars/city/tr/istanbul.en-gb.html",
+      "sourceTitle": "The 10 best four-star hotels in Istanbul, Turkey | Booking.com",
+      "evidenceText": "The exact Istanbul four-star class page states 2 adults · 0 children · 1 room and says the average price per night for a four-star hotel in Istanbul is CNY 904, based on Booking.com prices. The evidence does not say whether taxes or fees are included or excluded.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking.com result crawled last week; class-page FAQ average and weekend average CNY 1,395",
+      "searchQuery": "site:booking.com/fourstars/city Istanbul Turkey 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because tax/fee treatment is unknown; the strict row requires a numeric current average with explicit tax inclusion or exclusion."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

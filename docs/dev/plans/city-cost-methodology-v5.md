@@ -282,6 +282,16 @@ rows per class and four complete cities; a pass only authorizes a separate valid
 The panel completed with 0/24 strict rows and no complete city. Agoda required date entry before exposing a numeric
 nightly price and did not provide the complete occupancy/tax evidence in search results. Reject promotion.
 
+### Experiment 057 - Booking class-average tax panel
+
+Twelve one-city Luna calls issued exactly two ordered Booking searches each (3-star then 4-star; 24 total). Strict
+rows required exact city/class, explicit 2 adults and 1 room, a numeric current class average, and known tax.
+Coverage was 0/24 (3-star 0/12, 4-star 0/12), with no complete city. Class pages sometimes exposed a selector and
+numeric average but omitted tax/fee treatment; other rows lacked class or same-evidence occupancy.
+
+**Decision:** reject the route. Do not map or fit from these rows. A different tax or price-statistic estimand needs
+new pre-registration and independent validation. Read `data/reference/v5/experiments/057-booking-class-tax-panel/`.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

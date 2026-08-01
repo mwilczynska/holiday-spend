@@ -74,9 +74,17 @@ class rows because tax treatment or class/currency evidence failed; no city was 
 The 056 Agoda one-/three-star panel is complete and rejected: twelve one-city contexts produced 0/24 strict rows;
 date entry, numeric nightly price, one-room occupancy, and tax evidence did not co-occur.
 
+The 057 Booking class-average tax panel is complete and rejected: twelve one-city contexts produced 0/24 strict
+3-/4-star rows; class pages sometimes exposed numeric averages and selectors but not tax/fee treatment in the same
+evidence. Do not map or fit from these rows.
+
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
 auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.
+
+| `llm_prompt_city_cost_v5_experiment_055_skyscanner_class_panel.md` | **COMPLETE - reject promotion** | one city per delegated GPT-5.6 Luna-class invocation | Twelve-city four-class panel; 0/48 strict rows |
+| `llm_prompt_city_cost_v5_experiment_056_agoda_one_three_star.md` | **COMPLETE - reject promotion** | one city per delegated GPT-5.6 Luna-class invocation | Twelve-city 1-/3-star panel; 0/24 strict rows |
+| `llm_prompt_city_cost_v5_experiment_057_booking_class_tax_panel.md` | **COMPLETE - reject promotion** | one city per delegated GPT-5.6 Luna-class invocation | Twelve-city 3-/4-star panel; 0/24 strict rows |
 
 ## Known defect in the shipping prompt
 

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 1659,
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/threestars/city/ca/vancouver.html",
+      "sourceTitle": "The 10 best 3-star hotels in Vancouver, Canada | Booking.com",
+      "evidenceText": "Booking.com’s Vancouver 3-star class page shows the selector as 2 adults · 0 children · 1 room and states that a 3-star hotel in Vancouver costs CNY 1,659 per night on average (based on Booking.com prices). The result does not state whether taxes or fees are included.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking.com page crawled last week; dates shown in result were July 23–26 2026",
+      "searchQuery": "site:booking.com/threestars/city Vancouver Canada 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Exact city, class, occupancy, and class-average value were returned, but tax/fee treatment is unknown; strict acceptance therefore fails."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:booking.com/fourstars/city Vancouver Canada 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "The ordered 4-star search returned no exact-city 4-star class-average row with a numeric nightly price and tax treatment. No positive evidence established that the class is absent."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

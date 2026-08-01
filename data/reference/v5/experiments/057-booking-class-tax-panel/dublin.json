@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:booking.com/threestars/city Dublin Ireland 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "The 3-star class-page query returned unrelated or property-specific results rather than an exact-city current class-average row. No qualifying row was accepted."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:booking.com/fourstars/city Dublin Ireland 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "The 4-star class-page query did not return an exact-city current class-average row containing explicit two-adult/one-room occupancy and tax treatment. No qualifying row was accepted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/city/hu/budapest.de.html",
+      "sourceTitle": "Budapest city hotels | Booking.com (generic city page)",
+      "evidenceText": "The exact Budapest generic city page shows 2 adults · 0 children · 1 room and an average 3-star price of US$153 per night. It is not the requested /threestars/city class page, and the evidence does not state tax or fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking.com result crawled recently; generic Budapest city page average",
+      "searchQuery": "site:booking.com/threestars/city Budapest Hungary 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the evidence is a generic city-page class average rather than the requested 3-star class-page result, and tax/fee treatment is unknown."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/city/hu/budapest.de.html",
+      "sourceTitle": "Budapest city hotels | Booking.com (generic city page)",
+      "evidenceText": "The exact Budapest generic city page shows 2 adults · 0 children · 1 room and an average 4-star price of US$219 per night. It is not the requested /fourstars/city class page, and the evidence does not state tax or fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking.com result crawled recently; generic Budapest city page average",
+      "searchQuery": "site:booking.com/fourstars/city Budapest Hungary 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the evidence is a generic city-page class average rather than the requested 4-star class-page result, and tax/fee treatment is unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

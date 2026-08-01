@@ -416,9 +416,15 @@ Luna contexts. Strict rows require exact city/class, two adults and one room, no
 Coverage was 0/24 and no city was complete; Agoda required date entry before price and tax evidence appeared. No
 source row is mapped or used for a ratio fit.
 
-Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
-dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
-booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked
-018 holdout, use the shipping CSV as ground truth, or infer dorm/private separation from the blended hostel
-channel. The derivation contract remains out of the shipping path until source feasibility and accuracy gates
+Experiment 057 completed twelve independent one-city Luna contexts and 24 ordered Booking 3-star/4-star searches.
+Strict rows required exact city/class, explicit two-adult one-room occupancy, current numeric average, and known tax.
+Coverage was 0/24 (3-star 0/12, 4-star 0/12), with no complete city. Reject the route: class pages often exposed
+numeric averages/selectors but not tax treatment, and other rows lacked class or same-evidence occupancy. No mapping
+or fitting is allowed.
+
+Next, test a materially different hotel-class source or a separately declared tax/price-statistic estimand while
+retaining the one-bed dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display
+currency. Direct booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not
+tune the locked 018 holdout, use the shipping CSV as ground truth, or infer dorm/private separation from the blended
+hostel channel. The derivation contract remains out of the shipping path until source feasibility and accuracy gates
 pass.

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 846,
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/threestars/city/cz/prague.en-gb.html",
+      "sourceTitle": "The 10 best three-star hotels in Prague, Czech Republic | Booking.com",
+      "evidenceText": "Booking.com identifies three-star hotels in Prague, shows Select occupancy: 2 adults · 0 children · 1 room, and states: 'On average, a three-star hotel in Prague costs CNY 846 per night (based on Booking.com prices).' The same evidence does not state whether taxes or fees are included or excluded.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking result crawled last week; selected dates 25–28 July 2026; current FAQ average",
+      "searchQuery": "site:booking.com/threestars/city Prague Czechia 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected under the strict contract because tax/fee treatment for the class average is unknown."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 198,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/fourstars/city/cz/prague.html",
+      "sourceTitle": "The 10 best 4-star hotels in Prague, Czech Republic | Booking.com",
+      "evidenceText": "Booking.com states that a 4-star hotel in Prague costs $198 per night on average (based on Booking.com prices). The returned evidence does not show an explicit 2-adult/one-room selector and does not state tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking result crawled last week; current FAQ average",
+      "searchQuery": "site:booking.com/fourstars/city Prague Czechia 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because explicit two-adult/one-room occupancy and tax/fee treatment are both absent from the same evidence."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

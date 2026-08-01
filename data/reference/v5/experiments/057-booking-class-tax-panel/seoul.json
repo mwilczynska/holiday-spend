@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:booking.com/threestars/city Seoul South Korea 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "No exact Seoul 3-star class-page result was returned with the required numeric average, occupancy, and tax treatment."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/fourstars/city/kr/seoul.html",
+      "sourceTitle": "The 10 best 4-star hotels in Seoul, South Korea | Booking.com",
+      "evidenceText": "The exact Seoul four-star class page says the average price per night for a 4-star hotel in Seoul is US$180 (and lists weekend and evening averages). This result does not explicitly state 2 adults and 1 room or whether taxes and fees are included. A separate class-page result showed 2 adults · 0 children · 1 room but no numeric average; the protocol does not combine separate evidence snippets.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking.com result crawled last week; class-page FAQ average US$180, weekend US$356, evening US$319",
+      "searchQuery": "site:booking.com/fourstars/city Seoul South Korea 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the numeric average lacks explicit two-adult one-room occupancy and tax/fee treatment in the same evidence."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

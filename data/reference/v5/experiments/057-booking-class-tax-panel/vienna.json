@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/threestars/city/cl/santiago.html",
+      "sourceTitle": "The 10 best 3-star hotels in Santiago, Chile | Booking.com",
+      "evidenceText": "The returned class-page result is for Santiago, Chile rather than Vienna. It reports a Santiago 3-star average of about US$65 per night (US$124 for the weekend) and mentions a one-night, two-adult search, but it is the wrong city and does not state tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking.com result crawled recently; wrong-city Santiago class-page snippet",
+      "searchQuery": "site:booking.com/threestars/city Vienna Austria 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the returned class page is for Santiago, not Vienna, and tax/fee treatment is unknown."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/fourstars/city/it/venice.html",
+      "sourceTitle": "The 10 best 4-star hotels in Venice, Italy | Booking.com",
+      "evidenceText": "The returned class-page result is for Venice, Italy rather than Vienna. It reports a Venice 4-star average of about US$510 per night (US$468 for the weekend) and mentions a one-night, two-adult search, but it is the wrong city and does not state tax/fee treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking.com result crawled recently; wrong-city Venice class-page snippet",
+      "searchQuery": "site:booking.com/fourstars/city Vienna Austria 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected because the returned class page is for Venice, not Vienna, and tax/fee treatment is unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

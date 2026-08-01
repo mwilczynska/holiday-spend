@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-booking-class-tax-panel-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "taxStatus": "unknown",
+      "referencePeriod": null,
+      "searchQuery": "site:booking.com/threestars/city Amsterdam Netherlands 3-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "No returned Booking class page supplied a qualifying exact-city 3-star current average with the required occupancy and tax evidence."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 298,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_one_room",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "sourceUrl": "https://www.booking.com/fourstars/city/nl/amsterdam.nl.html",
+      "sourceTitle": "De 10 beste 4-sterrenhotels in Amsterdam, Nederland | Booking.com",
+      "evidenceText": "Booking.com identifies the page as 4-star hotels in Amsterdam, shows Select occupancy: 2 volwassenen · 0 kinderen · 1 kamer, and states: 'Gemiddeld kost een 4-sterrenhotel in Amsterdam US$298 per nacht (gebaseerd op Booking.com-prijzen).' The same evidence does not state whether taxes or fees are included or excluded.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Booking result crawled last week; selected dates 25–28 July 2026; current FAQ average",
+      "searchQuery": "site:booking.com/fourstars/city Amsterdam Netherlands 4-star hotels 2 adults 1 room average nightly price taxes fees",
+      "reason": "Rejected under the strict contract because tax/fee treatment for the class average is unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

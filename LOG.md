@@ -1411,3 +1411,16 @@ and tax treatment appeared.
 **Verdict:** reject the Agoda route under the frozen contract. Do not map or fit from these results; a different
 retrieval shape or estimand requires a new pre-registration. Read
 `data/reference/v5/experiments/056-agoda-one-three-star-panel/`.
+
+## Experiment 057 - Booking class-average tax panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly two ordered Booking searches each
+(3-star then 4-star; 24 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
+sources, or cross-city evidence occurred. Strict coverage was **0/24**: 3-star 0/12 and 4-star 0/12, with no
+complete city.
+
+Some Booking class pages exposed an exact city/class, a current numeric average, and sometimes a two-adult/one-room
+selector, but the same evidence did not state whether tax or fees were included. Other rows lacked a class average,
+had a wrong city/class, or lacked same-evidence occupancy. **Verdict:** reject the Booking class-average route
+under the frozen contract. Do not map 3- or 4-star prices, infer tax treatment, or fit a class ratio from these
+rows. Read `data/reference/v5/experiments/057-booking-class-tax-panel/`.
