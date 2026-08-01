@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "The Dawson Hostel - DUBLIN",
+    "value": null,
+    "currency": "CNY",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/ie/lastampa.html",
+    "sourceTitle": "The Dawson Hostel - DUBLIN, Dublin (updated prices 2026)",
+    "evidenceText": "Booking result shows 2 adults, 0 children, 1 room; Family Room, max people 2; CNY 2,073 per night, excluding 13.5% VAT, but the shown amount is a Genius members-only price requiring sign-in.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Booking dates not explicitly shown in the result; 3-night total and price crawled last week",
+    "searchQuery": "site:booking.com Dublin Ireland hostel private room 2 adults price per night",
+    "reason": "The named exact-city hostel has occupancy, a family/private-room-like class, nightly amount, and tax status, but the displayed amount is explicitly a members-only Genius price requiring sign-in. Login-only prices are excluded from the production-feasible panel."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-telemetry-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:hostelworld.com Vienna Austria private room 2 guests price per night",
+    "site:booking.com Vienna Austria hostel private room 2 adults price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "status": "not_found",
+  "notes": "Single-city broad private-hostel run using exactly two ordered searches. The exact BeFree Hostel result was login-only Genius pricing with taxes excluded; Hostelworld results were From offers. No reads, retries, arithmetic, FX, averaging, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

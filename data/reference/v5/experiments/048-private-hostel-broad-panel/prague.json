@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "propertyName": "Celine Prague Luxury Hostel",
+    "value": 583,
+    "currency": "CNY",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/cz/hostel-franz-kafka.html",
+    "sourceTitle": "Celine Prague Luxury Hostel, Prague (updated prices 2026)",
+    "evidenceText": "Booking result identifies Celine Prague Luxury Hostel and says it offers private rooms. It shows 2 adults, 0 children, 1 room; Superior Double Room sleeps 2 adults; CNY 583 per night (CNY 1,749 for 3 nights), excluding €2 city tax per person per night and 12% VAT.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Booking dates Sat 2026-07-25 to Tue 2026-07-28 (3 nights); result crawled last week",
+    "searchQuery": "site:booking.com Prague Czech Republic hostel private room 2 adults price per night",
+    "reason": "Accepted: named exact-Prague hostel with private-room description, explicit two-adult/one-room occupancy, numeric non-from nightly price, and stated excluded city tax and VAT."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

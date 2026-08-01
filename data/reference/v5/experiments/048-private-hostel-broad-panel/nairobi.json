@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "propertyName": "ZZZ Hostel",
+    "value": 344,
+    "currency": "CNY",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/ke/zzz-hostel.html",
+    "sourceTitle": "ZZZ hostel Nairobi, Nairobi (updated prices 2026)",
+    "evidenceText": "Booking identifies ZZZ Hostel in Nairobi and shows 2 adults, 0 children, 1 room. The Queen Room with Garden View has max people 2 and costs CNY 344 per night; the result explicitly excludes 2% city tax and 16% VAT.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Result crawled last week; selected three-night stay with per-night quote",
+    "searchQuery": "site:booking.com Nairobi Kenya hostel private room 2 adults price per night",
+    "reason": "Accepted: named exact-Nairobi hostel, named queen room (non-dorm private-room class), explicit two-adult/one-room occupancy, numeric non-from nightly price, and explicit excluded tax treatment."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

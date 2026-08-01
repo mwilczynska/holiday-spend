@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-telemetry-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:hostelworld.com Vancouver Canada private room 2 guests price per night",
+    "site:booking.com Vancouver Canada hostel private room 2 adults price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only private-hostel panel with exactly two ordered searches. Vancouver had only From-style Hostelworld rows and a nearby Burnaby Booking result with no available price; no qualifying exact-city property quote was found. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

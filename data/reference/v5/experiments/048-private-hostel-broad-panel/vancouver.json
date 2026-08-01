@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Economical Homestay hostel",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/ca/economical-homestay.html",
+    "sourceTitle": "Economical Homestay hostel, Burnaby (updated prices 2026)",
+    "evidenceText": "Booking returned Economical Homestay hostel in Burnaby, 9.9 miles from Vancouver, with 2 adults/1 room but no availability or price. Hostelworld Vancouver results listed private rooms only as From prices without explicit two-guest occupancy or tax treatment.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Hostelworld result crawled last week; Booking result crawled last week and dates 2026-07-25 to 2026-07-28 had no availability",
+    "searchQuery": "site:booking.com Vancouver Canada hostel private room 2 adults price per night",
+    "reason": "Not found under the strict contract: the only Booking hostel result was a nearby Burnaby property and had no available quote; exact Vancouver Hostelworld rows were From prices without explicit occupancy or tax/fee treatment. No nearby-city or generic price was substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

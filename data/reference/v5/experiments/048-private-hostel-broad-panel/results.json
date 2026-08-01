@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-audit-v1",
+  "citiesTested": 12,
+  "acceptedCities": 4,
+  "promotionGate": "6 of 12 strict quotes",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Amsterdam",
+      "accepted": false
+    },
+    {
+      "city": "Budapest",
+      "accepted": false
+    },
+    {
+      "city": "Buenos Aires",
+      "accepted": false
+    },
+    {
+      "city": "Copenhagen",
+      "accepted": false
+    },
+    {
+      "city": "Dublin",
+      "accepted": false
+    },
+    {
+      "city": "Istanbul",
+      "accepted": false
+    },
+    {
+      "city": "Nairobi",
+      "accepted": true
+    },
+    {
+      "city": "Prague",
+      "accepted": true
+    },
+    {
+      "city": "Seoul",
+      "accepted": true
+    },
+    {
+      "city": "Sydney",
+      "accepted": true
+    },
+    {
+      "city": "Vancouver",
+      "accepted": false
+    },
+    {
+      "city": "Vienna",
+      "accepted": false
+    }
+  ],
+  "accepted": [
+    {
+      "city": "Nairobi",
+      "value": 344,
+      "currency": "CNY",
+      "propertyName": "ZZZ Hostel",
+      "sourceUrl": "https://www.booking.com/hotel/ke/zzz-hostel.html"
+    },
+    {
+      "city": "Prague",
+      "value": 583,
+      "currency": "CNY",
+      "propertyName": "Celine Prague Luxury Hostel",
+      "sourceUrl": "https://www.booking.com/hotel/cz/hostel-franz-kafka.html"
+    },
+    {
+      "city": "Seoul",
+      "value": 309,
+      "currency": "CNY",
+      "propertyName": "Moonraejung Hostel",
+      "sourceUrl": "https://www.booking.com/hotel/kr/munraejeong.html"
+    },
+    {
+      "city": "Sydney",
+      "value": 54,
+      "currency": "USD",
+      "propertyName": "Maze Backpackers - Sydney",
+      "sourceUrl": "https://www.booking.com/hotel/au/maze-backpackers.html"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Amsterdam",
+      "status": "not_found",
+      "reason": "The named exact-city hostel and private room have explicit two-adult/one-room occupancy and tax treatment, but the displayed numeric amount is a three-night stay total rather than an explicit one-night price. No division or other arithmetic is permitted, so the quote is rejected."
+    },
+    {
+      "city": "Budapest",
+      "status": "not_found",
+      "reason": "Not found under the strict private-hostel contract because the only explicit private-room hostel rates were login-only Genius discounts with excluded taxes/fees. Hostelworld results were From offers. No quote was substituted."
+    },
+    {
+      "city": "Buenos Aires",
+      "status": "not_found",
+      "reason": "Not found under the strict contract: exact-city Booking private-room candidates had explicit occupancy and numeric prices but no tax/fee treatment; Hostelworld exposed only From prices. Unknown tax status is incompatible, so no quote was accepted."
+    },
+    {
+      "city": "Copenhagen",
+      "status": "not_found",
+      "reason": "The exact-city hostel has explicit occupancy, a non-from nightly price, and tax treatment, but the accommodation class is explicitly a private capsule rather than a private room. The strict private-room panel rejects it without mapping a different room class."
+    },
+    {
+      "city": "Dublin",
+      "status": "not_found",
+      "reason": "The named exact-city hostel has occupancy, a family/private-room-like class, nightly amount, and tax status, but the displayed amount is explicitly a members-only Genius price requiring sign-in. Login-only prices are excluded from the production-feasible panel."
+    },
+    {
+      "city": "Istanbul",
+      "status": "not_found",
+      "reason": "Not found under the strict private-hostel contract because the only hostel listing price was a From/lowest offer with unknown taxes/fees. Hostelworld results likewise contained only From prices and no explicit two-adult quote."
+    },
+    {
+      "city": "Vancouver",
+      "status": "not_found",
+      "reason": "Not found under the strict contract: the only Booking hostel result was a nearby Burnaby property and had no available quote; exact Vancouver Hostelworld rows were From prices without explicit occupancy or tax/fee treatment. No nearby-city or generic price was substituted."
+    },
+    {
+      "city": "Vienna",
+      "status": "not_found",
+      "reason": "Not found under the strict private-hostel contract because the only exact hostel/private-room result used a login-only Genius price and excluded taxes/fees. Hostelworld results were From offers. No quote was substituted."
+    }
+  ],
+  "productMapping": "none_property_ground_truth_only"
+}

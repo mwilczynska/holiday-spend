@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "propertyName": "Maze Backpackers - Sydney",
+    "value": 54,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/au/maze-backpackers.html",
+    "sourceTitle": "Maze Backpackers - Sydney, Sydney (updated prices 2026)",
+    "evidenceText": "Booking identifies Maze Backpackers - Sydney and shows 2 adults, 0 children, 1 room. The Twin Room with Shared Bathroom has 2 bunk beds, max people 2, and costs $54 per night; the result states this excludes taxes and fees.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Sat 2026-07-25 to Tue 2026-07-28; result crawled last week",
+    "searchQuery": "site:booking.com Sydney Australia hostel private room 2 adults price per night",
+    "reason": "Accepted: named exact-Sydney hostel, explicitly room-level twin accommodation rather than a dorm, explicit two-adult/one-room occupancy, numeric non-from nightly price, and excluded tax/fee treatment."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

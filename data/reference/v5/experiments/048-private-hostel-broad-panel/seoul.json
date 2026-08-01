@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "propertyName": "Moonraejung Hostel",
+    "value": 309,
+    "currency": "CNY",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/kr/munraejeong.html",
+    "sourceTitle": "Moonraejung Hostel, Seoul | Booking.com",
+    "evidenceText": "Moonraejung Hostel, Seoul: 2 adults, 0 children, 1 room; Double Room with Private Bathroom, max people 2; CNY 309 per night for the displayed three-night stay, excluding 10% tax.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Booking result crawled last week; displayed Tue Jul 21–Fri Jul 24 2026; 2 adults, 1 room; tax excluded",
+    "searchQuery": "site:booking.com Seoul South Korea hostel private room 2 adults price per night",
+    "reason": "Accepted as a named Seoul hostel private-room property quote: exact hostel identity, private double room, explicit two-adult/one-room occupancy, non-from per-night price, and excluded 10% tax are all stated. This is property-level evidence only; no city median or product mapping is computed."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

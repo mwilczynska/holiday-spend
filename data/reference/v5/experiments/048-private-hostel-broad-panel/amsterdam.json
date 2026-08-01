@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "ClinkNOORD Hostel",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/nl/clinknoord.fr.html",
+    "sourceTitle": "ClinkNOORD Hostel, Amsterdam (tarifs actualisés pour 2026)",
+    "evidenceText": "Booking result shows 2 adults, 0 children, 1 room and a Private Double Room with max 2; US$409 taxes and fees included for the selected 25–28 July 2026 stay, with Amsterdam tourist tax 12.5% added separately.",
+    "taxStatus": "included",
+    "referencePeriod": "Booking dates Sat 2026-07-25 to Tue 2026-07-28 (3 nights); result crawled last week",
+    "searchQuery": "site:booking.com Amsterdam Netherlands hostel private room 2 adults price per night",
+    "reason": "The named exact-city hostel and private room have explicit two-adult/one-room occupancy and tax treatment, but the displayed numeric amount is a three-night stay total rather than an explicit one-night price. No division or other arithmetic is permitted, so the quote is rejected."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

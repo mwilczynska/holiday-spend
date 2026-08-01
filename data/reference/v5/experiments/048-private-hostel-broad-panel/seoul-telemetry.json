@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-telemetry-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "status": "found",
+  "notes": "Single-city broad private-hostel run using exactly two ordered searches. Booking exposed Moonraejung Hostel's private double room at CNY 309/night for 2 adults and 1 room, excluding 10% tax; Hostelworld results were not used. Property evidence is retained without averaging, scaling, FX conversion, or product mapping. No reads, retries, arithmetic, FX, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

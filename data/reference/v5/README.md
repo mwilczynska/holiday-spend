@@ -68,6 +68,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/045-trip-activity-definitions/` | **COMPLETE — reject Trip.com activity route** | Six one-city calls, 18 searches: 0/18 strict activity cells; “From” prices and missing definition fields |
 | `experiments/046-official-activity-pages/` | **COMPLETE — reject complete route** | Six one-city calls, 18 searches: 0/18 strict cells; two budget rows had unknown tax |
 | `experiments/047-accommodation-property-panel/` | **COMPLETE — promote private panel; reject one-star route** | Six one-city calls: private 3/6, one-star 1/6 strict quotes |
+| `experiments/048-private-hostel-broad-panel/` | **COMPLETE — reject promotion gate** | Twelve one-city calls: 4/12 strict private-hostel quotes; no aggregation |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
 candidate contract without a provider credential. Provider API telemetry remains separately pending.

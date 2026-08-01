@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Play Hostel Garden",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/ar/play-hostel-garden.html",
+    "sourceTitle": "Play Hostel Garden, Buenos Aires (updated prices 2026)",
+    "evidenceText": "Booking identifies Play Hostel Garden in Buenos Aires and shows 2 adults, 0 children, 1 room. Its Standard Double Room has max people 2 and costs $65 per night for a three-night stay, but the result does not state whether taxes or fees are included. Other exact-city hostel room rows likewise lacked tax treatment. Hostelworld rows were all From prices.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Sat 2026-07-25 to Tue 2026-07-28; Booking/Hostelworld results crawled last week",
+    "searchQuery": "site:booking.com Buenos Aires Argentina hostel private room 2 adults price per night",
+    "reason": "Not found under the strict contract: exact-city Booking private-room candidates had explicit occupancy and numeric prices but no tax/fee treatment; Hostelworld exposed only From prices. Unknown tax status is incompatible, so no quote was accepted."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

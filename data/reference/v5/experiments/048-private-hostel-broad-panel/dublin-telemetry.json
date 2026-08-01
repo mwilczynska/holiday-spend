@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-telemetry-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundQuotes": 0,
+  "notFoundQuotes": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only private-hostel panel with exactly two ordered searches. Dublin's candidate was a members-only Genius price and was rejected; Hostelworld/Booking listing evidence did not provide a compatible non-login private-room quote. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

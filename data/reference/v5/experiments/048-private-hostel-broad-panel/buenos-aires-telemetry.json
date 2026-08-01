@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-telemetry-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:hostelworld.com Buenos Aires Argentina private room 2 guests price per night",
+    "site:booking.com Buenos Aires Argentina hostel private room 2 adults price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundMeasures": 0,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only private-hostel panel with exactly two ordered searches. Buenos Aires had exact-city Booking private-room candidates but no stated tax/fee treatment, while Hostelworld exposed only From prices; no strict quote was accepted. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

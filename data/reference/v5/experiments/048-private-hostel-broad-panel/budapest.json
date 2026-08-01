@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/hu/mustache-hostel.html",
+    "sourceTitle": "Mustache Hostel, Budapest | Booking.com",
+    "evidenceText": "Mustache Hostel shows a Double Room with Private Bathroom, max adults 2, and CNY 1,171 per night, but the displayed rate is a Genius members-only discount, excludes 15% VAT and 4% city tax, and requires sign-in; no clean non-login quote is exposed.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Booking result crawled last week; displayed three-night availability; members-only discounted rate",
+    "searchQuery": "site:booking.com Budapest Hungary hostel private room 2 adults price per night",
+    "reason": "Not found under the strict private-hostel contract because the only explicit private-room hostel rates were login-only Genius discounts with excluded taxes/fees. Hostelworld results were From offers. No quote was substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

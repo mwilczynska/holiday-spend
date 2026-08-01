@@ -211,6 +211,10 @@ Mexico City. Private-hostel quotes passed in 3/6 cities (Berlin, Mexico City, To
 promotion threshold for a broader property/ground-truth panel. One-star quotes passed in 1/6, so the one-star blocker
 remains. The private rows are property observations only; define selection and aggregation before any city mapping.
 
+Experiment 048 broadened the private-hostel panel to 12 new cities. Only 4/12 strict quotes passed, below the
+6/12 promotion gate. Retain the four property-level ground-truth candidates, but do not promote to aggregation or
+map the route; members-only, tax, one-night, and class failures remain unresolved.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

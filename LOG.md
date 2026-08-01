@@ -1285,3 +1285,18 @@ gate only as property-level ground-truth collection; one-star coverage fails.
 **Verdict:** promote the private-hostel route to a broader property panel, with a separately declared property
 selection and aggregation rule before any city mapping. Reject the one-star route for now. No product values were
 mapped. Read `data/reference/v5/experiments/047-accommodation-property-panel/`.
+
+## Experiment 048 — broad private-hostel property panel (1 August 2026)
+
+Twelve independent single-city Luna-class contexts issued exactly two ordered searches each (Hostelworld then
+Booking.com), 24 searches total. No page reads, retries, arithmetic, FX conversion, averaging, or cross-city
+evidence occurred.
+
+Strict explicit-two-adult, named-hostel, non-`from`, one-night, tax-resolved quotes passed in **4/12** cities:
+Nairobi, Prague, Seoul, and Sydney. The pre-registered 6/12 promotion gate failed. Rejections included
+members-only/login prices, multi-night totals, nearby-city results, capsule rather than room classes, unknown tax,
+and `from` prices.
+
+**Verdict:** do not promote the private-hostel route to aggregation or product mapping. Preserve the four accepted
+property-level ground-truth candidates and the failure reasons. Read
+`data/reference/v5/experiments/048-private-hostel-broad-panel/`.

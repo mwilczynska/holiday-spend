@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": "Copenhagen Downtown Hostel",
+    "value": null,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/dk/copenhagen-downtown-hostel.html",
+    "sourceTitle": "Copenhagen Downtown Hostel, Copenhagen (updated prices 2026)",
+    "evidenceText": "Booking result shows 2 adults, 0 children, 1 room; Double bed in a private Capsule (2 pax); $53 per night, excluding 25% VAT, for the selected 25–28 July 2026 stay.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Booking dates Sat 2026-07-25 to Tue 2026-07-28 (3 nights); result crawled last week",
+    "searchQuery": "site:booking.com Copenhagen Denmark hostel private room 2 adults price per night",
+    "reason": "The exact-city hostel has explicit occupancy, a non-from nightly price, and tax treatment, but the accommodation class is explicitly a private capsule rather than a private room. The strict private-room panel rejects it without mapping a different room class."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

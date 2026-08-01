@@ -359,6 +359,10 @@ Experiment 047 tested a six-city explicit two-adult accommodation property panel
 property/ground-truth panel. One-star quotes passed in only 1/6, so the one-star blocker remains. No city average or
 product mapping is permitted yet.
 
+Experiment 048 broadened the private-hostel property panel to 12 new cities. Only 4/12 strict quotes passed,
+below the 6/12 promotion gate. The route remains a ground-truth candidate, not a production anchor; resolve
+members-only, tax, one-night, and class failures before defining aggregation.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not

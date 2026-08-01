@@ -370,6 +370,10 @@ promote that route only to a broader property/ground-truth panel. One-star quote
 No city aggregation, correction, or product mapping is allowed until property selection, aggregation, and the
 30-city/10-holdout gates are pre-registered.
 
+Experiment 048 broadened the private-hostel route to 12 cities with 24 compliant searches. Four strict quotes
+passed (Nairobi, Prague, Seoul, Sydney), below the 6/12 promotion gate. Do not aggregate or map the private-room
+route; preserve these property candidates and the failure reasons while resolving login/tax/one-night/class gaps.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

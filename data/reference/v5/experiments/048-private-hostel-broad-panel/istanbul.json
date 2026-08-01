@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hostels/city/tr/sultanahmet.en-gb.html",
+    "sourceTitle": "The 10 best hostels in Sultanahmet, Turkey | Booking.com",
+    "evidenceText": "The Booking.com Istanbul/Sultanahmet hostel listing shows 1 night, 2 adults and a Windrose Hostel result from US$69.18 per night, but the price is explicitly From/lowest and no tax/fee treatment is stated.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Booking hostel listing crawled last week; one-night/2-adult context; From price",
+    "searchQuery": "site:booking.com Istanbul Turkey hostel private room 2 adults price per night",
+    "reason": "Not found under the strict private-hostel contract because the only hostel listing price was a From/lowest offer with unknown taxes/fees. Hostelworld results likewise contained only From prices and no explicit two-adult quote."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

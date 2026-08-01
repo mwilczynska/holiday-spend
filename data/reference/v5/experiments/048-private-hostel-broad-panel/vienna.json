@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-private-hostel-broad-panel-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults",
+    "class": "hostel_private_room",
+    "sourceUrl": "https://www.booking.com/hotel/at/be-free-hostel.html",
+    "sourceTitle": "BeFree Hostel - Self-Service, Vienna | Booking.com",
+    "evidenceText": "BeFree Hostel shows a Double Room ‘Hostel’ with max people 2 and $50 per night, but the displayed price is a members-only Genius discount, excludes taxes and fees, and requires sign-in; the non-member original/current totals are not a clean eligible quote.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Booking result crawled last week; displayed Sat Jul 25–Tue Jul 28 2026, 2 adults, 1 room; members-only price",
+    "searchQuery": "site:booking.com Vienna Austria hostel private room 2 adults price per night",
+    "reason": "Not found under the strict private-hostel contract because the only exact hostel/private-room result used a login-only Genius price and excluded taxes/fees. Hostelworld results were From offers. No quote was substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
