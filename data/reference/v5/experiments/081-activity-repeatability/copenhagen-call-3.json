@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v5-activity-repeatability-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "call": 3,
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "activity_average_per_person_day": {
+      "status": "found", "value": 33, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "average", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/denmark/copenhagen", "sourceTitle": "Copenhagen Travel Cost - Average Price of a Vacation to Copenhagen: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Sightseeing activities, entertainment, and entrance tickets in Copenhagen typically cost an average of $33 per person, per day based on the spending of previous travelers.",
+      "referencePeriod": "Page crawled 3 weeks before 2026-08-01; current 2026 travel-cost data", "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark sightseeing activities entertainment entrance tickets per person per day", "reason": null
+    },
+    "activities_budget_per_person_day": {
+      "status": "found", "value": 12, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "budget", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/denmark/copenhagen/trip-cost-2618425", "sourceTitle": "How much does a trip to Copenhagen Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $12, Mid-Range $33, Luxury $93.",
+      "referencePeriod": "Page crawled last month; current 2026 travel-cost table", "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_mid_per_person_day": {
+      "status": "found", "value": 33, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "mid_range", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/denmark/copenhagen/trip-cost-2618425", "sourceTitle": "How much does a trip to Copenhagen Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $12, Mid-Range $33, Luxury $93.",
+      "referencePeriod": "Page crawled last month; current 2026 travel-cost table", "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark budget mid-range luxury entertainment per person per day", "reason": null
+    },
+    "activities_high_per_person_day": {
+      "status": "found", "value": 93, "currency": "USD", "unit": "per_person_per_day", "partyBasis": "one_person", "tier": "high_end", "scope": "entertainment_or_sightseeing",
+      "sourceUrl": "https://www.budgetyourtrip.com/denmark/copenhagen/trip-cost-2618425", "sourceTitle": "How much does a trip to Copenhagen Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category — Entertainment: Budget $12, Mid-Range $33, Luxury $93.",
+      "referencePeriod": "Page crawled last month; current 2026 travel-cost table", "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark budget mid-range luxury entertainment per person per day", "reason": null
+    }
+  },
+  "telemetry": {"searchesAttempted": 2, "searchOperations": 2, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

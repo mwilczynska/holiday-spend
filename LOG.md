@@ -1710,3 +1710,8 @@ Read `data/reference/v5/experiments/080-activity-scaling-panel/`.
 This experiment is in progress. Five difficult cities (Fukuoka, Mumbai, Dubai, Paris, Copenhagen) each receive three
 independent one-city calls using the exact 080 activity prompt. The deterministic audit measures protocol compliance,
 complete tier coverage, and within-city relative range; it does not average calls, fit a model, or claim ground truth.
+
+Experiment 081 completed with 15/15 protocol-compliant calls. Mumbai, Dubai, Paris, and Copenhagen each returned
+identical complete tiers in all three calls (0% within-city relative range); Fukuoka was `not_found` in every call.
+The pre-registered five-city repeatability gate failed. **Verdict:** retain the ordinary-city route with explicit
+sparse fail-closed behavior; do not average calls or map missing values. Read `data/reference/v5/experiments/081-activity-repeatability/`.

@@ -168,7 +168,8 @@ were rejected; independent activity ground truth remains required.
 
 The 081 activity-repeatability prompt is active: five difficult cities receive three independent single-city calls
 using the 080 two-search contract. It records dispersion and missingness only; no cross-call averaging, arithmetic,
-or product mapping is authorized.
+or product mapping is authorized. The run completed 15/15 compliant calls; four cities were stable and Fukuoka was
+not-found in all three calls, so the five-city repeatability gate failed.
 
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.

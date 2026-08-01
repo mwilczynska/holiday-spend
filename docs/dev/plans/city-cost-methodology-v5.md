@@ -547,6 +547,11 @@ The pre-registered gate is 15 compliant calls, three complete tier sets in every
 relative range no greater than 25% for each tier. This measures single-call dispersion only; it is not an accuracy or
 ground-truth result and cannot authorize product mapping.
 
+The panel completed with 15/15 compliant calls. Four cities had identical complete tiers across all three calls
+(0% relative range); Fukuoka was not-found in every call. The five-city gate failed, so the route is retained only for
+ordinary covered cities with explicit sparse fail-closed behavior. **Verdict:** reject complete repeatability promotion;
+do not average calls or map missing values.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

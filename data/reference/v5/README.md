@@ -113,7 +113,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/078-expedia-matched-panel/` | **COMPLETE - reject pooled fitting ceiling** | Twelve new one-city calls, eight strict rows; pooled 20 2↔3 and 26 3↔4 matched cities, below 30 |
 | `experiments/079-hotevi-proxy-calibration/` | **COMPLETE - reject proxy calibration** | Eighteen complete grouped rows; 19 3-star and 15 4-star Expedia matches, below 30/10 gates |
 | `experiments/080-activity-scaling-panel/` | **COMPLETE - promote scaling to definition validation** | 30/30 compliant, 28/30 complete tier sets; two-person scaling candidate, independent ground truth still missing |
-| `experiments/081-activity-repeatability/` | **IN PROGRESS** | Fifteen independent single-city calls on five difficult cities; dispersion gate |
+| `experiments/081-activity-repeatability/` | **COMPLETE - reject complete repeatability gate** | 15/15 compliant; four cities stable, Fukuoka not-found in all three calls |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

@@ -1,0 +1,354 @@
+{
+  "schemaVersion": "city-cost-v5-activity-repeatability-audit-v1",
+  "citiesTested": 5,
+  "callsTested": 15,
+  "protocolCompliant": 15,
+  "citiesWithThreeCompleteCalls": 4,
+  "relativeRangeByTier": {
+    "budget": {
+      "medianRelativeRangePercent": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "mid": {
+      "medianRelativeRangePercent": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "high": {
+      "medianRelativeRangePercent": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "repeatabilityGate": "15 compliant calls, 5 cities with 3 complete calls, median relative range <=25% per tier",
+  "repeatabilityGatePassed": false,
+  "productMapping": "none_repeatability_only",
+  "rows": [
+    {
+      "city": "Fukuoka",
+      "calls": [
+        {
+          "call": 1,
+          "complete": false,
+          "protocolCompliant": true,
+          "values": {
+            "budget": null,
+            "mid": null,
+            "high": null
+          }
+        },
+        {
+          "call": 2,
+          "complete": false,
+          "protocolCompliant": true,
+          "values": {
+            "budget": null,
+            "mid": null,
+            "high": null
+          }
+        },
+        {
+          "call": 3,
+          "complete": false,
+          "protocolCompliant": true,
+          "values": {
+            "budget": null,
+            "mid": null,
+            "high": null
+          }
+        }
+      ],
+      "stats": {
+        "budget": {
+          "n": 0,
+          "values": [],
+          "relativeRangePercent": null
+        },
+        "mid": {
+          "n": 0,
+          "values": [],
+          "relativeRangePercent": null
+        },
+        "high": {
+          "n": 0,
+          "values": [],
+          "relativeRangePercent": null
+        }
+      },
+      "threeComplete": false
+    },
+    {
+      "city": "Mumbai",
+      "calls": [
+        {
+          "call": 1,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 1,
+            "mid": 2,
+            "high": 6
+          }
+        },
+        {
+          "call": 2,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 1,
+            "mid": 2,
+            "high": 6
+          }
+        },
+        {
+          "call": 3,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 1,
+            "mid": 2,
+            "high": 6
+          }
+        }
+      ],
+      "stats": {
+        "budget": {
+          "n": 3,
+          "values": [
+            1,
+            1,
+            1
+          ],
+          "relativeRangePercent": 0
+        },
+        "mid": {
+          "n": 3,
+          "values": [
+            2,
+            2,
+            2
+          ],
+          "relativeRangePercent": 0
+        },
+        "high": {
+          "n": 3,
+          "values": [
+            6,
+            6,
+            6
+          ],
+          "relativeRangePercent": 0
+        }
+      },
+      "threeComplete": true
+    },
+    {
+      "city": "Dubai",
+      "calls": [
+        {
+          "call": 1,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 6,
+            "mid": 19,
+            "high": 77
+          }
+        },
+        {
+          "call": 2,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 6,
+            "mid": 19,
+            "high": 77
+          }
+        },
+        {
+          "call": 3,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 6,
+            "mid": 19,
+            "high": 77
+          }
+        }
+      ],
+      "stats": {
+        "budget": {
+          "n": 3,
+          "values": [
+            6,
+            6,
+            6
+          ],
+          "relativeRangePercent": 0
+        },
+        "mid": {
+          "n": 3,
+          "values": [
+            19,
+            19,
+            19
+          ],
+          "relativeRangePercent": 0
+        },
+        "high": {
+          "n": 3,
+          "values": [
+            77,
+            77,
+            77
+          ],
+          "relativeRangePercent": 0
+        }
+      },
+      "threeComplete": true
+    },
+    {
+      "city": "Paris",
+      "calls": [
+        {
+          "call": 1,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 31,
+            "mid": 88,
+            "high": 281
+          }
+        },
+        {
+          "call": 2,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 31,
+            "mid": 88,
+            "high": 281
+          }
+        },
+        {
+          "call": 3,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 31,
+            "mid": 88,
+            "high": 281
+          }
+        }
+      ],
+      "stats": {
+        "budget": {
+          "n": 3,
+          "values": [
+            31,
+            31,
+            31
+          ],
+          "relativeRangePercent": 0
+        },
+        "mid": {
+          "n": 3,
+          "values": [
+            88,
+            88,
+            88
+          ],
+          "relativeRangePercent": 0
+        },
+        "high": {
+          "n": 3,
+          "values": [
+            281,
+            281,
+            281
+          ],
+          "relativeRangePercent": 0
+        }
+      },
+      "threeComplete": true
+    },
+    {
+      "city": "Copenhagen",
+      "calls": [
+        {
+          "call": 1,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 12,
+            "mid": 33,
+            "high": 93
+          }
+        },
+        {
+          "call": 2,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 12,
+            "mid": 33,
+            "high": 93
+          }
+        },
+        {
+          "call": 3,
+          "complete": true,
+          "protocolCompliant": true,
+          "values": {
+            "budget": 12,
+            "mid": 33,
+            "high": 93
+          }
+        }
+      ],
+      "stats": {
+        "budget": {
+          "n": 3,
+          "values": [
+            12,
+            12,
+            12
+          ],
+          "relativeRangePercent": 0
+        },
+        "mid": {
+          "n": 3,
+          "values": [
+            33,
+            33,
+            33
+          ],
+          "relativeRangePercent": 0
+        },
+        "high": {
+          "n": 3,
+          "values": [
+            93,
+            93,
+            93
+          ],
+          "relativeRangePercent": 0
+        }
+      },
+      "threeComplete": true
+    }
+  ]
+}

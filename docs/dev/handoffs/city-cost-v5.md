@@ -553,6 +553,6 @@ was `not_found`; Rome's multi-city itinerary rows were rejected. Deterministic t
 but holdout completeness was 8/10 and no independent ground truth validates the reported-spend activity semantics.
 Promote only to definition-matched validation; do not accept final activity mapping.
 
-Experiment 081 is active. Fukuoka, Mumbai, Dubai, Paris, and Copenhagen each receive three independent one-city
-BudgetYourTrip calls with exactly two searches per call. The analyzer measures complete-call coverage, protocol
-compliance, and within-city tier dispersion; no cross-call averaging or product mapping is allowed.
+Experiment 081 completed with 15/15 compliant calls. Mumbai, Dubai, Paris, and Copenhagen returned identical complete
+tiers in all three calls (0% dispersion); Fukuoka was not-found in all three. The five-city repeatability gate failed;
+retain ordinary-city extraction with sparse fail-closed behavior and no cross-call averaging or product mapping.
