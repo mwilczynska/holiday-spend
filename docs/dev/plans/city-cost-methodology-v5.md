@@ -182,6 +182,11 @@ guarded and preserve Tokyo testing-subdomain/Rome page-family provenance warning
 these rows to the product. The next one-star step must use independent definition-matched ground truth or a
 pre-registered imputation model.
 
+Experiment 042 joined frozen official-register one-star classes to exact-property searches in Barcelona, Lisbon,
+and Da Nang. Only one of nine property attempts passed strict tax/occupancy/identity checks; the Lisbon quote
+has a register-versus-search address discrepancy. Reject the route as a productive panel and retain the row only
+as guarded identity-review evidence.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

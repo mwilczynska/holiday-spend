@@ -329,6 +329,10 @@ either collect independently curated definition-matched one-star ground truth or
 imputation model with a separate validation sample; require the 30-city/10-holdout gate before mapping any
 candidate to `accom_1_star`.
 
+Experiment 042 tested frozen official-register class evidence joined to exact-property two-adult quotes. Only
+1/9 properties passed strict price/tax/occupancy checks, and the surviving Lisbon quote needs an address identity
+review. Reject the route as a productive panel; do not compute a basket or map a quote to `accom_1_star`.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not

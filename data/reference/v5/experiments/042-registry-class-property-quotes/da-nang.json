@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "city-cost-v5-registry-class-property-quotes-v1",
+  "city": "Da Nang",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "classBasis": {
+    "sourceId": "vnat-accommodation-register-da-nang-2026-07-24",
+    "sourceTitle": "Vietnam National Authority of Tourism government-managed accommodation database",
+    "sourceUrl": "https://csdl.vietnamtourism.gov.vn/cslt/",
+    "retrievalDate": "2026-07-24",
+    "classRule": "official register says exact 1-star category",
+    "manifestProperties": [
+      "vnat-osm:VN:way:693117415 Khách sạn Legend, 169 Hồ Nghinh, An Hải, Sơn Trà, Da Nang",
+      "vnat-osm:VN:node:12848643548 Khách sạn Quang Nhật, 125 Hoàng Kế Viêm, Ngũ Hành Sơn, Da Nang",
+      "vnat-osm:VN:way:697217237 Khách sạn Diamond, 391 Trần Hưng Đạo, Sơn Trà, Da Nang"
+    ]
+  },
+  "propertyQuotes": [
+    {
+      "propertyId": "vnat-osm:VN:way:693117415",
+      "propertyName": "Khách sạn Legend",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "\"Khách sạn Legend\" Da Nang booking 2 adults 1 room price per night",
+      "reason": "Search results reconciled the exact 169 Hồ Nghinh Da Nang property, including a Booking.com review page, but no qualifying non-from nightly room price with explicit two-adult/one-room occupancy was shown. A Hotdeal result was a 2N1Đ voucher package and described the property as 3-star, so it was rejected; a separate exact-property result exposed 2-adult availability without a numeric price. No other property or city value was substituted."
+    },
+    {
+      "propertyId": "vnat-osm:VN:node:12848643548",
+      "propertyName": "Khách sạn Quang Nhật",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "\"Khách sạn Quang Nhật\" Da Nang booking 2 adults 1 room price per night",
+      "reason": "Search results identified the exact Khách sạn Quang Nhật at 125 Hoàng Kế Viêm, but the matching booking result showed one adult and no numeric room price (and other dates were fully booked). An Agoda result described room types without a qualifying two-adult nightly price. No explicit two-adult non-from price was retained."
+    },
+    {
+      "propertyId": "vnat-osm:VN:way:697217237",
+      "propertyName": "Khách sạn Diamond",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "\"Khách sạn Diamond\" Da Nang booking 2 adults 1 room price per night",
+      "reason": "No result reconciled the exact manifest property at 391 Trần Hưng Đạo, Sơn Trà, Da Nang with a qualifying two-adult nightly room price. A Booking result for Diamond Hotel was in Văn Giang, Hưng Yên; Diamond Sea and other Da Nang results were different properties and addresses. Those mismatches were rejected without substitution."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

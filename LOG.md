@@ -1199,3 +1199,16 @@ so paired calibration coverage was **0/6**.
 guarded source evidence; Tokyo's testing-subdomain result and Rome's conflicting page families carry explicit
 provenance warnings. Do not map source-default rows to `accom_1_star` or fit a correction. Read
 `data/reference/v5/experiments/041-one-star-paired-calibration/`.
+
+## Experiment 042 — registry-class plus explicit two-adult property quotes (1 August 2026)
+
+Three independent one-city Luna calls used frozen official-register one-star manifests for Barcelona, Lisbon,
+and Da Nang, with exactly one ordered property search for each of nine listed properties. All nine searches were
+compliant with no reads, retries, fallback sources, arithmetic, FX conversion, averaging, or cross-city evidence.
+Only one strict quote survived: Lisbon's Hotel LX ROSSIO at EUR63/night for two guests with taxes included. The
+quote has an address discrepancy against the frozen register and remains a guarded identity-review candidate.
+
+**Verdict:** reject the registry join as a productive one-star panel (1/9 strict quotes; 0/3 cities meeting the
+two-quote threshold). Do not compute a basket or map the quote to `accom_1_star`; preserve the class evidence,
+tax failure, and property-identity failure reasons. Read
+`data/reference/v5/experiments/042-registry-class-property-quotes/`.

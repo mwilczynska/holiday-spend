@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-registry-class-property-quotes-telemetry-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "\"Coronado\" Barcelona booking 2 adults 1 room price per night",
+    "\"Barcelona City Hotel-Universal\" Barcelona booking 2 adults 1 room price per night",
+    "\"Roma Reial\" Barcelona booking 2 adults 1 room price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundQuotes": 0,
+  "notFoundQuotes": 3,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only registry-class property run using exactly one ordered search per manifest property. Coronado exposed an exact Booking result with explicit 2-adult/1-room occupancy at CNY 935 per night, but taxes/fees were not stated and the quote therefore failed closed; Barcelona City Hotel-Universal and Roma Reial produced no qualifying quote. The registry is the class basis; no property values were averaged, converted, or mapped to a city value. No page reads, retries, fallback sources, arithmetic, FX conversion, or cross-city evidence were used. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

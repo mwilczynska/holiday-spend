@@ -57,6 +57,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-hostel-private-boundary.mjs` | `analyze-v5-hostel-private-boundary.mjs` | Experiment 039: audits one-bed dorm inputs and explicit two-adult private-hostel rows |
 | `node scripts/analyze-v5-private-two-guest-search.mjs` | `analyze-v5-private-two-guest-search.mjs` | Experiment 040: audits explicit two-adult named-hostel quotes; no city-wide mapping |
 | `node scripts/analyze-v5-one-star-paired-calibration.mjs` | `analyze-v5-one-star-paired-calibration.mjs` | Experiment 041: audits one-star city-statistic/explicit-two-adult pairing without fitting |
+| `node scripts/analyze-v5-registry-class-property-quotes.mjs` | `analyze-v5-registry-class-property-quotes.mjs` | Experiment 042: audits official-register class joins to property quotes without basket aggregation |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

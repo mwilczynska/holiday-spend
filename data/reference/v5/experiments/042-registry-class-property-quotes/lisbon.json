@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "city-cost-v5-registry-class-property-quotes-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "classBasis": {
+    "sourceId": "turismo-portugal-rnet-open-data-2026-07-24",
+    "sourceTitle": "Turismo de Portugal RNET",
+    "sourceUrl": "https://travelbi.turismodeportugal.pt/alojamento/empreendimentos-turisticos-oferta/",
+    "retrievalDate": "2026-07-24",
+    "classRule": "official register says exact 1-star category",
+    "manifestProperties": [
+      "rnet:PT:11228 Independente Bica Hotel *, Rua de São Paulo n.º 91-103, 1200-427 Lisboa",
+      "rnet:PT:7575 Tings Lisbon, Rua da Senhora do Monte 37-43B, 1170-359 Lisboa",
+      "rnet:PT:1384 Hotel LX ROSSIO, Rua da Assunção 52, 1100-044 Lisboa"
+    ]
+  },
+  "propertyQuotes": [
+    {
+      "propertyId": "rnet:PT:11228",
+      "propertyName": "Independente Bica Hotel *",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The exact Independente Bica Booking.com result showed no availability and a search context of 2 adults plus 2 children in 2 rooms; no numeric one-night two-adult room price was exposed.",
+      "referencePeriod": "Booking result crawled last month before 2026-08-01; requested dates unavailable",
+      "searchQuery": "\"Independente Bica Hotel *\" Lisbon booking 2 adults 1 room price per night",
+      "reason": "Not found under the strict property contract: the exact listed property was identified, but the result had no numeric available one-night price and did not match the required two-adult/one-room occupancy. No alternate property or estimate was substituted."
+    },
+    {
+      "propertyId": "rnet:PT:7575",
+      "propertyName": "Tings Lisbon",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The exact Tings Lisbon room page lists €65 per night for rooms with maximum two adults, but every displayed price is explicitly a ‘From’ price and adds taxes/fees.",
+      "referencePeriod": "Tings Lisbon room page crawled 6 days before 2026-08-01; low-season/from pricing",
+      "searchQuery": "\"Tings Lisbon\" Lisbon booking 2 adults 1 room price per night",
+      "reason": "Rejected under the strict property contract because the only numeric room prices are lowest/from prices with taxes and fees not included. A from price is not a central eligible nightly quote."
+    },
+    {
+      "propertyId": "rnet:PT:1384",
+      "propertyName": "Hotel LX ROSSIO",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "found",
+      "value": 63,
+      "currency": "EUR",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "sourceUrl": "https://www.kayak.pt/Hoteis-Hotel-LX-Rossio-Lisboa.88732.ksp",
+      "sourceTitle": "Hotel LX Rossio desde 55 €. Lisboa Hotéis – KAYAK",
+      "evidenceText": "Hotel LX Rossio, Lisbon: 2 guests, 1 room, Mon 3 Aug–Tue 4 Aug 2026. Standard room, €63 per night, with taxes. The listing identifies Hotel LX Rossio as 1 star; the €55 ‘from’ rate was not used.",
+      "referencePeriod": "KAYAK result crawled 4 days before 2026-08-01; displayed one-night dates 3–4 August 2026; taxes included",
+      "searchQuery": "\"Hotel LX ROSSIO\" Lisbon booking 2 adults 1 room price per night",
+      "reason": "Accepted as an exact Hotel LX Rossio Lisbon property quote: the official RNET manifest supplies the 1-star class, while the independent KAYAK result supplies a non-from standard-room nightly rate, explicit two-guest/one-room occupancy, date window, EUR currency, and taxes-included treatment. This is a property observation only; no city statistic or basket value is computed."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -338,6 +338,11 @@ Booking/Hotels.com returned zero explicit two-adult one-star quotes. Reject occu
 mapping; Tokyo's testing-subdomain row and Rome's conflicting page families require guarded provenance. The
 remaining path is independent definition-matched ground truth or a separately validated imputation model.
 
+Experiment 042 tested the repository's frozen registry manifests against exact-property searches: 1/9 strict
+quotes, in Lisbon, with an unresolved address discrepancy. Barcelona's only price had unknown tax treatment and
+Da Nang had no qualifying quote. Reject the join as a productive one-star panel; no basket, correction, or product
+mapping is permitted.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

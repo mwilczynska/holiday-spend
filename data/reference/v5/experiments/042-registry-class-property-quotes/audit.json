@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "city-cost-v5-registry-class-property-quotes-audit-v1",
+  "citiesTested": 3,
+  "propertiesAttempted": 9,
+  "acceptedQuotes": 1,
+  "acceptedCities": ["Lisbon"],
+  "acceptedQuotesAre": "named_property_observations_only",
+  "identityReviewRequired": ["Lisbon / Hotel LX ROSSIO: register address 52 versus search result address 40"],
+  "searchesAttempted": 9,
+  "searchOperations": 9,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "productMapping": "none_ground_truth_property_panel_only",
+  "verdict": "reject_broader_join_panel_retain_guarded_candidate"
+}

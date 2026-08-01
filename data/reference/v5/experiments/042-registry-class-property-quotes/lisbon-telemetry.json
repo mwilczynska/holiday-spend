@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-registry-class-property-quotes-telemetry-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "\"Independente Bica Hotel *\" Lisbon booking 2 adults 1 room price per night",
+    "\"Tings Lisbon\" Lisbon booking 2 adults 1 room price per night",
+    "\"Hotel LX ROSSIO\" Lisbon booking 2 adults 1 room price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundQuotes": 1,
+  "notFoundQuotes": 2,
+  "notes": "Single-city registry-class property run using exactly one ordered search per manifest property. Independente Bica had no available numeric two-adult quote; Tings Lisbon exposed only from prices; Hotel LX Rossio yielded one eligible KAYAK standard-room quote at €63/night for 2 guests/1 room with taxes included. Official RNET class evidence is kept separate from price evidence; no basket median, arithmetic, FX, fallback, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

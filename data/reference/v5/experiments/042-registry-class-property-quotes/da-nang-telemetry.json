@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-registry-class-property-quotes-telemetry-v1",
+  "city": "Da Nang",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "\"Khách sạn Legend\" Da Nang booking 2 adults 1 room price per night",
+    "\"Khách sạn Quang Nhật\" Da Nang booking 2 adults 1 room price per night",
+    "\"Khách sạn Diamond\" Da Nang booking 2 adults 1 room price per night"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "propertiesAttempted": 3,
+  "acceptedQuotes": 0,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only registry-join run with exactly three ordered property searches. All three manifest properties retained the supplied official-register exact 1-star class basis, but no exact-property non-from nightly two-adult quote was found. Legend had exact identity but no qualifying price; Quang Nhat had exact identity but one-adult/no-price results; Diamond results were mismatched properties or lacked a qualifying quote. No page reads, retries, fallback sources, arithmetic, FX conversion, averaging, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

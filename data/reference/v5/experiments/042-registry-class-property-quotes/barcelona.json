@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "city-cost-v5-registry-class-property-quotes-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "classBasis": {
+    "sourceId": "catalonia-tourism-register-t2h3-cgys-2026-07-01",
+    "sourceTitle": "Generalitat de Catalunya Registre de Turisme",
+    "sourceUrl": "https://analisi.transparenciacatalunya.cat/d/t2h3-cgys",
+    "retrievalDate": "2026-08-01",
+    "classRule": "official register says exact 1-star category",
+    "manifestProperties": [
+      "HB-003443 Coronado, Carrer Nou de la Rambla 134, 08004 Barcelona",
+      "HB-003925 Barcelona City Hotel-Universal, Carrer Aragó 281, 08009 Barcelona",
+      "HB-000063 Roma Reial, Plaça Reial 11, 08002 Barcelona"
+    ]
+  },
+  "propertyQuotes": [
+    {
+      "propertyId": "HB-003443",
+      "propertyName": "Coronado",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "sourceUrl": "https://www.booking.com/hotel/es/coronado.html?came_from_hotel_review=1&keep_landing=1",
+      "sourceTitle": "Hotel Coronado, Barcelona (updated prices 2026)",
+      "evidenceText": "Booking.com identifies Hotel Coronado in Barcelona with 2 adults, 0 children, 1 room and shows CNY 935 per night (current price CNY 2,805 for the displayed stay).",
+      "referencePeriod": "Booking.com result crawled last week; updated prices 2026; booking dates and tax treatment are not visible in the search snippet",
+      "searchQuery": "\"Coronado\" Barcelona booking 2 adults 1 room price per night",
+      "reason": "The exact listed property is reconciled as Hotel Coronado in Barcelona and the snippet supplies two adults, one room, and CNY 935 per night, but the search evidence does not state whether taxes and fees are included. Experiment 042 rejects unknown tax treatment, so the quote fails closed and is retained only as rejected evidence; no currency conversion or arithmetic was performed."
+    },
+    {
+      "propertyId": "HB-003925",
+      "propertyName": "Barcelona City Hotel-Universal",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "\"Barcelona City Hotel-Universal\" Barcelona booking 2 adults 1 room price per night",
+      "reason": "The single targeted search did not expose a qualifying exact-property result with a numeric non-from nightly price and explicit two-adult/one-room occupancy. No other Barcelona property or source was substituted."
+    },
+    {
+      "propertyId": "HB-000063",
+      "propertyName": "Roma Reial",
+      "class": "1_star",
+      "classEvidence": "official register record supplied in manifest",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "\"Roma Reial\" Barcelona booking 2 adults 1 room price per night",
+      "reason": "The targeted search returned the official property site and KAYAK/HotelsCombined snippets rather than a qualifying Booking result. Those alternatives exposed lowest or average-deal figures with incomplete date/tax treatment and were not used as fallback evidence."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
