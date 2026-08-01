@@ -522,6 +522,19 @@ holdout and eight are validation. The deterministic analyzer joins proxy rows on
 The 30-city matched relationship and 10-city holdout gates must pass before any simple calibration is fitted; no
 grouped class is treated as an observed product tier.
 
+The panel completed with 18/18 compliant, complete new rows. Pooling with Experiment 076 produced only 19 matched
+3-star and 15 matched 4-star Expedia target cities, with 8 and 5 locked holdout matches. The raw proxy screen had
+3-star median APE 17.65% (p90 109.68%) and 4-star median APE 35.92% (p90 183.02%), with worse holdout p90s. **Verdict:**
+reject proxy calibration; retain HOTEVI only as labelled evidence and do not split or map grouped tiers.
+
+### Experiment 080 - BudgetYourTrip per-person activity scaling panel
+
+Thirty new cities are being tested with exactly two BudgetYourTrip-restricted searches per city. The accepted source
+contract is an exact-city Budget/Mid-Range/Luxury entertainment row explicitly priced per person per day. Deterministic
+code doubles each accepted input for the two-traveller product; no coefficient is fitted and the model does no
+arithmetic. Ten cities are locked holdout. A pass only establishes source/scaling feasibility; reported-spend
+entertainment is not automatically equivalent to a paid-ticket or duration-specific activity estimand.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

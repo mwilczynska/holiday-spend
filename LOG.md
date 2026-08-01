@@ -1683,8 +1683,17 @@ only and do not fit or map hotel classes. Read `data/reference/v5/experiments/07
 
 ## Experiment 079 - HOTEVI grouped proxy calibration panel (1 August 2026)
 
-This experiment is in progress. Eighteen new single-city Luna contexts are assigned one HOTEVI-restricted search and
-one exact page read each. The 12 complete grouped rows from Experiment 076 are development data; ten named new cities
-are locked holdout and eight are validation. The analyzer joins grouped HOTEVI mid/luxury proxies only to strict
-Expedia 3-/4-star rows. Unknown occupancy and tax remain explicit proxy metadata. No calibration, class split, or
-product mapping is allowed until both 30-city matched relationships and ten-city holdouts pass.
+This experiment used eighteen new single-city Luna contexts, each with one HOTEVI-restricted search and one exact
+page read. All 18 calls and grouped proxy rows were complete. Pooling with the 12 Experiment 076 development rows
+matched only 19 explicit Expedia 3-star cities and 15 explicit 4-star cities; locked holdout matches were 8 and 5.
+The 30-city/10-holdout gates failed, and the unfitted proxy error was unstable (3-star median APE 17.65%, p90 109.68%;
+4-star median APE 35.92%, p90 183.02%). **Verdict:** reject HOTEVI proxy calibration; retain source-defined grouped
+values as labelled evidence only. Do not split, fit, or map product tiers.
+
+## Experiment 080 - BudgetYourTrip per-person activity scaling panel (1 August 2026)
+
+This experiment is in progress. Thirty new single-city Luna contexts are assigned exactly two ordered
+BudgetYourTrip-restricted searches for Budget, Mid-Range, and Luxury entertainment rows. Accepted rows must be
+explicitly one person per day; deterministic code may multiply them by two for the two-traveller product. Ten cities
+are locked holdout. The source screen does not yet establish that reported-spend entertainment tiers equal the
+product's ticket or duration-specific activity estimands.

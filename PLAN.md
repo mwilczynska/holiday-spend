@@ -643,11 +643,20 @@ fit coefficients or map hotel classes.
 The next accommodation experiment must test a materially different anchor or explicitly pre-register another
 bounded source-panel attempt; repeating the same Expedia query contract without a changed hypothesis is not justified.
 
-Experiment 079 is active: eighteen new one-city Luna contexts test HOTEVI's grouped 1-2/3/4-5-star public table.
-The twelve complete 076 rows are development data; ten named new cities are locked holdout and eight are validation.
-The only promotion question is whether grouped proxy rows can be matched to at least 30 explicit Expedia 3-star and
-4-star city rows, including ten locked holdouts per relationship. Unknown occupancy and tax remain labelled proxy
-semantics; no grouped value may be presented as an observed product tier.
+Experiment 079 completed with 18/18 protocol-compliant, complete grouped proxy rows. Combined with Experiment 076,
+only 19 cities matched explicit Expedia 3-star rows and 15 matched explicit Expedia 4-star rows; locked holdout
+matches were 8 and 5. Both 30-city/10-holdout gates failed. The unfitted proxy screen was also unstable (3-star
+overall median APE 17.65%, p90 109.68%; 4-star median APE 35.92%, p90 183.02%). Reject proxy calibration; retain
+HOTEVI as labelled research evidence only and do not split, fit, or map grouped classes.
+
+The next accommodation experiment must test a materially different anchor, not repeat Expedia/HOTEVI grouped
+semantics without a changed hypothesis.
+
+Experiment 080 is active: thirty new one-city Luna contexts test BudgetYourTrip's explicit per-person/day activity
+tiers. The only proposed transformation is deterministic multiplication by two in server-side code; the model may not
+perform arithmetic. A source screen requires 28/30 complete cities and 28/30 compliant calls, with ten locked
+holdouts retained for the semantic/source audit. This route does not yet establish that reported-spend entertainment
+tiers equal the product's ticket/activity estimands.
 
 ## Unrelated app backlog
 

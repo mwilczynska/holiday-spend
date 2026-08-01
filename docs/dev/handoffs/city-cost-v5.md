@@ -542,8 +542,13 @@ rows across 41 cities, with 20 matched 2-star/3-star cities and 26 matched 3-sta
 relationship gates failed. Reject pooled fitting promotion; retain all rows as source evidence only. The next
 experiment must use a materially different source or a pre-registered changed query hypothesis.
 
-Experiment 079 is active. Eighteen new one-city contexts are testing HOTEVI grouped budget/mid/luxury proxy rows
-with exactly one search and one exact page read. The analyzer pools these with the 12 complete 076 rows and joins
-them only to independently strict Expedia 3-/4-star rows. Ten new cities are locked holdout and eight are validation;
-unknown HOTEVI occupancy/tax remain proxy metadata. No calibration or product mapping may be claimed until the
-30-city/10-holdout relationships pass.
+Experiment 079 completed with 18/18 compliant, complete grouped proxy rows. Pooling with the 12 complete 076 rows
+yielded only 19 explicit Expedia 3-star matches and 15 explicit 4-star matches, with 8 and 5 locked holdout rows.
+The 30-city/10-holdout gates failed, and the unfitted proxy error was unstable. Reject HOTEVI proxy calibration;
+retain source-defined grouped values as labelled research evidence only. The next experiment must use a materially
+different anchor or hypothesis.
+
+Experiment 080 is active. Thirty new one-city contexts issue exactly two ordered BudgetYourTrip-restricted searches
+for explicit Budget/Mid-Range/Luxury entertainment rows on a one-person/day basis. The analyzer accepts only exact
+city, USD, per-person/day, non-from rows and records the deterministic two-person scaling outputs. Ten cities are
+locked holdout; no LLM arithmetic, source fallback, or product mapping is allowed.
