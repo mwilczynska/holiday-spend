@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "class": "3_star",
+      "occupancyBasis": null,
+      "statistic": null,
+      "breakfastIncluded": null,
+      "reviewScoreMinimum": null,
+      "propertyCount": null,
+      "checkInDate": null,
+      "bookedOnDate": null,
+      "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=c99ea3a8-f43f-46a6-91a0-9e8544f8bcbd&rating=3",
+      "sourceTitle": "Rome, Italy - 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": null,
+      "evidenceText": "The exact Rome 3-star result was returned by search, but its city page could not be read; no value was accepted from a search snippet.",
+      "referencePeriod": "Search and direct read attempted 2026-08-01",
+      "searchQuery": "site:worldstaytracker.com/city Rome Italy World Stay Tracker hotel prices",
+      "reason": "Exact returned Rome city page read failed with a cache miss."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "class": "4_star",
+      "occupancyBasis": null,
+      "statistic": null,
+      "breakfastIncluded": null,
+      "reviewScoreMinimum": null,
+      "propertyCount": null,
+      "checkInDate": null,
+      "bookedOnDate": null,
+      "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=c99ea3a8-f43f-46a6-91a0-9e8544f8bcbd&rating=4",
+      "sourceTitle": null,
+      "sourceContract": null,
+      "evidenceText": "The same-cityid URL with rating 4 was attempted directly after the Rome page read, but the page was not readable; no 4-star value was accepted.",
+      "referencePeriod": "Direct rating-4 read attempted 2026-08-01",
+      "searchQuery": "site:worldstaytracker.com/city Rome Italy World Stay Tracker hotel prices",
+      "reason": "Exact rating-4 city page direct read failed with a non-retryable safe-open error."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 2,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

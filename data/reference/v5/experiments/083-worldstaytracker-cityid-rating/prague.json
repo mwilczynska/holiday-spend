@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-v1",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 147.73,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "class": "3_star",
+      "occupancyBasis": "explicit_two_adults_source_average",
+      "statistic": "city_average",
+      "breakfastIncluded": true,
+      "reviewScoreMinimum": 7,
+      "propertyCount": 50,
+      "checkInDate": "2026-06-19",
+      "bookedOnDate": "2026-06-04",
+      "advancePeriod": "15 days",
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=a7b3c031-08ca-41dc-984b-476ea458d6d4&rating=3",
+      "sourceTitle": "Prague, Czech Republic - 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": "2 adults / 1 night / Breakfast included / Review score: Good (7+) / Rating: 3 stars",
+      "evidenceText": "World Stay Tracker exact Prague page: USD 147.73; average of 50 properties; check-in 19 June 2026; booked on 4 June 2026 (15 days in advance); 2 adults / 1 night / breakfast included / review score Good (7+) / rating 3 stars.",
+      "referencePeriod": "Check-in 2026-06-19; retrieved 2026-08-01",
+      "searchQuery": "site:worldstaytracker.com/city Prague Czech Republic World Stay Tracker hotel prices",
+      "reason": null
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "class": "4_star",
+      "occupancyBasis": null,
+      "statistic": null,
+      "breakfastIncluded": null,
+      "reviewScoreMinimum": null,
+      "propertyCount": null,
+      "checkInDate": null,
+      "bookedOnDate": null,
+      "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=a7b3c031-08ca-41dc-984b-476ea458d6d4&rating=4",
+      "sourceTitle": null,
+      "sourceContract": null,
+      "evidenceText": "The same-cityid URL with rating 4 was attempted directly after the Prague page read, but the page was not readable; no 4-star value was accepted.",
+      "referencePeriod": "Direct rating-4 read attempted 2026-08-01",
+      "searchQuery": "site:worldstaytracker.com/city Prague Czech Republic World Stay Tracker hotel prices",
+      "reason": "Exact rating-4 city page direct read failed with a non-retryable safe-open error."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 2,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

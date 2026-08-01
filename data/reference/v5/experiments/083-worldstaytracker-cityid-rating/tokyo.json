@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 193.41,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "class": "3_star",
+      "occupancyBasis": "explicit_two_adults_source_average",
+      "statistic": "city_average",
+      "breakfastIncluded": true,
+      "reviewScoreMinimum": 7,
+      "propertyCount": 59,
+      "checkInDate": "2026-08-16",
+      "bookedOnDate": "2026-08-01",
+      "advancePeriod": "15 days",
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=1707e7f2-b1ad-4afd-a38e-be24ba066c0f&rating=3",
+      "sourceTitle": "Tokyo, Japan - 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": "2 adults / 1 night / Breakfast included / Review score: Good (7+) / Rating: 3 stars",
+      "evidenceText": "World Stay Tracker exact Tokyo page: USD 193.41; average of 59 properties; check-in 16 August 2026; booked on 1 August 2026 (15 days in advance); 2 adults / 1 night / breakfast included / review score Good (7+) / rating 3 stars.",
+      "referencePeriod": "Check-in 2026-08-16; retrieved 2026-08-01",
+      "searchQuery": "site:worldstaytracker.com/city Tokyo Japan World Stay Tracker hotel prices",
+      "reason": null
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "class": "4_star",
+      "occupancyBasis": null,
+      "statistic": null,
+      "breakfastIncluded": null,
+      "reviewScoreMinimum": null,
+      "propertyCount": null,
+      "checkInDate": null,
+      "bookedOnDate": null,
+      "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=1707e7f2-b1ad-4afd-a38e-be24ba066c0f&rating=4",
+      "sourceTitle": null,
+      "sourceContract": null,
+      "evidenceText": "The same-cityid URL with rating 4 was attempted directly after the Tokyo page read, but the page was not readable; no 4-star value was accepted.",
+      "referencePeriod": "Direct rating-4 read attempted 2026-08-01",
+      "searchQuery": "site:worldstaytracker.com/city Tokyo Japan World Stay Tracker hotel prices",
+      "reason": "Exact rating-4 city page direct read failed with a non-retryable safe-open error."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 2,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

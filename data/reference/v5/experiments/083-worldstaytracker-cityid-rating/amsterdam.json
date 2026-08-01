@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "found", "value": 336.65, "currency": "USD", "unit": "per_room_per_night", "class": "3_star", "occupancyBasis": "explicit_two_adults_source_average", "statistic": "city_average", "breakfastIncluded": true, "reviewScoreMinimum": 7, "propertyCount": 48,
+      "checkInDate": "2026-08-08", "bookedOnDate": "2026-07-24", "advancePeriod": "15 days",
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=e2ff4dc6-10f0-4a69-99f1-f3ce95f7d3c3&rating=3", "sourceTitle": "Amsterdam, Netherlands — 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": "2 adults / 1 night / Breakfast included / Review score: Good (7+) / Rating: 3 stars",
+      "evidenceText": "World Stay Tracker exact Amsterdam page: USD 336.65; average of 48 properties; check-in 8 August 2026; booked on 24 July 2026 (15 days in advance); 2 adults / 1 night / breakfast included / review score Good (7+) / rating 3 stars.",
+      "referencePeriod": "Check-in 2026-08-08; retrieved 2026-08-01", "searchQuery": "site:worldstaytracker.com/city Amsterdam Netherlands World Stay Tracker hotel prices", "reason": null
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found", "value": null, "currency": null, "unit": "per_room_per_night", "class": "4_star", "occupancyBasis": null, "statistic": null, "breakfastIncluded": null, "reviewScoreMinimum": null, "propertyCount": null,
+      "checkInDate": null, "bookedOnDate": null, "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=e2ff4dc6-10f0-4a69-99f1-f3ce95f7d3c3&rating=4", "sourceTitle": "Amsterdam, Netherlands — World Stay Tracker city page (rating=4 direct URL)",
+      "sourceContract": null,
+      "evidenceText": "The deterministic rating=4 URL retained Amsterdam's cityid and advance period, but the required direct read was rejected as an unsafe URL; no 4-star value was accepted.",
+      "referencePeriod": "Direct rating=4 read attempted 2026-08-01; non-retryable unsafe URL", "searchQuery": "site:worldstaytracker.com/city Amsterdam Netherlands World Stay Tracker hotel prices", "reason": "Direct read of the constructed rating=4 URL failed with a non-retryable unsafe-URL error."
+    }
+  },
+  "telemetry": {"searchesAttempted": 1, "searchOperations": 1, "directReads": 2, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

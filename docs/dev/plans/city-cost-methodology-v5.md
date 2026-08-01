@@ -564,11 +564,12 @@ boundary and measure schema compliance explicitly.
 
 ### Experiment 083 - World Stay Tracker cityid/rating URL panel
 
-The next active package tests a materially different World Stay Tracker retrieval boundary: one exact-city search,
-one read of the returned city page, and one direct read with only the returned URL's `rating` parameter changed to 4.
-The panel has twelve independent one-city contexts and a 10/12 complete-city, 10/12 protocol-compliance screen gate.
-Breakfast-included/popular-property semantics remain labelled warnings; no product mapping or breakfast adjustment is
-authorized by a screen pass.
+The twelve independent one-city contexts completed the changed retrieval boundary (one search, one returned-page read,
+and one direct read after changing only the `rating=4` parameter) with 12/12 protocol compliance. Six strict 3-star
+rows and zero 4-star rows passed; zero cities were complete because every direct 4-star read was unsafe or unavailable.
+The 10/12 screen failed. **Verdict:** reject promotion; retain labelled source and access-failure evidence only, with
+no fallback search, breakfast adjustment, coefficient fitting, or product mapping. The next accommodation experiment
+must use a materially different source or access boundary.
 
 ## Restart rule
 

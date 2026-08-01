@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-telemetry-v1",
+  "city": "Copenhagen", "country": "Denmark", "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna", "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_083_worldstaytracker_cityid_rating.md", "calls": 1,
+  "searchesAttempted": 1, "searchOperations": 1, "queries": ["site:worldstaytracker.com/city Copenhagen Denmark World Stay Tracker hotel prices"],
+  "directReads": 2, "readUrls": ["https://worldstaytracker.com/city?advanceperiod=15+days&cityid=d765db1b-e6c5-4f34-93f0-c0579d65f44d&rating=3", "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=d765db1b-e6c5-4f34-93f0-c0579d65f44d&rating=4"],
+  "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true,
+  "notes": "One-city extraction; exactly one search, read of exact result, then direct read with only rating=4 substituted. Rating=3 read cache-missed and rating=4 direct read failed unsafe URL; no fallback or retry."
+}

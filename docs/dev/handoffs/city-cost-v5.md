@@ -563,8 +563,8 @@ The 10/12 complete-city screen failed. Retain World Stay Tracker rows as labelle
 source evidence only; do not remove breakfast, fit coefficients, or map product tiers. Next restart action: test a
 materially different accommodation source or query boundary and enforce canonical schema compliance.
 
-Experiment 083 is now active. It tests the World Stay Tracker cityid/rating URL boundary with twelve independent
-one-city contexts and exactly three ordered operations per city: one search, one returned-page read, and one direct
-read after substituting only `rating=4` in the same cityid URL. No second search, retry, fallback, arithmetic, FX, or
-cross-city evidence is allowed. The screen gate is 10/12 complete cities and 10/12 compliant calls; a pass permits
-only separate room-only semantic calibration.
+Experiment 083 completed with 12/12 protocol-compliant one-city calls: one search, one returned-page read, and one
+direct read after substituting only `rating=4` in the same cityid URL. Six strict 3-star rows and zero 4-star rows
+passed; zero cities were complete because every direct 4-star read was unsafe or unavailable. The screen failed. Retain
+labelled source/access evidence only; do not fall back to search, remove breakfast, fit coefficients, or map tiers. The
+next restart action is a materially different accommodation source or access boundary.

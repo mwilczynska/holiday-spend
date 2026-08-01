@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 219.59,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "class": "3_star",
+      "occupancyBasis": "explicit_two_adults_source_average",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "breakfastIncluded": true,
+      "reviewScoreMinimum": 7,
+      "propertyCount": 57,
+      "checkInDate": "2026-08-13",
+      "advancePeriod": "15 days",
+      "bookedOnDate": "2026-07-29",
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=b5890fed-d7f4-47de-9756-1db95b3ae97f&rating=3",
+      "sourceTitle": "Lisbon, Portugal — 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": "2 adults / 1 night / Breakfast included / Review score: Good (7+) / Rating: 3 stars",
+      "evidenceText": "Lisbon; USD 219.59; Avg. of 57 properties; Check-in Thu, Aug 13 2026; Booked on Wed, Jul 29 2026 (15 days in advance); 2 adults / 1 night / Breakfast included / Review score: Good (7+) / Rating: 3 stars.",
+      "referencePeriod": "Check-in 2026-08-13; booked 2026-07-29; 15-day advance window.",
+      "searchQuery": "site:worldstaytracker.com/city Lisbon Portugal World Stay Tracker hotel prices",
+      "reason": "Exact World Stay Tracker Lisbon page visibly provides a numeric USD city average, selected 3-star rating, property count, dates, and the explicit two-adult/one-night/breakfast/review-score contract. Source observation only; no product mapping or arithmetic."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "class": "4_star",
+      "occupancyBasis": "explicit_two_adults_source_average",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "breakfastIncluded": null,
+      "reviewScoreMinimum": 7,
+      "propertyCount": null,
+      "checkInDate": null,
+      "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=b5890fed-d7f4-47de-9756-1db95b3ae97f&rating=4",
+      "sourceTitle": null,
+      "evidenceText": "The deterministic cityid/rating=4 read returned a non-retryable unsafe-URL error; no page was available to establish city, rating, or price.",
+      "referencePeriod": "Direct read attempted 2026-08-01; no qualifying 4-star observation.",
+      "searchQuery": "site:worldstaytracker.com/city Lisbon Portugal World Stay Tracker hotel prices",
+      "reason": "Not found because the exact substituted rating=4 URL was unavailable; no retry or fallback search was permitted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 2,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

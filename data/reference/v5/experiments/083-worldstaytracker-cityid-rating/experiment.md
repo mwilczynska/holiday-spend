@@ -1,6 +1,6 @@
 # Experiment 083 — World Stay Tracker cityid/rating URL panel
 
-**Status:** In progress
+**Status:** Complete — reject promotion
 
 ## Question
 
@@ -11,7 +11,8 @@ read directly, avoiding the search index's repeated 4-star-to-3-star misrouting 
 
 The cityid URL parameter will yield strict 3-star and 4-star rows for at least 10/12 cities with one search and two
 direct reads per city. Breakfast inclusion and popular-property selection remain explicit semantic warnings; this
-experiment does not silently treat the source as room-only ground truth.
+experiment does not silently treat the source as room-only ground truth. **Rejected:** all 12 calls were protocol
+compliant, but zero 4-star direct reads were available and zero cities were complete.
 
 ## Pre-registered protocol
 

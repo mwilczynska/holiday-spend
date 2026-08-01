@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-telemetry-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_083_worldstaytracker_cityid_rating.md",
+  "calls": 1,
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": ["site:worldstaytracker.com/city London United Kingdom World Stay Tracker hotel prices"],
+  "directReads": 2,
+  "directReadUrls": [
+    "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=b1ad6142-1eac-41a8-b04b-9c36eaeb2ca5&rating=3",
+    "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=b1ad6142-1eac-41a8-b04b-9c36eaeb2ca5&rating=4"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "notFoundMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "One-city run: one search, read of returned rating=3 page, and deterministic read of the same cityid with rating=4. The 3-star row was accepted; substituted rating=4 read was unsafe; no retries or fallback."
+}

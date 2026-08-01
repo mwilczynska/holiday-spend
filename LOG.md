@@ -1729,9 +1729,16 @@ promotion; do not remove breakfast, fit coefficients, or map product tiers. Read
 
 ## Experiment 083 - World Stay Tracker cityid/rating URL panel (1 August 2026)
 
-This experiment is in progress. Twelve independent one-city Luna contexts perform exactly one World Stay Tracker
+The pre-registered panel used twelve independent one-city Luna contexts, each performing exactly one World Stay Tracker
 search, one read of the returned city page, and one read of the same `cityid` URL with only `rating=4` substituted.
 The changed URL boundary tests whether direct parameter navigation avoids the search index's repeated 4-star-to-3-star
 misrouting. No second search, retry, fallback, arithmetic, FX conversion, or cross-city evidence is allowed. Strict
 rows retain the source's explicit 2-adult/1-night/breakfast/review-7+ basis; a screen pass authorizes only a later
 room-only semantic calibration.
+
+Experiment 083 completed with 12/12 protocol-compliant calls: one exact-city search, one returned-page read, and one
+direct read after substituting only the World Stay Tracker `rating=4` URL parameter. The audit accepted six strict
+3-star rows and zero 4-star rows; zero cities were complete. Every direct 4-star read was unsafe or unavailable, and
+the 10/12 complete-city screen failed. **Verdict:** reject promotion; retain labelled observations and access-failure
+evidence only, with no fallback search, breakfast adjustment, fitting, or product mapping. Read
+`data/reference/v5/experiments/083-worldstaytracker-cityid-rating/`.

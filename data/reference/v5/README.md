@@ -115,7 +115,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/080-activity-scaling-panel/` | **COMPLETE - promote scaling to definition validation** | 30/30 compliant, 28/30 complete tier sets; two-person scaling candidate, independent ground truth still missing |
 | `experiments/081-activity-repeatability/` | **COMPLETE - reject complete repeatability gate** | 15/15 compliant; four cities stable, Fukuoka not-found in all three calls |
 | `experiments/082-worldstaytracker-accommodation/` | **COMPLETE - reject promotion** | 12/12 compliant; 5 canonical 3-star rows, 0 four-star rows, 0 complete cities; breakfast/popular-property proxy only |
-| `experiments/083-worldstaytracker-cityid-rating/` | **IN PROGRESS** | One search plus direct 3-/4-star cityid reads; screen requires 10/12 complete and compliant |
+| `experiments/083-worldstaytracker-cityid-rating/` | **COMPLETE - reject promotion** | 12/12 compliant; 6 strict 3-star rows, 0 four-star rows, 0 complete cities; direct rating reads unsafe |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

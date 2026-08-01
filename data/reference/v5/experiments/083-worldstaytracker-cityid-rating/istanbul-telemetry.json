@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-telemetry-v1",
+  "city": "Istanbul",
+  "country": "Türkiye",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_083_worldstaytracker_cityid_rating.md",
+  "calls": 1,
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "queries": ["site:worldstaytracker.com/city Istanbul Türkiye World Stay Tracker hotel prices"],
+  "directReads": 2,
+  "directReadUrls": [
+    "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=54488c8c-5c19-4c6c-b696-7fb9233b1dcb&rating=3",
+    "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=54488c8c-5c19-4c6c-b696-7fb9233b1dcb&rating=4"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "notFoundMeasures": 2,
+  "protocolCompliant": true,
+  "notes": "One-city run: one search, read of returned rating=3 page, and deterministic read of the same cityid with rating=4. The first read cache-missed and substituted read was unsafe; no retries or fallback."
+}

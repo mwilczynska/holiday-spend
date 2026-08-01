@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-telemetry-v1",
+  "city": "Dubai", "country": "United Arab Emirates", "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna", "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_083_worldstaytracker_cityid_rating.md", "calls": 1,
+  "searchesAttempted": 1, "searchOperations": 1, "queries": ["site:worldstaytracker.com/city Dubai United Arab Emirates World Stay Tracker hotel prices"],
+  "directReads": 2, "readUrls": ["https://worldstaytracker.com/city?advanceperiod=15+days&cityid=7e2405e0-36b7-41e4-be6f-0b8c70fbc98c&rating=3", "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=7e2405e0-36b7-41e4-be6f-0b8c70fbc98c&rating=4"],
+  "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true,
+  "notes": "One-city extraction; exactly one search, read of exact result, then direct read with only rating=4 substituted. Rating=4 direct read failed unsafe URL; no fallback or retry."
+}

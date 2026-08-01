@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-audit-v1",
+  "citiesTested": 12,
+  "completeCities": 0,
+  "threeStarCoverage": 6,
+  "fourStarCoverage": 0,
+  "protocolCompliant": 12,
+  "screenGate": "completeCities>=10 and protocolCompliant>=10",
+  "screenGatePassed": false,
+  "semanticBasis": "2 adults / 1 night / breakfast included / review score >=7 / 15-day advance",
+  "productMapping": "none_semantic_screen_only",
+  "rows": [
+    {
+      "city": "Amsterdam",
+      "complete": false,
+      "accepted": {
+        "three": true,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Bangkok",
+      "complete": false,
+      "accepted": {
+        "three": false,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Copenhagen",
+      "complete": false,
+      "accepted": {
+        "three": false,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "complete": false,
+      "accepted": {
+        "three": true,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Istanbul",
+      "complete": false,
+      "accepted": {
+        "three": false,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "complete": false,
+      "accepted": {
+        "three": true,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "complete": false,
+      "accepted": {
+        "three": true,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Paris",
+      "complete": false,
+      "accepted": {
+        "three": false,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Prague",
+      "complete": false,
+      "accepted": {
+        "three": true,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Rome",
+      "complete": false,
+      "accepted": {
+        "three": false,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Sydney",
+      "complete": false,
+      "accepted": {
+        "three": false,
+        "four": false
+      },
+      "protocolCompliant": true
+    },
+    {
+      "city": "Tokyo",
+      "complete": false,
+      "accepted": {
+        "three": true,
+        "four": false
+      },
+      "protocolCompliant": true
+    }
+  ]
+}

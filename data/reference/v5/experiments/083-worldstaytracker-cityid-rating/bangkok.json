@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found", "value": null, "currency": null, "unit": "per_room_per_night", "class": "3_star", "occupancyBasis": null, "statistic": null, "breakfastIncluded": null, "reviewScoreMinimum": null, "propertyCount": null,
+      "checkInDate": null, "bookedOnDate": null, "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=8167f4e2-fa35-4376-8376-968b96b47950&rating=3", "sourceTitle": "Bangkok, Thailand — 3-Star Hotel Prices | World Stay Tracker",
+      "sourceContract": null,
+      "evidenceText": "The Bangkok 3-star search identified a qualifying-looking page (USD 64.60; average of 59 properties; check-in 7 August 2026; 2 adults / 1 night / breakfast included / review score Good (7+) / rating 3 stars), but the required exact-page read returned a cache-miss error; no value was accepted without a readable page.",
+      "referencePeriod": "Search and read attempted 2026-08-01; read failed cache miss", "searchQuery": "site:worldstaytracker.com/city Bangkok Thailand World Stay Tracker hotel prices", "reason": "Exact result read failed with cache miss; strict contract requires a visibly readable page."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found", "value": null, "currency": null, "unit": "per_room_per_night", "class": "4_star", "occupancyBasis": null, "statistic": null, "breakfastIncluded": null, "reviewScoreMinimum": null, "propertyCount": null,
+      "checkInDate": null, "bookedOnDate": null, "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=8167f4e2-fa35-4376-8376-968b96b47950&rating=4", "sourceTitle": "Bangkok, Thailand — World Stay Tracker city page (rating=4 direct URL)",
+      "sourceContract": null,
+      "evidenceText": "The deterministic rating=4 URL retained Bangkok's cityid and advance period, but the required direct read was rejected as an unsafe URL; no 4-star value was accepted.",
+      "referencePeriod": "Direct rating=4 read attempted 2026-08-01; non-retryable unsafe URL", "searchQuery": "site:worldstaytracker.com/city Bangkok Thailand World Stay Tracker hotel prices", "reason": "Direct read of the constructed rating=4 URL failed with a non-retryable unsafe-URL error."
+    }
+  },
+  "telemetry": {"searchesAttempted": 1, "searchOperations": 1, "directReads": 2, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

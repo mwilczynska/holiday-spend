@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-v1",
+  "city": "Istanbul",
+  "country": "Türkiye",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "class": "3_star",
+      "occupancyBasis": "explicit_two_adults_source_average",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "breakfastIncluded": null,
+      "reviewScoreMinimum": 7,
+      "propertyCount": null,
+      "checkInDate": null,
+      "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=54488c8c-5c19-4c6c-b696-7fb9233b1dcb&rating=3",
+      "sourceTitle": "Istanbul, Turkey — 3-Star Hotel Prices | World Stay Tracker",
+      "evidenceText": "The exact city page returned by the required search failed to open with a cache-miss error. The search snippet was not treated as a page observation.",
+      "referencePeriod": "Search/read retrieved 2026-08-01; no qualifying 3-star observation.",
+      "searchQuery": "site:worldstaytracker.com/city Istanbul Türkiye World Stay Tracker hotel prices",
+      "reason": "Not found because the required direct read returned a cache miss; no retry or alternate result was permitted."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "class": "4_star",
+      "occupancyBasis": "explicit_two_adults_source_average",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "breakfastIncluded": null,
+      "reviewScoreMinimum": 7,
+      "propertyCount": null,
+      "checkInDate": null,
+      "advancePeriod": null,
+      "sourceUrl": "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=54488c8c-5c19-4c6c-b696-7fb9233b1dcb&rating=4",
+      "sourceTitle": null,
+      "evidenceText": "The deterministic cityid/rating=4 read returned a non-retryable unsafe-URL error; no page was available to establish city, rating, or price.",
+      "referencePeriod": "Direct read attempted 2026-08-01; no qualifying 4-star observation.",
+      "searchQuery": "site:worldstaytracker.com/city Istanbul Türkiye World Stay Tracker hotel prices",
+      "reason": "Not found because the exact substituted rating=4 URL was unavailable; no retry or fallback search was permitted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 2,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

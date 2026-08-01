@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-worldstaytracker-cityid-rating-telemetry-v1",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "directReads": 2,
+  "queries": ["site:worldstaytracker.com/city Prague Czech Republic World Stay Tracker hotel prices"],
+  "pageReads": [
+    "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=a7b3c031-08ca-41dc-984b-476ea458d6d4&rating=3",
+    "https://worldstaytracker.com/city?advanceperiod=15+days&cityid=a7b3c031-08ca-41dc-984b-476ea458d6d4&rating=4"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city; one exact-city search followed by reads of the returned rating URL and the same cityid URL with only rating=4 substituted. The rating-4 read failed without retry."
+}
