@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "proxy_candidate",
+      "value": 131,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_double_occupancy_snippet",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "before_taxes_and_fees",
+      "sourceUrl": "https://testing.budgetyourtrip.com/hotels/denmark/copenhagen-2618425",
+      "sourceTitle": "How Much Do Hotels Cost in Copenhagen? Hotel Prices for Copenhagen, Denmark | Budget Your Trip",
+      "evidenceText": "The exact-city search result reports $131 as the average price of 9 1-star hotels in Copenhagen and a $123 median; it describes a one-night stay. The same result states that hotel prices are in US Dollars before taxes, and the star table is before taxes and fees.",
+      "referencePeriod": "Search result crawled last week; snippet retrieved 2026-08-01.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Copenhagen Denmark 1-star hotel average price one night before taxes",
+      "sampleSize": 9,
+      "reason": "Source-defined snippet proxy candidate only: exact city/class, numeric one-night USD average, and explicit pre-tax basis are present; not an observed two-adult product value."
+    },
+    "double_occupancy_semantics": {
+      "status": "found",
+      "value": 193,
+      "currency": "USD",
+      "localValue": 1255,
+      "localCurrency": "DKK",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_people_typical_double_occupancy_search_snippet",
+      "class": "all_hotel_classes",
+      "statistic": "reported_traveler_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/denmark/copenhagen",
+      "sourceTitle": "Copenhagen Travel Cost - Average Price of a Vacation to Copenhagen: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact-city same-source search result states: the average price paid in Copenhagen for two people for a typical double-occupancy hotel room is $193 (kr1,255). It also states that one person sharing averages $96 (kr627) per night and that costs are from reported traveler spending.",
+      "occupancyEvidence": "The average price paid in Copenhagen for two people for a typical double-occupancy hotel room is $193 (kr1,255).",
+      "referencePeriod": "Search result published 2 months ago and crawled 3 weeks ago; snippet retrieved 2026-08-01.",
+      "searchQuery": "site:budgetyourtrip.com Copenhagen Denmark \"two people\" \"double-occupancy\" hotel price",
+      "reason": "Same-source exact-city snippet supplies explicit two-person/double-occupancy wording; this supports only the labelled one-star proxy candidate."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 1,
+    "proxyCandidates": 1,
+    "protocolCompliant": true,
+    "queries": [
+      "site:budgetyourtrip.com/hotels Copenhagen Denmark 1-star hotel average price one night before taxes",
+      "site:budgetyourtrip.com Copenhagen Denmark \"two people\" \"double-occupancy\" hotel price"
+    ],
+    "notes": "Single city, exactly two ordered searches, and no page reads, retries, fallback source, arithmetic, FX, averaging, or cross-city evidence. Proxy remains snippet-only and is not mapped or fitted."
+  }
+}

@@ -566,14 +566,14 @@ Experiment 066 completed with 0/12 explicit two-person rows: eight numeric pages
 page reads were blocked or timed out. Reject BudgetYourTrip as a direct one-star source, but test a source-level
 double-occupancy proxy calibration before closing the route. No mapping or fitting is allowed yet.
 
-Experiment 067 is active: twelve one-city Luna contexts will join an exact-city one-star page with a same-source
-destination page that explicitly defines typical double-occupancy hotel prices. The screen requires 8/12 complete
-proxy candidates and 10/12 protocol-compliant calls; a pass authorizes calibration only, never direct observation.
-
 Experiment 067 completed with 1/12 proxy candidates and 12/12 protocol-compliant calls. The gate failed because
 most cities had blocked/timed-out reads, stale or absent one-star classes, or no joinable same-source occupancy page.
 Reject this proxy route at current web-tool reliability; retain Cairo as labelled proxy evidence only and do not map
 or fit.
+
+Experiment 068 completed with 10/12 proxy candidates and 12/12 protocol-compliant calls, passing its screening gate.
+Promote only to independent explicit-two-adult calibration/page-backed validation; snippets remain proxy-only and no
+mapping or fitting is allowed.
 
 ## Unrelated app backlog
 

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "found",
+      "value": 201,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown_without_pair",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "before_taxes_and_fees",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/france/paris-2988507",
+      "sourceTitle": "How Much Do Hotels Cost in Paris? Hotel Prices for Paris, France | Budget Your Trip",
+      "evidenceText": "The exact-city search result reports $201 as the average price of 296 1-star hotels in Paris and a $165 median; it describes a one-night stay. The same result states that hotel prices are in US Dollars before taxes and fees. The companion occupancy snippet did not expose the required two-person wording, so this remains a found source statistic rather than a proxy candidate.",
+      "referencePeriod": "Search result crawled 4 days ago; snippet retrieved 2026-08-01.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Paris France 1-star hotel average price one night before taxes",
+      "sampleSize": 296,
+      "reason": "One-star snippet is complete, but the paired search did not provide an exact-city two-person/double-occupancy statement; no proxy candidate is formed."
+    },
+    "double_occupancy_semantics": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "not_found_in_search_snippet",
+      "class": "all_hotel_classes",
+      "statistic": "reported_traveler_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/france/paris",
+      "sourceTitle": "Paris Travel Cost - Average Price of a Vacation to Paris: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact-city search result exposed one-person sharing and category context but did not include the required statement about two people or a typical double-occupancy room. The one-person figure cannot be doubled or otherwise used to infer occupancy semantics.",
+      "referencePeriod": "Search result crawled 3 weeks ago; snippet retrieved 2026-08-01.",
+      "searchQuery": "site:budgetyourtrip.com Paris France \"two people\" \"double-occupancy\" hotel price",
+      "reason": "Required occupancy wording absent from the exact-city snippet; do not infer it from one-person sharing or another city's result."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "proxyCandidates": 0,
+    "protocolCompliant": true,
+    "queries": [
+      "site:budgetyourtrip.com/hotels Paris France 1-star hotel average price one night before taxes",
+      "site:budgetyourtrip.com Paris France \"two people\" \"double-occupancy\" hotel price"
+    ],
+    "notes": "Single city, exactly two ordered searches, and no page reads, retries, fallback source, arithmetic, FX, averaging, or cross-city evidence. One-star snippet is not promoted without occupancy semantics."
+  }
+}

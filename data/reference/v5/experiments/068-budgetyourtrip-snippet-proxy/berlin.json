@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-v1",
+  "city": "Berlin",
+  "country": "Germany",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "proxy_candidate",
+      "value": 139,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_double_occupancy",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/germany/berlin-2950159",
+      "sourceTitle": "How Much Do Hotels Cost in Berlin? Hotel Prices for Berlin, Germany | Budget Your Trip",
+      "evidenceText": "Search snippet for the exact Berlin hotel page reports: 'The average price of the 109 terrific 1-star hotels in Berlin is $139, and the median price is $115.' It identifies the 1-star section as the average price for one night and the page states that hotel prices are in US Dollars before taxes.",
+      "taxEvidence": "The same search snippet states: '(All hotel prices are in US Dollars before taxes, and come from a base price that is reported by Kayak.)' The star-rating summary also says prices are before taxes and fees.",
+      "referencePeriod": "Search result crawled 3 weeks ago; search-snippet evidence only, no page read.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Berlin Germany 1-star hotel average price one night before taxes",
+      "sampleSize": 109,
+      "reason": "Labelled source-level proxy candidate only: exact-city one-star USD one-night statistic and tax basis in the first snippet, paired with same-source exact-city double-occupancy wording in the second snippet. Search snippets are weaker than page evidence; never treat as observed or map/fit."
+    },
+    "double_occupancy_semantics": {
+      "status": "found",
+      "value": 146,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_double_occupancy",
+      "class": "typical_double_occupancy",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/germany/berlin/",
+      "sourceTitle": "Berlin Travel Cost - Average Price of a Vacation to Berlin: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Search snippet for the exact Berlin destination page states: 'The average price paid in Berlin for two people for a typical double-occupancy hotel room is $146 (€128).' It also identifies the one-person sharing-room value as $73 per night and says these costs are from reported spending of actual travelers.",
+      "occupancyEvidence": "Explicit search-snippet wording names two people and a typical double-occupancy hotel room.",
+      "referencePeriod": "Search result crawled 6 days ago; search-snippet evidence only, no page read.",
+      "searchQuery": "site:budgetyourtrip.com Berlin Germany \"two people\" \"double-occupancy\" hotel price",
+      "reason": "Same-source exact-city occupancy semantics found in a search snippet; this is supporting proxy evidence only, not an observed one-star value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedProxyCandidates": 1,
+    "protocolCompliant": true
+  }
+}

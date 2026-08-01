@@ -110,6 +110,10 @@ The 067 BudgetYourTrip double-occupancy proxy prompt is complete and rejected at
 contexts issued exactly two searches and two page reads each, yielding 1/12 proxy candidates and 12/12 protocol
 compliance. No mapping or fitting follows; the Cairo candidate remains labelled proxy only.
 
+The 068 BudgetYourTrip snippet-proxy prompt is complete and passes its screening gate: twelve one-city contexts used
+exactly two ordered searches and no page reads, yielding 10/12 proxy candidates and 12/12 protocol compliance. This
+only authorizes independent calibration; snippets remain lower-evidence proxies and cannot be mapped or fitted.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

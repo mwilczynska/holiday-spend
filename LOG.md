@@ -1544,3 +1544,17 @@ defining typical double occupancy. The screening gate required 8/12 proxy candid
 timed out, stale, class-absent, or lacked a joinable semantic page. **Verdict:** reject this proxy route at current
 web-tool reliability. Retain Cairo as labelled proxy evidence only; do not map or fit. Read
 `data/reference/v5/experiments/067-budgetyourtrip-double-occupancy-proxy/`.
+
+## Experiment 068 - BudgetYourTrip search-snippet occupancy proxy (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly two ordered BudgetYourTrip searches each
+(24 searches total). No page reads, retries, fallback sources, arithmetic, FX conversion, averaging, or cross-city
+evidence occurred; all twelve calls were protocol-compliant.
+
+Ten cities produced complete same-source snippet proxy candidates. Paris lacked explicit two-person wording and Mumbai
+lacked an exact-city one-star value. The 10/12 candidate rate passed the pre-registered screening gate. Search
+snippets are lower-evidence than page reads and every value remains `proxy_candidate`, never observed.
+
+**Verdict:** promote only to independent explicit-two-adult calibration or page-backed validation. Do not map, fit,
+tax-normalize, or present snippets as product observations. Read
+`data/reference/v5/experiments/068-budgetyourtrip-snippet-proxy/`.

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-telemetry-v1",
+  "city": "Madrid",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com/hotels Madrid Spain 1-star hotel average price one night before taxes",
+    "site:budgetyourtrip.com Madrid Spain \"two people\" \"double-occupancy\" hotel price"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 1,
+  "proxyCandidates": 1,
+  "protocolCompliant": true,
+  "notes": "One-city context; exactly two searches and no page reads, retries, fallback, arithmetic, FX, averaging, or cross-city evidence."
+}

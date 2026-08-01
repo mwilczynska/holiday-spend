@@ -470,8 +470,13 @@ numeric pages lacked row-level occupancy and four reads were blocked or timed ou
 one-star source. A source-level double-occupancy proxy calibration is now the next experiment; do not map or fit
 until that proxy is independently calibrated.
 
-Experiment 067 is active. It tests twelve fresh one-city Luna contexts with exactly two searches and two page reads:
-the exact-city one-star BudgetYourTrip page and the same-source destination page defining typical double occupancy.
-The output was a labelled proxy candidate in Cairo only (1/12); all calls were protocol-compliant, but the 8/12
-screening gate failed because other cities were blocked, stale, class-absent, or lacked a joinable semantic page.
-Reject this proxy route at current web-tool reliability; no mapping, tax normalization, or fitting follows.
+Experiment 067 completed twelve fresh one-city Luna contexts with exactly two searches and two page reads. The output
+was a labelled proxy candidate in Cairo only (1/12); all calls were protocol-compliant, but the 8/12 screening gate
+failed because other cities were blocked, stale, class-absent, or lacked a joinable semantic page. Reject this proxy
+route at current web-tool reliability; no mapping, tax normalization, or fitting follows.
+
+with no page reads, to determine whether page blocking—not source semantics—is the remaining operational bottleneck.
+Experiment 068 completed twelve one-city Luna contexts with exactly two ordered searches and no page reads. Ten
+cities produced complete snippet proxy candidates and all calls were protocol-compliant, so the screening gate passed.
+Promote only to independent explicit-two-adult calibration/page-backed validation; snippets remain proxy-only and
+cannot be mapped or fitted.

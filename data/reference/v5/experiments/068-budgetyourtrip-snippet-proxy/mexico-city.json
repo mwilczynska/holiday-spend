@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "proxy_candidate",
+      "value": 51,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_double_occupancy",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/mexico/mexico-city-3530597",
+      "sourceTitle": "How Much Do Hotels Cost in Mexico City? Hotel Prices for Mexico City, Mexico | Budget Your Trip",
+      "evidenceText": "The exact Mexico City hotel-price search snippet reports an average 1-star hotel price of $51, median $50, based on 11 hotels. It states that hotel prices are in US Dollars before taxes and come from a Kayak-reported base price; the page reports one-night prices.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; page crawled last month; prices are before taxes and vary seasonally.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Mexico City Mexico 1-star hotel average price one night before taxes",
+      "sampleSize": 11,
+      "reason": "Both ordered snippets identify Mexico City and BudgetYourTrip. The first supplies exact city/class, numeric one-night USD value, sample and tax exclusion; the companion snippet supplies same-source two-person/double-occupancy semantics. This is a labelled source-defined proxy candidate, never an observed two-adult price."
+    },
+    "double_occupancy_semantics": {
+      "status": "found",
+      "value": 81,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_people_typical_double_occupancy_source_snippet",
+      "statistic": "reported_traveler_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city",
+      "sourceTitle": "Mexico City Travel Cost - Average Price of a Vacation to Mexico City: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact Mexico City destination search snippet states that the average price paid in Mexico City for two people for a typical double-occupancy hotel room is $81 (MX$1,407); one person sharing a room averages $41 per night, from reported traveler spending.",
+      "occupancyEvidence": "The average price paid in Mexico City for two people for a typical double-occupancy hotel room is $81 (MX$1,407).",
+      "referencePeriod": "BudgetYourTrip destination travel-cost page; snippet crawled 3 weeks before retrieval."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "queries": [
+      "site:budgetyourtrip.com/hotels Mexico City Mexico 1-star hotel average price one night before taxes",
+      "site:budgetyourtrip.com Mexico City Mexico \"two people\" \"double-occupancy\" hotel price"
+    ],
+    "directReads": 0,
+    "firstSnippetStatus": "success",
+    "secondSnippetStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "proxyCandidates": 1,
+    "protocolCompliant": true
+  }
+}

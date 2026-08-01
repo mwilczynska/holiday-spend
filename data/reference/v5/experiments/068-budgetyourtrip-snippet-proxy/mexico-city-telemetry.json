@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-telemetry-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com/hotels Mexico City Mexico 1-star hotel average price one night before taxes",
+    "site:budgetyourtrip.com Mexico City Mexico \"two people\" \"double-occupancy\" hotel price"
+  ],
+  "directReads": 0,
+  "firstSnippetStatus": "success",
+  "secondSnippetStatus": "success",
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "proxyCandidates": 1,
+  "protocolCompliant": true,
+  "notes": "One city, exactly two ordered BudgetYourTrip searches and no page reads. Mexico City qualified only as a source-defined double-occupancy snippet proxy candidate; the 1-star value remains a proxy, never an observed two-adult price. No retries, fallback, arithmetic, FX, or cross-city evidence."
+}

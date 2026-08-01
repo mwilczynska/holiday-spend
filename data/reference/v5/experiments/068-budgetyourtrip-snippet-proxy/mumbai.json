@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-v1",
+  "city": "Mumbai",
+  "country": "India",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/india/mumbai-1275339",
+      "sourceTitle": "How Much Do Hotels Cost in Mumbai? Hotel Prices for Mumbai, India | Budget Your Trip",
+      "evidenceText": "The exact Mumbai hotel-price search snippet identifies the page and states that hotel prices are in US Dollars before taxes, but its current star-rating rows list 5-star ($95), 4-star ($65), 3-star ($45), and 2-star ($35) only; no 1-star average is present in the snippet.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; search result crawled last month; displayed prices are before taxes.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Mumbai India 1-star hotel average price one night before taxes",
+      "sampleSize": null,
+      "reason": "No exact-city 1-star numeric observation appeared in the first snippet, so the protocol forbids substituting a 2-star, country, or generic budget value. This city cannot be a proxy candidate even though the second snippet supplies occupancy semantics."
+    },
+    "double_occupancy_semantics": {
+      "status": "found",
+      "value": 60,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_people_typical_double_occupancy_source_snippet",
+      "statistic": "reported_traveler_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/india/mumbai",
+      "sourceTitle": "Mumbai Travel Cost - Average Price of a Vacation to Mumbai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact Mumbai destination search snippet states that the average price paid in Mumbai for two people for a typical double-occupancy hotel room is $60 (₹5,619), with one person sharing a room at $30 per night; the costs are from reported traveler spending.",
+      "occupancyEvidence": "The average price paid in Mumbai for two people for a typical double-occupancy hotel room is $60 (₹5,619).",
+      "referencePeriod": "BudgetYourTrip destination travel-cost page; snippet crawled last month."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "queries": [
+      "site:budgetyourtrip.com/hotels Mumbai India 1-star hotel average price one night before taxes",
+      "site:budgetyourtrip.com Mumbai India \"two people\" \"double-occupancy\" hotel price"
+    ],
+    "directReads": 0,
+    "firstSnippetStatus": "success",
+    "secondSnippetStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "proxyCandidates": 0,
+    "protocolCompliant": true
+  }
+}

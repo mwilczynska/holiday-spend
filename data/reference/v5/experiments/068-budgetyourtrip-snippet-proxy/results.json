@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 24,
+  "searchOperations": 24,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": 12,
+  "acceptedProxyCandidates": 10,
+  "acceptedCities": [
+    "Athens",
+    "Berlin",
+    "Budapest",
+    "Copenhagen",
+    "Istanbul",
+    "Madrid",
+    "Mexico City",
+    "Rio de Janeiro",
+    "Rome",
+    "Singapore"
+  ],
+  "promotionGate": "proxy candidates>=8, protocol-compliant cities>=10",
+  "promotionGatePassed": true,
+  "cities": [
+    {
+      "city": "Athens",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Labelled source-level proxy candidate only: exact-city one-star USD one-night statistic and tax basis in the first snippet, paired with same-source exact-city double-occupancy wording in the second snippet. Search snippets are weaker than page evidence; never treat as observed or map/fit."
+    },
+    {
+      "city": "Berlin",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Labelled source-level proxy candidate only: exact-city one-star USD one-night statistic and tax basis in the first snippet, paired with same-source exact-city double-occupancy wording in the second snippet. Search snippets are weaker than page evidence; never treat as observed or map/fit."
+    },
+    {
+      "city": "Budapest",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Labelled source-level proxy candidate only: exact-city one-star USD one-night statistic and tax basis in the first snippet, paired with same-source exact-city double-occupancy wording in the second snippet. Search snippets are weaker than page evidence; never treat as observed or map/fit."
+    },
+    {
+      "city": "Copenhagen",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Source-defined snippet proxy candidate only: exact city/class, numeric one-night USD average, and explicit pre-tax basis are present; not an observed two-adult product value."
+    },
+    {
+      "city": "Istanbul",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Labelled source-level proxy candidate only: exact-city one-star USD one-night statistic and tax basis in the first snippet, paired with same-source exact-city double-occupancy wording in the second snippet. Search snippets are weaker than page evidence; never treat as observed or map/fit."
+    },
+    {
+      "city": "Madrid",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Source-defined snippet proxy candidate only: exact city/class, numeric one-night USD average, and explicit pre-tax basis are present; not an observed two-adult product value."
+    },
+    {
+      "city": "Mexico City",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Both ordered snippets identify Mexico City and BudgetYourTrip. The first supplies exact city/class, numeric one-night USD value, sample and tax exclusion; the companion snippet supplies same-source two-person/double-occupancy semantics. This is a labelled source-defined proxy candidate, never an observed two-adult price."
+    },
+    {
+      "city": "Mumbai",
+      "accepted": false,
+      "proxyStatus": "not_found",
+      "semanticsStatus": "found",
+      "reason": "No exact-city 1-star numeric observation appeared in the first snippet, so the protocol forbids substituting a 2-star, country, or generic budget value. This city cannot be a proxy candidate even though the second snippet supplies occupancy semantics."
+    },
+    {
+      "city": "Paris",
+      "accepted": false,
+      "proxyStatus": "found",
+      "semanticsStatus": "not_found",
+      "reason": "One-star snippet is complete, but the paired search did not provide an exact-city two-person/double-occupancy statement; no proxy candidate is formed."
+    },
+    {
+      "city": "Rio de Janeiro",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Both ordered snippets identify Rio de Janeiro and BudgetYourTrip. The first supplies exact city/class, numeric one-night USD value, sample and tax exclusion; the companion snippet supplies same-source two-person/double-occupancy semantics. This is a labelled source-defined proxy candidate, never an observed two-adult price."
+    },
+    {
+      "city": "Rome",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Source-defined snippet proxy candidate only: exact city/class, numeric one-night USD average, and explicit pre-tax basis are present; not an observed two-adult product value."
+    },
+    {
+      "city": "Singapore",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "Both ordered snippets identify Singapore and BudgetYourTrip. The first supplies the exact 1-star city average, USD unit, one-night context, sample, and tax exclusion; the companion snippet supplies same-source two-person/double-occupancy semantics. This is a labelled source-defined proxy candidate, never an observed two-adult price."
+    }
+  ],
+  "productMapping": "none_snippet_proxy_screening_only"
+}

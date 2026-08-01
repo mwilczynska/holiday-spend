@@ -388,6 +388,19 @@ Results: all twelve calls were protocol-compliant, but only Cairo produced a com
 could not join both source pages. **Verdict:** reject this proxy route at the observed web-tool reliability; retain
 Cairo as labelled proxy evidence only and do not map or fit.
 
+### Experiment 068 - BudgetYourTrip search-snippet occupancy proxy
+
+This lower-evidence operational test uses twelve fresh one-city Luna contexts with exactly two ordered BudgetYourTrip
+searches and no page reads. A candidate requires exact-city one-star numeric/tax evidence plus a same-source search
+snippet explicitly stating two-person or typical double occupancy. The screening gate is 8/12 proxy candidates and
+10/12 protocol-compliant calls. A pass authorizes only page-backed or independent explicit-two-adult calibration;
+snippets remain proxy-only and cannot be mapped or fitted.
+
+Results: all twelve calls were protocol-compliant and ten produced complete snippet proxy candidates (10/12), passing
+the screening gate. Paris lacked explicit two-person wording and Mumbai lacked an exact-city one-star value. **Verdict:**
+promote only to an independent explicit-two-adult calibration/page-backed validation stage; do not map, fit, or treat
+snippets as observed.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

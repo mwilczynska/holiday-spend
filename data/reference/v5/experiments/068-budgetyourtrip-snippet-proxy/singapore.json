@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-snippet-proxy-v1",
+  "city": "Singapore",
+  "country": "Singapore",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "proxy_candidate",
+      "value": 111,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_double_occupancy",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/singapore/singapore-1880252",
+      "sourceTitle": "How Much Do Hotels Cost in Singapore? Hotel Prices for Singapore, Singapore | Budget Your Trip",
+      "evidenceText": "The exact Singapore hotel-price search snippet reports an average 1-star hotel price of $111, median $90, based on 71 hotels. It states that hotel prices are in US Dollars before taxes and come from a Kayak-reported base price; the page is for one-night hotel prices.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; search result crawled 5 days before retrieval; prices are before taxes and vary seasonally.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Singapore Singapore 1-star hotel average price one night before taxes",
+      "sampleSize": 71,
+      "reason": "Both ordered snippets identify Singapore and BudgetYourTrip. The first supplies the exact 1-star city average, USD unit, one-night context, sample, and tax exclusion; the companion snippet supplies same-source two-person/double-occupancy semantics. This is a labelled source-defined proxy candidate, never an observed two-adult price."
+    },
+    "double_occupancy_semantics": {
+      "status": "found",
+      "value": 201,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_people_typical_double_occupancy_source_snippet",
+      "statistic": "reported_traveler_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+      "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+      "evidenceText": "The exact Singapore destination search snippet states: the average price paid in Singapore for two people for a typical double-occupancy hotel room is $201 (SG$260). It also reports $101 per night for one person sharing a room.",
+      "occupancyEvidence": "The average price paid in Singapore for two people for a typical double-occupancy hotel room is $201 (SG$260).",
+      "referencePeriod": "BudgetYourTrip destination travel-cost page; snippet crawled 3 weeks before retrieval."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "queries": [
+      "site:budgetyourtrip.com/hotels Singapore Singapore 1-star hotel average price one night before taxes",
+      "site:budgetyourtrip.com Singapore Singapore \"two people\" \"double-occupancy\" hotel price"
+    ],
+    "directReads": 0,
+    "firstSnippetStatus": "success",
+    "secondSnippetStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "proxyCandidates": 1,
+    "protocolCompliant": true
+  }
+}
