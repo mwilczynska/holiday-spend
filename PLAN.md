@@ -643,6 +643,12 @@ fit coefficients or map hotel classes.
 The next accommodation experiment must test a materially different anchor or explicitly pre-register another
 bounded source-panel attempt; repeating the same Expedia query contract without a changed hypothesis is not justified.
 
+Experiment 079 is active: eighteen new one-city Luna contexts test HOTEVI's grouped 1-2/3/4-5-star public table.
+The twelve complete 076 rows are development data; ten named new cities are locked holdout and eight are validation.
+The only promotion question is whether grouped proxy rows can be matched to at least 30 explicit Expedia 3-star and
+4-star city rows, including ten locked holdouts per relationship. Unknown occupancy and tax remain labelled proxy
+semantics; no grouped value may be presented as an observed product tier.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

@@ -541,3 +541,9 @@ Experiment 078 completed with 12/12 compliant calls and eight strict new rows. T
 rows across 41 cities, with 20 matched 2-star/3-star cities and 26 matched 3-star/4-star cities. Both 30-city
 relationship gates failed. Reject pooled fitting promotion; retain all rows as source evidence only. The next
 experiment must use a materially different source or a pre-registered changed query hypothesis.
+
+Experiment 079 is active. Eighteen new one-city contexts are testing HOTEVI grouped budget/mid/luxury proxy rows
+with exactly one search and one exact page read. The analyzer pools these with the 12 complete 076 rows and joins
+them only to independently strict Expedia 3-/4-star rows. Ten new cities are locked holdout and eight are validation;
+unknown HOTEVI occupancy/tax remain proxy metadata. No calibration or product mapping may be claimed until the
+30-city/10-holdout relationships pass.

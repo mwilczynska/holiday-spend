@@ -1680,3 +1680,11 @@ relationships reach the frozen 30-city matched-city gate. The calls were 12/12 p
 strict new rows. Pooling reached 89 strict rows across 41 cities, with 20 matched 2-star/3-star cities and 26 matched
 3-star/4-star cities. Both gates failed. **Verdict:** reject pooled fitting promotion; retain rows as source evidence
 only and do not fit or map hotel classes. Read `data/reference/v5/experiments/078-expedia-matched-panel/`.
+
+## Experiment 079 - HOTEVI grouped proxy calibration panel (1 August 2026)
+
+This experiment is in progress. Eighteen new single-city Luna contexts are assigned one HOTEVI-restricted search and
+one exact page read each. The 12 complete grouped rows from Experiment 076 are development data; ten named new cities
+are locked holdout and eight are validation. The analyzer joins grouped HOTEVI mid/luxury proxies only to strict
+Expedia 3-/4-star rows. Unknown occupancy and tax remain explicit proxy metadata. No calibration, class split, or
+product mapping is allowed until both 30-city matched relationships and ten-city holdouts pass.

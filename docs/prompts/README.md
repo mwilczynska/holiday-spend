@@ -155,6 +155,10 @@ The 078 Expedia matched-panel prompt is complete and rejected for promotion: twe
 exactly three ordered Expedia 2-/3-/4-star searches and produced eight strict rows. Pooling reached 20 matched 2↔3
 and 26 matched 3↔4 cities, below the 30-city gate; no fitting or product mapping is authorized.
 
+The 079 HOTEVI proxy-calibration prompt is active: eighteen new one-city contexts perform exactly one HOTEVI search
+and one page read for grouped budget/mid/luxury rows. The rows remain labelled proxies and are eligible only for an
+independent 3-/4-star calibration and locked holdout audit; no grouped class split or product mapping is authorized.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

@@ -513,6 +513,15 @@ class. The result was 89 rows across 41 cities, with 20 matched 2-star/3-star ci
 cities. Both 30-city gates failed. **Verdict:** reject pooled fitting promotion; retain source evidence only and do
 not map hotel classes.
 
+### Experiment 079 - HOTEVI grouped proxy calibration panel
+
+Eighteen new cities are being tested with one HOTEVI-restricted search and one exact page read per city. The grouped
+budget (1-2 star), mid (3 star), and luxury (4-5 star) rows remain source-defined standard-room proxies with unknown
+tax and occupancy. The 12 complete rows from Experiment 076 are development data; ten named new cities are locked
+holdout and eight are validation. The deterministic analyzer joins proxy rows only to strict Expedia 3-/4-star rows.
+The 30-city matched relationship and 10-city holdout gates must pass before any simple calibration is fitted; no
+grouped class is treated as an observed product tier.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and
