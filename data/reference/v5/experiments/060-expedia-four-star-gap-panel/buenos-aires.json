@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-four-star-gap-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "class": "4_star",
+    "statistic": "city_class_average",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.expedia.com/Buenos-Aires-Hotels.d178242.Travel-Guide-Hotels",
+    "sourceTitle": "Top 10 Hotels in Buenos Aires (from $38) 2026 - Competitive Prices | Expedia",
+    "evidenceText": "The returned Expedia result lists 4-star properties in Buenos Aires and gives a generic all-hotel trend, but no exact-city 4-star class trend value. The generic trend is not an acceptable substitute.",
+    "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+    "searchQuery": "site:expedia.com Buenos Aires Argentina 4-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "No exact-city 4-star numeric average or trend was returned. The generic all-hotel trend was rejected because class is ambiguous, even though its tax basis is stated as excluded."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -75,6 +75,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-agoda-one-three-star-panel.mjs` | `analyze-v5-agoda-one-three-star-panel.mjs` | Experiment 056: audits Agoda 1-/3-star class prices without mapping |
 | `node scripts/analyze-v5-booking-class-tax-panel.mjs` | `analyze-v5-booking-class-tax-panel.mjs` | Experiment 057: audits Booking 3-/4-star class averages and tax metadata |
 | `node scripts/analyze-v5-trip-class-tax-panel.mjs` | `analyze-v5-trip-class-tax-panel.mjs` | Experiment 058: audits Trip.com 2-/3-/4-star class averages and tax metadata |
+| `node scripts/analyze-v5-expedia-class-panel.mjs` | `analyze-v5-expedia-class-panel.mjs` | Experiment 059: audits Expedia 2-/3-/4-star two-adult trend rows and tax basis |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

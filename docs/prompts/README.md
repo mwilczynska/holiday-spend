@@ -82,6 +82,12 @@ The 058 Trip.com hotel-class tax panel is complete and rejected: twelve one-city
 2-/3-/4-star rows because occupancy and tax evidence did not co-occur with the class averages. Do not map or fit
 from these rows.
 
+The 059 Expedia class-panel prompt is complete and near-pass: twelve new one-city contexts produced 27/36 strict
+2-/3-/4-star trend rows (4-star 7/12), all with explicit two-adult and excluded-tax basis. Do not map or fit yet.
+
+The 060 Expedia four-star gap prompt is complete and rejected at its recovery gate: 12 one-city contexts produced
+9/12 strict rows overall and recovered 3/5 prior misses. It cannot amend the 059 gate or authorize mapping/fitting.
+
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
 auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

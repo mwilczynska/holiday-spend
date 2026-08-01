@@ -529,6 +529,17 @@ Strict coverage was 0/36 (0/12 for each class), with no complete city. Class pag
 localized averages but not same-evidence explicit two-adult/one-room occupancy and tax status. Reject the route and
 do not map or fit; a materially different tax or price-statistic estimand requires new pre-registration.
 
+Experiment 059 completed twelve independent one-city Luna contexts and 36 ordered Expedia 2-/3-/4-star searches.
+Strict coverage was 27/36 (2-star 9/12, 3-star 11/12, 4-star 7/12), with six complete cities. The complete-city
+sub-gate passed but the pre-registered 4-star 8/12 gate failed. All accepted rows explicitly state two-adult
+tax-excluded base-rate trends. Retain Expedia as the strongest candidate, but do not map or fit; run a separately
+pre-registered 4-star gap panel.
+
+Experiment 060 completed twelve independent one-city Luna contexts and 12 ordered Expedia 4-star searches. Strict
+coverage was 9/12; 3/5 prior misses recovered (Budapest, Sydney, Tokyo), below the pre-registered 4/5 recovery gate.
+The overall gate passed, but no mapping or fitting is authorized. Combined with 059, Expedia has 16 unique strict
+4-star cities; continue a new-city paired 2-/3-/4-star panel toward the 30-city modelling requirement.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

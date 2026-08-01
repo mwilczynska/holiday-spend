@@ -427,9 +427,18 @@ Strict coverage was 0/36 (0/12 per class), with no complete city. Class-page ave
 two-adult/one-room occupancy and tax status, or were from/localized/stale values. Reject the route; no row is mapped
 or fitted.
 
-Next, test a materially different hotel-class source or a separately declared tax/price-statistic estimand while
-retaining the one-bed dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display
-currency. Direct booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not
-tune the locked 018 holdout, use the shipping CSV as ground truth, or infer dorm/private separation from the blended
-hostel channel. The derivation contract remains out of the shipping path until source feasibility and accuracy gates
-pass.
+Experiment 059 completed twelve new independent one-city Luna contexts and 36 ordered Expedia 2-/3-/4-star trend
+searches. Strict coverage was 27/36 (2-star 9/12, 3-star 11/12, 4-star 7/12), with six complete cities. All
+accepted rows explicitly state two-adult tax-excluded base-rate trends. The 4-star 8/12 gate failed by one row;
+retain Expedia as the strongest candidate but do not map or fit.
+
+Experiment 060 completed twelve independent one-city Luna contexts and 12 ordered Expedia 4-star searches. Strict
+coverage was 9/12, recovering 3/5 prior misses (below the 4/5 recovery gate); Buenos Aires, Cape Town, and Warsaw
+remained not-found. Retain the accepted rows but do not amend the frozen gate or map/fit. The next package is a
+new-city paired 2-/3-/4-star Expedia panel toward 30 matched cities.
+
+Next, run a new-city paired Expedia 2-/3-/4-star panel toward 30 complete matched cities, retaining the one-bed dorm
+boundary, strict private/hotel identity, exact source/display currency, and explicit tax-excluded basis. Direct
+booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked 018
+holdout, use the shipping CSV as ground truth, or infer dorm/private separation from the blended hostel channel. The
+derivation contract remains out of the shipping path until source feasibility and accuracy gates pass.

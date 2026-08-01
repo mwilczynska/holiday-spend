@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-panel-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 40,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Mexico-City-Hotels.s20-0-d178285.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Mexico City from $16 | Expedia",
+      "evidenceText": "Expedia’s Mexico City 2-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 2 stars in Mexico City. Its monthly trend table lists August at $40 per night.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 2-star properties",
+      "searchQuery": "site:expedia.com Mexico City Mexico 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 79,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/es/3Estrellas-Ciudad-De-Mexico-Hoteles.s30-0-d178285.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "3-star hotels in Mexico City | Expedia (Spanish)",
+      "evidenceText": "Expedia’s Mexico City 3-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 3 stars in Mexico City. Its monthly trend table lists August at $79 per night.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 3-star properties",
+      "searchQuery": "site:expedia.com Mexico City Mexico 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present despite the localized Spanish page."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 141,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Mexico-City-Hotels.s40-0-d178285.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Mexico City from $89 | Expedia",
+      "evidenceText": "Expedia’s Mexico City 4-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 4 stars in Mexico City. Its monthly trend table lists August at $141 per night.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 4-star properties",
+      "searchQuery": "site:expedia.com Mexico City Mexico 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

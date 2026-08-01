@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-panel-telemetry-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:expedia.com Tokyo Japan 2-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Tokyo Japan 3-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Tokyo Japan 4-star hotels average nightly price trend 2 adults taxes fees"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 1,
+  "notFoundRows": 2,
+  "protocolCompliant": true,
+  "notes": "One-city, three-search Expedia 2-/3-/4-star class-trend panel. Tokyo 2-star supplied a strict tax-excluded trend; 3- and 4-star searches returned only a generic all-hotel trend and were rejected. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

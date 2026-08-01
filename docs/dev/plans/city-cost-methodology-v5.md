@@ -301,6 +301,24 @@ two-adult/one-room occupancy and tax status, or were from/localized/stale values
 **Decision:** reject the route. Do not map or fit from Trip.com class pages; a different tax or price-statistic
 estimand needs new pre-registration and independent validation. Read `data/reference/v5/experiments/058-trip-class-tax-panel/`.
 
+### Experiment 059 - Expedia two-adult class-trend panel
+
+Twelve new one-city Luna calls expanded Expedia's 2-/3-/4-star class-trend route. Strict coverage was 27/36:
+2-star 9/12, 3-star 11/12, and 4-star 7/12, with six complete cities. The 4-star 8/12 gate failed by one row;
+all accepted rows explicitly state two-adult, tax-excluded base-rate trends.
+
+**Decision:** near-pass, retain as the strongest source candidate, and run a targeted 4-star gap panel. Do not map
+or fit until source/basis and locked holdout gates pass.
+
+### Experiment 060 - Expedia four-star gap panel
+
+Twelve one-city Luna calls issued exactly one Expedia-restricted 4-star query each. Strict coverage was 9/12 overall,
+recovering 3/5 prior Experiment 059 misses (below the 4/5 recovery gate); Buenos Aires, Cape Town, and Warsaw
+remained not-found. All accepted rows explicitly state two-adult, tax-excluded trends.
+
+**Decision:** reject the recovery gate. Retain Expedia as a strong source candidate but do not amend 059 or map/fit.
+Continue a new-city paired 2-/3-/4-star panel toward 30 matched cities.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

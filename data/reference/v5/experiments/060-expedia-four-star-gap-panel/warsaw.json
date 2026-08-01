@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-four-star-gap-v1",
+  "city": "Warsaw",
+  "country": "Poland",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "class": "4_star",
+    "statistic": "city_class_average",
+    "taxStatus": "unknown",
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": null,
+    "referencePeriod": null,
+    "searchQuery": "site:expedia.com Warsaw Poland 4-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "The ordered search returned a general Warsaw trend and individual 4-star property prices, but no exact-city 4-star class trend with a numeric non-from average, explicit two-adult source trend, and tax-exclusion evidence. General-city and single-property rows were rejected."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

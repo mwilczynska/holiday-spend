@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-panel-v1",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 54,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Istanbul-Hotels.s20-0-d178267.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Istanbul | Expedia",
+      "evidenceText": "Expedia's exact Istanbul 2-star trend table lists August $54. The same evidence states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 2-star properties in Istanbul.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Istanbul Turkey 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as a strict source-feasibility row: exact city/class, numeric August nightly trend, explicit two-adult basis, named Expedia.com USD display, seven-day reference window, and explicit tax exclusion are all present."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 80,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-b2e0e9dd69a5",
+      "sourceTitle": "The Best 3 Star Hotels in Istanbul from $29 | Expedia",
+      "evidenceText": "Expedia's exact Istanbul 3-star trend table lists August $80. The same evidence states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Istanbul.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Istanbul Turkey 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as a strict source-feasibility row: exact city/class, numeric August nightly trend, explicit two-adult basis, named Expedia.com USD display, seven-day reference window, and explicit tax exclusion are all present."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 103,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Istanbul-Hotels.s40-0-d178267.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Istanbul from $68 | Expedia",
+      "evidenceText": "Expedia's exact Istanbul 4-star trend table lists August $103. The same evidence states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in Istanbul.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Istanbul Turkey 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as a strict source-feasibility row: exact city/class, numeric August nightly trend, explicit two-adult basis, named Expedia.com USD display, seven-day reference window, and explicit tax exclusion are all present."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-panel-audit-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 36,
+  "searchOperations": 36,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "classCoverage": {"2_star": 9, "3_star": 11, "4_star": 7},
+  "completeCities": 6,
+  "promotionGate": "2-star>=8, 3-star>=8, 4-star>=8, complete cities>=6",
+  "promotionGatePassed": false,
+  "productMapping": "none; source feasibility only"
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-four-star-gap-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 132,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults_source_trend",
+    "class": "4_star",
+    "statistic": "city_class_average",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.expedia.com/4Star-Budapest-Hotels.s40-0-d179994.Travel-Guide-Filter-Hotels",
+    "sourceTitle": "The Best 4 Star Hotels in Budapest from $65 | Expedia",
+    "evidenceText": "Expedia's 4-star Budapest trend table shows August $132. It explicitly says the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in Budapest.",
+    "referencePeriod": "Expedia result crawled last week; trend based on base rates found in the last 7 days; August monthly value.",
+    "searchQuery": "site:expedia.com Budapest Hungary 4-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "Accepted as source-feasibility evidence with a known excluded-tax base-rate basis; it is not an inclusive product observation."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-four-star-gap-v1",
+  "city": "Jakarta",
+  "country": "Indonesia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 45,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults_source_trend",
+    "class": "4_star",
+    "statistic": "city_class_average",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.expedia.com/4Star-Jakarta-Hotels.s40-0-d178269.Travel-Guide-Filter-Hotels",
+    "sourceTitle": "The Best 4 Star Hotels in Jakarta from $31 | Expedia",
+    "evidenceText": "Expedia’s Jakarta 4-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 4 stars in Jakarta. Its monthly trend table lists August at $45 per night.",
+    "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 4-star properties",
+    "searchQuery": "site:expedia.com Jakarta Indonesia 4-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

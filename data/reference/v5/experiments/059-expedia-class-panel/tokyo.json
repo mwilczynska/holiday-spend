@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-panel-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 76,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Tokyo-Hotels.s20-0-d179900.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Tokyo from $32 | Expedia",
+      "evidenceText": "Expedia's exact Tokyo 2-star trend table lists August $76. The same evidence states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 2-star properties in Tokyo.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last month)",
+      "searchQuery": "site:expedia.com Tokyo Japan 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as a strict source-feasibility row: exact city/class, numeric August nightly trend, explicit two-adult basis, named Expedia.com USD display, seven-day reference window, and explicit tax exclusion are all present."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Tokyo-Hotels.d179900.Travel-Guide-Hotels?mcicid=ed.magazine.best-destinations-spring",
+      "sourceTitle": "Top 10 Hotels in Tokyo (from $33) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Tokyo city page lists 3-star property counts and a generic all-hotel August trend of $85 with a two-adult base-rate and tax-excluded statement. It does not provide a 3-star-specific numeric class trend, so the generic trend cannot be substituted.",
+      "referencePeriod": "August 2026 generic Tokyo hotel trend; base rates averaged for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Tokyo Japan 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because the returned evidence is a generic all-hotel Tokyo trend rather than a 3-star class trend."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Tokyo-Hotels.d179900.Travel-Guide-Hotels?mcicid=ed.magazine.best-destinations-spring",
+      "sourceTitle": "Top 10 Hotels in Tokyo (from $33) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Tokyo city page lists 4-star property counts and a generic all-hotel August trend of $85 with a two-adult base-rate and tax-excluded statement. It does not provide a 4-star-specific numeric class trend, so the generic trend cannot be substituted.",
+      "referencePeriod": "August 2026 generic Tokyo hotel trend; base rates averaged for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Tokyo Japan 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because the returned evidence is a generic all-hotel Tokyo trend rather than a 4-star class trend."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

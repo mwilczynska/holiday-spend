@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-four-star-gap-v1",
+  "city": "Berlin",
+  "country": "Germany",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 110,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults_source_trend",
+    "class": "4_star",
+    "statistic": "city_class_average",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.expedia.com/4Star-Berlin-Hotels.s40-0-d179892.Travel-Guide-Filter-Hotels",
+    "sourceTitle": "The Best 4 Star Hotels in Berlin from $81 | Expedia",
+    "evidenceText": "Expedia's exact Berlin 4-star trend table lists August $110. The same evidence states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in Berlin.",
+    "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+    "searchQuery": "site:expedia.com Berlin Germany 4-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "Accepted as strict source-feasibility evidence: exact city/class, numeric August trend, explicit two-adult basis, named Expedia.com USD display, seven-day reference window, and explicit tax exclusion are all present."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

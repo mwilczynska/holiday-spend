@@ -1438,3 +1438,27 @@ explicit two-adult/one-room occupancy and tax/fee treatment. Other results were 
 displays, or lacked a numeric class average. **Verdict:** reject the Trip.com class-page route under the frozen
 contract. Do not map 2-/3-/4-star prices, infer occupancy/tax basis, or fit a class ratio. Read
 `data/reference/v5/experiments/058-trip-class-tax-panel/`.
+
+## Experiment 060 - Expedia four-star gap panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly one ordered Expedia 4-star search each
+(12 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback sources, or cross-city
+evidence occurred.
+
+Strict coverage was **9/12** overall. Three of the five Experiment 059 misses recovered (Budapest, Sydney, Tokyo);
+Buenos Aires, Cape Town, and Warsaw remained not-found. All accepted rows explicitly state two-adult nightly
+base-rate trends with taxes/fees excluded. The overall 8/12 gate passed, but the pre-registered recovery gate was
+4/5 and failed. **Verdict:** reject coverage-repair promotion, retain Expedia as a source candidate, and continue
+a new-city paired panel. Read `data/reference/v5/experiments/060-expedia-four-star-gap-panel/`.
+
+## Experiment 059 - Expedia two-adult class-trend panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly three ordered Expedia searches each
+(2-star, 3-star, 4-star; 36 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
+sources, or cross-city evidence occurred.
+
+Strict coverage was **27/36**: 2-star 9/12, 3-star 11/12, and 4-star 7/12. Six cities were complete, but the
+pre-registered 4-star 8/12 gate failed by one row. All accepted rows explicitly state two-adult nightly base-rate
+trends with taxes/fees excluded; unknown tax, generic trends, district substitutions, and missing class trends were
+rejected. **Verdict:** near-pass; retain Expedia as the strongest source candidate, run a targeted 4-star gap panel,
+and do not map or fit yet. Read `data/reference/v5/experiments/059-expedia-class-panel/`.

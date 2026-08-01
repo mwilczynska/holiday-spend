@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-class-panel-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 45,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Buenos-Aires-Hotels.s20-0-d178242.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Buenos Aires from $23 | Expedia",
+      "evidenceText": "Expedia’s Buenos Aires 2-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 2 stars in Buenos Aires. Its monthly trend table lists August at $45 per night.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 2-star properties",
+      "searchQuery": "site:expedia.com Buenos Aires Argentina 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 72,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Buenos Aires from $29 | Expedia",
+      "evidenceText": "Expedia’s Buenos Aires 3-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 3 stars in Buenos Aires. Its monthly trend table lists August at $72 per night.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 3-star properties",
+      "searchQuery": "site:expedia.com Buenos Aires Argentina 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Buenos Aires Argentina 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "The ordered search returned no exact-city 4-star class trend with a numeric nightly value and explicit two-adult and tax-exclusion evidence. General-city trend results were class-ambiguous and rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
