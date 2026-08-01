@@ -1804,3 +1804,11 @@ provenance. The source-coverage gate is 23/24 compliant calls, 20 completed call
 city relationships for both 2-star/3-star and 4-star/3-star. A pass authorizes only independent explicit-two-adult
 accuracy validation; no fitting or product mapping occurs. Read
 `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.
+
+Experiment 087 completed with 24/24 protocol-compliant one-city calls and 32 strict-or-proxy rows. The deterministic
+pooled audit reached 20 matched 2-star/3-star cities and 29 matched 4-star/3-star cities, below both registered
+30-city gates. Generic all-city, district, wrong-city, and sparse 2-star results dominated the remaining gap.
+**Verdict:** reject the broad coverage gate; retain rows with `source_locale_proxy`/imputed-currency provenance only.
+The next experiment may target the missing 2-/3-star pair boundary, but independent explicit-two-adult accuracy
+validation remains mandatory before any production mapping or fitting. Read
+`data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/verdict.md`.

@@ -698,11 +698,11 @@ but that comparison is not independent ground truth. Preserve `currency: null` a
 run a broader independent validation panel before any product mapping. Artifacts:
 `data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.
 
-**Experiment 087 — Expedia.com locale-proxy broad panel — in progress.** This 24-city panel uses the 086 prompt
-contract and exact-host proxy guard to test source coverage, not accuracy or product mapping. It is pre-registered to
-require at least 23/24 protocol-compliant calls, 20 completed calls, and pooled matched relationships ≥30 for both
-2-star←3-star and 4-star←3-star after deterministic de-duplication. Even a pass authorizes only independent
-explicit-two-adult validation; proxy currency remains imputed. Artifacts:
+**Experiment 087 — Expedia.com locale-proxy broad panel — complete; rejected.** All 24 calls were compliant and
+produced 32 strict-or-proxy rows. The pooled audit reached 20 matched 2-star←3-star cities and 29 matched
+4-star←3-star cities, below both registered 30-city gates. Retain rows with imputed-currency provenance only; no
+mapping or fitting. The next accommodation action is a targeted missing 2-/3-star pair panel or a different anchor,
+followed by independent explicit-two-adult accuracy validation. Artifacts:
 `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.
 
 ## Unrelated app backlog

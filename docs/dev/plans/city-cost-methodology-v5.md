@@ -601,11 +601,12 @@ imputed-currency provenance and do not map product tiers or fit coefficients. Re
 
 ### Experiment 087 - Expedia.com locale-proxy broad panel
 
-This active 24-city panel uses the 086 exact-heading one-city contract and deterministic `www.expedia.com` USD
-proxy guard. Bare-dollar rows remain labelled source-locale proxies with imputed currency; no fitting or product
-mapping occurs. The pre-registered source-coverage gate requires at least 23/24 compliant calls, 20 completed calls,
-and at least 30 pooled matched cities for both 2-star/3-star and 4-star/3-star after de-duplication. A pass only
-promotes the source to independent explicit-two-adult accuracy validation.
+All 24 independent one-city calls were protocol-compliant and produced 32 strict-or-proxy rows under the exact-host
+guard. The pooled audit reached 20 matched 2-star/3-star cities and 29 matched 4-star/3-star cities, below both
+30-city gates. **Verdict:** reject the broad coverage gate; retain proxy rows with imputed-currency provenance and
+no mapping or fitting. The next accommodation action is a targeted missing 2-/3-star pair panel or a different
+anchor, followed by independent explicit-two-adult validation. Read
+`data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.
 
 ## Restart rule
 

@@ -591,8 +591,9 @@ provenance, and do not map product tiers or fit coefficients. The Istanbul artif
 while the manifest uses `Türkiye`; retain the raw alias and resolve it only in a separate canonical-country layer.
 Read `data/reference/v5/experiments/086-expedia-locale-currency-proxy/` and `verdict.md`.
 
-Experiment 087 is now the active restart package: a 24-city, one-city-per-Luna broad panel using the 086 exact
-heading searches and guarded Expedia.com locale proxy. It requires 23/24 compliant calls, at least 20 completed
-calls, and pooled 2-star/3-star plus 4-star/3-star matched-city counts of at least 30. Bare-dollar rows remain
-`currency: null` in extraction and are mapped only by deterministic exact-host code; no product mapping or fitting
-is authorized. Files are in `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.
+Experiment 087 completed with 24/24 compliant one-city calls and 32 strict-or-proxy rows. The pooled audit reached
+20 matched 2-star/3-star cities and 29 matched 4-star/3-star cities, below both registered 30-city gates. **Verdict:**
+reject the broad coverage gate; retain proxy rows with imputed-currency provenance and no mapping or fitting. The
+next accommodation action is a targeted missing 2-/3-star pair panel or a different anchor, followed by independent
+explicit-two-adult validation. Read `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/` and
+`verdict.md`.

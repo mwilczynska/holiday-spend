@@ -1,6 +1,6 @@
 # Experiment 087 — Expedia.com locale-proxy broad 2–4-star panel
 
-**Status:** In progress
+**Status:** Complete — reject broad coverage gate
 
 ## Question
 
@@ -28,3 +28,9 @@ coverage without changing occupancy, tax, class, reference-period, or non-`from`
 - The source-coverage gate is 23/24 protocol-compliant calls, at least 20 calls completed, and at least 30 pooled
   matched city relationships for both 2-star←3-star and 4-star←3-star after deterministic de-duplication with prior
   evidence. A pass authorizes only independent explicit-two-adult accuracy validation; it is not a DoD pass.
+
+## Result
+
+All 24 calls were protocol-compliant and produced 32 strict-or-proxy rows. The pooled audit reached 20 matched
+2-star/3-star cities and 29 matched 4-star/3-star cities, so the registered gate failed. Generic, district, and
+wrong-city results remain the dominant missing-class failure; no mapping or fitting is authorized.
