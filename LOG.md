@@ -1742,3 +1742,12 @@ direct read after substituting only the World Stay Tracker `rating=4` URL parame
 the 10/12 complete-city screen failed. **Verdict:** reject promotion; retain labelled observations and access-failure
 evidence only, with no fallback search, breakfast adjustment, fitting, or product mapping. Read
 `data/reference/v5/experiments/083-worldstaytracker-cityid-rating/`.
+
+
+## Experiment 084 - Nomadlio food/drink structured-page proxy panel (1 August 2026)
+
+This experiment is in progress. Twelve independent one-city Luna contexts perform exactly one Nomadlio city-page
+search and one exact-page read. The panel records six labels (inexpensive meal, mid-range meal, coffee, beer, cocktail,
+wine bottle) while preserving whether the page defines serving size, party size, taxes, and statistic. Undefined labels
+remain source-defined proxies; no wine-bottle-to-wine-glass, coffee-to-cappuccino, street-food, or premium-meal
+substitution is allowed.

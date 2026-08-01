@@ -676,6 +676,12 @@ pre-registered 10/12 complete-city screen failed. Retain World Stay Tracker 3-st
 as labelled evidence only; do not fall back to search, remove breakfast, fit coefficients, or map product tiers. The
 next accommodation experiment must use a materially different source or access boundary.
 
+Experiment 084 is in progress. It tests Nomadlio structured city pages on twelve independent one-city Luna contexts,
+with exactly one search and one page read per city. The screen records six labelled food/drink rows (inexpensive and
+mid-range meal, coffee, beer, cocktail, wine bottle) but separates definition-compatible observations from
+source-defined proxies when page units, party size, tax treatment, cappuccino identity, or wine-by-glass semantics are
+not explicit. No row is mapped to a product tier by the screen.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

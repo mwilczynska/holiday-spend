@@ -571,6 +571,13 @@ The 10/12 screen failed. **Verdict:** reject promotion; retain labelled source a
 no fallback search, breakfast adjustment, coefficient fitting, or product mapping. The next accommodation experiment
 must use a materially different source or access boundary.
 
+### Experiment 084 - Nomadlio food/drink structured-page proxy panel
+
+Twelve independent one-city contexts are testing one Nomadlio search and one page read per city. The panel measures
+coverage for six exact labels and separately scores definition-compatible rows versus source-defined proxies. Missing
+unit, party, tax, cappuccino, wine-by-glass, street-food, or premium-meal semantics cannot be inferred. A screen pass
+authorizes only a later semantic/accuracy calibration and no product mapping.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

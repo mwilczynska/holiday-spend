@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-nomadlio-food-drink-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Amsterdam","country":"Netherlands","slug":"amsterdam"},
+    {"city":"Bangkok","country":"Thailand","slug":"bangkok"},
+    {"city":"Copenhagen","country":"Denmark","slug":"copenhagen"},
+    {"city":"Dubai","country":"United Arab Emirates","slug":"dubai"},
+    {"city":"Hanoi","country":"Vietnam","slug":"hanoi"},
+    {"city":"Lisbon","country":"Portugal","slug":"lisbon"},
+    {"city":"London","country":"United Kingdom","slug":"london"},
+    {"city":"Paris","country":"France","slug":"paris"},
+    {"city":"Prague","country":"Czech Republic","slug":"prague"},
+    {"city":"Rome","country":"Italy","slug":"rome"},
+    {"city":"Sydney","country":"Australia","slug":"sydney"},
+    {"city":"Tokyo","country":"Japan","slug":"tokyo"}
+  ],
+  "source": "Nomadlio.com",
+  "sourceContract": "structured city page; page display USD; exact restaurant/drink labels; page update date",
+  "requestedRows": ["inexpensive_meal", "mid_range_meal", "coffee", "beer", "cocktail", "wine_bottle"],
+  "screenGate": {"completeCities":10,"protocolCompliant":10},
+  "semanticWarnings": ["page does not visibly state party size, serving size, taxes, or venue statistic for these labels", "wine bottle is not wine by glass", "coffee is not explicitly cappuccino", "no street-food or premium-meal row"]
+}

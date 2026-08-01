@@ -568,3 +568,8 @@ direct read after substituting only `rating=4` in the same cityid URL. Six stric
 passed; zero cities were complete because every direct 4-star read was unsafe or unavailable. The screen failed. Retain
 labelled source/access evidence only; do not fall back to search, remove breakfast, fit coefficients, or map tiers. The
 next restart action is a materially different accommodation source or access boundary.
+
+Experiment 084 is now active. It tests Nomadlio structured food/drink pages with twelve independent one-city contexts,
+exactly one search and one page read per city, and six labelled rows. The analyzer distinguishes definition-compatible
+observations from source-defined proxies; no units, party sizes, taxes, cappuccino, wine-by-glass, street-food, or
+premium-meal semantics may be inferred. A screen pass permits only independent calibration.
