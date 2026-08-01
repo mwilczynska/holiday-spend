@@ -582,3 +582,11 @@ cities, below both 30-city gates. **Verdict:** reject the changed query contract
 source/access records only. The next restart action is a materially different anchor or an explicitly amended,
 independently validated estimand. Read `data/reference/v5/experiments/085-expedia-query-contract/` and its
 `verdict.md`.
+
+Experiment 086 is the active restart package. It tests the named-currency boundary exposed by 085 with twelve
+independent one-city Luna contexts. The prompt records exact bare-dollar Expedia.com trends as `found_proxy` with
+`currency: null`; it never infers USD. The deterministic analyzer may apply an exact `www.expedia.com` host guard,
+label the result `source_locale_proxy`, and record `imputedMeasures: ["currency"]`, then compare it to prior named-
+USD rows from the same city/class. Screen thresholds are 10 compliant calls, 10 mapped/named rows, 10 same-city/class
+matches, median APE ≤25%, and p90 APE ≤50%. No product mapping or model fitting is authorized. Files are in
+`data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.

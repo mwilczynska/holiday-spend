@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-locale-currency-proxy-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Amsterdam","country":"Netherlands"},
+    {"city":"Bangkok","country":"Thailand"},
+    {"city":"Chicago","country":"United States"},
+    {"city":"Hanoi","country":"Vietnam"},
+    {"city":"Istanbul","country":"Türkiye"},
+    {"city":"Lisbon","country":"Portugal"},
+    {"city":"London","country":"United Kingdom"},
+    {"city":"New York","country":"United States"},
+    {"city":"Prague","country":"Czechia"},
+    {"city":"San Francisco","country":"United States"},
+    {"city":"Stockholm","country":"Sweden"},
+    {"city":"Vienna","country":"Austria"}
+  ],
+  "comparisonExperiments": ["028","029","059","060","061","063","075","078"],
+  "screenGate": {"protocolCompliant":10,"mappedOrNamedRows":10,"sameCityClassMatches":10,"medianApe":0.25,"p90Ape":0.50},
+  "maximumCalls": 12
+}

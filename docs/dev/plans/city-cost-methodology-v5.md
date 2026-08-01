@@ -589,6 +589,15 @@ pages, or wrong-city/class results. The pooled audit remains 20 matched 2-star/3
 retain negative source/access records only and do not map or fit. Read
 `data/reference/v5/experiments/085-expedia-query-contract/`.
 
+### Experiment 086 - Expedia.com bare-dollar currency proxy
+
+This active experiment explicitly tests the currency boundary exposed by 085. Twelve independent one-city Luna
+contexts repeat the exact three Expedia class searches, but preserve exact bare-dollar values as `found_proxy` with
+`currency: null`; the prompt never calls `$` USD. Deterministic code may map only exact `www.expedia.com` hosts with
+no locale override to a labelled `source_locale_proxy` USD basis and `imputedMeasures: ["currency"]`. A screen
+requires 10 compliant calls, 10 mapped/named rows, 10 same-city/class matches to prior named-USD rows, median APE
+≤25%, and p90 APE ≤50%. A pass authorizes only a broader proxy validation panel; no product mapping or fitting.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

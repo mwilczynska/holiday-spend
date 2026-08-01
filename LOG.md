@@ -1776,3 +1776,13 @@ rejected. The pooled audit remains 89 rows across 41 cities, with 20 matched 2-s
 4-star/3-star cities, below both frozen 30-city gates. **Verdict:** reject the changed query contract and pooled
 fitting; retain negative source/access evidence only and pivot to a materially different anchor or independently
 validated estimand. Read `data/reference/v5/experiments/085-expedia-query-contract/verdict.md`.
+
+## Experiment 086 - Expedia.com bare-dollar currency proxy (1 August 2026)
+
+This experiment is pre-registered before collection. It repeats the exact three Expedia class searches on twelve
+cities with prior named-USD rows, but asks the Luna extractor to preserve numeric bare-dollar trends as
+`found_proxy` with `currency: null` rather than inferring USD. Deterministic code may map only an exact
+`www.expedia.com` host with no locale override to a labelled `source_locale_proxy` USD basis and imputed currency.
+The same-city/class comparison is a source/date calibration, not independent ground truth. The screen requires
+10 compliant calls, 10 mapped/named rows, 10 matched rows, median APE ≤25%, and p90 APE ≤50%; even a pass cannot
+authorize product mapping or fitting. Read `data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.
