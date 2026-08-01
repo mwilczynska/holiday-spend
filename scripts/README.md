@@ -15,6 +15,7 @@ re-derive is a claim you cannot audit.
 | --- | --- | --- |
 | `node scripts/analyze-v5-expedia-query-contract.mjs` | `analyze-v5-expedia-query-contract.mjs` | Experiment 085: pools the changed exact-heading Expedia 2-/3-/4-star panel and checks the 30-city relationship ceiling without fitting |
 | `node scripts/analyze-v5-expedia-locale-currency-proxy.mjs` | `analyze-v5-expedia-locale-currency-proxy.mjs` | Experiment 086: applies an exact-host USD proxy guard to bare-dollar Expedia rows and audits same-city/class source-date drift |
+| `node scripts/analyze-v5-expedia-locale-proxy-broad-panel.mjs` | `analyze-v5-expedia-locale-proxy-broad-panel.mjs` | Experiment 087: pools a broad Expedia.com locale-proxy 2-/3-/4-star panel and checks 30-city matched relationships without fitting |
 | `npm run docs:sync-memory` / `:check-memory` | `sync-memory-docs.mjs` | Mirror and verify `AGENTS.md` against `CLAUDE.md` |
 | `npm run country-metadata:generate` | `generate-country-metadata.mjs` | Regenerate canonical country metadata |
 | `npm run models:refresh` / `:check` | `refresh-curated-models.ts` | Refresh the curated LLM model snapshot |

@@ -11,3 +11,7 @@ from the same Expedia source family and may share locale, index, and page-genera
 supports a guarded proxy as a candidate input contract for a broader, independently audited panel, not an observed
 currency claim or product mapping. Preserve `currency: null` in extraction artifacts; perform the mapping only in
 deterministic code and carry `imputedMeasures: ["currency"]`.
+
+The accompanying `source-locale-audit.json` records an official Expedia.com Help Center inspection whose selected
+display currency is explicitly USD at the exact guarded host. That supports the versioned host/locale rule but does
+not replace independent row-level validation.

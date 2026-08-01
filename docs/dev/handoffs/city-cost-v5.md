@@ -590,3 +590,9 @@ promote only to a broader independent proxy validation panel; preserve `currency
 provenance, and do not map product tiers or fit coefficients. The Istanbul artifact uses country label `Turkey`
 while the manifest uses `Türkiye`; retain the raw alias and resolve it only in a separate canonical-country layer.
 Read `data/reference/v5/experiments/086-expedia-locale-currency-proxy/` and `verdict.md`.
+
+Experiment 087 is now the active restart package: a 24-city, one-city-per-Luna broad panel using the 086 exact
+heading searches and guarded Expedia.com locale proxy. It requires 23/24 compliant calls, at least 20 completed
+calls, and pooled 2-star/3-star plus 4-star/3-star matched-city counts of at least 30. Bare-dollar rows remain
+`currency: null` in extraction and are mapped only by deterministic exact-host code; no product mapping or fitting
+is authorized. Files are in `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.

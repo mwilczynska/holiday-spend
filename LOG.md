@@ -1794,3 +1794,13 @@ come from the Expedia source family. **Verdict:** promote only to a broader inde
 preserve `currency: null` and imputed-currency provenance, and do not map product tiers or fit coefficients. The
 Istanbul artifact uses country label `Turkey` while the manifest uses `Türkiye`; retain that raw alias for canonical
 country resolution rather than silently normalizing the response.
+
+## Experiment 087 - Expedia.com locale-proxy broad panel (1 August 2026)
+
+This 24-city panel is pre-registered after the 086 source/date screen and official Expedia.com locale audit. Each
+city receives one independent Luna context and exactly three search-only class queries. Bare-dollar exact rows stay
+`currency: null` in the response and are mapped only by deterministic exact-host code with imputed-currency
+provenance. The source-coverage gate is 23/24 compliant calls, 20 completed calls, and at least 30 pooled matched
+city relationships for both 2-star/3-star and 4-star/3-star. A pass authorizes only independent explicit-two-adult
+accuracy validation; no fitting or product mapping occurs. Read
+`data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.

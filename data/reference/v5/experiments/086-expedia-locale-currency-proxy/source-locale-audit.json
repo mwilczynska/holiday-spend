@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-locale-audit-v1",
+  "retrievalDate": "2026-08-01",
+  "sourceUrl": "https://www.expedia.com/helpcenter/?currency=USD&siteid=1",
+  "host": "www.expedia.com",
+  "localeParameter": "currency=USD",
+  "observedCurrencyLabel": "USD",
+  "evidenceBasis": "official_expedia_help_page_locale_label",
+  "scope": "source-locale configuration evidence only; does not independently validate every bare-dollar trend row",
+  "notes": "The official Expedia.com help page visibly labels the selected display currency USD. Production mapping must retain the exact-host guard and a source-locale version; it must not infer USD from a bare symbol on an unguarded or localized host."
+}

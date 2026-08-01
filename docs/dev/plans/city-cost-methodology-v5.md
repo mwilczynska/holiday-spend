@@ -599,6 +599,14 @@ promote only to a broader independent proxy validation panel. Same-source compar
 imputed-currency provenance and do not map product tiers or fit coefficients. Read
 `data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.
 
+### Experiment 087 - Expedia.com locale-proxy broad panel
+
+This active 24-city panel uses the 086 exact-heading one-city contract and deterministic `www.expedia.com` USD
+proxy guard. Bare-dollar rows remain labelled source-locale proxies with imputed currency; no fitting or product
+mapping occurs. The pre-registered source-coverage gate requires at least 23/24 compliant calls, 20 completed calls,
+and at least 30 pooled matched cities for both 2-star/3-star and 4-star/3-star after de-duplication. A pass only
+promotes the source to independent explicit-two-adult accuracy validation.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and
