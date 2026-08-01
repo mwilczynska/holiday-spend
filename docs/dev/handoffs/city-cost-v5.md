@@ -517,3 +517,8 @@ Experiment 074 completed twelve one-city Luna contexts with exactly one public H
 protocol-compliant, but strict shared-dorm coverage was 0/12 because results were `From`/seasonal prices or lacked
 dates and tax/fee basis. Reject this source/query boundary; retain not-found evidence only. The next restart action is
 a targeted pooled Expedia 3↔4-star completion panel, with no mapping or fitting until the 30-city/10-holdout gate.
+
+Experiment 075 completed: 12/12 calls were protocol-compliant and 15 fresh strict rows were retained. The corrected
+pooled audit (including legacy 028/029 field names) has 81 rows across 36 cities, 20 matched 2↔3 cities, and 23 matched
+3↔4 cities. Both 30-city gates failed. Reject pooled fitting promotion; do not map hotel classes. The next experiment
+must target a materially different accommodation boundary or collect genuinely new matched cities.

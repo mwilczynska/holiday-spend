@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Sofia",
+  "country": "Bulgaria",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Sofia-Hotels.d3235.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Sofia | Expedia",
+      "evidenceText": "Search returned a city-wide trend and star-rating list without a strict 2-star city-class trend; result rejected.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Sofia Bulgaria 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Generic city trend did not identify a 2-star class average; a class-mismatched result was rejected."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 76,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Sofia-Hotels.s30-0-d3235.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Sofia | Expedia",
+      "evidenceText": "Expedia reports a city-class 3-star trend for Sofia: the August row is $76 USD, based on base nightly rates for 2 adults in the last 7 days and averaged across commonly viewed 3-star properties; taxes and fees excluded.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Sofia",
+      "searchQuery": "site:expedia.com Sofia Bulgaria 3-star hotels average nightly price trend 2 adults taxes fees"
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Sofia-Hotels.d3235.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Sofia | Expedia",
+      "evidenceText": "Search returned a city-wide trend and star-rating list without a strict 4-star city-class trend; result rejected.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Sofia Bulgaria 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Generic city trend did not identify a 4-star class average; a class-mismatched result was rejected."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

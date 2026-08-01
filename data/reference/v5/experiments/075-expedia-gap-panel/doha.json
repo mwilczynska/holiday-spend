@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Doha",
+  "country": "Qatar",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Doha-Hotels.d1048.Travel-Guide-Hotels?msockid=2a1aed0ee0956d1f0179fb82e1286c30",
+      "sourceTitle": "Top 10 Hotels in Doha (from $32) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The Expedia Doha page lists a 2-star property count but exposes only an all-hotel Doha monthly trend (August $88), not a 2-star class trend. Its tax note applies to the aggregate city trend, so the requested class value is not accepted.",
+      "referencePeriod": "Expedia result crawled last week; aggregate trend based on nightly two-adult base rates found in the prior 7 days; no class-specific window",
+      "searchQuery": "site:expedia.com Doha Qatar 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Fail closed: class-specific 2-star average/trend is missing; generic city trend and individual property quotes are rejected."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Doha-Hotels.d1048.Travel-Guide-Hotels?msockid=2a1aed0ee0956d1f0179fb82e1286c30",
+      "sourceTitle": "Top 10 Hotels in Doha (from $32) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The Expedia Doha page lists a 3-star property count but exposes only an all-hotel Doha monthly trend (August $88), not a 3-star class trend. Its tax note applies to the aggregate city trend, so the requested class value is not accepted.",
+      "referencePeriod": "Expedia result crawled last week; aggregate trend based on nightly two-adult base rates found in the prior 7 days; no class-specific window",
+      "searchQuery": "site:expedia.com Doha Qatar 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Fail closed: class-specific 3-star average/trend is missing; generic city trend and individual property quotes are rejected."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Destinations-In-Qatar.d149.Hotel-Destinations",
+      "sourceTitle": "Top Qatar Hotels: 2026 Best Hotels in Qatar - Expedia",
+      "evidenceText": "The Expedia result contains individual 4-star Doha properties and a Qatar-wide monthly trend, but no exact Doha 4-star class trend. The country trend is not a city-class average and is rejected despite its two-adult tax note.",
+      "referencePeriod": "Expedia Qatar result crawled last week; country-level trend based on nightly two-adult base rates found in the prior 7 days; no exact Doha class-specific window",
+      "searchQuery": "site:expedia.com Doha Qatar 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Fail closed: exact-city 4-star class trend is missing; country-level trend and individual property quotes are not substitutes."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -618,6 +618,11 @@ protocol-compliant, but strict shared-dorm coverage was 0/12: results were `From
 dates and tax/fee basis. Reject this source/query boundary; do not map or scale it. The next accommodation priority is
 the closest viable model-evidence package, beginning with a targeted pooled Expedia 3↔4-star completion audit.
 
+Experiment 075 completed with 12/12 protocol-compliant calls and 15 strict fresh rows. The pooled evidence now has 20
+matched 2↔3 cities and 23 matched 3↔4 cities (81 rows across 36 cities), so neither 30-city relationship gate passed.
+Reject pooled fitting promotion; retain rows as source evidence only and do not map hotel classes. The accommodation
+model remains unresolved.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

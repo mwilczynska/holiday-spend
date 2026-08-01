@@ -471,6 +471,18 @@ dates and tax/fee basis. **Verdict:** reject this source/query boundary; no mapp
 the nearest viable accommodation model evidence: complete the pooled Expedia 3↔4-star relationship panel before
 revisiting one-star/private/dorm source semantics.
 
+### Experiment 075 - targeted Expedia class-gap panel
+
+The pooled ceiling audit left 20 matched 2↔3 cities and 22 matched 3↔4 cities. Experiment 075 targets twelve cities
+missing one or more classes with three fresh ordered Expedia searches each. The analyzer will deduplicate against the
+prior six source panels and report whether both relationships reach 30 matched cities. A pass only authorizes a
+separate city-level development/holdout fit design; it never authorizes immediate coefficients or product mapping.
+
+The completed panel produced 15 strict rows from 12/12 compliant calls. Pooling with the six prior Expedia panels
+yielded 81 rows across 36 cities, with 20 matched 2↔3 cities and 23 matched 3↔4 cities. Both 30-city relationship
+gates failed. **Verdict:** reject pooled fitting promotion; retain the rows as source evidence only and keep all hotel
+class mapping blocked.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -139,6 +139,10 @@ The 074 Hostelworld shared-dorm prompt is complete and rejected: twelve one-city
 public Hostelworld search, with 12/12 protocol compliance but 0/12 strict rows. `From`/seasonal prices and missing
 dates or tax basis dominated. No scaling or mapping follows.
 
+The 075 Expedia gap-panel prompt is complete and rejected for promotion: twelve fresh one-city contexts performed
+exactly three ordered Expedia-restricted 2-/3-/4-star searches, producing 15 strict rows. Pooling yielded 20 matched
+2↔3 cities and 23 matched 3↔4 cities, below 30 for both; no fitting or mapping follows.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Santiago",
+  "country": "Chile",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Santiago-Hotels.d178306.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Santiago | Expedia",
+      "evidenceText": "Search returned a city-wide trend and star-rating counts without a strict 2-star city-class trend; result rejected.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Santiago Chile 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Generic city trend did not identify a 2-star class average."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/3Star-Las-Condes-Santiago-Hotels.s30-n6053607-0.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Las Condes | Expedia",
+      "evidenceText": "Search exposed a 3-star trend for Las Condes, a district scope, rather than the requested Santiago city scope; result rejected.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Santiago Chile 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Only a district-level 3-star trend appeared; district evidence is not used for a city estimand."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Santiago-Hotels.d178306.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Santiago | Expedia",
+      "evidenceText": "Search returned a city-wide trend and individual hotel listings without a strict 4-star city-class trend; result rejected.",
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Santiago Chile 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "The exact search exposed a generic city trend and listings but no 4-star class average."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

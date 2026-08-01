@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-gap-panel-audit-v1",
+  "newCitiesTested": 12,
+  "newRows": 15,
+  "newCities": [
+    {
+      "city": "Auckland",
+      "strictRows": 2,
+      "classes": [
+        "2",
+        "3"
+      ]
+    },
+    {
+      "city": "Buenos Aires",
+      "strictRows": 2,
+      "classes": [
+        "2",
+        "3"
+      ]
+    },
+    {
+      "city": "Cape Town",
+      "strictRows": 1,
+      "classes": [
+        "3"
+      ]
+    },
+    {
+      "city": "Sydney",
+      "strictRows": 2,
+      "classes": [
+        "3",
+        "4"
+      ]
+    },
+    {
+      "city": "Sofia",
+      "strictRows": 1,
+      "classes": [
+        "3"
+      ]
+    },
+    {
+      "city": "Rio de Janeiro",
+      "strictRows": 1,
+      "classes": [
+        "3"
+      ]
+    },
+    {
+      "city": "Kuala Lumpur",
+      "strictRows": 1,
+      "classes": [
+        "4"
+      ]
+    },
+    {
+      "city": "Santiago",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Bucharest",
+      "strictRows": 1,
+      "classes": [
+        "4"
+      ]
+    },
+    {
+      "city": "Cairo",
+      "strictRows": 2,
+      "classes": [
+        "2",
+        "4"
+      ]
+    },
+    {
+      "city": "Doha",
+      "strictRows": 0,
+      "classes": []
+    },
+    {
+      "city": "Brisbane",
+      "strictRows": 2,
+      "classes": [
+        "3",
+        "4"
+      ]
+    }
+  ],
+  "protocolCompliant": 12,
+  "pooledRows": 81,
+  "pooledCities": 36,
+  "pooledMatchedCities": {
+    "hotel_2_from_3": 20,
+    "hotel_4_from_3": 23
+  },
+  "pooledGate": "hotel_2_from_3>=30 and hotel_4_from_3>=30 and protocolCompliant>=10",
+  "pooledGatePassed": false,
+  "productMapping": "none_pooled_ceiling_only",
+  "protocol": [
+    {
+      "city": "Auckland",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Buenos Aires",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Sydney",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Sofia",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Rio de Janeiro",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Kuala Lumpur",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Santiago",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Bucharest",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Cairo",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Doha",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Brisbane",
+      "protocolCompliant": true
+    }
+  ],
+  "pairs": {
+    "hotel_2_from_3": [
+      "Amsterdam",
+      "Auckland",
+      "Bangkok",
+      "Budapest",
+      "Buenos Aires",
+      "Chicago",
+      "Hanoi",
+      "Istanbul",
+      "Lima",
+      "Lisbon",
+      "London",
+      "Mexico City",
+      "Miami",
+      "New York",
+      "Prague",
+      "San Francisco",
+      "Stockholm",
+      "Toronto",
+      "Vancouver",
+      "Vienna"
+    ],
+    "hotel_4_from_3": [
+      "Amsterdam",
+      "Bangkok",
+      "Belgrade",
+      "Brisbane",
+      "Chicago",
+      "Dubai",
+      "Hanoi",
+      "Istanbul",
+      "Lima",
+      "Lisbon",
+      "London",
+      "Mexico City",
+      "New York",
+      "Perth",
+      "Prague",
+      "San Francisco",
+      "Seoul",
+      "Singapore",
+      "Stockholm",
+      "Sydney",
+      "Toronto",
+      "Vancouver",
+      "Vienna"
+    ]
+  }
+}

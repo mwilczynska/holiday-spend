@@ -1629,3 +1629,14 @@ prices, city-list summaries, or omitted dates and tax/fee basis; no values were 
 **Verdict:** reject this source/query boundary. Retain not-found reasons as access evidence only; do not map, scale,
 or fit a dorm value. The next accommodation experiment is a targeted pooled Expedia 3↔4-star completion panel.
 Read `data/reference/v5/experiments/074-hostelworld-shared-dorm-panel/`.
+
+## Experiment 075 - targeted Expedia class-gap panel (1 August 2026)
+
+Twelve fresh independent single-city GPT-5.6 Luna-class contexts issued exactly three ordered Expedia searches each
+(2-star, 3-star, 4-star), with no page reads, retries, fallback sources, arithmetic, FX conversion, or cross-city
+evidence. All calls were protocol-compliant and yielded 15 strict rows (2-star 4, 3-star 7, 4-star 4).
+
+The deterministic pool, with 075 precedence and legacy field compatibility, contains 81 rows across 36 cities. It has
+20 matched 2↔3 cities and 23 matched 3↔4 cities, below the 30-city gate for both relationships. **Verdict:** reject
+pooled fitting promotion; retain the strict rows as source evidence only. No coefficients or product mapping follow.
+Read `data/reference/v5/experiments/075-expedia-gap-panel/`.
