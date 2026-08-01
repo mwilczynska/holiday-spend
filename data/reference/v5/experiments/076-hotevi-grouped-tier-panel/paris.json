@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-grouped-tier-panel-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "budget_1_2_star": {
+      "status": "found",
+      "value": 70,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "budget_1_2_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "The HOTEVI sample table identifies the exact row Paris | France | 2,056 hotels | Budget $70. The page describes the table as average nightly rates in USD by star tier and defines Budget as 1-2 star. This is retained as a source-defined standard-room grouped proxy; occupancy and tax treatment are not stated.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; the research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research Paris France HOTEVI research hotel rates",
+      "reason": "Exact city/country row, positive USD monthly average, and published 1-2-star group identity are present. This remains a grouped proxy and is not an observed two-adult product tier."
+    },
+    "mid_3_star": {
+      "status": "found",
+      "value": 120,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "mid_3_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "The HOTEVI sample table identifies the exact row Paris | France | 2,056 hotels | Mid-Range $120. The page describes the table as average nightly rates in USD by star tier and defines Mid-Range as 3 star. This is retained as a source-defined standard-room grouped proxy; occupancy and tax treatment are not stated.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; the research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research Paris France HOTEVI research hotel rates",
+      "reason": "Exact city/country row, positive USD monthly average, and published 3-star group identity are present. This remains a grouped proxy and is not an observed two-adult product tier."
+    },
+    "luxury_4_5_star": {
+      "status": "found",
+      "value": 230,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "luxury_4_5_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "The HOTEVI sample table identifies the exact row Paris | France | 2,056 hotels | Luxury $230. The page describes the table as average nightly rates in USD by star tier and defines Luxury as 4-5 star. This is retained as a source-defined standard-room grouped proxy; occupancy and tax treatment are not stated.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; the research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research Paris France HOTEVI research hotel rates",
+      "reason": "Exact city/country row, positive USD monthly average, and published 4-5-star group identity are present. This remains a grouped proxy and is not an observed two-adult product tier."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-grouped-tier-panel-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Bangkok","country":"Thailand"},
+    {"city":"Lisbon","country":"Portugal"},
+    {"city":"London","country":"United Kingdom"},
+    {"city":"Paris","country":"France"},
+    {"city":"Rome","country":"Italy"},
+    {"city":"Prague","country":"Czechia"},
+    {"city":"Tokyo","country":"Japan"},
+    {"city":"Hanoi","country":"Vietnam"},
+    {"city":"New York City","country":"United States"},
+    {"city":"Sydney","country":"Australia"},
+    {"city":"Cape Town","country":"South Africa"},
+    {"city":"Mexico City","country":"Mexico"}
+  ],
+  "source": "hotevi_public_research_sample",
+  "sourceUrl": "https://hotevi.com/research",
+  "sourceAliases": {"New York City": ["New York"]},
+  "groups": ["budget_1_2_star", "mid_3_star", "luxury_4_5_star"],
+  "screeningGate": {"completeCities": 8, "protocolCompliant": 10}
+}

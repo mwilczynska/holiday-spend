@@ -1,0 +1,256 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-grouped-tier-panel-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictByGroup": {
+    "budget_1_2_star": 12,
+    "mid_3_star": 12,
+    "luxury_4_5_star": 12
+  },
+  "completeCities": 12,
+  "screeningGate": "completeCities>=8 and protocolCompliant>=10",
+  "screeningGatePassed": true,
+  "productMapping": "none_source_defined_proxy_only",
+  "rows": [
+    {
+      "city": "Bangkok",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 30,
+        "mid_3_star": 65,
+        "luxury_4_5_star": 150
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 70,
+        "mid_3_star": 120,
+        "luxury_4_5_star": 230
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 70,
+        "mid_3_star": 120,
+        "luxury_4_5_star": 230
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 70,
+        "mid_3_star": 120,
+        "luxury_4_5_star": 230
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Rome",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 70,
+        "mid_3_star": 120,
+        "luxury_4_5_star": 230
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Prague",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 45,
+        "mid_3_star": 80,
+        "luxury_4_5_star": 160
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Tokyo",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 52,
+        "mid_3_star": 100,
+        "luxury_4_5_star": 200
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 30,
+        "mid_3_star": 65,
+        "luxury_4_5_star": 150
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "New York City",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 85,
+        "mid_3_star": 140,
+        "luxury_4_5_star": 275
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Sydney",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 75,
+        "mid_3_star": 130,
+        "luxury_4_5_star": 260
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 40,
+        "mid_3_star": 75,
+        "luxury_4_5_star": 160
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    },
+    {
+      "city": "Mexico City",
+      "protocolCompliant": true,
+      "groups": {
+        "budget_1_2_star": true,
+        "mid_3_star": true,
+        "luxury_4_5_star": true
+      },
+      "complete": true,
+      "values": {
+        "budget_1_2_star": 35,
+        "mid_3_star": 70,
+        "luxury_4_5_star": 140
+      },
+      "taxStatuses": {
+        "budget_1_2_star": "unknown",
+        "mid_3_star": "unknown",
+        "luxury_4_5_star": "unknown"
+      }
+    }
+  ]
+}

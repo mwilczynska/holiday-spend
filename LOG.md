@@ -1640,3 +1640,13 @@ The deterministic pool, with 075 precedence and legacy field compatibility, cont
 20 matched 2↔3 cities and 23 matched 3↔4 cities, below the 30-city gate for both relationships. **Verdict:** reject
 pooled fitting promotion; retain the strict rows as source evidence only. No coefficients or product mapping follow.
 Read `data/reference/v5/experiments/075-expedia-gap-panel/`.
+
+## Experiment 076 - HOTEVI grouped-tier proxy panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts each issued exactly one HOTEVI research search and one
+exact-page read. All calls were protocol-compliant and all 12 cities produced all three grouped rows (36/36): budget
+(1–2★), mid-range (3★), and luxury (4–5★). Every row is a source-defined standard-room proxy with unknown tax
+treatment and an unspecified calendar index month; New York City is represented by an explicit `New York` source alias.
+
+**Verdict:** promote to independent proxy calibration only. Do not split groups, infer two-adult occupancy/taxes, fit,
+or map product tiers. Read `data/reference/v5/experiments/076-hotevi-grouped-tier-panel/`.

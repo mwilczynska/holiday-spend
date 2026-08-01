@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-grouped-tier-panel-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "budget_1_2_star": {
+      "status": "found",
+      "value": 70,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "budget_1_2_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI's sample table identifies average nightly rates in USD by star tier and lists Rome, Italy with Budget $70.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research HOTEVI hotel rates Rome",
+      "reason": "Grouped 1-2-star source-defined standard-room proxy; not an observed individual product star value."
+    },
+    "mid_3_star": {
+      "status": "found",
+      "value": 120,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "mid_3_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI's sample table identifies average nightly rates in USD by star tier and lists Rome, Italy with Mid-Range $120.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research HOTEVI hotel rates Rome",
+      "reason": "Grouped source-defined 3-star standard-room proxy; not an observed individual product value."
+    },
+    "luxury_4_5_star": {
+      "status": "found",
+      "value": 230,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "luxury_4_5_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI's sample table identifies average nightly rates in USD by star tier and lists Rome, Italy with Luxury $230.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research HOTEVI hotel rates Rome",
+      "reason": "Grouped 4-5-star source-defined standard-room proxy; not an observed individual product value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

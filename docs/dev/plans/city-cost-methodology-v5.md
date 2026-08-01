@@ -483,6 +483,17 @@ yielded 81 rows across 36 cities, with 20 matched 2↔3 cities and 23 matched 3�
 gates failed. **Verdict:** reject pooled fitting promotion; retain the rows as source evidence only and keep all hotel
 class mapping blocked.
 
+### Experiment 076 - HOTEVI grouped-tier proxy panel
+
+HOTEVI's current public research page advertises monthly city averages for budget (1–2★), mid-range (3★), and luxury
+(4–5★) tiers. Twelve one-city contexts will test extraction of those grouped rows with one search and one page read.
+The rows are source-defined standard-room proxies with unknown occupancy/tax unless explicitly stated. Even a passing
+screen cannot split grouped classes or map a product tier; it only authorizes independent calibration.
+
+The screen passed: 12/12 compliant calls and 12/12 complete cities (36/36 grouped rows). **Verdict:** promote only to
+independent proxy calibration. Preserve unknown tax, unspecified index month, and the documented New York alias; do not
+split groups, infer two-adult occupancy, fit, or map.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

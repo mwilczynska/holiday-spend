@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-grouped-tier-panel-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "budget_1_2_star": {
+      "status": "found",
+      "value": 30,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "budget_1_2_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI's sample table identifies average nightly rates in USD by star tier and lists Hanoi, Vietnam with Budget $30.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research HOTEVI hotel rates Hanoi",
+      "reason": "Grouped 1-2-star source-defined standard-room proxy; not an observed individual product star value."
+    },
+    "mid_3_star": {
+      "status": "found",
+      "value": 65,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "mid_3_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI's sample table identifies average nightly rates in USD by star tier and lists Hanoi, Vietnam with Mid-Range $65.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research HOTEVI hotel rates Hanoi",
+      "reason": "Grouped source-defined 3-star standard-room proxy; not an observed individual product value."
+    },
+    "luxury_4_5_star": {
+      "status": "found",
+      "value": 150,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "luxury_4_5_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI's sample table identifies average nightly rates in USD by star tier and lists Hanoi, Vietnam with Luxury $150.",
+      "referencePeriod": "Monthly average; HOTEVI research page cites HOTEVI Hotel Price Index retrieved July 30, 2026; research page does not specify a calendar index month.",
+      "searchQuery": "site:hotevi.com/research HOTEVI hotel rates Hanoi",
+      "reason": "Grouped 4-5-star source-defined standard-room proxy; not an observed individual product value."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

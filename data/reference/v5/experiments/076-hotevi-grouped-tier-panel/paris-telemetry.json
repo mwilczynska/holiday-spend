@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-grouped-tier-panel-telemetry-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_076_hotevi_grouped_tier_panel.md",
+  "calls": 1,
+  "searchesAttempted": 2,
+  "searchOperations": 1,
+  "queries": ["site:hotevi.com/research Paris France HOTEVI research hotel rates"],
+  "directReads": 1,
+  "directReadUrl": "https://hotevi.com/research",
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One-city HOTEVI grouped-tier extraction. One search returned the public research page and one direct read inspected it. Only Paris's row was extracted; grouped values are source-defined proxies and were not split or mapped to product tiers."
+}

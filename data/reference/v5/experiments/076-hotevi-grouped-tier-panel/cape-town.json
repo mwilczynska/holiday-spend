@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-grouped-tier-panel-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "budget_1_2_star": {
+      "status": "found",
+      "value": 40,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "budget_1_2_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI sample dataset row: Cape Town | South Africa | 355 hotels | $40 budget; page states monthly average prices by budget (1-2 star), mid-range (3 star), and luxury (4-5 star), and average nightly rates in USD by star tier.",
+      "referencePeriod": "2026; page citation says retrieved July 30, 2026 (month not specified)",
+      "searchQuery": "HOTEVI research Cape Town hotel monthly average budget mid-range luxury",
+      "reason": null
+    },
+    "mid_3_star": {
+      "status": "found",
+      "value": 75,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "mid_3_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI sample dataset row: Cape Town | South Africa | 355 hotels | $75 mid-range; page states monthly average prices by budget (1-2 star), mid-range (3 star), and luxury (4-5 star), and average nightly rates in USD by star tier.",
+      "referencePeriod": "2026; page citation says retrieved July 30, 2026 (month not specified)",
+      "searchQuery": "HOTEVI research Cape Town hotel monthly average budget mid-range luxury",
+      "reason": null
+    },
+    "luxury_4_5_star": {
+      "status": "found",
+      "value": 160,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_standard_room",
+      "class": "luxury_4_5_star",
+      "statistic": "monthly_average_price",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hotevi.com/research",
+      "sourceTitle": "Hotel Data for Researchers & Academics — HOTEVI",
+      "evidenceText": "HOTEVI sample dataset row: Cape Town | South Africa | 355 hotels | $160 luxury; page states monthly average prices by budget (1-2 star), mid-range (3 star), and luxury (4-5 star), and average nightly rates in USD by star tier.",
+      "referencePeriod": "2026; page citation says retrieved July 30, 2026 (month not specified)",
+      "searchQuery": "HOTEVI research Cape Town hotel monthly average budget mid-range luxury",
+      "reason": null
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

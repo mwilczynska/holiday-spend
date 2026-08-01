@@ -143,6 +143,10 @@ The 075 Expedia gap-panel prompt is complete and rejected for promotion: twelve 
 exactly three ordered Expedia-restricted 2-/3-/4-star searches, producing 15 strict rows. Pooling yielded 20 matched
 2↔3 cities and 23 matched 3↔4 cities, below 30 for both; no fitting or mapping follows.
 
+The 076 HOTEVI grouped-tier prompt is complete and passes its source screen: twelve one-city contexts produced 36/36
+grouped rows with 12/12 protocol compliance. All rows remain source-defined standard-room proxies with unknown tax and
+no individual-star or two-adult basis; only independent calibration is authorized.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

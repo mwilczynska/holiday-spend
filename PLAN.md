@@ -623,6 +623,14 @@ matched 2↔3 cities and 23 matched 3↔4 cities (81 rows across 36 cities), so 
 Reject pooled fitting promotion; retain rows as source evidence only and do not map hotel classes. The accommodation
 model remains unresolved.
 
+Experiment 076 is active: twelve one-city Luna contexts test HOTEVI's public research table with exactly one search and
+one exact-page read. The strict screen extracts grouped budget (1–2★), mid (3★), and luxury (4–5★) standard-room rates
+as source-defined proxies. A pass authorizes only independent calibration; no star splitting, fitting, or product mapping.
+
+Experiment 076 completed with 12/12 protocol-compliant calls and 12/12 complete cities (36/36 grouped rows). Promote
+HOTEVI only to independent proxy calibration. Its occupancy is source-defined standard-room, tax status is unknown,
+the index month is not exposed, and grouped 1–2★/4–5★ tiers cannot be split. Do not map or fit.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

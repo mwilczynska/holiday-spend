@@ -522,3 +522,13 @@ Experiment 075 completed: 12/12 calls were protocol-compliant and 15 fresh stric
 pooled audit (including legacy 028/029 field names) has 81 rows across 36 cities, 20 matched 2↔3 cities, and 23 matched
 3↔4 cities. Both 30-city gates failed. Reject pooled fitting promotion; do not map hotel classes. The next experiment
 must target a materially different accommodation boundary or collect genuinely new matched cities.
+
+Experiment 076 is active. It tests HOTEVI's public research page with one HOTEVI search and one exact-page read per
+city, extracting only the supplied city's budget (1–2★), mid (3★), and luxury (4–5★) grouped standard-room rates.
+These are source-defined proxy rows, not observed two-adult anchors; no grouped-class splitting or product mapping is
+allowed. The screening gate is 8/12 complete cities and 10/12 compliant calls.
+
+Experiment 076 completed with 12/12 compliant calls and 12/12 complete cities. All 36 grouped rows are source-defined
+standard-room proxies with unknown tax and an unspecified calendar index month. Promote only to independent calibration;
+do not split the grouped tiers or map any product field. The New York City → `New York | United States` alias is
+explicit in the raw evidence and must remain explicit in any future join.
