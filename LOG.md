@@ -1704,3 +1704,9 @@ analyzer doubled accepted inputs deterministically and performed no fitted scali
 below the final 95% gate, and no independent ground truth validates the reported-spend activity semantics.
 **Verdict:** promote deterministic scaling only to definition-matched validation; do not accept product mapping.
 Read `data/reference/v5/experiments/080-activity-scaling-panel/`.
+
+## Experiment 081 - activity one-call repeatability panel (1 August 2026)
+
+This experiment is in progress. Five difficult cities (Fukuoka, Mumbai, Dubai, Paris, Copenhagen) each receive three
+independent one-city calls using the exact 080 activity prompt. The deterministic audit measures protocol compliance,
+complete tier coverage, and within-city relative range; it does not average calls, fit a model, or claim ground truth.

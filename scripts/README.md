@@ -97,6 +97,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-expedia-matched-panel.mjs` | `analyze-v5-expedia-matched-panel.mjs` | Experiment 078: pools a new single-city Expedia 2-/3-/4-star panel and checks the 30-city relationship ceiling without fitting |
 | `node scripts/analyze-v5-hotevi-proxy-calibration.mjs` | `analyze-v5-hotevi-proxy-calibration.mjs` | Experiment 079: joins HOTEVI grouped proxy rows to strict Expedia 3-/4-star rows and checks calibration/holdout gates |
 | `node scripts/analyze-v5-activity-scaling-panel.mjs` | `analyze-v5-activity-scaling-panel.mjs` | Experiment 080: audits exact-city BudgetYourTrip per-person/day activity tiers and deterministic two-person scaling |
+| `node scripts/analyze-v5-activity-repeatability.mjs` | `analyze-v5-activity-repeatability.mjs` | Experiment 081: measures three-call single-city activity extraction dispersion without averaging it away |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

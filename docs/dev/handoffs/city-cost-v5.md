@@ -552,3 +552,7 @@ Experiment 080 completed with 30/30 compliant calls and 28/30 complete exact-cit
 was `not_found`; Rome's multi-city itinerary rows were rejected. Deterministic two-person scaling is reproducible,
 but holdout completeness was 8/10 and no independent ground truth validates the reported-spend activity semantics.
 Promote only to definition-matched validation; do not accept final activity mapping.
+
+Experiment 081 is active. Fukuoka, Mumbai, Dubai, Paris, and Copenhagen each receive three independent one-city
+BudgetYourTrip calls with exactly two searches per call. The analyzer measures complete-call coverage, protocol
+compliance, and within-city tier dispersion; no cross-call averaging or product mapping is allowed.

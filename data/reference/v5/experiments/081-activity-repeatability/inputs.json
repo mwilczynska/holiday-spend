@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "city-cost-v5-activity-repeatability-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Fukuoka","country":"Japan"},
+    {"city":"Mumbai","country":"India"},
+    {"city":"Dubai","country":"United Arab Emirates"},
+    {"city":"Paris","country":"France"},
+    {"city":"Copenhagen","country":"Denmark"}
+  ],
+  "independentCallsPerCity": 3,
+  "sourcePrompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_080_activity_scaling_panel.md",
+  "repeatabilityGate": {"citiesWithThreeCompleteCalls":5,"medianRelativeRangePercentMax":25,"protocolCompliantCalls":15}
+}

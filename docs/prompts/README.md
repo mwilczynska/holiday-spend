@@ -166,6 +166,10 @@ definition review. The screen completed with 30/30 compliant calls and 28/30 com
 deterministic scaling candidate, not the product mapping. Fukuoka was not-found and Rome's multi-city itinerary rows
 were rejected; independent activity ground truth remains required.
 
+The 081 activity-repeatability prompt is active: five difficult cities receive three independent single-city calls
+using the 080 two-search contract. It records dispersion and missingness only; no cross-call averaging, arithmetic,
+or product mapping is authorized.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

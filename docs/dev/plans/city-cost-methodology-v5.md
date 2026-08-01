@@ -540,6 +540,13 @@ screen. Fukuoka was not-found and Rome's multi-city itinerary rows were rejected
 is retained as a candidate, but holdout completeness was 8/10 and no independent ground truth exists for the reported-
 spend activity semantics. **Verdict:** promote only to definition-matched validation; do not accept product mapping.
 
+### Experiment 081 - activity one-call repeatability panel
+
+Five difficult cities are each tested with three independent one-city calls using the exact 080 two-search contract.
+The pre-registered gate is 15 compliant calls, three complete tier sets in every city, and median within-city
+relative range no greater than 25% for each tier. This measures single-call dispersion only; it is not an accuracy or
+ground-truth result and cannot authorize product mapping.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

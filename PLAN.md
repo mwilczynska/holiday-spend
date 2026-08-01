@@ -658,6 +658,11 @@ factor-of-two scaling produced candidate two-traveller values, but the locked ho
 independent ground truth establishes equivalence to ticket, half-day, or full-day activity estimands. Promote only to
 definition-matched validation; do not accept final activity mapping.
 
+Experiment 081 is active: five difficult cities receive three independent single-city calls each using the 080
+activity prompt. The repeatability gate requires 15/15 compliant calls, three complete tier sets in every city, and
+within-city median relative range no greater than 25% for each tier. This is a dispersion test, not ground-truth
+accuracy; no values are mapped or doubled in the LLM.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.
