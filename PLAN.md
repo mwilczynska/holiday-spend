@@ -683,6 +683,13 @@ values as `source_defined_proxy` only; do not substitute coffee/cocktail/wine-bo
 next food/drink action must find definition-matched evidence or pre-register a proxy calibration against independent
 ground truth.
 
+**Experiment 085 — Expedia exact-heading query contract — in progress.** This is a materially changed
+accommodation query hypothesis, not a repeat of 078. Twelve independent one-city Luna contexts issue exactly three
+Expedia-restricted searches using the indexed heading `Price trends for properties with N Stars`, plus the source's
+two-adult and tax wording. The strict acceptance contract and pooled 30-city/10-holdout gates are unchanged. Rows
+remain evidence-only until the deterministic pooled audit passes for both 2-star←3-star and 4-star←3-star. Artifacts:
+`data/reference/v5/experiments/085-expedia-query-contract/`.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

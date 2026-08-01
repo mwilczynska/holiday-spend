@@ -13,6 +13,7 @@ re-derive is a claim you cannot audit.
 
 | Command | Script | Purpose |
 | --- | --- | --- |
+| `node scripts/analyze-v5-expedia-query-contract.mjs` | `analyze-v5-expedia-query-contract.mjs` | Experiment 085: pools the changed exact-heading Expedia 2-/3-/4-star panel and checks the 30-city relationship ceiling without fitting |
 | `npm run docs:sync-memory` / `:check-memory` | `sync-memory-docs.mjs` | Mirror and verify `AGENTS.md` against `CLAUDE.md` |
 | `npm run country-metadata:generate` | `generate-country-metadata.mjs` | Regenerate canonical country metadata |
 | `npm run models:refresh` / `:check` | `refresh-curated-models.ts` | Refresh the curated LLM model snapshot |

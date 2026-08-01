@@ -1757,3 +1757,15 @@ cities, but zero definition-compatible rows: page units, party size, taxes/fees,
 returned a guide-page misroute; London and Prague each missed one label. **Verdict:** retain all values as
 `source_defined_proxy` only; do not map, substitute, or fit from them. Read
 `data/reference/v5/experiments/084-nomadlio-food-drink/`.
+
+## Experiment 085 - Expedia exact-heading query contract (1 August 2026)
+
+This experiment is pre-registered before collection. Twelve independent one-city Luna contexts will issue exactly
+three Expedia-restricted search queries, each quoting the indexed heading `Price trends for properties with N Stars`
+and the source's `2 adults` and `taxes and fees` language. The strict exact-city/class, named-currency,
+non-`from`, reference-window, occupancy, and tax-status contract is unchanged from the pooled Expedia audits. No
+page reads, retries, fallback sources, arithmetic, FX conversion, aggregation, or cross-city evidence is allowed.
+The deterministic analyzer will pool new rows with 028/029/059-063/075/078 and will fit or map nothing. Promotion
+requires at least 10 compliant calls and at least 30 matched cities for both 2-star←3-star and 4-star←3-star;
+otherwise the changed query ceiling is rejected. Read
+`data/reference/v5/experiments/085-expedia-query-contract/`.

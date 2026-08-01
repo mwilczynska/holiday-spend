@@ -579,6 +579,15 @@ semantics were absent. Dubai was a guide-page misroute; London and Prague each m
 all values as source-defined proxies only; no substitution, product mapping, or fitting. A future proxy calibration
 requires independent definition-matched ground truth.
 
+### Experiment 085 - Expedia exact-heading query contract
+
+This active experiment changes the Expedia retrieval hypothesis rather than relaxing the estimand. Twelve one-city
+Luna contexts use exactly three search-only queries anchored to Expedia's indexed `Price trends for properties with
+N Stars` heading, with explicit two-adult and tax wording. Exact-city, exact-class, named-currency, non-`from`,
+reference-window, and tax-status requirements remain unchanged. The deterministic analyzer pools new rows with
+028/029/059-063/075/078 and authorizes no fitting or product mapping. Promotion requires both 30-city matched
+relationships and at least 10 compliant new calls; otherwise the source ceiling is rejected.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

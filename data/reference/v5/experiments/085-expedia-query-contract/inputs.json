@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-query-contract-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Cape Town","country":"South Africa"},
+    {"city":"Cairo","country":"Egypt"},
+    {"city":"Mumbai","country":"India"},
+    {"city":"Nairobi","country":"Kenya"},
+    {"city":"Rio de Janeiro","country":"Brazil"},
+    {"city":"Sofia","country":"Bulgaria"},
+    {"city":"Santiago","country":"Chile"},
+    {"city":"Kuala Lumpur","country":"Malaysia"},
+    {"city":"Tokyo","country":"Japan"},
+    {"city":"Ho Chi Minh City","country":"Vietnam"},
+    {"city":"Athens","country":"Greece"},
+    {"city":"Osaka","country":"Japan"}
+  ],
+  "sourceExperiments": ["028","029","059","060","061","063","075","078"],
+  "pooledGate": {"hotel_2_from_3":30,"hotel_4_from_3":30,"protocolCompliant":10},
+  "maximumCalls": 12
+}

@@ -117,6 +117,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/082-worldstaytracker-accommodation/` | **COMPLETE - reject promotion** | 12/12 compliant; 5 canonical 3-star rows, 0 four-star rows, 0 complete cities; breakfast/popular-property proxy only |
 | `experiments/083-worldstaytracker-cityid-rating/` | **COMPLETE - reject promotion** | 12/12 compliant; 6 strict 3-star rows, 0 four-star rows, 0 complete cities; direct rating reads unsafe |
 | `experiments/084-nomadlio-food-drink/` | **COMPLETE - reject product mapping** | 12/12 compliant; 64 proxy cells, 0 definition-compatible, 9 complete cities |
+| `experiments/085-expedia-query-contract/` | **IN PROGRESS** | Changed exact-heading 2-/3-/4-star Expedia query contract; pooled 30-city ceiling test pending |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

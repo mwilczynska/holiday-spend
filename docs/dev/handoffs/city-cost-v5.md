@@ -574,3 +574,11 @@ cities, but zero definition-compatible rows because page units, party size, taxe
 absent. Dubai was a guide-page misroute; London and Prague each missed one label. Retain all values as
 `source_defined_proxy` only; no substitution, product mapping, or fitting. Next action: definition-matched evidence or
 a pre-registered proxy calibration with independent ground truth.
+
+Experiment 085 is the active restart package. It tests a materially changed Expedia query contract: one city per
+Luna context, exactly three search-only queries using the indexed heading `Price trends for properties with N Stars`
+plus two-adult and tax terms, and no reads, retries, fallback, arithmetic, FX, or cross-city evidence. The strict
+2-/3-/4-star row contract and pooled 30-city/10-holdout gates are unchanged. Files are in
+`data/reference/v5/experiments/085-expedia-query-contract/`; run
+`node scripts/analyze-v5-expedia-query-contract.mjs` after all twelve city JSON files arrive. No mapping or fitting
+is authorized before the audit verdict.
