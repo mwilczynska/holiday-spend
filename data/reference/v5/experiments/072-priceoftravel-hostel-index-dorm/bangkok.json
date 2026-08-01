@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-dorm-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 6.48,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Born Free Hostel",
+    "evidenceText": "Price of Travel's Hostel Index lists Bangkok, Thailand, Born Free Hostel, at $6.48 per night. The methodology states the price is per night including taxes and fees for one person in a shared dorm room, using the average of a Thursday and Friday night in mid April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; article dated 2023-01-16.",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Bangkok Thailand Hostel Index dorm bed price",
+    "reason": "Found as a source-defined one-person shared-dorm index observation; no conversion to two travellers is performed here."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

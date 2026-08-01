@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-dorm-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictRows": 12,
+  "screeningGate": "strictRows>=8 and protocolCompliant>=10",
+  "screeningGatePassed": true,
+  "deterministicScalingFactor": 2,
+  "productMapping": "none_dorm_screening_only",
+  "cities": [
+    {
+      "city": "Bangkok",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Rome",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Prague",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Tokyo",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "New York City",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Sydney",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    },
+    {
+      "city": "Mexico City",
+      "protocolCompliant": true,
+      "strict": true,
+      "status": "found"
+    }
+  ]
+}

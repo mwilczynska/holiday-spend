@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-dorm-v1",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 13.77,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "PLUS Prague",
+    "evidenceText": "Price of Travel states that the Hostel Index price is per night including taxes and fees for one person in a shared dorm room, averaged over a Thursday and Friday night in mid-April 2023. The table row is Prague, Czechia, PLUS Prague, $13.77.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; Hostel Index 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Prague Czech Republic Hostel Index dorm bed price",
+    "reason": "Exact-city row (the source labels the country Czechia) and source methodology meet the shared-dorm, one-person, nightly, tax-included contract."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

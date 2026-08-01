@@ -1,0 +1,13 @@
+{
+  "schemaVersion":"city-cost-v5-priceoftravel-hostel-index-dorm-audit-v1",
+  "citiesTested":12,
+  "protocolCompliant":12,
+  "strictRows":12,
+  "screeningGate":"strictRows>=8 and protocolCompliant>=10",
+  "screeningGatePassed":true,
+  "sourceReferenceWindow":"average of Thursday and Friday nights in mid-April 2023",
+  "sourceTaxBasis":"included per source methodology",
+  "deterministicScalingFactor":2,
+  "productMapping":"none_dorm_screening_only",
+  "verdict":"promote_to_scaling_and_accuracy_validation"
+}

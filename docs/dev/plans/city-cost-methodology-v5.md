@@ -443,6 +443,16 @@ route at current reliability. The five rows remain property-level evidence only;
 or fitting is authorized. A future private-hostel method needs a materially different source or aggregation design and
 the unchanged 30-city/10-locked-holdout validation gate.
 
+### Experiment 072 - Price of Travel Hostel Index dorm anchor
+
+This source screen used one restricted search and one exact-page read per city. The source documents a one-person
+shared-dorm bed per-night price, included taxes and fees, and an average of Thursday and Friday nights in mid-April
+2023. All 12 one-city Luna contexts returned strict rows and were protocol-compliant.
+
+**Verdict:** promote only to deterministic two-bed scaling and independent accuracy validation. The reference window
+is stale and the statistic is a selected named-hostel observation rather than a current city median. Do not map
+`accom_shared_hostel_dorm` until a 30-city/10-locked-holdout benchmark establishes error, drift, and refresh policy.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

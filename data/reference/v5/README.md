@@ -104,6 +104,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/069-budgetyourtrip-explicit-calibration/` | **COMPLETE - reject proxy calibration** | Twelve one-city five-search calls: 11/12 proxies, 0/12 matched explicit candidates, 12/12 protocol-compliant; no mapping |
 | `experiments/070-private-hostel-three-source-panel/` | **COMPLETE - reject search-only route** | Twelve one-city three-search calls: 4/12 cities and 5 property rows, 12/12 protocol-compliant; no aggregation |
 | `experiments/071-activity-per-person-scaling-panel/` | **COMPLETE - reject per-person screen** | Twelve one-city three-search calls: budget 3/12, mid 0/12, high 1/12, zero complete; no scaling or mapping |
+| `experiments/072-priceoftravel-hostel-index-dorm/` | **COMPLETE - promote to scaling validation** | Twelve one-city search+page-read calls: 12/12 strict, 12/12 protocol-compliant; source window April 2023; no mapping |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

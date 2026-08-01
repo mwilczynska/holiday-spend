@@ -1594,3 +1594,15 @@ Strict coverage was only 3/12 budget-ticket rows, 0/12 half-day group rows, and 
 complete. Unknown taxes, from/discount prices, missing duration, and group/party ambiguity dominated failures.
 **Verdict:** reject this per-person screen at the feasibility gate. Retain four one-person/per-person source facts only;
 do not apply the factor of two, map tiers, or claim accuracy. Read `data/reference/v5/experiments/071-activity-per-person-scaling-panel/`.
+
+## Experiment 072 - Price of Travel Hostel Index dorm anchor (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts each issued exactly one restricted search followed by one
+read of the exact Price of Travel Hostel Index page (24 operations total). There were no second reads, retries,
+fallbacks, arithmetic, FX conversions, averaging, or cross-city evidence; all calls were protocol-compliant.
+
+All 12 cities produced strict one-person shared-dorm rows. The source states taxes and fees are included and uses an
+average of Thursday and Friday nights in mid-April 2023. **Verdict:** promote only to deterministic two-bed scaling and
+independent validation. The reference window is stale and the selected-hostel statistic is not yet a production city
+median; do not map `accom_shared_hostel_dorm` until the 30-city/10-locked-holdout accuracy gates pass. Read
+`data/reference/v5/experiments/072-priceoftravel-hostel-index-dorm/`.

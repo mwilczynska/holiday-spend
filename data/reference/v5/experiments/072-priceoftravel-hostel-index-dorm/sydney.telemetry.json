@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-dorm-telemetry-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "directReads": 1,
+  "queries": [
+    "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Sydney Australia Hostel Index dorm bed price"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city, one exact Price of Travel search followed by one read of the returned index page; no other web operation."
+}

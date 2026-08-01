@@ -126,6 +126,10 @@ The 071 activity prompt is complete and rejected at its feasibility gate. Twelve
 searches; strict coverage was budget 3/12, mid-range 0/12, and high-end 1/12, with no complete city. Per-person facts
 remain evidence only; no factor-of-two scaling or product mapping follows.
 
+The 072 Price of Travel Hostel Index prompt is complete and passes its source screen: twelve one-city contexts each
+performed exactly one restricted search and one exact-page read, yielding 12/12 strict rows. The tax-included reference
+window is April 2023; deterministic two-bed scaling and independent validation are still required.
+
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
 

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-dorm-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 22.21,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Big Hostel",
+    "evidenceText": "Price of Travel's Hostel Index table lists Sydney, Australia, Big Hostel, $22.21. The methodology states the price is per night including taxes and fees for one person in a shared dorm room, averaged over a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; index published 16 Jan 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Sydney Australia Hostel Index dorm bed price",
+    "reason": "Exact city row, named hostel, numeric USD nightly shared-dorm bed price, one-person basis, included taxes/fees methodology, and dated reference window are all explicit."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

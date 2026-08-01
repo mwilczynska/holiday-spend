@@ -499,3 +499,9 @@ half-day group activity, and full-day premium activity. All calls were protocol-
 budget 3/12, mid-range 0/12, high-end 1/12, and zero complete cities. Reject the per-person screen; retain four
 one-person/per-person source facts only. Do not apply factor-of-two scaling or map activity tiers until a materially
 different source/contract passes independent scaling validation.
+
+Experiment 072 completed twelve one-city Luna contexts with exactly one Price of Travel search and one exact-page read.
+All twelve yielded strict, tax-included one-person shared-dorm rows from the April 2023 Thursday/Friday index window;
+all calls were protocol-compliant. Promote only to two-bed scaling and independent validation. The index is stale and
+selected-hostel based, so do not map the dorm product or claim accuracy until a 30-city/10-locked-holdout benchmark
+passes.
