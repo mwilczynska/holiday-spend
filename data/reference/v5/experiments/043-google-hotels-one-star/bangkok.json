@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v5-google-hotels-one-star-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "propertyQuotes": [
+    {
+      "propertyName": null,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "Google Hotels Bangkok landing and entity results exposed generic city listings and properties labelled 2–5 stars, but no exact Bangkok 1-star property with explicit two-adult/two-guest one-room occupancy and a numeric non-from nightly price with tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Google Hotels search results crawled last month to 3 weeks before 2026-08-01; no qualifying exact-property row",
+      "searchQuery": "site:google.com/travel/hotels Bangkok Thailand 1-star hotel taxes fees room",
+      "reason": "Not found under the strict Google Hotels contract. Generic city averages, other star classes, and rows without explicit occupancy or eligible non-from price/tax labels were rejected; no Bangkok 1-star property quote was substituted."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

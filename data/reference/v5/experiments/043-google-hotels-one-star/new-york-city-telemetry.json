@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-google-hotels-one-star-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels New York City United States 1-star hotel 2 adults price",
+    "site:google.com/travel/hotels New York City United States \"1 star hotel\" \"2 guests\" nightly",
+    "site:google.com/travel/hotels New York City United States 1-star hotel taxes fees room"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundQuotes": 0,
+  "notFoundQuotes": 1,
+  "protocolCompliant": true,
+  "notes": "Single-city search-only Google Hotels one-star run using exactly three ordered restricted queries. U.S. Pacific Hotel was an exact New York City 1-star result but lacked explicit two-adult/two-guest occupancy and was rejected; other results were wrong class or wrong city. No page reads, retries, fallback sources, arithmetic, FX conversion, averaging, or cross-city evidence. Provider token, latency, and monetary cost are unavailable from delegated orchestration."
+}

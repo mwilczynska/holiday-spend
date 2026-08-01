@@ -1212,3 +1212,15 @@ quote has an address discrepancy against the frozen register and remains a guard
 two-quote threshold). Do not compute a basket or map the quote to `accom_1_star`; preserve the class evidence,
 tax failure, and property-identity failure reasons. Read
 `data/reference/v5/experiments/042-registry-class-property-quotes/`.
+
+## Experiment 043 — Google Hotels one-star property search (1 August 2026)
+
+Six independent one-city Luna calls issued exactly three Google-Hotels-restricted searches each. All 18
+searches/operations were compliant with no reads, retries, fallback sources, arithmetic, FX conversion, averaging,
+or cross-city evidence. Only Cape Town produced a strict quote: Road Lodge Cape Town International Airport,
+USD63 all-in for one night, exact one-star class, and explicit two-adult occupancy. The other five cities failed
+on class, identity, occupancy, or tax/price evidence.
+
+**Verdict:** reject Google Hotels as a productive one-star panel (1/6 strict quotes); retain Cape Town only as
+independent ground-truth candidate evidence. Do not map it to `accom_1_star` or fit a correction. Read
+`data/reference/v5/experiments/043-google-hotels-one-star/`.

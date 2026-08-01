@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "city-cost-v5-google-hotels-one-star-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "propertyQuotes": [
+    {
+      "propertyName": "Road Lodge Cape Town International Airport",
+      "status": "found",
+      "value": 63,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "class": "1_star",
+      "sourceUrl": "https://www.google.com/travel/hotels/entity/ChcIvubupNXzxt5YGgsvZy8xdGs0aG5zaxAB",
+      "sourceTitle": "Road Lodge Cape Town International Airport - Google hotels",
+      "evidenceText": "Google Hotels identified Road Lodge Cape Town International Airport at Cape Town International Airport, Airport Approach Rd, Matroosfontein, Cape Town, 7490, South Africa as a 1-star hotel. The result displayed $55 nightly and $63 total for 1 night with taxes + fees, with the occupancy control set to 2 Adults. The retained value is the directly displayed one-night $63 total including taxes and fees; no arithmetic was performed.",
+      "taxStatus": "included",
+      "referencePeriod": "Google Hotels result crawled 3 weeks before 2026-08-01; displayed Aug 3-4, one night, 2 adults, with $63 total including taxes and fees",
+      "searchQuery": "site:google.com/travel/hotels Cape Town South Africa 1-star hotel 2 adults price",
+      "reason": "Strict contract satisfied: exact Cape Town property, explicit 1-star class, explicit two-adult occupancy, direct numeric one-night total, Google Hotels source URL, and taxes/fees explicitly included."
+    }
+  ],
+  "rejected": [
+    {
+      "source": "Google Hotels query 2",
+      "reason": "The exact-city result for never@home Green Point was labelled 5-star rather than 1-star; nearby or other-class results were rejected."
+    },
+    {
+      "source": "Google Hotels query 3",
+      "reason": "Road Lodge N1 City was an exact-city 1-star result with a numeric nightly/tax-inclusive display but did not show explicit two-adult occupancy in the search result. A duplicate Road Lodge Cape Town International Airport result also lacked an explicit occupancy control in this query, so neither was used to supplement the qualifying first-query quote."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

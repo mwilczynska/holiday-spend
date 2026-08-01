@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v5-google-hotels-one-star-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "propertyQuotes": [
+    {
+      "propertyName": null,
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "class": "1_star",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "Google Hotels Hanoi landing and entity results exposed named properties labelled 3–5 stars and a Hanoi Brilliant result whose snippets conflicted between a 1-star review summary and a 3-star property label; no exact unambiguous 1-star property had explicit two-adult/two-guest one-room occupancy, a numeric non-from nightly price, and tax treatment.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Google Hotels search results crawled 3 weeks before 2026-08-01; no qualifying exact-property row",
+      "searchQuery": "site:google.com/travel/hotels Hanoi Vietnam 1-star hotel taxes fees room",
+      "reason": "Not found under the strict Google Hotels contract. Other star classes and the class-conflicting Hanoi Brilliant result were rejected; no Hanoi 1-star property quote was substituted."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

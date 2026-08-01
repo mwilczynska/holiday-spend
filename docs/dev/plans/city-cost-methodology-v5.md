@@ -187,6 +187,10 @@ and Da Nang. Only one of nine property attempts passed strict tax/occupancy/iden
 has a register-versus-search address discrepancy. Reject the route as a productive panel and retain the row only
 as guarded identity-review evidence.
 
+Experiment 043 tested Google Hotels one-star snippets across six one-city calls. Only Cape Town passed the strict
+property contract (1/6); reject the route as a productive panel and retain that row only as an independent
+ground-truth candidate.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

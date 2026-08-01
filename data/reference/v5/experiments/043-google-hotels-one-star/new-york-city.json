@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "city-cost-v5-google-hotels-one-star-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "propertyQuotes": [
+    {
+      "propertyName": "U.S. Pacific Hotel",
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults",
+      "class": "1_star",
+      "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgIqp2mu7q39-HvARoLL2cvMXRqaDA4czgQAQ/prices?ts=CAEaBAoCGgAqBAoAGgA",
+      "sourceTitle": "U.S. Pacific Hotel - Google hotels",
+      "evidenceText": "Google Hotels returned U.S. Pacific Hotel at 106 Bowery, New York, NY 10013 as a 1-star hotel with $99 nightly and $117 total for 1 night with taxes + fees. The result did not display the required explicit 2 Adults or 2 guests occupancy control, so the numeric quote was not accepted.",
+      "taxStatus": "unknown",
+      "referencePeriod": "Google Hotels result crawled 4 weeks before 2026-08-01; displayed Aug 3-4, one night; occupancy not explicit",
+      "searchQuery": "site:google.com/travel/hotels New York City United States 1-star hotel 2 adults price",
+      "reason": "Rejected under the strict contract because the exact-city 1-star result lacked explicit two-adult/two-guest occupancy, despite a direct nightly and taxes-plus-fees display. No unsupported value was substituted."
+    }
+  ],
+  "rejected": [
+    {
+      "source": "Google Hotels query 2",
+      "reason": "No exact New York City 1-star property with an eligible numeric price and explicit occupancy was returned; results were other cities or other star classes."
+    },
+    {
+      "source": "Google Hotels query 3",
+      "reason": "U.S. Pacific Hotel was again an exact-city 1-star result with $99 nightly and $117 total including taxes and fees, but explicit two-adult occupancy was absent. Other results were 2- to 4-star properties."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

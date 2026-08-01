@@ -333,6 +333,10 @@ Experiment 042 tested frozen official-register class evidence joined to exact-pr
 1/9 properties passed strict price/tax/occupancy checks, and the surviving Lisbon quote needs an address identity
 review. Reject the route as a productive panel; do not compute a basket or map a quote to `accom_1_star`.
 
+Experiment 043 tested Google Hotels snippets as a new one-star source family. Only 1/6 cities produced a strict
+exact-city, explicit-two-adult, non-`from`, tax-resolved quote. Reject the broader route; retain the Cape Town
+row only as independent ground-truth evidence and do not map or fit it.
+
 Experiment 031 rejected that calibration route: three one-city calls and nine bounded searches produced zero
 explicit two-adult 1-star rows. Momondo's two source-default candidates remain unresolved evidence only. The
 next run must test a different direct 1-star source or a separately curated two-adult property panel; do not

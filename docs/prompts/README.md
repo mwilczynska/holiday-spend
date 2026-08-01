@@ -41,6 +41,7 @@
 | `llm_prompt_city_cost_v5_experiment_040_private_two_guest_search.md` | **EXPERIMENT — complete; promote property panel only** | one city per delegated GPT-5.6 Luna-class invocation | Six-city explicit two-guest private-hostel search; dated property quotes are not city averages |
 | `llm_prompt_city_cost_v5_experiment_041_one_star_paired_calibration.md` | **EXPERIMENT — complete; reject paired calibration** | one city per delegated GPT-5.6 Luna-class invocation | Six-city BudgetYourTrip statistic plus Booking/Hotels explicit-occupancy pairing test |
 | `llm_prompt_city_cost_v5_experiment_042_registry_class_property_quotes.md` | **EXPERIMENT — complete; reject productive panel** | one city per delegated GPT-5.6 Luna-class invocation | Frozen official-register class evidence joined to exact-property two-adult quotes |
+| `llm_prompt_city_cost_v5_experiment_043_google_hotels_one_star.md` | **EXPERIMENT — complete; reject broader route** | one city per delegated GPT-5.6 Luna-class invocation | Six-city Google Hotels one-star property search with explicit tax/occupancy gates |
 | `llm_prompt_city_cost_observations_1.md` | **ABANDONED (v3)** | `scripts/run-city-cost-research.ts` | v3 tooling. Kept only so `npm run methodology:research` still runs |
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had

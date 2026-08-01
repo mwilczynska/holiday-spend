@@ -343,6 +343,10 @@ quotes, in Lisbon, with an unresolved address discrepancy. Barcelona's only pric
 Da Nang had no qualifying quote. Reject the join as a productive one-star panel; no basket, correction, or product
 mapping is permitted.
 
+Experiment 043 tested Google Hotels as another one-star source family: 1/6 strict property quotes, Cape Town
+only. The route fails the 3/6 promotion gate; preserve the all-in USD63 row as ground-truth candidate evidence,
+but no one-star mapping, basket, or correction is allowed.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

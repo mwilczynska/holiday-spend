@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v5-google-hotels-one-star-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "propertyQuotes": [],
+  "rejected": [
+    {
+      "source": "Google Hotels query 1",
+      "reason": "The results exposed AeroHotel Barcelona Airport, a 1-star hotel with $135 nightly and taxes+fees, but its address is El Prat de Llobregat rather than Barcelona city and the snippet does not establish the required two-adult/one-room occupancy. Other results were different star classes."
+    },
+    {
+      "source": "Google Hotels query 2",
+      "reason": "The results exposed Hostal Athenas, a 1-star hotel with a $73 nightly taxes+fees display, but its address is Sant Adrià de Besòs rather than Barcelona city. Other exact-Barcelona results were 4- or 5-star properties or lacked a qualifying price/occupancy row."
+    },
+    {
+      "source": "Google Hotels query 3",
+      "reason": "The results exposed Exe Barcelona Gate with a 1-star mention, but the property is in Sant Joan Despí and the snippet did not establish two adults/one room. Other results were different properties or wrong star classes. No exact-city 1-star quote was retained."
+    }
+  ],
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
