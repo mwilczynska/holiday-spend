@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-v1",
+  "city": "Manila",
+  "country": "Philippines",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 31,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults_source_trend",
+    "class": "3_star",
+    "statistic": "city_class_average",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.expedia.com/3Star-Manila-Hotels.s30-0-d178282.Travel-Guide-Filter-Hotels",
+    "sourceTitle": "The Best 3 Star Hotels in Manila from $24 | Expedia",
+    "evidenceText": "Expedia's exact Manila 3-star trend table lists August $31. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Manila.",
+    "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+    "searchQuery": "site:expedia.com Manila Philippines 3-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

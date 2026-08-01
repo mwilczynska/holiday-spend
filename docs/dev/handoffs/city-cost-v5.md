@@ -442,3 +442,20 @@ boundary, strict private/hotel identity, exact source/display currency, and expl
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked 018
 holdout, use the shipping CSV as ground truth, or infer dorm/private separation from the blended hostel channel. The
 derivation contract remains out of the shipping path until source feasibility and accuracy gates pass.
+
+Experiment 061 completed twelve new independent one-city Luna contexts and 36 ordered Expedia 2-/3-/4-star
+searches. Strict coverage was 26/36 (2-star 8/12, 3-star 8/12, 4-star 10/12), with five complete cities; the
+complete-city gate failed. Retain paired evidence but do not map or fit.
+
+Experiment 062 completed twelve independent one-city Luna contexts and 12 ordered Expedia 3-star searches. Strict
+coverage was 4/12, with 0/4 recovery among the 061 misses; both gates failed. Retain four strict rows, stop query
+retry expansion, and reassess the pooled Expedia source/model boundary. No mapping or fitting is allowed.
+
+Experiment 063 completed twelve entirely new independent one-city Luna contexts and 36 ordered Expedia 2-/3-/4-star
+searches. Strict coverage was 15/36 (2-star 2/12, 3-star 7/12, 4-star 6/12), with one complete city; all gates
+failed. Retain rows for a pooled source-ceiling audit but do not map or fit.
+
+Experiment 064 completed the deterministic pooled Expedia audit: 80 rows across 36 cities, 16 complete 2-/3-/4-star
+cities, 20 matched 2↔3 cities, 22 matched 3↔4 cities, and zero one-star/hostel rows. No relationship reached the
+30-city plus 10-holdout gate. Do not fit or map; pivot the missing-class boundary while retaining Expedia as a
+candidate source for 2-/3-/4-star values.

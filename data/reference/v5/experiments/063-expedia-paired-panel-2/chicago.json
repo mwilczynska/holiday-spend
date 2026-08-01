@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Chicago",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 99,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Chicago-Hotels.s20-0-d178248.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Chicago, IL from $64 | Expedia",
+      "evidenceText": "Expedia's exact Chicago 2-star trend table lists August $99. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 2-star properties in Chicago.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Chicago United States 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 152,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Chicago-Hotels.s30-0-d178248.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Chicago, IL from $75 | Expedia",
+      "evidenceText": "Expedia's exact Chicago 3-star trend table lists August US$152. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Chicago.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Chicago United States 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 215,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/cn/4Star-Chicago-Hotels.s40-0-d178248.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "4 星级酒店订房与住宿预约 | Expedia",
+      "evidenceText": "Expedia's Chinese exact Chicago 4-star class page lists August $215. Its evidence says price trends exclude taxes and fees and are based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 4-star properties in Chicago.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last month)",
+      "searchQuery": "site:expedia.com Chicago United States 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence; the localized Expedia page identifies Chicago and 4-star properties, gives the numeric August trend, explicit two-adult basis, USD display, seven-day window, and tax exclusion."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

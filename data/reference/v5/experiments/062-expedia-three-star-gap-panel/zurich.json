@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-v1",
+  "city": "Zurich",
+  "country": "Switzerland",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "found",
+    "value": 255,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "explicit_two_adults_source_trend",
+    "class": "3_star",
+    "statistic": "city_class_average",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.expedia.com/3Star-Zurich-Hotels.s30-0-d4191.Travel-Guide-Filter-Hotels?adobe_mc=MCMID%3D81490540568399952874937841860946487674%7CMCORGID%3DC00802BE5330A8350A490D4C%2540AdobeOrg%7CTS%3D1736467200",
+    "sourceTitle": "The Best 3 Star Hotels in Zürich from $87 | Expedia",
+    "evidenceText": "Expedia's exact Zürich (Zurich) 3-star trend table lists August $255. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Zürich.",
+    "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+    "searchQuery": "site:expedia.com Zurich Switzerland 3-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "Accepted as strict source-feasibility evidence; Zürich is the source's spelling of the exact queried city Zurich, and city/class, trend, two-adult basis, USD display, seven-day window, and tax exclusion are explicit."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-pooled-ceiling-audit-v1",
+  "sourceExperiments": ["028", "029", "059", "060", "061", "063"],
+  "rawAcceptedRows": 80,
+  "deduplicatedRows": 80,
+  "uniqueCities": 36,
+  "classRows": {"1_star": 0, "2_star": 23, "3_star": 30, "4_star": 27},
+  "complete234Cities": 16,
+  "matchedCities": {"hotel_2_from_3": 20, "hotel_4_from_3": 22, "hostel_or_one_star": 0},
+  "allRelationshipsFitEligible": false,
+  "taxBasis": {"excluded": 80, "included": 0, "unknownEligible": 0},
+  "productMapping": "none; pooled ceiling only"
+}

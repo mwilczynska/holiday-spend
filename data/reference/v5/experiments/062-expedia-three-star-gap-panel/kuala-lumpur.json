@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-v1",
+  "city": "Kuala Lumpur",
+  "country": "Malaysia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "class": "3_star",
+    "statistic": "city_class_average",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.expedia.com/Kuala-Lumpur-Hotels.d180008.Travel-Guide-Hotels?equalTargetTab=tab-1",
+    "sourceTitle": "Top 10 Hotels in Kuala Lumpur | Expedia",
+    "evidenceText": "The returned Expedia result lists star-rating counts including 3-star hotels and a generic all-hotel Kuala Lumpur trend, but no exact-city 3-star class trend value. The generic trend cannot substitute for a requested class.",
+    "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+    "searchQuery": "site:expedia.com Kuala Lumpur Malaysia 3-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "No exact-city 3-star numeric average or trend was returned; the generic all-hotel trend was rejected as class-ambiguous."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

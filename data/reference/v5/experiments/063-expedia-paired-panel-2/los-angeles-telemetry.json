@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-telemetry-v1",
+  "city": "Los Angeles",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:expedia.com Los Angeles United States 2-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Los Angeles United States 3-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Los Angeles United States 4-star hotels average nightly price trend 2 adults taxes fees"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 0,
+  "notFoundRows": 3,
+  "protocolCompliant": true,
+  "notes": "One-city, three-search Expedia paired panel. The ordered search call completed, but the returned payload was truncated before any city/class evidence could be inspected; rows are conservatively unassigned rather than counted as source misses. No retry, page read, fallback, arithmetic, FX, or cross-city evidence was used."
+}

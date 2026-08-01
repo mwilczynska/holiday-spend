@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Los Angeles",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The single ordered search call completed, but its result payload was truncated before an inspectable exact-city 2-star class trend could be verified. No value was assigned.",
+      "referencePeriod": "Expedia search retrieved 2026-08-01; qualifying evidence not inspectable in the returned payload.",
+      "searchQuery": "site:expedia.com Los Angeles United States 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Evidence payload truncation prevented verification; not treated as a source miss or as coverage."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The single ordered search call completed, but its result payload was truncated before an inspectable exact-city 3-star class trend could be verified. No value was assigned.",
+      "referencePeriod": "Expedia search retrieved 2026-08-01; qualifying evidence not inspectable in the returned payload.",
+      "searchQuery": "site:expedia.com Los Angeles United States 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Evidence payload truncation prevented verification; not treated as a source miss or as coverage."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The single ordered search call completed, but its result payload was truncated before an inspectable exact-city 4-star class trend could be verified. No value was assigned.",
+      "referencePeriod": "Expedia search retrieved 2026-08-01; qualifying evidence not inspectable in the returned payload.",
+      "searchQuery": "site:expedia.com Los Angeles United States 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Evidence payload truncation prevented verification; not treated as a source miss or as coverage."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

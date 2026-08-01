@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 114,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-London-Hotels.s20-0-d178279.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in London from $44 | Expedia",
+      "evidenceText": "Expedia's 2-star London trend table shows August $114. It states the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 2-star properties in London.",
+      "referencePeriod": "Expedia result crawled last month; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com London United Kingdom 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as source-feasibility evidence with known excluded-tax base-rate basis; it is not an inclusive product observation."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 141,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-London-Hotels.s30-0-d178279.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in London from $27 | Expedia",
+      "evidenceText": "Expedia's 3-star London trend table shows August $141. It explicitly says the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in London.",
+      "referencePeriod": "Expedia result crawled 3 weeks ago; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com London United Kingdom 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as source-feasibility evidence with known excluded-tax base-rate basis; it is not an inclusive product observation."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 218,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-London-Hotels.s40-0-d178279.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in London | Expedia",
+      "evidenceText": "Expedia's 4-star London trend table shows August $218. It explicitly says the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in London.",
+      "referencePeriod": "Expedia result crawled last week; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com London United Kingdom 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as source-feasibility evidence with known excluded-tax base-rate basis; it is not an inclusive product observation."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

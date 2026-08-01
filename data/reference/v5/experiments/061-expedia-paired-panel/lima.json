@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Lima",
+  "country": "Peru",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 36,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Lima-Hotels.s20-0-d178277.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Lima from $17 | Expedia",
+      "evidenceText": "Expedia's exact Lima 2-star trend table lists August $36. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 2-star properties in Lima.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled 2 weeks ago)",
+      "searchQuery": "site:expedia.com Lima Peru 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 65,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/es/3Estrellas-Lima-Hoteles.s30-0-d178277.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "The Best 3 Star Hotels in Lima from $25 | Expedia",
+      "evidenceText": "Expedia's exact Lima 3-star trend table lists August $65. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Lima.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last month)",
+      "searchQuery": "site:expedia.com Lima Peru 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 118,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/cn/4Star-Lima-Hotels.s40-0-d178277.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Lima from $73 | Expedia",
+      "evidenceText": "Expedia's exact Lima 4-star trend table lists August $118. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in Lima.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled 4 months ago)",
+      "searchQuery": "site:expedia.com Lima Peru 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

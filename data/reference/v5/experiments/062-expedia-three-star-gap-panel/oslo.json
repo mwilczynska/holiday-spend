@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-v1",
+  "city": "Oslo",
+  "country": "Norway",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "class": "3_star",
+    "statistic": "city_class_average",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.expedia.com/Oslo-Hotels.d178295.Travel-Guide-Hotels?adobe_mc=MCMID%3D81490540568399952874937841860946487674%7CMCORGID%3DC00802BE5330A8350A490D4C%2540AdobeOrg%7CTS%3D1737590400",
+    "sourceTitle": "Top 10 Hotels in Oslo (from $85) 2026 - Competitive Prices | Expedia",
+    "evidenceText": "The returned generic Oslo city page gives an all-hotel August trend of $175 and lists 3-star property counts, but it does not provide a 3-star-specific trend. A separate result is for Oslo City Centre (district), not city-wide. Neither can be substituted for the requested exact city/class trend.",
+    "referencePeriod": "August 2026 generic Oslo hotel trend; result crawled last week",
+    "searchQuery": "site:expedia.com Oslo Norway 3-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "Rejected because no exact city-wide 3-star class trend was returned; only a generic city trend and a district trend were available."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

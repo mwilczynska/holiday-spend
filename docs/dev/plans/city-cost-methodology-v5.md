@@ -319,6 +319,33 @@ remained not-found. All accepted rows explicitly state two-adult, tax-excluded t
 **Decision:** reject the recovery gate. Retain Expedia as a strong source candidate but do not amend 059 or map/fit.
 Continue a new-city paired 2-/3-/4-star panel toward 30 matched cities.
 
+### Experiment 061 - Expedia paired 2-/3-/4-star panel
+
+Twelve new one-city Luna calls issued exactly three Expedia searches each. Strict coverage was 26/36 (2-star 8/12,
+3-star 8/12, 4-star 10/12), with five complete cities; the six-complete-city gate failed. Retain paired evidence,
+but do not map or fit. Continue toward pooled 30-city/10-holdout validation.
+
+### Experiment 062 - Expedia three-star gap panel
+
+Twelve one-city Luna calls issued exactly one Expedia 3-star query each. Strict coverage was 4/12, with 0/4 recovery
+among the Experiment 061 misses; both gates failed. Retain four strict rows, but stop query-retry expansion and
+reassess the pooled Expedia source/model boundary. Do not map or fit.
+
+### Experiment 063 - Expedia paired 2-/3-/4-star panel, tranche 2
+
+Twelve entirely new one-city Luna calls issued exactly three Expedia searches each. Strict coverage was 15/36
+(2-star 2/12, 3-star 7/12, 4-star 6/12), with one complete city; all gates failed. Retain rows for a pooled
+source-ceiling audit; no mapping or fitting follows.
+
+### Experiment 064 - Expedia pooled ceiling audit
+
+A deterministic script pooled Experiments 028/029/059/060/061/063 without fitting. It found 80 rows across 36
+cities, 16 complete 2-/3-/4-star cities, 20 matched 2↔3 cities, and 22 matched 3↔4 cities; one-star/hostel had
+zero eligible rows. No relationship reached 30 matched cities plus ten holdouts.
+
+**Decision:** reject fitting from the current pool and pivot the missing-class data boundary. Do not use shipping
+asserted values as ground truth.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

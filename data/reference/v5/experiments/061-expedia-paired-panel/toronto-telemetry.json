@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-telemetry-v1",
+  "city": "Toronto",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:expedia.com Toronto Canada 2-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Toronto Canada 3-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Toronto Canada 4-star hotels average nightly price trend 2 adults taxes fees"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 3,
+  "notFoundRows": 0,
+  "protocolCompliant": true,
+  "notes": "One-city, three-search Expedia paired panel. All classes returned exact-city monthly base-rate trends explicitly based on 2 adults and the prior seven days, with taxes and fees explicitly excluded. The 4-star result was a Chinese locale page but preserved the same exact-city basis and numeric currency. No pages were opened and no retries, fallback, arithmetic, FX, or cross-city evidence were used."
+}

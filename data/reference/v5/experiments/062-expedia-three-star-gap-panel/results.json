@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-v1",
+  "citiesTested": 12,
+  "acceptedRows": 4,
+  "recoveryCities": [
+    "Cairo",
+    "Kuala Lumpur",
+    "Mumbai",
+    "Santiago"
+  ],
+  "acceptedRecoveries": [],
+  "recoveryCount": 0,
+  "promotionGate": "overall>=8/12 and recovery>=3/4",
+  "promotionGatePassed": false,
+  "rows": [
+    {
+      "city": "Athens",
+      "accepted": true,
+      "value": 119,
+      "currency": "USD",
+      "taxStatus": "excluded"
+    },
+    {
+      "city": "Brussels",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Cairo",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "accepted": true,
+      "value": 34,
+      "currency": "USD",
+      "taxStatus": "excluded"
+    },
+    {
+      "city": "Johannesburg",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Kuala Lumpur",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Manila",
+      "accepted": true,
+      "value": 31,
+      "currency": "USD",
+      "taxStatus": "excluded"
+    },
+    {
+      "city": "Montreal",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Mumbai",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Oslo",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Santiago",
+      "accepted": false,
+      "value": null,
+      "currency": null,
+      "taxStatus": null
+    },
+    {
+      "city": "Zurich",
+      "accepted": true,
+      "value": 255,
+      "currency": "USD",
+      "taxStatus": "excluded"
+    }
+  ],
+  "productMapping": "none_coverage_repair_only"
+}

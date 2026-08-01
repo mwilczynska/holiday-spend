@@ -88,6 +88,18 @@ The 059 Expedia class-panel prompt is complete and near-pass: twelve new one-cit
 The 060 Expedia four-star gap prompt is complete and rejected at its recovery gate: 12 one-city contexts produced
 9/12 strict rows overall and recovered 3/5 prior misses. It cannot amend the 059 gate or authorize mapping/fitting.
 
+The 061 Expedia paired-panel prompt is complete and rejected at its complete-city gate: twelve new one-city contexts
+produced 26/36 strict rows and five complete cities. Retain paired evidence; do not map or fit.
+
+The 062 Expedia three-star gap prompt is complete and rejected: twelve one-city contexts produced 4/12 strict rows
+and recovered 0/4 prior misses. Retain four rows as evidence; do not map or fit.
+
+The 063 Expedia paired-panel tranche-2 prompt is complete and rejected: twelve entirely new cities produced 15/36
+strict rows and one complete city. Retain rows for the pooled source-ceiling audit; no mapping or fitting.
+
+Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
+cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.
+
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes
 auxiliary `mcmeal_combo`; it is never silently substituted for a missing street-food anchor.

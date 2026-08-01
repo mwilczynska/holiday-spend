@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-v1",
+  "city": "Johannesburg",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "class": "3_star",
+    "statistic": "city_class_average",
+    "taxStatus": "unknown",
+    "sourceUrl": null,
+    "sourceTitle": "Expedia Johannesburg hotel search result",
+    "evidenceText": "The returned Expedia results list Johannesburg star-rating counts and a generic all-hotel price trend, plus individual 3-star properties, but no exact-city 3-star class trend value. Generic and single-property prices cannot substitute for a class average.",
+    "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+    "searchQuery": "site:expedia.com Johannesburg South Africa 3-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "No exact-city 3-star numeric average or trend was returned; generic all-hotel and single-property values were rejected as class-ambiguous."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

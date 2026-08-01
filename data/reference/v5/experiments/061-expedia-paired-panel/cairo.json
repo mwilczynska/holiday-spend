@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Cairo",
+  "country": "Egypt",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 21,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Cairo-Hotels.s20-0-d178243.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Cairo from $6 | Expedia",
+      "evidenceText": "Expedia’s Cairo 2-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 2 stars in Cairo. Its monthly trend table lists August at $21 per night.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 2-star properties",
+      "searchQuery": "site:expedia.com Cairo Egypt 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "referencePeriod": null,
+      "searchQuery": "site:expedia.com Cairo Egypt 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "The ordered search returned no exact-city 3-star class trend with a numeric non-from average, explicit two-adult source trend, and tax-exclusion evidence. General-city trends and unrelated properties were class-ambiguous and rejected."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 87,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Cairo-Hotels.s40-0-d178243.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Cairo from $29 | Expedia",
+      "evidenceText": "Expedia’s Cairo 4-star page states that price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 4 stars in Cairo. Its monthly trend table lists August at $87 per night.",
+      "referencePeriod": "August 2026 monthly trend; base rates for nightly stays for 2 adults found in the prior 7 days and averaged over commonly viewed 4-star properties",
+      "searchQuery": "site:expedia.com Cairo Egypt 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, two-adult nightly trend, reference window, currency display, and explicit tax exclusion are present."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-telemetry-v1",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:expedia.com Rio de Janeiro Brazil 2-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Rio de Janeiro Brazil 3-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Rio de Janeiro Brazil 4-star hotels average nightly price trend 2 adults taxes fees"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 1,
+  "notFoundRows": 2,
+  "protocolCompliant": true,
+  "notes": "One-city, three-search Expedia paired panel. Rio de Janeiro 3-star supplied a strict tax-excluded trend; 2-star and 4-star searches returned only a generic all-hotel trend. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

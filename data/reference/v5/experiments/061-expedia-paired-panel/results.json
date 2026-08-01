@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "citiesTested": 12,
+  "classCoverage": {
+    "2": 8,
+    "3": 8,
+    "4": 10
+  },
+  "completeCities": [
+    "Lima",
+    "London",
+    "New York",
+    "Stockholm",
+    "Toronto"
+  ],
+  "promotionGate": "2-star>=8, 3-star>=8, 4-star>=8, complete cities>=6",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Auckland",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Cairo",
+      "measures": {
+        "2": true,
+        "3": false,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Kuala Lumpur",
+      "measures": {
+        "2": false,
+        "3": false,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Lima",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": true
+      },
+      "complete": true
+    },
+    {
+      "city": "London",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": true
+      },
+      "complete": true
+    },
+    {
+      "city": "Mumbai",
+      "measures": {
+        "2": true,
+        "3": false,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "New York",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": true
+      },
+      "complete": true
+    },
+    {
+      "city": "Rio de Janeiro",
+      "measures": {
+        "2": false,
+        "3": true,
+        "4": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Santiago",
+      "measures": {
+        "2": false,
+        "3": false,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Singapore",
+      "measures": {
+        "2": false,
+        "3": true,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Stockholm",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": true
+      },
+      "complete": true
+    },
+    {
+      "city": "Toronto",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": true
+      },
+      "complete": true
+    }
+  ],
+  "byClass": {
+    "2": [
+      {
+        "city": "Auckland",
+        "value": 61,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Auckland-Hotels.s20-0-d178233.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Cairo",
+        "value": 21,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Cairo-Hotels.s20-0-d178243.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Lima",
+        "value": 36,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Lima-Hotels.s20-0-d178277.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "London",
+        "value": 114,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-London-Hotels.s20-0-d178279.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Mumbai",
+        "value": 39,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Mumbai-Hotels.s20-0-d6050062.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "New York",
+        "value": 187,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/es/2Estrellas-Nueva-York-Hoteles.s20-0-d178293.Guia-Viajes-Filter-Hoteles"
+      },
+      {
+        "city": "Stockholm",
+        "value": 115,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Stockholm-Hotels.s20-0-d178311.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Toronto",
+        "value": 125,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Toronto-Hotels.s20-0-d178314.Travel-Guide-Filter-Hotels"
+      }
+    ],
+    "3": [
+      {
+        "city": "Auckland",
+        "value": 82,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Auckland-Hotels.s30-0-d178233.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Lima",
+        "value": 65,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/es/3Estrellas-Lima-Hoteles.s30-0-d178277.Guia-Viajes-Filter-Hoteles"
+      },
+      {
+        "city": "London",
+        "value": 141,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-London-Hotels.s30-0-d178279.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "New York",
+        "value": 210,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-New-York-Hotels.s30-0-d178293.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Rio de Janeiro",
+        "value": 81,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Rio-De-Janeiro-Hotels.s30-0-d178301.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Singapore",
+        "value": 110,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Singapore-Hotels.s30-0-d3168.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Stockholm",
+        "value": 131,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Toronto",
+        "value": 164,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Toronto-Hotels.s30-0-d178314.Travel-Guide-Filter-Hotels"
+      }
+    ],
+    "4": [
+      {
+        "city": "Cairo",
+        "value": 87,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Cairo-Hotels.s40-0-d178243.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Kuala Lumpur",
+        "value": 74,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Kuala-Lumpur-Hotels.s40-0-d180008.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Lima",
+        "value": 118,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/cn/4Star-Lima-Hotels.s40-0-d178277.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "London",
+        "value": 218,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-London-Hotels.s40-0-d178279.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Mumbai",
+        "value": 92,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Mumbai-Hotels.s40-0-d6050062.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "New York",
+        "value": 230,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-New-York-Hotels.s40-0-d178293.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Santiago",
+        "value": 137,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Santiago-Hotels.s40-0-d178306.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Singapore",
+        "value": 175,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Singapore-Hotels.s40-0-d3168.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Stockholm",
+        "value": 190,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Stockholm-Hotels.s40-0-d178311.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Toronto",
+        "value": 281,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/cn/4Star-Toronto-Hotels.s40-0-d178314.Travel-Guide-Filter-Hotels"
+      }
+    ]
+  },
+  "productMapping": "none_source_feasibility_only"
+}

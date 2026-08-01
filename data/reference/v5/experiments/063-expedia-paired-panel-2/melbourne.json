@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Melbourne",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/2Star-Melbourne-Hotels.s20-0-d178283.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Melbourne | Expedia",
+      "evidenceText": "The returned exact-city 2-star Expedia page did not expose a numeric class trend. No exact-city 2-star average could be verified.",
+      "referencePeriod": "Expedia result retrieved 2026-08-01; no qualifying class trend returned.",
+      "searchQuery": "site:expedia.com Melbourne Australia 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No exact-city 2-star numeric average or trend was returned."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": 100,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Melbourne-Central-Business-District-Melbourne-Hotels.s30-n6052020-0.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Melbourne Central Business District | Expedia",
+      "evidenceText": "The returned Expedia 3-star trend shows August $100 for Melbourne Central Business District, based on 2 adults and excluding taxes and fees. The district-scoped result was rejected for the city-wide target.",
+      "referencePeriod": "Expedia result retrieved 2026-08-01; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Melbourne Australia 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "A numeric 3-star trend was returned only for Melbourne Central Business District, not exact city scope."
+    },
+    "hotel_4star_room_2p": {
+      "status": "not_found",
+      "value": 123,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Melbourne-Central-Business-District-Melbourne-Hotels.s40-n6052020-0.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Melbourne Central Business District | Expedia",
+      "evidenceText": "The returned Expedia 4-star trend shows August $123 for Melbourne Central Business District, based on 2 adults and excluding taxes and fees. The district-scoped result was rejected for the city-wide target.",
+      "referencePeriod": "Expedia result retrieved 2026-08-01; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Melbourne Australia 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "A numeric 4-star trend was returned only for Melbourne Central Business District, not exact city scope."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-telemetry-v1",
+  "city": "Brisbane",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:expedia.com Brisbane Australia 2-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Brisbane Australia 3-star hotels average nightly price trend 2 adults taxes fees",
+    "site:expedia.com Brisbane Australia 4-star hotels average nightly price trend 2 adults taxes fees"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 2,
+  "notFoundRows": 1,
+  "protocolCompliant": true,
+  "notes": "One-city, three-search Expedia paired panel. Exact-city 3-star and 4-star monthly base-rate trends explicitly based on 2 adults and the prior seven days were returned with taxes and fees excluded. The 2-star result was only a generic all-hotel trend and was rejected. No pages were opened and no retries, fallback, arithmetic, FX, or cross-city evidence were used."
+}

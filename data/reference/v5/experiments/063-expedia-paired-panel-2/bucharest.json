@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Bucharest",
+  "country": "Romania",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Bucharest-Hotels.d719.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Bucharest | Expedia",
+      "evidenceText": "The returned Expedia page exposes a generic all-hotel Bucharest trend and star counts, but no exact-city 2-star class trend. The generic trend is class-ambiguous and cannot substitute for the requested class.",
+      "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+      "searchQuery": "site:expedia.com Bucharest Romania 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No exact-city 2-star numeric average or trend was returned; generic all-hotel trend and individual properties were rejected."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Bucharest-Hotels.d719.Travel-Guide-Hotels",
+      "sourceTitle": "Top 10 Hotels in Bucharest | Expedia",
+      "evidenceText": "The returned Expedia page lists 3-star properties and a generic all-hotel Bucharest trend, but no exact-city 3-star class trend. Individual property prices and the generic trend cannot substitute for a class average.",
+      "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+      "searchQuery": "site:expedia.com Bucharest Romania 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "No exact-city 3-star numeric average or trend was returned; generic all-hotel and single-property values were rejected as class-ambiguous."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 93,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Bucharest-Hotels.s40-0-d719.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Bucharest from $74 | Expedia",
+      "evidenceText": "Expedia's exact Bucharest 4-star trend table lists August at $93. The evidence states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed properties with 4 stars in Bucharest.",
+      "referencePeriod": "August 2026 monthly trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Bucharest Romania 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Exact city/class, numeric August trend, explicit two-adult basis, USD display, seven-day reference window, and tax exclusion are all present."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -1439,6 +1439,17 @@ displays, or lacked a numeric class average. **Verdict:** reject the Trip.com cl
 contract. Do not map 2-/3-/4-star prices, infer occupancy/tax basis, or fit a class ratio. Read
 `data/reference/v5/experiments/058-trip-class-tax-panel/`.
 
+## Experiment 059 - Expedia two-adult class-trend panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly three ordered Expedia searches each
+(2-star, 3-star, 4-star; 36 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
+sources, or cross-city evidence occurred.
+
+Strict coverage was **27/36**: 2-star 9/12, 3-star 11/12, and 4-star 7/12. Six cities were complete, but the
+pre-registered 4-star 8/12 gate failed by one row. All accepted rows explicitly state two-adult nightly base-rate
+trends with taxes/fees excluded. **Verdict:** near-pass; retain Expedia as the strongest source candidate, run a
+targeted 4-star gap panel, and do not map or fit yet. Read `data/reference/v5/experiments/059-expedia-class-panel/`.
+
 ## Experiment 060 - Expedia four-star gap panel (1 August 2026)
 
 Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly one ordered Expedia 4-star search each
@@ -1451,14 +1462,44 @@ base-rate trends with taxes/fees excluded. The overall 8/12 gate passed, but the
 4/5 and failed. **Verdict:** reject coverage-repair promotion, retain Expedia as a source candidate, and continue
 a new-city paired panel. Read `data/reference/v5/experiments/060-expedia-four-star-gap-panel/`.
 
-## Experiment 059 - Expedia two-adult class-trend panel (1 August 2026)
+## Experiment 061 - Expedia paired 2-/3-/4-star panel (1 August 2026)
 
 Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly three ordered Expedia searches each
 (2-star, 3-star, 4-star; 36 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
 sources, or cross-city evidence occurred.
 
-Strict coverage was **27/36**: 2-star 9/12, 3-star 11/12, and 4-star 7/12. Six cities were complete, but the
-pre-registered 4-star 8/12 gate failed by one row. All accepted rows explicitly state two-adult nightly base-rate
-trends with taxes/fees excluded; unknown tax, generic trends, district substitutions, and missing class trends were
-rejected. **Verdict:** near-pass; retain Expedia as the strongest source candidate, run a targeted 4-star gap panel,
-and do not map or fit yet. Read `data/reference/v5/experiments/059-expedia-class-panel/`.
+Strict coverage was **26/36**: 2-star 8/12, 3-star 8/12, and 4-star 10/12. Only five cities were complete, below
+the 6/12 promotion gate. All accepted rows explicitly state two-adult nightly base-rate trends with taxes/fees
+excluded. **Verdict:** reject promotion, retain paired evidence, and run a 3-star gap panel; no mapping or fitting.
+Read `data/reference/v5/experiments/061-expedia-paired-panel/`.
+
+## Experiment 062 - Expedia three-star gap panel (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly one ordered Expedia 3-star search each
+(12 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback sources, or cross-city
+evidence occurred.
+
+Strict coverage was **4/12** overall (Athens, Ho Chi Minh City, Manila, Zurich), with **0/4** recovery among the
+Experiment 061 misses. Generic all-hotel trends, district-only pages, and missing exact class trends were rejected.
+**Verdict:** reject the coverage-repair gate, retain four strict rows, and reassess the pooled Expedia boundary; no
+mapping or fitting. Read `data/reference/v5/experiments/062-expedia-three-star-gap-panel/`.
+
+## Experiment 063 - Expedia paired 2-/3-/4-star panel, tranche 2 (1 August 2026)
+
+Twelve entirely new single-city GPT-5.6 Luna-class contexts issued exactly three ordered Expedia searches each
+(2-star, 3-star, 4-star; 36 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
+sources, or cross-city evidence occurred.
+
+Strict coverage was **15/36**: 2-star 2/12, 3-star 7/12, and 4-star 6/12. Only Chicago was complete. Accepted
+rows explicitly state two-adult nightly base-rate trends with taxes/fees excluded; generic, district, class-missing,
+and truncated responses were rejected. **Verdict:** reject the paired gate, retain rows for a pooled ceiling audit,
+and do not map or fit. Read `data/reference/v5/experiments/063-expedia-paired-panel-2/`.
+
+## Experiment 064 - Expedia pooled evidence ceiling audit (1 August 2026)
+
+The deterministic audit pooled accepted rows from Experiments 028, 029, 059, 060, 061, and 063 without fitting.
+It found **80 rows across 36 unique cities**, all explicitly tax-excluded: 1-star 0, 2-star 23, 3-star 30, and
+4-star 27. Sixteen cities were complete for 2-/3-/4-star; 2↔3 matched cities numbered 20 and 3↔4 matched cities
+22. Hostel/private and one-star relationships had zero eligible rows. **Verdict:** no relationship meets the
+30-city plus 10-holdout gate; do not fit or map. Pivot the missing-class boundary and retain Expedia only as a
+candidate 2-/3-/4-star source. Read `data/reference/v5/experiments/064-expedia-pooled-ceiling-audit/`.

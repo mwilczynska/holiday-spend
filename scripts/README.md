@@ -76,6 +76,11 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-booking-class-tax-panel.mjs` | `analyze-v5-booking-class-tax-panel.mjs` | Experiment 057: audits Booking 3-/4-star class averages and tax metadata |
 | `node scripts/analyze-v5-trip-class-tax-panel.mjs` | `analyze-v5-trip-class-tax-panel.mjs` | Experiment 058: audits Trip.com 2-/3-/4-star class averages and tax metadata |
 | `node scripts/analyze-v5-expedia-class-panel.mjs` | `analyze-v5-expedia-class-panel.mjs` | Experiment 059: audits Expedia 2-/3-/4-star two-adult trend rows and tax basis |
+| `node scripts/analyze-v5-expedia-four-star-gap.mjs` | `analyze-v5-expedia-four-star-gap.mjs` | Experiment 060: audits Expedia 4-star gap recovery without mapping |
+| `node scripts/analyze-v5-expedia-paired-panel.mjs` | `analyze-v5-expedia-paired-panel.mjs` | Experiment 061: audits paired Expedia 2-/3-/4-star rows without mapping |
+| `node scripts/analyze-v5-expedia-three-star-gap.mjs` | `analyze-v5-expedia-three-star-gap.mjs` | Experiment 062: audits Expedia 3-star gap recovery without mapping |
+| `node scripts/analyze-v5-expedia-paired-panel-2.mjs` | `analyze-v5-expedia-paired-panel-2.mjs` | Experiment 063: audits second paired Expedia 2-/3-/4-star tranche |
+| `node scripts/analyze-v5-expedia-pooled-ceiling.mjs` | `analyze-v5-expedia-pooled-ceiling.mjs` | Experiment 064: audits pooled Expedia coverage and model eligibility without fitting |
 
 V5 experiment outputs live under `data/reference/v5/experiments/` and must retain their hypothesis,
 inputs, raw evidence, deterministic results, and verdict.

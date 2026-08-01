@@ -93,6 +93,10 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/058-trip-class-tax-panel/` | **COMPLETE - reject promotion** | Twelve one-city calls: 0/36 strict 2-/3-/4-star rows; occupancy/tax evidence blocked |
 | `experiments/059-expedia-class-panel/` | **COMPLETE - near-pass; 4-star gap** | Twelve one-city calls: 27/36 strict rows; 4-star 7/12, no mapping |
 | `experiments/060-expedia-four-star-gap-panel/` | **COMPLETE - reject recovery gate** | Twelve one-city calls: 9/12 strict, 3/5 prior misses recovered; no mapping |
+| `experiments/061-expedia-paired-panel/` | **COMPLETE - reject complete-city gate** | Twelve one-city calls: 26/36 strict rows, 5 complete; no mapping |
+| `experiments/062-expedia-three-star-gap-panel/` | **COMPLETE - reject recovery gate** | Twelve one-city calls: 4/12 strict, 0/4 prior misses recovered; no mapping |
+| `experiments/063-expedia-paired-panel-2/` | **COMPLETE - reject paired gate** | Twelve new one-city calls: 15/36 strict rows, one complete; no mapping |
+| `experiments/064-expedia-pooled-ceiling-audit/` | **COMPLETE - reject fitting ceiling** | 80 rows/36 cities; 16 complete 2-/3-/4-star, no relationship fit-eligible |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

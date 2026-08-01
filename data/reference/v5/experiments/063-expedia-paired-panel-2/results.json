@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-2-v1",
+  "citiesTested": 12,
+  "classCoverage": {
+    "2": 2,
+    "3": 7,
+    "4": 6
+  },
+  "completeCities": [
+    "Chicago"
+  ],
+  "promotionGate": "2-star>=8, 3-star>=8, 4-star>=8, complete cities>=6",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Belgrade",
+      "measures": {
+        "2": false,
+        "3": true,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Brisbane",
+      "measures": {
+        "2": false,
+        "3": true,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Bucharest",
+      "measures": {
+        "2": false,
+        "3": false,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Chicago",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": true
+      },
+      "complete": true
+    },
+    {
+      "city": "Doha",
+      "measures": {
+        "2": false,
+        "3": false,
+        "4": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Dubai",
+      "measures": {
+        "2": false,
+        "3": true,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Los Angeles",
+      "measures": {
+        "2": false,
+        "3": false,
+        "4": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Melbourne",
+      "measures": {
+        "2": false,
+        "3": false,
+        "4": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Miami",
+      "measures": {
+        "2": true,
+        "3": true,
+        "4": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Perth",
+      "measures": {
+        "2": false,
+        "3": true,
+        "4": true
+      },
+      "complete": false
+    },
+    {
+      "city": "Sofia",
+      "measures": {
+        "2": false,
+        "3": true,
+        "4": false
+      },
+      "complete": false
+    },
+    {
+      "city": "Tallinn",
+      "measures": {
+        "2": false,
+        "3": false,
+        "4": false
+      },
+      "complete": false
+    }
+  ],
+  "byClass": {
+    "2": [
+      {
+        "city": "Chicago",
+        "value": 99,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Chicago-Hotels.s20-0-d178248.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Miami",
+        "value": 101,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/2Star-Miami-Hotels.s20-0-d178286.Travel-Guide-Filter-Hotels"
+      }
+    ],
+    "3": [
+      {
+        "city": "Belgrade",
+        "value": 83,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Brisbane",
+        "value": 126,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Brisbane-Hotels.s30-0-d179993.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Chicago",
+        "value": 152,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Chicago-Hotels.s30-0-d178248.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Dubai",
+        "value": 37,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Miami",
+        "value": 119,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Miami-Hotels.s30-0-d178286.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Perth",
+        "value": 123,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Perth-Hotels.s30-0-d180013.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Sofia",
+        "value": 76,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/3Star-Sofia-Hotels.s30-0-d3235.Travel-Guide-Filter-Hotels"
+      }
+    ],
+    "4": [
+      {
+        "city": "Belgrade",
+        "value": 114,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Belgrade-Hotels.s40-0-d6333.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Brisbane",
+        "value": 156,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Brisbane-Hotels.s40-0-d179993.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Bucharest",
+        "value": 93,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Bucharest-Hotels.s40-0-d719.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Chicago",
+        "value": 215,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/cn/4Star-Chicago-Hotels.s40-0-d178248.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Dubai",
+        "value": 47,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Dubai-Hotels.s40-0-d6053839.Travel-Guide-Filter-Hotels"
+      },
+      {
+        "city": "Perth",
+        "value": 154,
+        "currency": "USD",
+        "taxStatus": "excluded",
+        "sourceUrl": "https://www.expedia.com/4Star-Perth-Hotels.s40-0-d180013.Travel-Guide-Filter-Hotels"
+      }
+    ]
+  },
+  "productMapping": "none_source_feasibility_only"
+}

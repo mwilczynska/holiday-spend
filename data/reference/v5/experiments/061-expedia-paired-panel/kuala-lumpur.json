@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Kuala Lumpur",
+  "country": "Malaysia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/Kuala-Lumpur-Hotels.d180008.Travel-Guide-Hotels?equalTargetTab=tab-1",
+      "sourceTitle": "Top 10 Hotels in Kuala Lumpur (from $24) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "The returned generic Kuala Lumpur page gives an all-hotel August trend of $36 and lists 2-star property counts, but it does not provide a 2-star class trend. The generic trend cannot be substituted.",
+      "referencePeriod": "August 2026 generic Kuala Lumpur hotel trend; result crawled last week",
+      "searchQuery": "site:expedia.com Kuala Lumpur Malaysia 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because no exact 2-star class trend was returned; only a generic all-hotel trend was available."
+    },
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/3Star-Kuala-Lumpur-City-Centre-Kuala-Lumpur-Hotels.s30-n6152213-0.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Kuala Lumpur City Centre from $44 | Expedia",
+      "evidenceText": "The returned 3-star trend is explicitly for Kuala Lumpur City Centre, a district, and lists August $71. The exact city-wide Kuala Lumpur class trend was not returned, so this district result was rejected.",
+      "referencePeriod": "August 2026 Kuala Lumpur City Centre 3-star trend; result crawled last week",
+      "searchQuery": "site:expedia.com Kuala Lumpur Malaysia 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Rejected because the result is a district (Kuala Lumpur City Centre) rather than the exact city-wide class trend."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 74,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-Kuala-Lumpur-Hotels.s40-0-d180008.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in Kuala Lumpur from $44 | Expedia",
+      "evidenceText": "Expedia's exact Kuala Lumpur 4-star trend table lists August $74. It states that price-trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 4-star properties in Kuala Lumpur.",
+      "referencePeriod": "August 2026 monthly price trend; base rates averaged for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com Kuala Lumpur Malaysia 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as strict source-feasibility evidence with exact city/class, numeric trend, two-adult basis, Expedia.com USD display, seven-day window, and explicit tax exclusion."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

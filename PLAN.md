@@ -540,6 +540,23 @@ coverage was 9/12; 3/5 prior misses recovered (Budapest, Sydney, Tokyo), below t
 The overall gate passed, but no mapping or fitting is authorized. Combined with 059, Expedia has 16 unique strict
 4-star cities; continue a new-city paired 2-/3-/4-star panel toward the 30-city modelling requirement.
 
+Experiment 061 completed twelve new one-city Luna contexts and 36 ordered Expedia 2-/3-/4-star searches. Strict
+coverage was 26/36 (2-star 8/12, 3-star 8/12, 4-star 10/12), with five complete cities; the six-complete-city gate
+failed. Retain paired evidence but do not map or fit; run a 3-star gap panel.
+
+Experiment 062 completed twelve independent one-city Luna contexts and 12 ordered Expedia 3-star searches. Strict
+coverage was 4/12, with 0/4 recovery among the 061 misses; both pre-registered gates failed. Retain four strict rows
+but stop query-retry expansion and reassess the pooled Expedia source/model boundary. No mapping or fitting is allowed.
+
+Experiment 063 completed twelve entirely new one-city Luna contexts and 36 ordered Expedia 2-/3-/4-star searches.
+Strict coverage was 15/36 (2-star 2/12, 3-star 7/12, 4-star 6/12), with one complete city; all gates failed.
+Retain rows for a pooled source-ceiling audit, but do not map or fit.
+
+Experiment 064 completed the deterministic pooled Expedia evidence audit. It found 80 accepted rows across 36
+unique cities, all tax-excluded; 16 cities were complete for 2-/3-/4-star, with 20 matched 2↔3 cities and 22 matched
+3↔4 cities. No relationship reached the 30-city plus 10-holdout gate, and one-star/hostel had zero eligible rows.
+Do not fit or map. Pivot the missing-class boundary while retaining Expedia as a candidate 2-/3-/4-star source.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

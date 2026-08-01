@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-v1",
+  "city": "Brussels",
+  "country": "Belgium",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "class": "3_star",
+    "statistic": "city_class_average",
+    "taxStatus": "unknown",
+    "sourceUrl": "https://www.expedia.com/Brussels-Hotels.d178241.Travel-Guide-Hotels",
+    "sourceTitle": "Top 10 Hotels in Brussels | Expedia",
+    "evidenceText": "The returned Expedia result lists Brussels star-rating counts and a generic all-hotel price trend, but no exact-city 3-star class trend value. The generic trend and individual property prices cannot substitute for a class average.",
+    "referencePeriod": "Expedia result crawled last week; generic city trend based on base rates found in the last 7 days.",
+    "searchQuery": "site:expedia.com Brussels Belgium 3-star hotels average nightly price trend 2 adults taxes fees",
+    "reason": "No exact-city 3-star numeric average or trend was returned; generic all-hotel and single-property values were rejected as class-ambiguous."
+  },
+  "telemetry": {
+    "searchesAttempted": 1,
+    "searchOperations": 1,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

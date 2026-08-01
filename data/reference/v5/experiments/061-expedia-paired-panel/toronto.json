@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-paired-panel-v1",
+  "city": "Toronto",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "found",
+      "value": 125,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Toronto-Hotels.s20-0-d178314.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Toronto from $74 | Expedia",
+      "evidenceText": "Expedia's 2-star Toronto trend table shows August $125. It states the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 2-star properties in Toronto.",
+      "referencePeriod": "Expedia result crawled last week; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Toronto Canada 2-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as source-feasibility evidence with known excluded-tax base-rate basis; it is not an inclusive product observation."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found",
+      "value": 164,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Toronto-Hotels.s30-0-d178314.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Toronto from $86 | Expedia",
+      "evidenceText": "Expedia's 3-star Toronto trend table shows August $164. It explicitly says the trend excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days and averaged for commonly viewed 3-star properties in Toronto.",
+      "referencePeriod": "Expedia result crawled last week; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Toronto Canada 3-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as source-feasibility evidence with known excluded-tax base-rate basis; it is not an inclusive product observation."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found",
+      "value": 281,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "4_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/cn/4Star-Toronto-Hotels.s40-0-d178314.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "4 星级酒店订房与住宿预约 | Expedia",
+      "evidenceText": "Expedia's Chinese 4-star Toronto trend table shows August $281. It states the trend excludes taxes and fees and is based on average nightly base rates for 2 adults found in the last 7 days for commonly viewed 4-star Toronto properties.",
+      "referencePeriod": "Expedia result crawled 3 weeks ago; trend based on base rates found in the last 7 days; August monthly value.",
+      "searchQuery": "site:expedia.com Toronto Canada 4-star hotels average nightly price trend 2 adults taxes fees",
+      "reason": "Accepted as source-feasibility evidence with known excluded-tax base-rate basis; it is not an inclusive product observation."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

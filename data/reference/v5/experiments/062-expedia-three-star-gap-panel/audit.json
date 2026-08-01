@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-audit-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 12,
+  "searchOperations": 12,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedRows": 4,
+  "recoveredRows": 0,
+  "promotionGate": "overall>=8/12 and recovery>=3/4",
+  "promotionGatePassed": false,
+  "productMapping": "none; coverage repair only"
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-three-star-gap-telemetry-v1",
+  "city": "Ho Chi Minh City",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 1,
+  "searchOperations": 1,
+  "query": "site:expedia.com Ho Chi Minh City Vietnam 3-star hotels average nightly price trend 2 adults taxes fees",
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "foundRows": 1,
+  "notFoundRows": 0,
+  "protocolCompliant": true,
+  "notes": "One-city, one-search Expedia 3-star gap panel. Exact Ho Chi Minh City 3-star trend was accepted. No page was opened and no retry, fallback, arithmetic, FX, or cross-city evidence was used."
+}
