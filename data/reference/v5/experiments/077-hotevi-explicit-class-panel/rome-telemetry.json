@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-telemetry-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_077_hotevi_explicit_class_panel.md",
+  "calls": 1,
+  "searchesAttempted": 6,
+  "searchOperations": 3,
+  "queries": [
+    "site:hotevi.com/hotel/ Rome Italy HOTEVI 1 star hotel 2 adults nightly price taxes dates",
+    "site:hotevi.com/hotel/ Rome Italy HOTEVI 3 star hotel 2 adults nightly price taxes dates",
+    "site:hotevi.com/hotel/ Rome Italy HOTEVI 4 star hotel 2 adults nightly price taxes dates"
+  ],
+  "directReads": 3,
+  "directReadUrls": [
+    "https://hotevi.com/hotel/hotel-hafnia-4012252",
+    "https://hotevi.com/hotel/st-catherines-on-park-43307762",
+    "https://hotevi.com/hotel/hotel-hafnia-4012252"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city; exactly one search/read per requested class, with no fallback, retry, arithmetic, FX conversion, or cross-city evidence. Direct pages were wrong-city or cache-missed, so all strict rows failed closed."
+}

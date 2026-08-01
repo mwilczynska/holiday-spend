@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "city-cost-v5-hotevi-explicit-class-panel-telemetry-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "providerModel": "gpt-5.6-luna",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_077_hotevi_explicit_class_panel.md",
+  "calls": 1,
+  "searchesAttempted": 6,
+  "searchOperations": 3,
+  "queries": [
+    "site:hotevi.com/hotel/ Tokyo Japan HOTEVI 1 star hotel 2 adults nightly price taxes dates",
+    "site:hotevi.com/hotel/ Tokyo Japan HOTEVI 3 star hotel 2 adults nightly price taxes dates",
+    "site:hotevi.com/hotel/ Tokyo Japan HOTEVI 4 star hotel 2 adults nightly price taxes dates"
+  ],
+  "directReads": 3,
+  "directReadUrls": [
+    "https://hotevi.com/hotel/shinagawa-prince-hotel-east-tower-66884061",
+    "https://hotevi.com/hotel/sanseikan-67084021",
+    "https://hotevi.com/hotel/shinagawa-prince-hotel-east-tower-66884061"
+  ],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": true,
+  "notes": "One city; exactly one search/read per requested class, with no fallback, retry, arithmetic, FX conversion, or cross-city evidence. Search found a Tokyo 4-star page and a Japan 3-star page, but direct reads were cache-missed and no strict quote was established."
+}
