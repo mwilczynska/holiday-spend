@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "found",
+    "propertyName": "Travelodge Rathmines",
+    "value": 119,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "selector_two_adults_one_night",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChcIraOo0-Prwat2GgsvZy8xdGxiaHp3dBAB",
+    "sourceTitle": "Travelodge Rathmines - Google hotels",
+    "evidenceText": "Google Hotels identifies Travelodge Rathmines at Lower Rathmines Road Lower, Rathmines, Dublin as a 3-star hotel. It shows $119 nightly and $135 total for 1 night with taxes + fees, with a visible 2 Adults selector. The same evidence does not state one room.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result crawled 3 weeks ago; July 13–14 stay; 2-adult selector",
+    "searchQuery": "site:google.com/travel/hotels Dublin Ireland 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "Strict not_found because one room is not explicitly stated. Selector-relaxed found is a hypothesis label only: exact-city class, non-from nightly price, taxes, and a two-adult one-night selector are present, but this is not an observed two-person room quote."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

@@ -394,6 +394,13 @@ remaining failures included from prices, generic averages, wrong/nearby class, a
 do not map `accom_3_star`, and do not infer one room from a two-adult selector. A relaxed occupancy semantic must
 be a new pre-registered estimand experiment with independent validation.
 
+Experiment 053 completed. It recorded strict and selector-relaxed outcomes for the same 12-city three-star
+panel, where the relaxed hypothesis requires an exact named property, explicit two-adult/one-night selector,
+numeric non-from nightly price, known tax, and no multi-room/per-person/suite signal despite omitted one-room words.
+Strict coverage was 0/12 and relaxed coverage 7/12, so the 8/12 plus 6/12 promotion gate failed. The relaxed label
+is not observed occupancy and cannot be mapped or fitted. Any future amendment requires a dated estimand decision
+and a separate 30-city/10-holdout explicit-room validation panel.
+
 Next, test a separately declared hotel-class occupancy/source hypothesis while retaining the promoted one-bed
 dorm boundary, strict two-adult per-room private/hotel identity, and exact source/display currency. Direct
 booking-engine URLs and direct Numbeo retrieval remain rejected for the target web path. Do not tune the locked

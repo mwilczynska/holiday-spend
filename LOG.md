@@ -1354,3 +1354,19 @@ nearby cities, or absent class labels.
 one-room occupancy from a two-adult selector. A relaxed occupancy interpretation would change the estimand and
 requires a new pre-registered experiment with independent accuracy validation. Read
 `data/reference/v5/experiments/052-three-star-broad-panel/`.
+
+## Experiment 053 - selector-based occupancy semantic audit (1 August 2026)
+
+Twelve independent single-city Luna-class contexts issued exactly three ordered searches each (Google Hotels,
+Expedia, Booking.com; 36 searches total). No page reads, retries, arithmetic, FX conversion, averaging, fallback
+sources, or cross-city evidence occurred.
+
+Strict explicit-one-room coverage was **0/12**. The pre-registered selector-relaxed hypothesis (exact named
+three-star property, explicit two-adult one-night selector, numeric non-from nightly price, known tax, and no
+multi-room/per-person/suite signal) reached **7/12**. The 8/12 promotion gate failed, although the requirement
+for at least six strict failures attributable solely to omitted room wording was met (7/12).
+
+**Verdict:** reject promotion. The seven relaxed rows remain semantic hypotheses, not observed two-person room
+prices. Do not map `accom_3_star`, fit a correction, or infer one room. Any future change requires a dated
+estimand decision and a new 30-city/10-holdout explicit-room validation panel. Read
+`data/reference/v5/experiments/053-selector-occupancy-audit/`.

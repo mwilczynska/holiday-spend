@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "not_found",
+    "propertyName": null,
+    "value": null,
+    "currency": null,
+    "unit": "per_room_per_night",
+    "occupancyBasis": "selector_two_adults_one_night",
+    "class": "3_star",
+    "sourceUrl": "https://www.booking.com/threestars/city/kr/seoul.html",
+    "sourceTitle": "The 10 best 3-star hotels in Seoul, South Korea",
+    "evidenceText": "Booking.com shows 2 adults, 0 children, 1 room and an average $270 per night for 3-star hotels in Seoul this weekend. This is a generic city average, not a named-property quote.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Booking.com result crawled date not specified; weekend reference period",
+    "searchQuery": "site:booking.com Seoul South Korea 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "Rejected for both statuses because the source is a generic city average and does not identify an exact named property. Expedia's named Seoul result was a start-from price; no compatible property quote was returned."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

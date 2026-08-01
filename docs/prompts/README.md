@@ -52,6 +52,7 @@
 | `llm_prompt_city_cost_v5_experiment_049_one_star_broad_panel.md` | **EXPERIMENT — complete; reject promotion gate** | one city per delegated GPT-5.6 Luna-class invocation | Twelve-city one-star panel; 1/12 strict quotes |
 | `llm_prompt_city_cost_v5_experiment_050_tax_resolved_activity_ticket.md` | **EXPERIMENT — complete; reject promotion gate** | one city per delegated GPT-5.6 Luna-class invocation | Six-city tax-resolved ticket test; 2/6 strict tickets |
 | `llm_prompt_city_cost_v5_experiment_051_minimal_anchor_panel.md` | **EXPERIMENT — in progress** | one city per delegated GPT-5.6 Luna-class invocation | Six-city fixed four-search nine-anchor source-boundary test |
+| `llm_prompt_city_cost_v5_experiment_053_selector_occupancy.md` | **COMPLETE — reject promotion** | one city per delegated GPT-5.6 Luna-class invocation | Twelve-city strict versus selector-relaxed occupancy semantic audit |
 
 The 051 minimal-anchor prompt is complete as a source-boundary experiment: no city returned all nine anchors, so
 the complete-contract promotion gate was rejected. The prompt remains reusable for model-boundary validation.
@@ -59,6 +60,13 @@ the complete-contract promotion gate was rejected. The prompt remains reusable f
 The 052 three-star property panel is complete and rejected: twelve independent one-city contexts returned 0/12
 strict explicit-three-star/two-adult/one-room quotes. Do not infer one room from a two-adult selector; any relaxed
 occupancy rule needs a new pre-registered estimand experiment and independent validation.
+
+The 053 selector-occupancy prompt is active: one city per delegated Luna context, strict and selector-relaxed
+statuses are recorded separately, and the relaxed status is only a semantic hypothesis pending independent
+explicit-room validation.
+
+The 053 run has completed and failed promotion at 7/12 relaxed candidates; keep the relaxed label as a hypothesis
+until an independent explicit-room validation panel passes.
 
 The 030 one-star prompt is now complete as a calibration-only experiment: its three Momondo candidates had
 unknown or source-default occupancy and must not be mapped to `accom_1_star`. The v5 experiment prompt includes

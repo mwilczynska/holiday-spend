@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "found",
+    "propertyName": "Hotel Hacienda",
+    "value": 61,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "selector_two_adults_one_night",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgIqszXkv-ZwKGwARoLL2cvMXRobG42djQQAQ",
+    "sourceTitle": "Hotel Hacienda - Google hotels",
+    "evidenceText": "Google Hotels identifies Hotel Hacienda at 179 Cleveland St, Redfern NSW 2016, Sydney as a 3-star hotel. The result shows $61 nightly and $67 total for 1 night with taxes + fees (6–7 July 2026), and an explicit 2 Adults selector. The returned booking evidence contains no explicit one-unit occupancy wording.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result for 6–7 July 2026; explicit 2 Adults and 1 night selector",
+    "searchQuery": "site:google.com/travel/hotels Sydney Australia 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "The candidate satisfies the selector-relaxed hypothesis but strictStatus remains not_found because the source does not explicitly prove one room. The query text is not used as occupancy evidence."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

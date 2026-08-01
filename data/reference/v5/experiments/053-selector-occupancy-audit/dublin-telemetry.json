@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-telemetry-v1",
+  "city": "Dublin",
+  "country": "Ireland",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels Dublin Ireland 3-star hotel 2 adults 1 room one night price taxes",
+    "site:expedia.com Dublin Ireland 3-star hotel 2 adults 1 room one night price taxes",
+    "site:booking.com Dublin Ireland 3-star hotel 2 adults 1 room one night price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "strictStatus": "not_found",
+  "selectorRelaxedStatus": "found",
+  "protocolCompliant": true,
+  "notes": "One-city, three-search selector occupancy audit. Google returned a named exact-city 3-star quote with a two-adult one-night selector and taxes, but no explicit one-room statement. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

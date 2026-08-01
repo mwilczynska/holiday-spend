@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-audit-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 36,
+  "searchOperations": 36,
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "strictCities": 0,
+  "selectorRelaxedCities": 7,
+  "strictOnlyFailures": 7,
+  "promotionGate": "8 of 12 selector-relaxed candidates and at least 6 strict failures attributable solely to omitted room wording",
+  "promotionGatePassed": false,
+  "productMapping": "none; semantic audit only"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-telemetry-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels Amsterdam Netherlands 3-star hotel 2 adults 1 room one night price taxes",
+    "site:expedia.com Amsterdam Netherlands 3-star hotel 2 adults 1 room one night price taxes",
+    "site:booking.com Amsterdam Netherlands 3-star hotel 2 adults 1 room one night price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "strictStatus": "not_found",
+  "selectorRelaxedStatus": "found",
+  "protocolCompliant": true,
+  "notes": "One-city, three-search selector occupancy audit. A Google Hotels 3-star exact-city quote had a two-adult one-night selector but did not explicitly state one room. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

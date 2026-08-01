@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Vienna",
+  "country": "Austria",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "found",
+    "propertyName": "Stasta",
+    "value": 90,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "selector_two_adults_one_night",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChkIpcHSltTYl5R3GgsvZy8xMWMyMDhidng5EAE?ts=CAEaBAoCGgA",
+    "sourceTitle": "Stasta - Google hotels",
+    "evidenceText": "Stasta is explicitly a 3-star hotel in Vienna. Google shows 2 Adults in the booking selector, a 1-night stay with taxes and fees, and $90 nightly ($113 total). The evidence does not state one room in words.",
+    "taxStatus": "included",
+    "referencePeriod": "Google result crawled 3 weeks ago; stay dates July 27-28",
+    "searchQuery": "site:google.com/travel/hotels Vienna Austria 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "Strict status rejected because the same evidence omits words proving one room. Selector-relaxed status is recorded as a hypothesis only: named exact-city 3-star property, explicit two-adult/one-night selector, numeric non-from nightly price, and taxes included."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

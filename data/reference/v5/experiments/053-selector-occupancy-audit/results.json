@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "citiesTested": 12,
+  "strictCities": 0,
+  "selectorRelaxedCities": 7,
+  "strictOnlyFailures": 7,
+  "promotionGate": "8 of 12 selector-relaxed candidates and at least 6 strict failures attributable solely to omitted room wording",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Amsterdam",
+      "strict": false,
+      "selectorRelaxed": true
+    },
+    {
+      "city": "Budapest",
+      "strict": false,
+      "selectorRelaxed": false
+    },
+    {
+      "city": "Buenos Aires",
+      "strict": false,
+      "selectorRelaxed": true
+    },
+    {
+      "city": "Copenhagen",
+      "strict": false,
+      "selectorRelaxed": false
+    },
+    {
+      "city": "Dublin",
+      "strict": false,
+      "selectorRelaxed": true
+    },
+    {
+      "city": "Istanbul",
+      "strict": false,
+      "selectorRelaxed": false
+    },
+    {
+      "city": "Nairobi",
+      "strict": false,
+      "selectorRelaxed": true
+    },
+    {
+      "city": "Prague",
+      "strict": false,
+      "selectorRelaxed": false
+    },
+    {
+      "city": "Seoul",
+      "strict": false,
+      "selectorRelaxed": false
+    },
+    {
+      "city": "Sydney",
+      "strict": false,
+      "selectorRelaxed": true
+    },
+    {
+      "city": "Vancouver",
+      "strict": false,
+      "selectorRelaxed": true
+    },
+    {
+      "city": "Vienna",
+      "strict": false,
+      "selectorRelaxed": true
+    }
+  ],
+  "strict": [],
+  "selectorRelaxed": [
+    {
+      "city": "Amsterdam",
+      "value": 37,
+      "currency": "USD",
+      "propertyName": "The Alfred Hotel Amsterdam"
+    },
+    {
+      "city": "Buenos Aires",
+      "value": 31,
+      "currency": "USD",
+      "propertyName": "Waldorf Hotel Buenos Aires"
+    },
+    {
+      "city": "Dublin",
+      "value": 119,
+      "currency": "USD",
+      "propertyName": "Travelodge Rathmines"
+    },
+    {
+      "city": "Nairobi",
+      "value": 19,
+      "currency": "USD",
+      "propertyName": "Decasa Hotel Nairobi"
+    },
+    {
+      "city": "Sydney",
+      "value": 61,
+      "currency": "USD",
+      "propertyName": "Hotel Hacienda"
+    },
+    {
+      "city": "Vancouver",
+      "value": 173,
+      "currency": "USD",
+      "propertyName": "Atrium Hotel Vancouver"
+    },
+    {
+      "city": "Vienna",
+      "value": 90,
+      "currency": "USD",
+      "propertyName": "Stasta"
+    }
+  ],
+  "rejected": [
+    {
+      "city": "Budapest",
+      "reason": "No strict or selector-relaxed result: the named exact-city class and quote are present, but the evidence does not explicitly show a two-adult one-night booking selector. Query text cannot provide occupancy."
+    },
+    {
+      "city": "Copenhagen",
+      "reason": "Both statuses not_found: exact-city class, non-from nightly price, and taxes are present, but the same evidence lacks an explicit two-adult one-night selector and one-room statement. The query cannot supply occupancy evidence."
+    },
+    {
+      "city": "Istanbul",
+      "reason": "No strict or selector-relaxed result: exact city, class, price, and tax are present, but explicit two-adult/one-night selector evidence is absent. Query text cannot provide occupancy."
+    },
+    {
+      "city": "Prague",
+      "reason": "Both statuses not_found: the source has a named exact-city property, selector occupancy, numeric nightly price, and taxes, but no explicit 3-star class and no explicit one-room statement. Ambiguous related-text star fragments cannot establish class."
+    },
+    {
+      "city": "Seoul",
+      "reason": "Rejected for both statuses because the source is a generic city average and does not identify an exact named property. Expedia's named Seoul result was a start-from price; no compatible property quote was returned."
+    }
+  ],
+  "productMapping": "none_semantic_audit_only"
+}

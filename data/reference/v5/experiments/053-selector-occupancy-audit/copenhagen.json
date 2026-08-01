@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "not_found",
+    "propertyName": "Good Morning City Copenhagen Star",
+    "value": 193,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChcIzbu9h-3Y3ZgGGgsvZy8xdGdmNmQ1bhAB",
+    "sourceTitle": "Good Morning City Copenhagen Star - Google hotels",
+    "evidenceText": "Google Hotels identifies Good Morning City Copenhagen Star at Colbjørnsensgade 13, Copenhagen as a 3-star hotel and shows $193 nightly and $241 total for 1 night with taxes + fees. The returned evidence does not show a two-adult booking selector or state one room for this quote.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result crawled 3 weeks ago; July 10–11 stay; occupancy not shown",
+    "searchQuery": "site:google.com/travel/hotels Copenhagen Denmark 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "Both statuses not_found: exact-city class, non-from nightly price, and taxes are present, but the same evidence lacks an explicit two-adult one-night selector and one-room statement. The query cannot supply occupancy evidence."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

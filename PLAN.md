@@ -497,6 +497,12 @@ boundary. Any relaxed occupancy rule is an estimand amendment, not an implementa
 against independent named-property observations before use. The v5 methodology remains unaccepted and the shipping
 v1 path remains unchanged.
 
+Experiment 053 completed the selector-occupancy semantic audit in twelve independent one-city Luna calls and 36
+ordered searches. Strict explicit-one-room coverage was 0/12; the separately labelled selector-relaxed hypothesis
+reached 7/12, below its 8/12 promotion gate (the six strict-failure condition passed at 7/12). Reject promotion:
+the relaxed rows remain hypotheses, not observed two-person rooms. Any future semantic amendment requires a dated
+estimand decision and a new 30-city/10-holdout explicit-room validation panel.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

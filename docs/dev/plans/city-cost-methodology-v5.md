@@ -240,6 +240,21 @@ not a silent parser relaxation, and would need independent property-level accura
 should test that semantic question or move the boundary to a modelled tier while preserving evidence-basis labels.
 Read `data/reference/v5/experiments/052-three-star-broad-panel/`.
 
+### Experiment 053 - selector-based occupancy semantic audit
+
+The next run tests a declared semantic amendment rather than silently relaxing the strict contract. Twelve
+independent one-city Luna calls use the same three-source search budget and record both strict explicit-one-room
+status and a selector-relaxed hypothesis: exact named 3-star property, two-adult/one-night selector, numeric
+non-from nightly price, and known tax, but no explicit room wording. No mapping or aggregation is permitted.
+
+Promotion requires 8/12 relaxed candidates and at least 6 strict failures attributable solely to omitted room
+wording. A pass only authorizes a new 30-city/10-holdout explicit-room validation panel; it does not change the
+frozen data dictionary.
+
+The panel completed with 0/12 strict rows and 7/12 selector-relaxed rows. The strict-failure condition passed, but
+the 8/12 relaxed-coverage gate failed. **Decision:** reject promotion; retain the seven rows as semantic hypotheses
+only and do not map or fit `accom_3_star`.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

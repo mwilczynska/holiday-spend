@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "not_found",
+    "propertyName": "Hermitage Hotel Prague",
+    "value": 130,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "selector_two_adults_one_night",
+    "class": "unknown",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChcI7K_HkYTamo0ZGgsvZy8xMjF2N200bBAB",
+    "sourceTitle": "Hermitage Hotel Prague - Google hotels",
+    "evidenceText": "Google Hotels shows Hermitage Hotel Prague at Svobodova 1, Prague with $130 nightly and $150 total for 1 night with taxes + fees, and a visible 2 Adults selector. The returned evidence contains an ambiguous '3 star2 star' fragment in related text but does not explicitly identify Hermitage Hotel Prague as a 3-star property; one room is also not stated.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result crawled 2 weeks ago; July 26–27 stay; 2-adult selector",
+    "searchQuery": "site:google.com/travel/hotels Prague Czechia 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "Both statuses not_found: the source has a named exact-city property, selector occupancy, numeric nightly price, and taxes, but no explicit 3-star class and no explicit one-room statement. Ambiguous related-text star fragments cannot establish class."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

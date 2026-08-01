@@ -72,6 +72,7 @@ It is separate from the live v1 CSV and the retained v3/v4 evidence. Existing fi
 | `experiments/049-one-star-broad-panel/` | **COMPLETE — reject promotion gate** | Twelve one-city calls: 1/12 strict one-star quotes; no mapping |
 | `experiments/050-tax-resolved-activity-ticket/` | **COMPLETE — reject promotion gate** | Six one-city calls: 2/6 strict tax-resolved tickets; no mapping |
 | `experiments/051-minimal-anchor-panel/` | **COMPLETE — reject complete promotion** | Six one-city calls: no complete city; food/drink and attractions retained |
+| `experiments/053-selector-occupancy-audit/` | **COMPLETE — reject promotion** | Twelve one-city calls: 0/12 strict, 7/12 selector-relaxed; below 8/12 gate |
 | `experiments/052-three-star-broad-panel/` | **IN PROGRESS — three-star ground truth** | Twelve-city explicit two-adult three-star property panel; results pending |
 
 The API key is optional for prompt feasibility: the delegated GPT-5.6 Luna-class sub-agent can run the
@@ -82,6 +83,15 @@ property route was rejected and one-room occupancy remains an explicit evidence 
 
 The inventory row for 052 above is a stale status label; the experiment directory and verdict are authoritative:
 052 is complete and rejected (0/12 strict quotes).
+
+The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-relaxed candidates, below the
+8/12 promotion gate. Its relaxed label remains a hypothesis only.
+
+The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-relaxed candidates, below the
+8/12 promotion gate. Its relaxed label remains a hypothesis only.
+
+Experiment 053 is complete and rejected: twelve one-city calls produced 0/12 strict and 7/12 selector-relaxed
+occupancy candidates, below the 8/12 promotion gate. The relaxed label remains a hypothesis only.
 
 Raw model responses, source captures, and generated reports must retain retrieval dates, schema/version
 metadata, source URLs, currencies, and evidence basis. Do not store copied page content when a URL and

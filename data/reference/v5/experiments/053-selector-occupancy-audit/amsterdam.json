@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "found",
+    "propertyName": "The Alfred Hotel Amsterdam",
+    "value": 37,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "selector_two_adults_one_night",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChgIp4eynrHdvKh0GgwvZy8xaGMxa3o3Y3MQAQ",
+    "sourceTitle": "The Alfred Hotel Amsterdam - Google hotels",
+    "evidenceText": "Google Hotels identifies The Alfred Hotel Amsterdam at Cornelis Schuytstraat 58-60, Amsterdam as a 3-star hotel. It shows $37 nightly and $55 total for 1 night with taxes + fees, and the booking selector visibly shows 2 Adults. The same evidence does not state one room.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result crawled 3 weeks ago; July 13–14 stay; 2-adult selector",
+    "searchQuery": "site:google.com/travel/hotels Amsterdam Netherlands 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "Strict not_found because one room is not explicitly stated. Selector-relaxed found is a hypothesis label only: the source has exact-city class, non-from nightly price, taxes, and a two-adult one-night selector, but it must not be treated as an observed two-person room quote."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}

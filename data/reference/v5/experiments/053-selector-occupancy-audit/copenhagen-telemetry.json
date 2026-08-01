@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-telemetry-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 3,
+  "searchOperations": 3,
+  "queries": [
+    "site:google.com/travel/hotels Copenhagen Denmark 3-star hotel 2 adults 1 room one night price taxes",
+    "site:expedia.com Copenhagen Denmark 3-star hotel 2 adults 1 room one night price taxes",
+    "site:booking.com Copenhagen Denmark 3-star hotel 2 adults 1 room one night price taxes"
+  ],
+  "directReads": 0,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "strictStatus": "not_found",
+  "selectorRelaxedStatus": "not_found",
+  "protocolCompliant": true,
+  "notes": "One-city, three-search selector occupancy audit. Google returned a named exact-city 3-star quote with taxes but no visible two-adult selector or one-room statement. No pages were opened and no retries, fallback, arithmetic, FX, averaging, or cross-city evidence were used."
+}

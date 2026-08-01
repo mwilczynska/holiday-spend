@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-selector-occupancy-audit-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "measure": {
+    "strictStatus": "not_found",
+    "selectorRelaxedStatus": "found",
+    "propertyName": "Waldorf Hotel Buenos Aires",
+    "value": 31,
+    "currency": "USD",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "selector_two_adults_one_night",
+    "class": "3_star",
+    "sourceUrl": "https://www.google.com/travel/hotels/entity/ChcIxq7Y5vOr09NaGgsvZy8xdmhfOWtxMhAB/prices",
+    "sourceTitle": "Waldorf Hotel Buenos Aires - Google hotels",
+    "evidenceText": "Google Hotels identifies Waldorf Hotel Buenos Aires at Paraguay 450, Buenos Aires as a 3-star hotel. The result shows $31 nightly and $37 total for 1 night with taxes + fees, an explicit 2 Adults selector, and Standard Double options with 1 double bed. The returned booking evidence contains no explicit one-unit occupancy wording.",
+    "taxStatus": "included",
+    "referencePeriod": "Google Hotels result for 27 July 2026 onward; explicit 2 Adults and 1 night selector",
+    "searchQuery": "site:google.com/travel/hotels Buenos Aires Argentina 3-star hotel 2 adults 1 room one night price taxes",
+    "reason": "The candidate satisfies the selector-relaxed hypothesis but strictStatus remains not_found because a room type/bed is not an explicit count of one room. The query text is not used as occupancy evidence."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0
+  }
+}
