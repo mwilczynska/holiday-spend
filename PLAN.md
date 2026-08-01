@@ -691,12 +691,11 @@ audit remains 20 matched 2-star←3-star cities and 26 matched 4-star←3-star c
 coefficient, class split, or product mapping is authorized. Artifacts:
 `data/reference/v5/experiments/085-expedia-query-contract/`.
 
-**Experiment 086 — Expedia.com bare-dollar currency proxy — in progress.** This pre-registered audit tests whether
-the named-currency requirement is discarding otherwise exact Expedia class trends. Twelve one-city Luna contexts
-record bare `$` values without calling them USD. Deterministic code may map only exact `www.expedia.com` hosts to a
-labelled `source_locale_proxy` USD basis, with `imputedMeasures: ["currency"]`; this is not observed evidence and
-does not authorize product mapping. A screen requires 10 compliant calls, 10 mapped/named rows, 10 same-city/class
-matches, median APE ≤25%, and p90 APE ≤50% against prior named-USD Expedia rows. Artifacts:
+**Experiment 086 — Expedia.com bare-dollar currency proxy — complete; promote guarded proxy validation.** Twelve
+one-city Luna contexts recorded 27 exact rows (24 bare-dollar proxies, three named USD) without inferring USD in the
+prompt. Deterministic exact-host mapping passed the pre-registered same-source screen (median APE 0%, p90 1.72%),
+but that comparison is not independent ground truth. Preserve `currency: null` and imputed-currency provenance;
+run a broader independent validation panel before any product mapping. Artifacts:
 `data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.
 
 ## Unrelated app backlog

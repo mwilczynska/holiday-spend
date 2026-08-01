@@ -583,10 +583,10 @@ source/access records only. The next restart action is a materially different an
 independently validated estimand. Read `data/reference/v5/experiments/085-expedia-query-contract/` and its
 `verdict.md`.
 
-Experiment 086 is the active restart package. It tests the named-currency boundary exposed by 085 with twelve
-independent one-city Luna contexts. The prompt records exact bare-dollar Expedia.com trends as `found_proxy` with
-`currency: null`; it never infers USD. The deterministic analyzer may apply an exact `www.expedia.com` host guard,
-label the result `source_locale_proxy`, and record `imputedMeasures: ["currency"]`, then compare it to prior named-
-USD rows from the same city/class. Screen thresholds are 10 compliant calls, 10 mapped/named rows, 10 same-city/class
-matches, median APE ≤25%, and p90 APE ≤50%. No product mapping or model fitting is authorized. Files are in
-`data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.
+Experiment 086 completed with 12/12 protocol-compliant one-city calls. It retained 24 exact bare-dollar proxy rows
+and three named-USD rows; deterministic exact-host mapping joined all 27 to prior named-USD rows with median APE 0%
+and p90 APE 1.72%, passing the pre-registered same-source screen. This is not independent ground truth. **Verdict:**
+promote only to a broader independent proxy validation panel; preserve `currency: null` and imputed-currency
+provenance, and do not map product tiers or fit coefficients. The Istanbul artifact uses country label `Turkey`
+while the manifest uses `Türkiye`; retain the raw alias and resolve it only in a separate canonical-country layer.
+Read `data/reference/v5/experiments/086-expedia-locale-currency-proxy/` and `verdict.md`.

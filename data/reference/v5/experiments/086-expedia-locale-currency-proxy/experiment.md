@@ -1,6 +1,6 @@
 # Experiment 086 — Expedia.com bare-dollar currency proxy
 
-**Status:** In progress
+**Status:** Complete — promote to guarded proxy validation
 
 ## Question
 
@@ -34,3 +34,10 @@ imputed-currency evidence basis.
   calibration, not independent ground truth. The screen requires at least 10 protocol-compliant calls, 10
   mapped/named rows, 10 same-city/class matches, median APE ≤25%, and p90 APE ≤50%. A screen pass authorizes
   only a broader proxy validation panel; it does not authorize product mapping or model fitting.
+
+## Result
+
+All 12 calls were protocol-compliant. Twenty-four bare-dollar proxy rows and three named-USD rows passed the
+deterministic host guard; all 27 joined prior named-USD rows from the same city/class, with median APE 0% and p90
+APE 1.72%. The screen passed. Because the comparison is same-source/date evidence rather than independent ground
+truth, the proxy is promoted only to a broader independent validation panel; no production mapping is authorized.

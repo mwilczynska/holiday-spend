@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-locale-currency-proxy-v1",
+  "city": "New York",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "currencyStatus": null,
+      "currencyBasis": null,
+      "unit": "per_room_per_night",
+      "class": "2_star",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/2Star-Manhattan-New-York-Hotels.s20-n129440-0.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Manhattan, NY from $128 | Expedia",
+      "evidenceText": "The first class-specific result is for Manhattan, a district, rather than the requested city-level New York estimate. It has a numeric Manhattan 2-star trend with a bare dollar symbol, but district or nearby evidence is rejected.",
+      "referencePeriod": "August monthly trend for Manhattan; retrieved 2026-08-01; no accepted city-level New York 2-star row.",
+      "searchQuery": "site:expedia.com \"New York\" \"Price trends for properties with 2 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "Rejected: district scope (Manhattan) is not exact city New York; no fallback or page read permitted."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found_proxy",
+      "value": 210,
+      "currency": null,
+      "currencyStatus": "bare_dollar",
+      "currencyBasis": "source_locale_candidate",
+      "unit": "per_room_per_night",
+      "class": "3_star",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-New-York-Hotels.s30-0-d178293.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in New York, NY from $121 | Expedia",
+      "evidenceText": "The exact New York 3-star Expedia trend lists August at $210. The page says trend information excludes taxes and fees, is based on base rates for a nightly stay for 2 adults observed in the last 7 days, and is averaged for commonly viewed 3-star properties in New York. The displayed currency is a bare dollar symbol only.",
+      "referencePeriod": "August monthly trend; base rates averaged for a nightly stay for 2 adults observed in the last 7 days; retrieved 2026-08-01.",
+      "searchQuery": "site:expedia.com \"New York\" \"Price trends for properties with 3 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "Exact city and class trend accepted as a labelled bare-dollar proxy; no currency mapping is asserted in this response."
+    },
+    "hotel_4star_room_2p": {
+      "status": "found_proxy",
+      "value": 230,
+      "currency": null,
+      "currencyStatus": "bare_dollar",
+      "currencyBasis": "source_locale_candidate",
+      "unit": "per_room_per_night",
+      "class": "4_star",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/4Star-New-York-Hotels.s40-0-d178293.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 4 Star Hotels in New York, NY from $162 | Expedia",
+      "evidenceText": "The exact New York 4-star Expedia trend lists August at $230. The page says trend information excludes taxes and fees, is based on base rates for a nightly stay for 2 adults observed in the last 7 days, and is averaged for commonly viewed 4-star properties in New York. The displayed currency is a bare dollar symbol only.",
+      "referencePeriod": "August monthly trend; base rates averaged for a nightly stay for 2 adults observed in the last 7 days; retrieved 2026-08-01.",
+      "searchQuery": "site:expedia.com \"New York\" \"Price trends for properties with 4 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "Exact city and class trend accepted as a labelled bare-dollar proxy; no currency mapping is asserted in this response."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

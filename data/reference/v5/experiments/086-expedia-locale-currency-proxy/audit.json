@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-locale-currency-proxy-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "acceptedRows": 27,
+  "mappedProxyRows": 24,
+  "namedRows": 3,
+  "sameCityClassMatches": 27,
+  "medianAPE": 0,
+  "p90APE": 0.017241379310344827,
+  "screenGate": {
+    "protocolCompliant": 10,
+    "mappedOrNamedRows": 10,
+    "sameCityClassMatches": 10,
+    "medianApe": 0.25,
+    "p90Ape": 0.5
+  },
+  "screenGatePassed": true,
+  "mapping": "USD only under exact www.expedia.com host guard; evidence basis source_locale_proxy; no product mapping",
+  "rows": [
+    {
+      "city": "Amsterdam",
+      "classNumber": "3",
+      "value": 157,
+      "originalStatus": "found_observed",
+      "currencyStatus": "named_currency",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "observed",
+      "imputedMeasures": [],
+      "sourceUrl": "https://www.expedia.com/3Star-Amsterdam-Hotels.s30-0-d178229.Travel-Guide-Filter-Hotels",
+      "priorValue": 157,
+      "ape": 0
+    },
+    {
+      "city": "Amsterdam",
+      "classNumber": "4",
+      "value": 169,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Amsterdam-Hotels.s40-0-d178229.Travel-Guide-Filter-Hotels",
+      "priorValue": 169,
+      "ape": 0
+    },
+    {
+      "city": "Bangkok",
+      "classNumber": "4",
+      "value": 53,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Bangkok-Hotels.s40-0-d178236.Travel-Guide-Filter-Hotels",
+      "priorValue": 53,
+      "ape": 0
+    },
+    {
+      "city": "Chicago",
+      "classNumber": "2",
+      "value": 99,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/2Star-Chicago-Hotels.s20-0-d178248.Travel-Guide-Filter-Hotels",
+      "priorValue": 99,
+      "ape": 0
+    },
+    {
+      "city": "Chicago",
+      "classNumber": "3",
+      "value": 152,
+      "originalStatus": "found_observed",
+      "currencyStatus": "named_currency",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "observed",
+      "imputedMeasures": [],
+      "sourceUrl": "https://www.expedia.com/3Star-Chicago-Hotels.s30-0-d178248.Travel-Guide-Filter-Hotels",
+      "priorValue": 152,
+      "ape": 0
+    },
+    {
+      "city": "Chicago",
+      "classNumber": "4",
+      "value": 215,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Chicago-Hotels.s40-0-d178248.Travel-Guide-Filter-Hotels",
+      "priorValue": 215,
+      "ape": 0
+    },
+    {
+      "city": "Hanoi",
+      "classNumber": "3",
+      "value": 33,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+      "priorValue": 31,
+      "ape": 0.06451612903225806
+    },
+    {
+      "city": "Hanoi",
+      "classNumber": "4",
+      "value": 57,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Hanoi-Hotels.s40-0-d1428.Travel-Guide-Filter-Hotels",
+      "priorValue": 58,
+      "ape": 0.017241379310344827
+    },
+    {
+      "city": "Istanbul",
+      "classNumber": "2",
+      "value": 54,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/2Star-Istanbul-Hotels.s20-0-d178267.Travel-Guide-Filter-Hotels",
+      "priorValue": 54,
+      "ape": 0
+    },
+    {
+      "city": "Istanbul",
+      "classNumber": "3",
+      "value": 80,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+      "priorValue": 80,
+      "ape": 0
+    },
+    {
+      "city": "Istanbul",
+      "classNumber": "4",
+      "value": 103,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Istanbul-Hotels.s40-0-d178267.Travel-Guide-Filter-Hotels",
+      "priorValue": 103,
+      "ape": 0
+    },
+    {
+      "city": "Lisbon",
+      "classNumber": "2",
+      "value": 102,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/2Star-Lisbon-Hotels.s20-0-d2080.Travel-Guide-Filter-Hotels",
+      "priorValue": 102,
+      "ape": 0
+    },
+    {
+      "city": "Lisbon",
+      "classNumber": "3",
+      "value": 137,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+      "priorValue": 137,
+      "ape": 0
+    },
+    {
+      "city": "Lisbon",
+      "classNumber": "4",
+      "value": 179,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Lisbon-Hotels.s40-0-d2080.Travel-Guide-Filter-Hotels",
+      "priorValue": 179,
+      "ape": 0
+    },
+    {
+      "city": "London",
+      "classNumber": "2",
+      "value": 114,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/2Star-London-Hotels.s20-0-d178279.Travel-Guide-Filter-Hotels",
+      "priorValue": 114,
+      "ape": 0
+    },
+    {
+      "city": "London",
+      "classNumber": "3",
+      "value": 141,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/3Star-London-Hotels.s30-0-d178279.Travel-Guide-Filter-Hotels",
+      "priorValue": 141,
+      "ape": 0
+    },
+    {
+      "city": "London",
+      "classNumber": "4",
+      "value": 218,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-London-Hotels.s40-0-d178279.Travel-Guide-Filter-Hotels",
+      "priorValue": 218,
+      "ape": 0
+    },
+    {
+      "city": "New York",
+      "classNumber": "3",
+      "value": 210,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/3Star-New-York-Hotels.s30-0-d178293.Travel-Guide-Filter-Hotels",
+      "priorValue": 210,
+      "ape": 0
+    },
+    {
+      "city": "New York",
+      "classNumber": "4",
+      "value": 230,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-New-York-Hotels.s40-0-d178293.Travel-Guide-Filter-Hotels",
+      "priorValue": 230,
+      "ape": 0
+    },
+    {
+      "city": "Prague",
+      "classNumber": "2",
+      "value": 78,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/2Star-Prague-Hotels.s20-0-d180014.Travel-Guide-Filter-Hotels",
+      "priorValue": 78,
+      "ape": 0
+    },
+    {
+      "city": "Prague",
+      "classNumber": "3",
+      "value": 104,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/3Star-Prague-Hotels.s30-0-d180014.Travel-Guide-Filter-Hotels",
+      "priorValue": 104,
+      "ape": 0
+    },
+    {
+      "city": "Prague",
+      "classNumber": "4",
+      "value": 119,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Prague-Hotels.s40-0-d180014.Travel-Guide-Filter-Hotels",
+      "priorValue": 119,
+      "ape": 0
+    },
+    {
+      "city": "San Francisco",
+      "classNumber": "4",
+      "value": 192,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-San-Francisco-Hotels.s40-0-d178305.Travel-Guide-Filter-Hotels",
+      "priorValue": 192,
+      "ape": 0
+    },
+    {
+      "city": "Stockholm",
+      "classNumber": "2",
+      "value": 115,
+      "originalStatus": "found_observed",
+      "currencyStatus": "named_currency",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "observed",
+      "imputedMeasures": [],
+      "sourceUrl": "https://www.expedia.com/2Star-Stockholm-Hotels.s20-0-d178311.Travel-Guide-Filter-Hotels",
+      "priorValue": 115,
+      "ape": 0
+    },
+    {
+      "city": "Stockholm",
+      "classNumber": "3",
+      "value": 131,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+      "priorValue": 131,
+      "ape": 0
+    },
+    {
+      "city": "Stockholm",
+      "classNumber": "4",
+      "value": 190,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Stockholm-Hotels.s40-0-d178311.Travel-Guide-Filter-Hotels",
+      "priorValue": 190,
+      "ape": 0
+    },
+    {
+      "city": "Vienna",
+      "classNumber": "4",
+      "value": 139,
+      "originalStatus": "found_proxy",
+      "currencyStatus": "bare_dollar",
+      "mappedCurrency": "USD",
+      "evidenceBasis": "source_locale_proxy",
+      "imputedMeasures": [
+        "currency"
+      ],
+      "sourceUrl": "https://www.expedia.com/4Star-Vienna-Hotels.s40-0-d178316.Travel-Guide-Filter-Hotels",
+      "priorValue": 147,
+      "ape": 0.05442176870748299
+    }
+  ],
+  "perCity": [
+    {
+      "city": "Amsterdam",
+      "protocolCompliant": true,
+      "acceptedRows": 2
+    },
+    {
+      "city": "Bangkok",
+      "protocolCompliant": true,
+      "acceptedRows": 1
+    },
+    {
+      "city": "Chicago",
+      "protocolCompliant": true,
+      "acceptedRows": 3
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true,
+      "acceptedRows": 2
+    },
+    {
+      "city": "Istanbul",
+      "protocolCompliant": true,
+      "acceptedRows": 3
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true,
+      "acceptedRows": 3
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true,
+      "acceptedRows": 3
+    },
+    {
+      "city": "New York",
+      "protocolCompliant": true,
+      "acceptedRows": 2
+    },
+    {
+      "city": "Prague",
+      "protocolCompliant": true,
+      "acceptedRows": 3
+    },
+    {
+      "city": "San Francisco",
+      "protocolCompliant": true,
+      "acceptedRows": 1
+    },
+    {
+      "city": "Stockholm",
+      "protocolCompliant": true,
+      "acceptedRows": 3
+    },
+    {
+      "city": "Vienna",
+      "protocolCompliant": true,
+      "acceptedRows": 1
+    }
+  ]
+}

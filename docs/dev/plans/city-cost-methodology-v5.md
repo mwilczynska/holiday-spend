@@ -591,12 +591,13 @@ retain negative source/access records only and do not map or fit. Read
 
 ### Experiment 086 - Expedia.com bare-dollar currency proxy
 
-This active experiment explicitly tests the currency boundary exposed by 085. Twelve independent one-city Luna
-contexts repeat the exact three Expedia class searches, but preserve exact bare-dollar values as `found_proxy` with
-`currency: null`; the prompt never calls `$` USD. Deterministic code may map only exact `www.expedia.com` hosts with
-no locale override to a labelled `source_locale_proxy` USD basis and `imputedMeasures: ["currency"]`. A screen
-requires 10 compliant calls, 10 mapped/named rows, 10 same-city/class matches to prior named-USD rows, median APE
-≤25%, and p90 APE ≤50%. A pass authorizes only a broader proxy validation panel; no product mapping or fitting.
+Twelve independent one-city Luna contexts repeated the exact three Expedia class searches while preserving exact
+bare-dollar values as `found_proxy` with `currency: null`; the prompt never called `$` USD. Deterministic mapping
+under an exact `www.expedia.com` host guard yielded 24 proxy rows and three named-USD rows, all 27 joining prior
+named-USD rows with median APE 0% and p90 APE 1.72%. The pre-registered same-source screen passed. **Verdict:**
+promote only to a broader independent proxy validation panel. Same-source comparison is not ground truth; retain
+imputed-currency provenance and do not map product tiers or fit coefficients. Read
+`data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.
 
 ## Restart rule
 

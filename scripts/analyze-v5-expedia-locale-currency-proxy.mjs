@@ -40,7 +40,9 @@ for (const {city} of inputs.cities) {
     if (!hostGuard && !named) continue;
     const mappedCurrency = named ? "USD" : "USD";
     const p = prior.get(`${city}\u0000${n}`);
-    rows.push({ city, classNumber: n, value: m.value, originalStatus: m.status, currencyStatus: m.currencyStatus ?? "named", mappedCurrency, sourceUrl: m.sourceUrl, priorValue: p?.value ?? null, ape: p ? Math.abs(m.value - p.value) / p.value : null });
+    rows.push({ city, classNumber: n, value: m.value, originalStatus: m.status, currencyStatus: m.currencyStatus ?? "named", mappedCurrency,
+      evidenceBasis: named ? "observed" : "source_locale_proxy", imputedMeasures: named ? [] : ["currency"],
+      sourceUrl: m.sourceUrl, priorValue: p?.value ?? null, ape: p ? Math.abs(m.value - p.value) / p.value : null });
     accepted++;
   }
   perCity.push({ city, protocolCompliant: compliant, acceptedRows: accepted });

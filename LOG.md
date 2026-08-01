@@ -1786,3 +1786,11 @@ cities with prior named-USD rows, but asks the Luna extractor to preserve numeri
 The same-city/class comparison is a source/date calibration, not independent ground truth. The screen requires
 10 compliant calls, 10 mapped/named rows, 10 matched rows, median APE ≤25%, and p90 APE ≤50%; even a pass cannot
 authorize product mapping or fitting. Read `data/reference/v5/experiments/086-expedia-locale-currency-proxy/`.
+
+Experiment 086 completed with 12/12 protocol-compliant calls. It retained 24 exact bare-dollar proxy rows and three
+named-USD rows; deterministic exact-host mapping joined all 27 to prior named-USD rows with median APE 0% and p90
+APE 1.72%, passing the pre-registered same-source screen. This is not independent ground truth because both sides
+come from the Expedia source family. **Verdict:** promote only to a broader independent proxy validation panel;
+preserve `currency: null` and imputed-currency provenance, and do not map product tiers or fit coefficients. The
+Istanbul artifact uses country label `Turkey` while the manifest uses `Türkiye`; retain that raw alias for canonical
+country resolution rather than silently normalizing the response.
