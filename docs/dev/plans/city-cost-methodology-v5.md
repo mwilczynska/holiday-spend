@@ -608,6 +608,14 @@ no mapping or fitting. The next accommodation action is a targeted missing 2-/3-
 anchor, followed by independent explicit-two-adult validation. Read
 `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.
 
+### Experiment 088 - targeted Expedia 2-/3-star URL-pattern panel
+
+This active 15-city, one-city-per-Luna panel changes the retrieval query rather than the estimand: exactly two
+search-only queries target Expedia's indexed `2Star-...-Hotels.s20` and `3Star-...-Hotels.s30` URL patterns. Exact
+city/class, two-adult, tax, reference-period, non-`from`, and exact-host rules remain unchanged; bare-dollar rows
+retain imputed source-locale currency. Promotion requires 14/15 compliant calls, eight new paired rows, and pooled
+2-star/3-star coverage ≥30. No coefficient or product mapping is authorized.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

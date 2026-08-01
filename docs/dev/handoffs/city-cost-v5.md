@@ -597,3 +597,9 @@ reject the broad coverage gate; retain proxy rows with imputed-currency provenan
 next accommodation action is a targeted missing 2-/3-star pair panel or a different anchor, followed by independent
 explicit-two-adult validation. Read `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/` and
 `verdict.md`.
+
+Experiment 088 is now the active restart package: a 15-city, one-city-per-Luna targeted 2-/3-star panel using
+Expedia's indexed class URL patterns and exactly two search operations per city. It requires 14/15 compliant calls,
+eight new paired rows, and pooled 2-star/3-star coverage of at least 30. Bare-dollar rows remain `currency: null`
+and are mapped only by deterministic exact-host code; no fitting or product mapping is authorized. Files are in
+`data/reference/v5/experiments/088-expedia-targeted-23-panel/`.

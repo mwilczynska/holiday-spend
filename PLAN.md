@@ -705,6 +705,12 @@ mapping or fitting. The next accommodation action is a targeted missing 2-/3-sta
 followed by independent explicit-two-adult accuracy validation. Artifacts:
 `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.
 
+**Experiment 088 — targeted Expedia 2-/3-star URL-pattern panel — in progress.** Fifteen one-city Luna contexts
+issue exactly two searches using Expedia's indexed `2Star-...-Hotels.s20` and `3Star-...-Hotels.s30` URL patterns,
+targeting cities that have one side of the pair. The screen requires 14/15 compliant calls, eight new paired rows,
+and pooled 2-star←3-star coverage ≥30. Bare-dollar values remain source-locale proxies with imputed currency; no
+fitting or product mapping occurs. Artifacts: `data/reference/v5/experiments/088-expedia-targeted-23-panel/`.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

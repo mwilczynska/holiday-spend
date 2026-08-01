@@ -9,6 +9,7 @@
 | `llm_prompt_city_cost_v5_experiment_085_expedia_query_contract.md` | **COMPLETE — reject pooled fitting ceiling** | one city per delegated GPT-5.6 Luna-class invocation | Exact Expedia indexed-heading query contract; 0/36 strict new rows |
 | `llm_prompt_city_cost_v5_experiment_086_expedia_locale_currency_proxy.md` | **COMPLETE — promote guarded proxy validation** | one city per delegated GPT-5.6 Luna-class invocation | Records bare-dollar Expedia.com rows as labelled proxies; deterministic host guard passes same-source screen |
 | `llm_prompt_city_cost_v5_experiment_087_expedia_locale_proxy_broad_panel.md` | **COMPLETE — reject broad coverage gate** | one city per delegated GPT-5.6 Luna-class invocation | 24/24 compliant; pooled 20 2↔3 and 29 3↔4; retain proxy rows only |
+| `llm_prompt_city_cost_v5_experiment_088_expedia_targeted_23_panel.md` | **EXPERIMENT — in progress** | one city per delegated GPT-5.6 Luna-class invocation | Targeted Expedia 2-/3-star URL-pattern searches for the remaining paired-city gap |
 | `llm_prompt_new_cities_1.md` | **ACTIVE — shipping** | `src/lib/city-generation.ts` at runtime | The v1 city generation path. Every user-facing city cost comes from this |
 | `llm_prompt_intercity_transport_1.md` | **ACTIVE — shipping** | `src/lib/transport-estimation.ts` | Planner intercity transport estimation. Unrelated to city costs |
 | `llm_prompt_city_anchors_v4.md` | **ACTIVE — not yet wired up** | nothing yet | The v4 collection contract. Tested end to end but no ingestion path exists |

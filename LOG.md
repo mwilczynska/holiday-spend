@@ -1812,3 +1812,12 @@ pooled audit reached 20 matched 2-star/3-star cities and 29 matched 4-star/3-sta
 The next experiment may target the missing 2-/3-star pair boundary, but independent explicit-two-adult accuracy
 validation remains mandatory before any production mapping or fitting. Read
 `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/verdict.md`.
+
+## Experiment 088 - targeted Expedia 2-/3-star URL-pattern panel (1 August 2026)
+
+This 15-city panel is pre-registered after 087's persistent 2-star gap. Each independent one-city Luna context
+issues exactly two search-only queries targeting Expedia's indexed `2Star-...-Hotels.s20` and `3Star-...-Hotels.s30`
+URL patterns. The strict city/class, two-adult, tax, reference-period, non-`from`, and exact-host contract remains;
+bare-dollar rows are labelled source-locale proxies with imputed currency. Promotion requires 14/15 compliant calls,
+eight new paired rows, and pooled 2-star/3-star coverage ≥30. No fitting or product mapping occurs. Read
+`data/reference/v5/experiments/088-expedia-targeted-23-panel/`.
