@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 39.36,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "The 3 Ducks Eiffel Tower by Hiphohostels",
+    "evidenceText": "The Price of Travel Hostel Index table lists Paris, France, The 3 Ducks Eiffel Tower by Hiphohostels, at $39.36 per night. Its methodology states that the price is for one person in a shared dorm room, including taxes and fees, using the average of a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; article dated 2023-01-16.",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Paris France Hostel Index dorm bed price",
+    "reason": "Exact city row and source-defined one-person shared-dorm observation found; no conversion or ratio calculated."
+  },
+  "currentBenchmark": {
+    "status": "found",
+    "value": 385,
+    "currency": "CNY",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.booking.com/hotel/fr/3-ducks-boutique-hostel.html?came_from_hotel_review=1&keep_landing=1",
+    "sourceTitle": "The 3 Ducks Eiffel Tower by Hiphophostels, Paris (updated prices 2026)",
+    "propertyName": "The 3 Ducks Eiffel Tower by Hiphophostels",
+    "evidenceText": "Booking.com search results for The 3 Ducks Eiffel Tower by Hiphophostels in Paris show a Bed in 8-Bed Mixed Dormitory Room, maximum people 1 / only for 1 guest, at CNY 385 per night. The result explicitly says the €2.6 city tax per person per night and 10% VAT are excluded; it also displays the three-night total of CNY 1,155, which was not used as the nightly value.",
+    "referencePeriod": "Booking search result displayed a three-night stay; retrieved 2026-08-01.",
+    "searchQuery": "The 3 Ducks Eiffel Tower by Hiphohostels Paris current shared dorm bed one person nightly price taxes included",
+    "reason": "Exact named property and city, one-person mixed-dorm bed, explicit nightly price, currency, and tax basis found in one public search result; no arithmetic performed."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

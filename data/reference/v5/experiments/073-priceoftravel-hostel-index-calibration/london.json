@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 35.35,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Clink261",
+    "evidenceText": "The Price of Travel Hostel Index table lists London, England, Clink261, at $35.35 per night. Its methodology states that the price is for one person in a shared dorm room, including taxes and fees, using the average of a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; article dated 2023-01-16.",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world London England Hostel Index dorm bed price",
+    "reason": "Exact city row and source-defined one-person shared-dorm observation found; no conversion or ratio calculated."
+  },
+  "currentBenchmark": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.booking.com/hotel/gb/clink261.en-gb.html",
+    "sourceTitle": "Clink261 Hostel, London (updated prices 2026)",
+    "propertyName": "Clink261",
+    "evidenceText": "The public search returned the exact Clink261 property and one-guest dorm rows, but the available strict candidates were either a limited-time deal/sale price or a price shown only as a multi-night total. The result therefore did not provide a non-sale, single-night, tax-resolved nightly benchmark that satisfies the contract.",
+    "referencePeriod": "Booking search result displayed a three-night stay; retrieved 2026-08-01.",
+    "searchQuery": "Clink261 London current shared dorm bed one person nightly price taxes included",
+    "reason": "No strict current benchmark: one candidate was a limited-time deal and the non-sale candidate did not state a nightly price separately from its three-night total. Fail closed without inferring or dividing."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

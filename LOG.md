@@ -1606,3 +1606,16 @@ average of Thursday and Friday nights in mid-April 2023. **Verdict:** promote on
 independent validation. The reference window is stale and the selected-hostel statistic is not yet a production city
 median; do not map `accom_shared_hostel_dorm` until the 30-city/10-locked-holdout accuracy gates pass. Read
 `data/reference/v5/experiments/072-priceoftravel-hostel-index-dorm/`.
+
+## Experiment 073 - Price of Travel same-property dorm-index calibration (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts each issued exactly one Price of Travel index search, one
+exact index-page read, and one current exact-property dorm search. All 12 calls were protocol-compliant and all 12
+index rows were strict. Only 5/12 current benchmarks were strict, 4/12 had the same property identity, and just 1/12
+had matching currency. The sole scored Lisbon pair had an absolute percentage error of 38.76%.
+
+**Verdict:** reject the pre-registered same-currency calibration gate (1/12 versus 8/12 required). Do not map, fit,
+or scale the Price of Travel index. Retain the source rows and current snippets as labelled evidence only. A separate
+deterministic-FX audit may test the CNY rows, but it must preserve strict property/occupancy/tax/date semantics and
+the 30-city/10-locked-holdout validation gate. Read
+`data/reference/v5/experiments/073-priceoftravel-hostel-index-calibration/`.

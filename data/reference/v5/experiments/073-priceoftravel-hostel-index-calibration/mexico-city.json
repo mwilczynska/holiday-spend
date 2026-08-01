@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 9.76,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Casa MX Alameda",
+    "evidenceText": "Price of Travel's Hostel Index row lists Mexico City, Mexico, Casa MX Alameda, at $9.76 per night. The page methodology says this is the price per night including taxes and fees for one person in a shared dorm room, using the average of a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; index published 16 Jan 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Mexico City Mexico Hostel Index dorm bed price",
+    "reason": "Exact city row and source-defined one-person shared-dorm basis were found; no scaling, ratio, or FX conversion was performed."
+  },
+  "currentBenchmark": {
+    "status": "found",
+    "value": 63,
+    "currency": "CNY",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.booking.com/hotel/mx/casa-mx.html",
+    "sourceTitle": "CASA MX alameda, Mexico City (updated prices 2026)",
+    "propertyName": "Casa MX Alameda",
+    "evidenceText": "The exact-property Booking.com result for CASA MX alameda in Mexico City shows a Single Bed in Mixed Dormitory Room, max. people 1/only for 1 guest, at CNY 63 per night; it explicitly states 16% VAT and 3.5% city tax are excluded. The result also shows a CNY 190 three-night total, which is not used.",
+    "referencePeriod": "Booking result for Sat 25 Jul–Tue 28 Jul 2026; retrieval date 2026-08-01",
+    "searchQuery": "Casa MX Alameda Mexico City Mexico shared dorm one person nightly price taxes",
+    "reason": "Strict current benchmark found: same property/city, one-person mixed shared dorm bed, explicit nightly amount, named currency, and explicit excluded tax basis."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

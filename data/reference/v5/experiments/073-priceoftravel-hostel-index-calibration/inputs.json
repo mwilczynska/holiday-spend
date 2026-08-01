@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Bangkok","country":"Thailand"},
+    {"city":"Lisbon","country":"Portugal"},
+    {"city":"London","country":"United Kingdom"},
+    {"city":"Paris","country":"France"},
+    {"city":"Rome","country":"Italy"},
+    {"city":"Prague","country":"Czechia"},
+    {"city":"Tokyo","country":"Japan"},
+    {"city":"Hanoi","country":"Vietnam"},
+    {"city":"New York City","country":"United States"},
+    {"city":"Sydney","country":"Australia"},
+    {"city":"Cape Town","country":"South Africa"},
+    {"city":"Mexico City","country":"Mexico"}
+  ],
+  "indexSource": "priceoftravel_hostel_index",
+  "benchmarkSourcePolicy": "one_public_signed_out_search_for_exact_named_property",
+  "scoredCurrencies": "same_currency_only",
+  "screeningGate": {"matchedPairs": 8, "protocolCompliant": 10}
+}

@@ -453,6 +453,16 @@ shared-dorm bed per-night price, included taxes and fees, and an average of Thur
 is stale and the statistic is a selected named-hostel observation rather than a current city median. Do not map
 `accom_shared_hostel_dorm` until a 30-city/10-locked-holdout benchmark establishes error, drift, and refresh policy.
 
+### Experiment 073 - Price of Travel same-property calibration
+
+Twelve independent single-city Luna contexts each performed one index search, one exact index-page read, and one
+current exact-property dorm search. All 12 calls were protocol-compliant and all 12 index rows were strict. Only five
+current benchmarks were strict, four had the same property identity, and one pair had matching currency. The sole
+scored Lisbon pair had a 38.76% absolute percentage error. **Verdict:** reject the same-currency calibration screen
+(1/12 versus the 8/12 gate). Do not fit a correction or map the dorm tier. Any FX-normalized follow-up must be a new
+pre-registered experiment with explicit source, tax, occupancy, and date checks and the unchanged 30-city/10-holdout
+accuracy requirement.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 25.32,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Palladini Hostel Rome",
+    "evidenceText": "The Price of Travel methodology states that the Hostel Index price is per night, including taxes and fees, for one person in a shared dorm room, averaged over a Thursday and Friday night in mid-April 2023. The Rome row names Palladini Hostel Rome and lists $25.32.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; Hostel Index 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Rome Italy Hostel Index dorm bed price",
+    "reason": "Exact Rome row and explicit index methodology satisfy the one-person shared-dorm, nightly, tax-included contract."
+  },
+  "currentBenchmark": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.hostelworld.com/hotels/p/72723/palladini-rome/",
+    "sourceTitle": "Palladini Rome, Rome - 2025 Prices & Reviews",
+    "propertyName": "Palladini Rome",
+    "evidenceText": "The exact-property Hostelworld result identifies Palladini Rome in Rome and states that taxes are not included, but it provides no numeric current nightly shared-dorm price in the search result. Other returned listings either exposed a private/room-level quote or only offered a button to view dates, so no strict current benchmark was selected.",
+    "referencePeriod": null,
+    "searchQuery": "Palladini Hostel Rome Rome shared dorm bed one person nightly price taxes fees",
+    "reason": "not_found: the single allowed current-property search did not expose a numeric, non-sale, one-person shared-dorm nightly price."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

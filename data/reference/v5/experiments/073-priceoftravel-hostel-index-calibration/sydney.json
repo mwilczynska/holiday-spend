@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 22.21,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Big Hostel",
+    "evidenceText": "Price of Travel's Hostel Index row lists Sydney, Australia, Big Hostel, at $22.21 per night. The page methodology says this is the price per night including taxes and fees for one person in a shared dorm room, using the average of a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; index published 16 Jan 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Sydney Australia Hostel Index dorm bed price",
+    "reason": "Exact city row and source-defined one-person shared-dorm basis were found; no scaling, ratio, or FX conversion was performed."
+  },
+  "currentBenchmark": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.booking.com/hotel/au/big.html",
+    "sourceTitle": "Big Backpackers Hostel, Sydney (updated prices 2026)",
+    "propertyName": "Big Backpackers Hostel",
+    "evidenceText": "The exact-property Booking.com result supplies one-person mixed-dorm quotes, including $24 per night with 10% VAT excluded, but the returned property name is Big Backpackers Hostel rather than the exact index name Big Hostel. The strict protocol does not infer that a renamed property is identical.",
+    "referencePeriod": "Booking result for Sat 25 Jul–Tue 28 Jul 2026; retrieval date 2026-08-01",
+    "searchQuery": "Big Hostel Sydney Australia shared dorm one person nightly price taxes",
+    "reason": "Fail closed on exact-property identity: a numeric quote exists for Big Backpackers Hostel, but the result does not state the exact index property name Big Hostel. No alias or rename equivalence is inferred."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 51.75,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Chelsea International Hostel",
+    "evidenceText": "Price of Travel's Hostel Index row lists New York City, USA, Chelsea International Hostel, at $51.75 per night. The page methodology says this is the price per night including taxes and fees for one person in a shared dorm room, using the average of a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; index published 16 Jan 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world New York City United States Hostel Index dorm bed price",
+    "reason": "Exact city row and source-defined one-person shared-dorm basis were found; no scaling, ratio, or FX conversion was performed."
+  },
+  "currentBenchmark": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.hostelworld.com/hostels/p/801/chelsea-international-hostel/",
+    "sourceTitle": "Chelsea International Hostel, New York - 2026 Prices & Reviews",
+    "propertyName": "Chelsea International Hostel",
+    "evidenceText": "The exact Hostelworld property result identifies Chelsea International Hostel in New York and shared rooms/single beds and states taxes are included, but provides no numeric nightly price for a selected one-person shared dorm bed.",
+    "referencePeriod": "Current-property search result crawled 2026; retrieval date 2026-08-01",
+    "searchQuery": "Chelsea International Hostel New York City shared dorm one person nightly price taxes",
+    "reason": "No strict current benchmark: the selected exact-property result has no numeric nightly shared-dorm quote. Other snippets in the same search were not used because occupancy was not explicitly a one-person bed."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

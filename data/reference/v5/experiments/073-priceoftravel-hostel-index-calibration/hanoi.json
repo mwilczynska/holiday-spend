@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 6.39,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Hanoi Central Backpackers Hostel",
+    "evidenceText": "The Price of Travel methodology states that the Hostel Index price is per night, including taxes and fees, for one person in a shared dorm room, averaged over a Thursday and Friday night in mid-April 2023. The Hanoi row names Hanoi Central Backpackers Hostel and lists $6.39.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; Hostel Index 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Hanoi Vietnam Hostel Index dorm bed price",
+    "reason": "Exact Hanoi row and explicit index methodology satisfy the one-person shared-dorm, nightly, tax-included contract."
+  },
+  "currentBenchmark": {
+    "status": "found",
+    "value": 46,
+    "currency": "CNY",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.booking.com/hotel/vn/the-world.en-gb.html",
+    "sourceTitle": "Hanoi Central Backpackers Hostel, Hanoi (updated prices 2026)",
+    "propertyName": "Hanoi Central Backpackers Hostel",
+    "evidenceText": "The exact-property Booking.com result identifies a 'Bed in dorm' at Hanoi Central Backpackers Hostel, Hanoi, with max. people 1 / only for 1 guest and CNY46 per night. It explicitly states that 8% VAT is excluded. The search snippet does not identify a sale or package.",
+    "referencePeriod": "Current Booking.com search result retrieved 2026-08-01; displayed dates are not exposed in the snippet",
+    "searchQuery": "Hanoi Central Backpackers Hostel Hanoi shared dorm bed one person nightly price taxes fees",
+    "reason": "Exact property/city, one guest, dorm-bed unit, numeric nightly CNY price, and explicit excluded VAT are all present in the single allowed current-property search result."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

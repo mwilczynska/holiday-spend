@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 23.07,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Sakura Hostel Asakusa",
+    "evidenceText": "The Price of Travel methodology states that the Hostel Index price is per night, including taxes and fees, for one person in a shared dorm room, averaged over a Thursday and Friday night in mid-April 2023. The Tokyo row names Sakura Hostel Asakusa and lists $23.07.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; Hostel Index 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Tokyo Japan Hostel Index dorm bed price",
+    "reason": "Exact Tokyo row and explicit index methodology satisfy the one-person shared-dorm, nightly, tax-included contract."
+  },
+  "currentBenchmark": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.booking.com/hotel/jp/sakurahostel-asakusa.html",
+    "sourceTitle": "Sakura Hostel Asakusa, Tokyo (updated prices 2026)",
+    "propertyName": "Sakura Hostel Asakusa",
+    "evidenceText": "The exact-property Booking.com result identifies a Bunk Bed in Mixed Dormitory Room for one guest and lists CNY169 per night excluding taxes and fees, but marks it as a 40% Getaway Deal and also shows multiple discounted/current amounts. The strict protocol rejects sale-only prices, so no benchmark is selected.",
+    "referencePeriod": null,
+    "searchQuery": "Sakura Hostel Asakusa Tokyo shared dorm bed one person nightly price taxes fees",
+    "reason": "not_found: the numeric result is explicitly a sale/Getaway Deal and therefore fails the non-sale benchmark rule."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

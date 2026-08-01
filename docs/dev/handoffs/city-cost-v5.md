@@ -505,3 +505,10 @@ All twelve yielded strict, tax-included one-person shared-dorm rows from the Apr
 all calls were protocol-compliant. Promote only to two-bed scaling and independent validation. The index is stale and
 selected-hostel based, so do not map the dorm product or claim accuracy until a 30-city/10-locked-holdout benchmark
 passes.
+
+Experiment 073 completed twelve one-city Luna contexts with exactly one index search, one exact index-page read, and
+one current exact-property dorm search. All calls were protocol-compliant. Five current benchmarks were strict, four
+joined the same property, and only Lisbon had matching currency; its absolute percentage error was 38.76%. The 1/12
+same-currency gate failed. Reject this calibration boundary; retain all rows as labelled evidence only and do not map,
+fit, or scale the index. The next experiment is a pre-registered deterministic-FX audit, not an implicit relaxation of
+this result.

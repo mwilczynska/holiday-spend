@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Prague",
+  "country": "Czechia",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 13.77,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "PLUS Prague",
+    "evidenceText": "The Price of Travel methodology states that the Hostel Index price is per night, including taxes and fees, for one person in a shared dorm room, averaged over a Thursday and Friday night in mid-April 2023. The Prague row (country label Czechia) names PLUS Prague and lists $13.77.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; Hostel Index 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Prague Czech Republic Hostel Index dorm bed price",
+    "reason": "Exact Prague row and explicit index methodology satisfy the one-person shared-dorm, nightly, tax-included contract."
+  },
+  "currentBenchmark": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.google.cz/travel/hotels/entity/ChgIzprPy_qF79qYARoLL2cvMXRmemwxY3IQAQ?ap=MABIAQ&g2lb=4181926%2C4208993%2C4209588%2C4225902%2C201880%2C4207631%2C4219394%2C4220469%2C4222768&un=0",
+    "sourceTitle": "Plus Prague Hostel - Google hotels",
+    "propertyName": "PLUS Prague",
+    "evidenceText": "The exact-property Google Hotels search result includes a shared dormitory, mixed dorm, ensuite (8-bedded) listing and says 'Nightly price with fees', but the snippet displays multiple unlabelled values (CZK 721, CZK 908, and CZK 6,353 for a seven-night context) and does not explicitly identify a one-person occupancy. No single strict current value can be selected without inference or arithmetic.",
+    "referencePeriod": null,
+    "searchQuery": "PLUS Prague Prague shared dorm bed one person nightly price taxes fees",
+    "reason": "not_found: current search exposed multiple ambiguous prices and did not provide an explicit one-person basis."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

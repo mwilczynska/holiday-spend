@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 6.48,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Born Free Hostel",
+    "evidenceText": "The Price of Travel Hostel Index table lists Bangkok, Thailand, Born Free Hostel, at $6.48 per night. Its methodology states that the price is for one person in a shared dorm room, including taxes and fees, using the average of a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; article dated 2023-01-16.",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Bangkok Thailand Hostel Index dorm bed price",
+    "reason": "Exact city row and source-defined one-person shared-dorm observation found; no conversion or ratio calculated."
+  },
+  "currentBenchmark": {
+    "status": "found",
+    "value": 25,
+    "currency": "CNY",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "taxStatus": "excluded",
+    "sourceUrl": "https://www.booking.com/hotel/th/born-free-hostel.html",
+    "sourceTitle": "Born Free Hostel, Bangkok (updated prices 2026)",
+    "propertyName": "Born Free Hostel",
+    "evidenceText": "Booking.com search results for Born Free Hostel, Bangkok show a Bed in 10-Bed Mixed Dormitory Room, maximum people 1 / only for 1 guest, at CNY 25 per night; the result explicitly says 7% VAT is excluded. The same result displays a three-night price of CNY 76 and was not used as the nightly value.",
+    "referencePeriod": "Booking search result displayed a three-night stay; retrieved 2026-08-01.",
+    "searchQuery": "Born Free Hostel Bangkok current shared dorm bed one person nightly price taxes included",
+    "reason": "Exact named property and city, one-person mixed-dorm bed, explicit nightly price, currency, and tax basis found in one public search result; no arithmetic performed."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -601,15 +601,17 @@ high-end 1/12, and zero complete cities. Reject this per-person activity screen;
 not apply the factor of two, map tiers, or fit. The next activity attempt must use a materially different source or
 contract and independently validate scaling.
 
-Experiment 072 is active: twelve one-city Luna contexts test Price of Travel's static Hostel Index with exactly one
-search and one page read per city. The strict contract requires an exact one-person shared-dorm bed price, named
-currency, tax/fee basis, and reference window. The screen requires 8/12 rows and 10/12 protocol-compliant calls;
-deterministic two-bed scaling and accuracy validation remain separate.
-
 Experiment 072 completed with 12/12 strict rows and 12/12 protocol-compliant calls, passing its source screen. All
 rows use the tax-included Price of Travel Hostel Index reference window (Thursday/Friday mid-April 2023). Promote only
 to a pre-registered two-bed scaling and independent accuracy experiment; the stale selected-hostel statistic is not
 yet a production city median, and no dorm product mapping is allowed.
+
+Experiment 073 completed twelve one-city Luna contexts with exactly one Price of Travel search, one exact-page read,
+and one current exact-property dorm search. All calls were protocol-compliant and all index rows were strict, but
+only 5/12 current benchmarks were strict, 4/12 had the same property identity, and just 1/12 had matching currency.
+The same-currency calibration gate (8/12) failed; Lisbon's one scored pair had 38.76% absolute percentage error.
+Reject this calibration boundary. Do not map or fit the index. A separate deterministic-FX audit may test the retained
+definition-compatible CNY rows, but it must be pre-registered and still meet the 30-city/10-holdout gate.
 
 ## Unrelated app backlog
 

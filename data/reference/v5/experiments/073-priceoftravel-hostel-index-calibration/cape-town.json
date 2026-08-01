@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "city-cost-v5-priceoftravel-hostel-index-calibration-v1",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalDate": "2026-08-01",
+  "indexObservation": {
+    "status": "found",
+    "value": 13.82,
+    "currency": "USD",
+    "unit": "per_person_shared_dorm_bed_per_night",
+    "occupancyBasis": "one_person_shared_dorm_bed",
+    "class": "hostel_shared_dorm",
+    "statistic": "index_city_observation",
+    "taxStatus": "included",
+    "sourceUrl": "https://www.priceoftravel.com/how-much-do-hostels-cost-around-the-world",
+    "sourceTitle": "How much do hostels cost around the world? Hostel Price Index for 2023 - Price of Travel",
+    "propertyName": "Zebra Crossing",
+    "evidenceText": "Price of Travel's Hostel Index row lists Cape Town, South Africa, Zebra Crossing, at $13.82 per night. The page methodology says this is the price per night including taxes and fees for one person in a shared dorm room, using the average of a Thursday and Friday night in mid-April 2023.",
+    "referencePeriod": "Average Thursday and Friday night in mid-April 2023; index published 16 Jan 2023",
+    "searchQuery": "site:priceoftravel.com/how-much-do-hostels-cost-around-the-world Cape Town South Africa Hostel Index dorm bed price",
+    "reason": "Exact city row and source-defined one-person shared-dorm basis were found; no scaling, ratio, or FX conversion was performed."
+  },
+  "currentBenchmark": {
+    "status": "not_found",
+    "value": null,
+    "currency": null,
+    "unit": null,
+    "occupancyBasis": null,
+    "class": null,
+    "taxStatus": null,
+    "sourceUrl": "https://www.booking.com/hotel/za/zebra-crossing-backpacker.en-gb.html",
+    "sourceTitle": "Zebra Crossing Backpacker, Cape Town (updated prices 2026)",
+    "propertyName": "Zebra Crossing Backpacker",
+    "evidenceText": "The exact-property Booking.com result identifies Zebra Crossing Backpacker in Cape Town and shows one-person 8-bed dorm options, but the numeric quotes are discounted Getaway Deal/sale prices presented with multi-night totals. No eligible non-sale nightly benchmark was supplied.",
+    "referencePeriod": "Booking result for Mon 20 Jul–Thu 23 Jul 2026; retrieval date 2026-08-01",
+    "searchQuery": "Zebra Crossing Cape Town South Africa shared dorm one person nightly price taxes",
+    "reason": "Fail closed because the available one-person dorm quotes are sale-only discounted offers and multi-night totals; the strict protocol excludes sale-only or ambiguous quote bases."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 2,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}
