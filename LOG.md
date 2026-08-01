@@ -1532,3 +1532,15 @@ source-level proxy candidates and cannot be promoted to `accom_1_star` or used a
 **Verdict:** reject BudgetYourTrip as a direct one-star source, but test a source-level
 `source_defined_double_occupancy` convention separately. It requires independent explicit-two-adult calibration;
 any resulting product value must be labelled `modelled`. Read `data/reference/v5/experiments/066-budgetyourtrip-one-star-semantics/`.
+
+## Experiment 067 - BudgetYourTrip source-level double-occupancy proxy (1 August 2026)
+
+Twelve independent single-city GPT-5.6 Luna-class contexts issued exactly two ordered searches and two page reads
+each (24 searches and 24 reads total). No retries, fallback sources, arithmetic, FX conversion, averaging, or
+cross-city evidence occurred; all twelve calls were protocol-compliant.
+
+Only **1/12** cities (Cairo) joined an exact-city one-star numeric page with a same-source destination page explicitly
+defining typical double occupancy. The screening gate required 8/12 proxy candidates. Other cities were blocked or
+timed out, stale, class-absent, or lacked a joinable semantic page. **Verdict:** reject this proxy route at current
+web-tool reliability. Retain Cairo as labelled proxy evidence only; do not map or fit. Read
+`data/reference/v5/experiments/067-budgetyourtrip-double-occupancy-proxy/`.

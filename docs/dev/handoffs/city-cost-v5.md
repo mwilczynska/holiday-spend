@@ -472,4 +472,6 @@ until that proxy is independently calibrated.
 
 Experiment 067 is active. It tests twelve fresh one-city Luna contexts with exactly two searches and two page reads:
 the exact-city one-star BudgetYourTrip page and the same-source destination page defining typical double occupancy.
-The output is a labelled proxy candidate only; no mapping, tax normalization, or fitting follows this screen.
+The output was a labelled proxy candidate in Cairo only (1/12); all calls were protocol-compliant, but the 8/12
+screening gate failed because other cities were blocked, stale, class-absent, or lacked a joinable semantic page.
+Reject this proxy route at current web-tool reliability; no mapping, tax normalization, or fitting follows.

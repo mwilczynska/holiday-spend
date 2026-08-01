@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-telemetry-v1",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com/hotels Auckland New Zealand 1-star hotel average price one night",
+    "site:budgetyourtrip.com Auckland New Zealand average price two people typical double-occupancy hotel room"
+  ],
+  "directReads": 2,
+  "firstPageReadStatus": "blocked_http_429",
+  "secondPageReadStatus": "success",
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "proxyCandidates": 0,
+  "protocolCompliant": true,
+  "notes": "One city, exactly two ordered BudgetYourTrip searches and two page-read attempts. The hotel page read returned HTTP 429; the destination page independently exposed source-level double-occupancy wording. No retry, fallback, arithmetic, FX, or cross-city evidence."
+}

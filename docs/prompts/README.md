@@ -106,9 +106,9 @@ contexts used exactly one search and one exact-city page read, producing 0/12 ex
 lacked row-level occupancy and four were blocked. This rejects direct observation, but source-level double-occupancy
 proxy calibration remains a separate active question; numeric values are not yet product outputs.
 
-The 067 BudgetYourTrip double-occupancy proxy prompt is active. Each one-city Luna context issues exactly two searches
-and two page reads: the one-star page and the same-source destination page that must explicitly define typical
-double-occupancy hotel prices. Proxy candidates remain labelled and cannot be mapped or fitted by this experiment.
+The 067 BudgetYourTrip double-occupancy proxy prompt is complete and rejected at its screening gate: twelve one-city
+contexts issued exactly two searches and two page reads each, yielding 1/12 proxy candidates and 12/12 protocol
+compliance. No mapping or fitting follows; the Cairo candidate remains labelled proxy only.
 
 Experiment 064 has no prompt: it is a deterministic pooled audit of existing evidence. It found 80 rows across 36
 cities, but no 30-city/10-holdout relationship and zero one-star/hostel rows. Do not fit or map.

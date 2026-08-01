@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-v1",
+  "citiesTested": 12,
+  "searchesAttempted": 24,
+  "searchOperations": 24,
+  "directReads": 24,
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "protocolCompliant": 12,
+  "acceptedProxyCandidates": 1,
+  "acceptedCities": [
+    "Cairo"
+  ],
+  "promotionGate": "proxy candidates>=8, protocol-compliant cities>=10",
+  "promotionGatePassed": false,
+  "cities": [
+    {
+      "city": "Auckland",
+      "accepted": false,
+      "proxyStatus": "blocked",
+      "semanticsStatus": "found",
+      "reason": "Blocked first page; no one-star value is promoted and no proxy candidate can be formed even though the same-source destination semantics page was available."
+    },
+    {
+      "city": "Bangkok",
+      "accepted": false,
+      "proxyStatus": "blocked",
+      "semanticsStatus": "found",
+      "reason": "Blocked one-star page read; no star value can be joined to the destination-page occupancy convention."
+    },
+    {
+      "city": "Cairo",
+      "accepted": true,
+      "proxyStatus": "proxy_candidate",
+      "semanticsStatus": "found",
+      "reason": "This is only a source-defined double-occupancy proxy candidate. The first page supplies exact city/class, numeric one-night USD value, sample and tax exclusion; the companion destination page supplies the source-level occupancy convention. It is not an observed two-adult price and is not mapped or fitted."
+    },
+    {
+      "city": "Kuala Lumpur",
+      "accepted": false,
+      "proxyStatus": "not_found",
+      "semanticsStatus": "found",
+      "reason": "Wrong class/page family: no exact-city numeric 1-star average was present, so no proxy candidate is formed."
+    },
+    {
+      "city": "Lisbon",
+      "accepted": false,
+      "proxyStatus": "blocked",
+      "semanticsStatus": "blocked",
+      "reason": "One-star page succeeded, but paired double-occupancy semantics page was blocked; retain only as a pending candidate, never as observed."
+    },
+    {
+      "city": "London",
+      "accepted": false,
+      "proxyStatus": "blocked",
+      "semanticsStatus": "blocked",
+      "reason": "Exact page blocked; numeric search-snippet candidate retained only as provenance and not as an observed or proxy value."
+    },
+    {
+      "city": "Nairobi",
+      "accepted": false,
+      "proxyStatus": "blocked",
+      "semanticsStatus": "blocked",
+      "reason": "Blocked/timed-out one-star page read; no star value can be joined to the destination-page occupancy convention."
+    },
+    {
+      "city": "New York City",
+      "accepted": false,
+      "proxyStatus": "class_absent",
+      "semanticsStatus": "blocked",
+      "reason": "Exact-city page explicitly lacks a 1-star class; do not substitute the wrong-city New York result or derive a value from another star tier."
+    },
+    {
+      "city": "Prague",
+      "accepted": false,
+      "proxyStatus": "stale",
+      "semanticsStatus": "blocked",
+      "reason": "A numeric exact-city one-star row and tax basis were visible, but the page is stale (crawled 11 months ago) and the required destination-page occupancy read was blocked. It is not a proxy candidate or observation."
+    },
+    {
+      "city": "Stockholm",
+      "accepted": false,
+      "proxyStatus": "not_found",
+      "semanticsStatus": "blocked",
+      "reason": "No exact-city numeric 1-star statistic was present on the opened page, so no proxy candidate is formed."
+    },
+    {
+      "city": "Toronto",
+      "accepted": false,
+      "proxyStatus": "blocked",
+      "semanticsStatus": "blocked",
+      "reason": "Blocked page and no one-star value in the search output; do not infer a missing class from other star tiers."
+    },
+    {
+      "city": "Vienna",
+      "accepted": false,
+      "proxyStatus": "found",
+      "semanticsStatus": "blocked",
+      "reason": "Exact-city one-star numeric row and tax basis were found, but the required destination-page double-occupancy read was blocked. The row remains an unjoined source value, not a proxy candidate or observation."
+    }
+  ],
+  "productMapping": "none_proxy_screening_only"
+}

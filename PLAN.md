@@ -570,6 +570,11 @@ Experiment 067 is active: twelve one-city Luna contexts will join an exact-city 
 destination page that explicitly defines typical double-occupancy hotel prices. The screen requires 8/12 complete
 proxy candidates and 10/12 protocol-compliant calls; a pass authorizes calibration only, never direct observation.
 
+Experiment 067 completed with 1/12 proxy candidates and 12/12 protocol-compliant calls. The gate failed because
+most cities had blocked/timed-out reads, stale or absent one-star classes, or no joinable same-source occupancy page.
+Reject this proxy route at current web-tool reliability; retain Cairo as labelled proxy evidence only and do not map
+or fit.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

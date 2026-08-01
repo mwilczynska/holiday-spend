@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-v1",
+  "city": "Cairo",
+  "country": "Egypt",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "proxy_candidate",
+      "value": 40,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "source_defined_double_occupancy",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/egypt/cairo-360630",
+      "sourceTitle": "How Much Do Hotels Cost in Cairo? Hotel Prices for Cairo, Egypt | Budget Your Trip",
+      "evidenceText": "The exact Cairo hotel page reports $40 as the average price of 54 1-star hotels, with a $27 median. It describes a one-night stay, and states that all hotel prices are in US Dollars before taxes and come from a Kayak base price. The page also states that star prices are before taxes and fees and change with seasons.",
+      "referencePeriod": "BudgetYourTrip hotel-price analysis; page crawled today; prices vary seasonally and are before taxes and fees.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Cairo Egypt 1-star hotel average price one night",
+      "sampleSize": 54,
+      "reason": "This is only a source-defined double-occupancy proxy candidate. The first page supplies exact city/class, numeric one-night USD value, sample and tax exclusion; the companion destination page supplies the source-level occupancy convention. It is not an observed two-adult price and is not mapped or fitted."
+    },
+    "double_occupancy_semantics": {
+      "status": "found",
+      "value": 22,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_people_typical_double_occupancy_source_page",
+      "statistic": "reported_traveler_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/egypt/cairo",
+      "sourceTitle": "Cairo Travel Cost - Average Price of a Vacation to Cairo: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact Cairo destination page says the average price paid in Cairo for two people for a typical double-occupancy hotel room is $22 (E£1,073), while one person sharing a room averages $11 per night; these costs are from reported traveler spending.",
+      "occupancyEvidence": "The average price paid in Cairo for two people for a typical double-occupancy hotel room is $22; one person sharing a room is $11 per night.",
+      "referencePeriod": "Destination travel-cost data page; travel cost data last updated June 12, 2026; page opened 2026-08-01."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "queries": [
+      "site:budgetyourtrip.com/hotels Cairo Egypt 1-star hotel average price one night",
+      "site:budgetyourtrip.com Cairo Egypt average price two people typical double-occupancy hotel room"
+    ],
+    "directReads": 2,
+    "firstPageReadStatus": "success",
+    "secondPageReadStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "proxyCandidates": 1,
+    "protocolCompliant": true
+  }
+}

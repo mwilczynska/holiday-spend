@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-v1",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "stale",
+      "value": 66,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://testing.budgetyourtrip.com/hotels/czech-republic/prague-3067696",
+      "sourceTitle": "How Much Do Hotels Cost in Prague? Hotel Prices for Prague, Czech Republic | Budget Your Trip",
+      "evidenceText": "The exact-city page reports an average price of $66 for 1-star hotels in Prague based on 23 hotels, with a median of $55, and describes the 1-star range as a one-night hotel price.",
+      "taxEvidence": "The page states that average prices by star rating are before taxes and fees and change with seasons.",
+      "referencePeriod": "BudgetYourTrip exact-city hotel page crawled 11 months ago; stale at retrieval.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Prague Czech Republic 1-star hotel average price one night",
+      "sampleSize": 23,
+      "reason": "A numeric exact-city one-star row and tax basis were visible, but the page is stale (crawled 11 months ago) and the required destination-page occupancy read was blocked. It is not a proxy candidate or observation."
+    },
+    "double_occupancy_semantics": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "typical_double_occupancy",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+      "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact-city destination page was returned by the mandated second search, but the single mandated page read failed with HTTP 429 Too Many Requests. Search output mentioned a typical double-occupancy price, but no source-page wording was inspected or promoted.",
+      "occupancyEvidence": "Unavailable because the exact-city destination page read was blocked; search-snippet wording is not treated as inspected page evidence.",
+      "referencePeriod": "Search result crawled 3 weeks ago; mandated page read attempted 2026-08-01 and blocked by HTTP 429.",
+      "searchQuery": "site:budgetyourtrip.com Prague Czech Republic average price two people typical double-occupancy hotel room",
+      "reason": "Blocked destination-page read; no source-level double-occupancy semantics can be joined."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 2,
+    "pageReadStatuses": ["success", "blocked_http_429"],
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "blockedMeasures": 1,
+    "staleMeasures": 1,
+    "protocolCompliant": true
+  }
+}

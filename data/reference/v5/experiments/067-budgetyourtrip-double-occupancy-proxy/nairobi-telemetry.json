@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-telemetry-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com/hotels Nairobi Kenya 1-star hotel average price one night",
+    "site:budgetyourtrip.com Nairobi Kenya average price two people typical double-occupancy hotel room"
+  ],
+  "directReads": 2,
+  "pageReadStatuses": ["blocked_timeout", "blocked_http_429"],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "blockedMeasures": 2,
+  "staleMeasures": 0,
+  "protocolCompliant": true,
+  "notes": "One-city context with exactly two ordered searches and two ordered page reads: exact-city one-star page, then exact-city destination page. The first read timed out and the second returned HTTP 429. No retry, fallback, arithmetic, FX, averaging, or cross-city evidence was used."
+}

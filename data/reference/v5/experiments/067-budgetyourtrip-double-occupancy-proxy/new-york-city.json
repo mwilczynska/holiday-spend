@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "class_absent",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "not_applicable",
+      "class": "1_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://testing.budgetyourtrip.com/hotels/united-states-of-america/new-york-city-5128581",
+      "sourceTitle": "How Much Do Hotels Cost in New York City? Hotel Prices for New York City, New York | Budget Your Trip",
+      "evidenceText": "The exact-city BudgetYourTrip page read succeeded. Its hotel sections list 5-star ($271), 4-star ($198), 3-star ($161), and 2-star ($135), with no 1-star section. A different generic New York page appeared in search results but was rejected as the wrong city.",
+      "referencePeriod": "Page read 2026-08-01; page states one-night USD prices before taxes.",
+      "searchQuery": "site:budgetyourtrip.com/hotels New York City United States 1-star hotel average price one night",
+      "reason": "Exact-city page explicitly lacks a 1-star class; do not substitute the wrong-city New York result or derive a value from another star tier."
+    },
+    "double_occupancy_semantics": {
+      "status": "blocked",
+      "value": null,
+      "candidateValue": 350,
+      "candidateCurrency": "USD",
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_people_typical_double_occupancy_search_snippet_unverified",
+      "class": "all_hotel_classes",
+      "statistic": "average_paid",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/new-york-city",
+      "sourceTitle": "New York City Travel Cost - Average Price of a Vacation to New York City: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The mandated search result explicitly reported an average price paid in New York City for two people for a typical double-occupancy hotel room of $350. The mandated exact-city page read returned HTTP 429 Too Many Requests, so the occupancy wording could not be verified on-page.",
+      "referencePeriod": "Search result crawled 3 weeks ago; mandated page read attempted 2026-08-01 and blocked by HTTP 429.",
+      "searchQuery": "site:budgetyourtrip.com New York City United States average price two people typical double-occupancy hotel room",
+      "reason": "Destination page blocked; search snippet alone cannot satisfy the source-level proxy contract."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 2,
+    "pageReadStatuses": ["success", "blocked_http_429"],
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "proxyCandidateMeasures": 0,
+    "blockedMeasures": 1,
+    "classAbsentMeasures": 1,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-v1",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/kenya/nairobi-184745",
+      "sourceTitle": "How Much Do Hotels Cost in Nairobi? Hotel Prices for Nairobi, Kenya | Budget Your Trip",
+      "evidenceText": "The exact-city hotel-by-star page was returned by the mandated first search, but the single mandated page read failed with a 400 timeout. Search output mentioned Nairobi hotel prices, but no source-page one-star row was inspected or promoted.",
+      "taxEvidence": "Unavailable because the exact-city hotel page read timed out; search-snippet wording is not treated as inspected page evidence.",
+      "referencePeriod": "Search result crawled last month; mandated page read attempted 2026-08-01 and timed out.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Nairobi Kenya 1-star hotel average price one night",
+      "reason": "Blocked/timed-out one-star page read; no star value can be joined to the destination-page occupancy convention."
+    },
+    "double_occupancy_semantics": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "typical_double_occupancy",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/kenya/nairobi",
+      "sourceTitle": "Nairobi Travel Cost - Average Price of a Vacation to Nairobi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact-city destination page was returned by the mandated second search, but the single mandated page read failed with HTTP 429 Too Many Requests. Search output mentioned $23 for two people in a typical double-occupancy room, but no source-page wording was inspected or promoted.",
+      "occupancyEvidence": "Unavailable because the exact-city destination page read was blocked; search-snippet wording is not treated as inspected page evidence.",
+      "referencePeriod": "Search result crawled last month; mandated page read attempted 2026-08-01 and blocked by HTTP 429.",
+      "searchQuery": "site:budgetyourtrip.com Nairobi Kenya average price two people typical double-occupancy hotel room",
+      "reason": "Blocked destination-page read; no source-level double-occupancy semantics can be joined."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 2,
+    "pageReadStatuses": ["blocked_timeout", "blocked_http_429"],
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "acceptedMeasures": 0,
+    "blockedMeasures": 2,
+    "staleMeasures": 0,
+    "protocolCompliant": true
+  }
+}

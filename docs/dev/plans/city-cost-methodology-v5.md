@@ -383,6 +383,11 @@ basis, and source-level two-person wording. The screening gate is 8/12 proxy can
 protocol-compliant calls. A pass authorizes only independent calibration against explicit-two-adult observations;
 it never authorizes mapping, fitting, or presenting a proxy as observed.
 
+Results: all twelve calls were protocol-compliant, but only Cairo produced a complete source-defined proxy candidate
+(1/12), far below the 8/12 screening gate. The other cities had blocked/timed-out reads, absent or stale classes, or
+could not join both source pages. **Verdict:** reject this proxy route at the observed web-tool reliability; retain
+Cairo as labelled proxy evidence only and do not map or fit.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-v1",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_1star_proxy": {
+      "status": "blocked",
+      "value": null,
+      "currency": null,
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "1_star",
+      "statistic": "city_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/hotels/new-zealand/auckland-2193733",
+      "sourceTitle": "How Much Do Hotels Cost in Auckland? Hotel Prices for Auckland, New Zealand | Budget Your Trip",
+      "evidenceText": "The exact Auckland hotel page was returned by the mandated first search, but the single mandated page read returned HTTP 429 Too Many Requests. The search result described the page and before-tax hotel pricing but did not provide an inspectable one-star statistic.",
+      "referencePeriod": "Search result crawled last month; mandated page read attempted 2026-08-01 and blocked by HTTP 429.",
+      "searchQuery": "site:budgetyourtrip.com/hotels Auckland New Zealand 1-star hotel average price one night",
+      "reason": "Blocked first page; no one-star value is promoted and no proxy candidate can be formed even though the same-source destination semantics page was available."
+    },
+    "double_occupancy_semantics": {
+      "status": "found",
+      "value": 194,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_people_typical_double_occupancy_source_page",
+      "statistic": "reported_traveler_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/auckland",
+      "sourceTitle": "Auckland Travel Cost - Average Price of a Vacation to Auckland: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "The exact Auckland destination page says the average price paid in Auckland for two people for a typical double-occupancy hotel room is $194 (NZ$334), while one person sharing a room averages $97 (NZ$167) per night; these costs are from reported traveler spending.",
+      "occupancyEvidence": "The average price paid in Auckland for two people for a typical double-occupancy hotel room is $194; one person sharing a room is $97 per night.",
+      "referencePeriod": "Destination travel-cost data page; travel cost data last updated June 12, 2026; page opened 2026-08-01."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "directReads": 2,
+    "firstPageReadStatus": "blocked_http_429",
+    "secondPageReadStatus": "success",
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "proxyCandidates": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "city-cost-v5-budgetyourtrip-double-occupancy-proxy-telemetry-v1",
+  "city": "New York City",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "provider": "delegated GPT-5.6 Luna-class web-search agent",
+  "modelId": "GPT-5.6 Luna-class (orchestration model id unavailable)",
+  "searchesAttempted": 2,
+  "searchOperations": 2,
+  "queries": [
+    "site:budgetyourtrip.com/hotels New York City United States 1-star hotel average price one night",
+    "site:budgetyourtrip.com New York City United States average price two people typical double-occupancy hotel room"
+  ],
+  "directReads": 2,
+  "pageReadStatuses": ["success", "blocked_http_429"],
+  "retries": 0,
+  "fallbackSources": 0,
+  "arithmeticOperations": 0,
+  "currencyConversions": 0,
+  "crossCityEvidence": 0,
+  "acceptedMeasures": 0,
+  "proxyCandidateMeasures": 0,
+  "blockedMeasures": 1,
+  "classAbsentMeasures": 1,
+  "protocolCompliant": true,
+  "notes": "Single city and exactly four ordered operations. The hotel page read succeeded and explicitly lacked a 1-star section; the destination page read returned HTTP 429. No wrong-city result, retry, fallback, arithmetic, FX, or cross-city evidence was used."
+}
