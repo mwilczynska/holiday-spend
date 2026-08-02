@@ -11,6 +11,7 @@
 | `llm_prompt_city_cost_v5_experiment_087_expedia_locale_proxy_broad_panel.md` | **COMPLETE — reject broad coverage gate** | one city per delegated GPT-5.6 Luna-class invocation | 24/24 compliant; pooled 20 2↔3 and 29 3↔4; retain proxy rows only |
 | `llm_prompt_city_cost_v5_experiment_088_expedia_targeted_23_panel.md` | **COMPLETE — reject targeted coverage gate** | one city per delegated GPT-5.6 Luna-class invocation | 15/15 compliant; no new 2-/3-star pair; pooled coverage remains 20; no mapping |
 | `llm_prompt_city_cost_v5_experiment_089_activity_semantic_calibration.md` | **COMPLETE — reject semantic calibration** | one city per delegated GPT-5.6 Luna-class invocation | 12/12 compliant; strict screen failed; BudgetYourTrip remains proxy-only |
+| `llm_prompt_city_cost_v5_experiment_090_one_call_anchor_bundle.md` | **COMPLETE — reject complete bundle** | one city per delegated GPT-5.6 Luna-class invocation | 12/12 compliant; no complete all-anchor city; no mapping |
 | `llm_prompt_new_cities_1.md` | **ACTIVE — shipping** | `src/lib/city-generation.ts` at runtime | The v1 city generation path. Every user-facing city cost comes from this |
 | `llm_prompt_intercity_transport_1.md` | **ACTIVE — shipping** | `src/lib/transport-estimation.ts` | Planner intercity transport estimation. Unrelated to city costs |
 | `llm_prompt_city_anchors_v4.md` | **ACTIVE — not yet wired up** | nothing yet | The v4 collection contract. Tested end to end but no ingestion path exists |

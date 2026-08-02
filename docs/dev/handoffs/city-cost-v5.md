@@ -614,6 +614,8 @@ Experiment 089 is complete in `data/reference/v5/experiments/089-activity-semant
 three searches per city across 12 independent one-city Luna contexts. All calls were protocol-compliant, but the
 strict audit accepted 0/12 low-cost-ticket rows, 5/12 half-day rows, and 4/12 full-day rows, with zero complete
 cities. The screen failed and no calibration or product mapping was performed. BudgetYourTrip remains a labelled
-`source_defined_proxy`. The workstream is paused after Experiment 089 at the user's request; the v5 Definition of
-Done remains unmet. Resume by reading its `verdict.md` and rerunning
-`cmd /c node scripts/analyze-v5-activity-semantic-calibration.mjs` before selecting another experiment.
+`source_defined_proxy`. The v5 Definition of Done remains unmet. The next active package is Experiment 090,
+`data/reference/v5/experiments/090-one-call-anchor-bundle/`: twelve one-city Luna calls, exactly five ordered
+source-restricted searches per city, and a deterministic coverage audit only. Use
+`cmd /c node scripts/analyze-v5-one-call-anchor-bundle.mjs` after all artifacts arrive; do not map or fit from a
+screen pass.

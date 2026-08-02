@@ -638,8 +638,22 @@ definition-matched collection only; it does not map product fields or fit final 
 The panel completed with 12/12 compliant calls, 0/12 strict low-cost-ticket rows, 5/12 strict half-day rows, and
 4/12 strict full-day rows. No city supplied all three anchors, so every substantive screen gate failed. Compatible
 USD matches to the BudgetYourTrip baseline were only 0, 1, and 2 rows respectively; no calibration was fitted.
-**Verdict:** reject the activity semantic route and retain BudgetYourTrip as `source_defined_proxy` only. The
-workstream is paused after this experiment at the user's request; the v5 Definition of Done remains unmet.
+**Verdict:** reject the activity semantic route and retain BudgetYourTrip as `source_defined_proxy` only. The v5
+Definition of Done remains unmet.
+
+### Experiment 090 - one-call multi-source anchor bundle
+
+This pre-registered 12-city screen tests one production-shaped request per city with exactly five ordered searches:
+Numbeo food/drink, BudgetYourTrip activities, Expedia 2–4-star trends, public hostel prices, and a one-star query.
+The response is a structured extractor only: no reads, retries, fallback, arithmetic, FX, aggregation, or
+cross-city evidence. The deterministic audit reports observed versus source-defined/proxy coverage and complete
+anchor bundles, but performs no model fitting or product mapping. A pass is only a source-boundary promotion; the
+frozen 30-city/10-holdout accuracy gates still apply.
+
+The screen completed with 12/12 compliant calls. Five Numbeo food inputs and all three BudgetYourTrip activity
+proxies were present in 8/12 cities, while cocktail, wine-glass, 2-star, hostel, private-hostel, and one-star rows
+were all zero; no city had a complete anchor bundle. **Verdict:** reject this as a complete production path and
+retain partial evidence only. The protocol is feasible, but source coverage—not LLM formatting—is the blocker.
 
 ## Restart rule
 

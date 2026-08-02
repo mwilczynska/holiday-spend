@@ -18,6 +18,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-expedia-locale-proxy-broad-panel.mjs` | `analyze-v5-expedia-locale-proxy-broad-panel.mjs` | Experiment 087: pools a broad Expedia.com locale-proxy 2-/3-/4-star panel and checks 30-city matched relationships without fitting |
 | `node scripts/analyze-v5-expedia-targeted-23-panel.mjs` | `analyze-v5-expedia-targeted-23-panel.mjs` | Experiment 088: audits targeted Expedia 2-/3-star URL-pattern searches and the pooled 2↔3 matched-city ceiling without fitting |
 | `node scripts/analyze-v5-activity-semantic-calibration.mjs` | `analyze-v5-activity-semantic-calibration.mjs` | Experiment 089: scores independent activity anchors against BudgetYourTrip tiers without product mapping |
+| `node scripts/analyze-v5-one-call-anchor-bundle.mjs` | `analyze-v5-one-call-anchor-bundle.mjs` | Experiment 090: scores five-search single-city anchor coverage without fitting or product mapping |
 | `npm run docs:sync-memory` / `:check-memory` | `sync-memory-docs.mjs` | Mirror and verify `AGENTS.md` against `CLAUDE.md` |
 | `npm run country-metadata:generate` | `generate-country-metadata.mjs` | Regenerate canonical country metadata |
 | `npm run models:refresh` / `:check` | `refresh-curated-models.ts` | Refresh the curated LLM model snapshot |

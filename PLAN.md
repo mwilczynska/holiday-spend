@@ -715,8 +715,13 @@ coverage repair. Artifacts: `data/reference/v5/experiments/088-expedia-targeted-
 protocol-compliant, but the strict audit accepted 0/12 low-cost ticket rows, 5/12 half-day rows, and 4/12 full-day
 premium rows, with zero complete cities. The registered screen therefore failed; the few compatible USD rows cannot
 identify a calibration. BudgetYourTrip tiers remain labelled source-defined proxies and are not mapped to the frozen
-activity estimands. The v5 workstream is paused here at the user's request; the Definition of Done remains unmet.
-Artifacts: `data/reference/v5/experiments/089-activity-semantic-calibration/`.
+activity estimands. The Definition of Done remains unmet. Artifacts:
+`data/reference/v5/experiments/089-activity-semantic-calibration/`.
+
+**Experiment 090 — one-call multi-source anchor bundle — complete; rejected as a complete bundle.** All 12 calls
+were protocol-compliant. Five Numbeo food inputs and all three BudgetYourTrip activity proxies reached 8/12, but
+cocktail/wine, 2-star, hostel, private-hostel, and one-star coverage was zero; no city had a complete anchor bundle.
+No coefficients or product mappings were made. Artifacts: `data/reference/v5/experiments/090-one-call-anchor-bundle/`.
 
 ## Unrelated app backlog
 

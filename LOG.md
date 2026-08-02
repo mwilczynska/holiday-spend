@@ -1848,3 +1848,18 @@ Missing tax, duration, party, premium, or current-price evidence caused honest e
 activity semantic-calibration route; retain 080 values as `source_defined_proxy` only and perform no product
 mapping. The workstream is paused after this experiment at the user's request. Read
 `data/reference/v5/experiments/089-activity-semantic-calibration/verdict.md`.
+
+## Experiment 090 - one-call multi-source anchor bundle (pre-registered 1 August 2026)
+
+Experiment 090 tests whether the strongest surviving source contracts can coexist in one production-shaped,
+single-city Luna request. Twelve cities each receive exactly five ordered source-restricted searches: Numbeo
+food/drink, BudgetYourTrip activities, Expedia 2–4-star trends, public hostel prices, and a one-star query. The
+audit will report evidence-labelled coverage and complete anchor bundles without fitting, arithmetic, FX, or product
+mapping. A pass only authorizes broader validation; all frozen model and provenance gates remain in force.
+
+Experiment 090 completed with 12/12 protocol-compliant calls. The deterministic audit accepted five Numbeo
+food/drink inputs and all three BudgetYourTrip activity proxies in 8/12 cities, but zero cocktail, wine-glass,
+2-star, hostel-dorm, private-hostel, or one-star rows; no city had a complete anchor bundle. **Verdict:** reject
+the five-search bundle as sufficient for all 19 fields. Preserve partial evidence and source-defined labels; no
+coefficient fitting, imputation, or product mapping is authorized. Read
+`data/reference/v5/experiments/090-one-call-anchor-bundle/verdict.md`.

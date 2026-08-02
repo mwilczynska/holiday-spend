@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "city-cost-v5-one-call-anchor-bundle-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "gate": {
+    "protocolCompliant": 10
+  },
+  "protocolGatePassed": true,
+  "summary": {
+    "foodDrink": {
+      "fast_food_meal": 8,
+      "inexpensive_meal": 8,
+      "midrange_meal": 8,
+      "coffee": 8,
+      "domestic_beer": 8,
+      "cocktail": 0,
+      "wine_glass": 0
+    },
+    "activities": {
+      "budget": 8,
+      "mid": 8,
+      "high": 8
+    },
+    "hotelClasses": {
+      "twoStar": 0,
+      "threeStar": 4,
+      "fourStar": 2
+    },
+    "hostelAndOneStar": {
+      "dorm": 0,
+      "privateHostel": 0,
+      "oneStar": 0
+    }
+  },
+  "complete": {
+    "foodDrink": [],
+    "activities": [
+      "Amsterdam",
+      "Athens",
+      "Barcelona",
+      "Berlin",
+      "Hanoi",
+      "Lisbon",
+      "London",
+      "Paris"
+    ],
+    "hotelClasses": [],
+    "hostelAndOneStar": []
+  },
+  "allAnchorBundleCities": [],
+  "evidenceBasis": "observed_or_source_defined_proxy_retained_separately",
+  "productMapping": "none_source_coverage_only",
+  "protocol": [
+    {
+      "city": "Amsterdam",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Athens",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Barcelona",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Berlin",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Budapest",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Chicago",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Copenhagen",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true
+    }
+  ]
+}
