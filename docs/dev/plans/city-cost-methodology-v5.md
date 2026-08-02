@@ -655,6 +655,18 @@ proxies were present in 8/12 cities, while cocktail, wine-glass, 2-star, hostel,
 were all zero; no city had a complete anchor bundle. **Verdict:** reject this as a complete production path and
 retain partial evidence only. The protocol is feasible, but source coverage—not LLM formatting—is the blocker.
 
+### Experiment 091 - Expatistan drink-anchor panel
+
+This pre-registered 12-city panel tests a materially different public source for the two missing drink inputs.
+Each one-city Luna call issues exactly two ordered Expatistan searches for `1 cocktail drink in downtown club` and
+`1 bottle of red table wine, good quality`. Search-only telemetry and exact-city/canonical-label validation are
+required. The bottle remains a source input, never a wine-glass observation; a pass only authorizes independent
+cocktail validation and a bottle-to-glass calibration study.
+
+The panel passed its screen with 12/12 compliant calls, 10/12 cocktail rows, and 12/12 wine-bottle rows. **Verdict:**
+promote source coverage to calibration only. Expatistan tax treatment is unknown, and no bottle-to-glass conversion
+or product mapping is authorized.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

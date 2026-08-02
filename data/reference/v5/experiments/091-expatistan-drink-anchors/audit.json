@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "city-cost-v5-expatistan-drink-anchors-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "acceptedRows": {
+    "cocktail": 10,
+    "wineBottle": 12
+  },
+  "screenGate": {
+    "protocolCompliant": 10,
+    "cocktailRows": 8,
+    "wineBottleRows": 8
+  },
+  "screenGatePassed": true,
+  "bottleIsNotGlass": true,
+  "productMapping": "none_until_independent_calibration",
+  "protocol": [
+    {
+      "city": "Amsterdam",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Athens",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Barcelona",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Berlin",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Budapest",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Chicago",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Copenhagen",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true
+    }
+  ],
+  "rows": [
+    {
+      "city": "Amsterdam",
+      "measure": "cocktail",
+      "value": 15,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/amsterdam",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 27, 2026"
+    },
+    {
+      "city": "Amsterdam",
+      "measure": "wineBottle",
+      "value": 7,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/amsterdam",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 27, 2026"
+    },
+    {
+      "city": "Athens",
+      "measure": "cocktail",
+      "value": 11,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/athens-greece",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 27, 2026"
+    },
+    {
+      "city": "Athens",
+      "measure": "wineBottle",
+      "value": 13,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/athens-greece",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 27, 2026"
+    },
+    {
+      "city": "Barcelona",
+      "measure": "cocktail",
+      "value": 13,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/barcelona-spain",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 24, 2026"
+    },
+    {
+      "city": "Barcelona",
+      "measure": "wineBottle",
+      "value": 7,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/barcelona-spain",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 24, 2026"
+    },
+    {
+      "city": "Berlin",
+      "measure": "cocktail",
+      "value": 12,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/berlin",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 27, 2026"
+    },
+    {
+      "city": "Berlin",
+      "measure": "wineBottle",
+      "value": 8,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/berlin",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 27, 2026"
+    },
+    {
+      "city": "Budapest",
+      "measure": "cocktail",
+      "value": 2718,
+      "currency": "HUF",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/budapest",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 26, 2026"
+    },
+    {
+      "city": "Budapest",
+      "measure": "wineBottle",
+      "value": 3099,
+      "currency": "HUF",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/budapest",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 28, 2026"
+    },
+    {
+      "city": "Chicago",
+      "measure": "cocktail",
+      "value": 17,
+      "currency": "USD",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/chicago",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 24, 2026"
+    },
+    {
+      "city": "Chicago",
+      "measure": "wineBottle",
+      "value": 18,
+      "currency": "USD",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/chicago",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 24, 2026"
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "cocktail",
+      "value": 123,
+      "currency": "DKK",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/copenhagen",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 27, 2026"
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "wineBottle",
+      "value": 87,
+      "currency": "DKK",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://expatistan.com/cost-of-living/copenhagen?currency=EUR",
+      "referencePeriod": "Current as of Jul 2026; page published last week"
+    },
+    {
+      "city": "Dubai",
+      "measure": "cocktail",
+      "value": 96,
+      "currency": "AED",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/dubai",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 24, 2026"
+    },
+    {
+      "city": "Dubai",
+      "measure": "wineBottle",
+      "value": 54,
+      "currency": "AED",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/dubai",
+      "referencePeriod": "Current as of Jul 2026; latest price update July 24, 2026"
+    },
+    {
+      "city": "Hanoi",
+      "measure": "cocktail",
+      "value": 150582,
+      "currency": "VND",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/price/wine/hanoi",
+      "referencePeriod": "Expatistan page latest update March 18, 2026; retrieved 2026-08-01."
+    },
+    {
+      "city": "Hanoi",
+      "measure": "wineBottle",
+      "value": 351687,
+      "currency": "VND",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/price/wine/hanoi",
+      "referencePeriod": "Expatistan page latest update March 18, 2026; retrieved 2026-08-01."
+    },
+    {
+      "city": "Lisbon",
+      "measure": "wineBottle",
+      "value": 6,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/lisbon?currency=EUR",
+      "referencePeriod": "Current as of Jul 2026; page published/crawled last week; retrieved 2026-08-01."
+    },
+    {
+      "city": "London",
+      "measure": "wineBottle",
+      "value": 11,
+      "currency": "GBP",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/london?currency=USD",
+      "referencePeriod": "Current as of Jul 2026; page published/crawled last week; retrieved 2026-08-01."
+    },
+    {
+      "city": "Paris",
+      "measure": "cocktail",
+      "value": 14,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/price/cocktail/paris/EUR",
+      "referencePeriod": "Expatistan page latest update May 21, 2026; retrieved 2026-08-01."
+    },
+    {
+      "city": "Paris",
+      "measure": "wineBottle",
+      "value": 11,
+      "currency": "EUR",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/paris?currency=SYPX",
+      "referencePeriod": "Current as of Jul 2026; page published/crawled last week; retrieved 2026-08-01."
+    }
+  ]
+}

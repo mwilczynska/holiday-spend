@@ -618,4 +618,11 @@ cities. The screen failed and no calibration or product mapping was performed. B
 `data/reference/v5/experiments/090-one-call-anchor-bundle/`: twelve one-city Luna calls, exactly five ordered
 source-restricted searches per city, and a deterministic coverage audit only. Use
 `cmd /c node scripts/analyze-v5-one-call-anchor-bundle.mjs` after all artifacts arrive; do not map or fit from a
-screen pass.
+screen pass. Experiment 090 rejected complete coverage. The next active package is Experiment 091,
+`data/reference/v5/experiments/091-expatistan-drink-anchors/`: twelve one-city calls, exactly two Expatistan searches
+per city, and no bottle-to-glass conversion. Use `cmd /c node scripts/analyze-v5-expatistan-drink-anchors.mjs` after
+collection; do not map either drink field from a screen pass.
+Experiment 091 passed source coverage with 12/12 compliant calls, 10 cocktail rows, and 12 wine-bottle rows. It is
+promoted only to independent calibration: preserve `per_bottle`, do not infer a wine glass, and do not map product
+drink fields. The next unresolved action is a separately pre-registered cocktail ground-truth and bottle-to-glass
+calibration study.

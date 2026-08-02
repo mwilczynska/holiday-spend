@@ -1,0 +1,11 @@
+{
+  "schemaVersion":"city-cost-v5-expatistan-drink-anchors-v1",
+  "city":"Lisbon",
+  "country":"Portugal",
+  "retrievalDate":"2026-08-01",
+  "measures":{
+    "cocktail":{"status":"not_found","value":null,"currency":null,"unit":"per_person_item","basis":"unknown","taxStatus":"unknown","sourceUrl":null,"sourceTitle":null,"evidenceText":"The two returned Lisbon Expatistan searches produced comparison pages and no exact-city public page with a canonical cocktail row and central value.","referencePeriod":null,"searchQuery":"site:expatistan.com/cost-of-living/ Lisbon Portugal \"1 cocktail drink in downtown club\"","reason":"Comparison pages are excluded; no exact-city cocktail observation accepted."},
+    "wineBottle":{"status":"found","value":6,"currency":"EUR","unit":"per_bottle","basis":"red_table_wine_good_quality","taxStatus":"unknown","sourceUrl":"https://www.expatistan.com/cost-of-living/lisbon?currency=EUR","sourceTitle":"Cost of Living in Lisbon. Updated Prices Jul 2026.","evidenceText":"The exact Lisbon Expatistan city page, current as of Jul 2026, lists 1 bottle of red table wine, good quality at €6.","referencePeriod":"Current as of Jul 2026; page published/crawled last week; retrieved 2026-08-01.","searchQuery":"site:expatistan.com/cost-of-living/ Lisbon Portugal \"1 bottle of red table wine, good quality\"","reason":"Exact-city public Expatistan bottle observation; retained as per_bottle and never relabelled as a glass."}
+  },
+  "telemetry":{"searchesAttempted":2,"searchOperations":2,"directReads":0,"retries":0,"fallbackSources":0,"arithmeticOperations":0,"currencyConversions":0,"crossCityEvidence":0,"protocolCompliant":true}
+}

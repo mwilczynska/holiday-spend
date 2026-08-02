@@ -1,0 +1,11 @@
+{
+  "schemaVersion":"city-cost-v5-expatistan-drink-anchors-v1",
+  "city":"Hanoi",
+  "country":"Vietnam",
+  "retrievalDate":"2026-08-01",
+  "measures":{
+    "cocktail":{"status":"found","value":150582,"currency":"VND","unit":"per_person_item","basis":"standard_cocktail_downtown_club","taxStatus":"unknown","sourceUrl":"https://www.expatistan.com/price/wine/hanoi","sourceTitle":"Price of 1 bottle of red table wine, good quality in Hanoi","evidenceText":"The exact Hanoi Expatistan page lists: The price of 1 cocktail drink in downtown club in Hanoi is 150,582 ₫.","referencePeriod":"Expatistan page latest update March 18, 2026; retrieved 2026-08-01.","searchQuery":"site:expatistan.com/cost-of-living/ Hanoi Vietnam \"1 cocktail drink in downtown club\"","reason":"Exact-city public Expatistan evidence exposes the canonical cocktail label and central VND value; no arithmetic or conversion performed."},
+    "wineBottle":{"status":"found","value":351687,"currency":"VND","unit":"per_bottle","basis":"red_table_wine_good_quality","taxStatus":"unknown","sourceUrl":"https://www.expatistan.com/price/wine/hanoi","sourceTitle":"Price of 1 bottle of red table wine, good quality in Hanoi","evidenceText":"The exact Hanoi Expatistan page states: The price of 1 bottle of red table wine, good quality in Hanoi is 351,687 ₫.","referencePeriod":"Expatistan page latest update March 18, 2026; retrieved 2026-08-01.","searchQuery":"site:expatistan.com/cost-of-living/ Hanoi Vietnam \"1 bottle of red table wine, good quality\"","reason":"Exact-city public Expatistan bottle observation; retained as per_bottle and never relabelled as a glass."}
+  },
+  "telemetry":{"searchesAttempted":2,"searchOperations":2,"directReads":0,"retries":0,"fallbackSources":0,"arithmeticOperations":0,"currencyConversions":0,"crossCityEvidence":0,"protocolCompliant":true}
+}

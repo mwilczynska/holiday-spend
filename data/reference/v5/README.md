@@ -123,6 +123,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/088-expedia-targeted-23-panel/` | **COMPLETE — reject targeted coverage gate** | 15/15 compliant; 12 accepted rows; no new paired city; pooled 20 matched 2↔3; no mapping |
 | `experiments/089-activity-semantic-calibration/` | **COMPLETE — reject semantic calibration** | 12/12 compliant; 0 low-cost, 5 half-day, 4 full-day strict rows; no complete cities; no mapping |
 | `experiments/090-one-call-anchor-bundle/` | **COMPLETE — reject complete bundle** | 12/12 protocol-compliant; partial food/activity coverage; zero complete all-anchor cities; no mapping |
+| `experiments/091-expatistan-drink-anchors/` | **COMPLETE — promote to calibration only** | 12/12 compliant; 10 cocktail and 12 wine-bottle rows; no bottle-to-glass mapping |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

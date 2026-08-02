@@ -723,6 +723,11 @@ were protocol-compliant. Five Numbeo food inputs and all three BudgetYourTrip ac
 cocktail/wine, 2-star, hostel, private-hostel, and one-star coverage was zero; no city had a complete anchor bundle.
 No coefficients or product mappings were made. Artifacts: `data/reference/v5/experiments/090-one-call-anchor-bundle/`.
 
+**Experiment 091 — Expatistan drink anchors — complete; promote to calibration only.** All 12 calls were
+protocol-compliant; 10 cocktail and 12 wine-bottle rows passed the screen. The wine measure remains explicitly a
+bottle, and no bottle-to-glass factor or product mapping was fitted. Next work must independently calibrate the
+cocktail source and any wine-bottle-to-glass model. Artifacts: `data/reference/v5/experiments/091-expatistan-drink-anchors/`.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

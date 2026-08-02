@@ -1863,3 +1863,15 @@ food/drink inputs and all three BudgetYourTrip activity proxies in 8/12 cities, 
 the five-search bundle as sufficient for all 19 fields. Preserve partial evidence and source-defined labels; no
 coefficient fitting, imputation, or product mapping is authorized. Read
 `data/reference/v5/experiments/090-one-call-anchor-bundle/verdict.md`.
+
+## Experiment 091 - Expatistan drink-anchor panel (pre-registered 1 August 2026)
+
+Experiment 091 targets the two missing Numbeo drink rows with public Expatistan city pages. Twelve independent
+one-city Luna calls issue exactly two ordered searches for the standard downtown-club cocktail and good-quality red
+wine bottle. The bottle is deliberately not treated as a wine glass; any conversion must be modelled and validated
+separately. The screen requires 10/12 compliant calls and 8/12 accepted rows for each anchor.
+
+Experiment 091 completed with 12/12 protocol-compliant calls, 10/12 accepted cocktail rows, and 12/12 accepted
+wine-bottle rows. **Verdict:** promote Expatistan only to independent calibration. Preserve the wine unit as
+`per_bottle`; unknown tax treatment and the source-defined statistic prevent product mapping. No bottle-to-glass
+factor was fitted. Read `data/reference/v5/experiments/091-expatistan-drink-anchors/verdict.md`.

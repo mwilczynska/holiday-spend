@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "city-cost-v5-expatistan-drink-anchors-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "cocktail": {"status":"found","value":15,"currency":"EUR","unit":"per_person_item","basis":"standard_cocktail_downtown_club","taxStatus":"unknown","sourceUrl":"https://expatistan.com/cost-of-living/amsterdam","sourceTitle":"Cost of living in Amsterdam. Updated Prices Jul 2026.","evidenceText":"Exact Amsterdam Expatistan page lists canonical row '1 cocktail drink in downtown club | €15'. Page says current as of Jul 2026 and latest price update July 27, 2026; no tax treatment is stated.","referencePeriod":"Current as of Jul 2026; latest price update July 27, 2026","searchQuery":"site:expatistan.com/cost-of-living/ Amsterdam Netherlands \"1 cocktail drink in downtown club\"","reason":""},
+    "wineBottle": {"status":"found","value":7,"currency":"EUR","unit":"per_bottle","basis":"red_table_wine_good_quality","taxStatus":"unknown","sourceUrl":"https://expatistan.com/cost-of-living/amsterdam","sourceTitle":"Cost of living in Amsterdam. Updated Prices Jul 2026.","evidenceText":"Exact Amsterdam Expatistan page lists canonical row '1 bottle of red table wine, good quality | €7'. The row is a bottle input, not a glass. Page says current as of Jul 2026 and latest price update July 27, 2026; no tax treatment is stated.","referencePeriod":"Current as of Jul 2026; latest price update July 27, 2026","searchQuery":"site:expatistan.com/cost-of-living/ Amsterdam Netherlands \"1 bottle of red table wine, good quality\"","reason":""}
+  },
+  "telemetry": {"searchesAttempted":2,"searchOperations":2,"directReads":0,"retries":0,"fallbackSources":0,"arithmeticOperations":0,"currencyConversions":0,"crossCityEvidence":0,"protocolCompliant":true}
+}

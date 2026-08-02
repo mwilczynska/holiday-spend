@@ -1,0 +1,11 @@
+{
+  "schemaVersion":"city-cost-v5-expatistan-drink-anchors-v1",
+  "city":"Paris",
+  "country":"France",
+  "retrievalDate":"2026-08-01",
+  "measures":{
+    "cocktail":{"status":"found","value":14,"currency":"EUR","unit":"per_person_item","basis":"standard_cocktail_downtown_club","taxStatus":"unknown","sourceUrl":"https://www.expatistan.com/price/cocktail/paris/EUR","sourceTitle":"Price of 1 cocktail drink in downtown club in Paris - EUR","evidenceText":"The exact Paris Expatistan page states: The price of 1 cocktail drink in downtown club in Paris is €14 (€14).", "referencePeriod":"Expatistan page latest update May 21, 2026; retrieved 2026-08-01.","searchQuery":"site:expatistan.com/cost-of-living/ Paris France \"1 cocktail drink in downtown club\"","reason":"Exact-city public Expatistan cocktail observation with canonical label and EUR central value; no arithmetic or conversion performed."},
+    "wineBottle":{"status":"found","value":11,"currency":"EUR","unit":"per_bottle","basis":"red_table_wine_good_quality","taxStatus":"unknown","sourceUrl":"https://www.expatistan.com/cost-of-living/paris?currency=SYPX","sourceTitle":"Cost of Living in Paris. Updated Prices Jul 2026.","evidenceText":"The exact Paris Expatistan city page, current as of Jul 2026, lists 1 bottle of red table wine, good quality at native €11; the alternate display currency was not used.","referencePeriod":"Current as of Jul 2026; page published/crawled last week; retrieved 2026-08-01.","searchQuery":"site:expatistan.com/cost-of-living/ Paris France \"1 bottle of red table wine, good quality\"","reason":"Exact-city public Expatistan bottle observation; retained as native EUR per_bottle and never relabelled as a glass."}
+  },
+  "telemetry":{"searchesAttempted":2,"searchOperations":2,"directReads":0,"retries":0,"fallbackSources":0,"arithmeticOperations":0,"currencyConversions":0,"crossCityEvidence":0,"protocolCompliant":true}
+}
