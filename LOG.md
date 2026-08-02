@@ -1901,3 +1901,18 @@ extreme dispersion (0.001–3.704). Dubai's displayed `$` versus declared AED an
 also require an explicit normalization audit. **Verdict:** promote the volume-targeted query contract to a locked
 independent calibration study, but reject a global bottle-to-glass coefficient and all product mapping. Read
 `data/reference/v5/experiments/093-wine-volume-targeted-panel/verdict.md`.
+
+## Experiment 094 - Trip.com class proxy calibration (pre-registered)
+
+Experiment 094 tests whether Trip.com's abundant city/star averages can be retained as a labelled
+`source_defined_proxy` rather than silently discarded for missing occupancy and tax wording. Twelve independent
+one-city Luna calls issue exactly three ordered Trip.com class searches. A deterministic audit will compare same-
+currency weekday averages with existing Expedia trends that explicitly state two adults and excluded taxes. The
+screen requires 10/12 compliant cities, 8 rows per class, 15 same-currency pairs, median APE ≤25%, and p90 APE ≤50%.
+No product mapping or coefficient fit follows a screen pass.
+
+The panel completed with 12/12 compliant calls and 36/36 proxy rows, but only 12 same-currency joins were available.
+Median APE was 124.2%, p90 APE 532.4%, and median signed error +124.2%; both pair-count and accuracy gates failed.
+**Verdict:** reject Trip.com proxy calibration. Unknown occupancy/tax is materially consequential, so retain rows as
+labelled source evidence only and do not relax the frozen accommodation estimand or map a product field. Read
+`data/reference/v5/experiments/094-trip-class-proxy-calibration/verdict.md`.

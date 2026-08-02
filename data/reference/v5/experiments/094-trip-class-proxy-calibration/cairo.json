@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-v1",
+  "city": "Cairo",
+  "country": "Egypt",
+  "retrievalDate": "2026-08-01",
+  "classes": {
+    "2_star": {
+      "status": "found",
+      "value": 62,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 61,
+      "sourceUrl": "https://www.trip.com/hotels/star2/city/eg/cairo.html",
+      "sourceTitle": "Best 2-Star Hotels in Cairo (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com identifies Cairo 2-star hotels and reports a weekday average price of US$62 and weekend average of US$61.",
+      "referencePeriod": "Search result crawled five days ago; retrieved 2026-08-01",
+      "searchQuery": "site:trip.com/hotels/star2/city Cairo Egypt Trip.com 2-star weekday average price",
+      "reason": "Exact-city, exact-class Trip.com source-defined weekday average retained in the displayed USD viewer currency; occupancy and taxes remain unknown."
+    },
+    "3_star": {
+      "status": "found",
+      "value": 82,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 82,
+      "sourceUrl": "https://www.trip.com/hotels/star3/city/eg/cairo.html",
+      "sourceTitle": "Top 3-Star Hotels in Cairo | Trip.com",
+      "evidenceText": "Trip.com identifies Cairo 3-star hotels and reports a weekday average cost of $82 and weekend average of $82.",
+      "referencePeriod": "Search result crawled five days ago; retrieved 2026-08-01",
+      "searchQuery": "site:trip.com/hotels/star3/city Cairo Egypt Trip.com 3-star weekday average price",
+      "reason": "Exact-city, exact-class Trip.com source-defined weekday average retained in the displayed dollar viewer currency (USD); occupancy and taxes remain unknown."
+    },
+    "4_star": {
+      "status": "found",
+      "value": 58,
+      "currency": "OMR",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 59,
+      "sourceUrl": "https://www.trip.com/hotels/star4/city/eg/cairo.html",
+      "sourceTitle": "Top 4-Star Hotels in Cairo | Trip.com",
+      "evidenceText": "Trip.com identifies Cairo 4-star hotels and reports a weekday average cost of OMR 58 and weekend average of OMR 59.",
+      "referencePeriod": "Search result crawled five days ago; retrieved 2026-08-01",
+      "searchQuery": "site:trip.com/hotels/star4/city Cairo Egypt Trip.com 4-star weekday average price",
+      "reason": "Exact-city, exact-class Trip.com source-defined weekday average retained in the displayed OMR viewer currency; occupancy and taxes remain unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -22,6 +22,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/analyze-v5-expatistan-drink-anchors.mjs` | `analyze-v5-expatistan-drink-anchors.mjs` | Experiment 091: audits Expatistan cocktail and wine-bottle anchor coverage without glass conversion |
 | `node scripts/analyze-v5-drink-menu-calibration.mjs` | `analyze-v5-drink-menu-calibration.mjs` | Experiment 092: computes deterministic public-menu medians and same-currency calibration screens |
 | `node scripts/analyze-v5-wine-volume-targeted-panel.mjs` | `analyze-v5-wine-volume-targeted-panel.mjs` | Experiment 093: audits explicit-volume wine-glass coverage without bottle conversion |
+| `node scripts/analyze-v5-trip-class-proxy-calibration.mjs` | `analyze-v5-trip-class-proxy-calibration.mjs` | Experiment 094: audits labelled Trip.com class proxies against Expedia two-adult trends |
 | `npm run docs:sync-memory` / `:check-memory` | `sync-memory-docs.mjs` | Mirror and verify `AGENTS.md` against `CLAUDE.md` |
 | `npm run country-metadata:generate` | `generate-country-metadata.mjs` | Regenerate canonical country metadata |
 | `npm run models:refresh` / `:check` | `refresh-curated-models.ts` | Refresh the curated LLM model snapshot |

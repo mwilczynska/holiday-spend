@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-v1",
+  "city": "Vancouver",
+  "country": "Canada",
+  "retrievalDate": "2026-08-01",
+  "classes": {
+    "2_star": {
+      "status": "found",
+      "value": 305,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 322,
+      "sourceUrl": "https://ca.trip.com/hotels/star2/city/ca/vancouver.html",
+      "sourceTitle": "Best 2-Star Hotels in Vancouver - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The returned exact-city Trip.com 2-star result reports a Vancouver weekday average of US$305 and weekend average of US$322.",
+      "referencePeriod": "Trip.com search result crawled last month; returned page text was older and was not used",
+      "searchQuery": "site:trip.com/hotels/star2/city Vancouver Canada Trip.com 2-star weekday average price",
+      "reason": "The fresh returned search evidence identifies Vancouver and 2-star class with numeric weekday and weekend averages. The older page text displayed a conflicting viewer value, so only the registered current search result is retained and no reconciliation or conversion is attempted."
+    },
+    "3_star": {
+      "status": "found",
+      "value": 445,
+      "currency": "CAD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 500,
+      "sourceUrl": "https://ca.trip.com/hotels/star3/city/ca/vancouver.html",
+      "sourceTitle": "Best 3-star Hotels in Vancouver - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The returned exact-city Trip.com page reports an average Vancouver 3-star hotel price of CAD 445 on weekdays and CAD 500 on weekends.",
+      "referencePeriod": "Trip.com page/search result crawled 4 days before retrieval",
+      "searchQuery": "site:trip.com/hotels/star3/city Vancouver Canada Trip.com 3-star weekday average price",
+      "reason": "Exact city and 3-star class are identified with a numeric weekday average in displayed CAD. The page fetch was cache-missed, so the returned search evidence is retained without fallback or conversion."
+    },
+    "4_star": {
+      "status": "found",
+      "value": 472,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 533,
+      "sourceUrl": "https://ca.trip.com/hotels/star4/city/ca/vancouver.html",
+      "sourceTitle": "Best 4-star Hotels in Vancouver - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The returned exact-city Trip.com 4-star result reports a Vancouver weekday average of US$472 and weekend average of US$533.",
+      "referencePeriod": "Trip.com search result crawled last week; returned page text was older and was not used",
+      "searchQuery": "site:trip.com/hotels/star4/city Vancouver Canada Trip.com 4-star weekday average price",
+      "reason": "The fresh returned search evidence identifies Vancouver and 4-star class with numeric weekday and weekend averages. An older page read showed a different locale value, so no reconciliation or conversion was attempted."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

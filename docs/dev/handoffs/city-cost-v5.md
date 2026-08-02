@@ -642,3 +642,10 @@ volume-targeted query contract to locked calibration only; fit no bottle-to-glas
 field. Read `data/reference/v5/experiments/093-wine-volume-targeted-panel/verdict.md` and `audit.json`.
 The next active package should be a materially different accommodation experiment, because accommodation class
 coverage remains the largest blocker. Preserve the 093 artifacts and do not treat its rows as production values.
+The next package is Experiment 094, `data/reference/v5/experiments/094-trip-class-proxy-calibration/`. It tests
+Trip.com weekday class averages as explicitly labelled proxies against the existing Expedia two-adult trends. Run
+the three-search-per-city prompt, collect all 12 artifacts, then run
+`cmd /c node scripts/analyze-v5-trip-class-proxy-calibration.mjs`. Preserve unknown occupancy/tax and do not fit or
+map from a screen pass. **Completed:** 12/12 compliant, 36/36 proxy rows, 12 same-currency pairs, median APE 124.2%,
+p90 APE 532.4%; reject the route. The next experiment must use a materially different accommodation source or
+model boundary; do not silently relax occupancy/tax.

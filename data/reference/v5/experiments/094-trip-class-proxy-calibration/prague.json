@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-v1",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalDate": "2026-08-01",
+  "classes": {
+    "2_star": {
+      "status": "found",
+      "value": 371,
+      "currency": "PLN",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 450,
+      "sourceUrl": "https://pl.trip.com/hotels/star2/city/cz/prague.html",
+      "sourceTitle": "Najlepsze hotele 2-gwiazdkowe w mieście Praga | Trip.com",
+      "evidenceText": "The returned exact-city Trip.com page states that Prague 2-star hotels average 371 zł on weekdays and 450 zł on weekends (displayed Polish-zloty viewer currency).",
+      "referencePeriod": "Trip.com search result crawled last month; public page returned by the registered 2-star search",
+      "searchQuery": "site:trip.com/hotels/star2/city Prague Czech Republic Trip.com 2-star weekday average price",
+      "reason": "The returned page/snippet identifies Prague and 2-star class with a numeric weekday average. The public page itself was cache-missed when opened, so the returned search evidence is retained without currency conversion or inference."
+    },
+    "3_star": {
+      "status": "found",
+      "value": 142,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 178,
+      "sourceUrl": "https://www.trip.com/hotels/star3/city/cz/prague.html",
+      "sourceTitle": "Best 3-Star Hotels in Prague (Prices & Reviews) | Trip.com",
+      "evidenceText": "The exact-city Trip.com page reports the average Prague 3-star hotel price as US$142 on weekdays and US$178 on weekends.",
+      "referencePeriod": "Trip.com page crawled today",
+      "searchQuery": "site:trip.com/hotels/star3/city Prague Czech Republic Trip.com 3-star weekday average price",
+      "reason": "Exact city and 3-star class are identified with a numeric weekday average. Weekend value is evidence only and occupancy/tax remain unknown."
+    },
+    "4_star": {
+      "status": "found",
+      "value": 276,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 357,
+      "sourceUrl": "https://www.trip.com/hotels/star4/city/cz/prague.html",
+      "sourceTitle": "Best 4-Star Hotels in Prague (Prices & Reviews) | Trip.com",
+      "evidenceText": "The exact-city Trip.com page reports the average Prague 4-star hotel price as US$276 on weekdays and US$357 on weekends.",
+      "referencePeriod": "Trip.com page crawled today",
+      "searchQuery": "site:trip.com/hotels/star4/city Prague Czech Republic Trip.com 4-star weekday average price",
+      "reason": "Exact city and 4-star class are identified with a numeric weekday average; no conversion, occupancy inference, or tax inference was performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 4,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-v1",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalDate": "2026-08-01",
+  "classes": {
+    "2_star": {
+      "status": "found",
+      "value": 93,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 103,
+      "sourceUrl": "https://www.trip.com/hotels/star2/city/mx/mexico-city.html",
+      "sourceTitle": "Best 2-Star Hotels in Mexico City (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com identifies Mexico City 2-star hotels and reports an average weekday price of US$93 and weekend price of US$103.",
+      "referencePeriod": "Trip.com page crawled 4 days before retrieval",
+      "searchQuery": "site:trip.com/hotels/star2/city Mexico City Mexico Trip.com 2-star weekday average price",
+      "reason": "Exact city and 2-star class are identified with a numeric weekday average. Weekend value is retained as evidence only; occupancy and tax treatment remain unknown."
+    },
+    "3_star": {
+      "status": "found",
+      "value": 203,
+      "currency": "CAD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 215,
+      "sourceUrl": "https://ca.trip.com/hotels/star3/city/mx/mexico-city.html",
+      "sourceTitle": "Best 3-star Hotels in Mexico City - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The exact-city Trip.com page reports the average Mexico City 3-star hotel price as CAD 203 on weekdays and CAD 215 on weekends.",
+      "referencePeriod": "Trip.com page crawled 3 weeks before retrieval",
+      "searchQuery": "site:trip.com/hotels/star3/city Mexico City Mexico Trip.com 3-star weekday average price",
+      "reason": "Exact city and 3-star class are identified with a numeric weekday average in the page's displayed CAD viewer currency. No currency conversion, occupancy inference, or tax inference was made."
+    },
+    "4_star": {
+      "status": "found",
+      "value": 386,
+      "currency": "CAD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 415,
+      "sourceUrl": "https://ca.trip.com/hotels/star4/city/mx/mexico-city.html",
+      "sourceTitle": "Best 4-star Hotels in Mexico City - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The exact-city Trip.com 4-star page reports a Mexico City weekday average of CAD 386 and weekend average of CAD 415.",
+      "referencePeriod": "Trip.com page crawled 5 days before retrieval",
+      "searchQuery": "site:trip.com/hotels/star4/city Mexico City Mexico Trip.com 4-star weekday average price",
+      "reason": "Exact city and 4-star class are identified with a numeric weekday average. The viewer currency is recorded as displayed CAD; weekend value is evidence only."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 4,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

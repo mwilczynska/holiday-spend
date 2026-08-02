@@ -741,6 +741,13 @@ Experiment 091 had median glass/bottle ratio 0.727, with extreme dispersion and 
 issues. **Verdict:** retain the query contract for a locked calibration study, but reject any global bottle-to-glass
 coefficient or product mapping. Artifacts: `data/reference/v5/experiments/093-wine-volume-targeted-panel/`.
 
+**Experiment 094 — Trip.com class proxy calibration — complete; reject.** All 12 one-city Luna contexts were
+protocol-compliant and all 36 class rows met the `source_defined_proxy` retrieval contract. Only 12 same-currency
+joins to existing explicit-two-adult Expedia trends were available; median APE was 124.2% and p90 APE 532.4%.
+**Verdict:** unknown occupancy/tax is materially consequential; reject proxy calibration and do not relax the frozen
+accommodation estimand, fit a correction, or map a product field. Artifacts:
+`data/reference/v5/experiments/094-trip-class-proxy-calibration/`.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

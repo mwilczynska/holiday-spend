@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "classes": {
+    "2_star": {
+      "status": "found",
+      "value": 215,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 235,
+      "sourceUrl": "https://www.trip.com/hotels/star2/city/gb/london.html",
+      "sourceTitle": "Best 2-Star Hotels in London (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com identifies the page as London 2-star properties and reports an average price on weekdays of US$215 and weekends of US$235; the Hotel Info table repeats Weekday Avg. Price US$215.",
+      "referencePeriod": "Trip.com page publicly retrieved 2026-08-01; featured prices stated for July 15-July 21",
+      "searchQuery": "site:trip.com/hotels/star2/city London United Kingdom Trip.com 2-star weekday average price",
+      "reason": "Exact-city 2-star page supplies a numeric weekday average and separate weekend value; displayed US-dollar viewer currency is retained without conversion."
+    },
+    "3_star": {
+      "status": "found",
+      "value": 207,
+      "currency": "GBP",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 232,
+      "sourceUrl": "https://uk.trip.com/hotels/star3/city/gb/london.html",
+      "sourceTitle": "Best 3-star Hotels in London - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "Trip.com identifies the page as London 3-star properties and reports an average price on weekdays of GBP 207 and weekends of GBP 232; the Hotel Info table repeats Weekday Avg. Price GBP 207.",
+      "referencePeriod": "Trip.com page publicly retrieved 2026-08-01; featured prices stated for July 23-July 29",
+      "searchQuery": "site:trip.com/hotels/star3/city London United Kingdom Trip.com 3-star weekday average price",
+      "reason": "Exact-city 3-star page supplies a numeric weekday average and separate weekend value; British-pound viewer currency is retained without conversion."
+    },
+    "4_star": {
+      "status": "found",
+      "value": 454,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 489,
+      "sourceUrl": "https://www.trip.com/hotels/star4/city/gb/london.html",
+      "sourceTitle": "Best 4-Star Hotels in London (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com identifies the page as London 4-star properties and reports an average price on weekdays of US$454 and weekends of US$489; the Hotel Info table repeats Weekday Avg. Price US$454.",
+      "referencePeriod": "Trip.com page publicly retrieved 2026-08-01; featured prices stated for July 11-July 17",
+      "searchQuery": "site:trip.com/hotels/star4/city London United Kingdom Trip.com 4-star weekday average price",
+      "reason": "Exact-city 4-star page supplies a numeric weekday average and separate weekend value; displayed US-dollar viewer currency is retained without conversion."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

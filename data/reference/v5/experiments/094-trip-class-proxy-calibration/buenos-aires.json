@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-v1",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalDate": "2026-08-01",
+  "classes": {
+    "2_star": {
+      "status": "found",
+      "value": 57,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 62,
+      "sourceUrl": "https://www.trip.com/hotels/star2/city/ar/buenos-aires.html",
+      "sourceTitle": "Best 2-Star Hotels in Buenos Aires (Prices & Reviews) | Trip.com",
+      "evidenceText": "Trip.com identifies Buenos Aires 2-star hotels and reports a weekday average price of US$57 and weekend average of US$62.",
+      "referencePeriod": "Search result crawled last month; retrieved 2026-08-01",
+      "searchQuery": "site:trip.com/hotels/star2/city Buenos Aires Argentina Trip.com 2-star weekday average price",
+      "reason": "Exact-city, exact-class Trip.com source-defined weekday average retained in the displayed USD viewer currency; occupancy and taxes remain unknown."
+    },
+    "3_star": {
+      "status": "found",
+      "value": 342,
+      "currency": "QAR",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 395,
+      "sourceUrl": "https://www.trip.com/hotels/star3/city/ar/buenos-aires.html",
+      "sourceTitle": "Top 3-Star Hotels in Buenos Aires | Trip.com",
+      "evidenceText": "Trip.com identifies Buenos Aires 3-star hotels and reports a weekday average cost of QAR 342 and weekend average of QAR 395.",
+      "referencePeriod": "Search result crawled four days ago; retrieved 2026-08-01",
+      "searchQuery": "site:trip.com/hotels/star3/city Buenos Aires Argentina Trip.com 3-star weekday average price",
+      "reason": "Exact-city, exact-class Trip.com source-defined weekday average retained in the displayed QAR viewer currency; occupancy and taxes remain unknown."
+    },
+    "4_star": {
+      "status": "found",
+      "value": 8151,
+      "currency": "TRY",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 9272,
+      "sourceUrl": "https://us.trip.com/hotels/star4/city/ar/buenos-aires.html",
+      "sourceTitle": "Top 4-Star Hotels in Buenos Aires | Trip.com",
+      "evidenceText": "Trip.com identifies Buenos Aires 4-star hotels and reports a weekday average cost of TRY 8,151 and weekend average of TRY 9,272.",
+      "referencePeriod": "Search result crawled two weeks ago; retrieved 2026-08-01",
+      "searchQuery": "site:trip.com/hotels/star4/city Buenos Aires Argentina Trip.com 4-star weekday average price",
+      "reason": "Exact-city, exact-class Trip.com source-defined weekday average retained in the displayed TRY viewer currency; occupancy and taxes remain unknown."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

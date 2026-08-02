@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-v1",
+  "city": "Sydney",
+  "country": "Australia",
+  "retrievalDate": "2026-08-01",
+  "classes": {
+    "2_star": {
+      "status": "found",
+      "value": 203,
+      "currency": "NZD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 250,
+      "sourceUrl": "https://ca.trip.com/hotels/star2/city/au/sydney.html",
+      "sourceTitle": "Best 2-Star Hotels in Sydney - Latest Prices & Reviews | Trip.com",
+      "evidenceText": "The returned exact-Sydney Trip.com 2-star result reports an average weekday price of NZD 203 and weekend price of NZD 250.",
+      "referencePeriod": "Trip.com search result crawled 4 weeks before retrieval",
+      "searchQuery": "site:trip.com/hotels/star2/city Sydney Australia Trip.com 2-star weekday average price",
+      "reason": "The returned exact-city/class result supplies a numeric weekday average in its displayed NZD viewer currency. The public page was cache-missed when opened; no fallback or conversion was attempted."
+    },
+    "3_star": {
+      "status": "found",
+      "value": 394,
+      "currency": "AUD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 446,
+      "sourceUrl": "https://au.trip.com/hotels/star3/city/au/sydney.html",
+      "sourceTitle": "Top 3-Star Hotels in Sydney | Trip.com",
+      "evidenceText": "The exact-city Trip.com page reports an average Sydney 3-star hotel price of AU$394 on weekdays and AU$446 on weekends.",
+      "referencePeriod": "Trip.com page crawled 2 days before retrieval",
+      "searchQuery": "site:trip.com/hotels/star3/city Sydney Australia Trip.com 3-star weekday average price",
+      "reason": "Exact city and 3-star class are identified with a numeric weekday average. Weekend value is evidence only; occupancy and tax treatment remain unknown."
+    },
+    "4_star": {
+      "status": "found",
+      "value": 334,
+      "currency": "USD",
+      "unit": "per_room_per_night",
+      "basis": "source_defined_proxy",
+      "statistic": "source_reported_weekday_average",
+      "occupancyBasis": "unknown",
+      "taxStatus": "unknown",
+      "weekendValue": 388,
+      "sourceUrl": "https://www.trip.com/hotels/star4/city/au/sydney.html",
+      "sourceTitle": "Best 4-Star Hotels in Sydney (Prices & Reviews) | Trip.com",
+      "evidenceText": "The exact-city Trip.com page reports an average Sydney 4-star hotel price of US$334 on weekdays and US$388 on weekends.",
+      "referencePeriod": "Trip.com page crawled today",
+      "searchQuery": "site:trip.com/hotels/star4/city Sydney Australia Trip.com 4-star weekday average price",
+      "reason": "Exact city and 4-star class are identified with a numeric weekday average in the displayed USD viewer currency; no conversion, occupancy inference, or tax inference was performed."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-calibration-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "proxyRows": 36,
+  "proxyRowsByClass": {
+    "2_star": 12,
+    "3_star": 12,
+    "4_star": 12
+  },
+  "completeProxyCities": [
+    "Amsterdam",
+    "Buenos Aires",
+    "Cape Town",
+    "Cairo",
+    "Dubai",
+    "Hanoi",
+    "Lisbon",
+    "London",
+    "Mexico City",
+    "Prague",
+    "Sydney",
+    "Vancouver"
+  ],
+  "sameCurrencyPairs": 12,
+  "calibrationMetrics": {
+    "medianApe": 1.2420382165605095,
+    "p90Ape": 5.324324324324325,
+    "medianSignedError": 1.2420382165605095,
+    "pairs": [
+      {
+        "city": "Amsterdam",
+        "class": "3_star",
+        "value": 352,
+        "currency": "USD",
+        "sourceUrl": "https://my.trip.com/hotels/star3/city/nl/amsterdam.html",
+        "weekendValue": 469,
+        "anchorValue": 157,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "059-expedia-class-panel",
+        "ratio": 2.2420382165605095,
+        "ape": 1.2420382165605095,
+        "signedError": 1.2420382165605095
+      },
+      {
+        "city": "Buenos Aires",
+        "class": "2_star",
+        "value": 57,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star2/city/ar/buenos-aires.html",
+        "weekendValue": 62,
+        "anchorValue": 45,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "059-expedia-class-panel",
+        "ratio": 1.2666666666666666,
+        "ape": 0.2666666666666666,
+        "signedError": 0.2666666666666666
+      },
+      {
+        "city": "Cairo",
+        "class": "2_star",
+        "value": 62,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star2/city/eg/cairo.html",
+        "weekendValue": 61,
+        "anchorValue": 21,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "061-expedia-paired-panel",
+        "ratio": 2.9523809523809526,
+        "ape": 1.9523809523809526,
+        "signedError": 1.9523809523809526
+      },
+      {
+        "city": "Dubai",
+        "class": "3_star",
+        "value": 234,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star3/city/ae/dubai.html",
+        "weekendValue": 241,
+        "anchorValue": 37,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "063-expedia-paired-panel-2",
+        "ratio": 6.324324324324325,
+        "ape": 5.324324324324325,
+        "signedError": 5.324324324324325
+      },
+      {
+        "city": "Dubai",
+        "class": "4_star",
+        "value": 349,
+        "currency": "USD",
+        "sourceUrl": "https://us.trip.com/hotels/star4/city/ae/dubai.html",
+        "weekendValue": 351,
+        "anchorValue": 47,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "063-expedia-paired-panel-2",
+        "ratio": 7.425531914893617,
+        "ape": 6.425531914893617,
+        "signedError": 6.425531914893617
+      },
+      {
+        "city": "London",
+        "class": "2_star",
+        "value": 215,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star2/city/gb/london.html",
+        "weekendValue": 235,
+        "anchorValue": 114,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "061-expedia-paired-panel",
+        "ratio": 1.8859649122807018,
+        "ape": 0.8859649122807018,
+        "signedError": 0.8859649122807018
+      },
+      {
+        "city": "London",
+        "class": "4_star",
+        "value": 454,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star4/city/gb/london.html",
+        "weekendValue": 489,
+        "anchorValue": 218,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "061-expedia-paired-panel",
+        "ratio": 2.0825688073394497,
+        "ape": 1.0825688073394497,
+        "signedError": 1.0825688073394497
+      },
+      {
+        "city": "Mexico City",
+        "class": "2_star",
+        "value": 93,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star2/city/mx/mexico-city.html",
+        "weekendValue": 103,
+        "anchorValue": 40,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "059-expedia-class-panel",
+        "ratio": 2.325,
+        "ape": 1.3250000000000002,
+        "signedError": 1.3250000000000002
+      },
+      {
+        "city": "Prague",
+        "class": "3_star",
+        "value": 142,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star3/city/cz/prague.html",
+        "weekendValue": 178,
+        "anchorValue": 104,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "059-expedia-class-panel",
+        "ratio": 1.3653846153846154,
+        "ape": 0.3653846153846154,
+        "signedError": 0.3653846153846154
+      },
+      {
+        "city": "Prague",
+        "class": "4_star",
+        "value": 276,
+        "currency": "USD",
+        "sourceUrl": "https://www.trip.com/hotels/star4/city/cz/prague.html",
+        "weekendValue": 357,
+        "anchorValue": 119,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "059-expedia-class-panel",
+        "ratio": 2.319327731092437,
+        "ape": 1.3193277310924372,
+        "signedError": 1.3193277310924372
+      },
+      {
+        "city": "Vancouver",
+        "class": "2_star",
+        "value": 305,
+        "currency": "USD",
+        "sourceUrl": "https://ca.trip.com/hotels/star2/city/ca/vancouver.html",
+        "weekendValue": 322,
+        "anchorValue": 194,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "059-expedia-class-panel",
+        "ratio": 1.5721649484536082,
+        "ape": 0.5721649484536082,
+        "signedError": 0.5721649484536082
+      },
+      {
+        "city": "Vancouver",
+        "class": "4_star",
+        "value": 472,
+        "currency": "USD",
+        "sourceUrl": "https://ca.trip.com/hotels/star4/city/ca/vancouver.html",
+        "weekendValue": 533,
+        "anchorValue": 375,
+        "anchorCurrency": "USD",
+        "anchorSourceExperiment": "059-expedia-class-panel",
+        "ratio": 1.2586666666666666,
+        "ape": 0.2586666666666666,
+        "signedError": 0.2586666666666666
+      }
+    ]
+  },
+  "screenGate": {
+    "protocolCompliantCities": 10,
+    "proxyRowsPerClass": 8,
+    "sameCurrencyPairs": 15,
+    "medianApe": 0.25,
+    "p90Ape": 0.5
+  },
+  "screenGatePassed": false,
+  "productMapping": "none_until_locked_validation",
+  "protocol": [
+    {
+      "city": "Amsterdam",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Buenos Aires",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Cape Town",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Cairo",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Mexico City",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Prague",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Sydney",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Vancouver",
+      "protocolCompliant": true
+    }
+  ],
+  "cities": [
+    {
+      "city": "Amsterdam",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Amsterdam Netherlands Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Amsterdam Netherlands Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Amsterdam Netherlands Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Buenos Aires",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Buenos Aires Argentina Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Buenos Aires Argentina Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Buenos Aires Argentina Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Cape Town",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Cape Town South Africa Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Cape Town South Africa Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Cape Town South Africa Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Cairo",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Cairo Egypt Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Cairo Egypt Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Cairo Egypt Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Dubai",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Dubai United Arab Emirates Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Dubai United Arab Emirates Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Dubai United Arab Emirates Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Hanoi",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Hanoi Vietnam Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Hanoi Vietnam Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Hanoi Vietnam Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Lisbon",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Lisbon Portugal Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Lisbon Portugal Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Lisbon Portugal Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "London",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city London United Kingdom Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city London United Kingdom Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city London United Kingdom Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Mexico City",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Mexico City Mexico Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Mexico City Mexico Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Mexico City Mexico Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Prague",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Prague Czech Republic Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Prague Czech Republic Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Prague Czech Republic Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Sydney",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Sydney Australia Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Sydney Australia Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Sydney Australia Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    },
+    {
+      "city": "Vancouver",
+      "accepted": {
+        "2_star": "site:trip.com/hotels/star2/city Vancouver Canada Trip.com 2-star weekday average price",
+        "3_star": "site:trip.com/hotels/star3/city Vancouver Canada Trip.com 3-star weekday average price",
+        "4_star": "site:trip.com/hotels/star4/city Vancouver Canada Trip.com 4-star weekday average price"
+      },
+      "complete": true
+    }
+  ]
+}

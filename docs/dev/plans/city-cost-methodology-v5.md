@@ -688,6 +688,20 @@ were protocol-compliant and 9/12 produced strict panels, passing the screen. Nin
 caveats in source evidence. **Verdict:** promote the explicit-volume query contract to a locked calibration study,
 but reject a global bottle-to-glass coefficient and all product mapping. See the experiment `verdict.md`.
 
+### Experiment 094 - Trip.com class proxy calibration
+
+This pre-registered panel tests a separate semantic boundary rather than relaxing the frozen estimand silently. Each
+one-city Luna call issues three Trip.com class searches and records numeric weekday averages as
+`source_defined_proxy`; occupancy and tax remain `unknown`. The deterministic audit joins same-currency rows to
+existing Expedia trends whose two-adult, tax-excluded basis is explicit. The screen requires 10/12 compliant cities,
+8 rows per class, 15 pairs, median APE ≤25%, and p90 APE ≤50%. A pass only authorizes a locked held-out calibration;
+it cannot map a product field or fit a coefficient.
+
+The panel completed with 12/12 compliant calls and 36/36 proxy rows, but only 12 same-currency pairs. Median APE was
+124.2% and p90 APE 532.4%, so both pair-count and accuracy gates failed. **Verdict:** reject Trip.com proxy
+calibration; preserve rows as labelled source evidence and keep occupancy/tax requirements in the frozen estimand.
+See the experiment `verdict.md`.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

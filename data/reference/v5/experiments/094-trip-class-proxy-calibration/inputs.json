@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "city-cost-v5-trip-class-proxy-calibration-input-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    { "city": "Amsterdam", "country": "Netherlands" },
+    { "city": "Buenos Aires", "country": "Argentina" },
+    { "city": "Cape Town", "country": "South Africa" },
+    { "city": "Cairo", "country": "Egypt" },
+    { "city": "Dubai", "country": "United Arab Emirates" },
+    { "city": "Hanoi", "country": "Vietnam" },
+    { "city": "Lisbon", "country": "Portugal" },
+    { "city": "London", "country": "United Kingdom" },
+    { "city": "Mexico City", "country": "Mexico" },
+    { "city": "Prague", "country": "Czechia" },
+    { "city": "Sydney", "country": "Australia" },
+    { "city": "Vancouver", "country": "Canada" }
+  ],
+  "searchContract": {
+    "searchesPerCity": 3,
+    "orderedClasses": ["2_star", "3_star", "4_star"],
+    "source": "Trip.com public city class pages",
+    "allowPublicReturnedPageReads": true,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticInResponse": 0,
+    "fxInResponse": 0,
+    "crossCityEvidence": 0
+  },
+  "proxyDefinition": {
+    "basis": "source_defined_proxy",
+    "statistic": "source_reported_weekday_average",
+    "unit": "per_room_per_night",
+    "occupancyBasis": "unknown",
+    "taxStatus": "unknown",
+    "requiredEvidence": "exact city and class, numeric non-from weekday average, displayed currency, source URL/title, retrieval/reference period"
+  },
+  "screenGate": {
+    "protocolCompliantCities": 10,
+    "proxyRowsPerClass": 8,
+    "sameCurrencyPairs": 15,
+    "medianApe": 0.25,
+    "p90Ape": 0.5
+  },
+  "decisionRule": "A screen pass only authorizes a locked city-level calibration panel. It never maps a proxy to a product field or fits a coefficient directly."
+}

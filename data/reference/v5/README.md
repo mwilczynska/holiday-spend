@@ -126,6 +126,7 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/091-expatistan-drink-anchors/` | **COMPLETE — promote to calibration only** | 12/12 compliant; 10 cocktail and 12 wine-bottle rows; no bottle-to-glass mapping |
 | `experiments/092-drink-menu-calibration/` | **COMPLETE — reject wine-glass screen** | 12/12 compliant; 12 cocktail, 4 wine-glass medians; cocktail ratio retained; no mapping |
 | `experiments/093-wine-volume-targeted-panel/` | **COMPLETE — promote retrieval only** | 12/12 protocol-compliant; 9/12 strict explicit-volume panels; ratios too heterogeneous for bottle-to-glass mapping |
+| `experiments/094-trip-class-proxy-calibration/` | **COMPLETE — reject proxy calibration** | 12/12 compliant; 36/36 proxy rows; 12 pairs, median APE 124.2%, p90 532.4% |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 
