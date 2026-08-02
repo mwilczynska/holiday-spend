@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Athens",
+  "country": "Greece",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "priceSamples": [13, 18, 16, 17, 17],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "MODERN Eatery",
+    "sourceUrl": "https://www.athenswas.gr/app/uploads/sites/13/2026/04/MODERN-Eatery-Menu-Summer-2026.pdf",
+    "sourceTitle": "MODERN Eatery Menu Summer 2026",
+    "evidenceText": "The public Signature Cocktails section includes recognizable standard/classic preparations with house descriptions: Aperol Spritz EUR 13, Tommy's Margarita EUR 18, Adam & Eve Negroni EUR 16, Passion Fruit Gimlet EUR 17, Sichuan Old Fashioned EUR 17, and Espresso Martini EUR 17. These are ordinary named cocktails, not bottle service, flights, or reserve sections. All legal taxes are stated to be included.",
+    "taxStatus": "included",
+    "referencePeriod": "Summer 2026 menu; PDF publicly retrieved 2026-08-01",
+    "searchQuery": "Athens Greece public cocktail bar menu classic cocktails prices current",
+    "reason": "Five raw named classic-cocktail prices were retained in EUR; no median, arithmetic, or conversion was calculated by the agent."
+  },
+  "wineGlass": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [12, 12, 13],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "MODERN Eatery",
+    "sourceUrl": "https://www.athenswas.gr/app/uploads/sites/13/2026/04/MODERN-Eatery-Menu-Summer-2026.pdf",
+    "sourceTitle": "MODERN Eatery Menu Summer 2026",
+    "evidenceText": "The public red-wine list gives Nemea, Aivalis Winery EUR 12, Kali Riza, Kir-Yianni Estate EUR 12, and Bordeaux Supérieur, Chateau Pertign EUR 13. The menu's glass-size labels identify the red pours as 150 ml. All legal taxes are stated to be included.",
+    "taxStatus": "included",
+    "referencePeriod": "Summer 2026 menu; PDF publicly retrieved 2026-08-01",
+    "searchQuery": "Athens Greece public wine menu wine by the glass red price current",
+    "reason": "Three raw standard 150 ml dry-red wine-by-glass prices were retained in EUR; no median, arithmetic, or conversion was calculated by the agent."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 2,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

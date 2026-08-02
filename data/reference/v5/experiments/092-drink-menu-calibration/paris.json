@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "priceSamples": [12.5, 12.5, 12.5],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Public House Paris",
+    "sourceUrl": "https://www.publichouseparis.fr/menus/",
+    "sourceTitle": "Cartes et menus / Paris / Public House",
+    "evidenceText": "The public menu's Cocktails / Classiques section lists Pimm's O' Clock €12.50, Negroni €12.50, Dry Martini €12.50, Basil Smash €12.50, Daïquiri €12.50, and Expresso Martini €12.50 (among further classics), each with an individual menu price.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Public menu crawled 2026-07; accessed 2026-08-01",
+    "searchQuery": "Paris France public cocktail bar menu classic cocktails prices current",
+    "reason": "At least three standard/classic cocktails are individually priced in one exact-Paris public menu. The venue page does not state VAT or service treatment, so tax status is unknown and no adjustment was made."
+  },
+  "wineGlass": {
+    "status": "not_found",
+    "currency": null,
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": null,
+    "sourceUrl": "https://www.lagedorparis.com/menu/",
+    "sourceTitle": "Menu – L'AGE D'OR - Paris",
+    "evidenceText": "The inspected public L'Âge d'Or wine list has several red wines by 12 cl (120 ml), below the required 125–175 ml range. Public House lists only one red wine by glass at 13 cl, and the other returned wine pages did not expose three qualifying standard dry-red glasses. No wine sample was substituted or converted.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Public menus crawled 2026-07; accessed 2026-08-01",
+    "searchQuery": "Paris France public wine menu wine by the glass red price current",
+    "reason": "No returned public menu provided at least three standard dry-red wines in a stated 125–175 ml glass (or an unambiguously standard glass without an out-of-range volume). The 12 cl and single 13 cl entries are retained only as the reason for honest not_found."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 8,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

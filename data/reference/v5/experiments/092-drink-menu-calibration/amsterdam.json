@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "priceSamples": [13.25, 13.9, 13.25, 13.9, 13.25, 14.8, 15.95, 13.9],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Hard Rock Cafe Amsterdam",
+    "sourceUrl": "https://www.thefork.nl/restaurant/hard-rock-cafe-amsterdam-r826778/menu",
+    "sourceTitle": "Menu 2026 - Hard Rock Cafe Amsterdam in Amsterdam | TheFork",
+    "evidenceText": "The public Classic cocktails section lists Smoked old fashioned EUR 13.25, Paloma EUR 13.90, Dirty martini EUR 13.25, Cosmopolitan EUR 13.90, Whiskey sour EUR 13.25, Gin & tonic EUR 14.80, Espresso martini EUR 15.95, and Manhattan EUR 13.90. No tax-inclusion statement appears on the menu page.",
+    "taxStatus": "unknown",
+    "referencePeriod": "TheFork menu last updated 15 April 2025; page publicly retrieved 2026-08-01",
+    "searchQuery": "Amsterdam Netherlands public cocktail bar menu classic cocktails prices current",
+    "reason": "Eight raw standard/classic cocktail prices were retained in EUR; no median, arithmetic, or conversion was calculated by the agent."
+  },
+  "wineGlass": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [14, 8, 16],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Prins & Aap",
+    "sourceUrl": "https://www.thefork.nl/restaurant/prins-aap-r814945/menu",
+    "sourceTitle": "Menu 2026 - Prins & Aap in Amsterdam | TheFork",
+    "evidenceText": "The public Wine by glass - red section lists Terrazas de los Andes Malbec EUR 14, Mont Tauch Merlot Les Garrigues EUR 8, and Albert Bichot Origines Pinot Noir EUR 16. The section explicitly identifies red wines sold by the glass but does not state the glass volume; no volume has been inferred.",
+    "taxStatus": "unknown",
+    "referencePeriod": "TheFork menu last updated 6 May 2026; page publicly retrieved 2026-08-01",
+    "searchQuery": "Amsterdam Netherlands public wine menu wine by the glass red price current",
+    "reason": "Three raw red-wine-by-glass prices were retained in EUR. Serving volume is not stated, so glassVolumeMl remains null and comparability is flagged for downstream audit; no median or conversion was calculated by the agent."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 7,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

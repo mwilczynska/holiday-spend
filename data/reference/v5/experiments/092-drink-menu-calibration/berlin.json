@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Berlin",
+  "country": "Germany",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "priceSamples": [9.5, 11, 12, 11, 11, 12, 10, 12],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Bürkner Eck Bar",
+    "sourceUrl": "https://buerknereck.simpleshop.com/",
+    "sourceTitle": "Bürkner Eck Bar - Bürkner Eck Bar",
+    "evidenceText": "The public classic-cocktail menu lists Daiquiri EUR 9.50, Negroni EUR 11, Boulevardier EUR 12, Espresso Martini EUR 11, Martini cocktail EUR 11, Manhattan EUR 12, Whiskey Sour EUR 10, and Old Fashioned EUR 12. No tax-inclusion statement appears on the page.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Public menu page footer dated 2026; page publicly retrieved 2026-08-01",
+    "searchQuery": "Berlin Germany public cocktail bar menu classic cocktails prices current",
+    "reason": "Eight raw standard/classic cocktail prices were retained in EUR; no median, arithmetic, or conversion was calculated by the agent."
+  },
+  "wineGlass": {
+    "status": "not_found",
+    "currency": null,
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": null,
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": "The three ordered Berlin searches returned public menus with red wine glasses at 0.10 L, 0.20 L, or 0.25 L, and other menus without a qualifying standard-glass volume. No single returned public menu supplied at least three standard dry-red wines at 125–175 ml; no fallback, retry, or alternate search was used.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Public search results and returned pages retrieved 2026-08-01",
+    "searchQuery": "Berlin Germany public wine menu wine by the glass red price current",
+    "reason": "not_found: qualifying >=3 red-glass samples from one menu were unavailable under the strict 125–175 ml or explicitly standard-glass rule; non-qualifying pours were not substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "HUF",
+    "unit": "per_person_item",
+    "priceSamples": [3790, 3790, 3790, 3790],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Kandalló Pub",
+    "sourceUrl": "https://kandallopub.hu/en/cocktails/",
+    "sourceTitle": "Kandalló Pub cocktails",
+    "evidenceText": "The public Classic Cocktails menu lists Moscow Mule, Espresso Martini, Margarita, and Mojito at 3,790 Ft each. The page also states that a 15% service charge is added; it does not state whether VAT is included.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Page publicly retrieved 2026-08-01; no menu date stated",
+    "searchQuery": "Budapest Hungary public cocktail bar menu classic cocktails prices current",
+    "reason": "Four standard/classic cocktail observations were retained as raw source-currency samples; no median was calculated by the agent."
+  },
+  "wineGlass": {
+    "status": "found",
+    "currency": "HUF",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [2100, 2600, 2500, 3400],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Hungarikum Bisztró",
+    "sourceUrl": "https://hungarikumbisztro.hu/",
+    "sourceTitle": "Hungarikum Bisztró menu",
+    "evidenceText": "The public Red Wines section gives 0.15 l glasses: Portugieser 2,100 Ft, Recas Legendary Merlot 2,600 Ft, Tóth Ferenc Bikavér 2,500 Ft, and Zelna Bárka Cuvée 3,400 Ft. The page states that a 15% service charge is added to all food and beverage items, but does not state VAT treatment.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Page publicly retrieved 2026-08-01; no menu date stated",
+    "searchQuery": "Budapest Hungary public wine menu wine by the glass red price current",
+    "reason": "Four standard dry-red wine-by-glass observations at the explicit 150 ml serving size were retained as raw source-currency samples; no median was calculated by the agent."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -626,3 +626,12 @@ Experiment 091 passed source coverage with 12/12 compliant calls, 10 cocktail ro
 promoted only to independent calibration: preserve `per_bottle`, do not infer a wine glass, and do not map product
 drink fields. The next unresolved action is a separately pre-registered cocktail ground-truth and bottle-to-glass
 calibration study.
+The next active package is Experiment 092, `data/reference/v5/experiments/092-drink-menu-calibration/`. It collects
+raw public-menu samples for at least three standard cocktails and three 125–175 ml red-wine glasses per city, then
+uses `cmd /c node scripts/analyze-v5-drink-menu-calibration.mjs` for deterministic medians and same-currency
+ratios. Do not average or convert in the Luna response, and do not infer a bottle-to-glass factor without locked
+validation.
+Experiment 092 completed with 12/12 compliant calls, 12 cocktail medians, and 4 wine-glass medians. The wine screen
+failed; cocktail same-currency ratios have median 0.917 but wide dispersion and are calibration evidence only. No
+bottle-to-glass factor or product mapping was fitted. The workstream is paused after Experiment 092 at the user's
+request; the v5 Definition of Done remains unmet. Resume by reading its `verdict.md` and `audit.json`.

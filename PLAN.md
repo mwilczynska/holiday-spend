@@ -728,6 +728,12 @@ protocol-compliant; 10 cocktail and 12 wine-bottle rows passed the screen. The w
 bottle, and no bottle-to-glass factor or product mapping was fitted. Next work must independently calibrate the
 cocktail source and any wine-bottle-to-glass model. Artifacts: `data/reference/v5/experiments/091-expatistan-drink-anchors/`.
 
+**Experiment 092 — independent drink-menu calibration — complete; wine-glass screen rejected.** All 12 calls were
+protocol-compliant. Twelve cocktail medians passed, but only four wine-glass medians met the strict volume rule.
+Ten cocktail rows matched Expatistan with median ratio 0.917, but dispersion was too wide for a coefficient. No
+drink mapping or bottle-to-glass factor was fitted. The workstream is paused after 092 at the user's request; the
+Definition of Done remains unmet. Artifacts: `data/reference/v5/experiments/092-drink-menu-calibration/`.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

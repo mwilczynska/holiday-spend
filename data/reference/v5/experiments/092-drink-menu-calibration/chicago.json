@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Chicago",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "USD",
+    "unit": "per_person_item",
+    "priceSamples": [14, 14, 14, 14, 14],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Billy Sunday",
+    "sourceUrl": "https://www.billy-sunday.com/menu/cocktails-/",
+    "sourceTitle": "Billy Sunday cocktails",
+    "evidenceText": "The public Classics section lists Billy Sunday Old Fashioned, Jungle Bird, Amaro Daiquiri, Billy Sunday Negroni, and Espresso Martini at $14 each (with a Wednesday discount also shown). No tax-inclusion statement appears on the page.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Page publicly retrieved 2026-08-01; search result crawled 4 days ago",
+    "searchQuery": "Chicago United States public cocktail bar menu classic cocktails prices current",
+    "reason": "Five standard/classic cocktail observations were retained as raw USD samples; no median was calculated by the agent."
+  },
+  "wineGlass": {
+    "status": "not_found",
+    "currency": "USD",
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "The Publican",
+    "sourceUrl": "https://www.thepublicanrestaurant.com/menus/",
+    "sourceTitle": "The Publican menus",
+    "evidenceText": "The public Wine by The Glass section lists five red wines at $14, $16, $15, $18, and $14, but does not state a glass volume or explicitly identify a standard pour. The protocol therefore does not accept these as comparable wine-glass observations.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Page publicly retrieved 2026-08-01; search result crawled 4 days ago",
+    "searchQuery": "Chicago United States public wine menu wine by the glass red price current",
+    "reason": "A returned public menu had multiple red-by-glass prices, but the required 125–175 ml or explicitly standard glass size was absent; preserving not_found is more honest than inferring a serving volume."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

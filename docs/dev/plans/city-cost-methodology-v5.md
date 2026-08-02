@@ -667,6 +667,18 @@ The panel passed its screen with 12/12 compliant calls, 10/12 cocktail rows, and
 promote source coverage to calibration only. Expatistan tax treatment is unknown, and no bottle-to-glass conversion
 or product mapping is authorized.
 
+### Experiment 092 - independent drink-menu calibration
+
+This pre-registered 12-city panel collects independent public-menu ground truth. Each one-city Luna call issues
+exactly three searches and may read only returned public pages. It returns raw arrays of at least three standard
+cocktail or 125–175 ml red-wine-by-glass prices; deterministic code computes medians and same-currency ratios
+against Experiment 091. No bottle-to-glass factor or product mapping follows a screen pass automatically.
+
+The panel completed with 12/12 compliant calls, 12/12 cocktail medians, and 4/12 wine-glass medians. Ten cocktail
+rows matched Expatistan in the same currency; median ratio was 0.917 with wide city dispersion. **Verdict:** reject
+the wine-glass screen, retain cocktail ratios as calibration evidence only, and fit/map nothing. The workstream is
+paused after Experiment 092 at the user's request; the Definition of Done remains unmet.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

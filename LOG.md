@@ -1875,3 +1875,16 @@ Experiment 091 completed with 12/12 protocol-compliant calls, 10/12 accepted coc
 wine-bottle rows. **Verdict:** promote Expatistan only to independent calibration. Preserve the wine unit as
 `per_bottle`; unknown tax treatment and the source-defined statistic prevent product mapping. No bottle-to-glass
 factor was fitted. Read `data/reference/v5/experiments/091-expatistan-drink-anchors/verdict.md`.
+
+## Experiment 092 - independent drink-menu calibration (pre-registered 1 August 2026)
+
+Experiment 092 will collect definition-matched public-menu ground truth for standard cocktails and standard red wine
+by the glass. Twelve one-city Luna calls issue exactly three searches, preserve raw samples, and allow only returned
+public page reads. Deterministic code computes medians and same-currency comparisons to Expatistan. A bottle remains
+a bottle; no conversion or product mapping is authorized from this screen.
+
+Experiment 092 completed with 12/12 protocol-compliant calls. It accepted 12/12 cocktail medians but only 4/12
+strict wine-glass medians. Ten cocktail rows matched Expatistan in the same currency (median ratio 0.917), with
+wide dispersion; no coefficient was accepted. **Verdict:** reject wine-glass calibration, retain cocktail evidence
+only, and perform no drink mapping or bottle-to-glass conversion. The workstream is paused after 092 at the user's
+request. Read `data/reference/v5/experiments/092-drink-menu-calibration/verdict.md`.

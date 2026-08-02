@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictRows": {
+    "cocktail": 12,
+    "wineGlass": 4
+  },
+  "screenGate": {
+    "protocolCompliant": 10,
+    "cocktailRows": 8,
+    "wineGlassRows": 8
+  },
+  "screenGatePassed": false,
+  "sameCurrencyCalibrationScreen": {
+    "cocktail": {
+      "matchedRows": 10,
+      "medianRatio": 0.9166666666666666,
+      "ratios": [
+        {
+          "city": "Amsterdam",
+          "measure": "cocktail",
+          "sourceValue": 15,
+          "groundTruthMedian": 13.9,
+          "ratio": 0.9266666666666666
+        },
+        {
+          "city": "Athens",
+          "measure": "cocktail",
+          "sourceValue": 11,
+          "groundTruthMedian": 17,
+          "ratio": 1.5454545454545454
+        },
+        {
+          "city": "Barcelona",
+          "measure": "cocktail",
+          "sourceValue": 13,
+          "groundTruthMedian": 7,
+          "ratio": 0.5384615384615384
+        },
+        {
+          "city": "Berlin",
+          "measure": "cocktail",
+          "sourceValue": 12,
+          "groundTruthMedian": 11,
+          "ratio": 0.9166666666666666
+        },
+        {
+          "city": "Budapest",
+          "measure": "cocktail",
+          "sourceValue": 2718,
+          "groundTruthMedian": 3790,
+          "ratio": 1.3944076526857985
+        },
+        {
+          "city": "Chicago",
+          "measure": "cocktail",
+          "sourceValue": 17,
+          "groundTruthMedian": 14,
+          "ratio": 0.8235294117647058
+        },
+        {
+          "city": "Copenhagen",
+          "measure": "cocktail",
+          "sourceValue": 123,
+          "groundTruthMedian": 115,
+          "ratio": 0.9349593495934959
+        },
+        {
+          "city": "Dubai",
+          "measure": "cocktail",
+          "sourceValue": 96,
+          "groundTruthMedian": 80,
+          "ratio": 0.8333333333333334
+        },
+        {
+          "city": "Hanoi",
+          "measure": "cocktail",
+          "sourceValue": 150582,
+          "groundTruthMedian": 120000,
+          "ratio": 0.7969079969717496
+        },
+        {
+          "city": "Paris",
+          "measure": "cocktail",
+          "sourceValue": 14,
+          "groundTruthMedian": 12.5,
+          "ratio": 0.8928571428571429
+        }
+      ]
+    },
+    "wineGlassAgainstBottle": {
+      "matchedRows": 4,
+      "medianRatio": 0.9230769230769231,
+      "ratios": [
+        {
+          "city": "Athens",
+          "measure": "wineGlass",
+          "sourceValue": 13,
+          "groundTruthMedian": 12,
+          "ratio": 0.9230769230769231
+        },
+        {
+          "city": "Budapest",
+          "measure": "wineGlass",
+          "sourceValue": 3099,
+          "groundTruthMedian": 2600,
+          "ratio": 0.8389803162310423
+        },
+        {
+          "city": "Hanoi",
+          "measure": "wineGlass",
+          "sourceValue": 351687,
+          "groundTruthMedian": 650000,
+          "ratio": 1.8482343674915478
+        },
+        {
+          "city": "London",
+          "measure": "wineGlass",
+          "sourceValue": 11,
+          "groundTruthMedian": 10,
+          "ratio": 0.9090909090909091
+        }
+      ]
+    }
+  },
+  "productMapping": "none_until_locked_validation",
+  "protocol": [
+    {
+      "city": "Amsterdam",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Athens",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Barcelona",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Berlin",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Budapest",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Chicago",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Copenhagen",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true
+    }
+  ]
+}

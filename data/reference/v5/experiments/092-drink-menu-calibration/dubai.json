@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Dubai",
+  "country": "United Arab Emirates",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "AED",
+    "unit": "per_person_item",
+    "priceSamples": [65, 75, 75, 75, 80, 80, 85, 95],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Duomo Dubai",
+    "sourceUrl": "https://www.duomodubai.com/resourcefiles/pdf/beverage-menu.pdf",
+    "sourceTitle": "Duomo Dubai drink menu",
+    "evidenceText": "The public Classic Cocktails section lists Caipirinha AED 65, Negroni 75, Clover Club 75, Whisky Sour 75, Mai Tai 80, Paloma 80, Margarita 85, and Aperol Spritz 95. The menu explicitly states that all prices include 10% service charge, 7% municipality fee, and 5% VAT.",
+    "taxStatus": "included",
+    "referencePeriod": "Public menu PDF published 9 months ago; retrieved 2026-08-01",
+    "searchQuery": "Dubai United Arab Emirates public cocktail bar menu classic cocktails prices current",
+    "reason": "Eight standard/classic cocktail observations were retained as raw AED samples; no median was calculated by the agent."
+  },
+  "wineGlass": {
+    "status": "not_found",
+    "currency": "AED",
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Jou Jou Brasserie",
+    "sourceUrl": "https://www.fourseasons.com/dubaijb/dining/restaurants/jou-jou-brasserie/beverages/",
+    "sourceTitle": "Jou Jou Brasserie beverages",
+    "evidenceText": "The public Red wine by the glass section lists five wines at AED 100, 105, 185, 200, and 240, but gives no glass volume and does not explicitly identify a standard pour. Tax treatment is not stated on this page.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Page publicly retrieved 2026-08-01; search result crawled 3 months ago",
+    "searchQuery": "Dubai United Arab Emirates public wine menu wine by the glass red price current",
+    "reason": "A returned public menu had multiple red-by-glass prices, but the required 125–175 ml or explicitly standard glass size was absent; preserving not_found avoids inferring a serving volume."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

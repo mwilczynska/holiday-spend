@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "GBP",
+    "unit": "per_person_item",
+    "priceSamples": [17.5, 17.5, 17.5],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Courtroom Bar @ the Dixon, Tower Bridge",
+    "sourceUrl": "https://www.thefork.co.uk/restaurant/courtroom-bar-the-dixon-tower-bridge-r808942/menu",
+    "sourceTitle": "Menus 2026 - Courtroom Bar @ the Dixon, Tower Bridge in London | TheFork",
+    "evidenceText": "The public menu's Classic cocktails section lists Old fashioned £17.5, Espresso martini £17.5, and Margarita £17.5 (with additional Manhattan, Passion fruit martini, and Cosmopolitan entries). The page identifies the venue as Courtroom Bar @ the Dixon, Tower Bridge, London and was last updated 14 June 2025.",
+    "taxStatus": "unknown",
+    "referencePeriod": "TheFork page last update 2025-06-14; accessed 2026-08-01",
+    "searchQuery": "London United Kingdom public cocktail bar menu classic cocktails prices current",
+    "reason": "Three standard classics are individually listed in one exact-London public menu. The page does not state whether listed drink prices include VAT, so tax status is unknown; no service-charge adjustment was made."
+  },
+  "wineGlass": {
+    "status": "found",
+    "currency": "GBP",
+    "unit": "per_person_item",
+    "glassVolumeMl": 125,
+    "priceSamples": [9, 10, 11],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Idalia",
+    "sourceUrl": "https://uksm.blob.core.windows.net/cloud/restaurants/29602/menus/idalia-wine-list-april-2026_23042026092157.pdf",
+    "sourceTitle": "Idalia wine list (April 2026)",
+    "evidenceText": "Page 2 is headed WINE BY THE GLASS 125 ml. Under RED WINES it lists Carmenère, Morandé Pionero Reserva 2023 £9; Finca La Colonia Colección Malbec, Norton 2025 £10; and Zinfandel, Joel Gott 2022 £11 (with additional red glasses). The PDF is an April 2026 wine list for the London venue.",
+    "taxStatus": "unknown",
+    "referencePeriod": "April 2026 wine list",
+    "searchQuery": "London United Kingdom public wine menu wine by the glass red price current",
+    "reason": "The public wine list explicitly defines 125 ml glasses and provides at least three standard dry-red samples. The PDF contains no VAT/tax statement, so tax status is unknown; raw GBP values are retained without adjustment."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 5,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

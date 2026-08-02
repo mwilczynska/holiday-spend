@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "city-cost-v5-drink-menu-calibration-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "cocktail": {
+    "status": "found",
+    "currency": "DKK",
+    "unit": "per_person_item",
+    "priceSamples": [120, 115, 115, 115, 120],
+    "priceStatistic": "median_of_standard_classics",
+    "venueName": "Restaurant Grimal",
+    "sourceUrl": "https://grimal.dk/en/menu/drinks",
+    "sourceTitle": "Restaurant Grimal drinks menu",
+    "evidenceText": "The public drinks menu lists Negroni 120, Manhattan 115, Whiskey sour 115, Peach sour 115, and Espresso martini 120 DKK. The linked menu is labelled GRIMAL WINELIST 17.07.26. No tax-inclusion statement appears on this page.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Menu labelled 17.07.26; page publicly retrieved 2026-08-01",
+    "searchQuery": "Copenhagen Denmark public cocktail bar menu classic cocktails prices current",
+    "reason": "Five standard/classic cocktail observations were retained as raw DKK samples; no median was calculated by the agent."
+  },
+  "wineGlass": {
+    "status": "not_found",
+    "currency": "DKK",
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Copenhagen hotel room-service menu",
+    "sourceUrl": "https://cpcopenhagen.dk/pdf/room-service/room-service-drikke",
+    "sourceTitle": "Room Service Beverage Menu",
+    "evidenceText": "The public menu has five red wines in a GLAS/GLASS column priced 69, 89, 108, 135, and 135 DKK, and explicitly says prices include VAT and service. It does not state the glass volume or explicitly call the pour standard, so no samples are accepted under this protocol.",
+    "taxStatus": "included",
+    "referencePeriod": "Menu publicly retrieved 2026-08-01; search result published 4 months ago",
+    "searchQuery": "Copenhagen Denmark public menu VAT tax included cocktail wine glass",
+    "reason": "Multiple red-by-glass prices were visible, but the required 125–175 ml or explicitly standard glass size was absent; preserving not_found avoids inferring a serving volume."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}
