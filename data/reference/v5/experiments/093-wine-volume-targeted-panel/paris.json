@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [6.5, 8, 9],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Le Pendule du Panthéon",
+    "sourceUrl": "https://www.thefork.com/restaurant/le-pendule-du-pantheon-r861696/menu",
+    "sourceTitle": "Menu 2026 - Le Pendule du Panthéon in Paris | TheFork",
+    "evidenceText": "The exact-Paris public menu's Les vins au verre - rouges (15cl) section lists Réserve James Deschartrons Bordeaux AOC €6.5, L’enfant rebelle Pinot Noir VDF €8, Domaine du Petit Pérou Morgon AOC €9, Château La Borie Côtes du Rhône AOC €9, and further red glasses. The page identifies the venue as Le Pendule du Panthéon, Paris.",
+    "taxStatus": "unknown",
+    "referencePeriod": "TheFork page crawled 2 days before retrieval; accessed 2026-08-01",
+    "searchQuery": "Paris France wine menu red wine glass 125 ml 150 ml current public",
+    "reason": "One exact-Paris public menu supplies at least three standard dry-red wines, each explicitly priced for a 15cl glass. The page does not state VAT/service treatment, so tax status is unknown; raw EUR values are retained without adjustment."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 5,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

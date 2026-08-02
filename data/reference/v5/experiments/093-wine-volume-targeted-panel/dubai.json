@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Dubai",
+  "country": "United Arab Emirates",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "found",
+    "currency": "AED",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [100, 150, 200, 240],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Jou Jou Brasserie",
+    "sourceUrl": "https://www.joujoudubai.com/menu/drinks-menu/",
+    "sourceTitle": "Jou Jou Brasserie drinks menu",
+    "evidenceText": "The public Wine By The Glass / Red Wine section is explicitly labelled Glass (15cl) and lists Mendoza Malbec Terrazas de los Andes $100, Bourgogne Pinot Noir Château de Dracy $150, Saint-Estèphe Château Les Ormes de Pez $200, and Barolo Massolino $240. The Brunello di Montalcino $350 row is marked by Coravin and was excluded. The Dubai venue's page displays the dollar sign; no tax treatment is stated.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Page publicly retrieved 2026-08-01; search result crawled last week",
+    "searchQuery": "Dubai United Arab Emirates wine menu red wine glass 125 ml 150 ml current public",
+    "reason": "Four exact-city standard dry-red wines have explicit 150 ml glass prices. Raw displayed-price samples are returned without a median."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 1,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

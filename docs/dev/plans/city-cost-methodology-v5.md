@@ -679,6 +679,15 @@ rows matched Expatistan in the same currency; median ratio was 0.917 with wide c
 the wine-glass screen, retain cocktail ratios as calibration evidence only, and fit/map nothing. The workstream is
 paused after Experiment 092 at the user's request; the Definition of Done remains unmet.
 
+### Experiment 093 - volume-targeted wine-glass panel
+
+This panel changed only the retrieval query: three exact-city searches targeted 125/150/175 ml or 15 cl red-wine
+pours. The frozen volume-compatible definition was preserved; no unspecified glass or bottle passed. All 12 calls
+were protocol-compliant and 9/12 produced strict panels, passing the screen. Nine same-currency joins to Experiment
+091 had median glass/bottle ratio 0.727, with extreme dispersion (0.001–3.704) and unresolved denomination/currency
+caveats in source evidence. **Verdict:** promote the explicit-volume query contract to a locked calibration study,
+but reject a global bottle-to-glass coefficient and all product mapping. See the experiment `verdict.md`.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "found",
+    "currency": "VND",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [440, 400, 360],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Hiryu Hanoi",
+    "sourceUrl": "https://www.hiryuhanoi.com/wp-content/uploads/2026/04/hiryu-full-menu-web.pdf",
+    "sourceTitle": "Hiryu_Alacarte&Beverage&Teppanyaki",
+    "evidenceText": "The exact-Hanoi public menu labels WINE BY THE GLASS as 150 ml | 750 ml. In the RED section it lists Santa Cristina 440, Domaine des Hautes Troglodytes Saumur-Champigny 400, and Gerard Bertrand '6eme Sens' Pays d’OC 360. The menu states all prices are quoted in thousand VND and are subject to a 5% service charge and applicable VAT.",
+    "taxStatus": "excluded",
+    "referencePeriod": "Public menu PDF published April 2026; accessed 2026-08-01",
+    "searchQuery": "Hanoi Vietnam wine menu red wine glass 125 ml 150 ml current public",
+    "reason": "One exact-Hanoi public menu supplies three standard dry-red wines, each explicitly priced for the same 150 ml glass. Raw menu amounts are retained in the source's thousand-VND denomination; no arithmetic or tax adjustment was made."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

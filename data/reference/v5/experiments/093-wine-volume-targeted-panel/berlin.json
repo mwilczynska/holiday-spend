@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Berlin",
+  "country": "Germany",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [7, 8, 10, 8, 8],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Balance Wine Bar Berlin Friedrichshain",
+    "sourceUrl": "https://weinbalance.com/en/pages/menu",
+    "sourceTitle": "Menu & Wine List | Balance Wine Bar Berlin Friedrichshain – Balance Weinbar",
+    "evidenceText": "The public search result for the exact Berlin Balance Wine Bar menu lists a BY THE GLASS section with Red Wines 15cl: Gardian EUR 7, Bila Haut EUR 8, La bella Sedara EUR 10, Nerè EUR 8, and Cicada EUR 8. The source is explicitly identified as Berlin Friedrichshain and was crawled five days ago. A direct page read returned a cache miss, but no alternate source, retry, or inferred volume was used; the qualifying values are retained from the returned public result text.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Public search result crawled five days ago; retrieved 2026-08-01",
+    "searchQuery": "Berlin Germany wine list red wine glass 175 ml 15 cl current public",
+    "reason": "Five raw positive EUR prices from one exact-city public menu explicitly labelled Red Wines 15cl; no median, arithmetic, or currency conversion was calculated by the agent."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 4,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

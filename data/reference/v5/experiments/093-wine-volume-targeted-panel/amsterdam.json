@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "not_found",
+    "currency": null,
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": null,
+    "sourceUrl": "https://www.thefork.com/restaurant/wagamama-centraal-r841452/menu",
+    "sourceTitle": "Menu 2026 - Wagamama Centraal in Amsterdam | TheFork",
+    "evidenceText": "The returned Wagamama Centraal menu explicitly labels red wine glasses as 15cl, but supplies only two red wines (Merlot EUR 5.95 and Malbec EUR 6.95). Le Pub Amsterdam lists more red wines by a glass but does not state a serving volume, while MOS Amsterdam's returned wine list is bottle-only. No single exact-city public menu supplied at least three qualifying red wines at 125–175 ml or 15 cl.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Wagamama menu last updated 7 May 2025; page publicly retrieved 2026-08-01. Other returned pages crawled within the last two weeks.",
+    "searchQuery": "Amsterdam Netherlands restaurant wine list standard pour 15cl red wine price",
+    "reason": "not_found: one exact-city menu had an explicit 15 cl volume but fewer than three red wines; unspecified-volume and bottle-only menus were not substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 3,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

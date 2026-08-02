@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "not_found",
+    "currency": null,
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": null,
+    "sourceUrl": "https://www.thefork.es/restaurante/tapas-del-gotic-r845392/menu",
+    "sourceTitle": "Carta 2026 - Tapas del Gòtic",
+    "evidenceText": "Tapas del Gòtic has eight red-wine-by-glass prices but no glass volume. Aangan Restaurant gives only two 15 cl red/house or Rioja options. Tiflis Barcelona explicitly labels 150 ml but its dry red wines are bottle-only; the only 150 ml red shown is a semi-sweet Kindzmarauli, which is excluded. FIRE lists three red-by-glass prices but no volume. No single exact-city public menu supplied at least three qualifying dry-red wines with explicit 125–175 ml or 15 cl volume.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Returned pages publicly retrieved 2026-08-01; Tapas del Gòtic menu last modified 27 October 2025.",
+    "searchQuery": "Barcelona Spain restaurant wine list standard pour 15cl red wine price",
+    "reason": "not_found: qualifying volume and dry-red count were not jointly present in one exact-city menu; unspecified-volume, bottle-only, and semi-sweet entries were not substituted."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 11,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

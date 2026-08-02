@@ -734,6 +734,13 @@ Ten cocktail rows matched Expatistan with median ratio 0.917, but dispersion was
 drink mapping or bottle-to-glass factor was fitted. The workstream is paused after 092 at the user's request; the
 Definition of Done remains unmet. Artifacts: `data/reference/v5/experiments/092-drink-menu-calibration/`.
 
+**Experiment 093 — volume-targeted wine-glass panel — complete; promote retrieval only.** Twelve one-city Luna
+contexts issued exactly three searches targeting explicit 125–175 ml or 15 cl red-wine pours. All 12 calls were
+protocol-compliant and 9/12 produced strict panels, passing the 10/12 + 8/12 screen. Nine same-currency joins to
+Experiment 091 had median glass/bottle ratio 0.727, with extreme dispersion and unresolved source-denomination
+issues. **Verdict:** retain the query contract for a locked calibration study, but reject any global bottle-to-glass
+coefficient or product mapping. Artifacts: `data/reference/v5/experiments/093-wine-volume-targeted-panel/`.
+
 ## Unrelated app backlog
 
 - [ ] Add tests around city generation parsing and Wise import format handling.

@@ -635,3 +635,10 @@ Experiment 092 completed with 12/12 compliant calls, 12 cocktail medians, and 4 
 failed; cocktail same-currency ratios have median 0.917 but wide dispersion and are calibration evidence only. No
 bottle-to-glass factor or product mapping was fitted. The workstream is paused after Experiment 092 at the user's
 request; the v5 Definition of Done remains unmet. Resume by reading its `verdict.md` and `audit.json`.
+Experiment 093 completed with 12/12 compliant calls and 9/12 strict explicit-volume red-wine panels, passing its
+screen. Nine same-currency joins to Experiment 091 had median glass/bottle ratio 0.727 with extreme dispersion;
+Dubai currency display and Hanoi thousand-VND denomination require a separate normalization audit. Promote the
+volume-targeted query contract to locked calibration only; fit no bottle-to-glass coefficient and map no product
+field. Read `data/reference/v5/experiments/093-wine-volume-targeted-panel/verdict.md` and `audit.json`.
+The next active package should be a materially different accommodation experiment, because accommodation class
+coverage remains the largest blocker. Preserve the 093 artifacts and do not treat its rows as production values.

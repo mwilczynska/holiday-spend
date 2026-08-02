@@ -1888,3 +1888,16 @@ strict wine-glass medians. Ten cocktail rows matched Expatistan in the same curr
 wide dispersion; no coefficient was accepted. **Verdict:** reject wine-glass calibration, retain cocktail evidence
 only, and perform no drink mapping or bottle-to-glass conversion. The workstream is paused after 092 at the user's
 request. Read `data/reference/v5/experiments/092-drink-menu-calibration/verdict.md`.
+
+## Experiment 093 - volume-targeted wine-glass panel (pre-registered)
+
+Experiment 093 targets the 092 wine-volume coverage gap with three explicit 125/150/175 ml or 15 cl searches per
+city. It preserves the frozen volume-compatible definition, returns raw samples only, and uses deterministic
+medians. No bottle-to-glass conversion or product mapping is authorized.
+
+The panel completed with 12/12 protocol-compliant calls and 9/12 strict explicit-volume red-wine panels, passing the
+registered 10/12 + 8/12 screen. Nine same-currency joins to Experiment 091 had median glass/bottle ratio 0.727, with
+extreme dispersion (0.001–3.704). Dubai's displayed `$` versus declared AED and Hanoi's thousand-VND denomination
+also require an explicit normalization audit. **Verdict:** promote the volume-targeted query contract to a locked
+independent calibration study, but reject a global bottle-to-glass coefficient and all product mapping. Read
+`data/reference/v5/experiments/093-wine-volume-targeted-panel/verdict.md`.

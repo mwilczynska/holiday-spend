@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Chicago",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "not_found",
+    "currency": "USD",
+    "unit": "per_person_item",
+    "glassVolumeMl": null,
+    "priceSamples": [],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": null,
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "evidenceText": null,
+    "taxStatus": "unknown",
+    "referencePeriod": "Searches performed 2026-08-01",
+    "searchQuery": null,
+    "reason": "The returned current Chicago menus either omitted the glass volume or used an unaccepted size label (for example, 6 oz); no exact-city public menu with at least three red wines explicitly priced for 125–175 ml or 15 cl was accepted. Older menu PDFs were rejected as stale."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

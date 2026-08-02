@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [5.25, 9, 8.75],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Cervejaria Trindade",
+    "sourceUrl": "https://www.cervejariatrindade.pt/en/menu/",
+    "sourceTitle": "Trindade - Menu - Restaurant and Petiscaria",
+    "evidenceText": "The exact-Lisbon public menu's WINE BY THE GLASS / Red section is explicitly 15cl and lists Herdade da Pimenta | Alentejo 5.25, Manoella, Wine & Soul | Douro 9.00, Esporão Reserva, Herdade do Esporão | Alentejo 8.75, and Encantado, Monte da Ravasqueira | Alentejo 5.20. Raw values are in euros.",
+    "taxStatus": "unknown",
+    "referencePeriod": "Current public menu page crawled 2026-08-01",
+    "searchQuery": "Lisbon Portugal wine menu red wine glass 125 ml 150 ml current public",
+    "reason": "One exact-Lisbon public menu supplies at least three standard dry-red wines at the explicitly stated 15cl pour. Raw EUR prices are retained without averaging, conversion, or tax inference."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 5,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

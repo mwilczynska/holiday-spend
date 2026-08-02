@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictRows": 9,
+  "screenGate": {
+    "protocolCompliant": 10,
+    "strictRows": 8
+  },
+  "screenGatePassed": true,
+  "sameCurrencyBottleRatios": {
+    "matchedRows": 9,
+    "medianRatio": 0.7272727272727273,
+    "ratios": [
+      {
+        "city": "Athens",
+        "bottle": 13,
+        "glass": 8,
+        "ratio": 0.6153846153846154
+      },
+      {
+        "city": "Berlin",
+        "bottle": 8,
+        "glass": 8,
+        "ratio": 1
+      },
+      {
+        "city": "Budapest",
+        "bottle": 3099,
+        "glass": 1750,
+        "ratio": 0.5646982897708939
+      },
+      {
+        "city": "Copenhagen",
+        "bottle": 87,
+        "glass": 115,
+        "ratio": 1.3218390804597702
+      },
+      {
+        "city": "Dubai",
+        "bottle": 54,
+        "glass": 200,
+        "ratio": 3.7037037037037037
+      },
+      {
+        "city": "Hanoi",
+        "bottle": 351687,
+        "glass": 400,
+        "ratio": 0.0011373749953794141
+      },
+      {
+        "city": "Lisbon",
+        "bottle": 6,
+        "glass": 8.75,
+        "ratio": 1.4583333333333333
+      },
+      {
+        "city": "London",
+        "bottle": 11,
+        "glass": 4.5,
+        "ratio": 0.4090909090909091
+      },
+      {
+        "city": "Paris",
+        "bottle": 11,
+        "glass": 8,
+        "ratio": 0.7272727272727273
+      }
+    ]
+  },
+  "productMapping": "none_until_locked_validation",
+  "protocol": [
+    {
+      "city": "Amsterdam",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Athens",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Barcelona",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Berlin",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Budapest",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Chicago",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Copenhagen",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true
+    }
+  ]
+}

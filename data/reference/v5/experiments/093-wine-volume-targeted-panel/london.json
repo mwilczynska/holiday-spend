@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "London",
+  "country": "United Kingdom",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "found",
+    "currency": "GBP",
+    "unit": "per_person_item",
+    "glassVolumeMl": 125,
+    "priceSamples": [3.95, 4.5, 5.5],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "VQ Euston",
+    "sourceUrl": "https://www.opentable.co.uk/r/vq-euston-london",
+    "sourceTitle": "VQ EUSTON - Updated 2026, International Restaurant in London",
+    "evidenceText": "The exact-London public OpenTable wine list's Red Wine section lists El Zafiro Tinto glass (125ml) £3.95, Cabernet Merlot glass (125ml) £4.50, and Malbec glass (125ml) £5.50, with additional Montepulciano and Rioja entries also offered at 125ml and 175ml.",
+    "taxStatus": "unknown",
+    "referencePeriod": "OpenTable page crawled 2 days before retrieval; accessed 2026-08-01",
+    "searchQuery": "London United Kingdom wine menu red wine glass 125 ml 150 ml current public",
+    "reason": "One exact-London public menu supplies at least three standard dry-red wines, each individually priced for an explicit 125 ml glass. No VAT statement was present on the source page, so tax status is unknown and prices remain raw GBP values."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 5,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

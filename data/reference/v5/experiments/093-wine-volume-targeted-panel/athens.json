@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "city-cost-v5-wine-volume-targeted-v1",
+  "city": "Athens",
+  "country": "Greece",
+  "retrievalDate": "2026-08-01",
+  "wineGlass": {
+    "status": "found",
+    "currency": "EUR",
+    "unit": "per_person_item",
+    "glassVolumeMl": 150,
+    "priceSamples": [5.5, 6.5, 7.5, 8, 14, 11],
+    "priceStatistic": "median_of_standard_red_glasses",
+    "venueName": "Heteroclito cave & bar a vin",
+    "sourceUrl": "https://www.heteroclito.gr/wp-down/list_en/files/assets/common/downloads/publication.pdf?uni=20e73775d6760ab37b890c83fae6fc1",
+    "sourceTitle": "wine by the glass / February 2026",
+    "evidenceText": "The public Heteroclito Athens PDF has a red 150 ml section with six dry-red wines and prices: August EUR 5.50, Haroula EUR 6.50, Brusco Vertzami EUR 7.50, Nemea Amphora EUR 8.00, Le Printemps EUR 14.00, and Rosso di Gaetano EUR 11.00. The venue footer identifies Heteroclito Athens; no bottle, carafe, tasting pour, or volume inference is used.",
+    "taxStatus": "unknown",
+    "referencePeriod": "February 2026 wine list; PDF publicly retrieved 2026-08-01",
+    "searchQuery": "Athens Greece wine menu red wine glass 125 ml 150 ml current public",
+    "reason": "Six raw positive EUR prices from one exact-city public menu explicitly labelled red 150 ml; no median, arithmetic, or currency conversion was calculated by the agent."
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 4,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}
