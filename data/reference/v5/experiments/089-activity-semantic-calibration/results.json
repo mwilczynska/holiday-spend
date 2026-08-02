@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-audit-v1",
+  "citiesTested": 12,
+  "protocolCompliant": 12,
+  "strictRows": {
+    "budget": 0,
+    "mid": 5,
+    "high": 4
+  },
+  "strictCompleteCities": [],
+  "compatibleUsdRows": {
+    "budget": 0,
+    "mid": 1,
+    "high": 2
+  },
+  "gate": {
+    "protocolCompliant": 8,
+    "strictRowsPerAnchor": 8,
+    "completeCities": 6
+  },
+  "screenGatePassed": false,
+  "calibration": {
+    "budget": {
+      "matchedRows": 0,
+      "medianRatio": null,
+      "medianApe": null,
+      "developmentRows": 0,
+      "holdoutRows": 0,
+      "holdoutMedianApe": null
+    },
+    "mid": {
+      "matchedRows": 1,
+      "medianRatio": 8.829787234042554,
+      "medianApe": 1.3697209364050125e-16,
+      "developmentRows": 1,
+      "holdoutRows": 0,
+      "holdoutMedianApe": null
+    },
+    "high": {
+      "matchedRows": 2,
+      "medianRatio": 4.172043010752688,
+      "medianApe": 3.461768219832736,
+      "developmentRows": 1,
+      "holdoutRows": 1,
+      "holdoutMedianApe": 0.7758736109251573
+    }
+  },
+  "productMapping": "none_until_independent_definition_validation",
+  "protocol": [
+    {
+      "city": "Amsterdam",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Athens",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Barcelona",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Berlin",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Budapest",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Chicago",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Copenhagen",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Dubai",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Hanoi",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Lisbon",
+      "protocolCompliant": true
+    },
+    {
+      "city": "London",
+      "protocolCompliant": true
+    },
+    {
+      "city": "Paris",
+      "protocolCompliant": true
+    }
+  ],
+  "acceptedRows": [
+    {
+      "city": "Amsterdam",
+      "measure": "half_day_group_activity_adult_1",
+      "tier": "mid",
+      "value": 34,
+      "currency": "EUR",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.de/things-to-do/a.a47680125.activity-details?endDate=2026-01-19&langid=2057&location=Amsterdam+Museum&rid=6064633&startDate=2026-01-05&swp=off",
+      "durationHours": 3
+    },
+    {
+      "city": "Athens",
+      "measure": "full_day_premium_activity_adult_1",
+      "tier": "high",
+      "value": 290,
+      "currency": "EUR",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.ie/things-to-do/athens-full-day-private-sightseeing-tour.a4257826.activity-details?location=Syntagma+Square&rid=6123041&swp=off",
+      "durationHours": 8
+    },
+    {
+      "city": "Barcelona",
+      "measure": "full_day_premium_activity_adult_1",
+      "tier": "high",
+      "value": 408,
+      "currency": "EUR",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.es/things-to-do/a.a839273.activity-details?endDate=2026-04-23&langid=2057&location=El+Prat+de+Llobregat&rid=179746&startDate=2026-04-09&swp=off",
+      "durationHours": 6
+    },
+    {
+      "city": "Berlin",
+      "measure": "half_day_group_activity_adult_1",
+      "tier": "mid",
+      "value": 200,
+      "currency": "EUR",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.visitberlin.de/en/city-tours-groups-berlin-potsdam",
+      "durationHours": 3
+    },
+    {
+      "city": "Budapest",
+      "measure": "half_day_group_activity_adult_1",
+      "tier": "mid",
+      "value": 30,
+      "currency": "EUR",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.de/things-to-do/a.a563372.activity-details?endDate=2026-01-20&langid=2057&location=Stra%C3%9Fe+Andr%C3%A1ssy+%C3%BAt&rid=6062423&startDate=2026-01-06&swp=off",
+      "durationHours": 3
+    },
+    {
+      "city": "Budapest",
+      "measure": "full_day_premium_activity_adult_1",
+      "tier": "high",
+      "value": 72,
+      "currency": "USD",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.com/things-to-do/budapest-full-day-tour.a48327960.activity-details?location=Zugligeti+Libego+Chair+Lift&rid=553248621560871555&swp=off",
+      "durationHours": 6
+    },
+    {
+      "city": "Chicago",
+      "measure": "half_day_group_activity_adult_1",
+      "tier": "mid",
+      "value": 415,
+      "currency": "USD",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.com/things-to-do/welcome-to-chicago-private-half-day-tour-with-360-observation-deck.a3890506.activity-details",
+      "durationHours": 3
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "half_day_group_activity_adult_1",
+      "tier": "mid",
+      "value": 1200,
+      "currency": "DKK",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.dk/things-to-do/kobenhavn-3-timers-privat-byvandring.a4576633.oplysninger-om-aktivitet?location=Medicinsk+Museion&rid=6230776&swp=off",
+      "durationHours": 3
+    },
+    {
+      "city": "Copenhagen",
+      "measure": "full_day_premium_activity_adult_1",
+      "tier": "high",
+      "value": 388,
+      "currency": "USD",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.com/things-to-do/copenhagen-private-full-day-tour-with-lunch-hygge-walking-gastro-experience.a3434674.activity-details",
+      "durationHours": 6.5
+    }
+  ]
+}

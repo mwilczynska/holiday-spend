@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.zoo.pt/en/visit/entry-costs/",
+      "sourceTitle": "Entry Costs - Jardim Zoológico",
+      "evidenceText": "The official Lisbon Zoo page lists an adult 13–64 ticket at 31 EUR valid from 1 January 2026, but the returned evidence does not state whether taxes are included.",
+      "referencePeriod": "Prices valid from 1 January 2026; retrieved 2026-08-01.",
+      "searchQuery": "Lisbon Portugal official low cost attraction adult ticket price taxes included",
+      "reason": "Rejected because tax treatment is not explicit in the returned official evidence."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The returned Lisbon results do not state a three-to-six-hour group activity with an adult or per-person price and explicit tax status.",
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal official half day group tour adult price 3 hours taxes included",
+      "reason": "No definition-matched result returned."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The returned Lisbon results do not state a six-hour-or-longer premium activity with an adult or per-person price and explicit tax status.",
+      "referencePeriod": null,
+      "searchQuery": "Lisbon Portugal official full day premium group activity adult price 6 hours taxes included",
+      "reason": "No definition-matched result returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

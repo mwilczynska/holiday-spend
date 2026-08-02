@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "city-cost-v5-expedia-targeted-23-v1",
+  "city": "Addis Ababa",
+  "country": "Ethiopia",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "hotel_2star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "currencyStatus": "unknown",
+      "currencyBasis": "unknown",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "unknown",
+      "class": "2_star",
+      "statistic": "city_class_average",
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/2Star-Managua-Hotels.s20-0-d6053704.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 2 Star Hotels in Managua from $18 | Expedia",
+      "evidenceText": "The returned Expedia page was for Managua rather than Addis Ababa. It did not provide an exact 2-star Addis Ababa trend.",
+      "referencePeriod": "Wrong-city result; no exact 2-star Addis Ababa class trend",
+      "searchQuery": "site:expedia.com/2Star-Addis Ababa-Hotels.s20 \"Addis Ababa\" \"Price trends for properties with 2 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "not_found: result was a different city."
+    },
+    "hotel_3star_room_2p": {
+      "status": "found_proxy",
+      "value": 46,
+      "currency": null,
+      "currencyStatus": "bare_dollar",
+      "currencyBasis": "source_locale_candidate",
+      "unit": "per_room_per_night",
+      "occupancyBasis": "explicit_two_adults_source_trend",
+      "class": "3_star",
+      "statistic": "city_class_average",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://www.expedia.com/3Star-Addis-Ababa-Hotels.s30-0-d289.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Addis Ababa from $18 | Expedia",
+      "evidenceText": "Expedia's exact Addis Ababa 3-star result has the heading Price trends for properties with 3 Stars in Addis Ababa and gives the August monthly trend as $46. It states that base rates for a nightly stay for 2 adults observed in the last 7 days are averaged for commonly viewed 3-star properties and exclude taxes and fees. The symbol is retained without a USD claim.",
+      "referencePeriod": "August monthly 3-star trend; base rates for a nightly stay for 2 adults found in the last 7 days (result crawled last week)",
+      "searchQuery": "site:expedia.com/3Star-Addis Ababa-Hotels.s30 \"Addis Ababa\" \"Price trends for properties with 3 Stars\" \"2 adults\" \"taxes and fees\"",
+      "reason": "Exact city/class and strict occupancy, statistic, and tax fields are present; bare-dollar currency is retained as a labelled proxy candidate."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_088_expedia_targeted_23_panel.md",
+    "calls": 1,
+    "searchesAttempted": 2,
+    "searchOperations": 2,
+    "queries": [
+      "site:expedia.com/2Star-Addis Ababa-Hotels.s20 \"Addis Ababa\" \"Price trends for properties with 2 Stars\" \"2 adults\" \"taxes and fees\"",
+      "site:expedia.com/3Star-Addis Ababa-Hotels.s30 \"Addis Ababa\" \"Price trends for properties with 3 Stars\" \"2 adults\" \"taxes and fees\""
+    ],
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "aggregationOperations": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true,
+    "notes": "Single-city search-only extraction. Exactly two ordered Expedia-restricted searches; no page reads, retries, fallback, arithmetic, FX, aggregation, or cross-city evidence. Bare dollar remains an explicitly labelled proxy candidate."
+  }
+}

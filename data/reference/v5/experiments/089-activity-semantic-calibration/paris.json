@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Paris",
+  "country": "France",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.toureiffel.paris/en/rates-opening-times",
+      "sourceTitle": "Ticket rates and opening times - OFFICIAL Eiffel Tower website",
+      "evidenceText": "The official Eiffel Tower page lists adult rates of 23.50 EUR for the second floor and 36.70 EUR for the top, but the returned evidence does not state explicit tax treatment.",
+      "referencePeriod": "Crawled 2 weeks ago; retrieved 2026-08-01.",
+      "searchQuery": "Paris France official low cost attraction adult ticket price taxes included",
+      "reason": "Rejected because tax treatment is not explicit in the returned official evidence."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.museepicassoparis.fr/sites/default/files/2022-09/Livret_groupes_adultes_UK_2022_automne_V2B_BAT_WEB.pdf",
+      "sourceTitle": "DISCOVER THE MUSÉE NATIONAL PICASSO-PARIS - GROUP TO",
+      "evidenceText": "The returned Picasso group document states that taxes and administration costs are included, but its listed group visits are about one to one-and-a-half hours rather than the required three-to-six-hour activity.",
+      "referencePeriod": "2022 group document; retrieved 2026-08-01.",
+      "searchQuery": "Paris France official half day group tour adult price 3 hours taxes included",
+      "reason": "Rejected because duration and current adult price basis do not match the half-day contract."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "The returned Paris results do not state a six-hour-or-longer premium activity with an adult or per-person price and explicit tax status.",
+      "referencePeriod": null,
+      "searchQuery": "Paris France official full day premium group activity adult price 6 hours taxes included",
+      "reason": "No definition-matched result returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

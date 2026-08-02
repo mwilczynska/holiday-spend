@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Chicago",
+  "country": "United States",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.chicagohistory.org/visit-us/",
+      "sourceTitle": "Visit Us - Chicago History Museum",
+      "evidenceText": "The official Chicago History Museum page lists general admission at $19 for adults, but does not state whether tax is included or excluded. The numeric adult ticket therefore fails the explicit tax-status requirement.",
+      "referencePeriod": "Current result crawled 5 days ago; retrieved 2026-08-01.",
+      "searchQuery": "Chicago Illinois official low cost attraction adult ticket price taxes included",
+      "reason": "Rejected: exact-city adult price was visible but tax treatment was not explicit."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "found",
+      "value": 415,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": 3,
+      "premiumBasis": "private_guided_group_with_observation_deck",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.com/things-to-do/welcome-to-chicago-private-half-day-tour-with-360-observation-deck.a3890506.activity-details",
+      "sourceTitle": "Welcome to Chicago: Private Half-Day Tour with 360 Observation Deck",
+      "evidenceText": "The Chicago activity listing describes a private 3-hour half-day highlights tour with a professional guide and 360 observation deck admission. It lists $415 per adult and explicitly says the price includes taxes and fees.",
+      "referencePeriod": "Result crawled 2 months ago; retrieved 2026-08-01.",
+      "searchQuery": "Chicago Illinois official half day group tour adult price 3 hours taxes included",
+      "reason": "Accepted: exact-city 3-hour private group activity with a numeric per-adult price and explicit tax inclusion."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.com/things-to-do/best-chicago-full-day-city-tour.a1916262.activity-details",
+      "sourceTitle": "Chicago Full-day City Tour",
+      "evidenceText": "The returned Chicago full-day listing gives a per-adult price and tax inclusion, but the search evidence does not state a duration of at least six hours or a premium/private/small-group inclusion. It cannot satisfy the full-day premium contract.",
+      "referencePeriod": "Result crawled 2 months ago; retrieved 2026-08-01.",
+      "searchQuery": "Chicago Illinois official full day premium group activity adult price 6 hours taxes included",
+      "reason": "Rejected: duration and premium basis were not both explicit in the returned evidence."
+    }
+  },
+  "telemetry": {"searchesAttempted": 3, "searchOperations": 3, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

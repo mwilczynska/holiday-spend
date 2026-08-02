@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://nationalmuseet.dk/en/information",
+      "sourceTitle": "Information",
+      "evidenceText": "The National Museum of Denmark page in Copenhagen lists a 150 DKK adult admission ticket, but the result does not state whether tax is included or excluded. The numeric ticket therefore fails the explicit tax-status requirement.",
+      "referencePeriod": "Current result crawled 4 days ago; retrieved 2026-08-01.",
+      "searchQuery": "Copenhagen Denmark official low cost attraction adult ticket price taxes included",
+      "reason": "Rejected: exact-city adult price was visible but tax treatment was not explicit."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "found",
+      "value": 1200,
+      "currency": "DKK",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": 3,
+      "premiumBasis": "private_guided_walking_tour",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.dk/things-to-do/kobenhavn-3-timers-privat-byvandring.a4576633.oplysninger-om-aktivitet?location=Medicinsk+Museion&rid=6230776&swp=off",
+      "sourceTitle": "Copenhagen Highlights: 3 Hour Group Walking Tour",
+      "evidenceText": "The Copenhagen activity listing describes a 3-hour private walking tour and lists 1,200 DKK per adult with taxes and fees included. The listing identifies Copenhagen as the activity city.",
+      "referencePeriod": "Result crawled last month; retrieved 2026-08-01.",
+      "searchQuery": "Copenhagen Denmark official half day group tour adult price 3 hours taxes included",
+      "reason": "Accepted: exact-city 3-hour private group activity with a numeric per-adult price and explicit tax inclusion."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "found",
+      "value": 388,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": 6.5,
+      "premiumBasis": "private_guided_tour_with_lunch",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.com/things-to-do/copenhagen-private-full-day-tour-with-lunch-hygge-walking-gastro-experience.a3434674.activity-details",
+      "sourceTitle": "Copenhagen Private Full Day Tour with Lunch Option",
+      "evidenceText": "The Copenhagen private full-day listing states a duration of 6 hours 30 minutes, a private guided experience with lunch included, and $388 per adult with taxes and fees included.",
+      "referencePeriod": "Result crawled 2 months ago; retrieved 2026-08-01.",
+      "searchQuery": "Copenhagen Denmark official full day premium group activity adult price 6 hours taxes included",
+      "reason": "Accepted: exact-city 6.5-hour private premium activity with lunch, a numeric per-adult price, and explicit tax inclusion."
+    }
+  },
+  "telemetry": {"searchesAttempted": 3, "searchOperations": 3, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

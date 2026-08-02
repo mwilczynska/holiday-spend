@@ -705,11 +705,18 @@ mapping or fitting. The next accommodation action is a targeted missing 2-/3-sta
 followed by independent explicit-two-adult accuracy validation. Artifacts:
 `data/reference/v5/experiments/087-expedia-locale-proxy-broad-panel/`.
 
-**Experiment 088 — targeted Expedia 2-/3-star URL-pattern panel — in progress.** Fifteen one-city Luna contexts
-issue exactly two searches using Expedia's indexed `2Star-...-Hotels.s20` and `3Star-...-Hotels.s30` URL patterns,
-targeting cities that have one side of the pair. The screen requires 14/15 compliant calls, eight new paired rows,
-and pooled 2-star←3-star coverage ≥30. Bare-dollar values remain source-locale proxies with imputed currency; no
-fitting or product mapping occurs. Artifacts: `data/reference/v5/experiments/088-expedia-targeted-23-panel/`.
+**Experiment 088 — targeted Expedia 2-/3-star URL-pattern panel — complete; rejected.** All 15 one-city Luna
+contexts were protocol-compliant, but only 12 rows were accepted and no new 2-/3-star pair was found. Pooled
+matched coverage remains 20 rather than the required 30. Bare-dollar values remain source-locale proxies with
+imputed currency; no fitting or product mapping is authorized. The URL-pattern query shape is rejected as a
+coverage repair. Artifacts: `data/reference/v5/experiments/088-expedia-targeted-23-panel/`.
+
+**Experiment 089 — activity semantic calibration — complete; rejected.** All 12 one-city Luna calls were
+protocol-compliant, but the strict audit accepted 0/12 low-cost ticket rows, 5/12 half-day rows, and 4/12 full-day
+premium rows, with zero complete cities. The registered screen therefore failed; the few compatible USD rows cannot
+identify a calibration. BudgetYourTrip tiers remain labelled source-defined proxies and are not mapped to the frozen
+activity estimands. The v5 workstream is paused here at the user's request; the Definition of Done remains unmet.
+Artifacts: `data/reference/v5/experiments/089-activity-semantic-calibration/`.
 
 ## Unrelated app backlog
 

@@ -616,6 +616,31 @@ city/class, two-adult, tax, reference-period, non-`from`, and exact-host rules r
 retain imputed source-locale currency. Promotion requires 14/15 compliant calls, eight new paired rows, and pooled
 2-star/3-star coverage ≥30. No coefficient or product mapping is authorized.
 
+### Experiment 088 verdict
+
+The 15-city panel completed with 15/15 protocol-compliant calls, 12 accepted rows, and no new paired 2-/3-star
+city. Pooled de-duplicated coverage remains 20 matched cities, below the registered threshold of 30. Generic
+trends, wrong-city or district pages, and sparse 2-star indexing dominated failures. Bare-dollar rows retain
+imputed source-locale currency. **Verdict:** reject the URL-pattern coverage repair; retain source-access evidence
+only and do not fit or map from it. Next, test an independent semantic calibration for BudgetYourTrip activity
+tiers, whose one-call coverage is strong but whose definitions are not yet matched to the product estimands.
+
+### Experiment 089 - activity semantic calibration screen
+
+This pre-registered 12-city panel tests the unresolved activity model boundary. Each one-city Luna call issues
+exactly three ordered searches for an exact-city low-cost adult attraction ticket, a 3–6 hour group activity, and
+a 6+ hour premium activity. Strict rows require numeric non-`from` prices, named currency, reference period,
+explicit tax status, and matching duration/premium evidence. Deterministic code compares compatible rows against
+the complete BudgetYourTrip tier set from Experiment 080; the response performs no arithmetic or FX. Screen gates
+are 8/12 compliant calls, 8 strict rows per anchor, and 6 complete cities. A screen pass authorizes broader
+definition-matched collection only; it does not map product fields or fit final coefficients.
+
+The panel completed with 12/12 compliant calls, 0/12 strict low-cost-ticket rows, 5/12 strict half-day rows, and
+4/12 strict full-day rows. No city supplied all three anchors, so every substantive screen gate failed. Compatible
+USD matches to the BudgetYourTrip baseline were only 0, 1, and 2 rows respectively; no calibration was fitted.
+**Verdict:** reject the activity semantic route and retain BudgetYourTrip as `source_defined_proxy` only. The
+workstream is paused after this experiment at the user's request; the v5 Definition of Done remains unmet.
+
 ## Restart rule
 
 At the end of every work cycle, record the verdict, update the experiment index, commit sizeable work, and

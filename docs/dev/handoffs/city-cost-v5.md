@@ -603,3 +603,17 @@ Expedia's indexed class URL patterns and exactly two search operations per city.
 eight new paired rows, and pooled 2-star/3-star coverage of at least 30. Bare-dollar rows remain `currency: null`
 and are mapped only by deterministic exact-host code; no fitting or product mapping is authorized. Files are in
 `data/reference/v5/experiments/088-expedia-targeted-23-panel/`.
+
+Experiment 088 completed with 15/15 protocol-compliant calls, 12 accepted rows, and no new paired 2-/3-star
+city. Pooled matched coverage remains 20, below the registered 30-city gate. Reject this URL-pattern repair;
+retain raw rows as source-access evidence only, with bare-dollar currency still imputed and no fitting or product
+mapping. The next restart package should be a materially different experiment, beginning with independent semantic
+calibration of the high-coverage BudgetYourTrip activity route.
+
+Experiment 089 is complete in `data/reference/v5/experiments/089-activity-semantic-calibration/`. It used exactly
+three searches per city across 12 independent one-city Luna contexts. All calls were protocol-compliant, but the
+strict audit accepted 0/12 low-cost-ticket rows, 5/12 half-day rows, and 4/12 full-day rows, with zero complete
+cities. The screen failed and no calibration or product mapping was performed. BudgetYourTrip remains a labelled
+`source_defined_proxy`. The workstream is paused after Experiment 089 at the user's request; the v5 Definition of
+Done remains unmet. Resume by reading its `verdict.md` and rerunning
+`cmd /c node scripts/analyze-v5-activity-semantic-calibration.mjs` before selecting another experiment.

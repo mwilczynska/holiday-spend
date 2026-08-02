@@ -1821,3 +1821,30 @@ URL patterns. The strict city/class, two-adult, tax, reference-period, non-`from
 bare-dollar rows are labelled source-locale proxies with imputed currency. Promotion requires 14/15 compliant calls,
 eight new paired rows, and pooled 2-star/3-star coverage ≥30. No fitting or product mapping occurs. Read
 `data/reference/v5/experiments/088-expedia-targeted-23-panel/`.
+
+The panel completed with 15/15 protocol-compliant calls, 12 accepted rows, and no new paired 2-/3-star city.
+After deterministic de-duplication, pooled matched coverage remained 20 versus the registered threshold of 30;
+the new-pair and pooled gates therefore failed. Generic all-city trends, wrong-city/district pages, and sparse
+2-star indexing dominated the not-found outcomes. Bare-dollar rows remain source-locale proxies with imputed
+currency, not observed USD. **Verdict:** reject this Expedia URL-pattern repair; retain raw access evidence only,
+with no coefficient fit, class split, or product mapping. The next accommodation experiment must be materially
+different. See `data/reference/v5/experiments/088-expedia-targeted-23-panel/verdict.md`.
+
+## Experiment 089 - activity semantic calibration screen (pre-registered 1 August 2026)
+
+Experiment 080 provides strong one-call coverage for BudgetYourTrip budget/mid-range/luxury entertainment tiers,
+but those source-defined reported-spend values are not definition-matched observations of the product's low-cost
+ticket, half-day group, and full-day premium activity estimands. Experiment 089 pre-registers a 12-city, one-city
+per Luna screen with exactly three ordered searches per city for independent public anchors. Strict rows require
+exact city, non-`from` numeric adult price, named currency, reference period, explicit tax status, and the required
+duration or premium evidence. The screen requires 8/12 compliant calls, eight strict rows per anchor, and six
+complete cities. No product mapping or coefficient fitting is authorized before the deterministic audit and an
+independent definition-matched validation.
+
+Experiment 089 completed with 12/12 protocol-compliant calls. The audit accepted 0/12 strict low-cost attraction
+ticket rows, 5/12 half-day group rows, and 4/12 full-day premium rows; zero cities were complete. Compatible USD
+matches to the BudgetYourTrip baseline were only 0, 1, and 2 rows respectively, so no calibration was identified.
+Missing tax, duration, party, premium, or current-price evidence caused honest exclusions. **Verdict:** reject the
+activity semantic-calibration route; retain 080 values as `source_defined_proxy` only and perform no product
+mapping. The workstream is paused after this experiment at the user's request. Read
+`data/reference/v5/experiments/089-activity-semantic-calibration/verdict.md`.

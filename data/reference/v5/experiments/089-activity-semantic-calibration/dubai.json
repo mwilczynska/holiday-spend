@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Dubai",
+  "country": "United Arab Emirates",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "excluded",
+      "sourceUrl": "https://dlp.dubai.gov.ae/Legislation%20Reference/2025/Administrative%20Resolution%20No.%20%28221%29%20of%202025%20Prices%20of%20Dubai%20Safari%20Park%20Entry%20Tickets.html",
+      "sourceTitle": "Administrative Resolution No. (221) of 2025 Approving the Prices of Dubai Safari Park Entry Tickets and Packages",
+      "evidenceText": "The Dubai government schedule lists a Dubai Safari Park Pass at AED50 per person and states VAT must be added, but it does not label the price as a standard adult ticket. The adult-specific contract is therefore not met.",
+      "referencePeriod": "Current resolution crawled 2 weeks ago; retrieved 2026-08-01.",
+      "searchQuery": "Dubai United Arab Emirates official low cost attraction adult ticket price taxes included",
+      "reason": "Rejected: a numeric per-person ticket and tax exclusion were visible, but no adult-specific category was stated."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "found",
+      "value": 250,
+      "currency": "AED",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": 3,
+      "premiumBasis": "guided_Emirati_cultural_tour",
+      "taxStatus": "excluded",
+      "sourceUrl": "https://heritageexpress.com/book-experience",
+      "sourceTitle": "Book Experience | Heritage Express Dubai Cultural Tours",
+      "evidenceText": "The Dubai operator lists a 3-hour half-day heritage experience at AED250 + VAT per adult, with an Emirati cultural guide and an optional meal selection. VAT is explicitly separate from the listed price.",
+      "referencePeriod": "Current result crawled 6 days ago; retrieved 2026-08-01.",
+      "searchQuery": "Dubai United Arab Emirates official half day group tour adult price 3 hours taxes included",
+      "reason": "Accepted: exact-city 3-hour guided group activity with a numeric adult price and explicit VAT exclusion."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.aaa.com/tripcanvas/thing-to-do/full-day-small-group-red-desert-safari-with-bbq-dinner-in-dubai-333604P1",
+      "sourceTitle": "Full-Day Small-Group Red Desert Safari with BBQ Dinner in Dubai in Dubai, United Arab Emirates",
+      "evidenceText": "The returned Dubai small-group safari states 6 hours but only gives a starting price and says taxes and fees will be calculated at checkout. It therefore fails the non-starting price and explicit tax-status requirements.",
+      "referencePeriod": "Result crawled 2 months ago; retrieved 2026-08-01.",
+      "searchQuery": "Dubai United Arab Emirates official full day premium group activity adult price 6 hours taxes included",
+      "reason": "Rejected: starting price and unknown tax treatment; no fallback or page read permitted."
+    }
+  },
+  "telemetry": {"searchesAttempted": 3, "searchOperations": 3, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

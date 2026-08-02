@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Berlin",
+  "country": "Germany",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.berlin.de/en/tickets/leisure/teufelsberg-admission-ticket-af4ad160-0ba2-4a32-85e3-93bd7e24fe25/",
+      "sourceTitle": "Teufelsberg Admission Ticket",
+      "evidenceText": "The public Berlin ticket page lists an adult Teufelsberg admission at €10 but does not state whether taxes are included or excluded.",
+      "referencePeriod": "Ticket page crawled 3 weeks ago; tax treatment not stated",
+      "searchQuery": "Berlin Germany official low cost attraction adult ticket price taxes included",
+      "reason": "not_found: numeric adult ticket lacks explicit tax status."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "found",
+      "value": 200,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "partyBasis": "group_equivalent",
+      "activityBasis": "half_day_group",
+      "durationHours": 3,
+      "premiumBasis": null,
+      "taxStatus": "included",
+      "sourceUrl": "https://www.visitberlin.de/en/city-tours-groups-berlin-potsdam",
+      "sourceTitle": "City tours for groups in Berlin & Potsdam",
+      "evidenceText": "The official visitBerlin page identifies a 3-hour Berlin city tour for a group. It quotes a €200 guide price for the maximum group size and states that prices include statutory value added tax. This is a group-equivalent price rather than an individual ticket.",
+      "referencePeriod": "Official page crawled 3 weeks ago; 3-hour group city tour",
+      "searchQuery": "Berlin Germany official half day group tour adult price 3 hours taxes included",
+      "reason": "Exact city, 3-hour group activity, group-equivalent price, named currency, and included-tax statement are present."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.expedia.nl/things-to-do/a.a47340998.activity-details?endDate=2026-01-20&langid=2057&location=Brandenburg+-regio&rid=6049339&startDate=2026-01-06&swp=off",
+      "sourceTitle": "Tropical Islands full day by Private Car from Berlin",
+      "evidenceText": "The returned listing gives a six-hour private activity with taxes included but places the attraction in the Brandenburg region outside Berlin, so it is not an exact Berlin activity row.",
+      "referencePeriod": "Listing crawled 2 weeks ago; six-hour activity outside the target city",
+      "searchQuery": "Berlin Germany official full day premium group activity adult price 6 hours taxes included",
+      "reason": "not_found: returned activity location is outside Berlin."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_089_activity_semantic_calibration.md",
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "queries": [
+      "Berlin Germany official low cost attraction adult ticket price taxes included",
+      "Berlin Germany official half day group tour adult price 3 hours taxes included",
+      "Berlin Germany official full day premium group activity adult price 6 hours taxes included"
+    ],
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

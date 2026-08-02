@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-inputs-v1",
+  "retrievalDate": "2026-08-01",
+  "cities": [
+    {"city":"Amsterdam","country":"Netherlands"},
+    {"city":"Athens","country":"Greece"},
+    {"city":"Barcelona","country":"Spain"},
+    {"city":"Berlin","country":"Germany"},
+    {"city":"Budapest","country":"Hungary"},
+    {"city":"Chicago","country":"United States"},
+    {"city":"Copenhagen","country":"Denmark"},
+    {"city":"Dubai","country":"United Arab Emirates"},
+    {"city":"Hanoi","country":"Vietnam"},
+    {"city":"Lisbon","country":"Portugal"},
+    {"city":"London","country":"United Kingdom"},
+    {"city":"Paris","country":"France"}
+  ],
+  "lockedHoldoutCities": ["Athens","Barcelona","Copenhagen","Dubai","London","Paris"],
+  "screenGate": {"protocolCompliant": 8, "strictRowsPerAnchor": 8, "completeCities": 6},
+  "sourceBaseline": "080-activity-scaling-panel"
+}

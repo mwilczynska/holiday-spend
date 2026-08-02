@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Athens",
+  "country": "Greece",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://odysseus.culture.gr/h/3/eh355.jsp?obj_id=2402",
+      "sourceTitle": "Ministry of Culture and Sports | Roman Agora of Athens",
+      "evidenceText": "The official Ministry of Culture page lists a full adult Roman Agora ticket at €10 but does not state whether taxes are included or excluded.",
+      "referencePeriod": "Current ministry ticket page; tax treatment not stated",
+      "searchQuery": "Athens Greece official low cost attraction adult ticket price taxes included",
+      "reason": "not_found: numeric adult ticket lacks explicit tax status."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.greecetours.com/package/athens-walking-tour/",
+      "sourceTitle": "Walking Tour of Athens & Acropolis Hill",
+      "evidenceText": "A public Athens walking-tour listing gives a 3-hour adult price and an all-tax statement, but the returned evidence does not identify the activity as a group tour.",
+      "referencePeriod": "Listing crawled 6 days ago; 3-hour tour",
+      "searchQuery": "Athens Greece official half day group tour adult price 3 hours taxes included",
+      "reason": "not_found: group basis is not explicit in the same evidence."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "found",
+      "value": 290,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": 8,
+      "premiumBasis": "private_full_day",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.ie/things-to-do/athens-full-day-private-sightseeing-tour.a4257826.activity-details?location=Syntagma+Square&rid=6123041&swp=off",
+      "sourceTitle": "Athens Full Day Private Tour",
+      "evidenceText": "The public Expedia activity listing identifies Athens, Greece. It lists an 8-hour private full-day city tour at €290 per adult and says the price includes taxes and fees. The private guided vehicle and landmark itinerary provide a premium basis.",
+      "referencePeriod": "Activity listing crawled 2 weeks ago; 8-hour full-day private tour",
+      "searchQuery": "Athens Greece official full day premium group activity adult price 6 hours taxes included",
+      "reason": "Exact city, 8-hour private premium activity, adult price, named currency, and included-tax statement are present."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_089_activity_semantic_calibration.md",
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "queries": [
+      "Athens Greece official low cost attraction adult ticket price taxes included",
+      "Athens Greece official half day group tour adult price 3 hours taxes included",
+      "Athens Greece official full day premium group activity adult price 6 hours taxes included"
+    ],
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

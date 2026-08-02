@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Barcelona",
+  "country": "Spain",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://tickets-official.fcbarcelona.com/fcbmuseu/select/2677372?hl=en-US",
+      "sourceTitle": "Tickets Basic ticket Basic Ticket Barcelona - Museum",
+      "evidenceText": "The official FC Barcelona ticket listing gives a €33 general adult ticket plus an administration fee but does not state whether taxes are included or excluded.",
+      "referencePeriod": "Ticket listing crawled 2 months ago; tax treatment not stated",
+      "searchQuery": "Barcelona Spain official low cost attraction adult ticket price taxes included",
+      "reason": "not_found: numeric adult ticket lacks explicit tax status."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.spain.info/en/activities/barcelona-highlights-morning/",
+      "sourceTitle": "Barcelona highlights morning",
+      "evidenceText": "The official Spain tourism listing describes a 3-hour Barcelona group-style morning route and tax-inclusive pricing, but the price is explicitly presented as a starting amount and therefore fails the fixed-price contract.",
+      "referencePeriod": "Tourism listing crawled 6 days ago; 3-hour route with starting price",
+      "searchQuery": "Barcelona Spain official half day group tour adult price 3 hours taxes included",
+      "reason": "not_found: only a starting price was returned."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "found",
+      "value": 408,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": 6,
+      "premiumBasis": "private_premium_full_day",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.es/things-to-do/a.a839273.activity-details?endDate=2026-04-23&langid=2057&location=El+Prat+de+Llobregat&rid=179746&startDate=2026-04-09&swp=off",
+      "sourceTitle": "Sagrada Familia and Park Guell Private Barcelona Tour",
+      "evidenceText": "The public Expedia.es activity listing identifies Barcelona, Spain. It lists a private Sagrada Familia and Park Güell tour at €408 per adult, shows a six-hour duration, and says the price includes taxes and fees. It describes a premium full-day private tour with a local guide and landmark admission.",
+      "referencePeriod": "Activity listing crawled last week; six-hour private full-day tour",
+      "searchQuery": "Barcelona Spain official full day premium group activity adult price 6 hours taxes included",
+      "reason": "Exact city, six-hour private premium activity, adult price, named currency, and included-tax statement are present."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_089_activity_semantic_calibration.md",
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "queries": [
+      "Barcelona Spain official low cost attraction adult ticket price taxes included",
+      "Barcelona Spain official half day group tour adult price 3 hours taxes included",
+      "Barcelona Spain official full day premium group activity adult price 6 hours taxes included"
+    ],
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.madametussauds.hu/en/",
+      "sourceTitle": "Biggest Celebrities in Budapest! | Madame Tussauds Budapest",
+      "evidenceText": "The returned Budapest attraction result lists an adult ticket price, but the evidence does not state whether tax is included or excluded. It therefore cannot satisfy the explicit tax-status contract.",
+      "referencePeriod": "Current result crawled last week; retrieved 2026-08-01.",
+      "searchQuery": "Budapest Hungary official low cost attraction adult ticket price taxes included",
+      "reason": "Rejected: exact-city adult price was visible but tax treatment was not explicit."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "found",
+      "value": 30,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": 3,
+      "premiumBasis": null,
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.de/things-to-do/a.a563372.activity-details?endDate=2026-01-20&langid=2057&location=Stra%C3%9Fe+Andr%C3%A1ssy+%C3%BAt&rid=6062423&startDate=2026-01-06&swp=off",
+      "sourceTitle": "Budapest 3-hour City Walking & Bus Tour",
+      "evidenceText": "The Budapest activity listing states a 3-hour City Walking and Bus Tour at €30 per adult and explicitly says the price includes taxes and fees.",
+      "referencePeriod": "Result crawled last month; retrieved 2026-08-01.",
+      "searchQuery": "Budapest Hungary official half day group tour adult price 3 hours taxes included",
+      "reason": "Accepted: exact-city 3-hour activity with a numeric per-adult price and explicit tax inclusion."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "found",
+      "value": 72,
+      "currency": "USD",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": 6,
+      "premiumBasis": "partly_tailored_UNESCO_guided_walk",
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.com/things-to-do/budapest-full-day-tour.a48327960.activity-details?location=Zugligeti+Libego+Chair+Lift&rid=553248621560871555&swp=off",
+      "sourceTitle": "Budapest Full Day Tour",
+      "evidenceText": "The Budapest full-day activity listing states a 6-hour guided walk through UNESCO sites with a partly tailored route, and lists $72 per adult with taxes and fees included. The premium basis is the tailored UNESCO guided experience.",
+      "referencePeriod": "Result crawled 3 months ago; retrieved 2026-08-01.",
+      "searchQuery": "Budapest Hungary official full day premium group activity adult price 6 hours taxes included",
+      "reason": "Accepted: exact-city 6-hour guided activity with a tailored UNESCO inclusion, numeric per-adult price, and explicit tax inclusion."
+    }
+  },
+  "telemetry": {"searchesAttempted": 3, "searchOperations": 3, "directReads": 0, "retries": 0, "fallbackSources": 0, "arithmeticOperations": 0, "currencyConversions": 0, "crossCityEvidence": 0, "protocolCompliant": true}
+}

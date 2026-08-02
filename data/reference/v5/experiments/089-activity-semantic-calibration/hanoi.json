@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://hanoi.gov.vn/hoat-dong-cua-hdnd-thanh-pho-ha-noi/quy-dinh-phi-tham-quan-danh-lam-thang-canh-di-tich-lich-su-cong-trinh-van-hoa-tren-dia-ban-thanh-pho-ap-dung-tu-1-1-2024-42861763.htm",
+      "sourceTitle": "Quy định phí tham quan danh lam thắng cảnh, di tích lịch sử, công trình văn hóa trên địa bàn thành phố",
+      "evidenceText": "The official Hanoi page lists attraction fees such as Temple of Literature 70,000 VND and Ngoc Son 50,000 VND, but the returned result is an older fee notice and does not state current tax treatment for a standard adult ticket.",
+      "referencePeriod": "Fee notice applies from 2024; retrieved 2026-08-01.",
+      "searchQuery": "Hanoi Vietnam official low cost attraction adult ticket price taxes included",
+      "reason": "Rejected because the returned official fee notice is not current enough for the calibration period and does not state tax status."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://iop.vast.vn/theor/conferences/apwmp/files/Half%20day%20city%20tour.pdf",
+      "sourceTitle": "HAN001-Half day city tour",
+      "evidenceText": "The returned PDF describes a half-day Hanoi city tour and group prices per pax, but it does not state explicit tax treatment or a current reference period.",
+      "referencePeriod": "Reference period not stated in returned result; retrieved 2026-08-01.",
+      "searchQuery": "Hanoi Vietnam official half day group tour adult price 3 hours taxes included",
+      "reason": "Rejected because the result does not provide explicit taxes and a sufficiently current, definition-matched adult price."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": "None of the three returned Hanoi search results states a six-hour-or-longer premium activity with an adult or per-person price and explicit tax status.",
+      "referencePeriod": null,
+      "searchQuery": "Hanoi Vietnam official full day premium group activity adult price 6 hours taxes included",
+      "reason": "No definition-matched result returned."
+    }
+  },
+  "telemetry": {
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}

@@ -1,6 +1,19 @@
 # Experiment 088 — targeted Expedia 2-/3-star URL-pattern panel
 
-**Status:** In progress
+**Status:** Complete — reject targeted coverage gate
+
+## Results
+
+All 15 calls were protocol-compliant, but the panel produced only 12 accepted rows and no new paired 2-/3-star
+city. After de-duplication with prior Expedia evidence, the pooled set contains 20 matched 2-/3-star cities,
+still below the registered threshold of 30. Failures were predominantly generic all-city trend pages, wrong-city
+or district pages, and sparse 2-star indexing. Bare-dollar rows remain source-locale proxies with imputed
+currency; the audit did not treat them as observed USD.
+
+**Verdict:** reject the targeted Expedia coverage gate. Retain the raw rows as source-access evidence only; do
+not fit a 2-star/3-star relationship, map an accommodation product tier, or infer missing classes from this
+panel. A subsequent accommodation experiment must use a materially different source/query or a separately
+pre-registered semantic calibration, not another repetition of this URL-pattern search.
 
 ## Question
 

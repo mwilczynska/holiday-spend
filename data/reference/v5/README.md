@@ -120,7 +120,8 @@ The 053 selector-occupancy run has now completed: 0/12 strict and 7/12 selector-
 | `experiments/085-expedia-query-contract/` | **COMPLETE — reject pooled fitting ceiling** | 12/12 compliant; 0 strict new rows; pooled 20 2↔3 and 26 3↔4 matched cities |
 | `experiments/086-expedia-locale-currency-proxy/` | **COMPLETE — promote guarded proxy validation** | 12/12 compliant; 27 rows (24 bare-dollar proxies); same-source median APE 0%, p90 1.72%; no production mapping |
 | `experiments/087-expedia-locale-proxy-broad-panel/` | **COMPLETE — reject broad coverage gate** | 24/24 compliant; 32 rows; pooled 20 2↔3 and 29 3↔4 matched cities; no mapping |
-| `experiments/088-expedia-targeted-23-panel/` | **IN PROGRESS** | Targeted two-search 2-/3-star URL-pattern panel; paired-city gate pending |
+| `experiments/088-expedia-targeted-23-panel/` | **COMPLETE — reject targeted coverage gate** | 15/15 compliant; 12 accepted rows; no new paired city; pooled 20 matched 2↔3; no mapping |
+| `experiments/089-activity-semantic-calibration/` | **COMPLETE — reject semantic calibration** | 12/12 compliant; 0 low-cost, 5 half-day, 4 full-day strict rows; no complete cities; no mapping |
 
 | `experiments/054-model-fit-adequacy/` | **COMPLETE — reject fitting** | 176 accepted direct rows; six relationships, none fit-eligible under 30-city/10-holdout gate |
 

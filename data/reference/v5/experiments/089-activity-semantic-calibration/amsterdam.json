@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "city-cost-v5-activity-semantic-calibration-v1",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "retrievalDate": "2026-08-01",
+  "measures": {
+    "paid_attraction_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_ticket",
+      "partyBasis": "one_adult",
+      "activityBasis": "standard_adult_ticket",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.nieuwekerk.nl/en/plan-your-visit/",
+      "sourceTitle": "Plan your visit - De Nieuwe Kerk",
+      "evidenceText": "The official De Nieuwe Kerk page lists an Amsterdam adult ticket at €25 but does not state whether taxes are included or excluded.",
+      "referencePeriod": "Current ticket page; tax treatment not stated",
+      "searchQuery": "Amsterdam Netherlands official low cost attraction adult ticket price taxes included",
+      "reason": "not_found: numeric adult ticket lacks explicit tax status."
+    },
+    "half_day_group_activity_adult_1": {
+      "status": "found",
+      "value": 34,
+      "currency": "EUR",
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "half_day_group",
+      "durationHours": 3,
+      "premiumBasis": null,
+      "taxStatus": "included",
+      "sourceUrl": "https://www.expedia.de/things-to-do/a.a47680125.activity-details?endDate=2026-01-19&langid=2057&location=Amsterdam+Museum&rid=6064633&startDate=2026-01-05&swp=off",
+      "sourceTitle": "Amsterdam: Small Group Walking Tour with Fun Guide",
+      "evidenceText": "The public Expedia activity listing identifies Amsterdam, Netherlands, as the activity location. It lists a 3-hour small-group walking tour at €34 per adult and says the price includes taxes and fees.",
+      "referencePeriod": "Activity listing crawled 4 months ago; 3-hour tour",
+      "searchQuery": "Amsterdam Netherlands official half day group tour adult price 3 hours taxes included",
+      "reason": "Exact city, 3-hour group activity, adult price, named currency, and included-tax statement are present."
+    },
+    "full_day_premium_activity_adult_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "unit": "per_person_activity",
+      "partyBasis": "one_adult",
+      "activityBasis": "full_day_premium",
+      "durationHours": null,
+      "premiumBasis": null,
+      "taxStatus": "unknown",
+      "sourceUrl": "https://www.aaa.com/tripcanvas/thing-to-do/private-group-zaanse-schans-half-day-tour-from-amsterdam-15614P10",
+      "sourceTitle": "Private Group Zaanse Schans Half-Day Tour from Amsterdam",
+      "evidenceText": "A public activity listing references an Amsterdam departure and a six-hour private group tour but says taxes and fees will be calculated at checkout, so its tax treatment is unresolved.",
+      "referencePeriod": "Listing crawled 3 weeks ago; six-hour activity with checkout tax calculation",
+      "searchQuery": "Amsterdam Netherlands official full day premium group activity adult price 6 hours taxes included",
+      "reason": "not_found: tax status is not explicit at the public price."
+    }
+  },
+  "telemetry": {
+    "providerModel": "gpt-5.6-luna",
+    "prompt": "docs/prompts/llm_prompt_city_cost_v5_experiment_089_activity_semantic_calibration.md",
+    "searchesAttempted": 3,
+    "searchOperations": 3,
+    "queries": [
+      "Amsterdam Netherlands official low cost attraction adult ticket price taxes included",
+      "Amsterdam Netherlands official half day group tour adult price 3 hours taxes included",
+      "Amsterdam Netherlands official full day premium group activity adult price 6 hours taxes included"
+    ],
+    "directReads": 0,
+    "retries": 0,
+    "fallbackSources": 0,
+    "arithmeticOperations": 0,
+    "currencyConversions": 0,
+    "crossCityEvidence": 0,
+    "protocolCompliant": true
+  }
+}
