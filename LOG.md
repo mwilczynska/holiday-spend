@@ -2108,3 +2108,17 @@ member/promotional prices were excluded. No holdout data was inspected or writte
 **45 found observations, 105 pending development slots**, with zero errors. **Verdict:** promote this
 tranche as dated source evidence and continue M2 collection without tuning coefficients or opening the
 holdout.
+
+## v6 M2 — dated accommodation tranche: Phuket (9 August 2026)
+
+The next interactive Booking.com collection covered Phuket Town for the frozen 2026-09-17 to 2026-09-18
+window. All five accommodation measures were verified: Little Nyonya Hotel (4-star), The Memory at On On
+Hotel (3-star), Siri Hotel Phuket (1-star), Book a Bed Poshtel private room, and the same hostel's
+one-adult mixed dormitory bed. Each row records exact occupancy, room type, displayed AUD price, source URL,
+retrieval date and the observed promotion/tax basis.
+
+Original public prices were retained when VIP reward, Genius or Getaway Deal discounts were displayed;
+current member/promotional prices were excluded. No holdout data was inspected or written. Validation
+reports **50 found observations, 100 pending development slots**, with zero errors. **Verdict:** promote
+this tranche as dated source evidence and continue M2 collection without tuning coefficients or opening
+the holdout.
