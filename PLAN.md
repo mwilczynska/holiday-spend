@@ -95,13 +95,13 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 
 - [x] Create a manifest-driven ledger for 25 development cities × 6 measures
 - [x] Seal the holdout boundary without storing holdout prices or scores
-- [ ] 25 development cities — 150 dated source facts
+- [ ] 25 development cities — 150 dated source facts (25 found, 125 pending)
 - [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
 - [x] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
-reference window is 2026-09-17 to 2026-09-18; the ledger currently reports every slot as pending rather
-than carrying an undated or inferred price.
+reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 25 found observations and 125
+pending slots rather than carrying an undated or inferred price.
 
 M1 implementation notes:
 

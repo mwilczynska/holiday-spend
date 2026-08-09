@@ -75,8 +75,10 @@ for (const cityEntry of ledger.cities ?? []) {
       if (!validDateTime(observation.retrievedAt)) issue(`${cityEntry.city}/${measure}: found rows need retrievedAt`);
       if (!observation.taxStatus || typeof observation.taxStatus !== 'string') issue(`${cityEntry.city}/${measure}: found rows need taxStatus`);
       if (!observation.evidenceText) issue(`${cityEntry.city}/${measure}: found rows need evidenceText`);
-      if (observation.checkIn !== '2026-09-17' || observation.checkOut !== '2026-09-18') issue(`${cityEntry.city}/${measure}: accommodation quote dates must match the frozen window`);
-      if (accommodationMeasures.has(measure) && !observation.propertyName) issue(`${cityEntry.city}/${measure}: accommodation rows need propertyName`);
+      if (accommodationMeasures.has(measure)) {
+        if (observation.checkIn !== '2026-09-17' || observation.checkOut !== '2026-09-18') issue(`${cityEntry.city}/${measure}: accommodation quote dates must match the frozen window`);
+        if (!observation.propertyName) issue(`${cityEntry.city}/${measure}: accommodation rows need propertyName`);
+      }
       if (measure === 'paid_attraction_adult_1' && observation.propertyName !== undefined && observation.propertyName === '') issue(`${cityEntry.city}/${measure}: empty propertyName is not allowed`);
     } else if (!missingStatuses.has(status)) {
       issue(`${cityEntry.city}/${measure}: status must be found or an explicit missingness status`);

@@ -2,7 +2,7 @@
   "schemaVersion": "city-cost-v6-ground-truth-ledger-v1",
   "methodologyVersion": "v6.0",
   "panel": "development",
-  "status": "collection_not_started",
+  "status": "collection_in_progress",
   "manifestPath": "data/reference/v6/validation-manifest-v6.json",
   "referenceWindow": {
     "arrival": "2026-09-17",
@@ -32,30 +32,80 @@
     "missingStatuses": ["not_found", "blocked", "stale", "class_absent"]
   },
   "cities": [
-    { "city": "Hanoi", "region": "SEA", "band": "low", "observations": [] },
-    { "city": "Ho Chi Minh City", "region": "SEA", "band": "low", "observations": [] },
-    { "city": "Da Nang", "region": "SEA", "band": "low", "observations": [] },
-    { "city": "Phuket", "region": "SEA", "band": "mid", "observations": [] },
-    { "city": "Singapore", "region": "SEA", "band": "high", "observations": [] },
-    { "city": "Taipei", "region": "East Asia", "band": "mid", "observations": [] },
-    { "city": "Beijing", "region": "East Asia", "band": "mid", "observations": [] },
-    { "city": "Tokyo", "region": "East Asia", "band": "high", "observations": [] },
-    { "city": "Seoul", "region": "East Asia", "band": "high", "observations": [] },
-    { "city": "Delhi", "region": "South Asia", "band": "low", "observations": [] },
-    { "city": "Colombo", "region": "South Asia", "band": "low", "observations": [] },
-    { "city": "Mumbai", "region": "South Asia", "band": "mid", "observations": [] },
-    { "city": "Istanbul", "region": "Middle East", "band": "mid", "observations": [] },
-    { "city": "Dubai", "region": "Middle East", "band": "high", "observations": [] },
-    { "city": "Cairo", "region": "Africa", "band": "low", "observations": [] },
-    { "city": "Cape Town", "region": "Africa", "band": "mid", "observations": [] },
-    { "city": "Nairobi", "region": "Africa", "band": "mid", "observations": [] },
-    { "city": "Budapest", "region": "Europe", "band": "mid", "observations": [] },
-    { "city": "Prague", "region": "Europe", "band": "mid", "observations": [] },
-    { "city": "Lisbon", "region": "Europe", "band": "high", "observations": [] },
-    { "city": "Barcelona", "region": "Europe", "band": "high", "observations": [] },
-    { "city": "Mexico City", "region": "Latin America", "band": "mid", "observations": [] },
-    { "city": "Lima", "region": "Latin America", "band": "mid", "observations": [] },
-    { "city": "San Francisco", "region": "North America", "band": "high", "observations": [] },
-    { "city": "Melbourne", "region": "Oceania", "band": "high", "observations": [] }
+    { "city": "Hanoi", "region": "SEA", "band": "low", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 70000, "currency": "VND", "sourceName": "Van Mieu - Quoc Tu Giam", "sourceUrl": "https://vanmieu.gov.vn/en/visitor-information", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official visitor-information page lists a standard adult ticket at 70,000 VND and identifies the ticket as applying to general visitors." }
+    ] },
+    { "city": "Ho Chi Minh City", "region": "SEA", "band": "low", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 80000, "currency": "VND", "sourceName": "Independence Palace", "sourceUrl": "https://dinhdoclap.gov.vn/en/visiting-hours/", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official ticket page lists general admission for adults at 80,000 VND per person, valid from 1 May 2026." }
+    ] },
+    { "city": "Da Nang", "region": "SEA", "band": "low", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 1000000, "currency": "VND", "sourceName": "Sun World Ba Na Hills", "sourceUrl": "https://danangfantasticity.com/vi/kham-pha/gia-ve-va-quy-dinh-sun-world-ba-na-hills-2026", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Da Nang tourism information portal lists the 2026 out-of-province adult entrance ticket at 1,000,000 VND." }
+    ] },
+    { "city": "Phuket", "region": "SEA", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 500, "currency": "THB", "sourceName": "Phuket Provincial Government", "sourceUrl": "https://www.phuket.go.th/eng/Attractions-Zoo.php", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Phuket provincial government attractions page states that Phuket Zoo charges foreign adults 500 baht." }
+    ] },
+    { "city": "Singapore", "region": "SEA", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 20, "currency": "SGD", "sourceName": "National Museum of Singapore", "sourceUrl": "https://www.nhb.gov.sg/nationalmuseum/plan-your-visit/visitor-information/admissions", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The National Heritage Board admissions page lists a non-resident standard adult general-admission ticket at S$20." }
+    ] },
+    { "city": "Taipei", "region": "East Asia", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 600, "currency": "TWD", "sourceName": "TAIPEI 101 Observatory", "sourceUrl": "https://www.taipei-101.com.tw/en/observatory/ticket/information.", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official TAIPEI 101 ticket page lists the general adult ticket for the 88F/89F observatory at NT$600." }
+    ] },
+    { "city": "Beijing", "region": "East Asia", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 90, "currency": "CNY", "sourceName": "Central TV Tower", "sourceUrl": "https://english.beijing.gov.cn/travellinginbeijing/attractions/202603/t20260320_4562520.html", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Beijing municipal tourism page lists the Central TV Tower adult ticket at CNY 90 per person." }
+    ] },
+    { "city": "Tokyo", "region": "East Asia", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 800, "currency": "JPY", "sourceName": "EDO-TOKYO MUSEUM", "sourceUrl": "https://edo-tokyo-museum.or.jp/en/information/guide/", "retrievedAt": "2026-08-09", "taxStatus": "included", "evidenceText": "The official EDO-TOKYO MUSEUM ticket page lists individual adult permanent-exhibition admission at 800 yen." }
+    ] },
+    { "city": "Seoul", "region": "East Asia", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 25000, "currency": "KRW", "sourceName": "SEOULDAL", "sourceUrl": "https://english.seoul.go.kr/service/amusement/seouldal/", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Seoul Metropolitan Government page lists the SEOULDAL adult ticket at KRW 25,000 for ages 19 to 64." }
+    ] },
+    { "city": "Delhi", "region": "South Asia", "band": "low", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 400, "currency": "INR", "sourceName": "National Zoological Park", "sourceUrl": "https://nzpnewdelhi.gov.in/timing_and_tariff?ln=en", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The National Zoological Park tariff page lists the foreign-adult entrance fee at Rs. 400 per head." }
+    ] },
+    { "city": "Colombo", "region": "South Asia", "band": "low", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 5, "currency": "USD", "sourceName": "Colombo National Museum", "sourceUrl": "https://www.museum.gov.lk/v1/services/ticket-pricing", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Sri Lankan Department of National Museums ticket-pricing page lists the Colombo National Museum general foreign-adult ticket at US$5." }
+    ] },
+    { "city": "Mumbai", "region": "South Asia", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 200, "currency": "INR", "sourceName": "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya", "sourceUrl": "https://www.csmvs.in/visit-us.html", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The museum's official visit page lists the Indian adult visitor museum-entry ticket at Rs 200, effective from 1 May 2025." }
+    ] },
+    { "city": "Istanbul", "region": "Middle East", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 1000, "currency": "TRY", "sourceName": "Rahmi M. Koc Museum", "sourceUrl": "https://www.rmk-museum.org.tr/istanbul/en/visit-us/hours-and-prices", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official museum hours-and-prices page lists the adult entry ticket at 1000 TL." }
+    ] },
+    { "city": "Dubai", "region": "Middle East", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 169, "currency": "AED", "sourceName": "Museum of the Future", "sourceUrl": "https://museumofthefuture.ae/en/plan-your-visit", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official Museum of the Future visit page lists the entry ticket for visitors aged 4 and above at AED 169." }
+    ] },
+    { "city": "Cairo", "region": "Africa", "band": "low", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 550, "currency": "EGP", "sourceName": "The Egyptian Museum", "sourceUrl": "https://egymonuments.gov.eg/en/museums/egyptian-museum/", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Egyptian Ministry of Tourism and Antiquities page lists the foreign adult ticket at EGP 550." }
+    ] },
+    { "city": "Cape Town", "region": "Africa", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 100, "currency": "ZAR", "sourceName": "Iziko South African Museum", "sourceUrl": "https://www.iziko.org.za/news/new-entrance-fees-2026/", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "Iziko's 2026 fee notice lists the international adult fee for the Iziko South African Museum at R100, effective 1 April 2026." }
+    ] },
+    { "city": "Nairobi", "region": "Africa", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 18, "currency": "USD", "sourceName": "Nairobi National Museum", "sourceUrl": "https://museums.or.ke/wp-content/uploads/2026/04/Revision-of-NMK-admission-fees-2026-Website.pdf", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The National Museums of Kenya 2026 admission-fee notice lists the Nairobi National Museum foreign-adult fee at US$18." }
+    ] },
+    { "city": "Budapest", "region": "Europe", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 2900, "currency": "HUF", "sourceName": "Kunsthalle Budapest", "sourceUrl": "https://www.mucsarnok.hu/tickets/index.php", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official Kunsthalle Budapest ticket page lists the normal adult ticket for the current Roads and Crossroads exhibition at HUF 2,900." }
+    ] },
+    { "city": "Prague", "region": "Europe", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 330, "currency": "CZK", "sourceName": "Prague Zoo", "sourceUrl": "https://www.zoopraha.cz/en/before-visit/admission-prices", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official Prague Zoo admission page lists the standard adult single-entrance price at CZK 330 at the cash register." }
+    ] },
+    { "city": "Lisbon", "region": "Europe", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 10, "currency": "EUR", "sourceName": "Museu Nacional de Arte Contemporanea", "sourceUrl": "https://museuartecontemporanea.gov.pt/en/informacao/horarios-e-ingresso", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Portuguese museum page lists the museum entrance ticket at 10 euros and identifies the Lisbon ticket-office address." }
+    ] },
+    { "city": "Barcelona", "region": "Europe", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 5, "currency": "EUR", "sourceName": "Fundacion Mapfre KBr Barcelona", "sourceUrl": "https://www.fundacionmapfre.org/arte-y-cultura/compra-de-entradas/joaquin-tusquets-de-cabirol-catalan/", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The current Fundacion Mapfre KBr Barcelona exhibition page lists general admission at 5 euros for the 18 June to 6 September 2026 exhibition." }
+    ] },
+    { "city": "Mexico City", "region": "Latin America", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 60, "currency": "MXN", "sourceName": "Museo de Arte Popular", "sourceUrl": "https://www.map.cdmx.gob.mx/costos-y-horarios", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The official Mexico City museum page lists the general adult admission fee at MXN 60; Sundays are free for all visitors." }
+    ] },
+    { "city": "Lima", "region": "Latin America", "band": "mid", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 40, "currency": "PEN", "sourceName": "Museo de Arte de Lima-MALI", "sourceUrl": "https://museos.cultura.pe/index.php/node/322", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "The Peruvian Ministry of Culture museum page lists the foreign-adult admission fee at S/.40." }
+    ] },
+    { "city": "San Francisco", "region": "North America", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 30, "currency": "USD", "sourceName": "San Francisco Museum of Modern Art", "sourceUrl": "https://www.sfmoma.org/visit/", "retrievedAt": "2026-08-09", "taxStatus": "unknown", "evidenceText": "SFMOMA's official visitor guide lists general admission for an adult at US$30." }
+    ] },
+    { "city": "Melbourne", "region": "Oceania", "band": "high", "observations": [
+      { "measure": "paid_attraction_adult_1", "status": "found", "amount": 43, "currency": "AUD", "sourceName": "National Gallery of Victoria CARTIER exhibition", "sourceUrl": "https://www.ngv.vic.gov.au/exhibition/cartier/", "retrievedAt": "2026-08-09", "taxStatus": "included", "evidenceText": "The official NGV page lists the 2026 CARTIER exhibition adult ticket at A$43; general admission to NGV is free, but this ticketed exhibition requires payment." }
+    ] }
   ]
 }

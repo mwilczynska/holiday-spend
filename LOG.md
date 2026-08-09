@@ -2050,9 +2050,10 @@ the shipping CSV or older v5 observations. `scripts/validate-city-cost-v6-ground
 reference window, city/region/band membership, duplicate rows, found-row provenance and explicit missingness.
 
 The holdout boundary is represented by `data/reference/v6/ground-truth/holdout-seal.json`, which contains
-only the lock marker and has null result and score files. The initial audit passes structural checks and
-reports 0 found observations plus 150 pending development slots. A live Hanoi availability check found an
-official Văn Miếu adult ticket price and generic hotel/hostel listings, but the hotel listings did not expose
-an auditable exact 2026-09-17 to 2026-09-18 quote in the permitted result, so no accommodation row was
-written. **Verdict:** promote the ledger scaffold; continue M2 dated-fact collection without tuning or
-scoring the holdout.
+only the lock marker and has null result and score files. The audit passes structural checks and
+reports 25 found observations plus 125 pending development slots. The attraction tranche uses official
+city or attraction tariff pages. A live Hanoi availability check also found an official Văn Miếu adult
+ticket price and generic hotel/hostel listings, but the hotel listings did not expose an auditable exact
+2026-09-17 to 2026-09-18 quote in the permitted result, so no accommodation row was written. **Verdict:**
+promote the ledger scaffold and the first attraction tranche; continue M2 dated-fact collection without
+tuning or scoring the holdout.

@@ -75,7 +75,7 @@ times for sample size. The accuracy its gate protected was already achieved.
 - The M2 ledger scaffold is in `data/reference/v6/ground-truth/development-ledger.json`; its 25 development
   cities and six required measures are sourced from the frozen manifest. `holdout-seal.json` contains only a
   lock marker and no holdout prices or scores. `node scripts/validate-city-cost-v6-ground-truth.mjs` audits
-  the boundary and currently reports 150 pending development slots.
+  the boundary and currently reports 25 found observations plus 125 pending development slots.
 
 ### The coefficients that exist right now
 
@@ -104,8 +104,8 @@ path is covered by deterministic integration tests.
 ## 4. The exact next action
 
 **Continue M2 — populate the development ledger with dated source facts.** Do not tune coefficients or score
-the locked holdout yet. The deterministic ledger and holdout seal exist; all 150 development slots are still
-pending because the frozen reference window is 2026-09-17 to 2026-09-18.
+the locked holdout yet. The deterministic ledger and holdout seal exist; 25 attraction slots are found and
+125 accommodation slots are still pending because the frozen reference window is 2026-09-17 to 2026-09-18.
 
 Work order:
 
@@ -121,7 +121,7 @@ Work order:
 
 **M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
 metadata and sealed storage; no holdout score has been revealed. The current ledger is not at exit: it has
-0 found observations and 150 pending slots.
+25 found observations and 125 pending slots.
 
 ---
 
