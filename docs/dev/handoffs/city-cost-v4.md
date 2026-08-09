@@ -1,5 +1,10 @@
 # Handover — City Cost Methodology v4
 
+> **SUPERSEDED — 9 August 2026.** The current handoff is `docs/dev/handoffs/city-cost-v6.md`.
+> v4 was never integrated. Its ratio evidence is retained and is reused directly by v6 — see
+> `data/reference/dry-run/phase-0c-ratio-model-fit.json` and `phase-0h-accommodation-class-ratios.json`,
+> and the independent cross-validation in `data/reference/v6/coefficients-v6.json`. Kept for provenance.
+
 **As at 27 July 2026.** Read `docs/product/methodology-v4.md` first; this note covers what is done, what is blocked, and what to do next.
 
 ## Where things stand

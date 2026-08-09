@@ -40,10 +40,25 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 | `dry-run/stage1/bangkok-firstpage.json` | **LIVE** | Kept for the **class-inversion anomaly** — 4-star headline below 3-star | provenance |
 | `dry-run/stage1/lisbon-firstpage.json` | **LIVE** | First-page capture | provenance |
 
-## CURRENT — v5 methodology evidence
+## CURRENT — v6 methodology contracts
 
-V5 contracts and experiments are kept under `data/reference/v5/`. The workstream is not yet integrated
-into the app and does not replace the live v1 CSV.
+**v6 is the active workstream.** Its contracts live under `data/reference/v6/` — start at
+`v6/README.md`. Not yet integrated into the app; the live v1 CSV is unchanged until milestone M4.
+
+| Path | Status | What it is | Read by |
+| --- | --- | --- | --- |
+| `v6/README.md` | **CURRENT** | Evidence inventory and orientation for the v6 workstream | humans and agents |
+| `v6/data-dictionary-v6.md` | **CURRENT** | Frozen estimands (unchanged from v5) plus the A/B/C/D evidence-grade ladder | v6 derivation and experiments |
+| `v6/validation-manifest-v6.json` | **CURRENT** | Product-level acceptance gates, the 40-city ground-truth panel, and the locked 15-city holdout | v6 scoring |
+| `v6/coefficients-v6.json` | **GENERATED** | The fitted accommodation ladder with provenance, leave-one-out scores and per-coefficient caveats. **Never hand-edit** | `fit-city-cost-ladder-v6.mjs`, v6 derivation |
+
+## SUPERSEDED — v5 methodology evidence
+
+> **The v5 acceptance rule is superseded; the v5 evidence is not.** All 95 experiment directories are
+> retained and every verdict remains an accurate statement about what a source could supply. v6 reuses
+> the Numbeo, Expedia, BudgetYourTrip, Expatistan and Price of Travel routes directly, and fits its
+> accommodation ladder from the pooled Expedia rows collected here. See
+> `docs/dev/plans/city-cost-methodology-v6.md` §1.
 
 | Path | Status | What it is | Read by |
 | --- | --- | --- | --- |

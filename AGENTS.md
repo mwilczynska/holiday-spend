@@ -10,8 +10,9 @@ change history.
 | --- | --- |
 | What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
 | What was built, what methodologies were tried and what they produced, dataset inventory | **[LOG.md](LOG.md)** |
-| The active city cost methodology workstream | `docs/dev/plans/city-cost-methodology-v5.md` |
-| Prior methodology evidence | `docs/product/methodology-v4.md` |
+| The active city cost methodology workstream | `docs/dev/plans/city-cost-methodology-v6.md` |
+| How to resume that workstream cold | `docs/dev/handoffs/city-cost-v6.md` |
+| Prior methodology evidence | `docs/product/methodology-v4.md`, `data/reference/v5/` |
 
 ---
 
@@ -71,7 +72,8 @@ Recharts · NextAuth · Vitest + Playwright
 | Path | Contents |
 | --- | --- |
 | repo root | App code |
-| `docs/dev/plans/city-cost-methodology-v5.md` | **The active methodology workstream** |
+| `docs/dev/plans/city-cost-methodology-v6.md` | **The active methodology workstream** |
+| `LOOP-PROMPT-V6.md` | The autonomous work prompt for v6, including its stopping rules |
 | `docs/product/methodology-v4.md` | Prior methodology evidence; not integrated |
 | `docs/dev/plans/`, `docs/dev/handoffs/` | **Only current** workstream documents |
 | `docs/prompts/` | Versioned LLM prompt contracts — see its `README.md` for status |
@@ -114,10 +116,10 @@ ten anchor prices and asserted multipliers derive 19 tiers.
 > measured and refuted — it overpredicts 14 of 16 tested cities with a median absolute error of 38.8%.
 > The replacement is designed but not integrated. See PLAN.md.
 
-### The prior design (v4)
+### The design v6 executes (v4's principle)
 
-Documented in full in `docs/product/methodology-v4.md`. Its governing principle remains valuable evidence,
-but v4 is not integrated and is not presumed to be the v5 answer:
+Documented in full in `docs/product/methodology-v4.md`. v4 was never integrated, but its governing
+principle is the basis of the active v6 workstream:
 
 > **Measure what is cheap to measure. Model only the gaps. Never assert a constant.**
 
@@ -138,9 +140,26 @@ conversion, and never emits a tier. All derivation is a pure server-side functio
 | The dataset | **By persistence** | Anchors stored with provenance; a city never changes until a deliberate refresh |
 
 **`docs/prompts/llm_prompt_city_anchors_v4.md` is generated from methodology-v4.md §9.1.** Never edit it
-directly — edit the methodology and regenerate, or the two will drift. The active replacement workstream is
-`docs/dev/plans/city-cost-methodology-v5.md`; v5 contracts and experiments live under
-`data/reference/v5/` and must pass their locked gates before app integration.
+directly — edit the methodology and regenerate, or the two will drift.
+
+### v5 — closed, and why it matters
+
+**v5 ran 95 experiments and mapped zero product fields.** Its acceptance rule required evidence public
+sources do not publish (explicit occupancy, tax basis and one-room wording in a single snippet) plus 30
+matched cities per relationship, and it forbade shipping until those gates passed. All its evidence is
+retained under `data/reference/v5/` and every experiment verdict is still accurate — only the acceptance
+rule is superseded. **Do not re-run its experiments or reinstate its gates.** The full diagnosis is
+`docs/dev/plans/city-cost-methodology-v6.md` §1, and the trap it teaches is recorded in `PLAN.md`:
+*an unreachable gate is a defect in the gate, not a reason to collect more.*
+
+### v6 — the active workstream
+
+Measure one level per category (Numbeo food/drink, Expedia 3-star, BudgetYourTrip activities), derive the
+rest from ratios fitted in `data/reference/v6/coefficients-v6.json`, and grade every value **A** observed
+/ **B** source proxy / **C** laddered / **D** regional prior, each with an interval. Every field always
+produces a number; no number is ever presented as better-evidenced than it is. Contracts are frozen under
+`data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start document is
+`docs/dev/handoffs/city-cost-v6.md`.
 
 ### Transport is out of scope
 
@@ -213,6 +232,7 @@ npx tsc --noEmit          # expected to pass
 npm run build             # expected to pass
 npm test -- --run         # 142 tests
 npm run docs:check-memory # AGENTS.md mirrors CLAUDE.md
+node scripts/fit-city-cost-ladder-v6.mjs --check   # v6 coefficients match their evidence
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.
@@ -249,7 +269,10 @@ login page shows provider-specific guidance instead.
 
 | Path | Purpose |
 | --- | --- |
-| `docs/dev/plans/city-cost-methodology-v5.md` | Active v5 methodology workstream and acceptance gates |
+| `docs/dev/plans/city-cost-methodology-v6.md` | Active v6 methodology, the v5 diagnosis, milestones |
+| `docs/dev/handoffs/city-cost-v6.md` | Cold-start handoff — names the exact next action |
+| `data/reference/v6/` | Frozen v6 contracts: data dictionary, validation manifest, coefficients |
+| `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder; `--check` verifies determinism |
 | `docs/product/methodology-v4.md` | Prior methodology evidence; §9.1 is the v4 prompt's source of truth |
 | `data/reference/city_costs_app_aud.csv` | The live 121-city dataset |
 | `src/lib/city-generation-config.ts` | Provider/model defaults, migrations, validation |

@@ -18,8 +18,8 @@ The app needs, for each city, **19 cost values**: six accommodation tiers (hoste
 four food, five drinks, four activities. All for two travellers, per night for accommodation and per day
 otherwise, in AUD.
 
-Four methodology versions have been attempted. **v1 is what still ships.** v3 was abandoned. v4 is
-researched but not integrated.
+Six methodology versions have been attempted. **v1 is what still ships.** v3 and v5 were abandoned. v4 is
+researched but not integrated. **v6 is the active workstream** — see [PLAN.md](PLAN.md).
 
 | Version | Approach | Status | Verdict |
 | --- | --- | --- | --- |
@@ -27,6 +27,8 @@ researched but not integrated.
 | v2.1 | v1 plus hybrid/Xotelo accommodation lookup | Removed | Code deleted; only the doc baseline remains |
 | v3 | Observed-first: direct source-attributed observation of every measure | **Abandoned** 25–27 Jul 2026 | Stalled at 22.8% coverage, zero complete cities |
 | v4 | Measure price *level* cheaply, model tier *structure* | **Research complete, unintegrated** | 18–22% median APE; accommodation level unresolved |
+| v5 | Definition-matched one-call collection with per-relationship sample gates | **Closed** 9 Aug 2026 | 95 experiments, zero product mappings; acceptance rule unsatisfiable from public sources |
+| v6 | v4's principle, executed: measure one level per category, ladder the rest, grade every value | **Active** | M0 complete; ladder fitted at 11.4% / 13.0% LOO |
 
 ---
 
@@ -164,9 +166,10 @@ Superseded text was marked rather than deleted, across `docs/dev/plans/city-cost
 
 ---
 
-## v4 — Measure level, model structure (current design)
+## v4 — Measure level, model structure (never integrated; its principle survives into v6)
 
-**Status: research complete, app integration not started.**
+**Status: research complete, app integration not started. Its governing principle and its fitted ratios
+are reused directly by v6.**
 
 Authoritative document: **`docs/product/methodology-v4.md`** (1,703 lines). §9.1 is the source of truth
 for the extraction prompt; `docs/prompts/llm_prompt_city_anchors_v4.md` is *generated* from it and must
@@ -388,6 +391,102 @@ Each cost real time to discover and generalises beyond this project:
 7. Rate limiting: ~40 rapid fetches trigger 429 escalating to 503, cleared only by changing IP. Batch
    builds need 10–15 cities/day with checkpointing. **On a rate-limited response, defer the city — never
    fall through to search.** That difference is exact values versus 10–19% error.
+
+---
+
+## v5 — Definition-matched one-call collection (closed 9 August 2026)
+
+**Status: closed after 95 experiments and zero product mappings.** All evidence retained under
+`data/reference/v5/`; every experiment verdict remains an accurate statement about its source.
+
+### What it required
+
+One user-initiated request to a cheap web-enabled model, producing all 19 values, where every observation
+carried explicit occupancy, tax basis, class, currency, reference period and a non-`from` price *in the
+same evidence*, and every modelled relationship was fitted on ≥30 matched cities plus 10 locked holdouts.
+Shipping was forbidden until those gates passed.
+
+### What it produced
+
+| Category | Experiments | Result |
+| --- | --- | --- |
+| Accommodation | **61 of 95** | No field mapped. 15 of those targeted `accom_1_star` alone (~150 city-calls) and produced **zero** usable rows |
+| Activities | 13 | No field mapped; no definition-matched source found in 6 source families |
+| Food / drink | 11 | Route promoted at 96% cell coverage, never mapped |
+| Infrastructure / audit | 10 | Derivation contract built and retained |
+
+### Why it could not terminate
+
+Five independent mechanisms, documented in full in `docs/dev/plans/city-cost-methodology-v6.md` §1:
+
+1. **The estimand demanded metadata commercial sources do not publish.** Eight facts co-occurring in one
+   snippet. Experiment 052 is the clean case — 0/12 strict, with most candidates having class, price and
+   tax but no explicit one-room occupancy. The price was on the page; the label was not.
+2. **The sample-size gate was unreachable.** Eleven Expedia panels (~130 city-calls) reached 18 matched
+   2↔3 cities and 26 matched 3↔4, then flatlined — the last four panels added zero new 2↔3 pairs.
+3. **The accuracy that gate protected was already achieved.** See below.
+4. **Fail-closed was wired to the product, not the label.** No route achieved complete coverage, so
+   `complete` was false for every city and nothing shipped — leaving the known-defective v1 path live.
+5. **The one-call constraint** saved ~A$10 per full refresh and in exchange forbade category
+   specialisation, retry-on-block and second samples.
+
+The proximate cause was `LOOP-PROMPT.md` (now `docs/dev/archive/loop-prompt-v5.md`), which forbade
+shipping before the gates passed, forbade stopping before the Definition of Done, and forbade banking a
+working category while a harder one remained — mathematically an infinite loop.
+
+### The finding that ended it
+
+Pooling v5's own Expedia evidence and scoring R0 leave-one-out at city level:
+
+| Relation | Matched cities | Coefficient | LOO median APE | p90 | v4's independent Booking.com fit | Agreement |
+| --- | --- | --- | --- | --- | --- | --- |
+| `accom_2_star ← accom_3_star` | 18 | 0.7500 | **11.37%** | 24.63% | 0.7341 (n=16) | 2.17% |
+| `accom_4_star ← accom_3_star` | 26 | 1.3372 | **12.98%** | 27.18% | 1.2972 (n=16) | 3.08% |
+
+Two independent sources, different estimators, different years, largely different city samples — agreeing
+to within 2–3%, at roughly half the error the v5 gate allowed. **v5 rejected this fit eleven times for
+having fewer than 30 matched cities.** The sample-size gate was a proxy for "does this generalise?", and
+cross-source replication answers that better than a larger single-source sample would.
+
+Reproduce: `node scripts/fit-city-cost-ladder-v6.mjs`.
+
+### What v5 leaves behind, and it is a lot
+
+| Asset | Location | Reused by v6 as |
+| --- | --- | --- |
+| Numbeo food/drink route | Exp 016–019, 022 | Spine call A — 144/150 cells, 28/30 complete cities |
+| Expedia class-trend route | Exp 028–088 | Spine call B **and** the fitted ladder — 101 rows / 51 cities |
+| BudgetYourTrip activity route | Exp 035, 036, 080, 081 | Spine call C — 28/30 cities, 0% repeat dispersion |
+| Expatistan drink route | Exp 091, 092 | Optional spine call D |
+| Price of Travel dorm index | Exp 072 | Dorm ratio (2023 window, stale) |
+| Derivation function | `src/lib/city-cost-methodology-v5.ts` | **Unchanged** — the v6 derivation core |
+| Data dictionary | `v5/data-dictionary-v5.md` | Estimands unchanged in v6 |
+| Experiment protocol | pre-registration, deterministic scoring, one verdict | Carried forward unchanged |
+
+**The lesson, recorded as trap 8:** an unreachable gate is a defect in the gate, not a reason to collect
+more. Measure whether a gate has ever been passed by anything before spending another experiment on it.
+
+---
+
+## v6 — The ladder, shipped and graded (active)
+
+**Status: adopted 9 August 2026. M0 complete; M1 (integrate) is next.**
+
+Not a new research programme. v6 is v4's principle — *measure what is cheap to measure, model only the
+gaps, never assert a constant* — finally executed, using v5's collected evidence, with an acceptance rule
+that can be satisfied.
+
+Measure one level per category (Numbeo food/drink, Expedia 3-star, BudgetYourTrip activities), derive the
+rest from fitted ratios, grade every value **A** observed / **B** source proxy / **C** laddered /
+**D** regional prior, attach an interval, and ship. Integrate first, improve grades after.
+
+Gates move from per-relationship sample size to product outcomes: city ranking (Spearman ρ ≥0.90), trip
+total (±20%), and — the gate v5 never had — **beat the shipping v1 dataset**.
+
+Current documents: `docs/dev/plans/city-cost-methodology-v6.md`, `docs/dev/handoffs/city-cost-v6.md`,
+`LOOP-PROMPT-V6.md`, `data/reference/v6/`.
+
+Results will be appended here as milestones complete.
 
 ---
 

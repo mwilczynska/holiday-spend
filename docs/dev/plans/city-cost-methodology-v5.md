@@ -1,7 +1,23 @@
-# City Cost Methodology v5 — Active Workstream
+# City Cost Methodology v5 — Closed
 
-**Status:** Research and validation in progress. The shipping path remains v1. v4 is prior evidence,
-not an assumed implementation.
+> **SUPERSEDED — 9 August 2026.** Replaced by `docs/dev/plans/city-cost-methodology-v6.md`.
+>
+> v5 ran **95 experiments and accepted zero product mappings.** Its acceptance rule required evidence
+> that free public sources do not publish — explicit occupancy, tax basis and one-room wording
+> co-occurring in a single snippet — and a per-relationship sample size (30 matched cities plus 10
+> holdout) that those sources cannot reach. It also forbade shipping until those gates passed, so the
+> known-defective v1 path remained live throughout.
+>
+> **This document is retained in full as evidence and is still accurate.** Every experiment verdict below
+> is a correct statement about what a source could and could not supply. Only the acceptance rule that
+> governed them is superseded. The collected evidence is the foundation of v6 — including the
+> accommodation ladder, which v6 fits from the pooled Expedia rows recorded here at 11.4% and 13.0%
+> leave-one-out error.
+>
+> Read `docs/dev/plans/city-cost-methodology-v6.md` §1 for the full diagnosis.
+
+**Original status header (31 July 2026):** Research and validation in progress. The shipping path remains
+v1. v4 is prior evidence, not an assumed implementation.
 
 ## Objective
 

@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "city-cost-v6-validation-manifest-v1",
+  "methodologyVersion": "v6.0",
+  "status": "frozen-at-v6-adoption-2026-08-09",
+  "readThisFirst": "This file defines what 'v6 works' means. Do not change a gate after seeing its result. To amend a gate, record a dated decision in PLAN.md and in this file BEFORE the locked holdout is used. See docs/dev/plans/city-cost-methodology-v6.md section 4.",
+
+  "relatedFiles": {
+    "methodology": "docs/dev/plans/city-cost-methodology-v6.md",
+    "dataDictionary": "data/reference/v6/data-dictionary-v6.md",
+    "coefficients": "data/reference/v6/coefficients-v6.json",
+    "coefficientScript": "scripts/fit-city-cost-ladder-v6.mjs",
+    "derivationCode": "src/lib/city-cost-methodology-v5.ts",
+    "shippingDataset": "data/reference/city_costs_app_aud.csv"
+  },
+
+  "whyTheseGatesDifferFromV5": "v5 gated on per-relationship sample size (30 matched cities + 10 holdout per material relationship). That gate was unreachable from public sources -- eleven Expedia panels reached 18 and 26 matched cities and then flatlined -- and it was a proxy for an accuracy standard the fitted ladder already met at 11-13% leave-one-out error. v6 gates on what the product actually does: order cities correctly and get trip totals roughly right.",
+
+  "gates": {
+    "1_coverage": {
+      "requirement": "All 19 product fields numeric for at least 95% of in-scope cities, every value carrying an evidence grade",
+      "threshold": 0.95,
+      "note": "Grade D (regional prior) is permitted and expected for sparse cities. It must never be hidden or relabelled."
+    },
+    "2_tierAccuracy": {
+      "requirement": "Per-tier held-out error against the ground-truth panel",
+      "medianAbsolutePercentageErrorMax": 35,
+      "p90AbsolutePercentageErrorMax": 75,
+      "absoluteMedianSignedErrorMax": 15,
+      "note": "v4 measured 18-22% as the realistic ceiling for this source class and the fitted ladder achieves 11-13%. 35% is a floor that admits the weak tiers (1-star, hostel split, activities), not a target. Report achieved figures per tier, never only the aggregate.",
+      "excludedFields": ["activities_free"]
+    },
+    "3_cityRanking": {
+      "requirement": "THE GATE THAT MATTERS. The product exists to answer 'Lisbon or Copenhagen?'",
+      "spearmanRhoMin": 0.9,
+      "pairwiseOrderingAccuracyMin": 0.85,
+      "appliedTo": ["total_daily_cost_two_travellers", "accommodation_category", "food_category"],
+      "note": "Ratios preserve ordering by construction, so this is more likely to pass than the tier gates. If it fails, the anchor measurement is the problem, not the ladder."
+    },
+    "4_costBandAgreement": {
+      "requirement": "Assigned cost band matches the ground-truth band",
+      "exactAgreementMin": 0.8,
+      "withinOneBandMin": 1.0,
+      "note": "v4 measured 63% exact agreement for newly generated cities, never off by more than one band. This must improve on that."
+    },
+    "5_tripLevelRealism": {
+      "requirement": "Simulated 10-city trip total within tolerance of the ground-truth-composed total",
+      "tolerancePct": 20,
+      "note": "Independent per-city errors partially cancel across a trip. This is the number the user actually sees on the dashboard."
+    },
+    "6_noRegressionVsV1": {
+      "requirement": "THE GATE v5 NEVER HAD. v6 must beat the shipping v1 dataset, which is the live alternative",
+      "tiersImprovedMin": 15,
+      "tiersTotal": 19,
+      "maxRegressionPctOnAnyTier": 10,
+      "note": "v1 is 100% asserted with a refuted multiplier (accom_4_star = hotel_3star x 1.80, refuted at 38.8% median absolute error across 16 cities). Failing to beat it means v6 should not ship."
+    },
+    "7_repeatability": {
+      "requirement": "Three independent calls on five deliberately difficult cities; report dispersion, never average it away",
+      "cities": ["Kyoto", "Fukuoka", "Pu Luong", "Zanzibar", "Queenstown"],
+      "callsPerCity": 3,
+      "maxRelativeRangePctForGradeAB": 25,
+      "note": "Experiment 081 already measured 0% dispersion for the BudgetYourTrip activity route across three calls in four of five cities."
+    },
+    "8_calibrationIntegrity": {
+      "requirement": "Every shipped source-calibration offset is fitted on enough cities and demonstrably helps",
+      "minCitiesPerOffset": 12,
+      "mustReduceHeldOutMedianApe": true,
+      "note": "Prevents the source-offset mechanism becoming a new generation of asserted constants. An offset that does not clear this ships as 1.0 with the dispersion still widening the interval."
+    },
+    "9_refreshEconomics": {
+      "requirement": "The real constraint from CLAUDE.md -- refresh must be cheap enough that it actually gets re-run",
+      "maxLlmCallsPerCity": 6,
+      "maxSearchesPerCity": 25,
+      "maxAudPerCity": 0.15,
+      "maxAudFull121CityRefresh": 20,
+      "maxHoursFull121CityRefresh": 24,
+      "note": "v5 constrained this to exactly 1 LLM call per city, which saved roughly A$10 per full refresh and forbade category specialisation, retry-on-block, and second samples. That was optimising a non-binding cost."
+    },
+    "10_provenance": {
+      "requirement": "No grade C or D value renderable without its grade; blocked and not_found remain distinct",
+      "note": "Inherited from v5 unchanged and non-negotiable. A modelled value must never be presentable as observed evidence."
+    }
+  },
+
+  "groundTruthPanel": {
+    "purpose": "Fit source-calibration offsets and score gates 2-6. This is the one-time collection that retires v5's sample-size objection permanently.",
+    "collectionRule": "MAY be collected by browser automation, manual research, or a stronger model. Ground truth is never in the production path, so it does not need to be target-model feasible. Only PRODUCTION collection must be. v5 permitted this but never spent effort on it.",
+    "measuresPerCity": [
+      "hostel_dorm_bed_1p",
+      "hostel_private_room_2p",
+      "hotel_1star_room_2p",
+      "hotel_3star_room_2p",
+      "hotel_4star_room_2p",
+      "paid_attraction_adult_1"
+    ],
+    "requiredMetadata": [
+      "dated one-night stay, two adults, one room (or one bed for dorm)",
+      "source URL and retrieval date",
+      "currency as displayed",
+      "tax/fee treatment as stated",
+      "property name where the observation is property-level"
+    ],
+    "referenceWindow": "One night, arrival 2026-09-17, departure 2026-09-18",
+    "totalCities": 40,
+    "development": {
+      "count": 25,
+      "cities": [
+        { "city": "Hanoi", "region": "SEA", "band": "low" },
+        { "city": "Ho Chi Minh City", "region": "SEA", "band": "low" },
+        { "city": "Da Nang", "region": "SEA", "band": "low" },
+        { "city": "Phuket", "region": "SEA", "band": "mid" },
+        { "city": "Singapore", "region": "SEA", "band": "high" },
+        { "city": "Taipei", "region": "East Asia", "band": "mid" },
+        { "city": "Beijing", "region": "East Asia", "band": "mid" },
+        { "city": "Tokyo", "region": "East Asia", "band": "high" },
+        { "city": "Seoul", "region": "East Asia", "band": "high" },
+        { "city": "Delhi", "region": "South Asia", "band": "low" },
+        { "city": "Colombo", "region": "South Asia", "band": "low" },
+        { "city": "Mumbai", "region": "South Asia", "band": "mid" },
+        { "city": "Istanbul", "region": "Middle East", "band": "mid" },
+        { "city": "Dubai", "region": "Middle East", "band": "high" },
+        { "city": "Cairo", "region": "Africa", "band": "low" },
+        { "city": "Cape Town", "region": "Africa", "band": "mid" },
+        { "city": "Nairobi", "region": "Africa", "band": "mid" },
+        { "city": "Budapest", "region": "Europe", "band": "mid" },
+        { "city": "Prague", "region": "Europe", "band": "mid" },
+        { "city": "Lisbon", "region": "Europe", "band": "high" },
+        { "city": "Barcelona", "region": "Europe", "band": "high" },
+        { "city": "Mexico City", "region": "Latin America", "band": "mid" },
+        { "city": "Lima", "region": "Latin America", "band": "mid" },
+        { "city": "San Francisco", "region": "North America", "band": "high" },
+        { "city": "Melbourne", "region": "Oceania", "band": "high" }
+      ]
+    },
+    "lockedHoldout": {
+      "count": 15,
+      "lockRule": "LOCKED. Do not inspect, fit against, or tune on these cities. Reveal once per candidate freeze. If you have looked at holdout results, you may not then change a coefficient, prompt, or gate.",
+      "cities": [
+        { "city": "Hoi An", "region": "SEA", "band": "low" },
+        { "city": "Pu Luong", "region": "SEA", "band": "low", "sparse": true },
+        { "city": "Koh Samui", "region": "SEA", "band": "mid" },
+        { "city": "Kyoto", "region": "East Asia", "band": "high", "sparse": true },
+        { "city": "Fukuoka", "region": "East Asia", "band": "mid", "sparse": true },
+        { "city": "Nikko", "region": "East Asia", "band": "high", "sparse": true },
+        { "city": "Kathmandu", "region": "South Asia", "band": "low" },
+        { "city": "Amman", "region": "Middle East", "band": "mid" },
+        { "city": "Zanzibar", "region": "Africa", "band": "mid", "sparse": true },
+        { "city": "Krakow", "region": "Europe", "band": "mid" },
+        { "city": "Rome", "region": "Europe", "band": "high" },
+        { "city": "Cusco", "region": "Latin America", "band": "mid", "sparse": true },
+        { "city": "Buenos Aires", "region": "Latin America", "band": "mid" },
+        { "city": "Vancouver", "region": "North America", "band": "high" },
+        { "city": "Queenstown", "region": "Oceania", "band": "high", "sparse": true }
+      ]
+    },
+    "stratification": {
+      "regionsCovered": 9,
+      "regionsCoveredInHoldout": 9,
+      "bandsCovered": ["low", "mid", "high"],
+      "deliberatelySparseCitiesInHoldout": 7,
+      "note": "The dataset's regions and bands do not fully cross -- there are no low-band European cities and no low-band North American or Oceania cities. The panel stratifies by region with band coverage where it exists rather than forcing an impossible full cross. Sparse cities are over-represented in the holdout on purpose: grade D behaviour must be characterised honestly, not averaged out of view."
+    },
+    "bandCutsAud": {
+      "measure": "accom_3_star",
+      "lowMax": 54.25,
+      "midMax": 116.25,
+      "basis": "terciles of the 121 production rows"
+    }
+  },
+
+  "productionConstraint": {
+    "llmCallsPerCity": { "max": 6, "expected": 3 },
+    "expectedCallShape": [
+      "A: Numbeo search snippets -> 5 food/drink anchors",
+      "B: Expedia 3-star class trend -> 1 accommodation level anchor",
+      "C: BudgetYourTrip entertainment tiers -> 3 activity anchors",
+      "D (optional): Expatistan -> cocktail and wine bottle"
+    ],
+    "retriesAllowed": true,
+    "retryRule": "Retry is permitted on a 429/503 or a blocked page. A retry must be recorded. On repeated block, fail to the next grade -- never silently substitute a different source.",
+    "directPageReadsInProduction": false,
+    "directPageReadRationale": "Experiment 015 returned HTTP 503 and 429 on canonical Numbeo URLs; Experiment 013 had all 15 official booking-engine URLs blocked at the web safety boundary. Search snippets only.",
+    "sourceApiKeysAllowed": false,
+    "sourceAccountsAllowed": false,
+    "paidDataApisAllowed": false,
+    "targetModels": ["GPT-5.6 Luna", "Claude Haiku-class"]
+  },
+
+  "scoringRules": {
+    "citySplitUnit": "city",
+    "splitRule": "Correlated observations from one city must never cross partitions.",
+    "activitiesFreeScored": false,
+    "reportRequirements": [
+      "Per-tier figures, never only an aggregate",
+      "Per-region and per-band breakdown, so bias cannot hide inside an average",
+      "Grade distribution across the dataset",
+      "Dispersion retained, never averaged away"
+    ]
+  }
+}

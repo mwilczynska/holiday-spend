@@ -1,3 +1,30 @@
+> **SUPERSEDED — DO NOT RUN.** This is the loop prompt that drove the v5 experiment programme. It was
+> moved here from the repo root on 9 August 2026 and replaced by `LOOP-PROMPT-V6.md`.
+>
+> **It is retained because it is required reading, not because it is reusable.** It is an unusually
+> rigorous research protocol that nonetheless cannot terminate, and understanding why is the entire
+> justification for v6. Three instructions combine into an infinite loop:
+>
+> 1. *"Do not migrate the production dataset or wire v5 into the application until the methodology passes
+>    its gates"* — shipping is forbidden until a condition is met.
+> 2. *"Do not stop after ... partially solving one category. Continue selecting and executing the next
+>    highest-value experiment until the Definition of Done is satisfied"* — the loop cannot exit.
+> 3. *"Do not ... polish an already workable food model while accommodation or activities still prevent a
+>    complete result"* — the loop is **required** to spend its effort on the least tractable category.
+>
+> Combined with acceptance gates that public sources cannot satisfy (30 matched cities per relationship;
+> row-level occupancy and tax metadata), the result was 95 experiments, zero product mappings, and the
+> known-defective v1 dataset still shipping. **61 of 95 experiments went to accommodation, and 15 of those
+> to `accom_1_star` alone, producing zero usable rows.**
+>
+> Full diagnosis: `docs/dev/plans/city-cost-methodology-v6.md` §1.
+> Replacement: `LOOP-PROMPT-V6.md` at the repo root.
+>
+> Its *experimental discipline* — pre-registration, falsifiable hypotheses, deterministic scoring, raw
+> artifact retention, one verdict per candidate — was excellent and is carried forward into v6 unchanged.
+
+---
+
 /goal
 
 Work autonomously and continuously on the current branch

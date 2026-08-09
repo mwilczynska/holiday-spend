@@ -42,7 +42,17 @@ re-derive is a claim you cannot audit.
 > The two accommodation scripts embed a `generatedAt` timestamp, so their artifacts differ by that one
 > line on re-run while every computed value reproduces exactly.
 
-## CURRENT — methodology v5
+## CURRENT — methodology v6
+
+| Command | Script | Purpose |
+| --- | --- | --- |
+| `node scripts/fit-city-cost-ladder-v6.mjs` | `fit-city-cost-ladder-v6.mjs` | **Fits the v6 accommodation ladder** from pooled v5 Expedia panels plus the Price of Travel dorm index, scores leave-one-out at city level, cross-validates against the independent v4 Booking.com fit, and regenerates `data/reference/v6/coefficients-v6.json`. Reads only repo files — no network or model calls |
+| `node scripts/fit-city-cost-ladder-v6.mjs --check` | ditto | Verifies the committed coefficients match their evidence byte-for-byte. Exits 1 on drift. Belongs in the verification baseline |
+
+## SUPERSEDED — methodology v5
+
+> The v5 acceptance rule is superseded by v6; these audit scripts still run and their outputs remain
+> valid evidence. See `docs/dev/plans/city-cost-methodology-v6.md` §1.
 
 | Command (`npm run …`) | Script | Purpose |
 | --- | --- | --- |

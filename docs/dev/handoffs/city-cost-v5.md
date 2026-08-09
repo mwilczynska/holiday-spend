@@ -1,5 +1,11 @@
 # Handoff — City Cost Methodology v5
 
+> **SUPERSEDED — 9 August 2026.** The current handoff is `docs/dev/handoffs/city-cost-v6.md`.
+> v5 closed after 95 experiments with zero product mappings; its acceptance rule could not be satisfied
+> from free public sources. Its collected evidence is retained in full and is the foundation of v6.
+> Diagnosis: `docs/dev/plans/city-cost-methodology-v6.md` §1. This file describes the state as at
+> 31 July 2026 and is kept for provenance only.
+
 **As at:** 31 July 2026
 **Branch:** `feat/city-cost-methodology-v5`
 **Goal status:** active; v5 is not accepted
