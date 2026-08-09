@@ -110,8 +110,11 @@ Interactive Booking.com collection has produced all five accommodation measures 
 Ho Chi Minh City, Phuket, Singapore, Taipei and Tokyo, plus four found Beijing accommodation measures;
 Beijing's exact-date 1-star query is recorded as explicit class absence.
 Preserve the same evidence standard for the next city: exact dates, class or hostel identity, occupancy,
-display currency, price basis and tax treatment; exclude member/promotional rates when an original public
-price is visible.
+display currency, price basis and tax treatment. Record as `amount` the lowest price a logged-out visitor
+with no membership is quoted for a room meeting the class and occupancy spec for the frozen window. Public
+promotional deals available to any visitor (Getaway Deal, Early Booker, Bonus savings and seasonal sales) are
+transactable and included; membership-gated rates (Genius and VIP reward tiers) are excluded. Never record a
+strikethrough or "original" price as `amount`.
 
 Work order:
 

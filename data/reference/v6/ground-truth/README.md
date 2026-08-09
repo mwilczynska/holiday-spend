@@ -35,3 +35,13 @@ Ground truth is not copied from the shipping CSV or v5 observations. A found row
 amount and currency, source URL, retrieval date, tax/fee wording, and property name for property-level
 accommodation quotes. Failed retrievals remain explicit (`not_found`, `blocked`, `stale`, or
 `class_absent`) rather than being replaced with a plausible value.
+
+## Accommodation price basis
+
+For a frozen-window Booking.com quote, record as `amount` the lowest price a logged-out visitor with no
+membership is quoted for a room meeting the class and occupancy specification. Public promotional deals
+available to any visitor — including Getaway Deal, Early Booker, Bonus savings and seasonal sales — are
+transactable and included. Membership-gated rates, including Genius and VIP reward tiers, are excluded.
+Never record a strikethrough or "original" price as `amount`; it is a marketing number nobody transacts at,
+and its inflation factor is not constant, so it cannot be calibrated out. Preserve that strikethrough value
+separately as `listPriceAmount` when it is shown.

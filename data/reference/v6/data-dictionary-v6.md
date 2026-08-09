@@ -35,8 +35,9 @@ These are inherited from v5 verbatim except where marked **[v6]**.
 - Accommodation is **per room/bed night**; food, drinks and activities are **per day**.
 - Source facts are retained in the **source currency**. FX conversion happens **once**, in deterministic
   code, from a dated versioned rate table. The LLM never converts currency.
-- A price is the **standard publicly available rate** for the stated unit. Member-only rates, rates
-  requiring an account, and unlabelled promotional pricing are excluded.
+- For dated Booking.com ground truth, a price is the lowest rate quoted to a logged-out visitor with no
+  membership for the stated unit. Public promotional deals available to any visitor are included; member-only
+  or account-gated rates are excluded. A strikethrough or "original" marketing price is never the amount.
 - **[v6] Tax treatment no longer gates admissibility.** Where a source states its tax basis, record it.
   Where it does not, record `taxStatus: unknown` and let the source-level calibration offset (§4) absorb
   the systematic component. v5 rejected these rows; v6 uses them at grade B.
