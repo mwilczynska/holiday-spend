@@ -1,12 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 const root = process.cwd();
 const manifestPath = path.join(root, 'data/reference/v6/validation-manifest-v6.json');
 const ledgerPath = path.join(root, 'data/reference/v6/ground-truth/development-ledger.json');
 const holdoutSealPath = path.join(root, 'data/reference/v6/ground-truth/holdout-seal.json');
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-const ledger = JSON.parse(fs.readFileSync(ledgerPath, 'utf8'));
+const ledgerGitArgument = process.argv.find((argument) => argument.startsWith('--ledger-git='));
+const ledger = ledgerGitArgument
+  ? JSON.parse(execFileSync('git', ['show', ledgerGitArgument.slice('--ledger-git='.length)], { encoding: 'utf8' }))
+  : JSON.parse(fs.readFileSync(ledgerPath, 'utf8'));
 const holdoutSeal = JSON.parse(fs.readFileSync(holdoutSealPath, 'utf8'));
 
 const measures = manifest.groundTruthPanel.measuresPerCity;
