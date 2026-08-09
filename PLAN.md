@@ -95,18 +95,20 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 
 - [x] Create a manifest-driven ledger for 25 development cities × 6 measures
 - [x] Seal the holdout boundary without storing holdout prices or scores
-- [ ] 25 development cities — 150 dated source facts (64 found, 85 pending)
+- [ ] 25 development cities — 150 dated source facts (55 found, 95 pending)
 - [x] Collect the paid-attraction anchor from an official/current city or attraction tariff page for all 25 development cities
 - [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
 - [x] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
-reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 64 found observations and 85
+reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 55 found observations and 95
 pending slots rather than carrying an undated or inferred price. Interactive Booking.com collection has
-now produced dated, class-matched accommodation facts for Beijing, Da Nang, Hanoi, Ho Chi Minh City, Phuket,
-Singapore, Taipei and Tokyo. Beijing's exact-date 1-star query returned zero in-city properties and is recorded
-as explicit class absence rather than filled with a substitute. Member/promotional rates were excluded where
-the original public price was visible, and displayed tax treatment was preserved.
+now produced corrected, class-matched accommodation facts for Hanoi, Ho Chi Minh City, Da Nang, Phuket,
+Singapore and Taipei. Nine attraction rows were also re-collected to the standard general-admission
+museum/historic-site estimand. The accommodation basis includes public promotional rates available to any
+logged-out visitor, excludes membership-gated rates, and never records a strikethrough/original price as
+the amount. The current source policy is Booking.com ground truth with a Booking → Expedia offset to be
+fitted only after at least 12 accommodation cities.
 
 M1 implementation notes:
 

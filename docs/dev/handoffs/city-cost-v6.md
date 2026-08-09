@@ -80,6 +80,17 @@ times for sample size. The accuracy its gate protected was already achieved.
   Booking.com accommodation rows across Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei.
   `holdout-seal.json` remains a lock marker only; no holdout prices or scores were used.
 
+### Current collection findings
+
+The corrected six-city panel is useful for auditing the collection contract but is not a coefficient-fit
+panel. The fixed-price-basis recollection removes the apparent 1-star and class-ratio failures caused by
+Booking.com strikethrough anchors. One genuine signal remains: the dorm rung is still materially higher
+than the fitted coefficient in this panel (roughly 2× against the fitted 0.163 ratio). Record this as an
+M5 dorm-coefficient finding; do not refit or score it during M2.
+
+The nine known attraction-estimand violations were replaced with standard adult general-admission museum
+or historic-site rows: Da Nang, Melbourne, Taipei, Beijing, Barcelona, Budapest, Prague, Phuket and Delhi.
+
 ### The coefficients that exist right now
 
 ```
@@ -106,11 +117,12 @@ path is covered by deterministic integration tests.
 
 ## 4. The exact next action
 
-**Continue M2 — populate the development ledger with dated source facts.** Do not tune coefficients or score
-the locked holdout yet. The current ledger has 25 found attraction rows plus 30 corrected accommodation
-rows, leaving 95 pending slots for the frozen reference window 2026-09-17 to 2026-09-18. The six-city
-accommodation rows use the logged-out Booking.com price-ascending median rule and v2 provenance fields.
-The old Beijing and Tokyo accommodation rows are historical only and were removed in `4cf397b`.
+**Next exact action: re-collect Beijing’s five accommodation measures under the v2 contract.** Do not tune
+coefficients, fit the Booking → Expedia offset, score gates or open the locked holdout. The current ledger
+has 25 found attraction rows plus 30 corrected accommodation rows, leaving 95 pending slots for the frozen
+reference window 2026-09-17 to 2026-09-18. The six-city accommodation rows use the logged-out Booking.com
+price-ascending median rule and v2 provenance fields. Beijing and Tokyo’s old accommodation rows are
+historical only and were removed in `4cf397b`; Beijing must be collected afresh, not patched.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; do not mistake that historical checkpoint for the current ledger state.
@@ -126,21 +138,22 @@ use 2 adults / 1 room (1 adult / 1 room for a dorm), filter to the star class or
 ascending, take the first 10 eligible listings, and record all 10 prices; `amount` is the median. If 10 are
 not available, use at least 3 and use that same count for every class in the city. Never use one listing.
 
-Work order:
+Work order for the next agent:
 
 1. Use `data/reference/v6/ground-truth/development-ledger.json` as the only development write target and
    keep the 15 holdout city results sealed in `ground-truth/holdout-seal.json`.
-2. Run the deleted-row regression with the updated validator, replaying the Hanoi, Phuket and Da Nang
-   accommodation rows from `git show a80e922:data/reference/v6/ground-truth/development-ledger.json`; it
-   must emit class-inversion, sub-amount-AUD and ratio-band warnings.
-3. Replace the remaining attraction violations (Taipei observation deck and Phuket zoo) with standard
-   general-admission museum/historic-site rows, then validate the ledger.
-4. Record one M2 verdict in `PLAN.md`, append confirmed coverage to `LOG.md`, and update this handoff with
-   the exact next action. Do not use the locked holdout to tune a prompt, coefficient or gate.
+2. On Booking.com, use the frozen dates and the logged-out `booking_price_asc_median_v1` rule for Beijing’s
+   dorm, private hostel, 1-star, 3-star and 4-star measures. If a class is absent, record explicit
+   missingness; never turn a tool limitation into a source-level block.
+3. Run `node scripts/validate-city-cost-v6-ground-truth.mjs` and keep the 12-city minimum before fitting
+   the Booking → Expedia source offset. The deleted-row regression is already committed in `6d74fdb` and
+   the attraction repair is already committed in `34a1045`.
+4. Append the next dated M2 verdict to `LOG.md`, then update this section with the next exact city/action.
+   Do not use the locked holdout to tune a prompt, coefficient or gate.
 
 **M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
 metadata and sealed storage; no holdout score has been revealed. The current ledger is not at exit: it has
-64 found observations and 85 pending slots.
+55 found observations and 95 pending slots.
 
 ---
 

@@ -2180,3 +2180,25 @@ At the `4cf397b` contract checkpoint, the ledger correctly returned to **25 foun
 **zero accommodation cities**. The 25 found cells were the attraction tranche; all 125 accommodation cells
 were deliberately reopened for collection under the corrected v2 contract. No holdout result or score was
 used in this repair.
+
+## v6 M2 — corrected six-city accommodation and attraction repair (9 August 2026)
+
+The six-city accommodation panel was re-collected after the contract reset, not patched. Hanoi, Ho Chi
+Minh City, Da Nang, Phuket, Singapore and Taipei now contribute all five accommodation measures each: 30
+Booking.com rows using the logged-out `booking_price_asc_median_v1` rule, with the v2 sample prices, list
+price, deal-label and selection-rule fields. Taipei had six eligible 1-star listings and therefore uses the
+same six-listing sample count for every class in that city. The corrected ledger now has **55 found / 95
+pending** cells: 25 attraction rows and 30 accommodation rows.
+
+The attraction estimand was repaired for nine rows. Da Nang, Melbourne, Taipei, Beijing, Barcelona,
+Budapest, Prague, Phuket and Delhi now use standard adult general-admission museum or historic-site
+tariffs rather than a theme park, observation deck, zoo or exhibition-specific ticket. The Taipei source
+URL was also corrected to remove its trailing period.
+
+The old accommodation panel's apparent class failures were collection artifacts from strikethrough prices
+and the one-property rule. The corrected panel no longer supports treating those as ladder defects. One
+real M2 finding survives: the dorm rung remains roughly 2× above the fitted 0.163 coefficient; defer that
+weak-coefficient issue to M5 and do not refit during M2. The Booking.com ground truth to Expedia production
+offset remains unfit until at least 12 accommodation cities are available. **Verdict:** promote the
+corrected rows as M2 source evidence, continue collection from the remaining 95 slots, and do not score
+gates or open the holdout.
