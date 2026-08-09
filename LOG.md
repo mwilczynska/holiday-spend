@@ -2152,3 +2152,18 @@ displayed; current member prices were excluded. No holdout data was inspected or
 **59 found observations, 90 pending development slots**, with zero errors. **Verdict:** promote this tranche
 and the explicit class-absence result as dated M2 evidence; continue M2 collection without tuning coefficients
 or opening the holdout.
+
+## v6 M2 — dated accommodation tranche: Tokyo (9 August 2026)
+
+The next interactive Booking.com collection covered Tokyo for the frozen 2026-09-17 to 2026-09-18 window.
+All five accommodation measures were verified: Hotel Mystays Premier Akasaka (4-star), OTHER SPACE Asakusa
+(3-star), Oyado Cocochi (1-star), Grids Tokyo Ueno Hotel&Hostel private room, and the same hostel's one-adult
+6-bed mixed dormitory bed. The 1-star selection used the hotel-only plus 1-star filters, keeping the hotel
+anchor separate from the hostel measures.
+
+Original public prices were retained when Bonus savings, Secret Deal, VIP, Getaway Deal or Genius discounts
+were displayed; current member/promotional prices were excluded. The Booking results labelled these quotes
+with additional charges may apply, so their original tax basis is recorded as unknown. No holdout data was
+inspected or written. Validation reports **64 found observations, 85 pending development slots**, with zero
+errors. **Verdict:** promote this tranche as dated source evidence and continue M2 collection without tuning
+coefficients or opening the holdout.
