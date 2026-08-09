@@ -2094,3 +2094,17 @@ discounts; discounted member/promotional prices were excluded. No holdout data w
 Validation reports **40 found observations, 110 pending development slots**, with zero errors. **Verdict:**
 promote this tranche as dated source evidence and continue M2 collection without tuning coefficients or
 opening the holdout.
+
+## v6 M2 — dated accommodation tranche: Da Nang (9 August 2026)
+
+The next interactive Booking.com collection covered Da Nang for the frozen 2026-09-17 to 2026-09-18
+window. All five accommodation measures were verified: HAIAN Riverfront Hotel Da Nang (4-star), Sekong
+Hotel Da Nang (3-star), Summer Beach (1-star), IKIGAI Dorm Hostel private room, and City Hostel Da Nang
+one-adult dormitory bed. Each row records exact occupancy, room type, displayed AUD price, source URL,
+retrieval date and the observed promotion/tax basis.
+
+Original public prices were retained when a Genius or Getaway Deal discount was displayed; current
+member/promotional prices were excluded. No holdout data was inspected or written. Validation reports
+**45 found observations, 105 pending development slots**, with zero errors. **Verdict:** promote this
+tranche as dated source evidence and continue M2 collection without tuning coefficients or opening the
+holdout.
