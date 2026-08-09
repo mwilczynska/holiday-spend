@@ -95,16 +95,18 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 
 - [x] Create a manifest-driven ledger for 25 development cities × 6 measures
 - [x] Seal the holdout boundary without storing holdout prices or scores
-- [ ] 25 development cities — 150 dated source facts (55 found, 95 pending)
+- [ ] 25 development cities — 150 dated source facts (59 found, 90 pending)
 - [x] Collect the paid-attraction anchor from an official/current city or attraction tariff page for all 25 development cities
 - [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
 - [x] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
-reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 55 found observations and 95
+reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 59 found observations and 90
 pending slots rather than carrying an undated or inferred price. Interactive Booking.com collection has
-now produced dated, class-matched accommodation facts for Da Nang, Hanoi, Ho Chi Minh City, Phuket, Singapore and Taipei; member/promotional rates
-were excluded where the original public price was visible, and displayed tax treatment was preserved.
+now produced dated, class-matched accommodation facts for Beijing, Da Nang, Hanoi, Ho Chi Minh City, Phuket,
+Singapore and Taipei. Beijing's exact-date 1-star query returned zero in-city properties and is recorded as
+explicit class absence rather than filled with a substitute. Member/promotional rates were excluded where the
+original public price was visible, and displayed tax treatment was preserved.
 
 M1 implementation notes:
 

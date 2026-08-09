@@ -2136,3 +2136,19 @@ current member/promotional prices were excluded. No holdout data was inspected o
 reports **50 found observations, 100 pending development slots**, with zero errors. **Verdict:** promote
 this tranche as dated source evidence and continue M2 collection without tuning coefficients or opening
 the holdout.
+
+## v6 M2 — dated accommodation tranche: Beijing (9 August 2026)
+
+The next interactive Booking.com collection covered Beijing for the frozen 2026-09-17 to 2026-09-18
+window. Four accommodation measures were verified: Jianguo Hotel (4-star), Dequan Xinyue Hotel, near
+Sanlitun (3-star), Beijing Pagoda Light International Youth Hostel private room, and the same hostel's
+one-adult dormitory bed. The exact-date Beijing city-scope 1-star query returned zero properties, so that
+slot is recorded as `class_absent` under the missingness contract; no substitute class or inferred price was
+written.
+
+The accommodation rows record exact occupancy, room type, displayed AUD price, source URL, retrieval date
+and the observed promotion/tax basis. Original public prices were retained when a Genius discount was
+displayed; current member prices were excluded. No holdout data was inspected or written. Validation reports
+**59 found observations, 90 pending development slots**, with zero errors. **Verdict:** promote this tranche
+and the explicit class-absence result as dated M2 evidence; continue M2 collection without tuning coefficients
+or opening the holdout.
