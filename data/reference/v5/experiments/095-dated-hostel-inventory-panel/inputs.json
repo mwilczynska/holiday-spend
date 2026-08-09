@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "city-cost-v5-dated-hostel-inventory-input-v1",
+  "retrievalDate": "2026-08-01",
+  "stayWindow": { "checkIn": "2026-09-17", "checkOut": "2026-09-18", "nights": 1 },
+  "cities": [
+    { "city": "Amsterdam", "country": "Netherlands" },
+    { "city": "Athens", "country": "Greece" },
+    { "city": "Barcelona", "country": "Spain" },
+    { "city": "Berlin", "country": "Germany" },
+    { "city": "Budapest", "country": "Hungary" },
+    { "city": "Chicago", "country": "United States" },
+    { "city": "Copenhagen", "country": "Denmark" },
+    { "city": "Dubai", "country": "United Arab Emirates" },
+    { "city": "Hanoi", "country": "Vietnam" },
+    { "city": "Lisbon", "country": "Portugal" },
+    { "city": "London", "country": "United Kingdom" },
+    { "city": "Paris", "country": "France" }
+  ],
+  "searchContract": {
+    "searchesPerCity": 3,
+    "orderedSearches": [
+      "Hostelworld exact-city dated shared dorm, one bed",
+      "Hostelworld exact-city dated private hostel room, two guests",
+      "Hostelz exact-city dated dorm/private hostel inventory"
+    ],
+    "allowPublicReturnedPageReads": true,
+    "retries": 0,
+    "unregisteredFallbackSources": 0,
+    "arithmeticInResponse": 0,
+    "fxInResponse": 0,
+    "crossCityEvidence": 0
+  },
+  "strictDefinition": {
+    "dorm": "one named shared-dorm bed, exact one-night stay, numeric nightly price explicitly stated, named currency, tax/fee status, exact dates",
+    "private": "one named hostel private room for exactly two guests, exact one-night stay, numeric nightly price explicitly stated, named currency, tax/fee status, exact dates",
+    "reject": ["from/starting prices", "ranges", "packages", "multi-night totals without explicit nightly rate", "unknown occupancy", "unknown dates", "unknown tax status"]
+  },
+  "screenGate": { "protocolCompliantCities": 10, "dormRows": 6, "privateRows": 6, "completeCities": 4 },
+  "decisionRule": "A screen pass authorizes only a broader current inventory validation; it does not map or fit a city value. Deterministic code scales a per-bed dorm quote to two beds only after validation."
+}
