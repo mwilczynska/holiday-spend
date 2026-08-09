@@ -45,3 +45,13 @@ transactable and included. Membership-gated rates, including Genius and VIP rewa
 Never record a strikethrough or "original" price as `amount`; it is a marketing number nobody transacts at,
 and its inflation factor is not constant, so it cannot be calibrated out. Preserve that strikethrough value
 separately as `listPriceAmount` when it is shown.
+
+## Accommodation selection rule
+
+The deterministic selection rule is `booking_price_asc_median_v1`. On the city-scoped Booking.com results
+page for the frozen window, use 2 adults / 1 room (1 adult / 1 room for a dorm), filter to the required star
+class or `Hostel`, sort by **Price ascending**, and take the first 10 listings that meet the class and
+occupancy specification. Record every selected quote in `samplePrices`; `amount` is their median (the mean
+of the two middle values for an even count). If 10 eligible listings are not available, use a minimum of 3
+and record the same count for every class in that city. Never use one listing. The rule's deliberate mild low
+bias is consistent across the within-city ratios, where estimator bias is expected to cancel.

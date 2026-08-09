@@ -116,6 +116,11 @@ promotional deals available to any visitor (Getaway Deal, Early Booker, Bonus sa
 transactable and included; membership-gated rates (Genius and VIP reward tiers) are excluded. Never record a
 strikethrough or "original" price as `amount`.
 
+The property selection rule is `booking_price_asc_median_v1`: on the city-scoped Booking.com results page,
+use 2 adults / 1 room (1 adult / 1 room for a dorm), filter to the star class or Hostel, sort by Price
+ascending, take the first 10 eligible listings, and record all 10 prices; `amount` is the median. If 10 are
+not available, use at least 3 and use that same count for every class in the city. Never use one listing.
+
 Work order:
 
 1. Use `data/reference/v6/ground-truth/development-ledger.json` as the only development write target and
