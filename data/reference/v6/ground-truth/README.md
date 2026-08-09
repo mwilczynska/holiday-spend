@@ -36,6 +36,16 @@ amount and currency, source URL, retrieval date, tax/fee wording, and property n
 accommodation quotes. Failed retrievals remain explicit (`not_found`, `blocked`, `stale`, or
 `class_absent`) rather than being replaced with a plausible value.
 
+The ledger uses schema `city-cost-v6-ground-truth-ledger-v2`. Found accommodation rows additionally
+require `samplePrices`, `listPriceAmount`, `dealLabels`, and `selectionRule`. `samplePrices` is the full
+set of selected listing prices behind the median; `listPriceAmount` preserves a displayed strikethrough
+price or is `null`; `dealLabels` preserves public promotional labels; and `selectionRule` must be
+`booking_price_asc_median_v1`.
+
+The ledger `sourcePolicy` records Booking.com as the accommodation ground-truth source and Expedia as the
+production anchor. The calibration direction is **Booking -> Expedia**, and at least 12 matched cities are
+required before fitting that source offset.
+
 ## Accommodation price basis
 
 For a frozen-window Booking.com quote, record as `amount` the lowest price a logged-out visitor with no
