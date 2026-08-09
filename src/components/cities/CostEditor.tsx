@@ -46,9 +46,36 @@ interface CostEditorProps {
   values: Record<string, number | null>;
   onChange: (key: string, value: number | null) => void;
   sources?: Record<string, string>;
+  evidenceGrades?: Record<string, string | null | undefined>;
+  intervals?: Record<string, { lowerAud: number; upperAud: number; widthPct: number } | null | undefined>;
 }
 
-export function CostEditor({ values, onChange, sources }: CostEditorProps) {
+const FIELD_EVIDENCE_KEYS: Record<string, string> = {
+  accomHostel: 'accom_shared_hostel_dorm',
+  accomPrivateRoom: 'accom_hostel_private_room',
+  accom1star: 'accom_1_star',
+  accom2star: 'accom_2_star',
+  accom3star: 'accom_3_star',
+  accom4star: 'accom_4_star',
+  foodStreet: 'food_street_food',
+  foodBudget: 'food_budget',
+  foodMid: 'food_mid_range',
+  foodHigh: 'food_high_end',
+  drinkCoffee: 'drink_coffee',
+  drinkLocalBeer: 'domestic_draft_beer_1',
+  drinkWineGlass: 'wine_glass_1',
+  drinkCocktail: 'cocktail_1',
+  drinksNone: 'drinks_none',
+  drinksLight: 'drinks_light',
+  drinksModerate: 'drinks_moderate',
+  drinksHeavy: 'drinks_heavy',
+  activitiesFree: 'activities_free',
+  activitiesBudget: 'activities_budget',
+  activitiesMid: 'activities_mid_range',
+  activitiesHigh: 'activities_high_end',
+};
+
+export function CostEditor({ values, onChange, sources, evidenceGrades, intervals }: CostEditorProps) {
   const groups = COST_FIELDS.reduce<Record<string, CostField[]>>((acc, field) => {
     if (!acc[field.group]) acc[field.group] = [];
     acc[field.group].push(field);
@@ -71,6 +98,22 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
               <div key={field.key}>
                 <div className="flex items-center gap-1">
                   <Label className="text-xs">{field.label}</Label>
+                  {evidenceGrades?.[field.key] ? (
+                    <span
+                      className={`rounded px-1 text-[10px] ${
+                        evidenceGrades[field.key] === 'D'
+                          ? 'bg-red-100 text-red-700'
+                          : 'bg-slate-100 text-slate-700'
+                      }`}
+                      title={
+                        intervals?.[FIELD_EVIDENCE_KEYS[field.key]]
+                          ? `Published interval ±${intervals[FIELD_EVIDENCE_KEYS[field.key]]?.widthPct.toFixed(0)}%`
+                          : undefined
+                      }
+                    >
+                      {evidenceGrades[field.key]}
+                    </span>
+                  ) : null}
                   {sources?.[field.key] && (
                     <span className={`text-[10px] px-1 rounded ${SOURCE_BADGES[sources[field.key]] || 'bg-gray-100'}`}>
                       {sources[field.key]}
@@ -82,6 +125,11 @@ export function CostEditor({ values, onChange, sources }: CostEditorProps) {
                   className="h-8 text-xs"
                   placeholder="$"
                   value={values[field.key] ?? ''}
+                  title={
+                    intervals?.[FIELD_EVIDENCE_KEYS[field.key]]
+                      ? `Published interval: ${intervals[FIELD_EVIDENCE_KEYS[field.key]]?.lowerAud.toFixed(2)}–${intervals[FIELD_EVIDENCE_KEYS[field.key]]?.upperAud.toFixed(2)} AUD`
+                      : undefined
+                  }
                   onChange={(e) =>
                     onChange(field.key, e.target.value ? parseFloat(e.target.value) : null)
                   }

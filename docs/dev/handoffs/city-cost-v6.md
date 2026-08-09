@@ -2,7 +2,7 @@
 
 **As at:** 9 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** M0 complete. **M1 (integrate) is the next work.**
+**Milestone:** M0 and **M1 (integrate) complete**. **M2 (ground truth) is next.**
 
 > **This is the cold-start document.** If you are picking up this workstream with no context, you are in
 > the right place. Read §1, then do §4. You do not need to read the 95 v5 experiment directories.
@@ -51,7 +51,7 @@ times for sample size. The accuracy its gate protected was already achieved.
 
 ## 3. State of the world
 
-### Done (M0, 9 August 2026)
+### Done (M0 + M1, 9 August 2026)
 
 - Repo hygiene: `AGENTS.md` had a resume prompt accidentally appended and had drifted from `CLAUDE.md`,
   so `npm run docs:check-memory` was failing. Repaired.
@@ -62,6 +62,16 @@ times for sample size. The accuracy its gate protected was already achieved.
 - `LOOP-PROMPT-V6.md` written; v5's loop prompt archived at `docs/dev/archive/loop-prompt-v5.md` with a
   banner explaining why it could not terminate.
 - v5 plan doc and handoff bannered superseded; v5 programme closure appended to `LOG.md`.
+- v6 deterministic materialization added in `src/lib/city-cost-methodology-v6.ts`: JSON-driven
+  accommodation ladder, regional/band grade-D priors, worst-grade baskets and intervals.
+- Three versioned v6 spine prompts and `src/lib/city-cost-v6-collection.ts` added. The collector preserves
+  source currency and missingness, converts with the frozen FX snapshot, retries a block once, and records
+  per-call telemetry within the six-call/25-search budget.
+- `CITY_COST_METHODOLOGY_V6=true` switches new-city generation to v6; unset retains v1. The 121-city CSV and
+  seed path are unchanged.
+- v6 grades, intervals, missingness and telemetry are persisted in estimate metadata and shown on `/dataset`.
+- 10 v6 tests cover materialization, priors, collection retry/FX, and the flagged generation path. The full
+  suite passes with 153 tests; build, TypeScript and coefficient checks pass.
 
 ### The coefficients that exist right now
 
@@ -81,36 +91,31 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 ### Not done
 
-M1–M5. Nothing is wired into the app yet. **The 121-city CSV and the v1 generation path are untouched
-and still shipping.**
+M2–M5. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
+untouched and still shipping.** A live provider smoke test requires a configured provider key; the flagged
+path is covered by deterministic integration tests.
 
 ---
 
 ## 4. The exact next action
 
-**Start M1 — integrate v6 behind a feature flag.** Do not start with data collection; do not start with
-an experiment. M1 first is the central correction to v5's failure mode.
+**Start M2 — collect the 40-city ground-truth panel.** Do not tune coefficients or score the locked holdout
+yet. M1 is complete; the next work is bounded collection, not another production-source experiment.
 
 Work order:
 
-1. **Types.** Add evidence grade (`A | B | C | D | definitional`) and interval to the materialized tier
-   type. `src/lib/city-cost-methodology-v5.ts` already carries `evidenceBasis` and `imputedMeasures` —
-   extend rather than replace, and keep `deriveCityCostV5()` working as-is.
-2. **Ladder.** Apply `data/reference/v6/coefficients-v6.json` to derive the five non-3-star accommodation
-   tiers from the measured `hotel_3star_room_2p`. Read the coefficients from the JSON; do not inline them.
-3. **Grade D.** Implement the regional/band prior so no field is ever blank. Band cuts are in the
-   validation manifest (`accom_3_star` terciles: 54.25 / 116.25 AUD).
-4. **Basket grading.** A basket takes the **worst** grade among its inputs. See data dictionary §3.
-5. **Prompts.** Three spine extractors under `docs/prompts/`, versioned: Numbeo food/drink, Expedia
-   3-star, BudgetYourTrip activities. The v5 experiment prompts for each route are the starting point —
-   they are already validated retrieval contracts.
-6. **Collection path.** Multi-call, with retry-on-block recorded, and per-call telemetry.
-7. **Flag.** New cities generate through v6; existing rows unchanged.
-8. **UI.** Surface the grade on `/dataset`.
-9. **Tests.** Ladder application, grade propagation, basket worst-grade rule, fail-to-grade-D.
+1. Read `data/reference/v6/validation-manifest-v6.json` and create the ground-truth collection ledger for
+   its 25 development cities and six measures per city. Keep the 15 holdout city results sealed.
+2. Collect dated source facts for each development city using browser automation, manual research, or a
+   stronger model as permitted by the manifest. Record source URL, retrieval date, displayed currency,
+   tax/fee treatment, and property name where applicable.
+3. Validate the ledger deterministically before fitting anything. Do not use the locked holdout to tune a
+   prompt, coefficient or gate.
+4. Record one M2 verdict in `PLAN.md`, append confirmed coverage to `LOG.md`, and update this handoff with
+   the exact next action.
 
-**M1 exit criterion:** one new city generates end to end through v6 with all 19 values graded, and the
-verification baseline passes.
+**M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
+metadata and sealed storage; no holdout score has been revealed.
 
 ---
 

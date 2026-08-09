@@ -20,7 +20,7 @@ arithmetic and FX inside the model, and applies asserted multipliers, one of whi
 could not be satisfied from free public sources. Its evidence is retained in full and is the foundation
 of v6. Full diagnosis: [`docs/dev/plans/city-cost-methodology-v6.md`](docs/dev/plans/city-cost-methodology-v6.md) §1.
 
-**v6 is adopted and M0 is complete.** The next work is **M1 — integrate**.
+**v6 is adopted and M1 is integrated behind an opt-in feature flag.** The next work is **M2 — ground truth**.
 
 ---
 
@@ -71,23 +71,25 @@ Order is **not negotiable**. M1 ships before any accuracy work — that is the c
 - [x] v5 plan doc bannered superseded; v5 closure appended to `LOG.md`
 - [x] `AGENTS.md`/`CLAUDE.md` mirror repaired — `npm run docs:check-memory` was failing
 
-### M1 — integrate — **next**
+### M1 — integrate — **complete (9 August 2026)**
 
-Wire v6 into the app behind a feature flag. **The 121-city CSV is not touched.**
+Wire v6 into the app behind `CITY_COST_METHODOLOGY_V6=true`. Unset keeps the v1 generation path active.
+**The 121-city CSV is untouched.**
 
-- [ ] Add the grade + interval types and propagate them through materialization
-- [ ] Implement the ladder from `coefficients-v6.json` on top of `deriveCityCostV5()`
-- [ ] Implement the grade-D regional/band prior so no field is ever blank
-- [ ] Build the three spine extractor prompts (Numbeo / Expedia / BudgetYourTrip) under `docs/prompts/`
-- [ ] Wire the multi-call collection path with retry-on-block and per-call telemetry
-- [ ] Feature flag: new cities generate through v6; existing rows unchanged
-- [ ] Surface grade in the `/dataset` UI
-- [ ] Tests: ladder, grade propagation, basket worst-grade rule, fail-to-grade-D
+- [x] Add the grade + interval types and propagate them through materialization
+- [x] Implement the ladder from `coefficients-v6.json` on top of `deriveCityCostV5()`
+- [x] Implement the grade-D regional/band prior so no field is ever blank
+- [x] Build the three spine extractor prompts (Numbeo / Expedia / BudgetYourTrip) under `docs/prompts/`
+- [x] Wire the multi-call collection path with retry-on-block and per-call telemetry
+- [x] Feature flag: v6 generation is opt-in; existing CSV rows remain unchanged
+- [x] Surface grade and interval in the `/dataset` UI and editor
+- [x] Tests: ladder, grade propagation, basket worst-grade rule, fail-to-grade-D, collection retry, flagged generation
 
-**Exit:** a new city generates end to end through v6 with all 19 values graded, and the verification
-baseline passes.
+**Exit:** the flagged new-city path generates all 19 graded/intervalled values in the integration test; the
+121-city CSV remains untouched; the verification baseline passes. A live provider smoke test still requires
+a configured provider key.
 
-### M2 — ground truth
+### M2 — ground truth — **next**
 
 Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-manifest-v6.json`.
 
@@ -96,6 +98,15 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 - [ ] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded.
+
+M1 implementation notes:
+
+- `src/lib/city-cost-methodology-v6.ts` is the deterministic ladder, basket-grade, interval and prior boundary.
+- `src/lib/city-cost-v6-collection.ts` runs three specialist search-snippet calls, retries a reported block once,
+  preserves missingness, converts through the frozen FX snapshot, and records per-call telemetry.
+- `src/lib/city-generation.ts` switches to v6 only when `CITY_COST_METHODOLOGY_V6=true`; v1 remains the default.
+- v6 provenance is persisted in `city_estimates.metadata_json` and shown on `/dataset`. The live CSV and seed path
+  are unchanged.
 
 ### M3 — fit and validate
 
@@ -195,7 +206,7 @@ These are why v6 terminates and v5 did not. Full text in `LOOP-PROMPT-V6.md` §5
 ```
 npx tsc --noEmit                              # expected to pass
 npm run build                                 # expected to pass
-npm test -- --run                             # 142 tests
+    npm test -- --run                             # 153 tests
 npm run docs:check-memory                     # AGENTS.md mirrors CLAUDE.md
 node scripts/fit-city-cost-ladder-v6.mjs --check   # coefficients match the evidence
 ```

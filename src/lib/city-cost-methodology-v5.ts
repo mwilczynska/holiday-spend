@@ -61,6 +61,7 @@ export type V5AnchorStatus =
   | 'imputed'
   | 'not_found'
   | 'blocked'
+  | 'stale'
   | 'class_absent';
 
 export type V5EvidenceBasis =
@@ -70,6 +71,15 @@ export type V5EvidenceBasis =
   | 'imputed'
   | 'definitional'
   | 'missing';
+
+/** Evidence labels used by the v6 materialization boundary. */
+export type CityCostEvidenceGrade = 'A' | 'B' | 'C' | 'D' | 'definitional';
+
+export interface CityCostInterval {
+  lowerAud: number;
+  upperAud: number;
+  widthPct: number;
+}
 
 export interface V5AnchorInput {
   /** Value after deterministic FX conversion, never a model output in AUD. */
@@ -92,6 +102,10 @@ export interface V5MaterializedTier {
   imputedMeasures: V5AnchorName[];
   sourceIds: string[];
   modelVersions: string[];
+  /** Optional so the v5 experiment contract remains backwards-compatible. */
+  evidenceGrade?: CityCostEvidenceGrade;
+  /** Optional so the v5 experiment contract remains backwards-compatible. */
+  interval?: CityCostInterval;
 }
 
 export interface V5Materialization {

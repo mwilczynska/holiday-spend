@@ -4,6 +4,14 @@ import { z } from 'zod';
 import type { CityEstimateData } from '@/types';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
 import { type CityGenerationProvider } from '@/lib/city-generation-config';
+import {
+  collectCityCostV6Anchors,
+  type V6CollectionResult,
+} from '@/lib/city-cost-v6-collection';
+import {
+  materializeCityCostV6,
+  type V6Materialization,
+} from '@/lib/city-cost-methodology-v6';
 
 const generatedCitySchema = z.object({
   city: z.string().min(1),
@@ -55,15 +63,31 @@ export interface CityGenerationRequest {
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
+  region?: string | null;
+}
+
+export interface V6GeneratedCityPayload {
+  city: string;
+  country: string;
+  region: string;
+  confidence: 'low' | 'medium' | 'high';
+  confidence_notes: string;
+  anchors_aud: Record<string, number>;
+  tiers_aud: Record<string, number>;
+  evidence_grades: Record<string, string>;
+  intervals: Record<string, { lowerAud: number; upperAud: number; widthPct: number }>;
 }
 
 export interface CityGenerationResult {
   provider: string;
   model: string;
   promptVersion: string;
-  payload: GeneratedCityPayload;
+  payload: GeneratedCityPayload | V6GeneratedCityPayload;
   mappedEstimate: Partial<CityEstimateData>;
-  inferredAudPerUsd: number;
+  inferredAudPerUsd: number | null;
+  methodologyVersion: 'v1' | 'v6.0';
+  v6Collection?: V6CollectionResult;
+  v6Materialization?: V6Materialization;
 }
 
 export class CityGenerationError extends Error {
@@ -74,6 +98,10 @@ export class CityGenerationError extends Error {
     this.name = 'CityGenerationError';
     this.status = status;
   }
+}
+
+export function isCityCostV6Enabled() {
+  return process.env.CITY_COST_METHODOLOGY_V6 === 'true';
 }
 
 function extractJsonObject(text: string): unknown {
@@ -212,6 +240,72 @@ function inferAudPerUsd(payload: GeneratedCityPayload) {
 }
 
 export async function generateCityCostEstimate(request: CityGenerationRequest): Promise<CityGenerationResult> {
+  if (isCityCostV6Enabled()) {
+    try {
+      const collection = await collectCityCostV6Anchors({
+        city: request.cityName,
+        country: request.countryName,
+        region: request.region,
+        referenceDate: request.referenceDate,
+        provider: request.provider,
+        apiKey: request.apiKey,
+        model: request.model,
+      });
+      const materialization = materializeCityCostV6({
+        city: request.cityName,
+        country: request.countryName,
+        region: request.region,
+        anchors: collection.anchors,
+      });
+      const grades = Object.fromEntries(
+        Object.entries(materialization.tiersAud).map(([tier, value]) => [tier, value.evidenceGrade])
+      );
+      const intervals = Object.fromEntries(
+        Object.entries(materialization.tiersAud).map(([tier, value]) => [tier, value.interval])
+      );
+      const tierValues = Object.fromEntries(
+        Object.entries(materialization.tiersAud).map(([tier, value]) => [tier, value.amountAud ?? 0])
+      );
+      const anchorValues = Object.fromEntries(
+        Object.entries(materialization.anchors).map(([anchor, value]) => [anchor, value.valueAud ?? 0])
+      );
+      const gradeRank: Record<string, number> = { definitional: 0, A: 1, B: 2, C: 3, D: 4 };
+      const worstGrade = Object.values(grades).reduce(
+        (worst, grade) => (gradeRank[grade] > gradeRank[worst] ? grade : worst),
+        'A'
+      );
+      const confidence = worstGrade === 'D' ? 'low' : worstGrade === 'C' ? 'medium' : 'high';
+      const payload: V6GeneratedCityPayload = {
+        city: request.cityName,
+        country: request.countryName,
+        region: materialization.region ?? request.region ?? 'unknown',
+        confidence,
+        confidence_notes: `City cost v6.0: deterministic derivation from three bounded source extractors. Worst materialized evidence grade is ${worstGrade}; grades and intervals are persisted per tier.`,
+        anchors_aud: anchorValues,
+        tiers_aud: tierValues,
+        evidence_grades: grades,
+        intervals,
+      };
+      const primaryCall = collection.telemetry[0];
+      return {
+        provider: primaryCall?.provider ?? request.provider ?? 'unknown',
+        model: primaryCall?.model ?? request.model ?? 'unknown',
+        promptVersion: 'city-cost-v6-spine-v1',
+        inferredAudPerUsd: null,
+        methodologyVersion: 'v6.0',
+        v6Collection: collection,
+        v6Materialization: materialization,
+        mappedEstimate: materialization.mappedEstimate,
+        payload,
+      };
+    } catch (err) {
+      if (err instanceof CityGenerationError) throw err;
+      const message = err instanceof Error ? err.message : 'v6 city-cost collection failed.';
+      const status = typeof (err as { status?: unknown }).status === 'number' ? (err as { status: number }).status : 502;
+      throw new CityGenerationError(message, status);
+    }
+  }
+
   const { prompt, promptVersion } = buildCityGenerationPrompt(request);
   let providerResponse: { provider: string; model: string; text: string } | null = null;
   try {
@@ -257,6 +351,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
     model: providerResponse.model,
     promptVersion,
     inferredAudPerUsd,
+    methodologyVersion: 'v1',
     mappedEstimate: mapTiersToEstimateData(parsedPayload),
     payload: parsedPayload,
   };

@@ -17,6 +17,9 @@
 | `llm_prompt_city_cost_v5_experiment_093_wine_volume_targeted_panel.md` | **COMPLETE — promote retrieval only** | one city per delegated GPT-5.6 Luna-class invocation | 12/12 compliant, 9/12 strict panels; no bottle-to-glass mapping |
 | `llm_prompt_city_cost_v5_experiment_094_trip_class_proxy_calibration.md` | **COMPLETE — reject proxy calibration** | one city per delegated GPT-5.6 Luna-class invocation | 36/36 proxy rows; high error and insufficient same-currency pairs |
 | `llm_prompt_new_cities_1.md` | **ACTIVE — shipping** | `src/lib/city-generation.ts` at runtime | The v1 city generation path. Every user-facing city cost comes from this |
+| `llm_prompt_city_cost_v6_numbeo.md` | **ACTIVE — v6 M1** | `src/lib/city-cost-v6-collection.ts` | Search-snippet extractor for five Numbeo food/drink anchors; source currency only |
+| `llm_prompt_city_cost_v6_expedia_3star.md` | **ACTIVE — v6 M1** | `src/lib/city-cost-v6-collection.ts` | Search-snippet extractor for the Expedia three-star accommodation level |
+| `llm_prompt_city_cost_v6_budgetyourtrip.md` | **ACTIVE — v6 M1** | `src/lib/city-cost-v6-collection.ts` | Search-snippet extractor for three BudgetYourTrip activity proxies |
 | `llm_prompt_intercity_transport_1.md` | **ACTIVE — shipping** | `src/lib/transport-estimation.ts` | Planner intercity transport estimation. Unrelated to city costs |
 | `llm_prompt_city_anchors_v4.md` | **ACTIVE — not yet wired up** | nothing yet | The v4 collection contract. Tested end to end but no ingestion path exists |
 | `llm_prompt_city_cost_v5_experiment_001.md` | **EXPERIMENT — unvalidated** | `scripts/run-city-cost-v5-one-call.mjs` | Candidate 18-measure extractor; target-class prompt testing uses delegated Luna, provider telemetry remains pending |

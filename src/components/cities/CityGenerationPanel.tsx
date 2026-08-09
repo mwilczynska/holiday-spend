@@ -29,12 +29,16 @@ interface GenerationResult {
   provider: string;
   model: string;
   promptVersion: string;
-  inferredAudPerUsd: number;
+  inferredAudPerUsd: number | null;
+  methodologyVersion?: string;
   payload: {
     confidence: string;
     confidence_notes: string;
-    anchors_usd: Record<string, number>;
+    anchors_usd?: Record<string, number>;
+    anchors_aud?: Record<string, number>;
     tiers_aud: Record<string, number>;
+    evidence_grades?: Record<string, string>;
+    intervals?: Record<string, { lowerAud: number; upperAud: number; widthPct: number }>;
   };
 }
 
@@ -336,7 +340,10 @@ export function CityGenerationPanel({
             <Badge variant="outline">{result.provider}</Badge>
             <Badge variant="outline">{result.model}</Badge>
             <Badge variant="outline">{result.promptVersion}</Badge>
-            <Badge variant="outline">1 USD = {fmtMoney(result.inferredAudPerUsd)} AUD</Badge>
+            {result.methodologyVersion ? <Badge variant="outline">Method {result.methodologyVersion}</Badge> : null}
+            {typeof result.inferredAudPerUsd === 'number' ? (
+              <Badge variant="outline">1 USD = {fmtMoney(result.inferredAudPerUsd)} AUD</Badge>
+            ) : null}
             <Badge
               variant={
                 result.payload.confidence === 'high'
@@ -355,17 +362,26 @@ export function CityGenerationPanel({
             <p className="text-sm text-muted-foreground">{result.payload.confidence_notes}</p>
           </div>
 
-          <div className="space-y-1">
-            <p className="text-xs uppercase tracking-wide text-muted-foreground">Implied AUD/USD Rate</p>
+          {typeof result.inferredAudPerUsd === 'number' ? (
+            <div className="space-y-1">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground">Implied AUD/USD Rate</p>
+              <p className="text-sm text-muted-foreground">
+                The generated tier basket implies an exchange rate of 1 USD = {fmtMoney(result.inferredAudPerUsd)} AUD.
+              </p>
+            </div>
+          ) : (
             <p className="text-sm text-muted-foreground">
-              The generated tier basket implies an exchange rate of 1 USD = {fmtMoney(result.inferredAudPerUsd)} AUD.
+              v6 keeps source facts in source currency, converts them with the frozen FX snapshot, and derives all
+              planner values deterministically.
             </p>
-          </div>
+          )}
 
           <details className="rounded-md border">
-            <summary className="cursor-pointer px-3 py-2 text-sm font-medium">USD Anchors</summary>
+            <summary className="cursor-pointer px-3 py-2 text-sm font-medium">
+              {result.payload.anchors_aud ? 'AUD Source Anchors' : 'USD Anchors'}
+            </summary>
             <div className="grid gap-2 border-t px-3 py-3 sm:grid-cols-2 lg:grid-cols-5">
-              {Object.entries(result.payload.anchors_usd).map(([key, value]) => (
+              {Object.entries(result.payload.anchors_aud ?? result.payload.anchors_usd ?? {}).map(([key, value]) => (
                 <div key={key} className="space-y-1">
                   <div className="text-xs text-muted-foreground">{key}</div>
                   <div className="text-sm font-medium">{fmtMoney(value)}</div>
@@ -380,7 +396,19 @@ export function CityGenerationPanel({
               {Object.entries(result.payload.tiers_aud).map(([key, value]) => (
                 <div key={key} className="space-y-1">
                   <div className="text-xs text-muted-foreground">{key}</div>
-                  <div className="text-sm font-medium">{fmtMoney(value)}</div>
+                  <div className="flex items-center gap-2 text-sm font-medium">
+                    {fmtMoney(value)}
+                    {result.payload.evidence_grades?.[key] ? (
+                      <span className="rounded bg-slate-100 px-1 text-[10px]">
+                        {result.payload.evidence_grades[key]}
+                      </span>
+                    ) : null}
+                  </div>
+                  {result.payload.intervals?.[key] ? (
+                    <div className="text-[10px] text-muted-foreground">
+                      ±{result.payload.intervals[key].widthPct.toFixed(0)}%
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>

@@ -4,7 +4,7 @@
 cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact next action. This file
 tells you what lives here and what each file is for.
 
-**Status:** v6 adopted 9 August 2026. Milestone M0 complete; M1 is the next work.
+**Status:** v6 adopted 9 August 2026. Milestones M0 and M1 complete; M2 is next.
 
 ---
 
@@ -102,6 +102,21 @@ Full diagnosis: `docs/dev/plans/city-cost-methodology-v6.md` §1.
 
 Nothing under `data/reference/v5/` is deleted or moved. Per project convention, superseded decisions are
 marked and dated rather than removed, so the reasoning that replaced them stays legible.
+
+---
+
+## M1 implementation
+
+The opt-in runtime flag `CITY_COST_METHODOLOGY_V6=true` sends new-city generation through
+`src/lib/city-cost-v6-collection.ts` and `src/lib/city-cost-methodology-v6.ts`. The path makes three bounded
+search-snippet extractor calls (Numbeo, Expedia three-star, BudgetYourTrip), retries a reported block once,
+converts source-currency facts with the frozen FX snapshot, and falls back to regional/accommodation-band
+medians at grade D when an anchor is unavailable. Grades, intervals, missingness and per-call telemetry are
+stored in `city_estimates.metadata_json` and exposed by `/api/estimates` and `/dataset`.
+
+The feature flag is deliberately off by default during M1. The v1 generation path and
+`data/reference/city_costs_app_aud.csv` remain unchanged. M2 ground-truth collection is the next workstream;
+no v6 experiment is authorized before that panel work begins.
 
 > **Do not move or rename anything under `data/reference/`** without updating its readers. Scripts and
 > six Vitest test files reference those paths as string literals.

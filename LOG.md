@@ -2015,3 +2015,29 @@ Median APE was 124.2%, p90 APE 532.4%, and median signed error +124.2%; both pai
 **Verdict:** reject Trip.com proxy calibration. Unknown occupancy/tax is materially consequential, so retain rows as
 labelled source evidence only and do not relax the frozen accommodation estimand or map a product field. Read
 `data/reference/v5/experiments/094-trip-class-proxy-calibration/verdict.md`.
+
+## v6 M1 — integration complete (9 August 2026)
+
+M1 integrated the v6 path behind the opt-in `CITY_COST_METHODOLOGY_V6=true` feature flag. The default v1
+generation path and the 121-city CSV remain unchanged.
+
+Confirmed implementation:
+
+- `src/lib/city-cost-methodology-v6.ts` reads the frozen validation band cuts and generated accommodation
+  coefficients, derives all five non-three-star accommodation tiers from the measured three-star anchor,
+  applies worst-grade basket propagation, computes intervals, and falls back to regional/band medians at
+  grade D without returning blanks.
+- `src/lib/city-cost-v6-collection.ts` runs three versioned search-snippet spine extractors (Numbeo,
+  Expedia three-star, BudgetYourTrip). It keeps source-currency facts separate from deterministic FX,
+  preserves `blocked`/`not_found`/`stale`/`class_absent`, retries a block once, and records per-call
+  telemetry within the v6 refresh budget.
+- Estimate metadata persists v6 grades, intervals, anchor provenance, missingness, prior basis and telemetry.
+  `/dataset` shows a per-city grade distribution, per-value grades/intervals, and editor tooltips.
+
+Verification passed from the physical OneDrive target path: `npx tsc --noEmit`, `npm run build` (with the
+documented dynamic `/api/export` message), `npm test -- --run` (153 tests), `npm run docs:check-memory`, and
+`node scripts/fit-city-cost-ladder-v6.mjs --check`. The flagged generation path is covered by a deterministic
+integration test; a live provider smoke test remains pending because no provider key is configured locally.
+
+**Verdict:** promote M1 integration. Do not collect v6 experiments or score gates yet. The next work is M2:
+collect and seal the 25 development plus 15 locked-holdout ground-truth cities defined in the frozen manifest.

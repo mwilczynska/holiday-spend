@@ -39,8 +39,12 @@ export async function POST(
       model: generated.model,
       promptVersion: generated.promptVersion,
       inferredAudPerUsd: generated.inferredAudPerUsd,
+      methodologyVersion: generated.methodologyVersion,
       payload: generated.payload,
       estimate: generated.estimate,
+      evidenceGrades: generated.evidenceGrades,
+      intervals: generated.intervals,
+      collectionTelemetry: generated.collectionTelemetry,
     });
   } catch (err) {
     if (err instanceof CityGenerationError) {

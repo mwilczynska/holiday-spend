@@ -24,7 +24,25 @@ interface City {
   estimationSource: string | null;
   estimatedAt?: string | null;
   notes?: string | null;
+  v6Provenance?: V6Provenance | null;
   [key: string]: unknown;
+}
+
+interface V6Interval {
+  lowerAud: number;
+  upperAud: number;
+  widthPct: number;
+}
+
+interface V6Provenance {
+  methodologyVersion: 'v6.0';
+  evidenceGrades: Record<string, string>;
+  intervals: Record<string, V6Interval>;
+  anchorEvidenceGrades: Record<string, string>;
+  anchorIntervals: Record<string, V6Interval | null>;
+  collectionTelemetry: Array<{ source?: string; status?: string; attempts?: number; searchesUsed?: number }>;
+  missingness: Record<string, string>;
+  priorBasis: string | null;
 }
 
 interface Country {
@@ -47,6 +65,7 @@ interface EstimateHistoryItem {
   reasoning: string | null;
   inferredAudPerUsd: number | null;
   isActive: number | null;
+  v6Provenance?: V6Provenance | null;
 }
 
 type DatasetCity = City & {
@@ -55,26 +74,26 @@ type DatasetCity = City & {
   region?: string | null;
 };
 
-const DATASET_COLUMNS: Array<{ key: string; label: string }> = [
-  { key: 'accomHostel', label: 'Hostel' },
-  { key: 'accomPrivateRoom', label: 'Private' },
-  { key: 'accom1star', label: '1-Star' },
-  { key: 'accom2star', label: '2-Star' },
-  { key: 'accom3star', label: '3-Star' },
-  { key: 'accom4star', label: '4-Star' },
-  { key: 'foodStreet', label: 'Food Street' },
-  { key: 'foodBudget', label: 'Food Budget' },
-  { key: 'foodMid', label: 'Food Mid' },
-  { key: 'foodHigh', label: 'Food High' },
-  { key: 'drinkCoffee', label: 'Coffee / Unit' },
-  { key: 'drinksNone', label: 'Drinks None' },
-  { key: 'drinksLight', label: 'Drinks Light' },
-  { key: 'drinksModerate', label: 'Drinks Moderate' },
-  { key: 'drinksHeavy', label: 'Drinks Heavy' },
-  { key: 'activitiesFree', label: 'Activities Free' },
-  { key: 'activitiesBudget', label: 'Activities Budget' },
-  { key: 'activitiesMid', label: 'Activities Mid' },
-  { key: 'activitiesHigh', label: 'Activities High' },
+const DATASET_COLUMNS: Array<{ key: string; label: string; v6Tier: string }> = [
+  { key: 'accomHostel', label: 'Hostel', v6Tier: 'accom_shared_hostel_dorm' },
+  { key: 'accomPrivateRoom', label: 'Private', v6Tier: 'accom_hostel_private_room' },
+  { key: 'accom1star', label: '1-Star', v6Tier: 'accom_1_star' },
+  { key: 'accom2star', label: '2-Star', v6Tier: 'accom_2_star' },
+  { key: 'accom3star', label: '3-Star', v6Tier: 'accom_3_star' },
+  { key: 'accom4star', label: '4-Star', v6Tier: 'accom_4_star' },
+  { key: 'foodStreet', label: 'Food Street', v6Tier: 'food_street_food' },
+  { key: 'foodBudget', label: 'Food Budget', v6Tier: 'food_budget' },
+  { key: 'foodMid', label: 'Food Mid', v6Tier: 'food_mid_range' },
+  { key: 'foodHigh', label: 'Food High', v6Tier: 'food_high_end' },
+  { key: 'drinkCoffee', label: 'Coffee / Unit', v6Tier: 'drink_coffee' },
+  { key: 'drinksNone', label: 'Drinks None', v6Tier: 'drinks_none' },
+  { key: 'drinksLight', label: 'Drinks Light', v6Tier: 'drinks_light' },
+  { key: 'drinksModerate', label: 'Drinks Moderate', v6Tier: 'drinks_moderate' },
+  { key: 'drinksHeavy', label: 'Drinks Heavy', v6Tier: 'drinks_heavy' },
+  { key: 'activitiesFree', label: 'Activities Free', v6Tier: 'activities_free' },
+  { key: 'activitiesBudget', label: 'Activities Budget', v6Tier: 'activities_budget' },
+  { key: 'activitiesMid', label: 'Activities Mid', v6Tier: 'activities_mid_range' },
+  { key: 'activitiesHigh', label: 'Activities High', v6Tier: 'activities_high_end' },
 ];
 
 const REGION_OPTIONS = [
@@ -100,6 +119,40 @@ function fmtDate(value: string | null | undefined) {
 
 function fmtMoney(value: unknown) {
   return typeof value === 'number' ? value.toFixed(2) : '-';
+}
+
+function gradeForField(provenance: V6Provenance | null | undefined, column: { key: string; v6Tier: string }) {
+  return provenance?.evidenceGrades?.[column.v6Tier] ?? null;
+}
+
+function gradeForCostEditorField(provenance: V6Provenance | null | undefined, key: string) {
+  const anchorByField: Record<string, string> = {
+    drinkLocalBeer: 'domestic_draft_beer_1',
+    drinkWineGlass: 'wine_glass_1',
+    drinkCocktail: 'cocktail_1',
+  };
+  const tierByField: Record<string, string> = {
+    accomHostel: 'accom_shared_hostel_dorm',
+    accomPrivateRoom: 'accom_hostel_private_room',
+    accom1star: 'accom_1_star',
+    accom2star: 'accom_2_star',
+    accom3star: 'accom_3_star',
+    accom4star: 'accom_4_star',
+    foodStreet: 'food_street_food',
+    foodBudget: 'food_budget',
+    foodMid: 'food_mid_range',
+    foodHigh: 'food_high_end',
+    drinkCoffee: 'drink_coffee',
+    drinksNone: 'drinks_none',
+    drinksLight: 'drinks_light',
+    drinksModerate: 'drinks_moderate',
+    drinksHeavy: 'drinks_heavy',
+    activitiesFree: 'activities_free',
+    activitiesBudget: 'activities_budget',
+    activitiesMid: 'activities_mid_range',
+    activitiesHigh: 'activities_high_end',
+  };
+  return provenance?.evidenceGrades?.[tierByField[key]] ?? provenance?.anchorEvidenceGrades?.[anchorByField[key]] ?? null;
 }
 
 function matchesCity(row: DatasetCity, query: string) {
@@ -147,7 +200,17 @@ export default function DatasetPage() {
 
       const countriesData = await countriesResponse.json();
       const estimatesData = await estimatesResponse.json();
-      const nextCountries = (countriesData.data || []).sort((a: Country, b: Country) => a.name.localeCompare(b.name));
+      const estimateRows = (estimatesData.data?.rows || []) as Array<{ cityId: string; v6Provenance?: V6Provenance | null }>;
+      const estimateByCityId = new Map(estimateRows.map((row) => [row.cityId, row]));
+      const nextCountries = (countriesData.data || [])
+        .map((country: Country) => ({
+          ...country,
+          cities: country.cities.map((city) => ({
+            ...city,
+            v6Provenance: estimateByCityId.get(city.id)?.v6Provenance ?? null,
+          })),
+        }))
+        .sort((a: Country, b: Country) => a.name.localeCompare(b.name));
 
       setCountries(nextCountries);
       setHistory(estimatesData.data?.history || []);
@@ -217,6 +280,7 @@ export default function DatasetPage() {
     () => selectedCityHistory.find((row) => row.isActive) ?? selectedCityHistory[0] ?? null,
     [selectedCityHistory]
   );
+  const selectedCityV6 = selectedCity?.v6Provenance ?? null;
 
   const selectCityFromCountries = useCallback(
     (cityId: string | null, sourceCountries: Country[], updateQuery = true) => {
@@ -453,6 +517,43 @@ export default function DatasetPage() {
                         'Base dataset row. Methodology and generation history live alongside the dataset pages.'}
                     </div>
                   </div>
+                  {selectedCityV6 ? (
+                    <div className="md:col-span-4 rounded-md border bg-muted/20 p-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <div className="text-xs uppercase tracking-wide text-muted-foreground">v6 evidence</div>
+                        <Badge variant="outline">v6.0</Badge>
+                        {Object.entries(
+                          Object.values(selectedCityV6.evidenceGrades).reduce<Record<string, number>>((counts, grade) => {
+                            counts[grade] = (counts[grade] ?? 0) + 1;
+                            return counts;
+                          }, {})
+                        ).map(([grade, count]) => (
+                          <Badge key={grade} variant={grade === 'D' ? 'destructive' : 'secondary'}>
+                            {grade}: {count}
+                          </Badge>
+                        ))}
+                      </div>
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        Grades are assigned by deterministic code. Intervals are shown per value below; grade D means a
+                        regional or cost-band prior, not a live observation.
+                      </p>
+                      <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                        {DATASET_COLUMNS.map((column) => {
+                          const grade = gradeForField(selectedCityV6, column);
+                          const interval = selectedCityV6.intervals[column.v6Tier];
+                          return (
+                            <div key={column.key} className="rounded border bg-background px-2 py-1.5">
+                              <div className="text-[11px] text-muted-foreground">{column.label}</div>
+                              <div className="flex items-center gap-2 text-xs">
+                                <Badge variant={grade === 'D' ? 'destructive' : 'outline'}>{grade ?? '-'}</Badge>
+                                {interval ? <span>±{interval.widthPct.toFixed(0)}%</span> : null}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : null}
                 </CardContent>
               </Card>
 
@@ -539,6 +640,18 @@ export default function DatasetPage() {
                   <CostEditor
                     values={selectedCity as unknown as Record<string, number | null>}
                     onChange={handleCostChange}
+                    evidenceGrades={
+                      selectedCityV6
+                        ? Object.fromEntries(
+                            COST_FIELD_KEYS.map((key) => [key, gradeForCostEditorField(selectedCityV6, key)])
+                          )
+                        : undefined
+                    }
+                    intervals={
+                      selectedCityV6
+                        ? { ...selectedCityV6.intervals, ...selectedCityV6.anchorIntervals }
+                        : undefined
+                    }
                   />
                   <div className="flex flex-wrap items-center gap-3">
                     <Button type="button" onClick={handleSaveCity} disabled={isSaving}>
@@ -622,6 +735,7 @@ export default function DatasetPage() {
                       {column.label}
                     </th>
                   ))}
+                  <th className="px-3 py-2 text-left font-medium">Evidence</th>
                   <th className="px-3 py-2 text-left font-medium">Notes</th>
                   <th className="px-3 py-2 text-left font-medium">Actions</th>
                 </tr>
@@ -643,6 +757,21 @@ export default function DatasetPage() {
                         {fmtMoney((city as Record<string, unknown>)[column.key])}
                       </td>
                     ))}
+                    <td className="px-3 py-2">
+                      {DATASET_COLUMNS.some((column) => gradeForField(city.v6Provenance, column)) ? (
+                        <div className="flex max-w-[12rem] flex-wrap gap-1">
+                          {Array.from(
+                            new Set(DATASET_COLUMNS.map((column) => gradeForField(city.v6Provenance, column)).filter(Boolean))
+                          ).map((grade) => (
+                            <Badge key={grade} variant={grade === 'D' ? 'destructive' : 'outline'}>
+                              {grade}
+                            </Badge>
+                          ))}
+                        </div>
+                      ) : (
+                        '-'
+                      )}
+                    </td>
                     <td className="min-w-[16rem] px-3 py-2 text-xs text-muted-foreground">{city.notes || '-'}</td>
                     <td className="min-w-[12rem] px-3 py-2">
                       <div className="flex gap-2">
@@ -671,7 +800,7 @@ export default function DatasetPage() {
                 ))}
                 {filteredCities.length === 0 ? (
                   <tr>
-                    <td colSpan={DATASET_COLUMNS.length + 6} className="px-3 py-8 text-center text-sm text-muted-foreground">
+                    <td colSpan={DATASET_COLUMNS.length + 7} className="px-3 py-8 text-center text-sm text-muted-foreground">
                       No city rows match the current search.
                     </td>
                   </tr>
