@@ -2,7 +2,7 @@
 
 **Status:** **ACTIVE.** Adopted 9 August 2026. Supersedes `city-cost-methodology-v5.md`.
 **Branch:** `feat/city-cost-methodology-v6`
-**Current milestone:** M0 complete; **M1 (integrate) is next**.
+**Current milestone:** M0 and M1 complete; **M2 (ground truth) is in progress**.
 
 **Cold start?** Read `docs/dev/handoffs/city-cost-v6.md` — it names the exact next action.
 **Running the loop?** Use `LOOP-PROMPT-V6.md`.

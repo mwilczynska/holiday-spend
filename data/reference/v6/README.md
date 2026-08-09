@@ -4,7 +4,7 @@
 cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact next action. This file
 tells you what lives here and what each file is for.
 
-**Status:** v6 adopted 9 August 2026. Milestones M0 and M1 complete; M2 is next.
+**Status:** v6 adopted 9 August 2026. Milestones M0 and M1 complete; M2 ground-truth collection is in progress.
 
 ---
 
@@ -16,6 +16,7 @@ tells you what lives here and what each file is for.
 | `data-dictionary-v6.md` | **Frozen estimands + the evidence-grade ladder.** Defines what each of the 19 values means and what grade A/B/C/D mean | Read before deciding whether a value is usable or what grade it carries. Amend only by dated decision |
 | `validation-manifest-v6.json` | **Frozen acceptance gates + the 40-city ground-truth panel with its locked 15-city holdout** | Read before scoring anything. Never change a gate after seeing its result |
 | `coefficients-v6.json` | **Generated.** The fitted accommodation ladder with provenance, leave-one-out scores and caveats for every number | Never hand-edit. Regenerate with the script below |
+| `ground-truth/` | Frozen-window development ledger plus holdout lock marker for M2; no holdout results are stored here yet | Append dated source facts; validate before M3 |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 
 ---
@@ -102,6 +103,14 @@ Full diagnosis: `docs/dev/plans/city-cost-methodology-v6.md` §1.
 
 Nothing under `data/reference/v5/` is deleted or moved. Per project convention, superseded decisions are
 marked and dated rather than removed, so the reasoning that replaced them stays legible.
+
+## M2 ground-truth ledger
+
+`ground-truth/development-ledger.json` is the manifest-driven 25-city x 6-measure collection ledger. It
+starts with no fabricated values; each found observation must retain its displayed currency, source URL,
+retrieval timestamp, tax/fee wording, and property name for accommodation. Run
+`node scripts/validate-city-cost-v6-ground-truth.mjs` to check the ledger. The separate
+`ground-truth/holdout-seal.json` contains only the lock marker and no holdout prices or scores.
 
 ---
 

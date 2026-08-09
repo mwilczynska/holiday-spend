@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "city-cost-v6-ground-truth-ledger-v1",
+  "methodologyVersion": "v6.0",
+  "panel": "development",
+  "status": "collection_not_started",
+  "manifestPath": "data/reference/v6/validation-manifest-v6.json",
+  "referenceWindow": {
+    "arrival": "2026-09-17",
+    "departure": "2026-09-18",
+    "stayNights": 1,
+    "travellers": 2,
+    "currencyPolicy": "retain displayed source currency; convert only during deterministic scoring"
+  },
+  "requiredMeasures": [
+    "hostel_dorm_bed_1p",
+    "hostel_private_room_2p",
+    "hotel_1star_room_2p",
+    "hotel_3star_room_2p",
+    "hotel_4star_room_2p",
+    "paid_attraction_adult_1"
+  ],
+  "observationContract": {
+    "found": [
+      "amount",
+      "currency",
+      "sourceUrl",
+      "retrievedAt",
+      "taxStatus",
+      "evidenceText"
+    ],
+    "propertyLevelAccommodation": ["propertyName"],
+    "missingStatuses": ["not_found", "blocked", "stale", "class_absent"]
+  },
+  "cities": [
+    { "city": "Hanoi", "region": "SEA", "band": "low", "observations": [] },
+    { "city": "Ho Chi Minh City", "region": "SEA", "band": "low", "observations": [] },
+    { "city": "Da Nang", "region": "SEA", "band": "low", "observations": [] },
+    { "city": "Phuket", "region": "SEA", "band": "mid", "observations": [] },
+    { "city": "Singapore", "region": "SEA", "band": "high", "observations": [] },
+    { "city": "Taipei", "region": "East Asia", "band": "mid", "observations": [] },
+    { "city": "Beijing", "region": "East Asia", "band": "mid", "observations": [] },
+    { "city": "Tokyo", "region": "East Asia", "band": "high", "observations": [] },
+    { "city": "Seoul", "region": "East Asia", "band": "high", "observations": [] },
+    { "city": "Delhi", "region": "South Asia", "band": "low", "observations": [] },
+    { "city": "Colombo", "region": "South Asia", "band": "low", "observations": [] },
+    { "city": "Mumbai", "region": "South Asia", "band": "mid", "observations": [] },
+    { "city": "Istanbul", "region": "Middle East", "band": "mid", "observations": [] },
+    { "city": "Dubai", "region": "Middle East", "band": "high", "observations": [] },
+    { "city": "Cairo", "region": "Africa", "band": "low", "observations": [] },
+    { "city": "Cape Town", "region": "Africa", "band": "mid", "observations": [] },
+    { "city": "Nairobi", "region": "Africa", "band": "mid", "observations": [] },
+    { "city": "Budapest", "region": "Europe", "band": "mid", "observations": [] },
+    { "city": "Prague", "region": "Europe", "band": "mid", "observations": [] },
+    { "city": "Lisbon", "region": "Europe", "band": "high", "observations": [] },
+    { "city": "Barcelona", "region": "Europe", "band": "high", "observations": [] },
+    { "city": "Mexico City", "region": "Latin America", "band": "mid", "observations": [] },
+    { "city": "Lima", "region": "Latin America", "band": "mid", "observations": [] },
+    { "city": "San Francisco", "region": "North America", "band": "high", "observations": [] },
+    { "city": "Melbourne", "region": "Oceania", "band": "high", "observations": [] }
+  ]
+}

@@ -164,6 +164,8 @@ Every field always produces a number; no number is ever presented as better-evid
 collector records source currency, missingness, bounded retries and per-call telemetry. Contracts are frozen
 under `data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start document is
 `docs/dev/handoffs/city-cost-v6.md`.
+M2 ground-truth collection is in progress: the manifest-driven development ledger has 25 cities x 6
+measures, while the holdout seal contains no prices or scores and the 121-city CSV remains on v1 until M4.
 
 ### Transport is out of scope
 
@@ -234,7 +236,7 @@ being treated as zero.
 ```
 npx tsc --noEmit          # expected to pass
 npm run build             # expected to pass
-npm test -- --run         # 152 tests
+npm test -- --run         # 153 tests
 npm run docs:check-memory # AGENTS.md mirrors CLAUDE.md
 node scripts/fit-city-cost-ladder-v6.mjs --check   # v6 coefficients match their evidence
 ```
@@ -276,6 +278,8 @@ login page shows provider-specific guidance instead.
 | `docs/dev/plans/city-cost-methodology-v6.md` | Active v6 methodology, the v5 diagnosis, milestones |
 | `docs/dev/handoffs/city-cost-v6.md` | Cold-start handoff — names the exact next action |
 | `data/reference/v6/` | Frozen v6 contracts: data dictionary, validation manifest, coefficients |
+| `data/reference/v6/ground-truth/` | M2 development ledger and holdout lock marker; holdout results remain sealed |
+| `scripts/validate-city-cost-v6-ground-truth.mjs` | Deterministic M2 ledger audit; never scores the holdout |
 | `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder; `--check` verifies determinism |
 | `docs/product/methodology-v4.md` | Prior methodology evidence; §9.1 is the v4 prompt's source of truth |
 | `data/reference/city_costs_app_aud.csv` | The live 121-city dataset |

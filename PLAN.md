@@ -89,15 +89,19 @@ Wire v6 into the app behind `CITY_COST_METHODOLOGY_V6=true`. Unset keeps the v1 
 121-city CSV remains untouched; the verification baseline passes. A live provider smoke test still requires
 a configured provider key.
 
-### M2 — ground truth — **next**
+### M2 — ground truth — **in progress (9 August 2026)**
 
 Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-manifest-v6.json`.
 
-- [ ] 25 development cities
+- [x] Create a manifest-driven ledger for 25 development cities × 6 measures
+- [x] Seal the holdout boundary without storing holdout prices or scores
+- [ ] 25 development cities — 150 dated source facts
 - [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
-- [ ] Browser automation or manual collection is explicitly allowed here
+- [x] Browser automation or manual collection is explicitly allowed here
 
-**Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded.
+**Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
+reference window is 2026-09-17 to 2026-09-18; the ledger currently reports every slot as pending rather
+than carrying an undated or inferred price.
 
 M1 implementation notes:
 

@@ -48,6 +48,7 @@ re-derive is a claim you cannot audit.
 | --- | --- | --- |
 | `node scripts/fit-city-cost-ladder-v6.mjs` | `fit-city-cost-ladder-v6.mjs` | **Fits the v6 accommodation ladder** from pooled v5 Expedia panels plus the Price of Travel dorm index, scores leave-one-out at city level, cross-validates against the independent v4 Booking.com fit, and regenerates `data/reference/v6/coefficients-v6.json`. Reads only repo files — no network or model calls |
 | `node scripts/fit-city-cost-ladder-v6.mjs --check` | ditto | Verifies the committed coefficients match their evidence byte-for-byte. Exits 1 on drift. Belongs in the verification baseline |
+| `node scripts/validate-city-cost-v6-ground-truth.mjs` | `validate-city-cost-v6-ground-truth.mjs` | Manifest-driven M2 ledger audit; checks development-city membership, six-measure coverage shape, provenance fields and the sealed holdout boundary without scoring it |
 
 ## SUPERSEDED — methodology v5
 

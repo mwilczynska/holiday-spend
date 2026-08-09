@@ -43,7 +43,7 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 ## CURRENT — v6 methodology contracts
 
 **v6 is the active workstream.** Its contracts live under `data/reference/v6/` — start at
-`v6/README.md`. Not yet integrated into the app; the live v1 CSV is unchanged until milestone M4.
+`v6/README.md`. M1 is integrated behind an opt-in flag; the live v1 CSV is unchanged until milestone M4.
 
 | Path | Status | What it is | Read by |
 | --- | --- | --- | --- |
@@ -51,6 +51,7 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 | `v6/data-dictionary-v6.md` | **CURRENT** | Frozen estimands (unchanged from v5) plus the A/B/C/D evidence-grade ladder | v6 derivation and experiments |
 | `v6/validation-manifest-v6.json` | **CURRENT** | Product-level acceptance gates, the 40-city ground-truth panel, and the locked 15-city holdout | v6 scoring |
 | `v6/coefficients-v6.json` | **GENERATED** | The fitted accommodation ladder with provenance, leave-one-out scores and per-coefficient caveats. **Never hand-edit** | `fit-city-cost-ladder-v6.mjs`, v6 derivation |
+| `v6/ground-truth/` | **CURRENT — M2** | Manifest-driven development ledger and holdout lock marker; no holdout results are exposed | v6 collection and scoring |
 
 ## SUPERSEDED — v5 methodology evidence
 

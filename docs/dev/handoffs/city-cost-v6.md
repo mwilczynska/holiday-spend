@@ -2,7 +2,7 @@
 
 **As at:** 9 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** M0 and **M1 (integrate) complete**. **M2 (ground truth) is next.**
+**Milestone:** M0 and **M1 (integrate) complete**. **M2 (ground truth) is in progress.**
 
 > **This is the cold-start document.** If you are picking up this workstream with no context, you are in
 > the right place. Read §1, then do §4. You do not need to read the 95 v5 experiment directories.
@@ -72,6 +72,10 @@ times for sample size. The accuracy its gate protected was already achieved.
 - v6 grades, intervals, missingness and telemetry are persisted in estimate metadata and shown on `/dataset`.
 - 10 v6 tests cover materialization, priors, collection retry/FX, and the flagged generation path. The full
   suite passes with 153 tests; build, TypeScript and coefficient checks pass.
+- The M2 ledger scaffold is in `data/reference/v6/ground-truth/development-ledger.json`; its 25 development
+  cities and six required measures are sourced from the frozen manifest. `holdout-seal.json` contains only a
+  lock marker and no holdout prices or scores. `node scripts/validate-city-cost-v6-ground-truth.mjs` audits
+  the boundary and currently reports 150 pending development slots.
 
 ### The coefficients that exist right now
 
@@ -91,7 +95,7 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 ### Not done
 
-M2–M5. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
+The M2 source-fact collection and M3–M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
 untouched and still shipping.** A live provider smoke test requires a configured provider key; the flagged
 path is covered by deterministic integration tests.
 
@@ -99,13 +103,14 @@ path is covered by deterministic integration tests.
 
 ## 4. The exact next action
 
-**Start M2 — collect the 40-city ground-truth panel.** Do not tune coefficients or score the locked holdout
-yet. M1 is complete; the next work is bounded collection, not another production-source experiment.
+**Continue M2 — populate the development ledger with dated source facts.** Do not tune coefficients or score
+the locked holdout yet. The deterministic ledger and holdout seal exist; all 150 development slots are still
+pending because the frozen reference window is 2026-09-17 to 2026-09-18.
 
 Work order:
 
-1. Read `data/reference/v6/validation-manifest-v6.json` and create the ground-truth collection ledger for
-   its 25 development cities and six measures per city. Keep the 15 holdout city results sealed.
+1. Use `data/reference/v6/ground-truth/development-ledger.json` as the only development write target and
+   keep the 15 holdout city results sealed in `ground-truth/holdout-seal.json`.
 2. Collect dated source facts for each development city using browser automation, manual research, or a
    stronger model as permitted by the manifest. Record source URL, retrieval date, displayed currency,
    tax/fee treatment, and property name where applicable.
@@ -115,7 +120,8 @@ Work order:
    the exact next action.
 
 **M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
-metadata and sealed storage; no holdout score has been revealed.
+metadata and sealed storage; no holdout score has been revealed. The current ledger is not at exit: it has
+0 found observations and 150 pending slots.
 
 ---
 
