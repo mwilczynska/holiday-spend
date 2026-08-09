@@ -2057,3 +2057,13 @@ ticket price and generic hotel/hostel listings, but the hotel listings did not e
 2026-09-17 to 2026-09-18 quote in the permitted result, so no accommodation row was written. **Verdict:**
 promote the ledger scaffold and the first attraction tranche; continue M2 dated-fact collection without
 tuning or scoring the holdout.
+
+## v6 M2 — accommodation retrieval screen (9 August 2026)
+
+The next collection slice tested indexed Expedia/Booking/travel-search results for the frozen
+2026-09-17 to 2026-09-18 window. Returned pages were generic, “from” rates, stale date selections, or
+prices without a verifiable class/occupancy combination. The connected browser runtime was also
+unavailable in this session, so no browser-only result was treated as a source block and no accommodation
+fact was written. **Verdict:** retain all 125 accommodation slots as pending; resume with an available
+interactive browser or an indexed result that exposes the exact dates, two-adult basis, property class,
+display currency, and total.

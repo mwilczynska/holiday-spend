@@ -106,6 +106,10 @@ path is covered by deterministic integration tests.
 **Continue M2 — populate the development ledger with dated source facts.** Do not tune coefficients or score
 the locked holdout yet. The deterministic ledger and holdout seal exist; 25 attraction slots are found and
 125 accommodation slots are still pending because the frozen reference window is 2026-09-17 to 2026-09-18.
+Indexed accommodation searches produced only generic, “from”, stale-date, or class/occupancy-incomplete
+results, and the connected browser runtime was unavailable in the current session. Do not convert that
+tool limitation into a source-level `blocked` result; resume the same collection with an available browser
+or a directly auditable dated quote.
 
 Work order:
 
