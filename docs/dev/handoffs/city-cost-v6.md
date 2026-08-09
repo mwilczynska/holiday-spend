@@ -72,10 +72,13 @@ times for sample size. The accuracy its gate protected was already achieved.
 - v6 grades, intervals, missingness and telemetry are persisted in estimate metadata and shown on `/dataset`.
 - 10 v6 tests cover materialization, priors, collection retry/FX, and the flagged generation path. The full
   suite passes with 153 tests; build, TypeScript and coefficient checks pass.
-- The M2 ledger scaffold is in `data/reference/v6/ground-truth/development-ledger.json`; its 25 development
-  cities and six required measures are sourced from the frozen manifest. `holdout-seal.json` contains only a
-  lock marker and no holdout prices or scores. `node scripts/validate-city-cost-v6-ground-truth.mjs` audits
-  the boundary and currently reports 64 found observations plus 85 pending development slots.
+- The M2 ledger is in `data/reference/v6/ground-truth/development-ledger.json` and now uses
+  `city-cost-v6-ground-truth-ledger-v2`. At the contract-reset checkpoint in `4cf397b`, it correctly
+  reported **25 found / 125 pending / zero accommodation cities**: the attraction tranche remained and every
+  accommodation slot was reopened because the old single-property, pre-correction captures were invalid.
+  The current post-recollection state is **55 found / 95 pending**: 25 attraction rows and 30 corrected
+  Booking.com accommodation rows across Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei.
+  `holdout-seal.json` remains a lock marker only; no holdout prices or scores were used.
 
 ### The coefficients that exist right now
 
@@ -104,11 +107,13 @@ path is covered by deterministic integration tests.
 ## 4. The exact next action
 
 **Continue M2 — populate the development ledger with dated source facts.** Do not tune coefficients or score
-the locked holdout yet. The deterministic ledger and holdout seal exist; 25 attraction slots are found and
-85 accommodation slots are still pending for the frozen reference window 2026-09-17 to 2026-09-18.
-Interactive Booking.com collection has produced all five accommodation measures for Da Nang, Hanoi,
-Ho Chi Minh City, Phuket, Singapore, Taipei and Tokyo, plus four found Beijing accommodation measures;
-Beijing's exact-date 1-star query is recorded as explicit class absence.
+the locked holdout yet. The current ledger has 25 found attraction rows plus 30 corrected accommodation
+rows, leaving 95 pending slots for the frozen reference window 2026-09-17 to 2026-09-18. The six-city
+accommodation rows use the logged-out Booking.com price-ascending median rule and v2 provenance fields.
+The old Beijing and Tokyo accommodation rows are historical only and were removed in `4cf397b`.
+
+The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
+accommodation cities**; do not mistake that historical checkpoint for the current ledger state.
 Preserve the same evidence standard for the next city: exact dates, class or hostel identity, occupancy,
 display currency, price basis and tax treatment. Record as `amount` the lowest price a logged-out visitor
 with no membership is quoted for a room meeting the class and occupancy spec for the frozen window. Public
@@ -125,13 +130,13 @@ Work order:
 
 1. Use `data/reference/v6/ground-truth/development-ledger.json` as the only development write target and
    keep the 15 holdout city results sealed in `ground-truth/holdout-seal.json`.
-2. Collect dated source facts for each development city using browser automation, manual research, or a
-   stronger model as permitted by the manifest. Record source URL, retrieval date, displayed currency,
-   tax/fee treatment, and property name where applicable.
-3. Validate the ledger deterministically before fitting anything. Do not use the locked holdout to tune a
-   prompt, coefficient or gate.
+2. Run the deleted-row regression with the updated validator, replaying the Hanoi, Phuket and Da Nang
+   accommodation rows from `git show a80e922:data/reference/v6/ground-truth/development-ledger.json`; it
+   must emit class-inversion, sub-amount-AUD and ratio-band warnings.
+3. Replace the remaining attraction violations (Taipei observation deck and Phuket zoo) with standard
+   general-admission museum/historic-site rows, then validate the ledger.
 4. Record one M2 verdict in `PLAN.md`, append confirmed coverage to `LOG.md`, and update this handoff with
-   the exact next action.
+   the exact next action. Do not use the locked holdout to tune a prompt, coefficient or gate.
 
 **M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
 metadata and sealed storage; no holdout score has been revealed. The current ledger is not at exit: it has

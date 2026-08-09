@@ -2167,3 +2167,16 @@ with additional charges may apply, so their original tax basis is recorded as un
 inspected or written. Validation reports **64 found observations, 85 pending development slots**, with zero
 errors. **Verdict:** promote this tranche as dated source evidence and continue M2 collection without tuning
 coefficients or opening the holdout.
+
+## v6 M2 — accommodation tranche verdicts superseded by the v2 reset (9 August 2026)
+
+The Beijing and Tokyo tranche verdicts above are superseded. Those rows were collected under the
+pre-correction price basis: they retained Booking.com strikethrough/original prices and excluded public
+promotional prices that any logged-out visitor could transact. The single-property captures also predated
+the deterministic multi-listing selection rule. The rows were removed from the development ledger in
+`4cf397b`; they are historical evidence of the failed collection rule, not current ground truth.
+
+At the `4cf397b` contract checkpoint, the ledger correctly returned to **25 found / 125 pending** with
+**zero accommodation cities**. The 25 found cells were the attraction tranche; all 125 accommodation cells
+were deliberately reopened for collection under the corrected v2 contract. No holdout result or score was
+used in this repair.
