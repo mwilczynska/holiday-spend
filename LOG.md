@@ -2080,3 +2080,17 @@ Genius/Getaway/Early Booker discounts; the discounted member/promotional prices 
 with the contract. No holdout data was inspected or written. Validation reports **35 found observations,
 115 pending development slots**, with zero errors. **Verdict:** promote this tranche as dated source evidence;
 continue M2 collection city by city without tuning coefficients or opening the holdout.
+
+## v6 M2 — dated accommodation tranche: Ho Chi Minh City (9 August 2026)
+
+The next interactive Booking.com collection covered Ho Chi Minh City for the frozen 2026-09-17 to
+2026-09-18 window. All five accommodation measures were verified: Tao Dan Hotel (4-star), GK Central
+Hotel (3-star), Thanh Lan Hotel (1-star), City Backpackers Hostel private room, and the same hostel's
+one-adult mixed dormitory bed. Each row records exact occupancy, room type, displayed AUD price, source URL,
+retrieval date and the observed promotion/tax basis.
+
+The hotel and hostel pages showed original public prices alongside Genius, Getaway Deal or Bonus savings
+discounts; discounted member/promotional prices were excluded. No holdout data was inspected or written.
+Validation reports **40 found observations, 110 pending development slots**, with zero errors. **Verdict:**
+promote this tranche as dated source evidence and continue M2 collection without tuning coefficients or
+opening the holdout.

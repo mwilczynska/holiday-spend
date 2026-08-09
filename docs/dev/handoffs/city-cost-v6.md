@@ -75,7 +75,7 @@ times for sample size. The accuracy its gate protected was already achieved.
 - The M2 ledger scaffold is in `data/reference/v6/ground-truth/development-ledger.json`; its 25 development
   cities and six required measures are sourced from the frozen manifest. `holdout-seal.json` contains only a
   lock marker and no holdout prices or scores. `node scripts/validate-city-cost-v6-ground-truth.mjs` audits
-  the boundary and currently reports 35 found observations plus 115 pending development slots.
+  the boundary and currently reports 40 found observations plus 110 pending development slots.
 
 ### The coefficients that exist right now
 
@@ -106,7 +106,8 @@ path is covered by deterministic integration tests.
 **Continue M2 — populate the development ledger with dated source facts.** Do not tune coefficients or score
 the locked holdout yet. The deterministic ledger and holdout seal exist; 25 attraction slots are found and
 115 accommodation slots are still pending for the frozen reference window 2026-09-17 to 2026-09-18.
-Interactive Booking.com collection has produced all five accommodation measures for Hanoi and Singapore.
+Interactive Booking.com collection has produced all five accommodation measures for Hanoi, Ho Chi Minh City
+and Singapore.
 Preserve the same evidence standard for the next city: exact dates, class or hostel identity, occupancy,
 display currency, price basis and tax treatment; exclude member/promotional rates when an original public
 price is visible.
@@ -125,7 +126,7 @@ Work order:
 
 **M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
 metadata and sealed storage; no holdout score has been revealed. The current ledger is not at exit: it has
-35 found observations and 115 pending slots.
+40 found observations and 110 pending slots.
 
 ---
 
