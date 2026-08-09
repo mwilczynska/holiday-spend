@@ -37,10 +37,12 @@ accommodation quotes. Failed retrievals remain explicit (`not_found`, `blocked`,
 `class_absent`) rather than being replaced with a plausible value.
 
 The ledger uses schema `city-cost-v6-ground-truth-ledger-v2`. Found accommodation rows additionally
-require `samplePrices`, `listPriceAmount`, `dealLabels`, and `selectionRule`. `samplePrices` is the full
-set of selected listing prices behind the median; `listPriceAmount` preserves a displayed strikethrough
-price or is `null`; `dealLabels` preserves public promotional labels; and `selectionRule` must be
-`booking_price_asc_median_v1`.
+require `samplePrices`, `listPriceAmount`, `dealLabels`, `classInventoryCount`, and `selectionRule`.
+`samplePrices` is the full set of first-page listing prices behind the median; `listPriceAmount` preserves
+the displayed strikethrough price for the representative first listing or is `null`; `dealLabels` preserves
+public promotional labels; `classInventoryCount` preserves Booking's displayed inventory depth; and
+`selectionRule` must be `booking_top_picks_firstpage_median_v2`. The prior `booking_price_asc_median_v1`
+rows remain identifiable as superseded migration evidence until their cities are re-collected.
 
 The ledger `sourcePolicy` records Booking.com as the accommodation ground-truth source and Expedia as the
 production anchor. The calibration direction is **Booking -> Expedia**, and at least 12 matched cities are
@@ -58,10 +60,14 @@ separately as `listPriceAmount` when it is shown.
 
 ## Accommodation selection rule
 
-The deterministic selection rule is `booking_price_asc_median_v1`. On the city-scoped Booking.com results
+The current selection rule is `booking_top_picks_firstpage_median_v2`. On the city-scoped Booking.com results
 page for the frozen window, use 2 adults / 1 room (1 adult / 1 room for a dorm), filter to the required star
-class or `Hostel`, sort by **Price ascending**, and take the first 10 listings that meet the class and
-occupancy specification. Record every selected quote in `samplePrices`; `amount` is their median (the mean
-of the two middle values for an even count). If 10 eligible listings are not available, use a minimum of 3
-and record the same count for every class in that city. Never use one listing. The rule's deliberate mild low
-bias is consistent across the within-city ratios, where estimator bias is expected to cancel.
+class or `Hostel`, leave Booking's default **Our top picks** order selected, and take every first-page listing
+that meets the class and occupancy specification. For a dorm, Booking may label the same default order
+**Top picks for solo travellers**. Record every displayed price in page order in `samplePrices`, record the
+displayed `N properties found` figure as `classInventoryCount`, and set `amount` to the median (the mean of
+the two middle values for an even count). A class with fewer first-page listings contributes all available
+listings. This first-page popularity-weighted bias is deliberate and auditable; the Copenhagen stage-1
+analysis measures its depth effect rather than treating it as unknown. The fixed-count price-ascending rule
+was superseded because class inventory depth placed deep 3/4-star classes near their price floor while
+shallow 1-star/hostel classes remained nearer their middle.

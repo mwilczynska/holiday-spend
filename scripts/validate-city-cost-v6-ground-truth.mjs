@@ -31,6 +31,8 @@ const accommodationRatios = {
   hotel_3star_room_2p: 1,
   hotel_4star_room_2p: 1.3372,
 };
+const currentAccommodationSelectionRule = 'booking_top_picks_firstpage_median_v2';
+const supersededAccommodationSelectionRule = 'booking_price_asc_median_v1';
 const accommodationClassOrder = [
   'hostel_dorm_bed_1p',
   'hostel_private_room_2p',
@@ -63,7 +65,7 @@ if (ledger.sourcePolicy?.accommodationGroundTruthSource !== 'Booking.com') issue
 if (ledger.sourcePolicy?.productionAccommodationAnchor !== 'Expedia') issue('Ledger sourcePolicy must identify Expedia as the production accommodation anchor');
 if (ledger.sourcePolicy?.offsetDirection !== 'Booking -> Expedia') issue('Ledger sourcePolicy must declare the Booking -> Expedia offset direction');
 if (ledger.sourcePolicy?.minimumCitiesForOffset !== 12) issue('Ledger sourcePolicy must require at least 12 cities for the Booking -> Expedia offset');
-for (const field of ['samplePrices', 'listPriceAmount', 'dealLabels', 'selectionRule']) {
+for (const field of ['samplePrices', 'listPriceAmount', 'dealLabels', 'classInventoryCount', 'selectionRule']) {
   if (!ledger.observationContract?.accommodationFound?.includes(field)) issue(`Ledger accommodation contract must include ${field}`);
 }
 
@@ -112,8 +114,8 @@ for (const cityEntry of ledger.cities ?? []) {
       if (accommodationMeasures.has(measure)) {
         if (observation.checkIn !== '2026-09-17' || observation.checkOut !== '2026-09-18') issue(`${cityEntry.city}/${measure}: accommodation quote dates must match the frozen window`);
         if (!observation.propertyName) issue(`${cityEntry.city}/${measure}: accommodation rows need propertyName`);
-        if (!Array.isArray(observation.samplePrices) || observation.samplePrices.length < 3 || observation.samplePrices.length > 10) {
-          issue(`${cityEntry.city}/${measure}: accommodation rows need 3 to 10 samplePrices`);
+        if (!Array.isArray(observation.samplePrices) || observation.samplePrices.length < 1 || observation.samplePrices.length > 50) {
+          issue(`${cityEntry.city}/${measure}: accommodation rows need 1 to 50 samplePrices`);
         } else if (observation.samplePrices.some((price) => !(typeof price === 'number' && Number.isFinite(price) && price > 0))) {
           issue(`${cityEntry.city}/${measure}: samplePrices must contain only positive numbers`);
         } else if (Math.abs(observation.amount - median(observation.samplePrices)) > 0.01) {
@@ -125,8 +127,14 @@ for (const cityEntry of ledger.cities ?? []) {
         if (!Array.isArray(observation.dealLabels) || observation.dealLabels.some((label) => typeof label !== 'string')) {
           issue(`${cityEntry.city}/${measure}: dealLabels must be an array of strings`);
         }
-        if (observation.selectionRule !== 'booking_price_asc_median_v1') {
-          issue(`${cityEntry.city}/${measure}: selectionRule must be booking_price_asc_median_v1`);
+        if (![currentAccommodationSelectionRule, supersededAccommodationSelectionRule].includes(observation.selectionRule)) {
+          issue(`${cityEntry.city}/${measure}: selectionRule must be ${currentAccommodationSelectionRule}`);
+        } else if (!(Number.isInteger(observation.classInventoryCount) && observation.classInventoryCount > 0) && observation.selectionRule === currentAccommodationSelectionRule) {
+          issue(`${cityEntry.city}/${measure}: classInventoryCount must be a positive integer`);
+        } else if (!(Number.isInteger(observation.classInventoryCount) && observation.classInventoryCount > 0)) {
+          warnings.push(`Legacy accommodation row lacks classInventoryCount: ${cityEntry.city}/${measure}`);
+        } else if (observation.selectionRule === supersededAccommodationSelectionRule) {
+          warnings.push(`Superseded accommodation selection rule: ${cityEntry.city}/${measure}`);
         }
         if (!accommodationByCity.has(cityEntry.city)) accommodationByCity.set(cityEntry.city, new Map());
         accommodationByCity.get(cityEntry.city).set(measure, observation);
@@ -157,7 +165,8 @@ for (const { city, observation } of foundRows) {
   const figures = [...String(observation.evidenceText ?? '').matchAll(audPattern)]
     .map((match) => Number(match[1].replace(',', '.')))
     .filter((value) => Number.isFinite(value));
-  if (figures.some((value) => value < observation.amount)) {
+  const samplePrices = Array.isArray(observation.samplePrices) ? observation.samplePrices : [];
+  if (figures.filter((value) => !samplePrices.some((samplePrice) => Math.abs(samplePrice - value) < 0.01)).some((value) => value < observation.amount)) {
     warnings.push(`Sub-amount AUD figure in evidence: ${city}/${observation.measure}`);
   }
 }
