@@ -2095,6 +2095,20 @@ Validation reports **40 found observations, 110 pending development slots**, wit
 promote this tranche as dated source evidence and continue M2 collection without tuning coefficients or
 opening the holdout.
 
+## v6 M2 — dated accommodation tranche: Taipei (9 August 2026)
+
+The next interactive Booking.com collection covered Taipei for the frozen 2026-09-17 to 2026-09-18
+window. All five accommodation measures were verified: Green World Hotel - Zhonghua (4-star), Lumos Inn
+(3-star), Chian Huei Business Hotel (1-star), We Come Hostel private room, and the same hostel's
+one-adult mixed dormitory bed. The 1-star row is explicitly marked as an Inn by Booking.com; it remains
+the in-city 1-star result and the property-type distinction is preserved in the evidence text.
+
+Original public prices were retained when Genius or Getaway Deal discounts were displayed; current
+member/promotional prices were excluded. No holdout data was inspected or written. Validation reports
+**55 found observations, 95 pending development slots**, with zero errors. **Verdict:** promote this
+tranche as dated source evidence and continue M2 collection without tuning coefficients or opening the
+holdout.
+
 ## v6 M2 — dated accommodation tranche: Da Nang (9 August 2026)
 
 The next interactive Booking.com collection covered Da Nang for the frozen 2026-09-17 to 2026-09-18
