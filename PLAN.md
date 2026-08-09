@@ -102,13 +102,16 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
 reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 55 found observations and 95
-pending slots rather than carrying an undated or inferred price. Interactive Booking.com collection has
-now produced corrected, class-matched accommodation facts for Hanoi, Ho Chi Minh City, Da Nang, Phuket,
-Singapore and Taipei. Nine attraction rows were also re-collected to the standard general-admission
-museum/historic-site estimand. The accommodation basis includes public promotional rates available to any
-logged-out visitor, excludes membership-gated rates, and never records a strikethrough/original price as
-the amount. The current source policy is Booking.com ground truth with a Booking → Expedia offset to be
-fitted only after at least 12 accommodation cities.
+pending slots rather than carrying an undated or inferred price. The accommodation panel is currently a
+two-city pilot under `booking_top_picks_firstpage_median_v2`: Hanoi and Singapore have 10 new rows, while
+20 rows from the superseded `booking_price_asc_median_v1` rule remain migration evidence. The pilot still
+shows class-inversion warnings and a Singapore dorm ratio-band warning, so the other four cities must not
+be collected until the rule is amended and re-piloted. Nine known attraction violations plus the leftover
+Seoul SEOULDAL row were replaced with the standard general-admission museum/historic-site estimand. The
+accommodation basis includes public promotional rates available to any logged-out visitor, excludes
+membership-gated rates, and never records a strikethrough/original price as the amount. The current source
+policy is Booking.com ground truth with a Booking → Expedia offset to be fitted only after at least 12
+accommodation cities.
 
 M1 implementation notes:
 

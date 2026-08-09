@@ -2202,3 +2202,28 @@ weak-coefficient issue to M5 and do not refit during M2. The Booking.com ground 
 offset remains unfit until at least 12 accommodation cities are available. **Verdict:** promote the
 corrected rows as M2 source evidence, continue collection from the remaining 95 slots, and do not score
 gates or open the holdout.
+
+## v6 M2 — `booking_price_asc_median_v1` superseded by the top-picks pilot (9 August 2026)
+
+The preceding six-city verdict is superseded. The `booking_price_asc_median_v1` rule took a fixed
+count of the cheapest listings, so the sampled percentile varied with class inventory depth: deep
+3-star and 4-star classes were pulled toward their price floor while shallow 1-star and hostel
+classes represented a much deeper slice of their distributions. The resulting ratios inverted even
+after the price-basis correction. This is a selection-rule defect, not evidence against the fitted
+ladder. The Copenhagen stage-1 analysis independently measures the first-page depth effect: its first
+10 four-star prices were 5.2% below the full 108-price median, with the first 15 already 23.7% below it.
+
+The replacement rule is `booking_top_picks_firstpage_median_v2`: retain every eligible first-page
+listing in Booking.com's default Our top picks order, record all prices and the displayed class
+inventory count, and use the median. A two-city pilot was collected for Hanoi (deep inventory) and
+Singapore (shallow inventory), producing 10 new accommodation rows. Hanoi medians for 4-star,
+3-star, 1-star, private hostel and dorm were A$62/A$42/A$27/A$32/A$10; Singapore medians were
+A$182/A$118/A$73/A$99/A$39. Both cities still show a private-hostel/1-star inversion, and Singapore's
+dorm/3-star ratio of 0.331 is just outside the validator's fitted-coefficient band. Per the pilot
+stop rule, the other four accommodation cities were not collected; no coefficient refit, gate score,
+source offset or holdout inspection was performed.
+
+The ledger therefore remains at **55 found / 95 pending**: 25 attraction rows, 10 v2 pilot
+accommodation rows and 20 legacy v1 rows awaiting an approved replacement rule. Seoul's SEOULDAL
+observation was also replaced with the next-ranked paid historic-site observation, Changdeokgung
+Palace. The current handoff records the pilot stop and the exact state required for a cold resume.

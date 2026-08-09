@@ -239,6 +239,7 @@ npm run build             # expected to pass
 npm test -- --run         # 153 tests
 npm run docs:check-memory # AGENTS.md mirrors CLAUDE.md
 node scripts/fit-city-cost-ladder-v6.mjs --check   # v6 coefficients match their evidence
+node scripts/test-city-cost-v6-ground-truth-warnings.mjs # legacy warning replay tripwire
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.
