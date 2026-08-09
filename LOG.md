@@ -2067,3 +2067,16 @@ unavailable in this session, so no browser-only result was treated as a source b
 fact was written. **Verdict:** retain all 125 accommodation slots as pending; resume with an available
 interactive browser or an indexed result that exposes the exact dates, two-adult basis, property class,
 display currency, and total.
+
+## v6 M2 — dated accommodation tranche: Hanoi and Singapore (9 August 2026)
+
+With the connected Chrome session available, the frozen 2026-09-17 to 2026-09-18 window was queried
+interactively on Booking.com for Hanoi and Singapore. Each city now has all five accommodation measures:
+hostel dorm bed, private hostel room, 1-star, 3-star and 4-star room. The ledger records the selected
+property, exact occupancy, room type, displayed AUD price, source URL, retrieval date and tax basis.
+
+Singapore supplied base prices with taxes shown separately. Hanoi exposed original public prices alongside
+Genius/Getaway/Early Booker discounts; the discounted member/promotional prices were excluded in accordance
+with the contract. No holdout data was inspected or written. Validation reports **35 found observations,
+115 pending development slots**, with zero errors. **Verdict:** promote this tranche as dated source evidence;
+continue M2 collection city by city without tuning coefficients or opening the holdout.

@@ -95,17 +95,16 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 
 - [x] Create a manifest-driven ledger for 25 development cities × 6 measures
 - [x] Seal the holdout boundary without storing holdout prices or scores
-- [ ] 25 development cities — 150 dated source facts (25 found, 125 pending)
+- [ ] 25 development cities — 150 dated source facts (35 found, 115 pending)
 - [x] Collect the paid-attraction anchor from an official/current city or attraction tariff page for all 25 development cities
 - [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
 - [x] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
-reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 25 found observations and 125
-pending slots rather than carrying an undated or inferred price.
-Indexed accommodation searches produced no auditable exact-date, class-matched two-adult quote; the
-connected browser runtime was unavailable in the current session, so those slots remain pending rather
-than being labelled source-level `blocked`.
+reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 35 found observations and 115
+pending slots rather than carrying an undated or inferred price. Interactive Booking.com collection has
+now produced dated, class-matched accommodation facts for Hanoi and Singapore; member/promotional rates
+were excluded where the original public price was visible, and displayed tax treatment was preserved.
 
 M1 implementation notes:
 
