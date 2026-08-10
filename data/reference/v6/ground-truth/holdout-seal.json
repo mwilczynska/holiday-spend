@@ -7,5 +7,12 @@
   "requiredMeasureCount": 6,
   "resultsFile": "data/reference/v6/ground-truth/holdout-ledger.json",
   "scoresFile": null,
-  "lockRule": "Collected holdout is sealed; do not inspect, fit against, score, compare, or tune on holdout results until candidate freeze."
+  "lockRule": "Candidate frozen before first holdout read. Score gates 2-6 once; do not tune or rescore after reveal.",
+  "candidateConfigHash": "sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde",
+  "candidateCommit": "f52be517359c51d878e667673918e88487e6199d",
+  "candidateFiles": [
+    "data/reference/v6/coefficients-v6.json",
+    "src/lib/city-cost-v6-collection.ts"
+  ],
+  "frozenAt": "2026-08-10T02:52:04.144Z"
 }
