@@ -300,7 +300,7 @@ consecutive experiments fail the same gate for the same structural reason, the g
 
 The one genuinely new collection work, and the thing that retires the sample-size objection permanently.
 
-**40 cities × 6 anchors, collected once, by any means.** v5 required production-shaped collection for
+**40 cities × 17 validation measures, collected once per measure, by any means.** v5 required production-shaped collection for
 everything; v6 separates the two concerns explicitly:
 
 - **Production collection** must be target-model feasible. Non-negotiable.
@@ -314,8 +314,10 @@ spent effort there because §1.6's instruction always redirected it to the next 
 
 - 40 cities: 25 development, **15 locked holdout**, stratified across 9 regions × 3 cost bands
 - Deliberately includes 5 sparse cities (Don Det, Kyoto, Fukuoka class) to characterise grade D honestly
-- Per city: dated two-adult one-night quotes for hostel dorm, hostel private, 1★, 3★, 4★, plus one
-  attraction ticket — the six measures the ladder is fitted or validated against
+- Per city: dated two-adult one-night quotes for hostel dorm, hostel private, 1★, 2★, 3★, 4★, one
+  attraction ticket, five independent restaurant/drink menu measures, the McDonald's combo, and two
+  independent activity measures. These 17 rows support all 19 product tiers; street food is the explicit
+  production derivation from the independently collected McDonald's anchor.
 - Fixed reference window, recorded retrieval dates, source URLs, tax status
 - Collected with Chrome automation where a plain fetch fails, which v4 established is the blocker
   ("a plain page fetch cannot obtain a dated quote from a hotel's own site")
@@ -330,8 +332,8 @@ Estimated effort: 2–4 days of collection. This is bounded, unlike the 95-exper
 | --- | --- | --- | --- | --- |
 | **M0** | Adopt v6 — **COMPLETE** | Contracts frozen, ladder fitted, loop replaced, docs bannered, memory repaired | done | — |
 | **M1** | **Ship the path** | v6 derivation + grades + ladder behind a flag; new cities generate through v6; 121 CSV untouched | 2–3 d | **90%** |
-| **M2** | Ground truth | 40-city × 6-anchor panel, 15 locked holdout | 2–4 d | 85% |
-| **M3** | Fit + validate | Offsets fitted, one holdout score and production-anchor replication; full-basket gates remain open | 2–3 d | 75% |
+| **M2** | Ground truth | 40-city × 17-measure panel, with per-measure holdout seals | 5–10 d | 75% |
+| **M3** | Fit + validate all 19 tiers | Every derivation generated, development-fit and one-time holdout result per tier; full-basket gates evaluated | 5–10 d | 65% |
 | **M4** | Migrate | Regenerate 121 cities with grades, A/B vs v1, rollback tested | 2–3 d | 85% |
 | **M5** | Improve weak grades | 1★, dorm/private split, activity semantics | ongoing | 50% |
 

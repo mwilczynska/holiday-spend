@@ -19,6 +19,10 @@ const coefficients = JSON.parse(fs.readFileSync(coefficientsPath, 'utf8'));
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const seal = JSON.parse(fs.readFileSync(sealPath, 'utf8'));
 
+if (seal.schemaVersion === 'city-cost-v6-ground-truth-holdout-seal-v2' || seal.status === 'per_measure') {
+  throw new Error('Legacy whole-panel scorer is disabled: the v6 holdout is now sealed per measure. Use the all-tier scorer, which must select only sealed_after_collection measures and refuse revealed_once measures.');
+}
+
 if (!seal.candidateConfigHash || !seal.candidateCommit) throw new Error('Candidate must be frozen in the holdout seal before scoring.');
 if (seal.scoresFile !== null) throw new Error('Holdout has already been scored; a second pass is forbidden.');
 

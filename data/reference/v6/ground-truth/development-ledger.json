@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "city-cost-v6-ground-truth-ledger-v2",
+  "schemaVersion": "city-cost-v6-ground-truth-ledger-v3",
   "methodologyVersion": "v6.0",
   "panel": "development",
   "status": "collection_in_progress",
@@ -17,7 +17,18 @@
     "hotel_1star_room_2p",
     "hotel_3star_room_2p",
     "hotel_4star_room_2p",
-    "paid_attraction_adult_1"
+    "paid_attraction_adult_1",
+    "inexpensive_restaurant_meal_1p",
+    "midrange_restaurant_meal_2p",
+    "mcmeal_combo",
+    "cappuccino_1",
+    "domestic_draft_beer_1",
+    "half_day_group_activity_adult_1",
+    "full_day_premium_activity_adult_1",
+    "premium_restaurant_meal_2p",
+    "cocktail_1",
+    "wine_glass_1",
+    "hotel_2star_room_2p"
   ],
   "observationContract": {
     "found": [
@@ -42,6 +53,10 @@
       "listPriceAmount",
       "dealLabels",
       "classInventoryCount",
+      "selectionRule"
+    ],
+    "panelMedianFound": [
+      "samplePrices",
       "selectionRule"
     ]
   },
@@ -5774,6 +5789,28 @@
     "offsetDirection": "Booking -> Expedia",
     "minimumCitiesForOffset": 12,
     "levelBiasCaveat": "Booking default top-picks first-page medians undershoot full-inventory medians by roughly 20-27% at 25 listings in the Copenhagen stage-1 analysis; use this panel for ratios and source calibration, not absolute city levels.",
-    "levelBiasEvidence": "data/reference/dry-run/phase-0g-stage1-analysis.json"
+    "levelBiasEvidence": "data/reference/dry-run/phase-0g-stage1-analysis.json",
+    "independentFoodDrinkGroundTruth": "Official restaurant, cafe and bar menus or venue price lists; never Numbeo; Expatistan is cross-check only.",
+    "independentActivityGroundTruth": "Official attraction and operator pages; never BudgetYourTrip.",
+    "selectionRules": {
+      "hostel_dorm_bed_1p": "booking_top_picks_firstpage_median_v2",
+      "hostel_private_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_1star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_2star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_3star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_4star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "paid_attraction_adult_1": "official_principal_museum_or_historic_site_adult_ga_v1",
+      "inexpensive_restaurant_meal_1p": "independent_menu_panel_first5_median_v1",
+      "midrange_restaurant_meal_2p": "independent_menu_panel_first5_median_v1",
+      "premium_restaurant_meal_2p": "independent_menu_panel_first5_median_v1",
+      "cappuccino_1": "independent_menu_panel_first5_median_v1",
+      "domestic_draft_beer_1": "independent_menu_panel_first5_median_v1",
+      "cocktail_1": "independent_menu_panel_first5_median_v1",
+      "wine_glass_1": "independent_menu_panel_first5_median_v1",
+      "mcmeal_combo": "official_mcdonalds_city_menu_first3_median_v1",
+      "half_day_group_activity_adult_1": "official_operator_first3_halfday_group_median_v1",
+      "full_day_premium_activity_adult_1": "official_operator_first3_fullday_premium_median_v1"
+    },
+    "allTierPanelDecision": "2026-08-10: expand from the accommodation-scoped six-measure panel to 17 measures so all 19 product tiers can be fitted and validated."
   }
 }

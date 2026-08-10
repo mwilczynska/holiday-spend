@@ -186,3 +186,20 @@ code. This changes the input unit, not the estimand, and introduces no fitted pa
 `unknown_source_default` were **ineligible** under v5; under v6 they are **grade B** inputs subject to §4.
 A room price is still never multiplied by two merely because the product serves two travellers — room
 prices are not per-person beds.
+
+### 10 August 2026 - expand the ground-truth contract to all product tiers
+
+The original validation manifest v1 declared six measures per city and was therefore accommodation-scoped
+(five Booking classes plus the paid-attraction row). Its holdout could only partly evaluate gates 2-6: the
+production anchor was not paired, and food, drink and activity tiers were absent. By owner decision, the
+manifest is amended to v2 and the development and holdout contracts expand to the 17 directly auditable
+anchor/validation measures needed to fit and validate all 19 product tiers. `street_food_meal_1p` remains
+a deterministic production derivation from the independently collected `mcmeal_combo` row, so it is
+validated as a product tier without creating a duplicate source slot.
+
+Food and drink ground truth is independent of Numbeo: use official restaurant, cafe and bar menus or venue
+price lists. Expatistan may cross-check but cannot be primary evidence for a Numbeo-supplied field. Activity
+ground truth is independent of BudgetYourTrip: use official operator and attraction pages. Each new measure
+has a fixed selection rule in `validation-manifest-v6.json` before collection; a vague city average is not
+an estimand. The holdout seal is now per-measure so the six already revealed measures remain spent while
+the new measures can be collected and revealed once under a single all-19 candidate freeze.

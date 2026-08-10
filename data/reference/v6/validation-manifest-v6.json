@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "city-cost-v6-validation-manifest-v1",
+  "schemaVersion": "city-cost-v6-validation-manifest-v2",
   "methodologyVersion": "v6.0",
-  "status": "frozen-at-v6-adoption-2026-08-09",
+  "status": "amended-by-dated-decision-2026-08-10",
   "readThisFirst": "This file defines what 'v6 works' means. Do not change a gate after seeing its result. To amend a gate, record a dated decision in PLAN.md and in this file BEFORE the locked holdout is used. See docs/dev/plans/city-cost-methodology-v6.md section 4.",
 
   "relatedFiles": {
@@ -83,22 +83,62 @@
   },
 
   "groundTruthPanel": {
-    "purpose": "Fit source-calibration offsets and score gates 2-6. This is the one-time collection that retires v5's sample-size objection permanently.",
-    "collectionRule": "MAY be collected by browser automation, manual research, or a stronger model. Ground truth is never in the production path, so it does not need to be target-model feasible. Only PRODUCTION collection must be. v5 permitted this but never spent effort on it.",
+    "purpose": "Fit all 19 product-tier derivations, fit source-calibration offsets, and score gates 2-6. The original six-measure panel was accommodation-scoped and made gates 2-6 only partly evaluable.",
+    "collectionRule": "MAY be collected by browser automation, manual research, or a stronger model. Ground truth is never in the production path, so it does not need to be target-model feasible. Food and drink ground truth MUST use independent official menus or venue price lists, never Numbeo; activity ground truth MUST use independent official operator or attraction pages, never BudgetYourTrip.",
     "measuresPerCity": [
       "hostel_dorm_bed_1p",
       "hostel_private_room_2p",
       "hotel_1star_room_2p",
       "hotel_3star_room_2p",
       "hotel_4star_room_2p",
-      "paid_attraction_adult_1"
+      "paid_attraction_adult_1",
+      "inexpensive_restaurant_meal_1p",
+      "midrange_restaurant_meal_2p",
+      "mcmeal_combo",
+      "cappuccino_1",
+      "domestic_draft_beer_1",
+      "half_day_group_activity_adult_1",
+      "full_day_premium_activity_adult_1",
+      "premium_restaurant_meal_2p",
+      "cocktail_1",
+      "wine_glass_1",
+      "hotel_2star_room_2p"
     ],
+    "measureSelectionRules": {
+      "hostel_dorm_bed_1p": "booking_top_picks_firstpage_median_v2",
+      "hostel_private_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_1star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_2star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_3star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "hotel_4star_room_2p": "booking_top_picks_firstpage_median_v2",
+      "paid_attraction_adult_1": "official_principal_museum_or_historic_site_adult_ga_v1",
+      "inexpensive_restaurant_meal_1p": "independent_menu_panel_first5_median_v1",
+      "midrange_restaurant_meal_2p": "independent_menu_panel_first5_median_v1",
+      "premium_restaurant_meal_2p": "independent_menu_panel_first5_median_v1",
+      "cappuccino_1": "independent_menu_panel_first5_median_v1",
+      "domestic_draft_beer_1": "independent_menu_panel_first5_median_v1",
+      "cocktail_1": "independent_menu_panel_first5_median_v1",
+      "wine_glass_1": "independent_menu_panel_first5_median_v1",
+      "mcmeal_combo": "official_mcdonalds_city_menu_first3_median_v1",
+      "half_day_group_activity_adult_1": "official_operator_first3_halfday_group_median_v1",
+      "full_day_premium_activity_adult_1": "official_operator_first3_fullday_premium_median_v1"
+    },
+    "selectionRuleDefinitions": {
+      "booking_top_picks_firstpage_median_v2": "On the city-scoped Booking.com results page for the frozen window, use 2 adults / 1 room (1 adult for dorm), filter to the star class or Hostel, leave Booking's default Our top picks order, take every first-page listing meeting the class and occupancy spec, record all displayed public prices and use their median. Record the displayed class inventory count.",
+      "official_principal_museum_or_historic_site_adult_ga_v1": "Use the city's principal national or municipal museum or historic site. Record its standard adult general-admission tariff from the official operator page. Exclude theme parks, observation decks, zoos, aquariums and temporary or exhibition-specific pricing; if general admission is free, move to the next-ranked paid museum or historic site.",
+      "independent_menu_panel_first5_median_v1": "Run the fixed city-scoped query for the measure, take the first five distinct eligible venue menus in search-result order that are official venue or operator pages, record one regular publicly listed price per venue in the defined serving basis, and use the median. Exclude specials, happy hours, member prices, delivery prices, drinks from meal measures, and menus without a comparable serving basis. Inexpensive is one main for one at a casual/local venue; midrange is the lowest complete regular three-course meal for two at a midrange venue; premium is the lowest complete regular three-course or tasting-menu meal for two at a high-end venue; cappuccino, domestic draft beer and cocktail are one standard serving; wine is exactly the v5 volume-targeted 150 ml glass method from experiment 093.",
+      "official_mcdonalds_city_menu_first3_median_v1": "Use official McDonald's local menu or restaurant pages found by the fixed city-scoped query, take the first three distinct city-specific pages in search-result order that display a standard Big Mac meal/combo price, record all three prices and use the median. If the official city menu exposes only one city-level price, record that one and mark the reduced sample in evidenceText.",
+      "official_operator_first3_halfday_group_median_v1": "Search the city for official operator pages, take the first three distinct eligible operators in search-result order selling a standard adult place on a scheduled group activity lasting approximately half a day, record the regular public adult price and use the median. Exclude private/custom tours, theme-park admission, observation decks, zoos, aquariums, and temporary promotions.",
+      "official_operator_first3_fullday_premium_median_v1": "Search the city for official operator pages, take the first three distinct eligible operators in search-result order selling a standard adult place on a scheduled full-day premium activity, record the regular public adult price and use the median. Exclude private/custom tours, theme-park admission, observation decks, zoos, aquariums, and temporary promotions."
+    },
     "requiredMetadata": [
       "dated one-night stay, two adults, one room (or one bed for dorm)",
       "source URL and retrieval date",
       "currency as displayed",
       "tax/fee treatment as stated",
-      "property name where the observation is property-level"
+      "property name where the observation is property-level",
+      "all individual prices behind a panel median in samplePrices",
+      "selectionRule and the source-specific serving basis"
     ],
     "referenceWindow": "One night, arrival 2026-09-17, departure 2026-09-18",
     "totalCities": 40,
@@ -134,7 +174,7 @@
     },
     "lockedHoldout": {
       "count": 15,
-      "lockRule": "LOCKED. Do not inspect, fit against, or tune on these cities. Reveal once per candidate freeze. If you have looked at holdout results, you may not then change a coefficient, prompt, or gate.",
+      "lockRule": "LOCKED per measure. Existing revealed_once measures are spent and must not be reread or rescored. New measures are sealed independently after collection, revealed once only after the all-19 candidate is frozen, and never used for tuning. If a new measure has been revealed, no coefficient, prompt, or gate may change.",
       "cities": [
         { "city": "Hoi An", "region": "SEA", "band": "low" },
         { "city": "Pu Luong", "region": "SEA", "band": "low", "sparse": true },
@@ -174,7 +214,7 @@
       "A: Numbeo search snippets -> 5 food/drink anchors",
       "B: Expedia 3-star class trend -> 1 accommodation level anchor",
       "C: BudgetYourTrip entertainment tiers -> 3 activity anchors",
-      "D (optional): Expatistan -> cocktail and wine bottle"
+      "D (optional): Expatistan -> cocktail and wine bottle; cross-check only unless independently validated"
     ],
     "retriesAllowed": true,
     "retryRule": "Retry is permitted on a 429/503 or a blocked page. A retry must be recorded. On repeated block, fail to the next grade -- never silently substitute a different source.",

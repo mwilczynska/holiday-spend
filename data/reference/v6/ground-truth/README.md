@@ -3,8 +3,8 @@
 This directory contains the one-time ground-truth collection for the frozen v6 validation panel.
 
 The reference window is one night, arrival `2026-09-17`, departure `2026-09-18`, for two adults and
-one room (or one dorm bed). The six required measures are the accommodation ladder endpoints plus one
-paid attraction ticket:
+one room (or one dorm bed). The original six-measure panel was accommodation-scoped. The amended v2
+contract has 17 rows per city so the 19 product tiers can be fitted and validated:
 
 - `hostel_dorm_bed_1p`
 - `hostel_private_room_2p`
@@ -12,14 +12,26 @@ paid attraction ticket:
 - `hotel_3star_room_2p`
 - `hotel_4star_room_2p`
 - `paid_attraction_adult_1`
+- `inexpensive_restaurant_meal_1p`
+- `midrange_restaurant_meal_2p`
+- `mcmeal_combo`
+- `cappuccino_1`
+- `domestic_draft_beer_1`
+- `half_day_group_activity_adult_1`
+- `full_day_premium_activity_adult_1`
+- `premium_restaurant_meal_2p`
+- `cocktail_1`
+- `wine_glass_1`
+- `hotel_2star_room_2p`
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
 | `development-ledger.json` | Append-only development-city observations and explicit collection metadata |
-| `holdout-ledger.json` | Collected 15-city holdout observations; sealed and not inspected by the validator |
-| `holdout-seal.json` | Lock marker naming the sealed holdout ledger; no scores are stored |
+| `holdout-ledger.json` | The original six-measure holdout observations; those measures are revealed_once and spent |
+| `holdout-extension.json` | Per-measure sealed work queue for the eleven new rows; it contains no old holdout values |
+| `holdout-seal.json` | Per-measure lock marker; old measures remain revealed_once and new measures have their own lifecycle |
 | `../validation-manifest-v6.json` | Source of truth for city membership and gates |
 
 Run the deterministic audit with:
@@ -37,7 +49,7 @@ amount and currency, source URL, retrieval date, tax/fee wording, and property n
 accommodation quotes. Failed retrievals remain explicit (`not_found`, `blocked`, `stale`, or
 `class_absent`) rather than being replaced with a plausible value.
 
-The ledger uses schema `city-cost-v6-ground-truth-ledger-v2`. Found accommodation rows additionally
+The ledger uses schema `city-cost-v6-ground-truth-ledger-v3`. Found accommodation rows additionally
 require `samplePrices`, `listPriceAmount`, `dealLabels`, `classInventoryCount`, and `selectionRule`.
 `samplePrices` is the full set of first-page listing prices behind the median; `listPriceAmount` preserves
 the displayed strikethrough price for the representative first listing or is `null`; `dealLabels` preserves
@@ -51,7 +63,10 @@ least 12 matched cities are required before fitting that source offset. Its leve
 Copenhagen stage-1 finding:
 the top-picks first-page median undershot the full-inventory median by roughly 20-27% at 25 listings. Do not
 use this panel to set or score absolute city levels; its intended use is within-city ratios and source
-calibration.
+calibration. The food and drink rows are independently sourced from official menus or venue price lists,
+never Numbeo. Activity rows are independently sourced from official operator or attraction pages, never
+BudgetYourTrip. The exact selection rules are frozen in `validation-manifest-v6.json`; every panel median
+retains its individual prices in `samplePrices`.
 
 ## Accommodation price basis
 

@@ -4,7 +4,7 @@ The working document for the current workstream. Confirmed historical results an
 live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 
 **Active workstream:** city cost methodology **v6**
-**Last reviewed:** 9 August 2026
+**Last reviewed:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
 ---
@@ -20,7 +20,9 @@ arithmetic and FX inside the model, and applies asserted multipliers, one of whi
 could not be satisfied from free public sources. Its evidence is retained in full and is the foundation
 of v6. Full diagnosis: [`docs/dev/plans/city-cost-methodology-v6.md`](docs/dev/plans/city-cost-methodology-v6.md) §1.
 
-**v6 is adopted and M1 is integrated behind an opt-in feature flag.** The next work is **M2 — ground truth**.
+**v6 is adopted and M1 is integrated behind an opt-in feature flag.** The original accommodation-scoped M2
+and M3 records are retained, but the owner has reopened M3: it now means fitting and holdout-validating all
+19 product tiers. M4 must not start until that work is complete or an explicit unvalidation reason is recorded.
 
 ---
 
@@ -130,7 +132,7 @@ The 1-star median uses n=22 because Beijing, Nairobi and Melbourne have explicit
 relationships use n=25. v5 never validated a single relationship against product ground truth. v6 validated
 all four across the development panel before the two refuted rungs were refit in M3.
 
-### M3 — development refit and source calibration
+### Historical M3 accommodation-only work (retained; insufficient for current M3)
 
 - [x] Fit private-room and dorm development diagnostics from the 25-city Booking.com v2 ratios; retain the
   dorm refit and apply the documented post-score private rollback
@@ -189,18 +191,19 @@ M1 implementation notes:
 - v6 provenance is persisted in `city_estimates.metadata_json` and shown on `/dataset`. The live CSV and seed path
   are unchanged.
 
-### M3 — fit and validate — **development refit, single holdout score and anchor check complete**
+### M3 — fit and validate all 19 tiers — **IN PROGRESS (scope reset 10 August 2026)**
 
-- [x] Fit source-calibration offsets (15 matched cities; ≥12 minimum crossed)
-- [x] Score gates 2–6 once against the frozen candidate; correct anchor-contaminated reports without rescoring
-- [x] Reveal the locked holdout **once**; report the valid conditional results and correct contamination without rescoring
-- [x] Complete `001-expedia-production-anchor` against the 15 matched development cities; accept the production path
-- [ ] Score remaining gates/segments that require paired production-shaped food, drink and full-basket evidence
-- [ ] Write the methodology and data card
+- [x] Record the dated contract amendment from six accommodation-scoped measures to 17 all-tier validation rows
+- [ ] Collect the 11 new independent development measures across all 25 cities
+- [ ] Generate and cross-check every non-accommodation derivation from the development panel
+- [ ] Collect the 11 fresh holdout measures under per-measure seals without reading them
+- [ ] Freeze one all-19 candidate and score gates 2–6 once
+- [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
 
-**Exit status:** development fit, source offset, candidate freeze, single score and fresh production-path
-anchor replication are complete. Gates 4 and 5 remain not evaluable until paired food/drink/activity
-evidence exists; M4 migration remains intentionally unstarted.
+**Current status:** Phase 1 contract reset is complete. The development ledger is intentionally incomplete at
+147 found rows plus 275 pending new slots; the per-measure holdout seal keeps the six already revealed rows
+spent and has created eleven sealed-before-collection extension measures. The old accommodation-only score
+is not an all-19 M3 result. M4 migration remains out of scope.
 
 ### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 

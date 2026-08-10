@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "city-cost-v6-ground-truth-holdout-extension-v1",
+  "methodologyVersion": "v6.0",
+  "manifestPath": "data/reference/v6/validation-manifest-v6.json",
+  "panel": "holdout-extension",
+  "referenceWindow": "One night, arrival 2026-09-17, departure 2026-09-18",
+  "requiredMeasures": [
+    "inexpensive_restaurant_meal_1p",
+    "midrange_restaurant_meal_2p",
+    "mcmeal_combo",
+    "cappuccino_1",
+    "domestic_draft_beer_1",
+    "half_day_group_activity_adult_1",
+    "full_day_premium_activity_adult_1",
+    "premium_restaurant_meal_2p",
+    "cocktail_1",
+    "wine_glass_1",
+    "hotel_2star_room_2p"
+  ],
+  "status": "sealed_before_collection",
+  "cities": [
+    {
+      "city": "Hoi An",
+      "region": "SEA",
+      "band": "low",
+      "observations": []
+    },
+    {
+      "city": "Pu Luong",
+      "region": "SEA",
+      "band": "low",
+      "observations": []
+    },
+    {
+      "city": "Koh Samui",
+      "region": "SEA",
+      "band": "mid",
+      "observations": []
+    },
+    {
+      "city": "Kyoto",
+      "region": "East Asia",
+      "band": "high",
+      "observations": []
+    },
+    {
+      "city": "Fukuoka",
+      "region": "East Asia",
+      "band": "mid",
+      "observations": []
+    },
+    {
+      "city": "Nikko",
+      "region": "East Asia",
+      "band": "high",
+      "observations": []
+    },
+    {
+      "city": "Kathmandu",
+      "region": "South Asia",
+      "band": "low",
+      "observations": []
+    },
+    {
+      "city": "Amman",
+      "region": "Middle East",
+      "band": "mid",
+      "observations": []
+    },
+    {
+      "city": "Zanzibar",
+      "region": "Africa",
+      "band": "mid",
+      "observations": []
+    },
+    {
+      "city": "Krakow",
+      "region": "Europe",
+      "band": "mid",
+      "observations": []
+    },
+    {
+      "city": "Rome",
+      "region": "Europe",
+      "band": "high",
+      "observations": []
+    },
+    {
+      "city": "Cusco",
+      "region": "Latin America",
+      "band": "mid",
+      "observations": []
+    },
+    {
+      "city": "Buenos Aires",
+      "region": "Latin America",
+      "band": "mid",
+      "observations": []
+    },
+    {
+      "city": "Vancouver",
+      "region": "North America",
+      "band": "high",
+      "observations": []
+    },
+    {
+      "city": "Queenstown",
+      "region": "Oceania",
+      "band": "high",
+      "observations": []
+    }
+  ]
+}

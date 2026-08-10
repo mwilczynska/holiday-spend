@@ -17,7 +17,26 @@ const measures = manifest.groundTruthPanel.measuresPerCity;
 const development = manifest.groundTruthPanel.development.cities;
 const holdout = manifest.groundTruthPanel.lockedHoldout.cities;
 const missingStatuses = new Set(['not_found', 'blocked', 'stale', 'class_absent']);
-const accommodationMeasures = new Set(measures.filter((measure) => measure !== 'paid_attraction_adult_1'));
+const accommodationMeasures = new Set([
+  'hostel_dorm_bed_1p',
+  'hostel_private_room_2p',
+  'hotel_1star_room_2p',
+  'hotel_2star_room_2p',
+  'hotel_3star_room_2p',
+  'hotel_4star_room_2p',
+]);
+const panelMedianMeasures = new Set([
+  'inexpensive_restaurant_meal_1p',
+  'midrange_restaurant_meal_2p',
+  'mcmeal_combo',
+  'cappuccino_1',
+  'domestic_draft_beer_1',
+  'half_day_group_activity_adult_1',
+  'full_day_premium_activity_adult_1',
+  'premium_restaurant_meal_2p',
+  'cocktail_1',
+  'wine_glass_1',
+]);
 const errors = [];
 const warnings = [];
 let foundObservations = 0;
@@ -29,6 +48,7 @@ const accommodationRatios = {
   hostel_private_room_2p: 0.5919,
   hotel_1star_room_2p: 0.6663,
   hotel_3star_room_2p: 1,
+  hotel_2star_room_2p: 0.75,
   hotel_4star_room_2p: 1.3372,
 };
 const currentAccommodationSelectionRule = 'booking_top_picks_firstpage_median_v2';
@@ -37,6 +57,7 @@ const accommodationClassOrder = [
   'hostel_dorm_bed_1p',
   'hostel_private_room_2p',
   'hotel_1star_room_2p',
+  'hotel_2star_room_2p',
   'hotel_3star_room_2p',
   'hotel_4star_room_2p',
 ];
@@ -55,7 +76,7 @@ function issue(message) {
   errors.push(message);
 }
 
-if (ledger.schemaVersion !== 'city-cost-v6-ground-truth-ledger-v2') issue('Unexpected development ledger schemaVersion');
+if (ledger.schemaVersion !== 'city-cost-v6-ground-truth-ledger-v3') issue('Unexpected development ledger schemaVersion');
 if (ledger.panel !== 'development') issue('Development ledger must declare panel=development');
 if (ledger.referenceWindow?.arrival !== '2026-09-17' || ledger.referenceWindow?.departure !== '2026-09-18') {
   issue('Ledger reference window does not match the frozen manifest');
@@ -65,8 +86,13 @@ if (ledger.sourcePolicy?.accommodationGroundTruthSource !== 'Booking.com') issue
 if (ledger.sourcePolicy?.productionAccommodationAnchor !== 'Expedia') issue('Ledger sourcePolicy must identify Expedia as the production accommodation anchor');
 if (ledger.sourcePolicy?.offsetDirection !== 'Booking -> Expedia') issue('Ledger sourcePolicy must declare the Booking -> Expedia offset direction');
 if (ledger.sourcePolicy?.minimumCitiesForOffset !== 12) issue('Ledger sourcePolicy must require at least 12 cities for the Booking -> Expedia offset');
+if (!ledger.sourcePolicy?.independentFoodDrinkGroundTruth || /Numbeo/i.test(ledger.sourcePolicy.independentFoodDrinkGroundTruth) === false) issue('Ledger sourcePolicy must state the independent food/drink ground-truth rule');
+if (!ledger.sourcePolicy?.independentActivityGroundTruth || /BudgetYourTrip/i.test(ledger.sourcePolicy.independentActivityGroundTruth) === false) issue('Ledger sourcePolicy must state the independent activity ground-truth rule');
 for (const field of ['samplePrices', 'listPriceAmount', 'dealLabels', 'classInventoryCount', 'selectionRule']) {
   if (!ledger.observationContract?.accommodationFound?.includes(field)) issue(`Ledger accommodation contract must include ${field}`);
+}
+for (const field of ['samplePrices', 'selectionRule']) {
+  if (!ledger.observationContract?.panelMedianFound?.includes(field)) issue(`Ledger panel-median contract must include ${field}`);
 }
 
 const expectedDevelopment = new Map(development.map((entry) => [entry.city, entry]));
@@ -139,6 +165,17 @@ for (const cityEntry of ledger.cities ?? []) {
         if (!accommodationByCity.has(cityEntry.city)) accommodationByCity.set(cityEntry.city, new Map());
         accommodationByCity.get(cityEntry.city).set(measure, observation);
       }
+      if (panelMedianMeasures.has(measure) && !accommodationMeasures.has(measure)) {
+        const expectedRule = manifest.groundTruthPanel.measureSelectionRules?.[measure];
+        if (observation.selectionRule !== expectedRule) issue(`${cityEntry.city}/${measure}: selectionRule must be ${expectedRule}`);
+        if (!Array.isArray(observation.samplePrices) || observation.samplePrices.length < 1 || observation.samplePrices.length > 10) {
+          issue(`${cityEntry.city}/${measure}: panel-median rows need 1 to 10 samplePrices`);
+        } else if (observation.samplePrices.some((price) => !(typeof price === 'number' && Number.isFinite(price) && price > 0))) {
+          issue(`${cityEntry.city}/${measure}: samplePrices must contain only positive numbers`);
+        } else if (Math.abs(observation.amount - median(observation.samplePrices)) > 0.01) {
+          issue(`${cityEntry.city}/${measure}: amount must equal the median of samplePrices`);
+        }
+      }
       if (measure === 'paid_attraction_adult_1' && observation.propertyName !== undefined && observation.propertyName === '') issue(`${cityEntry.city}/${measure}: empty propertyName is not allowed`);
     } else if (!missingStatuses.has(status)) {
       issue(`${cityEntry.city}/${measure}: status must be found or an explicit missingness status`);
@@ -193,23 +230,30 @@ for (const [city, byMeasure] of accommodationByCity) {
   }
 }
 
-if (holdoutSeal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v1') issue('Unexpected holdout seal schemaVersion');
+if (holdoutSeal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v2') issue('Unexpected holdout seal schemaVersion');
 if (holdoutSeal.methodologyVersion !== 'v6.0') issue('Holdout seal methodologyVersion must be v6.0');
 if (holdoutSeal.manifestPath !== 'data/reference/v6/validation-manifest-v6.json') issue('Holdout seal manifestPath must identify the frozen v6 manifest');
-if (holdoutSeal.status === 'sealed_before_collection') {
-  if (holdoutSeal.resultsFile !== null || holdoutSeal.scoresFile !== null) issue('Pre-collection holdout seal must not expose result or score files');
-} else if (holdoutSeal.status === 'sealed_after_collection') {
-  if (typeof holdoutSeal.resultsFile !== 'string' || !holdoutSeal.resultsFile) issue('Collected holdout seal must name its sealed results file');
-  if (holdoutSeal.scoresFile !== null) issue('Collected holdout seal must not expose score files');
-  if (typeof holdoutSeal.resultsFile === 'string' && !fs.existsSync(path.join(root, holdoutSeal.resultsFile))) issue('Collected holdout results file is missing');
-} else if (holdoutSeal.status === 'revealed_once') {
-  if (typeof holdoutSeal.resultsFile !== 'string' || !holdoutSeal.resultsFile) issue('Revealed holdout seal must name its results file');
-  if (typeof holdoutSeal.scoresFile !== 'string' || !holdoutSeal.scoresFile) issue('Revealed holdout seal must name its score file');
-  if (!holdoutSeal.candidateConfigHash || !holdoutSeal.candidateCommit) issue('Revealed holdout seal must retain the frozen candidate identity');
-  if (typeof holdoutSeal.resultsFile === 'string' && !fs.existsSync(path.join(root, holdoutSeal.resultsFile))) issue('Revealed holdout results file is missing');
-  if (typeof holdoutSeal.scoresFile === 'string' && !fs.existsSync(path.join(root, holdoutSeal.scoresFile))) issue('Revealed holdout score file is missing');
-} else {
-  issue('Holdout seal must be sealed_before_collection, sealed_after_collection, or revealed_once');
+if (holdoutSeal.status !== 'per_measure') issue('Holdout seal must declare status=per_measure');
+const sealMeasures = holdoutSeal.measures && typeof holdoutSeal.measures === 'object' ? holdoutSeal.measures : {};
+if (JSON.stringify(Object.keys(sealMeasures).sort()) !== JSON.stringify([...measures].sort())) issue('Per-measure holdout seal keys do not match the frozen manifest');
+for (const measure of measures) {
+  const entry = sealMeasures[measure];
+  if (!entry) continue;
+  if (!['sealed_before_collection', 'sealed_after_collection', 'revealed_once'].includes(entry.status)) {
+    issue(`Holdout seal has invalid status for ${measure}`);
+    continue;
+  }
+  if (typeof entry.resultsFile !== 'string' || !entry.resultsFile) issue(`Holdout seal must name a results file for ${measure}`);
+  if (typeof entry.resultsFile === 'string' && !fs.existsSync(path.join(root, entry.resultsFile))) issue(`Holdout results file is missing for ${measure}`);
+  if (entry.status === 'sealed_before_collection' || entry.status === 'sealed_after_collection') {
+    if (entry.scoresFile !== null) issue(`Unrevealed holdout measure must not expose a score file: ${measure}`);
+    if (entry.candidateConfigHash !== null || entry.candidateCommit !== null) issue(`Unrevealed holdout measure must not carry a candidate identity: ${measure}`);
+  }
+  if (entry.status === 'revealed_once') {
+    if (typeof entry.scoresFile !== 'string' || !entry.scoresFile) issue(`Revealed holdout measure must name a score file: ${measure}`);
+    if (!entry.candidateConfigHash || !entry.candidateCommit) issue(`Revealed holdout measure must retain the frozen candidate identity: ${measure}`);
+    if (typeof entry.scoresFile === 'string' && !fs.existsSync(path.join(root, entry.scoresFile))) issue(`Holdout score file is missing for ${measure}`);
+  }
 }
 if (holdoutSeal.cityCount !== holdout.length || holdoutSeal.requiredMeasureCount !== measures.length) issue('Holdout seal counts do not match the frozen manifest');
 
@@ -223,7 +267,7 @@ const report = {
   warnings,
   substanceWarningCount: warnings.filter((warning) => !warning.startsWith('Pending slot:')).length,
   holdoutInspected: false,
-  holdoutScored: holdoutSeal.status === 'revealed_once',
+  holdoutScored: Object.values(sealMeasures).some((entry) => entry.status === 'revealed_once'),
   complete: errors.length === 0 && pendingSlots === 0,
 };
 console.log(JSON.stringify(report, null, 2));
