@@ -106,7 +106,7 @@ describe('materializeCityCostV6', () => {
     expect(result.tiersAud.accom_3_star.evidenceGrade).toBe('B');
     expect(result.tiersAud.accom_2_star.evidenceGrade).toBe('C');
     expect(result.tiersAud.activities_budget.evidenceGrade).toBe('B');
-    expect(result.tiersAud.food_budget.evidenceGrade).toBe('C');
+    expect(result.tiersAud.food_budget.evidenceGrade).toBe('D');
     expect(result.tiersAud.food_high_end.evidenceGrade).toBe('D');
     expect(result.tiersAud.accom_4_star.interval.widthPct).toBe(25);
     expect(result.mappedEstimate.accom4star).toBe(133.72);

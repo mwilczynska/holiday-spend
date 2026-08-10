@@ -552,7 +552,19 @@ streetFit.selectedForm = 'measured_R0_below_minimum_n';
 streetFit.observedFit = { ...streetFit };
 streetFit.fitStatus = 'measured_ratio_below_minimum_n';
 streetFit.intervalPct = streetFit.leaveOneCityOut ? ceilPct(streetFit.leaveOneCityOut.p90ApePct) : 45;
-streetFit.notes = `The measured paired relation has n=${streetFit.n}, below the n>=${MIN_FITTED_RELATION_N} shipping threshold, so it is retained as a weak measured R0 rather than called a well-powered fit. The measured coefficient is preferred because it is consistent in direction with the direct-evidence prior${streetPriorRatio === null ? '' : ` (global ratio of prior medians ${round(streetPriorRatio, 4)})`} and contradicts the superseded 0.5 reasoned constant. The full leave-one-city-out residual interval is retained; McMeal remains a cross-check and the basket is checked against BudgetYourTrip.`;
+streetFit.notes = `The measured paired relation has n=${streetFit.n}, below the n>=${MIN_FITTED_RELATION_N} shipping threshold, so it is retained as a diagnostic only. Its measured R0 ${streetFit.coefficient} and full LOO residual interval are not shipped; production falls back to the global direct-evidence prior ratio${streetPriorRatio === null ? '' : ` ${round(streetPriorRatio, 4)}`}. McMeal remains a cross-check and the basket is checked against BudgetYourTrip.`;
+if (!Number.isFinite(streetPriorRatio)) {
+  throw new Error('A global direct-evidence prior ratio is required for the below-minimum-n street-food fallback.');
+}
+const streetShippingFit = streetFit.n >= MIN_FITTED_RELATION_N
+  ? streetFit
+  : {
+      coefficient: round(streetPriorRatio, 4),
+      fitStatus: 'global_prior_fallback_below_minimum_n',
+      intervalPct: 45,
+      grade: 'D',
+      provenance: 'global_direct_evidence_prior_ratio_below_minimum_n',
+    };
 
 function selectedStreetCoefficient(point) {
   return streetFit.selectedForm === 'R1_band' && point.band && Number.isFinite(streetFit.byBand?.[point.band])
@@ -795,11 +807,15 @@ const derivationRules = {
     validation: 'development_fitted_and_original_holdout_revealed_once',
   },
   food_street_food: {
-    type: 'measured_ratio_with_wide_interval',
+    type: streetFit.n >= MIN_FITTED_RELATION_N ? 'measured_ratio' : 'global_prior_ratio_fallback',
     inputs: ['inexpensive_restaurant_meal_1p'],
     coefficientKey: 'street_food_meal_1p',
-    definition: 'street-food meal uses the measured paired street-food/inexpensive-meal R0; the source street-food anchor remains visible in validation evidence',
-    validation: 'development_basket_cross_check; measured_relation_below_minimum_n_with_residual_interval',
+    definition: streetFit.n >= MIN_FITTED_RELATION_N
+      ? 'street-food meal uses the shipped measured street-food/inexpensive-meal ratio'
+      : 'street-food meal uses the global direct-evidence prior ratio because the measured paired relation is below the minimum shipping n; the measured rows remain diagnostic evidence',
+    validation: streetFit.n >= MIN_FITTED_RELATION_N
+      ? 'development_basket_cross_check; measured_relation'
+      : 'development_basket_cross_check; measured_relation_below_minimum_n_not_shipped',
   },
   food_budget: {
     type: 'fixed_basket',
@@ -1048,14 +1064,19 @@ const report = {
       warning: premiumFit.n >= MIN_FITTED_RELATION_N ? null : 'Only three development cities supplied both compliant independent premium and midrange menu panels. The apparent ±12% fitted interval is rejected; this grade-D reasoned fallback is not a validation result.',
     },
     street_food_meal_1p: {
-      k: streetFit.coefficient,
-      ...(streetFit.selectedForm === 'R1_band' ? { byBand: streetFit.byBand } : {}),
+      k: streetShippingFit.coefficient,
+      ...(streetShippingFit.selectedForm === 'R1_band' ? { byBand: streetShippingFit.byBand } : {}),
       appliedTo: 'inexpensive_restaurant_meal_1p',
-      grade: 'C',
-      intervalPct: streetFit.intervalPct,
-      provenance: 'measured_independent_official_menu_panel_r0_below_minimum_n',
-      developmentGroundTruthValidation: streetFit,
-      warning: `The prior McMeal 1:1 identity proxy and the superseded reasoned 0.5 constant are replaced by the measured paired R0 ${streetFit.coefficient}. The n=${streetFit.n} panel is below the n>=${MIN_FITTED_RELATION_N} threshold, so the interval is the full LOO p90 residual (${streetFit.intervalPct}%). The direct-evidence prior ratio of medians is ${streetPriorRatio === null ? 'unavailable' : round(streetPriorRatio, 4)}; its difference from the paired median ratio reflects median-of-marginals versus median-of-paired-ratios, not an unrecorded coefficient override. McMeal remains a Numbeo cross-check only; the basket is checked against BudgetYourTrip.`,
+      grade: streetShippingFit.grade ?? 'C',
+      intervalPct: streetShippingFit.intervalPct,
+      provenance: streetShippingFit.provenance ?? 'measured_independent_official_menu_panel_r0',
+      developmentGroundTruthValidation: {
+        observedFit: streetFit,
+        shippedForm: streetShippingFit,
+      },
+      warning: streetFit.n >= MIN_FITTED_RELATION_N
+        ? `The measured street-food relation ships at n=${streetFit.n} with its LOO residual interval.`
+        : `The measured street-food R0 ${streetFit.coefficient} is not shipped: n=${streetFit.n} is below the uniform n>=${MIN_FITTED_RELATION_N} rule and its LOO p90 residual interval is ±${streetFit.intervalPct}%. Production explicitly falls back to the global direct-evidence prior ratio ${round(streetPriorRatio, 4)} at grade D with ±45%; the priors and shipped fallback therefore agree. The measured relation remains diagnostic only, and McMeal remains a cross-check.`,
     },
     cocktail_1: {
       k: cocktailFit.coefficient,
@@ -1069,7 +1090,7 @@ const report = {
   },
   postHoldoutDecisions,
   limitations: [
-    `Fitted relations require n>=${MIN_FITTED_RELATION_N}. The street-food n=6 relation is selected as a weak measured R0 with its full ${streetFit.intervalPct}% LOO residual interval; the premium n=3 relation remains a documented reasoned fallback with grade D.`,
+    `Fitted relations require n>=${MIN_FITTED_RELATION_N}. The street-food n=${streetFit.n} relation is retained as diagnostic evidence but does not ship; production uses the global direct-evidence prior ratio ${round(streetPriorRatio, 4)} at grade D ±45%. The premium n=${premiumObservedFit.n} relation follows the same minimum-n rule and remains a documented grade-D fallback.`,
     'Wine glass is intentionally excluded from drinks_heavy after the rejected Expatistan bottle-to-glass route; its raw menu diagnostic is retained but no wine coefficient is shipped.',
     `The minimum fitted relation sample size is n=${MIN_FITTED_RELATION_N}. The beer/cappuccino diagnostic has n=4 and LOO medAPE 82.87%, so it is not promoted to a coefficient; the n=5 wine diagnostic is likewise not promoted.`,
     'accom_1_star is interpolated, not observed. It is the weakest value in the methodology.',

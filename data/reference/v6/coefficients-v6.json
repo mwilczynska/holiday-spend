@@ -377,7 +377,7 @@
         "Mexico City",
         "San Francisco"
       ],
-      "notes": "The measured paired relation has n=6, below the n>=8 shipping threshold, so it is retained as a weak measured R0 rather than called a well-powered fit. The measured coefficient is preferred because it is consistent in direction with the direct-evidence prior (global ratio of prior medians 0.2757) and contradicts the superseded 0.5 reasoned constant. The full leave-one-city-out residual interval is retained; McMeal remains a cross-check and the basket is checked against BudgetYourTrip.",
+      "notes": "The measured paired relation has n=6, below the n>=8 shipping threshold, so it is retained as a diagnostic only. Its measured R0 0.3248 and full LOO residual interval are not shipped; production falls back to the global direct-evidence prior ratio 0.2757. McMeal remains a cross-check and the basket is checked against BudgetYourTrip.",
       "candidateForms": {
         "R0": {
           "coefficient": 0.3248,
@@ -681,13 +681,13 @@
       "validation": "development_fitted_and_original_holdout_revealed_once"
     },
     "food_street_food": {
-      "type": "measured_ratio_with_wide_interval",
+      "type": "global_prior_ratio_fallback",
       "inputs": [
         "inexpensive_restaurant_meal_1p"
       ],
       "coefficientKey": "street_food_meal_1p",
-      "definition": "street-food meal uses the measured paired street-food/inexpensive-meal R0; the source street-food anchor remains visible in validation evidence",
-      "validation": "development_basket_cross_check; measured_relation_below_minimum_n_with_residual_interval"
+      "definition": "street-food meal uses the global direct-evidence prior ratio because the measured paired relation is below the minimum shipping n; the measured rows remain diagnostic evidence",
+      "validation": "development_basket_cross_check; measured_relation_below_minimum_n_not_shipped"
     },
     "food_budget": {
       "type": "fixed_basket",
@@ -1198,76 +1198,16 @@
       "warning": "Only three development cities supplied both compliant independent premium and midrange menu panels. The apparent ±12% fitted interval is rejected; this grade-D reasoned fallback is not a validation result."
     },
     "street_food_meal_1p": {
-      "k": 0.3248,
+      "k": 0.2757,
       "appliedTo": "inexpensive_restaurant_meal_1p",
-      "grade": "C",
-      "intervalPct": 336,
-      "provenance": "measured_independent_official_menu_panel_r0_below_minimum_n",
+      "grade": "D",
+      "intervalPct": 45,
+      "provenance": "global_direct_evidence_prior_ratio_below_minimum_n",
       "developmentGroundTruthValidation": {
-        "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
-        "n": 6,
-        "fitStatus": "measured_ratio_below_minimum_n",
-        "shippingEligible": false,
-        "coefficient": 0.3248,
-        "dispersion": {
-          "min": 0.093,
-          "q25": 0.1367,
-          "q75": 0.6464,
-          "max": 0.9508
-        },
-        "leaveOneCityOut": {
-          "n": 6,
-          "medianApePct": 100.73,
-          "p90ApePct": 335.59,
-          "maxApePct": 381.9,
-          "medianSignedLogError": 0
-        },
-        "intervalPct": 336,
-        "cities": [
-          "Budapest",
-          "Da Nang",
-          "Dubai",
-          "Hanoi",
-          "Mexico City",
-          "San Francisco"
-        ],
-        "notes": "The measured paired relation has n=6, below the n>=8 shipping threshold, so it is retained as a weak measured R0 rather than called a well-powered fit. The measured coefficient is preferred because it is consistent in direction with the direct-evidence prior (global ratio of prior medians 0.2757) and contradicts the superseded 0.5 reasoned constant. The full leave-one-city-out residual interval is retained; McMeal remains a cross-check and the basket is checked against BudgetYourTrip.",
-        "candidateForms": {
-          "R0": {
-            "coefficient": 0.3248,
-            "leaveOneCityOut": {
-              "n": 6,
-              "medianApePct": 100.73,
-              "p90ApePct": 335.59,
-              "maxApePct": 381.9,
-              "medianSignedLogError": 0
-            },
-            "intervalPct": 336
-          },
-          "R1_band": {
-            "form": "R1_band",
-            "globalFallback": 0.3248,
-            "byBand": {
-              "high": null,
-              "low": null,
-              "mid": null
-            },
-            "leaveOneCityOut": {
-              "n": 6,
-              "medianApePct": 100.73,
-              "p90ApePct": 335.59,
-              "maxApePct": 381.9,
-              "medianSignedLogError": 0
-            },
-            "intervalPct": 336,
-            "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
-          }
-        },
-        "selectedForm": "measured_R0_below_minimum_n",
         "observedFit": {
           "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
           "n": 6,
-          "fitStatus": "fitted_r0",
+          "fitStatus": "measured_ratio_below_minimum_n",
           "shippingEligible": false,
           "coefficient": 0.3248,
           "dispersion": {
@@ -1292,7 +1232,7 @@
             "Mexico City",
             "San Francisco"
           ],
-          "notes": "Fitted on independent official street-food and local prepared-meal medians after FX conversion with the frozen snapshot. McMeal remains a separate cross-check and is never used as the base.",
+          "notes": "The measured paired relation has n=6, below the n>=8 shipping threshold, so it is retained as a diagnostic only. Its measured R0 0.3248 and full LOO residual interval are not shipped; production falls back to the global direct-evidence prior ratio 0.2757. McMeal remains a cross-check and the basket is checked against BudgetYourTrip.",
           "candidateForms": {
             "R0": {
               "coefficient": 0.3248,
@@ -1324,10 +1264,79 @@
               "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
             }
           },
-          "selectedForm": "measured_R0_below_minimum_n"
+          "selectedForm": "measured_R0_below_minimum_n",
+          "observedFit": {
+            "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
+            "n": 6,
+            "fitStatus": "fitted_r0",
+            "shippingEligible": false,
+            "coefficient": 0.3248,
+            "dispersion": {
+              "min": 0.093,
+              "q25": 0.1367,
+              "q75": 0.6464,
+              "max": 0.9508
+            },
+            "leaveOneCityOut": {
+              "n": 6,
+              "medianApePct": 100.73,
+              "p90ApePct": 335.59,
+              "maxApePct": 381.9,
+              "medianSignedLogError": 0
+            },
+            "intervalPct": 336,
+            "cities": [
+              "Budapest",
+              "Da Nang",
+              "Dubai",
+              "Hanoi",
+              "Mexico City",
+              "San Francisco"
+            ],
+            "notes": "Fitted on independent official street-food and local prepared-meal medians after FX conversion with the frozen snapshot. McMeal remains a separate cross-check and is never used as the base.",
+            "candidateForms": {
+              "R0": {
+                "coefficient": 0.3248,
+                "leaveOneCityOut": {
+                  "n": 6,
+                  "medianApePct": 100.73,
+                  "p90ApePct": 335.59,
+                  "maxApePct": 381.9,
+                  "medianSignedLogError": 0
+                },
+                "intervalPct": 336
+              },
+              "R1_band": {
+                "form": "R1_band",
+                "globalFallback": 0.3248,
+                "byBand": {
+                  "high": null,
+                  "low": null,
+                  "mid": null
+                },
+                "leaveOneCityOut": {
+                  "n": 6,
+                  "medianApePct": 100.73,
+                  "p90ApePct": 335.59,
+                  "maxApePct": 381.9,
+                  "medianSignedLogError": 0
+                },
+                "intervalPct": 336,
+                "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
+              }
+            },
+            "selectedForm": "measured_R0_below_minimum_n"
+          }
+        },
+        "shippedForm": {
+          "coefficient": 0.2757,
+          "fitStatus": "global_prior_fallback_below_minimum_n",
+          "intervalPct": 45,
+          "grade": "D",
+          "provenance": "global_direct_evidence_prior_ratio_below_minimum_n"
         }
       },
-      "warning": "The prior McMeal 1:1 identity proxy and the superseded reasoned 0.5 constant are replaced by the measured paired R0 0.3248. The n=6 panel is below the n>=8 threshold, so the interval is the full LOO p90 residual (336%). The direct-evidence prior ratio of medians is 0.2757; its difference from the paired median ratio reflects median-of-marginals versus median-of-paired-ratios, not an unrecorded coefficient override. McMeal remains a Numbeo cross-check only; the basket is checked against BudgetYourTrip."
+      "warning": "The measured street-food R0 0.3248 is not shipped: n=6 is below the uniform n>=8 rule and its LOO p90 residual interval is ±336%. Production explicitly falls back to the global direct-evidence prior ratio 0.2757 at grade D with ±45%; the priors and shipped fallback therefore agree. The measured relation remains diagnostic only, and McMeal remains a cross-check."
     },
     "cocktail_1": {
       "k": 2.6,
@@ -1390,7 +1399,7 @@
     }
   },
   "limitations": [
-    "Fitted relations require n>=8. The street-food n=6 relation is selected as a weak measured R0 with its full 336% LOO residual interval; the premium n=3 relation remains a documented reasoned fallback with grade D.",
+    "Fitted relations require n>=8. The street-food n=6 relation is retained as diagnostic evidence but does not ship; production uses the global direct-evidence prior ratio 0.2757 at grade D ±45%. The premium n=3 relation follows the same minimum-n rule and remains a documented grade-D fallback.",
     "Wine glass is intentionally excluded from drinks_heavy after the rejected Expatistan bottle-to-glass route; its raw menu diagnostic is retained but no wine coefficient is shipped.",
     "The minimum fitted relation sample size is n=8. The beer/cappuccino diagnostic has n=4 and LOO medAPE 82.87%, so it is not promoted to a coefficient; the n=5 wine diagnostic is likewise not promoted.",
     "accom_1_star is interpolated, not observed. It is the weakest value in the methodology.",
