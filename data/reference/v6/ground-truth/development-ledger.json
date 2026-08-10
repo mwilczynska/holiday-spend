@@ -8018,6 +8018,96 @@
           "dealLabels": [],
           "classInventoryCount": 83,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 6,
+          "currency": "EUR",
+          "sourceName": "Abrelatas Bar & Lounge Barcelona official menu",
+          "sourceUrl": "https://abrelatasbcn.com/menu-english",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Abrelatas menu provided three comparable regular casual one-person mains as sandwiches: Spanish omelette sandwich EUR 5.50, classic sandwich EUR 6 and tuna sandwich EUR 7. Median; specials, promotions and beverages excluded.",
+          "samplePrices": [
+            5.5,
+            6,
+            7
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official Barcelona menu route did not produce three comparable current complete regular three-course meals for two at qualifying midrange venues; single-course menus and promotions were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's Spain route did not expose a current Barcelona city-specific Big Mac meal/combo price; delivery and aggregator prices were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "The bounded official Barcelona route exposed one regular cappuccino at Abrelatas but did not produce three comparable current official menu observations; latte and iced variants were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The current official Abrelatas menu exposed only two comparable 0.40 litre domestic draft items, not the required three-observation panel; bottled and differently sized beers were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Barcelona operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private tours, attractions and promotions were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Barcelona operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private tours and attraction admission were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official Barcelona menu route did not produce three comparable current complete regular three-course or tasting-menu meals for two at qualifying high-end venues; single-menu course prices were not promoted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 9.5,
+          "currency": "EUR",
+          "sourceName": "Abrelatas Bar & Lounge Barcelona official menu",
+          "sourceUrl": "https://abrelatasbcn.com/menu-english",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Abrelatas menu listed regular classic cocktails at EUR 9.50 for Mojito, Daiquiri and Caipirinha. Median; happy-hour and promotional prices excluded.",
+          "samplePrices": [
+            9.5,
+            9.5,
+            9.5
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "The bounded official Barcelona route did not produce three comparable regular wines with an explicit 125-175 ml or 15 cl serving basis; unlabelled glass prices were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -8291,6 +8381,136 @@
           "dealLabels": [],
           "classInventoryCount": 33,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 149,
+          "currency": "MXN",
+          "sourceName": "Tagers San Ángel CDMX official menu",
+          "sourceUrl": "https://tagers.com/menus/cdmx/comida-cena/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "The current official Tagers CDMX menu provided three comparable regular casual one-person mains: pepperoni pizza MXN 135, pasta bolognese MXN 149 and pasta Alfredo with chicken MXN 169. Median; optional drinks, promotions and extras excluded.",
+          "samplePrices": [
+            135,
+            149,
+            169
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 906,
+          "currency": "MXN",
+          "sourceName": "Tagers San Ángel CDMX official menu",
+          "sourceUrl": "https://tagers.com/menus/cdmx/comida-cena/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Three complete regular three-course examples for two were constructed from the current official Tagers menu: (chicken soup 99 + pasta bolognese 149 + cheesecake 159)x2 = MXN 814; (cream of corn soup 109 + milanesa 169 + Matilda crunch 175)x2 = MXN 906; (French onion soup 129 + chicken tzatziki bowl 269 + cookie skillet 189)x2 = MXN 1,174. Median; beverages and optional extras excluded.",
+          "samplePrices": [
+            814,
+            906,
+            1174
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's Mexico route did not expose three current Mexico City-specific Big Mac meal/combo prices; delivery and aggregator prices were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 67,
+          "currency": "MXN",
+          "sourceName": "Official Mexico City cappuccino panel: Meroma, Street Art Hotel Roma and Tagers San Ángel",
+          "sourceUrl": "https://meroma.mx/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "Meroma includes tax; other treatment not stated",
+          "evidenceText": "Regular cappuccino prices in the current official Mexico City panel were MXN 60 at Meroma (200 ml; https://meroma.mx/menu), MXN 67 at Street Art Hotel Roma (280 ml; https://www.streetarthotel.com/menu), and MXN 75 at Tagers San Ángel (400 ml; https://tagers.com/menus/cdmx/bebidas/). Median; iced variants and extras excluded.",
+          "samplePrices": [
+            60,
+            67,
+            75
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The current official Mexico City menus located listed bottled or canned beer rather than three comparable domestic draft servings with a common serving basis; those entries were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Mexico City operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private tours, observation attractions and promotions were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Mexico City operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private tours and attraction admission were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 1610,
+          "currency": "MXN",
+          "sourceName": "Meroma Mexico City official menu",
+          "sourceUrl": "https://meroma.mx/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Three complete regular high-end three-course examples for two were constructed from the current official Meroma menu: (ensalada 259 + tagliolini 355 + dessert 190)x2 = MXN 1,608; (crudo 295 + orecchiette 310 + dessert 200)x2 = MXN 1,610; (pork belly skewers 280 + catch of day 365 + dessert 210)x2 = MXN 1,710. Median; beverages and optional extras excluded.",
+          "samplePrices": [
+            1608,
+            1610,
+            1710
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 149,
+          "currency": "MXN",
+          "sourceName": "Tagers San Ángel CDMX official drinks menu",
+          "sourceUrl": "https://tagers.com/menus/cdmx/bebidas/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "The current official Tagers CDMX menu listed regular cocktails at MXN 135 for Paloma negra, MXN 149 for Red berry mezcal and MXN 169 for Mezcalina de piña tatemada. Median; happy-hour, refill and non-alcoholic prices excluded.",
+          "samplePrices": [
+            135,
+            149,
+            169
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 149,
+          "currency": "MXN",
+          "sourceName": "Tagers San Ángel CDMX official drinks menu",
+          "sourceUrl": "https://tagers.com/menus/cdmx/bebidas/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "The current official Tagers CDMX menu explicitly states bottle 750 ml / glass 150 ml and listed comparable regular glass wines at MXN 135, 149 and 165. Median; bottle, refill and promotional prices excluded.",
+          "samplePrices": [
+            135,
+            149,
+            165
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
@@ -8567,6 +8787,106 @@
           ],
           "classInventoryCount": 30,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 23.9,
+          "currency": "PEN",
+          "sourceName": "El Chinito Lima official 2026 menu",
+          "sourceUrl": "https://elchinito.com.pe/carta",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official El Chinito 2026 menu provided three comparable regular casual one-person sanguchones at PEN 23.90 each: chicharrón, lomito and butifarra. Median; combo additions, beverages and promotions excluded.",
+          "samplePrices": [
+            23.9,
+            23.9,
+            23.9
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official Lima route did not produce three comparable current complete regular three-course meals for two at qualifying midrange venues; single-course menus and promotions were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's Peru route did not expose three current Lima-specific Big Mac meal/combo prices; delivery and aggregator prices were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "The current official Lima menus located exposed fewer than three comparable regular cappuccino servings; espresso, latte and non-comparable coffee styles were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The current official Lima menus located exposed bottled beer or an unclassified craft serving, not three comparable domestic draft servings with a common serving basis.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Lima operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private tours and attraction admission were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Lima operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private tours and attraction admission were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 276,
+          "currency": "PEN",
+          "sourceName": "Limaná Lima official Fall 2026 menu",
+          "sourceUrl": "https://limana.com/carta/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Three complete regular high-end three-course examples for two were constructed from the current Limaná Fall 2026 menu: (Gyozas 36 + Pad Thai 48 + Quiero ser tiramisú 29)x2 = PEN 226; (Bowl de Setas y Jengibre 38 + Risotto 68 + Crocante 32)x2 = PEN 276; (Ceviche de Coco 34 + Trucha 75 + Pecado de chocolate 32)x2 = PEN 282. Median; beverages and optional extras excluded.",
+          "samplePrices": [
+            226,
+            276,
+            282
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 42,
+          "currency": "PEN",
+          "sourceName": "Limaná Lima official Fall 2026 menu",
+          "sourceUrl": "https://limana.com/carta/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Limaná Fall 2026 menu listed regular cocktails at PEN 38 for Tinto de Verano, PEN 42 for Capitan and PEN 45 for House Spritz. Median; promotions and non-alcoholic drinks excluded.",
+          "samplePrices": [
+            38,
+            42,
+            45
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "The current official Lima menus located listed wines by the glass without an explicit 125-175 ml or 15 cl serving basis; those prices were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -8838,6 +9158,96 @@
           "dealLabels": [],
           "classInventoryCount": 49,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 20,
+          "currency": "USD",
+          "sourceName": "Hazie's San Francisco official menu",
+          "sourceUrl": "https://www.haziessf.com/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Hazie's menu provided three comparable regular casual one-person lunch mains: Crispy Asian Chicken Salad USD 19, Fried Chicken Sandwich USD 20 and Baja Fish Tacos USD 22. Median; happy-hour prices, drinks and extras excluded.",
+          "samplePrices": [
+            19,
+            20,
+            22
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official San Francisco menu route did not produce three comparable current complete regular three-course meals for two at qualifying midrange venues; single-course menus and promotions were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's US route did not expose three current San Francisco city-specific Big Mac meal/combo prices; delivery and aggregator prices were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "The current official San Francisco menus located did not expose three comparable regular cappuccino servings; latte, espresso and unpriced coffee entries were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "Hazie's current official menu listed draft beers without a stated serving volume and did not provide three comparable domestic draft observations with a common serving basis.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official San Francisco operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private tours and observation attractions were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official San Francisco operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private tours and attraction admission were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official San Francisco menu route did not produce three comparable current complete regular three-course or tasting-menu meals for two at qualifying high-end venues; single-menu course prices were not promoted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 16,
+          "currency": "USD",
+          "sourceName": "Hazie's San Francisco official menu",
+          "sourceUrl": "https://www.haziessf.com/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Hazie's dinner menu provided three regular house cocktails at USD 15, USD 16 and USD 17. Median; happy-hour and promotional prices excluded.",
+          "samplePrices": [
+            15,
+            16,
+            17
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Hazie's current official menu listed glass prices without an explicit 125-175 ml or 15 cl serving basis; those prices were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -9082,6 +9492,116 @@
           "dealLabels": [],
           "classInventoryCount": 26,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 25,
+          "currency": "AUD",
+          "sourceName": "Dame Melbourne official menu",
+          "sourceUrl": "https://www.dame.melbourne/fooddrink",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Dame all-day menu provided three comparable regular casual one-person mains: Croque ma'DAME AUD 25, Eggs Florentine AUD 26 and Caesar Salad AUD 24. Median; brunch packages, drinks and extras excluded.",
+          "samplePrices": [
+            24,
+            25,
+            26
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+        "amount": 116,
+          "currency": "AUD",
+          "sourceName": "Official Melbourne menu panel: Neptune Food and Wine and Aegli",
+          "sourceUrl": "https://neptune.melbourne/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Three complete regular three-course examples for two were constructed from current official Melbourne menus: (Neptune eggplant 18 + rigatoni 27 + bomboloni 10)x2 = AUD 110; (Neptune stracciatella 18 + mushroom tortellini 28 + tiramisu 12)x2 = AUD 116; (Aegli three-course sharing menu priced at $70 per person)x2 = AUD 140. Median; beverages and optional extras excluded. Aegli menu: https://www.aegli.melbourne/menu.",
+          "samplePrices": [
+            110,
+            116,
+            140
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's Australia route did not expose three current Melbourne city-specific Big Mac meal/combo prices; delivery and aggregator prices were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "The current official Melbourne menus located did not expose three comparable regular cappuccino servings; Dame's menu listed coffee without a cappuccino item and other coffee styles were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The current official Melbourne menus located did not produce three comparable domestic draft servings with a common serving basis; listings without serving volume or with bottled/canned beer were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Melbourne operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private tours, observation attractions and promotions were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Melbourne operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private tours and attraction admission were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official Melbourne menu route did not produce three comparable current complete regular three-course or tasting-menu meals for two at qualifying high-end venues; single tasting-menu prices were not promoted without a three-observation panel.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 22,
+          "currency": "AUD",
+          "sourceName": "Aegli Melbourne official menu",
+          "sourceUrl": "https://www.aegli.melbourne/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Aegli menu listed regular cocktails at AUD 21 for Espresso Martini, AUD 22 for Margarita and AUD 23 for Tsipouro Margarita. Median; mocktails, happy-hour and promotional prices excluded.",
+          "samplePrices": [
+            21,
+            22,
+            23
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 14.5,
+          "currency": "AUD",
+          "sourceName": "Matteo's Melbourne official wine-by-the-glass menu",
+          "sourceUrl": "https://www.matteos.com.au/PDFs/MatteosCurrentWinesByGlass.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Matteo's menu explicitly states 140 ml for white and red wines by the glass and lists comparable regular prices of AUD 13.5, AUD 14.5 and AUD 16.5. The 140 ml serving is within the frozen 125-175 ml target; median; bottle prices and promotions excluded.",
+          "samplePrices": [
+            13.5,
+            14.5,
+            16.5
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     }

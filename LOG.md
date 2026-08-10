@@ -2481,3 +2481,23 @@ The batch took development coverage from **234 found / 90 pending** to **252 fou
 25-city x 17-measure ledger. No new batch-level artifact signature exceeded the owned 30% stop threshold.
 No coefficient was refit, no gate was scored, and no holdout value was read. The next tranche is Barcelona,
 Mexico City, Lima, San Francisco and Melbourne.
+## v6 M3 — independent menu/activity batch 005 (10 August 2026)
+
+Experiment `002-independent-anchor-panel` batch 005 resolved all 50 non-accommodation slots for Barcelona,
+Mexico City, Lima, San Francisco and Melbourne. It added **17 found observations and 33 explicit missingness
+rows**, taking development coverage to **269 found / 0 pending** across the 25-city x 17-measure ledger.
+
+Found rows came from current official menus: Abrelatas in Barcelona; Meroma, Tagers and Street Art Hotel in
+Mexico City; El Chinito and Limaná in Lima; Hazie's in San Francisco; and Dame, Neptune, Aegli and Matteo's
+in Melbourne. A current official route was not promoted when it lacked the required panel size, serving basis,
+three-course structure or current regular price. In particular, bottled/canned beer was not substituted for
+draft, unlabelled wine glasses were not substituted for the 125–175 ml target, and activity/operator routes
+that did not yield compliant scheduled group prices remain `not_found`. No Numbeo, BudgetYourTrip, delivery
+menu, aggregator, happy-hour or other promotional price was used as ground truth.
+
+The validator returned zero errors, zero pending slots and 19 standing accommodation substance warnings. No
+new batch-level artifact signature exceeded the owned 30% stop threshold. The arithmetic audit caught and
+corrected two Melbourne median values before completion. No coefficient was refit, no gate was scored, and no
+holdout value was read. Phase 2 collection is complete; the next action is script-generated Phase 3 fitting
+of every non-accommodation derivation, with leave-one-city-out provenance, residual intervals and a dated
+decision on whether cocktail/wine remain laddered or receive a production spine call.
