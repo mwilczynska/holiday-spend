@@ -116,21 +116,34 @@ the holdout has not been inspected, scored, compared, or used for tuning.
 
 ### M2 ladder validation result
 
-The requested 19-city v2 panel validates all four accommodation relationships against product ground truth.
-The 1-star relationship has n=17 because Beijing and Nairobi have explicit class absence; the other three
-relationships have n=19. `CONFIRMED` means the ground-truth median is inside the shipped coefficient interval.
+The full 25-city v2 development panel validates the four accommodation relationships against product ground
+truth. `CONFIRMED` means the ground-truth median is inside the shipped coefficient interval.
 
-| Relationship | Fitted k | 19-city GT median | Difference | M2 result |
+| Relationship | Fitted k | 25-city GT median | Difference | M2 result |
 | --- | ---: | ---: | ---: | --- |
-| 4-star / 3-star | 1.337 | 1.404 | +5.0% | **CONFIRMED** (interval ±25%) |
-| 1-star / 3-star | 0.666 | 0.745 | +11.9% | **CONFIRMED** (interval ±45%) |
-| private room / 3-star | 0.592 | 0.800 | +35.2% | **At interval edge — M5 correction candidate** |
-| dorm / 3-star | 0.163 | 0.319 | +96.5% | **REFUTED — stale 2023 coefficient confirmed** |
+| 4-star / 3-star | 1.337 | 1.395 | +4.3% | **CONFIRMED** (interval ±25%) |
+| 1-star / 3-star | 0.666 | 0.727 | +9.2% | **CONFIRMED** (interval ±45%) |
+| private room / 3-star | 0.592 | 0.795 | +34.4% | **REFUTED — refit in M3** |
+| dorm / 3-star | 0.163 | 0.295 | +81.7% | **REFUTED — refit in M3; stale 2023 coefficient confirmed** |
 
-The six-city extension refreshes these medians to 1.395 (4-star, n=25), 0.727 (1-star, n=22), 0.795
-(private, n=25) and 0.295 (dorm, n=25); the interpretation is unchanged. v5 never validated a single
-relationship against product ground truth. v6 has now validated all four against the 19-city panel and
-rechecked them after the full development tranche, without refitting coefficients.
+The 1-star median uses n=22 because Beijing, Nairobi and Melbourne have explicit class absence; the other
+relationships use n=25. v5 never validated a single relationship against product ground truth. v6 validated
+all four across the development panel before the two refuted rungs were refit in M3.
+
+### M3 — development refit and source calibration
+
+- [x] Refit private-room and dorm coefficients from the 25-city Booking.com v2 development ratios only
+- [x] Leave confirmed 4-star and 1-star coefficients unchanged
+- [x] Fit the Booking → Expedia 3-star source offset on 15 matched development cities (above the ≥12 minimum)
+- [ ] Freeze one candidate configuration in `ground-truth/holdout-seal.json` before reading holdout values
+- [ ] Score gates 2–6 once after the freeze; do not tune or rescore
+
+The generated candidate coefficients are private `0.7955` with a `±52%` LOO-p90 residual interval and dorm
+`0.2955` with a `±54%` interval. The source calibration record is in
+`data/reference/v6/coefficients-v6.json`: Booking.com v2 development ground truth is the calibration target,
+Expedia 3-star class-trend output is the production anchor, the runtime Expedia→Booking multiplier is `0.9361`,
+and its LOO-p90 residual interval is `±41%`. Four matched Expedia rows are the documented bare-dollar proxy;
+the offset absorbs that shared displayed-dollar basis and retains the provenance.
 
 M1 implementation notes:
 

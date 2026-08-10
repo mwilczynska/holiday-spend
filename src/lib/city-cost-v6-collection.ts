@@ -4,6 +4,7 @@ import { z } from 'zod';
 import type { CityGenerationProvider } from './city-generation-config';
 import { runJsonPromptWithProvider } from './city-llm-client';
 import {
+  loadV6SourceCalibrationOffset,
   normalizeV6Region,
   type V6AnchorInputs,
   type V6Grade,
@@ -236,12 +237,21 @@ function sourceFactToAnchor(
     };
   }
 
+  const rawValueAud = fact.value * rate;
+  const sourceOffset = source === 'expedia_3star'
+    ? loadV6SourceCalibrationOffset('hotel_3star_room_2p')
+    : null;
+  const calibratedValueAud = rawValueAud * (sourceOffset?.expediaToBookingMultiplier ?? 1);
   return {
-    valueAud: Math.round((fact.value * rate + Number.EPSILON) * 100) / 100,
+    valueAud: Math.round((calibratedValueAud + Number.EPSILON) * 100) / 100,
     status: 'observed' as const,
     evidenceGrade,
-    sourceIds: [`${source}:${fact.sourceUrl}`],
-    modelVersions: [model, promptVersion],
+    intervalPct: sourceOffset?.intervalPct,
+    sourceIds: [
+      `${source}:${fact.sourceUrl}`,
+      ...(sourceOffset ? [`v6-source-offset:${sourceOffset.fit?.provenance ?? 'booking-expedia'}`] : []),
+    ],
+    modelVersions: [model, promptVersion, ...(sourceOffset ? ['city-cost-v6-source-offset-v1'] : [])],
   };
 }
 

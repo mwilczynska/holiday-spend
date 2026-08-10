@@ -134,6 +134,11 @@ Rules that keep this from becoming v1's asserted-constant mistake:
 Until M3 completes, **all offsets are `1.0`** and grade-B intervals use the defaults in §3. That is the
 honest starting state, not a placeholder to be quietly forgotten.
 
+During M3, the candidate offset is recorded in `data/reference/v6/coefficients-v6.json` with both directions
+explicit: the calibration target is Booking.com development ground truth and the production anchor is
+Expedia. It is not accepted as final until the candidate is frozen and gate 8 is checked against the locked
+holdout.
+
 ---
 
 ## 5. Model and missingness rules

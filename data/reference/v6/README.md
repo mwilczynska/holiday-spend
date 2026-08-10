@@ -37,7 +37,8 @@ Current output:
 pooled 101 hotel rows across 51 cities
 accom_2_star <- accom_3_star           n=18  k=0.7500  LOO medAPE 11.37%  p90 24.63%
 accom_4_star <- accom_3_star           n=26  k=1.3372  LOO medAPE 12.98%  p90 27.18%
-hostel_dorm_bed_1p <- accom_3_star     n= 7  k=0.1626  LOO medAPE 27.96%  p90 38.75%
+hostel_dorm_bed_1p <- accom_3_star     n=25  k=0.2955  LOO medAPE 20.92% p90 53.16%  (Booking v2 development)
+hostel_private_room_2p <- accom_3_star n=25  k=0.7955  LOO medAPE 17.00% p90 51.25%  (Booking v2 development)
 cross-check 2-star: v6 0.7500 vs v4 0.7341 -> 2.17% apart
 cross-check 4-star: v6 1.3372 vs v4 1.2972 -> 3.08% apart
 ```
@@ -111,7 +112,9 @@ starts with no fabricated values; each found observation must retain its display
 retrieval timestamp, tax/fee wording, and property name for accommodation. Run
 `node scripts/validate-city-cost-v6-ground-truth.mjs` to check the development ledger. The collected
 `ground-truth/holdout-ledger.json` is sealed behind `ground-truth/holdout-seal.json`; the validator checks
-only the seal metadata and does not read the holdout observations.
+only the seal metadata and does not read the holdout observations. M3's candidate coefficients and the
+Booking → Expedia source offset are generated in `coefficients-v6.json`; the holdout remains unread until
+the candidate hash is committed into the seal.
 
 ---
 

@@ -133,7 +133,7 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 ### Not done
 
-M3–M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
+M3 gate scoring remains. M4–M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
 untouched and still shipping.** A live provider smoke test requires a configured provider key; the flagged
 path is covered by deterministic integration tests.
 
@@ -146,15 +146,17 @@ Expedia offset, score gates, or open the sealed holdout from this handoff. The d
 147 found rows, three explicit one-star `class_absent` rows and zero pending slots; the holdout ledger contains
 15 cities × 6 measures and is sealed without inspection or comparison.
 
-The exact next action for a cold resume is verification only:
+The exact next action for a cold resume is the single candidate-freeze transition:
 
-1. Run `node scripts/validate-city-cost-v6-ground-truth.mjs` and
-   `node scripts/test-city-cost-v6-ground-truth-warnings.mjs` against the development evidence.
-2. Run the repository verification baseline and confirm the handoff, README, PLAN and LOG agree that M2 is
-   complete, the 12-city Booking → Expedia threshold is crossed, and the offset remains unfitted.
-3. Stop at the M2/M3 boundary. A separately authorized M3 must freeze the candidate, fit the source offset
-   using at least 12 development cities, score the gates, and reveal the sealed holdout once; until then,
-   never inspect, compare, score, or tune against `holdout-ledger.json`.
+1. Confirm `coefficients-v6.json` with `node scripts/fit-city-cost-ladder-v6.mjs --check` and run the
+   development validator with `--require-complete`; completeness is zero errors and zero pending slots even
+   when substance warnings remain.
+2. The candidate is already fit from development only: private `0.7955 ±52%`, dorm `0.2955 ±54%`, confirmed
+   4-star/1-star unchanged, and Expedia→Booking runtime offset `0.9361 ±41%` from 15 matched development
+   cities. Do not change any of these values after the seal is frozen.
+3. Before opening a holdout value, compute the candidate configuration hash, write it and the current commit
+   into `ground-truth/holdout-seal.json`, commit that seal, and only then run the one-time gate 2–6 scorer.
+   Never tune or rescore after the first holdout read.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use

@@ -70,7 +70,8 @@ describe('collectCityCostV6Anchors', () => {
 
     expect(result.llmCalls).toBe(3);
     expect(result.searches).toBe(3);
-    expect(result.anchors.hotel_3star_room_2p?.valueAud).toBeCloseTo(142.987, 2);
+    expect(result.anchors.hotel_3star_room_2p?.valueAud).toBeCloseTo(133.85, 2);
+    expect(result.anchors.hotel_3star_room_2p?.intervalPct).toBe(41);
     expect(result.anchors.hotel_3star_room_2p?.evidenceGrade).toBe('B');
     expect(result.telemetry.every((call) => call.directPageReads === 0)).toBe(true);
   });
@@ -115,4 +116,3 @@ describe('collectCityCostV6Anchors', () => {
     expect(result.anchors.hotel_3star_room_2p?.valueAud).toBeNull();
   });
 });
-

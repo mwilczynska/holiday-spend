@@ -62,6 +62,18 @@ interface V6ShippedCoefficient {
 
 interface V6CoefficientsFile {
   shippedCoefficients: Record<string, V6ShippedCoefficient>;
+  sourceCalibrationOffsets?: Record<string, V6SourceCalibrationOffset>;
+}
+
+export interface V6SourceCalibrationOffset {
+  direction: 'Booking -> Expedia';
+  groundTruthSource: string;
+  productionSource: string;
+  bookingToExpediaMultiplier: number;
+  expediaToBookingMultiplier: number;
+  grade: Exclude<V6Grade, 'C' | 'D' | 'definitional'>;
+  intervalPct: number;
+  fit: Record<string, unknown>;
 }
 
 export interface V6PriorRow {
@@ -181,6 +193,10 @@ export function loadV6ReferenceData() {
     };
   }
   return referenceCache;
+}
+
+export function loadV6SourceCalibrationOffset(measure: V5AnchorName) {
+  return loadV6ReferenceData().coefficients.sourceCalibrationOffsets?.[measure] ?? null;
 }
 
 function numeric(value: string | number | undefined) {
