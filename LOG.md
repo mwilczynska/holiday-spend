@@ -2465,3 +2465,19 @@ The verification baseline also exposed and repaired a replay-fixture regression:
 uses the pre-two-star `a80e922` ledger, so the validator now evaluates its five-class substance order and adds
 the two-star ratio check whenever that row is present. The replay again confirms inversion, sub-amount AUD and
 ratio-band warnings for Hanoi, Phuket and Da Nang.
+
+## v6 M3 — independent menu/activity batch 004 (10 August 2026)
+
+Experiment `002-independent-anchor-panel` batch 004 resolved all 40 non-accommodation slots for Nairobi,
+Budapest, Prague and Lisbon. The 18 found rows use current official restaurant, bar and venue menus, preserve
+source currency and every panel price, and retain tax/fee and serving-basis wording. The 22 remaining rows are
+explicit `not_found` because the bounded official route did not yield a compliant observation; no Numbeo,
+BudgetYourTrip, third-party menu aggregator, or plausible substitute was used. Nairobi's official hotel menu
+was not promoted into the midrange or premium estimands because it did not provide a defensible qualifying
+venue panel. Prague contributed the first independent 0.4 litre domestic draft-beer panel in this tranche;
+Budapest and Lisbon contributed explicit 0.15 litre wine panels.
+
+The batch took development coverage from **234 found / 90 pending** to **252 found / 50 pending** across the
+25-city x 17-measure ledger. No new batch-level artifact signature exceeded the owned 30% stop threshold.
+No coefficient was refit, no gate was scored, and no holdout value was read. The next tranche is Barcelona,
+Mexico City, Lima, San Francisco and Melbourne.

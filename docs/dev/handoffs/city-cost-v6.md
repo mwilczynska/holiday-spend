@@ -79,12 +79,12 @@ times for sample size. The accuracy its gate protected was already achieved.
   current count. The all-19 M3 contract is `city-cost-v6-ground-truth-ledger-v3`: 25 cities x 17 measures.
   The first independent tranche is complete: 25/25 `hotel_2star_room_2p` rows were collected from logged-out
   Booking.com under `booking_top_picks_firstpage_median_v2`, including sample prices and inventory counts.
-  Current coverage is **234 found / 90 pending**. Batch 001 resolved all ten independent food/drink/activity
+  Current coverage is **252 found / 50 pending**. Batch 001 resolved all ten independent food/drink/activity
   measures for Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei; batch 002 resolved the same ten
   measures for Beijing, Tokyo, Seoul, Delhi, Colombo and Mumbai; batch 003 resolved the same ten measures for
-  Istanbul, Dubai, Cairo and Cape Town. Batch 003 added 20 found rows and 20 explicit missingness rows. The
-  remaining 90 cells are Experiment 002 rows for Nairobi, Budapest, Prague, Lisbon, Barcelona, Mexico City,
-  Lima, San Francisco and Melbourne.
+  Istanbul, Dubai, Cairo and Cape Town; and batch 004 resolved the same ten measures for Nairobi, Budapest,
+  Prague and Lisbon. Batch 004 added 18 found rows and 22 explicit missingness rows. The remaining 50 cells
+  are Experiment 002 rows for Barcelona, Mexico City, Lima, San Francisco and Melbourne.
 - The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and was scored
   exactly once after the candidate freeze. `holdout-seal.json` is now `revealed_once` and points to the separate
   `ground-truth/holdout-scores.json`; the holdout ledger itself has no score fields. Do not tune or rescore.
@@ -111,8 +111,9 @@ correlates with `classInventoryCount` across the batch, or an implausible 3-star
 A$400; stop and report only when candidates exceed 30% of the cities in a batch. Individual outliers do not
 stop collection.
 
-The six remaining development cities — Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne —
-were collected under `booking_top_picks_firstpage_median_v2`. The full development panel is resolved.
+The remaining non-accommodation development cities are now Barcelona, Mexico City, Lima, San Francisco and Melbourne.
+The accommodation rows for all 25 development cities are collected under
+`booking_top_picks_firstpage_median_v2`; the all-tier independent panel is not yet resolved.
 The 25-city ladder result and six-city refresh are recorded in `PLAN.md` and `LOG.md`: 4-star and 1-star
 remain confirmed, and dorm was refit from the development medians. The private development diagnostic was
 0.7955, but the one-time holdout implied roughly 0.603 and showed uniform over-prediction; the generator now
@@ -146,9 +147,10 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 ### Not done
 
 The historical accommodation-only candidate and single gate 2–6 score are retained, and experiment 001 has
-accepted the fresh production-anchor replication. They are not the all-19 M3 result. Experiment 002 batches 001,
-002 and 003 have resolved the ten independent measures for 16 cities; coverage is **234 found / 90 pending**.
-No all-19 coefficient, holdout score or gate result exists yet. The v6 path is integrated but opt-in.
+accepted the fresh production-anchor replication. They are not the all-19 M3 result. Experiment 002 batches 001–004
+have resolved the ten independent measures for 20 cities; coverage is **252 found / 50 pending**. No all-19
+coefficient, holdout score or gate result exists yet. The v6 path is integrated but opt-in. The remaining
+non-accommodation cities are Barcelona, Mexico City, Lima, San Francisco and Melbourne.
 **The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
 API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
 
@@ -167,15 +169,15 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
 
 ## 4. The exact next action
 
-The all-19 M3 collection is active. The development ledger currently has 234 found rows and 90 pending
+The all-19 M3 collection is active. The development ledger currently has 252 found rows and 50 pending
 slots. Experiment 001 is complete and accepted; its
 deterministic results and audit are under
 `data/reference/v6/experiments/001-expedia-production-anchor/`. The holdout contains 15 × 6 measures, is
 spent, and must not be reread, rescored, or replaced.
 
 The per-measure holdout extension is sealed-before-collection and must not be read. Continue Experiment 002
-with the remaining nine non-accommodation cities — Nairobi, Budapest, Prague, Lisbon, Barcelona, Mexico City,
-Lima, San Francisco and Melbourne — and collect all ten remaining independent
+with the remaining five non-accommodation cities — Barcelona, Mexico City, Lima, San Francisco and Melbourne —
+and collect all ten remaining independent
 measures for each city:
 `inexpensive_restaurant_meal_1p`, `midrange_restaurant_meal_2p`, `mcmeal_combo`, `cappuccino_1`,
 `domestic_draft_beer_1`, `half_day_group_activity_adult_1`, `full_day_premium_activity_adult_1`,

@@ -202,12 +202,13 @@ M1 implementation notes:
 
 **Current status:** Phase 1 contract reset is complete. Experiment 002 batch 001 resolved all ten
 non-accommodation slots for Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei; batch 002
-resolved the same ten slots for Beijing, Tokyo, Seoul, Delhi, Colombo and Mumbai; and batch 003 resolved
-Istanbul, Dubai, Cairo and Cape Town. All three batches used current official menus, operator pages and
-explicit missingness where the independent route did not yield a compliant observation. Coverage is now
-**234 found / 90 pending** across the 25-city x 17-measure development panel: batch 003 added 20 found
-observations and 20 explicit missingness rows. The remaining 90 cells are the ten non-accommodation
-measures for Nairobi, Budapest, Prague, Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne.
+resolved the same ten slots for Beijing, Tokyo, Seoul, Delhi, Colombo and Mumbai; batch 003 resolved
+Istanbul, Dubai, Cairo and Cape Town; and batch 004 resolved Nairobi, Budapest, Prague and Lisbon. All
+four batches used current official menus, operator pages and explicit missingness where the independent
+route did not yield a compliant observation. Coverage is now **252 found / 50 pending** across the
+25-city x 17-measure development panel: batch 004 added 18 found observations and 22 explicit missingness
+rows. The remaining 50 cells are the ten non-accommodation measures for Barcelona, Mexico City, Lima, San
+Francisco and Melbourne.
 The per-measure holdout seal keeps the six already revealed rows spent and has created eleven
 sealed-before-collection extension measures. The old accommodation-only score is not an all-19 M3 result.
 M4 migration remains out of scope.

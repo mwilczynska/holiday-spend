@@ -6470,6 +6470,96 @@
           ],
           "classInventoryCount": 28,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "The bounded official city menu route did not produce three comparable regular casual/local one-person meals with a current public price; no higher-tier or aggregator menu was substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official city route did not produce three comparable regular three-course meals for two at a qualifying midrange venue; a higher-tier or single-menu route was not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's local route did not expose a current public city-specific Big Mac meal/combo price; no delivery or aggregator price was substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 500,
+          "currency": "KES",
+          "sourceName": "Official Nairobi menu panel: Nairobi Serena, Cedars Nairobi, La Villa Nairobi",
+          "sourceUrl": "https://document-tc.galaxy.tf/wdpdf-582xr1mfp7wzij7g2zlwqtszk/in-room-service-menu.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included at Serena; other menu treatment not stated",
+          "evidenceText": "Regular cappuccino prices in the official Nairobi panel were KES 650 at Nairobi Serena (https://document-tc.galaxy.tf/wdpdf-582xr1mfp7wzij7g2zlwqtszk/in-room-service-menu.pdf), KES 300 at Cedars Nairobi (https://www.cedarsnairobi.com/menus), and KES 500 at La Villa Nairobi (https://www.lavilla.co.ke/drinks-menu). Median; iced, jumbo, promotional and membership prices excluded.",
+          "samplePrices": [
+            650,
+            300,
+            500
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The bounded official city menu search did not produce three comparable domestic draft servings with a common serving basis and current regular public price; bottled, imported and unclassified beer listings were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private and unpriced tours were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private, bundled and unpriced routes were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official city pages did not produce three comparable complete regular high-end tasting or three-course menus for two; a single high-end venue was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 1300,
+          "currency": "KES",
+          "sourceName": "La Villa Nairobi official drinks menu",
+          "sourceUrl": "https://www.lavilla.co.ke/drinks-menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official La Villa Nairobi drinks menu lists regular alcoholic cocktails at KES 1000, KES 1300 and KES 1300, including Margarita, Boulevardier and Whisky Sour examples. Median; mocktails, promotions and package prices excluded.",
+          "samplePrices": [
+            1000,
+            1300,
+            1300
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Current official city menus did not state a comparable 125-175 ml or 15 cl wine-glass serving for three observations; unmeasured glass prices were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -6721,6 +6811,126 @@
           ],
           "classInventoryCount": 6,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 3050,
+          "currency": "HUF",
+          "sourceName": "Beras Budapest official restaurant menu",
+          "sourceUrl": "https://beras.hu/wp-content/uploads/2026/01/beras_restaurant_menu.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included; 15% service fee stated",
+          "evidenceText": "The current official Beras Budapest menu, dated January 2026, provided three comparable regular casual/local one-person mains at HUF 2850 (Nasi/Mie Goreng), HUF 3050 (Fried Soto Chicken) and HUF 3600 (Chicken Katsu). Median; set menus, promotions and beverages excluded.",
+          "samplePrices": [
+            2850,
+            3050,
+            3600
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 16100,
+          "currency": "HUF",
+          "sourceName": "Beras Budapest official restaurant menu",
+          "sourceUrl": "https://beras.hu/wp-content/uploads/2026/01/beras_restaurant_menu.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included; 15% service fee stated",
+          "evidenceText": "Three complete regular three-course meals for two were constructed from the current official Beras Budapest menu: (Bakwan 1200 + Nasi/Mie Goreng 2850 + Mango Tapioca 1650) x 2 = HUF 11400; (Shrimp Tempura 3050 + Fried Soto Chicken 3050 + Flodni 1950) x 2 = HUF 16100; and (Spicy Tofu 1990 + Chicken Katsu 3600 + Pandan Cheesecake 2800) x 2 = HUF 16780. Median; beverages, promotions and optional extras excluded.",
+          "samplePrices": [
+            11400,
+            16100,
+            16780
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's local route did not expose a current public city-specific Big Mac meal/combo price; no delivery or aggregator price was substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 1200,
+          "currency": "HUF",
+          "sourceName": "Official Budapest menu panel: Beras, Babka, Essencia",
+          "sourceUrl": "https://beras.hu/wp-content/uploads/2026/01/beras_restaurant_menu.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included at Beras; other menu treatment not stated",
+          "evidenceText": "Regular cappuccino prices in the official Budapest panel were HUF 1790 at Beras (https://beras.hu/wp-content/uploads/2026/01/beras_restaurant_menu.pdf), HUF 1200 at Babka (https://www.babkabudapest.hu/en/menu/), and HUF 1000 at Essencia (https://essenciarestaurant.hu/italok/). Median; iced, jumbo, promotional and membership prices excluded.",
+          "samplePrices": [
+            1790,
+            1200,
+            1000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The bounded official city menu search did not produce three comparable domestic draft servings with a common serving basis and current regular public price; bottled, imported and unclassified beer listings were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private and unpriced tours were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private, bundled and unpriced routes were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official city pages did not produce three comparable complete regular high-end tasting or three-course menus for two; a single high-end venue was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 3900,
+          "currency": "HUF",
+          "sourceName": "Essencia Budapest official drinks menu",
+          "sourceUrl": "https://essenciarestaurant.hu/italok/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included; 13% service fee stated",
+          "evidenceText": "The current official Essencia Budapest drinks menu lists regular alcoholic cocktails at HUF 3500, HUF 3900 and HUF 4200. Median; mocktails, promotions and package prices excluded.",
+          "samplePrices": [
+            3500,
+            3900,
+            4200
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 2975,
+          "currency": "HUF",
+          "sourceName": "Gundel Budapest official restaurant menu",
+          "sourceUrl": "https://gundel.hu/wp-content/uploads/2026/05/gundel_etterem_nappali_etlap_orosz_2026.05.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Gundel Budapest menu explicitly labels 0.15 litre wine-by-the-glass servings. Three comparable regular prices were HUF 2800, HUF 2975 and HUF 3150. Median; bottle prices, promotions and other serving sizes excluded.",
+          "samplePrices": [
+            2800,
+            2975,
+            3150
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
@@ -6984,6 +7194,136 @@
           "dealLabels": [],
           "classInventoryCount": 17,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 365,
+          "currency": "CZK",
+          "sourceName": "Dancing House Café Prague official lunch menu",
+          "sourceUrl": "https://www.dancinghouse.cz/en/cafe-beverages",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Dancing House Café Prague lunch menu for 03-09 August 2026 provided three comparable regular one-person mains at CZK 330 (chicken), CZK 365 (tuna) and CZK 405 (beef). Median; set menus, promotions and beverages excluded.",
+          "samplePrices": [
+            330,
+            365,
+            405
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 1410,
+          "currency": "CZK",
+          "sourceName": "Dancing House Café Prague official lunch menu",
+          "sourceUrl": "https://www.dancinghouse.cz/en/cafe-beverages",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Three complete regular three-course meals for two were constructed from the current official Dancing House Café Prague lunch menu: (veal starter 185 + chicken main 330 + panna cotta 180) x 2 = CZK 1390; (garlic soup 160 + tuna main 365 + panna cotta 180) x 2 = CZK 1410; and (veal starter 185 + beef main 405 + panna cotta 180) x 2 = CZK 1540. Median; beverages, promotions and optional extras excluded.",
+          "samplePrices": [
+            1390,
+            1410,
+            1540
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's local route did not expose a current public city-specific Big Mac meal/combo price; no delivery or aggregator price was substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 85,
+          "currency": "CZK",
+          "sourceName": "Official Prague menu panel: Dëem, ALMA, Dancing House Café",
+          "sourceUrl": "https://www.deemprague.cz/wp-content/uploads/2025/10/2508-DEEM-Prague-Menu-EN_A5_NAHLED-na-web.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Regular cappuccino prices in the official Prague panel were CZK 79 at Dëem (https://www.deemprague.cz/wp-content/uploads/2025/10/2508-DEEM-Prague-Menu-EN_A5_NAHLED-na-web.pdf), CZK 85 at ALMA (https://www.almaprague.cz/en/drinks), and CZK 109 at Dancing House Café (https://www.dancinghouse.cz/en/cafe-beverages). Median; iced, jumbo, promotional and membership prices excluded.",
+          "samplePrices": [
+            79,
+            85,
+            109
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 65,
+          "currency": "CZK",
+          "sourceName": "Official Prague draft-beer menu panel: Hangar Bar, Dëem, ALMA",
+          "sourceUrl": "https://www.hangarpraha.cz/en/?p=menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Comparable regular domestic draft-beer servings were CZK 65 for 0.4 litre Staropramen at Hangar Bar (https://www.hangarpraha.cz/en/?p=menu), CZK 65 for 0.4 litre unfiltered beer at Dëem (https://www.deemprague.cz/wp-content/uploads/2025/10/2508-DEEM-Prague-Menu-EN_A5_NAHLED-na-web.pdf), and CZK 79 for 0.4 litre Pilsner Urquell at ALMA (https://www.almaprague.cz/en/drinks). Median; bottled, imported and promotional beer prices excluded.",
+          "samplePrices": [
+            65,
+            65,
+            79
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private and unpriced tours were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private, bundled and unpriced routes were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official city pages did not produce three comparable complete regular high-end tasting or three-course menus for two; a single high-end venue was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 175,
+          "currency": "CZK",
+          "sourceName": "Bees Prague official cocktail list",
+          "sourceUrl": "https://www.bees-restaurant.cz/en/menu/cocktail-list/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Bees Prague cocktail list provided three regular alcoholic cocktails at CZK 160, CZK 175 and CZK 180. Median; mocktails, promotions and package prices excluded.",
+          "samplePrices": [
+            160,
+            175,
+            180
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 162,
+          "currency": "CZK",
+          "sourceName": "Alriso Prague official menu",
+          "sourceUrl": "https://www.alriso.cz/kompletni-menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The current official Alriso Prague menu explicitly labels 0.15 litre wine-by-the-glass servings. Three comparable regular prices were CZK 152, CZK 162 and CZK 175. Median; bottle prices, promotions and other serving sizes excluded.",
+          "samplePrices": [
+            152,
+            162,
+            175
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
@@ -7260,6 +7600,126 @@
           "dealLabels": [],
           "classInventoryCount": 35,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 18,
+          "currency": "EUR",
+          "sourceName": "OMNIA Lisbon official menu",
+          "sourceUrl": "https://restauranteomnia.pt/wp-content/uploads/2026/03/Menu_ENG-6.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included",
+          "evidenceText": "The current official OMNIA Lisbon menu provided three comparable regular one-person main dishes at EUR 15 (Mushroom Rice), EUR 18 (Brás-Style Cod) and EUR 19 (Beef Cheek). Median; set menus, promotions and beverages excluded. The menu states VAT is included.",
+          "samplePrices": [
+            15,
+            18,
+            19
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 78,
+          "currency": "EUR",
+          "sourceName": "OMNIA Lisbon official menu",
+          "sourceUrl": "https://restauranteomnia.pt/wp-content/uploads/2026/03/Menu_ENG-6.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included",
+          "evidenceText": "Three complete regular three-course meals for two were constructed from the current official OMNIA Lisbon menu: (Huevos Rotos starter 10 + OMNIA Steak 24 + Abbot's Secret dessert 7) x 2 = EUR 82; (Shrimp Taco 12 + Beef Cheek 19 + Chocolate Explosion 8) x 2 = EUR 78; and (Garlic Shrimp 10 + Brás-Style Cod 18 + Ruby Essence 9) x 2 = EUR 74. Median; beverages, promotions and optional extras excluded. The menu states VAT is included.",
+          "samplePrices": [
+            82,
+            78,
+            74
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The bounded official McDonald's local route did not expose a current public city-specific Big Mac meal/combo price; no delivery or aggregator price was substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 4,
+          "currency": "EUR",
+          "sourceName": "Official Lisbon cappuccino menu panel: Le Palais, OMNIA, Cultura Lounge",
+          "sourceUrl": "https://restauranteomnia.pt/wp-content/uploads/2026/03/Menu_ENG-6.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included at OMNIA; other menu treatment not stated",
+          "evidenceText": "Regular cappuccino prices in the official Lisbon panel were EUR 3.5 at Le Palais (https://www.lepalais.pt/en/), EUR 4 at OMNIA (https://restauranteomnia.pt/wp-content/uploads/2026/03/Menu_ENG-6.pdf), and EUR 4 at Cultura Lounge (https://culturalounge.com/pt). Median; iced, jumbo, promotional and membership prices excluded.",
+          "samplePrices": [
+            3.5,
+            4,
+            4
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The bounded official city menu search did not produce three comparable domestic draft servings with a common serving basis and current regular public price; bottled, imported and unclassified beer listings were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with current regular adult prices; private and unpriced tours were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official city operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private, bundled and unpriced routes were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official city pages did not produce three comparable complete regular high-end tasting or three-course menus for two; a single high-end venue was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 12,
+          "currency": "EUR",
+          "sourceName": "Official Lisbon cocktail panel: OMNIA, Cultura Lounge, Taste of Marriott Lisbon",
+          "sourceUrl": "https://restauranteomnia.pt/wp-content/uploads/2026/03/Menu_ENG-6.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "VAT included at OMNIA; other menu treatment not stated",
+          "evidenceText": "Regular alcoholic cocktail prices in the official Lisbon panel were EUR 9 at OMNIA (https://restauranteomnia.pt/wp-content/uploads/2026/03/Menu_ENG-6.pdf), EUR 12 at Cultura Lounge (https://culturalounge.com/pt), and EUR 13 at Taste of Marriott Lisbon (https://www.tasteofmarriottlisbon.com/pt/our-menus). Median; mocktails, promotions and package prices excluded.",
+          "samplePrices": [
+            9,
+            12,
+            13
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 7,
+          "currency": "EUR",
+          "sourceName": "Official Lisbon 15 cl wine panel: InterContinental Lisbon, Cervejaria Trindade",
+          "sourceUrl": "https://digital.ihg.com/is/content/ihg/intercontinental-lisbon-9494214819-original?fmt=pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "The official Lisbon panel used explicitly labelled 15 cl wine-by-the-glass servings: EUR 6, EUR 7 and EUR 8.75 from InterContinental Lisbon (https://digital.ihg.com/is/content/ihg/intercontinental-lisbon-9494214819-original?fmt=pdf) and Cervejaria Trindade (https://www.cervejariatrindade.pt/en/menu/). Median; bottle prices, promotions and other serving sizes excluded.",
+          "samplePrices": [
+            6,
+            7,
+            8.75
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
