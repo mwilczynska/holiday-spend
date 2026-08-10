@@ -2444,3 +2444,24 @@ The batch added 11 found observations and 49 explicit missingness rows, taking d
 **203 found / 190 pending** to **214 found / 130 pending**. No coefficient was refit, no gate was scored, and
 no holdout value was read. The remaining development tranche is Istanbul, Dubai, Cairo, Cape Town, Nairobi,
 Budapest, Prague, Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne.
+
+## v6 M3 — independent menu/activity batch 003 (10 August 2026)
+
+Experiment `002-independent-anchor-panel` batch 003 resolved all 40 non-accommodation slots for Istanbul,
+Dubai, Cairo and Cape Town. The 20 found rows use current official restaurant and bar menus, preserve source
+currency and every panel price, and retain tax/fee and serving-basis wording. The remaining 20 rows are
+explicit `not_found` because the bounded official route did not produce a compliant observation; no Numbeo,
+BudgetYourTrip, third-party menu aggregator, or plausible substitute was used. The batch included the first
+independent wine-glass rows with an explicit 15 cl or 0.125 litre serving basis, and domestic draft beer only
+where the official menu stated a draft/on-tap serving.
+
+The batch took development coverage from **214 found / 130 pending** to **234 found / 90 pending**. The
+validator returned zero errors; its accommodation substance warnings are the standing tripwires and no new
+batch-level artifact signature exceeded the owned 30% stop threshold. No coefficient was refit, no gate was
+scored, and no holdout value was read. The next tranche is Nairobi, Budapest, Prague, Lisbon, Barcelona,
+Mexico City, Lima, San Francisco and Melbourne.
+
+The verification baseline also exposed and repaired a replay-fixture regression: the historical warning test
+uses the pre-two-star `a80e922` ledger, so the validator now evaluates its five-class substance order and adds
+the two-star ratio check whenever that row is present. The replay again confirms inversion, sub-amount AUD and
+ratio-band warnings for Hanoi, Phuket and Da Nang.

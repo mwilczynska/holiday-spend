@@ -61,6 +61,9 @@ const accommodationClassOrder = [
   'hotel_3star_room_2p',
   'hotel_4star_room_2p',
 ];
+// The historical replay fixture predates the 2-star tranche. Keep the substance
+// tripwire useful for that fixture, while checking 2-star whenever it is present.
+const accommodationSubstanceOrder = accommodationClassOrder.filter((measure) => measure !== 'hotel_2star_room_2p');
 
 const isoDate = /^\d{4}-\d{2}-\d{2}$/;
 const validUrl = (value) => typeof value === 'string' && /^https?:\/\//.test(value);
@@ -214,13 +217,13 @@ for (const { city, observation } of foundRows) {
 }
 
 for (const [city, byMeasure] of accommodationByCity) {
-  const rows = accommodationClassOrder.map((measure) => byMeasure.get(measure));
-  if (rows.length !== accommodationClassOrder.length || rows.some((row) => !row)) continue;
+  const rows = accommodationSubstanceOrder.map((measure) => byMeasure.get(measure));
+  if (rows.some((row) => !row)) continue;
   if (new Set(rows.map((row) => row.currency)).size === 1) {
     const inversion = rows.some((row, index) => index > 0 && rows[index - 1].amount >= row.amount);
     if (inversion) warnings.push(`Intra-city accommodation class inversion: ${city}`);
     const anchor = byMeasure.get('hotel_3star_room_2p');
-    for (const measure of accommodationClassOrder.filter((value) => value !== 'hotel_3star_room_2p')) {
+    for (const measure of accommodationClassOrder.filter((value) => value !== 'hotel_3star_room_2p' && byMeasure.has(value))) {
       const ratio = byMeasure.get(measure).amount / anchor.amount;
       const fitted = accommodationRatios[measure];
       if (ratio > fitted * 2 || ratio < fitted * 0.5) {
