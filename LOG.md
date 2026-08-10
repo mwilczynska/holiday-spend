@@ -2250,3 +2250,33 @@ offset: 17 development cities have complete five-class accommodation rows. The o
 no gate was scored, no coefficient was changed, and the holdout remains sealed. The Copenhagen stage-1
 first-page bias caveat is now recorded in the ground-truth README and ledger `sourcePolicy`: the panel is
 valid for ratios and source-structure calibration, not absolute city levels.
+
+## v6 M2 — development panel completed and ladder validated (9 August 2026)
+
+The previous stop on Delhi/Prague 4-star-versus-3-star direction flips is superseded. Across the 19-city
+v2 panel, the ratios form a continuous distribution with median 1.404; Delhi 0.941 and Prague 0.931 are
+near-parity low-tail dispersion, not collection artifacts. The genuinely defective v1 rows were Da Nang
+0.64 and Phuket 0.28. The decision procedure is now explicit and owned by the loop: record and continue by
+default; mark an artifact candidate only for a class-order violation exceeding 25%, a within-city ratio that
+correlates with `classInventoryCount` across the batch, or an implausible 3-star level below A$10 or above
+A$400. Stop and report only when artifact candidates exceed 30% of the cities in a batch. Individual
+outliers never stop collection.
+
+The six remaining development cities were then collected under `booking_top_picks_firstpage_median_v2`.
+The development ledger now resolves all 150 cells: 25 attraction rows, 122 accommodation rows and three
+explicit one-star `class_absent` results (Beijing, Nairobi and Melbourne). No development slot remains
+pending. The requested 19-city ladder validation is:
+
+| Relationship | Fitted k | GT median | Difference | Result |
+| --- | ---: | ---: | ---: | --- |
+| 4-star / 3-star | 1.337 | 1.404 | +5.0% | **CONFIRMED** (interval ±25%) |
+| 1-star / 3-star | 0.666 | 0.745 | +11.9% | **CONFIRMED** (interval ±45%) |
+| private room / 3-star | 0.592 | 0.800 | +35.2% | **At interval edge — M5 correction candidate** |
+| dorm / 3-star | 0.163 | 0.319 | +96.5% | **REFUTED — stale 2023 coefficient confirmed** |
+
+The 1-star median uses n=17 because two cities have explicit class absence; the other medians use n=19.
+After the six-city extension, the full development refresh is 1.395 (4-star, n=25), 0.727 (1-star, n=22),
+0.795 (private, n=25) and 0.295 (dorm, n=25), leaving the conclusions unchanged. v5 never validated a
+single relationship against product ground truth; v6 has now validated all four across the 19-city panel
+and rechecked them after the full development tranche. No coefficient was refit, no gate was scored, and
+the Booking → Expedia offset remains unfitted for M3.

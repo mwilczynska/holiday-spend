@@ -194,8 +194,15 @@ for (const [city, byMeasure] of accommodationByCity) {
 }
 
 if (holdoutSeal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v1') issue('Unexpected holdout seal schemaVersion');
-if (holdoutSeal.status !== 'sealed_before_collection') issue('Holdout seal must remain sealed_before_collection until candidate freeze');
-if (holdoutSeal.resultsFile !== null || holdoutSeal.scoresFile !== null) issue('Holdout seal must not expose result or score files');
+if (holdoutSeal.status === 'sealed_before_collection') {
+  if (holdoutSeal.resultsFile !== null || holdoutSeal.scoresFile !== null) issue('Pre-collection holdout seal must not expose result or score files');
+} else if (holdoutSeal.status === 'sealed_after_collection') {
+  if (typeof holdoutSeal.resultsFile !== 'string' || !holdoutSeal.resultsFile) issue('Collected holdout seal must name its sealed results file');
+  if (holdoutSeal.scoresFile !== null) issue('Collected holdout seal must not expose score files');
+  if (typeof holdoutSeal.resultsFile === 'string' && !fs.existsSync(path.join(root, holdoutSeal.resultsFile))) issue('Collected holdout results file is missing');
+} else {
+  issue('Holdout seal must be sealed_before_collection or sealed_after_collection');
+}
 if (holdoutSeal.cityCount !== holdout.length || holdoutSeal.requiredMeasureCount !== measures.length) issue('Holdout seal counts do not match the frozen manifest');
 
 const report = {

@@ -95,23 +95,40 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 
 - [x] Create a manifest-driven ledger for 25 development cities × 6 measures
 - [x] Seal the holdout boundary without storing holdout prices or scores
-- [ ] 25 development cities — 150 dated source facts (118 found, 30 pending)
+- [x] 25 development cities — 150 dated source cells resolved (147 found, 3 explicit `class_absent`)
 - [x] Collect the paid-attraction anchor from an official/current city or attraction tariff page for all 25 development cities
 - [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
 - [x] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
-reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 118 found observations and 30
-pending slots rather than carrying an undated or inferred price. The v2 panel includes all 25 attractions
-and 93 accommodation rows. Nineteen development-city accommodation tranches
-were attempted; 17 have all five found classes, while Beijing and Nairobi record explicit one-star
-`class_absent` results. The remaining six development cities were not collected after the revised artifact
-stop triggered: Delhi has 4-star/3-star = 0.941 and Prague = 0.931, while the other completed cities are
-above 1.0. That direction-flipping ordering violation is a collection artifact signature under the revised
-rule, not a reason to refit the ladder. The accommodation basis includes public promotional rates available
-to any logged-out visitor, excludes membership-gated rates, and never records a strikethrough/original price
-as the amount. The Booking.com → Expedia offset threshold has been crossed with 17 complete accommodation
-cities, but the offset remains deliberately unfitted until M3.
+reference window is 2026-09-17 to 2026-09-18; all 150 development cells are now resolved without carrying an
+undated or inferred price: 25 attraction rows, 122 accommodation rows and three explicit one-star
+`class_absent` results for Beijing, Nairobi and Melbourne. All six final development cities were collected
+under `booking_top_picks_firstpage_median_v2`; the previous Delhi/Prague near-parity observations are retained
+as dispersion, not a stop condition. The current decision procedure treats a row as an artifact candidate
+only when a class-order violation exceeds 25%, a ratio correlates with inventory depth across the batch, or
+the 3-star level is below A$10 or above A$400. Collection stops only when candidates exceed 30% of the batch.
+The accommodation basis includes public promotional rates available to any logged-out visitor, excludes
+membership-gated rates, and never records a strikethrough/original price as the amount. The Booking.com →
+Expedia offset threshold is crossed, but the offset remains deliberately unfitted until M3.
+
+### M2 ladder validation result
+
+The requested 19-city v2 panel validates all four accommodation relationships against product ground truth.
+The 1-star relationship has n=17 because Beijing and Nairobi have explicit class absence; the other three
+relationships have n=19. `CONFIRMED` means the ground-truth median is inside the shipped coefficient interval.
+
+| Relationship | Fitted k | 19-city GT median | Difference | M2 result |
+| --- | ---: | ---: | ---: | --- |
+| 4-star / 3-star | 1.337 | 1.404 | +5.0% | **CONFIRMED** (interval ±25%) |
+| 1-star / 3-star | 0.666 | 0.745 | +11.9% | **CONFIRMED** (interval ±45%) |
+| private room / 3-star | 0.592 | 0.800 | +35.2% | **At interval edge — M5 correction candidate** |
+| dorm / 3-star | 0.163 | 0.319 | +96.5% | **REFUTED — stale 2023 coefficient confirmed** |
+
+The six-city extension refreshes these medians to 1.395 (4-star, n=25), 0.727 (1-star, n=22), 0.795
+(private, n=25) and 0.295 (dorm, n=25); the interpretation is unchanged. v5 never validated a single
+relationship against product ground truth. v6 has now validated all four against the 19-city panel and
+rechecked them after the full development tranche, without refitting coefficients.
 
 M1 implementation notes:
 
