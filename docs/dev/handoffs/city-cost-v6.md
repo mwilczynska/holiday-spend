@@ -1,9 +1,9 @@
 # Handoff — City Cost Methodology v6
 
-**As at:** 9 August 2026
+**As at:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 **Milestone:** M0, **M1 (integrate)**, **M2 (ground truth)** and the M3 development refit, source calibration,
-candidate freeze and single holdout score are complete. Remaining M3 segments and M4/M5 are open.
+candidate freeze, single holdout score and post-score private rollback are complete. Remaining M3 segments and M4/M5 are open.
 
 > **This is the cold-start document.** If you are picking up this workstream with no context, you are in
 > the right place. Read §1, then do §4. You do not need to read the 95 v5 experiment directories.
@@ -109,11 +109,14 @@ stop collection.
 The six remaining development cities — Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne —
 were collected under `booking_top_picks_firstpage_median_v2`. The full development panel is resolved.
 The 25-city ladder result and six-city refresh are recorded in `PLAN.md` and `LOG.md`: 4-star and 1-star
-remain confirmed, while the old private and dorm coefficients were refit from the development medians. The
+remain confirmed, and dorm was refit from the development medians. The private development diagnostic was
+0.7955, but the one-time holdout implied roughly 0.603 and showed uniform over-prediction; the generator now
+ships a pre-holdout v4-blended rollback of **0.5919 ±35%**. This is a rollback, not a holdout fit, and the
+private rung is now the primary cost-banded R1 M5 candidate rather than an independent holdout test. The
 Booking → Expedia offset was fitted on 15 matched development cities (above the 12-city minimum), then frozen
-with the candidate. San Francisco's A$537 3-star median remains a flagged absolute-level row. The first-page
-bias caveat is documented in the ground-truth README and both ledger `sourcePolicy` objects: this panel supports
-ratios and source calibration, not absolute city levels.
+with the scored candidate. San Francisco's A$537 3-star median remains a flagged absolute-level row. The
+first-page bias caveat is documented in the ground-truth README and both ledger `sourcePolicy` objects: this
+panel supports ratios and source calibration, not absolute city levels.
 
 ### The coefficients that exist right now
 
@@ -121,13 +124,15 @@ ratios and source calibration, not absolute city levels.
 accom_2_star              = 0.7500 × accom_3_star    n=18  LOO 11.37%  grade C  ±25%
 accom_4_star              = 1.3372 × accom_3_star    n=26  LOO 12.98%  grade C  ±25%
 accom_1_star              = 0.6663 × accom_3_star    INTERPOLATED       grade C  ±45%
-accom_hostel_private_room = 0.7955 × accom_3_star    Booking v2, n=25   grade C  ±52%
+accom_hostel_private_room = 0.5919 × accom_3_star    v4 blended rollback   grade C  ±35%
 accom_shared_hostel_dorm  = 2 × 0.2955 × accom_3_star  Booking v2, n=25   grade C  ±54%
 ```
 
-The frozen candidate preserves a known private-room/1-star ordering inversion (0.7955 > 0.6663); it is a
-candidate M5 ladder decision, not a reason to alter the frozen candidate or rescore the holdout. Dorm 0.2955
-remains below 1-star and the stale 2023 dorm coefficient is superseded.
+The current shipped coefficient is the v4-blended rollback. The frozen candidate used for the single holdout
+score was 0.7955; its private-room result is therefore not a test of the current coefficient. The development
+and holdout disagreement is evidence for a cost-banded R1 form: the development panel skews major-metro,
+while the holdout skews smaller and more touristic, where private rooms can be genuinely budget-priced. Dorm
+0.2955 remains below 1-star and the stale 2023 dorm coefficient is superseded.
 
 **`accom_1_star` is the weakest number in the methodology.** It has zero direct observations — 15 v5
 experiments and roughly 150 one-city calls produced none, and the 101 pooled Expedia rows contain zero
@@ -143,10 +148,11 @@ path is covered by deterministic integration tests.
 
 ## 4. The exact next action
 
-M2 is complete and the M3 candidate/holdout score is frozen. Do not recollect the development panel, refit
-`coefficients-v6.json`, fit another offset, or rescore/open additional holdout detail from this handoff. The
-development ledger contains 147 found rows, three explicit one-star `class_absent` rows and zero pending
-slots; the holdout ledger contains 15 cities × 6 measures and was scored once under the frozen candidate.
+M2 is complete and the M3 candidate/holdout score is frozen. The post-score private rollback has been generated
+and recorded, but the score remains tied to the earlier frozen candidate hash. Do not recollect the development
+panel, fit another offset, or rescore/open additional holdout detail from this handoff. The development ledger
+contains 147 found rows, three explicit one-star `class_absent` rows and zero pending slots; the holdout ledger
+contains 15 cities × 6 measures and was scored once under the frozen candidate.
 
 The candidate-freeze transition and the one-time holdout read are complete. The exact next action for a cold
 resume is to preserve the scored result and move to the remaining M3/M4 decision work; do not rerun scoring.
@@ -154,14 +160,16 @@ resume is to preserve the scored result and move to the remaining M3/M4 decision
 1. Preserve the frozen candidate hash `sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde`
    and base commit `f52be517359c51d878e667673918e88487e6199d` in `ground-truth/holdout-seal.json`. The seal is
    now `revealed_once`; its score file is `ground-truth/holdout-scores.json`.
-2. Keep private `0.7955 ±52%`, dorm `0.2955 ±54%`, confirmed 4-star/1-star unchanged, and the
-   Expedia→Booking runtime offset `0.9361 ±41%`. Do not change any candidate component after the holdout read.
-3. Preserve the single score: gate 2 fails private-room signed error, gate 3 accommodation ranking passes,
-   gate 4 exact band agreement fails at 73.33%, gate 5 is not evaluable, and gate 6 is only partial because
-   the six-measure panel cannot assess 15/19 full product tiers. Gate 8 is not holdout-evaluable because no
-   paired Expedia rows were collected in the holdout.
-4. Run verification only. Never tune, rescore, or inspect additional holdout detail. The next authorized
-   workstream is the remaining M3/M4 decision and migration work, not another M2 or holdout collection pass.
+2. Keep current private `0.5919 ±35%` as the documented v4 rollback and dorm `0.2955 ±54%`; confirmed
+   4-star/1-star remain unchanged, and the Expedia→Booking runtime offset remains `0.9361 ±41%`. The frozen
+   score candidate was private `0.7955 ±52%`; do not treat its private result as a current-coefficient test.
+3. Preserve the corrected single score: Gate 2 is partly not evaluable, Gate 3 is an upper bound only, Gates
+   4 and 5 are not evaluable, and Gate 6 is partly not evaluable. Conditional ladder APE is dorm 32.98%, private
+   31.89%, 1-star 30.45%, and 4-star 13.26%. Attraction coverage is 6 found / 9 missing. Gate 8 is not
+   holdout-evaluable because no paired Expedia rows were collected.
+4. Run verification only. Never tune, rescore, or inspect additional holdout detail. A real end-to-end test
+   needs paired Expedia observations for the same cities and window; schedule that in M4 or a separately sealed
+   future holdout, never by reopening this one.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use

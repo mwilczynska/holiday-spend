@@ -26,7 +26,7 @@ const foundRows = [];
 const accommodationByCity = new Map();
 const accommodationRatios = {
   hostel_dorm_bed_1p: 0.2955,
-  hostel_private_room_2p: 0.7955,
+  hostel_private_room_2p: 0.5919,
   hotel_1star_room_2p: 0.6663,
   hotel_3star_room_2p: 1,
   hotel_4star_room_2p: 1.3372,

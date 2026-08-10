@@ -439,6 +439,49 @@ const oneStarK =
 const privateGroundTruthK = bookingPrivateFromThree.length ? median(bookingPrivateFromThree.map((p) => p.ratio)) : null;
 const dormGroundTruthK = bookingDormFromThree.length ? median(bookingDormFromThree.map((p) => p.ratio)) : null;
 
+// The development panel fit for the private rung is retained above as evidence,
+// but it is no longer shipped. The one-time M3 holdout showed that the 0.7955
+// development fit over-predicted every private row (median signed error +31.89%),
+// implying a holdout ratio near 0.603. Roll back to the pre-holdout v4 blended
+// coefficient through this generator; do not hand-edit the generated JSON.
+const privateRoomRollback = {
+  k: 0.5919,
+  appliedTo: 'accom_3_star',
+  grade: 'C',
+  intervalPct: 35,
+  provenance: 'v4_booking_blended_hostel_ratio',
+  warning:
+    'Rollback after the one-time M3 holdout score. The v4 hostel channel could not distinguish dorm bed from private room; this is the blended measure. Assigning it to private room is a modelling choice, not an observation. The Booking.com v2 development fit was 0.7955, but the holdout-informed rollback means the private rung is no longer an independent holdout test.',
+  rollback: {
+    status: 'holdout_informed_rollback',
+    fitStatus: 'rollback_not_fit',
+    priorDevelopmentFit: 0.7955,
+    holdoutImpliedRatio: 0.603,
+    reason:
+      'The development panel skews toward major metros while the holdout skews smaller and more touristic; hostel private rooms can be boutique-priced in large cities and genuinely budget in small ones. Treat this as the primary M5 cost-banded R1 candidate.',
+    scoreFile: 'data/reference/v6/ground-truth/holdout-scores.json',
+    rescorePerformed: false,
+  },
+};
+
+const postHoldoutDecisions = {
+  privateRoomRollback: {
+    fromDevelopmentFit: privateGroundTruthK ? round(privateGroundTruthK, 4) : null,
+    shippedCoefficient: privateRoomRollback.k,
+    holdoutImpliedRatio: privateRoomRollback.rollback.holdoutImpliedRatio,
+    status: privateRoomRollback.rollback.status,
+    fitStatus: privateRoomRollback.rollback.fitStatus,
+    reason: privateRoomRollback.rollback.reason,
+    scoreFile: privateRoomRollback.rollback.scoreFile,
+    rescorePerformed: false,
+  },
+  gateContamination: {
+    status: 'anchor_contaminated',
+    reason:
+      'The six-measure holdout has Booking observations but no paired Expedia 3-star production-anchor observation; downstream scores that use the observed 3-star row as prediction are not end-to-end tests.',
+  },
+};
+
 // ─── report ──────────────────────────────────────────────────────────────────
 
 const report = {
@@ -492,7 +535,7 @@ const report = {
     relation(
       'hostel_private_room_2p <- accom_3_star',
       bookingPrivateFromThree,
-      'Fitted on Booking.com v2 development medians paired within city. The first-page top-picks estimator is a level-biased but ratio-valid panel; the source offset separately calibrates the Expedia anchor.',
+      'Development diagnostic fit only: 0.7955 from Booking.com v2 medians. The first-page top-picks estimator is a level-biased but ratio-valid panel; the post-holdout shipped rollback is recorded in postHoldoutDecisions and the source offset separately calibrates the Expedia anchor.',
       intervalFromResiduals(bookingPrivateFromThree)
     ),
     relation(
@@ -544,13 +587,7 @@ const report = {
         'docs/dev/plans/city-cost-methodology-v6.md section 8.',
     },
     accom_hostel_private_room: {
-      k: privateGroundTruthK ? round(privateGroundTruthK, 4) : null,
-      appliedTo: 'accom_3_star',
-      grade: 'C',
-      intervalPct: intervalFromResiduals(bookingPrivateFromThree),
-      provenance: 'fitted_booking_ground_truth_v2_development',
-      warning:
-        'Fitted from the Booking.com v2 development panel. The first-page top-picks median is a level-biased estimator, so this coefficient is valid for within-city ratios and requires the documented source-calibration caveat for absolute levels.',
+      ...privateRoomRollback,
     },
     accom_shared_hostel_dorm: {
       k: dormGroundTruthK ? round(dormGroundTruthK, 4) : null,
@@ -563,12 +600,13 @@ const report = {
         'Fitted from the Booking.com v2 development panel; the stale 2023 Price of Travel coefficient is superseded. The x2 converts one dorm bed to the two-bed product estimand and is definitional, not fitted.',
     },
   },
+  postHoldoutDecisions,
   limitations: [
     'Only R0 is fitted. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.',
     'accom_1_star is interpolated, not observed. It is the weakest value in the methodology.',
-    'The private-room and dorm coefficients are fitted on Booking.com v2 development ratios; absolute levels remain subject to the first-page bias caveat and the Expedia source offset.',
+    'The dorm coefficient is fitted on Booking.com v2 development ratios. The private-room development fit is retained as diagnostic evidence, but the shipped coefficient is the pre-holdout v4 blended rollback after the one-time holdout exposed over-prediction; absolute levels remain subject to the first-page bias caveat and the Expedia source offset.',
     'Bare-dollar Expedia.com rows carry currency BARE_DOLLAR_PROXY and are only ever paired with each other.',
-    'The 4-star and 1-star rungs remain unchanged and were confirmed against the 25-city Booking.com v2 panel; the private-room and dorm rungs were refit on that development panel. Holdout scoring is a separate one-time M3 action.',
+    'The 4-star and 1-star rungs remain unchanged and were confirmed against the 25-city Booking.com v2 panel; the dorm rung was refit on that development panel. The private-room rung is now holdout-informed and is no longer an independent test. The frozen score remains tied to the pre-rollback candidate hash; no second score is permitted.',
   ],
 };
 

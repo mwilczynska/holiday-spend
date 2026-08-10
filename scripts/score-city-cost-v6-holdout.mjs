@@ -152,6 +152,12 @@ for (const city of holdout.cities) {
 }
 
 const tierScores = Object.fromEntries(Object.entries(accommodationPairs).map(([key, pairs]) => [key, scorePairs(pairs)]));
+const contaminatedThreeStarAccuracy = tierScores.threeStar;
+tierScores.threeStar = {
+  status: 'not_evaluable',
+  contaminatedRawResult: contaminatedThreeStarAccuracy,
+  reason: 'The observed three-star Booking value is used as the prediction anchor; 0% APE is self-comparison.',
+};
 const predictedRanks = rank(categoryPairs.map((pair) => pair.predicted));
 const actualRanks = rank(categoryPairs.map((pair) => pair.actual));
 const pairwiseTotal = categoryPairs.length * (categoryPairs.length - 1) / 2;
@@ -165,19 +171,24 @@ const categoryRanking = {
   n: categoryPairs.length,
   spearmanRho: round(correlation(predictedRanks, actualRanks), 4),
   pairwiseOrderingAccuracy: round(pairwiseCorrect / pairwiseTotal, 4),
-  pass: correlation(predictedRanks, actualRanks) >= 0.9 && pairwiseCorrect / pairwiseTotal >= 0.85,
+  pass: null,
   basis: 'sum of the five accommodation measures available in each holdout city; this is the accommodation-category component only',
+  note: 'Upper bound only: the observed three-star Booking row is the dominant term in this sum and is also used as the prediction anchor. This is not an end-to-end ranking measurement without a paired Expedia production-anchor observation.',
 };
 
 const exactBandAgreement = bandResults.filter((row) => row.exact).length / bandResults.length;
 const bandIndex = { low: 0, mid: 1, high: 2 };
 const withinOneBand = bandResults.filter((row) => Math.abs(bandIndex[row.predictedBand] - bandIndex[row.manifestBand]) <= 1).length / bandResults.length;
-const costBand = {
+const contaminatedCostBand = {
   n: bandResults.length,
   exactAgreement: round(exactBandAgreement, 4),
   withinOneBand: withinOneBand,
-  pass: exactBandAgreement >= 0.8 && withinOneBand === 1,
   basis: 'candidate 3-star anchor compared with manifest cost bands',
+};
+const costBand = {
+  status: 'not_evaluable',
+  contaminatedRawResult: contaminatedCostBand,
+  reason: 'The candidate three-star value is the holdout observation itself; banding it against the manifest cannot test the production anchor or the method.',
 };
 
 const v1Pairs = Object.fromEntries(Object.keys(measures).map((key) => [key, []]));
@@ -199,7 +210,15 @@ const noRegressionRows = Object.fromEntries(Object.entries(v1Pairs).map(([key, p
   const v1Ape = scorePairs(pairs.map((pair) => ({ predicted: pair.v1, actual: pair.actual })));
   return [key, { n: pairs.length, candidateMedianApePct: candidateApe.medianApePct, v1MedianApePct: v1Ape.medianApePct, improved: candidateApe.medianApePct < v1Ape.medianApePct }];
 }));
-const improvedTiers = Object.values(noRegressionRows).filter((row) => row.improved).length;
+const contaminatedThreeStarNoRegression = noRegressionRows.threeStar;
+noRegressionRows.threeStar = {
+  status: 'not_evaluable',
+  contaminatedRawResult: contaminatedThreeStarNoRegression,
+  reason: 'The candidate three-star value is the holdout observation itself; its 0% APE and improvement versus v1 are not a method test.',
+};
+const improvedTiers = Object.values(noRegressionRows).filter((row) => row.improved === true).length;
+
+const contaminationNote = 'The six-measure holdout contains Booking ground truth but no paired Expedia 3-star production-anchor observation. The scorer uses each observed Booking three-star value as the prediction anchor, so any result downstream of that value is contaminated: three-star accuracy, cost-band agreement, and the three-star component of category ranking/no-regression are not evaluable. The conditional ladder errors remain valid because they test the other rungs given a correct anchor.';
 
 const scoreReport = {
   schemaVersion: 'city-cost-v6-holdout-score-v1',
@@ -209,13 +228,16 @@ const scoreReport = {
   scoredAt: new Date().toISOString(),
   holdoutCities: holdout.cities.length,
   holdoutLedger: 'data/reference/v6/ground-truth/holdout-ledger.json',
+  contaminationNote,
   gate2TierAccuracy: {
-    status: 'partial_panel',
+    status: 'partial_panel_anchor_contaminated',
+    evaluableTiers: ['dorm', 'private', 'oneStar', 'fourStar'],
+    notEvaluableTiers: ['threeStar'],
     tiers: tierScores,
-    note: 'The frozen six-measure holdout supports the five accommodation tiers. Food, drink and activity product tiers are not present in the ground-truth contract.',
+    note: 'The frozen six-measure holdout supports four conditional ladder tiers. The three-star row is not evaluable because it is both observed ground truth and the prediction anchor. Food, drink and activity product tiers are not present in the ground-truth contract.',
   },
   gate3CityRanking: {
-    status: 'partial_panel',
+    status: 'upper_bound_only',
     accommodationCategory: categoryRanking,
     foodCategory: { status: 'not_evaluable', reason: 'No food measures in the frozen ground-truth panel.' },
     totalDailyCost: { status: 'not_evaluable', reason: 'The panel has no food or drink measures for a full daily basket.' },
@@ -226,11 +248,11 @@ const scoreReport = {
     reason: 'The six-measure panel does not contain the food and drink inputs required to compose a daily trip total.',
   },
   gate6NoRegressionVsV1: {
-    status: 'partial_panel',
+    status: 'partial_panel_anchor_contaminated',
     accommodationTiers: noRegressionRows,
-    evaluableTiers: Object.keys(noRegressionRows).length,
+    evaluableTiers: Object.keys(noRegressionRows).length - 1,
     improvedAccommodationTiers: improvedTiers,
-    requirement: '15 of 19 tiers improved with no tier regressing by more than 10%; full gate cannot be evaluated from the six-measure panel.',
+    requirement: '15 of 19 tiers improved with no tier regressing by more than 10%; three-star is not evaluable and the full gate cannot be evaluated from the six-measure panel.',
   },
   gate8CalibrationIntegrity: {
     status: 'not_evaluable_on_holdout',

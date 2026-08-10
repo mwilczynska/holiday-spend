@@ -46,7 +46,7 @@ re-derive is a claim you cannot audit.
 
 | Command | Script | Purpose |
 | --- | --- | --- |
-| `node scripts/fit-city-cost-ladder-v6.mjs` | `fit-city-cost-ladder-v6.mjs` | **Fits the v6 accommodation ladder** from pooled v5 Expedia panels plus the 25-city Booking.com v2 development panel, scores leave-one-out at city level, fits the Booking→Expedia 3-star calibration, and regenerates `data/reference/v6/coefficients-v6.json`. Reads only repo files — no network or model calls |
+| `node scripts/fit-city-cost-ladder-v6.mjs` | `fit-city-cost-ladder-v6.mjs` | **Fits the v6 accommodation ladder diagnostics** from pooled v5 Expedia panels plus the 25-city Booking.com v2 development panel, scores leave-one-out at city level, fits the Booking→Expedia 3-star calibration, applies the documented post-score private rollback, and regenerates `data/reference/v6/coefficients-v6.json`. Reads only repo files — no network or model calls |
 | `node scripts/fit-city-cost-ladder-v6.mjs --check` | ditto | Verifies the committed coefficients match their evidence byte-for-byte. Exits 1 on drift. Belongs in the verification baseline |
 | `node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete` | `validate-city-cost-v6-ground-truth.mjs` | Manifest-driven development-ledger audit; completeness means zero errors and zero pending slots, while substance warnings are reported separately and never block |
 | `node scripts/freeze-city-cost-v6-candidate.mjs` | `freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the holdout seal before the first holdout read |

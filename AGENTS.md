@@ -165,9 +165,10 @@ collector records source currency, missingness, bounded retries and per-call tel
 under `data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start document is
 `docs/dev/handoffs/city-cost-v6.md`.
 M2 ground-truth collection is complete: the manifest-driven development ledger has 25 cities x 6 measures,
-and the 15-city holdout was read exactly once after the frozen M3 candidate was committed. The candidate
-refits the private/dorm rungs, calibrates Expedia to Booking ground truth, and records all grades and intervals;
-the 121-city CSV remains on v1 until M4.
+and the 15-city holdout was read exactly once after the frozen M3 candidate was committed. The current
+coefficients retain the validated dorm refit, roll the private rung back to the pre-holdout v4 blend after
+the holdout exposed over-prediction, and record that the private rung is no longer an independent test; the
+121-city CSV remains on v1 until M4.
 
 ### Transport is out of scope
 

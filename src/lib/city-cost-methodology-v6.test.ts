@@ -68,7 +68,7 @@ describe('materializeCityCostV6', () => {
     expect(result.complete).toBe(true);
     expect(Object.keys(result.tiersAud)).toHaveLength(19);
     expect(result.tiersAud.accom_shared_hostel_dorm.amountAud).toBe(59.1);
-    expect(result.tiersAud.accom_hostel_private_room.amountAud).toBe(79.55);
+    expect(result.tiersAud.accom_hostel_private_room.amountAud).toBe(59.19);
     expect(result.tiersAud.accom_1_star.amountAud).toBe(66.63);
     expect(result.tiersAud.accom_2_star.amountAud).toBe(75);
     expect(result.tiersAud.accom_3_star.amountAud).toBe(100);

@@ -6,8 +6,11 @@
   "scoredAt": "2026-08-10T02:55:41.541Z",
   "holdoutCities": 15,
   "holdoutLedger": "data/reference/v6/ground-truth/holdout-ledger.json",
+  "contaminationNote": "The six-measure holdout contains Booking ground truth but no paired Expedia 3-star production-anchor observation. The scorer uses each observed Booking three-star value as the prediction anchor, so any result downstream of that value is contaminated: three-star accuracy, cost-band agreement, and the three-star component of category ranking/no-regression are not evaluable. The conditional ladder errors remain valid because they test the other rungs given a correct anchor.",
   "gate2TierAccuracy": {
-    "status": "partial_panel",
+    "status": "partial_panel_anchor_contaminated",
+    "evaluableTiers": ["dorm", "private", "oneStar", "fourStar"],
+    "notEvaluableTiers": ["threeStar"],
     "tiers": {
       "dorm": {
         "n": 15,
@@ -31,11 +34,15 @@
         "pass": true
       },
       "threeStar": {
-        "n": 15,
-        "medianApePct": 0,
-        "p90ApePct": 0,
-        "medianSignedErrorPct": 0,
-        "pass": true
+        "status": "not_evaluable",
+        "contaminatedRawResult": {
+          "n": 15,
+          "medianApePct": 0,
+          "p90ApePct": 0,
+          "medianSignedErrorPct": 0,
+          "pass": true
+        },
+        "reason": "The observed three-star Booking value is used as the prediction anchor; 0% APE is self-comparison."
       },
       "fourStar": {
         "n": 15,
@@ -45,16 +52,17 @@
         "pass": true
       }
     },
-    "note": "The frozen six-measure holdout supports the five accommodation tiers. Food, drink and activity product tiers are not present in the ground-truth contract."
+    "note": "The frozen six-measure holdout supports four conditional ladder tiers. The three-star row is not evaluable because it is both observed ground truth and the prediction anchor. Food, drink and activity product tiers are not present in the ground-truth contract."
   },
   "gate3CityRanking": {
-    "status": "partial_panel",
+    "status": "upper_bound_only",
     "accommodationCategory": {
       "n": 15,
       "spearmanRho": 0.9642,
       "pairwiseOrderingAccuracy": 0.9429,
-      "pass": true,
-      "basis": "sum of the five accommodation measures available in each holdout city; this is the accommodation-category component only"
+      "pass": null,
+      "basis": "sum of the five accommodation measures available in each holdout city; this is the accommodation-category component only",
+      "note": "Upper bound only: the observed three-star Booking row is the dominant term in this sum and is also used as the prediction anchor. This is not an end-to-end ranking measurement without a paired Expedia production-anchor observation."
     },
     "foodCategory": {
       "status": "not_evaluable",
@@ -66,18 +74,21 @@
     }
   },
   "gate4CostBandAgreement": {
-    "n": 15,
-    "exactAgreement": 0.7333,
-    "withinOneBand": 1,
-    "pass": false,
-    "basis": "candidate 3-star anchor compared with manifest cost bands"
+    "status": "not_evaluable",
+    "contaminatedRawResult": {
+      "n": 15,
+      "exactAgreement": 0.7333,
+      "withinOneBand": 1,
+      "basis": "candidate 3-star anchor compared with manifest cost bands"
+    },
+    "reason": "The candidate three-star value is the holdout observation itself; banding it against the manifest cannot test the production anchor or the method."
   },
   "gate5TripLevelRealism": {
     "status": "not_evaluable",
     "reason": "The six-measure panel does not contain the food and drink inputs required to compose a daily trip total."
   },
   "gate6NoRegressionVsV1": {
-    "status": "partial_panel",
+    "status": "partial_panel_anchor_contaminated",
     "accommodationTiers": {
       "dorm": {
         "n": 15,
@@ -98,10 +109,14 @@
         "improved": true
       },
       "threeStar": {
-        "n": 15,
-        "candidateMedianApePct": 0,
-        "v1MedianApePct": 19.27,
-        "improved": true
+        "status": "not_evaluable",
+        "contaminatedRawResult": {
+          "n": 15,
+          "candidateMedianApePct": 0,
+          "v1MedianApePct": 19.27,
+          "improved": true
+        },
+        "reason": "The candidate three-star value is the holdout observation itself; its 0% APE and improvement versus v1 are not a method test."
       },
       "fourStar": {
         "n": 15,
@@ -110,9 +125,9 @@
         "improved": true
       }
     },
-    "evaluableTiers": 5,
-    "improvedAccommodationTiers": 5,
-    "requirement": "15 of 19 tiers improved with no tier regressing by more than 10%; full gate cannot be evaluated from the six-measure panel."
+    "evaluableTiers": 4,
+    "improvedAccommodationTiers": 4,
+    "requirement": "15 of 19 tiers improved with no tier regressing by more than 10%; three-star is not evaluable and the full gate cannot be evaluated from the six-measure panel."
   },
   "gate8CalibrationIntegrity": {
     "status": "not_evaluable_on_holdout",
@@ -158,7 +173,8 @@
   },
   "attractionCoverage": {
     "found": 6,
-    "missing": 9
+    "missing": 9,
+    "note": "Activities cannot be validated from this panel: only 6 of 15 holdout attraction rows were found."
   },
   "holdoutReadOnce": true
 }

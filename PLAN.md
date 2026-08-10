@@ -132,27 +132,36 @@ all four across the development panel before the two refuted rungs were refit in
 
 ### M3 — development refit and source calibration
 
-- [x] Refit private-room and dorm coefficients from the 25-city Booking.com v2 development ratios only
+- [x] Fit private-room and dorm development diagnostics from the 25-city Booking.com v2 ratios; retain the
+  dorm refit and apply the documented post-score private rollback
 - [x] Leave confirmed 4-star and 1-star coefficients unchanged
 - [x] Fit the Booking → Expedia 3-star source offset on 15 matched development cities (above the ≥12 minimum)
 - [x] Freeze one candidate configuration in `ground-truth/holdout-seal.json` before reading holdout values
 - [x] Score gates 2–6 once after the freeze; do not tune or rescore
 
-The generated candidate coefficients are private `0.7955` with a `±52%` LOO-p90 residual interval and dorm
-`0.2955` with a `±54%` interval. The source calibration record is in
+The frozen candidate that was scored used private `0.7955` with a `±52%` LOO-p90 residual interval and dorm
+`0.2955` with a `±54%` interval. After the one-time score, the private coefficient was rolled back through
+the generator to the pre-holdout v4-blended `0.5919 ±35%`; this is a rollback, not a holdout fit. The
+development `0.7955` fit remains diagnostic evidence in `coefficients-v6.json`, and the current private rung
+is no longer an independent holdout test. The source calibration record is in
 `data/reference/v6/coefficients-v6.json`: Booking.com v2 development ground truth is the calibration target,
 Expedia 3-star class-trend output is the production anchor, the runtime Expedia→Booking multiplier is `0.9361`,
 and its LOO-p90 residual interval is `±41%`. Four matched Expedia rows are the documented bare-dollar proxy;
 the offset absorbs that shared displayed-dollar basis and retains the provenance.
 
 The one-time holdout score is in `data/reference/v6/ground-truth/holdout-scores.json` and is tied to the frozen
-candidate hash. Gate 2 passes for dorm, 1-star, 3-star and 4-star but fails for private room on the signed-error
-criterion (median APE 31.89%, p90 74.36%, median signed error +31.89%). Gate 3 passes for the accommodation
-category (Spearman 0.9642; pairwise 0.9429) but food and total-daily-cost components are not evaluable from
-the six-measure panel. Gate 4 fails exact band agreement at 73.33% (within-one-band 100%). Gate 5 is not
-evaluable without food and drink inputs. Gate 6 improves all five evaluable accommodation tiers, but cannot
-claim the manifest's 15/19 full-tier requirement from this six-measure panel. Gate 8 has a development fit
-but is not holdout-evaluable because the holdout contains no paired Expedia anchor rows.
+candidate hash. Because the holdout has no paired Expedia 3-star observation, Gate 2 is only partly evaluable:
+conditional ladder median APE is dorm **32.98%**, private **31.89%**, 1-star **30.45%**, and 4-star **13.26%**;
+the three-star row is not evaluable. Gate 3's accommodation number (Spearman 0.9642; pairwise 0.9429) is an
+upper bound only because the observed three-star anchor is the dominant term and is also the prediction.
+Gate 4 and the three-star component of Gate 6 are not evaluable; Gate 5 is not evaluable without food and
+drink inputs. Gate 6 has four evaluable accommodation tiers and cannot claim the manifest's 15/19 requirement.
+Gate 8 has a development fit but is not holdout-evaluable because the holdout contains no paired Expedia
+anchor rows. Holdout attraction coverage is **6 found / 9 missing**, so activities are not validated.
+
+An end-to-end test requires paired Expedia 3-star observations for the same cities and frozen window as the
+Booking ground truth. That belongs in M4's production-shaped measurement/validation work or a separately
+pre-registered future holdout; the current holdout must never be reopened or rescored.
 
 M1 implementation notes:
 
@@ -166,12 +175,13 @@ M1 implementation notes:
 ### M3 — fit and validate — **development refit and single holdout score complete**
 
 - [x] Fit source-calibration offsets (15 matched cities; ≥12 minimum crossed)
-- [x] Score gates 2–6 once against the frozen candidate; report partial-panel limitations and failures
-- [x] Reveal the locked holdout **once**; report results unmodified
+- [x] Score gates 2–6 once against the frozen candidate; correct anchor-contaminated reports without rescoring
+- [x] Reveal the locked holdout **once**; report the valid conditional results and correct contamination without rescoring
 - [ ] Score remaining gates/segments that require production-shaped food, drink and full-basket evidence
 - [ ] Write the methodology and data card
 
-**Exit:** all gates scored and reported, including any that fail and why.
+**Exit status:** development fit, source offset, candidate freeze and the single score are complete; end-to-end
+gate validation remains open because the six-measure holdout has no production-anchor observation.
 
 ### M4 — migrate
 
@@ -187,6 +197,8 @@ M1 implementation notes:
 - [ ] `accom_1_star` — interpolated, zero direct evidence, weakest number in the ladder
 - [ ] Hostel dorm/private split — the v4 channel could not distinguish them
 - [ ] Activity semantics — BudgetYourTrip measures reported spend, not ticket prices
+- [ ] Private-room rung — development `0.7955` versus holdout-implied `0.603`; current `0.5919` rollback is
+  no longer an independent test. Treat this as the primary cost-banded R1 candidate.
 - [x] Dorm coefficient — stale 2023 index finding confirmed and replaced by the Booking v2 development fit;
   retain the source and first-page-bias caveats
 

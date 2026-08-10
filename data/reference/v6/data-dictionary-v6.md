@@ -59,7 +59,7 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 | Field | Frozen estimand | Derived how (v6) | Typical grade |
 | --- | --- | --- | --- |
 | `accom_shared_hostel_dorm` | Two separately purchasable dorm beds in an eligible hostel, one night | `2 × 0.2955 × accom_3_star` | C |
-| `accom_hostel_private_room` | One private hostel room for two, one night | `0.7955 × accom_3_star` | C |
+| `accom_hostel_private_room` | One private hostel room for two, one night | `0.5919 × accom_3_star` (v4 blended rollback; primary M5 cost-banded R1 candidate) | C |
 | `accom_1_star` | Standard room for two, one-star class, one night | `0.6663 × accom_3_star` (retained interpolated rung) | C |
 | `accom_2_star` | Standard room for two, two-star class, one night | `0.7500 × accom_3_star` | C |
 | `accom_3_star` | Standard room for two, three-star class, one night | **MEASURED** — Expedia class-trend snippet | B |

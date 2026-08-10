@@ -2353,5 +2353,29 @@ evaluable accommodation tiers, but the manifest's 15/19 full-tier requirement ca
 six-measure panel. Gate 8's development fit remains recorded, but holdout reduction is not evaluable because
 the holdout contains no paired Expedia production-anchor rows.
 
-These are recorded results, not tuning prompts. No coefficient, grade, interval or offset was changed after
-the frozen candidate was read, and no second scoring pass is permitted.
+These are the initial raw score results, recorded before the audit correction. No coefficient, grade, interval
+or offset was changed during the one-time scoring pass, and no second scoring pass is permitted. The later
+reporting correction and private rollback are recorded below; the score remains tied to the original frozen
+candidate hash.
+
+## v6 M3 audit correction — contaminated gates and private rollback (10 August 2026)
+
+The M3 audit corrected the report without rereading the holdout ledger or rescoring. The six-measure holdout
+has no paired Expedia 3-star production-anchor observation, so the observed Booking three-star row was used
+as its own prediction anchor. Gate 2's three-star row, Gate 4 cost-band agreement, and Gate 6's three-star
+no-regression row are **not evaluable**. Gate 3's accommodation ranking remains **upper bound only** because
+the anchor is the dominant term in the category sum and is ground truth. Gate 5 remains not evaluable without
+food and drink inputs. The corrected score file retains the valid conditional ladder measurements: dorm median
+APE **32.98%**, private **31.89%**, 1-star **30.45%**, and 4-star **13.26%**. Holdout attraction coverage is
+**6 found / 9 missing**, so activities cannot be validated from this panel.
+
+The private development fit **0.7955** over-predicted every holdout private row (median signed error and
+median APE both **+31.89%**), implying a holdout ratio near **0.603**. The current coefficient was therefore
+rolled back through `fit-city-cost-ladder-v6.mjs` to the pre-holdout v4-blended **0.5919 ±35%**. This is a
+rollback, not a holdout fit; the score was run under the earlier frozen 0.7955 candidate, so the private rung
+is no longer an independent holdout test. The development/holdout split — major-metro versus smaller,
+touristic cities — is the primary M5 candidate for a cost-banded R1 private-room form. Dorm remains the
+validated development refit at **0.2955 ±54%**.
+
+An end-to-end test requires paired Expedia observations for the same cities and frozen window as Booking ground
+truth. That belongs in M4 or a separately pre-registered future holdout; the existing holdout is not reopened.

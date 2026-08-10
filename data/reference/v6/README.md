@@ -18,7 +18,7 @@ production-shaped gate segments and M4 migration are open.
 | `data-dictionary-v6.md` | **Frozen estimands + the evidence-grade ladder.** Defines what each of the 19 values means and what grade A/B/C/D mean | Read before deciding whether a value is usable or what grade it carries. Amend only by dated decision |
 | `validation-manifest-v6.json` | **Frozen acceptance gates + the 40-city ground-truth panel with its locked 15-city holdout** | Read before scoring anything. Never change a gate after seeing its result |
 | `coefficients-v6.json` | **Generated.** The fitted accommodation ladder with provenance, leave-one-out scores and caveats for every number | Never hand-edit. Regenerate with the script below |
-| `ground-truth/` | Frozen-window development ledger plus the sealed holdout ledger and lock marker for M2 | Do not inspect the holdout until candidate freeze; validate the development ledger before M3 |
+| `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 
 ---
@@ -40,7 +40,7 @@ pooled 101 hotel rows across 51 cities
 accom_2_star <- accom_3_star           n=18  k=0.7500  LOO medAPE 11.37%  p90 24.63%
 accom_4_star <- accom_3_star           n=26  k=1.3372  LOO medAPE 12.98%  p90 27.18%
 hostel_dorm_bed_1p <- accom_3_star     n=25  k=0.2955  LOO medAPE 20.92% p90 53.16%  (Booking v2 development)
-hostel_private_room_2p <- accom_3_star n=25  k=0.7955  LOO medAPE 17.00% p90 51.25%  (Booking v2 development)
+hostel_private_room_2p <- accom_3_star n=25  diagnostic k=0.7955; shipped k=0.5919 v4 rollback (±35%)
 cross-check 2-star: v6 0.7500 vs v4 0.7341 -> 2.17% apart
 cross-check 4-star: v6 1.3372 vs v4 1.2972 -> 3.08% apart
 ```
