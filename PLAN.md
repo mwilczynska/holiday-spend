@@ -221,6 +221,17 @@ are circular because BYT is production. The 9 evaluable tier results are develop
 validation. Gates 3–6 are explicitly `not_evaluable` on this partial truth panel. No holdout file was read or
 changed.
 
+The food diagnosis is now separated from the score. Adding `drinks_none` and `drinks_light` moves the
+budget prediction/truth ratio from 0.76x to 0.90x and 1.04x, respectively, which is a BYT Food & Meals
+category-boundary artifact. Mid-range remains 0.70x after drinks and high-end 0.51x, so both retain a
+genuine basket-composition gap. Existing-panel non-negative basket re-weighting beats the current basket
+on both LOO median APE and p90 only for high-end (29.82% / 47.21% versus 51.99% / 61.00%); mid-range
+improves median only (36.98% / 48.39% versus 37.41% / 46.92%). Neither is shipped. Numbeo all-five
+anchor coverage is 13/25 (52%); regional rates range from 0/3 in Africa and 0/2 in the Middle East to
+4/5 in SEA. The food score is therefore Western/East-Asian-leaning and may not generalise to cities
+with weak Numbeo coverage. See the generated diagnostic and report for field-level rates and residual
+dispersion.
+
 The measured street-food relation (`k=0.3248`, n=6, ±336% LOO-p90) is diagnostic only under the uniform
 minimum fitted n=8 rule. The generated shipped fallback is the global direct-evidence prior ratio `k=0.2757`
 at grade D ±45%, matching `priors-v6.json`; premium n=3 remains the parallel grade-D 1.5 fallback. M4 remains

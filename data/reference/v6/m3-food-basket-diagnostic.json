@@ -1,0 +1,657 @@
+{
+  "schemaVersion": "city-cost-v6-food-basket-diagnostic-v1",
+  "methodologyVersion": "v6.0",
+  "panel": "25-city development panel; existing prediction bundles and BYT truth only",
+  "inSample": true,
+  "holdoutRead": false,
+  "beverageBoundary": {
+    "food_budget": {
+      "food_only": {
+        "n": 14,
+        "medianPredictionToTruth": 0.7578,
+        "medianApePct": 24.22,
+        "p90ApePct": 63.64,
+        "maxApePct": 67.45,
+        "medianSignedErrorPct": -24.22,
+        "residualDispersionPct": {
+          "min": -67.45,
+          "q25": -56.99,
+          "q75": 4.69,
+          "max": 21.23
+        }
+      },
+      "plus_drinks_none": {
+        "n": 14,
+        "medianPredictionToTruth": 0.9018,
+        "medianApePct": 28.66,
+        "p90ApePct": 42.97,
+        "maxApePct": 52.19,
+        "medianSignedErrorPct": -9.82,
+        "residualDispersionPct": {
+          "min": -52.19,
+          "q25": -39.12,
+          "q75": 27,
+          "max": 39.79
+        }
+      },
+      "plus_drinks_light": {
+        "n": 14,
+        "medianPredictionToTruth": 1.0445,
+        "medianApePct": 30.89,
+        "p90ApePct": 64.79,
+        "maxApePct": 67.77,
+        "medianSignedErrorPct": 4.45,
+        "residualDispersionPct": {
+          "min": -39.99,
+          "q25": -24.34,
+          "q75": 47.39,
+          "max": 67.77
+        }
+      }
+    },
+    "food_mid_range": {
+      "food_only": {
+        "n": 13,
+        "medianPredictionToTruth": 0.626,
+        "medianApePct": 37.4,
+        "p90ApePct": 46.92,
+        "maxApePct": 55.54,
+        "medianSignedErrorPct": -37.4,
+        "residualDispersionPct": {
+          "min": -55.54,
+          "q25": -46.54,
+          "q75": -11.46,
+          "max": 21.07
+        }
+      },
+      "plus_drinks_none": {
+        "n": 13,
+        "medianPredictionToTruth": 0.6606,
+        "medianApePct": 33.94,
+        "p90ApePct": 41.49,
+        "maxApePct": 49.32,
+        "medianSignedErrorPct": -33.94,
+        "residualDispersionPct": {
+          "min": -49.32,
+          "q25": -38.42,
+          "q75": -3.44,
+          "max": 28.59
+        }
+      },
+      "plus_drinks_light": {
+        "n": 13,
+        "medianPredictionToTruth": 0.7008,
+        "medianApePct": 31.05,
+        "p90ApePct": 38.72,
+        "maxApePct": 44.35,
+        "medianSignedErrorPct": -29.92,
+        "residualDispersionPct": {
+          "min": -44.35,
+          "q25": -33.4,
+          "q75": 6.77,
+          "max": 38.72
+        }
+      }
+    },
+    "food_high_end": {
+      "food_only": {
+        "n": 13,
+        "medianPredictionToTruth": 0.4801,
+        "medianApePct": 51.99,
+        "p90ApePct": 61,
+        "maxApePct": 62.08,
+        "medianSignedErrorPct": -51.99,
+        "residualDispersionPct": {
+          "min": -62.08,
+          "q25": -54.97,
+          "q75": -34.18,
+          "max": -3.47
+        }
+      },
+      "plus_drinks_none": {
+        "n": 13,
+        "medianPredictionToTruth": 0.4951,
+        "medianApePct": 50.49,
+        "p90ApePct": 58.38,
+        "maxApePct": 60.14,
+        "medianSignedErrorPct": -50.49,
+        "residualDispersionPct": {
+          "min": -60.14,
+          "q25": -51.76,
+          "q75": -30.62,
+          "max": -0.36
+        }
+      },
+      "plus_drinks_light": {
+        "n": 13,
+        "medianPredictionToTruth": 0.5121,
+        "medianApePct": 48.79,
+        "p90ApePct": 56.28,
+        "maxApePct": 57.99,
+        "medianSignedErrorPct": -48.79,
+        "residualDispersionPct": {
+          "min": -57.99,
+          "q25": -50.02,
+          "q75": -25.92,
+          "max": 3.83
+        }
+      }
+    }
+  },
+  "basketFits": {
+    "food_mid_range": {
+      "n": 13,
+      "featureDefinition": "effective weights on inexpensive_restaurant_meal_1p and midrange_restaurant_meal_2p; no intercept; non-negative least squares",
+      "currentEffectiveWeights": {
+        "inexpensive": 2.5514,
+        "midrange": 1
+      },
+      "fittedEffectiveWeights": {
+        "inexpensive": 1.7674,
+        "midrange": 1.3618,
+        "fitMode": "nonnegative_ols"
+      },
+      "unconstrainedOls": {
+        "inexpensive": 1.7674,
+        "midrange": 1.3618
+      },
+      "fullPanelFit": {
+        "n": 13,
+        "medianPredictionToTruth": 0.6806,
+        "medianApePct": 32.93,
+        "p90ApePct": 38,
+        "maxApePct": 46.75,
+        "medianSignedErrorPct": -31.94,
+        "residualDispersionPct": {
+          "min": -46.75,
+          "q25": -35.03,
+          "q75": 2.62,
+          "max": 37.86
+        }
+      },
+      "currentLoo": {
+        "n": 13,
+        "medianPredictionToTruth": 0.6259,
+        "medianApePct": 37.41,
+        "p90ApePct": 46.92,
+        "maxApePct": 55.54,
+        "medianSignedErrorPct": -37.41,
+        "residualDispersionPct": {
+          "min": -55.54,
+          "q25": -46.53,
+          "q75": -11.45,
+          "max": 21.07
+        }
+      },
+      "reweightedLoo": {
+        "n": 13,
+        "medianPredictionToTruth": 0.6475,
+        "medianApePct": 36.98,
+        "p90ApePct": 48.39,
+        "maxApePct": 63.45,
+        "medianSignedErrorPct": -35.25,
+        "residualDispersionPct": {
+          "min": -48.39,
+          "q25": -37.53,
+          "q75": 2.82,
+          "max": 63.45
+        }
+      },
+      "looFitModes": {
+        "Hanoi": "nonnegative_ols",
+        "Ho Chi Minh City": "nonnegative_ols",
+        "Da Nang": "nonnegative_ols",
+        "Phuket": "nonnegative_ols",
+        "Beijing": "nonnegative_ols",
+        "Tokyo": "nonnegative_ols",
+        "Seoul": "nonnegative_ols",
+        "Delhi": "nonnegative_ols",
+        "Lisbon": "nnls_midrange_only",
+        "Barcelona": "nonnegative_ols",
+        "Mexico City": "nonnegative_ols",
+        "San Francisco": "nonnegative_ols",
+        "Melbourne": "nonnegative_ols"
+      },
+      "comparison": {
+        "medianApeDeltaPct": -0.43,
+        "p90ApeDeltaPct": 1.47,
+        "beatsCurrentOnMedianApe": true,
+        "beatsCurrentOnP90Ape": false,
+        "beatsCurrentOnBoth": false
+      },
+      "rows": [
+        {
+          "city": "Hanoi",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.6302
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.6302
+        },
+        {
+          "city": "Da Nang",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.5161
+        },
+        {
+          "city": "Phuket",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.6247
+        },
+        {
+          "city": "Beijing",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.6475
+        },
+        {
+          "city": "Tokyo",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.5744
+        },
+        {
+          "city": "Seoul",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 1.0633
+        },
+        {
+          "city": "Delhi",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.9605
+        },
+        {
+          "city": "Lisbon",
+          "fitMode": "nnls_midrange_only",
+          "predictionToTruth": 0.5989
+        },
+        {
+          "city": "Barcelona",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.9152
+        },
+        {
+          "city": "Mexico City",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 1.0282
+        },
+        {
+          "city": "San Francisco",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 1.6345
+        },
+        {
+          "city": "Melbourne",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 1.1414
+        }
+      ]
+    },
+    "food_high_end": {
+      "n": 13,
+      "featureDefinition": "effective weights on inexpensive_restaurant_meal_1p and midrange_restaurant_meal_2p; no intercept; non-negative least squares",
+      "currentEffectiveWeights": {
+        "inexpensive": 2,
+        "midrange": 2.5
+      },
+      "fittedEffectiveWeights": {
+        "inexpensive": 0,
+        "midrange": 4.2724,
+        "fitMode": "nnls_midrange_only"
+      },
+      "unconstrainedOls": {
+        "inexpensive": -0.6527,
+        "midrange": 4.4062
+      },
+      "fullPanelFit": {
+        "n": 13,
+        "medianPredictionToTruth": 0.7073,
+        "medianApePct": 29.27,
+        "p90ApePct": 42.55,
+        "maxApePct": 42.6,
+        "medianSignedErrorPct": -29.27,
+        "residualDispersionPct": {
+          "min": -42.55,
+          "q25": -31.5,
+          "q75": -3.84,
+          "max": 42.6
+        }
+      },
+      "currentLoo": {
+        "n": 13,
+        "medianPredictionToTruth": 0.4801,
+        "medianApePct": 51.99,
+        "p90ApePct": 61,
+        "maxApePct": 62.08,
+        "medianSignedErrorPct": -51.99,
+        "residualDispersionPct": {
+          "min": -62.08,
+          "q25": -54.97,
+          "q75": -34.18,
+          "max": -3.47
+        }
+      },
+      "reweightedLoo": {
+        "n": 13,
+        "medianPredictionToTruth": 0.7018,
+        "medianApePct": 29.82,
+        "p90ApePct": 47.21,
+        "maxApePct": 69.38,
+        "medianSignedErrorPct": -29.82,
+        "residualDispersionPct": {
+          "min": -47.21,
+          "q25": -34.99,
+          "q75": -3.87,
+          "max": 69.38
+        }
+      },
+      "looFitModes": {
+        "Hanoi": "nonnegative_ols",
+        "Ho Chi Minh City": "nonnegative_ols",
+        "Da Nang": "nonnegative_ols",
+        "Phuket": "nonnegative_ols",
+        "Beijing": "nonnegative_ols",
+        "Tokyo": "nonnegative_ols",
+        "Seoul": "nnls_midrange_only",
+        "Delhi": "nnls_midrange_only",
+        "Lisbon": "nnls_midrange_only",
+        "Barcelona": "nnls_midrange_only",
+        "Mexico City": "nnls_midrange_only",
+        "San Francisco": "nnls_midrange_only",
+        "Melbourne": "nonnegative_ols"
+      },
+      "comparison": {
+        "medianApeDeltaPct": -22.17,
+        "p90ApeDeltaPct": -13.79,
+        "beatsCurrentOnMedianApe": true,
+        "beatsCurrentOnP90Ape": true,
+        "beatsCurrentOnBoth": true
+      },
+      "rows": [
+        {
+          "city": "Hanoi",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.7018
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.7018
+        },
+        {
+          "city": "Da Nang",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.5983
+        },
+        {
+          "city": "Phuket",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.6501
+        },
+        {
+          "city": "Beijing",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.6894
+        },
+        {
+          "city": "Tokyo",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 0.5279
+        },
+        {
+          "city": "Seoul",
+          "fitMode": "nnls_midrange_only",
+          "predictionToTruth": 1.0524
+        },
+        {
+          "city": "Delhi",
+          "fitMode": "nnls_midrange_only",
+          "predictionToTruth": 0.9613
+        },
+        {
+          "city": "Lisbon",
+          "fitMode": "nnls_midrange_only",
+          "predictionToTruth": 0.6399
+        },
+        {
+          "city": "Barcelona",
+          "fitMode": "nnls_midrange_only",
+          "predictionToTruth": 0.9294
+        },
+        {
+          "city": "Mexico City",
+          "fitMode": "nnls_midrange_only",
+          "predictionToTruth": 0.8508
+        },
+        {
+          "city": "San Francisco",
+          "fitMode": "nnls_midrange_only",
+          "predictionToTruth": 1.6938
+        },
+        {
+          "city": "Melbourne",
+          "fitMode": "nonnegative_ols",
+          "predictionToTruth": 1.2114
+        }
+      ]
+    }
+  },
+  "identifiability": {
+    "note": "Street food is a fixed multiple of inexpensive food and premium is a fixed multiple of midrange. Raw basket weights are therefore collinear; the reported regressions fit identifiable effective weights and do not change the shipped basket.",
+    "midRangeCurrentRawWeights": {
+      "street": 2,
+      "inexpensive": 2,
+      "midrange": 1
+    },
+    "highEndCurrentRawWeights": {
+      "inexpensive": 2,
+      "midrange": 1,
+      "premium": 1
+    }
+  },
+  "numbeoObservationRatesByRegion": {
+    "Africa": {
+      "cities": 3,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 0,
+        "midrange_restaurant_meal_2p": 0,
+        "cappuccino_1": 0,
+        "domestic_draft_beer_1": 0,
+        "mcmeal_combo": 0
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 0,
+        "midrange_restaurant_meal_2p": 0,
+        "cappuccino_1": 0,
+        "domestic_draft_beer_1": 0,
+        "mcmeal_combo": 0
+      },
+      "allFiveObserved": 0,
+      "allFiveRatePct": 0
+    },
+    "East Asia": {
+      "cities": 4,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 75,
+        "midrange_restaurant_meal_2p": 75,
+        "cappuccino_1": 75,
+        "domestic_draft_beer_1": 75,
+        "mcmeal_combo": 75
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 3,
+        "midrange_restaurant_meal_2p": 3,
+        "cappuccino_1": 3,
+        "domestic_draft_beer_1": 3,
+        "mcmeal_combo": 3
+      },
+      "allFiveObserved": 3,
+      "allFiveRatePct": 75
+    },
+    "Europe": {
+      "cities": 4,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 75,
+        "midrange_restaurant_meal_2p": 50,
+        "cappuccino_1": 75,
+        "domestic_draft_beer_1": 50,
+        "mcmeal_combo": 50
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 3,
+        "midrange_restaurant_meal_2p": 2,
+        "cappuccino_1": 3,
+        "domestic_draft_beer_1": 2,
+        "mcmeal_combo": 2
+      },
+      "allFiveObserved": 2,
+      "allFiveRatePct": 50
+    },
+    "Latin America": {
+      "cities": 2,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 50,
+        "midrange_restaurant_meal_2p": 50,
+        "cappuccino_1": 50,
+        "domestic_draft_beer_1": 50,
+        "mcmeal_combo": 50
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 1,
+        "midrange_restaurant_meal_2p": 1,
+        "cappuccino_1": 1,
+        "domestic_draft_beer_1": 1,
+        "mcmeal_combo": 1
+      },
+      "allFiveObserved": 1,
+      "allFiveRatePct": 50
+    },
+    "Middle East": {
+      "cities": 2,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 0,
+        "midrange_restaurant_meal_2p": 0,
+        "cappuccino_1": 0,
+        "domestic_draft_beer_1": 0,
+        "mcmeal_combo": 0
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 0,
+        "midrange_restaurant_meal_2p": 0,
+        "cappuccino_1": 0,
+        "domestic_draft_beer_1": 0,
+        "mcmeal_combo": 0
+      },
+      "allFiveObserved": 0,
+      "allFiveRatePct": 0
+    },
+    "North America": {
+      "cities": 1,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 100,
+        "midrange_restaurant_meal_2p": 100,
+        "cappuccino_1": 100,
+        "domestic_draft_beer_1": 100,
+        "mcmeal_combo": 100
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 1,
+        "midrange_restaurant_meal_2p": 1,
+        "cappuccino_1": 1,
+        "domestic_draft_beer_1": 1,
+        "mcmeal_combo": 1
+      },
+      "allFiveObserved": 1,
+      "allFiveRatePct": 100
+    },
+    "Oceania": {
+      "cities": 1,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 100,
+        "midrange_restaurant_meal_2p": 100,
+        "cappuccino_1": 100,
+        "domestic_draft_beer_1": 100,
+        "mcmeal_combo": 100
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 1,
+        "midrange_restaurant_meal_2p": 1,
+        "cappuccino_1": 1,
+        "domestic_draft_beer_1": 1,
+        "mcmeal_combo": 1
+      },
+      "allFiveObserved": 1,
+      "allFiveRatePct": 100
+    },
+    "SEA": {
+      "cities": 5,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 80,
+        "midrange_restaurant_meal_2p": 80,
+        "cappuccino_1": 80,
+        "domestic_draft_beer_1": 80,
+        "mcmeal_combo": 80
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 4,
+        "midrange_restaurant_meal_2p": 4,
+        "cappuccino_1": 4,
+        "domestic_draft_beer_1": 4,
+        "mcmeal_combo": 4
+      },
+      "allFiveObserved": 4,
+      "allFiveRatePct": 80
+    },
+    "South Asia": {
+      "cities": 3,
+      "ratesPct": {
+        "inexpensive_restaurant_meal_1p": 33.3,
+        "midrange_restaurant_meal_2p": 33.3,
+        "cappuccino_1": 33.3,
+        "domestic_draft_beer_1": 33.3,
+        "mcmeal_combo": 33.3
+      },
+      "observedCounts": {
+        "inexpensive_restaurant_meal_1p": 1,
+        "midrange_restaurant_meal_2p": 1,
+        "cappuccino_1": 1,
+        "domestic_draft_beer_1": 1,
+        "mcmeal_combo": 1
+      },
+      "allFiveObserved": 1,
+      "allFiveRatePct": 33.3
+    }
+  },
+  "overallNumbeoObservationRates": {
+    "inexpensive_restaurant_meal_1p": {
+      "observed": 14,
+      "total": 25,
+      "ratePct": 56
+    },
+    "midrange_restaurant_meal_2p": {
+      "observed": 13,
+      "total": 25,
+      "ratePct": 52
+    },
+    "cappuccino_1": {
+      "observed": 14,
+      "total": 25,
+      "ratePct": 56
+    },
+    "domestic_draft_beer_1": {
+      "observed": 13,
+      "total": 25,
+      "ratePct": 52
+    },
+    "mcmeal_combo": {
+      "observed": 13,
+      "total": 25,
+      "ratePct": 52
+    }
+  },
+  "sourceFiles": [
+    "data/reference/v6/experiments/005-development-in-sample-score/results.json",
+    "data/reference/v6/experiments/006-development-prediction-spine/cities/",
+    "data/reference/v6/coefficients-v6.json"
+  ]
+}

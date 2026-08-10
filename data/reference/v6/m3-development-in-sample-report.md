@@ -49,4 +49,47 @@ Food rows are scored only where the required production Numbeo anchors were obse
 - `food_mid_range`: n=13; required observed anchors: inexpensive_restaurant_meal_1p, midrange_restaurant_meal_2p; excluded 12: Singapore, Taipei, Colombo, Mumbai, Istanbul, Dubai, Cairo, Cape Town, Nairobi, Budapest, Prague, Lima
 - `food_high_end`: n=13; required observed anchors: inexpensive_restaurant_meal_1p, midrange_restaurant_meal_2p; excluded 12: Singapore, Taipei, Colombo, Mumbai, Istanbul, Dubai, Cairo, Cape Town, Nairobi, Budapest, Prague, Lima
 
+## Food basket diagnosis (existing data; in-sample)
+
+This screen uses the existing production bundles and BYT food truth only. It does not read a holdout, make provider calls, or change coefficients.
+
+| Food tier | Food only | + drinks_none | + drinks_light |
+| --- | ---: | ---: | ---: |
+| `food_budget` | 0.76x | 0.90x | 1.04x |
+| `food_mid_range` | 0.63x | 0.66x | 0.70x |
+| `food_high_end` | 0.48x | 0.50x | 0.51x |
+
+At budget, adding the product's beverage tiers moves the prediction from 0.76x to 0.90x and then 1.04x of BYT food truth. That near-closure is a category-boundary artifact: BYT Food & Meals evidently includes beverages that the product books under drinks. At mid and high, the same additions move 0.63x to 0.70x and 0.48x to 0.51x; the remaining under-prediction is a genuine basket-composition question.
+
+### Basket-weight re-fit (diagnostic only)
+
+Because street food is a fixed multiple of inexpensive food and premium is a fixed multiple of midrange, raw basket terms are collinear. The fitted values below are identifiable effective weights and are not shipped.
+
+| Tier | n | Current effective weights | Fitted effective weights | Current LOO medAPE / p90 | Reweighted LOO medAPE / p90 | Beats current on both? |
+| --- | ---: | --- | --- | ---: | ---: | --- |
+| `food_mid_range` | 13 | inexpensive 2.5514; midrange 1 | inexpensive 1.7674; midrange 1.3618 (nonnegative_ols) | 37.41% / 46.92% | 36.98% / 48.39% | no |
+|  |  |  | Full-panel medAPE 32.93%; signed residual dispersion min / Q1 / Q3 / max: -46.75% / -35.03% / 2.62% / 37.86% |  | LOO signed residual dispersion min / Q1 / Q3 / max: -48.39% / -37.53% / 2.82% / 63.45% |  |
+| `food_high_end` | 13 | inexpensive 2; midrange 2.5 | inexpensive 0; midrange 4.2724 (nnls_midrange_only) | 51.99% / 61% | 29.82% / 47.21% | yes |
+|  |  |  | Full-panel medAPE 29.27%; signed residual dispersion min / Q1 / Q3 / max: -42.55% / -31.5% / -3.84% / 42.6% |  | LOO signed residual dispersion min / Q1 / Q3 / max: -47.21% / -34.99% / -3.87% / 69.38% |  |
+
+The mid-range re-fit improves LOO median APE by 0.43 percentage points but worsens p90 by 1.47 points, so it does not beat the current basket on both criteria. The high-end re-fit beats it on both (LOO median APE 29.82% vs 51.99%; p90 47.21% vs 61.00%). Neither re-weighting is shipped; the high-end result is a candidate for a separately reviewed model change.
+
+### Numbeo observation coverage by region
+
+Rates below are for the five Numbeo production anchors in the 25-city development prediction bundles. The food score therefore runs on a Western/East-Asian-leaning subsample and may not generalise to cities with weak Numbeo coverage.
+
+| Region | Cities | Inexpensive | Midrange | Cappuccino | Draft beer | McMeal | All five |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Africa | 3 | 0% | 0% | 0% | 0% | 0% | 0% |
+| East Asia | 4 | 75% | 75% | 75% | 75% | 75% | 75% |
+| Europe | 4 | 75% | 50% | 75% | 50% | 50% | 50% |
+| Latin America | 2 | 50% | 50% | 50% | 50% | 50% | 50% |
+| Middle East | 2 | 0% | 0% | 0% | 0% | 0% | 0% |
+| North America | 1 | 100% | 100% | 100% | 100% | 100% | 100% |
+| Oceania | 1 | 100% | 100% | 100% | 100% | 100% | 100% |
+| SEA | 5 | 80% | 80% | 80% | 80% | 80% | 80% |
+| South Asia | 3 | 33.3% | 33.3% | 33.3% | 33.3% | 33.3% | 33.3% |
+
+Overall food-anchor observation rates are inexpensive 14/25 (56%), midrange 13/25 (52%), and all-five 13/25 (52.0%).
+
 The spent holdout remains closed. The fresh holdout proposal remains uncollected and requires owner approval.

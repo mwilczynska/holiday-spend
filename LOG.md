@@ -2649,3 +2649,27 @@ The uniform minimum fitted-relation threshold is n=8. The measured street-food r
 LOO-p90 ±336%) is diagnostic only. The generated shipped fallback is the global direct-evidence prior ratio
 k=0.2757, grade D ±45%, matching `priors-v6.json`; premium n=3 remains the parallel grade-D 1.5 fallback.
 No coefficient was hand-edited, no holdout value was read or changed, and the 121-city CSV remains untouched.
+
+## v6 M3 — food basket boundary and composition diagnostic (10 August 2026)
+
+The existing 25-city prediction bundles and BYT food panel were re-analysed without collection, holdout
+access or coefficient changes. Adding the product's drink tiers to food closes the budget discrepancy:
+food-only prediction/truth is **0.76x**, rising to **0.90x** with `drinks_none` and **1.04x** with
+`drinks_light`. This is recorded as a category-boundary artifact: BYT's Food & Meals figure evidently
+includes beverages that the product assigns to drinks. The adjustment barely closes the mid/high gaps:
+`food_mid_range` moves **0.63x → 0.70x**, and `food_high_end` **0.48x → 0.51x**. Those remain genuine
+basket-composition questions.
+
+A non-negative, no-intercept diagnostic re-fit against the scoreable BYT rows gave identifiable effective
+weights, not raw street/premium terms: mid-range **1.7674 × inexpensive + 1.3618 × midrange** (n=13)
+and high-end **0 × inexpensive + 4.2724 × midrange** (n=13). The mid re-fit improved LOO median APE
+from **37.41% to 36.98%** but worsened p90 from **46.92% to 48.39%**, so it does not beat the current
+basket on both criteria. The high re-fit improved LOO median APE **51.99% → 29.82%** and p90
+**61.00% → 47.21%**. These are diagnostic candidates only; no re-weighting ships.
+
+Numbeo coverage is materially skewed: inexpensive observed **14/25 (56%)**, midrange **13/25 (52%)**,
+and all five production anchors **13/25 (52%)**. Regional all-five rates are Africa 0/3, East Asia
+3/4, Europe 2/4, Latin America 1/2, Middle East 0/2, North America 1/1, Oceania 1/1, SEA 4/5 and
+South Asia 1/3. The food score therefore runs on a Western/East-Asian-leaning subsample and may not
+generalise to cities with weak Numbeo coverage. The detailed diagnostic is
+`data/reference/v6/m3-food-basket-diagnostic.json`; the generated report incorporates it.

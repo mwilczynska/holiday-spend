@@ -8,6 +8,7 @@ import path from 'node:path';
 const root = process.cwd();
 const coefficients = JSON.parse(fs.readFileSync(path.join(root, 'data/reference/v6/coefficients-v6.json'), 'utf8'));
 const score = JSON.parse(fs.readFileSync(path.join(root, 'data/reference/v6/experiments/005-development-in-sample-score/results.json'), 'utf8'));
+const diagnostic = JSON.parse(fs.readFileSync(path.join(root, 'data/reference/v6/m3-food-basket-diagnostic.json'), 'utf8'));
 const outputPath = path.join(root, 'data/reference/v6/m3-development-in-sample-report.md');
 
 const tiers = [
@@ -57,6 +58,58 @@ const resultText = (tier) => {
   return `NOT EVALUABLE — ${result.reason}`;
 };
 
+const ratioText = (value) => `${value.toFixed(2)}x`;
+const weightsText = (weights) => `inexpensive ${weights.inexpensive}; midrange ${weights.midrange}`;
+const dispersionText = (metrics) => `${metrics.residualDispersionPct.min}% / ${metrics.residualDispersionPct.q25}% / ${metrics.residualDispersionPct.q75}% / ${metrics.residualDispersionPct.max}%`;
+const basketDiagnosticLines = [
+  '## Food basket diagnosis (existing data; in-sample)',
+  '',
+  'This screen uses the existing production bundles and BYT food truth only. It does not read a holdout, make provider calls, or change coefficients.',
+  '',
+  '| Food tier | Food only | + drinks_none | + drinks_light |',
+  '| --- | ---: | ---: | ---: |',
+];
+for (const tier of ['food_budget', 'food_mid_range', 'food_high_end']) {
+  const boundary = diagnostic.beverageBoundary[tier];
+  basketDiagnosticLines.push(`| \`${tier}\` | ${ratioText(boundary.food_only.medianPredictionToTruth)} | ${ratioText(boundary.plus_drinks_none.medianPredictionToTruth)} | ${ratioText(boundary.plus_drinks_light.medianPredictionToTruth)} |`);
+}
+basketDiagnosticLines.push(
+  '',
+  'At budget, adding the product\'s beverage tiers moves the prediction from 0.76x to 0.90x and then 1.04x of BYT food truth. That near-closure is a category-boundary artifact: BYT Food & Meals evidently includes beverages that the product books under drinks. At mid and high, the same additions move 0.63x to 0.70x and 0.48x to 0.51x; the remaining under-prediction is a genuine basket-composition question.',
+  '',
+  '### Basket-weight re-fit (diagnostic only)',
+  '',
+  'Because street food is a fixed multiple of inexpensive food and premium is a fixed multiple of midrange, raw basket terms are collinear. The fitted values below are identifiable effective weights and are not shipped.',
+  '',
+  '| Tier | n | Current effective weights | Fitted effective weights | Current LOO medAPE / p90 | Reweighted LOO medAPE / p90 | Beats current on both? |',
+  '| --- | ---: | --- | --- | ---: | ---: | --- |',
+);
+for (const tier of ['food_mid_range', 'food_high_end']) {
+  const fit = diagnostic.basketFits[tier];
+  basketDiagnosticLines.push(`| \`${tier}\` | ${fit.n} | ${weightsText(fit.currentEffectiveWeights)} | ${weightsText(fit.fittedEffectiveWeights)} (${fit.fittedEffectiveWeights.fitMode}) | ${fit.currentLoo.medianApePct}% / ${fit.currentLoo.p90ApePct}% | ${fit.reweightedLoo.medianApePct}% / ${fit.reweightedLoo.p90ApePct}% | ${fit.comparison.beatsCurrentOnBoth ? 'yes' : 'no'} |`);
+  basketDiagnosticLines.push(`|  |  |  | Full-panel medAPE ${fit.fullPanelFit.medianApePct}%; signed residual dispersion min / Q1 / Q3 / max: ${dispersionText(fit.fullPanelFit)} |  | LOO signed residual dispersion min / Q1 / Q3 / max: ${dispersionText(fit.reweightedLoo)} |  |`);
+}
+basketDiagnosticLines.push(
+  '',
+  'The mid-range re-fit improves LOO median APE by 0.43 percentage points but worsens p90 by 1.47 points, so it does not beat the current basket on both criteria. The high-end re-fit beats it on both (LOO median APE 29.82% vs 51.99%; p90 47.21% vs 61.00%). Neither re-weighting is shipped; the high-end result is a candidate for a separately reviewed model change.',
+  '',
+  '### Numbeo observation coverage by region',
+  '',
+  'Rates below are for the five Numbeo production anchors in the 25-city development prediction bundles. The food score therefore runs on a Western/East-Asian-leaning subsample and may not generalise to cities with weak Numbeo coverage.',
+  '',
+  '| Region | Cities | Inexpensive | Midrange | Cappuccino | Draft beer | McMeal | All five |',
+  '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
+);
+for (const [region, coverage] of Object.entries(diagnostic.numbeoObservationRatesByRegion)) {
+  const rates = coverage.ratesPct;
+  basketDiagnosticLines.push(`| ${region} | ${coverage.cities} | ${rates.inexpensive_restaurant_meal_1p}% | ${rates.midrange_restaurant_meal_2p}% | ${rates.cappuccino_1}% | ${rates.domestic_draft_beer_1}% | ${rates.mcmeal_combo}% | ${coverage.allFiveRatePct}% |`);
+}
+const allFiveObserved = Object.values(diagnostic.numbeoObservationRatesByRegion).reduce((sum, row) => sum + row.allFiveObserved, 0);
+basketDiagnosticLines.push(
+  '',
+  `Overall food-anchor observation rates are inexpensive ${diagnostic.overallNumbeoObservationRates.inexpensive_restaurant_meal_1p.observed}/${diagnostic.overallNumbeoObservationRates.inexpensive_restaurant_meal_1p.total} (${diagnostic.overallNumbeoObservationRates.inexpensive_restaurant_meal_1p.ratePct}%), midrange ${diagnostic.overallNumbeoObservationRates.midrange_restaurant_meal_2p.observed}/${diagnostic.overallNumbeoObservationRates.midrange_restaurant_meal_2p.total} (${diagnostic.overallNumbeoObservationRates.midrange_restaurant_meal_2p.ratePct}%), and all-five ${allFiveObserved}/25 (${(allFiveObserved / 25 * 100).toFixed(1)}%).`,
+);
+
 const lines = [
   '# v6 M3 development in-sample report',
   '',
@@ -95,6 +148,8 @@ lines.push(
     const result = score.tiers[tier];
     return `- \`${tier}\`: n=${result.n}; required observed anchors: ${(result.requiredObservedAnchors ?? []).join(', ')}; excluded ${result.excludedCount ?? 0}: ${(result.excludedCities ?? []).join(', ') || 'none'}`;
   }),
+  '',
+  ...basketDiagnosticLines,
   '',
   'The spent holdout remains closed. The fresh holdout proposal remains uncollected and requires owner approval.',
   '',

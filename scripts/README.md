@@ -63,6 +63,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/build-city-cost-v6-priors.mjs` | `build-city-cost-v6-priors.mjs` | Generates `data/reference/v6/priors-v6.json` from direct development evidence and BYT labelled tiers, without reading the live CSV |
 | `node scripts/score-v6-development-panel-in-sample.mjs` | `score-v6-development-panel-in-sample.mjs` | Scores only paired development prediction/truth rows and labels all blocked/circular results; never reads a holdout |
 | `node scripts/report-city-cost-v6-development-in-sample.mjs` | `report-city-cost-v6-development-in-sample.mjs` | Generates the 19-tier development-only M3 table and gate 2–6 status from the coefficients and in-sample score; never reads a holdout |
+| `node scripts/analyze-city-cost-v6-food-baskets.mjs` | `analyze-city-cost-v6-food-baskets.mjs` | Diagnoses beverage-boundary effects, screens food basket re-weightings by development LOO, and reports Numbeo observation coverage by region; never reads a holdout or changes coefficients |
 
 ## SUPERSEDED — methodology v5
 

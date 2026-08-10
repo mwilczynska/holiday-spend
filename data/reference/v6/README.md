@@ -54,6 +54,11 @@ uniform minimum fitted n=8 rule. Production uses the generated global direct-evi
 at grade D ±45%; the coefficient warning documents the fallback and the prior builder explicitly lists the
 34 frozen-FX exclusions rather than silently dropping them.
 
+`m3-food-basket-diagnostic.json` is an existing-data, in-sample diagnostic. It records the budget
+beverage category-boundary effect, the mid/high effective basket-weight re-fits with LOO residual
+dispersion, and Numbeo observation rates by region. It does not change shipped coefficients, read a
+holdout, or provide independent drinks truth.
+
 ---
 
 ## Files in this directory

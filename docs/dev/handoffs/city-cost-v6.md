@@ -4,7 +4,8 @@
 **Branch:** `feat/city-cost-methodology-v6`
 **Milestone:** M0, **M1 (integrate)** and the original accommodation-scoped **M2 (ground truth)** are
 complete. M3 was reopened by owner decision on 10 August 2026 and now means fit and holdout-validate all
-19 product tiers. Independent all-tier collection is in progress; M4/M5 are out of scope.
+19 product tiers. The development prediction/score route is complete as an in-sample diagnostic;
+fresh holdout work remains unapproved. M4/M5 are out of scope.
 
 > **This is the cold-start document.** If you are picking up this workstream with no context, you are in
 > the right place. Read §1, then do §4. You do not need to read the 95 v5 experiment directories.
@@ -80,6 +81,16 @@ The measured street-food R0 `k=0.3248`, n=6, with a ±336% LOO-p90 interval is d
 minimum fitted n=8 rule means production uses the generated global direct-evidence prior ratio `k=0.2757`
 at grade D ±45%; premium n=3 remains the parallel grade-D 1.5 fallback. The prior artifact explicitly lists
 the 34 frozen-FX exclusions.
+
+The food score has now been diagnosed rather than treated as a uniform method error. Adding
+`drinks_none` and `drinks_light` moves budget prediction/truth from 0.76x to 0.90x and 1.04x, a
+category-boundary artifact because BYT Food & Meals evidently includes beverages. Mid/high remain
+under at 0.70x and 0.51x after drinks. Existing-panel basket re-weighting beats the current basket
+on both LOO median APE and p90 for high-end only; it is diagnostic and not shipped. Numbeo all-five
+coverage is 13/25, with all-five regional rates from 0% in Africa/Middle East to 80% in SEA, so the
+food result is Western/East-Asian-leaning and may not generalise to weak-coverage cities. Full weights,
+residual dispersion and field-level rates are in
+`data/reference/v6/m3-food-basket-diagnostic.json` and the generated report.
 
 The fresh holdout proposal remains `proposed_not_collected` with its 72/90 coverage gate. Do not collect,
 freeze or read it without owner approval. M4 remains out of scope.
@@ -236,7 +247,7 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
 
 The old holdout, all 18 `revealed_once` measures, and the 121-city CSV are out of scope. M4 is out of scope.
 
-## 4. The exact next action
+## 4. Historical next action (superseded 10 August 2026)
 
 1. Treat experiment 006 and `data/reference/v6/experiments/005-development-in-sample-score/results.json`
    as the current development record. The prediction bundle is 25/25 and the score is explicitly in-sample:
@@ -256,6 +267,23 @@ The old holdout, all 18 `revealed_once` measures, and the 121-city CSV are out o
    not touch the spent holdout or any `revealed_once` measure.
 
 ---
+
+## 4. The exact next action
+
+1. Treat `data/reference/v6/m3-development-in-sample-report.md` and
+   `data/reference/v6/m3-food-basket-diagnostic.json` as the current development record. The food
+   diagnosis is in-sample only: the budget gap largely closes when product drinks are added, while
+   mid/high remain under-predicted. The high-end basket re-fit beats the current basket by LOO, but is
+   diagnostic only; no coefficient or production basket has changed.
+2. Keep the existing 25/25 Stage-B bundles and experiment 005 score. If they are regenerated, use
+   `cmd /c node scripts/generate-v6-prediction-bundle.mjs` from disk, then rerun the report and diagnostic.
+   Do not make provider calls or recollect the development panel.
+3. The next methodology decision is whether to open a separately reviewed M5 basket-composition
+   experiment. The mid-range re-fit does not beat the current basket on both LOO metrics; the high-end
+   re-fit does. Record any future change through the coefficient generator, never by hand-editing.
+4. The fresh proposal remains `data/reference/v6/ground-truth/fresh-holdout-proposal-v2.json` with a 72/90
+   minimum coverage gate. **Stop and obtain owner approval before collecting, freezing or reading it.** Do
+   not touch the spent holdout or any `revealed_once` measure.
 
 ## 5. Traps that will cost you time if you forget them
 
