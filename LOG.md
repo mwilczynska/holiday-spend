@@ -2227,3 +2227,26 @@ The ledger therefore remains at **55 found / 95 pending**: 25 attraction rows, 1
 accommodation rows and 20 legacy v1 rows awaiting an approved replacement rule. Seoul's SEOULDAL
 observation was also replaced with the next-ranked paid historic-site observation, Changdeokgung
 Palace. The current handoff records the pilot stop and the exact state required for a cold resume.
+
+## v6 M2 — v2 re-collection stopped on a direction-flipping artifact signature (9 August 2026)
+
+The pilot stop was superseded by the revised artifact-signature rule. The four legacy cities were
+re-collected under `booking_top_picks_firstpage_median_v2`, then 13 additional development cities were
+attempted. The ledger now has **118 found / 30 pending** cells: all 25 attraction rows and 93 of 125
+accommodation rows. Seventeen cities have five found accommodation classes; Beijing and Nairobi have an
+explicit `class_absent` one-star result. The remaining six development cities were not collected after
+the stop condition fired, and no holdout city was collected or inspected.
+
+The stop signature is a direction-flipping class-order violation. Most completed cities have 4-star above
+3-star, but Delhi records A$32/A$34 = **0.941** and Prague A$134/A$144 = **0.931**. This is the exact
+ordering-violation pattern now designated as a collection artifact, so it is not ladder evidence and does
+not authorise a refit. The same panel strengthens the separate M5 note: dorm/3-star remains above the
+fitted 0.163 band across multiple independent cities, consistent with the stale 2023 Price of Travel
+coefficient already flagged in `coefficients-v6.json`. The private-room/1-star relationship remains a
+candidate M5 ladder correction, but M2 does not refit either coefficient.
+
+The Booking.com ground-truth panel has crossed the 12-city minimum for a future Booking → Expedia source
+offset: 17 development cities have complete five-class accommodation rows. The offset remains unfitted;
+no gate was scored, no coefficient was changed, and the holdout remains sealed. The Copenhagen stage-1
+first-page bias caveat is now recorded in the ground-truth README and ledger `sourcePolicy`: the panel is
+valid for ratios and source-structure calibration, not absolute city levels.

@@ -76,8 +76,9 @@ times for sample size. The accuracy its gate protected was already achieved.
   `city-cost-v6-ground-truth-ledger-v2`. At the contract-reset checkpoint in `4cf397b`, it correctly
   reported **25 found / 125 pending / zero accommodation cities**: the attraction tranche remained and every
   accommodation slot was reopened because the old single-property, pre-correction captures were invalid.
-  The current post-recollection state is **55 found / 95 pending**: 25 attraction rows and 30 corrected
-  Booking.com accommodation rows across Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei.
+  The current post-recollection state is **118 found / 30 pending**: all 25 attraction rows and 93 v2
+  Booking.com accommodation rows. Nineteen development-city tranches were attempted; 17 have all five
+  accommodation classes found, while Beijing and Nairobi have explicit one-star `class_absent` rows.
   `holdout-seal.json` remains a lock marker only; no holdout prices or scores were used.
 
 ### Current collection findings
@@ -88,16 +89,21 @@ not comparable across classes. The v2 replacement is
 `booking_top_picks_firstpage_median_v2`: Booking's default Our top picks order, every eligible first-page
 price, and the displayed class inventory count.
 
-The two-city v2 pilot is deliberately stopped before the other four cities. Hanoi medians are
-4*/3*/1*/private/dorm = **62/42/27/32/10 AUD**; Singapore = **182/118/73/99/39 AUD**. Both cities show
-the private-hostel/1-star class inversion. Singapore also puts dorm/3-star at **0.331**, just outside the
-validator's 2× band around fitted 0.163. These are pilot method warnings, not evidence against the ladder;
-do not collect the other four cities and do not refit.
+The two-city v2 pilot was verified and the revised artifact-signature rule then authorized continuation.
+Hanoi medians are 4*/3*/1*/private/dorm = **62/42/27/32/10 AUD**; Singapore =
+**182/118/73/99/39 AUD**. The private-hostel/1-star inversion holds in the same direction in the pilot,
+so it remains a candidate M5 ladder correction. Dorm/3-star remains above the fitted 0.163 band across
+multiple cities, strengthening the stale 2023 Price of Travel coefficient finding; do not refit during M2.
 
-The current ledger remains **55 found / 95 pending**: 25 attraction rows, 10 v2 pilot accommodation rows,
-and 20 legacy v1 accommodation rows awaiting replacement if a method is approved. The nine known attraction
-violations were repaired, and Seoul's SEOULDAL row was replaced with the next-ranked paid historic site,
-Changdeokgung Palace.
+The revised stop condition has now fired: most completed cities have 4-star above 3-star, but Delhi is
+**0.941** and Prague **0.931**. This direction-flipping ordering violation is an artifact signature. Stop
+before the remaining six development cities and do not collect the holdout.
+
+The current ledger is **118 found / 30 pending**: 25 attraction rows and 93 v2 accommodation rows. The
+remaining six development cities are Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne.
+The Booking → Expedia offset threshold is crossed: 17 development cities have complete five-class rows,
+but the offset remains unfitted until M3. The first-page bias caveat is documented in the ground-truth README
+and ledger `sourcePolicy`: this panel supports ratios and source calibration, not absolute city levels.
 
 ### The coefficients that exist right now
 
@@ -125,13 +131,13 @@ path is covered by deterministic integration tests.
 
 ## 4. The exact next action
 
-**Stop accommodation collection at the two-city v2 pilot.** Do not collect Beijing, Tokyo, Seoul or the
-other three remaining accommodation cities. Do not tune coefficients, fit the Booking → Expedia offset,
-score gates or open the locked holdout. The current ledger has 25 attraction rows, 10 v2 pilot
-accommodation rows and 20 legacy v1 accommodation rows, leaving 95 pending slots for the frozen reference
-window 2026-09-17 to 2026-09-18. The v2 rows use Booking's default top-picks order and record every
-first-page price plus `classInventoryCount`. The old Beijing and Tokyo rows from the earlier panel remain
-historical and were removed in `4cf397b`; the other four v1 cities are now legacy migration evidence.
+**Stop the M2 collection tranche on the direction-flipping artifact signature.** Do not collect Lisbon,
+Barcelona, Mexico City, Lima, San Francisco, Melbourne or any holdout city. Do not tune coefficients, fit
+the Booking → Expedia offset, score gates or open the locked holdout. The ledger has **118 found / 30
+pending** cells: 25 attractions and 93 accommodation rows, with 17 complete accommodation cities and two
+explicit one-star class absences. The v2 rows use Booking's default top-picks order and record every
+first-page price plus `classInventoryCount`. The first-page level-bias caveat is documented; do not use these
+medians as absolute city-level ground truth.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; do not mistake that historical checkpoint for the current ledger state.
@@ -152,20 +158,19 @@ Work order for the next agent:
 
 1. Use `data/reference/v6/ground-truth/development-ledger.json` as the only development write target and
    keep the 15 holdout city results sealed in `ground-truth/holdout-seal.json`.
-2. Treat the v2 pilot warnings as a method stop: no further accommodation collection until the selection
-   rule is amended and re-piloted under the loop's stopping rules. The pilot rows must remain auditable.
-3. Run `node scripts/validate-city-cost-v6-ground-truth.mjs`; the expected current-pilot warnings are the
-   Hanoi and Singapore class inversions plus the Singapore dorm ratio-band warning. The validator also emits
-   migration warnings for the 20 legacy v1 rows and their known substance warnings; the replay tripwire in
-   `scripts/test-city-cost-v6-ground-truth-warnings.mjs` confirms that deleted Hanoi, Phuket and Da Nang rows
-   still trip inversion, sub-amount and ratio-band warnings. The attraction repairs are in `34a1045` and this
-   Seoul repair.
-4. Keep the 12-city minimum before fitting the Booking → Expedia source offset. Do not use the locked holdout
-   to tune a prompt, coefficient or gate.
+2. Treat the Delhi/Prague 4-star-versus-3-star direction flip as the current artifact stop. Preserve all
+   collected rows for audit; do not resume the six remaining development cities unless the rule is amended
+   and re-piloted under the loop's stopping rules.
+3. Run `node scripts/validate-city-cost-v6-ground-truth.mjs`; expected substance warnings include the
+   direction-flipping class inversions and the dorm ratio-band warnings. `scripts/test-city-cost-v6-ground-truth-warnings.mjs`
+   must continue to pass against the deleted v1 fixtures.
+4. The 12-city minimum for the Booking → Expedia source offset has been crossed at 17 complete cities, but
+   the offset remains unfitted. Do not use the locked holdout to tune a prompt, coefficient, gate or offset.
 
 **M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
 metadata and sealed storage; no holdout score has been revealed. The current ledger is not at exit: it has
-55 found observations and 95 pending slots; the pilot is intentionally not an M2 exit.
+118 found observations and 30 pending slots. Collection stopped before exit because the revised artifact
+signature fired; no holdout result has been collected or inspected.
 
 ---
 

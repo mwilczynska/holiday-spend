@@ -95,23 +95,23 @@ Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-m
 
 - [x] Create a manifest-driven ledger for 25 development cities × 6 measures
 - [x] Seal the holdout boundary without storing holdout prices or scores
-- [ ] 25 development cities — 150 dated source facts (55 found, 95 pending)
+- [ ] 25 development cities — 150 dated source facts (118 found, 30 pending)
 - [x] Collect the paid-attraction anchor from an official/current city or attraction tariff page for all 25 development cities
 - [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
 - [x] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
-reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 55 found observations and 95
-pending slots rather than carrying an undated or inferred price. The accommodation panel is currently a
-two-city pilot under `booking_top_picks_firstpage_median_v2`: Hanoi and Singapore have 10 new rows, while
-20 rows from the superseded `booking_price_asc_median_v1` rule remain migration evidence. The pilot still
-shows class-inversion warnings and a Singapore dorm ratio-band warning, so the other four cities must not
-be collected until the rule is amended and re-piloted. Nine known attraction violations plus the leftover
-Seoul SEOULDAL row were replaced with the standard general-admission museum/historic-site estimand. The
-accommodation basis includes public promotional rates available to any logged-out visitor, excludes
-membership-gated rates, and never records a strikethrough/original price as the amount. The current source
-policy is Booking.com ground truth with a Booking → Expedia offset to be fitted only after at least 12
-accommodation cities.
+reference window is 2026-09-17 to 2026-09-18; the ledger currently reports 118 found observations and 30
+pending slots rather than carrying an undated or inferred price. The v2 panel includes all 25 attractions
+and 93 accommodation rows. Nineteen development-city accommodation tranches
+were attempted; 17 have all five found classes, while Beijing and Nairobi record explicit one-star
+`class_absent` results. The remaining six development cities were not collected after the revised artifact
+stop triggered: Delhi has 4-star/3-star = 0.941 and Prague = 0.931, while the other completed cities are
+above 1.0. That direction-flipping ordering violation is a collection artifact signature under the revised
+rule, not a reason to refit the ladder. The accommodation basis includes public promotional rates available
+to any logged-out visitor, excludes membership-gated rates, and never records a strikethrough/original price
+as the amount. The Booking.com → Expedia offset threshold has been crossed with 17 complete accommodation
+cities, but the offset remains deliberately unfitted until M3.
 
 M1 implementation notes:
 
@@ -145,7 +145,9 @@ M1 implementation notes:
 - [ ] `accom_1_star` — interpolated, zero direct evidence, weakest number in the ladder
 - [ ] Hostel dorm/private split — the v4 channel could not distinguish them
 - [ ] Activity semantics — BudgetYourTrip measures reported spend, not ticket prices
-- [ ] Dorm coefficient — currently mixes a 2023 index with a current anchor
+- [ ] Dorm coefficient — currently mixes a 2023 index with a current anchor; the v2 ground-truth panel
+  repeatedly records dorm/3-star above the fitted band across multiple cities, strengthening the stale-index
+  finding without authorising a refit during M2
 
 ---
 
