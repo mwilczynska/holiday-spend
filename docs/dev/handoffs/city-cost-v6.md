@@ -154,8 +154,11 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 The historical accommodation-only candidate and single gate 2–6 score are retained, and experiment 001 has
 accepted the fresh production-anchor replication. They are not the all-19 M3 result. Experiment 002 batches
 001–005 resolved the ten independent measures for all 25 cities and batch 006 added the street-food measure;
-coverage is **280 found / 0 pending**. The generated all-tier coefficient report exists, but no fresh all-19
-holdout score or gate result exists yet. The v6 path is integrated but opt-in.
+coverage is **280 found / 0 pending**. Batch 007 resolved the fresh holdout extension at 12 found / 168
+explicit `not_found` rows across 180 slots. The generated all-tier coefficient report exists, and the fresh
+all-tier score report is `data/reference/v6/ground-truth/holdout-scores-all-tier.json`; all gates 2-6 are
+explicitly `not_evaluable` because no paired production-path prediction bundle exists and the old six
+measures cannot be reopened. The v6 path is integrated but opt-in.
 **The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
 API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
 
@@ -186,10 +189,13 @@ generates every available independent menu/activity relation and the street-food
 selected street relation is R0 `k=0.3248`, n=6, LOO median APE 100.73%, p90 335.59%, grade C ±336%; R1 ties
 because no band has three eligible pairs. McMeal is retained as a diagnostic, and the generated report
 records the modeled food-tier collinearity. The coefficients pass `--check`. The remaining M3 action is
-fresh per-measure holdout collection without reading its values.
+fresh per-measure holdout collection is complete; the extension was read once after candidate freeze.
 
-Do not read holdout values, score gates, refit from holdout data, or begin M4. Collect the twelve fresh
-holdout measures under their per-measure sealed statuses, freeze exactly one all-19 candidate before reading
+The fresh holdout read is complete and must not be repeated. Do not refit from holdout data, change the
+candidate, reopen any `revealed_once` measure, or begin M4. The exact next action is to document the all-19
+derivation/coverage table and the explicit reasons the gates remain `not_evaluable`.
+The old six-measure holdout remains spent and must not be reread, rescored or replaced. The two historical
+lines immediately below still describe the pre-collection state and are superseded by this paragraph.
 any of them, and score gates 2–6 once. The original six-measure holdout remains spent and must not be reread,
 rescored or replaced.
 

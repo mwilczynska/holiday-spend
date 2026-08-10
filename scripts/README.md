@@ -51,6 +51,10 @@ re-derive is a claim you cannot audit.
 | `node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete` | `validate-city-cost-v6-ground-truth.mjs` | Manifest-driven development-ledger audit; completeness means zero errors and zero pending slots, while substance warnings are reported separately and never block |
 | `node scripts/freeze-city-cost-v6-candidate.mjs` | `freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the holdout seal before the first holdout read |
 | `node scripts/score-city-cost-v6-holdout.mjs` | `score-city-cost-v6-holdout.mjs` | One-time gate 2–6 score against the frozen holdout; refuses a second pass |
+| `node scripts/score-city-cost-v6-holdout-all-tier.mjs` | `score-city-cost-v6-holdout-all-tier.mjs` | One-time per-measure all-tier read; refuses old revealed measures and records explicit not_evaluable reasons when production predictions are absent |
+| `node scripts/collect-v6-holdout-extension-batch.mjs` | `collect-v6-holdout-extension-batch.mjs` | Writes a bounded fresh 15-city x 12-measure collection batch without printing prices |
+| `node scripts/merge-v6-holdout-extension-batch.mjs` | `merge-v6-holdout-extension-batch.mjs` | Merges a complete fresh batch into the sealed extension and reports status counts only |
+| `node scripts/seal-v6-holdout-extension.mjs` | `seal-v6-holdout-extension.mjs` | Transitions all fresh extension measures to sealed_after_collection without exposing prices |
 | `node scripts/score-expedia-production-anchor-v6.mjs [--check]` | `score-expedia-production-anchor-v6.mjs` | Deterministic scorer for experiment 001; reads only the development Booking ledger and Expedia experiment responses |
 
 ## SUPERSEDED — methodology v5

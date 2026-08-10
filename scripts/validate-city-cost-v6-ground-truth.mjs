@@ -238,7 +238,7 @@ for (const [city, byMeasure] of accommodationByCity) {
 if (holdoutSeal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v3') issue('Unexpected holdout seal schemaVersion');
 if (holdoutSeal.methodologyVersion !== 'v6.0') issue('Holdout seal methodologyVersion must be v6.0');
 if (holdoutSeal.manifestPath !== 'data/reference/v6/validation-manifest-v6.json') issue('Holdout seal manifestPath must identify the frozen v6 manifest');
-if (holdoutSeal.status !== 'per_measure') issue('Holdout seal must declare status=per_measure');
+if (!['per_measure', 'revealed_once'].includes(holdoutSeal.status)) issue('Holdout seal must declare status=per_measure or revealed_once');
 const sealMeasures = holdoutSeal.measures && typeof holdoutSeal.measures === 'object' ? holdoutSeal.measures : {};
 if (JSON.stringify(Object.keys(sealMeasures).sort()) !== JSON.stringify([...measures].sort())) issue('Per-measure holdout seal keys do not match the frozen manifest');
 for (const measure of measures) {
@@ -261,6 +261,10 @@ for (const measure of measures) {
   }
 }
 if (holdoutSeal.cityCount !== holdout.length || holdoutSeal.requiredMeasureCount !== measures.length) issue('Holdout seal counts do not match the frozen manifest');
+if (holdoutSeal.status === 'revealed_once') {
+  if (typeof holdoutSeal.allTierScoresFile !== 'string' || !fs.existsSync(path.join(root, holdoutSeal.allTierScoresFile))) issue('Revealed all-tier holdout seal must name its score file');
+  if (measures.some((measure) => sealMeasures[measure]?.status !== 'revealed_once')) issue('All-tier revealed seal must mark every measure revealed_once');
+}
 
 const report = {
   schemaVersion: 'city-cost-v6-ground-truth-validation-v1',

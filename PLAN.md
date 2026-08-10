@@ -196,7 +196,7 @@ M1 implementation notes:
 - [x] Record the dated contract amendment from six accommodation-scoped measures to 18 all-tier validation rows
 - [x] Resolve the 12 new development measures across all 25 cities (hotel-2 plus street food and ten other independent measures; explicit missingness is valid)
 - [x] Generate and cross-check every non-accommodation derivation from the development panel, including fitted street-food/inexpensive
-- [ ] Collect the 12 fresh holdout measures under per-measure seals without reading them
+- [x] Collect the 12 fresh holdout measures under per-measure seals without reading them
 - [ ] Freeze one all-19 candidate and score gates 2–6 once
 - [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
 
@@ -207,9 +207,13 @@ complete at **280 found / 0 pending** across 25 cities: street food contributed 
 FX-compatible city pairs, with LOO median APE 100.73%, p90 335.59%; its cost-banded R1 candidate tied because
 no band had three eligible pairs, so the grade-C interval is the residual-derived ±336%. McMeal remains a
 diagnostic only. No holdout value was read, no gate was scored, and M4 migration remains out of scope.
-The old accommodation-only score is not an all-19 M3 result. The per-measure holdout seal keeps the six
-already revealed rows spent and now has twelve sealed-before-collection extension measures. No holdout value
-was read, no gate was scored, and M4 migration remains out of scope.
+The old accommodation-only score is not an all-19 M3 result. Batch 007 resolved and sealed the fresh
+15-city extension: 12 found independent menu rows and 168 explicit `not_found` rows across 180 slots.
+One candidate was frozen before the fresh extension was read. The all-tier scorer then read the 12 fresh
+measures once, refused to open the six `revealed_once` measures, and recorded gates 2-6 as `not_evaluable`:
+no paired production-path prediction bundle exists for the fresh cities, and the spent old measures cannot
+be reopened to compose a full basket. This is an explicit validation gap, not a pass. M4 migration remains
+out of scope.
 
 ### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 

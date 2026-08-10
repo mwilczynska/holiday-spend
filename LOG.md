@@ -2542,3 +2542,19 @@ direct street rows provide independent evidence for the fit, not independent pro
 No coefficient was hand-edited, no gate was scored, no holdout value was read, and the 121-city CSV remains
 untouched. The next action is fresh per-measure holdout collection, followed by one all-19 candidate freeze
 before any new holdout value is read.
+
+## v6 M3 — fresh per-measure holdout extension and integrity-limited score (10 August 2026)
+
+Batch 007 collected the 15-city fresh extension under the per-measure seal. All 180 slots were resolved:
+12 found independent official-menu rows and 168 explicit `not_found` rows. The found rows retain their source
+currency and panel prices; NPR and JOD rows are preserved as source facts but cannot be converted by the frozen
+FX snapshot. No missing row was filled from Numbeo, BudgetYourTrip, a proxy, or a plausible substitute.
+
+The extension was sealed before candidate freeze. Exactly one candidate was frozen by
+`freeze-city-cost-v6-candidate.mjs`; the fresh extension was then read once by
+`score-city-cost-v6-holdout-all-tier.mjs`. That scorer did not open any of the six old `revealed_once`
+measures. It recorded gates 2-6 as `not_evaluable`, not passes: the fresh ground truth has no paired
+production-path prediction bundle, and the spent old measures cannot be reopened to construct an end-to-end
+daily basket. Ratio-only validation is also not evaluable where both independent sides are not found and
+frozen-FX comparable. This is the honest M3 result for the current holdout contract; the missing prediction
+bundle and the spent-measure boundary are explicit reasons, not a scoring failure to tune around.
