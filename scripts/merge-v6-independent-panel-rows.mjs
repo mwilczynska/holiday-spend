@@ -61,7 +61,9 @@ for (const raw of rows) {
     });
     continue;
   }
-  replaceObservation(raw.city, raw.observation ?? raw);
+  const observation = raw.observation ?? raw;
+  const { city: _city, ...cleanObservation } = observation;
+  replaceObservation(raw.city, cleanObservation);
 }
 
 fs.writeFileSync(ledgerPath, `${JSON.stringify(ledger, null, 2)}\n`);

@@ -1,0 +1,275 @@
+{
+  "experiment": "002-independent-anchor-panel",
+  "batch": "006-street-food",
+  "collectedAt": "2026-08-10",
+  "selectionRule": "independent_street_food_panel_first5_median_v1",
+  "sourcePolicy": "Independent official vendor, market-board, bakery-takeaway or local prepared-meal menus only; no Numbeo, McDonald's, aggregators or delivery prices.",
+  "rows": [
+    {
+      "city": "Hanoi",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 65000,
+      "currency": "VND",
+      "sourceName": "Bánh Mì Gác official menu",
+      "sourceUrl": "https://banhmigac.com/en",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Bánh Mì Gác menu lists Hanoi Traditional Banh Mi at VND 55,000, grilled beef wrapped in lolot leaf Banh Mi at VND 65,000, and additional prepared savoury meal items at VND 105,000 and VND 125,000. The retained panel prices are VND 55,000, 65,000 and 125,000; the median is VND 65,000.",
+      "samplePrices": [55000, 65000, 125000],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 45000,
+      "currency": "VND",
+      "sourceName": "Bánh Mì Như Ý official menu",
+      "sourceUrl": "https://banhminhuy.vn/",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Bánh Mì Như Ý menu at its Ho Chi Minh City address lists Bánh Mì Truyền Thống Huế, Pate Chà Bông, 1 Trứng and 2 Trứng at VND 45,000 each. Three qualifying single-person prepared bánh mì prices were retained; the median is VND 45,000.",
+      "samplePrices": [45000, 45000, 45000],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Da Nang",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 20000,
+      "currency": "VND",
+      "sourceName": "Đồng Tiến Bakery official menu",
+      "sourceUrl": "https://dongtienbakery.com/bread/355-grill-chopped-meat-banh-my",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Đồng Tiến Bakery menu in Da Nang lists prepared bánh mì items including grilled beef at VND 22,000, beef sausage at VND 20,000 and grilled chicken at VND 20,000. Plain baguettes were excluded as unprepared items. The median of the three retained prepared takeaway meals is VND 20,000.",
+      "samplePrices": [22000, 20000, 20000],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Phuket",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The official local-food route exposed restaurant dishes but did not establish three compliant street-stall, market-board, bakery-takeaway or prepared street-food prices under the frozen rule.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Singapore",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 8.3,
+      "currency": "SGD",
+      "sourceName": "Hainan Second Street menu via Visit Bedok venue listing",
+      "sourceUrl": "https://www.visitbedok.com/shop/hainan-second-street",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The Visit Bedok venue listing for Hainan Second Street shows regular single serving prices of SGD 7.30 for a rice bowl, SGD 8.30 for the drum rice bowl and SGD 8.60 for curry mee or chicken kway teow soup. Promotional takeaway deals were excluded. The median is SGD 8.30.",
+      "samplePrices": [7.3, 8.3, 8.6],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Taipei",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The search route did not produce three compliant official street-food or market-board single-person meal prices; no Numbeo or aggregator substitute was used.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Beijing",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The search route did not produce three compliant official street-food or market-board single-person meal prices under the frozen rule.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Tokyo",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 420,
+      "currency": "JPY",
+      "sourceName": "Takoichi Tokyo official menu",
+      "sourceUrl": "https://takoichi-tokyo.com/",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Takoichi Tokyo menu lists prepared quick-service items including fried chicken 3 pieces at JPY 370, dumplings 6 pieces at JPY 420 and fried chicken 5 pieces at JPY 450. The median of the three retained savoury street-food prices is JPY 420.",
+      "samplePrices": [370, 420, 450],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Seoul",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The search route did not produce three compliant official street-food or market-board single-person meal prices under the frozen rule.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Delhi",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "A candidate menu did not expose an unambiguous local-currency basis, so the route was recorded as not_found rather than converting an ambiguous dollar display.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Colombo",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 650,
+      "currency": "LKR",
+      "sourceName": "Culture Colombo official menu",
+      "sourceUrl": "https://culturecolombo.lk/menu/",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Culture Colombo menu lists local prepared meal items including hoppers with sambols at LKR 625, string hoppers with curry at LKR 650 and vegetable kottu at LKR 1,400. Three qualifying local prepared-meal prices were retained; the median is LKR 650.",
+      "samplePrices": [625, 650, 1400],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Mumbai",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 49,
+      "currency": "INR",
+      "sourceName": "Aamchi Vadapav official menu",
+      "sourceUrl": "https://aamchivadapav.com/menu",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Aamchi Vadapav menu describes Mumbai street-side food and lists Aamchi Vadapav at INR 39, Bhel Puri at INR 49 and Sev Puri at INR 49. Three qualifying savoury street-food prices were retained; the median is INR 49.",
+      "samplePrices": [39, 49, 49],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Istanbul",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The search route produced tourism price ranges but not three compliant official vendor or market-board prices.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Dubai",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 19,
+      "currency": "AED",
+      "sourceName": "Shawarmary official menu",
+      "sourceUrl": "https://shawarmary.com/",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Dubai Shawarmary menu lists regular prepared street-food items including Beefary at AED 15, medium Beefary at AED 19 and large Beefary at AED 24. Combo and promotional prices were excluded. The median of the three retained single-person items is AED 19.",
+      "samplePrices": [15, 19, 24],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Cairo",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The candidate menu route was not a Cairo-local price list and the remaining route exposed no three compliant official local-currency prices.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Cape Town",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The official tourism route exposed only a single starting price, not the minimum three prices required by the frozen street-food panel rule.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Nairobi",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The route produced stale or non-vendor price material rather than three current official street-food menu prices.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Budapest",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 2900,
+      "currency": "HUF",
+      "sourceName": "Lángos & Beer official menu",
+      "sourceUrl": "https://langosandbeer.hu/menu/",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Lángos & Beer menu lists plain lángos at HUF 2,500, sour-cream lángos at HUF 2,900 and cheese lángos at HUF 2,900. The median of the three retained prepared street-food prices is HUF 2,900.",
+      "samplePrices": [2500, 2900, 2900],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Prague",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The candidate official route exposed dessert and drink prices rather than three qualifying savoury prepared meal prices.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Lisbon",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The route exposed fewer than the required three compliant official prepared street-food prices.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Barcelona",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The official market route established prepared food availability but did not publish the minimum three regular single-person prices required by the rule.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "Mexico City",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 30,
+      "currency": "MXN",
+      "sourceName": "Los Parados official Mexico City menu",
+      "sourceUrl": "https://www.los-parados.com/menu.html",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official Los Parados Mexico City menu lists local prepared street-food items including tacos al pastor at MXN 25, volcanes at MXN 30 and queso fundido at MXN 35. The median of the three retained regular savoury prices is MXN 30.",
+      "samplePrices": [25, 30, 35],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Lima",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The official venue route exposed a menu without prices and the remaining route did not establish three compliant local-currency street-food prices.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    },
+    {
+      "city": "San Francisco",
+      "measure": "street_food_meal_1p",
+      "status": "found",
+      "amount": 14.25,
+      "currency": "USD",
+      "sourceName": "Truly Food Truck official menu",
+      "sourceUrl": "https://www.trulyfoodtrucksf.com/",
+      "retrievedAt": "2026-08-10",
+      "taxStatus": "unknown",
+      "evidenceText": "The official San Francisco food-truck menu describes real Latin street food and lists the Classic Cheese Burger at USD 13.25, Bacon Guac at USD 14.25 and Truly California at USD 16.75. The median of the three retained regular prepared meal prices is USD 14.25.",
+      "samplePrices": [13.25, 14.25, 16.75],
+      "selectionRule": "independent_street_food_panel_first5_median_v1"
+    },
+    {
+      "city": "Melbourne",
+      "measure": "street_food_meal_1p",
+      "status": "not_found",
+      "reason": "The official market-street-food route established venue identity but did not publish the minimum three regular comparable prices required by the rule.",
+      "attempts": 5,
+      "lastAttemptAt": "2026-08-10"
+    }
+  ]
+}

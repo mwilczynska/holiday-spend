@@ -3,8 +3,8 @@
 This directory contains the one-time ground-truth collection for the frozen v6 validation panel.
 
 The reference window is one night, arrival `2026-09-17`, departure `2026-09-18`, for two adults and
-one room (or one dorm bed). The original six-measure panel was accommodation-scoped. The amended v2
-contract has 17 rows per city so the 19 product tiers can be fitted and validated:
+one room (or one dorm bed). The original six-measure panel was accommodation-scoped. The amended v3
+contract has 18 rows per city so the 19 product tiers can be fitted and validated:
 
 - `hostel_dorm_bed_1p`
 - `hostel_private_room_2p`
@@ -23,6 +23,7 @@ contract has 17 rows per city so the 19 product tiers can be fitted and validate
 - `cocktail_1`
 - `wine_glass_1`
 - `hotel_2star_room_2p`
+- `street_food_meal_1p`
 
 ## Files
 
@@ -64,9 +65,24 @@ Copenhagen stage-1 finding:
 the top-picks first-page median undershot the full-inventory median by roughly 20-27% at 25 listings. Do not
 use this panel to set or score absolute city levels; its intended use is within-city ratios and source
 calibration. The food and drink rows are independently sourced from official menus or venue price lists,
-never Numbeo. Activity rows are independently sourced from official operator or attraction pages, never
-BudgetYourTrip. The exact selection rules are frozen in `validation-manifest-v6.json`; every panel median
-retains its individual prices in `samplePrices`.
+never Numbeo. The street-food row is independently sourced from official street-stall, market-board,
+bakery-takeaway or local prepared-meal menus; McDonald's is retained only as a Numbeo cross-check.
+Activity rows are independently sourced from official operator or attraction pages, never BudgetYourTrip.
+The exact selection rules are frozen in `validation-manifest-v6.json`; every panel median retains its
+individual prices in `samplePrices`.
+
+## Street-food selection rule
+
+The current rule is `independent_street_food_panel_first5_median_v1`. Run the city-scoped query for street
+food, market food, bakery takeaway and casual prepared meals. In search-result order, take the first five
+distinct eligible official vendor, market-board or tourism-listed venue pages that publish regular public
+prices for prepared savoury meals eaten out. From each page retain qualifying item prices in menu order
+until five prices are recorded, with no more than three prices from one page. Exclude drinks, desserts,
+packaged groceries, McDonald's or other global chains, delivery/aggregator prices, happy hours and temporary
+promotions. Record every selected single-person meal price and use the median; require at least three
+prices. If official city evidence establishes that no street-food category exists, record `class_absent`
+with the reason; otherwise an exhausted route is `not_found`. A missing route is never filled with Numbeo,
+Expatistan or a plausible substitute.
 
 ## Accommodation price basis
 
