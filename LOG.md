@@ -2621,3 +2621,31 @@ Experiment numbering is repaired: the old empty provider attempt is `007-product
 the current collection is `006-development-prediction-spine`, and the score is normalized under
 `005-development-in-sample-score/`. The spent holdout and the proposed fresh holdout were not read, changed,
 frozen or scored.
+
+## v6 M3 — post-derivation food fix and honest development score (10 August 2026)
+
+Audit found a live materializer defect: `applyDirectTierPriors` checked the pre-derivation anchor map, so
+derived `street_food_meal_1p` and `premium_restaurant_meal_2p` made all three food baskets fall back to
+grade-D direct tier priors even when their Numbeo source anchors were observed. The requirement check now
+uses the post-derivation set; observed and modelled anchors satisfy it, while imputed anchors still fall back.
+A regression test proves that observed inexpensive and midrange anchors retain the basket formulas.
+
+Stage B was rerun from the existing experiment 006 disk responses with zero LLM calls. The corrected
+development score is **IN-SAMPLE ONLY**: six accommodation tiers remain genuine; food budget is n=14 with
+median APE 24.22%, food mid-range n=13 with 37.40%, and food high-end n=13 with 51.99%. The score records
+the excluded cities per tier because a food score requires observed Numbeo source anchors, not priors:
+budget excludes Singapore, Taipei, Colombo, Mumbai, Istanbul, Dubai, Cairo, Cape Town, Nairobi, Prague and
+Lima; mid/high exclude the same list plus Budapest. The old food results 14.56%, 14.34% and 13.76% are
+superseded: they compared BYT regional medians against BYT city truth and measured source dispersion, not
+method accuracy.
+
+The 54.19% activities-budget result is also superseded. The official rows are single-admission ticket
+observations, while production predicts two-person daily activity spend. The contract now uses the daily
+BYT estimand for all three activity tiers; the 25 ticket rows remain preserved under their different
+estimand, and no activity recollection occurred. Daily activity spend is structurally unvalidated because
+BYT is production and no independent spend panel is identified; Price of Travel is the candidate future route.
+
+The uniform minimum fitted-relation threshold is n=8. The measured street-food relation (n=6, k=0.3248,
+LOO-p90 ±336%) is diagnostic only. The generated shipped fallback is the global direct-evidence prior ratio
+k=0.2757, grade D ±45%, matching `priors-v6.json`; premium n=3 remains the parallel grade-D 1.5 fallback.
+No coefficient was hand-edited, no holdout value was read or changed, and the 121-city CSV remains untouched.

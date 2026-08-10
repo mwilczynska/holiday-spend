@@ -198,7 +198,7 @@ M1 implementation notes:
 - [x] Reuse 15 Expedia responses from experiment 001 and collect/record the remaining delegated spine responses
 - [x] Materialize 25/25 production-path prediction bundles through `materializeCityCostV6`
 - [x] Collect the pre-registered BudgetYourTrip tier panel and Expatistan drink cross-checks
-- [x] Replace the unsupported street-food constant with the measured paired R0 (`k=0.3248`, n=6, ±336% LOO-p90)
+- [x] Apply the uniform minimum fitted-relation rule: retain street-food R0 (`k=0.3248`, n=6, ±336% LOO-p90) as diagnostic and ship the generated prior fallback (`k=0.2757`, grade D ±45%)
 - [x] Rebuild regional priors from direct development evidence, decoupled from the live CSV
 - [x] Record all 34 frozen-FX exclusions: EGP/Cairo 7, LKR/Colombo 2, PEN/Lima 4, SGD/Singapore 8, TWD/Taipei 6, ZAR/Cape Town 7
 - [x] Score the development panel end-to-end, labelled **IN-SAMPLE**
@@ -211,16 +211,20 @@ Experiment 006 contains 75 schema-validated delegated spine responses and 75 tel
 real `materializeCityCostV6` path; all 25 cities materialized. Dubai's `UAE`/`United Arab Emirates` spelling
 is accepted only through an explicit country-alias identity check.
 
-The in-sample score in experiment 005 has **10 evaluable tiers**, one definitional tier (`activities_free`),
-and 8 blocked tiers: street food has no direct daily-tier truth; all five drinks lack an independent full
-basket; and BudgetYourTrip mid/high activity truth is circular. The 10 tier results are development
-diagnostics, not holdout validation. Gates 3–6 are explicitly `not_evaluable` on this partial truth panel.
-No holdout file was read or changed.
+The corrected in-sample score in experiment 005 has **9 evaluable tiers** (six accommodation and three food),
+one definitional tier (`activities_free`), 8 blocked tiers, and one explicitly not-evaluable activity tier.
+Food scores require observed Numbeo source anchors and exclude 11 cities for budget and 12 cities for mid/high;
+the exact names are in the score artifact and generated report. The previous food results 14.56%, 14.34% and
+13.76% are superseded because they compared BYT regional fallback medians with BYT truth values. The three
+activity tiers have no valid independent truth: the budget ticket rows use the wrong estimand, while mid/high
+are circular because BYT is production. The 9 evaluable tier results are development diagnostics, not holdout
+validation. Gates 3–6 are explicitly `not_evaluable` on this partial truth panel. No holdout file was read or
+changed.
 
-The shipped street-food coefficient is now the measured paired `k=0.3248`, grade C with a ±336% residual
-interval. The direct-evidence prior ratio of marginal medians is 0.276; the coefficient warning explains the
-ratio-of-medians versus median-of-paired-ratios distinction. The superseded reasoned 0.5 constant is not
-defended or used. M4 remains out of scope.
+The measured street-food relation (`k=0.3248`, n=6, ±336% LOO-p90) is diagnostic only under the uniform
+minimum fitted n=8 rule. The generated shipped fallback is the global direct-evidence prior ratio `k=0.2757`
+at grade D ±45%, matching `priors-v6.json`; premium n=3 remains the parallel grade-D 1.5 fallback. M4 remains
+out of scope.
 
 ### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 
@@ -235,7 +239,7 @@ defended or used. M4 remains out of scope.
 
 - [ ] `accom_1_star` — interpolated, zero direct evidence, weakest number in the ladder
 - [ ] Hostel dorm/private split — the v4 channel could not distinguish them
-- [ ] Activity semantics — BudgetYourTrip measures reported spend, not ticket prices
+- [ ] Activity validation — daily spend is structurally unvalidated; Price of Travel is the candidate independent panel to test later
 - [ ] Private-room rung — development `0.7955` versus holdout-implied `0.603`; current `0.5919` rollback is
   no longer an independent test. Treat this as the primary cost-banded R1 candidate.
 - [x] Dorm coefficient — stale 2023 index finding confirmed and replaced by the Booking v2 development fit;

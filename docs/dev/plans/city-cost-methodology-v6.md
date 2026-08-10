@@ -361,16 +361,19 @@ cover the 25 development cities, with 15 Expedia responses reused byte-for-byte 
 default generator validates those files and sends the normalized anchors through the real
 `materializeCityCostV6` implementation. Stage B produced **25/25** full 19-tier bundles.
 
-The development score is labelled **IN-SAMPLE** and is not a holdout result. It has 10 evaluable tiers, one
-definitional tier and 8 blocked tiers. The blocked tiers are street food (no direct daily-tier truth), the
-five drinks (no independent full basket), and mid/high activities (BudgetYourTrip is the production source).
-Gates 3–6 are `not_evaluable` on this partial truth panel; no gate pass or failure is inferred.
+The development score is labelled **IN-SAMPLE** and is not a holdout result. It has 9 evaluable tiers (six
+accommodation and three food), one definitional tier, 8 blocked tiers and one not-evaluable activity tier.
+Food scores require observed Numbeo source anchors: budget n=14, mid n=13 and high n=13, with exclusions
+listed in the score artifact. The 25 official attraction rows are ticket observations, not truth for the
+daily-spend activity estimand; all three activity tiers are therefore not independently evaluable. Gates 3–6
+are `not_evaluable` on this partial truth panel; no gate pass or failure is inferred.
 
-The measured street-food paired R0 `k=0.3248` is now shipped with grade C and a ±336% LOO-p90 interval,
-superseding the reasoned 0.5 constant. The direct prior ratio of marginal medians is 0.276 and the
-coefficient warning explains the median-of-marginals versus median-of-paired-ratios distinction. The prior
-artifact records 34 found rows excluded by the frozen FX snapshot. The spent holdout remains closed, and the
-fresh 15-city proposal remains uncollected pending owner approval.
+The measured street-food paired R0 `k=0.3248` is diagnostic only at n=6, with a ±336% LOO-p90 interval.
+The uniform minimum fitted n=8 rule makes production use the generated global direct-evidence prior ratio
+`k=0.2757` at grade D ±45%, superseding both the measured shipping claim and the reasoned 0.5 constant.
+Premium n=3 remains the parallel grade-D 1.5 fallback. The prior artifact records 34 found rows excluded by
+the frozen FX snapshot. The spent holdout remains closed, and the fresh 15-city proposal remains uncollected
+pending owner approval.
 
 ## 6. Milestones and honest success estimates
 

@@ -64,38 +64,44 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 | `accom_2_star` | Standard room for two, two-star class, one night | `0.7500 × accom_3_star` | C |
 | `accom_3_star` | Standard room for two, three-star class, one night | **MEASURED** — Expedia class-trend snippet | B |
 | `accom_4_star` | Standard room for two, four-star class, one night | `1.3372 × accom_3_star` | C |
-| `food_street_food` | Six standard low-cost prepared meals for two over one day | `6 × street_food_meal_1p`, where `street_food_meal_1p` is the measured paired R0 against `inexpensive_restaurant_meal_1p` (n=6; ±336% residual interval) | C |
-| `food_budget` | Four street meals + two inexpensive-restaurant meals for two, one day | basket | A/C |
-| `food_mid_range` | Two street + two inexpensive + one mid-range shared meal, one day | basket | A/C |
-| `food_high_end` | Two inexpensive + one mid-range + one premium shared meal, one day | basket; premium is fitted from independent menus against midrange | A/C |
+| `food_street_food` | Six standard low-cost prepared meals for two over one day | `6 × street_food_meal_1p`; the measured n=6 relation is diagnostic only and production falls back to the generated global prior ratio `0.2757 × inexpensive_restaurant_meal_1p` | D |
+| `food_budget` | Four street meals + two inexpensive-restaurant meals for two, one day | basket | A/D |
+| `food_mid_range` | Two street + two inexpensive + one mid-range shared meal, one day | basket | A/D |
+| `food_high_end` | Two inexpensive + one mid-range + one premium shared meal, one day | basket; premium is a grade-D fallback below minimum n | A/D |
 | `drink_coffee` | One regular cappuccino | **MEASURED** — Numbeo | A |
 | `drinks_none` | Two cappuccinos, no alcohol | basket | A |
 | `drinks_light` | Two cappuccinos + two domestic draft beers | basket | A |
 | `drinks_moderate` | Two cappuccinos + four beers + two standard cocktails | basket; cocktail is fitted from independent menus against cappuccino | C |
 | `drinks_heavy` | Two cappuccinos + six beers + four cocktails | basket; cocktail is fitted from independent menus against cappuccino; wine glass is excluded after rejected calibration | C |
 | `activities_free` | No paid activity spending | `0` | definitional |
-| `activities_budget` | Two adult tickets to a standard low-cost paid attraction | `2 ×` BudgetYourTrip budget tier | B |
-| `activities_mid_range` | Two adult places on a half-day group activity | `2 ×` BudgetYourTrip mid tier, unvalidated production proxy | C |
-| `activities_high_end` | Two adult places on a full-day premium activity | `2 ×` BudgetYourTrip luxury tier, unvalidated production proxy | C |
+| `activities_budget` | Daily activity spend for two people at the budget tier | `2 ×` BudgetYourTrip budget activity-spend tier; no independent daily-spend truth | B |
+| `activities_mid_range` | Daily activity spend for two people at the mid tier | `2 ×` BudgetYourTrip mid activity-spend tier; no independent daily-spend truth | C |
+| `activities_high_end` | Daily activity spend for two people at the high tier | `2 ×` BudgetYourTrip luxury activity-spend tier; no independent daily-spend truth | C |
 
-> **Current M3 override (10 August 2026):** `street_food_meal_1p` uses the measured paired R0 `k=0.3248`
-> with grade C and a ±336% residual interval, not the superseded 0.5 constant. `premium_restaurant_meal_2p`
+> **Current M3 override (10 August 2026):** the measured street-food R0 `k=0.3248` (n=6; ±336% LOO-p90)
+> is diagnostic only under the uniform minimum fitted n=8 rule. Production uses the generated global prior
+> ratio `k=0.2757` at grade D with ±45%; the priors and shipped fallback agree. This supersedes the 0.5
+> constant. `premium_restaurant_meal_2p`
 > uses the generated grade-D 1.5 fallback below the minimum n threshold. `activities_mid_range` and
-> `activities_high_end` are grade C ±35% production proxies with no independent validation, and
-> `drinks_heavy` excludes wine glass after the rejected bottle calibration route.
+> `activities_high_end` are daily-spend production proxies with no independent validation, and
+> `activities_budget` is also not independently validated. The 25 official-attraction rows are retained
+> as ticket observations under a different estimand, not as activity-tier truth. `drinks_heavy` excludes
+> wine glass after the rejected bottle calibration route.
 
-**The activity fields carry a known semantic gap.** BudgetYourTrip publishes *reported daily entertainment
-spend by traveller tier*, not *the price of a ticket / half-day group activity / full-day premium
-activity*. Experiments 037, 045, 044, 046, 050, 071 and 089 all failed to find a definition-matched
-activity source. v6 ships the proxy at grade C with the mismatch recorded here rather than blocking, and
-M5 revisits it. **Do not describe these three values as observed ticket prices.**
+**The activity fields now use a daily-spend estimand.** BudgetYourTrip publishes *reported daily
+entertainment spend by traveller tier*, which matches the product's per-two-person daily prediction.
+The 25 official attraction rows collected earlier are valid single-admission ticket observations but
+measure a different estimand and are not truth for these tiers. Experiments 037, 045, 044, 046, 050, 071
+and 089 found no independent daily-spend source. **Do not describe the retained ticket rows as activity-tier
+truth or the BYT production values as independently validated.**
 
 The food and drink anchor paths are explicit. `premium_restaurant_meal_2p` is generated as the grade-D
 1.5 × midrange fallback below the minimum relation n; `cocktail_1` is `2.6000 ×` measured cappuccino.
 Those coefficients are generated from independent official-menu development fits or documented fallbacks
 and their residual intervals are recorded in `coefficients-v6.json`; the displayed values are not asserted
-constants. `street_food_meal_1p` is the measured weak paired relation,
-not the old McMeal identity proxy. McMeal remains a measured Numbeo anchor and diagnostic only.
+constants. `street_food_meal_1p` retains the measured weak paired relation as diagnostic evidence, while
+production uses the generated grade-D global prior fallback because n=6 is below the uniform fitted n=8
+threshold. McMeal remains a measured Numbeo anchor and diagnostic only.
 
 ---
 
@@ -266,3 +272,30 @@ The current all-tier score is explicitly **IN-SAMPLE**: 10 evaluable tiers, one 
 blocked tiers. Drinks remain not evaluable for lack of an independent full basket; BudgetYourTrip mid/high
 activities remain circular; and gates 3–6 are not evaluable on this partial development truth. The spent
 holdout remains closed.
+
+### 10 August 2026 — correct post-derivation tier requirements and withdraw circular score claims
+
+The materializer previously checked `applyDirectTierPriors` against the pre-derivation input map. Because
+`street_food_meal_1p` and `premium_restaurant_meal_2p` are generated anchors, that check overwrote the
+food baskets with direct grade-D tier priors even when the Numbeo inexpensive and midrange source anchors
+were observed. The requirement check now uses the post-derivation anchor set and treats observed or modelled
+anchors as usable; only imputed anchors trigger the direct-tier fallback. A regression test covers all three
+food baskets.
+
+The earlier food score (budget 14.56%, mid 14.34%, high 13.76%) is superseded. It compared BudgetYourTrip
+regional medians used as fallback predictions against BudgetYourTrip city values, measuring source-panel
+dispersion rather than method accuracy. The corrected score is restricted to cities with observed production
+Numbeo source anchors: budget n=14, mid n=13 and high n=13. The excluded cities are recorded in the score
+artifact and generated report.
+
+The 25 official-attraction rows are retained but are not truth for the activity tiers. They measure ticket
+counts while production predicts daily activity spend. The previous `activities_budget` 54.19% result is
+superseded as an estimand mismatch; all three activity tiers are now not independently evaluable. No activity
+rows were recollected.
+
+### 10 August 2026 — apply the minimum-n rule uniformly to weak food relations
+
+The minimum fitted relation sample size is n=8. The measured street-food relation has n=6 and a ±336%
+LOO-p90 interval, so it is retained as diagnostic evidence but not shipped. Production uses the generated
+global direct-evidence prior ratio k=0.2757 at grade D ±45%, matching `priors-v6.json`. Premium has n=3
+and remains the parallel grade-D 1.5 fallback. Neither weak relation is presented as a fitted coefficient.

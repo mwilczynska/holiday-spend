@@ -165,15 +165,12 @@ collector records source currency, missingness, bounded retries and per-call tel
 under `data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start document is
 `docs/dev/handoffs/city-cost-v6.md`.
 M3 was reopened by owner decision to fit and validate all 19 product tiers. The manifest-driven development
-ledger now has 25 cities x 18 measures with 280 found rows and zero pending slots; the street-food relation
-is independently audited; the initial reset note's generated 0.5 reasoned constant was superseded when the
-minimum fitted-relation threshold. The original six-measure holdout and the later 18-measure extension are
-spent; all 18 measures are `revealed_once` and must not be reopened. The exact production prediction-bundle
-generator exists, but its initial provider-mode run materialized 0/25 cities because no local provider credential was
-configured. BYT tier evidence and an Expatistan drink cross-check are recorded for development, while
-activity evidence remains circular when sourced from BYT. The development scorer is therefore correctly
-blocked until predictions exist; the current paired development score is recorded separately. A fresh 15-city proposal is page-verified and coverage-gated at 72/90 rows;
-it awaits owner approval. The 121-city CSV remains on v1 until M4.
+ledger now has 25 cities x 18 measures with 280 found rows and zero pending slots. The original six-measure
+holdout and later 18-measure extension are spent; all 18 measures are `revealed_once` and must not be reopened.
+BYT tier evidence and an Expatistan drink cross-check are recorded for development, while independent activity
+truth is unavailable: the official rows are ticket observations and BYT is the production daily-spend source.
+A fresh 15-city proposal is page-verified and coverage-gated at 72/90 rows; it awaits owner approval. The
+121-city CSV remains on v1 until M4.
 
 **Current M3 pairing result (10 August 2026).** Experiment 006 now supplies 75 delegated, schema-validated
 spine responses and 75 telemetry records for the 25-city development panel, reusing 15 Expedia responses
@@ -184,6 +181,13 @@ explicitly IN-SAMPLE: 10 evaluable tiers, one definitional tier and 8 blocked ti
 coefficient is the measured paired `k=0.3248` with grade C and a ±336% LOO-p90 interval; the former 0.5
 reasoned constant is superseded. `priors-v6.json` records all 34 frozen-FX exclusions. The spent holdout and
 the proposed fresh holdout remain untouched; owner approval is required before any new holdout action.
+
+**M3 correction (10 August 2026; supersedes the paragraph above).** The materializer now preserves
+post-derivation food baskets. The development score is 9 evaluable tiers (six accommodation and three food),
+one definitional tier, 8 blocked tiers and one not-evaluable activity tier. Food scores use observed Numbeo
+source anchors only: budget n=14, mid n=13 and high n=13. The measured street-food n=6 relation is diagnostic
+only; generated production fallback is prior ratio k=0.2757, grade D +/-45% under the uniform n>=8 rule.
+The former food and activities-budget scores are superseded as circular or estimand-mismatched comparisons.
 
 ### Transport is out of scope
 

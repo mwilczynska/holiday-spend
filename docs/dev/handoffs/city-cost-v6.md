@@ -64,14 +64,22 @@ refreeze or tune from it.
 The paired development route is now complete. Experiment 006 contains 75 schema-validated delegated spine
 responses and 75 telemetry records for all 25 cities; 15 Expedia responses are byte-identical reuses from
 experiment 001. Stage B runs the shared `materializeCityCostV6` implementation and produced 25/25 full
-19-tier bundles. Experiment 005 is the deterministic **IN-SAMPLE** score: 10 evaluable tiers, one definitional
-tier and 8 blocked tiers. Gates 3–6 are explicitly `not_evaluable` because the development truth lacks a
+19-tier bundles. Experiment 005 is the deterministic **IN-SAMPLE** score: 9 evaluable tiers (six genuine
+accommodation tiers plus three food tiers), one definitional tier, 8 blocked tiers, and one explicitly
+not-evaluable activity tier. Gates 3–6 are explicitly `not_evaluable` because the development truth lacks a
 complete independent daily basket. This is not holdout validation.
 
-The current street-food coefficient is the measured paired R0 `k=0.3248`, n=6, grade C, with a ±336%
-leave-one-city-out p90 interval. The direct-evidence prior ratio of marginal medians is 0.276; the generated
-coefficient warning explains the median-of-marginals versus median-of-paired-ratios difference. The prior
-artifact explicitly lists the 34 frozen-FX exclusions.
+The six accommodation results remain genuine: medAPE ranges from 8.27% (3-star) to 25.46% (dorm). Food is
+scored only where source Numbeo anchors are observed: budget n=14, mid n=13 and high n=13. Budget excludes
+Singapore, Taipei, Colombo, Mumbai, Istanbul, Dubai, Cairo, Cape Town, Nairobi, Prague and Lima; mid/high
+also exclude Budapest. The earlier food numbers are superseded as BYT-region-median-versus-BYT-city circular
+comparisons. The 25 official attraction rows are preserved ticket observations, not daily-spend truth; the
+previous activities-budget score is withdrawn, and all three activity tiers are not independently evaluable.
+
+The measured street-food R0 `k=0.3248`, n=6, with a ±336% LOO-p90 interval is diagnostic only. The uniform
+minimum fitted n=8 rule means production uses the generated global direct-evidence prior ratio `k=0.2757`
+at grade D ±45%; premium n=3 remains the parallel grade-D 1.5 fallback. The prior artifact explicitly lists
+the 34 frozen-FX exclusions.
 
 The fresh holdout proposal remains `proposed_not_collected` with its 72/90 coverage gate. Do not collect,
 freeze or read it without owner approval. M4 remains out of scope.
@@ -162,7 +170,7 @@ accom_4_star              = 1.3372 × accom_3_star    n=26  LOO 12.98%  grade C 
 accom_1_star              = 0.6663 × accom_3_star    INTERPOLATED       grade C  ±45%
 accom_hostel_private_room = 0.5919 × accom_3_star    v4 blended rollback   grade C  ±35%
 accom_shared_hostel_dorm  = 2 × 0.2955 × accom_3_star  Booking v2, n=25   grade C  ±54%
-street_food_meal_1p       = 0.3248 × inexpensive meal independent menu, n=6 grade C  ±336%
+street_food_meal_1p       = 0.2757 × inexpensive meal global prior fallback, grade D  ±45% (diagnostic R0 0.3248, n=6, ±336%)
 ```
 
 The current shipped coefficient is the v4-blended rollback. The frozen candidate used for the single holdout
@@ -180,8 +188,9 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 The historical accommodation-only candidate and single gate 2–6 score are retained, and experiment 001 has
 accepted the fresh production-anchor replication. They are not the all-19 M3 result. The item-level
 development ledger remains **280 found / 0 pending**. Experiment 006 now supplies the paired production
-prediction bundle at 25/25 cities; experiment 005 reports the development-only score as 10 evaluable tiers,
-one definitional tier and 8 blocked tiers. Gates 3–6 are not evaluable on the partial development truth.
+prediction bundle at 25/25 cities; experiment 005 reports the development-only score as 9 evaluable tiers,
+one definitional tier, 8 blocked tiers and one not-evaluable activity tier. Gates 3–6 are not evaluable on the
+partial development truth.
 The v6 path is integrated but opt-in. The 121-city CSV and default v1 path remain untouched.
 **The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
 API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
@@ -231,14 +240,17 @@ The old holdout, all 18 `revealed_once` measures, and the 121-city CSV are out o
 
 1. Treat experiment 006 and `data/reference/v6/experiments/005-development-in-sample-score/results.json`
    as the current development record. The prediction bundle is 25/25 and the score is explicitly in-sample:
-   10 evaluable tiers, one definitional tier and 8 blocked tiers. Do not relabel any number as holdout
-   validation.
+   9 evaluable tiers, one definitional tier, 8 blocked tiers and one not-evaluable activity tier. Food scores
+   are budget n=14, mid n=13 and high n=13; use the recorded exclusion lists. Do not relabel any number as
+   holdout validation.
 2. If the bundle is regenerated, use the default from-disk path:
    `cmd /c node scripts/generate-v6-prediction-bundle.mjs`. It must read the 75 raw response files and 75
    telemetry files under experiment 006, validate the existing spine schema, and call the shared
    `materializeCityCostV6` function. `--provider=<name>` is the opt-in direct-provider mode.
-3. Run the verification baseline, then append confirmed results to `PLAN.md` and `LOG.md`. Regenerate
-   `priors-v6.json` before `fit-city-cost-ladder-v6.mjs --check`; do not hand-edit coefficients.
+3. The materializer regression and observed-anchor score are already committed. If this route is changed,
+   run the verification baseline, then append confirmed results to `PLAN.md` and `LOG.md`. Regenerate
+   `priors-v6.json` before `fit-city-cost-ladder-v6.mjs --check`; do not hand-edit coefficients. The measured
+   street-food n=6 relation is diagnostic only; the shipped fallback is generated k=0.2757, grade D ±45%.
 4. The fresh proposal remains `data/reference/v6/ground-truth/fresh-holdout-proposal-v2.json` with a 72/90
    minimum coverage gate. **Stop and obtain owner approval before collecting, freezing or reading it.** Do
    not touch the spent holdout or any `revealed_once` measure.
