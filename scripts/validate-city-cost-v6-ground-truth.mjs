@@ -25,8 +25,8 @@ let pendingSlots = 0;
 const foundRows = [];
 const accommodationByCity = new Map();
 const accommodationRatios = {
-  hostel_dorm_bed_1p: 0.1626,
-  hostel_private_room_2p: 0.5919,
+  hostel_dorm_bed_1p: 0.2955,
+  hostel_private_room_2p: 0.7955,
   hotel_1star_room_2p: 0.6663,
   hotel_3star_room_2p: 1,
   hotel_4star_room_2p: 1.3372,
@@ -202,8 +202,14 @@ if (holdoutSeal.status === 'sealed_before_collection') {
   if (typeof holdoutSeal.resultsFile !== 'string' || !holdoutSeal.resultsFile) issue('Collected holdout seal must name its sealed results file');
   if (holdoutSeal.scoresFile !== null) issue('Collected holdout seal must not expose score files');
   if (typeof holdoutSeal.resultsFile === 'string' && !fs.existsSync(path.join(root, holdoutSeal.resultsFile))) issue('Collected holdout results file is missing');
+} else if (holdoutSeal.status === 'revealed_once') {
+  if (typeof holdoutSeal.resultsFile !== 'string' || !holdoutSeal.resultsFile) issue('Revealed holdout seal must name its results file');
+  if (typeof holdoutSeal.scoresFile !== 'string' || !holdoutSeal.scoresFile) issue('Revealed holdout seal must name its score file');
+  if (!holdoutSeal.candidateConfigHash || !holdoutSeal.candidateCommit) issue('Revealed holdout seal must retain the frozen candidate identity');
+  if (typeof holdoutSeal.resultsFile === 'string' && !fs.existsSync(path.join(root, holdoutSeal.resultsFile))) issue('Revealed holdout results file is missing');
+  if (typeof holdoutSeal.scoresFile === 'string' && !fs.existsSync(path.join(root, holdoutSeal.scoresFile))) issue('Revealed holdout score file is missing');
 } else {
-  issue('Holdout seal must be sealed_before_collection or sealed_after_collection');
+  issue('Holdout seal must be sealed_before_collection, sealed_after_collection, or revealed_once');
 }
 if (holdoutSeal.cityCount !== holdout.length || holdoutSeal.requiredMeasureCount !== measures.length) issue('Holdout seal counts do not match the frozen manifest');
 
@@ -217,6 +223,7 @@ const report = {
   warnings,
   substanceWarningCount: warnings.filter((warning) => !warning.startsWith('Pending slot:')).length,
   holdoutInspected: false,
+  holdoutScored: holdoutSeal.status === 'revealed_once',
   complete: errors.length === 0 && pendingSlots === 0,
 };
 console.log(JSON.stringify(report, null, 2));

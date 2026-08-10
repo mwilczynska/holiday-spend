@@ -4,7 +4,9 @@
 cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact next action. This file
 tells you what lives here and what each file is for.
 
-**Status:** v6 adopted 9 August 2026. Milestones M0, M1 and M2 ground-truth collection are complete; M3 is not started.
+**Status:** v6 adopted 9 August 2026. Milestones M0, M1 and M2 ground-truth collection are complete; the M3
+development refit, source calibration, candidate freeze and one-time holdout score are recorded. Remaining
+production-shaped gate segments and M4 migration are open.
 
 ---
 
@@ -112,9 +114,10 @@ starts with no fabricated values; each found observation must retain its display
 retrieval timestamp, tax/fee wording, and property name for accommodation. Run
 `node scripts/validate-city-cost-v6-ground-truth.mjs` to check the development ledger. The collected
 `ground-truth/holdout-ledger.json` is sealed behind `ground-truth/holdout-seal.json`; the validator checks
-only the seal metadata and does not read the holdout observations. M3's candidate coefficients and the
-Booking → Expedia source offset are generated in `coefficients-v6.json`; the holdout remains unread until
-the candidate hash is committed into the seal.
+only the seal metadata and does not read holdout observations. The M3 candidate coefficients and the
+Booking → Expedia source offset are generated in `coefficients-v6.json`, frozen by the candidate hash in the
+seal, and scored exactly once in `ground-truth/holdout-scores.json`. The raw holdout ledger remains free of
+score fields; do not tune or rescore it.
 
 ---
 
@@ -128,9 +131,8 @@ medians at grade D when an anchor is unavailable. Grades, intervals, missingness
 stored in `city_estimates.metadata_json` and exposed by `/api/estimates` and `/dataset`.
 
 The feature flag is deliberately off by default during M1. The v1 generation path and
-`data/reference/city_costs_app_aud.csv` remain unchanged. M2 ground-truth collection is complete; M3 source
-calibration and gate scoring are the next workstream, and the sealed holdout must remain unopened until the
-candidate is frozen.
+`data/reference/city_costs_app_aud.csv` remain unchanged. M2 ground-truth collection and the M3 candidate
+calibration/one-time score are complete; remaining production-shaped gate segments and M4 migration are next.
 
 > **Do not move or rename anything under `data/reference/`** without updating its readers. Scripts and
 > six Vitest test files reference those paths as string literals.

@@ -164,8 +164,10 @@ Every field always produces a number; no number is ever presented as better-evid
 collector records source currency, missingness, bounded retries and per-call telemetry. Contracts are frozen
 under `data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start document is
 `docs/dev/handoffs/city-cost-v6.md`.
-M2 ground-truth collection is in progress: the manifest-driven development ledger has 25 cities x 6
-measures, while the holdout seal contains no prices or scores and the 121-city CSV remains on v1 until M4.
+M2 ground-truth collection is complete: the manifest-driven development ledger has 25 cities x 6 measures,
+and the 15-city holdout was read exactly once after the frozen M3 candidate was committed. The candidate
+refits the private/dorm rungs, calibrates Expedia to Booking ground truth, and records all grades and intervals;
+the 121-city CSV remains on v1 until M4.
 
 ### Transport is out of scope
 
@@ -240,6 +242,7 @@ npm test -- --run         # 153 tests
 npm run docs:check-memory # AGENTS.md mirrors CLAUDE.md
 node scripts/fit-city-cost-ladder-v6.mjs --check   # v6 coefficients match their evidence
 node scripts/test-city-cost-v6-ground-truth-warnings.mjs # legacy warning replay tripwire
+node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete # zero errors and zero pending slots; warnings do not block
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.
@@ -279,9 +282,11 @@ login page shows provider-specific guidance instead.
 | `docs/dev/plans/city-cost-methodology-v6.md` | Active v6 methodology, the v5 diagnosis, milestones |
 | `docs/dev/handoffs/city-cost-v6.md` | Cold-start handoff — names the exact next action |
 | `data/reference/v6/` | Frozen v6 contracts: data dictionary, validation manifest, coefficients |
-| `data/reference/v6/ground-truth/` | M2 development ledger and holdout lock marker; holdout results remain sealed |
-| `scripts/validate-city-cost-v6-ground-truth.mjs` | Deterministic M2 ledger audit; never scores the holdout |
-| `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder; `--check` verifies determinism |
+| `data/reference/v6/ground-truth/` | M2 development ledger, sealed holdout ledger, one-time score file and lock marker |
+| `scripts/validate-city-cost-v6-ground-truth.mjs` | Deterministic development-ledger audit; checks seal metadata but never reads holdout values |
+| `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder and Booking/Expedia calibration; `--check` verifies determinism |
+| `scripts/freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the seal before holdout access |
+| `scripts/score-city-cost-v6-holdout.mjs` | One-time gate 2–6 score against the frozen holdout; refuses a second pass |
 | `docs/product/methodology-v4.md` | Prior methodology evidence; §9.1 is the v4 prompt's source of truth |
 | `data/reference/city_costs_app_aud.csv` | The live 121-city dataset |
 | `src/lib/city-generation-config.ts` | Provider/model defaults, migrations, validation |

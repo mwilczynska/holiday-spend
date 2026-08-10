@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "city-cost-v6-holdout-score-v1",
+  "methodologyVersion": "v6.0",
+  "candidateConfigHash": "sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde",
+  "candidateCommit": "f52be517359c51d878e667673918e88487e6199d",
+  "scoredAt": "2026-08-10T02:55:41.541Z",
+  "holdoutCities": 15,
+  "holdoutLedger": "data/reference/v6/ground-truth/holdout-ledger.json",
+  "gate2TierAccuracy": {
+    "status": "partial_panel",
+    "tiers": {
+      "dorm": {
+        "n": 15,
+        "medianApePct": 32.98,
+        "p90ApePct": 62.36,
+        "medianSignedErrorPct": -5.44,
+        "pass": true
+      },
+      "private": {
+        "n": 15,
+        "medianApePct": 31.89,
+        "p90ApePct": 74.36,
+        "medianSignedErrorPct": 31.89,
+        "pass": false
+      },
+      "oneStar": {
+        "n": 14,
+        "medianApePct": 30.45,
+        "p90ApePct": 51.63,
+        "medianSignedErrorPct": -0.82,
+        "pass": true
+      },
+      "threeStar": {
+        "n": 15,
+        "medianApePct": 0,
+        "p90ApePct": 0,
+        "medianSignedErrorPct": 0,
+        "pass": true
+      },
+      "fourStar": {
+        "n": 15,
+        "medianApePct": 13.26,
+        "p90ApePct": 32.06,
+        "medianSignedErrorPct": -9.62,
+        "pass": true
+      }
+    },
+    "note": "The frozen six-measure holdout supports the five accommodation tiers. Food, drink and activity product tiers are not present in the ground-truth contract."
+  },
+  "gate3CityRanking": {
+    "status": "partial_panel",
+    "accommodationCategory": {
+      "n": 15,
+      "spearmanRho": 0.9642,
+      "pairwiseOrderingAccuracy": 0.9429,
+      "pass": true,
+      "basis": "sum of the five accommodation measures available in each holdout city; this is the accommodation-category component only"
+    },
+    "foodCategory": {
+      "status": "not_evaluable",
+      "reason": "No food measures in the frozen ground-truth panel."
+    },
+    "totalDailyCost": {
+      "status": "not_evaluable",
+      "reason": "The panel has no food or drink measures for a full daily basket."
+    }
+  },
+  "gate4CostBandAgreement": {
+    "n": 15,
+    "exactAgreement": 0.7333,
+    "withinOneBand": 1,
+    "pass": false,
+    "basis": "candidate 3-star anchor compared with manifest cost bands"
+  },
+  "gate5TripLevelRealism": {
+    "status": "not_evaluable",
+    "reason": "The six-measure panel does not contain the food and drink inputs required to compose a daily trip total."
+  },
+  "gate6NoRegressionVsV1": {
+    "status": "partial_panel",
+    "accommodationTiers": {
+      "dorm": {
+        "n": 15,
+        "candidateMedianApePct": 32.98,
+        "v1MedianApePct": 38,
+        "improved": true
+      },
+      "private": {
+        "n": 15,
+        "candidateMedianApePct": 31.89,
+        "v1MedianApePct": 34.74,
+        "improved": true
+      },
+      "oneStar": {
+        "n": 14,
+        "candidateMedianApePct": 30.45,
+        "v1MedianApePct": 33.58,
+        "improved": true
+      },
+      "threeStar": {
+        "n": 15,
+        "candidateMedianApePct": 0,
+        "v1MedianApePct": 19.27,
+        "improved": true
+      },
+      "fourStar": {
+        "n": 15,
+        "candidateMedianApePct": 13.26,
+        "v1MedianApePct": 26.3,
+        "improved": true
+      }
+    },
+    "evaluableTiers": 5,
+    "improvedAccommodationTiers": 5,
+    "requirement": "15 of 19 tiers improved with no tier regressing by more than 10%; full gate cannot be evaluated from the six-measure panel."
+  },
+  "gate8CalibrationIntegrity": {
+    "status": "not_evaluable_on_holdout",
+    "developmentFit": {
+      "n": 15,
+      "matchedCities": [
+        "Budapest",
+        "Cape Town",
+        "Colombo",
+        "Dubai",
+        "Hanoi",
+        "Ho Chi Minh City",
+        "Istanbul",
+        "Lima",
+        "Lisbon",
+        "Mexico City",
+        "Nairobi",
+        "Prague",
+        "Seoul",
+        "Singapore",
+        "Tokyo"
+      ],
+      "expediaToBookingMultiplier": 0.9361,
+      "bookingToExpediaMultiplier": 1.0683,
+      "residuals": {
+        "minApePct": 0,
+        "medianApePct": 8.91,
+        "p90ApePct": 39.27,
+        "maxApePct": 60.12
+      },
+      "leaveOneCityOut": {
+        "medianApePct": 10.24,
+        "p90ApePct": 40.03,
+        "maxApePct": 60.98
+      },
+      "intervalPct": 41,
+      "groundTruthSource": "Booking.com v2 development panel, displayed AUD",
+      "productionSource": "Expedia 3-star class-trend anchor",
+      "rawBasis": "Expedia USD or documented bare-dollar proxy converted with the frozen USD→AUD snapshot; the offset absorbs the common source/display basis.",
+      "provenance": "fitted_booking_ground_truth_v2_development"
+    },
+    "reason": "The sealed holdout contains Booking ground truth but no paired Expedia production-anchor observation."
+  },
+  "attractionCoverage": {
+    "found": 6,
+    "missing": 9
+  },
+  "holdoutReadOnce": true
+}

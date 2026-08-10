@@ -58,9 +58,9 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 
 | Field | Frozen estimand | Derived how (v6) | Typical grade |
 | --- | --- | --- | --- |
-| `accom_shared_hostel_dorm` | Two separately purchasable dorm beds in an eligible hostel, one night | `2 × 0.1626 × accom_3_star` | C |
-| `accom_hostel_private_room` | One private hostel room for two, one night | `0.5919 × accom_3_star` | C |
-| `accom_1_star` | Standard room for two, one-star class, one night | `0.6663 × accom_3_star` (interpolated) | C |
+| `accom_shared_hostel_dorm` | Two separately purchasable dorm beds in an eligible hostel, one night | `2 × 0.2955 × accom_3_star` | C |
+| `accom_hostel_private_room` | One private hostel room for two, one night | `0.7955 × accom_3_star` | C |
+| `accom_1_star` | Standard room for two, one-star class, one night | `0.6663 × accom_3_star` (retained interpolated rung) | C |
 | `accom_2_star` | Standard room for two, two-star class, one night | `0.7500 × accom_3_star` | C |
 | `accom_3_star` | Standard room for two, three-star class, one night | **MEASURED** — Expedia class-trend snippet | B |
 | `accom_4_star` | Standard room for two, four-star class, one night | `1.3372 × accom_3_star` | C |
@@ -131,13 +131,11 @@ Rules that keep this from becoming v1's asserted-constant mistake:
    corrects the median but leaves wide scatter must not narrow the interval.
 4. Every offset is versioned and recorded with its fit date, sample and residual statistics.
 
-Until M3 completes, **all offsets are `1.0`** and grade-B intervals use the defaults in §3. That is the
-honest starting state, not a placeholder to be quietly forgotten.
-
-During M3, the candidate offset is recorded in `data/reference/v6/coefficients-v6.json` with both directions
-explicit: the calibration target is Booking.com development ground truth and the production anchor is
-Expedia. It is not accepted as final until the candidate is frozen and gate 8 is checked against the locked
-holdout.
+The frozen M3 candidate records both directions in `data/reference/v6/coefficients-v6.json`: the calibration
+target is Booking.com development ground truth and the production anchor is Expedia. The runtime
+Expedia → Booking multiplier is `0.9361` with a `±41%` leave-one-city-out p90 residual interval, fitted on
+15 matched development cities. Gate 8 is not evaluable on the holdout because it contains no paired Expedia
+anchor rows, so this remains a recorded candidate calibration rather than a holdout-validated offset.
 
 ---
 

@@ -2,7 +2,8 @@
 
 **As at:** 9 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** M0, **M1 (integrate)** and **M2 (ground truth) complete**. **M3 is not started.**
+**Milestone:** M0, **M1 (integrate)**, **M2 (ground truth)** and the M3 development refit, source calibration,
+candidate freeze and single holdout score are complete. Remaining M3 segments and M4/M5 are open.
 
 > **This is the cold-start document.** If you are picking up this workstream with no context, you are in
 > the right place. Read §1, then do §4. You do not need to read the 95 v5 experiment directories.
@@ -79,10 +80,9 @@ times for sample size. The accuracy its gate protected was already achieved.
   The completed development state is **147 found / 3 explicit `class_absent` / zero pending** across all
   150 cells: 25 attraction rows and 122 v2 Booking.com accommodation rows. Beijing, Nairobi and Melbourne
   have explicit one-star `class_absent` rows.
-- The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and sealed by
-  `holdout-seal.json` with `status: sealed_after_collection`. It contains 90 six-measure slots with explicit
-  missingness where needed. The holdout has not been inspected, scored, compared, or used for tuning; the
-  validator checks only the seal metadata and never reads the holdout ledger.
+- The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and was scored
+  exactly once after the candidate freeze. `holdout-seal.json` is now `revealed_once` and points to the separate
+  `ground-truth/holdout-scores.json`; the holdout ledger itself has no score fields. Do not tune or rescore.
 
 ### Current collection findings
 
@@ -107,13 +107,13 @@ A$400; stop and report only when candidates exceed 30% of the cities in a batch.
 stop collection.
 
 The six remaining development cities — Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne —
-were collected under `booking_top_picks_firstpage_median_v2`. The full development panel is now resolved.
-The 19-city ladder validation and six-city refresh are recorded in `PLAN.md` and `LOG.md`: 4-star and 1-star
-are confirmed inside their intervals, private room is at the interval edge and remains an M5 correction
-candidate, and dorm is refuted against the stale 2023 coefficient. The Booking → Expedia offset threshold is
-crossed, but the offset remains unfitted until M3. The first-page bias caveat is documented in the ground-truth
-README and both ledger `sourcePolicy` objects: this panel supports ratios and source calibration, not absolute
-city levels.
+were collected under `booking_top_picks_firstpage_median_v2`. The full development panel is resolved.
+The 25-city ladder result and six-city refresh are recorded in `PLAN.md` and `LOG.md`: 4-star and 1-star
+remain confirmed, while the old private and dorm coefficients were refit from the development medians. The
+Booking → Expedia offset was fitted on 15 matched development cities (above the 12-city minimum), then frozen
+with the candidate. San Francisco's A$537 3-star median remains a flagged absolute-level row. The first-page
+bias caveat is documented in the ground-truth README and both ledger `sourcePolicy` objects: this panel supports
+ratios and source calibration, not absolute city levels.
 
 ### The coefficients that exist right now
 
@@ -121,11 +121,13 @@ city levels.
 accom_2_star              = 0.7500 × accom_3_star    n=18  LOO 11.37%  grade C  ±25%
 accom_4_star              = 1.3372 × accom_3_star    n=26  LOO 12.98%  grade C  ±25%
 accom_1_star              = 0.6663 × accom_3_star    INTERPOLATED       grade C  ±45%
-accom_hostel_private_room = 0.5919 × accom_3_star    v4 blended, n=13   grade C  ±35%
-accom_shared_hostel_dorm  = 2 × 0.1626 × accom_3_star  n=7, 2023 index  grade C  ±40%
+accom_hostel_private_room = 0.7955 × accom_3_star    Booking v2, n=25   grade C  ±52%
+accom_shared_hostel_dorm  = 2 × 0.2955 × accom_3_star  Booking v2, n=25   grade C  ±54%
 ```
 
-Ordering sanity check: dorm 0.325 < private 0.592 < 1★ 0.666 < 2★ 0.750 < 3★ 1.000 < 4★ 1.337. Monotonic.
+The frozen candidate preserves a known private-room/1-star ordering inversion (0.7955 > 0.6663); it is a
+candidate M5 ladder decision, not a reason to alter the frozen candidate or rescore the holdout. Dorm 0.2955
+remains below 1-star and the stale 2023 dorm coefficient is superseded.
 
 **`accom_1_star` is the weakest number in the methodology.** It has zero direct observations — 15 v5
 experiments and roughly 150 one-city calls produced none, and the 101 pooled Expedia rows contain zero
@@ -133,7 +135,7 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 ### Not done
 
-M3 gate scoring remains. M4–M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
+The M3 candidate and single gate 2–6 score are complete; remaining M3 segments, M4 and M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
 untouched and still shipping.** A live provider smoke test requires a configured provider key; the flagged
 path is covered by deterministic integration tests.
 
@@ -141,22 +143,25 @@ path is covered by deterministic integration tests.
 
 ## 4. The exact next action
 
-M2 is complete. Do not recollect the development panel, refit `coefficients-v6.json`, fit the Booking →
-Expedia offset, score gates, or open the sealed holdout from this handoff. The development ledger contains
-147 found rows, three explicit one-star `class_absent` rows and zero pending slots; the holdout ledger contains
-15 cities × 6 measures and is sealed without inspection or comparison.
+M2 is complete and the M3 candidate/holdout score is frozen. Do not recollect the development panel, refit
+`coefficients-v6.json`, fit another offset, or rescore/open additional holdout detail from this handoff. The
+development ledger contains 147 found rows, three explicit one-star `class_absent` rows and zero pending
+slots; the holdout ledger contains 15 cities × 6 measures and was scored once under the frozen candidate.
 
-The exact next action for a cold resume is the single candidate-freeze transition:
+The candidate-freeze transition and the one-time holdout read are complete. The exact next action for a cold
+resume is to preserve the scored result and move to the remaining M3/M4 decision work; do not rerun scoring.
 
-1. Confirm `coefficients-v6.json` with `node scripts/fit-city-cost-ladder-v6.mjs --check` and run the
-   development validator with `--require-complete`; completeness is zero errors and zero pending slots even
-   when substance warnings remain.
-2. The candidate is already fit from development only: private `0.7955 ±52%`, dorm `0.2955 ±54%`, confirmed
-   4-star/1-star unchanged, and Expedia→Booking runtime offset `0.9361 ±41%` from 15 matched development
-   cities. Do not change any of these values after the seal is frozen.
-3. Before opening a holdout value, compute the candidate configuration hash, write it and the current commit
-   into `ground-truth/holdout-seal.json`, commit that seal, and only then run the one-time gate 2–6 scorer.
-   Never tune or rescore after the first holdout read.
+1. Preserve the frozen candidate hash `sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde`
+   and base commit `f52be517359c51d878e667673918e88487e6199d` in `ground-truth/holdout-seal.json`. The seal is
+   now `revealed_once`; its score file is `ground-truth/holdout-scores.json`.
+2. Keep private `0.7955 ±52%`, dorm `0.2955 ±54%`, confirmed 4-star/1-star unchanged, and the
+   Expedia→Booking runtime offset `0.9361 ±41%`. Do not change any candidate component after the holdout read.
+3. Preserve the single score: gate 2 fails private-room signed error, gate 3 accommodation ranking passes,
+   gate 4 exact band agreement fails at 73.33%, gate 5 is not evaluable, and gate 6 is only partial because
+   the six-measure panel cannot assess 15/19 full product tiers. Gate 8 is not holdout-evaluable because no
+   paired Expedia rows were collected in the holdout.
+4. Run verification only. Never tune, rescore, or inspect additional holdout detail. The next authorized
+   workstream is the remaining M3/M4 decision and migration work, not another M2 or holdout collection pass.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use

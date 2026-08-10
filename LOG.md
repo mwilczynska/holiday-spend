@@ -2334,3 +2334,24 @@ propagates its interval to the Expedia anchor.
 
 No holdout value has been read. Candidate freeze and the one-time gate 2–6 scoring pass remain the next M3
 actions; no tuning or rescore is permitted after the first holdout read.
+
+## v6 M3 — candidate frozen and holdout scored once (9 August 2026)
+
+Candidate freeze was committed before the first holdout read. `holdout-seal.json` records configuration hash
+`sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde` and base commit
+`f52be517359c51d878e667673918e88487e6199d`; the seal is now `revealed_once` and points to the one score file
+`data/reference/v6/ground-truth/holdout-scores.json`. The holdout ledger itself was not modified with scoring
+fields.
+
+Gates 2–6 were scored once, with the frozen six-measure contract's limits preserved. Gate 2 passes dorm,
+1-star, 3-star and 4-star, but private room fails the signed-error criterion: median APE **31.89%**, p90
+**74.36%**, median signed error **+31.89%**. Gate 3's accommodation-category component passes with Spearman
+**0.9642** and pairwise ordering **0.9429**; food-category and total-daily-cost components are not evaluable
+because the panel has no food or drink measures. Gate 4 fails exact cost-band agreement at **73.33%** (within
+one band **100%**). Gate 5 is not evaluable without a full food/drink basket. Gate 6 improves all five
+evaluable accommodation tiers, but the manifest's 15/19 full-tier requirement cannot be claimed from a
+six-measure panel. Gate 8's development fit remains recorded, but holdout reduction is not evaluable because
+the holdout contains no paired Expedia production-anchor rows.
+
+These are recorded results, not tuning prompts. No coefficient, grade, interval or offset was changed after
+the frozen candidate was read, and no second scoring pass is permitted.
