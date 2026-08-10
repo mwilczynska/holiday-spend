@@ -46,7 +46,10 @@ rows remain identifiable as superseded migration evidence until their cities are
 
 The ledger `sourcePolicy` records Booking.com as the accommodation ground-truth source and Expedia as the
 production anchor. The calibration direction is **Booking -> Expedia**, and at least 12 matched cities are
-required before fitting that source offset.
+required before fitting that source offset. Its level-bias caveat records the Copenhagen stage-1 finding:
+the top-picks first-page median undershot the full-inventory median by roughly 20-27% at 25 listings. Do not
+use this panel to set or score absolute city levels; its intended use is within-city ratios and source
+calibration.
 
 ## Accommodation price basis
 
@@ -68,6 +71,10 @@ that meets the class and occupancy specification. For a dorm, Booking may label 
 displayed `N properties found` figure as `classInventoryCount`, and set `amount` to the median (the mean of
 the two middle values for an even count). A class with fewer first-page listings contributes all available
 listings. This first-page popularity-weighted bias is deliberate and auditable; the Copenhagen stage-1
-analysis measures its depth effect rather than treating it as unknown. The fixed-count price-ascending rule
-was superseded because class inventory depth placed deep 3/4-star classes near their price floor while
-shallow 1-star/hostel classes remained nearer their middle.
+analysis measures its depth effect rather than treating it as unknown. It is a **level bias**, not a ratio
+bias: at 25 listings, Copenhagen's first-page median undershot the full 108-listing median by roughly
+20-27% (the exact stage-1 comparison is retained in `data/reference/dry-run/phase-0g-stage1-analysis.json`).
+This panel is therefore valid for within-city ratios and source-structure calibration, but must not be used
+to set or score absolute city levels. The fixed-count price-ascending rule was superseded because class
+inventory depth placed deep 3/4-star classes near their price floor while shallow 1-star/hostel classes
+remained nearer their middle.

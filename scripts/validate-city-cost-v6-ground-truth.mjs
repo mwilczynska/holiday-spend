@@ -166,7 +166,12 @@ for (const { city, observation } of foundRows) {
     .map((match) => Number(match[1].replace(',', '.')))
     .filter((value) => Number.isFinite(value));
   const samplePrices = Array.isArray(observation.samplePrices) ? observation.samplePrices : [];
-  if (figures.filter((value) => !samplePrices.some((samplePrice) => Math.abs(samplePrice - value) < 0.01)).some((value) => value < observation.amount)) {
+  const listPriceFigures = observation.selectionRule === currentAccommodationSelectionRule
+    ? [...String(observation.evidenceText ?? '').matchAll(/\blist\s+AUD\s+([0-9]+(?:[.,][0-9]+)?)/gi)]
+      .map((match) => Number(match[1].replace(',', '.')))
+    : [];
+  const excludedPrices = [...samplePrices, observation.listPriceAmount, ...listPriceFigures].filter((value) => Number.isFinite(value));
+  if (figures.filter((value) => !excludedPrices.some((excludedPrice) => Math.abs(excludedPrice - value) < 0.01)).some((value) => value < observation.amount)) {
     warnings.push(`Sub-amount AUD figure in evidence: ${city}/${observation.measure}`);
   }
 }
