@@ -282,8 +282,8 @@
         "status": "complete",
         "searchesUsed": 2,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.261Z",
-        "completedAt": "2026-08-10T20:40:51.261Z",
+        "startedAt": "2026-08-10T21:26:48.808Z",
+        "completedAt": "2026-08-10T21:26:48.808Z",
         "durationMs": 0,
         "error": null
       },
@@ -297,8 +297,8 @@
         "status": "not_found",
         "searchesUsed": 2,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.262Z",
-        "completedAt": "2026-08-10T20:40:51.262Z",
+        "startedAt": "2026-08-10T21:26:48.809Z",
+        "completedAt": "2026-08-10T21:26:48.809Z",
         "durationMs": 0,
         "error": null
       },
@@ -312,8 +312,8 @@
         "status": "complete",
         "searchesUsed": 3,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.262Z",
-        "completedAt": "2026-08-10T20:40:51.262Z",
+        "startedAt": "2026-08-10T21:26:48.809Z",
+        "completedAt": "2026-08-10T21:26:48.809Z",
         "durationMs": 0,
         "error": null
       }
@@ -501,49 +501,52 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 10.08,
+        "amountAud": 8.58,
         "evidenceBasis": "modelled",
-        "imputedMeasures": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "evidenceGrade": "C",
-        "interval": {
-          "lowerAud": 0,
-          "upperAud": 43.95,
-          "widthPct": 336
-        }
-      },
-      "food_budget": {
-        "formula": "direct food_budget prior from v6 development panel",
-        "parentAnchors": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "missingAnchors": [],
-        "sourceIds": [
-          "v6-tier-prior:South Asia:all:food_budget"
-        ],
-        "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
-        ],
-        "amountAud": 27.17,
-        "evidenceBasis": "imputed",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 14.94,
-          "upperAud": 39.4,
+          "lowerAud": 4.72,
+          "upperAud": 12.44,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Delhi",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
+        ],
+        "amountAud": 16.08,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 8.84,
+          "upperAud": 23.32,
           "widthPct": 45
         }
       },
       "food_mid_range": {
-        "formula": "direct food_mid_range prior from v6 development panel",
+        "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
         "parentAnchors": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p",
@@ -551,26 +554,29 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:South Asia:all:food_mid_range"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Delhi",
+          "v6-coefficient:street_food_meal_1p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 80.07,
-        "evidenceBasis": "imputed",
+        "amountAud": 42.83,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 44.04,
-          "upperAud": 116.1,
+          "lowerAud": 23.56,
+          "upperAud": 62.1,
           "widthPct": 45
         }
       },
       "food_high_end": {
-        "formula": "direct food_high_end prior from v6 development panel",
+        "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
         "parentAnchors": [
           "inexpensive_restaurant_meal_1p",
           "midrange_restaurant_meal_2p",
@@ -578,21 +584,24 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:South Asia:all:food_high_end"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Delhi",
+          "v6-coefficient:premium_restaurant_meal_2p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
         ],
-        "amountAud": 258.81,
-        "evidenceBasis": "imputed",
+        "amountAud": 84.39,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "premium_restaurant_meal_2p",
           "midrange_restaurant_meal_2p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 142.35,
-          "upperAud": 375.27,
+          "lowerAud": 46.41,
+          "upperAud": 122.37,
           "widthPct": 45
         }
       },
@@ -923,10 +932,10 @@
         ]
       },
       "street_food_meal_1p": {
-        "valueAud": 1.68,
+        "valueAud": 1.43,
         "status": "modelled",
-        "evidenceGrade": "C",
-        "intervalPct": 336,
+        "evidenceGrade": "D",
+        "intervalPct": 45,
         "sourceIds": [
           "numbeo:https://www.numbeo.com/cost-of-living/in/Delhi",
           "v6-coefficient:street_food_meal_1p"
@@ -934,7 +943,7 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
         "imputedMeasures": [
           "street_food_meal_1p",
@@ -1121,10 +1130,10 @@
       "accom2star": 41.25,
       "accom3star": 55,
       "accom4star": 73.55,
-      "foodStreet": 10.08,
-      "foodBudget": 27.17,
-      "foodMid": 80.07,
-      "foodHigh": 258.81,
+      "foodStreet": 8.58,
+      "foodBudget": 16.08,
+      "foodMid": 42.83,
+      "foodHigh": 84.39,
       "drinkCoffee": 3.44,
       "drinkLocalBeer": 3.7,
       "drinkWineGlass": 19.91,

@@ -284,8 +284,8 @@
         "status": "complete",
         "searchesUsed": 2,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.256Z",
-        "completedAt": "2026-08-10T20:40:51.256Z",
+        "startedAt": "2026-08-10T21:26:48.801Z",
+        "completedAt": "2026-08-10T21:26:48.801Z",
         "durationMs": 0,
         "error": null
       },
@@ -299,8 +299,8 @@
         "status": "complete",
         "searchesUsed": 4,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.256Z",
-        "completedAt": "2026-08-10T20:40:51.256Z",
+        "startedAt": "2026-08-10T21:26:48.803Z",
+        "completedAt": "2026-08-10T21:26:48.803Z",
         "durationMs": 0,
         "error": null
       },
@@ -314,8 +314,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.257Z",
-        "completedAt": "2026-08-10T20:40:51.257Z",
+        "startedAt": "2026-08-10T21:26:48.803Z",
+        "completedAt": "2026-08-10T21:26:48.803Z",
         "durationMs": 0,
         "error": null
       }
@@ -519,49 +519,52 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 20.52,
+        "amountAud": 17.4,
         "evidenceBasis": "modelled",
-        "imputedMeasures": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "evidenceGrade": "C",
-        "interval": {
-          "lowerAud": 0,
-          "upperAud": 89.47,
-          "widthPct": 336
-        }
-      },
-      "food_budget": {
-        "formula": "direct food_budget prior from v6 development panel",
-        "parentAnchors": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "missingAnchors": [],
-        "sourceIds": [
-          "v6-tier-prior:East Asia:high:food_budget"
-        ],
-        "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
-        ],
-        "amountAud": 58.62,
-        "evidenceBasis": "imputed",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 32.24,
-          "upperAud": 85,
+          "lowerAud": 9.57,
+          "upperAud": 25.23,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Tokyo",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
+        ],
+        "amountAud": 32.64,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 17.95,
+          "upperAud": 47.33,
           "widthPct": 45
         }
       },
       "food_mid_range": {
-        "formula": "direct food_mid_range prior from v6 development panel",
+        "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
         "parentAnchors": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p",
@@ -569,26 +572,29 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:East Asia:high:food_mid_range"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Tokyo",
+          "v6-coefficient:street_food_meal_1p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 154.43,
-        "evidenceBasis": "imputed",
+        "amountAud": 92.6,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 84.94,
-          "upperAud": 223.92,
+          "lowerAud": 50.93,
+          "upperAud": 134.27,
           "widthPct": 45
         }
       },
       "food_high_end": {
-        "formula": "direct food_high_end prior from v6 development panel",
+        "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
         "parentAnchors": [
           "inexpensive_restaurant_meal_1p",
           "midrange_restaurant_meal_2p",
@@ -596,21 +602,24 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:East Asia:high:food_high_end"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Tokyo",
+          "v6-coefficient:premium_restaurant_meal_2p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
         ],
-        "amountAud": 421.81,
-        "evidenceBasis": "imputed",
+        "amountAud": 185.44,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "premium_restaurant_meal_2p",
           "midrange_restaurant_meal_2p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 232,
-          "upperAud": 611.62,
+          "lowerAud": 101.99,
+          "upperAud": 268.89,
           "widthPct": 45
         }
       },
@@ -950,10 +959,10 @@
         ]
       },
       "street_food_meal_1p": {
-        "valueAud": 3.42,
+        "valueAud": 2.9,
         "status": "modelled",
-        "evidenceGrade": "C",
-        "intervalPct": 336,
+        "evidenceGrade": "D",
+        "intervalPct": 45,
         "sourceIds": [
           "numbeo:https://www.numbeo.com/cost-of-living/in/Tokyo",
           "v6-coefficient:street_food_meal_1p"
@@ -961,7 +970,7 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
         "imputedMeasures": [
           "street_food_meal_1p",
@@ -1147,10 +1156,10 @@
       "accom2star": 101.39,
       "accom3star": 135.19,
       "accom4star": 180.78,
-      "foodStreet": 20.52,
-      "foodBudget": 58.62,
-      "foodMid": 154.43,
-      "foodHigh": 421.81,
+      "foodStreet": 17.4,
+      "foodBudget": 32.64,
+      "foodMid": 92.6,
+      "foodHigh": 185.44,
       "drinkCoffee": 4.73,
       "drinkLocalBeer": 5.26,
       "drinkWineGlass": 12.8,

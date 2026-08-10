@@ -284,8 +284,8 @@
         "status": "complete",
         "searchesUsed": 4,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.285Z",
-        "completedAt": "2026-08-10T20:40:51.285Z",
+        "startedAt": "2026-08-10T21:26:48.835Z",
+        "completedAt": "2026-08-10T21:26:48.835Z",
         "durationMs": 0,
         "error": null
       },
@@ -299,8 +299,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.285Z",
-        "completedAt": "2026-08-10T20:40:51.285Z",
+        "startedAt": "2026-08-10T21:26:48.836Z",
+        "completedAt": "2026-08-10T21:26:48.836Z",
         "durationMs": 0,
         "error": null
       },
@@ -314,8 +314,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.285Z",
-        "completedAt": "2026-08-10T20:40:51.285Z",
+        "startedAt": "2026-08-10T21:26:48.836Z",
+        "completedAt": "2026-08-10T21:26:48.836Z",
         "durationMs": 0,
         "error": null
       }
@@ -519,49 +519,52 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 47.7,
+        "amountAud": 40.5,
         "evidenceBasis": "modelled",
-        "imputedMeasures": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "evidenceGrade": "C",
-        "interval": {
-          "lowerAud": 0,
-          "upperAud": 207.97,
-          "widthPct": 336
-        }
-      },
-      "food_budget": {
-        "formula": "direct food_budget prior from v6 development panel",
-        "parentAnchors": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "missingAnchors": [],
-        "sourceIds": [
-          "v6-tier-prior:Europe:high:food_budget"
-        ],
-        "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
-        ],
-        "amountAud": 88.65,
-        "evidenceBasis": "imputed",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 48.76,
-          "upperAud": 128.54,
+          "lowerAud": 22.28,
+          "upperAud": 58.73,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Barcelona",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
+        ],
+        "amountAud": 75.94,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 41.77,
+          "upperAud": 110.11,
           "widthPct": 45
         }
       },
       "food_mid_range": {
-        "formula": "direct food_mid_range prior from v6 development panel",
+        "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
         "parentAnchors": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p",
@@ -569,26 +572,29 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:Europe:high:food_mid_range"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Barcelona",
+          "v6-coefficient:street_food_meal_1p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 215.91,
-        "evidenceBasis": "imputed",
+        "amountAud": 160.31,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 118.75,
-          "upperAud": 313.07,
+          "lowerAud": 88.17,
+          "upperAud": 232.45,
           "widthPct": 45
         }
       },
       "food_high_end": {
-        "formula": "direct food_high_end prior from v6 development panel",
+        "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
         "parentAnchors": [
           "inexpensive_restaurant_meal_1p",
           "midrange_restaurant_meal_2p",
@@ -596,21 +602,24 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:Europe:high:food_high_end"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Barcelona",
+          "v6-coefficient:premium_restaurant_meal_2p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
         ],
-        "amountAud": 507.61,
-        "evidenceBasis": "imputed",
+        "amountAud": 293.62,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "premium_restaurant_meal_2p",
           "midrange_restaurant_meal_2p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 279.19,
-          "upperAud": 736.03,
+          "lowerAud": 161.49,
+          "upperAud": 425.75,
           "widthPct": 45
         }
       },
@@ -950,10 +959,10 @@
         ]
       },
       "street_food_meal_1p": {
-        "valueAud": 7.95,
+        "valueAud": 6.75,
         "status": "modelled",
-        "evidenceGrade": "C",
-        "intervalPct": 336,
+        "evidenceGrade": "D",
+        "intervalPct": 45,
         "sourceIds": [
           "numbeo:https://www.numbeo.com/cost-of-living/in/Barcelona",
           "v6-coefficient:street_food_meal_1p"
@@ -961,7 +970,7 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
         "imputedMeasures": [
           "street_food_meal_1p",
@@ -1147,10 +1156,10 @@
       "accom2star": 196.76,
       "accom3star": 262.35,
       "accom4star": 350.81,
-      "foodStreet": 47.7,
-      "foodBudget": 88.65,
-      "foodMid": 215.91,
-      "foodHigh": 507.61,
+      "foodStreet": 40.5,
+      "foodBudget": 75.94,
+      "foodMid": 160.31,
+      "foodHigh": 293.62,
       "drinkCoffee": 4.27,
       "drinkLocalBeer": 6.52,
       "drinkWineGlass": 11.42,

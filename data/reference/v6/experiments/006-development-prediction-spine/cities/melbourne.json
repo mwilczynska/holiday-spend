@@ -282,8 +282,8 @@
         "status": "complete",
         "searchesUsed": 2,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.296Z",
-        "completedAt": "2026-08-10T20:40:51.296Z",
+        "startedAt": "2026-08-10T21:26:48.848Z",
+        "completedAt": "2026-08-10T21:26:48.848Z",
         "durationMs": 0,
         "error": null
       },
@@ -297,8 +297,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.297Z",
-        "completedAt": "2026-08-10T20:40:51.297Z",
+        "startedAt": "2026-08-10T21:26:48.848Z",
+        "completedAt": "2026-08-10T21:26:48.848Z",
         "durationMs": 0,
         "error": null
       },
@@ -312,8 +312,8 @@
         "status": "complete",
         "searchesUsed": 2,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.297Z",
-        "completedAt": "2026-08-10T20:40:51.297Z",
+        "startedAt": "2026-08-10T21:26:48.848Z",
+        "completedAt": "2026-08-10T21:26:48.848Z",
         "durationMs": 0,
         "error": null
       }
@@ -501,49 +501,52 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 48.72,
+        "amountAud": 41.34,
         "evidenceBasis": "modelled",
-        "imputedMeasures": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "evidenceGrade": "C",
-        "interval": {
-          "lowerAud": 0,
-          "upperAud": 212.42,
-          "widthPct": 336
-        }
-      },
-      "food_budget": {
-        "formula": "direct food_budget prior from v6 development panel",
-        "parentAnchors": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "missingAnchors": [],
-        "sourceIds": [
-          "v6-tier-prior:Oceania:all:food_budget"
-        ],
-        "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
-        ],
-        "amountAud": 68.63,
-        "evidenceBasis": "imputed",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 37.75,
-          "upperAud": 99.51,
+          "lowerAud": 22.74,
+          "upperAud": 59.94,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
+        ],
+        "amountAud": 77.56,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 42.66,
+          "upperAud": 112.46,
           "widthPct": 45
         }
       },
       "food_mid_range": {
-        "formula": "direct food_mid_range prior from v6 development panel",
+        "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
         "parentAnchors": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p",
@@ -551,26 +554,29 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:Oceania:all:food_mid_range"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:street_food_meal_1p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 163.01,
-        "evidenceBasis": "imputed",
+        "amountAud": 163.78,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 89.66,
-          "upperAud": 236.36,
+          "lowerAud": 90.08,
+          "upperAud": 237.48,
           "widthPct": 45
         }
       },
       "food_high_end": {
-        "formula": "direct food_high_end prior from v6 development panel",
+        "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
         "parentAnchors": [
           "inexpensive_restaurant_meal_1p",
           "midrange_restaurant_meal_2p",
@@ -578,21 +584,24 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:Oceania:all:food_high_end"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:premium_restaurant_meal_2p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
         ],
-        "amountAud": 366.05,
-        "evidenceBasis": "imputed",
+        "amountAud": 300,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "premium_restaurant_meal_2p",
           "midrange_restaurant_meal_2p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 201.33,
-          "upperAud": 530.77,
+          "lowerAud": 165,
+          "upperAud": 435,
           "widthPct": 45
         }
       },
@@ -923,10 +932,10 @@
         ]
       },
       "street_food_meal_1p": {
-        "valueAud": 8.12,
+        "valueAud": 6.89,
         "status": "modelled",
-        "evidenceGrade": "C",
-        "intervalPct": 336,
+        "evidenceGrade": "D",
+        "intervalPct": 45,
         "sourceIds": [
           "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
           "v6-coefficient:street_food_meal_1p"
@@ -934,7 +943,7 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
         "imputedMeasures": [
           "street_food_meal_1p",
@@ -1121,10 +1130,10 @@
       "accom2star": 93.75,
       "accom3star": 125,
       "accom4star": 167.15,
-      "foodStreet": 48.72,
-      "foodBudget": 68.63,
-      "foodMid": 163.01,
-      "foodHigh": 366.05,
+      "foodStreet": 41.34,
+      "foodBudget": 77.56,
+      "foodMid": 163.78,
+      "foodHigh": 300,
       "drinkCoffee": 5.64,
       "drinkLocalBeer": 13.15,
       "drinkWineGlass": 14.5,

@@ -282,8 +282,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.253Z",
-        "completedAt": "2026-08-10T20:40:51.253Z",
+        "startedAt": "2026-08-10T21:26:48.799Z",
+        "completedAt": "2026-08-10T21:26:48.799Z",
         "durationMs": 0,
         "error": null
       },
@@ -297,8 +297,8 @@
         "status": "not_found",
         "searchesUsed": 2,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.254Z",
-        "completedAt": "2026-08-10T20:40:51.254Z",
+        "startedAt": "2026-08-10T21:26:48.799Z",
+        "completedAt": "2026-08-10T21:26:48.799Z",
         "durationMs": 0,
         "error": null
       },
@@ -312,8 +312,8 @@
         "status": "complete",
         "searchesUsed": 2,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.254Z",
-        "completedAt": "2026-08-10T20:40:51.254Z",
+        "startedAt": "2026-08-10T21:26:48.799Z",
+        "completedAt": "2026-08-10T21:26:48.799Z",
         "durationMs": 0,
         "error": null
       }
@@ -501,49 +501,52 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 12.36,
+        "amountAud": 10.5,
         "evidenceBasis": "modelled",
-        "imputedMeasures": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "evidenceGrade": "C",
-        "interval": {
-          "lowerAud": 0,
-          "upperAud": 53.89,
-          "widthPct": 336
-        }
-      },
-      "food_budget": {
-        "formula": "direct food_budget prior from v6 development panel",
-        "parentAnchors": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "missingAnchors": [],
-        "sourceIds": [
-          "v6-tier-prior:East Asia:all:food_budget"
-        ],
-        "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
-        ],
-        "amountAud": 45.76,
-        "evidenceBasis": "imputed",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 25.17,
-          "upperAud": 66.35,
+          "lowerAud": 5.78,
+          "upperAud": 15.23,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
+        ],
+        "amountAud": 19.66,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 10.81,
+          "upperAud": 28.51,
           "widthPct": 45
         }
       },
       "food_mid_range": {
-        "formula": "direct food_mid_range prior from v6 development panel",
+        "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
         "parentAnchors": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p",
@@ -551,26 +554,29 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:East Asia:all:food_mid_range"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:street_food_meal_1p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 118.68,
-        "evidenceBasis": "imputed",
+        "amountAud": 58.38,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 65.27,
-          "upperAud": 172.09,
+          "lowerAud": 32.11,
+          "upperAud": 84.65,
           "widthPct": 45
         }
       },
       "food_high_end": {
-        "formula": "direct food_high_end prior from v6 development panel",
+        "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
         "parentAnchors": [
           "inexpensive_restaurant_meal_1p",
           "midrange_restaurant_meal_2p",
@@ -578,21 +584,24 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:East Asia:all:food_high_end"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:premium_restaurant_meal_2p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
         ],
-        "amountAud": 305.99,
-        "evidenceBasis": "imputed",
+        "amountAud": 118.21,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "premium_restaurant_meal_2p",
           "midrange_restaurant_meal_2p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 168.29,
-          "upperAud": 443.69,
+          "lowerAud": 65.02,
+          "upperAud": 171.4,
           "widthPct": 45
         }
       },
@@ -923,10 +932,10 @@
         ]
       },
       "street_food_meal_1p": {
-        "valueAud": 2.06,
+        "valueAud": 1.75,
         "status": "modelled",
-        "evidenceGrade": "C",
-        "intervalPct": 336,
+        "evidenceGrade": "D",
+        "intervalPct": 45,
         "sourceIds": [
           "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
           "v6-coefficient:street_food_meal_1p"
@@ -934,7 +943,7 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
         "imputedMeasures": [
           "street_food_meal_1p",
@@ -1121,10 +1130,10 @@
       "accom2star": 87.38,
       "accom3star": 116.5,
       "accom4star": 155.78,
-      "foodStreet": 12.36,
-      "foodBudget": 45.76,
-      "foodMid": 118.68,
-      "foodHigh": 305.99,
+      "foodStreet": 10.5,
+      "foodBudget": 19.66,
+      "foodMid": 58.38,
+      "foodHigh": 118.21,
       "drinkCoffee": 4.61,
       "drinkLocalBeer": 1.69,
       "drinkWineGlass": 12.8,

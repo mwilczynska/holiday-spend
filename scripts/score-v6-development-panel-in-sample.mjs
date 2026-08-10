@@ -25,6 +25,15 @@ const accommodationMeasures = {
   accom_3_star: ['hotel_3star_room_2p', 1], accom_4_star: ['hotel_4star_room_2p', 1],
 };
 const bytFood = { food_budget: 'food_budget_per_person_day', food_mid_range: 'food_mid_per_person_day', food_high_end: 'food_high_per_person_day' };
+// These are the independent production anchors that must be observed for a
+// food basket score. Derived street-food and premium-meal anchors are allowed
+// only as modelled descendants of these observed inputs; an imputed source
+// anchor would make the comparison circular with the BYT truth panel.
+const foodObservedAnchorRequirements = {
+  food_budget: ['inexpensive_restaurant_meal_1p'],
+  food_mid_range: ['inexpensive_restaurant_meal_1p', 'midrange_restaurant_meal_2p'],
+  food_high_end: ['inexpensive_restaurant_meal_1p', 'midrange_restaurant_meal_2p'],
+};
 
 function median(values) { const s = [...values].sort((a, b) => a - b); return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null; }
 function round(value) { return Math.round((value + Number.EPSILON) * 100) / 100; }
@@ -71,8 +80,29 @@ const blockedReasons = {
   activities_high_end: 'BudgetYourTrip is the production source; no independent full-day tier source',
   food_street_food: 'no direct daily tier truth; street-food relation is checked only through the BYT food basket',
 };
+const notEvaluableReasons = {
+  activities_budget: 'The 25 official-attraction rows measure two single-admission tickets, while the production tier is two-person daily activity spend. They are valid ticket observations but not truth for this tier.',
+};
 
 const tierScores = {};
+const foodEligibility = {};
+for (const [tier, requiredAnchors] of Object.entries(foodObservedAnchorRequirements)) {
+  const eligibleCities = [];
+  const excludedCities = [];
+  for (const city of ledger.cities) {
+    const materialization = predictions.get(city.city)?.materialization;
+    const eligible = requiredAnchors.every((anchor) => materialization?.anchors?.[anchor]?.status === 'observed');
+    (eligible ? eligibleCities : excludedCities).push(city.city);
+  }
+  foodEligibility[tier] = {
+    requiredObservedAnchors: requiredAnchors,
+    eligibleCities,
+    excludedCities,
+    eligibleCount: eligibleCities.length,
+    excludedCount: excludedCities.length,
+  };
+}
+
 for (const tier of tierNames) {
   if (tier === 'activities_free') {
     tierScores[tier] = {
@@ -82,8 +112,18 @@ for (const tier of tierNames) {
     };
     continue;
   }
+  if (notEvaluableReasons[tier]) {
+    tierScores[tier] = {
+      status: 'not_evaluable',
+      n: 0,
+      reason: notEvaluableReasons[tier],
+    };
+    continue;
+  }
   const rows = [];
+  const excludedCities = foodEligibility[tier]?.excludedCities ?? [];
   for (const city of ledger.cities) {
+    if (foodEligibility[tier] && excludedCities.includes(city.city)) continue;
     const prediction = predictions.get(city.city)?.materialization?.tiersAud?.[tier]?.amountAud;
     const truth = truthByCity.get(city.city)?.[tier];
     if (Number.isFinite(prediction) && Number.isFinite(truth) && truth > 0) {
@@ -91,9 +131,31 @@ for (const tier of tierNames) {
     }
   }
   if (rows.length) {
-    tierScores[tier] = { status: 'evaluable_in_sample', n: rows.length, medianApePct: median(rows.map((row) => row.apePct)), medianSignedErrorPct: median(rows.map((row) => row.signedErrorPct)), rows };
+    tierScores[tier] = {
+      status: 'evaluable_in_sample',
+      n: rows.length,
+      medianApePct: median(rows.map((row) => row.apePct)),
+      medianSignedErrorPct: median(rows.map((row) => row.signedErrorPct)),
+      rows,
+      ...(foodEligibility[tier] ? {
+        requiredObservedAnchors: foodEligibility[tier].requiredObservedAnchors,
+        eligibleCities: foodEligibility[tier].eligibleCities,
+        excludedCities,
+        excludedCount: excludedCities.length,
+      } : {}),
+    };
   } else {
-    tierScores[tier] = { status: predictionResults.foundCities ? 'blocked_no_pair' : 'blocked_no_prediction_bundle', n: 0, reason: blockedReasons[tier] ?? 'Prediction bundle has no materialized city rows; no score is possible.' };
+    tierScores[tier] = {
+      status: predictionResults.foundCities ? 'blocked_no_pair' : 'blocked_no_prediction_bundle',
+      n: 0,
+      reason: blockedReasons[tier] ?? 'Prediction bundle has no materialized city rows; no score is possible.',
+      ...(foodEligibility[tier] ? {
+        requiredObservedAnchors: foodEligibility[tier].requiredObservedAnchors,
+        eligibleCities: foodEligibility[tier].eligibleCities,
+        excludedCities,
+        excludedCount: excludedCities.length,
+      } : {}),
+    };
   }
 }
 
@@ -101,12 +163,13 @@ const output = {
   schemaVersion: 'city-cost-v6-development-in-sample-score-v1', methodologyVersion: 'v6.0',
   panel: 'development', inSample: true, holdout: false, scoredAt: new Date().toISOString(),
   predictionBundle: predictionResultsPath, predictionCoverage: { totalCities: predictionResults.totalCities, materializedCities: predictionResults.foundCities },
-  truthSources: { accommodation: 'development-ledger.json', food: '003-budgetyourtrip-tier-panel', activitiesBudget: 'development-ledger.json official attraction rows', activitiesMidHigh: 'blocked as circular BYT production source', drinks: '004-expatistan-drink-panel plus no accepted beer rows' },
-  note: 'This report is labelled IN-SAMPLE and is not holdout validation. No spent holdout file was read.',
+  truthSources: { accommodation: 'development-ledger.json', food: '003-budgetyourtrip-tier-panel; food scores require observed Numbeo source anchors', activitiesBudget: 'official attraction rows retained as ticket observations but not valid daily-spend truth', activitiesMidHigh: 'blocked as circular BYT production source', drinks: '004-expatistan-drink-panel plus no accepted beer rows' },
+  note: 'This report is labelled IN-SAMPLE and is not holdout validation. No spent holdout file was read. Food scores exclude cities whose required Numbeo source anchors were imputed from v6 priors.',
   summary: {
     evaluableTiers: Object.values(tierScores).filter((row) => row.status === 'evaluable_in_sample').length,
     definitionalTiers: Object.values(tierScores).filter((row) => row.status === 'definitional_not_scored').length,
     blockedTiers: Object.values(tierScores).filter((row) => row.status.startsWith('blocked_')).length,
+    notEvaluableTiers: Object.values(tierScores).filter((row) => row.status === 'not_evaluable').length,
   },
   gate2TierAccuracy: {
     status: 'in_sample_partial',
@@ -119,6 +182,9 @@ const output = {
     blockedTiers: Object.entries(tierScores)
       .filter(([, row]) => row.status.startsWith('blocked_'))
       .map(([tier]) => tier),
+    notEvaluableTiers: Object.entries(tierScores)
+      .filter(([, row]) => row.status === 'not_evaluable')
+      .map(([tier]) => tier),
     thresholds: { medianApePctMax: 35, p90ApePctMax: 75, absoluteMedianSignedErrorPctMax: 15 },
     tiers: tierScores,
     note: 'Development figures are in-sample diagnostics only. They are not held-out gate results, and blocked tiers are not treated as failures.',
@@ -127,7 +193,7 @@ const output = {
     status: 'not_evaluable',
     inSample: true,
     pass: null,
-    reason: 'The development panel lacks complete independent truth for the 19-tier daily basket: street food has no direct daily-tier truth, all five drink tiers are blocked, and BudgetYourTrip mid/high activities are circular.',
+    reason: 'The development panel lacks complete independent truth for the 19-tier daily basket: street food has no direct daily-tier truth, all five drink tiers are blocked, the activity budget truth is a ticket/daily-spend estimand mismatch, and BudgetYourTrip mid/high activities are circular.',
   },
   gate4CostBandAgreement: {
     status: 'not_evaluable',

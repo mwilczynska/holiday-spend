@@ -287,8 +287,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.277Z",
-        "completedAt": "2026-08-10T20:40:51.277Z",
+        "startedAt": "2026-08-10T21:26:48.827Z",
+        "completedAt": "2026-08-10T21:26:48.827Z",
         "durationMs": 0,
         "error": null
       },
@@ -302,8 +302,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.277Z",
-        "completedAt": "2026-08-10T20:40:51.277Z",
+        "startedAt": "2026-08-10T21:26:48.828Z",
+        "completedAt": "2026-08-10T21:26:48.828Z",
         "durationMs": 0,
         "error": null
       },
@@ -317,8 +317,8 @@
         "status": "complete",
         "searchesUsed": 1,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.277Z",
-        "completedAt": "2026-08-10T20:40:51.277Z",
+        "startedAt": "2026-08-10T21:26:48.828Z",
+        "completedAt": "2026-08-10T21:26:48.828Z",
         "durationMs": 0,
         "error": null
       }
@@ -522,44 +522,47 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 34.92,
+        "amountAud": 29.64,
         "evidenceBasis": "modelled",
-        "imputedMeasures": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "evidenceGrade": "C",
-        "interval": {
-          "lowerAud": 0,
-          "upperAud": 152.25,
-          "widthPct": 336
-        }
-      },
-      "food_budget": {
-        "formula": "direct food_budget prior from v6 development panel",
-        "parentAnchors": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "missingAnchors": [],
-        "sourceIds": [
-          "v6-tier-prior:Europe:high:food_budget"
-        ],
-        "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
-        ],
-        "amountAud": 88.65,
-        "evidenceBasis": "imputed",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 48.76,
-          "upperAud": 128.54,
+          "lowerAud": 16.3,
+          "upperAud": 42.98,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Budapest",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
+        ],
+        "amountAud": 55.62,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 30.59,
+          "upperAud": 80.65,
           "widthPct": 45
         }
       },
@@ -962,10 +965,10 @@
         ]
       },
       "street_food_meal_1p": {
-        "valueAud": 5.82,
+        "valueAud": 4.94,
         "status": "modelled",
-        "evidenceGrade": "C",
-        "intervalPct": 336,
+        "evidenceGrade": "D",
+        "intervalPct": 45,
         "sourceIds": [
           "numbeo:https://www.numbeo.com/cost-of-living/in/Budapest",
           "v6-coefficient:street_food_meal_1p"
@@ -973,7 +976,7 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
         "imputedMeasures": [
           "street_food_meal_1p",
@@ -1168,8 +1171,8 @@
       "accom2star": 129.5,
       "accom3star": 172.67,
       "accom4star": 230.89,
-      "foodStreet": 34.92,
-      "foodBudget": 88.65,
+      "foodStreet": 29.64,
+      "foodBudget": 55.62,
       "foodMid": 215.91,
       "foodHigh": 507.61,
       "drinkCoffee": 4.88,

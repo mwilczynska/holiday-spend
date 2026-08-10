@@ -284,8 +284,8 @@
         "status": "complete",
         "searchesUsed": 4,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.229Z",
-        "completedAt": "2026-08-10T20:40:51.229Z",
+        "startedAt": "2026-08-10T21:26:48.772Z",
+        "completedAt": "2026-08-10T21:26:48.772Z",
         "durationMs": 0,
         "error": null
       },
@@ -299,8 +299,8 @@
         "status": "complete",
         "searchesUsed": 3,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.231Z",
-        "completedAt": "2026-08-10T20:40:51.231Z",
+        "startedAt": "2026-08-10T21:26:48.774Z",
+        "completedAt": "2026-08-10T21:26:48.774Z",
         "durationMs": 0,
         "error": null
       },
@@ -314,8 +314,8 @@
         "status": "complete",
         "searchesUsed": 4,
         "directPageReads": 0,
-        "startedAt": "2026-08-10T20:40:51.232Z",
-        "completedAt": "2026-08-10T20:40:51.232Z",
+        "startedAt": "2026-08-10T21:26:48.776Z",
+        "completedAt": "2026-08-10T21:26:48.776Z",
         "durationMs": 0,
         "error": null
       }
@@ -519,49 +519,52 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 5.88,
+        "amountAud": 4.98,
         "evidenceBasis": "modelled",
-        "imputedMeasures": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "evidenceGrade": "C",
-        "interval": {
-          "lowerAud": 0,
-          "upperAud": 25.64,
-          "widthPct": 336
-        }
-      },
-      "food_budget": {
-        "formula": "direct food_budget prior from v6 development panel",
-        "parentAnchors": [
-          "street_food_meal_1p",
-          "inexpensive_restaurant_meal_1p"
-        ],
-        "missingAnchors": [],
-        "sourceIds": [
-          "v6-tier-prior:SEA:low:food_budget"
-        ],
-        "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
-        ],
-        "amountAud": 25.74,
-        "evidenceBasis": "imputed",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 14.16,
-          "upperAud": 37.32,
+          "lowerAud": 2.74,
+          "upperAud": 7.22,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
+        ],
+        "amountAud": 9.36,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.15,
+          "upperAud": 13.57,
           "widthPct": 45
         }
       },
       "food_mid_range": {
-        "formula": "direct food_mid_range prior from v6 development panel",
+        "formula": "2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p",
         "parentAnchors": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p",
@@ -569,26 +572,29 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:SEA:low:food_mid_range"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "v6-coefficient:street_food_meal_1p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
-        "amountAud": 65.77,
-        "evidenceBasis": "imputed",
+        "amountAud": 35.16,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "street_food_meal_1p",
           "inexpensive_restaurant_meal_1p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 36.17,
-          "upperAud": 95.37,
+          "lowerAud": 19.34,
+          "upperAud": 50.98,
           "widthPct": 45
         }
       },
       "food_high_end": {
-        "formula": "direct food_high_end prior from v6 development panel",
+        "formula": "2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p",
         "parentAnchors": [
           "inexpensive_restaurant_meal_1p",
           "midrange_restaurant_meal_2p",
@@ -596,21 +602,24 @@
         ],
         "missingAnchors": [],
         "sourceIds": [
-          "v6-tier-prior:SEA:low:food_high_end"
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Hanoi",
+          "v6-coefficient:premium_restaurant_meal_2p"
         ],
         "modelVersions": [
-          "city-cost-v6-direct-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
         ],
-        "amountAud": 165.87,
-        "evidenceBasis": "imputed",
+        "amountAud": 74.69,
+        "evidenceBasis": "modelled",
         "imputedMeasures": [
           "premium_restaurant_meal_2p",
           "midrange_restaurant_meal_2p"
         ],
         "evidenceGrade": "D",
         "interval": {
-          "lowerAud": 91.23,
-          "upperAud": 240.51,
+          "lowerAud": 41.08,
+          "upperAud": 108.3,
           "widthPct": 45
         }
       },
@@ -950,10 +959,10 @@
         ]
       },
       "street_food_meal_1p": {
-        "valueAud": 0.98,
+        "valueAud": 0.83,
         "status": "modelled",
-        "evidenceGrade": "C",
-        "intervalPct": 336,
+        "evidenceGrade": "D",
+        "intervalPct": 45,
         "sourceIds": [
           "numbeo:https://www.numbeo.com/cost-of-living/in/Hanoi",
           "v6-coefficient:street_food_meal_1p"
@@ -961,7 +970,7 @@
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_numbeo.md",
-          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+          "city-cost-v6-global_direct_evidence_prior_ratio_below_minimum_n"
         ],
         "imputedMeasures": [
           "street_food_meal_1p",
@@ -1147,10 +1156,10 @@
       "accom2star": 34.13,
       "accom3star": 45.51,
       "accom4star": 60.86,
-      "foodStreet": 5.88,
-      "foodBudget": 25.74,
-      "foodMid": 65.77,
-      "foodHigh": 165.87,
+      "foodStreet": 4.98,
+      "foodBudget": 9.36,
+      "foodMid": 35.16,
+      "foodHigh": 74.69,
       "drinkCoffee": 2.66,
       "drinkLocalBeer": 1.45,
       "drinkWineGlass": 21.97,
