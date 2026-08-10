@@ -2429,3 +2429,18 @@ The batch added 31 found observations and 29 explicit missingness rows, taking d
 where a current official page exposed only one or two qualifying prices; they are not silently treated as
 full five-page panels. No coefficient was refit, no gate was scored, and no holdout value was read. Next
 batch is Beijing, Tokyo, Seoul, Delhi, Colombo and Mumbai.
+
+## v6 M3 — independent menu/activity batch 002 (10 August 2026)
+
+Experiment `002-independent-anchor-panel` batch 002 resolved all 60 non-accommodation slots for Beijing,
+Tokyo, Seoul, Delhi, Colombo and Mumbai. The 11 found rows use current official restaurant, bar, operator or
+venue-menu pages, preserve source currency and every panel price, and retain tax/fee wording. Tokyo's
+McDonald's combo uses the official city menu rule; the other found rows use the preregistered independent
+menu panel rule. Rows that did not meet the independent selection rule were recorded as explicit
+`not_found` or `class_absent`; no Numbeo, BudgetYourTrip, third-party menu aggregator, or plausible substitute
+was used.
+
+The batch added 11 found observations and 49 explicit missingness rows, taking development coverage from
+**203 found / 190 pending** to **214 found / 130 pending**. No coefficient was refit, no gate was scored, and
+no holdout value was read. The remaining development tranche is Istanbul, Dubai, Cairo, Cape Town, Nairobi,
+Budapest, Prague, Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne.

@@ -2724,6 +2724,76 @@
           "dealLabels": [],
           "classInventoryCount": 154,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "The bounded official-menu search did not produce three current qualifying casual/local one-person mains with a comparable serving basis; hotel and proxy menus were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "The bounded official-menu search did not produce three current complete regular three-course meals for two; a government tour tariff and a la carte dishes were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The official McDonald's China route exposed the Big Mac product but not a current Beijing city-specific Big Mac meal/combo price; no proxy was admitted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "Current official Beijing venue pages exposed fewer than three comparable regular cappuccino prices; a single hotel or bar price was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "The bounded official search exposed an unpriced or single-venue draft listing but not three comparable domestic draft servings; bottled beer and starting prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Beijing operator and tourism pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Beijing operator and tourism pages did not produce three distinct eligible scheduled full-day premium activities with regular adult prices; government reference tariffs were not treated as operator observations.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official high-end Beijing pages exposed fewer than three comparable complete regular tasting or three-course menus for two; a single tasting-menu price was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "not_found",
+          "reason": "Current official Beijing bar pages exposed starting prices or fewer than three comparable regular cocktails; promotional and unpriced menus were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Current official Beijing menus did not state a comparable 125-175 ml or 15 cl wine-glass serving for three observations; unmeasured glass prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -3018,6 +3088,114 @@
           "dealLabels": [],
           "classInventoryCount": 226,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "The bounded official-menu search did not produce three current qualifying casual/local one-person mains with a comparable serving basis; hotel lounge a la carte items were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Tokyo menu pages did not produce three complete regular three-course meals for two; lounge sandwiches and buffet/free-flow packages were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "found",
+          "amount": 770,
+          "currency": "JPY",
+          "sourceName": "McDonald's Japan official menu",
+          "sourceUrl": "https://www.mcdonalds.co.jp/menu/set/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Official Japan regular menu shows Big Mac Set at JPY 770, tax included. The official route exposes one national city-level price rather than three Tokyo store pages, so this is a documented reduced sample of one.",
+          "samplePrices": [
+            770
+          ],
+          "selectionRule": "official_mcdonalds_city_menu_first3_median_v1"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 2500,
+          "currency": "JPY",
+          "sourceName": "Official Tokyo menu panel: Imperial Hotel Rendez-Vous, Imperial Lounge Aqua, Disney Ambassador Hotel Hyperion Lounge",
+          "sourceUrl": "https://www.imperialhotel.co.jp/en/tokyo/restaurant/rendezvous/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Regular cappuccino prices in the official panel were JPY 2,500 at Imperial Hotel Rendez-Vous (https://www.imperialhotel.co.jp/en/tokyo/restaurant/rendezvous/menu), JPY 2,700 at Imperial Lounge Aqua (https://www.imperialhotel.co.jp/en/tokyo/restaurant/imperial-aqua/menu), and JPY 1,100 at Disney Ambassador Hotel Hyperion Lounge (https://s.disneyhotels.jp/en/hotel/dah/restaurant/hyperion_menu.html). Median; member prices, promotions and delivery prices excluded.",
+          "samplePrices": [
+            2500,
+            2700,
+            1100
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 1900,
+          "currency": "JPY",
+          "sourceName": "Official Tokyo menu panel: Imperial Hotel Rendez-Vous, Imperial Lounge Aqua, Disney Ambassador Hotel Hyperion Lounge",
+          "sourceUrl": "https://www.imperialhotel.co.jp/en/tokyo/restaurant/rendezvous/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Regular Japan domestic draft examples in the official panel were JPY 1,900 at Imperial Hotel Rendez-Vous, JPY 2,300 at Imperial Lounge Aqua, and JPY 1,100 for Sapporo Draft Beer at Disney Ambassador Hotel Hyperion Lounge. Median; bottled imports and promotions excluded. Companion menu URLs: https://www.imperialhotel.co.jp/en/tokyo/restaurant/imperial-aqua/menu and https://s.disneyhotels.jp/en/hotel/dah/restaurant/hyperion_menu.html.",
+          "samplePrices": [
+            1900,
+            2300,
+            1100
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "An official Hato Bus half-day Tokyo tour was found, but the bounded search did not produce three distinct eligible official group operators with current regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Tokyo operator pages did not produce three distinct eligible scheduled full-day premium activities with regular adult prices; private guide tariffs were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Tokyo pages exposed high-end a la carte or single tasting prices but not three comparable complete regular menus for two.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 3000,
+          "currency": "JPY",
+          "sourceName": "Official Tokyo menu panel: Imperial Hotel Rendez-Vous, Imperial Lounge Aqua, Disney Ambassador Hotel Hyperion Lounge",
+          "sourceUrl": "https://www.imperialhotel.co.jp/en/tokyo/restaurant/rendezvous/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Regular cocktails in the official panel were JPY 3,000 at Imperial Hotel Rendez-Vous, JPY 3,250 at Imperial Lounge Aqua, and JPY 1,700 at Disney Ambassador Hotel Hyperion Lounge. Median; champagne cocktails, mocktails and promotions excluded. Companion menu URLs: https://www.imperialhotel.co.jp/en/tokyo/restaurant/imperial-aqua/menu and https://s.disneyhotels.jp/en/hotel/dah/restaurant/hyperion_menu.html.",
+          "samplePrices": [
+            3000,
+            3250,
+            1700
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Official Tokyo menus exposed glass-wine prices but did not state a comparable 125-175 ml or 15 cl serving basis for three observations; unmeasured glass prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -3300,6 +3478,106 @@
           ],
           "classInventoryCount": 113,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "The bounded official-menu search did not produce three current qualifying casual/local one-person mains with a comparable serving basis; hotel and premium menus were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Seoul pages did not produce three complete regular three-course meals for two; set menus without a comparable three-course basis were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "The official Korean McDonald's product route did not expose a current city-specific Big Mac meal price in the bounded pass; secondary reporting was not promoted to ground truth.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 20000,
+          "currency": "KRW",
+          "sourceName": "Official Seoul menu panel: Four Seasons Maru, Grand Hyatt Seoul room service, Signiel Seoul",
+          "sourceUrl": "https://www.fourseasons.com/seoul/dining/menus/maru-lounge-snack-and-drink/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Regular hot cappuccino prices in the official panel were KRW 20,000 at Four Seasons Maru, KRW 18,000 at Grand Hyatt Seoul room service, and KRW 20,000 at Signiel Seoul. Median; iced variants, member prices and promotions excluded. Companion menu URLs: https://www.hyatt.com/content/dam/hotel/propertysites/assets/grand/selrs/documents/ko_kr/dining/Room-Service-Menu-Korean.pdf and https://www.lottehotel.com/cms/asset/2025/02/18/16967/SIGNIEL%2BSEOUL%2BIRD%2BMenu%2817%29.pdf.",
+          "samplePrices": [
+            20000,
+            18000,
+            20000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "Official Seoul menus exposed one or two Korean draft beers but not three comparable domestic draft observations with regular public prices; bottled domestic beer was excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Seoul operator pages did not produce three distinct eligible scheduled group activities lasting approximately half a day with regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Seoul operator pages did not produce three distinct eligible scheduled full-day premium activities with regular adult prices; private and observation attractions were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 560000,
+          "currency": "KRW",
+          "sourceName": "Four Seasons Seoul Yu Yuan official course menus",
+          "sourceUrl": "https://www.fourseasons.com/seoul/dining/menus/yu-yuan-degustation-menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Official regular tasting menus for two were formed by doubling the published per-person prices: Essence lunch KRW 190,000 pp = 380,000 for two; Essence dinner KRW 280,000 pp = 560,000 for two; Chef's Taste of Harmony KRW 320,000 pp = 640,000 for two. Median; beverage pairings excluded.",
+          "samplePrices": [
+            380000,
+            560000,
+            640000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 30000,
+          "currency": "KRW",
+          "sourceName": "Official Seoul menu panel: Four Seasons Maru, Four Seasons Charles H., Four Seasons Garden Terrace",
+          "sourceUrl": "https://www.fourseasons.com/seoul/dining/menus/maru-lounge-snack-and-drink/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Regular cocktails in the official panel were KRW 30,000 at Four Seasons Maru, KRW 33,000 at Charles H., and KRW 28,000 at Garden Terrace. Median; non-alcoholic cocktails, special events and promotions excluded. Companion menu URLs: https://www.fourseasons.com/seoul/dining/menus/charlesh-drinks/ and https://www.fourseasons.com/seoul/dining/menus/the-garden-terrace-beverages/.",
+          "samplePrices": [
+            30000,
+            33000,
+            28000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Official Seoul menus exposed glass-wine prices but did not state a comparable 125-175 ml or 15 cl serving basis for three observations; unmeasured glass prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -3573,6 +3851,100 @@
           "dealLabels": [],
           "classInventoryCount": 77,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "The bounded official-menu search did not produce three current qualifying casual/local one-person mains with a comparable serving basis; hotel menus were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Delhi pages exposed a la carte dishes and breakfast items but not three comparable complete regular three-course meals for two.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "class_absent",
+          "reason": "The official McDonald's India menu route does not offer the beef Big Mac meal/combo in Delhi; India-specific vegetarian and chicken products were not substituted.",
+          "attempts": 3,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "Only one current official Delhi menu exposed a regular cappuccino price in the bounded pass; three comparable venue observations were not available.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "Current official Delhi menus exposed bottled domestic beers but not three comparable domestic draft servings; bottled prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "One official Delhi operator published a half-day group price, but the bounded search did not produce three distinct eligible official group operators with current regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Delhi operator pages did not produce three distinct eligible scheduled full-day premium activities with regular adult prices; private tours and zoo routes were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Official Delhi high-end pages exposed a tasting-menu description or a single venue menu but not three comparable complete regular menus for two with current prices.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 1250,
+          "currency": "INR",
+          "sourceName": "Taj Mahal New Delhi Rick's Bar official cocktail menu",
+          "sourceUrl": "https://assets.tajhotels.com/en-in/hotels/taj-mahal-new-delhi/restaurants/ricks-bar/ricks-bar-menu.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Regular cocktail observations from the current official Rick's Bar menu: An Ode To Paris INR 1,250, Ilsa's Last Song INR 1,250, El Clasico INR 1,250, Umami Ugarte INR 1,250 and Legend of Laszlo INR 1,250. Median; the menu states government taxes are additional and promotions were excluded.",
+          "samplePrices": [
+            1250,
+            1250,
+            1250,
+            1250,
+            1250
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 1345,
+          "currency": "INR",
+          "sourceName": "Andaz Delhi official in-room dining beverage menu",
+          "sourceUrl": "https://www.hyatt.com/content/dam/hotel/propertysites/assets/hyatt/delaa/documents/dining/IRD-Menu.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "The current official Andaz Delhi menu states a 150 ml serving for wine by the glass and lists comparable red-wine prices INR 1,445, 1,445, 1,345, 1,345 and 1,345. Median; service charge and applicable taxes are stated separately by the menu.",
+          "samplePrices": [
+            1445,
+            1445,
+            1345,
+            1345,
+            1345
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
@@ -3834,6 +4206,86 @@
           "dealLabels": [],
           "classInventoryCount": 8,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "Current official Colombo menus exposed individual mains and one lunch set but not three comparable casual/local one-person mains under the fixed menu-panel basis.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Colombo menus exposed two identical executive lunch sets but not three comparable complete regular three-course meals for two; fewer than three observations were not promoted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "class_absent",
+          "reason": "The bounded official route found that McDonald's no longer provides a current official Colombo menu route for a Big Mac meal/combo; Dinemore and aggregator prices were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 720,
+          "currency": "LKR",
+          "sourceName": "Official Colombo menu panel: Tilapiya, The Commons, Wildish",
+          "sourceUrl": "https://tilapiyacolombo.lk/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Regular cappuccino prices in the official panel were LKR 650 at Tilapiya, LKR 720 at The Commons, and LKR 900 at Wildish. Median; the Wildish menu states 18% VAT and 10% service charge are added, while the other menu tax basis is retained as unknown. Companion menu URLs: https://www.thecommonscolombo.com/ and https://wildish.lk/menu.php.",
+          "samplePrices": [
+            650,
+            720,
+            900
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "Current official Colombo menus did not expose three comparable domestic draft servings with a stated serving basis; bottled and imported beer were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Colombo operator pages did not produce three distinct eligible scheduled half-day group activities with current regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Colombo operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; safari and private-driver routes were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Colombo restaurant pages did not produce three comparable complete regular three-course or tasting menus for two; individual high-priced mains were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "not_found",
+          "reason": "The current Colombo official menu routes found were BYOB, mocktail-only, or did not expose three comparable regular alcoholic cocktails; a Negombo venue was not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Current official Colombo menus did not state a comparable 125-175 ml or 15 cl wine-glass serving for three observations; bottle prices and unmeasured glass prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -4127,6 +4579,88 @@
           "dealLabels": [],
           "classInventoryCount": 125,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "The bounded official-menu search did not produce three current qualifying casual/local one-person mains with a comparable serving basis; a la carte hotel menus were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Mumbai pages did not produce three complete regular three-course meals for two; menu snippets without a complete course basis were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "class_absent",
+          "reason": "The official McDonald's India route does not offer the beef Big Mac meal/combo in Mumbai; India-specific vegetarian and chicken products were not substituted.",
+          "attempts": 3,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "Current official Mumbai pages exposed one or two cappuccino prices but not three comparable regular venue observations; a single cafe price was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "Current official Mumbai pages exposed domestic beer prices but not three comparable domestic draft servings with a stated serving basis; minibar and bottled prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "One official Mumbai operator published a half-day route, but the bounded search did not produce three distinct eligible scheduled group operators with current regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Mumbai operator pages did not produce three distinct eligible scheduled full-day premium activities with current regular adult prices; private car tours were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official Mumbai restaurant pages did not produce three comparable complete regular three-course or tasting menus for two with current prices.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 425,
+          "currency": "INR",
+          "sourceName": "1522 Bar & Kitchen Mumbai official cocktail menu",
+          "sourceUrl": "https://www.1522mumbai.com/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Regular cocktail prices from the current official 1522 menu: Lawrence Of Arabia INR 425, C'EST L'AMOUR INR 425, Nirvana - The Promised Land INR 425, El Chapo INR 425 and Timeless - Like The Godfather INR 495. Median; the menu's placeholder beer and wine prices were not used.",
+          "samplePrices": [
+            425,
+            425,
+            425,
+            425,
+            495
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Current official Mumbai menus did not state a comparable 125-175 ml or 15 cl wine-glass serving for three observations; placeholder or minibar prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
