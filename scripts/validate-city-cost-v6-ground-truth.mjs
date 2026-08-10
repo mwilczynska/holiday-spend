@@ -194,6 +194,8 @@ for (const [city, byMeasure] of accommodationByCity) {
 }
 
 if (holdoutSeal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v1') issue('Unexpected holdout seal schemaVersion');
+if (holdoutSeal.methodologyVersion !== 'v6.0') issue('Holdout seal methodologyVersion must be v6.0');
+if (holdoutSeal.manifestPath !== 'data/reference/v6/validation-manifest-v6.json') issue('Holdout seal manifestPath must identify the frozen v6 manifest');
 if (holdoutSeal.status === 'sealed_before_collection') {
   if (holdoutSeal.resultsFile !== null || holdoutSeal.scoresFile !== null) issue('Pre-collection holdout seal must not expose result or score files');
 } else if (holdoutSeal.status === 'sealed_after_collection') {
@@ -213,8 +215,9 @@ const report = {
   pendingSlots,
   errors,
   warnings,
+  substanceWarningCount: warnings.filter((warning) => !warning.startsWith('Pending slot:')).length,
   holdoutInspected: false,
-  complete: errors.length === 0 && warnings.length === 0,
+  complete: errors.length === 0 && pendingSlots === 0,
 };
 console.log(JSON.stringify(report, null, 2));
-if (errors.length || (process.argv.includes('--require-complete') && warnings.length)) process.exitCode = 1;
+if (errors.length || (process.argv.includes('--require-complete') && !report.complete)) process.exitCode = 1;
