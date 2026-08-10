@@ -64,15 +64,15 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 | `accom_2_star` | Standard room for two, two-star class, one night | `0.7500 × accom_3_star` | C |
 | `accom_3_star` | Standard room for two, three-star class, one night | **MEASURED** — Expedia class-trend snippet | B |
 | `accom_4_star` | Standard room for two, four-star class, one night | `1.3372 × accom_3_star` | C |
-| `food_street_food` | Six standard low-cost prepared meals for two over one day | `6 × street_food_meal_1p` | A/C |
-| `food_budget` | Four street meals + two inexpensive-restaurant meals for two, one day | basket | A |
-| `food_mid_range` | Two street + two inexpensive + one mid-range shared meal, one day | basket | A |
-| `food_high_end` | Two inexpensive + one mid-range + one premium shared meal, one day | basket | A/C |
+| `food_street_food` | Six standard low-cost prepared meals for two over one day | `6 × street_food_meal_1p`, where `street_food_meal_1p` is fitted from independent street-food observations against `inexpensive_restaurant_meal_1p` | C |
+| `food_budget` | Four street meals + two inexpensive-restaurant meals for two, one day | basket | A/C |
+| `food_mid_range` | Two street + two inexpensive + one mid-range shared meal, one day | basket | A/C |
+| `food_high_end` | Two inexpensive + one mid-range + one premium shared meal, one day | basket; premium is fitted from independent menus against midrange | A/C |
 | `drink_coffee` | One regular cappuccino | **MEASURED** — Numbeo | A |
 | `drinks_none` | Two cappuccinos, no alcohol | basket | A |
 | `drinks_light` | Two cappuccinos + two domestic draft beers | basket | A |
-| `drinks_moderate` | Two cappuccinos + four beers + two standard cocktails | basket | A/B |
-| `drinks_heavy` | Two cappuccinos + six beers + four cocktails + two wine glasses | basket | B/C |
+| `drinks_moderate` | Two cappuccinos + four beers + two standard cocktails | basket; cocktail is fitted from independent menus against cappuccino | C |
+| `drinks_heavy` | Two cappuccinos + six beers + four cocktails + two wine glasses | basket; cocktail and wine are fitted from independent menus against cappuccino | C |
 | `activities_free` | No paid activity spending | `0` | definitional |
 | `activities_budget` | Two adult tickets to a standard low-cost paid attraction | `2 ×` BudgetYourTrip budget tier | B |
 | `activities_mid_range` | Two adult places on a half-day group activity | `2 ×` BudgetYourTrip mid tier | B |
@@ -83,6 +83,13 @@ spend by traveller tier*, not *the price of a ticket / half-day group activity /
 activity*. Experiments 037, 045, 044, 046, 050, 071 and 089 all failed to find a definition-matched
 activity source. v6 ships the proxy at grade B with the mismatch recorded here rather than blocking, and
 M5 revisits it. **Do not describe these three values as observed ticket prices.**
+
+The food and drink anchor paths are explicit. `premium_restaurant_meal_2p` is generated as `1.9789 ×`
+the measured midrange meal when absent; `cocktail_1` as `2.6000 ×` measured cappuccino; and `wine_glass_1`
+as `2.2239 ×` measured cappuccino. Those coefficients are generated from independent official-menu
+development fits and their residual intervals are recorded in `coefficients-v6.json`; the displayed values
+are not asserted constants. `street_food_meal_1p` is likewise a fitted independent street-food relation,
+not the old McMeal identity proxy. McMeal remains a measured Numbeo anchor and diagnostic only.
 
 ---
 
@@ -203,3 +210,14 @@ ground truth is independent of BudgetYourTrip: use official operator and attract
 has a fixed selection rule in `validation-manifest-v6.json` before collection; a vague city average is not
 an estimand. The holdout seal is now per-measure so the six already revealed measures remain spent while
 the new measures can be collected and revealed once under a single all-19 candidate freeze.
+
+### 10 August 2026 - supersede the McMeal street-food identity proxy
+
+`deriveStreetFromMcMeal` previously copied `mcmeal_combo` into `street_food_meal_1p` with an asserted
+1:1 ratio and stamped it grade B (±20%). That decision is superseded. The v5 Numbeo panel showed same-city
+McMeal/inexpensive ratios from **0.40 to 3.46** (median **0.817**, 36 cities), while McMeal was more
+expensive than an inexpensive local meal in 13 cities; McDonald's global-brand pricing is not the street-food
+estimand. The amended v6 contract therefore adds an independently collected `street_food_meal_1p` measure,
+fits `street_food_meal_1p / inexpensive_restaurant_meal_1p` from those observations, assigns grade C and a
+residual-derived interval, and retains McMeal only as a cross-check. The v1 CSV comparison that motivated
+the finding is retained as context in `LOG.md` and is not a fitting basis.

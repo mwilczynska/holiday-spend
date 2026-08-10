@@ -193,26 +193,21 @@ M1 implementation notes:
 
 ### M3 — fit and validate all 19 tiers — **IN PROGRESS (scope reset 10 August 2026)**
 
-- [x] Record the dated contract amendment from six accommodation-scoped measures to 17 all-tier validation rows
-- [x] Resolve the 11 new development measures across all 25 cities (hotel-2 plus ten independent measures; explicit missingness is valid)
-- [ ] Generate and cross-check every non-accommodation derivation from the development panel
-- [ ] Collect the 11 fresh holdout measures under per-measure seals without reading them
+- [x] Record the dated contract amendment from six accommodation-scoped measures to 18 all-tier validation rows
+- [ ] Resolve the 12 new development measures across all 25 cities (hotel-2 plus street food and ten other independent measures; explicit missingness is valid)
+- [ ] Generate and cross-check every non-accommodation derivation from the development panel, including fitted street-food/inexpensive
+- [ ] Collect the 12 fresh holdout measures under per-measure seals without reading them
 - [ ] Freeze one all-19 candidate and score gates 2–6 once
 - [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
 
-**Current status:** Phase 1 contract reset and Phase 2 development collection are complete. Experiment 002
-batches 001–004 resolved the ten independent measures for 20 cities; batch 005 resolved the same ten for
-Barcelona, Mexico City, Lima, San Francisco and Melbourne. The final batch added **17 found observations
-and 33 explicit missingness rows**. The development ledger now has **269 found / 0 pending** across all
-25 cities x 17 measures. All found food and drink rows use independent official menus or venue price lists;
-all found activity rows elsewhere in the panel use independent official operator or attraction pages. No
-Numbeo or BudgetYourTrip row was used as its own ground truth, and no batch-level artifact signature exceeded
-the owned 30% stop threshold.
-The per-measure holdout seal keeps the six already revealed rows spent and has created eleven
-sealed-before-collection extension measures. The old accommodation-only score is not an all-19 M3 result.
-The next action is Phase 3: extend the fit script so every non-accommodation coefficient is generated from
-the development medians, carries leave-one-city-out provenance and residual-dispersion intervals, and is
-cross-checked against the independent v4 food/drink ratio fit. M4 migration remains out of scope.
+**Current status:** Phase 1's all-tier contract was amended again on 10 August 2026 after an audit found
+that the McMeal-to-street-food identity proxy was an asserted `k=1.0` constant. The panel is now 18 measures
+per city and the street-food slots are pending: **269 found / 25 pending** across 25 cities. Street food
+must be collected independently from official local prepared-food menus or market/vendor listings before
+the ratio to inexpensive restaurant food can be fitted. The prior McMeal panel remains a diagnostic only.
+The old accommodation-only score is not an all-19 M3 result. The per-measure holdout seal keeps the six
+already revealed rows spent and now has twelve sealed-before-collection extension measures. No holdout value
+was read, no gate was scored, and M4 migration remains out of scope.
 
 ### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 

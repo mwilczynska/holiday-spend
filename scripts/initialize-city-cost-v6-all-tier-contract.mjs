@@ -32,7 +32,7 @@ if (seal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v1' || seal.s
   throw new Error('Expected the already-spent v1 holdout seal before the per-measure migration.');
 }
 
-development.schemaVersion = 'city-cost-v6-ground-truth-ledger-v3';
+development.schemaVersion = 'city-cost-v6-ground-truth-ledger-v4';
 development.requiredMeasures = measures;
 development.sourcePolicy = {
   ...development.sourcePolicy,
@@ -48,7 +48,7 @@ development.observationContract = {
 fs.writeFileSync(developmentPath, `${JSON.stringify(development, null, 2)}\n`);
 
 const extension = {
-  schemaVersion: 'city-cost-v6-ground-truth-holdout-extension-v1',
+  schemaVersion: 'city-cost-v6-ground-truth-holdout-extension-v2',
   methodologyVersion: manifest.methodologyVersion,
   manifestPath: 'data/reference/v6/validation-manifest-v6.json',
   panel: 'holdout-extension',
@@ -84,7 +84,7 @@ const newMeasureState = Object.fromEntries(newMeasures.map((measure) => [measure
 }]));
 
 const migratedSeal = {
-  schemaVersion: 'city-cost-v6-ground-truth-holdout-seal-v2',
+  schemaVersion: 'city-cost-v6-ground-truth-holdout-seal-v3',
   methodologyVersion: seal.methodologyVersion,
   manifestPath: seal.manifestPath,
   status: 'per_measure',

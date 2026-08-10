@@ -17,7 +17,7 @@ product tiers. The manifest is v2, the panel is 17 measures per city, and M4 mig
 | `README.md` | This file — the inventory | When you add an artifact here |
 | `data-dictionary-v6.md` | **Frozen estimands + the evidence-grade ladder.** Defines what each of the 19 values means and what grade A/B/C/D mean | Read before deciding whether a value is usable or what grade it carries. Amend only by dated decision |
 | `validation-manifest-v6.json` | **Frozen acceptance gates + the 40-city ground-truth panel with its locked 15-city holdout** | Read before scoring anything. Never change a gate after seeing its result |
-| `coefficients-v6.json` | **Generated.** The fitted accommodation ladder with provenance, leave-one-out scores and caveats for every number | Never hand-edit. Regenerate with the script below |
+| `coefficients-v6.json` | **Generated.** The fitted accommodation ladder, independent food/drink/activity ratio fits, all-19 derivation map, provenance, leave-one-out scores and caveats | Never hand-edit. Regenerate with the script below |
 | `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 
@@ -41,9 +41,24 @@ accom_2_star <- accom_3_star           n=18  k=0.7500  LOO medAPE 11.37%  p90 24
 accom_4_star <- accom_3_star           n=26  k=1.3372  LOO medAPE 12.98%  p90 27.18%
 hostel_dorm_bed_1p <- accom_3_star     n=25  k=0.2955  LOO medAPE 20.92% p90 53.16%  (Booking v2 development)
 hostel_private_room_2p <- accom_3_star n=25  diagnostic k=0.7955; shipped k=0.5919 v4 rollback (±35%)
+hotel_2star_room_2p <- hotel_3star_room_2p  n=25  diagnostic k=0.8182  LOO medAPE 17.85% p90 37.71%
+midrange <- inexpensive                  n=10  k=4.9062  LOO medAPE 21.53% p90 45.63%
+premium <- midrange                      n=3   k=1.9789  LOO medAPE 7.26%  p90 11.58%
+cocktail <- cappuccino                    n=11  k=2.6000  LOO medAPE 17.47% p90 74.17%
+wine glass <- cappuccino                  n=5   k=2.2239  LOO medAPE 16.71% p90 28.25%
+mcmeal/inexpensive                       n=0   not fitted; McMeal remains a measured production anchor
+half-day activity                         n=0   no independent compliant row; direct production anchor
+full-day activity                         n=1   below fit threshold; direct production anchor
 cross-check 2-star: v6 0.7500 vs v4 0.7341 -> 2.17% apart
 cross-check 4-star: v6 1.3372 vs v4 1.2972 -> 3.08% apart
 ```
+
+The new menu relations use independent official restaurant and bar menus, never Numbeo. Premium,
+cocktail and wine remain laddered in production, but their coefficients are fitted by the generator and
+carry residual-derived intervals. The McMeal, half-day and full-day routes did not provide enough
+independent pairs to fit a ratio (`n=0`, `n=0` and `n=1` respectively); they remain direct production
+anchors with the reason recorded in the generated `derivationRules` map. These are validation gaps, not
+asserted coefficients.
 
 ---
 
@@ -109,11 +124,11 @@ marked and dated rather than removed, so the reasoning that replaced them stays 
 
 ## M2 ground-truth ledger
 
-`ground-truth/development-ledger.json` is the manifest-driven 25-city x 17-measure collection ledger. It
+`ground-truth/development-ledger.json` is the manifest-driven 25-city x 18-measure collection ledger. It
 starts with no fabricated values; each found observation must retain its displayed currency, source URL,
 retrieval timestamp, tax/fee wording, and property name for accommodation. Run
 `node scripts/validate-city-cost-v6-ground-truth.mjs` to check the development ledger. The collected
-`ground-truth/holdout-ledger.json` is the spent six-measure holdout. The eleven new measures are in the
+`ground-truth/holdout-ledger.json` is the spent six-measure holdout. The twelve new measures are in the
 per-measure `ground-truth/holdout-extension.json` seal lifecycle; the validator checks seal metadata but
 does not read holdout observations. The all-19 M3 candidate coefficients and source offset will be generated
 in `coefficients-v6.json`, frozen once before any new measure is read, and scored once. Experiment
@@ -134,8 +149,8 @@ stored in `city_estimates.metadata_json` and exposed by `/api/estimates` and `/d
 
 The feature flag is deliberately off by default during M1. The v1 generation path and
 `data/reference/city_costs_app_aud.csv` remain unchanged. Accommodation-only M2/M3 records are retained,
-but the all-19 M3 fit, independent food/drink/activity validation, per-measure holdout read and full score
-remain open.
+and the all-19 development derivation candidate is now generated. Independent food/drink/activity
+holdout validation, the per-measure holdout read and the full score remain open.
 
 > **Do not move or rename anything under `data/reference/`** without updating its readers. Scripts and
 > six Vitest test files reference those paths as string literals.

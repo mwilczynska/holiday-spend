@@ -1,10 +1,10 @@
 {
-  "schemaVersion": "city-cost-v6-ground-truth-holdout-seal-v2",
+  "schemaVersion": "city-cost-v6-ground-truth-holdout-seal-v3",
   "methodologyVersion": "v6.0",
   "manifestPath": "data/reference/v6/validation-manifest-v6.json",
   "status": "per_measure",
   "cityCount": 15,
-  "requiredMeasureCount": 17,
+  "requiredMeasureCount": 18,
   "lockRule": "Per-measure seal. Existing revealed_once measures are spent. New measures are sealed before collection, revealed once only after the all-19 candidate is frozen, and may not be tuned or rescored.",
   "measures": {
     "hostel_dorm_bed_1p": {
@@ -116,6 +116,15 @@
       "revealedAt": null
     },
     "full_day_premium_activity_adult_1": {
+      "status": "sealed_before_collection",
+      "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
+      "scoresFile": null,
+      "candidateConfigHash": null,
+      "candidateCommit": null,
+      "frozenAt": null,
+      "revealedAt": null
+    },
+    "street_food_meal_1p": {
       "status": "sealed_before_collection",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
       "scoresFile": null,

@@ -50,7 +50,7 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 | `v6/README.md` | **CURRENT** | Evidence inventory and orientation for the v6 workstream | humans and agents |
 | `v6/data-dictionary-v6.md` | **CURRENT** | Frozen estimands (unchanged from v5) plus the A/B/C/D evidence-grade ladder | v6 derivation and experiments |
 | `v6/validation-manifest-v6.json` | **CURRENT** | Product-level acceptance gates, the 40-city ground-truth panel, and the locked 15-city holdout | v6 scoring |
-| `v6/coefficients-v6.json` | **GENERATED** | The fitted accommodation ladder with provenance, leave-one-out scores and per-coefficient caveats. **Never hand-edit** | `fit-city-cost-ladder-v6.mjs`, v6 derivation |
+| `v6/coefficients-v6.json` | **GENERATED** | The all-19 fitted derivation report with provenance, leave-one-out scores and per-coefficient caveats. **Never hand-edit** | `fit-city-cost-ladder-v6.mjs`, v6 derivation |
 | `v6/ground-truth/` | **CURRENT — M2** | Manifest-driven development ledger and holdout lock marker; no holdout results are exposed | v6 collection and scoring |
 
 ## SUPERSEDED — v5 methodology evidence

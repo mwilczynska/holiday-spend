@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "city-cost-v6-ground-truth-ledger-v3",
+  "schemaVersion": "city-cost-v6-ground-truth-ledger-v4",
   "methodologyVersion": "v6.0",
   "panel": "development",
   "status": "collection_in_progress",
@@ -18,6 +18,7 @@
     "hotel_3star_room_2p",
     "hotel_4star_room_2p",
     "paid_attraction_adult_1",
+    "street_food_meal_1p",
     "inexpensive_restaurant_meal_1p",
     "midrange_restaurant_meal_2p",
     "mcmeal_combo",
@@ -9613,7 +9614,8 @@
     "minimumCitiesForOffset": 12,
     "levelBiasCaveat": "Booking default top-picks first-page medians undershoot full-inventory medians by roughly 20-27% at 25 listings in the Copenhagen stage-1 analysis; use this panel for ratios and source calibration, not absolute city levels.",
     "levelBiasEvidence": "data/reference/dry-run/phase-0g-stage1-analysis.json",
-    "independentFoodDrinkGroundTruth": "Official restaurant, cafe and bar menus or venue price lists; never Numbeo; Expatistan is cross-check only.",
+    "independentFoodDrinkGroundTruth": "Official restaurant, cafe, bar and street-food vendor or market menus/price lists; never Numbeo; Expatistan is cross-check only.",
+    "independentStreetFoodGroundTruth": "Official street-stall, market-board, bakery-takeaway or local prepared-meal menus/listings under independent_street_food_panel_first5_median_v1; no McDonald's, Numbeo, aggregators or delivery prices.",
     "independentActivityGroundTruth": "Official attraction and operator pages; never BudgetYourTrip.",
     "selectionRules": {
       "hostel_dorm_bed_1p": "booking_top_picks_firstpage_median_v2",
@@ -9623,17 +9625,19 @@
       "hotel_3star_room_2p": "booking_top_picks_firstpage_median_v2",
       "hotel_4star_room_2p": "booking_top_picks_firstpage_median_v2",
       "paid_attraction_adult_1": "official_principal_museum_or_historic_site_adult_ga_v1",
-      "inexpensive_restaurant_meal_1p": "independent_menu_panel_first5_median_v1",
-      "midrange_restaurant_meal_2p": "independent_menu_panel_first5_median_v1",
-      "premium_restaurant_meal_2p": "independent_menu_panel_first5_median_v1",
-      "cappuccino_1": "independent_menu_panel_first5_median_v1",
-      "domestic_draft_beer_1": "independent_menu_panel_first5_median_v1",
-      "cocktail_1": "independent_menu_panel_first5_median_v1",
-      "wine_glass_1": "independent_menu_panel_first5_median_v1",
+    "street_food_meal_1p": "independent_street_food_panel_first5_median_v1",
+    "inexpensive_restaurant_meal_1p": "independent_menu_panel_first5_median_v2",
+    "midrange_restaurant_meal_2p": "independent_menu_panel_first5_median_v2",
+    "premium_restaurant_meal_2p": "independent_menu_panel_first5_median_v2",
+    "cappuccino_1": "independent_menu_panel_first5_median_v2",
+    "domestic_draft_beer_1": "independent_menu_panel_first5_median_v2",
+    "cocktail_1": "independent_menu_panel_first5_median_v2",
+    "wine_glass_1": "independent_menu_panel_first5_median_v2",
       "mcmeal_combo": "official_mcdonalds_city_menu_first3_median_v1",
       "half_day_group_activity_adult_1": "official_operator_first3_halfday_group_median_v1",
       "full_day_premium_activity_adult_1": "official_operator_first3_fullday_premium_median_v1"
     },
-    "allTierPanelDecision": "2026-08-10: expand from the accommodation-scoped six-measure panel to 17 measures so all 19 product tiers can be fitted and validated."
-  }
+  "allTierPanelDecision": "2026-08-10: expand from the accommodation-scoped six-measure panel to 17 measures so all 19 product tiers can be fitted and validated.",
+  "streetFoodPanelDecision": "2026-08-10: add independent street_food_meal_1p before fitting because the prior McMeal 1:1 identity proxy was an asserted constant and v5 evidence showed McMeal/inexpensive ratios from 0.40 to 3.46. Street food must be observed independently before fitting street_food/inexpensive."
+}
 }

@@ -30,7 +30,7 @@ contract has 17 rows per city so the 19 product tiers can be fitted and validate
 | --- | --- |
 | `development-ledger.json` | Append-only development-city observations and explicit collection metadata |
 | `holdout-ledger.json` | The original six-measure holdout observations; those measures are revealed_once and spent |
-| `holdout-extension.json` | Per-measure sealed work queue for the eleven new rows; it contains no old holdout values |
+| `holdout-extension.json` | Per-measure sealed work queue for the twelve new rows; it contains no old holdout values |
 | `holdout-seal.json` | Per-measure lock marker; old measures remain revealed_once and new measures have their own lifecycle |
 | `../validation-manifest-v6.json` | Source of truth for city membership and gates |
 
@@ -49,7 +49,7 @@ amount and currency, source URL, retrieval date, tax/fee wording, and property n
 accommodation quotes. Failed retrievals remain explicit (`not_found`, `blocked`, `stale`, or
 `class_absent`) rather than being replaced with a plausible value.
 
-The ledger uses schema `city-cost-v6-ground-truth-ledger-v3`. Found accommodation rows additionally
+The ledger uses schema `city-cost-v6-ground-truth-ledger-v4`. Found accommodation rows additionally
 require `samplePrices`, `listPriceAmount`, `dealLabels`, `classInventoryCount`, and `selectionRule`.
 `samplePrices` is the full set of first-page listing prices behind the median; `listPriceAmount` preserves
 the displayed strikethrough price for the representative first listing or is `null`; `dealLabels` preserves

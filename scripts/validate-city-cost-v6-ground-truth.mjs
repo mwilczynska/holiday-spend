@@ -26,6 +26,7 @@ const accommodationMeasures = new Set([
   'hotel_4star_room_2p',
 ]);
 const panelMedianMeasures = new Set([
+  'street_food_meal_1p',
   'inexpensive_restaurant_meal_1p',
   'midrange_restaurant_meal_2p',
   'mcmeal_combo',
@@ -79,7 +80,7 @@ function issue(message) {
   errors.push(message);
 }
 
-if (ledger.schemaVersion !== 'city-cost-v6-ground-truth-ledger-v3') issue('Unexpected development ledger schemaVersion');
+if (ledger.schemaVersion !== 'city-cost-v6-ground-truth-ledger-v4') issue('Unexpected development ledger schemaVersion');
 if (ledger.panel !== 'development') issue('Development ledger must declare panel=development');
 if (ledger.referenceWindow?.arrival !== '2026-09-17' || ledger.referenceWindow?.departure !== '2026-09-18') {
   issue('Ledger reference window does not match the frozen manifest');
@@ -90,6 +91,7 @@ if (ledger.sourcePolicy?.productionAccommodationAnchor !== 'Expedia') issue('Led
 if (ledger.sourcePolicy?.offsetDirection !== 'Booking -> Expedia') issue('Ledger sourcePolicy must declare the Booking -> Expedia offset direction');
 if (ledger.sourcePolicy?.minimumCitiesForOffset !== 12) issue('Ledger sourcePolicy must require at least 12 cities for the Booking -> Expedia offset');
 if (!ledger.sourcePolicy?.independentFoodDrinkGroundTruth || /Numbeo/i.test(ledger.sourcePolicy.independentFoodDrinkGroundTruth) === false) issue('Ledger sourcePolicy must state the independent food/drink ground-truth rule');
+if (!ledger.sourcePolicy?.independentStreetFoodGroundTruth || /Numbeo/i.test(ledger.sourcePolicy.independentStreetFoodGroundTruth) === false) issue('Ledger sourcePolicy must state the independent street-food ground-truth rule');
 if (!ledger.sourcePolicy?.independentActivityGroundTruth || /BudgetYourTrip/i.test(ledger.sourcePolicy.independentActivityGroundTruth) === false) issue('Ledger sourcePolicy must state the independent activity ground-truth rule');
 for (const field of ['samplePrices', 'listPriceAmount', 'dealLabels', 'classInventoryCount', 'selectionRule']) {
   if (!ledger.observationContract?.accommodationFound?.includes(field)) issue(`Ledger accommodation contract must include ${field}`);
@@ -233,7 +235,7 @@ for (const [city, byMeasure] of accommodationByCity) {
   }
 }
 
-if (holdoutSeal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v2') issue('Unexpected holdout seal schemaVersion');
+if (holdoutSeal.schemaVersion !== 'city-cost-v6-ground-truth-holdout-seal-v3') issue('Unexpected holdout seal schemaVersion');
 if (holdoutSeal.methodologyVersion !== 'v6.0') issue('Holdout seal methodologyVersion must be v6.0');
 if (holdoutSeal.manifestPath !== 'data/reference/v6/validation-manifest-v6.json') issue('Holdout seal manifestPath must identify the frozen v6 manifest');
 if (holdoutSeal.status !== 'per_measure') issue('Holdout seal must declare status=per_measure');

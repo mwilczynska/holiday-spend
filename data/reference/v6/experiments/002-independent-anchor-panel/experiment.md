@@ -9,9 +9,9 @@ scoring Numbeo or BudgetYourTrip against themselves.
 ## Pre-registered sample and window
 
 - Development sample: the 25 cities in `validation-manifest-v6.json`.
-- Measures: the eleven new v2 rows: inexpensive meal, midrange meal, McDonald's combo, cappuccino,
-  domestic draft beer, half-day group activity, full-day premium activity, premium meal, cocktail, wine
-  glass, and two-star room.
+- Measures: the twelve new all-tier rows: street-food meal, inexpensive meal, midrange meal, McDonald's
+  combo, cappuccino, domestic draft beer, half-day group activity, full-day premium activity, premium meal,
+  cocktail, wine glass, and two-star room.
 - Accommodation: Booking.com logged out, frozen 2026-09-17 to 2026-09-18, default Our top picks, all
   first-page eligible listings, median, with class inventory count.
 - Food/drink: official venue menus or price lists only; Numbeo is prohibited. Expatistan is cross-check

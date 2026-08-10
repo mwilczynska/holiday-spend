@@ -2501,3 +2501,21 @@ corrected two Melbourne median values before completion. No coefficient was refi
 holdout value was read. Phase 2 collection is complete; the next action is script-generated Phase 3 fitting
 of every non-accommodation derivation, with leave-one-city-out provenance, residual intervals and a dated
 decision on whether cocktail/wine remain laddered or receive a production spine call.
+
+## v6 M3 — McMeal street-food proxy superseded (10 August 2026)
+
+An audit found that `deriveStreetFromMcMeal` copied the Numbeo `mcmeal_combo` anchor unchanged into
+`street_food_meal_1p` (`k=1.0`) and stamped the relationship grade B with a ±20% interval. That is an
+asserted constant, not a fitted derivation. The retained v5 Numbeo panel shows same-city McMeal/inexpensive
+ratios from **0.40 to 3.46** (median **0.817**, 36 cities); McMeal is more expensive than an inexpensive
+local meal in 13 cities, with the most extreme ratios concentrated in Southeast Asia. The global-brand
+pricing mechanism is not the street-food estimand.
+
+The 2026-08-10 contract amendment therefore adds independent `street_food_meal_1p` observations to the
+development and fresh holdout measure lists. Street food will be selected from official street-stall,
+market-board, bakery-takeaway or local prepared-meal menus under `independent_street_food_panel_first5_median_v1`.
+The new relation will be generated as `street_food_meal_1p / inexpensive_restaurant_meal_1p`, with
+leave-one-city-out residual interval and grade C. McMeal remains in the production call and will be reported
+as a per-city diagnostic only; the v1 CSV comparison and the v5 panel are not a fitting basis. Phase 2's
+previous 269/0 count is superseded by the amended 18-measure panel's 269 found / 25 pending slots.
+No holdout value was read, no gate was scored, and the 121-city CSV remains untouched.
