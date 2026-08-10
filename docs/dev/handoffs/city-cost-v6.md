@@ -2,8 +2,9 @@
 
 **As at:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** M0, **M1 (integrate)**, **M2 (ground truth)** and the M3 development refit, source calibration,
-candidate freeze, single holdout score and post-score private rollback are complete. Remaining M3 segments and M4/M5 are open.
+**Milestone:** M0, **M1 (integrate)** and the original accommodation-scoped **M2 (ground truth)** are
+complete. M3 was reopened by owner decision on 10 August 2026 and now means fit and holdout-validate all
+19 product tiers. Independent all-tier collection is in progress; M4/M5 are out of scope.
 
 > **This is the cold-start document.** If you are picking up this workstream with no context, you are in
 > the right place. Read §1, then do §4. You do not need to read the 95 v5 experiment directories.
@@ -73,13 +74,13 @@ times for sample size. The accuracy its gate protected was already achieved.
 - v6 grades, intervals, missingness and telemetry are persisted in estimate metadata and shown on `/dataset`.
 - 10 v6 tests cover materialization, priors, collection retry/FX, and the flagged generation path. The full
   suite passes with 153 tests; build, TypeScript and coefficient checks pass.
-- The M2 development ledger is in `data/reference/v6/ground-truth/development-ledger.json` and uses
-  `city-cost-v6-ground-truth-ledger-v2`. At the contract-reset checkpoint in `4cf397b`, it correctly
-  reported **25 found / 125 pending / zero accommodation cities**: the attraction tranche remained and every
-  accommodation slot was reopened because the old single-property, pre-correction captures were invalid.
-  The completed development state is **147 found / 3 explicit `class_absent` / zero pending** across all
-  150 cells: 25 attraction rows and 122 v2 Booking.com accommodation rows. Beijing, Nairobi and Melbourne
-  have explicit one-star `class_absent` rows.
+- The original M2 development ledger was accommodation-scoped. At the contract-reset checkpoint in `4cf397b`,
+  it correctly reported **25 found / 125 pending / zero accommodation cities**; that is historical, not the
+  current count. The all-19 M3 contract is `city-cost-v6-ground-truth-ledger-v3`: 25 cities x 17 measures.
+  The first independent tranche is complete: 25/25 `hotel_2star_room_2p` rows were collected from logged-out
+  Booking.com under `booking_top_picks_firstpage_median_v2`, including sample prices and inventory counts.
+  Current coverage is **172 found / 250 pending**. The remaining 250 cells are the ten independent
+  food/drink/activity measures in Experiment 002.
 - The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and was scored
   exactly once after the candidate freeze. `holdout-seal.json` is now `revealed_once` and points to the separate
   `ground-truth/holdout-scores.json`; the holdout ledger itself has no score fields. Do not tune or rescore.
@@ -141,7 +142,9 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 ### Not done
 
 The M3 candidate and single gate 2–6 score are complete, and experiment 001 has now accepted the fresh
-production-anchor replication. The full-basket validation remains open. The v6 path is integrated but opt-in.
+production-anchor replication. The historical accommodation-only score is not the all-19 M3 result. Experiment
+002 is now collecting independent food, drink and activity evidence; no all-19 coefficient, holdout score or
+gate result exists yet. The v6 path is integrated but opt-in.
 **The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
 API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
 
@@ -160,22 +163,26 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
 
 ## 4. The exact next action
 
-M2 and the one-time M3 holdout read are complete. The development ledger contains 147 found rows, three
-explicit one-star `class_absent` rows and zero pending slots. Experiment 001 is complete and accepted; its
+The all-19 M3 collection is active. The development ledger currently has 172 found rows and 250 pending
+slots. Experiment 001 is complete and accepted; its
 deterministic results and audit are under
 `data/reference/v6/experiments/001-expedia-production-anchor/`. The holdout contains 15 × 6 measures, is
 spent, and must not be reread, rescored, or replaced.
 
-Do not start M4 migration yet. The exact next action is to make the M4 decision from a documented product
-validation gap:
+The per-measure holdout extension is sealed-before-collection and must not be read. Continue Experiment 002
+with the first six non-accommodation cities — Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei
+— and collect all ten remaining independent measures for each city:
+`inexpensive_restaurant_meal_1p`, `midrange_restaurant_meal_2p`, `mcmeal_combo`, `cappuccino_1`,
+`domestic_draft_beer_1`, `half_day_group_activity_adult_1`, `full_day_premium_activity_adult_1`,
+`premium_restaurant_meal_2p`, `cocktail_1`, and `wine_glass_1`. Use only official menus, operator pages and
+attraction tariffs; never use Numbeo or BudgetYourTrip as ground truth. Preserve source currency, every
+sample price, URLs, retrieval date, tax basis and explicit missingness. Merge the batch, run the validator,
+record any batch-level artifact candidates, update coverage and commit before moving to the next six-city
+batch. Do not refit coefficients, score gates or inspect any holdout values.
 
-1. Keep v6 flag-on for new cities only and keep the 121-city CSV on v1.
-2. If full end-to-end validation is approved, preregister a separate development tranche with paired Expedia,
-   Numbeo food/drink and BudgetYourTrip/official activity evidence. A 15-city run is about 45 primary calls,
-   up to 375 searches under the production 25-search-per-city ceiling, plus activity-estimand review. Gates 4
-   and 5 cannot be evaluated without it.
-3. Do not refit the offset or ladder from experiment 001, and do not reopen the spent holdout or create a
-   second holdout without explicit agreement.
+The 121-city CSV and M4 migration remain out of scope. The original six-measure holdout is spent; the eleven
+new holdout measures may be collected later only under their per-measure sealed status, after the all-tier
+development fit and candidate freeze are ready.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use

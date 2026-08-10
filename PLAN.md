@@ -200,8 +200,11 @@ M1 implementation notes:
 - [ ] Freeze one all-19 candidate and score gates 2–6 once
 - [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
 
-**Current status:** Phase 1 contract reset is complete. The development ledger is intentionally incomplete at
-147 found rows plus 275 pending new slots; the per-measure holdout seal keeps the six already revealed rows
+**Current status:** Phase 1 contract reset is complete. The first independent collection batch is complete:
+all 25 `hotel_2star_room_2p` rows were collected from logged-out Booking.com under
+`booking_top_picks_firstpage_median_v2` and merged into the ledger. Coverage is now **172 found / 250
+pending** across the 25-city x 17-measure development panel; the remaining 250 cells are the ten
+non-accommodation independent measures. The per-measure holdout seal keeps the six already revealed rows
 spent and has created eleven sealed-before-collection extension measures. The old accommodation-only score
 is not an all-19 M3 result. M4 migration remains out of scope.
 

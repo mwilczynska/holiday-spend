@@ -4,9 +4,9 @@
 cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact next action. This file
 tells you what lives here and what each file is for.
 
-**Status:** v6 adopted 9 August 2026. Milestones M0, M1 and M2 ground-truth collection are complete; the M3
-development refit, source calibration, candidate freeze and one-time holdout score are recorded. Remaining
-production-shaped gate segments and M4 migration are open.
+**Status:** v6 adopted 9 August 2026. M0, M1 and the original accommodation-scoped M2 collection are complete.
+M3 was reopened by owner decision on 10 August 2026: it now requires fitting and holdout-validating all 19
+product tiers. The manifest is v2, the panel is 17 measures per city, and M4 migration is out of scope.
 
 ---
 
@@ -109,15 +109,14 @@ marked and dated rather than removed, so the reasoning that replaced them stays 
 
 ## M2 ground-truth ledger
 
-`ground-truth/development-ledger.json` is the manifest-driven 25-city x 6-measure collection ledger. It
+`ground-truth/development-ledger.json` is the manifest-driven 25-city x 17-measure collection ledger. It
 starts with no fabricated values; each found observation must retain its displayed currency, source URL,
 retrieval timestamp, tax/fee wording, and property name for accommodation. Run
 `node scripts/validate-city-cost-v6-ground-truth.mjs` to check the development ledger. The collected
-`ground-truth/holdout-ledger.json` is sealed behind `ground-truth/holdout-seal.json`; the validator checks
-only the seal metadata and does not read holdout observations. The M3 candidate coefficients and the
-Booking → Expedia source offset are generated in `coefficients-v6.json`, frozen by the candidate hash in the
-seal, and scored exactly once in `ground-truth/holdout-scores.json`. The raw holdout ledger remains free of
-score fields; do not tune or rescore it. Experiment
+`ground-truth/holdout-ledger.json` is the spent six-measure holdout. The eleven new measures are in the
+per-measure `ground-truth/holdout-extension.json` seal lifecycle; the validator checks seal metadata but
+does not read holdout observations. The all-19 M3 candidate coefficients and source offset will be generated
+in `coefficients-v6.json`, frozen once before any new measure is read, and scored once. Experiment
 `experiments/001-expedia-production-anchor/` separately replayed the Expedia production extractor on the
 15 matched development cities and accepted the existing offset (median APE 8.36%, median signed error
 7.08%); it did not refit the offset or read the holdout.
@@ -134,8 +133,9 @@ medians at grade D when an anchor is unavailable. Grades, intervals, missingness
 stored in `city_estimates.metadata_json` and exposed by `/api/estimates` and `/dataset`.
 
 The feature flag is deliberately off by default during M1. The v1 generation path and
-`data/reference/city_costs_app_aud.csv` remain unchanged. M2 ground-truth collection and the M3 candidate
-calibration/one-time score are complete; remaining production-shaped gate segments and M4 migration are next.
+`data/reference/city_costs_app_aud.csv` remain unchanged. Accommodation-only M2/M3 records are retained,
+but the all-19 M3 fit, independent food/drink/activity validation, per-measure holdout read and full score
+remain open.
 
 > **Do not move or rename anything under `data/reference/`** without updating its readers. Scripts and
 > six Vitest test files reference those paths as string literals.

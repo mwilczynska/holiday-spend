@@ -2398,3 +2398,20 @@ preserves reproducibility.
 The full-basket validation remains open: paired Expedia plus food, drink and activity evidence is needed for
 levels and Gates 4–5. Recommendation remains v6 for new cities only while the 121-city CSV stays on v1; do
 not start M4 migration yet.
+
+## v6 M3 â€” independent panel contract reset and two-star batch (10 August 2026)
+
+The owner reopened M3 with a stricter scope: M3 now means fitting and holdout-validating all 19 product
+tiers, not accommodation alone. The six-measure panel was accommodation-scoped, and its food, drink and
+activity gates were only partly evaluable. The frozen contracts were amended to a 17-measure development
+panel supporting all 19 tiers, with per-measure holdout seals and independent ground truth for every measure
+that Numbeo or BudgetYourTrip supplies in production. Official menus, operator pages and attraction tariffs
+are admissible; Numbeo/BudgetYourTrip are not ground truth for their own production-derived values.
+
+Experiment `002-independent-anchor-panel` began with the preregistered hotel-2-star tranche. All 25
+development cities produced found Booking.com observations under `booking_top_picks_firstpage_median_v2`:
+first-page Our top-picks prices, the displayed class inventory count, public promotional rates where present,
+and separate list-price fields. The rows were merged into `development-ledger.json`; coverage is now **172
+found / 250 pending** across 25 cities x 17 measures. The remaining 250 cells are the ten independent
+food, drink and activity measures. No coefficient was refit, no gate was scored, and no holdout value was
+read.
