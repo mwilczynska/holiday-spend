@@ -335,9 +335,16 @@ function tierPriorValue(priors: V6Priors, region: string | null, band: V6CostBan
   );
 }
 
+function hasUsableMaterializedAnchor(
+  input: V6AnchorInput | undefined
+): input is V6AnchorInput & { valueAud: number; status: 'observed' | 'modelled' } {
+  return input?.valueAud !== null && input?.valueAud !== undefined &&
+    (input.status === 'observed' || input.status === 'modelled');
+}
+
 function applyDirectTierPriors(
   tiers: Record<V5TierName, V6Tier>,
-  originalAnchors: V6AnchorInputs,
+  materializedAnchors: Record<V5AnchorName, V6AnchorInput>,
   priors: V6Priors,
   region: string | null,
   band: V6CostBand | null
@@ -351,7 +358,10 @@ function applyDirectTierPriors(
     activities_high_end: ['full_day_premium_activity_adult_1'],
   };
   for (const [tierName, required] of Object.entries(tierInputRequirements) as [V5TierName, V5AnchorName[]][]) {
-    if (required.every((anchor) => originalAnchors[anchor]?.valueAud !== null && originalAnchors[anchor]?.valueAud !== undefined)) continue;
+    // Check the post-derivation anchor set. Derived anchors such as street food
+    // and premium meals are valid basket inputs; only an imputed anchor should
+    // force the independent direct-tier prior fallback.
+    if (required.every((anchor) => hasUsableMaterializedAnchor(materializedAnchors[anchor]))) continue;
     const amountAud = tierPriorValue(priors, region, band, tierName);
     if (amountAud === null) continue;
     tiers[tierName] = {
@@ -442,7 +452,6 @@ function applyAccommodationLadder(inputs: Record<V5AnchorName, V6AnchorInput>, c
 
 function applyGeneratedAnchorLadder(
   inputs: Record<V5AnchorName, V6AnchorInput>,
-  originalAnchors: V6AnchorInputs,
   coefficients: V6CoefficientsFile,
   costBand: V6CostBand | null
 ) {
@@ -465,10 +474,9 @@ function applyGeneratedAnchorLadder(
   ];
 
   for (const relation of relations) {
-    if (originalAnchors[relation.target]?.valueAud !== null && originalAnchors[relation.target]?.valueAud !== undefined) continue;
-    const sourceInput = originalAnchors[relation.source];
+    if (hasUsableMaterializedAnchor(inputs[relation.target])) continue;
     const source = inputs[relation.source];
-    if (sourceInput?.valueAud === null || sourceInput?.valueAud === undefined || !source?.valueAud) continue;
+    if (!hasUsableMaterializedAnchor(source)) continue;
     const coefficient = getCoefficient(relation.coefficientKey, coefficients, costBand);
     inputs[relation.target] = {
       valueAud: rounded(source.valueAud * coefficient.k),
@@ -510,7 +518,7 @@ function buildCompleteInputs(input: {
 
   // v6 measures the 3-star level and deterministically derives all other hotel tiers.
   applyAccommodationLadder(complete, loadV6ReferenceData().coefficients);
-  applyGeneratedAnchorLadder(complete, input.anchors, loadV6ReferenceData().coefficients, initialBand);
+  applyGeneratedAnchorLadder(complete, loadV6ReferenceData().coefficients, initialBand);
   return { complete, missingness, region, costBand: initialBand };
 }
 
@@ -637,7 +645,7 @@ export function materializeCityCostV6(input: {
       ];
     })
   ) as Record<V5TierName, V6Tier>;
-  applyDirectTierPriors(tiersAud, input.anchors, priors, completed.region, completed.costBand);
+  applyDirectTierPriors(tiersAud, completed.complete, priors, completed.region, completed.costBand);
 
   return {
     schemaVersion: 'city-cost-materialization-v6',

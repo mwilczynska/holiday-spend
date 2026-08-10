@@ -44,6 +44,36 @@ function observed(valueAud: number, evidenceGrade: 'A' | 'B' = 'A') {
 }
 
 describe('materializeCityCostV6', () => {
+  it('keeps observed-source food baskets after derived anchors are materialized', () => {
+    const result = materializeCityCostV6({
+      city: 'Food Regression City',
+      country: 'Testland',
+      region: 'europe',
+      anchors: {
+        hotel_3star_room_2p: observed(100, 'B'),
+        inexpensive_restaurant_meal_1p: observed(10),
+        midrange_restaurant_meal_2p: observed(50),
+      },
+      priors: {
+        ...priors,
+        tierValuesGlobal: {
+          food_budget: 999,
+          food_mid_range: 999,
+          food_high_end: 999,
+        },
+      },
+    });
+
+    expect(result.anchors.street_food_meal_1p?.status).toBe('modelled');
+    expect(result.anchors.premium_restaurant_meal_2p?.status).toBe('modelled');
+    expect(result.tiersAud.food_budget.formula).toBe('4 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p');
+    expect(result.tiersAud.food_mid_range.formula).toBe('2 * street_food_meal_1p + 2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p');
+    expect(result.tiersAud.food_high_end.formula).toBe('2 * inexpensive_restaurant_meal_1p + midrange_restaurant_meal_2p + premium_restaurant_meal_2p');
+    expect(result.tiersAud.food_budget.amountAud).not.toBe(999);
+    expect(result.tiersAud.food_mid_range.amountAud).not.toBe(999);
+    expect(result.tiersAud.food_high_end.amountAud).not.toBe(999);
+  });
+
   it('reads the ladder coefficients and produces all 19 values with propagated grades', () => {
     const anchors: V6AnchorInputs = {
       hotel_3star_room_2p: observed(100, 'B'),
