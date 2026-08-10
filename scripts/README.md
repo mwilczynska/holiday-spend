@@ -51,6 +51,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete` | `validate-city-cost-v6-ground-truth.mjs` | Manifest-driven development-ledger audit; completeness means zero errors and zero pending slots, while substance warnings are reported separately and never block |
 | `node scripts/freeze-city-cost-v6-candidate.mjs` | `freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the holdout seal before the first holdout read |
 | `node scripts/score-city-cost-v6-holdout.mjs` | `score-city-cost-v6-holdout.mjs` | One-time gate 2–6 score against the frozen holdout; refuses a second pass |
+| `node scripts/score-expedia-production-anchor-v6.mjs [--check]` | `score-expedia-production-anchor-v6.mjs` | Deterministic scorer for experiment 001; reads only the development Booking ledger and Expedia experiment responses |
 
 ## SUPERSEDED — methodology v5
 

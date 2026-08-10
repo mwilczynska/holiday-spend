@@ -2379,3 +2379,22 @@ validated development refit at **0.2955 ±54%**.
 
 An end-to-end test requires paired Expedia observations for the same cities and frozen window as Booking ground
 truth. That belongs in M4 or a separately pre-registered future holdout; the existing holdout is not reopened.
+
+## v6 M3 — Expedia production-anchor replication accepted (10 August 2026)
+
+Experiment `001-expedia-production-anchor` was preregistered before collection and then run against the 15
+matched development cities using the production Expedia prompt and delegated GPT-5.6 Luna test path. All 15
+cities returned observed values in 15 provider calls and 52 searches; direct page reads and blocks were zero.
+With the frozen USD→AUD snapshot and existing Expedia→Booking multiplier `0.9361`, median APE was **8.36%**
+and median signed error **+7.08%**, so the preregistered acceptance rule passed. No coefficient or offset was
+refit, and the spent holdout was not read. A late duplicate Cape Town response is retained as excluded audit
+evidence; fixed invocation order selected the primary observed `$92` response.
+
+The FX snapshot was checked against the ECB's 7 August 2026 reference rates. The frozen USD→AUD rate
+`1.4298737728` is only **0.66% higher** than the checked `1.4203727785`; sensitivity improves the median APE
+to 7.67% and does not change the verdict. The frozen rate remains primary because it was preregistered and
+preserves reproducibility.
+
+The full-basket validation remains open: paired Expedia plus food, drink and activity evidence is needed for
+levels and Gates 4–5. Recommendation remains v6 for new cities only while the 121-city CSV stays on v1; do
+not start M4 migration yet.

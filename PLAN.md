@@ -159,9 +159,26 @@ drink inputs. Gate 6 has four evaluable accommodation tiers and cannot claim the
 Gate 8 has a development fit but is not holdout-evaluable because the holdout contains no paired Expedia
 anchor rows. Holdout attraction coverage is **6 found / 9 missing**, so activities are not validated.
 
-An end-to-end test requires paired Expedia 3-star observations for the same cities and frozen window as the
-Booking ground truth. That belongs in M4's production-shaped measurement/validation work or a separately
-pre-registered future holdout; the current holdout must never be reopened or rescored.
+The last disclosure gap was the production anchor, not the ladder. Experiment
+`data/reference/v6/experiments/001-expedia-production-anchor/` collected one Expedia extractor response for
+each of the 15 matched development cities using the same frozen window. All 15 were observed in 15 provider
+calls and 52 searches, with zero blocks and zero direct page reads. Applying the frozen FX snapshot and
+`0.9361` Expedia→Booking multiplier gave median APE **8.36%** and median signed error **+7.08%**; the
+preregistered acceptance rule passed. No holdout was read and no refit was performed.
+
+A complete product validation additionally needs paired food and drink ground truth for the same cities, plus
+activity ground truth under the product's actual activity estimands. For a 15-city production-shaped panel,
+that is three spine calls per city (Expedia, Numbeo and BudgetYourTrip): about **45 primary extractor calls**,
+with a worst-case **375 searches** under the collector's 25-search-per-city ceiling, plus the manual/official
+review needed to make the activity rows match the product estimand. This is enough to test the level anchor,
+food/drink composition and activity semantics; the spent holdout cannot do so and must not be reopened.
+
+Recommendation: complete the cheap 15-city paired-anchor experiment now, but do not collect the full basket
+or migrate the 121-city CSV before a separate, explicitly scoped validation tranche is approved. If the anchor
+experiment is accepted, keep v6 flag-on for **new cities only** while the 121-city CSV remains on v1. The full
+food/drink/activity panel is worth collecting before CSV migration because Gates 4 and 5 otherwise remain
+untestable, but it is not worth delaying the low-risk new-city pilot or pretending the current holdout proves
+absolute levels.
 
 M1 implementation notes:
 
@@ -172,18 +189,20 @@ M1 implementation notes:
 - v6 provenance is persisted in `city_estimates.metadata_json` and shown on `/dataset`. The live CSV and seed path
   are unchanged.
 
-### M3 — fit and validate — **development refit and single holdout score complete**
+### M3 — fit and validate — **development refit, single holdout score and anchor check complete**
 
 - [x] Fit source-calibration offsets (15 matched cities; ≥12 minimum crossed)
 - [x] Score gates 2–6 once against the frozen candidate; correct anchor-contaminated reports without rescoring
 - [x] Reveal the locked holdout **once**; report the valid conditional results and correct contamination without rescoring
-- [ ] Score remaining gates/segments that require production-shaped food, drink and full-basket evidence
+- [x] Complete `001-expedia-production-anchor` against the 15 matched development cities; accept the production path
+- [ ] Score remaining gates/segments that require paired production-shaped food, drink and full-basket evidence
 - [ ] Write the methodology and data card
 
-**Exit status:** development fit, source offset, candidate freeze and the single score are complete; end-to-end
-gate validation remains open because the six-measure holdout has no production-anchor observation.
+**Exit status:** development fit, source offset, candidate freeze, single score and fresh production-path
+anchor replication are complete. Gates 4 and 5 remain not evaluable until paired food/drink/activity
+evidence exists; M4 migration remains intentionally unstarted.
 
-### M4 — migrate
+### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 
 - [ ] Regenerate all 121 cities through v6 with grades
 - [ ] A/B diff report against the current CSV, per tier and per city
@@ -214,7 +233,7 @@ Each has a stated default so no work is blocked waiting for an answer. Full cont
 | 1 | Six accommodation tiers, or merge `accom_1_star` into a budget band? | Keep six; ship 1★ at grade C |
 | 2 | How prominently is the grade shown in the UI? | Per-city badge + per-value tooltip, reusing the dashboard info-popover pattern |
 | 3 | Refresh cadence | Re-measure levels quarterly; refit coefficients annually |
-| 4 | Regenerate all 121 cities, or only new ones? | Regenerate at M4 behind the flag, with A/B diff and rollback |
+| 4 | Regenerate all 121 cities, or only new ones? | Keep the 121-city CSV on v1 and run v6 for new cities until paired-anchor and full-basket validation supports migration |
 
 ---
 

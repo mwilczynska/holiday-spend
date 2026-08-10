@@ -7,6 +7,13 @@
   "holdoutCities": 15,
   "holdoutLedger": "data/reference/v6/ground-truth/holdout-ledger.json",
   "contaminationNote": "The six-measure holdout contains Booking ground truth but no paired Expedia 3-star production-anchor observation. The scorer uses each observed Booking three-star value as the prediction anchor, so any result downstream of that value is contaminated: three-star accuracy, cost-band agreement, and the three-star component of category ranking/no-regression are not evaluable. The conditional ladder errors remain valid because they test the other rungs given a correct anchor.",
+  "shippedConfigDiverged": {
+    "sealedCandidateConfigHash": "sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde",
+    "shippedConfigHash": "sha256:8b0c75af42f631be7f926d217a0adc1aa45d734ef3fb852594ab23addef47a63",
+    "sealedPrivateCoefficient": 0.7955,
+    "shippedPrivateCoefficient": 0.5919,
+    "note": "After this one-time score, private was rolled back to 0.5919. The private results below therefore describe the superseded 0.7955 candidate, not the shipped configuration. No rescore was performed."
+  },
   "gate2TierAccuracy": {
     "status": "partial_panel_anchor_contaminated",
     "evaluableTiers": ["dorm", "private", "oneStar", "fourStar"],
@@ -24,7 +31,8 @@
         "medianApePct": 31.89,
         "p90ApePct": 74.36,
         "medianSignedErrorPct": 31.89,
-        "pass": false
+        "pass": false,
+        "note": "This row describes the superseded frozen candidate with private k=0.7955. Private was rolled back to k=0.5919 after the score; see shippedConfigDiverged. No rescore was performed."
       },
       "oneStar": {
         "n": 14,
@@ -100,7 +108,8 @@
         "n": 15,
         "candidateMedianApePct": 31.89,
         "v1MedianApePct": 34.74,
-        "improved": true
+        "improved": true,
+        "note": "This row describes the superseded frozen candidate with private k=0.7955. Private was rolled back to k=0.5919 after the score; see shippedConfigDiverged. No rescore was performed."
       },
       "oneStar": {
         "n": 14,

@@ -135,7 +135,10 @@ The frozen M3 candidate records both directions in `data/reference/v6/coefficien
 target is Booking.com development ground truth and the production anchor is Expedia. The runtime
 Expedia → Booking multiplier is `0.9361` with a `±41%` leave-one-city-out p90 residual interval, fitted on
 15 matched development cities. Gate 8 is not evaluable on the holdout because it contains no paired Expedia
-anchor rows, so this remains a recorded candidate calibration rather than a holdout-validated offset.
+anchor rows, so it remains unvalidated as an independent holdout result. Experiment
+`data/reference/v6/experiments/001-expedia-production-anchor/` did, however, replay the production Expedia
+extractor on those 15 unsealed development cities: median APE 8.36% and median signed error +7.08% under
+the frozen offset. This validates the production path, not an independent holdout.
 
 ---
 

@@ -1,5 +1,7 @@
 # v6 Experiments
 
+Experiments are now active in M3; M1 was implementation, not experimentation. See `PLAN.md`.
+
 **Empty until milestone M2.** M1 is implementation, not experimentation — see `PLAN.md`.
 
 One directory per material candidate, named `NNN-slug`, numbered from `001`. v6 numbering starts fresh;

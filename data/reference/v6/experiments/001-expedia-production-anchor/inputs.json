@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "city-cost-v6-expedia-production-anchor-inputs-v1",
+  "experiment": "001-expedia-production-anchor",
+  "prompt": "docs/prompts/llm_prompt_city_cost_v6_expedia_3star.md",
+  "referenceWindow": {
+    "arrival": "2026-09-17",
+    "departure": "2026-09-18",
+    "occupancy": "2 adults / 1 room"
+  },
+  "source": "expedia_3star",
+  "measure": "hotel_3star_room_2p",
+  "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json",
+  "frozenExpediaToBookingMultiplier": 0.9361,
+  "cities": [
+    {"city": "Budapest", "country": "Hungary"},
+    {"city": "Cape Town", "country": "South Africa"},
+    {"city": "Colombo", "country": "Sri Lanka"},
+    {"city": "Dubai", "country": "United Arab Emirates"},
+    {"city": "Hanoi", "country": "Vietnam"},
+    {"city": "Ho Chi Minh City", "country": "Vietnam"},
+    {"city": "Istanbul", "country": "Turkey"},
+    {"city": "Lima", "country": "Peru"},
+    {"city": "Lisbon", "country": "Portugal"},
+    {"city": "Mexico City", "country": "Mexico"},
+    {"city": "Nairobi", "country": "Kenya"},
+    {"city": "Prague", "country": "Czech Republic"},
+    {"city": "Seoul", "country": "South Korea"},
+    {"city": "Singapore", "country": "Singapore"},
+    {"city": "Tokyo", "country": "Japan"}
+  ]
+}

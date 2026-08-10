@@ -140,36 +140,42 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 ### Not done
 
-The M3 candidate and single gate 2–6 score are complete; remaining M3 segments, M4 and M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
-untouched and still shipping.** A live provider smoke test requires a configured provider key; the flagged
-path is covered by deterministic integration tests.
+The M3 candidate and single gate 2–6 score are complete, and experiment 001 has now accepted the fresh
+production-anchor replication. The full-basket validation remains open. The v6 path is integrated but opt-in.
+**The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
+API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
+
+The last reporting gap is documented in `holdout-scores.json`: the shipped configuration hash
+`sha256:8b0c75af42f631be7f926d217a0adc1aa45d734ef3fb852594ab23addef47a63` differs from the sealed score hash
+`sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde`, because private was rolled back
+to `0.5919` after the one-time score. The private score rows describe the superseded `0.7955` candidate.
+
+Experiment 001 (`data/reference/v6/experiments/001-expedia-production-anchor/`) collected 15/15 observed
+Expedia 3-star responses in 15 calls and 52 searches, with zero blocks and zero direct page reads. Against
+the Booking development anchors, the frozen FX snapshot and Expedia→Booking `0.9361` offset produced median
+APE **8.36%** and median signed error **+7.08%**; the preregistered verdict is **accept**. The checked ECB
+rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate remains primary for reproducibility.
 
 ---
 
 ## 4. The exact next action
 
-M2 is complete and the M3 candidate/holdout score is frozen. The post-score private rollback has been generated
-and recorded, but the score remains tied to the earlier frozen candidate hash. Do not recollect the development
-panel, fit another offset, or rescore/open additional holdout detail from this handoff. The development ledger
-contains 147 found rows, three explicit one-star `class_absent` rows and zero pending slots; the holdout ledger
-contains 15 cities × 6 measures and was scored once under the frozen candidate.
+M2 and the one-time M3 holdout read are complete. The development ledger contains 147 found rows, three
+explicit one-star `class_absent` rows and zero pending slots. Experiment 001 is complete and accepted; its
+deterministic results and audit are under
+`data/reference/v6/experiments/001-expedia-production-anchor/`. The holdout contains 15 × 6 measures, is
+spent, and must not be reread, rescored, or replaced.
 
-The candidate-freeze transition and the one-time holdout read are complete. The exact next action for a cold
-resume is to preserve the scored result and move to the remaining M3/M4 decision work; do not rerun scoring.
+Do not start M4 migration yet. The exact next action is to make the M4 decision from a documented product
+validation gap:
 
-1. Preserve the frozen candidate hash `sha256:bbd581154a657ccc0ffaf0b3a9ca3bac289564c0c9f8c5a53226785c094d2cde`
-   and base commit `f52be517359c51d878e667673918e88487e6199d` in `ground-truth/holdout-seal.json`. The seal is
-   now `revealed_once`; its score file is `ground-truth/holdout-scores.json`.
-2. Keep current private `0.5919 ±35%` as the documented v4 rollback and dorm `0.2955 ±54%`; confirmed
-   4-star/1-star remain unchanged, and the Expedia→Booking runtime offset remains `0.9361 ±41%`. The frozen
-   score candidate was private `0.7955 ±52%`; do not treat its private result as a current-coefficient test.
-3. Preserve the corrected single score: Gate 2 is partly not evaluable, Gate 3 is an upper bound only, Gates
-   4 and 5 are not evaluable, and Gate 6 is partly not evaluable. Conditional ladder APE is dorm 32.98%, private
-   31.89%, 1-star 30.45%, and 4-star 13.26%. Attraction coverage is 6 found / 9 missing. Gate 8 is not
-   holdout-evaluable because no paired Expedia rows were collected.
-4. Run verification only. Never tune, rescore, or inspect additional holdout detail. A real end-to-end test
-   needs paired Expedia observations for the same cities and window; schedule that in M4 or a separately sealed
-   future holdout, never by reopening this one.
+1. Keep v6 flag-on for new cities only and keep the 121-city CSV on v1.
+2. If full end-to-end validation is approved, preregister a separate development tranche with paired Expedia,
+   Numbeo food/drink and BudgetYourTrip/official activity evidence. A 15-city run is about 45 primary calls,
+   up to 375 searches under the production 25-search-per-city ceiling, plus activity-estimand review. Gates 4
+   and 5 cannot be evaluated without it.
+3. Do not refit the offset or ladder from experiment 001, and do not reopen the spent holdout or create a
+   second holdout without explicit agreement.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use

@@ -2,7 +2,8 @@
 
 **Status:** **ACTIVE.** Adopted 9 August 2026. Supersedes `city-cost-methodology-v5.md`.
 **Branch:** `feat/city-cost-methodology-v6`
-**Current milestone:** M0 and M1 complete; **M2 (ground truth) is in progress**.
+**Current milestone:** M0, M1 and M2 complete; M3 development fit, single holdout score and production-anchor
+replication are complete. M4 migration is intentionally not started.
 
 **Cold start?** Read `docs/dev/handoffs/city-cost-v6.md` — it names the exact next action.
 **Running the loop?** Use `LOOP-PROMPT-V6.md`.
@@ -330,7 +331,7 @@ Estimated effort: 2–4 days of collection. This is bounded, unlike the 95-exper
 | **M0** | Adopt v6 — **COMPLETE** | Contracts frozen, ladder fitted, loop replaced, docs bannered, memory repaired | done | — |
 | **M1** | **Ship the path** | v6 derivation + grades + ladder behind a flag; new cities generate through v6; 121 CSV untouched | 2–3 d | **90%** |
 | **M2** | Ground truth | 40-city × 6-anchor panel, 15 locked holdout | 2–4 d | 85% |
-| **M3** | Fit + validate | Offsets fitted, gates 1–10 scored, methodology + data card written | 2–3 d | 75% |
+| **M3** | Fit + validate | Offsets fitted, one holdout score and production-anchor replication; full-basket gates remain open | 2–3 d | 75% |
 | **M4** | Migrate | Regenerate 121 cities with grades, A/B vs v1, rollback tested | 2–3 d | 85% |
 | **M5** | Improve weak grades | 1★, dorm/private split, activity semantics | ongoing | 50% |
 

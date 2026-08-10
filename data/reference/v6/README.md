@@ -117,7 +117,10 @@ retrieval timestamp, tax/fee wording, and property name for accommodation. Run
 only the seal metadata and does not read holdout observations. The M3 candidate coefficients and the
 Booking → Expedia source offset are generated in `coefficients-v6.json`, frozen by the candidate hash in the
 seal, and scored exactly once in `ground-truth/holdout-scores.json`. The raw holdout ledger remains free of
-score fields; do not tune or rescore it.
+score fields; do not tune or rescore it. Experiment
+`experiments/001-expedia-production-anchor/` separately replayed the Expedia production extractor on the
+15 matched development cities and accepted the existing offset (median APE 8.36%, median signed error
+7.08%); it did not refit the offset or read the holdout.
 
 ---
 
