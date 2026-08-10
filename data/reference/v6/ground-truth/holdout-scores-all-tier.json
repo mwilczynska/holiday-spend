@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "city-cost-v6-holdout-all-tier-score-v1",
+  "methodologyVersion": "v6.0",
+  "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
+  "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
+  "scoredAt": "2026-08-10T17:51:33.655Z",
+  "holdoutCities": 15,
+  "freshMeasures": [
+    "inexpensive_restaurant_meal_1p",
+    "midrange_restaurant_meal_2p",
+    "mcmeal_combo",
+    "cappuccino_1",
+    "domestic_draft_beer_1",
+    "half_day_group_activity_adult_1",
+    "full_day_premium_activity_adult_1",
+    "street_food_meal_1p",
+    "premium_restaurant_meal_2p",
+    "cocktail_1",
+    "wine_glass_1",
+    "hotel_2star_room_2p"
+  ],
+  "contaminationNote": "This all-tier read is per-measure. The six old accommodation/attraction measures remain revealed_once and are not opened or rescored. The fresh extension contains independent ground truth, but no paired production-path prediction bundle, so product-level accuracy cannot be claimed from a ground-truth-only row. Ratio-only diagnostics are evaluable only where both sides are independently found and frozen-FX comparable.",
+  "holdoutReadOnce": true,
+  "coverage": {
+    "inexpensive_restaurant_meal_1p": {
+      "found": 2,
+      "missing": 13,
+      "fxComparable": 2
+    },
+    "midrange_restaurant_meal_2p": {
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0
+    },
+    "mcmeal_combo": {
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0
+    },
+    "cappuccino_1": {
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0
+    },
+    "domestic_draft_beer_1": {
+      "found": 2,
+      "missing": 13,
+      "fxComparable": 0
+    },
+    "half_day_group_activity_adult_1": {
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0
+    },
+    "full_day_premium_activity_adult_1": {
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0
+    },
+    "street_food_meal_1p": {
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0
+    },
+    "premium_restaurant_meal_2p": {
+      "found": 1,
+      "missing": 14,
+      "fxComparable": 1
+    },
+    "cocktail_1": {
+      "found": 6,
+      "missing": 9,
+      "fxComparable": 4
+    },
+    "wine_glass_1": {
+      "found": 1,
+      "missing": 14,
+      "fxComparable": 0
+    },
+    "hotel_2star_room_2p": {
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0
+    }
+  },
+  "ratioValidation": {
+    "street_food_meal_1p": {
+      "status": "not_evaluable",
+      "n": 0,
+      "fittedCoefficient": 0.3248,
+      "observedRatioMedian": null,
+      "reason": "No city has both independent target and anchor rows with currencies supported by the frozen FX snapshot."
+    },
+    "premium_restaurant_meal_2p": {
+      "status": "not_evaluable",
+      "n": 0,
+      "fittedCoefficient": 1.9789,
+      "observedRatioMedian": null,
+      "reason": "No city has both independent target and anchor rows with currencies supported by the frozen FX snapshot."
+    },
+    "cocktail_1": {
+      "status": "not_evaluable",
+      "n": 0,
+      "fittedCoefficient": 2.6,
+      "observedRatioMedian": null,
+      "reason": "No city has both independent target and anchor rows with currencies supported by the frozen FX snapshot."
+    },
+    "wine_glass_1": {
+      "status": "not_evaluable",
+      "n": 0,
+      "fittedCoefficient": 2.2239,
+      "observedRatioMedian": null,
+      "reason": "No city has both independent target and anchor rows with currencies supported by the frozen FX snapshot."
+    }
+  },
+  "tiers": {
+    "accom_shared_hostel_dorm": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "accom_hostel_private_room": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "accom_1_star": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "accom_2_star": {
+      "status": "not_evaluable",
+      "measure": "hotel_2star_room_2p",
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    },
+    "accom_3_star": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "accom_4_star": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "food_street_food": {
+      "status": "not_evaluable",
+      "measure": "street_food_meal_1p",
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    },
+    "food_budget": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "food_mid_range": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "food_high_end": {
+      "status": "not_evaluable",
+      "measure": "premium_restaurant_meal_2p",
+      "found": 1,
+      "missing": 14,
+      "fxComparable": 1,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    },
+    "drink_coffee": {
+      "status": "not_evaluable",
+      "measure": "cappuccino_1",
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    },
+    "drinks_none": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "drinks_light": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "drinks_moderate": {
+      "status": "not_evaluable",
+      "measure": "cocktail_1",
+      "found": 6,
+      "missing": 9,
+      "fxComparable": 4,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    },
+    "drinks_heavy": {
+      "status": "not_evaluable",
+      "measure": "wine_glass_1",
+      "found": 1,
+      "missing": 14,
+      "fxComparable": 0,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    },
+    "activities_free": {
+      "status": "not_applicable",
+      "reason": "Definitional zero-cost tier."
+    },
+    "activities_budget": {
+      "status": "not_evaluable",
+      "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+    },
+    "activities_mid_range": {
+      "status": "not_evaluable",
+      "measure": "half_day_group_activity_adult_1",
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    },
+    "activities_high_end": {
+      "status": "not_evaluable",
+      "measure": "full_day_premium_activity_adult_1",
+      "found": 0,
+      "missing": 15,
+      "fxComparable": 0,
+      "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+    }
+  },
+  "gate2TierAccuracy": {
+    "status": "not_evaluable",
+    "reason": "No production-path prediction bundle was collected for the fresh measures; old revealed_once measures are not reread.",
+    "tiers": {
+      "accom_shared_hostel_dorm": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "accom_hostel_private_room": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "accom_1_star": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "accom_2_star": {
+        "status": "not_evaluable",
+        "measure": "hotel_2star_room_2p",
+        "found": 0,
+        "missing": 15,
+        "fxComparable": 0,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      },
+      "accom_3_star": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "accom_4_star": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "food_street_food": {
+        "status": "not_evaluable",
+        "measure": "street_food_meal_1p",
+        "found": 0,
+        "missing": 15,
+        "fxComparable": 0,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      },
+      "food_budget": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "food_mid_range": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "food_high_end": {
+        "status": "not_evaluable",
+        "measure": "premium_restaurant_meal_2p",
+        "found": 1,
+        "missing": 14,
+        "fxComparable": 1,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      },
+      "drink_coffee": {
+        "status": "not_evaluable",
+        "measure": "cappuccino_1",
+        "found": 0,
+        "missing": 15,
+        "fxComparable": 0,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      },
+      "drinks_none": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "drinks_light": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "drinks_moderate": {
+        "status": "not_evaluable",
+        "measure": "cocktail_1",
+        "found": 6,
+        "missing": 9,
+        "fxComparable": 4,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      },
+      "drinks_heavy": {
+        "status": "not_evaluable",
+        "measure": "wine_glass_1",
+        "found": 1,
+        "missing": 14,
+        "fxComparable": 0,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      },
+      "activities_free": {
+        "status": "not_applicable",
+        "reason": "Definitional zero-cost tier."
+      },
+      "activities_budget": {
+        "status": "not_evaluable",
+        "reason": "This tier depends on an old revealed_once measure or a composed basket. The scorer refuses to reread spent measures, and no production-path prediction bundle is present for the fresh cities."
+      },
+      "activities_mid_range": {
+        "status": "not_evaluable",
+        "measure": "half_day_group_activity_adult_1",
+        "found": 0,
+        "missing": 15,
+        "fxComparable": 0,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      },
+      "activities_high_end": {
+        "status": "not_evaluable",
+        "measure": "full_day_premium_activity_adult_1",
+        "found": 0,
+        "missing": 15,
+        "fxComparable": 0,
+        "reason": "Fresh ground truth exists only as an independent observation. No paired production-path prediction was collected for this holdout city, so comparing the row to itself or to another ground-truth row would be circular."
+      }
+    }
+  },
+  "gate3CityRanking": {
+    "status": "not_evaluable",
+    "reason": "A full city basket requires the old revealed_once accommodation and attraction values plus production-path predictions for the fresh measures; per-measure seal integrity forbids reopening the old values."
+  },
+  "gate4CostBandAgreement": {
+    "status": "not_evaluable",
+    "reason": "The production anchor and old accommodation rows are sealed as revealed_once; the fresh extension has no production-path prediction bundle."
+  },
+  "gate5TripLevelRealism": {
+    "status": "not_evaluable",
+    "reason": "A 10-city product basket cannot be composed without production-path predictions and the spent old measures."
+  },
+  "gate6NoRegressionVsV1": {
+    "status": "not_evaluable",
+    "reason": "No valid candidate-versus-ground-truth comparison exists without the production-path prediction bundle; the old six-measure comparison remains in the historical score file."
+  }
+}

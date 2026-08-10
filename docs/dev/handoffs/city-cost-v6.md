@@ -89,9 +89,12 @@ times for sample size. The accuracy its gate protected was already achieved.
 - Batch 006 added the independent `street_food_meal_1p` slot. It has 11 found rows, 14 explicit `not_found`
   rows and zero `class_absent` findings. The amended ledger is now **280 found / 0 pending** across 25 cities
   x 18 measures.
-- The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and was scored
-  exactly once after the candidate freeze. `holdout-seal.json` is now `revealed_once` and points to the separate
-  `ground-truth/holdout-scores.json`; the holdout ledger itself has no score fields. Do not tune or rescore.
+- The original 15-city six-measure holdout is in `data/reference/v6/ground-truth/holdout-ledger.json` and is
+  spent. Batch 007 collected the fresh 12-measure extension at 12 found / 168 explicit `not_found` rows,
+  then sealed it. One candidate was frozen before the extension was read. The extension was read exactly once
+  by `score-city-cost-v6-holdout-all-tier.mjs`; it did not reopen the six old measures. Its gates 2-6 are
+  explicitly `not_evaluable` because no paired production-path prediction bundle exists and the old values
+  cannot be used to build a full basket. Do not tune or rescore.
 
 ### Current collection findings
 
@@ -196,12 +199,12 @@ candidate, reopen any `revealed_once` measure, or begin M4. The exact next actio
 derivation/coverage table and the explicit reasons the gates remain `not_evaluable`.
 The old six-measure holdout remains spent and must not be reread, rescored or replaced. The two historical
 lines immediately below still describe the pre-collection state and are superseded by this paragraph.
-any of them, and score gates 2–6 once. The original six-measure holdout remains spent and must not be reread,
-rescored or replaced.
+The old six-measure holdout remains spent and must not be reread, rescored or replaced. A separate
+production-prediction bundle or a fresh complete end-to-end holdout would be required before any claim of
+full gate evaluation.
 
-The 121-city CSV and M4 migration remain out of scope. The original six-measure holdout is spent; the twelve
-new holdout measures may now be collected only under their per-measure sealed status. The candidate freeze
-must occur before reading any new holdout value.
+The 121-city CSV and M4 migration remain out of scope. The twelve fresh measures are now revealed_once and
+must not be collected, read, rescored, or replaced in this holdout.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use

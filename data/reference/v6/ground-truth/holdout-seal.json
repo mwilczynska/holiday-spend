@@ -2,10 +2,10 @@
   "schemaVersion": "city-cost-v6-ground-truth-holdout-seal-v3",
   "methodologyVersion": "v6.0",
   "manifestPath": "data/reference/v6/validation-manifest-v6.json",
-  "status": "per_measure",
+  "status": "revealed_once",
   "cityCount": 15,
   "requiredMeasureCount": 18,
-  "lockRule": "Candidate frozen before first holdout read. Score gates 2-6 once; do not tune or rescore after reveal.",
+  "lockRule": "All fresh measures were revealed once after the single candidate freeze. Gates 2-6 are not_evaluable without paired production-path predictions; do not tune or rescore.",
   "measures": {
     "hostel_dorm_bed_1p": {
       "status": "revealed_once",
@@ -62,112 +62,112 @@
       "revealedAt": "2026-08-10T02:55:41.541Z"
     },
     "inexpensive_restaurant_meal_1p": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "midrange_restaurant_meal_2p": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "mcmeal_combo": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "cappuccino_1": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "domestic_draft_beer_1": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "half_day_group_activity_adult_1": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "full_day_premium_activity_adult_1": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "street_food_meal_1p": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "premium_restaurant_meal_2p": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "cocktail_1": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "wine_glass_1": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     },
     "hotel_2star_room_2p": {
-      "status": "sealed_after_collection",
+      "status": "revealed_once",
       "resultsFile": "data/reference/v6/ground-truth/holdout-extension.json",
-      "scoresFile": null,
+      "scoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
       "candidateConfigHash": "sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537",
       "candidateCommit": "4ca51c4f4c24a0f4668cab7c7eef170acce2b2c6",
       "frozenAt": "2026-08-10T17:51:24.632Z",
-      "revealedAt": null
+      "revealedAt": "2026-08-10T17:51:33.655Z"
     }
   },
   "migrationDecision": "2026-08-10 owner decision: treat the six already scored measures as spent while opening fresh per-measure slots for the eleven never-read measures; no old holdout observation was inspected by this migration.",
@@ -177,5 +177,7 @@
     "data/reference/v6/coefficients-v6.json",
     "src/lib/city-cost-v6-collection.ts"
   ],
-  "frozenAt": "2026-08-10T17:51:24.632Z"
+  "frozenAt": "2026-08-10T17:51:24.632Z",
+  "allTierScoresFile": "data/reference/v6/ground-truth/holdout-scores-all-tier.json",
+  "revealedAt": "2026-08-10T17:51:33.655Z"
 }

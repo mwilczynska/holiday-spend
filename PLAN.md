@@ -197,7 +197,7 @@ M1 implementation notes:
 - [x] Resolve the 12 new development measures across all 25 cities (hotel-2 plus street food and ten other independent measures; explicit missingness is valid)
 - [x] Generate and cross-check every non-accommodation derivation from the development panel, including fitted street-food/inexpensive
 - [x] Collect the 12 fresh holdout measures under per-measure seals without reading them
-- [ ] Freeze one all-19 candidate and score gates 2–6 once
+- [x] Freeze one all-19 candidate and perform the single per-measure read; no old revealed measure was reopened
 - [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
 
 **Current status:** Phase 1's all-tier contract was amended again on 10 August 2026 after an audit found
@@ -206,7 +206,8 @@ complete at **280 found / 0 pending** across 25 cities: street food contributed 
 `not_found` rows and zero `class_absent` findings. The generated street-food fit is R0 `k=0.3248` on six
 FX-compatible city pairs, with LOO median APE 100.73%, p90 335.59%; its cost-banded R1 candidate tied because
 no band had three eligible pairs, so the grade-C interval is the residual-derived ±336%. McMeal remains a
-diagnostic only. No holdout value was read, no gate was scored, and M4 migration remains out of scope.
+diagnostic only. That development fitting record predates the fresh holdout read; no coefficient was refit
+from holdout data and M4 migration remains out of scope.
 The old accommodation-only score is not an all-19 M3 result. Batch 007 resolved and sealed the fresh
 15-city extension: 12 found independent menu rows and 168 explicit `not_found` rows across 180 slots.
 One candidate was frozen before the fresh extension was read. The all-tier scorer then read the 12 fresh

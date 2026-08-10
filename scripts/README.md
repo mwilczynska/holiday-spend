@@ -52,6 +52,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/freeze-city-cost-v6-candidate.mjs` | `freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the holdout seal before the first holdout read |
 | `node scripts/score-city-cost-v6-holdout.mjs` | `score-city-cost-v6-holdout.mjs` | One-time gate 2–6 score against the frozen holdout; refuses a second pass |
 | `node scripts/score-city-cost-v6-holdout-all-tier.mjs` | `score-city-cost-v6-holdout-all-tier.mjs` | One-time per-measure all-tier read; refuses old revealed measures and records explicit not_evaluable reasons when production predictions are absent |
+| `node scripts/report-city-cost-v6-m3.mjs` | `report-city-cost-v6-m3.mjs` | Generates the 19-tier M3 derivation, development-fit and holdout-status table without reading a holdout ledger |
 | `node scripts/collect-v6-holdout-extension-batch.mjs` | `collect-v6-holdout-extension-batch.mjs` | Writes a bounded fresh 15-city x 12-measure collection batch without printing prices |
 | `node scripts/merge-v6-holdout-extension-batch.mjs` | `merge-v6-holdout-extension-batch.mjs` | Merges a complete fresh batch into the sealed extension and reports status counts only |
 | `node scripts/seal-v6-holdout-extension.mjs` | `seal-v6-holdout-extension.mjs` | Transitions all fresh extension measures to sealed_after_collection without exposing prices |
