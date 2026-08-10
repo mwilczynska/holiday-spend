@@ -18,7 +18,8 @@ paid attraction ticket:
 | File | Purpose |
 | --- | --- |
 | `development-ledger.json` | Append-only development-city observations and explicit collection metadata |
-| `holdout-seal.json` | Lock marker only; contains no holdout prices or scores |
+| `holdout-ledger.json` | Collected 15-city holdout observations; sealed and not inspected by the validator |
+| `holdout-seal.json` | Lock marker naming the sealed holdout ledger; no scores are stored |
 | `../validation-manifest-v6.json` | Source of truth for city membership and gates |
 
 Run the deterministic audit with:
@@ -28,8 +29,8 @@ node scripts/validate-city-cost-v6-ground-truth.mjs
 ```
 
 The validator reads only the 25 development cities. It refuses holdout observations, duplicate city /
-measure rows, wrong reference dates, missing source metadata, and unsupported statuses. It does not score,
-fit, or inspect holdout results.
+measure rows, wrong reference dates, missing source metadata, and unsupported statuses. It checks only the
+holdout seal metadata and never reads, scores, fits, compares, or inspects `holdout-ledger.json`.
 
 Ground truth is not copied from the shipping CSV or v5 observations. A found row must retain the displayed
 amount and currency, source URL, retrieval date, tax/fee wording, and property name for property-level
@@ -44,9 +45,10 @@ public promotional labels; `classInventoryCount` preserves Booking's displayed i
 `selectionRule` must be `booking_top_picks_firstpage_median_v2`. The prior `booking_price_asc_median_v1`
 rows remain identifiable as superseded migration evidence until their cities are re-collected.
 
-The ledger `sourcePolicy` records Booking.com as the accommodation ground-truth source and Expedia as the
-production anchor. The calibration direction is **Booking -> Expedia**, and at least 12 matched cities are
-required before fitting that source offset. Its level-bias caveat records the Copenhagen stage-1 finding:
+The development and sealed holdout `sourcePolicy` records Booking.com as the accommodation ground-truth
+source and Expedia as the production anchor. The calibration direction is **Booking -> Expedia**, and at
+least 12 matched cities are required before fitting that source offset. Its level-bias caveat records the
+Copenhagen stage-1 finding:
 the top-picks first-page median undershot the full-inventory median by roughly 20-27% at 25 listings. Do not
 use this panel to set or score absolute city levels; its intended use is within-city ratios and source
 calibration.

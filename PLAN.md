@@ -89,15 +89,15 @@ Wire v6 into the app behind `CITY_COST_METHODOLOGY_V6=true`. Unset keeps the v1 
 121-city CSV remains untouched; the verification baseline passes. A live provider smoke test still requires
 a configured provider key.
 
-### M2 — ground truth — **in progress (9 August 2026)**
+### M2 — ground truth — **complete (9 August 2026)**
 
 Collect the 40-city × 6-anchor panel defined in `data/reference/v6/validation-manifest-v6.json`.
 
 - [x] Create a manifest-driven ledger for 25 development cities × 6 measures
-- [x] Seal the holdout boundary without storing holdout prices or scores
+- [x] Seal the holdout boundary before collection, then collect into the sealed holdout ledger
 - [x] 25 development cities — 150 dated source cells resolved (147 found, 3 explicit `class_absent`)
 - [x] Collect the paid-attraction anchor from an official/current city or attraction tariff page for all 25 development cities
-- [ ] 15 locked holdout cities — **collect, then seal; do not score against them yet**
+- [x] 15 locked holdout cities — six measures per city collected and sealed; **do not score, compare, or tune against them yet**
 - [x] Browser automation or manual collection is explicitly allowed here
 
 **Exit:** panel complete with source URLs, retrieval dates, currencies and tax status recorded. The frozen
@@ -110,7 +110,9 @@ only when a class-order violation exceeds 25%, a ratio correlates with inventory
 the 3-star level is below A$10 or above A$400. Collection stops only when candidates exceed 30% of the batch.
 The accommodation basis includes public promotional rates available to any logged-out visitor, excludes
 membership-gated rates, and never records a strikethrough/original price as the amount. The Booking.com →
-Expedia offset threshold is crossed, but the offset remains deliberately unfitted until M3.
+Expedia offset threshold is crossed, but the offset remains deliberately unfitted until M3. The 15-city
+holdout is stored in `data/reference/v6/ground-truth/holdout-ledger.json` behind the sealed lock marker;
+the holdout has not been inspected, scored, compared, or used for tuning.
 
 ### M2 ladder validation result
 

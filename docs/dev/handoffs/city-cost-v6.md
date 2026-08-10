@@ -2,7 +2,7 @@
 
 **As at:** 9 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** M0 and **M1 (integrate) complete**. **M2 (ground truth) is in progress.**
+**Milestone:** M0, **M1 (integrate)** and **M2 (ground truth) complete**. **M3 is not started.**
 
 > **This is the cold-start document.** If you are picking up this workstream with no context, you are in
 > the right place. Read §1, then do §4. You do not need to read the 95 v5 experiment directories.
@@ -72,14 +72,17 @@ times for sample size. The accuracy its gate protected was already achieved.
 - v6 grades, intervals, missingness and telemetry are persisted in estimate metadata and shown on `/dataset`.
 - 10 v6 tests cover materialization, priors, collection retry/FX, and the flagged generation path. The full
   suite passes with 153 tests; build, TypeScript and coefficient checks pass.
-- The M2 ledger is in `data/reference/v6/ground-truth/development-ledger.json` and now uses
+- The M2 development ledger is in `data/reference/v6/ground-truth/development-ledger.json` and uses
   `city-cost-v6-ground-truth-ledger-v2`. At the contract-reset checkpoint in `4cf397b`, it correctly
   reported **25 found / 125 pending / zero accommodation cities**: the attraction tranche remained and every
   accommodation slot was reopened because the old single-property, pre-correction captures were invalid.
-  The current post-recollection state is **118 found / 30 pending**: all 25 attraction rows and 93 v2
-  Booking.com accommodation rows. Nineteen development-city tranches were attempted; 17 have all five
-  accommodation classes found, while Beijing and Nairobi have explicit one-star `class_absent` rows.
-  `holdout-seal.json` remains a lock marker only; no holdout prices or scores were used.
+  The completed development state is **147 found / 3 explicit `class_absent` / zero pending** across all
+  150 cells: 25 attraction rows and 122 v2 Booking.com accommodation rows. Beijing, Nairobi and Melbourne
+  have explicit one-star `class_absent` rows.
+- The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and sealed by
+  `holdout-seal.json` with `status: sealed_after_collection`. It contains 90 six-measure slots with explicit
+  missingness where needed. The holdout has not been inspected, scored, compared, or used for tuning; the
+  validator checks only the seal metadata and never reads the holdout ledger.
 
 ### Current collection findings
 
@@ -95,15 +98,22 @@ Hanoi medians are 4*/3*/1*/private/dorm = **62/42/27/32/10 AUD**; Singapore =
 so it remains a candidate M5 ladder correction. Dorm/3-star remains above the fitted 0.163 band across
 multiple cities, strengthening the stale 2023 Price of Travel coefficient finding; do not refit during M2.
 
-The revised stop condition has now fired: most completed cities have 4-star above 3-star, but Delhi is
-**0.941** and Prague **0.931**. This direction-flipping ordering violation is an artifact signature. Stop
-before the remaining six development cities and do not collect the holdout.
+The earlier stop on Delhi **0.941** and Prague **0.931** is superseded. Across the 19-city v2 panel, the
+4-star/3-star ratios form a continuous distribution with median 1.404; those two near-parity values are
+dispersion, not an artifact signature. The owned decision procedure is: record and continue by default;
+mark an artifact candidate only for a class-order violation exceeding 25%, a within-city ratio that
+correlates with `classInventoryCount` across the batch, or an implausible 3-star level below A$10 or above
+A$400; stop and report only when candidates exceed 30% of the cities in a batch. Individual outliers do not
+stop collection.
 
-The current ledger is **118 found / 30 pending**: 25 attraction rows and 93 v2 accommodation rows. The
-remaining six development cities are Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne.
-The Booking → Expedia offset threshold is crossed: 17 development cities have complete five-class rows,
-but the offset remains unfitted until M3. The first-page bias caveat is documented in the ground-truth README
-and ledger `sourcePolicy`: this panel supports ratios and source calibration, not absolute city levels.
+The six remaining development cities — Lisbon, Barcelona, Mexico City, Lima, San Francisco and Melbourne —
+were collected under `booking_top_picks_firstpage_median_v2`. The full development panel is now resolved.
+The 19-city ladder validation and six-city refresh are recorded in `PLAN.md` and `LOG.md`: 4-star and 1-star
+are confirmed inside their intervals, private room is at the interval edge and remains an M5 correction
+candidate, and dorm is refuted against the stale 2023 coefficient. The Booking → Expedia offset threshold is
+crossed, but the offset remains unfitted until M3. The first-page bias caveat is documented in the ground-truth
+README and both ledger `sourcePolicy` objects: this panel supports ratios and source calibration, not absolute
+city levels.
 
 ### The coefficients that exist right now
 
@@ -123,7 +133,7 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 ### Not done
 
-The M2 source-fact collection and M3–M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
+M3–M5 remain. The v6 path is integrated but opt-in. **The 121-city CSV and the default v1 generation path remain
 untouched and still shipping.** A live provider smoke test requires a configured provider key; the flagged
 path is covered by deterministic integration tests.
 
@@ -131,46 +141,26 @@ path is covered by deterministic integration tests.
 
 ## 4. The exact next action
 
-**Stop the M2 collection tranche on the direction-flipping artifact signature.** Do not collect Lisbon,
-Barcelona, Mexico City, Lima, San Francisco, Melbourne or any holdout city. Do not tune coefficients, fit
-the Booking → Expedia offset, score gates or open the locked holdout. The ledger has **118 found / 30
-pending** cells: 25 attractions and 93 accommodation rows, with 17 complete accommodation cities and two
-explicit one-star class absences. The v2 rows use Booking's default top-picks order and record every
-first-page price plus `classInventoryCount`. The first-page level-bias caveat is documented; do not use these
-medians as absolute city-level ground truth.
+M2 is complete. Do not recollect the development panel, refit `coefficients-v6.json`, fit the Booking →
+Expedia offset, score gates, or open the sealed holdout from this handoff. The development ledger contains
+147 found rows, three explicit one-star `class_absent` rows and zero pending slots; the holdout ledger contains
+15 cities × 6 measures and is sealed without inspection or comparison.
+
+The exact next action for a cold resume is verification only:
+
+1. Run `node scripts/validate-city-cost-v6-ground-truth.mjs` and
+   `node scripts/test-city-cost-v6-ground-truth-warnings.mjs` against the development evidence.
+2. Run the repository verification baseline and confirm the handoff, README, PLAN and LOG agree that M2 is
+   complete, the 12-city Booking → Expedia threshold is crossed, and the offset remains unfitted.
+3. Stop at the M2/M3 boundary. A separately authorized M3 must freeze the candidate, fit the source offset
+   using at least 12 development cities, score the gates, and reveal the sealed holdout once; until then,
+   never inspect, compare, score, or tune against `holdout-ledger.json`.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
-accommodation cities**; do not mistake that historical checkpoint for the current ledger state.
-Preserve the same evidence standard for the next city: exact dates, class or hostel identity, occupancy,
-display currency, price basis and tax treatment. Record as `amount` the lowest price a logged-out visitor
-with no membership is quoted for a room meeting the class and occupancy spec for the frozen window. Public
-promotional deals available to any visitor (Getaway Deal, Early Booker, Bonus savings and seasonal sales) are
-transactable and included; membership-gated rates (Genius and VIP reward tiers) are excluded. Never record a
-strikethrough or "original" price as `amount`.
-
-The property selection rule for any future approved collection is
-`booking_top_picks_firstpage_median_v2`: on the city-scoped Booking.com results page, use 2 adults / 1 room
-(1 adult / 1 room for a dorm), filter to the star class or Hostel, leave Booking's default Our top picks
-order selected, record every eligible first-page price and the displayed inventory count, and use the median.
-For dorms Booking may display the equivalent label Top picks for solo travellers.
-
-Work order for the next agent:
-
-1. Use `data/reference/v6/ground-truth/development-ledger.json` as the only development write target and
-   keep the 15 holdout city results sealed in `ground-truth/holdout-seal.json`.
-2. Treat the Delhi/Prague 4-star-versus-3-star direction flip as the current artifact stop. Preserve all
-   collected rows for audit; do not resume the six remaining development cities unless the rule is amended
-   and re-piloted under the loop's stopping rules.
-3. Run `node scripts/validate-city-cost-v6-ground-truth.mjs`; expected substance warnings include the
-   direction-flipping class inversions and the dorm ratio-band warnings. `scripts/test-city-cost-v6-ground-truth-warnings.mjs`
-   must continue to pass against the deleted v1 fixtures.
-4. The 12-city minimum for the Booking → Expedia source offset has been crossed at 17 complete cities, but
-   the offset remains unfitted. Do not use the locked holdout to tune a prompt, coefficient, gate or offset.
-
-**M2 exit criterion:** all 25 development cities and 15 locked holdout cities have the six required facts,
-metadata and sealed storage; no holdout score has been revealed. The current ledger is not at exit: it has
-118 found observations and 30 pending slots. Collection stopped before exit because the revised artifact
-signature fired; no holdout result has been collected or inspected.
+accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use
+Booking's default top-picks order, record every eligible first-page price and `classInventoryCount`, and use
+the documented public-promotion price basis. The first-page level-bias caveat means these medians are valid
+for ratios and source calibration, not absolute city-level ground truth.
 
 ---
 

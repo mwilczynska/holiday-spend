@@ -2280,3 +2280,33 @@ After the six-city extension, the full development refresh is 1.395 (4-star, n=2
 single relationship against product ground truth; v6 has now validated all four across the 19-city panel
 and rechecked them after the full development tranche. No coefficient was refit, no gate was scored, and
 the Booking → Expedia offset remains unfitted for M3.
+
+## v6 M2 — holdout collected and sealed (9 August 2026)
+
+The six remaining development cities were followed by the 15 locked holdout cities from the frozen manifest.
+Each holdout city has all six required measure slots in `data/reference/v6/ground-truth/holdout-ledger.json`:
+Booking.com top-picks accommodation observations under the v2 contract and an official museum or historic-site
+tariff where one could be verified, otherwise explicit `not_found` missingness. The holdout ledger is sealed
+behind `holdout-seal.json` with `status: sealed_after_collection` and no score file.
+
+This entry records collection and sealing only. Holdout prices, ratios and city comparisons were not inspected,
+scored, fitted, or used to tune a prompt, coefficient, gate or source offset. The Booking → Expedia offset
+threshold is crossed in the development panel, but fitting it and scoring the gates remain M3 work.
+M2 exit is therefore complete: 150 development cells resolved, 90 holdout slots sealed, and no holdout result
+has been revealed.
+
+### v6 M2 artifact-candidate audit (9 August 2026)
+
+Applying the owned batch rule to the completed 25-city development panel produced six artifact candidates,
+24% of cities, below the 30% stop threshold. Every candidate is retained as a warning, but collection is not
+reopened. The class-order candidates are private room above 1-star by more than 25%: Ho Chi Minh City
+**A$38/A$27 = 1.41**, Singapore **A$99/A$73 = 1.36**, Seoul **A$105/A$80 = 1.31**, Delhi
+**A$33/A$11.50 = 2.87**, Mexico City **A$92/A$50 = 1.84**. San Francisco is an implausible absolute-level
+candidate because its 3-star median is **A$537**, above the A$400 ceiling. No development 3-star median is
+below A$10.
+
+A simple batch diagnostic found no inventory-depth signature: Pearson correlations of each within-city ratio
+with log class inventory count were 4-star **0.035** (n=25), 1-star **−0.085** (n=22), private **0.124**
+(n=25) and dorm **0.098** (n=25). These are recorded as the audit numbers, not as a gate score. The six
+candidates are dispersion / source-panel warnings under the 24% batch rule; the private and dorm ladder
+findings remain the substantive M5 conclusions already recorded above.
