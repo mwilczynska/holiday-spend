@@ -22,7 +22,9 @@
     "dormPanels": [
       "072-priceoftravel-hostel-index-dorm"
     ],
-    "v4CrossValidation": "data/reference/dry-run/phase-0h-accommodation-class-ratios.json"
+    "v4CrossValidation": "data/reference/dry-run/phase-0h-accommodation-class-ratios.json",
+    "developmentGroundTruth": "data/reference/v6/ground-truth/development-ledger.json",
+    "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   },
   "productionAnchor": {
     "measure": "hotel_3star_room_2p",
@@ -40,7 +42,12 @@
       "4_star": 35
     },
     "dormRows": 12,
-    "citiesWithThreeStarAnchor": 43
+    "citiesWithThreeStarAnchor": 43,
+    "developmentGroundTruthRows": {
+      "privateRoom": 25,
+      "dormBed": 25
+    },
+    "sourceOffsetMatchedCities": 15
   },
   "relations": [
     {
@@ -60,6 +67,7 @@
         "maxApePct": 48.13,
         "medianSignedLogError": 0
       },
+      "intervalPct": null,
       "cities": [
         "Amsterdam",
         "Athens",
@@ -99,6 +107,7 @@
         "maxApePct": 28.34,
         "medianSignedLogError": 0
       },
+      "intervalPct": null,
       "cities": [
         "Addis Ababa",
         "Amsterdam",
@@ -130,32 +139,98 @@
       "notes": "Fitted. Same-currency Expedia pairs, R0 global median ratio."
     },
     {
-      "key": "hostel_dorm_bed_1p <- accom_3_star",
-      "n": 7,
-      "coefficient": 0.1626,
+      "key": "hostel_private_room_2p <- accom_3_star",
+      "n": 25,
+      "coefficient": 0.7955,
       "dispersion": {
-        "min": 0.1235,
-        "q25": 0.131,
-        "q75": 0.1863,
-        "max": 0.2507
+        "min": 0.2551,
+        "q25": 0.665,
+        "q75": 0.8571,
+        "max": 1.2432
       },
       "leaveOneCityOut": {
-        "n": 7,
-        "medianApePct": 27.96,
-        "p90ApePct": 38.75,
-        "maxApePct": 41.17,
-        "medianSignedLogError": -0.0521
+        "n": 25,
+        "medianApePct": 17,
+        "p90ApePct": 51.25,
+        "maxApePct": 212.69,
+        "medianSignedLogError": -0.0073
       },
+      "intervalPct": 52,
       "cities": [
+        "Barcelona",
+        "Beijing",
+        "Budapest",
+        "Cairo",
         "Cape Town",
+        "Colombo",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Hanoi",
+        "Ho Chi Minh City",
+        "Istanbul",
+        "Lima",
         "Lisbon",
-        "London",
+        "Melbourne",
         "Mexico City",
+        "Mumbai",
+        "Nairobi",
+        "Phuket",
         "Prague",
-        "Rome",
-        "Sydney"
+        "San Francisco",
+        "Seoul",
+        "Singapore",
+        "Taipei",
+        "Tokyo"
       ],
-      "notes": "Fitted cross-source: Price of Travel Hostel Index dorm bed vs Expedia 3-star. CAVEAT: the index reference window is mid-April 2023 while the Expedia anchor is current, so this ratio conflates the class relationship with three years of real price drift. Ships at grade C with a wide interval. Improving it is milestone M5."
+      "notes": "Fitted on Booking.com v2 development medians paired within city. The first-page top-picks estimator is a level-biased but ratio-valid panel; the source offset separately calibrates the Expedia anchor."
+    },
+    {
+      "key": "hostel_dorm_bed_1p <- accom_3_star",
+      "n": 25,
+      "coefficient": 0.2955,
+      "dispersion": {
+        "min": 0.1657,
+        "q25": 0.2431,
+        "q75": 0.3684,
+        "max": 0.6364
+      },
+      "leaveOneCityOut": {
+        "n": 25,
+        "medianApePct": 20.92,
+        "p90ApePct": 53.16,
+        "maxApePct": 79.36,
+        "medianSignedLogError": 0.0003
+      },
+      "intervalPct": 54,
+      "cities": [
+        "Barcelona",
+        "Beijing",
+        "Budapest",
+        "Cairo",
+        "Cape Town",
+        "Colombo",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Hanoi",
+        "Ho Chi Minh City",
+        "Istanbul",
+        "Lima",
+        "Lisbon",
+        "Melbourne",
+        "Mexico City",
+        "Mumbai",
+        "Nairobi",
+        "Phuket",
+        "Prague",
+        "San Francisco",
+        "Seoul",
+        "Singapore",
+        "Taipei",
+        "Tokyo"
+      ],
+      "notes": "Fitted on Booking.com v2 development medians paired within city. This replaces the stale 2023 Price of Travel coefficient; the product tier still applies the fixed x2 two-bed definition."
     }
   ],
   "crossValidation": [
@@ -180,6 +255,55 @@
       "agreementPct": 3.08
     }
   ],
+  "sourceCalibrationOffsets": {
+    "hotel_3star_room_2p": {
+      "direction": "Booking -> Expedia",
+      "groundTruthSource": "Booking.com v2 development panel, displayed AUD",
+      "productionSource": "Expedia 3-star class-trend anchor",
+      "bookingToExpediaMultiplier": 1.0683,
+      "expediaToBookingMultiplier": 0.9361,
+      "grade": "B",
+      "intervalPct": 41,
+      "fit": {
+        "n": 15,
+        "matchedCities": [
+          "Budapest",
+          "Cape Town",
+          "Colombo",
+          "Dubai",
+          "Hanoi",
+          "Ho Chi Minh City",
+          "Istanbul",
+          "Lima",
+          "Lisbon",
+          "Mexico City",
+          "Nairobi",
+          "Prague",
+          "Seoul",
+          "Singapore",
+          "Tokyo"
+        ],
+        "expediaToBookingMultiplier": 0.9361,
+        "bookingToExpediaMultiplier": 1.0683,
+        "residuals": {
+          "minApePct": 0,
+          "medianApePct": 8.91,
+          "p90ApePct": 39.27,
+          "maxApePct": 60.12
+        },
+        "leaveOneCityOut": {
+          "medianApePct": 10.24,
+          "p90ApePct": 40.03,
+          "maxApePct": 60.98
+        },
+        "intervalPct": 41,
+        "groundTruthSource": "Booking.com v2 development panel, displayed AUD",
+        "productionSource": "Expedia 3-star class-trend anchor",
+        "rawBasis": "Expedia USD or documented bare-dollar proxy converted with the frozen USD→AUD snapshot; the offset absorbs the common source/display basis.",
+        "provenance": "fitted_booking_ground_truth_v2_development"
+      }
+    }
+  },
   "shippedCoefficients": {
     "accom_2_star": {
       "k": 0.75,
@@ -204,28 +328,28 @@
       "warning": "NO DIRECT EVIDENCE. Zero one-star rows in 101 pooled Expedia rows; 15 v5 experiments failed to obtain any. This is the weakest coefficient in v6. See product decision 1 in docs/dev/plans/city-cost-methodology-v6.md section 8."
     },
     "accom_hostel_private_room": {
-      "k": 0.5919,
+      "k": 0.7955,
       "appliedTo": "accom_3_star",
       "grade": "C",
-      "intervalPct": 35,
-      "provenance": "v4_booking_blended_hostel_ratio",
-      "warning": "The v4 hostel channel could not distinguish dorm bed from private room; this is the blended measure. Assigning it to private room is a modelling choice, not an observation."
+      "intervalPct": 52,
+      "provenance": "fitted_booking_ground_truth_v2_development",
+      "warning": "Fitted from the Booking.com v2 development panel. The first-page top-picks median is a level-biased estimator, so this coefficient is valid for within-city ratios and requires the documented source-calibration caveat for absolute levels."
     },
     "accom_shared_hostel_dorm": {
-      "k": 0.1626,
+      "k": 0.2955,
       "appliedTo": "accom_3_star",
       "multiplyBy": 2,
       "grade": "C",
-      "intervalPct": 40,
-      "provenance": "fitted_priceoftravel_2023_index_vs_current_expedia",
-      "warning": "Cross-source and cross-year. The x2 converts one dorm bed to the two-bed product estimand and is definitional, not fitted."
+      "intervalPct": 54,
+      "provenance": "fitted_booking_ground_truth_v2_development",
+      "warning": "Fitted from the Booking.com v2 development panel; the stale 2023 Price of Travel coefficient is superseded. The x2 converts one dorm bed to the two-bed product estimand and is definitional, not fitted."
     }
   },
   "limitations": [
     "Only R0 is fitted. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.",
     "accom_1_star is interpolated, not observed. It is the weakest value in the methodology.",
-    "The dorm coefficient mixes a 2023 index with a current anchor.",
+    "The private-room and dorm coefficients are fitted on Booking.com v2 development ratios; absolute levels remain subject to the first-page bias caveat and the Expedia source offset.",
     "Bare-dollar Expedia.com rows carry currency BARE_DOLLAR_PROXY and are only ever paired with each other.",
-    "These coefficients are fitted on source evidence, not validated against independent ground truth. That validation is milestone M3 and requires the 40-city panel described in docs/dev/plans/city-cost-methodology-v6.md section 5."
+    "The 4-star and 1-star rungs remain unchanged and were confirmed against the 25-city Booking.com v2 panel; the private-room and dorm rungs were refit on that development panel. Holdout scoring is a separate one-time M3 action."
   ]
 }

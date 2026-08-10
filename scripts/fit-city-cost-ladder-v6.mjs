@@ -72,6 +72,8 @@ import path from 'node:path';
 const EXPERIMENTS = 'data/reference/v5/experiments';
 const OUT = 'data/reference/v6/coefficients-v6.json';
 const V4_ACCOM = 'data/reference/dry-run/phase-0h-accommodation-class-ratios.json';
+const DEVELOPMENT_LEDGER = 'data/reference/v6/ground-truth/development-ledger.json';
+const FX_SNAPSHOT = 'data/reference/fx/city_cost_fx_aud_2026-07-22.json';
 
 const checkOnly = process.argv.includes('--check');
 
@@ -127,6 +129,7 @@ const quantile = (xs, q) => {
 };
 
 const round = (x, dp) => Number(x.toFixed(dp));
+const ceilPct = (x) => Math.ceil(x);
 
 /** Read every per-city response JSON in a panel directory. */
 function readPanel(dir) {
@@ -193,6 +196,98 @@ for (const dir of DORM_PANELS) {
   }
 }
 
+// ─── development ground-truth panel ─────────────────────────────────────────
+// M3 deliberately fits only the two relationships that the Booking.com v2
+// development panel refuted. The confirmed 4-star and interpolated 1-star
+// coefficients continue to come from the existing Expedia/v4 fit.
+
+const developmentLedger = JSON.parse(fs.readFileSync(DEVELOPMENT_LEDGER, 'utf8'));
+const developmentRows = new Map(
+  developmentLedger.cities.map((city) => [
+    city.city,
+    Object.fromEntries(city.observations.filter((row) => row.status === 'found').map((row) => [row.measure, row])),
+  ])
+);
+
+function developmentPairs(targetMeasure) {
+  const out = [];
+  for (const [city, rows] of developmentRows) {
+    const anchor = rows.hotel_3star_room_2p;
+    const target = rows[targetMeasure];
+    if (!anchor || !target || anchor.currency !== 'AUD' || target.currency !== 'AUD') continue;
+    out.push({ city, anchor: anchor.amount, target: target.amount, ratio: target.amount / anchor.amount, currency: 'AUD' });
+  }
+  return out.sort((x, y) => x.city.localeCompare(y.city));
+}
+
+const bookingPrivateFromThree = developmentPairs('hostel_private_room_2p');
+const bookingDormFromThree = developmentPairs('hostel_dorm_bed_1p');
+
+function intervalFromResiduals(ps) {
+  const loo = scoreR0(ps);
+  return loo ? ceilPct(loo.p90ApePct) : null;
+}
+
+// The existing Expedia panel contains 15 same-city 3-star observations for
+// development cities. Four are the documented Expedia.com bare-dollar proxy;
+// the source offset intentionally absorbs the shared displayed-dollar basis,
+// while the provenance records that assumption. This is source calibration,
+// not a new product-level price estimate.
+const fxSnapshot = JSON.parse(fs.readFileSync(FX_SNAPSHOT, 'utf8'));
+const usdAud = fxSnapshot.rates?.USD?.audPerUnit;
+function sourceOffsetPairs() {
+  const out = [];
+  for (const [city, rows] of developmentRows) {
+    const booking = rows.hotel_3star_room_2p;
+    const expedia = hotelRows.get(`${city}|3_star`);
+    if (!booking || !expedia || booking.currency !== 'AUD' || !Number.isFinite(usdAud)) continue;
+    if (!(expedia.currency === 'USD' || expedia.currency === 'BARE_DOLLAR_PROXY')) continue;
+    const expediaAud = expedia.value * usdAud;
+    out.push({
+      city,
+      groundTruth: booking.amount,
+      raw: expediaAud,
+      ratio: booking.amount / expediaAud,
+      rawCurrency: expedia.currency,
+      panel: expedia.panel,
+    });
+  }
+  return out.sort((x, y) => x.city.localeCompare(y.city));
+}
+
+const bookingToExpediaPairs = sourceOffsetPairs();
+if (bookingToExpediaPairs.length < 12) {
+  throw new Error(`Booking -> Expedia source offset needs at least 12 matched development cities; found ${bookingToExpediaPairs.length}.`);
+}
+const expediaToBookingOffset = median(bookingToExpediaPairs.map((p) => p.ratio));
+const sourceOffsetResiduals = bookingToExpediaPairs.map((p) => Math.abs(p.raw * expediaToBookingOffset - p.groundTruth) / p.groundTruth * 100);
+const sourceOffsetLooResiduals = bookingToExpediaPairs.map((p, index) => {
+  const k = median(bookingToExpediaPairs.filter((_, i) => i !== index).map((q) => q.ratio));
+  return Math.abs(p.raw * k - p.groundTruth) / p.groundTruth * 100;
+});
+const sourceOffsetStats = {
+  n: bookingToExpediaPairs.length,
+  matchedCities: bookingToExpediaPairs.map((p) => p.city),
+  expediaToBookingMultiplier: round(expediaToBookingOffset, 4),
+  bookingToExpediaMultiplier: round(1 / expediaToBookingOffset, 4),
+  residuals: {
+    minApePct: round(Math.min(...sourceOffsetResiduals), 2),
+    medianApePct: round(median(sourceOffsetResiduals), 2),
+    p90ApePct: round(quantile(sourceOffsetResiduals, 0.9), 2),
+    maxApePct: round(Math.max(...sourceOffsetResiduals), 2),
+  },
+  leaveOneCityOut: {
+    medianApePct: round(median(sourceOffsetLooResiduals), 2),
+    p90ApePct: round(quantile(sourceOffsetLooResiduals, 0.9), 2),
+    maxApePct: round(Math.max(...sourceOffsetLooResiduals), 2),
+  },
+  intervalPct: ceilPct(quantile(sourceOffsetLooResiduals, 0.9)),
+  groundTruthSource: 'Booking.com v2 development panel, displayed AUD',
+  productionSource: 'Expedia 3-star class-trend anchor',
+  rawBasis: 'Expedia USD or documented bare-dollar proxy converted with the frozen USD→AUD snapshot; the offset absorbs the common source/display basis.',
+  provenance: 'fitted_booking_ground_truth_v2_development',
+};
+
 // ─── pair, fit, score ────────────────────────────────────────────────────────
 
 /**
@@ -258,7 +353,7 @@ function scoreR0(ps) {
   };
 }
 
-function relation(key, ps, notes) {
+function relation(key, ps, notes, intervalPct = null) {
   const ratios = ps.map((p) => p.ratio);
   return {
     key,
@@ -273,6 +368,7 @@ function relation(key, ps, notes) {
         }
       : null,
     leaveOneCityOut: scoreR0(ps),
+    intervalPct,
     cities: ps.map((p) => p.city),
     notes,
   };
@@ -340,6 +436,8 @@ if (!hostelBlended) {
 const twoStarK = twoFromThree.length ? median(twoFromThree.map((p) => p.ratio)) : null;
 const oneStarK =
   twoStarK && hostelBlended ? Math.sqrt(hostelBlended.median * twoStarK) : null;
+const privateGroundTruthK = bookingPrivateFromThree.length ? median(bookingPrivateFromThree.map((p) => p.ratio)) : null;
+const dormGroundTruthK = bookingDormFromThree.length ? median(bookingDormFromThree.map((p) => p.ratio)) : null;
 
 // ─── report ──────────────────────────────────────────────────────────────────
 
@@ -353,6 +451,8 @@ const report = {
     expediaPanels: EXPEDIA_PANELS,
     dormPanels: DORM_PANELS,
     v4CrossValidation: V4_ACCOM,
+    developmentGroundTruth: DEVELOPMENT_LEDGER,
+    fxSnapshot: FX_SNAPSHOT,
   },
   productionAnchor: {
     measure: 'hotel_3star_room_2p',
@@ -372,6 +472,11 @@ const report = {
     }, {}),
     dormRows: dormRows.size,
     citiesWithThreeStarAnchor: [...hotelRows.values()].filter((r) => r.class === '3_star').length,
+    developmentGroundTruthRows: {
+      privateRoom: bookingPrivateFromThree.length,
+      dormBed: bookingDormFromThree.length,
+    },
+    sourceOffsetMatchedCities: bookingToExpediaPairs.length,
   },
   relations: [
     relation(
@@ -385,15 +490,31 @@ const report = {
       'Fitted. Same-currency Expedia pairs, R0 global median ratio.'
     ),
     relation(
+      'hostel_private_room_2p <- accom_3_star',
+      bookingPrivateFromThree,
+      'Fitted on Booking.com v2 development medians paired within city. The first-page top-picks estimator is a level-biased but ratio-valid panel; the source offset separately calibrates the Expedia anchor.',
+      intervalFromResiduals(bookingPrivateFromThree)
+    ),
+    relation(
       'hostel_dorm_bed_1p <- accom_3_star',
-      dormFromThree,
-      'Fitted cross-source: Price of Travel Hostel Index dorm bed vs Expedia 3-star. ' +
-        'CAVEAT: the index reference window is mid-April 2023 while the Expedia anchor is current, ' +
-        'so this ratio conflates the class relationship with three years of real price drift. ' +
-        'Ships at grade C with a wide interval. Improving it is milestone M5.'
+      bookingDormFromThree,
+      'Fitted on Booking.com v2 development medians paired within city. This replaces the stale 2023 Price of Travel coefficient; the product tier still applies the fixed x2 two-bed definition.',
+      intervalFromResiduals(bookingDormFromThree)
     ),
   ],
   crossValidation,
+  sourceCalibrationOffsets: {
+    hotel_3star_room_2p: {
+      direction: 'Booking -> Expedia',
+      groundTruthSource: sourceOffsetStats.groundTruthSource,
+      productionSource: sourceOffsetStats.productionSource,
+      bookingToExpediaMultiplier: sourceOffsetStats.bookingToExpediaMultiplier,
+      expediaToBookingMultiplier: sourceOffsetStats.expediaToBookingMultiplier,
+      grade: 'B',
+      intervalPct: sourceOffsetStats.intervalPct,
+      fit: sourceOffsetStats,
+    },
+  },
   shippedCoefficients: {
     // Consumed by the v6 derivation path. Every entry states its own grade and
     // provenance so no caller can treat a modelled value as observed.
@@ -423,35 +544,31 @@ const report = {
         'docs/dev/plans/city-cost-methodology-v6.md section 8.',
     },
     accom_hostel_private_room: {
-      k: hostelBlended ? hostelBlended.median : null,
+      k: privateGroundTruthK ? round(privateGroundTruthK, 4) : null,
       appliedTo: 'accom_3_star',
       grade: 'C',
-      intervalPct: 35,
-      provenance: 'v4_booking_blended_hostel_ratio',
+      intervalPct: intervalFromResiduals(bookingPrivateFromThree),
+      provenance: 'fitted_booking_ground_truth_v2_development',
       warning:
-        'The v4 hostel channel could not distinguish dorm bed from private room; this is the blended ' +
-        'measure. Assigning it to private room is a modelling choice, not an observation.',
+        'Fitted from the Booking.com v2 development panel. The first-page top-picks median is a level-biased estimator, so this coefficient is valid for within-city ratios and requires the documented source-calibration caveat for absolute levels.',
     },
     accom_shared_hostel_dorm: {
-      k: dormFromThree.length ? round(median(dormFromThree.map((p) => p.ratio)), 4) : null,
+      k: dormGroundTruthK ? round(dormGroundTruthK, 4) : null,
       appliedTo: 'accom_3_star',
       multiplyBy: 2,
       grade: 'C',
-      intervalPct: 40,
-      provenance: 'fitted_priceoftravel_2023_index_vs_current_expedia',
+      intervalPct: intervalFromResiduals(bookingDormFromThree),
+      provenance: 'fitted_booking_ground_truth_v2_development',
       warning:
-        'Cross-source and cross-year. The x2 converts one dorm bed to the two-bed product estimand ' +
-        'and is definitional, not fitted.',
+        'Fitted from the Booking.com v2 development panel; the stale 2023 Price of Travel coefficient is superseded. The x2 converts one dorm bed to the two-bed product estimand and is definitional, not fitted.',
     },
   },
   limitations: [
     'Only R0 is fitted. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.',
     'accom_1_star is interpolated, not observed. It is the weakest value in the methodology.',
-    'The dorm coefficient mixes a 2023 index with a current anchor.',
+    'The private-room and dorm coefficients are fitted on Booking.com v2 development ratios; absolute levels remain subject to the first-page bias caveat and the Expedia source offset.',
     'Bare-dollar Expedia.com rows carry currency BARE_DOLLAR_PROXY and are only ever paired with each other.',
-    'These coefficients are fitted on source evidence, not validated against independent ground truth. ' +
-      'That validation is milestone M3 and requires the 40-city panel described in ' +
-      'docs/dev/plans/city-cost-methodology-v6.md section 5.',
+    'The 4-star and 1-star rungs remain unchanged and were confirmed against the 25-city Booking.com v2 panel; the private-room and dorm rungs were refit on that development panel. Holdout scoring is a separate one-time M3 action.',
   ],
 };
 
