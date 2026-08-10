@@ -1,24 +1,28 @@
 {
-  "schemaVersion": "city-cost-v6-ground-truth-holdout-extension-v2",
+  "schemaVersion": "city-cost-v6-ground-truth-holdout-extension-batch-v1",
   "methodologyVersion": "v6.0",
   "manifestPath": "data/reference/v6/validation-manifest-v6.json",
   "panel": "holdout-extension",
-  "referenceWindow": "One night, arrival 2026-09-17, departure 2026-09-18",
-  "requiredMeasures": [
-    "inexpensive_restaurant_meal_1p",
-    "midrange_restaurant_meal_2p",
-    "mcmeal_combo",
-    "cappuccino_1",
-    "domestic_draft_beer_1",
-    "half_day_group_activity_adult_1",
-    "full_day_premium_activity_adult_1",
-    "street_food_meal_1p",
-    "premium_restaurant_meal_2p",
-    "cocktail_1",
-    "wine_glass_1",
-    "hotel_2star_room_2p"
-  ],
-  "status": "sealed_after_collection",
+  "referenceWindow": {
+    "arrival": "2026-09-17",
+    "departure": "2026-09-18"
+  },
+  "selectionRules": {
+    "measures": [
+      "inexpensive_restaurant_meal_1p",
+      "midrange_restaurant_meal_2p",
+      "mcmeal_combo",
+      "cappuccino_1",
+      "domestic_draft_beer_1",
+      "half_day_group_activity_adult_1",
+      "full_day_premium_activity_adult_1",
+      "street_food_meal_1p",
+      "premium_restaurant_meal_2p",
+      "cocktail_1",
+      "wine_glass_1",
+      "hotel_2star_room_2p"
+    ]
+  },
   "cities": [
     {
       "city": "Hoi An",
@@ -38,6 +42,22 @@
             75000,
             75000,
             85000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 90000,
+          "currency": "VND",
+          "sourceUrl": "https://anrestauranthoian.com/menu",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "An Restaurant Hoi An official drinks menu: Gin Tonic, Rum Coke/Vodka Coke and Mojito 90,000 VND; Margarita/Pina Colada/Maitai 120,000 VND.",
+          "samplePrices": [
+            90000,
+            90000,
+            120000
           ],
           "selectionRule": "independent_menu_panel_first5_median_v2"
         },
@@ -96,22 +116,6 @@
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
           "attempts": 1,
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
-        },
-        {
-          "measure": "cocktail_1",
-          "status": "found",
-          "amount": 90000,
-          "currency": "VND",
-          "sourceUrl": "https://anrestauranthoian.com/menu",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "An Restaurant Hoi An official drinks menu: Gin Tonic, Rum Coke/Vodka Coke and Mojito 90,000 VND; Margarita/Pina Colada/Maitai 120,000 VND.",
-          "samplePrices": [
-            90000,
-            90000,
-            120000
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
         },
         {
           "measure": "wine_glass_1",
@@ -226,6 +230,22 @@
       "band": "mid",
       "observations": [
         {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 580,
+          "currency": "THB",
+          "sourceUrl": "https://www.fourseasons.com/kohsamui/dining/menus/koh-beverages/",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "Four Seasons Resort Koh Samui official beverage menu: three named cocktails priced at 580 THB each; menu states prices are subject to service charge and tax.",
+          "samplePrices": [
+            580,
+            580,
+            580
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
           "measure": "inexpensive_restaurant_meal_1p",
           "status": "not_found",
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
@@ -287,22 +307,6 @@
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
           "attempts": 1,
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
-        },
-        {
-          "measure": "cocktail_1",
-          "status": "found",
-          "amount": 580,
-          "currency": "THB",
-          "sourceUrl": "https://www.fourseasons.com/kohsamui/dining/menus/koh-beverages/",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "Four Seasons Resort Koh Samui official beverage menu: three named cocktails priced at 580 THB each; menu states prices are subject to service charge and tax.",
-          "samplePrices": [
-            580,
-            580,
-            580
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
         },
         {
           "measure": "wine_glass_1",
@@ -326,6 +330,38 @@
       "band": "high",
       "observations": [
         {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 3000,
+          "currency": "JPY",
+          "sourceUrl": "https://www.imperialhotel.co.jp/en/kyoto/restaurant/old-imperialbar/menu",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "Imperial Hotel Kyoto Old Imperial Bar official menu: named cocktails at 2,700, 3,000 and 3,200 JPY.",
+          "samplePrices": [
+            2700,
+            3000,
+            3200
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 32000,
+          "currency": "JPY",
+          "sourceUrl": "https://www.gion-nakatani.kyoto.jp/en/",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "Gion Nakatani official course menu: regular dinner courses at 13,000, 16,000 and 30,000 JPY per person; recorded as two-person equivalents 26,000, 32,000 and 60,000 JPY.",
+          "samplePrices": [
+            26000,
+            32000,
+            60000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
           "measure": "inexpensive_restaurant_meal_1p",
           "status": "not_found",
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
@@ -380,38 +416,6 @@
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
           "attempts": 1,
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
-        },
-        {
-          "measure": "premium_restaurant_meal_2p",
-          "status": "found",
-          "amount": 32000,
-          "currency": "JPY",
-          "sourceUrl": "https://www.gion-nakatani.kyoto.jp/en/",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "Gion Nakatani official course menu: regular dinner courses at 13,000, 16,000 and 30,000 JPY per person; recorded as two-person equivalents 26,000, 32,000 and 60,000 JPY.",
-          "samplePrices": [
-            26000,
-            32000,
-            60000
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
-        },
-        {
-          "measure": "cocktail_1",
-          "status": "found",
-          "amount": 3000,
-          "currency": "JPY",
-          "sourceUrl": "https://www.imperialhotel.co.jp/en/kyoto/restaurant/old-imperialbar/menu",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "Imperial Hotel Kyoto Old Imperial Bar official menu: named cocktails at 2,700, 3,000 and 3,200 JPY.",
-          "samplePrices": [
-            2700,
-            3000,
-            3200
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
         },
         {
           "measure": "wine_glass_1",
@@ -617,6 +621,38 @@
       "band": "low",
       "observations": [
         {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 795,
+          "currency": "NPR",
+          "sourceUrl": "https://www.divinekathmandurestaurant.com/menu",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "Divine Kathmandu official menu: Barahsinghe/Gorkha, Tuborg and Carlsberg beer prices 750, 795 and 865 NPR. Frozen FX has no NPR rate; retained as an explicit source row but not comparable in scoring.",
+          "samplePrices": [
+            750,
+            795,
+            865
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 795,
+          "currency": "NPR",
+          "sourceUrl": "https://www.divinekathmandurestaurant.com/menu",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "Divine Kathmandu official menu: Screwdriver, Gin & Tonic and named mixed drinks at 625, 795 and 850 NPR. Frozen FX has no NPR rate; retained as an explicit source row but not comparable in scoring.",
+          "samplePrices": [
+            625,
+            795,
+            850
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
           "measure": "inexpensive_restaurant_meal_1p",
           "status": "not_found",
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
@@ -645,22 +681,6 @@
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
         },
         {
-          "measure": "domestic_draft_beer_1",
-          "status": "found",
-          "amount": 795,
-          "currency": "NPR",
-          "sourceUrl": "https://www.divinekathmandurestaurant.com/menu",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "Divine Kathmandu official menu: Barahsinghe/Gorkha, Tuborg and Carlsberg beer prices 750, 795 and 865 NPR. Frozen FX has no NPR rate; retained as an explicit source row but not comparable in scoring.",
-          "samplePrices": [
-            750,
-            795,
-            865
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
-        },
-        {
           "measure": "half_day_group_activity_adult_1",
           "status": "not_found",
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
@@ -687,22 +707,6 @@
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
           "attempts": 1,
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
-        },
-        {
-          "measure": "cocktail_1",
-          "status": "found",
-          "amount": 795,
-          "currency": "NPR",
-          "sourceUrl": "https://www.divinekathmandurestaurant.com/menu",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "Divine Kathmandu official menu: Screwdriver, Gin & Tonic and named mixed drinks at 625, 795 and 850 NPR. Frozen FX has no NPR rate; retained as an explicit source row but not comparable in scoring.",
-          "samplePrices": [
-            625,
-            795,
-            850
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
         },
         {
           "measure": "wine_glass_1",
@@ -726,6 +730,54 @@
       "band": "mid",
       "observations": [
         {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 9,
+          "currency": "JOD",
+          "sourceUrl": "https://www.hyattrestaurants.com/en/amman/restaurant-bar/the-terrace/menu/",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "The Terrace Amman official menu: named cocktails at 8, 9 and 10 JOD. Frozen FX has no JOD rate; retained as an explicit source row but not comparable in scoring.",
+          "samplePrices": [
+            8,
+            9,
+            10
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 9,
+          "currency": "JOD",
+          "sourceUrl": "https://www.hyattrestaurants.com/en/amman/restaurant-bar/the-terrace/menu/",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "The Terrace Amman official menu: domestic beer prices at 7, 9 and 9 JOD. Frozen FX has no JOD rate; retained as an explicit source row but not comparable in scoring.",
+          "samplePrices": [
+            7,
+            9,
+            9
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 14,
+          "currency": "JOD",
+          "sourceUrl": "https://www.fourseasons.com/amman/dining/in_room_dining/in_room_dining/beverage/",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "Four Seasons Amman official beverage menu: wine by the glass at 10, 14 and 18 JOD. Frozen FX has no JOD rate; retained as an explicit source row but not comparable in scoring.",
+          "samplePrices": [
+            10,
+            14,
+            18
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
           "measure": "inexpensive_restaurant_meal_1p",
           "status": "not_found",
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
@@ -754,22 +806,6 @@
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
         },
         {
-          "measure": "domestic_draft_beer_1",
-          "status": "found",
-          "amount": 9,
-          "currency": "JOD",
-          "sourceUrl": "https://www.hyattrestaurants.com/en/amman/restaurant-bar/the-terrace/menu/",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "The Terrace Amman official menu: domestic beer prices at 7, 9 and 9 JOD. Frozen FX has no JOD rate; retained as an explicit source row but not comparable in scoring.",
-          "samplePrices": [
-            7,
-            9,
-            9
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
-        },
-        {
           "measure": "half_day_group_activity_adult_1",
           "status": "not_found",
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
@@ -796,38 +832,6 @@
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
           "attempts": 1,
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
-        },
-        {
-          "measure": "cocktail_1",
-          "status": "found",
-          "amount": 9,
-          "currency": "JOD",
-          "sourceUrl": "https://www.hyattrestaurants.com/en/amman/restaurant-bar/the-terrace/menu/",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "The Terrace Amman official menu: named cocktails at 8, 9 and 10 JOD. Frozen FX has no JOD rate; retained as an explicit source row but not comparable in scoring.",
-          "samplePrices": [
-            8,
-            9,
-            10
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
-        },
-        {
-          "measure": "wine_glass_1",
-          "status": "found",
-          "amount": 14,
-          "currency": "JOD",
-          "sourceUrl": "https://www.fourseasons.com/amman/dining/in_room_dining/in_room_dining/beverage/",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "Four Seasons Amman official beverage menu: wine by the glass at 10, 14 and 18 JOD. Frozen FX has no JOD rate; retained as an explicit source row but not comparable in scoring.",
-          "samplePrices": [
-            10,
-            14,
-            18
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
         },
         {
           "measure": "hotel_2star_room_2p",
@@ -1308,6 +1312,22 @@
       "band": "high",
       "observations": [
         {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 19,
+          "currency": "CAD",
+          "sourceUrl": "https://www.bravovancouver.com/menu",
+          "retrievedAt": "2026-08-10T00:00:00.000Z",
+          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
+          "evidenceText": "Bravo Vancouver official menu: three named cocktails priced at 18, 19 and 20 CAD.",
+          "samplePrices": [
+            18,
+            19,
+            20
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
           "measure": "inexpensive_restaurant_meal_1p",
           "status": "not_found",
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
@@ -1369,22 +1389,6 @@
           "reason": "Bounded independent-source route did not produce a compliant three-price observation before the collection budget; no source-level absence is inferred.",
           "attempts": 1,
           "lastAttemptAt": "2026-08-10T00:00:00.000Z"
-        },
-        {
-          "measure": "cocktail_1",
-          "status": "found",
-          "amount": 19,
-          "currency": "CAD",
-          "sourceUrl": "https://www.bravovancouver.com/menu",
-          "retrievedAt": "2026-08-10T00:00:00.000Z",
-          "taxStatus": "Menu prices as displayed; no separate tax or service charge stated on the cited page.",
-          "evidenceText": "Bravo Vancouver official menu: three named cocktails priced at 18, 19 and 20 CAD.",
-          "samplePrices": [
-            18,
-            19,
-            20
-          ],
-          "selectionRule": "independent_menu_panel_first5_median_v2"
         },
         {
           "measure": "wine_glass_1",
@@ -1493,8 +1497,5 @@
         }
       ]
     }
-  ],
-  "collectedAt": "2026-08-10T17:41:37.948Z",
-  "collectionBatch": "data/reference/v6/experiments/002-independent-anchor-panel/batch-007-holdout-extension.json",
-  "sealedAt": "2026-08-10T17:41:39.127Z"
+  ]
 }

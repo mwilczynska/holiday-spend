@@ -12,9 +12,14 @@ const sealPath = path.join(root, 'data/reference/v6/ground-truth/holdout-seal.js
 const coefficients = JSON.parse(fs.readFileSync(coefficientsPath, 'utf8'));
 const seal = JSON.parse(fs.readFileSync(sealPath, 'utf8'));
 
-if (seal.status !== 'sealed_after_collection') throw new Error('Holdout must be sealed_after_collection before candidate freeze.');
-if (seal.scoresFile !== null) throw new Error('Holdout already has a score file; candidate freeze is too late.');
-if (seal.candidateConfigHash || seal.candidateCommit) throw new Error('A candidate is already frozen; do not create a second candidate.');
+if (seal.status !== 'per_measure') throw new Error('Holdout must use the per_measure seal before candidate freeze.');
+if (!seal.measures || typeof seal.measures !== 'object') throw new Error('Per-measure holdout seal is missing its measure states.');
+const freshMeasures = Object.entries(seal.measures).filter(([, entry]) => entry.status === 'sealed_after_collection');
+if (!freshMeasures.length) throw new Error('No fresh sealed_after_collection measures are available for candidate freeze.');
+if (freshMeasures.some(([, entry]) => entry.scoresFile !== null || entry.candidateConfigHash !== null || entry.candidateCommit !== null)) {
+  throw new Error('A fresh holdout measure already carries a score or candidate identity; candidate freeze is too late.');
+}
+if (seal.candidateConfigHash || seal.candidateCommit || seal.scoresFile) throw new Error('A candidate is already frozen; do not create a second candidate.');
 
 const candidateConfiguration = {
   methodologyVersion: coefficients.methodologyVersion,
@@ -31,6 +36,11 @@ seal.candidateCommit = candidateCommit;
 seal.candidateFiles = ['data/reference/v6/coefficients-v6.json', 'src/lib/city-cost-v6-collection.ts'];
 seal.frozenAt = new Date().toISOString();
 seal.lockRule = 'Candidate frozen before first holdout read. Score gates 2-6 once; do not tune or rescore after reveal.';
+for (const [, entry] of freshMeasures) {
+  entry.candidateConfigHash = seal.candidateConfigHash;
+  entry.candidateCommit = candidateCommit;
+  entry.frozenAt = seal.frozenAt;
+}
 
 fs.writeFileSync(sealPath, `${JSON.stringify(seal, null, 2)}\n`);
 console.log(JSON.stringify({ candidateConfigHash: seal.candidateConfigHash, candidateCommit, holdoutRead: false }, null, 2));

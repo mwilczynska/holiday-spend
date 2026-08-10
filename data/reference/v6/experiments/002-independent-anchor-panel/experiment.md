@@ -18,6 +18,15 @@ scoring Numbeo or BudgetYourTrip against themselves.
   only. Wine follows the volume-targeted 125-175 ml / 15 cl method from v5 experiment 093.
 - Activities: official attraction/operator pages only; BudgetYourTrip is prohibited.
 
+## Holdout extension collection
+
+Batch 007 collected the 15-city fresh holdout extension under the per-measure seal on 10 August 2026.
+It resolved all 180 slots: **12 found independent menu rows and 168 explicit `not_found` rows**. Found
+rows retain source currency and individual prices; NPR and JOD rows remain source facts but are not
+comparable under the frozen FX snapshot. The batch was merged and sealed without printing or rereading
+its prices. The six accommodation/attraction measures from the old holdout remain `revealed_once` and
+were not read again.
+
 ## Acceptance and rejection
 
 Each found row must satisfy the manifest selection rule, retain its source currency and URL, preserve all

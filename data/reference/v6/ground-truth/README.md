@@ -68,7 +68,10 @@ calibration. The food and drink rows are independently sourced from official men
 never Numbeo. The street-food row is independently sourced from official street-stall, market-board,
 bakery-takeaway or local prepared-meal menus; McDonald's is retained only as a Numbeo cross-check.
 Activity rows are independently sourced from official operator or attraction pages, never BudgetYourTrip.
-The exact selection rules are frozen in `validation-manifest-v6.json`; every panel median retains its
+Batch 007 resolved the fresh holdout extension before sealing: 12 found independent menu rows and 168
+explicit `not_found` rows across 15 cities x 12 measures. Rows with currencies absent from the frozen FX
+snapshot remain source facts but are not comparable in scoring. The exact selection rules are frozen in
+`validation-manifest-v6.json`; every panel median retains its
 individual prices in `samplePrices`.
 
 ## Street-food selection rule

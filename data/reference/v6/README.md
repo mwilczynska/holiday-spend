@@ -132,8 +132,9 @@ starts with no fabricated values; each found observation must retain its display
 retrieval timestamp, tax/fee wording, and property name for accommodation. Run
 `node scripts/validate-city-cost-v6-ground-truth.mjs` to check the development ledger. The collected
 `ground-truth/holdout-ledger.json` is the spent six-measure holdout. The twelve new measures are in the
-per-measure `ground-truth/holdout-extension.json` seal lifecycle; the validator checks seal metadata but
-does not read holdout observations. The all-19 M3 candidate coefficients and source offset will be generated
+per-measure `ground-truth/holdout-extension.json` seal lifecycle; batch 007 resolved all 180 fresh slots
+with 12 found independent menu rows and 168 explicit `not_found` rows, then sealed them without printing
+their prices. The validator checks seal metadata but does not read holdout observations. The all-19 M3 candidate coefficients and source offset will be generated
 in `coefficients-v6.json`, frozen once before any new measure is read, and scored once. Experiment
 `experiments/001-expedia-production-anchor/` separately replayed the Expedia production extractor on the
 15 matched development cities and accepted the existing offset (median APE 8.36%, median signed error
