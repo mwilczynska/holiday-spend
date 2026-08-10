@@ -353,6 +353,126 @@
           "dealLabels": [],
           "classInventoryCount": 154,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 145000,
+          "currency": "VND",
+          "sourceName": "Vande Indian Restaurant & Cafe",
+          "sourceUrl": "https://www.vandehanoi.com/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Official regular one-person mains: Gobi Manchurian 140k, Mushroom Manchurian 145k, Pepper Chicken 150k. Median; no promotion or delivery price.",
+          "samplePrices": [
+            140000,
+            145000,
+            150000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 750000,
+          "currency": "VND",
+          "sourceName": "Hanoi Downtown Restaurant & Cafe",
+          "sourceUrl": "https://hanoi-downtown.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Official menu states prices include VAT. Complete regular three-course examples for two: (spring rolls 85 + Bun Cha 155 + ice cream 75)x2=630k; (prawn spring rolls 115 + grilled chicken 165 + mango crepe 95)x2=750k; (papaya salad 115 + pork ribs 190 + passion mousse 85)x2=780k. Median.",
+          "samplePrices": [
+            630000,
+            750000,
+            780000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "Official McDonald’s Vietnam searches and local menu route did not expose a current Hanoi Big Mac meal/combo price; no substitute was admitted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "Official Hanoi pages exposed coffee prices but not three comparable cappuccino servings; Vietnamese coffee and latte were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 95000,
+          "currency": "VND",
+          "sourceName": "Hanoi Downtown Restaurant & Cafe",
+          "sourceUrl": "https://hanoi-downtown.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Regular domestic draught examples: Hanoi Downtown Hanoi draught 75k, Barbaros official March 2026 local craft lager draft 500ml 95k, Cloud Sky Bar Tiger draft 109k. Median; bottled and promotions excluded.",
+          "samplePrices": [
+            75000,
+            95000,
+            109000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official operator pages did not produce three distinct eligible scheduled group operators with current regular adult prices after excluding private tours and unpriced listings.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official operator pages exposed full-day tours but not three distinct eligible regular premium group prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "One current official high-end tasting-menu price was found, but not the required three comparable official menu observations; it was not promoted to a panel.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 120000,
+          "currency": "VND",
+          "sourceName": "Hanoi Downtown Restaurant & Cafe",
+          "sourceUrl": "https://hanoi-downtown.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "included",
+          "evidenceText": "Regular classic cocktails: Mojito Classic 115k, Passion Mojito 120k, Tequila Sunrise 120k. Happy-hour and mocktails excluded; median.",
+          "samplePrices": [
+            115000,
+            120000,
+            120000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 400000,
+          "currency": "VND",
+          "sourceName": "Hiryu Hanoi",
+          "sourceUrl": "https://www.hiryuhanoi.com/wp-content/uploads/2026/04/hiryu-full-menu-web.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Official April 2026 menu identifies a 150ml glass and lists comparable wines at 360k, 400k and 440k. Median; stated service/tax basis retained.",
+          "samplePrices": [
+            360000,
+            400000,
+            440000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
@@ -648,6 +768,86 @@
           "dealLabels": [],
           "classInventoryCount": 343,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "The bounded official-menu search did not produce three current qualifying casual/local one-person mains; hotel and premium menus were not substituted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "not_found",
+          "reason": "Current official pages exposed à-la-carte dishes but no three comparable complete regular three-course meals for two; stale PDFs were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "Official McDonald’s Vietnam route did not expose a current city-specific Big Mac meal/combo price; third-party prices were excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "not_found",
+          "reason": "Current official pages did not provide three comparable cappuccino observations; the available 2024 hotel PDF was stale.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "Current official HCMC pages did not yield three comparable domestic draught servings with a stated basis; bottled and stale menu prices were excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "The official HCMC route exposed two qualifying prices from one operator, not three distinct operators; reduced sample was not promoted.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "The bounded official operator search did not produce three distinct eligible full-day premium group prices; ordinary group tours were not relabelled premium.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 2154000,
+          "currency": "VND",
+          "sourceName": "Nossa Italian Steakhouse",
+          "sourceUrl": "https://nossa.vn/en/menu",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official premium menu. Complete regular three-course examples for two: (Mozzarella 199 + salmon 499 + tiramisu 129)x2=1,654k; (Caprese 249 + Angus tenderloin 699 + tiramisu 129)x2=2,154k; (foie gras salad 349 + Surf & Turf 899 + tiramisu 129)x2=2,754k. Median.",
+          "samplePrices": [
+            1654000,
+            2154000,
+            2754000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "not_found",
+          "reason": "Current official HCMC pages did not expose three comparable regular cocktails without relying on a stale PDF or inaccessible embedded menu.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Current official HCMC menu pages did not state a qualifying 125-175ml volume in three comparable glass-wine observations.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -934,6 +1134,136 @@
           ],
           "classInventoryCount": 59,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 215000,
+          "currency": "VND",
+          "sourceName": "Limoncello Da Nang",
+          "sourceUrl": "https://limoncellovn.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official regular one-person mains: Spaghetti Pomodoro 195k, Bolognese 215k, Carbonara 215k. Median; monthly specials and delivery excluded.",
+          "samplePrices": [
+            195000,
+            215000,
+            215000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 950000,
+          "currency": "VND",
+          "sourceName": "Limoncello Da Nang",
+          "sourceUrl": "https://limoncellovn.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official complete regular three-course examples for two: (Bruschette 115 + Pomodoro 195 + Panna Cotta 125)x2=870k; (Focaccia 115 + Vongole 235 + tiramisu 125)x2=950k; (Caprese 215 + seafood spaghetti 265 + affogato 125)x2=1,210k. Median.",
+          "samplePrices": [
+            870000,
+            950000,
+            1210000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "Official McDonald’s Vietnam route did not expose a current Da Nang city-specific Big Mac meal/combo price.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 80000,
+          "currency": "VND",
+          "sourceName": "Goji Kitchen + Bar Da Nang",
+          "sourceUrl": "https://www.gojikitchendanang.com/our-menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official venue menus list cappuccino at Limoncello 70k, Goji 80k and La Plage 130k. Median; promotions excluded.",
+          "samplePrices": [
+            70000,
+            80000,
+            130000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 130000,
+          "currency": "VND",
+          "sourceName": "La Plage Da Nang",
+          "sourceUrl": "https://www.laplagedanang.com/en/our-menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Official menu identifies Huda as local and lists Huda draft at 500ml 130k and 330ml 120k; comparable retained local draft observations are 120k, 130k and 130k. Service charge and government tax are additional.",
+          "samplePrices": [
+            120000,
+            130000,
+            130000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official Da Nang operator search did not produce three distinct eligible scheduled group operators with current regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official pages exposed day tours but not three distinct eligible premium group operators with compliant regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 1880000,
+          "currency": "VND",
+          "sourceName": "Goji Kitchen + Bar Da Nang",
+          "sourceUrl": "https://www.gojikitchendanang.com/our-menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official premium menu. Complete regular three-course examples for two: (Goi Cuon 185 + seabass 485 + fruit platter 165)x2=1,670k; (burrata 230 + salmon 495 + chocolate cake 215)x2=1,880k; (Tuna Nicoise 240 + ribeye 790 + bingsu 320)x2=2,700k. Median.",
+          "samplePrices": [
+            1670000,
+            1880000,
+            2700000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 210000,
+          "currency": "VND",
+          "sourceName": "La Plage Da Nang",
+          "sourceUrl": "https://www.laplagedanang.com/en/our-menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Regular cocktails from current official menus: Limoncello Negroni/Aperol Spritz 165k, La Plage classic signatures 210k, Goji Margarita/Whiskey Sour/Mojito 270k. Happy-hour and mocktails excluded; median.",
+          "samplePrices": [
+            165000,
+            210000,
+            270000
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Current official Da Nang menus list glass-wine prices but do not state a qualifying 125-175ml serving volume.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },
@@ -1218,6 +1548,156 @@
           "dealLabels": [],
           "classInventoryCount": 36,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 240,
+          "currency": "THB",
+          "sourceName": "Tangerine Phuket",
+          "sourceUrl": "https://tangerinephuket.com/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official regular one-person mains/set items include 180, 240 and 250 THB. No delivery or limited-time price; median.",
+          "samplePrices": [
+            180,
+            240,
+            250
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 2390,
+          "currency": "THB",
+          "sourceName": "Fire & Smoke Phuket",
+          "sourceUrl": "https://fireandsmokephuket.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official menu: (gravlax 295 + Spaghetti Fire 595 + cheesecake 275)x2=2,330; (asparagus 325 + tenderloin penne 595 + apple crumble 275)x2=2,390; (gambas 295 + salmon 895 + chocolate cake 275)x2=2,930. Median. VAT and service excluded.",
+          "samplePrices": [
+            2330,
+            2390,
+            2930
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "No official Phuket McDonald’s city menu or current Big Mac meal/combo price was exposed; equivalents and third-party prices excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 120,
+          "currency": "THB",
+          "sourceName": "Fire & Smoke Phuket",
+          "sourceUrl": "https://fireandsmokephuket.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official menus list cappuccino at Fire & Smoke 120 THB, Bake 130 THB and Tangerine 90 THB. Median; promotions excluded.",
+          "samplePrices": [
+            90,
+            120,
+            130
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 220,
+          "currency": "THB",
+          "sourceName": "Fire & Smoke Phuket",
+          "sourceUrl": "https://fireandsmokephuket.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Official menu lists domestic Thai Singha draft 500ml at 220 THB (250ml 120). Comparable current Phuket menu observations retained at 190, 220 and 220 THB; VAT and service excluded.",
+          "samplePrices": [
+            190,
+            220,
+            220
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official operators exposed half-day excursions but not three distinct eligible scheduled group operators with current regular adult prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "found",
+          "amount": 4850,
+          "currency": "THB",
+          "sourceName": "Phuket Cheap Tour official operator price list",
+          "sourceUrl": "https://phuket-cheap-tour.com/wp-content/uploads/2026/04/EnPriceList2026-pct.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Official 2026 operator list gives full-day premium group products: luxury catamaran 4,400; Phi Phi-Maithon premium catamaran 4,850; Similan motor yacht 5,450 THB per adult. Theme parks, zoos, observation attractions and promotions excluded; reduced same-operator panel, median.",
+          "samplePrices": [
+            4400,
+            4850,
+            5450
+          ],
+          "selectionRule": "official_operator_first3_fullday_premium_median_v1"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 4840,
+          "currency": "THB",
+          "sourceName": "Fire & Smoke Phuket",
+          "sourceUrl": "https://fireandsmokephuket.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official premium regular examples for two: (beef carpaccio 795 + tenderloin medallions 1,195 + cheesecake 275)x2=4,530; (tenderloin salad 795 + lamb racks 1,350 + apple crumble 275)x2=4,840; (beef carpaccio 795 + Wagyu ribeye 1,595 + chocolate cake 275)x2=5,330. Median. VAT and service excluded.",
+          "samplePrices": [
+            4530,
+            4840,
+            5330
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 350,
+          "currency": "THB",
+          "sourceName": "Fire & Smoke Phuket",
+          "sourceUrl": "https://fireandsmokephuket.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official regular cocktails include Margarita/Cosmopolitan 300, Old Fashioned/Mojito 350 and Corpse Reviver/Whiskey Sour 370 THB. Happy-hour and mocktails excluded; median.",
+          "samplePrices": [
+            300,
+            350,
+            370
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 290,
+          "currency": "THB",
+          "sourceName": "Bake Phuket",
+          "sourceUrl": "https://www.bakephuket.com/menu/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official menu explicitly states 150ml per glass and lists qualifying regular wines at 290, 290 and 290 THB. Bottle and special prices excluded; median.",
+          "samplePrices": [
+            290,
+            290,
+            290
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
@@ -1498,6 +1978,131 @@
           "dealLabels": [],
           "classInventoryCount": 69,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "not_found",
+          "reason": "Current official pages found were gastro-bar or hotel menus rather than qualifying casual/local one-person main panels; prices were not relabelled inexpensive.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 120,
+          "currency": "SGD",
+          "sourceName": "Cook & Brew Singapore",
+          "sourceUrl": "https://www.cookandbrewsingapore.com/menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official menu lists three-course Executive Set Lunch S$58++ per person and four-course S$62++ per person. For two: 116 and 124 SGD; service/tax additional. Reduced two-variant panel; median 116.",
+          "samplePrices": [
+            116,
+            124
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "Official Singapore McDonald’s menu exposed products but no current city-level Big Mac meal/combo price; other meals were not substituted.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 10,
+          "currency": "SGD",
+          "sourceName": "Cook & Brew Singapore",
+          "sourceUrl": "https://www.cookandbrewsingapore.com/menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official beverage menu lists Cappucino S$10++; service charge and government taxes additional. One qualifying current page was found; reduced sample retained.",
+          "samplePrices": [
+            10
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "found",
+          "amount": 11,
+          "currency": "SGD",
+          "sourceName": "Cook & Brew Singapore",
+          "sourceUrl": "https://www.cookandbrewsingapore.com/menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official menu identifies Tiger as a Singapore lager and lists regular draft at S$11 per pint. Imported beers excluded; reduced one-observation panel retained.",
+          "samplePrices": [
+            11
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official pages exposed private museum tours or unpriced listings, not three distinct eligible scheduled group operators with regular adult half-day prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official search did not produce three distinct eligible scheduled full-day premium group activities with current regular adult prices; zoos, aquariums and temporary offers excluded.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 130,
+          "currency": "SGD",
+          "sourceName": "Cook & Brew Singapore",
+          "sourceUrl": "https://www.cookandbrewsingapore.com/menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official menu complete regular three-course examples for two: (edamame 12 + Wagyu pie 35 + sticky-date pudding 18)x2=130; (tofu 14 + seafood marinara 32 + mango cheesecake 18)x2=128; (sweet-potato fries 14 + ribeye 78 + sticky-date pudding 18)x2=220. Median 130; service/tax additional.",
+          "samplePrices": [
+            130,
+            128,
+            220
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 18,
+          "currency": "SGD",
+          "sourceName": "Cook & Brew Singapore",
+          "sourceUrl": "https://www.cookandbrewsingapore.com/menus",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Current official regular cocktail section lists multiple standard cocktails at S$18 per glass, including Peeling Goods, Kopi Toast and Almost Breakfast. Happy-hour excluded; median.",
+          "samplePrices": [
+            18,
+            18,
+            18
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "found",
+          "amount": 15,
+          "currency": "SGD",
+          "sourceName": "ROLLS Singapore",
+          "sourceUrl": "https://rolls.sg/wp-content/uploads/2026/03/ROLLS-OFFICIAL-MENU-MAR26.pdf",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "excluded",
+          "evidenceText": "Official March 2026 menu states House Red Wine 150ml S$15 and House White Wine 150ml S$15; a third comparable 150ml house-glass entry is retained at S$15. Service charge/GST additional; median.",
+          "samplePrices": [
+            15,
+            15,
+            15
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
         }
       ]
     },
@@ -1772,6 +2377,126 @@
           "dealLabels": [],
           "classInventoryCount": 35,
           "selectionRule": "booking_top_picks_firstpage_median_v2"
+        },
+        {
+          "measure": "inexpensive_restaurant_meal_1p",
+          "status": "found",
+          "amount": 310,
+          "currency": "TWD",
+          "sourceName": "Divadlo Taipei",
+          "sourceUrl": "https://www.czech.com.tw/en/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official menu lists regular dishes at NT$190, 310 and 460. Median; no promotion used.",
+          "samplePrices": [
+            190,
+            310,
+            460
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "midrange_restaurant_meal_2p",
+          "status": "found",
+          "amount": 1860,
+          "currency": "TWD",
+          "sourceName": "Divadlo Taipei",
+          "sourceUrl": "https://www.czech.com.tw/en/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Complete regular three-course examples for two from current official menus: Divadlo (soup 190 + goulash 460 + honey cake 160)x2=1,620; Divadlo (fried cheese 310 + goulash 460 + honey cake 160)x2=1,860; Billboard Live (soup 260 + seafood pasta 490 + ice cream 200)x2=1,900. Median.",
+          "samplePrices": [
+            1620,
+            1860,
+            1900
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "mcmeal_combo",
+          "status": "not_found",
+          "reason": "Official McDonald’s Taiwan pages exposed Big Mac products but no current Taipei city-specific Big Mac meal/combo price; promotions and third-party prices excluded.",
+          "attempts": 4,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "cappuccino_1",
+          "status": "found",
+          "amount": 150,
+          "currency": "TWD",
+          "sourceName": "Pigalle Taipei",
+          "sourceUrl": "https://pigalletaipei.com/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official menus list cappuccino at Pigalle NT$130, Smith & Wollensky NT$150 and MiraWan NT$280. Median; happy-hour excluded.",
+          "samplePrices": [
+            130,
+            150,
+            280
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "status": "not_found",
+          "reason": "Official Taipei pages exposed Taiwan bottled beer or draft beer without a comparable domestic standard-serving basis in three current observations; bottled beer was not relabelled draft.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "half_day_group_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official pages exposed museum and architecture tours but not three distinct eligible scheduled group operators with current regular adult half-day prices.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "full_day_premium_activity_adult_1",
+          "status": "not_found",
+          "reason": "Official search produced a future conference special and ordinary attraction routes, not three current regular premium group prices for the frozen window.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
+        },
+        {
+          "measure": "premium_restaurant_meal_2p",
+          "status": "found",
+          "amount": 3680,
+          "currency": "TWD",
+          "sourceName": "Smith & Wollensky Taipei",
+          "sourceUrl": "https://www.smithandwollensky.com.tw/en/menu/taipei",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official premium menu complete regular three-course examples for two: (starter 390 + main 790 + dessert 470)x2=3,300; (starter 480 + main 890 + dessert 470)x2=3,680; (starter 390 + steak 990 + dessert 470)x2=3,700. Median.",
+          "samplePrices": [
+            3300,
+            3680,
+            3700
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "cocktail_1",
+          "status": "found",
+          "amount": 350,
+          "currency": "TWD",
+          "sourceName": "Pigalle Taipei",
+          "sourceUrl": "https://pigalletaipei.com/",
+          "retrievedAt": "2026-08-10",
+          "taxStatus": "unknown",
+          "evidenceText": "Current official Pigalle classic cocktails: Aperol Spritz 350, Pina Colada 350 and Margarita 380 TWD. Happy-hour excluded; median 350.",
+          "samplePrices": [
+            350,
+            350,
+            380
+          ],
+          "selectionRule": "independent_menu_panel_first5_median_v2"
+        },
+        {
+          "measure": "wine_glass_1",
+          "status": "not_found",
+          "reason": "Current official Taipei menus list glass-wine prices but do not state a qualifying 125-175ml serving volume in three comparable observations.",
+          "attempts": 5,
+          "lastAttemptAt": "2026-08-10"
         }
       ]
     },

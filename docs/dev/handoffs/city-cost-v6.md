@@ -79,8 +79,9 @@ times for sample size. The accuracy its gate protected was already achieved.
   current count. The all-19 M3 contract is `city-cost-v6-ground-truth-ledger-v3`: 25 cities x 17 measures.
   The first independent tranche is complete: 25/25 `hotel_2star_room_2p` rows were collected from logged-out
   Booking.com under `booking_top_picks_firstpage_median_v2`, including sample prices and inventory counts.
-  Current coverage is **172 found / 250 pending**. The remaining 250 cells are the ten independent
-  food/drink/activity measures in Experiment 002.
+  Current coverage is **203 found / 190 pending**. Batch 001 resolved all ten independent
+  food/drink/activity measures for six cities; the remaining 190 cells are Experiment 002 rows for the
+  other 19 development cities.
 - The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and was scored
   exactly once after the candidate freeze. `holdout-seal.json` is now `revealed_once` and points to the separate
   `ground-truth/holdout-scores.json`; the holdout ledger itself has no score fields. Do not tune or rescore.
@@ -141,10 +142,10 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 ### Not done
 
-The M3 candidate and single gate 2–6 score are complete, and experiment 001 has now accepted the fresh
-production-anchor replication. The historical accommodation-only score is not the all-19 M3 result. Experiment
-002 is now collecting independent food, drink and activity evidence; no all-19 coefficient, holdout score or
-gate result exists yet. The v6 path is integrated but opt-in.
+The historical accommodation-only candidate and single gate 2–6 score are retained, and experiment 001 has
+accepted the fresh production-anchor replication. They are not the all-19 M3 result. Experiment 002 batch 001
+has resolved the ten independent measures for six cities; coverage is **203 found / 190 pending**. No all-19
+coefficient, holdout score or gate result exists yet. The v6 path is integrated but opt-in.
 **The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
 API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
 
@@ -163,15 +164,15 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
 
 ## 4. The exact next action
 
-The all-19 M3 collection is active. The development ledger currently has 172 found rows and 250 pending
+The all-19 M3 collection is active. The development ledger currently has 203 found rows and 190 pending
 slots. Experiment 001 is complete and accepted; its
 deterministic results and audit are under
 `data/reference/v6/experiments/001-expedia-production-anchor/`. The holdout contains 15 × 6 measures, is
 spent, and must not be reread, rescored, or replaced.
 
 The per-measure holdout extension is sealed-before-collection and must not be read. Continue Experiment 002
-with the first six non-accommodation cities — Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei
-— and collect all ten remaining independent measures for each city:
+with the next six non-accommodation cities — Beijing, Tokyo, Seoul, Delhi, Colombo and Mumbai — and collect
+all ten remaining independent measures for each city:
 `inexpensive_restaurant_meal_1p`, `midrange_restaurant_meal_2p`, `mcmeal_combo`, `cappuccino_1`,
 `domestic_draft_beer_1`, `half_day_group_activity_adult_1`, `full_day_premium_activity_adult_1`,
 `premium_restaurant_meal_2p`, `cocktail_1`, and `wine_glass_1`. Use only official menus, operator pages and

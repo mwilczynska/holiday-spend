@@ -200,13 +200,14 @@ M1 implementation notes:
 - [ ] Freeze one all-19 candidate and score gates 2–6 once
 - [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
 
-**Current status:** Phase 1 contract reset is complete. The first independent collection batch is complete:
-all 25 `hotel_2star_room_2p` rows were collected from logged-out Booking.com under
-`booking_top_picks_firstpage_median_v2` and merged into the ledger. Coverage is now **172 found / 250
-pending** across the 25-city x 17-measure development panel; the remaining 250 cells are the ten
-non-accommodation independent measures. The per-measure holdout seal keeps the six already revealed rows
-spent and has created eleven sealed-before-collection extension measures. The old accommodation-only score
-is not an all-19 M3 result. M4 migration remains out of scope.
+**Current status:** Phase 1 contract reset is complete. Experiment 002 batch 001 resolved all ten
+non-accommodation slots for Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei using current
+official menus and explicit missingness where the independent route did not yield a compliant observation.
+Coverage is now **203 found / 190 pending** across the 25-city x 17-measure development panel. The remaining
+190 cells are the ten non-accommodation measures for the other 19 development cities. The per-measure
+holdout seal keeps the six already revealed rows spent and has created eleven sealed-before-collection
+extension measures. The old accommodation-only score is not an all-19 M3 result. M4 migration remains out
+of scope.
 
 ### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 

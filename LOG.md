@@ -2415,3 +2415,17 @@ and separate list-price fields. The rows were merged into `development-ledger.js
 found / 250 pending** across 25 cities x 17 measures. The remaining 250 cells are the ten independent
 food, drink and activity measures. No coefficient was refit, no gate was scored, and no holdout value was
 read.
+
+## v6 M3 — independent menu/activity batch 001 (10 August 2026)
+
+Experiment `002-independent-anchor-panel` batch 001 resolved all 60 non-accommodation slots for Hanoi, Ho
+Chi Minh City, Da Nang, Phuket, Singapore and Taipei. The found rows use current official restaurant, bar,
+operator or venue-menu pages, preserve source currency and every panel price, and retain tax/fee wording.
+Rows that did not meet the independent selection rule were recorded as explicit `not_found`; no Numbeo,
+BudgetYourTrip, third-party menu aggregator, or plausible substitute was used.
+
+The batch added 31 found observations and 29 explicit missingness rows, taking development coverage from
+**172 found / 250 pending** to **203 found / 190 pending**. Reduced panels are called out in evidence text
+where a current official page exposed only one or two qualifying prices; they are not silently treated as
+full five-page panels. No coefficient was refit, no gate was scored, and no holdout value was read. Next
+batch is Beijing, Tokyo, Seoul, Delhi, Colombo and Mumbai.
