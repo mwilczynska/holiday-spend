@@ -2575,7 +2575,7 @@ official attraction panel remains the independent budget-activity check. Wine gl
 the rejected bottle calibration route.
 
 The new generator is `scripts/generate-v6-prediction-bundle.mjs` and its first run is stored under
-`data/reference/v6/experiments/002-production-prediction-bundle/`: **0/25 materialized** because no supported
+`data/reference/v6/experiments/007-production-prediction-bundle-initial/`: **0/25 materialized** because no supported
 provider credential is configured in this checkout. Every city is recorded `not_run`; no prediction was
 fabricated. No new holdout action is permitted before Phase 6, which will verify BYT page coverage, add a
 minimum-coverage freeze guard, propose a fresh 15-city panel, and stop for owner approval.
@@ -2592,3 +2592,32 @@ Phase 6 page verification found a 15-city proposal across the nine regions in
 tier rows out of 90; below that the freeze script must refuse and no holdout may be read. The proposal has
 no tier values. No new holdout was drawn, frozen, read or scored, and the owner must approve before that can
 change.
+
+## v6 M3 — pair delegated spine responses with deterministic production derivation (10 August 2026)
+
+The provider-key prediction attempt in experiment 007 is superseded as the default route. It remains
+archived as a faithful 0/25 fail-closed run: no supported local provider credential was configured and no
+prediction was fabricated. Experiment 006 generalizes experiment 001's delegated production-prompt method.
+It stores one raw, schema-validated response and one telemetry record per city/source, reuses the 15 existing
+Expedia responses byte-for-byte, and collects the remaining Numbeo, BudgetYourTrip and Expedia responses under
+the frozen window. All 75 response files and 75 telemetry files passed the spine schema, identity/search
+budget and `directPageReads=0` checks; Dubai's `UAE`/`United Arab Emirates` spelling is handled by an explicit
+country-alias identity check.
+
+Stage B runs `buildV6CollectionResultFromSpineResponses` and the real `materializeCityCostV6` library path.
+It produced complete 19-tier bundles for **25/25** development cities. The development score is explicitly
+**IN-SAMPLE**: 10 tiers evaluable, one definitional (`activities_free`) and 8 blocked. The blocked set is
+street food (no direct daily-tier truth), five drinks (no independent full basket), and BudgetYourTrip
+mid/high activities (circular production source). Gates 3–6 are `not_evaluable`; this is not a holdout result.
+
+The street-food decision is superseded again, this time in favour of the measured evidence: the shipped
+coefficient is the paired R0 `k=0.3248` from n=6, grade C with the full ±336% LOO-p90 interval. The direct
+prior ratio of marginal medians is 0.276; the coefficient warning records why that differs from the
+median-of-paired-ratios and does not silently choose between them. The former reasoned 0.5 constant is not
+used. The prior generator now records all 34 frozen-FX exclusions rather than silently dropping them:
+EGP/Cairo 7, LKR/Colombo 2, PEN/Lima 4, SGD/Singapore 8, TWD/Taipei 6 and ZAR/Cape Town 7.
+
+Experiment numbering is repaired: the old empty provider attempt is `007-production-prediction-bundle-initial`,
+the current collection is `006-development-prediction-spine`, and the score is normalized under
+`005-development-in-sample-score/`. The spent holdout and the proposed fresh holdout were not read, changed,
+frozen or scored.

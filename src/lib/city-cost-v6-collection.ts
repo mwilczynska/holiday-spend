@@ -11,7 +11,8 @@ import {
 } from './city-cost-methodology-v6';
 import type { V5AnchorName, V5AnchorStatus } from './city-cost-methodology-v5';
 
-type V6SpineSource = 'numbeo' | 'expedia_3star' | 'budgetyourtrip';
+export type V6SpineSource = 'numbeo' | 'expedia_3star' | 'budgetyourtrip';
+export const V6_SPINE_SOURCES: readonly V6SpineSource[] = ['numbeo', 'expedia_3star', 'budgetyourtrip'];
 
 const SOURCE_CONFIG: Record<
   V6SpineSource,
@@ -113,6 +114,37 @@ const responseSchemas: Record<V6SpineSource, z.ZodTypeAny> = {
   }),
 };
 
+export type V6SpineResponse = {
+  schemaVersion: 'city-cost-v6-spine-response-v1';
+  source: V6SpineSource;
+  city: string;
+  country: string;
+  retrievalStatus: 'complete' | 'partial' | 'not_found' | 'blocked';
+  searchesUsed: number;
+  directPageReads: number;
+  notes: string;
+  measures: Record<string, ParsedMeasure>;
+};
+
+export type V6DiskTelemetry = {
+  source?: V6SpineSource;
+  promptVersion?: string;
+  provider?: string;
+  model?: string;
+  attempts?: number;
+  providerCalls?: number;
+  retries?: number;
+  status?: V6CollectionCallTelemetry['status'] | V6SpineResponse['retrievalStatus'];
+  searchesUsed?: number;
+  directPageReads?: number;
+  startedAt?: string;
+  completedAt?: string;
+  durationMs?: number;
+  latencyMs?: number | null;
+  error?: string | null;
+  blocks?: number;
+};
+
 type ParsedMeasure = z.infer<typeof measureSchema>;
 
 export interface V6SpineFact extends ParsedMeasure {
@@ -194,6 +226,35 @@ function extractJsonObject(text: string) {
   }
 }
 
+export function parseV6SpineResponse(source: V6SpineSource, raw: unknown): V6SpineResponse {
+  const parsed = responseSchemas[source].parse(raw) as V6SpineResponse;
+  if (parsed.source !== source) {
+    throw new V6CollectionError(`Expected a ${source} spine response, received ${parsed.source}.`, 502);
+  }
+  if (parsed.directPageReads !== 0) {
+    throw new V6CollectionError(`The ${source} response reported a direct page read; v6 production is search-snippet only.`, 502);
+  }
+  return parsed;
+}
+
+const COUNTRY_ALIASES: Record<string, string> = {
+  uae: 'united arab emirates',
+  usa: 'united states',
+  us: 'united states',
+  uk: 'united kingdom',
+  czechia: 'czech republic',
+  turkiye: 'turkey',
+};
+
+function countryIdentity(value: string) {
+  const normalized = value.trim().toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, ' ');
+  return COUNTRY_ALIASES[normalized] ?? normalized;
+}
+
+function countriesMatch(left: string, right: string) {
+  return countryIdentity(left) === countryIdentity(right);
+}
+
 function readFxRate(currency: string) {
   const snapshotPath = path.resolve(process.cwd(), 'data/reference/fx/city_cost_fx_aud_2026-07-22.json');
   const fallbackPath = path.resolve(process.cwd(), '..', 'data/reference/fx/city_cost_fx_aud_2026-07-22.json');
@@ -257,6 +318,76 @@ function sourceFactToAnchor(
   };
 }
 
+function diskTelemetry(
+  source: V6SpineSource,
+  response: V6SpineResponse,
+  input: V6DiskTelemetry | undefined
+): V6CollectionCallTelemetry {
+  const telemetry = input ?? {};
+  const attempts = telemetry.attempts ?? telemetry.providerCalls ?? 1;
+  const searchesUsed = telemetry.searchesUsed ?? response.searchesUsed;
+  const directPageReads = telemetry.directPageReads ?? response.directPageReads;
+  const status = telemetry.status ?? response.retrievalStatus;
+  const startedAt = telemetry.startedAt ?? new Date().toISOString();
+  const completedAt = telemetry.completedAt ?? startedAt;
+  return {
+    source,
+    promptVersion: telemetry.promptVersion ?? SOURCE_CONFIG[source].promptFile,
+    provider: telemetry.provider ?? 'delegated-gpt-5.6-luna',
+    model: telemetry.model ?? 'gpt-5.6-luna',
+    attempts,
+    retries: telemetry.retries ?? Math.max(0, attempts - 1),
+    status,
+    searchesUsed,
+    directPageReads,
+    startedAt,
+    completedAt,
+    durationMs: telemetry.durationMs ?? telemetry.latencyMs ?? 0,
+    error: telemetry.error ?? null,
+  };
+}
+
+export function buildV6CollectionResultFromSpineResponses(input: {
+  city: string;
+  country: string;
+  responses: Record<V6SpineSource, unknown>;
+  telemetry?: Partial<Record<V6SpineSource, V6DiskTelemetry>>;
+}): V6CollectionResult {
+  const parsed = V6_SPINE_SOURCES.map((source) => {
+    const response = parseV6SpineResponse(source, input.responses[source]);
+    if (response.city !== input.city || !countriesMatch(response.country, input.country)) {
+      throw new V6CollectionError(`The ${source} response changed the requested city or country.`, 502);
+    }
+    const normalizedTelemetry = diskTelemetry(source, response, input.telemetry?.[source]);
+    const facts = SOURCE_CONFIG[source].measures.map((measure) => ({
+      measure,
+      source,
+      ...(response.measures[measure] as ParsedMeasure),
+      retrievalStatus: response.retrievalStatus,
+      provider: normalizedTelemetry.provider,
+      model: normalizedTelemetry.model,
+      promptVersion: normalizedTelemetry.promptVersion,
+    }));
+    const anchors = Object.fromEntries(
+      facts.map((fact) => [fact.measure, sourceFactToAnchor(source, fact, normalizedTelemetry.provider, normalizedTelemetry.model, normalizedTelemetry.promptVersion)])
+    ) as V6AnchorInputs;
+    return { response, facts, anchors, telemetry: normalizedTelemetry };
+  });
+
+  const searches = parsed.reduce((total, result) => total + result.telemetry.searchesUsed, 0);
+  if (searches > 25) {
+    throw new V6CollectionError('The v6 production search budget exceeded 25 searches for this city.', 502);
+  }
+  return {
+    anchors: Object.assign({}, ...parsed.map((result) => result.anchors)),
+    facts: parsed.flatMap((result) => result.facts),
+    telemetry: parsed.map((result) => result.telemetry),
+    llmCalls: parsed.reduce((total, result) => total + result.telemetry.attempts, 0),
+    searches,
+    promptVersions: parsed.map((result) => result.telemetry.promptVersion),
+  };
+}
+
 function isBlockError(error: unknown) {
   return /\b(429|503|blocked|rate limit|captcha|forbidden)\b/i.test(error instanceof Error ? error.message : String(error));
 }
@@ -300,19 +431,9 @@ async function collectSpineCall(input: {
       }
       provider = response.provider;
       model = response.model;
-      const parsed = responseSchemas[input.source].parse(extractJsonObject(response.text)) as {
-        city: string;
-        country: string;
-        retrievalStatus: 'complete' | 'partial' | 'not_found' | 'blocked';
-        searchesUsed: number;
-        directPageReads: number;
-        measures: Record<string, ParsedMeasure>;
-      };
-      if (parsed.city !== input.city || parsed.country !== input.country) {
+      const parsed = parseV6SpineResponse(input.source, extractJsonObject(response.text));
+      if (parsed.city !== input.city || !countriesMatch(parsed.country, input.country)) {
         throw new V6CollectionError(`The ${input.source} response changed the requested city or country.`, 502);
-      }
-      if (parsed.directPageReads !== 0) {
-        throw new V6CollectionError(`The ${input.source} response reported a direct page read; v6 production is search-snippet only.`, 502);
       }
       searchesUsedTotal += parsed.searchesUsed;
       if (parsed.retrievalStatus === 'blocked' && attempts < 2) {

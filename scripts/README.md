@@ -57,11 +57,12 @@ re-derive is a claim you cannot audit.
 | `node scripts/merge-v6-holdout-extension-batch.mjs` | `merge-v6-holdout-extension-batch.mjs` | Merges a complete fresh batch into the sealed extension and reports status counts only |
 | `node scripts/seal-v6-holdout-extension.mjs` | `seal-v6-holdout-extension.mjs` | Transitions all fresh extension measures to sealed_after_collection without exposing prices |
 | `node scripts/score-expedia-production-anchor-v6.mjs [--check]` | `score-expedia-production-anchor-v6.mjs` | Deterministic scorer for experiment 001; reads only the development Booking ledger and Expedia experiment responses |
-| `cmd /c node scripts/generate-v6-prediction-bundle.mjs` | `generate-v6-prediction-bundle.mjs` | Runs the exact production collector/materializer for the 25-city development panel and writes one full 19-tier prediction bundle per city; explicit `not_run` is retained when no provider is configured |
+| `cmd /c node scripts/generate-v6-prediction-bundle.mjs` | `generate-v6-prediction-bundle.mjs` | Default: validates delegated spine files under experiment 006 and runs the exact `materializeCityCostV6` Stage B for the 25-city development panel; pass `--provider=<name>` to retain direct provider mode; explicit `not_run` is retained for missing raw inputs |
 | `node scripts/record-v6-budgetyourtrip-tier-panel.mjs` | `record-v6-budgetyourtrip-tier-panel.mjs` | Records the pre-registered one-call-per-city BYT labelled food/activity tier facts without conversion or two-person scaling |
 | `node scripts/record-v6-expatistan-drink-panel.mjs` | `record-v6-expatistan-drink-panel.mjs` | Records accepted independent Expatistan cocktail evidence and explicit beer missingness; never promotes wine-bottle rows to wine-glass truth |
 | `node scripts/build-city-cost-v6-priors.mjs` | `build-city-cost-v6-priors.mjs` | Generates `data/reference/v6/priors-v6.json` from direct development evidence and BYT labelled tiers, without reading the live CSV |
 | `node scripts/score-v6-development-panel-in-sample.mjs` | `score-v6-development-panel-in-sample.mjs` | Scores only paired development prediction/truth rows and labels all blocked/circular results; never reads a holdout |
+| `node scripts/report-city-cost-v6-development-in-sample.mjs` | `report-city-cost-v6-development-in-sample.mjs` | Generates the 19-tier development-only M3 table and gate 2–6 status from the coefficients and in-sample score; never reads a holdout |
 
 ## SUPERSEDED — methodology v5
 

@@ -1,0 +1,1180 @@
+{
+  "city": "Cape Town",
+  "country": "South Africa",
+  "region": "Africa",
+  "band": "mid",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Cape-Town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Cape-Town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Cape-Town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Cape-Town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Cape-Town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 123.14,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 112.96,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 200,
+        "currency": "ZAR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cape-Town",
+        "sourceTitle": "Cost of Living in Cape Town. Jun 2026. Prices in Cape Town",
+        "evidenceText": "Meal at an Inexpensive Restaurant | R200.00 | 120.00-400.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cape-Town Meal, Inexpensive Restaurant",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 800,
+        "currency": "ZAR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cape-Town",
+        "sourceTitle": "Cost of Living in Cape Town. Jun 2026. Prices in Cape Town",
+        "evidenceText": "Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | R800.00 | 500.00-1,200.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cape-Town Meal for 2 People, Mid-range Restaurant",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 40.39,
+        "currency": "ZAR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cape-Town",
+        "sourceTitle": "Cost of Living in Cape Town. Jun 2026. Prices in Cape Town",
+        "evidenceText": "Cappuccino (Regular Size) | R40.39 | 30.00-60.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cape-Town Cappuccino (Regular Size)",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 50,
+        "currency": "ZAR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cape-Town",
+        "sourceTitle": "Cost of Living in Cape Town. Jun 2026. Prices in Cape Town",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | R50.00 | 40.00-70.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cape-Town Domestic Draft Beer (1 Pint)",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 100,
+        "currency": "ZAR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cape-Town",
+        "sourceTitle": "Cost of Living in Cape Town. Jun 2026. Prices in Cape Town",
+        "evidenceText": "Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | R100.00 | 85.00-120.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cape-Town McMeal at McDonalds",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 92,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Cape Town from $29 | Expedia",
+        "evidenceText": "September | $92\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Cape Town. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Cape-Town-Hotels.s30 \"Price trends for properties with 3 Stars\" \"2 adults\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town",
+        "sourceTitle": "Cape Town Travel Cost - Average Price of a Vacation to Cape Town: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment | $9 | (R154) | $26 | (R427) | $79 | (R1,296)",
+        "query": "site:budgetyourtrip.com Cape Town budget daily entertainment activities per person",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town",
+        "sourceTitle": "Cape Town Travel Cost - Average Price of a Vacation to Cape Town: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment | $9 | (R154) | $26 | (R427) | $79 | (R1,296)",
+        "query": "site:budgetyourtrip.com Cape Town mid-range daily entertainment activities per person",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 79,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town",
+        "sourceTitle": "Cape Town Travel Cost - Average Price of a Vacation to Cape Town: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment | $9 | (R154) | $26 | (R427) | $79 | (R1,296)",
+        "query": "site:budgetyourtrip.com Cape Town luxury daily entertainment activities per person",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.273Z",
+        "completedAt": "2026-08-10T20:40:51.273Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.273Z",
+        "completedAt": "2026-08-10T20:40:51.273Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.274Z",
+        "completedAt": "2026-08-10T20:40:51.274Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 12,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "region": "Africa",
+    "costBand": "high",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 72.78,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 33.48,
+          "upperAud": 112.08,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 72.89,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 47.38,
+          "upperAud": 98.4,
+          "widthPct": 35
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 82.05,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 45.13,
+          "upperAud": 118.97,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 92.36,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 69.27,
+          "upperAud": 115.45,
+          "widthPct": 25
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "amountAud": 123.14,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 72.65,
+          "upperAud": 173.63,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 164.66,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 123.5,
+          "upperAud": 205.83,
+          "widthPct": 25
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 21.42,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 11.78,
+          "upperAud": 31.06,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Africa:high:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 31.46,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 17.3,
+          "upperAud": 45.62,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Africa:high:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 48.62,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 26.74,
+          "upperAud": 70.5,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Africa:high:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 94.37,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 51.9,
+          "upperAud": 136.84,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 5.53,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 3.04,
+          "upperAud": 8.02,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 11.06,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 6.08,
+          "upperAud": 16.04,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 25.34,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 13.94,
+          "upperAud": 36.74,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 68.38,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 37.61,
+          "upperAud": 99.15,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 111.42,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1",
+          "wine_glass_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 61.28,
+          "upperAud": 161.56,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "2 * paid_attraction_adult_1",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 25.74,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 20.59,
+          "upperAud": 30.89,
+          "widthPct": 20
+        }
+      },
+      "activities_mid_range": {
+        "formula": "2 * half_day_group_activity_adult_1",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 74.36,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "formula": "2 * full_day_premium_activity_adult_1",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 225.92,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 146.85,
+          "upperAud": 304.99,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 36.39,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 54,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 72.89,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 82.05,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 45,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 92.36,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 123.14,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 164.66,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 3.57,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 12.95,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 85.74,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": 6.75,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "mcmeal_combo"
+        ],
+        "missingness": "not_found"
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 132.13,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": 5.53,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 7.14,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "missingness": "not_found"
+      },
+      "cocktail_1": {
+        "valueAud": 14.38,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cocktail_1"
+        ],
+        "missingness": "not_found"
+      },
+      "wine_glass_1": {
+        "valueAud": 12.8,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Africa:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 20,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 112.96,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/south-africa/cape-town"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "inexpensive_restaurant_meal_1p": "not_found",
+      "midrange_restaurant_meal_2p": "not_found",
+      "mcmeal_combo": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cappuccino_1": "not_found",
+      "domestic_draft_beer_1": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 72.78,
+      "accomPrivateRoom": 72.89,
+      "accom1star": 82.05,
+      "accom2star": 92.36,
+      "accom3star": 123.14,
+      "accom4star": 164.66,
+      "foodStreet": 21.42,
+      "foodBudget": 31.46,
+      "foodMid": 48.62,
+      "foodHigh": 94.37,
+      "drinkCoffee": 5.53,
+      "drinkLocalBeer": 7.14,
+      "drinkWineGlass": 12.8,
+      "drinkCocktail": 14.38,
+      "drinksNone": 11.06,
+      "drinksLight": 25.34,
+      "drinksModerate": 68.38,
+      "drinksHeavy": 111.42,
+      "activitiesFree": 0,
+      "activitiesBudget": 25.74,
+      "activitiesMid": 74.36,
+      "activitiesHigh": 225.92
+    }
+  }
+}

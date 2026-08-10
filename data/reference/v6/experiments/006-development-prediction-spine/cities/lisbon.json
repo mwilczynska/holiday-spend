@@ -1,0 +1,1168 @@
+{
+  "city": "Lisbon",
+  "country": "Portugal",
+  "region": "Europe",
+  "band": "high",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 24.47,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 89.72,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.21,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.89,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 16.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 208.81,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 102.95,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 15,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+        "sourceTitle": "Cost of Living in Lisbon. Jun 2026. Prices in Lisbon",
+        "evidenceText": "Meal at an Inexpensive Restaurant | €15.00 | 10.00-20.00",
+        "query": "site:numbeo.com/cost-of-living/in/Lisbon Meal at an Inexpensive Restaurant Cappuccino",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 55,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+        "sourceTitle": "Cost of Living in Lisbon. Jun 2026. Prices in Lisbon",
+        "evidenceText": "Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | €55.00 | 40.00-80.00",
+        "query": "site:numbeo.com/cost-of-living/in/Lisbon Meal at an Inexpensive Restaurant Cappuccino",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 2.58,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+        "sourceTitle": "Cost of Living in Lisbon. Jun 2026. Prices in Lisbon",
+        "evidenceText": "Cappuccino (Regular Size) | €2.58 | 1.20-4.00",
+        "query": "site:numbeo.com/cost-of-living/in/Lisbon Meal at an Inexpensive Restaurant Cappuccino",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 3,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+        "sourceTitle": "Cost of Living in Lisbon. Jun 2026. Prices in Lisbon",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | €3.00 | 1.80-4.50",
+        "query": "site:numbeo.com/cost-of-living/in/Lisbon Meal at an Inexpensive Restaurant Cappuccino",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 10,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+        "sourceTitle": "Cost of Living in Lisbon. Jun 2026. Prices in Lisbon",
+        "evidenceText": "Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | €10.00 | 8.00-12.00",
+        "query": "site:numbeo.com/cost-of-living/in/Lisbon Meal at an Inexpensive Restaurant Cappuccino",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 156,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Lisbon from $44 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Lisbon. September: $156.",
+        "query": "site:expedia.com Lisbon Portugal 3-star hotels 2 adults 1 night average price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon",
+        "sourceTitle": "Lisbon Travel Cost - Average Price of a Vacation to Lisbon: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment^{1} | $11 (€9.34) | $28 (€24) | $72 (€63)",
+        "query": "site:budgetyourtrip.com/portugal/lisbon Entertainment Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon",
+        "sourceTitle": "Lisbon Travel Cost - Average Price of a Vacation to Lisbon: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment^{1} | $11 (€9.34) | $28 (€24) | $72 (€63)",
+        "query": "site:budgetyourtrip.com/portugal/lisbon Entertainment Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 72,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/portugal/lisbon",
+        "sourceTitle": "Lisbon Travel Cost - Average Price of a Vacation to Lisbon: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment^{1} | $11 (€9.34) | $28 (€24) | $72 (€63)",
+        "query": "site:budgetyourtrip.com/portugal/lisbon Entertainment Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.282Z",
+        "completedAt": "2026-08-10T20:40:51.282Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.282Z",
+        "completedAt": "2026-08-10T20:40:51.282Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.283Z",
+        "completedAt": "2026-08-10T20:40:51.283Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 6,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "Lisbon",
+    "country": "Portugal",
+    "region": "Europe",
+    "costBand": "high",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 123.4,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 56.76,
+          "upperAud": 190.04,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 123.59,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 80.33,
+          "upperAud": 166.85,
+          "widthPct": 35
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 139.13,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 76.52,
+          "upperAud": 201.74,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 156.61,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 117.46,
+          "upperAud": 195.76,
+          "widthPct": 25
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "amountAud": 208.81,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 123.2,
+          "upperAud": 294.42,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 279.22,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 209.42,
+          "upperAud": 349.03,
+          "widthPct": 25
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "amountAud": 47.7,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 207.97,
+          "widthPct": 336
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Europe:high:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 88.65,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 48.76,
+          "upperAud": 128.54,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Europe:high:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 215.91,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 118.75,
+          "upperAud": 313.07,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Europe:high:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 507.61,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 279.19,
+          "upperAud": 736.03,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 4.21,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 3.79,
+          "upperAud": 4.63,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 8.42,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 7.58,
+          "upperAud": 9.26,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 18.2,
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 16.38,
+          "upperAud": 20.02,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "amountAud": 49.88,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 33.32,
+          "upperAud": 66.44,
+          "widthPct": 33.2
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "v6-coefficient:cocktail_1",
+          "v6-prior:Europe:high"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0",
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 81.56,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "wine_glass_1",
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 48.57,
+          "upperAud": 114.55,
+          "widthPct": 40.45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "2 * paid_attraction_adult_1",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 31.46,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 25.17,
+          "upperAud": 37.75,
+          "widthPct": 20
+        }
+      },
+      "activities_mid_range": {
+        "formula": "2 * half_day_group_activity_adult_1",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 80.08,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "formula": "2 * full_day_premium_activity_adult_1",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 205.9,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 133.84,
+          "upperAud": 277.97,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 61.7,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 54,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 123.59,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 139.13,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 45,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 156.61,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 208.81,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 279.22,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 7.95,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 336,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ]
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 24.47,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 89.72,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 16.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 134.58,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "v6-coefficient:premium_restaurant_meal_2p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.21,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.89,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 10.95,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 75,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Lisbon",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      },
+      "wine_glass_1": {
+        "valueAud": 11.42,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Europe:high"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 20,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 102.95,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/portugal/lisbon"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 123.4,
+      "accomPrivateRoom": 123.59,
+      "accom1star": 139.13,
+      "accom2star": 156.61,
+      "accom3star": 208.81,
+      "accom4star": 279.22,
+      "foodStreet": 47.7,
+      "foodBudget": 88.65,
+      "foodMid": 215.91,
+      "foodHigh": 507.61,
+      "drinkCoffee": 4.21,
+      "drinkLocalBeer": 4.89,
+      "drinkWineGlass": 11.42,
+      "drinkCocktail": 10.95,
+      "drinksNone": 8.42,
+      "drinksLight": 18.2,
+      "drinksModerate": 49.88,
+      "drinksHeavy": 81.56,
+      "activitiesFree": 0,
+      "activitiesBudget": 31.46,
+      "activitiesMid": 80.08,
+      "activitiesHigh": 205.9
+    }
+  }
+}

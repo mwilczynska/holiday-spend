@@ -328,7 +328,7 @@ Estimated effort: 2–4 days of collection. This is bounded, unlike the 95-exper
 
 ---
 
-## 5.1 Current M3 owner reset — 10 August 2026
+## 5.1 Historical M3 owner reset — superseded by §5.2 (10 August 2026)
 
 The 25-city x 18-measure development ledger is preserved at **280 found / 0 pending**, but it is item-level
 evidence and does not by itself validate the product's daily-spend tiers. The previous holdout is spent: all
@@ -352,6 +352,25 @@ The active M3 design is:
   measures remain blocked rather than becoming false validation.
 - Verify BYT page existence for a proposed 15-city draw from the 81 neither-panel cities, require at least
   72/90 found BYT tier rows before freeze/read, and stop for owner approval.
+
+## 5.2 Current M3 paired-prediction result — 10 August 2026
+
+The provider-key attempt is retained as experiment 007 and is superseded as the default route. Experiment
+006 generalizes the proven delegated Expedia-anchor pattern: 75 raw spine responses and 75 telemetry records
+cover the 25 development cities, with 15 Expedia responses reused byte-for-byte from experiment 001. The
+default generator validates those files and sends the normalized anchors through the real
+`materializeCityCostV6` implementation. Stage B produced **25/25** full 19-tier bundles.
+
+The development score is labelled **IN-SAMPLE** and is not a holdout result. It has 10 evaluable tiers, one
+definitional tier and 8 blocked tiers. The blocked tiers are street food (no direct daily-tier truth), the
+five drinks (no independent full basket), and mid/high activities (BudgetYourTrip is the production source).
+Gates 3–6 are `not_evaluable` on this partial truth panel; no gate pass or failure is inferred.
+
+The measured street-food paired R0 `k=0.3248` is now shipped with grade C and a ±336% LOO-p90 interval,
+superseding the reasoned 0.5 constant. The direct prior ratio of marginal medians is 0.276 and the
+coefficient warning explains the median-of-marginals versus median-of-paired-ratios distinction. The prior
+artifact records 34 found rows excluded by the frozen FX snapshot. The spent holdout remains closed, and the
+fresh 15-city proposal remains uncollected pending owner approval.
 
 ## 6. Milestones and honest success estimates
 

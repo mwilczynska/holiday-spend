@@ -1,0 +1,1196 @@
+{
+  "city": "Colombo",
+  "country": "Sri Lanka",
+  "region": "South Asia",
+  "band": "low",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 58.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "missingness": "not_found"
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "missingness": "not_found"
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 44,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Colombo from $19 | Expedia",
+        "evidenceText": "September | $44. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Colombo.",
+        "query": "site:expedia.com/Hotel-Search Colombo Sri Lanka 3-star hotels standard room 2 adults one night",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.263Z",
+        "completedAt": "2026-08-10T20:40:51.263Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.263Z",
+        "completedAt": "2026-08-10T20:40:51.263Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.264Z",
+        "completedAt": "2026-08-10T20:40:51.264Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 12,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "Colombo",
+    "country": "Sri Lanka",
+    "region": "South Asia",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 34.8,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 16.01,
+          "upperAud": 53.59,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 34.86,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 22.66,
+          "upperAud": 47.06,
+          "widthPct": 35
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 39.24,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 21.58,
+          "upperAud": 56.9,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 44.17,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 33.13,
+          "upperAud": 55.21,
+          "widthPct": 25
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "amountAud": 58.89,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 34.75,
+          "upperAud": 83.03,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 78.75,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 59.06,
+          "upperAud": 98.44,
+          "widthPct": 25
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 4.38,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.41,
+          "upperAud": 6.35,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:South Asia:mid:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 34.32,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:South Asia:mid:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 108.67,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 59.77,
+          "upperAud": 157.57,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:South Asia:mid:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 386.07,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 212.34,
+          "upperAud": 559.8,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 5.74,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 3.16,
+          "upperAud": 8.32,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 11.48,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 6.31,
+          "upperAud": 16.65,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 25.76,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 14.17,
+          "upperAud": 37.35,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 52.62,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 28.94,
+          "upperAud": 76.3,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 79.47999999999999,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1",
+          "wine_glass_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 43.71,
+          "upperAud": 115.25,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "direct activities_budget prior from v6 development panel",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:South Asia:mid:activities_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 2.86,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "paid_attraction_adult_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 1.57,
+          "upperAud": 4.15,
+          "widthPct": 45
+        }
+      },
+      "activities_mid_range": {
+        "formula": "direct activities_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:South Asia:mid:activities_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 5.72,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "half_day_group_activity_adult_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 3.15,
+          "upperAud": 8.29,
+          "widthPct": 45
+        }
+      },
+      "activities_high_end": {
+        "formula": "direct activities_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:South Asia:mid:activities_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 17.16,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 9.44,
+          "upperAud": 24.88,
+          "widthPct": 45
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 17.4,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 54,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 34.86,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 39.24,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 45,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 44.17,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 58.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 78.75,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 0.73,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 12.95,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 85.74,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": 6.75,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "mcmeal_combo"
+        ],
+        "missingness": "not_found"
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 132.13,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": 5.74,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 7.14,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "missingness": "not_found"
+      },
+      "cocktail_1": {
+        "valueAud": 6.29,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cocktail_1"
+        ],
+        "missingness": "not_found"
+      },
+      "wine_glass_1": {
+        "valueAud": 19.91,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 2.2,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "paid_attraction_adult_1"
+        ],
+        "missingness": "not_found"
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 2.86,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingness": "not_found"
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 8.58,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:South Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "inexpensive_restaurant_meal_1p": "not_found",
+      "midrange_restaurant_meal_2p": "not_found",
+      "mcmeal_combo": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cappuccino_1": "not_found",
+      "domestic_draft_beer_1": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found",
+      "paid_attraction_adult_1": "not_found",
+      "half_day_group_activity_adult_1": "not_found",
+      "full_day_premium_activity_adult_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 34.8,
+      "accomPrivateRoom": 34.86,
+      "accom1star": 39.24,
+      "accom2star": 44.17,
+      "accom3star": 58.89,
+      "accom4star": 78.75,
+      "foodStreet": 4.38,
+      "foodBudget": 34.32,
+      "foodMid": 108.67,
+      "foodHigh": 386.07,
+      "drinkCoffee": 5.74,
+      "drinkLocalBeer": 7.14,
+      "drinkWineGlass": 19.91,
+      "drinkCocktail": 6.29,
+      "drinksNone": 11.48,
+      "drinksLight": 25.76,
+      "drinksModerate": 52.62,
+      "drinksHeavy": 79.47999999999999,
+      "activitiesFree": 0,
+      "activitiesBudget": 2.86,
+      "activitiesMid": 5.72,
+      "activitiesHigh": 17.16
+    }
+  }
+}

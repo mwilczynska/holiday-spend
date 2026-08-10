@@ -1,0 +1,1180 @@
+{
+  "city": "Istanbul",
+  "country": "Turkey",
+  "region": "Middle East",
+  "band": "mid",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 105.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 135.84,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 79,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+        "sourceTitle": "The Best 3 Star Hotels in Istanbul from $29 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Istanbul. September $79.",
+        "query": "site:expedia.com Istanbul Turkey 3-star hotels average nightly price two adults one night",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment¹ | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com/turkey/istanbul Entertainment Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 39,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment¹ | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com/turkey/istanbul Entertainment Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 95,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses",
+        "evidenceText": "Entertainment¹ | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com/turkey/istanbul Entertainment Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.267Z",
+        "completedAt": "2026-08-10T20:40:51.267Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.267Z",
+        "completedAt": "2026-08-10T20:40:51.267Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.267Z",
+        "completedAt": "2026-08-10T20:40:51.267Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 9,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "region": "Middle East",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 62.5,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 28.75,
+          "upperAud": 96.25,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 62.59,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 40.68,
+          "upperAud": 84.5,
+          "widthPct": 35
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 70.45,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 38.75,
+          "upperAud": 102.15,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 79.3,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 59.47,
+          "upperAud": 99.13,
+          "widthPct": 25
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "amountAud": 105.74,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 62.39,
+          "upperAud": 149.09,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 141.4,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 106.05,
+          "upperAud": 176.75,
+          "widthPct": 25
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 44.34,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 24.39,
+          "upperAud": 64.29,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Middle East:mid:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 68.63,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 37.75,
+          "upperAud": 99.51,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Middle East:mid:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 168.73,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 92.8,
+          "upperAud": 244.66,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Middle East:mid:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 380.35,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 209.19,
+          "upperAud": 551.51,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 5.75,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 3.16,
+          "upperAud": 8.34,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 11.5,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 6.33,
+          "upperAud": 16.68,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 25.78,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 14.18,
+          "upperAud": 37.38,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 90.02,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 49.51,
+          "upperAud": 130.53,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 154.26,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1",
+          "wine_glass_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 84.84,
+          "upperAud": 223.68,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "2 * paid_attraction_adult_1",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 42.9,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 34.32,
+          "upperAud": 51.48,
+          "widthPct": 20
+        }
+      },
+      "activities_mid_range": {
+        "formula": "2 * half_day_group_activity_adult_1",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 111.54,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 72.5,
+          "upperAud": 150.58,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "formula": "2 * full_day_premium_activity_adult_1",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 271.68,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 176.59,
+          "upperAud": 366.77,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 31.25,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 54,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 62.59,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 70.45,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 45,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 79.3,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 105.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 141.4,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 7.39,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 9.08,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 76.31,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": 6.75,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "mcmeal_combo"
+        ],
+        "missingness": "not_found"
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 132.13,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": 5.75,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 7.14,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "missingness": "not_found"
+      },
+      "cocktail_1": {
+        "valueAud": 24.98,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cocktail_1"
+        ],
+        "missingness": "not_found"
+      },
+      "wine_glass_1": {
+        "valueAud": 12.8,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Middle East:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 20,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 135.84,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "inexpensive_restaurant_meal_1p": "not_found",
+      "midrange_restaurant_meal_2p": "not_found",
+      "mcmeal_combo": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cappuccino_1": "not_found",
+      "domestic_draft_beer_1": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 62.5,
+      "accomPrivateRoom": 62.59,
+      "accom1star": 70.45,
+      "accom2star": 79.3,
+      "accom3star": 105.74,
+      "accom4star": 141.4,
+      "foodStreet": 44.34,
+      "foodBudget": 68.63,
+      "foodMid": 168.73,
+      "foodHigh": 380.35,
+      "drinkCoffee": 5.75,
+      "drinkLocalBeer": 7.14,
+      "drinkWineGlass": 12.8,
+      "drinkCocktail": 24.98,
+      "drinksNone": 11.5,
+      "drinksLight": 25.78,
+      "drinksModerate": 90.02,
+      "drinksHeavy": 154.26,
+      "activitiesFree": 0,
+      "activitiesBudget": 42.9,
+      "activitiesMid": 111.54,
+      "activitiesHigh": 271.68
+    }
+  }
+}

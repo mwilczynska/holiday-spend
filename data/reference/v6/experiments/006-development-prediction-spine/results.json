@@ -1,0 +1,495 @@
+{
+  "schemaVersion": "city-cost-v6-prediction-bundle-v2",
+  "methodologyVersion": "v6.0",
+  "experiment": "006-development-prediction-spine",
+  "panel": "development",
+  "manifestPath": "data/reference/v6/validation-manifest-v6.json",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "spineDirectory": "data/reference/v6/experiments/006-development-prediction-spine/responses",
+  "telemetryDirectory": "data/reference/v6/experiments/006-development-prediction-spine/telemetry",
+  "productionPath": "Stage A validated spine responses -> materializeCityCostV6",
+  "provider": "delegated-gpt-5.6-luna",
+  "startedAt": "2026-08-10T20:40:51.226Z",
+  "completedAt": "2026-08-10T20:40:51.298Z",
+  "totalCities": 25,
+  "foundCities": 25,
+  "notRunCities": 0,
+  "rows": [
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 11,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 9,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 12,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 12,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 12,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "region": "East Asia",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 7,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Beijing",
+      "country": "China",
+      "region": "East Asia",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 5,
+      "observedFacts": 8,
+      "missingFacts": 1
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 7,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 7,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 7,
+      "observedFacts": 8,
+      "missingFacts": 1
+    },
+    {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "region": "South Asia",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 12,
+      "observedFacts": 1,
+      "missingFacts": 8
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "region": "South Asia",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 9,
+      "observedFacts": 4,
+      "missingFacts": 5
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 9,
+      "observedFacts": 4,
+      "missingFacts": 5
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "region": "Middle East",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 9,
+      "observedFacts": 4,
+      "missingFacts": 5
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "region": "Africa",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 9,
+      "observedFacts": 3,
+      "missingFacts": 6
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "region": "Africa",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 12,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "region": "Africa",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 8,
+      "observedFacts": 1,
+      "missingFacts": 8
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 3,
+      "observedFacts": 6,
+      "missingFacts": 3
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 7,
+      "observedFacts": 4,
+      "missingFacts": 5
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 6,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 6,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 7,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "region": "Latin America",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 8,
+      "observedFacts": 9,
+      "missingFacts": 0
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 5,
+      "observedFacts": 8,
+      "missingFacts": 1
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "mode": "from-disk",
+      "productionPath": {
+        "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+        "stageB": "materializeCityCostV6",
+        "provider": "delegated-spine-files"
+      },
+      "status": "found",
+      "tierCount": 19,
+      "llmCalls": 3,
+      "searches": 5,
+      "observedFacts": 8,
+      "missingFacts": 1
+    }
+  ]
+}

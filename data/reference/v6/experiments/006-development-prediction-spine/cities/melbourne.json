@@ -1,0 +1,1142 @@
+{
+  "city": "Melbourne",
+  "country": "Australia",
+  "region": "Oceania",
+  "band": "high",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 25,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 100,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.64,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 13.15,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 16.5,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 42.9,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 100.09,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 25,
+        "currency": "AUD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+        "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+        "evidenceText": "Meal at an Inexpensive Restaurant | A$25.00",
+        "query": "https://www.numbeo.com/cost-of-living/in/Melbourne \"Meal at an Inexpensive Restaurant\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 100,
+        "currency": "AUD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+        "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+        "evidenceText": "Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | A$100.00",
+        "query": "https://www.numbeo.com/cost-of-living/in/Melbourne \"Meal for Two at a Mid-Range Restaurant\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 5.64,
+        "currency": "AUD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+        "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+        "evidenceText": "Cappuccino (Regular Size) | A$5.64",
+        "query": "https://www.numbeo.com/cost-of-living/in/Melbourne \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 13.15,
+        "currency": "AUD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+        "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | A$13.15",
+        "query": "https://www.numbeo.com/cost-of-living/in/Melbourne \"Domestic Draft Beer\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 16.5,
+        "currency": "AUD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+        "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+        "evidenceText": "Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | A$16.50",
+        "query": "https://www.numbeo.com/cost-of-living/in/Melbourne \"McMeal at McDonalds\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:expedia.com Melbourne Australia 3-star hotels price trend 2 adults September 17 2026",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment | $12 | $30 | $70",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Budget\" \"Mid-Range\" \"Luxury\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 30,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment | $12 | $30 | $70",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Budget\" \"Mid-Range\" \"Luxury\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 70,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment | $12 | $30 | $70",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Budget\" \"Mid-Range\" \"Luxury\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.296Z",
+        "completedAt": "2026-08-10T20:40:51.296Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.297Z",
+        "completedAt": "2026-08-10T20:40:51.297Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.297Z",
+        "completedAt": "2026-08-10T20:40:51.297Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 5,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "Melbourne",
+    "country": "Australia",
+    "region": "Oceania",
+    "costBand": null,
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 73.88,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 33.98,
+          "upperAud": 113.78,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 73.99,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 40.69,
+          "upperAud": 107.29,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 83.29,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 45.81,
+          "upperAud": 120.77,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 93.75,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 51.56,
+          "upperAud": 135.94,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Oceania:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 125,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 68.75,
+          "upperAud": 181.25,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 167.15,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 91.93,
+          "upperAud": 242.37,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "amountAud": 48.72,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 212.42,
+          "widthPct": 336
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Oceania:all:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 68.63,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 37.75,
+          "upperAud": 99.51,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Oceania:all:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 163.01,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 89.66,
+          "upperAud": 236.36,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:Oceania:all:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 366.05,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 201.33,
+          "upperAud": 530.77,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 5.64,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 5.08,
+          "upperAud": 6.2,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 11.28,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 10.15,
+          "upperAud": 12.41,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 37.58,
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 33.82,
+          "upperAud": 41.34,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "amountAud": 93.2,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 69.9,
+          "upperAud": 116.5,
+          "widthPct": 25
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:cocktail_1",
+          "v6-prior:Oceania:all"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0",
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 148.82,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "wine_glass_1",
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 104.12,
+          "upperAud": 193.52,
+          "widthPct": 30.03
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "2 * paid_attraction_adult_1",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 34.32,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 27.46,
+          "upperAud": 41.18,
+          "widthPct": 20
+        }
+      },
+      "activities_mid_range": {
+        "formula": "2 * half_day_group_activity_adult_1",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 85.8,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 55.77,
+          "upperAud": 115.83,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "formula": "2 * full_day_premium_activity_adult_1",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 200.18,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 130.12,
+          "upperAud": 270.24,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 36.94,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 54,
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 73.99,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 35,
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 83.29,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 93.75,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 25,
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 125,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Oceania:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 167.15,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 25,
+        "sourceIds": [
+          "v6-prior:Oceania:all",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 8.12,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 336,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ]
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 25,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 100,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 16.5,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 150,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:premium_restaurant_meal_2p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.64,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 13.15,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 14.66,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 75,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Melbourne",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      },
+      "wine_glass_1": {
+        "valueAud": 14.5,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:Oceania:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 20,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 42.9,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 100.09,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_3star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 73.88,
+      "accomPrivateRoom": 73.99,
+      "accom1star": 83.29,
+      "accom2star": 93.75,
+      "accom3star": 125,
+      "accom4star": 167.15,
+      "foodStreet": 48.72,
+      "foodBudget": 68.63,
+      "foodMid": 163.01,
+      "foodHigh": 366.05,
+      "drinkCoffee": 5.64,
+      "drinkLocalBeer": 13.15,
+      "drinkWineGlass": 14.5,
+      "drinkCocktail": 14.66,
+      "drinksNone": 11.28,
+      "drinksLight": 37.58,
+      "drinksModerate": 93.2,
+      "drinksHeavy": 148.82,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 85.8,
+      "activitiesHigh": 200.18
+    }
+  }
+}

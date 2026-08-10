@@ -2,7 +2,7 @@
   "schemaVersion": "city-cost-v6-priors-v1",
   "methodologyVersion": "v6.0",
   "generatedAt": "2026-08-10",
-  "sourcePolicy": "Direct AUD-convertible observations from the 25-city development ledger plus labelled BudgetYourTrip tier values. No city_costs_app_aud.csv reads, inversion or self-derived refresh output.",
+  "sourcePolicy": "Direct AUD-convertible observations from the 25-city development ledger plus labelled BudgetYourTrip tier values. No city_costs_app_aud.csv reads, inversion or self-derived refresh output. Found rows without a rate in the frozen FX snapshot are listed explicitly and excluded rather than silently converted.",
   "fallbackOrder": "region|band -> region -> global",
   "bandCuts": {
     "measure": "accom_3_star",
@@ -632,5 +632,321 @@
     "ledgerUnconvertibleRows": 34,
     "bytFoundRows": 144
   },
+  "excludedLedgerRows": [
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "paid_attraction_adult_1",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "midrange_restaurant_meal_2p",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "cappuccino_1",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "domestic_draft_beer_1",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "premium_restaurant_meal_2p",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "cocktail_1",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "wine_glass_1",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "measure": "street_food_meal_1p",
+      "currency": "SGD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Taipei",
+      "region": "East Asia",
+      "band": "mid",
+      "measure": "paid_attraction_adult_1",
+      "currency": "TWD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Taipei",
+      "region": "East Asia",
+      "band": "mid",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "currency": "TWD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Taipei",
+      "region": "East Asia",
+      "band": "mid",
+      "measure": "midrange_restaurant_meal_2p",
+      "currency": "TWD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Taipei",
+      "region": "East Asia",
+      "band": "mid",
+      "measure": "cappuccino_1",
+      "currency": "TWD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Taipei",
+      "region": "East Asia",
+      "band": "mid",
+      "measure": "premium_restaurant_meal_2p",
+      "currency": "TWD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Taipei",
+      "region": "East Asia",
+      "band": "mid",
+      "measure": "cocktail_1",
+      "currency": "TWD",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Colombo",
+      "region": "South Asia",
+      "band": "low",
+      "measure": "cappuccino_1",
+      "currency": "LKR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Colombo",
+      "region": "South Asia",
+      "band": "low",
+      "measure": "street_food_meal_1p",
+      "currency": "LKR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cairo",
+      "region": "Africa",
+      "band": "low",
+      "measure": "paid_attraction_adult_1",
+      "currency": "EGP",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cairo",
+      "region": "Africa",
+      "band": "low",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "currency": "EGP",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cairo",
+      "region": "Africa",
+      "band": "low",
+      "measure": "midrange_restaurant_meal_2p",
+      "currency": "EGP",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cairo",
+      "region": "Africa",
+      "band": "low",
+      "measure": "cappuccino_1",
+      "currency": "EGP",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cairo",
+      "region": "Africa",
+      "band": "low",
+      "measure": "premium_restaurant_meal_2p",
+      "currency": "EGP",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cairo",
+      "region": "Africa",
+      "band": "low",
+      "measure": "cocktail_1",
+      "currency": "EGP",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cairo",
+      "region": "Africa",
+      "band": "low",
+      "measure": "wine_glass_1",
+      "currency": "EGP",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cape Town",
+      "region": "Africa",
+      "band": "mid",
+      "measure": "paid_attraction_adult_1",
+      "currency": "ZAR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cape Town",
+      "region": "Africa",
+      "band": "mid",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "currency": "ZAR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cape Town",
+      "region": "Africa",
+      "band": "mid",
+      "measure": "midrange_restaurant_meal_2p",
+      "currency": "ZAR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cape Town",
+      "region": "Africa",
+      "band": "mid",
+      "measure": "cappuccino_1",
+      "currency": "ZAR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cape Town",
+      "region": "Africa",
+      "band": "mid",
+      "measure": "domestic_draft_beer_1",
+      "currency": "ZAR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cape Town",
+      "region": "Africa",
+      "band": "mid",
+      "measure": "cocktail_1",
+      "currency": "ZAR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Cape Town",
+      "region": "Africa",
+      "band": "mid",
+      "measure": "wine_glass_1",
+      "currency": "ZAR",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Lima",
+      "region": "Latin America",
+      "band": "mid",
+      "measure": "paid_attraction_adult_1",
+      "currency": "PEN",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Lima",
+      "region": "Latin America",
+      "band": "mid",
+      "measure": "inexpensive_restaurant_meal_1p",
+      "currency": "PEN",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Lima",
+      "region": "Latin America",
+      "band": "mid",
+      "measure": "premium_restaurant_meal_2p",
+      "currency": "PEN",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    },
+    {
+      "city": "Lima",
+      "region": "Latin America",
+      "band": "mid",
+      "measure": "cocktail_1",
+      "currency": "PEN",
+      "status": "excluded_unconvertible_frozen_fx",
+      "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
+    }
+  ],
+  "excludedCurrencies": [
+    "EGP",
+    "LKR",
+    "PEN",
+    "SGD",
+    "TWD",
+    "ZAR"
+  ],
   "bytTierBasis": "BudgetYourTrip per-person/day USD source values multiplied by 2 only to compare with the two-person product tier; activity values are production-source diagnostics, not independent ground truth."
 }

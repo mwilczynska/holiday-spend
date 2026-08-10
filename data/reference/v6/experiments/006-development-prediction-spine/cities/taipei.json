@@ -1,0 +1,1180 @@
+{
+  "city": "Taipei",
+  "country": "Taiwan",
+  "region": "East Asia",
+  "band": "mid",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Taipei/"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Taipei/"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Taipei/"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Taipei/"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Taipei/"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "missingness": "not_found"
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 92.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 150,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei/",
+        "sourceTitle": "Cost of Living in Taipei. May 2026. Prices in Taipei",
+        "evidenceText": "Meal at an Inexpensive Restaurant | NT$150.00",
+        "query": "site:numbeo.com/cost-of-living/in/Taipei \"Meal, Inexpensive Restaurant\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 1500,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei/",
+        "sourceTitle": "Cost of Living in Taipei. May 2026. Prices in Taipei",
+        "evidenceText": "Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | NT$1,500.00",
+        "query": "site:numbeo.com/cost-of-living/in/Taipei \"Meal for 2 People, Mid-range Restaurant\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 108.69,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei/",
+        "sourceTitle": "Cost of Living in Taipei. May 2026. Prices in Taipei",
+        "evidenceText": "Cappuccino (Regular Size) | NT$108.69",
+        "query": "site:numbeo.com/cost-of-living/in/Taipei \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 90,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei/",
+        "sourceTitle": "Cost of Living in Taipei. May 2026. Prices in Taipei",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | NT$90.00",
+        "query": "site:numbeo.com/cost-of-living/in/Taipei \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 180,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei/",
+        "sourceTitle": "Cost of Living in Taipei. May 2026. Prices in Taipei",
+        "evidenceText": "Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | NT$180.00",
+        "query": "site:numbeo.com/cost-of-living/in/Taipei \"McMeal at McDonalds\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 69,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Taipei from $29 | Expedia",
+        "evidenceText": "September | $69. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Taipei.",
+        "query": "site:expedia.com/3Star-Taipei-Hotels \"Price trend information\" \"2 adults\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/taiwan/taipei",
+        "sourceTitle": "Taipei Travel Cost - Average Price of a Vacation to Taipei",
+        "evidenceText": "Entertainment | $7 (NT$217)",
+        "query": "site:budgetyourtrip.com/taiwan/taipei \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/taiwan/taipei",
+        "sourceTitle": "Taipei Travel Cost - Average Price of a Vacation to Taipei",
+        "evidenceText": "Entertainment | $18 (NT$564)",
+        "query": "site:budgetyourtrip.com/taiwan/taipei \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 48,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/taiwan/taipei",
+        "sourceTitle": "Taipei Travel Cost - Average Price of a Vacation to Taipei",
+        "evidenceText": "Entertainment | $48 (NT$1,511)",
+        "query": "site:budgetyourtrip.com/taiwan/taipei \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 5,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.250Z",
+        "completedAt": "2026-08-10T20:40:51.250Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.250Z",
+        "completedAt": "2026-08-10T20:40:51.250Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.250Z",
+        "completedAt": "2026-08-10T20:40:51.250Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 7,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "Taipei",
+    "country": "Taiwan",
+    "region": "East Asia",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 54.58,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 25.11,
+          "upperAud": 84.05,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 54.67,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 35.54,
+          "upperAud": 73.8,
+          "widthPct": 35
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 61.54,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 33.85,
+          "upperAud": 89.23,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 69.27,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 51.95,
+          "upperAud": 86.59,
+          "widthPct": 25
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "amountAud": 92.36,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 54.49,
+          "upperAud": 130.23,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 123.5,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 92.63,
+          "upperAud": 154.38,
+          "widthPct": 25
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 22.08,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 12.14,
+          "upperAud": 32.02,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:East Asia:mid:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 35.75,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 19.66,
+          "upperAud": 51.84,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:East Asia:mid:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 91.51,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 50.33,
+          "upperAud": 132.69,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:East Asia:mid:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 235.93,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 129.76,
+          "upperAud": 342.1,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 20.62,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 11.34,
+          "upperAud": 29.9,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 41.24,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 22.68,
+          "upperAud": 59.8,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 74.56,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 41.01,
+          "upperAud": 108.11,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 163.18,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 89.75,
+          "upperAud": 236.61,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 251.8,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1",
+          "wine_glass_1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 138.49,
+          "upperAud": 365.11,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "2 * paid_attraction_adult_1",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 20.02,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 16.02,
+          "upperAud": 24.02,
+          "widthPct": 20
+        }
+      },
+      "activities_mid_range": {
+        "formula": "2 * half_day_group_activity_adult_1",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 51.48,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "formula": "2 * full_day_premium_activity_adult_1",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 137.26,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 27.29,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 54,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 54.67,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 61.54,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 45,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 69.27,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 92.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 123.5,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 25,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 3.68,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 12.95,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingness": "not_found"
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 85.74,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "mcmeal_combo": {
+        "valueAud": 6.75,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "mcmeal_combo"
+        ],
+        "missingness": "not_found"
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 541.14,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": 20.62,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cappuccino_1"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 16.66,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "missingness": "not_found"
+      },
+      "cocktail_1": {
+        "valueAud": 27.65,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "cocktail_1"
+        ],
+        "missingness": "not_found"
+      },
+      "wine_glass_1": {
+        "valueAud": 12.8,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:mid"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 20,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/taiwan/taipei"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "inexpensive_restaurant_meal_1p": "not_found",
+      "midrange_restaurant_meal_2p": "not_found",
+      "mcmeal_combo": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cappuccino_1": "not_found",
+      "domestic_draft_beer_1": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 54.58,
+      "accomPrivateRoom": 54.67,
+      "accom1star": 61.54,
+      "accom2star": 69.27,
+      "accom3star": 92.36,
+      "accom4star": 123.5,
+      "foodStreet": 22.08,
+      "foodBudget": 35.75,
+      "foodMid": 91.51,
+      "foodHigh": 235.93,
+      "drinkCoffee": 20.62,
+      "drinkLocalBeer": 16.66,
+      "drinkWineGlass": 12.8,
+      "drinkCocktail": 27.65,
+      "drinksNone": 41.24,
+      "drinksLight": 74.56,
+      "drinksModerate": 163.18,
+      "drinksHeavy": 251.8,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 51.48,
+      "activitiesHigh": 137.26
+    }
+  }
+}

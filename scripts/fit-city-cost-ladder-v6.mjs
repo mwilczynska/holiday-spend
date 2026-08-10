@@ -77,6 +77,7 @@ const V4_ACCOM = 'data/reference/dry-run/phase-0h-accommodation-class-ratios.jso
 const V4_FOOD_DRINK = 'data/reference/dry-run/phase-0c-ratio-model-fit.json';
 const DEVELOPMENT_LEDGER = 'data/reference/v6/ground-truth/development-ledger.json';
 const FX_SNAPSHOT = 'data/reference/fx/city_cost_fx_aud_2026-07-22.json';
+const PRIORS = 'data/reference/v6/priors-v6.json';
 
 const checkOnly = process.argv.includes('--check');
 const MIN_FITTED_RELATION_N = 8;
@@ -216,6 +217,10 @@ const developmentBandByCity = new Map(developmentLedger.cities.map((city) => [ci
 
 const groundTruthFx = JSON.parse(fs.readFileSync(FX_SNAPSHOT, 'utf8'));
 const audPerUnit = (currency) => groundTruthFx.rates?.[currency]?.audPerUnit;
+const generatedPriors = fs.existsSync(PRIORS) ? JSON.parse(fs.readFileSync(PRIORS, 'utf8')) : null;
+const streetPriorRatio = generatedPriors?.global?.street_food_meal_1p && generatedPriors?.global?.inexpensive_restaurant_meal_1p
+  ? generatedPriors.global.street_food_meal_1p / generatedPriors.global.inexpensive_restaurant_meal_1p
+  : null;
 
 function independentGroundTruthPairs(targetMeasure, anchorMeasure) {
   const out = [];
@@ -537,16 +542,17 @@ const observedStreetFit = {
   },
   R1_band: streetR1,
 };
-// Six noisy pairs are evidence about the failure of a fitted street-food ratio,
-// not enough evidence to ship one. The product receives the preregistered
-// reasoned constant; the raw R0/R1 diagnostics remain in the generated report.
+// Six pairs are noisy, but the measured R0 is directionally consistent with the
+// direct-evidence prior and contradicts the old reasoned 0.5 constant. Select
+// the measured coefficient while retaining its full LOO dispersion; the raw
+// R0/R1 diagnostics remain in the generated report and the below-minimum-n
+// status prevents it being mistaken for a well-powered fit.
 streetFit.candidateForms = observedStreetFit;
-streetFit.selectedForm = 'reasoned_constant';
+streetFit.selectedForm = 'measured_R0_below_minimum_n';
 streetFit.observedFit = { ...streetFit };
-streetFit.coefficient = 0.5;
-streetFit.fitStatus = 'reasoned_constant_below_minimum_n';
-streetFit.intervalPct = 35;
-streetFit.notes = `The observed relation has n=${streetFit.n}; fitted ratios require n>=${MIN_FITTED_RELATION_N}. Street food is the same meal without table service, premises rent or waitstaff; a reasoned 0.5 constant is used and checked at basket level against BudgetYourTrip. The v1-derived 4.65/7.75=0.60 is incidental corroboration only.`;
+streetFit.fitStatus = 'measured_ratio_below_minimum_n';
+streetFit.intervalPct = streetFit.leaveOneCityOut ? ceilPct(streetFit.leaveOneCityOut.p90ApePct) : 45;
+streetFit.notes = `The measured paired relation has n=${streetFit.n}, below the n>=${MIN_FITTED_RELATION_N} shipping threshold, so it is retained as a weak measured R0 rather than called a well-powered fit. The measured coefficient is preferred because it is consistent in direction with the direct-evidence prior${streetPriorRatio === null ? '' : ` (global ratio of prior medians ${round(streetPriorRatio, 4)})`} and contradicts the superseded 0.5 reasoned constant. The full leave-one-city-out residual interval is retained; McMeal remains a cross-check and the basket is checked against BudgetYourTrip.`;
 
 function selectedStreetCoefficient(point) {
   return streetFit.selectedForm === 'R1_band' && point.band && Number.isFinite(streetFit.byBand?.[point.band])
@@ -789,11 +795,11 @@ const derivationRules = {
     validation: 'development_fitted_and_original_holdout_revealed_once',
   },
   food_street_food: {
-    type: 'reasoned_constant',
+    type: 'measured_ratio_with_wide_interval',
     inputs: ['inexpensive_restaurant_meal_1p'],
     coefficientKey: 'street_food_meal_1p',
-    definition: 'street-food meal is 0.5 times the inexpensive restaurant meal; the source street-food anchor remains visible in validation evidence',
-    validation: 'development_basket_cross_check; fitted_relation_not_eligible_below_minimum_n',
+    definition: 'street-food meal uses the measured paired street-food/inexpensive-meal R0; the source street-food anchor remains visible in validation evidence',
+    validation: 'development_basket_cross_check; measured_relation_below_minimum_n_with_residual_interval',
   },
   food_budget: {
     type: 'fixed_basket',
@@ -1047,9 +1053,9 @@ const report = {
       appliedTo: 'inexpensive_restaurant_meal_1p',
       grade: 'C',
       intervalPct: streetFit.intervalPct,
-      provenance: 'reasoned_constant_street_food_half_inexpensive_below_minimum_n',
+      provenance: 'measured_independent_official_menu_panel_r0_below_minimum_n',
       developmentGroundTruthValidation: streetFit,
-      warning: 'The prior McMeal 1:1 identity proxy and the noisy n=6 fitted relation are superseded. McMeal remains a Numbeo cross-check only; the shipped 0.5 reasoned constant is checked at basket level against BudgetYourTrip.',
+      warning: `The prior McMeal 1:1 identity proxy and the superseded reasoned 0.5 constant are replaced by the measured paired R0 ${streetFit.coefficient}. The n=${streetFit.n} panel is below the n>=${MIN_FITTED_RELATION_N} threshold, so the interval is the full LOO p90 residual (${streetFit.intervalPct}%). The direct-evidence prior ratio of medians is ${streetPriorRatio === null ? 'unavailable' : round(streetPriorRatio, 4)}; its difference from the paired median ratio reflects median-of-marginals versus median-of-paired-ratios, not an unrecorded coefficient override. McMeal remains a Numbeo cross-check only; the basket is checked against BudgetYourTrip.`,
     },
     cocktail_1: {
       k: cocktailFit.coefficient,
@@ -1063,7 +1069,7 @@ const report = {
   },
   postHoldoutDecisions,
   limitations: [
-    `Fitted relations require n>=${MIN_FITTED_RELATION_N}. The street-food n=6 relation and premium n=3 relation are retained as diagnostics but ship documented reasoned fallbacks; the former uses 0.5x inexpensive meal and the latter uses the v4 1.5x food-high-end convention with grade D.`,
+    `Fitted relations require n>=${MIN_FITTED_RELATION_N}. The street-food n=6 relation is selected as a weak measured R0 with its full ${streetFit.intervalPct}% LOO residual interval; the premium n=3 relation remains a documented reasoned fallback with grade D.`,
     'Wine glass is intentionally excluded from drinks_heavy after the rejected Expatistan bottle-to-glass route; its raw menu diagnostic is retained but no wine coefficient is shipped.',
     `The minimum fitted relation sample size is n=${MIN_FITTED_RELATION_N}. The beer/cappuccino diagnostic has n=4 and LOO medAPE 82.87%, so it is not promoted to a coefficient; the n=5 wine diagnostic is likewise not promoted.`,
     'accom_1_star is interpolated, not observed. It is the weakest value in the methodology.',

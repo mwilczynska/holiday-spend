@@ -352,9 +352,9 @@
     {
       "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
       "n": 6,
-      "fitStatus": "reasoned_constant_below_minimum_n",
+      "fitStatus": "measured_ratio_below_minimum_n",
       "shippingEligible": false,
-      "coefficient": 0.5,
+      "coefficient": 0.3248,
       "dispersion": {
         "min": 0.093,
         "q25": 0.1367,
@@ -368,7 +368,7 @@
         "maxApePct": 381.9,
         "medianSignedLogError": 0
       },
-      "intervalPct": 35,
+      "intervalPct": 336,
       "cities": [
         "Budapest",
         "Da Nang",
@@ -377,7 +377,7 @@
         "Mexico City",
         "San Francisco"
       ],
-      "notes": "The observed relation has n=6; fitted ratios require n>=8. Street food is the same meal without table service, premises rent or waitstaff; a reasoned 0.5 constant is used and checked at basket level against BudgetYourTrip. The v1-derived 4.65/7.75=0.60 is incidental corroboration only.",
+      "notes": "The measured paired relation has n=6, below the n>=8 shipping threshold, so it is retained as a weak measured R0 rather than called a well-powered fit. The measured coefficient is preferred because it is consistent in direction with the direct-evidence prior (global ratio of prior medians 0.2757) and contradicts the superseded 0.5 reasoned constant. The full leave-one-city-out residual interval is retained; McMeal remains a cross-check and the basket is checked against BudgetYourTrip.",
       "candidateForms": {
         "R0": {
           "coefficient": 0.3248,
@@ -409,7 +409,7 @@
           "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
         }
       },
-      "selectedForm": "reasoned_constant",
+      "selectedForm": "measured_R0_below_minimum_n",
       "observedFit": {
         "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
         "n": 6,
@@ -470,7 +470,7 @@
             "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
           }
         },
-        "selectedForm": "reasoned_constant"
+        "selectedForm": "measured_R0_below_minimum_n"
       }
     },
     {
@@ -681,13 +681,13 @@
       "validation": "development_fitted_and_original_holdout_revealed_once"
     },
     "food_street_food": {
-      "type": "reasoned_constant",
+      "type": "measured_ratio_with_wide_interval",
       "inputs": [
         "inexpensive_restaurant_meal_1p"
       ],
       "coefficientKey": "street_food_meal_1p",
-      "definition": "street-food meal is 0.5 times the inexpensive restaurant meal; the source street-food anchor remains visible in validation evidence",
-      "validation": "development_basket_cross_check; fitted_relation_not_eligible_below_minimum_n"
+      "definition": "street-food meal uses the measured paired street-food/inexpensive-meal R0; the source street-food anchor remains visible in validation evidence",
+      "validation": "development_basket_cross_check; measured_relation_below_minimum_n_with_residual_interval"
     },
     "food_budget": {
       "type": "fixed_basket",
@@ -903,8 +903,8 @@
     },
     {
       "relation": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
-      "v6Independent": 0.5,
-      "v6FitStatus": "reasoned_constant_below_minimum_n",
+      "v6Independent": 0.3248,
+      "v6FitStatus": "measured_ratio_below_minimum_n",
       "v6N": 6,
       "v4Reference": null,
       "agreementPct": null,
@@ -1198,17 +1198,17 @@
       "warning": "Only three development cities supplied both compliant independent premium and midrange menu panels. The apparent ±12% fitted interval is rejected; this grade-D reasoned fallback is not a validation result."
     },
     "street_food_meal_1p": {
-      "k": 0.5,
+      "k": 0.3248,
       "appliedTo": "inexpensive_restaurant_meal_1p",
       "grade": "C",
-      "intervalPct": 35,
-      "provenance": "reasoned_constant_street_food_half_inexpensive_below_minimum_n",
+      "intervalPct": 336,
+      "provenance": "measured_independent_official_menu_panel_r0_below_minimum_n",
       "developmentGroundTruthValidation": {
         "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
         "n": 6,
-        "fitStatus": "reasoned_constant_below_minimum_n",
+        "fitStatus": "measured_ratio_below_minimum_n",
         "shippingEligible": false,
-        "coefficient": 0.5,
+        "coefficient": 0.3248,
         "dispersion": {
           "min": 0.093,
           "q25": 0.1367,
@@ -1222,7 +1222,7 @@
           "maxApePct": 381.9,
           "medianSignedLogError": 0
         },
-        "intervalPct": 35,
+        "intervalPct": 336,
         "cities": [
           "Budapest",
           "Da Nang",
@@ -1231,7 +1231,7 @@
           "Mexico City",
           "San Francisco"
         ],
-        "notes": "The observed relation has n=6; fitted ratios require n>=8. Street food is the same meal without table service, premises rent or waitstaff; a reasoned 0.5 constant is used and checked at basket level against BudgetYourTrip. The v1-derived 4.65/7.75=0.60 is incidental corroboration only.",
+        "notes": "The measured paired relation has n=6, below the n>=8 shipping threshold, so it is retained as a weak measured R0 rather than called a well-powered fit. The measured coefficient is preferred because it is consistent in direction with the direct-evidence prior (global ratio of prior medians 0.2757) and contradicts the superseded 0.5 reasoned constant. The full leave-one-city-out residual interval is retained; McMeal remains a cross-check and the basket is checked against BudgetYourTrip.",
         "candidateForms": {
           "R0": {
             "coefficient": 0.3248,
@@ -1263,7 +1263,7 @@
             "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
           }
         },
-        "selectedForm": "reasoned_constant",
+        "selectedForm": "measured_R0_below_minimum_n",
         "observedFit": {
           "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
           "n": 6,
@@ -1324,10 +1324,10 @@
               "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
             }
           },
-          "selectedForm": "reasoned_constant"
+          "selectedForm": "measured_R0_below_minimum_n"
         }
       },
-      "warning": "The prior McMeal 1:1 identity proxy and the noisy n=6 fitted relation are superseded. McMeal remains a Numbeo cross-check only; the shipped 0.5 reasoned constant is checked at basket level against BudgetYourTrip."
+      "warning": "The prior McMeal 1:1 identity proxy and the superseded reasoned 0.5 constant are replaced by the measured paired R0 0.3248. The n=6 panel is below the n>=8 threshold, so the interval is the full LOO p90 residual (336%). The direct-evidence prior ratio of medians is 0.2757; its difference from the paired median ratio reflects median-of-marginals versus median-of-paired-ratios, not an unrecorded coefficient override. McMeal remains a Numbeo cross-check only; the basket is checked against BudgetYourTrip."
     },
     "cocktail_1": {
       "k": 2.6,
@@ -1390,7 +1390,7 @@
     }
   },
   "limitations": [
-    "Fitted relations require n>=8. The street-food n=6 relation and premium n=3 relation are retained as diagnostics but ship documented reasoned fallbacks; the former uses 0.5x inexpensive meal and the latter uses the v4 1.5x food-high-end convention with grade D.",
+    "Fitted relations require n>=8. The street-food n=6 relation is selected as a weak measured R0 with its full 336% LOO residual interval; the premium n=3 relation remains a documented reasoned fallback with grade D.",
     "Wine glass is intentionally excluded from drinks_heavy after the rejected Expatistan bottle-to-glass route; its raw menu diagnostic is retained but no wine coefficient is shipped.",
     "The minimum fitted relation sample size is n=8. The beer/cappuccino diagnostic has n=4 and LOO medAPE 82.87%, so it is not promoted to a coefficient; the n=5 wine diagnostic is likewise not promoted.",
     "accom_1_star is interpolated, not observed. It is the weakest value in the methodology.",

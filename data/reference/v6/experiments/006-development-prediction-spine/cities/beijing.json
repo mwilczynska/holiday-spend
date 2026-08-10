@@ -1,0 +1,1142 @@
+{
+  "city": "Beijing",
+  "country": "China",
+  "region": "East Asia",
+  "band": "mid",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 6.33,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 42.22,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.61,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.69,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 7.39,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 14.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 92.94,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 30,
+        "currency": "CNY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Beijing",
+        "sourceTitle": "Cost of Living in Beijing. Jun 2026. Prices in Beijing",
+        "evidenceText": "Meal at an Inexpensive Restaurant | ¥30.00",
+        "query": "site:numbeo.com/cost-of-living/in/Beijing \"Meal at an Inexpensive Restaurant\" \"Cappuccino\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 200,
+        "currency": "CNY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Beijing",
+        "sourceTitle": "Cost of Living in Beijing. Jun 2026. Prices in Beijing",
+        "evidenceText": "Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | ¥200.00",
+        "query": "site:numbeo.com/cost-of-living/in/Beijing \"Meal at an Inexpensive Restaurant\" \"Meal for Two\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 21.86,
+        "currency": "CNY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Beijing",
+        "sourceTitle": "Cost of Living in Beijing. Jun 2026. Prices in Beijing",
+        "evidenceText": "Cappuccino (Regular Size) | ¥21.86",
+        "query": "site:numbeo.com/cost-of-living/in/Beijing \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 8,
+        "currency": "CNY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Beijing",
+        "sourceTitle": "Cost of Living in Beijing. Jun 2026. Prices in Beijing",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ¥8.00",
+        "query": "site:numbeo.com/cost-of-living/in/Beijing \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 35,
+        "currency": "CNY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Beijing",
+        "sourceTitle": "Cost of Living in Beijing. Jun 2026. Prices in Beijing",
+        "evidenceText": "Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | ¥35.00",
+        "query": "site:numbeo.com/cost-of-living/in/Beijing \"McMeal at McDonalds\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 10,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/china/beijing",
+        "sourceTitle": "Beijing Travel Cost - Average Price of a Vacation to Beijing",
+        "evidenceText": "Entertainment | $10 (¥69)",
+        "query": "BudgetYourTrip Beijing \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/china/beijing",
+        "sourceTitle": "Beijing Travel Cost - Average Price of a Vacation to Beijing",
+        "evidenceText": "Entertainment | $26 (¥174)",
+        "query": "BudgetYourTrip Beijing \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 65,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/china/beijing",
+        "sourceTitle": "Beijing Travel Cost - Average Price of a Vacation to Beijing",
+        "evidenceText": "Entertainment | $65 (¥441)",
+        "query": "BudgetYourTrip Beijing \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.253Z",
+        "completedAt": "2026-08-10T20:40:51.253Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.254Z",
+        "completedAt": "2026-08-10T20:40:51.254Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.254Z",
+        "completedAt": "2026-08-10T20:40:51.254Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 5,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "Beijing",
+    "country": "China",
+    "region": "East Asia",
+    "costBand": null,
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 68.86,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 31.68,
+          "upperAud": 106.04,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 68.96,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 37.93,
+          "upperAud": 99.99,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 77.62,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 42.69,
+          "upperAud": 112.55,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 87.38,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 48.06,
+          "upperAud": 126.7,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 116.5,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 64.08,
+          "upperAud": 168.93,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 155.78,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 85.68,
+          "upperAud": 225.88,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "amountAud": 12.36,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 53.89,
+          "widthPct": 336
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:East Asia:all:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 45.76,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 25.17,
+          "upperAud": 66.35,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:East Asia:all:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 118.68,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 65.27,
+          "upperAud": 172.09,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:East Asia:all:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 305.99,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 168.29,
+          "upperAud": 443.69,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 4.61,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 4.15,
+          "upperAud": 5.07,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 9.22,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 8.3,
+          "upperAud": 10.14,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 12.6,
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 11.34,
+          "upperAud": 13.86,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "amountAud": 39.96,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 21.94,
+          "upperAud": 57.98,
+          "widthPct": 45.1
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:cocktail_1",
+          "v6-prior:East Asia:all"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0",
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 67.32,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "wine_glass_1",
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 31.32,
+          "upperAud": 103.32,
+          "widthPct": 53.47
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "2 * paid_attraction_adult_1",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 28.6,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 22.88,
+          "upperAud": 34.32,
+          "widthPct": 20
+        }
+      },
+      "activities_mid_range": {
+        "formula": "2 * half_day_group_activity_adult_1",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 74.36,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "formula": "2 * full_day_premium_activity_adult_1",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 185.88,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 120.82,
+          "upperAud": 250.94,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 34.43,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 54,
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 68.96,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 35,
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 77.62,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 87.38,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 25,
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 116.5,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 155.78,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 25,
+        "sourceIds": [
+          "v6-prior:East Asia:all",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 2.06,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 336,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ]
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 6.33,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 42.22,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 7.39,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 63.33,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:premium_restaurant_meal_2p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.61,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.69,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 11.99,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 75,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/Beijing",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      },
+      "wine_glass_1": {
+        "valueAud": 12.8,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:East Asia:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 14.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 20,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 92.94,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/china/beijing"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_3star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 68.86,
+      "accomPrivateRoom": 68.96,
+      "accom1star": 77.62,
+      "accom2star": 87.38,
+      "accom3star": 116.5,
+      "accom4star": 155.78,
+      "foodStreet": 12.36,
+      "foodBudget": 45.76,
+      "foodMid": 118.68,
+      "foodHigh": 305.99,
+      "drinkCoffee": 4.61,
+      "drinkLocalBeer": 1.69,
+      "drinkWineGlass": 12.8,
+      "drinkCocktail": 11.99,
+      "drinksNone": 9.22,
+      "drinksLight": 12.6,
+      "drinksModerate": 39.96,
+      "drinksHeavy": 67.32,
+      "activitiesFree": 0,
+      "activitiesBudget": 28.6,
+      "activitiesMid": 74.36,
+      "activitiesHigh": 185.88
+    }
+  }
+}

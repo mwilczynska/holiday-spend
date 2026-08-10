@@ -166,14 +166,24 @@ under `data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start docu
 `docs/dev/handoffs/city-cost-v6.md`.
 M3 was reopened by owner decision to fit and validate all 19 product tiers. The manifest-driven development
 ledger now has 25 cities x 18 measures with 280 found rows and zero pending slots; the street-food relation
-is independently audited and now ships a generated 0.5 reasoned constant because its n=6 fit is below the
+is independently audited; the initial reset note's generated 0.5 reasoned constant was superseded when the
 minimum fitted-relation threshold. The original six-measure holdout and the later 18-measure extension are
 spent; all 18 measures are `revealed_once` and must not be reopened. The exact production prediction-bundle
-generator exists, but its first run materialized 0/25 cities because no local provider credential was
+generator exists, but its initial provider-mode run materialized 0/25 cities because no local provider credential was
 configured. BYT tier evidence and an Expatistan drink cross-check are recorded for development, while
 activity evidence remains circular when sourced from BYT. The development scorer is therefore correctly
-blocked until predictions exist. A fresh 15-city proposal is page-verified and coverage-gated at 72/90 rows;
+blocked until predictions exist; the current paired development score is recorded separately. A fresh 15-city proposal is page-verified and coverage-gated at 72/90 rows;
 it awaits owner approval. The 121-city CSV remains on v1 until M4.
+
+**Current M3 pairing result (10 August 2026).** Experiment 006 now supplies 75 delegated, schema-validated
+spine responses and 75 telemetry records for the 25-city development panel, reusing 15 Expedia responses
+byte-for-byte from experiment 001. The default generator runs those responses through the real
+`materializeCityCostV6` implementation and produces 25/25 full 19-tier bundles. The development score is
+explicitly IN-SAMPLE: 10 evaluable tiers, one definitional tier and 8 blocked tiers. Gates 3–6 are
+`not_evaluable` because the independent development truth is not a complete daily basket. The street-food
+coefficient is the measured paired `k=0.3248` with grade C and a ±336% LOO-p90 interval; the former 0.5
+reasoned constant is superseded. `priors-v6.json` records all 34 frozen-FX exclusions. The spent holdout and
+the proposed fresh holdout remain untouched; owner approval is required before any new holdout action.
 
 ### Transport is out of scope
 

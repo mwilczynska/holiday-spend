@@ -77,6 +77,7 @@ const tierGlobal = {};
 const tierRegion = {};
 const tierRegionBand = {};
 const sourceCounts = { ledgerFoundRows: 0, ledgerAudRows: 0, ledgerUnconvertibleRows: 0, bytFoundRows: 0 };
+const unconvertibleRows = [];
 
 for (const city of ledger.cities) {
   const region = normalizeRegion(city.region);
@@ -87,7 +88,19 @@ for (const city of ledger.cities) {
     if (observation.status !== 'found') continue;
     sourceCounts.ledgerFoundRows += 1;
     const value = audAmount(observation);
-    if (value === null) { sourceCounts.ledgerUnconvertibleRows += 1; continue; }
+    if (value === null) {
+      sourceCounts.ledgerUnconvertibleRows += 1;
+      unconvertibleRows.push({
+        city: city.city,
+        region,
+        band,
+        measure: observation.measure,
+        currency: observation.currency ?? null,
+        status: 'excluded_unconvertible_frozen_fx',
+        fxSnapshot: 'data/reference/fx/city_cost_fx_aud_2026-07-22.json',
+      });
+      continue;
+    }
     sourceCounts.ledgerAudRows += 1;
     if (anchors.includes(observation.measure)) {
       add(anchorGlobal, 'global', observation.measure, value);
@@ -121,7 +134,7 @@ const output = {
   schemaVersion: 'city-cost-v6-priors-v1',
   methodologyVersion: 'v6.0',
   generatedAt: '2026-08-10',
-  sourcePolicy: 'Direct AUD-convertible observations from the 25-city development ledger plus labelled BudgetYourTrip tier values. No city_costs_app_aud.csv reads, inversion or self-derived refresh output.',
+  sourcePolicy: 'Direct AUD-convertible observations from the 25-city development ledger plus labelled BudgetYourTrip tier values. No city_costs_app_aud.csv reads, inversion or self-derived refresh output. Found rows without a rate in the frozen FX snapshot are listed explicitly and excluded rather than silently converted.',
   fallbackOrder: 'region|band -> region -> global',
   bandCuts,
   byRegionBand: collapse(anchorRegionBand),
@@ -131,6 +144,8 @@ const output = {
   tierValuesByRegion: collapse(tierRegion),
   tierValuesGlobal: collapse(tierGlobal).global ?? {},
   sourceCounts,
+  excludedLedgerRows: unconvertibleRows,
+  excludedCurrencies: [...new Set(unconvertibleRows.map((row) => row.currency).filter(Boolean))].sort(),
   bytTierBasis: 'BudgetYourTrip per-person/day USD source values multiplied by 2 only to compare with the two-person product tier; activity values are production-source diagnostics, not independent ground truth.',
 };
 fs.writeFileSync(outPath, `${JSON.stringify(output, null, 2)}\n`);

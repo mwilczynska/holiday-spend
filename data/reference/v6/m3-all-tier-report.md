@@ -1,5 +1,9 @@
 # v6 M3 all-19 derivation and validation report
 
+> **SUPERSEDED 10 August 2026:** This is the pre-prediction all-tier/holdout report. Use
+> `m3-development-in-sample-report.md` for the current paired development result. The spent holdout was not
+> reopened to produce this replacement.
+
 Generated from `coefficients-v6.json` and `holdout-scores-all-tier.json`; candidate sha256:5d1c39abd7604fadec9ea694accb0e5982da6ac526a9f8862cdd12adb1548537.
 
 M3 was reopened to require all 19 product tiers. Development fitting is script-generated. The fresh holdout extension was read once after the single candidate freeze, but the six old `revealed_once` measures were not reopened. Because no paired production-path prediction bundle exists for the fresh cities, gates 2–6 are reported as `not_evaluable`; these are integrity and design reasons, not passes.

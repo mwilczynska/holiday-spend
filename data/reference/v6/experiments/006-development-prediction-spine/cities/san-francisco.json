@@ -1,0 +1,1142 @@
+{
+  "city": "San Francisco",
+  "country": "United States",
+  "region": "North America",
+  "band": "high",
+  "referenceDate": "2026-09-17",
+  "mode": "from-disk",
+  "productionPath": {
+    "stageA": "parseV6SpineResponse + buildV6CollectionResultFromSpineResponses",
+    "stageB": "materializeCityCostV6",
+    "provider": "delegated-spine-files"
+  },
+  "status": "found",
+  "collection": {
+    "anchors": {
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 35.75,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 182.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 8.49,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 44.33,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 111.53,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "inexpensive_restaurant_meal_1p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 25,
+        "currency": "USD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/San-Francisco",
+        "sourceTitle": "Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco",
+        "evidenceText": "Meal at an Inexpensive Restaurant | $25.00",
+        "query": "site:numbeo.com/cost-of-living/in/San-Francisco \"Meal at an Inexpensive Restaurant\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "midrange_restaurant_meal_2p",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 127.5,
+        "currency": "USD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/San-Francisco",
+        "sourceTitle": "Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco",
+        "evidenceText": "Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks) | $127.50",
+        "query": "site:numbeo.com/cost-of-living/in/San-Francisco \"Meal for Two at a Mid-Range Restaurant\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 5.94,
+        "currency": "USD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/San-Francisco",
+        "sourceTitle": "Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco",
+        "evidenceText": "Cappuccino (Regular Size) | $5.94",
+        "query": "site:numbeo.com/cost-of-living/in/San-Francisco \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/San-Francisco",
+        "sourceTitle": "Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | $8.00",
+        "query": "site:numbeo.com/cost-of-living/in/San-Francisco \"Domestic Draft Beer\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "mcmeal_combo",
+        "source": "numbeo",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/San-Francisco",
+        "sourceTitle": "Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco",
+        "evidenceText": "Combo Meal at McDonald's (or Equivalent Fast-Food Meal) | $15.00",
+        "query": "site:numbeo.com/cost-of-living/in/San-Francisco \"McMeal at McDonalds\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md"
+      },
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:expedia.com San Francisco California 3-star hotels price trend 2 adults September 17 2026",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md"
+      },
+      {
+        "measure": "paid_attraction_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+        "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment | $13 | $31 | $78",
+        "query": "site:budgetyourtrip.com/united-states-of-america/san-francisco \"Budget\" \"Mid-Range\" \"Luxury\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "half_day_group_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 31,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+        "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment | $13 | $31 | $78",
+        "query": "site:budgetyourtrip.com/united-states-of-america/san-francisco \"Budget\" \"Mid-Range\" \"Luxury\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      },
+      {
+        "measure": "full_day_premium_activity_adult_1",
+        "source": "budgetyourtrip",
+        "status": "observed",
+        "value": 78,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+        "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment | $13 | $31 | $78",
+        "query": "site:budgetyourtrip.com/united-states-of-america/san-francisco \"Budget\" \"Mid-Range\" \"Luxury\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "numbeo",
+        "promptVersion": "llm_prompt_city_cost_v6_numbeo.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.293Z",
+        "completedAt": "2026-08-10T20:40:51.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_expedia_3star.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.294Z",
+        "completedAt": "2026-08-10T20:40:51.294Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip",
+        "promptVersion": "llm_prompt_city_cost_v6_budgetyourtrip.md",
+        "provider": "delegated-gpt-5.6-luna",
+        "model": "gpt-5.6-luna",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-10T20:40:51.294Z",
+        "completedAt": "2026-08-10T20:40:51.294Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 5,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_numbeo.md",
+      "llm_prompt_city_cost_v6_expedia_3star.md",
+      "llm_prompt_city_cost_v6_budgetyourtrip.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6",
+    "methodologyVersion": "v6.0",
+    "city": "San Francisco",
+    "country": "United States",
+    "region": "North America",
+    "costBand": null,
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "formula": "2 * hostel_dorm_bed_1p",
+        "parentAnchors": [
+          "hostel_dorm_bed_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "amountAud": 317.36,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 145.99,
+          "upperAud": 488.73,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "formula": "hostel_private_room_2p",
+        "parentAnchors": [
+          "hostel_private_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "amountAud": 317.85,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 174.82,
+          "upperAud": 460.88,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "formula": "hotel_1star_room_2p",
+        "parentAnchors": [
+          "hotel_1star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "amountAud": 357.8,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 196.79,
+          "upperAud": 518.81,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "formula": "hotel_2star_room_2p",
+        "parentAnchors": [
+          "hotel_2star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 402.75,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 221.51,
+          "upperAud": 583.99,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:North America:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 537,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 295.35,
+          "upperAud": 778.65,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "formula": "hotel_4star_room_2p",
+        "parentAnchors": [
+          "hotel_4star_room_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "amountAud": 718.08,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 394.94,
+          "upperAud": 1041.22,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "formula": "6 * street_food_meal_1p",
+        "parentAnchors": [
+          "street_food_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "amountAud": 69.66,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 303.72,
+          "widthPct": 336
+        }
+      },
+      "food_budget": {
+        "formula": "direct food_budget prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:North America:all:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 91.51,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 50.33,
+          "upperAud": 132.69,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "formula": "direct food_mid_range prior from v6 development panel",
+        "parentAnchors": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:North America:all:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 225.92,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 124.26,
+          "upperAud": 327.58,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "formula": "direct food_high_end prior from v6 development panel",
+        "parentAnchors": [
+          "inexpensive_restaurant_meal_1p",
+          "midrange_restaurant_meal_2p",
+          "premium_restaurant_meal_2p"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "v6-tier-prior:North America:all:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-direct-tier-prior-v1"
+        ],
+        "amountAud": 546.21,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 300.42,
+          "upperAud": 792,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 8.49,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 7.64,
+          "upperAud": 9.34,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 16.98,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 15.28,
+          "upperAud": 18.68,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ],
+        "amountAud": 39.86,
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 35.87,
+          "upperAud": 43.85,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "amountAud": 106.88,
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 73.42,
+          "upperAud": 140.34,
+          "widthPct": 31.31
+        }
+      },
+      "drinks_heavy": {
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco",
+          "v6-coefficient:cocktail_1",
+          "v6-prior:North America:all"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0",
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "amountAud": 173.9,
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "wine_glass_1",
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 107.31,
+          "upperAud": 240.49,
+          "widthPct": 38.29
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 (definitional)",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "formula": "2 * paid_attraction_adult_1",
+        "parentAnchors": [
+          "paid_attraction_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 37.18,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 29.74,
+          "upperAud": 44.62,
+          "widthPct": 20
+        }
+      },
+      "activities_mid_range": {
+        "formula": "2 * half_day_group_activity_adult_1",
+        "parentAnchors": [
+          "half_day_group_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 88.66,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 57.63,
+          "upperAud": 119.69,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "formula": "2 * full_day_premium_activity_adult_1",
+        "parentAnchors": [
+          "full_day_premium_activity_adult_1"
+        ],
+        "missingAnchors": [],
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ],
+        "amountAud": 223.06,
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 144.99,
+          "upperAud": 301.13,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hostel_dorm_bed_1p": {
+        "valueAud": 158.68,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 54,
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hostel_private_room_2p": {
+        "valueAud": 317.85,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 35,
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_1star_room_2p": {
+        "valueAud": 357.8,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_2star_room_2p": {
+        "valueAud": 402.75,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 25,
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "hotel_3star_room_2p": {
+        "valueAud": 537,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:North America:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "missingness": "not_found"
+      },
+      "hotel_4star_room_2p": {
+        "valueAud": 718.08,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 25,
+        "sourceIds": [
+          "v6-prior:North America:all",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p",
+          "hotel_3star_room_2p"
+        ]
+      },
+      "street_food_meal_1p": {
+        "valueAud": 11.61,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 336,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco",
+          "v6-coefficient:street_food_meal_1p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-measured_independent_official_menu_panel_r0_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "street_food_meal_1p",
+          "inexpensive_restaurant_meal_1p"
+        ]
+      },
+      "inexpensive_restaurant_meal_1p": {
+        "valueAud": 35.75,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "midrange_restaurant_meal_2p": {
+        "valueAud": 182.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "mcmeal_combo": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "premium_restaurant_meal_2p": {
+        "valueAud": 273.47,
+        "status": "modelled",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco",
+          "v6-coefficient:premium_restaurant_meal_2p"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-reasoned_v4_food_high_end_constant_below_minimum_n"
+        ],
+        "imputedMeasures": [
+          "premium_restaurant_meal_2p",
+          "midrange_restaurant_meal_2p"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 8.49,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 22.07,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 75,
+        "sourceIds": [
+          "numbeo:https://www.numbeo.com/cost-of-living/in/San-Francisco",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_numbeo.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      },
+      "wine_glass_1": {
+        "valueAud": 12.8,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6-prior:North America:all"
+        ],
+        "modelVersions": [
+          "city-cost-v6-regional-prior-v1"
+        ],
+        "imputedMeasures": [
+          "wine_glass_1"
+        ],
+        "missingness": "not_found"
+      },
+      "paid_attraction_adult_1": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 20,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "half_day_group_activity_adult_1": {
+        "valueAud": 44.33,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      },
+      "full_day_premium_activity_adult_1": {
+        "valueAud": 111.53,
+        "status": "observed",
+        "evidenceGrade": "C",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip:https://www.budgetyourtrip.com/united-states-of-america/san-francisco"
+        ],
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_budgetyourtrip.md"
+        ]
+      }
+    },
+    "missingness": {
+      "hostel_dorm_bed_1p": "not_found",
+      "hostel_private_room_2p": "not_found",
+      "hotel_1star_room_2p": "not_found",
+      "hotel_2star_room_2p": "not_found",
+      "hotel_3star_room_2p": "not_found",
+      "hotel_4star_room_2p": "not_found",
+      "street_food_meal_1p": "not_found",
+      "premium_restaurant_meal_2p": "not_found",
+      "cocktail_1": "not_found",
+      "wine_glass_1": "not_found"
+    },
+    "priorBasis": "data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 317.36,
+      "accomPrivateRoom": 317.85,
+      "accom1star": 357.8,
+      "accom2star": 402.75,
+      "accom3star": 537,
+      "accom4star": 718.08,
+      "foodStreet": 69.66,
+      "foodBudget": 91.51,
+      "foodMid": 225.92,
+      "foodHigh": 546.21,
+      "drinkCoffee": 8.49,
+      "drinkLocalBeer": 11.44,
+      "drinkWineGlass": 12.8,
+      "drinkCocktail": 22.07,
+      "drinksNone": 16.98,
+      "drinksLight": 39.86,
+      "drinksModerate": 106.88,
+      "drinksHeavy": 173.9,
+      "activitiesFree": 0,
+      "activitiesBudget": 37.18,
+      "activitiesMid": 88.66,
+      "activitiesHigh": 223.06
+    }
+  }
+}

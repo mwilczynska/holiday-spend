@@ -64,7 +64,7 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 | `accom_2_star` | Standard room for two, two-star class, one night | `0.7500 × accom_3_star` | C |
 | `accom_3_star` | Standard room for two, three-star class, one night | **MEASURED** — Expedia class-trend snippet | B |
 | `accom_4_star` | Standard room for two, four-star class, one night | `1.3372 × accom_3_star` | C |
-| `food_street_food` | Six standard low-cost prepared meals for two over one day | `6 × street_food_meal_1p`, where `street_food_meal_1p` is fitted from independent street-food observations against `inexpensive_restaurant_meal_1p` | C |
+| `food_street_food` | Six standard low-cost prepared meals for two over one day | `6 × street_food_meal_1p`, where `street_food_meal_1p` is the measured paired R0 against `inexpensive_restaurant_meal_1p` (n=6; ±336% residual interval) | C |
 | `food_budget` | Four street meals + two inexpensive-restaurant meals for two, one day | basket | A/C |
 | `food_mid_range` | Two street + two inexpensive + one mid-range shared meal, one day | basket | A/C |
 | `food_high_end` | Two inexpensive + one mid-range + one premium shared meal, one day | basket; premium is fitted from independent menus against midrange | A/C |
@@ -72,23 +72,29 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 | `drinks_none` | Two cappuccinos, no alcohol | basket | A |
 | `drinks_light` | Two cappuccinos + two domestic draft beers | basket | A |
 | `drinks_moderate` | Two cappuccinos + four beers + two standard cocktails | basket; cocktail is fitted from independent menus against cappuccino | C |
-| `drinks_heavy` | Two cappuccinos + six beers + four cocktails + two wine glasses | basket; cocktail and wine are fitted from independent menus against cappuccino | C |
+| `drinks_heavy` | Two cappuccinos + six beers + four cocktails | basket; cocktail is fitted from independent menus against cappuccino; wine glass is excluded after rejected calibration | C |
 | `activities_free` | No paid activity spending | `0` | definitional |
 | `activities_budget` | Two adult tickets to a standard low-cost paid attraction | `2 ×` BudgetYourTrip budget tier | B |
-| `activities_mid_range` | Two adult places on a half-day group activity | `2 ×` BudgetYourTrip mid tier | B |
-| `activities_high_end` | Two adult places on a full-day premium activity | `2 ×` BudgetYourTrip luxury tier | B |
+| `activities_mid_range` | Two adult places on a half-day group activity | `2 ×` BudgetYourTrip mid tier, unvalidated production proxy | C |
+| `activities_high_end` | Two adult places on a full-day premium activity | `2 ×` BudgetYourTrip luxury tier, unvalidated production proxy | C |
+
+> **Current M3 override (10 August 2026):** `street_food_meal_1p` uses the measured paired R0 `k=0.3248`
+> with grade C and a ±336% residual interval, not the superseded 0.5 constant. `premium_restaurant_meal_2p`
+> uses the generated grade-D 1.5 fallback below the minimum n threshold. `activities_mid_range` and
+> `activities_high_end` are grade C ±35% production proxies with no independent validation, and
+> `drinks_heavy` excludes wine glass after the rejected bottle calibration route.
 
 **The activity fields carry a known semantic gap.** BudgetYourTrip publishes *reported daily entertainment
 spend by traveller tier*, not *the price of a ticket / half-day group activity / full-day premium
 activity*. Experiments 037, 045, 044, 046, 050, 071 and 089 all failed to find a definition-matched
-activity source. v6 ships the proxy at grade B with the mismatch recorded here rather than blocking, and
+activity source. v6 ships the proxy at grade C with the mismatch recorded here rather than blocking, and
 M5 revisits it. **Do not describe these three values as observed ticket prices.**
 
-The food and drink anchor paths are explicit. `premium_restaurant_meal_2p` is generated as `1.9789 ×`
-the measured midrange meal when absent; `cocktail_1` as `2.6000 ×` measured cappuccino; and `wine_glass_1`
-as `2.2239 ×` measured cappuccino. Those coefficients are generated from independent official-menu
-development fits and their residual intervals are recorded in `coefficients-v6.json`; the displayed values
-are not asserted constants. `street_food_meal_1p` is likewise a fitted independent street-food relation,
+The food and drink anchor paths are explicit. `premium_restaurant_meal_2p` is generated as the grade-D
+1.5 × midrange fallback below the minimum relation n; `cocktail_1` is `2.6000 ×` measured cappuccino.
+Those coefficients are generated from independent official-menu development fits or documented fallbacks
+and their residual intervals are recorded in `coefficients-v6.json`; the displayed values are not asserted
+constants. `street_food_meal_1p` is the measured weak paired relation,
 not the old McMeal identity proxy. McMeal remains a measured Numbeo anchor and diagnostic only.
 
 ---
@@ -235,3 +241,28 @@ circular and explicitly unvalidated for activities), and collect Expatistan cock
 beer as independent cross-checks against Numbeo. Wine glass is not recollected after the rejected bottle
 calibration route. No new holdout may be drawn, frozen or read until Phase 6 proposes a coverage-qualified
 panel and the owner approves it.
+
+### 10 August 2026 — pair predictions before scoring; record explicit FX exclusions
+
+The provider-key prediction attempt is superseded as the default collection route. Delegated agents now
+produce one raw response per city and spine source under experiment 006; the local Stage-B generator validates
+those responses and calls the shipped `materializeCityCostV6` implementation. This is the required
+prediction/truth pairing pattern. The development run materialized 25/25 cities and scored only the unsealed
+development panel in-sample. The prior generator also records all 34 found ledger rows excluded because their
+currency is absent from the frozen FX snapshot: EGP/Cairo 7, LKR/Colombo 2, PEN/Lima 4, SGD/Singapore 8,
+TWD/Taipei 6 and ZAR/Cape Town 7. No rate was invented and the exclusion is recoverable in `priors-v6.json`.
+
+### 10 August 2026 — supersede the reasoned street-food constant with the measured weak ratio
+
+The owner-directed `street_food_meal_1p = 0.5 × inexpensive_restaurant_meal_1p` constant is superseded.
+The paired independent panel has n=6, median R0 `k=0.3248`, and a leave-one-city-out p90 absolute error of
+335.59%. The measured ratio is selected because it agrees in direction with the direct-evidence prior ratio
+of marginal medians (0.276) and the 0.5 constant is contradicted by the collected evidence. The coefficient
+ships as a weak grade-C ladder relationship with a rounded ±336% residual interval; the low n is disclosed
+and the interval is not narrowed. The difference between 0.3248 and 0.276 is explained as median-of-paired-
+ratios versus ratio-of-marginal-medians. McMeal remains a Numbeo cross-check only.
+
+The current all-tier score is explicitly **IN-SAMPLE**: 10 evaluable tiers, one definitional tier and eight
+blocked tiers. Drinks remain not evaluable for lack of an independent full basket; BudgetYourTrip mid/high
+activities remain circular; and gates 3–6 are not evaluable on this partial development truth. The spent
+holdout remains closed.

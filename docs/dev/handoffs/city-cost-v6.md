@@ -55,23 +55,26 @@ times for sample size. The accuracy its gate protected was already achieved.
 
 ### Current owner directive — 10 August 2026
 
-The previous M3 collection approach is **stopped and superseded**. It collected item-level truth without
-generating the corresponding production predictions, so the old holdout's `not_evaluable` result was
-structural, not a coverage verdict. The 25-city development ledger is intact at **280 found / 0 pending**
-across 18 measures and must not be recollected. The previous holdout is spent: all 18 measures are
-`revealed_once`; do not inspect, rescore, refreeze or tune from it.
+The previous item-level M3 collection/scoring approach is **stopped and superseded**. It collected truth
+without generating the matching production predictions, so its `not_evaluable` holdout result was structural.
+The 25-city development ledger is intact at **280 found / 0 pending** across 18 measures and must not be
+recollected. The previous holdout is spent: all 18 measures are `revealed_once`; do not inspect, rescore,
+refreeze or tune from it.
 
-The active M3 path is now: (1) generate exact production-path predictions for all 25 development cities;
-(2) collect BudgetYourTrip tier-level food/activity daily spend and Expatistan cocktail/beer evidence under
-new experiment contracts; (3) replace weak coefficients and rebuild priors without reading the live CSV;
-(4) score development **in-sample**; (5) verify BYT page coverage for a proposed fresh 15-city holdout,
-add a minimum-coverage freeze guard, and stop for owner approval. No new holdout may be drawn, frozen or
-read before that approval.
+The paired development route is now complete. Experiment 006 contains 75 schema-validated delegated spine
+responses and 75 telemetry records for all 25 cities; 15 Expedia responses are byte-identical reuses from
+experiment 001. Stage B runs the shared `materializeCityCostV6` implementation and produced 25/25 full
+19-tier bundles. Experiment 005 is the deterministic **IN-SAMPLE** score: 10 evaluable tiers, one definitional
+tier and 8 blocked tiers. Gates 3–6 are explicitly `not_evaluable` because the development truth lacks a
+complete independent daily basket. This is not holdout validation.
 
-The first production-bundle run is recorded in `data/reference/v6/experiments/002-production-prediction-bundle/`:
-**0/25 cities materialized** because this checkout has no supported provider credential. Each city is an
-explicit `not_run`; no prediction was fabricated. Run the bundle again with the production provider/key
-when available, using `cmd /c node scripts/generate-v6-prediction-bundle.mjs`.
+The current street-food coefficient is the measured paired R0 `k=0.3248`, n=6, grade C, with a ±336%
+leave-one-city-out p90 interval. The direct-evidence prior ratio of marginal medians is 0.276; the generated
+coefficient warning explains the median-of-marginals versus median-of-paired-ratios difference. The prior
+artifact explicitly lists the 34 frozen-FX exclusions.
+
+The fresh holdout proposal remains `proposed_not_collected` with its 72/90 coverage gate. Do not collect,
+freeze or read it without owner approval. M4 remains out of scope.
 
 ### Done (M0 + M1, 9 August 2026)
 
@@ -175,13 +178,11 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 ### Not done
 
 The historical accommodation-only candidate and single gate 2–6 score are retained, and experiment 001 has
-accepted the fresh production-anchor replication. They are not the all-19 M3 result. Experiment 002 batches
-001–005 resolved the ten independent measures for all 25 cities and batch 006 added the street-food measure;
-coverage is **280 found / 0 pending**. Batch 007 resolved the fresh holdout extension at 12 found / 168
-explicit `not_found` rows across 180 slots. The generated all-tier coefficient report exists, and the fresh
-all-tier score report is `data/reference/v6/ground-truth/holdout-scores-all-tier.json`; all gates 2-6 are
-explicitly `not_evaluable` because no paired production-path prediction bundle exists and the old six
-measures cannot be reopened. The v6 path is integrated but opt-in.
+accepted the fresh production-anchor replication. They are not the all-19 M3 result. The item-level
+development ledger remains **280 found / 0 pending**. Experiment 006 now supplies the paired production
+prediction bundle at 25/25 cities; experiment 005 reports the development-only score as 10 evaluable tiers,
+one definitional tier and 8 blocked tiers. Gates 3–6 are not evaluable on the partial development truth.
+The v6 path is integrated but opt-in. The 121-city CSV and default v1 path remain untouched.
 **The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
 API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
 
@@ -198,9 +199,9 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
 
 ---
 
-## 4. The exact next action
+## 4. Historical next action (superseded 10 August 2026)
 
-1. Inspect `data/reference/v6/experiments/002-production-prediction-bundle/results.json`. It is a
+1. Inspect `data/reference/v6/experiments/007-production-prediction-bundle-initial/results.json`. It is a
    deterministic audit of the production path, not a substitute for predictions. Run
    `cmd /c node scripts/generate-v6-prediction-bundle.mjs` with the same provider/model resolution as
    production once credentials are available; retain explicit `not_run` rows on failure.
@@ -225,6 +226,22 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
    stop and request owner approval. Do not collect, freeze or read that holdout in this phase.
 
 The old holdout, all 18 `revealed_once` measures, and the 121-city CSV are out of scope. M4 is out of scope.
+
+## 4. The exact next action
+
+1. Treat experiment 006 and `data/reference/v6/experiments/005-development-in-sample-score/results.json`
+   as the current development record. The prediction bundle is 25/25 and the score is explicitly in-sample:
+   10 evaluable tiers, one definitional tier and 8 blocked tiers. Do not relabel any number as holdout
+   validation.
+2. If the bundle is regenerated, use the default from-disk path:
+   `cmd /c node scripts/generate-v6-prediction-bundle.mjs`. It must read the 75 raw response files and 75
+   telemetry files under experiment 006, validate the existing spine schema, and call the shared
+   `materializeCityCostV6` function. `--provider=<name>` is the opt-in direct-provider mode.
+3. Run the verification baseline, then append confirmed results to `PLAN.md` and `LOG.md`. Regenerate
+   `priors-v6.json` before `fit-city-cost-ladder-v6.mjs --check`; do not hand-edit coefficients.
+4. The fresh proposal remains `data/reference/v6/ground-truth/fresh-holdout-proposal-v2.json` with a 72/90
+   minimum coverage gate. **Stop and obtain owner approval before collecting, freezing or reading it.** Do
+   not touch the spent holdout or any `revealed_once` measure.
 
 ---
 

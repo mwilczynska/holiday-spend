@@ -1,0 +1,3686 @@
+{
+  "schemaVersion": "city-cost-v6-development-in-sample-score-v1",
+  "methodologyVersion": "v6.0",
+  "panel": "development",
+  "inSample": true,
+  "holdout": false,
+  "scoredAt": "2026-08-10T20:41:51.552Z",
+  "predictionBundle": "C:\\Users\\chawi\\OneDrive\\Datascience\\projects\\holiday-spend\\data\\reference\\v6\\experiments\\006-development-prediction-spine\\results.json",
+  "predictionCoverage": {
+    "totalCities": 25,
+    "materializedCities": 25
+  },
+  "truthSources": {
+    "accommodation": "development-ledger.json",
+    "food": "003-budgetyourtrip-tier-panel",
+    "activitiesBudget": "development-ledger.json official attraction rows",
+    "activitiesMidHigh": "blocked as circular BYT production source",
+    "drinks": "004-expatistan-drink-panel plus no accepted beer rows"
+  },
+  "note": "This report is labelled IN-SAMPLE and is not holdout validation. No spent holdout file was read.",
+  "summary": {
+    "evaluableTiers": 10,
+    "definitionalTiers": 1,
+    "blockedTiers": 8
+  },
+  "gate2TierAccuracy": {
+    "status": "in_sample_partial",
+    "inSample": true,
+    "pass": null,
+    "evaluableTiers": [
+      "accom_shared_hostel_dorm",
+      "accom_hostel_private_room",
+      "accom_1_star",
+      "accom_2_star",
+      "accom_3_star",
+      "accom_4_star",
+      "food_budget",
+      "food_mid_range",
+      "food_high_end",
+      "activities_budget"
+    ],
+    "definitionalTiers": [
+      "activities_free"
+    ],
+    "blockedTiers": [
+      "food_street_food",
+      "drink_coffee",
+      "drinks_none",
+      "drinks_light",
+      "drinks_moderate",
+      "drinks_heavy",
+      "activities_mid_range",
+      "activities_high_end"
+    ],
+    "thresholds": {
+      "medianApePctMax": 35,
+      "p90ApePctMax": 75,
+      "absoluteMedianSignedErrorPctMax": 15
+    },
+    "tiers": {
+      "accom_shared_hostel_dorm": {
+        "status": "evaluable_in_sample",
+        "n": 25,
+        "medianApePct": 25.46,
+        "medianSignedErrorPct": 22.06,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 26.9,
+            "truthAud": 20,
+            "apePct": 34.5,
+            "signedErrorPct": 34.5
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 26.9,
+            "truthAud": 24,
+            "apePct": 12.08,
+            "signedErrorPct": 12.08
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 20.56,
+            "truthAud": 26,
+            "apePct": 20.92,
+            "signedErrorPct": -20.92
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 23.74,
+            "truthAud": 28,
+            "apePct": 15.21,
+            "signedErrorPct": -15.21
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 83.06,
+            "truthAud": 78,
+            "apePct": 6.49,
+            "signedErrorPct": 6.49
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 54.58,
+            "truthAud": 52,
+            "apePct": 4.96,
+            "signedErrorPct": 4.96
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 68.86,
+            "truthAud": 52,
+            "apePct": 32.42,
+            "signedErrorPct": 32.42
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 79.9,
+            "truthAud": 72,
+            "apePct": 10.97,
+            "signedErrorPct": 10.97
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 66.44,
+            "truthAud": 196,
+            "apePct": 66.1,
+            "signedErrorPct": -66.1
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 32.5,
+            "truthAud": 22,
+            "apePct": 47.73,
+            "signedErrorPct": 47.73
+          },
+          {
+            "city": "Colombo",
+            "predictionAud": 34.8,
+            "truthAud": 28,
+            "apePct": 24.29,
+            "signedErrorPct": 24.29
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 41.64,
+            "truthAud": 26,
+            "apePct": 60.15,
+            "signedErrorPct": 60.15
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 62.5,
+            "truthAud": 62,
+            "apePct": 0.81,
+            "signedErrorPct": 0.81
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 38.76,
+            "truthAud": 52,
+            "apePct": 25.46,
+            "signedErrorPct": -25.46
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 42.56,
+            "truthAud": 50,
+            "apePct": 14.88,
+            "signedErrorPct": -14.88
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 72.78,
+            "truthAud": 58,
+            "apePct": 25.48,
+            "signedErrorPct": 25.48
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 39.56,
+            "truthAud": 46,
+            "apePct": 14,
+            "signedErrorPct": -14
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 102.04,
+            "truthAud": 64,
+            "apePct": 59.44,
+            "signedErrorPct": 59.44
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 85.44,
+            "truthAud": 70,
+            "apePct": 22.06,
+            "signedErrorPct": 22.06
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 123.4,
+            "truthAud": 86,
+            "apePct": 43.49,
+            "signedErrorPct": 43.49
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 155.04,
+            "truthAud": 118,
+            "apePct": 31.39,
+            "signedErrorPct": 31.39
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 63.28,
+            "truthAud": 50,
+            "apePct": 26.56,
+            "signedErrorPct": 26.56
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 51.42,
+            "truthAud": 34,
+            "apePct": 51.24,
+            "signedErrorPct": 51.24
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 317.36,
+            "truthAud": 178,
+            "apePct": 78.29,
+            "signedErrorPct": 78.29
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 73.88,
+            "truthAud": 73,
+            "apePct": 1.21,
+            "signedErrorPct": 1.21
+          }
+        ]
+      },
+      "accom_hostel_private_room": {
+        "status": "evaluable_in_sample",
+        "n": 25,
+        "medianApePct": 15.97,
+        "medianSignedErrorPct": -15.81,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 26.94,
+            "truthAud": 32,
+            "apePct": 15.81,
+            "signedErrorPct": -15.81
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 26.94,
+            "truthAud": 38,
+            "apePct": 29.11,
+            "signedErrorPct": -29.11
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 20.6,
+            "truthAud": 30,
+            "apePct": 31.33,
+            "signedErrorPct": -31.33
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 23.77,
+            "truthAud": 31,
+            "apePct": 23.32,
+            "signedErrorPct": -23.32
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 83.19,
+            "truthAud": 99,
+            "apePct": 15.97,
+            "signedErrorPct": -15.97
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 54.67,
+            "truthAud": 53,
+            "apePct": 3.15,
+            "signedErrorPct": 3.15
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 68.96,
+            "truthAud": 70,
+            "apePct": 1.49,
+            "signedErrorPct": -1.49
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 80.02,
+            "truthAud": 108,
+            "apePct": 25.91,
+            "signedErrorPct": -25.91
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 66.55,
+            "truthAud": 105,
+            "apePct": 36.62,
+            "signedErrorPct": -36.62
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 32.55,
+            "truthAud": 33,
+            "apePct": 1.36,
+            "signedErrorPct": -1.36
+          },
+          {
+            "city": "Colombo",
+            "predictionAud": 34.86,
+            "truthAud": 34,
+            "apePct": 2.53,
+            "signedErrorPct": 2.53
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 41.7,
+            "truthAud": 37,
+            "apePct": 12.7,
+            "signedErrorPct": 12.7
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 62.59,
+            "truthAud": 82,
+            "apePct": 23.67,
+            "signedErrorPct": -23.67
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 38.82,
+            "truthAud": 51,
+            "apePct": 23.88,
+            "signedErrorPct": -23.88
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 42.62,
+            "truthAud": 40,
+            "apePct": 6.55,
+            "signedErrorPct": 6.55
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 72.89,
+            "truthAud": 63,
+            "apePct": 15.7,
+            "signedErrorPct": 15.7
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 39.62,
+            "truthAud": 35.5,
+            "apePct": 11.61,
+            "signedErrorPct": 11.61
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 102.2,
+            "truthAud": 96,
+            "apePct": 6.46,
+            "signedErrorPct": 6.46
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 85.57,
+            "truthAud": 120,
+            "apePct": 28.69,
+            "signedErrorPct": -28.69
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 123.59,
+            "truthAud": 133,
+            "apePct": 7.08,
+            "signedErrorPct": -7.08
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 155.28,
+            "truthAud": 283,
+            "apePct": 45.13,
+            "signedErrorPct": -45.13
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 63.38,
+            "truthAud": 92,
+            "apePct": 31.11,
+            "signedErrorPct": -31.11
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 51.5,
+            "truthAud": 50,
+            "apePct": 3,
+            "signedErrorPct": 3
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 317.85,
+            "truthAud": 137,
+            "apePct": 132.01,
+            "signedErrorPct": 132.01
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 73.99,
+            "truthAud": 92.5,
+            "apePct": 20.01,
+            "signedErrorPct": -20.01
+          }
+        ]
+      },
+      "accom_1_star": {
+        "status": "evaluable_in_sample",
+        "n": 22,
+        "medianApePct": 21.490000000000002,
+        "medianSignedErrorPct": -2.085,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 30.32,
+            "truthAud": 27,
+            "apePct": 12.3,
+            "signedErrorPct": 12.3
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 30.32,
+            "truthAud": 27,
+            "apePct": 12.3,
+            "signedErrorPct": 12.3
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 23.19,
+            "truthAud": 30,
+            "apePct": 22.7,
+            "signedErrorPct": -22.7
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 26.76,
+            "truthAud": 34,
+            "apePct": 21.29,
+            "signedErrorPct": -21.29
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 93.64,
+            "truthAud": 73,
+            "apePct": 28.27,
+            "signedErrorPct": 28.27
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 61.54,
+            "truthAud": 64,
+            "apePct": 3.84,
+            "signedErrorPct": -3.84
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 90.08,
+            "truthAud": 108,
+            "apePct": 16.59,
+            "signedErrorPct": -16.59
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 74.91,
+            "truthAud": 80,
+            "apePct": 6.36,
+            "signedErrorPct": -6.36
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 36.65,
+            "truthAud": 11.5,
+            "apePct": 218.7,
+            "signedErrorPct": 218.7
+          },
+          {
+            "city": "Colombo",
+            "predictionAud": 39.24,
+            "truthAud": 41,
+            "apePct": 4.29,
+            "signedErrorPct": -4.29
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 46.94,
+            "truthAud": 36,
+            "apePct": 30.39,
+            "signedErrorPct": 30.39
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 70.45,
+            "truthAud": 72,
+            "apePct": 2.15,
+            "signedErrorPct": -2.15
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 43.7,
+            "truthAud": 59,
+            "apePct": 25.93,
+            "signedErrorPct": -25.93
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 47.97,
+            "truthAud": 35,
+            "apePct": 37.06,
+            "signedErrorPct": 37.06
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 82.05,
+            "truthAud": 94,
+            "apePct": 12.71,
+            "signedErrorPct": -12.71
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 115.05,
+            "truthAud": 98,
+            "apePct": 17.4,
+            "signedErrorPct": 17.4
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 96.32,
+            "truthAud": 123,
+            "apePct": 21.69,
+            "signedErrorPct": -21.69
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 139.13,
+            "truthAud": 142,
+            "apePct": 2.02,
+            "signedErrorPct": -2.02
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 174.8,
+            "truthAud": 236,
+            "apePct": 25.93,
+            "signedErrorPct": -25.93
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 71.35,
+            "truthAud": 50,
+            "apePct": 42.7,
+            "signedErrorPct": 42.7
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 57.97,
+            "truthAud": 46,
+            "apePct": 26.02,
+            "signedErrorPct": 26.02
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 357.8,
+            "truthAud": 160.5,
+            "apePct": 122.93,
+            "signedErrorPct": 122.93
+          }
+        ]
+      },
+      "accom_2_star": {
+        "status": "evaluable_in_sample",
+        "n": 25,
+        "medianApePct": 16.74,
+        "medianSignedErrorPct": 0.38,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 34.13,
+            "truthAud": 38,
+            "apePct": 10.18,
+            "signedErrorPct": -10.18
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 34.13,
+            "truthAud": 37,
+            "apePct": 7.76,
+            "signedErrorPct": -7.76
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 26.1,
+            "truthAud": 30,
+            "apePct": 13,
+            "signedErrorPct": -13
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 30.12,
+            "truthAud": 36,
+            "apePct": 16.33,
+            "signedErrorPct": -16.33
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 105.41,
+            "truthAud": 74,
+            "apePct": 42.45,
+            "signedErrorPct": 42.45
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 69.27,
+            "truthAud": 58,
+            "apePct": 19.43,
+            "signedErrorPct": 19.43
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 87.38,
+            "truthAud": 90,
+            "apePct": 2.91,
+            "signedErrorPct": -2.91
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 101.39,
+            "truthAud": 96,
+            "apePct": 5.61,
+            "signedErrorPct": 5.61
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 84.32,
+            "truthAud": 115,
+            "apePct": 26.68,
+            "signedErrorPct": -26.68
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 41.25,
+            "truthAud": 22,
+            "apePct": 87.5,
+            "signedErrorPct": 87.5
+          },
+          {
+            "city": "Colombo",
+            "predictionAud": 44.17,
+            "truthAud": 45,
+            "apePct": 1.84,
+            "signedErrorPct": -1.84
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 52.84,
+            "truthAud": 46,
+            "apePct": 14.87,
+            "signedErrorPct": 14.87
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 79.3,
+            "truthAud": 79,
+            "apePct": 0.38,
+            "signedErrorPct": 0.38
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 49.19,
+            "truthAud": 62,
+            "apePct": 20.66,
+            "signedErrorPct": -20.66
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 54,
+            "truthAud": 36,
+            "apePct": 50,
+            "signedErrorPct": 50
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 92.36,
+            "truthAud": 118,
+            "apePct": 21.73,
+            "signedErrorPct": -21.73
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 50.2,
+            "truthAud": 43,
+            "apePct": 16.74,
+            "signedErrorPct": 16.74
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 129.5,
+            "truthAud": 93,
+            "apePct": 39.25,
+            "signedErrorPct": 39.25
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 108.42,
+            "truthAud": 106.5,
+            "apePct": 1.8,
+            "signedErrorPct": 1.8
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 156.61,
+            "truthAud": 195,
+            "apePct": 19.69,
+            "signedErrorPct": -19.69
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 196.76,
+            "truthAud": 264,
+            "apePct": 25.47,
+            "signedErrorPct": -25.47
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 80.31,
+            "truthAud": 40,
+            "apePct": 100.78,
+            "signedErrorPct": 100.78
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 65.25,
+            "truthAud": 57,
+            "apePct": 14.47,
+            "signedErrorPct": 14.47
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 402.75,
+            "truthAud": 351,
+            "apePct": 14.74,
+            "signedErrorPct": 14.74
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 93.75,
+            "truthAud": 225,
+            "apePct": 58.33,
+            "signedErrorPct": -58.33
+          }
+        ]
+      },
+      "accom_3_star": {
+        "status": "evaluable_in_sample",
+        "n": 25,
+        "medianApePct": 8.27,
+        "medianSignedErrorPct": 5.68,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 45.51,
+            "truthAud": 42,
+            "apePct": 8.36,
+            "signedErrorPct": 8.36
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 45.51,
+            "truthAud": 46,
+            "apePct": 1.07,
+            "signedErrorPct": -1.07
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 34.8,
+            "truthAud": 35,
+            "apePct": 0.57,
+            "signedErrorPct": -0.57
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 40.16,
+            "truthAud": 38,
+            "apePct": 5.68,
+            "signedErrorPct": 5.68
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 140.54,
+            "truthAud": 118,
+            "apePct": 19.1,
+            "signedErrorPct": 19.1
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 92.36,
+            "truthAud": 68,
+            "apePct": 35.82,
+            "signedErrorPct": 35.82
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 116.5,
+            "truthAud": 88,
+            "apePct": 32.39,
+            "signedErrorPct": 32.39
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 135.19,
+            "truthAud": 145,
+            "apePct": 6.77,
+            "signedErrorPct": -6.77
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 112.43,
+            "truthAud": 154,
+            "apePct": 26.99,
+            "signedErrorPct": -26.99
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 55,
+            "truthAud": 34,
+            "apePct": 61.76,
+            "signedErrorPct": 61.76
+          },
+          {
+            "city": "Colombo",
+            "predictionAud": 58.89,
+            "truthAud": 55,
+            "apePct": 7.07,
+            "signedErrorPct": 7.07
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 70.45,
+            "truthAud": 74,
+            "apePct": 4.8,
+            "signedErrorPct": -4.8
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 105.74,
+            "truthAud": 80,
+            "apePct": 32.17,
+            "signedErrorPct": 32.17
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 65.59,
+            "truthAud": 52,
+            "apePct": 26.13,
+            "signedErrorPct": 26.13
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 72,
+            "truthAud": 50,
+            "apePct": 44,
+            "signedErrorPct": 44
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 123.14,
+            "truthAud": 109,
+            "apePct": 12.97,
+            "signedErrorPct": 12.97
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 66.93,
+            "truthAud": 72,
+            "apePct": 7.04,
+            "signedErrorPct": -7.04
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 172.67,
+            "truthAud": 107,
+            "apePct": 61.37,
+            "signedErrorPct": 61.37
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 144.56,
+            "truthAud": 144,
+            "apePct": 0.39,
+            "signedErrorPct": 0.39
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 208.81,
+            "truthAud": 200,
+            "apePct": 4.41,
+            "signedErrorPct": 4.41
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 262.35,
+            "truthAud": 286,
+            "apePct": 8.27,
+            "signedErrorPct": -8.27
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 107.08,
+            "truthAud": 74,
+            "apePct": 44.7,
+            "signedErrorPct": 44.7
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 87,
+            "truthAud": 87,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 537,
+            "truthAud": 537,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 125,
+            "truthAud": 125,
+            "apePct": 0,
+            "signedErrorPct": 0
+          }
+        ]
+      },
+      "accom_4_star": {
+        "status": "evaluable_in_sample",
+        "n": 25,
+        "medianApePct": 13.12,
+        "medianSignedErrorPct": 3.88,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 60.86,
+            "truthAud": 62,
+            "apePct": 1.84,
+            "signedErrorPct": -1.84
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 60.86,
+            "truthAud": 63,
+            "apePct": 3.4,
+            "signedErrorPct": -3.4
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 46.53,
+            "truthAud": 57,
+            "apePct": 18.37,
+            "signedErrorPct": -18.37
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 53.7,
+            "truthAud": 53,
+            "apePct": 1.32,
+            "signedErrorPct": 1.32
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 187.93,
+            "truthAud": 182,
+            "apePct": 3.26,
+            "signedErrorPct": 3.26
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 123.5,
+            "truthAud": 129,
+            "apePct": 4.26,
+            "signedErrorPct": -4.26
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 155.78,
+            "truthAud": 103,
+            "apePct": 51.24,
+            "signedErrorPct": 51.24
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 180.78,
+            "truthAud": 185,
+            "apePct": 2.28,
+            "signedErrorPct": -2.28
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 150.34,
+            "truthAud": 215,
+            "apePct": 30.07,
+            "signedErrorPct": -30.07
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 73.55,
+            "truthAud": 32,
+            "apePct": 129.84,
+            "signedErrorPct": 129.84
+          },
+          {
+            "city": "Colombo",
+            "predictionAud": 78.75,
+            "truthAud": 76,
+            "apePct": 3.62,
+            "signedErrorPct": 3.62
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 94.21,
+            "truthAud": 125,
+            "apePct": 24.63,
+            "signedErrorPct": -24.63
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 141.4,
+            "truthAud": 125,
+            "apePct": 13.12,
+            "signedErrorPct": 13.12
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 87.71,
+            "truthAud": 73,
+            "apePct": 20.15,
+            "signedErrorPct": 20.15
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 96.28,
+            "truthAud": 86,
+            "apePct": 11.95,
+            "signedErrorPct": 11.95
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 164.66,
+            "truthAud": 140,
+            "apePct": 17.61,
+            "signedErrorPct": 17.61
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 89.5,
+            "truthAud": 106,
+            "apePct": 15.57,
+            "signedErrorPct": -15.57
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 230.89,
+            "truthAud": 181,
+            "apePct": 27.56,
+            "signedErrorPct": 27.56
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 193.31,
+            "truthAud": 134,
+            "apePct": 44.26,
+            "signedErrorPct": 44.26
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 279.22,
+            "truthAud": 254,
+            "apePct": 9.93,
+            "signedErrorPct": 9.93
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 350.81,
+            "truthAud": 339,
+            "apePct": 3.48,
+            "signedErrorPct": 3.48
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 143.19,
+            "truthAud": 121,
+            "apePct": 18.34,
+            "signedErrorPct": 18.34
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 116.34,
+            "truthAud": 112,
+            "apePct": 3.88,
+            "signedErrorPct": 3.88
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 718.08,
+            "truthAud": 592,
+            "apePct": 21.3,
+            "signedErrorPct": 21.3
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 167.15,
+            "truthAud": 151,
+            "apePct": 10.7,
+            "signedErrorPct": 10.7
+          }
+        ]
+      },
+      "food_street_food": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "no direct daily tier truth; street-food relation is checked only through the BYT food basket"
+      },
+      "food_budget": {
+        "status": "evaluable_in_sample",
+        "n": 24,
+        "medianApePct": 14.555,
+        "medianSignedErrorPct": 0.01,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 25.74,
+            "truthAud": 25.74,
+            "apePct": 0.01,
+            "signedErrorPct": 0.01
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 25.74,
+            "truthAud": 25.74,
+            "apePct": 0.01,
+            "signedErrorPct": 0.01
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 25.74,
+            "truthAud": 31.46,
+            "apePct": 18.17,
+            "signedErrorPct": -18.17
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 25.74,
+            "truthAud": 45.76,
+            "apePct": 43.75,
+            "signedErrorPct": -43.75
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 54.34,
+            "truthAud": 54.34,
+            "apePct": 0.01,
+            "signedErrorPct": 0.01
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 35.75,
+            "truthAud": 31.46,
+            "apePct": 13.65,
+            "signedErrorPct": 13.65
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 45.76,
+            "truthAud": 40.04,
+            "apePct": 14.3,
+            "signedErrorPct": 14.3
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 58.62,
+            "truthAud": 65.77,
+            "apePct": 10.88,
+            "signedErrorPct": -10.88
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 35.75,
+            "truthAud": 51.48,
+            "apePct": 30.55,
+            "signedErrorPct": -30.55
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 27.17,
+            "truthAud": 20.02,
+            "apePct": 35.73,
+            "signedErrorPct": 35.73
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 34.32,
+            "truthAud": 34.32,
+            "apePct": 0.01,
+            "signedErrorPct": 0.01
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 68.63,
+            "truthAud": 68.63,
+            "apePct": 0.01,
+            "signedErrorPct": -0.01
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 68.63,
+            "truthAud": 111.53,
+            "apePct": 38.47,
+            "signedErrorPct": -38.47
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 31.46,
+            "truthAud": 20.02,
+            "apePct": 57.16,
+            "signedErrorPct": 57.16
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 31.46,
+            "truthAud": 180.16,
+            "apePct": 82.54,
+            "signedErrorPct": -82.54
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 105.81,
+            "truthAud": 31.46,
+            "apePct": 236.36,
+            "signedErrorPct": 236.36
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 88.65,
+            "truthAud": 51.48,
+            "apePct": 72.22,
+            "signedErrorPct": 72.22
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 88.65,
+            "truthAud": 60.05,
+            "apePct": 47.62,
+            "signedErrorPct": 47.62
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 88.65,
+            "truthAud": 100.09,
+            "apePct": 11.43,
+            "signedErrorPct": -11.43
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 88.65,
+            "truthAud": 77.21,
+            "apePct": 14.81,
+            "signedErrorPct": 14.81
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 42.9,
+            "truthAud": 48.62,
+            "apePct": 11.76,
+            "signedErrorPct": -11.76
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 42.9,
+            "truthAud": 37.18,
+            "apePct": 15.39,
+            "signedErrorPct": 15.39
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 91.51,
+            "truthAud": 91.51,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 68.63,
+            "truthAud": 68.63,
+            "apePct": 0.01,
+            "signedErrorPct": -0.01
+          }
+        ]
+      },
+      "food_mid_range": {
+        "status": "evaluable_in_sample",
+        "n": 24,
+        "medianApePct": 14.335,
+        "medianSignedErrorPct": 0,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 65.77,
+            "truthAud": 65.77,
+            "apePct": 0.01,
+            "signedErrorPct": -0.01
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 65.77,
+            "truthAud": 65.77,
+            "apePct": 0.01,
+            "signedErrorPct": -0.01
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 65.77,
+            "truthAud": 77.21,
+            "apePct": 14.82,
+            "signedErrorPct": -14.82
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 65.77,
+            "truthAud": 117.25,
+            "apePct": 43.91,
+            "signedErrorPct": -43.91
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 134.41,
+            "truthAud": 134.41,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 91.51,
+            "truthAud": 80.07,
+            "apePct": 14.28,
+            "signedErrorPct": 14.28
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 118.68,
+            "truthAud": 102.95,
+            "apePct": 15.28,
+            "signedErrorPct": 15.28
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 154.43,
+            "truthAud": 174.44,
+            "apePct": 11.47,
+            "signedErrorPct": -11.47
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 91.51,
+            "truthAud": 134.41,
+            "apePct": 31.92,
+            "signedErrorPct": -31.92
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 80.07,
+            "truthAud": 51.48,
+            "apePct": 55.55,
+            "signedErrorPct": 55.55
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 108.67,
+            "truthAud": 108.67,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 168.73,
+            "truthAud": 168.73,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 168.73,
+            "truthAud": 274.54,
+            "apePct": 38.54,
+            "signedErrorPct": -38.54
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 48.62,
+            "truthAud": 48.62,
+            "apePct": 0.01,
+            "signedErrorPct": 0.01
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 48.62,
+            "truthAud": 234.5,
+            "apePct": 79.27,
+            "signedErrorPct": -79.27
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 135.84,
+            "truthAud": 37.18,
+            "apePct": 265.39,
+            "signedErrorPct": 265.39
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 215.91,
+            "truthAud": 140.13,
+            "apePct": 54.08,
+            "signedErrorPct": 54.08
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 215.91,
+            "truthAud": 142.99,
+            "apePct": 51,
+            "signedErrorPct": 51
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 215.91,
+            "truthAud": 243.08,
+            "apePct": 11.18,
+            "signedErrorPct": -11.18
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 215.91,
+            "truthAud": 188.74,
+            "apePct": 14.39,
+            "signedErrorPct": 14.39
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 112.96,
+            "truthAud": 131.55,
+            "apePct": 14.13,
+            "signedErrorPct": -14.13
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 112.96,
+            "truthAud": 94.37,
+            "apePct": 19.7,
+            "signedErrorPct": 19.7
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 225.92,
+            "truthAud": 225.92,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 163.01,
+            "truthAud": 163.01,
+            "apePct": 0,
+            "signedErrorPct": 0
+          }
+        ]
+      },
+      "food_high_end": {
+        "status": "evaluable_in_sample",
+        "n": 24,
+        "medianApePct": 13.76,
+        "medianSignedErrorPct": 0,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 165.87,
+            "truthAud": 165.87,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 165.87,
+            "truthAud": 165.87,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 165.87,
+            "truthAud": 183.02,
+            "apePct": 9.37,
+            "signedErrorPct": -9.37
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 165.87,
+            "truthAud": 308.85,
+            "apePct": 46.29,
+            "signedErrorPct": -46.29
+          },
+          {
+            "city": "Singapore",
+            "predictionAud": 340.31,
+            "truthAud": 340.31,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Taipei",
+            "predictionAud": 235.93,
+            "truthAud": 214.48,
+            "apePct": 10,
+            "signedErrorPct": 10
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 305.99,
+            "truthAud": 257.38,
+            "apePct": 18.89,
+            "signedErrorPct": 18.89
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 421.81,
+            "truthAud": 489.02,
+            "apePct": 13.74,
+            "signedErrorPct": -13.74
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 235.93,
+            "truthAud": 354.61,
+            "apePct": 33.47,
+            "signedErrorPct": -33.47
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 258.81,
+            "truthAud": 131.55,
+            "apePct": 96.74,
+            "signedErrorPct": 96.74
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 386.07,
+            "truthAud": 386.07,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 380.35,
+            "truthAud": 380.35,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 380.35,
+            "truthAud": 672.04,
+            "apePct": 43.4,
+            "signedErrorPct": -43.4
+          },
+          {
+            "city": "Cairo",
+            "predictionAud": 94.37,
+            "truthAud": 94.37,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Cape Town",
+            "predictionAud": 94.37,
+            "truthAud": 331.73,
+            "apePct": 71.55,
+            "signedErrorPct": -71.55
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 190.17,
+            "truthAud": 48.62,
+            "apePct": 291.17,
+            "signedErrorPct": 291.17
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 507.61,
+            "truthAud": 391.79,
+            "apePct": 29.56,
+            "signedErrorPct": 29.56
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 507.61,
+            "truthAud": 317.43,
+            "apePct": 59.91,
+            "signedErrorPct": 59.91
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 507.61,
+            "truthAud": 569.09,
+            "apePct": 10.8,
+            "signedErrorPct": -10.8
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 507.61,
+            "truthAud": 446.12,
+            "apePct": 13.78,
+            "signedErrorPct": 13.78
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 316,
+            "truthAud": 386.07,
+            "apePct": 18.15,
+            "signedErrorPct": -18.15
+          },
+          {
+            "city": "Lima",
+            "predictionAud": 316,
+            "truthAud": 245.94,
+            "apePct": 28.49,
+            "signedErrorPct": 28.49
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 546.21,
+            "truthAud": 546.21,
+            "apePct": 0,
+            "signedErrorPct": 0
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 366.05,
+            "truthAud": 366.05,
+            "apePct": 0,
+            "signedErrorPct": 0
+          }
+        ]
+      },
+      "drink_coffee": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "no independent full-basket drink truth; Expatistan cocktail does not validate Numbeo coffee"
+      },
+      "drinks_none": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "no independent full-basket drink truth"
+      },
+      "drinks_light": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "only 3/25 Expatistan neighbourhood-pub beer rows; no full independent drink basket"
+      },
+      "drinks_moderate": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "cocktail-only evidence cannot validate the full coffee/beer/cocktail basket"
+      },
+      "drinks_heavy": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "wine glass was intentionally excluded and no independent full basket exists"
+      },
+      "activities_free": {
+        "status": "definitional_not_scored",
+        "n": 0,
+        "reason": "Definitional zero-cost tier; no empirical prediction/truth pair is required."
+      },
+      "activities_budget": {
+        "status": "evaluable_in_sample",
+        "n": 20,
+        "medianApePct": 54.185,
+        "medianSignedErrorPct": 3.005,
+        "rows": [
+          {
+            "city": "Hanoi",
+            "predictionAud": 8.58,
+            "truthAud": 7.69,
+            "apePct": 11.58,
+            "signedErrorPct": 11.58
+          },
+          {
+            "city": "Ho Chi Minh City",
+            "predictionAud": 20.02,
+            "truthAud": 8.79,
+            "apePct": 127.8,
+            "signedErrorPct": 127.8
+          },
+          {
+            "city": "Da Nang",
+            "predictionAud": 17.16,
+            "truthAud": 6.59,
+            "apePct": 160.35,
+            "signedErrorPct": 160.35
+          },
+          {
+            "city": "Phuket",
+            "predictionAud": 51.48,
+            "truthAud": 16.92,
+            "apePct": 204.31,
+            "signedErrorPct": 204.31
+          },
+          {
+            "city": "Beijing",
+            "predictionAud": 28.6,
+            "truthAud": 25.33,
+            "apePct": 12.89,
+            "signedErrorPct": 12.89
+          },
+          {
+            "city": "Tokyo",
+            "predictionAud": 62.92,
+            "truthAud": 14.03,
+            "apePct": 348.48,
+            "signedErrorPct": 348.48
+          },
+          {
+            "city": "Seoul",
+            "predictionAud": 25.74,
+            "truthAud": 5.8,
+            "apePct": 343.95,
+            "signedErrorPct": 343.95
+          },
+          {
+            "city": "Delhi",
+            "predictionAud": 17.16,
+            "truthAud": 14.81,
+            "apePct": 15.89,
+            "signedErrorPct": 15.89
+          },
+          {
+            "city": "Colombo",
+            "predictionAud": 2.86,
+            "truthAud": 14.3,
+            "apePct": 80,
+            "signedErrorPct": -80
+          },
+          {
+            "city": "Mumbai",
+            "predictionAud": 2.86,
+            "truthAud": 5.92,
+            "apePct": 51.71,
+            "signedErrorPct": -51.71
+          },
+          {
+            "city": "Istanbul",
+            "predictionAud": 42.9,
+            "truthAud": 60.57,
+            "apePct": 29.17,
+            "signedErrorPct": -29.17
+          },
+          {
+            "city": "Dubai",
+            "predictionAud": 17.16,
+            "truthAud": 131.38,
+            "apePct": 86.94,
+            "signedErrorPct": -86.94
+          },
+          {
+            "city": "Nairobi",
+            "predictionAud": 37.18,
+            "truthAud": 51.48,
+            "apePct": 27.77,
+            "signedErrorPct": -27.77
+          },
+          {
+            "city": "Budapest",
+            "predictionAud": 28.6,
+            "truthAud": 31.38,
+            "apePct": 8.85,
+            "signedErrorPct": -8.85
+          },
+          {
+            "city": "Prague",
+            "predictionAud": 20.02,
+            "truthAud": 48.6,
+            "apePct": 58.81,
+            "signedErrorPct": -58.81
+          },
+          {
+            "city": "Lisbon",
+            "predictionAud": 31.46,
+            "truthAud": 32.62,
+            "apePct": 3.57,
+            "signedErrorPct": -3.57
+          },
+          {
+            "city": "Barcelona",
+            "predictionAud": 42.9,
+            "truthAud": 39.15,
+            "apePct": 9.58,
+            "signedErrorPct": 9.58
+          },
+          {
+            "city": "Mexico City",
+            "predictionAud": 17.16,
+            "truthAud": 9.85,
+            "apePct": 74.25,
+            "signedErrorPct": 74.25
+          },
+          {
+            "city": "San Francisco",
+            "predictionAud": 37.18,
+            "truthAud": 85.79,
+            "apePct": 56.66,
+            "signedErrorPct": -56.66
+          },
+          {
+            "city": "Melbourne",
+            "predictionAud": 34.32,
+            "truthAud": 36,
+            "apePct": 4.67,
+            "signedErrorPct": -4.67
+          }
+        ]
+      },
+      "activities_mid_range": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "BudgetYourTrip is the production source; no independent half-day tier source"
+      },
+      "activities_high_end": {
+        "status": "blocked_no_pair",
+        "n": 0,
+        "reason": "BudgetYourTrip is the production source; no independent full-day tier source"
+      }
+    },
+    "note": "Development figures are in-sample diagnostics only. They are not held-out gate results, and blocked tiers are not treated as failures."
+  },
+  "gate3CityRanking": {
+    "status": "not_evaluable",
+    "inSample": true,
+    "pass": null,
+    "reason": "The development panel lacks complete independent truth for the 19-tier daily basket: street food has no direct daily-tier truth, all five drink tiers are blocked, and BudgetYourTrip mid/high activities are circular."
+  },
+  "gate4CostBandAgreement": {
+    "status": "not_evaluable",
+    "inSample": true,
+    "pass": null,
+    "reason": "A complete independent product-level cost-band truth is not available for the development cities; the frozen manifest band cannot be treated as an independent full-basket observation."
+  },
+  "gate5TripLevelRealism": {
+    "status": "not_evaluable",
+    "inSample": true,
+    "pass": null,
+    "reason": "Trip totals require an independent full daily basket, but drinks and two activity tiers remain blocked and street food has no direct daily-tier truth."
+  },
+  "gate6NoRegressionVsV1": {
+    "status": "not_evaluable",
+    "inSample": true,
+    "pass": null,
+    "reason": "The available development truth does not cover all 19 product tiers, so no all-tier comparison against v1 can be made without turning partial evidence into a gate result."
+  },
+  "tiers": {
+    "accom_shared_hostel_dorm": {
+      "status": "evaluable_in_sample",
+      "n": 25,
+      "medianApePct": 25.46,
+      "medianSignedErrorPct": 22.06,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 26.9,
+          "truthAud": 20,
+          "apePct": 34.5,
+          "signedErrorPct": 34.5
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 26.9,
+          "truthAud": 24,
+          "apePct": 12.08,
+          "signedErrorPct": 12.08
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 20.56,
+          "truthAud": 26,
+          "apePct": 20.92,
+          "signedErrorPct": -20.92
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 23.74,
+          "truthAud": 28,
+          "apePct": 15.21,
+          "signedErrorPct": -15.21
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 83.06,
+          "truthAud": 78,
+          "apePct": 6.49,
+          "signedErrorPct": 6.49
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 54.58,
+          "truthAud": 52,
+          "apePct": 4.96,
+          "signedErrorPct": 4.96
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 68.86,
+          "truthAud": 52,
+          "apePct": 32.42,
+          "signedErrorPct": 32.42
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 79.9,
+          "truthAud": 72,
+          "apePct": 10.97,
+          "signedErrorPct": 10.97
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 66.44,
+          "truthAud": 196,
+          "apePct": 66.1,
+          "signedErrorPct": -66.1
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 32.5,
+          "truthAud": 22,
+          "apePct": 47.73,
+          "signedErrorPct": 47.73
+        },
+        {
+          "city": "Colombo",
+          "predictionAud": 34.8,
+          "truthAud": 28,
+          "apePct": 24.29,
+          "signedErrorPct": 24.29
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 41.64,
+          "truthAud": 26,
+          "apePct": 60.15,
+          "signedErrorPct": 60.15
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 62.5,
+          "truthAud": 62,
+          "apePct": 0.81,
+          "signedErrorPct": 0.81
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 38.76,
+          "truthAud": 52,
+          "apePct": 25.46,
+          "signedErrorPct": -25.46
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 42.56,
+          "truthAud": 50,
+          "apePct": 14.88,
+          "signedErrorPct": -14.88
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 72.78,
+          "truthAud": 58,
+          "apePct": 25.48,
+          "signedErrorPct": 25.48
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 39.56,
+          "truthAud": 46,
+          "apePct": 14,
+          "signedErrorPct": -14
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 102.04,
+          "truthAud": 64,
+          "apePct": 59.44,
+          "signedErrorPct": 59.44
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 85.44,
+          "truthAud": 70,
+          "apePct": 22.06,
+          "signedErrorPct": 22.06
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 123.4,
+          "truthAud": 86,
+          "apePct": 43.49,
+          "signedErrorPct": 43.49
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 155.04,
+          "truthAud": 118,
+          "apePct": 31.39,
+          "signedErrorPct": 31.39
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 63.28,
+          "truthAud": 50,
+          "apePct": 26.56,
+          "signedErrorPct": 26.56
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 51.42,
+          "truthAud": 34,
+          "apePct": 51.24,
+          "signedErrorPct": 51.24
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 317.36,
+          "truthAud": 178,
+          "apePct": 78.29,
+          "signedErrorPct": 78.29
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 73.88,
+          "truthAud": 73,
+          "apePct": 1.21,
+          "signedErrorPct": 1.21
+        }
+      ]
+    },
+    "accom_hostel_private_room": {
+      "status": "evaluable_in_sample",
+      "n": 25,
+      "medianApePct": 15.97,
+      "medianSignedErrorPct": -15.81,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 26.94,
+          "truthAud": 32,
+          "apePct": 15.81,
+          "signedErrorPct": -15.81
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 26.94,
+          "truthAud": 38,
+          "apePct": 29.11,
+          "signedErrorPct": -29.11
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 20.6,
+          "truthAud": 30,
+          "apePct": 31.33,
+          "signedErrorPct": -31.33
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 23.77,
+          "truthAud": 31,
+          "apePct": 23.32,
+          "signedErrorPct": -23.32
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 83.19,
+          "truthAud": 99,
+          "apePct": 15.97,
+          "signedErrorPct": -15.97
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 54.67,
+          "truthAud": 53,
+          "apePct": 3.15,
+          "signedErrorPct": 3.15
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 68.96,
+          "truthAud": 70,
+          "apePct": 1.49,
+          "signedErrorPct": -1.49
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 80.02,
+          "truthAud": 108,
+          "apePct": 25.91,
+          "signedErrorPct": -25.91
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 66.55,
+          "truthAud": 105,
+          "apePct": 36.62,
+          "signedErrorPct": -36.62
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 32.55,
+          "truthAud": 33,
+          "apePct": 1.36,
+          "signedErrorPct": -1.36
+        },
+        {
+          "city": "Colombo",
+          "predictionAud": 34.86,
+          "truthAud": 34,
+          "apePct": 2.53,
+          "signedErrorPct": 2.53
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 41.7,
+          "truthAud": 37,
+          "apePct": 12.7,
+          "signedErrorPct": 12.7
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 62.59,
+          "truthAud": 82,
+          "apePct": 23.67,
+          "signedErrorPct": -23.67
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 38.82,
+          "truthAud": 51,
+          "apePct": 23.88,
+          "signedErrorPct": -23.88
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 42.62,
+          "truthAud": 40,
+          "apePct": 6.55,
+          "signedErrorPct": 6.55
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 72.89,
+          "truthAud": 63,
+          "apePct": 15.7,
+          "signedErrorPct": 15.7
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 39.62,
+          "truthAud": 35.5,
+          "apePct": 11.61,
+          "signedErrorPct": 11.61
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 102.2,
+          "truthAud": 96,
+          "apePct": 6.46,
+          "signedErrorPct": 6.46
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 85.57,
+          "truthAud": 120,
+          "apePct": 28.69,
+          "signedErrorPct": -28.69
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 123.59,
+          "truthAud": 133,
+          "apePct": 7.08,
+          "signedErrorPct": -7.08
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 155.28,
+          "truthAud": 283,
+          "apePct": 45.13,
+          "signedErrorPct": -45.13
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 63.38,
+          "truthAud": 92,
+          "apePct": 31.11,
+          "signedErrorPct": -31.11
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 51.5,
+          "truthAud": 50,
+          "apePct": 3,
+          "signedErrorPct": 3
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 317.85,
+          "truthAud": 137,
+          "apePct": 132.01,
+          "signedErrorPct": 132.01
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 73.99,
+          "truthAud": 92.5,
+          "apePct": 20.01,
+          "signedErrorPct": -20.01
+        }
+      ]
+    },
+    "accom_1_star": {
+      "status": "evaluable_in_sample",
+      "n": 22,
+      "medianApePct": 21.490000000000002,
+      "medianSignedErrorPct": -2.085,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 30.32,
+          "truthAud": 27,
+          "apePct": 12.3,
+          "signedErrorPct": 12.3
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 30.32,
+          "truthAud": 27,
+          "apePct": 12.3,
+          "signedErrorPct": 12.3
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 23.19,
+          "truthAud": 30,
+          "apePct": 22.7,
+          "signedErrorPct": -22.7
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 26.76,
+          "truthAud": 34,
+          "apePct": 21.29,
+          "signedErrorPct": -21.29
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 93.64,
+          "truthAud": 73,
+          "apePct": 28.27,
+          "signedErrorPct": 28.27
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 61.54,
+          "truthAud": 64,
+          "apePct": 3.84,
+          "signedErrorPct": -3.84
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 90.08,
+          "truthAud": 108,
+          "apePct": 16.59,
+          "signedErrorPct": -16.59
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 74.91,
+          "truthAud": 80,
+          "apePct": 6.36,
+          "signedErrorPct": -6.36
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 36.65,
+          "truthAud": 11.5,
+          "apePct": 218.7,
+          "signedErrorPct": 218.7
+        },
+        {
+          "city": "Colombo",
+          "predictionAud": 39.24,
+          "truthAud": 41,
+          "apePct": 4.29,
+          "signedErrorPct": -4.29
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 46.94,
+          "truthAud": 36,
+          "apePct": 30.39,
+          "signedErrorPct": 30.39
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 70.45,
+          "truthAud": 72,
+          "apePct": 2.15,
+          "signedErrorPct": -2.15
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 43.7,
+          "truthAud": 59,
+          "apePct": 25.93,
+          "signedErrorPct": -25.93
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 47.97,
+          "truthAud": 35,
+          "apePct": 37.06,
+          "signedErrorPct": 37.06
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 82.05,
+          "truthAud": 94,
+          "apePct": 12.71,
+          "signedErrorPct": -12.71
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 115.05,
+          "truthAud": 98,
+          "apePct": 17.4,
+          "signedErrorPct": 17.4
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 96.32,
+          "truthAud": 123,
+          "apePct": 21.69,
+          "signedErrorPct": -21.69
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 139.13,
+          "truthAud": 142,
+          "apePct": 2.02,
+          "signedErrorPct": -2.02
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 174.8,
+          "truthAud": 236,
+          "apePct": 25.93,
+          "signedErrorPct": -25.93
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 71.35,
+          "truthAud": 50,
+          "apePct": 42.7,
+          "signedErrorPct": 42.7
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 57.97,
+          "truthAud": 46,
+          "apePct": 26.02,
+          "signedErrorPct": 26.02
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 357.8,
+          "truthAud": 160.5,
+          "apePct": 122.93,
+          "signedErrorPct": 122.93
+        }
+      ]
+    },
+    "accom_2_star": {
+      "status": "evaluable_in_sample",
+      "n": 25,
+      "medianApePct": 16.74,
+      "medianSignedErrorPct": 0.38,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 34.13,
+          "truthAud": 38,
+          "apePct": 10.18,
+          "signedErrorPct": -10.18
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 34.13,
+          "truthAud": 37,
+          "apePct": 7.76,
+          "signedErrorPct": -7.76
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 26.1,
+          "truthAud": 30,
+          "apePct": 13,
+          "signedErrorPct": -13
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 30.12,
+          "truthAud": 36,
+          "apePct": 16.33,
+          "signedErrorPct": -16.33
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 105.41,
+          "truthAud": 74,
+          "apePct": 42.45,
+          "signedErrorPct": 42.45
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 69.27,
+          "truthAud": 58,
+          "apePct": 19.43,
+          "signedErrorPct": 19.43
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 87.38,
+          "truthAud": 90,
+          "apePct": 2.91,
+          "signedErrorPct": -2.91
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 101.39,
+          "truthAud": 96,
+          "apePct": 5.61,
+          "signedErrorPct": 5.61
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 84.32,
+          "truthAud": 115,
+          "apePct": 26.68,
+          "signedErrorPct": -26.68
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 41.25,
+          "truthAud": 22,
+          "apePct": 87.5,
+          "signedErrorPct": 87.5
+        },
+        {
+          "city": "Colombo",
+          "predictionAud": 44.17,
+          "truthAud": 45,
+          "apePct": 1.84,
+          "signedErrorPct": -1.84
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 52.84,
+          "truthAud": 46,
+          "apePct": 14.87,
+          "signedErrorPct": 14.87
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 79.3,
+          "truthAud": 79,
+          "apePct": 0.38,
+          "signedErrorPct": 0.38
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 49.19,
+          "truthAud": 62,
+          "apePct": 20.66,
+          "signedErrorPct": -20.66
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 54,
+          "truthAud": 36,
+          "apePct": 50,
+          "signedErrorPct": 50
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 92.36,
+          "truthAud": 118,
+          "apePct": 21.73,
+          "signedErrorPct": -21.73
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 50.2,
+          "truthAud": 43,
+          "apePct": 16.74,
+          "signedErrorPct": 16.74
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 129.5,
+          "truthAud": 93,
+          "apePct": 39.25,
+          "signedErrorPct": 39.25
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 108.42,
+          "truthAud": 106.5,
+          "apePct": 1.8,
+          "signedErrorPct": 1.8
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 156.61,
+          "truthAud": 195,
+          "apePct": 19.69,
+          "signedErrorPct": -19.69
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 196.76,
+          "truthAud": 264,
+          "apePct": 25.47,
+          "signedErrorPct": -25.47
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 80.31,
+          "truthAud": 40,
+          "apePct": 100.78,
+          "signedErrorPct": 100.78
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 65.25,
+          "truthAud": 57,
+          "apePct": 14.47,
+          "signedErrorPct": 14.47
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 402.75,
+          "truthAud": 351,
+          "apePct": 14.74,
+          "signedErrorPct": 14.74
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 93.75,
+          "truthAud": 225,
+          "apePct": 58.33,
+          "signedErrorPct": -58.33
+        }
+      ]
+    },
+    "accom_3_star": {
+      "status": "evaluable_in_sample",
+      "n": 25,
+      "medianApePct": 8.27,
+      "medianSignedErrorPct": 5.68,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 45.51,
+          "truthAud": 42,
+          "apePct": 8.36,
+          "signedErrorPct": 8.36
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 45.51,
+          "truthAud": 46,
+          "apePct": 1.07,
+          "signedErrorPct": -1.07
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 34.8,
+          "truthAud": 35,
+          "apePct": 0.57,
+          "signedErrorPct": -0.57
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 40.16,
+          "truthAud": 38,
+          "apePct": 5.68,
+          "signedErrorPct": 5.68
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 140.54,
+          "truthAud": 118,
+          "apePct": 19.1,
+          "signedErrorPct": 19.1
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 92.36,
+          "truthAud": 68,
+          "apePct": 35.82,
+          "signedErrorPct": 35.82
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 116.5,
+          "truthAud": 88,
+          "apePct": 32.39,
+          "signedErrorPct": 32.39
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 135.19,
+          "truthAud": 145,
+          "apePct": 6.77,
+          "signedErrorPct": -6.77
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 112.43,
+          "truthAud": 154,
+          "apePct": 26.99,
+          "signedErrorPct": -26.99
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 55,
+          "truthAud": 34,
+          "apePct": 61.76,
+          "signedErrorPct": 61.76
+        },
+        {
+          "city": "Colombo",
+          "predictionAud": 58.89,
+          "truthAud": 55,
+          "apePct": 7.07,
+          "signedErrorPct": 7.07
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 70.45,
+          "truthAud": 74,
+          "apePct": 4.8,
+          "signedErrorPct": -4.8
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 105.74,
+          "truthAud": 80,
+          "apePct": 32.17,
+          "signedErrorPct": 32.17
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 65.59,
+          "truthAud": 52,
+          "apePct": 26.13,
+          "signedErrorPct": 26.13
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 72,
+          "truthAud": 50,
+          "apePct": 44,
+          "signedErrorPct": 44
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 123.14,
+          "truthAud": 109,
+          "apePct": 12.97,
+          "signedErrorPct": 12.97
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 66.93,
+          "truthAud": 72,
+          "apePct": 7.04,
+          "signedErrorPct": -7.04
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 172.67,
+          "truthAud": 107,
+          "apePct": 61.37,
+          "signedErrorPct": 61.37
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 144.56,
+          "truthAud": 144,
+          "apePct": 0.39,
+          "signedErrorPct": 0.39
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 208.81,
+          "truthAud": 200,
+          "apePct": 4.41,
+          "signedErrorPct": 4.41
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 262.35,
+          "truthAud": 286,
+          "apePct": 8.27,
+          "signedErrorPct": -8.27
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 107.08,
+          "truthAud": 74,
+          "apePct": 44.7,
+          "signedErrorPct": 44.7
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 87,
+          "truthAud": 87,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 537,
+          "truthAud": 537,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 125,
+          "truthAud": 125,
+          "apePct": 0,
+          "signedErrorPct": 0
+        }
+      ]
+    },
+    "accom_4_star": {
+      "status": "evaluable_in_sample",
+      "n": 25,
+      "medianApePct": 13.12,
+      "medianSignedErrorPct": 3.88,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 60.86,
+          "truthAud": 62,
+          "apePct": 1.84,
+          "signedErrorPct": -1.84
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 60.86,
+          "truthAud": 63,
+          "apePct": 3.4,
+          "signedErrorPct": -3.4
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 46.53,
+          "truthAud": 57,
+          "apePct": 18.37,
+          "signedErrorPct": -18.37
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 53.7,
+          "truthAud": 53,
+          "apePct": 1.32,
+          "signedErrorPct": 1.32
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 187.93,
+          "truthAud": 182,
+          "apePct": 3.26,
+          "signedErrorPct": 3.26
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 123.5,
+          "truthAud": 129,
+          "apePct": 4.26,
+          "signedErrorPct": -4.26
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 155.78,
+          "truthAud": 103,
+          "apePct": 51.24,
+          "signedErrorPct": 51.24
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 180.78,
+          "truthAud": 185,
+          "apePct": 2.28,
+          "signedErrorPct": -2.28
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 150.34,
+          "truthAud": 215,
+          "apePct": 30.07,
+          "signedErrorPct": -30.07
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 73.55,
+          "truthAud": 32,
+          "apePct": 129.84,
+          "signedErrorPct": 129.84
+        },
+        {
+          "city": "Colombo",
+          "predictionAud": 78.75,
+          "truthAud": 76,
+          "apePct": 3.62,
+          "signedErrorPct": 3.62
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 94.21,
+          "truthAud": 125,
+          "apePct": 24.63,
+          "signedErrorPct": -24.63
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 141.4,
+          "truthAud": 125,
+          "apePct": 13.12,
+          "signedErrorPct": 13.12
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 87.71,
+          "truthAud": 73,
+          "apePct": 20.15,
+          "signedErrorPct": 20.15
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 96.28,
+          "truthAud": 86,
+          "apePct": 11.95,
+          "signedErrorPct": 11.95
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 164.66,
+          "truthAud": 140,
+          "apePct": 17.61,
+          "signedErrorPct": 17.61
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 89.5,
+          "truthAud": 106,
+          "apePct": 15.57,
+          "signedErrorPct": -15.57
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 230.89,
+          "truthAud": 181,
+          "apePct": 27.56,
+          "signedErrorPct": 27.56
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 193.31,
+          "truthAud": 134,
+          "apePct": 44.26,
+          "signedErrorPct": 44.26
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 279.22,
+          "truthAud": 254,
+          "apePct": 9.93,
+          "signedErrorPct": 9.93
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 350.81,
+          "truthAud": 339,
+          "apePct": 3.48,
+          "signedErrorPct": 3.48
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 143.19,
+          "truthAud": 121,
+          "apePct": 18.34,
+          "signedErrorPct": 18.34
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 116.34,
+          "truthAud": 112,
+          "apePct": 3.88,
+          "signedErrorPct": 3.88
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 718.08,
+          "truthAud": 592,
+          "apePct": 21.3,
+          "signedErrorPct": 21.3
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 167.15,
+          "truthAud": 151,
+          "apePct": 10.7,
+          "signedErrorPct": 10.7
+        }
+      ]
+    },
+    "food_street_food": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "no direct daily tier truth; street-food relation is checked only through the BYT food basket"
+    },
+    "food_budget": {
+      "status": "evaluable_in_sample",
+      "n": 24,
+      "medianApePct": 14.555,
+      "medianSignedErrorPct": 0.01,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 25.74,
+          "truthAud": 25.74,
+          "apePct": 0.01,
+          "signedErrorPct": 0.01
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 25.74,
+          "truthAud": 25.74,
+          "apePct": 0.01,
+          "signedErrorPct": 0.01
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 25.74,
+          "truthAud": 31.46,
+          "apePct": 18.17,
+          "signedErrorPct": -18.17
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 25.74,
+          "truthAud": 45.76,
+          "apePct": 43.75,
+          "signedErrorPct": -43.75
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 54.34,
+          "truthAud": 54.34,
+          "apePct": 0.01,
+          "signedErrorPct": 0.01
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 35.75,
+          "truthAud": 31.46,
+          "apePct": 13.65,
+          "signedErrorPct": 13.65
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 45.76,
+          "truthAud": 40.04,
+          "apePct": 14.3,
+          "signedErrorPct": 14.3
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 58.62,
+          "truthAud": 65.77,
+          "apePct": 10.88,
+          "signedErrorPct": -10.88
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 35.75,
+          "truthAud": 51.48,
+          "apePct": 30.55,
+          "signedErrorPct": -30.55
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 27.17,
+          "truthAud": 20.02,
+          "apePct": 35.73,
+          "signedErrorPct": 35.73
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 34.32,
+          "truthAud": 34.32,
+          "apePct": 0.01,
+          "signedErrorPct": 0.01
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 68.63,
+          "truthAud": 68.63,
+          "apePct": 0.01,
+          "signedErrorPct": -0.01
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 68.63,
+          "truthAud": 111.53,
+          "apePct": 38.47,
+          "signedErrorPct": -38.47
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 31.46,
+          "truthAud": 20.02,
+          "apePct": 57.16,
+          "signedErrorPct": 57.16
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 31.46,
+          "truthAud": 180.16,
+          "apePct": 82.54,
+          "signedErrorPct": -82.54
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 105.81,
+          "truthAud": 31.46,
+          "apePct": 236.36,
+          "signedErrorPct": 236.36
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 88.65,
+          "truthAud": 51.48,
+          "apePct": 72.22,
+          "signedErrorPct": 72.22
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 88.65,
+          "truthAud": 60.05,
+          "apePct": 47.62,
+          "signedErrorPct": 47.62
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 88.65,
+          "truthAud": 100.09,
+          "apePct": 11.43,
+          "signedErrorPct": -11.43
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 88.65,
+          "truthAud": 77.21,
+          "apePct": 14.81,
+          "signedErrorPct": 14.81
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 42.9,
+          "truthAud": 48.62,
+          "apePct": 11.76,
+          "signedErrorPct": -11.76
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 42.9,
+          "truthAud": 37.18,
+          "apePct": 15.39,
+          "signedErrorPct": 15.39
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 91.51,
+          "truthAud": 91.51,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 68.63,
+          "truthAud": 68.63,
+          "apePct": 0.01,
+          "signedErrorPct": -0.01
+        }
+      ]
+    },
+    "food_mid_range": {
+      "status": "evaluable_in_sample",
+      "n": 24,
+      "medianApePct": 14.335,
+      "medianSignedErrorPct": 0,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 65.77,
+          "truthAud": 65.77,
+          "apePct": 0.01,
+          "signedErrorPct": -0.01
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 65.77,
+          "truthAud": 65.77,
+          "apePct": 0.01,
+          "signedErrorPct": -0.01
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 65.77,
+          "truthAud": 77.21,
+          "apePct": 14.82,
+          "signedErrorPct": -14.82
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 65.77,
+          "truthAud": 117.25,
+          "apePct": 43.91,
+          "signedErrorPct": -43.91
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 134.41,
+          "truthAud": 134.41,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 91.51,
+          "truthAud": 80.07,
+          "apePct": 14.28,
+          "signedErrorPct": 14.28
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 118.68,
+          "truthAud": 102.95,
+          "apePct": 15.28,
+          "signedErrorPct": 15.28
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 154.43,
+          "truthAud": 174.44,
+          "apePct": 11.47,
+          "signedErrorPct": -11.47
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 91.51,
+          "truthAud": 134.41,
+          "apePct": 31.92,
+          "signedErrorPct": -31.92
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 80.07,
+          "truthAud": 51.48,
+          "apePct": 55.55,
+          "signedErrorPct": 55.55
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 108.67,
+          "truthAud": 108.67,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 168.73,
+          "truthAud": 168.73,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 168.73,
+          "truthAud": 274.54,
+          "apePct": 38.54,
+          "signedErrorPct": -38.54
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 48.62,
+          "truthAud": 48.62,
+          "apePct": 0.01,
+          "signedErrorPct": 0.01
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 48.62,
+          "truthAud": 234.5,
+          "apePct": 79.27,
+          "signedErrorPct": -79.27
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 135.84,
+          "truthAud": 37.18,
+          "apePct": 265.39,
+          "signedErrorPct": 265.39
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 215.91,
+          "truthAud": 140.13,
+          "apePct": 54.08,
+          "signedErrorPct": 54.08
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 215.91,
+          "truthAud": 142.99,
+          "apePct": 51,
+          "signedErrorPct": 51
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 215.91,
+          "truthAud": 243.08,
+          "apePct": 11.18,
+          "signedErrorPct": -11.18
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 215.91,
+          "truthAud": 188.74,
+          "apePct": 14.39,
+          "signedErrorPct": 14.39
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 112.96,
+          "truthAud": 131.55,
+          "apePct": 14.13,
+          "signedErrorPct": -14.13
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 112.96,
+          "truthAud": 94.37,
+          "apePct": 19.7,
+          "signedErrorPct": 19.7
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 225.92,
+          "truthAud": 225.92,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 163.01,
+          "truthAud": 163.01,
+          "apePct": 0,
+          "signedErrorPct": 0
+        }
+      ]
+    },
+    "food_high_end": {
+      "status": "evaluable_in_sample",
+      "n": 24,
+      "medianApePct": 13.76,
+      "medianSignedErrorPct": 0,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 165.87,
+          "truthAud": 165.87,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 165.87,
+          "truthAud": 165.87,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 165.87,
+          "truthAud": 183.02,
+          "apePct": 9.37,
+          "signedErrorPct": -9.37
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 165.87,
+          "truthAud": 308.85,
+          "apePct": 46.29,
+          "signedErrorPct": -46.29
+        },
+        {
+          "city": "Singapore",
+          "predictionAud": 340.31,
+          "truthAud": 340.31,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Taipei",
+          "predictionAud": 235.93,
+          "truthAud": 214.48,
+          "apePct": 10,
+          "signedErrorPct": 10
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 305.99,
+          "truthAud": 257.38,
+          "apePct": 18.89,
+          "signedErrorPct": 18.89
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 421.81,
+          "truthAud": 489.02,
+          "apePct": 13.74,
+          "signedErrorPct": -13.74
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 235.93,
+          "truthAud": 354.61,
+          "apePct": 33.47,
+          "signedErrorPct": -33.47
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 258.81,
+          "truthAud": 131.55,
+          "apePct": 96.74,
+          "signedErrorPct": 96.74
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 386.07,
+          "truthAud": 386.07,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 380.35,
+          "truthAud": 380.35,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 380.35,
+          "truthAud": 672.04,
+          "apePct": 43.4,
+          "signedErrorPct": -43.4
+        },
+        {
+          "city": "Cairo",
+          "predictionAud": 94.37,
+          "truthAud": 94.37,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Cape Town",
+          "predictionAud": 94.37,
+          "truthAud": 331.73,
+          "apePct": 71.55,
+          "signedErrorPct": -71.55
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 190.17,
+          "truthAud": 48.62,
+          "apePct": 291.17,
+          "signedErrorPct": 291.17
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 507.61,
+          "truthAud": 391.79,
+          "apePct": 29.56,
+          "signedErrorPct": 29.56
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 507.61,
+          "truthAud": 317.43,
+          "apePct": 59.91,
+          "signedErrorPct": 59.91
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 507.61,
+          "truthAud": 569.09,
+          "apePct": 10.8,
+          "signedErrorPct": -10.8
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 507.61,
+          "truthAud": 446.12,
+          "apePct": 13.78,
+          "signedErrorPct": 13.78
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 316,
+          "truthAud": 386.07,
+          "apePct": 18.15,
+          "signedErrorPct": -18.15
+        },
+        {
+          "city": "Lima",
+          "predictionAud": 316,
+          "truthAud": 245.94,
+          "apePct": 28.49,
+          "signedErrorPct": 28.49
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 546.21,
+          "truthAud": 546.21,
+          "apePct": 0,
+          "signedErrorPct": 0
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 366.05,
+          "truthAud": 366.05,
+          "apePct": 0,
+          "signedErrorPct": 0
+        }
+      ]
+    },
+    "drink_coffee": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "no independent full-basket drink truth; Expatistan cocktail does not validate Numbeo coffee"
+    },
+    "drinks_none": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "no independent full-basket drink truth"
+    },
+    "drinks_light": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "only 3/25 Expatistan neighbourhood-pub beer rows; no full independent drink basket"
+    },
+    "drinks_moderate": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "cocktail-only evidence cannot validate the full coffee/beer/cocktail basket"
+    },
+    "drinks_heavy": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "wine glass was intentionally excluded and no independent full basket exists"
+    },
+    "activities_free": {
+      "status": "definitional_not_scored",
+      "n": 0,
+      "reason": "Definitional zero-cost tier; no empirical prediction/truth pair is required."
+    },
+    "activities_budget": {
+      "status": "evaluable_in_sample",
+      "n": 20,
+      "medianApePct": 54.185,
+      "medianSignedErrorPct": 3.005,
+      "rows": [
+        {
+          "city": "Hanoi",
+          "predictionAud": 8.58,
+          "truthAud": 7.69,
+          "apePct": 11.58,
+          "signedErrorPct": 11.58
+        },
+        {
+          "city": "Ho Chi Minh City",
+          "predictionAud": 20.02,
+          "truthAud": 8.79,
+          "apePct": 127.8,
+          "signedErrorPct": 127.8
+        },
+        {
+          "city": "Da Nang",
+          "predictionAud": 17.16,
+          "truthAud": 6.59,
+          "apePct": 160.35,
+          "signedErrorPct": 160.35
+        },
+        {
+          "city": "Phuket",
+          "predictionAud": 51.48,
+          "truthAud": 16.92,
+          "apePct": 204.31,
+          "signedErrorPct": 204.31
+        },
+        {
+          "city": "Beijing",
+          "predictionAud": 28.6,
+          "truthAud": 25.33,
+          "apePct": 12.89,
+          "signedErrorPct": 12.89
+        },
+        {
+          "city": "Tokyo",
+          "predictionAud": 62.92,
+          "truthAud": 14.03,
+          "apePct": 348.48,
+          "signedErrorPct": 348.48
+        },
+        {
+          "city": "Seoul",
+          "predictionAud": 25.74,
+          "truthAud": 5.8,
+          "apePct": 343.95,
+          "signedErrorPct": 343.95
+        },
+        {
+          "city": "Delhi",
+          "predictionAud": 17.16,
+          "truthAud": 14.81,
+          "apePct": 15.89,
+          "signedErrorPct": 15.89
+        },
+        {
+          "city": "Colombo",
+          "predictionAud": 2.86,
+          "truthAud": 14.3,
+          "apePct": 80,
+          "signedErrorPct": -80
+        },
+        {
+          "city": "Mumbai",
+          "predictionAud": 2.86,
+          "truthAud": 5.92,
+          "apePct": 51.71,
+          "signedErrorPct": -51.71
+        },
+        {
+          "city": "Istanbul",
+          "predictionAud": 42.9,
+          "truthAud": 60.57,
+          "apePct": 29.17,
+          "signedErrorPct": -29.17
+        },
+        {
+          "city": "Dubai",
+          "predictionAud": 17.16,
+          "truthAud": 131.38,
+          "apePct": 86.94,
+          "signedErrorPct": -86.94
+        },
+        {
+          "city": "Nairobi",
+          "predictionAud": 37.18,
+          "truthAud": 51.48,
+          "apePct": 27.77,
+          "signedErrorPct": -27.77
+        },
+        {
+          "city": "Budapest",
+          "predictionAud": 28.6,
+          "truthAud": 31.38,
+          "apePct": 8.85,
+          "signedErrorPct": -8.85
+        },
+        {
+          "city": "Prague",
+          "predictionAud": 20.02,
+          "truthAud": 48.6,
+          "apePct": 58.81,
+          "signedErrorPct": -58.81
+        },
+        {
+          "city": "Lisbon",
+          "predictionAud": 31.46,
+          "truthAud": 32.62,
+          "apePct": 3.57,
+          "signedErrorPct": -3.57
+        },
+        {
+          "city": "Barcelona",
+          "predictionAud": 42.9,
+          "truthAud": 39.15,
+          "apePct": 9.58,
+          "signedErrorPct": 9.58
+        },
+        {
+          "city": "Mexico City",
+          "predictionAud": 17.16,
+          "truthAud": 9.85,
+          "apePct": 74.25,
+          "signedErrorPct": 74.25
+        },
+        {
+          "city": "San Francisco",
+          "predictionAud": 37.18,
+          "truthAud": 85.79,
+          "apePct": 56.66,
+          "signedErrorPct": -56.66
+        },
+        {
+          "city": "Melbourne",
+          "predictionAud": 34.32,
+          "truthAud": 36,
+          "apePct": 4.67,
+          "signedErrorPct": -4.67
+        }
+      ]
+    },
+    "activities_mid_range": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "BudgetYourTrip is the production source; no independent half-day tier source"
+    },
+    "activities_high_end": {
+      "status": "blocked_no_pair",
+      "n": 0,
+      "reason": "BudgetYourTrip is the production source; no independent full-day tier source"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "city-cost-v6-development-prediction-spine-inputs-v1",
+  "experiment": "006-development-prediction-spine",
+  "panel": "development",
+  "referenceWindow": {
+    "arrival": "2026-09-17",
+    "departure": "2026-09-18"
+  },
+  "sources": {
+    "numbeo": {
+      "prompt": "docs/prompts/llm_prompt_city_cost_v6_numbeo.md",
+      "measures": [
+        "inexpensive_restaurant_meal_1p",
+        "midrange_restaurant_meal_2p",
+        "cappuccino_1",
+        "domestic_draft_beer_1",
+        "mcmeal_combo"
+      ],
+      "providerRole": "production_anchor",
+      "collectionMode": "delegated_search_snippets"
+    },
+    "expedia_3star": {
+      "prompt": "docs/prompts/llm_prompt_city_cost_v6_expedia_3star.md",
+      "measures": ["hotel_3star_room_2p"],
+      "providerRole": "production_anchor",
+      "collectionMode": "reuse_experiment_001_or_delegated_search_snippets"
+    },
+    "budgetyourtrip": {
+      "prompt": "docs/prompts/llm_prompt_city_cost_v6_budgetyourtrip.md",
+      "measures": [
+        "paid_attraction_adult_1",
+        "half_day_group_activity_adult_1",
+        "full_day_premium_activity_adult_1"
+      ],
+      "providerRole": "production_anchor",
+      "collectionMode": "delegated_search_snippets"
+    }
+  },
+  "constraints": {
+    "directPageReads": 0,
+    "maxTargetedSearchesPerAttempt": 4,
+    "maxRetriesAfterReportedBlock": 1,
+    "missingness": "not_found|blocked|stale|class_absent; never substitute",
+    "holdoutRead": false
+  },
+  "reuseExpediaCities": [
+    "Budapest",
+    "Cape Town",
+    "Colombo",
+    "Dubai",
+    "Hanoi",
+    "Ho Chi Minh City",
+    "Istanbul",
+    "Lima",
+    "Lisbon",
+    "Mexico City",
+    "Nairobi",
+    "Prague",
+    "Seoul",
+    "Singapore",
+    "Tokyo"
+  ],
+  "cities": [
+    "Hanoi",
+    "Ho Chi Minh City",
+    "Da Nang",
+    "Phuket",
+    "Singapore",
+    "Taipei",
+    "Beijing",
+    "Tokyo",
+    "Seoul",
+    "Delhi",
+    "Colombo",
+    "Mumbai",
+    "Istanbul",
+    "Dubai",
+    "Cairo",
+    "Cape Town",
+    "Nairobi",
+    "Budapest",
+    "Prague",
+    "Lisbon",
+    "Barcelona",
+    "Mexico City",
+    "Lima",
+    "San Francisco",
+    "Melbourne"
+  ]
+}

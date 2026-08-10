@@ -191,32 +191,36 @@ M1 implementation notes:
 - v6 provenance is persisted in `city_estimates.metadata_json` and shown on `/dataset`. The live CSV and seed path
   are unchanged.
 
-### M3 — fit and validate all 19 tiers — **IN PROGRESS (owner reset 10 August 2026)**
+### M3 — fit and validate all 19 tiers — **DEVELOPMENT PAIRING COMPLETE; HOLDOUT PENDING APPROVAL**
 
 - [x] Stop and supersede the item-level collection/scoring route; preserve the 25-city development panel
-- [x] Record that the previous holdout is spent: all 18 measures are `revealed_once`
-- [x] Add the exact production-path prediction-bundle generator
-- [ ] Materialize the 25-city production prediction bundle (currently 0/25: no local provider credential)
-- [ ] Collect the pre-registered BudgetYourTrip tier-level panel and Expatistan drink cross-checks
-- [ ] Replace weak relations with documented reasoned constants or regional priors; audit grades and intervals
-- [ ] Rebuild regional priors from direct development evidence, decoupled from the live CSV
-- [ ] Score the development panel end-to-end, labelled **IN-SAMPLE**
-- [ ] Verify candidate BYT coverage for a fresh 15-city holdout, add the minimum-coverage freeze guard, propose it, then stop for owner approval
+- [x] Split prediction generation into delegated Stage-A spine responses and deterministic Stage-B materialization
+- [x] Reuse 15 Expedia responses from experiment 001 and collect/record the remaining delegated spine responses
+- [x] Materialize 25/25 production-path prediction bundles through `materializeCityCostV6`
+- [x] Collect the pre-registered BudgetYourTrip tier panel and Expatistan drink cross-checks
+- [x] Replace the unsupported street-food constant with the measured paired R0 (`k=0.3248`, n=6, ±336% LOO-p90)
+- [x] Rebuild regional priors from direct development evidence, decoupled from the live CSV
+- [x] Record all 34 frozen-FX exclusions: EGP/Cairo 7, LKR/Colombo 2, PEN/Lima 4, SGD/Singapore 8, TWD/Taipei 6, ZAR/Cape Town 7
+- [x] Score the development panel end-to-end, labelled **IN-SAMPLE**
+- [x] Normalize experiment numbering and protocol directories
+- [ ] Obtain approval before collecting, freezing or reading any fresh holdout
 
 **Current status:** The 25-city x 18-measure development ledger remains intact at **280 found / 0 pending**.
-It is item-level evidence and is not being discarded, but it cannot by itself validate the daily-spend product
-tiers. The old holdout's 18 measures are all `revealed_once`; it must not be touched, frozen against, read,
-rescored or used to tune. The root failure was that the old scorer had truth without production predictions,
-and that the item-level food/drink/activity route was sparse where tier-level daily spend is published.
+Experiment 006 contains 75 schema-validated delegated spine responses and 75 telemetry records, including
+15 byte-identical Expedia reuses from experiment 001. Stage B uses the shared production normalizer and the
+real `materializeCityCostV6` path; all 25 cities materialized. Dubai's `UAE`/`United Arab Emirates` spelling
+is accepted only through an explicit country-alias identity check.
 
-Experiment 002 now contains the exact production bundle generator. Its first run is explicitly **0/25
-materialized** because no supported local provider credential is configured; every city is recorded as
-`not_run` rather than fabricated. The new route is one BudgetYourTrip call per development city for direct
-food/activity daily tiers, plus Expatistan cocktail and neighbourhood-pub beer evidence for drinks. BYT is
-independent for food but circular for activities, so activity mid/high remain production-sourced and
-unvalidated; the existing official attraction rows are the independent budget-activity check. Wine glass is
-not being recollected after the rejected Expatistan bottle/glass route. No new holdout action is permitted
-until Phase 6, where a coverage-gated proposal will be presented for approval. M4 remains out of scope.
+The in-sample score in experiment 005 has **10 evaluable tiers**, one definitional tier (`activities_free`),
+and 8 blocked tiers: street food has no direct daily-tier truth; all five drinks lack an independent full
+basket; and BudgetYourTrip mid/high activity truth is circular. The 10 tier results are development
+diagnostics, not holdout validation. Gates 3–6 are explicitly `not_evaluable` on this partial truth panel.
+No holdout file was read or changed.
+
+The shipped street-food coefficient is now the measured paired `k=0.3248`, grade C with a ±336% residual
+interval. The direct-evidence prior ratio of marginal medians is 0.276; the coefficient warning explains the
+ratio-of-medians versus median-of-paired-ratios distinction. The superseded reasoned 0.5 constant is not
+defended or used. M4 remains out of scope.
 
 ### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 
