@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "city-cost-v6-ladder-fit-v1",
+  "schemaVersion": "city-cost-v6-ladder-fit-v2",
   "methodologyVersion": "v6.0",
-  "description": "Accommodation ladder coefficients for city cost methodology v6. Every tier is derived from the single measured anchor hotel_3star_room_2p. Regenerate with: node scripts/fit-city-cost-ladder-v6.mjs",
+  "description": "All generated v6 ladder coefficients and independent development-panel ratio fits. Fixed basket definitions remain in the deterministic materializer. Regenerate with: node scripts/fit-city-cost-ladder-v6.mjs",
   "generatedFrom": {
     "expediaPanels": [
       "028-expedia-class-trends",
@@ -23,6 +23,7 @@
       "072-priceoftravel-hostel-index-dorm"
     ],
     "v4CrossValidation": "data/reference/dry-run/phase-0h-accommodation-class-ratios.json",
+    "v4FoodDrinkCrossValidation": "data/reference/dry-run/phase-0c-ratio-model-fit.json",
     "developmentGroundTruth": "data/reference/v6/ground-truth/development-ledger.json",
     "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json"
   },
@@ -45,7 +46,19 @@
     "citiesWithThreeStarAnchor": 43,
     "developmentGroundTruthRows": {
       "privateRoom": 25,
-      "dormBed": 25
+      "dormBed": 25,
+      "hotelTwoStar": 25,
+      "independentRelations": {
+        "hotel_2star_room_2p <- hotel_3star_room_2p (independent Booking validation)": 25,
+        "midrange_restaurant_meal_2p <- inexpensive_restaurant_meal_1p": 10,
+        "mcmeal_combo <- inexpensive_restaurant_meal_1p": 0,
+        "street_food_meal_1p <- inexpensive_restaurant_meal_1p": 6,
+        "cappuccino_1 <- domestic_draft_beer_1": 4,
+        "paid_attraction_adult_1 <- inexpensive_restaurant_meal_1p": 12,
+        "premium_restaurant_meal_2p <- midrange_restaurant_meal_2p": 3,
+        "cocktail_1 <- cappuccino_1": 11,
+        "wine_glass_1 <- cappuccino_1": 5
+      }
     },
     "sourceOffsetMatchedCities": 15
   },
@@ -53,6 +66,7 @@
     {
       "key": "accom_2_star <- accom_3_star",
       "n": 18,
+      "fitStatus": "fitted_r0",
       "coefficient": 0.75,
       "dispersion": {
         "min": 0.5063,
@@ -93,6 +107,7 @@
     {
       "key": "accom_4_star <- accom_3_star",
       "n": 26,
+      "fitStatus": "fitted_r0",
       "coefficient": 1.3372,
       "dispersion": {
         "min": 1.0764,
@@ -141,6 +156,7 @@
     {
       "key": "hostel_private_room_2p <- accom_3_star",
       "n": 25,
+      "fitStatus": "fitted_r0",
       "coefficient": 0.7955,
       "dispersion": {
         "min": 0.2551,
@@ -188,6 +204,7 @@
     {
       "key": "hostel_dorm_bed_1p <- accom_3_star",
       "n": 25,
+      "fitStatus": "fitted_r0",
       "coefficient": 0.2955,
       "dispersion": {
         "min": 0.1657,
@@ -231,8 +248,505 @@
         "Tokyo"
       ],
       "notes": "Fitted on Booking.com v2 development medians paired within city. This replaces the stale 2023 Price of Travel coefficient; the product tier still applies the fixed x2 two-bed definition."
+    },
+    {
+      "key": "hotel_2star_room_2p <- hotel_3star_room_2p (independent Booking validation)",
+      "n": 25,
+      "fitStatus": "fitted_r0",
+      "coefficient": 0.8182,
+      "dispersion": {
+        "min": 0.5405,
+        "q25": 0.6552,
+        "q75": 0.9474,
+        "max": 1.8
+      },
+      "leaveOneCityOut": {
+        "n": 25,
+        "medianApePct": 17.85,
+        "p90ApePct": 37.71,
+        "maxApePct": 54.93,
+        "medianSignedLogError": 0.0127
+      },
+      "intervalPct": 38,
+      "cities": [
+        "Barcelona",
+        "Beijing",
+        "Budapest",
+        "Cairo",
+        "Cape Town",
+        "Colombo",
+        "Da Nang",
+        "Delhi",
+        "Dubai",
+        "Hanoi",
+        "Ho Chi Minh City",
+        "Istanbul",
+        "Lima",
+        "Lisbon",
+        "Melbourne",
+        "Mexico City",
+        "Mumbai",
+        "Nairobi",
+        "Phuket",
+        "Prague",
+        "San Francisco",
+        "Seoul",
+        "Singapore",
+        "Taipei",
+        "Tokyo"
+      ],
+      "notes": "Independent Booking.com v2 development validation of the shipped accommodation coefficient. The production anchor remains Expedia; this fit is diagnostic and is not substituted into the accommodation spine."
+    },
+    {
+      "key": "midrange_restaurant_meal_2p <- inexpensive_restaurant_meal_1p",
+      "n": 10,
+      "fitStatus": "fitted_r0",
+      "coefficient": 4.9062,
+      "dispersion": {
+        "min": 3.8182,
+        "q25": 4.3547,
+        "q75": 5.8801,
+        "max": 9.9583
+      },
+      "leaveOneCityOut": {
+        "n": 10,
+        "medianApePct": 21.53,
+        "p90ApePct": 45.63,
+        "maxApePct": 53.41,
+        "medianSignedLogError": 0
+      },
+      "intervalPct": 46,
+      "cities": [
+        "Budapest",
+        "Da Nang",
+        "Dubai",
+        "Hanoi",
+        "Istanbul",
+        "Lisbon",
+        "Melbourne",
+        "Mexico City",
+        "Phuket",
+        "Prague"
+      ],
+      "notes": "Fitted on independent official-menu development medians after FX conversion with the frozen snapshot. Both measures are in the same city and the ratio is the estimand."
+    },
+    {
+      "key": "mcmeal_combo <- inexpensive_restaurant_meal_1p",
+      "n": 0,
+      "fitStatus": "not_fittable_n_lt_3",
+      "coefficient": null,
+      "dispersion": null,
+      "leaveOneCityOut": null,
+      "intervalPct": null,
+      "cities": [],
+      "notes": "Not fitted: the independent panel produced no city with both a compliant official McMeal and inexpensive meal row. McMeal remains a measured production anchor and diagnostic only; it is not the street-food ground-truth basis."
+    },
+    {
+      "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
+      "n": 6,
+      "fitStatus": "fitted_r0",
+      "coefficient": 0.3248,
+      "dispersion": {
+        "min": 0.093,
+        "q25": 0.1367,
+        "q75": 0.6464,
+        "max": 0.9508
+      },
+      "leaveOneCityOut": {
+        "n": 6,
+        "medianApePct": 100.73,
+        "p90ApePct": 335.59,
+        "maxApePct": 381.9,
+        "medianSignedLogError": 0
+      },
+      "intervalPct": 336,
+      "cities": [
+        "Budapest",
+        "Da Nang",
+        "Dubai",
+        "Hanoi",
+        "Mexico City",
+        "San Francisco"
+      ],
+      "notes": "Fitted on independent official street-food and local prepared-meal medians after FX conversion with the frozen snapshot. McMeal remains a separate cross-check and is never used as the base.",
+      "candidateForms": {
+        "R0": {
+          "coefficient": 0.3248,
+          "leaveOneCityOut": {
+            "n": 6,
+            "medianApePct": 100.73,
+            "p90ApePct": 335.59,
+            "maxApePct": 381.9,
+            "medianSignedLogError": 0
+          },
+          "intervalPct": 336
+        },
+        "R1_band": {
+          "form": "R1_band",
+          "globalFallback": 0.3248,
+          "byBand": {
+            "high": null,
+            "low": null,
+            "mid": null
+          },
+          "leaveOneCityOut": {
+            "n": 6,
+            "medianApePct": 100.73,
+            "p90ApePct": 335.59,
+            "maxApePct": 381.9,
+            "medianSignedLogError": 0
+          },
+          "intervalPct": 336,
+          "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
+        }
+      },
+      "selectedForm": "R0"
+    },
+    {
+      "key": "cappuccino_1 <- domestic_draft_beer_1",
+      "n": 4,
+      "fitStatus": "fitted_r0",
+      "coefficient": 0.9615,
+      "dispersion": {
+        "min": 0.5455,
+        "q25": 0.5979,
+        "q75": 1.3097,
+        "max": 1.3158
+      },
+      "leaveOneCityOut": {
+        "n": 4,
+        "medianApePct": 82.87,
+        "p90ApePct": 131.57,
+        "maxApePct": 139.74,
+        "medianSignedLogError": 0
+      },
+      "intervalPct": 132,
+      "cities": [
+        "Da Nang",
+        "Phuket",
+        "Prague",
+        "Tokyo"
+      ],
+      "notes": "Fitted on the four independent cities with both compliant official cappuccino and domestic draft panels. This is a validation relation, not a production replacement for either measured anchor."
+    },
+    {
+      "key": "paid_attraction_adult_1 <- inexpensive_restaurant_meal_1p",
+      "n": 12,
+      "fitStatus": "fitted_r0",
+      "coefficient": 0.9098,
+      "dispersion": {
+        "min": 0.2791,
+        "q25": 0.5374,
+        "q75": 1.2357,
+        "max": 3.3333
+      },
+      "leaveOneCityOut": {
+        "n": 12,
+        "medianApePct": 51.39,
+        "p90ApePct": 140.87,
+        "maxApePct": 253.42,
+        "medianSignedLogError": 0
+      },
+      "intervalPct": 141,
+      "cities": [
+        "Barcelona",
+        "Budapest",
+        "Da Nang",
+        "Dubai",
+        "Hanoi",
+        "Istanbul",
+        "Lisbon",
+        "Melbourne",
+        "Mexico City",
+        "Phuket",
+        "Prague",
+        "San Francisco"
+      ],
+      "notes": "Fitted as an independent cross-check of the attraction anchor against the food level. The product does not derive attractions from food; the production activity proxy remains separately sourced."
+    },
+    {
+      "key": "premium_restaurant_meal_2p <- midrange_restaurant_meal_2p",
+      "n": 3,
+      "fitStatus": "fitted_r0",
+      "coefficient": 1.9789,
+      "dispersion": {
+        "min": 1.777,
+        "q25": 1.878,
+        "q75": 2.002,
+        "max": 2.0251
+      },
+      "leaveOneCityOut": {
+        "n": 3,
+        "medianApePct": 7.26,
+        "p90ApePct": 11.58,
+        "maxApePct": 12.66,
+        "medianSignedLogError": -0.0401
+      },
+      "intervalPct": 12,
+      "cities": [
+        "Da Nang",
+        "Mexico City",
+        "Phuket"
+      ],
+      "notes": "Fitted on independent official-menu development medians. Only three cities supplied both compliant panels; the wide residual interval is retained."
+    },
+    {
+      "key": "cocktail_1 <- cappuccino_1",
+      "n": 11,
+      "fitStatus": "fitted_r0",
+      "coefficient": 2.6,
+      "dispersion": {
+        "min": 1.2,
+        "q25": 2.1414,
+        "q75": 2.9583,
+        "max": 4.3421
+      },
+      "leaveOneCityOut": {
+        "n": 11,
+        "medianApePct": 17.47,
+        "p90ApePct": 74.17,
+        "maxApePct": 117.71,
+        "medianSignedLogError": -0.0342
+      },
+      "intervalPct": 75,
+      "cities": [
+        "Budapest",
+        "Da Nang",
+        "Dubai",
+        "Istanbul",
+        "Lisbon",
+        "Mexico City",
+        "Nairobi",
+        "Phuket",
+        "Prague",
+        "Seoul",
+        "Tokyo"
+      ],
+      "notes": "Fitted on independent official menu medians. Cocktail remains laddered from the production cappuccino anchor; Expatistan is not used as primary ground truth."
+    },
+    {
+      "key": "wine_glass_1 <- cappuccino_1",
+      "n": 5,
+      "fitStatus": "fitted_r0",
+      "coefficient": 2.2239,
+      "dispersion": {
+        "min": 1.75,
+        "q25": 1.9059,
+        "q75": 2.4167,
+        "max": 2.4792
+      },
+      "leaveOneCityOut": {
+        "n": 5,
+        "medianApePct": 16.71,
+        "p90ApePct": 28.25,
+        "maxApePct": 32.59,
+        "medianSignedLogError": -0.0286
+      },
+      "intervalPct": 29,
+      "cities": [
+        "Budapest",
+        "Lisbon",
+        "Mexico City",
+        "Phuket",
+        "Prague"
+      ],
+      "notes": "Fitted on independent official menu medians with the frozen 125–175 ml / 15 cl wine rule. Wine remains laddered from the production cappuccino anchor; Expatistan is not used as primary ground truth."
     }
   ],
+  "derivationRules": {
+    "accom_shared_hostel_dorm": {
+      "type": "fitted_ratio_plus_definition",
+      "inputs": [
+        "hotel_3star_room_2p"
+      ],
+      "coefficientKey": "accom_shared_hostel_dorm",
+      "definition": "two dorm beds from one fitted one-person dorm-bed ratio",
+      "validation": "development_fitted_and_original_holdout_revealed_once"
+    },
+    "accom_hostel_private_room": {
+      "type": "fitted_ratio_with_recorded_rollback",
+      "inputs": [
+        "hotel_3star_room_2p"
+      ],
+      "coefficientKey": "accom_hostel_private_room",
+      "validation": "development_fit_and_superseded_candidate_holdout_only; current_rollback_not_retestable"
+    },
+    "accom_1_star": {
+      "type": "interpolated_ratio",
+      "inputs": [
+        "accom_hostel_private_room",
+        "accom_2_star"
+      ],
+      "coefficientKey": "accom_1_star",
+      "validation": "development_and_original_holdout_revealed_once; no_direct_one_star_observation"
+    },
+    "accom_2_star": {
+      "type": "fitted_ratio",
+      "inputs": [
+        "hotel_3star_room_2p"
+      ],
+      "coefficientKey": "accom_2_star",
+      "validation": "development_independent_booking_diagnostic; fresh_holdout_measure_required"
+    },
+    "accom_3_star": {
+      "type": "measured_production_anchor",
+      "inputs": [
+        "hotel_3star_room_2p"
+      ],
+      "source": "Expedia production extractor",
+      "validation": "original_holdout_contaminated_without_paired_expedia_observation"
+    },
+    "accom_4_star": {
+      "type": "fitted_ratio",
+      "inputs": [
+        "hotel_3star_room_2p"
+      ],
+      "coefficientKey": "accom_4_star",
+      "validation": "development_fitted_and_original_holdout_revealed_once"
+    },
+    "food_street_food": {
+      "type": "fitted_ratio",
+      "inputs": [
+        "inexpensive_restaurant_meal_1p"
+      ],
+      "coefficientKey": "street_food_meal_1p",
+      "definition": "street-food meal is fitted from the independently observed inexpensive restaurant meal relationship; the source street-food anchor remains visible in imputedMeasures",
+      "validation": "independent_street_food_development_fit_and_fresh_holdout_required"
+    },
+    "food_budget": {
+      "type": "fixed_basket",
+      "inputs": [
+        "street_food_meal_1p",
+        "inexpensive_restaurant_meal_1p"
+      ],
+      "validation": "direct_inputs_holdout_required"
+    },
+    "food_mid_range": {
+      "type": "fixed_basket",
+      "inputs": [
+        "street_food_meal_1p",
+        "inexpensive_restaurant_meal_1p",
+        "midrange_restaurant_meal_2p"
+      ],
+      "validation": "direct_inputs_holdout_required"
+    },
+    "food_high_end": {
+      "type": "fixed_basket_with_fitted_premium_ratio",
+      "inputs": [
+        "inexpensive_restaurant_meal_1p",
+        "midrange_restaurant_meal_2p",
+        "premium_restaurant_meal_2p"
+      ],
+      "coefficientKey": "premium_restaurant_meal_2p",
+      "validation": "premium_fresh_holdout_measure_required"
+    },
+    "drink_coffee": {
+      "type": "measured_production_anchor",
+      "inputs": [
+        "cappuccino_1"
+      ],
+      "source": "Numbeo production extractor",
+      "validation": "fresh_independent_holdout_measure_required"
+    },
+    "drinks_none": {
+      "type": "fixed_basket",
+      "inputs": [
+        "cappuccino_1"
+      ],
+      "validation": "direct_input_holdout_required"
+    },
+    "drinks_light": {
+      "type": "fixed_basket",
+      "inputs": [
+        "cappuccino_1",
+        "domestic_draft_beer_1"
+      ],
+      "validation": "direct_inputs_holdout_required"
+    },
+    "drinks_moderate": {
+      "type": "fixed_basket_with_fitted_cocktail_ratio",
+      "inputs": [
+        "cappuccino_1",
+        "domestic_draft_beer_1",
+        "cocktail_1"
+      ],
+      "coefficientKey": "cocktail_1",
+      "validation": "cocktail_fresh_holdout_measure_required"
+    },
+    "drinks_heavy": {
+      "type": "fixed_basket_with_fitted_cocktail_and_wine_ratios",
+      "inputs": [
+        "cappuccino_1",
+        "domestic_draft_beer_1",
+        "cocktail_1",
+        "wine_glass_1"
+      ],
+      "coefficientKeys": [
+        "cocktail_1",
+        "wine_glass_1"
+      ],
+      "validation": "cocktail_and_wine_fresh_holdout_measures_required"
+    },
+    "activities_free": {
+      "type": "definitional",
+      "inputs": [],
+      "validation": "not_applicable"
+    },
+    "activities_budget": {
+      "type": "measured_production_anchor",
+      "inputs": [
+        "paid_attraction_adult_1"
+      ],
+      "source": "BudgetYourTrip production extractor",
+      "validation": "original_holdout_revealed_once"
+    },
+    "activities_mid_range": {
+      "type": "measured_production_anchor",
+      "inputs": [
+        "half_day_group_activity_adult_1"
+      ],
+      "source": "BudgetYourTrip production extractor",
+      "validation": "independent_panel_n0; fresh_holdout_measure_required"
+    },
+    "activities_high_end": {
+      "type": "measured_production_anchor",
+      "inputs": [
+        "full_day_premium_activity_adult_1"
+      ],
+      "source": "BudgetYourTrip production extractor",
+      "validation": "independent_panel_n1_below_fit_threshold; fresh_holdout_measure_required"
+    }
+  },
+  "streetFoodDiagnostics": {
+    "mcMealCrossCheck": {
+      "thresholdFactor": 2,
+      "thresholdDescription": "Flag when McMeal is more than 2x or less than 0.5x the fitted street-food prediction.",
+      "streetFoodCities": [
+        "Budapest",
+        "Colombo",
+        "Da Nang",
+        "Dubai",
+        "Hanoi",
+        "Ho Chi Minh City",
+        "Mexico City",
+        "Mumbai",
+        "San Francisco",
+        "Singapore",
+        "Tokyo"
+      ],
+      "comparableCities": [],
+      "note": "McMeal-vs-street comparison is emitted only when street food, inexpensive meal and McMeal rows all have frozen-FX coverage. An empty comparable list is a coverage gap, not evidence of agreement.",
+      "cities": [],
+      "warningCount": 0
+    },
+    "foodStreetFoodVsBudget": {
+      "observedDevelopmentN": 6,
+      "observedPanelPearsonR": 0.7006,
+      "modeledPearsonR": 1,
+      "independentlyInformative": false,
+      "note": "After fitting street food as a ratio of inexpensive restaurant meals, both shipped tiers are deterministic functions of the inexpensive anchor and have modeled correlation 1. Direct street-food rows restore independent validation evidence, but the two materialized tiers do not carry independent production signal."
+    }
+  },
   "crossValidation": [
     {
       "relation": "accom_2_star <- accom_3_star",
@@ -253,6 +767,151 @@
         "source": "booking.com first-page property median"
       },
       "agreementPct": 3.08
+    },
+    {
+      "relation": "hotel_2star_room_2p <- hotel_3star_room_2p (independent Booking validation)",
+      "v6Independent": 0.8182,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 25,
+      "v4Reference": {
+        "median": 0.7341,
+        "n": 16,
+        "source": "booking.com first-page property median"
+      },
+      "agreementPct": 11.46,
+      "note": null
+    },
+    {
+      "relation": "midrange_restaurant_meal_2p <- inexpensive_restaurant_meal_1p",
+      "v6Independent": 4.9062,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 10,
+      "v4Reference": {
+        "selected": "R0",
+        "coefficient": 5.7388,
+        "n": 97,
+        "source": "v4 Numbeo ratio fit",
+        "leaveOneOut": {
+          "params": 1,
+          "medianApePct": 21.29,
+          "medianSignedLogError": 0.074,
+          "p90ApePct": 53.71,
+          "n": 97
+        },
+        "bands": null
+      },
+      "agreementPct": 14.51,
+      "note": null
+    },
+    {
+      "relation": "mcmeal_combo <- inexpensive_restaurant_meal_1p",
+      "v6Independent": null,
+      "v6FitStatus": "not_fittable_n_lt_3",
+      "v6N": 0,
+      "v4Reference": {
+        "selected": "R1",
+        "coefficient": 0.9852,
+        "n": 68,
+        "source": "v4 Numbeo ratio fit",
+        "leaveOneOut": {
+          "params": 3,
+          "medianApePct": 22.02,
+          "medianSignedLogError": -0.0121,
+          "p90ApePct": 59.68,
+          "n": 68
+        },
+        "bands": {
+          "low": 1.7260227852057646,
+          "mid": 1.0898048859587939,
+          "high": 0.6452229868779554
+        }
+      },
+      "agreementPct": null,
+      "note": null
+    },
+    {
+      "relation": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
+      "v6Independent": 0.3248,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 6,
+      "v4Reference": null,
+      "agreementPct": null,
+      "note": "No direct v4 street-food ratio; v4 McMeal evidence remains a diagnostic cross-check and is not the fitted basis."
+    },
+    {
+      "relation": "cappuccino_1 <- domestic_draft_beer_1",
+      "v6Independent": 0.9615,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 4,
+      "v4Reference": {
+        "selected": "R1",
+        "coefficient": 0.8916,
+        "n": 97,
+        "source": "v4 Numbeo ratio fit",
+        "leaveOneOut": {
+          "params": 3,
+          "medianApePct": 18.23,
+          "medianSignedLogError": 0.0128,
+          "p90ApePct": 62.62,
+          "n": 97
+        },
+        "bands": {
+          "low": 1.1304170245800576,
+          "mid": 1.0613734263819756,
+          "high": 0.6629224023157176
+        }
+      },
+      "agreementPct": 7.84,
+      "note": null
+    },
+    {
+      "relation": "paid_attraction_adult_1 <- inexpensive_restaurant_meal_1p",
+      "v6Independent": 0.9098,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 12,
+      "v4Reference": {
+        "selected": "R0",
+        "coefficient": 1.0571,
+        "n": 29,
+        "source": "v4 Numbeo ratio fit",
+        "leaveOneOut": {
+          "params": 1,
+          "medianApePct": 47.15,
+          "medianSignedLogError": 0.007,
+          "p90ApePct": 154.74,
+          "n": 29
+        },
+        "bands": null
+      },
+      "agreementPct": 13.93,
+      "note": null
+    },
+    {
+      "relation": "premium_restaurant_meal_2p <- midrange_restaurant_meal_2p",
+      "v6Independent": 1.9789,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 3,
+      "v4Reference": null,
+      "agreementPct": null,
+      "note": "No direct v4 premium-meal relation; v4 used a fixed 1.50 food-high-end assertion."
+    },
+    {
+      "relation": "cocktail_1 <- cappuccino_1",
+      "v6Independent": 2.6,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 11,
+      "v4Reference": null,
+      "agreementPct": null,
+      "note": "No direct v4 cocktail-to-cappuccino relation; v4 cocktail evidence was not accepted as a fitted coefficient."
+    },
+    {
+      "relation": "wine_glass_1 <- cappuccino_1",
+      "v6Independent": 2.2239,
+      "v6FitStatus": "fitted_r0",
+      "v6N": 5,
+      "v4Reference": null,
+      "agreementPct": null,
+      "note": "No direct v4 wine-glass-to-cappuccino relation; v4 rejected wine-glass calibration."
     }
   ],
   "sourceCalibrationOffsets": {
@@ -310,7 +969,55 @@
       "appliedTo": "accom_3_star",
       "grade": "C",
       "intervalPct": 25,
-      "provenance": "fitted_expedia_r0"
+      "provenance": "fitted_expedia_r0",
+      "developmentGroundTruthValidation": {
+        "key": "hotel_2star_room_2p <- hotel_3star_room_2p (independent Booking validation)",
+        "n": 25,
+        "fitStatus": "fitted_r0",
+        "coefficient": 0.8182,
+        "dispersion": {
+          "min": 0.5405,
+          "q25": 0.6552,
+          "q75": 0.9474,
+          "max": 1.8
+        },
+        "leaveOneCityOut": {
+          "n": 25,
+          "medianApePct": 17.85,
+          "p90ApePct": 37.71,
+          "maxApePct": 54.93,
+          "medianSignedLogError": 0.0127
+        },
+        "intervalPct": 38,
+        "cities": [
+          "Barcelona",
+          "Beijing",
+          "Budapest",
+          "Cairo",
+          "Cape Town",
+          "Colombo",
+          "Da Nang",
+          "Delhi",
+          "Dubai",
+          "Hanoi",
+          "Ho Chi Minh City",
+          "Istanbul",
+          "Lima",
+          "Lisbon",
+          "Melbourne",
+          "Mexico City",
+          "Mumbai",
+          "Nairobi",
+          "Phuket",
+          "Prague",
+          "San Francisco",
+          "Seoul",
+          "Singapore",
+          "Taipei",
+          "Tokyo"
+        ],
+        "notes": "Independent Booking.com v2 development validation of the shipped accommodation coefficient. The production anchor remains Expedia; this fit is diagnostic and is not substituted into the accommodation spine."
+      }
     },
     "accom_4_star": {
       "k": 1.3372,
@@ -352,6 +1059,187 @@
       "intervalPct": 54,
       "provenance": "fitted_booking_ground_truth_v2_development",
       "warning": "Fitted from the Booking.com v2 development panel; the stale 2023 Price of Travel coefficient is superseded. The x2 converts one dorm bed to the two-bed product estimand and is definitional, not fitted."
+    },
+    "premium_restaurant_meal_2p": {
+      "k": 1.9789,
+      "appliedTo": "midrange_restaurant_meal_2p",
+      "grade": "C",
+      "intervalPct": 12,
+      "provenance": "fitted_independent_official_menu_panel_r0",
+      "developmentGroundTruthValidation": {
+        "key": "premium_restaurant_meal_2p <- midrange_restaurant_meal_2p",
+        "n": 3,
+        "fitStatus": "fitted_r0",
+        "coefficient": 1.9789,
+        "dispersion": {
+          "min": 1.777,
+          "q25": 1.878,
+          "q75": 2.002,
+          "max": 2.0251
+        },
+        "leaveOneCityOut": {
+          "n": 3,
+          "medianApePct": 7.26,
+          "p90ApePct": 11.58,
+          "maxApePct": 12.66,
+          "medianSignedLogError": -0.0401
+        },
+        "intervalPct": 12,
+        "cities": [
+          "Da Nang",
+          "Mexico City",
+          "Phuket"
+        ],
+        "notes": "Fitted on independent official-menu development medians. Only three cities supplied both compliant panels; the wide residual interval is retained."
+      },
+      "warning": "Only three development cities supplied both compliant independent premium and midrange menu panels; retain the residual-dispersion interval and validate once on the sealed holdout measure."
+    },
+    "street_food_meal_1p": {
+      "k": 0.3248,
+      "appliedTo": "inexpensive_restaurant_meal_1p",
+      "grade": "C",
+      "intervalPct": 336,
+      "provenance": "fitted_independent_official_street_food_panel_r0",
+      "developmentGroundTruthValidation": {
+        "key": "street_food_meal_1p <- inexpensive_restaurant_meal_1p",
+        "n": 6,
+        "fitStatus": "fitted_r0",
+        "coefficient": 0.3248,
+        "dispersion": {
+          "min": 0.093,
+          "q25": 0.1367,
+          "q75": 0.6464,
+          "max": 0.9508
+        },
+        "leaveOneCityOut": {
+          "n": 6,
+          "medianApePct": 100.73,
+          "p90ApePct": 335.59,
+          "maxApePct": 381.9,
+          "medianSignedLogError": 0
+        },
+        "intervalPct": 336,
+        "cities": [
+          "Budapest",
+          "Da Nang",
+          "Dubai",
+          "Hanoi",
+          "Mexico City",
+          "San Francisco"
+        ],
+        "notes": "Fitted on independent official street-food and local prepared-meal medians after FX conversion with the frozen snapshot. McMeal remains a separate cross-check and is never used as the base.",
+        "candidateForms": {
+          "R0": {
+            "coefficient": 0.3248,
+            "leaveOneCityOut": {
+              "n": 6,
+              "medianApePct": 100.73,
+              "p90ApePct": 335.59,
+              "maxApePct": 381.9,
+              "medianSignedLogError": 0
+            },
+            "intervalPct": 336
+          },
+          "R1_band": {
+            "form": "R1_band",
+            "globalFallback": 0.3248,
+            "byBand": {
+              "high": null,
+              "low": null,
+              "mid": null
+            },
+            "leaveOneCityOut": {
+              "n": 6,
+              "medianApePct": 100.73,
+              "p90ApePct": 335.59,
+              "maxApePct": 381.9,
+              "medianSignedLogError": 0
+            },
+            "intervalPct": 336,
+            "notes": "Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median."
+          }
+        },
+        "selectedForm": "R0"
+      },
+      "warning": "The prior McMeal 1:1 identity proxy is superseded. McMeal remains a Numbeo cross-check only; this laddered value is grade C and uses the fitted residual-dispersion interval."
+    },
+    "cocktail_1": {
+      "k": 2.6,
+      "appliedTo": "cappuccino_1",
+      "grade": "C",
+      "intervalPct": 75,
+      "provenance": "fitted_independent_official_menu_panel_r0",
+      "developmentGroundTruthValidation": {
+        "key": "cocktail_1 <- cappuccino_1",
+        "n": 11,
+        "fitStatus": "fitted_r0",
+        "coefficient": 2.6,
+        "dispersion": {
+          "min": 1.2,
+          "q25": 2.1414,
+          "q75": 2.9583,
+          "max": 4.3421
+        },
+        "leaveOneCityOut": {
+          "n": 11,
+          "medianApePct": 17.47,
+          "p90ApePct": 74.17,
+          "maxApePct": 117.71,
+          "medianSignedLogError": -0.0342
+        },
+        "intervalPct": 75,
+        "cities": [
+          "Budapest",
+          "Da Nang",
+          "Dubai",
+          "Istanbul",
+          "Lisbon",
+          "Mexico City",
+          "Nairobi",
+          "Phuket",
+          "Prague",
+          "Seoul",
+          "Tokyo"
+        ],
+        "notes": "Fitted on independent official menu medians. Cocktail remains laddered from the production cappuccino anchor; Expatistan is not used as primary ground truth."
+      },
+      "warning": "Production does not measure cocktail_1. It remains laddered from the measured cappuccino anchor and is independently validated from official menus; no Expatistan primary ground truth is used."
+    },
+    "wine_glass_1": {
+      "k": 2.2239,
+      "appliedTo": "cappuccino_1",
+      "grade": "C",
+      "intervalPct": 29,
+      "provenance": "fitted_independent_official_menu_panel_r0",
+      "developmentGroundTruthValidation": {
+        "key": "wine_glass_1 <- cappuccino_1",
+        "n": 5,
+        "fitStatus": "fitted_r0",
+        "coefficient": 2.2239,
+        "dispersion": {
+          "min": 1.75,
+          "q25": 1.9059,
+          "q75": 2.4167,
+          "max": 2.4792
+        },
+        "leaveOneCityOut": {
+          "n": 5,
+          "medianApePct": 16.71,
+          "p90ApePct": 28.25,
+          "maxApePct": 32.59,
+          "medianSignedLogError": -0.0286
+        },
+        "intervalPct": 29,
+        "cities": [
+          "Budapest",
+          "Lisbon",
+          "Mexico City",
+          "Phuket",
+          "Prague"
+        ],
+        "notes": "Fitted on independent official menu medians with the frozen 125–175 ml / 15 cl wine rule. Wine remains laddered from the production cappuccino anchor; Expatistan is not used as primary ground truth."
+      },
+      "warning": "Production does not measure wine_glass_1. It remains laddered from the measured cappuccino anchor and is independently validated from official 125–175 ml / 15 cl menus; no Expatistan primary ground truth is used."
     }
   },
   "postHoldoutDecisions": {
@@ -371,7 +1259,7 @@
     }
   },
   "limitations": [
-    "Only R0 is fitted. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.",
+    "R0 is the default form. The street-food relation also tests an R1 cost-band candidate; it is selected only when its leave-one-city-out median APE improves on R0. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.",
     "accom_1_star is interpolated, not observed. It is the weakest value in the methodology.",
     "The dorm coefficient is fitted on Booking.com v2 development ratios. The private-room development fit is retained as diagnostic evidence, but the shipped coefficient is the pre-holdout v4 blended rollback after the one-time holdout exposed over-prediction; absolute levels remain subject to the first-page bias caveat and the Expedia source offset.",
     "Bare-dollar Expedia.com rows carry currency BARE_DOLLAR_PROXY and are only ever paired with each other.",

@@ -5,9 +5,11 @@
 // WHAT THIS SCRIPT IS FOR
 // ─────────────────────────────────────────────────────────────────────────────
 //
-// v6 measures ONE accommodation level per city (`hotel_3star_room_2p`, from
-// Expedia class-trend snippets) and derives the other five accommodation tiers
-// from it by fitted ratio. This script fits those ratios and scores them.
+// v6 measures one production accommodation level per city (`hotel_3star_room_2p`,
+// from Expedia class-trend snippets) and derives the other tiers from fitted
+// ratios or fixed basket definitions. This script generates the accommodation
+// ladder plus every independent non-accommodation ratio that is needed to
+// derive anchors absent from the production spine.
 //
 // It reads ONLY evidence that already exists in the repo. It makes no network
 // calls and no model calls. Running it is free and instantaneous.
@@ -72,6 +74,7 @@ import path from 'node:path';
 const EXPERIMENTS = 'data/reference/v5/experiments';
 const OUT = 'data/reference/v6/coefficients-v6.json';
 const V4_ACCOM = 'data/reference/dry-run/phase-0h-accommodation-class-ratios.json';
+const V4_FOOD_DRINK = 'data/reference/dry-run/phase-0c-ratio-model-fit.json';
 const DEVELOPMENT_LEDGER = 'data/reference/v6/ground-truth/development-ledger.json';
 const FX_SNAPSHOT = 'data/reference/fx/city_cost_fx_aud_2026-07-22.json';
 
@@ -197,9 +200,9 @@ for (const dir of DORM_PANELS) {
 }
 
 // ─── development ground-truth panel ─────────────────────────────────────────
-// M3 deliberately fits only the two relationships that the Booking.com v2
-// development panel refuted. The confirmed 4-star and interpolated 1-star
-// coefficients continue to come from the existing Expedia/v4 fit.
+// The development ledger is the fitting panel for all non-accommodation
+// derivations. Missing rows remain missing; the generator never turns a prior
+// or a production-source value into independent ground truth.
 
 const developmentLedger = JSON.parse(fs.readFileSync(DEVELOPMENT_LEDGER, 'utf8'));
 const developmentRows = new Map(
@@ -208,6 +211,35 @@ const developmentRows = new Map(
     Object.fromEntries(city.observations.filter((row) => row.status === 'found').map((row) => [row.measure, row])),
   ])
 );
+const developmentBandByCity = new Map(developmentLedger.cities.map((city) => [city.city, city.band]));
+
+const groundTruthFx = JSON.parse(fs.readFileSync(FX_SNAPSHOT, 'utf8'));
+const audPerUnit = (currency) => groundTruthFx.rates?.[currency]?.audPerUnit;
+
+function independentGroundTruthPairs(targetMeasure, anchorMeasure) {
+  const out = [];
+  for (const [city, rows] of developmentRows) {
+    const target = rows[targetMeasure];
+    const anchor = rows[anchorMeasure];
+    const targetRate = target ? audPerUnit(target.currency) : null;
+    const anchorRate = anchor ? audPerUnit(anchor.currency) : null;
+    if (!target || !anchor || !Number.isFinite(targetRate) || !Number.isFinite(anchorRate)) continue;
+    const targetAud = target.amount * targetRate;
+    const anchorAud = anchor.amount * anchorRate;
+    if (!(targetAud > 0) || !(anchorAud > 0)) continue;
+    out.push({
+      city,
+      anchor: anchorAud,
+      target: targetAud,
+      ratio: targetAud / anchorAud,
+      currency: 'AUD',
+      targetCurrency: target.currency,
+      anchorCurrency: anchor.currency,
+      band: developmentBandByCity.get(city) ?? null,
+    });
+  }
+  return out.sort((x, y) => x.city.localeCompare(y.city));
+}
 
 function developmentPairs(targetMeasure) {
   const out = [];
@@ -222,6 +254,25 @@ function developmentPairs(targetMeasure) {
 
 const bookingPrivateFromThree = developmentPairs('hostel_private_room_2p');
 const bookingDormFromThree = developmentPairs('hostel_dorm_bed_1p');
+
+const independentHotelTwoFromThree = independentGroundTruthPairs('hotel_2star_room_2p', 'hotel_3star_room_2p');
+const independentMidrangeFromInexpensive = independentGroundTruthPairs(
+  'midrange_restaurant_meal_2p',
+  'inexpensive_restaurant_meal_1p'
+);
+const independentMcMealFromInexpensive = independentGroundTruthPairs('mcmeal_combo', 'inexpensive_restaurant_meal_1p');
+const independentStreetFromInexpensive = independentGroundTruthPairs('street_food_meal_1p', 'inexpensive_restaurant_meal_1p');
+const independentCappuccinoFromBeer = independentGroundTruthPairs('cappuccino_1', 'domestic_draft_beer_1');
+const independentAttractionFromInexpensive = independentGroundTruthPairs(
+  'paid_attraction_adult_1',
+  'inexpensive_restaurant_meal_1p'
+);
+const independentPremiumFromMidrange = independentGroundTruthPairs(
+  'premium_restaurant_meal_2p',
+  'midrange_restaurant_meal_2p'
+);
+const independentCocktailFromCappuccino = independentGroundTruthPairs('cocktail_1', 'cappuccino_1');
+const independentWineFromCappuccino = independentGroundTruthPairs('wine_glass_1', 'cappuccino_1');
 
 function intervalFromResiduals(ps) {
   const loo = scoreR0(ps);
@@ -353,11 +404,55 @@ function scoreR0(ps) {
   };
 }
 
+/** Leave-one-city-out scoring of the cost-banded R1 candidate. */
+function scoreR1Band(ps) {
+  if (ps.length < 3) return null;
+  const errors = [];
+  const signed = [];
+  for (const [index, point] of ps.entries()) {
+    const training = ps.filter((_, candidateIndex) => candidateIndex !== index);
+    const sameBand = training.filter((candidate) => candidate.band && candidate.band === point.band);
+    const k = median((sameBand.length >= 3 ? sameBand : training).map((candidate) => candidate.ratio));
+    errors.push((Math.abs(point.anchor * k - point.target) / point.target) * 100);
+    signed.push(Math.log((point.anchor * k) / point.target));
+  }
+  return {
+    n: ps.length,
+    medianApePct: round(median(errors), 2),
+    p90ApePct: round(quantile(errors, 0.9), 2),
+    maxApePct: round(Math.max(...errors), 2),
+    medianSignedLogError: round(median(signed), 4),
+  };
+}
+
+function fitR1Band(ps) {
+  const loo = scoreR1Band(ps);
+  if (!loo) return null;
+  const global = median(ps.map((point) => point.ratio));
+  const byBand = Object.fromEntries(
+    [...new Set(ps.map((point) => point.band).filter(Boolean))]
+      .sort()
+      .map((band) => {
+        const bandPoints = ps.filter((point) => point.band === band);
+        return [band, bandPoints.length >= 3 ? round(median(bandPoints.map((point) => point.ratio)), 4) : null];
+      })
+  );
+  return {
+    form: 'R1_band',
+    globalFallback: round(global, 4),
+    byBand,
+    leaveOneCityOut: loo,
+    intervalPct: ceilPct(loo.p90ApePct),
+    notes: 'Within-band median ratio when a band has at least three development cities; otherwise the leave-one-out prediction falls back to the training-panel global median.',
+  };
+}
+
 function relation(key, ps, notes, intervalPct = null) {
   const ratios = ps.map((p) => p.ratio);
   return {
     key,
     n: ps.length,
+    fitStatus: ps.length >= 3 ? 'fitted_r0' : 'not_fittable_n_lt_3',
     coefficient: ps.length ? round(median(ratios), 4) : null,
     dispersion: ps.length
       ? {
@@ -378,15 +473,176 @@ const twoFromThree = pairs('3_star', '2_star');
 const fourFromThree = pairs('3_star', '4_star');
 const dormFromThree = dormPairs();
 
+const independentRelations = [
+  relation(
+    'hotel_2star_room_2p <- hotel_3star_room_2p (independent Booking validation)',
+    independentHotelTwoFromThree,
+    'Independent Booking.com v2 development validation of the shipped accommodation coefficient. The production anchor remains Expedia; this fit is diagnostic and is not substituted into the accommodation spine.'
+  ),
+  relation(
+    'midrange_restaurant_meal_2p <- inexpensive_restaurant_meal_1p',
+    independentMidrangeFromInexpensive,
+    'Fitted on independent official-menu development medians after FX conversion with the frozen snapshot. Both measures are in the same city and the ratio is the estimand.'
+  ),
+  relation(
+    'mcmeal_combo <- inexpensive_restaurant_meal_1p',
+    independentMcMealFromInexpensive,
+    'Not fitted: the independent panel produced no city with both a compliant official McMeal and inexpensive meal row. McMeal remains a measured production anchor and diagnostic only; it is not the street-food ground-truth basis.'
+  ),
+  relation(
+    'street_food_meal_1p <- inexpensive_restaurant_meal_1p',
+    independentStreetFromInexpensive,
+    'Fitted on independent official street-food and local prepared-meal medians after FX conversion with the frozen snapshot. McMeal remains a separate cross-check and is never used as the base.'
+  ),
+  relation(
+    'cappuccino_1 <- domestic_draft_beer_1',
+    independentCappuccinoFromBeer,
+    'Fitted on the four independent cities with both compliant official cappuccino and domestic draft panels. This is a validation relation, not a production replacement for either measured anchor.'
+  ),
+  relation(
+    'paid_attraction_adult_1 <- inexpensive_restaurant_meal_1p',
+    independentAttractionFromInexpensive,
+    'Fitted as an independent cross-check of the attraction anchor against the food level. The product does not derive attractions from food; the production activity proxy remains separately sourced.'
+  ),
+  relation(
+    'premium_restaurant_meal_2p <- midrange_restaurant_meal_2p',
+    independentPremiumFromMidrange,
+    'Fitted on independent official-menu development medians. Only three cities supplied both compliant panels; the wide residual interval is retained.'
+  ),
+  relation(
+    'cocktail_1 <- cappuccino_1',
+    independentCocktailFromCappuccino,
+    'Fitted on independent official menu medians. Cocktail remains laddered from the production cappuccino anchor; Expatistan is not used as primary ground truth.'
+  ),
+  relation(
+    'wine_glass_1 <- cappuccino_1',
+    independentWineFromCappuccino,
+    'Fitted on independent official menu medians with the frozen 125–175 ml / 15 cl wine rule. Wine remains laddered from the production cappuccino anchor; Expatistan is not used as primary ground truth.'
+  ),
+];
+for (const fit of independentRelations) {
+  fit.intervalPct = fit.leaveOneCityOut ? ceilPct(fit.leaveOneCityOut.p90ApePct) : null;
+}
+
+const streetFit = independentRelations.find((fit) => fit.key === 'street_food_meal_1p <- inexpensive_restaurant_meal_1p');
+if (!streetFit || streetFit.n < 3) {
+  throw new Error('The independent panel must fit street_food_meal_1p from inexpensive_restaurant_meal_1p with at least three city pairs.');
+}
+const streetR1 = fitR1Band(independentStreetFromInexpensive);
+streetFit.candidateForms = {
+  R0: {
+    coefficient: streetFit.coefficient,
+    leaveOneCityOut: streetFit.leaveOneCityOut,
+    intervalPct: streetFit.intervalPct,
+  },
+  R1_band: streetR1,
+};
+if (streetR1 && streetR1.leaveOneCityOut.medianApePct < streetFit.leaveOneCityOut.medianApePct) {
+  streetFit.selectedForm = 'R1_band';
+  streetFit.coefficient = streetR1.globalFallback;
+  streetFit.byBand = streetR1.byBand;
+  streetFit.leaveOneCityOut = streetR1.leaveOneCityOut;
+  streetFit.intervalPct = streetR1.intervalPct;
+  streetFit.fitStatus = 'fitted_r1_band';
+} else {
+  streetFit.selectedForm = 'R0';
+}
+
+function selectedStreetCoefficient(point) {
+  return streetFit.selectedForm === 'R1_band' && point.band && Number.isFinite(streetFit.byBand?.[point.band])
+    ? streetFit.byBand[point.band]
+    : streetFit.coefficient;
+}
+
+function pearson(xs, ys) {
+  if (xs.length < 2 || xs.length !== ys.length) return null;
+  const meanX = xs.reduce((sum, value) => sum + value, 0) / xs.length;
+  const meanY = ys.reduce((sum, value) => sum + value, 0) / ys.length;
+  const numerator = xs.reduce((sum, value, index) => sum + (value - meanX) * (ys[index] - meanY), 0);
+  const denominatorX = Math.sqrt(xs.reduce((sum, value) => sum + (value - meanX) ** 2, 0));
+  const denominatorY = Math.sqrt(ys.reduce((sum, value) => sum + (value - meanY) ** 2, 0));
+  return denominatorX && denominatorY ? numerator / (denominatorX * denominatorY) : null;
+}
+
+const streetFoodMcMealCrossCheck = [];
+const observedFoodStreet = [];
+for (const [city, rows] of developmentRows) {
+  const street = rows.street_food_meal_1p;
+  const inexpensive = rows.inexpensive_restaurant_meal_1p;
+  const mcmeal = rows.mcmeal_combo;
+  const streetRate = street ? audPerUnit(street.currency) : null;
+  const inexpensiveRate = inexpensive ? audPerUnit(inexpensive.currency) : null;
+  const mcmealRate = mcmeal ? audPerUnit(mcmeal.currency) : null;
+  if (!street || !inexpensive || !Number.isFinite(streetRate) || !Number.isFinite(inexpensiveRate)) continue;
+  const streetAud = street.amount * streetRate;
+  const inexpensiveAud = inexpensive.amount * inexpensiveRate;
+  observedFoodStreet.push({
+    city,
+    foodStreetAud: streetAud * 6,
+    foodBudgetAud: streetAud * 4 + inexpensiveAud * 2,
+  });
+  if (!mcmeal || !Number.isFinite(mcmealRate)) continue;
+  const point = { band: developmentBandByCity.get(city) ?? null };
+  const predictedStreetAud = inexpensiveAud * selectedStreetCoefficient(point);
+  const mcMealAud = mcmeal.amount * mcmealRate;
+  const factor = mcMealAud / predictedStreetAud;
+  streetFoodMcMealCrossCheck.push({
+    city,
+    fittedStreetAud: round(predictedStreetAud, 2),
+    mcMealAud: round(mcMealAud, 2),
+    mcMealToStreetFactor: round(factor, 3),
+    absoluteDifferencePct: round(Math.abs(mcMealAud - predictedStreetAud) / predictedStreetAud * 100, 2),
+    warning: factor > 2 || factor < 0.5,
+  });
+}
+const observedFoodStreetCorrelation = pearson(
+  observedFoodStreet.map((row) => row.foodStreetAud),
+  observedFoodStreet.map((row) => row.foodBudgetAud)
+);
+const streetFoodDiagnostics = {
+  mcMealCrossCheck: {
+    thresholdFactor: 2,
+    thresholdDescription: 'Flag when McMeal is more than 2x or less than 0.5x the fitted street-food prediction.',
+    streetFoodCities: [...developmentRows].filter(([, rows]) => rows.street_food_meal_1p).map(([city]) => city).sort(),
+    comparableCities: streetFoodMcMealCrossCheck.map((row) => row.city),
+    note: 'McMeal-vs-street comparison is emitted only when street food, inexpensive meal and McMeal rows all have frozen-FX coverage. An empty comparable list is a coverage gap, not evidence of agreement.',
+    cities: streetFoodMcMealCrossCheck,
+    warningCount: streetFoodMcMealCrossCheck.filter((row) => row.warning).length,
+  },
+  foodStreetFoodVsBudget: {
+    observedDevelopmentN: observedFoodStreet.length,
+    observedPanelPearsonR: observedFoodStreetCorrelation === null ? null : round(observedFoodStreetCorrelation, 4),
+    modeledPearsonR: 1,
+    independentlyInformative: false,
+    note: 'After fitting street food as a ratio of inexpensive restaurant meals, both shipped tiers are deterministic functions of the inexpensive anchor and have modeled correlation 1. Direct street-food rows restore independent validation evidence, but the two materialized tiers do not carry independent production signal.',
+  },
+};
+
 // ─── v4 cross-validation ─────────────────────────────────────────────────────
 // Independent Booking.com fit from the v4 programme. Different source, different
 // estimator (first-page property median vs class-trend average), different year,
 // largely different cities.
 
 const v4 = JSON.parse(fs.readFileSync(V4_ACCOM, 'utf8'));
+const v4FoodDrink = JSON.parse(fs.readFileSync(V4_FOOD_DRINK, 'utf8'));
 const v4Ratio = (label) => {
   const r = v4.relations.find((x) => x.label === label);
   return r ? { median: round(r.ratio.median, 4), n: r.n, source: 'booking.com first-page property median' } : null;
+};
+const v4FoodDrinkRatio = (key) => {
+  const r = v4FoodDrink.relations.find((x) => x.key === key);
+  if (!r) return null;
+  const selected = r.selection?.selected ?? 'R0';
+  const selectedFit = r.fittedFullSample?.[selected];
+  const coefficient = selectedFit?.k ?? selectedFit?.global;
+  return {
+    selected,
+    coefficient: Number.isFinite(coefficient) ? round(coefficient, 4) : null,
+    n: r.n,
+    source: 'v4 Numbeo ratio fit',
+    leaveOneOut: r.leaveOneOut?.[selected] ?? null,
+    bands: selectedFit?.byBand ?? null,
+  };
 };
 
 const crossValidation = [
@@ -405,8 +661,45 @@ const crossValidation = [
   agreementPct:
     row.v6Expedia && row.v4Booking
       ? round((Math.abs(row.v6Expedia - row.v4Booking.median) / row.v4Booking.median) * 100, 2)
-      : null,
+  : null,
 }));
+
+function independentRelation(key) {
+  return independentRelations.find((fit) => fit.key === key) ?? null;
+}
+
+function crossSourceRow(relationKey, v4Key, note = null) {
+  const fit = independentRelation(relationKey);
+  const v4Reference = typeof v4Key === 'string' && v4Key.startsWith('accom_')
+    ? v4Ratio(v4Key === 'accom_2_star' ? 'hotel_2star / hotel_3star' : 'hotel_4star / hotel_3star')
+    : v4FoodDrinkRatio(v4Key);
+  const agreementPct = fit?.coefficient !== null && v4Reference?.coefficient !== undefined
+    ? round(Math.abs(fit.coefficient - v4Reference.coefficient) / v4Reference.coefficient * 100, 2)
+    : fit?.coefficient !== null && v4Reference?.median !== undefined
+      ? round(Math.abs(fit.coefficient - v4Reference.median) / v4Reference.median * 100, 2)
+      : null;
+  return {
+    relation: relationKey,
+    v6Independent: fit?.coefficient ?? null,
+    v6FitStatus: fit?.fitStatus ?? 'not_present',
+    v6N: fit?.n ?? 0,
+    v4Reference: v4Reference ?? null,
+    agreementPct,
+    note,
+  };
+}
+
+const independentCrossValidation = [
+  crossSourceRow('hotel_2star_room_2p <- hotel_3star_room_2p (independent Booking validation)', 'accom_2_star'),
+  crossSourceRow('midrange_restaurant_meal_2p <- inexpensive_restaurant_meal_1p', 'midrange~inexpensive'),
+  crossSourceRow('mcmeal_combo <- inexpensive_restaurant_meal_1p', 'mcmeal~inexpensive'),
+  crossSourceRow('street_food_meal_1p <- inexpensive_restaurant_meal_1p', null, 'No direct v4 street-food ratio; v4 McMeal evidence remains a diagnostic cross-check and is not the fitted basis.'),
+  crossSourceRow('cappuccino_1 <- domestic_draft_beer_1', 'cappuccino~beer'),
+  crossSourceRow('paid_attraction_adult_1 <- inexpensive_restaurant_meal_1p', 'attraction~inexpensive'),
+  crossSourceRow('premium_restaurant_meal_2p <- midrange_restaurant_meal_2p', null, 'No direct v4 premium-meal relation; v4 used a fixed 1.50 food-high-end assertion.'),
+  crossSourceRow('cocktail_1 <- cappuccino_1', null, 'No direct v4 cocktail-to-cappuccino relation; v4 cocktail evidence was not accepted as a fitted coefficient.'),
+  crossSourceRow('wine_glass_1 <- cappuccino_1', null, 'No direct v4 wine-glass-to-cappuccino relation; v4 rejected wine-glass calibration.'),
+];
 
 // ─── derived coefficients that are NOT directly fitted ───────────────────────
 
@@ -438,6 +731,129 @@ const oneStarK =
   twoStarK && hostelBlended ? Math.sqrt(hostelBlended.median * twoStarK) : null;
 const privateGroundTruthK = bookingPrivateFromThree.length ? median(bookingPrivateFromThree.map((p) => p.ratio)) : null;
 const dormGroundTruthK = bookingDormFromThree.length ? median(bookingDormFromThree.map((p) => p.ratio)) : null;
+const premiumFit = independentRelation('premium_restaurant_meal_2p <- midrange_restaurant_meal_2p');
+const cocktailFit = independentRelation('cocktail_1 <- cappuccino_1');
+const wineFit = independentRelation('wine_glass_1 <- cappuccino_1');
+if (!premiumFit?.coefficient || !cocktailFit?.coefficient || !wineFit?.coefficient) {
+  throw new Error('The independent panel must fit premium, cocktail and wine ratios before M3 can proceed.');
+}
+
+// This is a generated coverage map, not a second source of arithmetic. It makes
+// the all-19 contract auditable: every product tier is either a measured anchor,
+// a deterministic identity/basket, or a named fitted relation.
+const derivationRules = {
+  accom_shared_hostel_dorm: {
+    type: 'fitted_ratio_plus_definition',
+    inputs: ['hotel_3star_room_2p'],
+    coefficientKey: 'accom_shared_hostel_dorm',
+    definition: 'two dorm beds from one fitted one-person dorm-bed ratio',
+    validation: 'development_fitted_and_original_holdout_revealed_once',
+  },
+  accom_hostel_private_room: {
+    type: 'fitted_ratio_with_recorded_rollback',
+    inputs: ['hotel_3star_room_2p'],
+    coefficientKey: 'accom_hostel_private_room',
+    validation: 'development_fit_and_superseded_candidate_holdout_only; current_rollback_not_retestable',
+  },
+  accom_1_star: {
+    type: 'interpolated_ratio',
+    inputs: ['accom_hostel_private_room', 'accom_2_star'],
+    coefficientKey: 'accom_1_star',
+    validation: 'development_and_original_holdout_revealed_once; no_direct_one_star_observation',
+  },
+  accom_2_star: {
+    type: 'fitted_ratio',
+    inputs: ['hotel_3star_room_2p'],
+    coefficientKey: 'accom_2_star',
+    validation: 'development_independent_booking_diagnostic; fresh_holdout_measure_required',
+  },
+  accom_3_star: {
+    type: 'measured_production_anchor',
+    inputs: ['hotel_3star_room_2p'],
+    source: 'Expedia production extractor',
+    validation: 'original_holdout_contaminated_without_paired_expedia_observation',
+  },
+  accom_4_star: {
+    type: 'fitted_ratio',
+    inputs: ['hotel_3star_room_2p'],
+    coefficientKey: 'accom_4_star',
+    validation: 'development_fitted_and_original_holdout_revealed_once',
+  },
+  food_street_food: {
+    type: 'fitted_ratio',
+    inputs: ['inexpensive_restaurant_meal_1p'],
+    coefficientKey: 'street_food_meal_1p',
+    definition: 'street-food meal is fitted from the independently observed inexpensive restaurant meal relationship; the source street-food anchor remains visible in imputedMeasures',
+    validation: 'independent_street_food_development_fit_and_fresh_holdout_required',
+  },
+  food_budget: {
+    type: 'fixed_basket',
+    inputs: ['street_food_meal_1p', 'inexpensive_restaurant_meal_1p'],
+    validation: 'direct_inputs_holdout_required',
+  },
+  food_mid_range: {
+    type: 'fixed_basket',
+    inputs: ['street_food_meal_1p', 'inexpensive_restaurant_meal_1p', 'midrange_restaurant_meal_2p'],
+    validation: 'direct_inputs_holdout_required',
+  },
+  food_high_end: {
+    type: 'fixed_basket_with_fitted_premium_ratio',
+    inputs: ['inexpensive_restaurant_meal_1p', 'midrange_restaurant_meal_2p', 'premium_restaurant_meal_2p'],
+    coefficientKey: 'premium_restaurant_meal_2p',
+    validation: 'premium_fresh_holdout_measure_required',
+  },
+  drink_coffee: {
+    type: 'measured_production_anchor',
+    inputs: ['cappuccino_1'],
+    source: 'Numbeo production extractor',
+    validation: 'fresh_independent_holdout_measure_required',
+  },
+  drinks_none: {
+    type: 'fixed_basket',
+    inputs: ['cappuccino_1'],
+    validation: 'direct_input_holdout_required',
+  },
+  drinks_light: {
+    type: 'fixed_basket',
+    inputs: ['cappuccino_1', 'domestic_draft_beer_1'],
+    validation: 'direct_inputs_holdout_required',
+  },
+  drinks_moderate: {
+    type: 'fixed_basket_with_fitted_cocktail_ratio',
+    inputs: ['cappuccino_1', 'domestic_draft_beer_1', 'cocktail_1'],
+    coefficientKey: 'cocktail_1',
+    validation: 'cocktail_fresh_holdout_measure_required',
+  },
+  drinks_heavy: {
+    type: 'fixed_basket_with_fitted_cocktail_and_wine_ratios',
+    inputs: ['cappuccino_1', 'domestic_draft_beer_1', 'cocktail_1', 'wine_glass_1'],
+    coefficientKeys: ['cocktail_1', 'wine_glass_1'],
+    validation: 'cocktail_and_wine_fresh_holdout_measures_required',
+  },
+  activities_free: {
+    type: 'definitional',
+    inputs: [],
+    validation: 'not_applicable',
+  },
+  activities_budget: {
+    type: 'measured_production_anchor',
+    inputs: ['paid_attraction_adult_1'],
+    source: 'BudgetYourTrip production extractor',
+    validation: 'original_holdout_revealed_once',
+  },
+  activities_mid_range: {
+    type: 'measured_production_anchor',
+    inputs: ['half_day_group_activity_adult_1'],
+    source: 'BudgetYourTrip production extractor',
+    validation: 'independent_panel_n0; fresh_holdout_measure_required',
+  },
+  activities_high_end: {
+    type: 'measured_production_anchor',
+    inputs: ['full_day_premium_activity_adult_1'],
+    source: 'BudgetYourTrip production extractor',
+    validation: 'independent_panel_n1_below_fit_threshold; fresh_holdout_measure_required',
+  },
+};
 
 // The development panel fit for the private rung is retained above as evidence,
 // but it is no longer shipped. The one-time M3 holdout showed that the 0.7955
@@ -485,15 +901,16 @@ const postHoldoutDecisions = {
 // ─── report ──────────────────────────────────────────────────────────────────
 
 const report = {
-  schemaVersion: 'city-cost-v6-ladder-fit-v1',
+  schemaVersion: 'city-cost-v6-ladder-fit-v2',
   methodologyVersion: 'v6.0',
   description:
-    'Accommodation ladder coefficients for city cost methodology v6. Every tier is derived from the ' +
-    'single measured anchor hotel_3star_room_2p. Regenerate with: node scripts/fit-city-cost-ladder-v6.mjs',
+    'All generated v6 ladder coefficients and independent development-panel ratio fits. Fixed basket ' +
+    'definitions remain in the deterministic materializer. Regenerate with: node scripts/fit-city-cost-ladder-v6.mjs',
   generatedFrom: {
     expediaPanels: EXPEDIA_PANELS,
     dormPanels: DORM_PANELS,
     v4CrossValidation: V4_ACCOM,
+    v4FoodDrinkCrossValidation: V4_FOOD_DRINK,
     developmentGroundTruth: DEVELOPMENT_LEDGER,
     fxSnapshot: FX_SNAPSHOT,
   },
@@ -518,6 +935,8 @@ const report = {
     developmentGroundTruthRows: {
       privateRoom: bookingPrivateFromThree.length,
       dormBed: bookingDormFromThree.length,
+      hotelTwoStar: independentHotelTwoFromThree.length,
+      independentRelations: independentRelations.reduce((acc, fit) => ({ ...acc, [fit.key]: fit.n }), {}),
     },
     sourceOffsetMatchedCities: bookingToExpediaPairs.length,
   },
@@ -544,8 +963,11 @@ const report = {
       'Fitted on Booking.com v2 development medians paired within city. This replaces the stale 2023 Price of Travel coefficient; the product tier still applies the fixed x2 two-bed definition.',
       intervalFromResiduals(bookingDormFromThree)
     ),
+    ...independentRelations,
   ],
-  crossValidation,
+  derivationRules,
+  streetFoodDiagnostics,
+  crossValidation: [...crossValidation, ...independentCrossValidation],
   sourceCalibrationOffsets: {
     hotel_3star_room_2p: {
       direction: 'Booking -> Expedia',
@@ -567,6 +989,7 @@ const report = {
       grade: 'C',
       intervalPct: 25,
       provenance: 'fitted_expedia_r0',
+      developmentGroundTruthValidation: independentRelation('hotel_2star_room_2p <- hotel_3star_room_2p (independent Booking validation)'),
     },
     accom_4_star: {
       k: fourFromThree.length ? round(median(fourFromThree.map((p) => p.ratio)), 4) : null,
@@ -599,10 +1022,49 @@ const report = {
       warning:
         'Fitted from the Booking.com v2 development panel; the stale 2023 Price of Travel coefficient is superseded. The x2 converts one dorm bed to the two-bed product estimand and is definitional, not fitted.',
     },
+    premium_restaurant_meal_2p: {
+      k: premiumFit.coefficient,
+      appliedTo: 'midrange_restaurant_meal_2p',
+      grade: 'C',
+      intervalPct: premiumFit.intervalPct,
+      provenance: 'fitted_independent_official_menu_panel_r0',
+      developmentGroundTruthValidation: premiumFit,
+      warning: 'Only three development cities supplied both compliant independent premium and midrange menu panels; retain the residual-dispersion interval and validate once on the sealed holdout measure.',
+    },
+    street_food_meal_1p: {
+      k: streetFit.coefficient,
+      ...(streetFit.selectedForm === 'R1_band' ? { byBand: streetFit.byBand } : {}),
+      appliedTo: 'inexpensive_restaurant_meal_1p',
+      grade: 'C',
+      intervalPct: streetFit.intervalPct,
+      provenance: streetFit.selectedForm === 'R1_band'
+        ? 'fitted_independent_official_street_food_panel_r1_band'
+        : 'fitted_independent_official_street_food_panel_r0',
+      developmentGroundTruthValidation: streetFit,
+      warning: 'The prior McMeal 1:1 identity proxy is superseded. McMeal remains a Numbeo cross-check only; this laddered value is grade C and uses the fitted residual-dispersion interval.',
+    },
+    cocktail_1: {
+      k: cocktailFit.coefficient,
+      appliedTo: 'cappuccino_1',
+      grade: 'C',
+      intervalPct: cocktailFit.intervalPct,
+      provenance: 'fitted_independent_official_menu_panel_r0',
+      developmentGroundTruthValidation: cocktailFit,
+      warning: 'Production does not measure cocktail_1. It remains laddered from the measured cappuccino anchor and is independently validated from official menus; no Expatistan primary ground truth is used.',
+    },
+    wine_glass_1: {
+      k: wineFit.coefficient,
+      appliedTo: 'cappuccino_1',
+      grade: 'C',
+      intervalPct: wineFit.intervalPct,
+      provenance: 'fitted_independent_official_menu_panel_r0',
+      developmentGroundTruthValidation: wineFit,
+      warning: 'Production does not measure wine_glass_1. It remains laddered from the measured cappuccino anchor and is independently validated from official 125–175 ml / 15 cl menus; no Expatistan primary ground truth is used.',
+    },
   },
   postHoldoutDecisions,
   limitations: [
-    'Only R0 is fitted. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.',
+    'R0 is the default form. The street-food relation also tests an R1 cost-band candidate; it is selected only when its leave-one-city-out median APE improves on R0. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.',
     'accom_1_star is interpolated, not observed. It is the weakest value in the methodology.',
     'The dorm coefficient is fitted on Booking.com v2 development ratios. The private-room development fit is retained as diagnostic evidence, but the shipped coefficient is the pre-holdout v4 blended rollback after the one-time holdout exposed over-prediction; absolute levels remain subject to the first-page bias caveat and the Expedia source offset.',
     'Bare-dollar Expedia.com rows carry currency BARE_DOLLAR_PROXY and are only ever paired with each other.',
@@ -638,6 +1100,9 @@ for (const r of report.relations) {
     `  ${r.key.padEnd(38)} n=${String(r.n).padStart(2)}  k=${r.coefficient ?? 'n/a'}` +
       (loo ? `  LOO medAPE ${loo.medianApePct}%  p90 ${loo.p90ApePct}%` : '  (not scored, n<3)')
   );
+  if (r.key === 'street_food_meal_1p <- inexpensive_restaurant_meal_1p') {
+    console.log(`    candidate R1 band: LOO medAPE ${r.candidateForms.R1_band.leaveOneCityOut.medianApePct}% p90 ${r.candidateForms.R1_band.leaveOneCityOut.p90ApePct}%; selected ${r.selectedForm}`);
+  }
 }
 for (const cv of crossValidation) {
   if (cv.agreementPct === null) continue;

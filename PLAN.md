@@ -194,17 +194,19 @@ M1 implementation notes:
 ### M3 — fit and validate all 19 tiers — **IN PROGRESS (scope reset 10 August 2026)**
 
 - [x] Record the dated contract amendment from six accommodation-scoped measures to 18 all-tier validation rows
-- [ ] Resolve the 12 new development measures across all 25 cities (hotel-2 plus street food and ten other independent measures; explicit missingness is valid)
-- [ ] Generate and cross-check every non-accommodation derivation from the development panel, including fitted street-food/inexpensive
+- [x] Resolve the 12 new development measures across all 25 cities (hotel-2 plus street food and ten other independent measures; explicit missingness is valid)
+- [x] Generate and cross-check every non-accommodation derivation from the development panel, including fitted street-food/inexpensive
 - [ ] Collect the 12 fresh holdout measures under per-measure seals without reading them
 - [ ] Freeze one all-19 candidate and score gates 2–6 once
 - [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
 
 **Current status:** Phase 1's all-tier contract was amended again on 10 August 2026 after an audit found
-that the McMeal-to-street-food identity proxy was an asserted `k=1.0` constant. The panel is now 18 measures
-per city and the street-food slots are pending: **269 found / 25 pending** across 25 cities. Street food
-must be collected independently from official local prepared-food menus or market/vendor listings before
-the ratio to inexpensive restaurant food can be fitted. The prior McMeal panel remains a diagnostic only.
+that the McMeal-to-street-food identity proxy was an asserted `k=1.0` constant. The 18-measure panel is now
+complete at **280 found / 0 pending** across 25 cities: street food contributed 11 found rows, 14 explicit
+`not_found` rows and zero `class_absent` findings. The generated street-food fit is R0 `k=0.3248` on six
+FX-compatible city pairs, with LOO median APE 100.73%, p90 335.59%; its cost-banded R1 candidate tied because
+no band had three eligible pairs, so the grade-C interval is the residual-derived ±336%. McMeal remains a
+diagnostic only. No holdout value was read, no gate was scored, and M4 migration remains out of scope.
 The old accommodation-only score is not an all-19 M3 result. The per-measure holdout seal keeps the six
 already revealed rows spent and now has twelve sealed-before-collection extension measures. No holdout value
 was read, no gate was scored, and M4 migration remains out of scope.

@@ -76,16 +76,19 @@ times for sample size. The accuracy its gate protected was already achieved.
   suite passes with 153 tests; build, TypeScript and coefficient checks pass.
 - The original M2 development ledger was accommodation-scoped. At the contract-reset checkpoint in `4cf397b`,
   it correctly reported **25 found / 125 pending / zero accommodation cities**; that is historical, not the
-  current count. The all-19 M3 contract is `city-cost-v6-ground-truth-ledger-v3`: 25 cities x 17 measures.
+  current count. The all-19 M3 contract is `city-cost-v6-ground-truth-ledger-v4`: 25 cities x 18 measures.
   The first independent tranche is complete: 25/25 `hotel_2star_room_2p` rows were collected from logged-out
   Booking.com under `booking_top_picks_firstpage_median_v2`, including sample prices and inventory counts.
-  Current coverage is **269 found / 0 pending**. Batch 001 resolved all ten independent food/drink/activity
+  Current coverage before the street-food amendment was **269 found / 0 pending**. Batch 001 resolved all ten independent food/drink/activity
   measures for Hanoi, Ho Chi Minh City, Da Nang, Phuket, Singapore and Taipei; batch 002 resolved the same ten
   measures for Beijing, Tokyo, Seoul, Delhi, Colombo and Mumbai; batch 003 resolved the same ten measures for
   Istanbul, Dubai, Cairo and Cape Town; and batch 004 resolved the same ten measures for Nairobi, Budapest,
   Prague and Lisbon; batch 005 resolved Barcelona, Mexico City, Lima, San Francisco and Melbourne. Batch 005
   added 17 found rows and 33 explicit missingness rows. Every 25-city x 17-measure development slot now has
   either a compliant independent observation or an explicit missingness status.
+- Batch 006 added the independent `street_food_meal_1p` slot. It has 11 found rows, 14 explicit `not_found`
+  rows and zero `class_absent` findings. The amended ledger is now **280 found / 0 pending** across 25 cities
+  x 18 measures.
 - The 15-city holdout is collected into `data/reference/v6/ground-truth/holdout-ledger.json` and was scored
   exactly once after the candidate freeze. `holdout-seal.json` is now `revealed_once` and points to the separate
   `ground-truth/holdout-scores.json`; the holdout ledger itself has no score fields. Do not tune or rescore.
@@ -112,9 +115,9 @@ correlates with `classInventoryCount` across the batch, or an implausible 3-star
 A$400; stop and report only when candidates exceed 30% of the cities in a batch. Individual outliers do not
 stop collection.
 
-All 25 development cities now have accommodation rows under `booking_top_picks_firstpage_median_v2` and
-explicit statuses for all ten independent food/drink/activity measures. The all-tier development collection
-panel is resolved; the all-19 fit and holdout validation are not.
+All 25 development cities now have accommodation rows under `booking_top_picks_firstpage_median_v2`,
+explicit statuses for the ten independent food/drink/activity measures, and the independent street-food row.
+The amended all-tier development collection panel is resolved; the all-19 holdout validation is not.
 The 25-city ladder result and six-city refresh are recorded in `PLAN.md` and `LOG.md`: 4-star and 1-star
 remain confirmed, and dorm was refit from the development medians. The private development diagnostic was
 0.7955, but the one-time holdout implied roughly 0.603 and showed uniform over-prediction; the generator now
@@ -133,6 +136,7 @@ accom_4_star              = 1.3372 × accom_3_star    n=26  LOO 12.98%  grade C 
 accom_1_star              = 0.6663 × accom_3_star    INTERPOLATED       grade C  ±45%
 accom_hostel_private_room = 0.5919 × accom_3_star    v4 blended rollback   grade C  ±35%
 accom_shared_hostel_dorm  = 2 × 0.2955 × accom_3_star  Booking v2, n=25   grade C  ±54%
+street_food_meal_1p       = 0.3248 × inexpensive meal independent menu, n=6 grade C  ±336%
 ```
 
 The current shipped coefficient is the v4-blended rollback. The frozen candidate used for the single holdout
@@ -149,8 +153,9 @@ one-star rows. It is the geometric mean of the hostel and two-star coefficients.
 
 The historical accommodation-only candidate and single gate 2–6 score are retained, and experiment 001 has
 accepted the fresh production-anchor replication. They are not the all-19 M3 result. Experiment 002 batches
-001–005 have resolved the ten independent measures for all 25 cities; coverage is **269 found / 0 pending**.
-No all-19 coefficient, holdout score or gate result exists yet. The v6 path is integrated but opt-in.
+001–005 resolved the ten independent measures for all 25 cities and batch 006 added the street-food measure;
+coverage is **280 found / 0 pending**. The generated all-tier coefficient report exists, but no fresh all-19
+holdout score or gate result exists yet. The v6 path is integrated but opt-in.
 **The 121-city CSV and the default v1 generation path remain untouched and still shipping.** Local provider
 API keys are absent; the delegated GPT-5.6 Luna test path produced the experiment responses.
 
@@ -169,29 +174,28 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
 
 ## 4. The exact next action
 
-Phase 2 collection is complete: the development ledger has **269 found rows and 0 pending slots** across
-25 cities x 17 measures. Experiment 002 batch 005 is stored at
-`data/reference/v6/experiments/002-independent-anchor-panel/batch-005-menu-activities.json`, and the merged
+Phase 2 collection is complete: the development ledger has **280 found rows and 0 pending slots** across
+25 cities x 18 measures. Experiment 002 batch 006 is stored at
+`data/reference/v6/experiments/002-independent-anchor-panel/batch-006-street-food.json`, and the merged
 ledger is validated with zero errors and 19 standing accommodation substance warnings. No batch-level
 artifact signature exceeded 30% of cities. Experiment 001 is complete and accepted; its deterministic
 results and audit are under `data/reference/v6/experiments/001-expedia-production-anchor/`.
 
-Begin Phase 3. Extend `scripts/fit-city-cost-ladder-v6.mjs` or a sibling generator so every non-accommodation
-coefficient is generated from the development medians, never hand-written. For each fitted relation, emit
-the coefficient, sample size, leave-one-city-out scores, residual-dispersion interval, evidence grade and
-source provenance. Include the explicit missingness pattern in the fit report and decide, with a dated record,
-whether cocktail/wine remain laddered or require a production spine call. Cross-check each food/drink fit
-against `data/reference/dry-run/phase-0c-ratio-model-fit.json` and record agreement or disagreement per
-coefficient. Regenerate `data/reference/v6/coefficients-v6.json` through the script and keep `--check` green.
+Phase 3 development fitting is complete for the current evidence. `scripts/fit-city-cost-ladder-v6.mjs`
+generates every available independent menu/activity relation and the street-food R0/R1 comparison. The
+selected street relation is R0 `k=0.3248`, n=6, LOO median APE 100.73%, p90 335.59%, grade C ±336%; R1 ties
+because no band has three eligible pairs. McMeal is retained as a diagnostic, and the generated report
+records the modeled food-tier collinearity. The coefficients pass `--check`. The remaining M3 action is
+fresh per-measure holdout collection without reading its values.
 
-Do not read the holdout extension, score gates, refit from holdout data, or begin M4. After the all-19
-development candidate is generated and audited, collect the eleven fresh holdout measures under their
-per-measure sealed statuses, freeze exactly one all-19 candidate before reading any of them, and score gates
-2–6 once. The original six-measure holdout remains spent and must not be reread, rescored or replaced.
+Do not read holdout values, score gates, refit from holdout data, or begin M4. Collect the twelve fresh
+holdout measures under their per-measure sealed statuses, freeze exactly one all-19 candidate before reading
+any of them, and score gates 2–6 once. The original six-measure holdout remains spent and must not be reread,
+rescored or replaced.
 
-The 121-city CSV and M4 migration remain out of scope. The original six-measure holdout is spent; the eleven
-new holdout measures may be collected later only under their per-measure sealed status, after the all-tier
-development fit and candidate freeze are ready.
+The 121-city CSV and M4 migration remain out of scope. The original six-measure holdout is spent; the twelve
+new holdout measures may now be collected only under their per-measure sealed status. The candidate freeze
+must occur before reading any new holdout value.
 
 The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
 accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use

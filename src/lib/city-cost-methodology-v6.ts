@@ -54,6 +54,7 @@ export interface V6BandCuts {
 
 interface V6ShippedCoefficient {
   k: number;
+  byBand?: Partial<Record<V6CostBand, number>>;
   multiplyBy?: number;
   grade: Exclude<V6Grade, 'definitional'>;
   intervalPct: number;
@@ -160,6 +161,12 @@ type V6AccommodationCoefficientKey =
   | 'accom_1_star'
   | 'accom_2_star'
   | 'accom_4_star';
+
+type V6GeneratedRatioCoefficientKey =
+  | 'premium_restaurant_meal_2p'
+  | 'street_food_meal_1p'
+  | 'cocktail_1'
+  | 'wine_glass_1';
 
 let referenceCache: { coefficients: V6CoefficientsFile; bandCuts: V6BandCuts } | null = null;
 let defaultPriorsCache: V6Priors | null = null;
@@ -430,24 +437,17 @@ function copyInput(input: V6AnchorInput, fallbackGrade?: Exclude<V6Grade, 'defin
   };
 }
 
-function deriveStreetFromMcMeal(input: V6AnchorInput): V6AnchorInput {
-  return {
-    valueAud: input.valueAud,
-    status: 'modelled',
-    evidenceGrade: 'B',
-    intervalPct: Math.max(input.intervalPct ?? DEFAULT_INTERVAL_PCT.B, DEFAULT_INTERVAL_PCT.B),
-    sourceIds: input.sourceIds,
-    modelVersions: [...(input.modelVersions ?? []), 'city-cost-v6-mcmeal-proxy-v1'],
-    imputedMeasures: ['mcmeal_combo', ...(input.imputedMeasures ?? [])],
-  };
-}
-
-function getCoefficient(name: V6AccommodationCoefficientKey, coefficients: V6CoefficientsFile) {
+function getCoefficient(
+  name: V6AccommodationCoefficientKey | V6GeneratedRatioCoefficientKey,
+  coefficients: V6CoefficientsFile,
+  costBand: V6CostBand | null = null
+) {
   const coefficient = coefficients.shippedCoefficients[name];
-  if (!coefficient || !Number.isFinite(coefficient.k) || coefficient.k < 0) {
-    throw new Error(`Missing valid v6 accommodation coefficient ${name}.`);
+  const bandCoefficient = costBand ? coefficient?.byBand?.[costBand] : undefined;
+  if (!coefficient || !Number.isFinite(coefficient.k) || coefficient.k < 0 || (bandCoefficient !== undefined && (!Number.isFinite(bandCoefficient) || bandCoefficient < 0))) {
+    throw new Error(`Missing valid v6 coefficient ${name}.`);
   }
-  return coefficient;
+  return bandCoefficient === undefined ? coefficient : { ...coefficient, k: bandCoefficient };
 }
 
 function applyAccommodationLadder(inputs: Record<V5AnchorName, V6AnchorInput>, coefficients: V6CoefficientsFile) {
@@ -479,6 +479,49 @@ function applyAccommodationLadder(inputs: Record<V5AnchorName, V6AnchorInput>, c
   }
 }
 
+function applyGeneratedAnchorLadder(
+  inputs: Record<V5AnchorName, V6AnchorInput>,
+  originalAnchors: V6AnchorInputs,
+  coefficients: V6CoefficientsFile,
+  costBand: V6CostBand | null
+) {
+  const relations: Array<{
+    target: V5AnchorName;
+    source: V5AnchorName;
+    coefficientKey: V6GeneratedRatioCoefficientKey;
+  }> = [
+    {
+      target: 'premium_restaurant_meal_2p',
+      source: 'midrange_restaurant_meal_2p',
+      coefficientKey: 'premium_restaurant_meal_2p',
+    },
+    {
+      target: 'street_food_meal_1p',
+      source: 'inexpensive_restaurant_meal_1p',
+      coefficientKey: 'street_food_meal_1p',
+    },
+    { target: 'cocktail_1', source: 'cappuccino_1', coefficientKey: 'cocktail_1' },
+    { target: 'wine_glass_1', source: 'cappuccino_1', coefficientKey: 'wine_glass_1' },
+  ];
+
+  for (const relation of relations) {
+    if (originalAnchors[relation.target]?.valueAud !== null && originalAnchors[relation.target]?.valueAud !== undefined) continue;
+    const sourceInput = originalAnchors[relation.source];
+    const source = inputs[relation.source];
+    if (sourceInput?.valueAud === null || sourceInput?.valueAud === undefined || !source?.valueAud) continue;
+    const coefficient = getCoefficient(relation.coefficientKey, coefficients, costBand);
+    inputs[relation.target] = {
+      valueAud: rounded(source.valueAud * coefficient.k),
+      status: 'modelled',
+      evidenceGrade: worstGrade(source.evidenceGrade, coefficient.grade) as Exclude<V6Grade, 'definitional'>,
+      intervalPct: coefficient.intervalPct,
+      sourceIds: [...(source.sourceIds ?? []), `v6-coefficient:${relation.coefficientKey}`],
+      modelVersions: [...(source.modelVersions ?? []), `city-cost-v6-${coefficient.provenance}`],
+      imputedMeasures: [relation.target, relation.source, ...(source.imputedMeasures ?? [])],
+    };
+  }
+}
+
 function buildCompleteInputs(input: {
   region: string | null;
   anchors: V6AnchorInputs;
@@ -505,13 +548,9 @@ function buildCompleteInputs(input: {
     complete[anchor] = makePriorInput(anchor, region, initialBand, input.priors, missingState);
   }
 
-  const mcMeal = input.anchors.mcmeal_combo;
-  if (mcMeal?.valueAud !== null && mcMeal?.valueAud !== undefined) {
-    complete.street_food_meal_1p = deriveStreetFromMcMeal(copyInput(mcMeal, mcMeal.evidenceGrade));
-  }
-
   // v6 measures the 3-star level and deterministically derives all other hotel tiers.
   applyAccommodationLadder(complete, loadV6ReferenceData().coefficients);
+  applyGeneratedAnchorLadder(complete, input.anchors, loadV6ReferenceData().coefficients, initialBand);
   return { complete, missingness, region, costBand: initialBand };
 }
 

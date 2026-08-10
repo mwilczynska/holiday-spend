@@ -241,7 +241,7 @@ accom_4_star              = hotel_3star_2p x 1.80`,
     title: 'Food Formulas',
     summary: 'Food budgets are derived from inexpensive-meal and mid-range-meal anchors.',
     codeBlocks: [
-      `street_food_meal = inexp_meal_1p x 0.60
+      `street_food_meal = inexp_meal_1p x fitted street_food_meal_1p coefficient
 
 food_street_food = street_food_meal x 3 meals x 2 people
 food_budget      = (street_food_meal x 2 + inexp_meal_1p) x 2 people
@@ -250,7 +250,7 @@ food_high_end    = food_mid_range x 1.50`,
     ],
     paragraphs: [
       'Street assumes three very cheap meals. Budget mixes two street-style meals with one inexpensive restaurant meal. Mid-range blends a street meal, a cheap meal, and a proper restaurant meal. High-end is a fixed 1.5x uplift on mid-range.',
-      'The 0.60 factor is a stated modelling assumption: it treats takeaway, markets, and low-cost local meals as cheaper than an inexpensive sit-down restaurant while allowing the relationship to vary through the local anchor itself. It is not presented as a universal observed ratio.',
+      'The street-food relationship is fitted from independent official street-stall, market, bakery-takeaway, and local prepared-meal prices. McMeal remains a Numbeo diagnostic and is not used as the base. The generated coefficient carries grade C and a residual-derived interval.',
       'The mid-range meal anchor is divided by two before being combined with the two per-person proxies. Drinks are excluded from all food formulas so that the drinks basket cannot be counted twice. The fixed high-end uplift is intentionally simple and should be interpreted as a broader dining allowance, not a prediction of a particular restaurant bill.',
     ],
   },

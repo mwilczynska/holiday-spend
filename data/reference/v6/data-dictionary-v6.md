@@ -199,10 +199,10 @@ prices are not per-person beds.
 The original validation manifest v1 declared six measures per city and was therefore accommodation-scoped
 (five Booking classes plus the paid-attraction row). Its holdout could only partly evaluate gates 2-6: the
 production anchor was not paired, and food, drink and activity tiers were absent. By owner decision, the
-manifest is amended to v2 and the development and holdout contracts expand to the 17 directly auditable
-anchor/validation measures needed to fit and validate all 19 product tiers. `street_food_meal_1p` remains
-a deterministic production derivation from the independently collected `mcmeal_combo` row, so it is
-validated as a product tier without creating a duplicate source slot.
+manifest is amended to v3 and the development and holdout contracts expand to 18 directly auditable
+anchor/validation measures needed to fit and validate all 19 product tiers. `street_food_meal_1p` now has
+its own independent menu/vendor observation slot; it is fitted against `inexpensive_restaurant_meal_1p`
+and is no longer derived from McMeal.
 
 Food and drink ground truth is independent of Numbeo: use official restaurant, cafe and bar menus or venue
 price lists. Expatistan may cross-check but cannot be primary evidence for a Numbeo-supplied field. Activity

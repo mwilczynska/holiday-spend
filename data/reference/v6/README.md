@@ -6,7 +6,7 @@ tells you what lives here and what each file is for.
 
 **Status:** v6 adopted 9 August 2026. M0, M1 and the original accommodation-scoped M2 collection are complete.
 M3 was reopened by owner decision on 10 August 2026: it now requires fitting and holdout-validating all 19
-product tiers. The manifest is v2, the panel is 17 measures per city, and M4 migration is out of scope.
+product tiers. The manifest is v3, the panel is 18 measures per city, and M4 migration is out of scope.
 
 ---
 
@@ -43,6 +43,7 @@ hostel_dorm_bed_1p <- accom_3_star     n=25  k=0.2955  LOO medAPE 20.92% p90 53.
 hostel_private_room_2p <- accom_3_star n=25  diagnostic k=0.7955; shipped k=0.5919 v4 rollback (±35%)
 hotel_2star_room_2p <- hotel_3star_room_2p  n=25  diagnostic k=0.8182  LOO medAPE 17.85% p90 37.71%
 midrange <- inexpensive                  n=10  k=4.9062  LOO medAPE 21.53% p90 45.63%
+street food <- inexpensive               n=6   k=0.3248  LOO medAPE 100.73% p90 335.59% (R1 tied; grade C)
 premium <- midrange                      n=3   k=1.9789  LOO medAPE 7.26%  p90 11.58%
 cocktail <- cappuccino                    n=11  k=2.6000  LOO medAPE 17.47% p90 74.17%
 wine glass <- cappuccino                  n=5   k=2.2239  LOO medAPE 16.71% p90 28.25%
@@ -53,12 +54,14 @@ cross-check 2-star: v6 0.7500 vs v4 0.7341 -> 2.17% apart
 cross-check 4-star: v6 1.3372 vs v4 1.2972 -> 3.08% apart
 ```
 
-The new menu relations use independent official restaurant and bar menus, never Numbeo. Premium,
-cocktail and wine remain laddered in production, but their coefficients are fitted by the generator and
-carry residual-derived intervals. The McMeal, half-day and full-day routes did not provide enough
-independent pairs to fit a ratio (`n=0`, `n=0` and `n=1` respectively); they remain direct production
-anchors with the reason recorded in the generated `derivationRules` map. These are validation gaps, not
-asserted coefficients.
+The new menu and street-food relations use independent official menus, vendor listings and venue price
+lists, never Numbeo. Premium, cocktail, wine and street food remain laddered in production, but their
+coefficients are fitted by the generator and carry residual-derived intervals. Street food has only six
+currency-compatible city pairs; its R1 band candidate ties R0 because no cost band has three eligible
+pairs, so the selected R0 interval is deliberately wide. The McMeal, half-day and full-day routes did not
+provide enough independent pairs to fit a ratio (`n=0`, `n=0` and `n=1` respectively); they remain direct
+production anchors or diagnostics with the reason recorded in the generated `derivationRules` map. These
+are validation gaps, not asserted coefficients.
 
 ---
 

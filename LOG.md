@@ -2519,3 +2519,26 @@ leave-one-city-out residual interval and grade C. McMeal remains in the producti
 as a per-city diagnostic only; the v1 CSV comparison and the v5 panel are not a fitting basis. Phase 2's
 previous 269/0 count is superseded by the amended 18-measure panel's 269 found / 25 pending slots.
 No holdout value was read, no gate was scored, and the 121-city CSV remains untouched.
+
+## v6 M3 — independent street-food panel and generated relation (10 August 2026)
+
+The amended `city-cost-v6-ground-truth-ledger-v4` contract adds `street_food_meal_1p` as an independent
+18th measure. Batch 006 collected 11 compliant rows from official vendor, market, bakery-takeaway or local
+prepared-meal menus and recorded 14 explicit `not_found` rows; zero cities had official evidence proving
+the category absent, so `class_absent` count is 0. The validator returned **280 found / 0 pending**, zero
+errors and the same 19 accommodation substance warnings. No Numbeo, McDonald's or delivery/aggregator price
+was used as street-food ground truth.
+
+The generator now fits `street_food_meal_1p <- inexpensive_restaurant_meal_1p` rather than copying McMeal.
+The six currency-compatible development pairs produce R0 `k=0.3248`, LOO median APE **100.73%**, p90
+**335.59%** and a grade-C residual interval of **±336%**. The tested R1 cost-band candidate ties R0 because
+no cost band has three eligible pairs, so R0 is selected and both candidates are retained in
+`coefficients-v6.json`. This is intentionally weak evidence and must be validated on the fresh holdout;
+the wide interval is not hidden. The old McMeal identity (`k=1.0`, grade B ±20%) is superseded and McMeal
+is retained only as a diagnostic. The report also records that the modeled `food_street_food` and
+`food_budget` tiers have correlation 1 because both are deterministic functions of the inexpensive anchor;
+direct street rows provide independent evidence for the fit, not independent production signal.
+
+No coefficient was hand-edited, no gate was scored, no holdout value was read, and the 121-city CSV remains
+untouched. The next action is fresh per-measure holdout collection, followed by one all-19 candidate freeze
+before any new holdout value is read.
