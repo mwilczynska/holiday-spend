@@ -53,6 +53,26 @@ times for sample size. The accuracy its gate protected was already achieved.
 
 ## 3. State of the world
 
+### Current owner directive — 10 August 2026
+
+The previous M3 collection approach is **stopped and superseded**. It collected item-level truth without
+generating the corresponding production predictions, so the old holdout's `not_evaluable` result was
+structural, not a coverage verdict. The 25-city development ledger is intact at **280 found / 0 pending**
+across 18 measures and must not be recollected. The previous holdout is spent: all 18 measures are
+`revealed_once`; do not inspect, rescore, refreeze or tune from it.
+
+The active M3 path is now: (1) generate exact production-path predictions for all 25 development cities;
+(2) collect BudgetYourTrip tier-level food/activity daily spend and Expatistan cocktail/beer evidence under
+new experiment contracts; (3) replace weak coefficients and rebuild priors without reading the live CSV;
+(4) score development **in-sample**; (5) verify BYT page coverage for a proposed fresh 15-city holdout,
+add a minimum-coverage freeze guard, and stop for owner approval. No new holdout may be drawn, frozen or
+read before that approval.
+
+The first production-bundle run is recorded in `data/reference/v6/experiments/002-production-prediction-bundle/`:
+**0/25 cities materialized** because this checkout has no supported provider credential. Each city is an
+explicit `not_run`; no prediction was fabricated. Run the bundle again with the production provider/key
+when available, using `cmd /c node scripts/generate-v6-prediction-bundle.mjs`.
+
 ### Done (M0 + M1, 9 August 2026)
 
 - Repo hygiene: `AGENTS.md` had a resume prompt accidentally appended and had drifted from `CLAUDE.md`,
@@ -180,37 +200,31 @@ rate differs from the frozen USD→AUD snapshot by only 0.66%; the frozen rate r
 
 ## 4. The exact next action
 
-Phase 2 collection is complete: the development ledger has **280 found rows and 0 pending slots** across
-25 cities x 18 measures. Experiment 002 batch 006 is stored at
-`data/reference/v6/experiments/002-independent-anchor-panel/batch-006-street-food.json`, and the merged
-ledger is validated with zero errors and 19 standing accommodation substance warnings. No batch-level
-artifact signature exceeded 30% of cities. Experiment 001 is complete and accepted; its deterministic
-results and audit are under `data/reference/v6/experiments/001-expedia-production-anchor/`.
+1. Inspect `data/reference/v6/experiments/002-production-prediction-bundle/results.json`. It is a
+   deterministic audit of the production path, not a substitute for predictions. Run
+   `cmd /c node scripts/generate-v6-prediction-bundle.mjs` with the same provider/model resolution as
+   production once credentials are available; retain explicit `not_run` rows on failure.
+2. Pre-register and write `data/reference/v6/experiments/003-budgetyourtrip-tier-panel/`. For each of
+   the 25 development cities, capture BudgetYourTrip's per-person/day budget, mid-range and high-end food
+   and entertainment/activity tiers, with label, currency, URL, retrieval date and evidence text. Mark
+   activity rows as production-source/unvalidated, not independent truth. Add a separate Expatistan drink
+   experiment for cocktail and neighbourhood-pub beer; do not collect wine glass after the rejected bottle
+   calibration route.
+3. Extend the coefficient generator. Set the minimum fitted relation sample size to a documented threshold
+   (use `n >= 8`); below it, ship a reasoned constant or regional prior with an honest grade and residual
+   interval. Replace street food's unusable n=6 fit with the owner-directed `0.5 × inexpensive meal`,
+   grade C, ±35%, and audit every food/drink/activity grade against actual evidence.
+4. Replace the CSV-inversion prior builder with a generated prior artifact built from direct development
+   observations and tier-level evidence. Preserve region → region|band → global fallback, and do not modify
+   `data/reference/city_costs_app_aud.csv`.
+5. Score only the development panel, labelled **IN-SAMPLE**. Report evaluable and blocked tiers separately;
+   do not call this a holdout result.
+6. Before any new holdout action, verify which of the 81 neither-panel cities have confirmed city-scoped
+   BudgetYourTrip pages. Add the minimum found-row coverage gate to
+   `freeze-city-cost-v6-candidate.mjs`, propose a stratified 15-city draw and its coverage numbers, then
+   stop and request owner approval. Do not collect, freeze or read that holdout in this phase.
 
-Phase 3 development fitting is complete for the current evidence. `scripts/fit-city-cost-ladder-v6.mjs`
-generates every available independent menu/activity relation and the street-food R0/R1 comparison. The
-selected street relation is R0 `k=0.3248`, n=6, LOO median APE 100.73%, p90 335.59%, grade C ±336%; R1 ties
-because no band has three eligible pairs. McMeal is retained as a diagnostic, and the generated report
-records the modeled food-tier collinearity. The coefficients pass `--check`. The remaining M3 action is
-fresh per-measure holdout collection is complete; the extension was read once after candidate freeze.
-
-The fresh holdout read is complete and must not be repeated. Do not refit from holdout data, change the
-candidate, reopen any `revealed_once` measure, or begin M4. The exact next action is to document the all-19
-derivation/coverage table and the explicit reasons the gates remain `not_evaluable`.
-The old six-measure holdout remains spent and must not be reread, rescored or replaced. The two historical
-lines immediately below still describe the pre-collection state and are superseded by this paragraph.
-The old six-measure holdout remains spent and must not be reread, rescored or replaced. A separate
-production-prediction bundle or a fresh complete end-to-end holdout would be required before any claim of
-full gate evaluation.
-
-The 121-city CSV and M4 migration remain out of scope. The twelve fresh measures are now revealed_once and
-must not be collected, read, rescored, or replaced in this holdout.
-
-The contract-reset checkpoint immediately before recollection was **25 found / 125 pending / zero
-accommodation cities**; it is historical and must not be reported as the current state. The v2 rows use
-Booking's default top-picks order, record every eligible first-page price and `classInventoryCount`, and use
-the documented public-promotion price basis. The first-page level-bias caveat means these medians are valid
-for ratios and source calibration, not absolute city-level ground truth.
+The old holdout, all 18 `revealed_once` measures, and the 121-city CSV are out of scope. M4 is out of scope.
 
 ---
 

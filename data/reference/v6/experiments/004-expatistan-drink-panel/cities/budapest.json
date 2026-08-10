@@ -1,0 +1,29 @@
+{
+  "city": "Budapest",
+  "country": "Hungary",
+  "region": "Europe",
+  "measures": {
+    "cocktail_1": {
+      "status": "found",
+      "value": 2718,
+      "currency": "HUF",
+      "unit": "per_person_item",
+      "basis": "standard_cocktail_downtown_club",
+      "sourceRole": "independent_ground_truth",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/budapest",
+      "sourceTitle": "Expatistan cost-of-living city price",
+      "evidenceText": "Expatistan publishes its standard city comparison row for one cocktail drink in a downtown club: 2718 HUF.",
+      "retrievalDate": "2026-08-01",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1",
+      "reusedFromExperiment": "091-expatistan-drink-anchors"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "sourceRole": "independent_ground_truth",
+      "unit": "per_person_item",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1",
+      "retrievalDate": "2026-08-10",
+      "reason": "The city page did not yield an accepted neighbourhood-pub beer row in this bounded collection; wine and Numbeo were not substituted."
+    }
+  }
+}

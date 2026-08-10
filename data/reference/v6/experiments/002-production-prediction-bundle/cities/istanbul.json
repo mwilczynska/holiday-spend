@@ -1,0 +1,14 @@
+{
+  "city": "Istanbul",
+  "country": "Turkey",
+  "region": "Middle East",
+  "band": "mid",
+  "referenceDate": "2026-09-17",
+  "productionPath": {
+    "collection": "collectCityCostV6Anchors",
+    "materialization": "materializeCityCostV6",
+    "provider": "production-provider-resolution"
+  },
+  "status": "not_run",
+  "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server."
+}

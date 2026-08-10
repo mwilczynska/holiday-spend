@@ -207,12 +207,14 @@ function readFxRate(currency: string) {
 
 function sourceFactToAnchor(
   source: V6SpineSource,
-  fact: ParsedMeasure,
+  fact: ParsedMeasure & { measure?: V5AnchorName },
   provider: string,
   model: string,
   promptVersion: string
 ) {
-  const evidenceGrade = SOURCE_CONFIG[source].grade;
+  const unvalidatedActivity = source === 'budgetyourtrip' &&
+    (fact.measure === 'half_day_group_activity_adult_1' || fact.measure === 'full_day_premium_activity_adult_1');
+  const evidenceGrade = unvalidatedActivity ? 'C' : SOURCE_CONFIG[source].grade;
   const missingStatus = fact.status as Exclude<V5AnchorStatus, 'observed' | 'modelled' | 'imputed'>;
   if (fact.status !== 'observed') {
     return {
@@ -246,7 +248,7 @@ function sourceFactToAnchor(
     valueAud: Math.round((calibratedValueAud + Number.EPSILON) * 100) / 100,
     status: 'observed' as const,
     evidenceGrade,
-    intervalPct: sourceOffset?.intervalPct,
+    intervalPct: unvalidatedActivity ? 35 : sourceOffset?.intervalPct,
     sourceIds: [
       `${source}:${fact.sourceUrl}`,
       ...(sourceOffset ? [`v6-source-offset:${sourceOffset.fit?.provenance ?? 'booking-expedia'}`] : []),

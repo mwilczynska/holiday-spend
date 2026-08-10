@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "city-cost-v6-budgetyourtrip-tier-panel-v1",
+  "methodologyVersion": "v6.0",
+  "panel": "development",
+  "source": "BudgetYourTrip",
+  "retrievedAt": "2026-08-10",
+  "totalCities": 25,
+  "citiesWithCompleteRows": 24,
+  "foundByMeasure": {
+    "food_budget_per_person_day": 24,
+    "food_mid_per_person_day": 24,
+    "food_high_per_person_day": 24,
+    "activities_budget_per_person_day": 24,
+    "activities_mid_per_person_day": 24,
+    "activities_high_per_person_day": 24
+  },
+  "explicitNotFoundRows": 6,
+  "activityValidation": "blocked_as_independent_ground_truth; BudgetYourTrip is the production activity source",
+  "foodValidation": "eligible_independent_ground_truth; production food source is Numbeo",
+  "twoPersonComparisonRule": "Multiply a per-person/day truth value by 2 only in the separate product-level scoring/reporting layer."
+}

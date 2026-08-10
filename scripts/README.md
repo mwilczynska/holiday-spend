@@ -49,7 +49,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/fit-city-cost-ladder-v6.mjs` | `fit-city-cost-ladder-v6.mjs` | **Fits the v6 accommodation ladder diagnostics** from pooled v5 Expedia panels plus the 25-city Booking.com v2 development panel, scores leave-one-out at city level, fits the Booking→Expedia 3-star calibration, applies the documented post-score private rollback, and regenerates `data/reference/v6/coefficients-v6.json`. Reads only repo files — no network or model calls |
 | `node scripts/fit-city-cost-ladder-v6.mjs --check` | ditto | Verifies the committed coefficients match their evidence byte-for-byte. Exits 1 on drift. Belongs in the verification baseline |
 | `node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete` | `validate-city-cost-v6-ground-truth.mjs` | Manifest-driven development-ledger audit; completeness means zero errors and zero pending slots, while substance warnings are reported separately and never block |
-| `node scripts/freeze-city-cost-v6-candidate.mjs` | `freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the holdout seal before the first holdout read |
+| `node scripts/freeze-city-cost-v6-candidate.mjs --target-panel=<coverage.json>` | `freeze-city-cost-v6-candidate.mjs` | Hashes the candidate only when the target panel reports at least its registered minimum found-row coverage; refuses an uncollected or under-covered holdout |
 | `node scripts/score-city-cost-v6-holdout.mjs` | `score-city-cost-v6-holdout.mjs` | One-time gate 2–6 score against the frozen holdout; refuses a second pass |
 | `node scripts/score-city-cost-v6-holdout-all-tier.mjs` | `score-city-cost-v6-holdout-all-tier.mjs` | One-time per-measure all-tier read; refuses old revealed measures and records explicit not_evaluable reasons when production predictions are absent |
 | `node scripts/report-city-cost-v6-m3.mjs` | `report-city-cost-v6-m3.mjs` | Generates the 19-tier M3 derivation, development-fit and holdout-status table without reading a holdout ledger |
@@ -57,6 +57,11 @@ re-derive is a claim you cannot audit.
 | `node scripts/merge-v6-holdout-extension-batch.mjs` | `merge-v6-holdout-extension-batch.mjs` | Merges a complete fresh batch into the sealed extension and reports status counts only |
 | `node scripts/seal-v6-holdout-extension.mjs` | `seal-v6-holdout-extension.mjs` | Transitions all fresh extension measures to sealed_after_collection without exposing prices |
 | `node scripts/score-expedia-production-anchor-v6.mjs [--check]` | `score-expedia-production-anchor-v6.mjs` | Deterministic scorer for experiment 001; reads only the development Booking ledger and Expedia experiment responses |
+| `cmd /c node scripts/generate-v6-prediction-bundle.mjs` | `generate-v6-prediction-bundle.mjs` | Runs the exact production collector/materializer for the 25-city development panel and writes one full 19-tier prediction bundle per city; explicit `not_run` is retained when no provider is configured |
+| `node scripts/record-v6-budgetyourtrip-tier-panel.mjs` | `record-v6-budgetyourtrip-tier-panel.mjs` | Records the pre-registered one-call-per-city BYT labelled food/activity tier facts without conversion or two-person scaling |
+| `node scripts/record-v6-expatistan-drink-panel.mjs` | `record-v6-expatistan-drink-panel.mjs` | Records accepted independent Expatistan cocktail evidence and explicit beer missingness; never promotes wine-bottle rows to wine-glass truth |
+| `node scripts/build-city-cost-v6-priors.mjs` | `build-city-cost-v6-priors.mjs` | Generates `data/reference/v6/priors-v6.json` from direct development evidence and BYT labelled tiers, without reading the live CSV |
+| `node scripts/score-v6-development-panel-in-sample.mjs` | `score-v6-development-panel-in-sample.mjs` | Scores only paired development prediction/truth rows and labels all blocked/circular results; never reads a holdout |
 
 ## SUPERSEDED — methodology v5
 

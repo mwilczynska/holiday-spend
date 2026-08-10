@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "city-cost-v6-development-in-sample-score-v1",
+  "methodologyVersion": "v6.0",
+  "panel": "development",
+  "inSample": true,
+  "holdout": false,
+  "scoredAt": "2026-08-10T20:04:36.185Z",
+  "predictionBundle": "C:\\Users\\chawi\\OneDrive\\Datascience\\projects\\holiday-spend\\data\\reference\\v6\\experiments\\002-production-prediction-bundle\\results.json",
+  "predictionCoverage": {
+    "totalCities": 25,
+    "materializedCities": 0
+  },
+  "truthSources": {
+    "accommodation": "development-ledger.json",
+    "food": "003-budgetyourtrip-tier-panel",
+    "activitiesBudget": "development-ledger.json official attraction rows",
+    "activitiesMidHigh": "blocked as circular BYT production source",
+    "drinks": "004-expatistan-drink-panel plus no accepted beer rows"
+  },
+  "note": "This report is labelled IN-SAMPLE and is not holdout validation. No spent holdout file was read.",
+  "tiers": {
+    "accom_shared_hostel_dorm": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "accom_hostel_private_room": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "accom_1_star": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "accom_2_star": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "accom_3_star": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "accom_4_star": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "food_street_food": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "no direct daily tier truth; street-food relation is checked only through the BYT food basket"
+    },
+    "food_budget": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "food_mid_range": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "food_high_end": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "drink_coffee": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "no independent full-basket drink truth; Expatistan cocktail does not validate Numbeo coffee"
+    },
+    "drinks_none": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "no independent full-basket drink truth"
+    },
+    "drinks_light": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "no accepted Expatistan neighbourhood-pub beer rows"
+    },
+    "drinks_moderate": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "cocktail-only evidence cannot validate the full coffee/beer/cocktail basket"
+    },
+    "drinks_heavy": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "wine glass was intentionally excluded and no independent full basket exists"
+    },
+    "activities_free": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "definitional; no empirical score required"
+    },
+    "activities_budget": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "Prediction bundle has no materialized city rows; no score is possible."
+    },
+    "activities_mid_range": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "BudgetYourTrip is the production source; no independent half-day tier source"
+    },
+    "activities_high_end": {
+      "status": "blocked_no_prediction_bundle",
+      "n": 0,
+      "reason": "BudgetYourTrip is the production source; no independent full-day tier source"
+    }
+  }
+}

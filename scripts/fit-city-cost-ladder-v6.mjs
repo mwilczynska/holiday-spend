@@ -79,6 +79,7 @@ const DEVELOPMENT_LEDGER = 'data/reference/v6/ground-truth/development-ledger.js
 const FX_SNAPSHOT = 'data/reference/fx/city_cost_fx_aud_2026-07-22.json';
 
 const checkOnly = process.argv.includes('--check');
+const MIN_FITTED_RELATION_N = 8;
 
 // ─── source panels ───────────────────────────────────────────────────────────
 // Every v5 experiment directory that ran an Expedia hotel-class panel. Listed
@@ -453,6 +454,7 @@ function relation(key, ps, notes, intervalPct = null) {
     key,
     n: ps.length,
     fitStatus: ps.length >= 3 ? 'fitted_r0' : 'not_fittable_n_lt_3',
+    shippingEligible: ps.length >= MIN_FITTED_RELATION_N,
     coefficient: ps.length ? round(median(ratios), 4) : null,
     dispersion: ps.length
       ? {
@@ -525,11 +527,9 @@ for (const fit of independentRelations) {
 }
 
 const streetFit = independentRelations.find((fit) => fit.key === 'street_food_meal_1p <- inexpensive_restaurant_meal_1p');
-if (!streetFit || streetFit.n < 3) {
-  throw new Error('The independent panel must fit street_food_meal_1p from inexpensive_restaurant_meal_1p with at least three city pairs.');
-}
+if (!streetFit) throw new Error('The independent panel must include the street-food diagnostic relation.');
 const streetR1 = fitR1Band(independentStreetFromInexpensive);
-streetFit.candidateForms = {
+const observedStreetFit = {
   R0: {
     coefficient: streetFit.coefficient,
     leaveOneCityOut: streetFit.leaveOneCityOut,
@@ -537,16 +537,16 @@ streetFit.candidateForms = {
   },
   R1_band: streetR1,
 };
-if (streetR1 && streetR1.leaveOneCityOut.medianApePct < streetFit.leaveOneCityOut.medianApePct) {
-  streetFit.selectedForm = 'R1_band';
-  streetFit.coefficient = streetR1.globalFallback;
-  streetFit.byBand = streetR1.byBand;
-  streetFit.leaveOneCityOut = streetR1.leaveOneCityOut;
-  streetFit.intervalPct = streetR1.intervalPct;
-  streetFit.fitStatus = 'fitted_r1_band';
-} else {
-  streetFit.selectedForm = 'R0';
-}
+// Six noisy pairs are evidence about the failure of a fitted street-food ratio,
+// not enough evidence to ship one. The product receives the preregistered
+// reasoned constant; the raw R0/R1 diagnostics remain in the generated report.
+streetFit.candidateForms = observedStreetFit;
+streetFit.selectedForm = 'reasoned_constant';
+streetFit.observedFit = { ...streetFit };
+streetFit.coefficient = 0.5;
+streetFit.fitStatus = 'reasoned_constant_below_minimum_n';
+streetFit.intervalPct = 35;
+streetFit.notes = `The observed relation has n=${streetFit.n}; fitted ratios require n>=${MIN_FITTED_RELATION_N}. Street food is the same meal without table service, premises rent or waitstaff; a reasoned 0.5 constant is used and checked at basket level against BudgetYourTrip. The v1-derived 4.65/7.75=0.60 is incidental corroboration only.`;
 
 function selectedStreetCoefficient(point) {
   return streetFit.selectedForm === 'R1_band' && point.band && Number.isFinite(streetFit.byBand?.[point.band])
@@ -731,12 +731,21 @@ const oneStarK =
   twoStarK && hostelBlended ? Math.sqrt(hostelBlended.median * twoStarK) : null;
 const privateGroundTruthK = bookingPrivateFromThree.length ? median(bookingPrivateFromThree.map((p) => p.ratio)) : null;
 const dormGroundTruthK = bookingDormFromThree.length ? median(bookingDormFromThree.map((p) => p.ratio)) : null;
-const premiumFit = independentRelation('premium_restaurant_meal_2p <- midrange_restaurant_meal_2p');
+const premiumObservedFit = independentRelation('premium_restaurant_meal_2p <- midrange_restaurant_meal_2p');
 const cocktailFit = independentRelation('cocktail_1 <- cappuccino_1');
 const wineFit = independentRelation('wine_glass_1 <- cappuccino_1');
-if (!premiumFit?.coefficient || !cocktailFit?.coefficient || !wineFit?.coefficient) {
-  throw new Error('The independent panel must fit premium, cocktail and wine ratios before M3 can proceed.');
+if (!premiumObservedFit?.coefficient || !cocktailFit?.coefficient) {
+  throw new Error('The independent panel must include premium and cocktail diagnostics before M3 can proceed.');
 }
+const premiumFit = premiumObservedFit.n >= MIN_FITTED_RELATION_N
+  ? premiumObservedFit
+  : {
+      ...premiumObservedFit,
+      coefficient: 1.5,
+      fitStatus: 'reasoned_constant_below_minimum_n',
+      intervalPct: 45,
+      notes: `The observed premium relation has n=${premiumObservedFit.n}; fitted ratios require n>=${MIN_FITTED_RELATION_N}. Use the documented v4 food-high-end basket convention of 1.5x midrange only as a reasoned fallback, not as a fitted result; the n=3 fit's ±12% interval is rejected as false confidence.`,
+    };
 
 // This is a generated coverage map, not a second source of arithmetic. It makes
 // the all-19 contract auditable: every product tier is either a measured anchor,
@@ -780,11 +789,11 @@ const derivationRules = {
     validation: 'development_fitted_and_original_holdout_revealed_once',
   },
   food_street_food: {
-    type: 'fitted_ratio',
+    type: 'reasoned_constant',
     inputs: ['inexpensive_restaurant_meal_1p'],
     coefficientKey: 'street_food_meal_1p',
-    definition: 'street-food meal is fitted from the independently observed inexpensive restaurant meal relationship; the source street-food anchor remains visible in imputedMeasures',
-    validation: 'independent_street_food_development_fit_and_fresh_holdout_required',
+    definition: 'street-food meal is 0.5 times the inexpensive restaurant meal; the source street-food anchor remains visible in validation evidence',
+    validation: 'development_basket_cross_check; fitted_relation_not_eligible_below_minimum_n',
   },
   food_budget: {
     type: 'fixed_basket',
@@ -797,10 +806,10 @@ const derivationRules = {
     validation: 'direct_inputs_holdout_required',
   },
   food_high_end: {
-    type: 'fixed_basket_with_fitted_premium_ratio',
+    type: 'fixed_basket_with_reasoned_premium_constant',
     inputs: ['inexpensive_restaurant_meal_1p', 'midrange_restaurant_meal_2p', 'premium_restaurant_meal_2p'],
     coefficientKey: 'premium_restaurant_meal_2p',
-    validation: 'premium_fresh_holdout_measure_required',
+    validation: 'premium_direct_panel_n3_below_minimum; independent validation required',
   },
   drink_coffee: {
     type: 'measured_production_anchor',
@@ -825,10 +834,10 @@ const derivationRules = {
     validation: 'cocktail_fresh_holdout_measure_required',
   },
   drinks_heavy: {
-    type: 'fixed_basket_with_fitted_cocktail_and_wine_ratios',
-    inputs: ['cappuccino_1', 'domestic_draft_beer_1', 'cocktail_1', 'wine_glass_1'],
-    coefficientKeys: ['cocktail_1', 'wine_glass_1'],
-    validation: 'cocktail_and_wine_fresh_holdout_measures_required',
+    type: 'fixed_basket_without_wine_glass',
+    inputs: ['cappuccino_1', 'domestic_draft_beer_1', 'cocktail_1'],
+    coefficientKey: 'cocktail_1',
+    validation: 'wine_glass_not_evaluable; intentionally excluded after rejected bottle calibration',
   },
   activities_free: {
     type: 'definitional',
@@ -842,16 +851,16 @@ const derivationRules = {
     validation: 'original_holdout_revealed_once',
   },
   activities_mid_range: {
-    type: 'measured_production_anchor',
+    type: 'measured_production_anchor_unvalidated',
     inputs: ['half_day_group_activity_adult_1'],
     source: 'BudgetYourTrip production extractor',
-    validation: 'independent_panel_n0; fresh_holdout_measure_required',
+    validation: 'blocked_as_independent_ground_truth; BudgetYourTrip is production source; runtime grade C ±35%',
   },
   activities_high_end: {
-    type: 'measured_production_anchor',
+    type: 'measured_production_anchor_unvalidated',
     inputs: ['full_day_premium_activity_adult_1'],
     source: 'BudgetYourTrip production extractor',
-    validation: 'independent_panel_n1_below_fit_threshold; fresh_holdout_measure_required',
+    validation: 'blocked_as_independent_ground_truth; BudgetYourTrip is production source; runtime grade C ±35%',
   },
 };
 
@@ -906,6 +915,7 @@ const report = {
   description:
     'All generated v6 ladder coefficients and independent development-panel ratio fits. Fixed basket ' +
     'definitions remain in the deterministic materializer. Regenerate with: node scripts/fit-city-cost-ladder-v6.mjs',
+  minimumFittedRelationN: MIN_FITTED_RELATION_N,
   generatedFrom: {
     expediaPanels: EXPEDIA_PANELS,
     dormPanels: DORM_PANELS,
@@ -1025,11 +1035,11 @@ const report = {
     premium_restaurant_meal_2p: {
       k: premiumFit.coefficient,
       appliedTo: 'midrange_restaurant_meal_2p',
-      grade: 'C',
+      grade: premiumFit.n >= MIN_FITTED_RELATION_N ? 'C' : 'D',
       intervalPct: premiumFit.intervalPct,
-      provenance: 'fitted_independent_official_menu_panel_r0',
-      developmentGroundTruthValidation: premiumFit,
-      warning: 'Only three development cities supplied both compliant independent premium and midrange menu panels; retain the residual-dispersion interval and validate once on the sealed holdout measure.',
+      provenance: premiumFit.n >= MIN_FITTED_RELATION_N ? 'fitted_independent_official_menu_panel_r0' : 'reasoned_v4_food_high_end_constant_below_minimum_n',
+      developmentGroundTruthValidation: { observedFit: premiumObservedFit, shippedForm: premiumFit },
+      warning: premiumFit.n >= MIN_FITTED_RELATION_N ? null : 'Only three development cities supplied both compliant independent premium and midrange menu panels. The apparent ±12% fitted interval is rejected; this grade-D reasoned fallback is not a validation result.',
     },
     street_food_meal_1p: {
       k: streetFit.coefficient,
@@ -1037,11 +1047,9 @@ const report = {
       appliedTo: 'inexpensive_restaurant_meal_1p',
       grade: 'C',
       intervalPct: streetFit.intervalPct,
-      provenance: streetFit.selectedForm === 'R1_band'
-        ? 'fitted_independent_official_street_food_panel_r1_band'
-        : 'fitted_independent_official_street_food_panel_r0',
+      provenance: 'reasoned_constant_street_food_half_inexpensive_below_minimum_n',
       developmentGroundTruthValidation: streetFit,
-      warning: 'The prior McMeal 1:1 identity proxy is superseded. McMeal remains a Numbeo cross-check only; this laddered value is grade C and uses the fitted residual-dispersion interval.',
+      warning: 'The prior McMeal 1:1 identity proxy and the noisy n=6 fitted relation are superseded. McMeal remains a Numbeo cross-check only; the shipped 0.5 reasoned constant is checked at basket level against BudgetYourTrip.',
     },
     cocktail_1: {
       k: cocktailFit.coefficient,
@@ -1052,19 +1060,12 @@ const report = {
       developmentGroundTruthValidation: cocktailFit,
       warning: 'Production does not measure cocktail_1. It remains laddered from the measured cappuccino anchor and is independently validated from official menus; no Expatistan primary ground truth is used.',
     },
-    wine_glass_1: {
-      k: wineFit.coefficient,
-      appliedTo: 'cappuccino_1',
-      grade: 'C',
-      intervalPct: wineFit.intervalPct,
-      provenance: 'fitted_independent_official_menu_panel_r0',
-      developmentGroundTruthValidation: wineFit,
-      warning: 'Production does not measure wine_glass_1. It remains laddered from the measured cappuccino anchor and is independently validated from official 125–175 ml / 15 cl menus; no Expatistan primary ground truth is used.',
-    },
   },
   postHoldoutDecisions,
   limitations: [
-    'R0 is the default form. The street-food relation also tests an R1 cost-band candidate; it is selected only when its leave-one-city-out median APE improves on R0. v4 established that cost bands make both hotel relations worse on leave-one-out and holdout.',
+    `Fitted relations require n>=${MIN_FITTED_RELATION_N}. The street-food n=6 relation and premium n=3 relation are retained as diagnostics but ship documented reasoned fallbacks; the former uses 0.5x inexpensive meal and the latter uses the v4 1.5x food-high-end convention with grade D.`,
+    'Wine glass is intentionally excluded from drinks_heavy after the rejected Expatistan bottle-to-glass route; its raw menu diagnostic is retained but no wine coefficient is shipped.',
+    `The minimum fitted relation sample size is n=${MIN_FITTED_RELATION_N}. The beer/cappuccino diagnostic has n=4 and LOO medAPE 82.87%, so it is not promoted to a coefficient; the n=5 wine diagnostic is likewise not promoted.`,
     'accom_1_star is interpolated, not observed. It is the weakest value in the methodology.',
     'The dorm coefficient is fitted on Booking.com v2 development ratios. The private-room development fit is retained as diagnostic evidence, but the shipped coefficient is the pre-holdout v4 blended rollback after the one-time holdout exposed over-prediction; absolute levels remain subject to the first-page bias caveat and the Expedia source offset.',
     'Bare-dollar Expedia.com rows carry currency BARE_DOLLAR_PROXY and are only ever paired with each other.',

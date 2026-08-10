@@ -2558,3 +2558,37 @@ production-path prediction bundle, and the spent old measures cannot be reopened
 daily basket. Ratio-only validation is also not evaluable where both independent sides are not found and
 frozen-FX comparable. This is the honest M3 result for the current holdout contract; the missing prediction
 bundle and the spent-measure boundary are explicit reasons, not a scoring failure to tune around.
+
+## v6 M3 — supersede item-level holdout route and reset to product-tier validation (10 August 2026)
+
+The owner stopped the prior M3 collection approach. The 25-city development ledger is preserved at **280
+found / 0 pending** across 18 measures; the previous holdout is spent, with all 18 measures `revealed_once`.
+No holdout value was reopened, rescored, frozen against, or used for tuning.
+
+The diagnosis is twofold: the old process collected truth without generating the matching production
+predictions, so scoring could only return `not_evaluable`; and item-level food, drink and activity sources
+are sparse and do not measure the product's daily-spend estimand. The active route is now to generate exact
+production-path predictions, collect BudgetYourTrip's tier-labelled daily food/activity spend for the
+development panel, add Expatistan cocktail and neighbourhood-pub beer cross-checks for Numbeo drinks, and
+score development in-sample. BYT activity rows are explicitly production-sourced and unvalidated; the
+official attraction panel remains the independent budget-activity check. Wine glass is not recollected after
+the rejected bottle calibration route.
+
+The new generator is `scripts/generate-v6-prediction-bundle.mjs` and its first run is stored under
+`data/reference/v6/experiments/002-production-prediction-bundle/`: **0/25 materialized** because no supported
+provider credential is configured in this checkout. Every city is recorded `not_run`; no prediction was
+fabricated. No new holdout action is permitted before Phase 6, which will verify BYT page coverage, add a
+minimum-coverage freeze guard, propose a fresh 15-city panel, and stop for owner approval.
+
+The development evidence artifacts are now banked. BYT covers 24/25 development city pages with 144 found
+labelled tier rows; Colombo is explicit `not_found`. Expatistan contributes 4 accepted cocktail rows and 3
+accepted neighbourhood-pub beer rows; remaining cities are explicit missingness and wine glass is not collected. The generated prior artifact
+`data/reference/v6/priors-v6.json` uses 246 AUD-convertible direct ledger rows plus the BYT tier panel and no
+shipping-CSV inversion. The in-sample scorer is present, but with 0/25 production predictions it correctly
+reports all 19 tiers blocked rather than scoring truth against nothing.
+
+Phase 6 page verification found a 15-city proposal across the nine regions in
+`data/reference/v6/ground-truth/fresh-holdout-proposal-v2.json`. Its pre-registered minimum is 72 found BYT
+tier rows out of 90; below that the freeze script must refuse and no holdout may be read. The proposal has
+no tier values. No new holdout was drawn, frozen, read or scored, and the owner must approve before that can
+change.

@@ -1,0 +1,23 @@
+{
+  "city": "Cape Town",
+  "country": "South Africa",
+  "region": "Africa",
+  "measures": {
+    "cocktail_1": {
+      "status": "not_found",
+      "sourceRole": "independent_ground_truth",
+      "unit": "per_person_item",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1",
+      "retrievalDate": "2026-08-10",
+      "reason": "The accepted Expatistan cocktail route did not contain a city row; no Numbeo or menu proxy substituted."
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "sourceRole": "independent_ground_truth",
+      "unit": "per_person_item",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1",
+      "retrievalDate": "2026-08-10",
+      "reason": "The city page did not yield an accepted neighbourhood-pub beer row in this bounded collection; wine and Numbeo were not substituted."
+    }
+  }
+}

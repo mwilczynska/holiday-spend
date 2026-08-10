@@ -1,0 +1,28 @@
+{
+  "city": "Da Nang",
+  "country": "Vietnam",
+  "region": "SEA",
+  "measures": {
+    "cocktail_1": {
+      "status": "not_found",
+      "sourceRole": "independent_ground_truth",
+      "unit": "per_person_item",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1",
+      "retrievalDate": "2026-08-10",
+      "reason": "The accepted Expatistan cocktail route did not contain a city row; no Numbeo or menu proxy substituted."
+    },
+    "domestic_draft_beer_1": {
+      "status": "found",
+      "value": 28575,
+      "currency": "VND",
+      "unit": "per_person_item",
+      "basis": "neighbourhood_pub_beer_500ml_or_1pt",
+      "sourceRole": "independent_ground_truth",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/da-nang",
+      "sourceTitle": "Expatistan cost-of-living city price",
+      "evidenceText": "Expatistan publishes its standard neighbourhood-pub beer row (500ml or 1pt.): 28575 VND.",
+      "retrievalDate": "2026-08-10",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1"
+    }
+  }
+}

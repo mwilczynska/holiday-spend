@@ -2,8 +2,10 @@
 
 **Status:** **ACTIVE.** Adopted 9 August 2026. Supersedes `city-cost-methodology-v5.md`.
 **Branch:** `feat/city-cost-methodology-v6`
-**Current milestone:** M0, M1 and M2 complete; M3 development fit, single holdout score and production-anchor
-replication are complete. M4 migration is intentionally not started.
+**Current milestone:** M0, M1 and M2 collection are complete; M3 has been reset to fit and validate all 19
+tiers end-to-end. The previous holdout is spent and all 18 measures are `revealed_once`; no new holdout may
+be drawn, frozen or read until Phase 6 proposes a coverage-qualified panel and the owner approves it. M4 is
+intentionally not started.
 
 **Cold start?** Read `docs/dev/handoffs/city-cost-v6.md` — it names the exact next action.
 **Running the loop?** Use `LOOP-PROMPT-V6.md`.
@@ -325,6 +327,31 @@ spent effort there because §1.6's instruction always redirected it to the next 
 Estimated effort: 2–4 days of collection. This is bounded, unlike the 95-experiment search that preceded it.
 
 ---
+
+## 5.1 Current M3 owner reset — 10 August 2026
+
+The 25-city x 18-measure development ledger is preserved at **280 found / 0 pending**, but it is item-level
+evidence and does not by itself validate the product's daily-spend tiers. The previous holdout is spent: all
+18 measures are `revealed_once`. The old all-tier score was `not_evaluable` because it had truth without the
+matching production predictions. No new holdout action is permitted before Phase 6 and owner approval.
+
+The active M3 design is:
+
+- Generate exact production-path 19-tier predictions for the 25 development cities. The first run is
+  recorded as 0/25 because this checkout has no provider credential; each city is explicit `not_run`.
+- Record one labelled BudgetYourTrip page per development city for food and activity budget/mid/luxury
+  per-person/day tiers. Food is independent of production Numbeo; activity rows are production-source
+  diagnostics and cannot be promoted to independent truth. Use Expatistan cocktail and neighbourhood-pub
+  beer for drinks; do not recollect wine glass after the rejected bottle calibration.
+- Require fitted relations to have n >= 8. Below that threshold, generated coefficients use a documented
+  reasoned constant or regional prior with an honest grade and interval. Street food ships the owner-directed
+  0.5 x inexpensive-meal reasoned constant, grade C, +/-35%; the n=3 premium fit is rejected.
+- Rebuild region -> region|band -> global priors from direct development evidence and labelled BYT tiers;
+  the live 121-city CSV is not read or inverted.
+- Score development only and label every evaluable number **IN-SAMPLE**. Circular, partial and unpaired
+  measures remain blocked rather than becoming false validation.
+- Verify BYT page existence for a proposed 15-city draw from the 81 neither-panel cities, require at least
+  72/90 found BYT tier rows before freeze/read, and stop for owner approval.
 
 ## 6. Milestones and honest success estimates
 

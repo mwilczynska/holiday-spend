@@ -166,11 +166,14 @@ under `data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start docu
 `docs/dev/handoffs/city-cost-v6.md`.
 M3 was reopened by owner decision to fit and validate all 19 product tiers. The manifest-driven development
 ledger now has 25 cities x 18 measures with 280 found rows and zero pending slots; the street-food relation
-is independently collected and generated from the inexpensive-meal anchor. The original six-measure holdout
-is spent. A fresh 15-city x 12-measure extension was collected under per-measure seals with 12 found and 168
-explicit missing rows, then read once after a single candidate freeze. The all-tier report records gates 2-6
-as not_evaluable because no paired production-path prediction bundle exists and the old revealed measures
-cannot be reopened. The 121-city CSV remains on v1 until M4.
+is independently audited and now ships a generated 0.5 reasoned constant because its n=6 fit is below the
+minimum fitted-relation threshold. The original six-measure holdout and the later 18-measure extension are
+spent; all 18 measures are `revealed_once` and must not be reopened. The exact production prediction-bundle
+generator exists, but its first run materialized 0/25 cities because no local provider credential was
+configured. BYT tier evidence and an Expatistan drink cross-check are recorded for development, while
+activity evidence remains circular when sourced from BYT. The development scorer is therefore correctly
+blocked until predictions exist. A fresh 15-city proposal is page-verified and coverage-gated at 72/90 rows;
+it awaits owner approval. The 121-city CSV remains on v1 until M4.
 
 ### Transport is out of scope
 
@@ -297,6 +300,9 @@ login page shows provider-specific guidance instead.
 | `src/lib/city-generation.ts`, `city-llm-client.ts` | v1 generation plus the v6 feature-flag switch |
 | `src/lib/city-cost-methodology-v6.ts` | Deterministic v6 ladder, grades, intervals and regional priors |
 | `src/lib/city-cost-v6-collection.ts` | Three v6 spine extractors, FX conversion, retry telemetry |
+| `scripts/generate-v6-prediction-bundle.mjs` | Exact production-path prediction bundle generator for the development panel |
+| `scripts/build-city-cost-v6-priors.mjs` | Generates direct-evidence regional/band priors without reading the live CSV |
+| `scripts/score-v6-development-panel-in-sample.mjs` | Development-only prediction/truth scorer; labels blocked and in-sample results explicitly |
 | `src/lib/provider-model-discovery.ts` | Three-tier model discovery |
 | `src/lib/country-metadata.ts` | Canonical country resolution |
 | `src/lib/plan-comparison.ts` | The canonical planned-allocation engine |

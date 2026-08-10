@@ -191,30 +191,32 @@ M1 implementation notes:
 - v6 provenance is persisted in `city_estimates.metadata_json` and shown on `/dataset`. The live CSV and seed path
   are unchanged.
 
-### M3 — fit and validate all 19 tiers — **IN PROGRESS (scope reset 10 August 2026)**
+### M3 — fit and validate all 19 tiers — **IN PROGRESS (owner reset 10 August 2026)**
 
-- [x] Record the dated contract amendment from six accommodation-scoped measures to 18 all-tier validation rows
-- [x] Resolve the 12 new development measures across all 25 cities (hotel-2 plus street food and ten other independent measures; explicit missingness is valid)
-- [x] Generate and cross-check every non-accommodation derivation from the development panel, including fitted street-food/inexpensive
-- [x] Collect the 12 fresh holdout measures under per-measure seals without reading them
-- [x] Freeze one all-19 candidate and perform the single per-measure read; no old revealed measure was reopened
-- [ ] Publish the all-19 derivation, development fit, holdout result and v1 comparison table
+- [x] Stop and supersede the item-level collection/scoring route; preserve the 25-city development panel
+- [x] Record that the previous holdout is spent: all 18 measures are `revealed_once`
+- [x] Add the exact production-path prediction-bundle generator
+- [ ] Materialize the 25-city production prediction bundle (currently 0/25: no local provider credential)
+- [ ] Collect the pre-registered BudgetYourTrip tier-level panel and Expatistan drink cross-checks
+- [ ] Replace weak relations with documented reasoned constants or regional priors; audit grades and intervals
+- [ ] Rebuild regional priors from direct development evidence, decoupled from the live CSV
+- [ ] Score the development panel end-to-end, labelled **IN-SAMPLE**
+- [ ] Verify candidate BYT coverage for a fresh 15-city holdout, add the minimum-coverage freeze guard, propose it, then stop for owner approval
 
-**Current status:** Phase 1's all-tier contract was amended again on 10 August 2026 after an audit found
-that the McMeal-to-street-food identity proxy was an asserted `k=1.0` constant. The 18-measure panel is now
-complete at **280 found / 0 pending** across 25 cities: street food contributed 11 found rows, 14 explicit
-`not_found` rows and zero `class_absent` findings. The generated street-food fit is R0 `k=0.3248` on six
-FX-compatible city pairs, with LOO median APE 100.73%, p90 335.59%; its cost-banded R1 candidate tied because
-no band had three eligible pairs, so the grade-C interval is the residual-derived ±336%. McMeal remains a
-diagnostic only. That development fitting record predates the fresh holdout read; no coefficient was refit
-from holdout data and M4 migration remains out of scope.
-The old accommodation-only score is not an all-19 M3 result. Batch 007 resolved and sealed the fresh
-15-city extension: 12 found independent menu rows and 168 explicit `not_found` rows across 180 slots.
-One candidate was frozen before the fresh extension was read. The all-tier scorer then read the 12 fresh
-measures once, refused to open the six `revealed_once` measures, and recorded gates 2-6 as `not_evaluable`:
-no paired production-path prediction bundle exists for the fresh cities, and the spent old measures cannot
-be reopened to compose a full basket. This is an explicit validation gap, not a pass. M4 migration remains
-out of scope.
+**Current status:** The 25-city x 18-measure development ledger remains intact at **280 found / 0 pending**.
+It is item-level evidence and is not being discarded, but it cannot by itself validate the daily-spend product
+tiers. The old holdout's 18 measures are all `revealed_once`; it must not be touched, frozen against, read,
+rescored or used to tune. The root failure was that the old scorer had truth without production predictions,
+and that the item-level food/drink/activity route was sparse where tier-level daily spend is published.
+
+Experiment 002 now contains the exact production bundle generator. Its first run is explicitly **0/25
+materialized** because no supported local provider credential is configured; every city is recorded as
+`not_run` rather than fabricated. The new route is one BudgetYourTrip call per development city for direct
+food/activity daily tiers, plus Expatistan cocktail and neighbourhood-pub beer evidence for drinks. BYT is
+independent for food but circular for activities, so activity mid/high remain production-sourced and
+unvalidated; the existing official attraction rows are the independent budget-activity check. Wine glass is
+not being recollected after the rejected Expatistan bottle/glass route. No new holdout action is permitted
+until Phase 6, where a coverage-gated proposal will be presented for approval. M4 remains out of scope.
 
 ### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
 

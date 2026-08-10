@@ -1,0 +1,441 @@
+{
+  "schemaVersion": "city-cost-v6-prediction-bundle-v1",
+  "methodologyVersion": "v6.0",
+  "panel": "development",
+  "manifestPath": "data/reference/v6/validation-manifest-v6.json",
+  "referenceDate": "2026-09-17",
+  "productionPath": "collectCityCostV6Anchors -> materializeCityCostV6",
+  "provider": "production-provider-resolution",
+  "startedAt": "2026-08-10T19:33:01.721Z",
+  "completedAt": "2026-08-10T19:33:01.740Z",
+  "totalCities": 25,
+  "foundCities": 0,
+  "notRunCities": 25,
+  "rows": [
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "region": "East Asia",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Beijing",
+      "country": "China",
+      "region": "East Asia",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "region": "South Asia",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "region": "South Asia",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "region": "Middle East",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "region": "Africa",
+      "band": "low",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "region": "Africa",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "region": "Africa",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "region": "Latin America",
+      "band": "mid",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": "high",
+      "referenceDate": "2026-09-17",
+      "productionPath": {
+        "collection": "collectCityCostV6Anchors",
+        "materialization": "materializeCityCostV6",
+        "provider": "production-provider-resolution"
+      },
+      "status": "not_run",
+      "reason": "No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.",
+      "tierCount": 0,
+      "llmCalls": 0,
+      "searches": 0
+    }
+  ]
+}

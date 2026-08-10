@@ -1,0 +1,34 @@
+{
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "region": "SEA",
+  "measures": {
+    "cocktail_1": {
+      "status": "found",
+      "value": 150582,
+      "currency": "VND",
+      "unit": "per_person_item",
+      "basis": "standard_cocktail_downtown_club",
+      "sourceRole": "independent_ground_truth",
+      "sourceUrl": "https://www.expatistan.com/price/wine/hanoi",
+      "sourceTitle": "Expatistan cost-of-living city price",
+      "evidenceText": "Expatistan publishes its standard city comparison row for one cocktail drink in a downtown club: 150582 VND.",
+      "retrievalDate": "2026-08-01",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1",
+      "reusedFromExperiment": "091-expatistan-drink-anchors"
+    },
+    "domestic_draft_beer_1": {
+      "status": "found",
+      "value": 36834,
+      "currency": "VND",
+      "unit": "per_person_item",
+      "basis": "neighbourhood_pub_beer_500ml_or_1pt",
+      "sourceRole": "independent_ground_truth",
+      "sourceUrl": "https://www.expatistan.com/cost-of-living/hanoi",
+      "sourceTitle": "Expatistan cost-of-living city price",
+      "evidenceText": "Expatistan publishes its standard neighbourhood-pub beer row (500ml or 1pt.): 36834 VND.",
+      "retrievalDate": "2026-08-10",
+      "selectionRule": "expatistan_standard_cocktail_or_neighbourhood_pub_beer_v1"
+    }
+  }
+}

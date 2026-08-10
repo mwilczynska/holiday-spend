@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "city-cost-v6-fresh-holdout-proposal-v2",
+  "methodologyVersion": "v6.0",
+  "status": "proposed_not_collected",
+  "proposedAt": "2026-08-10",
+  "sourcePool": "81 cities in the shipping CSV that are in neither the 25-city development panel nor the spent 15-city holdout",
+  "pageExistencePolicy": "A city enters the proposal only after its city-scoped BudgetYourTrip page is verified to exist. No tier price is collected or read at proposal time.",
+  "minimumCoverageGate": {
+    "basis": "six BYT-labelled tier rows per city (three food and three activity)",
+    "minimumFoundRows": 72,
+    "totalExpectedRows": 90,
+    "minimumCoveragePct": 80,
+    "actionBelowThreshold": "refuse candidate freeze and refuse any holdout read",
+    "note": "The page-existence check is not a coverage result. After collection, the found-row count must be at least 72/90 and every missing row must be explicit before approval is requested."
+  },
+  "cities": [
+    { "city": "Bangkok", "country": "Thailand", "region": "SEA", "band": "low", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok" },
+    { "city": "Chiang Mai", "country": "Thailand", "region": "SEA", "band": "low", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/thailand/chiang-mai" },
+    { "city": "Kuala Lumpur", "country": "Malaysia", "region": "SEA", "band": "mid", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/malaysia/kuala-lumpur" },
+    { "city": "Busan", "country": "South Korea", "region": "East Asia", "band": "mid", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/south-korea/busan-pusan" },
+    { "city": "Osaka", "country": "Japan", "region": "East Asia", "band": "high", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/japan/osaka" },
+    { "city": "Goa", "country": "India", "region": "South Asia", "band": "low", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/india/goa" },
+    { "city": "Tel Aviv", "country": "Israel", "region": "Middle East", "band": "high", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/israel/tel-aviv" },
+    { "city": "Marrakech", "country": "Morocco", "region": "Africa", "band": "mid", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/morocco/marrakech" },
+    { "city": "Athens", "country": "Greece", "region": "Europe", "band": "mid", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/greece/athens" },
+    { "city": "Amsterdam", "country": "Netherlands", "region": "Europe", "band": "high", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/netherlands/amsterdam" },
+    { "city": "Paris", "country": "France", "region": "Europe", "band": "high", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/france/paris" },
+    { "city": "Medellin", "country": "Colombia", "region": "Latin America", "band": "mid", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/colombia/medellin" },
+    { "city": "New York City", "country": "United States", "region": "North America", "band": "high", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/new-york-city" },
+    { "city": "Sydney", "country": "Australia", "region": "Oceania", "band": "high", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/australia/sydney" },
+    { "city": "Auckland", "country": "New Zealand", "region": "Oceania", "band": "high", "bytPageStatus": "verified", "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/auckland" }
+  ],
+  "verificationNote": "All 15 city-scoped pages were verified by direct open or exact-site search on 2026-08-10. This proposal records existence only; it contains no holdout tier values."
+}

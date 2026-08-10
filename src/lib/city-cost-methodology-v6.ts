@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import Papa from 'papaparse';
 import type { CityEstimateData } from '@/types';
 import {
   deriveCityCostV5,
@@ -86,29 +85,10 @@ export interface V6Priors {
   byRegionBand: Record<string, Partial<Record<V5AnchorName, number>>>;
   byRegion: Record<string, Partial<Record<V5AnchorName, number>>>;
   global: Partial<Record<V5AnchorName, number>>;
+  tierValuesByRegionBand?: Record<string, Partial<Record<V5TierName, number>>>;
+  tierValuesByRegion?: Record<string, Partial<Record<V5TierName, number>>>;
+  tierValuesGlobal?: Partial<Record<V5TierName, number>>;
   bandCuts: V6BandCuts;
-}
-
-interface V6CsvRow {
-  region?: string;
-  accom_shared_hostel_dorm?: string | number;
-  accom_hostel_private_room?: string | number;
-  accom_1_star?: string | number;
-  accom_2_star?: string | number;
-  accom_3_star?: string | number;
-  accom_4_star?: string | number;
-  food_street_food?: string | number;
-  food_budget?: string | number;
-  food_mid_range?: string | number;
-  food_high_end?: string | number;
-  drink_coffee?: string | number;
-  drinks_none?: string | number;
-  drinks_light?: string | number;
-  drinks_moderate?: string | number;
-  drinks_heavy?: string | number;
-  activities_budget?: string | number;
-  activities_mid_range?: string | number;
-  activities_high_end?: string | number;
 }
 
 const GRADE_ORDER: V6Grade[] = ['A', 'B', 'C', 'D', 'definitional'];
@@ -147,7 +127,6 @@ const V6_TIER_WEIGHTS: Record<V5TierName, Partial<Record<V5AnchorName, number>>>
     cappuccino_1: 2,
     domestic_draft_beer_1: 6,
     cocktail_1: 4,
-    wine_glass_1: 2,
   },
   activities_free: {},
   activities_budget: { paid_attraction_adult_1: 2 },
@@ -165,8 +144,7 @@ type V6AccommodationCoefficientKey =
 type V6GeneratedRatioCoefficientKey =
   | 'premium_restaurant_meal_2p'
   | 'street_food_meal_1p'
-  | 'cocktail_1'
-  | 'wine_glass_1';
+  | 'cocktail_1';
 
 let referenceCache: { coefficients: V6CoefficientsFile; bandCuts: V6BandCuts } | null = null;
 let defaultPriorsCache: V6Priors | null = null;
@@ -206,81 +184,11 @@ export function loadV6SourceCalibrationOffset(measure: V5AnchorName) {
   return loadV6ReferenceData().coefficients.sourceCalibrationOffsets?.[measure] ?? null;
 }
 
-function numeric(value: string | number | undefined) {
-  const parsed = typeof value === 'number' ? value : Number(value);
-  return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
-}
-
 function median(values: number[]) {
   if (!values.length) return null;
   const sorted = [...values].sort((a, b) => a - b);
   const middle = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
-}
-
-function positiveOrNull(value: number | null) {
-  return value !== null && Number.isFinite(value) && value >= 0 ? value : null;
-}
-
-function rowToAnchorValues(row: V6CsvRow): Partial<Record<V5AnchorName, number>> {
-  const coffee = numeric(row.drink_coffee);
-  const drinksLight = numeric(row.drinks_light);
-  const drinksModerate = numeric(row.drinks_moderate);
-  const drinksHeavy = numeric(row.drinks_heavy);
-  const street = numeric(row.food_street_food);
-  const inexpensive = positiveOrNull(
-    numeric(row.food_budget) !== null && street !== null
-      ? (numeric(row.food_budget)! - 4 * (street / 6)) / 2
-      : null
-  );
-  const midrange = positiveOrNull(
-    numeric(row.food_mid_range) !== null && street !== null && inexpensive !== null
-      ? numeric(row.food_mid_range)! - 2 * (street / 6) - 2 * inexpensive
-      : null
-  );
-  const premium = positiveOrNull(
-    numeric(row.food_high_end) !== null && inexpensive !== null && midrange !== null
-      ? numeric(row.food_high_end)! - 2 * inexpensive - midrange
-      : null
-  );
-  const beer = positiveOrNull(
-    drinksLight !== null && coffee !== null ? (drinksLight - 2 * coffee) / 2 : null
-  );
-  const cocktail = positiveOrNull(
-    drinksModerate !== null && coffee !== null && beer !== null
-      ? (drinksModerate - 2 * coffee - 4 * beer) / 2
-      : null
-  );
-  const wine = positiveOrNull(
-    drinksHeavy !== null && coffee !== null && beer !== null && cocktail !== null
-      ? (drinksHeavy - 2 * coffee - 6 * beer - 4 * cocktail) / 2
-      : null
-  );
-
-  const values: Partial<Record<V5AnchorName, number | null>> = {
-    hostel_dorm_bed_1p: numeric(row.accom_shared_hostel_dorm) === null ? null : numeric(row.accom_shared_hostel_dorm)! / 2,
-    hostel_private_room_2p: numeric(row.accom_hostel_private_room),
-    hotel_1star_room_2p: numeric(row.accom_1_star),
-    hotel_2star_room_2p: numeric(row.accom_2_star),
-    hotel_3star_room_2p: numeric(row.accom_3_star),
-    hotel_4star_room_2p: numeric(row.accom_4_star),
-    street_food_meal_1p: street === null ? null : street / 6,
-    inexpensive_restaurant_meal_1p: inexpensive,
-    midrange_restaurant_meal_2p: midrange,
-    premium_restaurant_meal_2p: premium,
-    mcmeal_combo: inexpensive,
-    cappuccino_1: coffee,
-    domestic_draft_beer_1: beer,
-    cocktail_1: cocktail,
-    wine_glass_1: wine,
-    paid_attraction_adult_1: numeric(row.activities_budget) === null ? null : numeric(row.activities_budget)! / 2,
-    half_day_group_activity_adult_1: numeric(row.activities_mid_range) === null ? null : numeric(row.activities_mid_range)! / 2,
-    full_day_premium_activity_adult_1: numeric(row.activities_high_end) === null ? null : numeric(row.activities_high_end)! / 2,
-  };
-
-  return Object.fromEntries(
-    Object.entries(values).filter(([, value]) => typeof value === 'number' && Number.isFinite(value) && value >= 0)
-  ) as Partial<Record<V5AnchorName, number>>;
 }
 
 function addPriorValue(
@@ -338,13 +246,23 @@ export function buildV6Priors(rows: V6PriorRow[], bandCuts: V6BandCuts = loadV6R
 
 export function loadV6Priors(): V6Priors {
   if (!defaultPriorsCache) {
-    const csvText = fs.readFileSync(repoFile('data/reference/city_costs_app_aud.csv'), 'utf8');
-    const parsed = Papa.parse<V6CsvRow>(csvText, { header: true, skipEmptyLines: true });
-    if (parsed.errors.length) throw new Error(`Failed to parse v6 prior CSV: ${parsed.errors[0].message}`);
-    defaultPriorsCache = buildV6Priors(
-      parsed.data.map((row) => ({ region: row.region ?? 'unknown', values: rowToAnchorValues(row) })),
-      loadV6ReferenceData().bandCuts
-    );
+    const generated = readJson<{
+      byRegionBand: Record<string, Partial<Record<V5AnchorName, number>>>;
+      byRegion: Record<string, Partial<Record<V5AnchorName, number>>>;
+      global: Partial<Record<V5AnchorName, number>>;
+      tierValuesByRegionBand?: Record<string, Partial<Record<V5TierName, number>>>;
+      tierValuesByRegion?: Record<string, Partial<Record<V5TierName, number>>>;
+      tierValuesGlobal?: Partial<Record<V5TierName, number>>;
+    }>('data/reference/v6/priors-v6.json');
+    defaultPriorsCache = {
+      byRegionBand: generated.byRegionBand,
+      byRegion: generated.byRegion,
+      global: generated.global,
+      tierValuesByRegionBand: generated.tierValuesByRegionBand,
+      tierValuesByRegion: generated.tierValuesByRegion,
+      tierValuesGlobal: generated.tierValuesGlobal,
+      bandCuts: loadV6ReferenceData().bandCuts,
+    };
   }
   return defaultPriorsCache;
 }
@@ -405,6 +323,49 @@ function priorValue(priors: V6Priors, region: string | null, band: V6CostBand | 
     priors.global[anchor] ??
     null
   );
+}
+
+function tierPriorValue(priors: V6Priors, region: string | null, band: V6CostBand | null, tier: V5TierName) {
+  const regionKey = region ?? 'unknown';
+  return (
+    (band ? priors.tierValuesByRegionBand?.[`${regionKey}|${band}`]?.[tier] : undefined) ??
+    priors.tierValuesByRegion?.[regionKey]?.[tier] ??
+    priors.tierValuesGlobal?.[tier] ??
+    null
+  );
+}
+
+function applyDirectTierPriors(
+  tiers: Record<V5TierName, V6Tier>,
+  originalAnchors: V6AnchorInputs,
+  priors: V6Priors,
+  region: string | null,
+  band: V6CostBand | null
+) {
+  const tierInputRequirements: Partial<Record<V5TierName, V5AnchorName[]>> = {
+    food_budget: ['street_food_meal_1p', 'inexpensive_restaurant_meal_1p'],
+    food_mid_range: ['street_food_meal_1p', 'inexpensive_restaurant_meal_1p', 'midrange_restaurant_meal_2p'],
+    food_high_end: ['inexpensive_restaurant_meal_1p', 'midrange_restaurant_meal_2p', 'premium_restaurant_meal_2p'],
+    activities_budget: ['paid_attraction_adult_1'],
+    activities_mid_range: ['half_day_group_activity_adult_1'],
+    activities_high_end: ['full_day_premium_activity_adult_1'],
+  };
+  for (const [tierName, required] of Object.entries(tierInputRequirements) as [V5TierName, V5AnchorName[]][]) {
+    if (required.every((anchor) => originalAnchors[anchor]?.valueAud !== null && originalAnchors[anchor]?.valueAud !== undefined)) continue;
+    const amountAud = tierPriorValue(priors, region, band, tierName);
+    if (amountAud === null) continue;
+    tiers[tierName] = {
+      ...tiers[tierName],
+      amountAud: rounded(amountAud),
+      formula: `direct ${tierName} prior from v6 development panel`,
+      evidenceBasis: 'imputed',
+      evidenceGrade: 'D',
+      interval: intervalFor('D', amountAud),
+      sourceIds: [`v6-tier-prior:${region ?? 'global'}:${band ?? 'all'}:${tierName}`],
+      modelVersions: ['city-cost-v6-direct-tier-prior-v1'],
+      imputedMeasures: [...tiers[tierName].imputedMeasures],
+    };
+  }
 }
 
 function makePriorInput(
@@ -501,7 +462,6 @@ function applyGeneratedAnchorLadder(
       coefficientKey: 'street_food_meal_1p',
     },
     { target: 'cocktail_1', source: 'cappuccino_1', coefficientKey: 'cocktail_1' },
-    { target: 'wine_glass_1', source: 'cappuccino_1', coefficientKey: 'wine_glass_1' },
   ];
 
   for (const relation of relations) {
@@ -604,7 +564,10 @@ function toV6Tier(
   };
 }
 
-function mapTiersToEstimateData(tiers: Record<V5TierName, V6Tier>): Partial<CityEstimateData> {
+function mapTiersToEstimateData(
+  tiers: Record<V5TierName, V6Tier>,
+  inputs: Record<V5AnchorName, V6AnchorInput>
+): Partial<CityEstimateData> {
   return {
     accomHostel: tiers.accom_shared_hostel_dorm.amountAud!,
     accomPrivateRoom: tiers.accom_hostel_private_room.amountAud!,
@@ -618,7 +581,7 @@ function mapTiersToEstimateData(tiers: Record<V5TierName, V6Tier>): Partial<City
     foodHigh: tiers.food_high_end.amountAud!,
     drinkCoffee: tiers.drink_coffee.amountAud!,
     drinkLocalBeer: rounded(tiers.drinks_light.amountAud! / 2 - tiers.drink_coffee.amountAud!),
-    drinkWineGlass: rounded((tiers.drinks_heavy.amountAud! - 2 * tiers.drink_coffee.amountAud! - 6 * (tiers.drinks_light.amountAud! / 2 - tiers.drink_coffee.amountAud!) - 4 * ((tiers.drinks_moderate.amountAud! - 2 * tiers.drink_coffee.amountAud! - 4 * (tiers.drinks_light.amountAud! / 2 - tiers.drink_coffee.amountAud!)) / 2)) / 2),
+    drinkWineGlass: inputs.wine_glass_1.valueAud!,
     drinkCocktail: rounded((tiers.drinks_moderate.amountAud! - 2 * tiers.drink_coffee.amountAud! - 4 * (tiers.drinks_light.amountAud! / 2 - tiers.drink_coffee.amountAud!)) / 2),
     drinksNone: tiers.drinks_none.amountAud!,
     drinksLight: tiers.drinks_light.amountAud!,
@@ -642,6 +605,17 @@ export function materializeCityCostV6(input: {
   const completed = buildCompleteInputs({ region: input.region ?? null, anchors: input.anchors, priors });
   const v5Inputs = completed.complete as Record<V5AnchorName, V5AnchorInput>;
   const base = deriveCityCostV5(v5Inputs);
+  // Wine-glass calibration was rejected and is deliberately not part of the
+  // heavy-drinks product basket. Keep the anchor visible as a grade-D prior,
+  // but make the shipped tier's formula auditable and independent of it.
+  base.tiersAud.drinks_heavy = {
+    ...base.tiersAud.drinks_heavy,
+    amountAud: 2 * v5Inputs.cappuccino_1.valueAud! +
+      6 * v5Inputs.domestic_draft_beer_1.valueAud! +
+      4 * v5Inputs.cocktail_1.valueAud!,
+    formula: '2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1',
+    parentAnchors: ['cappuccino_1', 'domestic_draft_beer_1', 'cocktail_1'],
+  };
   const coefficients = loadV6ReferenceData().coefficients.shippedCoefficients;
   const tiersAud = Object.fromEntries(
     V5_TIER_NAMES.map((tierName) => {
@@ -663,6 +637,7 @@ export function materializeCityCostV6(input: {
       ];
     })
   ) as Record<V5TierName, V6Tier>;
+  applyDirectTierPriors(tiersAud, input.anchors, priors, completed.region, completed.costBand);
 
   return {
     schemaVersion: 'city-cost-materialization-v6',
@@ -674,8 +649,8 @@ export function materializeCityCostV6(input: {
     tiersAud,
     anchors: completed.complete,
     missingness: completed.missingness,
-    priorBasis: 'data/reference/city_costs_app_aud.csv regional and accommodation-band medians; v6 band cuts from validation-manifest-v6.json',
+    priorBasis: 'data/reference/v6/priors-v6.json regional and accommodation-band medians from direct development evidence; v6 band cuts from validation-manifest-v6.json',
     complete: true,
-    mappedEstimate: mapTiersToEstimateData(tiersAud),
+    mappedEstimate: mapTiersToEstimateData(tiersAud, completed.complete),
   };
 }

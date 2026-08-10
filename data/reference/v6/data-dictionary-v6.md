@@ -221,3 +221,17 @@ estimand. The amended v6 contract therefore adds an independently collected `str
 fits `street_food_meal_1p / inexpensive_restaurant_meal_1p` from those observations, assigns grade C and a
 residual-derived interval, and retains McMeal only as a cross-check. The v1 CSV comparison that motivated
 the finding is retained as context in `LOG.md` and is not a fitting basis.
+
+### 10 August 2026 — supersede item-level all-tier holdout collection
+
+The item-level 18-measure collection route is superseded for M3. The 25-city development ledger remains
+intact at 280 found rows, but the prior holdout is spent (`revealed_once` for all 18 measures). Its all-tier
+score was not evaluable because it contained truth without a matching production prediction bundle, and the
+item-level food, drink and activity sources were too sparse to represent daily product spend reliably.
+
+M3 therefore validates the product layer: generate the exact production prediction bundle first, collect
+BudgetYourTrip's labelled per-person/day food and activity tiers for development (independent for food,
+circular and explicitly unvalidated for activities), and collect Expatistan cocktail and neighbourhood-pub
+beer as independent cross-checks against Numbeo. Wine glass is not recollected after the rejected bottle
+calibration route. No new holdout may be drawn, frozen or read until Phase 6 proposes a coverage-qualified
+panel and the owner approves it.
