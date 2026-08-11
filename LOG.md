@@ -2701,3 +2701,16 @@ Existing experiments 003 and 006 provide development fixtures with zero new mode
 remains spent and closed, the proposed fresh holdout is cancelled for v6.1, the accommodation coefficients
 are frozen, and `data/reference/city_costs_app_aud.csv` remains unchanged. v6.1 releases only for new-city
 generation behind the existing opt-in flag; migration of the 121 stored cities is a separate future decision.
+
+## v6.1 — source-native spine contracts (10 August 2026)
+
+Phase 1 is complete. `src/lib/city-cost-v6-1-collection.ts` adds the strict
+`city-cost-v6-1-spine-response-v1` contract for exactly nine source facts: Expedia 3-star, six BYT daily
+food/activity tiers, and Numbeo cappuccino plus domestic beer. It enforces exact source-specific measure
+keys, per-source search ceilings totalling ten per city, and zero direct page reads. Missingness remains
+explicit and unsupported currencies do not become fabricated values.
+
+The three v6.1 prompts are now wired to the new collector. The legacy v6.0 collector and parser remain
+unchanged so stored responses and historical experiment 006 can still be replayed. No LLM call, holdout,
+coefficient, prior or CSV was changed. Phase 2 — the simplified deterministic materializer and feature-flag
+handoff — is the next action.

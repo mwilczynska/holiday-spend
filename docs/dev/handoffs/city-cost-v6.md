@@ -2,8 +2,8 @@
 
 **As at:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** v6.1 implementation — **not started**
-**Exact next phase:** source-response contracts and runtime prompt wiring
+**Milestone:** v6.1 implementation — **Phase 1 complete**
+**Exact next phase:** simplified deterministic materialization and tests
 
 This handoff is written for a cold GPT-5.6 Luna Max context. It supersedes the earlier M3 handoffs. The
 v6.0 evidence and commits remain valid history; do not reconstruct the workstream from old prompts.
@@ -54,8 +54,9 @@ The production skeleton worked, but the evidence programme became unreachable:
 - the fresh holdout extension found only 12/180 rows and was spent without paired predictions;
 - a third holdout proposal would repeat the same failure and is cancelled for v6.1.
 
-The current code also has multiple fallback layers and still routes BYT daily-spend values through
-ticket-shaped anchor names. That complexity caused the fixed pre/post-derivation food-prior defect.
+The v6.0 runtime still has multiple fallback layers and routes BYT daily-spend values through ticket-shaped
+anchor names. The new v6.1 source boundary is now isolated in `src/lib/city-cost-v6-1-collection.ts`; the
+materializer and feature-flag switch still need to be implemented.
 
 ## 4. What is banked
 
@@ -137,27 +138,26 @@ against itself.
 
 ## 7. Exact next action
 
-Start Phase 1 from `LOOP-PROMPT-V6.md`:
+Start Phase 2 from `LOOP-PROMPT-V6.md`:
 
-1. Inspect `src/lib/city-cost-v6-collection.ts` and its tests.
-2. Add `city-cost-v6-1-spine-response-v1` source validators for the three v6.1 prompts.
-3. Add the nine v6.1 source measure names:
-   - Expedia 3-star;
-   - six BYT daily tiers;
-   - cappuccino and beer.
-4. Preserve v6.0 parsing for stored evidence.
-5. Wire only new runtime collection to the v6.1 prompt paths.
-6. Enforce source-specific keys, search ceilings and `directPageReads === 0`.
-7. Add focused schema/missingness tests.
-8. Run the full baseline, then commit and push:
-   `feat: add v6.1 source-native spine contracts`.
-9. Continue directly to Phase 2 unless a stop condition in the loop applies.
+1. Inspect `src/lib/city-cost-methodology-v6.ts` and `src/lib/city-generation.ts`.
+2. Add a v6.1 materialization path consuming `V61AnchorInputs` from
+   `src/lib/city-cost-v6-1-collection.ts`.
+3. Preserve the accommodation ladder and source calibration unchanged.
+4. Implement the BYT food/activity daily mappings, drink presets, cocktail relation and street-food
+   compatibility coefficient from the active plan.
+5. Replace the v6.1 ingredient/prior overwrite chain with one direct → regional → global category-tier
+   fallback.
+6. Add formula, grade, fallback, monotonicity and provenance tests.
+7. Run the full baseline, then commit and push:
+   `feat: simplify v6.1 tier materialization`.
+8. Continue directly to Phase 3 unless a stop condition in the loop applies.
 
 Do not begin by changing coefficients, priors or the materializer. The response contract comes first.
 
 ## 8. Implementation sequence
 
-1. Source schemas and prompt wiring.
+1. Source schemas and prompt wiring — **complete** in `src/lib/city-cost-v6-1-collection.ts`.
 2. Simplified v6.1 materializer.
 3. Generated category priors and 25-city fixtures from existing data.
 4. Reachable release validator/report.

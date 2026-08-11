@@ -159,8 +159,9 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
-The v6.1 contract is approved but not yet wired; until its implementation phases land, flag-on still runs
-the v6.0 collector/materializer. The cold-start handoff names the exact first code change.
+The v6.1 source contract is wired, but the feature-flagged materializer is not yet switched over; until
+Phase 2 and Phase 5 land, flag-on still runs the v6.0 materializer. The cold-start handoff names the exact
+next code change.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,

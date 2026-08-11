@@ -215,7 +215,7 @@ all 19 tiers while reducing the runtime spine to three calls and at most ten sea
 - [x] Draft the three versioned v6.1 extraction prompts
 - [x] Freeze reachable release gates in `validation-manifest-v6-1.json`
 - [x] Replace the autonomous loop and cold-start handoff
-- [ ] Add v6.1 response schemas while preserving v6.0 stored-response parsing
+- [x] Add v6.1 response schemas while preserving v6.0 stored-response parsing
 - [ ] Implement the simplified materializer and one category fallback layer
 - [ ] Generate v6.1 priors and 25-city fixtures from experiments 003 and 006; make no new LLM calls
 - [ ] Produce the deterministic 19-tier release report

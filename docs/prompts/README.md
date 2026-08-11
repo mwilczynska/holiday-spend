@@ -20,9 +20,9 @@
 | `llm_prompt_city_cost_v6_numbeo.md` | **ACTIVE — v6.0 compatibility; superseded for v6.1 collection** | `src/lib/city-cost-v6-collection.ts` | Historical five-field Numbeo food/drink spine; keep parsing stored responses |
 | `llm_prompt_city_cost_v6_expedia_3star.md` | **ACTIVE — v6.0 compatibility; superseded for v6.1 collection** | `src/lib/city-cost-v6-collection.ts` | Historical v6.0 Expedia schema; keep parsing stored responses |
 | `llm_prompt_city_cost_v6_budgetyourtrip.md` | **ACTIVE — v6.0 compatibility; superseded for v6.1 collection** | `src/lib/city-cost-v6-collection.ts` | Historical activity-only BYT schema with ticket-shaped field names; keep parsing stored responses |
-| `llm_prompt_city_cost_v6_1_expedia_3star.md` | **ACTIVE CONTRACT — v6.1 implementation target** | not wired yet; Phase 1 in `city-cost-methodology-v6-1.md` | Expedia three-star level under the v6.1 response schema |
-| `llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md` | **ACTIVE CONTRACT — v6.1 implementation target** | not wired yet; Phase 1 in `city-cost-methodology-v6-1.md` | Six source-native food/activity per-person daily spend tiers in one call |
-| `llm_prompt_city_cost_v6_1_numbeo_drinks.md` | **ACTIVE CONTRACT — v6.1 implementation target** | not wired yet; Phase 1 in `city-cost-methodology-v6-1.md` | Two-search cappuccino/beer spine; restaurant and McMeal rows removed |
+| `llm_prompt_city_cost_v6_1_expedia_3star.md` | **ACTIVE CONTRACT — v6.1** | `src/lib/city-cost-v6-1-collection.ts` | Expedia three-star level under the v6.1 response schema |
+| `llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md` | **ACTIVE CONTRACT — v6.1** | `src/lib/city-cost-v6-1-collection.ts` | Six source-native food/activity per-person daily spend tiers in one call |
+| `llm_prompt_city_cost_v6_1_numbeo_drinks.md` | **ACTIVE CONTRACT — v6.1** | `src/lib/city-cost-v6-1-collection.ts` | Two-search cappuccino/beer spine; restaurant and McMeal rows removed |
 | `llm_prompt_intercity_transport_1.md` | **ACTIVE — shipping** | `src/lib/transport-estimation.ts` | Planner intercity transport estimation. Unrelated to city costs |
 | `llm_prompt_city_anchors_v4.md` | **ACTIVE — not yet wired up** | nothing yet | The v4 collection contract. Tested end to end but no ingestion path exists |
 | `llm_prompt_city_cost_v5_experiment_001.md` | **EXPERIMENT — unvalidated** | `scripts/run-city-cost-v5-one-call.mjs` | Candidate 18-measure extractor; target-class prompt testing uses delegated Luna, provider telemetry remains pending |
