@@ -3,7 +3,7 @@
 The working document for the current workstream. Confirmed historical results and rejected methodologies
 live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 
-**Active workstream:** city cost methodology **v6**
+**Active workstream:** city cost methodology **v6.1 — reachable finish line**
 **Last reviewed:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
@@ -20,21 +20,26 @@ arithmetic and FX inside the model, and applies asserted multipliers, one of whi
 could not be satisfied from free public sources. Its evidence is retained in full and is the foundation
 of v6. Full diagnosis: [`docs/dev/plans/city-cost-methodology-v6.md`](docs/dev/plans/city-cost-methodology-v6.md) §1.
 
-**v6 is adopted and M1 is integrated behind an opt-in feature flag.** The original accommodation-scoped M2
-and M3 records are retained, but the owner has reopened M3: it now means fitting and holdout-validating all
-19 product tiers. M4 must not start until that work is complete or an explicit unvalidation reason is recorded.
+**v6 is integrated behind an opt-in feature flag, and v6.1 is the active implementation target.** On
+10 August 2026 the owner stopped the attempt to independently validate all 19 behavioural presets. v6.1
+keeps every existing tier, banks the genuine accommodation result, and replaces the unreachable evidence
+programme with a three-call, source-native, honestly graded path for new cities. No new holdout is planned.
+The 121-city CSV remains on v1.
 
 ---
 
-## The v6 methodology in one paragraph
+## The v6.1 methodology in one paragraph
 
-Measure **one level per category** with cheap search-snippet extraction — food and drink from Numbeo, one
-accommodation level (`hotel_3star_room_2p`) from Expedia, activity tiers from BudgetYourTrip. Derive
-everything else in deterministic code from fitted ratios. Grade every value **A** (observed) through **D**
-(regional prior), attach an interval, and ship it. A modelled value is never presented as observed.
+Make exactly three bounded search-snippet calls per city: Expedia for a 3-star room, BudgetYourTrip for its
+three daily food and three daily activity tiers, and Numbeo for cappuccino and domestic beer. Deterministic
+code converts those source-native facts into all 19 existing product fields. Accommodation uses the banked
+ladder; food and activities use BYT's per-person daily tiers at ×2; drinks remain explicit consumption
+presets; street food and cocktail are disclosed models. Grade every value **A** through **D**, attach an
+interval and use one regional/global tier-vector fallback per category.
 
-This is v4's governing principle — *measure what is cheap to measure, model only the gaps, never assert a
-constant* — finally executed rather than blocked.
+The refined rule is: *measure what is systematic, model the remaining product presets, and never disguise
+a model or fallback as observed evidence.* An explicit grade-D product assumption is preferable to an
+unreachable research programme.
 
 ---
 
@@ -191,60 +196,45 @@ M1 implementation notes:
 - v6 provenance is persisted in `city_estimates.metadata_json` and shown on `/dataset`. The live CSV and seed path
   are unchanged.
 
-### M3 — fit and validate all 19 tiers — **DEVELOPMENT PAIRING COMPLETE; HOLDOUT PENDING APPROVAL**
+### Historical M3 — all-tier independent validation — **stopped; evidence retained**
 
-- [x] Stop and supersede the item-level collection/scoring route; preserve the 25-city development panel
-- [x] Split prediction generation into delegated Stage-A spine responses and deterministic Stage-B materialization
-- [x] Reuse 15 Expedia responses from experiment 001 and collect/record the remaining delegated spine responses
-- [x] Materialize 25/25 production-path prediction bundles through `materializeCityCostV6`
-- [x] Collect the pre-registered BudgetYourTrip tier panel and Expatistan drink cross-checks
-- [x] Apply the uniform minimum fitted-relation rule: retain street-food R0 (`k=0.3248`, n=6, ±336% LOO-p90) as diagnostic and ship the generated prior fallback (`k=0.2757`, grade D ±45%)
-- [x] Rebuild regional priors from direct development evidence, decoupled from the live CSV
-- [x] Record all 34 frozen-FX exclusions: EGP/Cairo 7, LKR/Colombo 2, PEN/Lima 4, SGD/Singapore 8, TWD/Taipei 6, ZAR/Cape Town 7
-- [x] Score the development panel end-to-end, labelled **IN-SAMPLE**
-- [x] Normalize experiment numbering and protocol directories
-- [ ] Obtain approval before collecting, freezing or reading any fresh holdout
+The 25-city development ledger, experiment 006 prediction bundles, experiment 003 BYT panel, corrected
+in-sample score and food-basket diagnostic remain valid evidence. They established that accommodation is
+genuinely measurable but that food, drink and activity planner presets do not have 19 independent public
+price counterparts. The 450-slot development ledger resolved 280 found rows; the spent fresh extension
+found only 12/180 rows. Requiring another holdout would repeat the same structural failure. No holdout may
+be reopened or replaced under v6.1.
 
-**Current status:** The 25-city x 18-measure development ledger remains intact at **280 found / 0 pending**.
-Experiment 006 contains 75 schema-validated delegated spine responses and 75 telemetry records, including
-15 byte-identical Expedia reuses from experiment 001. Stage B uses the shared production normalizer and the
-real `materializeCityCostV6` path; all 25 cities materialized. Dubai's `UAE`/`United Arab Emirates` spelling
-is accepted only through an explicit country-alias identity check.
+### M3.1 — simplify and finish v6.1 — **ACTIVE; contracts drafted, implementation next**
 
-The corrected in-sample score in experiment 005 has **9 evaluable tiers** (six accommodation and three food),
-one definitional tier (`activities_free`), 8 blocked tiers, and one explicitly not-evaluable activity tier.
-Food scores require observed Numbeo source anchors and exclude 11 cities for budget and 12 cities for mid/high;
-the exact names are in the score artifact and generated report. The previous food results 14.56%, 14.34% and
-13.76% are superseded because they compared BYT regional fallback medians with BYT truth values. The three
-activity tiers have no valid independent truth: the budget ticket rows use the wrong estimand, while mid/high
-are circular because BYT is production. The 9 evaluable tier results are development diagnostics, not holdout
-validation. Gates 3–6 are explicitly `not_evaluable` on this partial truth panel. No holdout file was read or
-changed.
+The implementation contract is
+[`docs/dev/plans/city-cost-methodology-v6-1.md`](docs/dev/plans/city-cost-methodology-v6-1.md). It keeps
+all 19 tiers while reducing the runtime spine to three calls and at most ten searches per city.
 
-The food diagnosis is now separated from the score. Adding `drinks_none` and `drinks_light` moves the
-budget prediction/truth ratio from 0.76x to 0.90x and 1.04x, respectively, which is a BYT Food & Meals
-category-boundary artifact. Mid-range remains 0.70x after drinks and high-end 0.51x, so both retain a
-genuine basket-composition gap. Existing-panel non-negative basket re-weighting beats the current basket
-on both LOO median APE and p90 only for high-end (29.82% / 47.21% versus 51.99% / 61.00%); mid-range
-improves median only (36.98% / 48.39% versus 37.41% / 46.92%). Neither is shipped. Numbeo all-five
-anchor coverage is 13/25 (52%); regional rates range from 0/3 in Africa and 0/2 in the Middle East to
-4/5 in SEA. The food score is therefore Western/East-Asian-leaning and may not generalise to cities
-with weak Numbeo coverage. See the generated diagnostic and report for field-level rates and residual
-dispersion.
+- [x] Freeze the owner-approved source map and all 19 derivations
+- [x] Draft the three versioned v6.1 extraction prompts
+- [x] Freeze reachable release gates in `validation-manifest-v6-1.json`
+- [x] Replace the autonomous loop and cold-start handoff
+- [ ] Add v6.1 response schemas while preserving v6.0 stored-response parsing
+- [ ] Implement the simplified materializer and one category fallback layer
+- [ ] Generate v6.1 priors and 25-city fixtures from experiments 003 and 006; make no new LLM calls
+- [ ] Produce the deterministic 19-tier release report
+- [ ] Wire the new-city path behind `CITY_COST_METHODOLOGY_V6=true` and verify v1 rollback
 
-The measured street-food relation (`k=0.3248`, n=6, ±336% LOO-p90) is diagnostic only under the uniform
-minimum fitted n=8 rule. The generated shipped fallback is the global direct-evidence prior ratio `k=0.2757`
-at grade D ±45%, matching `priors-v6.json`; premium n=3 remains the parallel grade-D 1.5 fallback. M4 remains
-out of scope.
+**Finish line:** 25/25 fixtures produce all 19 graded and provenance-bearing values; runtime collection is
+three calls / at most ten searches; accommodation's 8.27%–25.46% median APE result is preserved; food and
+activities are labelled BYT source-backed; drinks are labelled source-priced presets; street food is an
+explicit grade-D compatibility model; the 121-city CSV and every holdout remain untouched.
 
-### M4 — migrate — **not started; do not begin before anchor disclosure is closed**
+### M4 — migrate the existing CSV — **separate future decision; not part of v6.1**
 
 - [ ] Regenerate all 121 cities through v6 with grades
 - [ ] A/B diff report against the current CSV, per tier and per city
 - [ ] Rollback tested
 - [ ] Switch the flag
 
-**Exit:** v6 is the shipping path with a tested rollback.
+**Exit:** v6 is the shipping path for the existing 121 cities with a tested rollback. This is not required
+to finish or release v6.1 for new-city generation.
 
 ### M5 — improve weak grades — ongoing
 
@@ -260,50 +250,52 @@ out of scope.
 
 ## Open product decisions
 
-Each has a stated default so no work is blocked waiting for an answer. Full context in
-[`docs/dev/plans/city-cost-methodology-v6.md`](docs/dev/plans/city-cost-methodology-v6.md) §8.
+Each has a stated default so no work is blocked waiting for an answer. Active v6.1 context is in
+[`docs/dev/plans/city-cost-methodology-v6-1.md`](docs/dev/plans/city-cost-methodology-v6-1.md).
 
 | # | Decision | Default if unanswered |
 | --- | --- | --- |
 | 1 | Six accommodation tiers, or merge `accom_1_star` into a budget band? | Keep six; ship 1★ at grade C |
 | 2 | How prominently is the grade shown in the UI? | Per-city badge + per-value tooltip, reusing the dashboard info-popover pattern |
 | 3 | Refresh cadence | Re-measure levels quarterly; refit coefficients annually |
-| 4 | Regenerate all 121 cities, or only new ones? | Keep the 121-city CSV on v1 and run v6 for new cities until paired-anchor and full-basket validation supports migration |
+| 4 | Regenerate all 121 cities, or only new ones? | **Settled for v6.1:** new cities only; existing-city migration is a separate future decision |
 
 ---
 
-## Acceptance gates
+## Active v6.1 release gates
 
-Frozen in [`data/reference/v6/validation-manifest-v6.json`](data/reference/v6/validation-manifest-v6.json).
-Summary:
+Frozen before implementation in
+[`data/reference/v6/validation-manifest-v6-1.json`](data/reference/v6/validation-manifest-v6-1.json):
 
-1. **Coverage** — 19/19 numeric for ≥95% of cities, every value graded
-2. **Tier accuracy** — median APE ≤35%, p90 ≤75%, absolute median signed error ≤15%
-3. **City ranking** — Spearman ρ ≥0.90, pairwise ordering ≥85% ← *the gate that matters*
-4. **Cost-band agreement** — ≥80% exact, 100% within one band
-5. **Trip-level realism** — 10-city trip total within ±20%
-6. **No regression vs v1** — beat v1 on ≥15 of 19 tiers, lose on none by >10% ← *the gate v5 never had*
-7. **Repeatability** — 3 calls × 5 hard cities, relative range ≤25% for grades A/B
-8. **Calibration integrity** — every offset fitted on ≥12 cities and reduces held-out APE
-9. **Refresh economics** — ≤6 calls, ≤25 searches, ≤A$0.15/city; full refresh ≤A$20, ≤24h
-10. **Provenance** — no grade C/D value renderable without its grade
+1. **Output coverage** — all 19 fields for 25/25 fixtures; ≥95% at runtime with explicit fallback
+2. **Schema and missingness** — source-specific validation; collection never invents a missing fact
+3. **Provenance and grades** — every tier names its basis, grade, interval, sources and imputations
+4. **Algebraic coherence** — finite, non-negative and ordered presets for all fixtures
+5. **Accommodation accuracy** — preserve the genuine six-tier result, each below 35% median APE
+6. **Source-dependence disclosure** — report direct-source and grade-D fallback rates by category/region
+7. **Deterministic replay** — fixture materialization is byte-identical under `--check`
+8. **Refresh economics** — exactly three calls, at most ten searches and zero direct page reads per city
+9. **Integration and rollback** — flag-on uses v6.1, flag-off uses v1, live CSV byte-identical
+10. **Verification** — build, tests, memory and generated-artifact checks pass
 
-**Amendment rule.** A gate may be amended only *before* the holdout is used, with a dated rationale
-here and in the manifest. Never weaken a gate after seeing its result. **A gate that no method can meet
-is a defect in the gate** — see the three-strikes rule in `LOOP-PROMPT-V6.md` §5.
+The old all-19 accuracy, full independent ranking, trip-total and beat-v1 gates are historical non-gates
+for v6.1. They required independent observations for behavioural presets that public sources do not publish.
+The v6.0 manifest and spent scores remain immutable evidence; their claims are not rewritten.
 
 ---
 
 ## Stopping rules
 
-These are why v6 terminates and v5 did not. Full text in `LOOP-PROMPT-V6.md` §5.
+These are why v6.1 terminates. Full text is in `LOOP-PROMPT-V6.md` §8.
 
 - **Three strikes** — three consecutive failures of the same gate for the same structural reason ⇒ report
   the gate as the defect; do not attempt a fourth.
-- **Per-field budget: 8 experiments.** Reaching it means accept the best available grade and move on.
-  *(v5 ran 15 on `accom_1_star` and got zero rows.)*
 - **Bank what works.** Do not refuse to bank a solved category because another is unsolved.
 - **Grade D is a completed field**, not a blocked one.
+- **No evidence rescue.** Missing independent food/drink/activity truth is a disclosed source dependency,
+  not permission for more collection.
+- **Ask only on scope change.** Stop for a fourth call, new source, holdout, CSV migration, tier removal or
+  accommodation refit; use the approved fallback for ordinary missingness.
 
 ---
 
@@ -311,12 +303,14 @@ These are why v6 terminates and v5 did not. Full text in `LOOP-PROMPT-V6.md` §5
 
 | Path | What it is |
 | --- | --- |
-| `docs/dev/plans/city-cost-methodology-v6.md` | The methodology, the v5 diagnosis, milestones, risks |
+| `docs/dev/plans/city-cost-methodology-v6-1.md` | **Active implementation plan and Definition of Done** |
+| `docs/dev/plans/city-cost-methodology-v6.md` | Historical v6.0 methodology and v5 diagnosis |
 | `docs/dev/handoffs/city-cost-v6.md` | **Restartable handoff — read this first on a cold start** |
 | `LOOP-PROMPT-V6.md` | The autonomous work prompt, with stopping rules |
 | `data/reference/v6/README.md` | Evidence inventory and orientation |
 | `data/reference/v6/data-dictionary-v6.md` | Frozen estimands + evidence grades |
-| `data/reference/v6/validation-manifest-v6.json` | Frozen gates + 40-city panel with locked holdout |
+| `data/reference/v6/validation-manifest-v6-1.json` | Active reachable v6.1 release gates |
+| `data/reference/v6/validation-manifest-v6.json` | Historical v6.0 gates + spent holdouts |
 | `data/reference/v6/coefficients-v6.json` | Generated ladder — never hand-edit |
 | `scripts/fit-city-cost-ladder-v6.mjs` | Reproducible fit; `--check` for verification |
 | `src/lib/city-cost-methodology-v5.ts` | The derivation function — **reused by v6 unchanged** |
@@ -329,9 +323,11 @@ These are why v6 terminates and v5 did not. Full text in `LOOP-PROMPT-V6.md` §5
 ```
 npx tsc --noEmit                              # expected to pass
 npm run build                                 # expected to pass
-    npm test -- --run                             # 153 tests
+npm test -- --run                             # expected to pass
 npm run docs:check-memory                     # AGENTS.md mirrors CLAUDE.md
 node scripts/fit-city-cost-ladder-v6.mjs --check   # coefficients match the evidence
+node scripts/test-city-cost-v6-ground-truth-warnings.mjs
+node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.

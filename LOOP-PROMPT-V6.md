@@ -1,213 +1,339 @@
-# LOOP-PROMPT-V6
+# LOOP-PROMPT-V6 — v6.1 reachable finish line
 
-**The autonomous work prompt for city cost methodology v6.** Paste the block in §PROMPT below to start
-or resume the loop.
-
-**Predecessor:** `docs/dev/archive/loop-prompt-v5.md` — superseded, do not run. It could not terminate;
-its banner explains exactly why, and this prompt is built to avoid each of those failures.
-
----
-
-## Why this prompt is different
-
-The v5 loop ran 95 experiments and shipped nothing. Four specific changes prevent a repeat:
-
-| v5 failure | v6 rule |
-| --- | --- |
-| Shipping forbidden until gates pass; gates unreachable | **Ship at M1, before any accuracy work** |
-| "Never polish a workable model while another category is incomplete" → forced onto the hardest category forever | **Bank the workable categories first.** A category with three structural failures is downgraded and left |
-| No exit when a gate is the defect | **Three-strikes rule:** three consecutive failures on one gate for the same structural reason ⇒ stop and report the gate, do not attempt a fourth |
-| Unbounded experiments per field (15 on `accom_1_star` alone) | **Budget: 8 experiments per product field.** Exceeding it means accept a lower grade, not run a ninth |
-
----
+This is the active autonomous implementation prompt for city cost methodology v6.1. The earlier v6.0
+loop is superseded because its all-19 independent-validation Definition of Done was structurally
+unreachable. Git history and the v6.0 evidence preserve that record.
 
 ## PROMPT
 
-Copy everything between the rules below.
+Copy everything below this line to GPT-5.6 Luna Max.
 
 ---
 
-Work autonomously on branch `feat/city-cost-methodology-v6` on the city cost methodology v6 workstream.
+Resume the city cost methodology workstream on branch `feat/city-cost-methodology-v6`.
 
-### 0. Orient before acting
+You are implementing the owner-approved **v6.1 simplification**. Keep all 19 existing product tiers.
+Do not restart evidence collection and do not attempt to independently validate every behavioural preset.
+The finish line is a simple, source-native, honestly graded three-call path for new cities.
 
-Read these, in this order. Do not skip and do not act before finishing them.
+## 0. Read before acting
 
-1. `docs/dev/handoffs/city-cost-v6.md` — **the restartable handoff. It names the exact next action.**
-2. `PLAN.md` — current milestone, status, open decisions
-3. `docs/dev/plans/city-cost-methodology-v6.md` — the methodology, and §1's diagnosis of why v5 failed
-4. `data/reference/v6/data-dictionary-v6.md` — frozen estimands and the A/B/C/D evidence grades
-5. `data/reference/v6/validation-manifest-v6.json` — frozen gates and the locked holdout
-6. `data/reference/v6/coefficients-v6.json` — the fitted ladder (generated; never hand-edit)
-7. `CLAUDE.md` — project memory
+Read these completely, in this order:
 
-Then verify the worktree is clean and run `npm run docs:check-memory`.
+1. `docs/dev/handoffs/city-cost-v6.md` — cold-start state and exact first action
+2. `docs/dev/plans/city-cost-methodology-v6-1.md` — active design and implementation phases
+3. `data/reference/v6/validation-manifest-v6-1.json` — reachable release gates
+4. The three v6.1 prompts:
+   - `docs/prompts/llm_prompt_city_cost_v6_1_expedia_3star.md`
+   - `docs/prompts/llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md`
+   - `docs/prompts/llm_prompt_city_cost_v6_1_numbeo_drinks.md`
+5. `data/reference/v6/README.md` — evidence inventory
+6. `PLAN.md` — milestone state
+7. `CLAUDE.md` — canonical project memory
 
-Do **not** re-read the 95 v5 experiment directories. Their conclusions are summarised in `LOG.md` and
-`data/reference/v6/README.md`. Read a specific v5 experiment only when you need its raw rows.
+Then inspect only the implementation files needed for the current phase:
 
-### 1. The objective
+- `src/lib/city-cost-v6-collection.ts`
+- `src/lib/city-cost-methodology-v6.ts`
+- `src/lib/city-generation.ts`
+- `scripts/generate-v6-prediction-bundle.mjs`
+- `data/reference/v6/experiments/003-budgetyourtrip-tier-panel/`
+- `data/reference/v6/experiments/006-development-prediction-spine/`
 
-Produce all 19 planner cost values for any in-scope city, each carrying an evidence grade and an
-interval, at a refresh cost cheap enough to actually re-run.
+Do not bulk-read `data/reference/v5/experiments/`. Do not read any holdout ledger or score values.
 
-The 19 values, their estimands, and their derivation paths are in `data/reference/v6/data-dictionary-v6.md`
-§2. **Do not redefine an estimand.** v6 changed evidence admissibility, not product meaning.
+Verify:
 
-### 2. Ship first — the milestone order is not negotiable
+- branch is `feat/city-cost-methodology-v6`;
+- worktree state before editing;
+- `npm run docs:check-memory` passes.
 
-| Milestone | Exit criterion |
-| --- | --- |
-| **M1 — integrate** | v6 derivation + grades + ladder wired behind a feature flag; a new city generates through v6 end to end; the 121-city CSV untouched; tests pass |
-| **M2 — ground truth** | The 40-city × 6-anchor panel in `validation-manifest-v6.json` collected, 15-city holdout still sealed |
-| **M3 — fit and validate** | Source offsets fitted; gates 1–10 scored and reported per tier, per region, per band |
-| **M4 — migrate** | 121 cities regenerated with grades; A/B diff vs v1 produced; rollback tested |
-| **M5 — improve weak grades** | Ongoing: `accom_1_star`, the dorm/private split, activity semantics |
+Preserve unrelated user changes if the worktree is dirty.
 
-**M1 comes first and is not deferred for accuracy work.** After M1 the app has a working generation path
-regardless of what M2–M5 conclude. This is the single most important difference from v5, which deferred
-all integration until an acceptance that never arrived.
+## 1. Product decisions — settled, do not reopen
 
-Do not start M(n+1) before M(n)'s exit criterion is met. Do not skip M1 because a source looks promising.
+1. Keep all 19 existing planner fields: accommodation 6, food 4, drinks 5, activities 4.
+2. Production uses exactly three source calls:
+   - Expedia 3-star accommodation;
+   - BudgetYourTrip food and activity budget/mid/high daily tiers;
+   - Numbeo cappuccino and domestic beer.
+3. BYT food/activity values are source-backed per-person daily spend, multiplied by two in code.
+4. `food_street_food` remains as a modelled compatibility tier.
+5. Drinks remain explicit consumption presets. Cocktail stays modelled; wine stays excluded.
+6. Food/activity source dependence is an honest completed outcome, not a blocker.
+7. No new holdout is collected or read.
+8. v6.1 is for new-city generation behind the existing feature flag. The 121-city CSV stays unchanged.
 
-### 3. Constraints
+If implementation details offer several equivalent choices, choose the smallest change that satisfies the
+v6.1 plan and preserves historical v6.0 replay.
 
-**Production collection:**
+## 2. What is already solved
 
-- Free sources only. No paid data APIs, no source API key, no source account, no paywall, no member rate.
-- Works signed out. Never bypass a CAPTCHA, block, or rate limit.
-- Search snippets only in the production path. Direct page reads are rejected — Experiment 015 returned
-  HTTP 503/429 on canonical Numbeo URLs and Experiment 013 had all 15 booking-engine URLs blocked.
-- Budget per city: **≤6 LLM calls, ≤25 searches, ≤A$0.15**. Full 121-city refresh **≤A$20 and ≤24h**.
-- Retry on a 429/503 or block **is allowed** and must be recorded. On repeated block, fall to the next
-  grade — never silently substitute a different source.
-- Target models: GPT-5.6 Luna or Claude Haiku-class.
+Do not revisit:
 
-**Ground truth is different and this distinction matters:**
+- Expedia-to-Booking calibration;
+- accommodation coefficients or ground-truth collection;
+- the private rollback or dorm refit;
+- v6.0 holdout reporting;
+- grades/provenance UI;
+- provider adapters;
+- the v1 flag-off path.
 
-- Ground truth **may** be collected by browser automation, manual research, or a stronger model, because
-  it is never in the production path.
-- Only **production** collection must be target-model feasible.
-- v5 permitted this but never spent effort there. Do not repeat that.
+The genuine accommodation development median APEs are:
 
-**Division of labour:**
+- 3-star 8.27%
+- 4-star 13.12%
+- private hostel 15.97%
+- 2-star 16.74%
+- 1-star 21.49%
+- dorm 25.46%
 
-- The LLM is a **structured extractor, never an estimator**. It reports source facts in source currency
-  with provenance. It performs no arithmetic, no FX, no aggregation, no tier construction.
-- Deterministic code owns FX, baskets, ratios, grading, intervals and validation.
-- Never ask a model to grade its own work. v4 found self-reported confidence wrong in every run and
-  always flatteringly.
+The v6.0 generator already materializes 25/25 cities. Preserve this evidence; v6.1 simplifies the source
+and fallback semantics around it.
 
-**Honesty:**
+## 3. Phase 1 — v6.1 response contracts
 
-- Every value carries a grade: A observed / B source proxy / C laddered / D regional prior / definitional.
-- A modelled or imputed value is **never** presentable as observed.
-- `not_found`, `blocked`, `stale` and `class_absent` stay distinct. A blocked page is never recorded as
-  missing data.
-- Never hide missingness behind a plausible substitute. Grade D is the honest answer, not a substitution.
+Implement `city-cost-v6-1-spine-response-v1` validation in
+`src/lib/city-cost-v6-collection.ts` or a focused sibling module.
 
-### 4. The experiment loop
+Required source measures:
 
-Only from M2 onward. M1 is implementation, not experimentation.
+- Expedia: `hotel_3star_room_2p`
+- BYT:
+  - `byt_food_budget_per_person_day`
+  - `byt_food_mid_per_person_day`
+  - `byt_food_high_per_person_day`
+  - `byt_activities_budget_per_person_day`
+  - `byt_activities_mid_per_person_day`
+  - `byt_activities_high_per_person_day`
+- Numbeo:
+  - `cappuccino_1`
+  - `domestic_draft_beer_1`
 
-1. Identify the largest remaining uncertainty **that is on the critical path for the current milestone**.
-2. Inspect existing evidence before collecting anything. Check `data/reference/v6/README.md` and `LOG.md`
-   first — the answer is often already collected.
-3. State one falsifiable hypothesis.
-4. Pre-register in `data/reference/v6/experiments/<NNN-slug>/experiment.md`: hypothesis, source, sample,
-   held-out units, prompt, target model, metrics, promotion gate, rejection rule, maximum calls.
-5. Build the smallest experiment that can reject the hypothesis.
-6. Run it. Inspect raw responses — independently verify any explanation a model gives for a failure.
-   A model's stated reason for a block is a hypothesis, not evidence.
-7. Score with a deterministic script. Support `--check`.
-8. Give exactly one verdict: reject / revise and retest / promote / accept.
-9. Record it, update `PLAN.md` and the handoff, commit, push.
+Requirements:
 
-### 5. Stopping rules — read these before starting any experiment
+- validate exact city/source/schema/measure keys;
+- retain source currency, URL, title, evidence text, query and tax status;
+- preserve `not_found` / `blocked` / `stale` / `class_absent`;
+- enforce source search limits and `directPageReads === 0`;
+- keep v6.0 parsers for stored responses;
+- use the v6.1 prompts for new runtime calls.
 
-These exist because v5 had none. They are the difference between a loop and a spiral.
+Add focused tests before moving on. Commit and push:
 
-**Three-strikes rule.** If three consecutive experiments fail the *same gate* for the *same structural
-reason*, stop. Report the gate as the defect. Do **not** attempt a fourth. Either amend the gate with a
-dated decision recorded in `PLAN.md` and the manifest, or accept a lower evidence grade for that field
-and move on.
+`feat: add v6.1 source-native spine contracts`
 
-**Per-field experiment budget: 8.** Count experiments per product field across the whole programme.
-Reaching 8 means the field gets its best available grade and the loop moves on. It does not mean run a
-ninth. *(v5 ran 15 on `accom_1_star` and got zero rows.)*
+## 4. Phase 2 — simplify deterministic materialization
 
-**Bank what works.** When a category reaches a usable grade, bank it and move on. Do not keep optimising
-a solved category, and do not refuse to bank it because another category is unsolved. This directly
-reverses the v5 instruction that caused the failure.
+Add a v6.1 materialization path using the shared production library. Do not reimplement FX or provenance.
 
-**Grade D is a valid outcome.** A field that cannot be measured ships at grade D with a wide interval.
-That is a completed field, not a blocked one.
+### Accommodation
 
-**A gate may be amended, never weakened after the fact.** Amend before the holdout is used, with a dated
-rationale in `PLAN.md` and `validation-manifest-v6.json`. Never weaken a gate after seeing a disappointing
-result in order to declare success. The converse now also holds: **a gate no method can meet is a defect
-in the gate**, and leaving it unamended is not integrity, it is paralysis.
+Keep the current calibrated Expedia anchor and ladder unchanged.
 
-**The locked holdout is locked.** The 15 cities in `validation-manifest-v6.json` are revealed once per
-candidate freeze. If you have seen holdout results, you may not then change a coefficient, prompt or gate.
+### Food
 
-### 6. When to stop and ask the user
+- `food_budget = 2 × byt_food_budget_per_person_day`
+- `food_mid_range = 2 × byt_food_mid_per_person_day`
+- `food_high_end = 2 × byt_food_high_per_person_day`
+- `food_street_food = 0.5331 × food_budget`
 
-Stop and ask only when genuinely blocked:
+Generate `0.5331` through the coefficient script from
+`(6 × 0.2757) / (4 × 0.2757 + 2)`; never hand-edit generated JSON. Grade street food D ±45%.
 
-- a credential or permission you do not have;
-- a **product** decision that cannot be resolved empirically — the four open ones are listed in
-  `docs/dev/plans/city-cost-methodology-v6.md` §8, each with a stated default so work is never blocked
-  waiting for an answer;
-- a three-strikes trigger where both amending the gate and accepting a lower grade would materially
-  change the product.
+### Drinks
 
-Otherwise proceed. Do not ask the user to choose between options an experiment can settle.
+- `drink_coffee = cappuccino`
+- `drinks_none = 2 cappuccinos`
+- `drinks_light = 2 cappuccinos + 2 beers`
+- `drinks_moderate = 2 cappuccinos + 4 beers + 2 cocktails`
+- `drinks_heavy = 2 cappuccinos + 6 beers + 4 cocktails`
+- `cocktail = 2.6 × cappuccino`, grade C ±75%
+- no wine
 
-### 7. Definition of Done
+### Activities
 
-v6 is done when **all** of these are true. Every one is reachable; check them off rather than treating
-them as aspirational.
+- `activities_free = 0`
+- remaining tiers are two times the matching BYT per-person daily tier
 
-1. M1–M4 exit criteria met.
-2. All 19 fields produced for ≥95% of in-scope cities, every value graded and intervalled.
-3. `validation-manifest-v6.json` gates 1–10 scored and reported per tier, per region and per band, with
-   achieved figures stated — including any that fail, with the reason.
-4. **Gate 6 passes: v6 beats shipping v1 on ≥15 of 19 tiers and loses on none by more than 10%.**
-5. Coefficients reproducible: `node scripts/fit-city-cost-ladder-v6.mjs --check` exits 0.
-6. Locked holdout revealed exactly once, results reported unmodified.
-7. The 121-city dataset regenerated with grades, A/B diff against v1 produced, rollback tested.
-8. Grade and interval visible in the UI; no grade C/D value renderable without its grade.
-9. `PLAN.md`, `LOG.md`, `docs/dev/plans/city-cost-methodology-v6.md`, `docs/dev/handoffs/city-cost-v6.md`,
-   `data/reference/v6/README.md` and the data/prompt/script inventories all current.
-10. Verification passes:
-    - `npx tsc --noEmit`
-    - `npm run build`
-    - `npm test -- --run`
-    - `npm run docs:check-memory`
-    - `node scripts/fit-city-cost-ladder-v6.mjs --check`
-11. All work committed and pushed on `feat/city-cost-methodology-v6`.
+Do not store BYT daily spend in ticket-shaped anchor names. Normalize old v6.0 fields only at the legacy
+boundary.
 
-**A gate that fails is reported as failing.** v6 may ship with a documented failing gate if the product
-decision is to accept it — that is the user's call, recorded with a dated rationale. What is not
-acceptable is failing quietly, or restarting the collection spiral to avoid reporting it.
+### Fallback
 
-### 8. At the end of every work cycle
+Use one fallback layer per category:
 
-1. Record the verdict or milestone progress in `PLAN.md`.
-2. Append confirmed results to `LOG.md`.
-3. **Update `docs/dev/handoffs/city-cost-v6.md` so a cold agent can resume from it alone.** State the
-   exact next action, not a general direction.
-4. Commit and push.
-5. Begin the next item, unless the Definition of Done is met or §6 applies.
+`direct source tier vector → region tier vector → global tier vector`.
+
+Remove the v6.1 path's anchor-prior → generated-anchor → basket → direct-tier-prior overwrite chain.
+Accommodation remains the only anchor ladder.
+
+Intervals use the widest contributing source/relation interval. Do not use quadrature for behavioural
+presets.
+
+Add tests covering all 19 formulas, grades, missing-category fallback, monotonicity and provenance.
+Commit and push:
+
+`feat: simplify v6.1 tier materialization`
+
+## 5. Phase 3 — generated priors and development fixtures
+
+Use existing data only; make zero LLM calls.
+
+Build normalized v6.1 fixtures for the same 25 development cities:
+
+- Expedia and Numbeo drink facts from experiment 006;
+- BYT food/activity facts from experiment 003;
+- experiment 006 BYT activity facts as a schema/provenance cross-check.
+
+Write deterministic scripts that:
+
+1. generate the v6.1 category-tier priors without reading the live CSV;
+2. generate 25 normalized spine bundles;
+3. materialize the real v6.1 path;
+4. support `--check` and reproduce byte-identically.
+
+Do not treat experiment 003 as ground truth after it becomes the v6.1 production fixture source.
+
+Report:
+
+- source observations and explicit missingness;
+- grade distribution;
+- category fallback rate by region;
+- all 19 output coverage;
+- calls/searches represented by the source records.
+
+Commit and push:
+
+`feat: build v6.1 development fixtures and priors`
+
+## 6. Phase 4 — reachable release report
+
+Add a deterministic validator/reporter for
+`data/reference/v6/validation-manifest-v6-1.json`.
+
+Score only its ten release gates:
+
+1. output coverage;
+2. schema and missingness;
+3. provenance and grades;
+4. algebraic coherence;
+5. banked accommodation accuracy;
+6. source-dependence disclosure;
+7. deterministic replay;
+8. refresh economics;
+9. integration and rollback;
+10. verification.
+
+Produce a 19-row table naming each tier's source/derivation, grade, interval and fallback path.
+
+Food/activity are BYT source-backed, drinks are source-priced presets, and street food is a grade-D
+compatibility model. Do not call these independently validated. The old gates 2–6, all-19 v1 comparison
+and full-basket city ranking are historical non-gates for v6.1.
+
+Commit and push:
+
+`docs: report reachable v6.1 release gates`
+
+## 7. Phase 5 — integration finish
+
+- Wire new runtime collection to the three v6.1 prompts.
+- Keep `CITY_COST_METHODOLOGY_V6=true` as the opt-in new-city switch.
+- Keep flag-off v1 behaviour.
+- Do not alter `data/reference/city_costs_app_aud.csv`.
+- Ensure persisted metadata identifies methodology `v6.1` and retains full provenance.
+- Update any methodology UI text that inaccurately describes item-level food or ticket-level activity.
+- Rewrite `PLAN.md`, `LOG.md`, this loop's status, the handoff, inventories and project memory.
+
+Commit and push the completed milestone.
+
+## 8. Stop rules
+
+Stop and ask the owner only if completing the approved design would require:
+
+- a new source or fourth production call;
+- new LLM/browser collection;
+- opening any spent or proposed holdout;
+- touching the 121-city CSV;
+- removing or renaming a user-facing product tier;
+- changing accommodation coefficients;
+- a product decision not settled in the v6.1 plan.
+
+Do **not** stop for:
+
+- individual missing source fields;
+- low source coverage in a region;
+- food/activity lacking independent truth;
+- drink baskets lacking independent truth;
+- a grade-D result;
+- an outlier that does not violate deterministic schema/algebra.
+
+Use the documented fallback and continue.
+
+If the same implementation approach fails three times for the same structural reason, stop that approach.
+Do not collect evidence to rescue an implementation defect.
+
+## 9. Guardrails
+
+- No holdout read, score, freeze or collection.
+- No new ground-truth collection.
+- No v1 CSV modification.
+- No accommodation refit.
+- No hand-edited generated coefficients or priors.
+- No direct source page reads in production.
+- No hidden fallback or relabelling modelled values as observed.
+- No all-19 independent-validation requirement.
+- Preserve v6.0 evidence and stored-response replay.
+
+## 10. Verification baseline
+
+Run after every phase:
+
+```
+npx tsc --noEmit
+npm run build
+npm test -- --run
+npm run docs:check-memory
+node scripts/fit-city-cost-ladder-v6.mjs --check
+node scripts/test-city-cost-v6-ground-truth-warnings.mjs
+node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete
+```
+
+Add these during implementation and include them in the final baseline:
+
+```
+node scripts/build-city-cost-v6-1-priors.mjs --check
+node scripts/materialize-city-cost-v6-1-development.mjs --check
+node scripts/validate-city-cost-v6-1-release.mjs
+```
+
+If the test suite fails, rerun it once before investigating because this OneDrive checkout has a known
+temp-directory flake.
+
+## 11. Definition of Done
+
+Do not stop until every item in §8 of
+`docs/dev/plans/city-cost-methodology-v6-1.md` is true, the tree is clean, and the branch is pushed.
+
+The successful final state is:
+
+- all 19 tiers retained;
+- three source calls;
+- 25/25 deterministic development materializations;
+- honest grades and category fallback;
+- accommodation accuracy banked;
+- food/activity/drinks explicitly source-dependent or modelled;
+- new-city path ready behind the flag;
+- 121-city CSV untouched;
+- no new holdout spent.
+
+At the end of each phase, update `docs/dev/handoffs/city-cost-v6.md` with completed work and the
+next exact command/file. A handoff that says only “continue” has failed.
 
 ---
 
-## Resume line
+Resume line:
 
-To resume an in-progress v6 loop, use:
-
-> Resume the city cost methodology v6 workstream on branch `feat/city-cost-methodology-v6`. Read
-> `docs/dev/handoffs/city-cost-v6.md` first and continue from the exact next action it names. Follow
-> `LOOP-PROMPT-V6.md`, including its stopping rules in §5. Do not mark the goal complete unless the
-> Definition of Done in §7 passes.
+> Resume v6.1 on `feat/city-cost-methodology-v6`. Read
+> `docs/dev/handoffs/city-cost-v6.md`, then follow `LOOP-PROMPT-V6.md` from the first incomplete
+> phase. Keep all 19 tiers, use no new collection or holdout, and do not touch the 121-city CSV.

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "city-cost-v6-1-release-manifest-v1",
+  "methodologyVersion": "v6.1",
+  "status": "active_unscored",
+  "decisionDate": "2026-08-10",
+  "objective": "Ship the existing 19 product tiers for new cities through a simple three-call, source-native and honestly graded approximation path.",
+  "supersedes": {
+    "manifest": "data/reference/v6/validation-manifest-v6.json",
+    "scopeOnly": true,
+    "note": "The v6.0 manifest and spent holdouts remain immutable historical evidence. Its all-19 independent-validation requirement is structurally unreachable and is not a v6.1 release blocker."
+  },
+  "contracts": {
+    "plan": "docs/dev/plans/city-cost-methodology-v6-1.md",
+    "handoff": "docs/dev/handoffs/city-cost-v6.md",
+    "loop": "LOOP-PROMPT-V6.md",
+    "promptInventory": "docs/prompts/README.md",
+    "coefficients": "data/reference/v6/coefficients-v6.json",
+    "shippingDataset": "data/reference/city_costs_app_aud.csv"
+  },
+  "productTiers": [
+    "accom_shared_hostel_dorm",
+    "accom_hostel_private_room",
+    "accom_1_star",
+    "accom_2_star",
+    "accom_3_star",
+    "accom_4_star",
+    "food_street_food",
+    "food_budget",
+    "food_mid_range",
+    "food_high_end",
+    "drink_coffee",
+    "drinks_none",
+    "drinks_light",
+    "drinks_moderate",
+    "drinks_heavy",
+    "activities_free",
+    "activities_budget",
+    "activities_mid_range",
+    "activities_high_end"
+  ],
+  "productionSpine": {
+    "callsPerCity": 3,
+    "searchesPerCityMax": 10,
+    "directPageReads": 0,
+    "sources": [
+      {
+        "id": "expedia_3star",
+        "prompt": "docs/prompts/llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "measures": ["hotel_3star_room_2p"],
+        "searchesMax": 4
+      },
+      {
+        "id": "budgetyourtrip_daily_tiers",
+        "prompt": "docs/prompts/llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "measures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day",
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "searchesMax": 4
+      },
+      {
+        "id": "numbeo_drinks",
+        "prompt": "docs/prompts/llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "measures": ["cappuccino_1", "domestic_draft_beer_1"],
+        "searchesMax": 2
+      }
+    ]
+  },
+  "derivationContract": {
+    "food": {
+      "food_budget": "2 * byt_food_budget_per_person_day",
+      "food_mid_range": "2 * byt_food_mid_per_person_day",
+      "food_high_end": "2 * byt_food_high_per_person_day",
+      "food_street_food": "street_budget_compatibility_k * food_budget",
+      "streetBudgetCompatibilityK": 0.5331,
+      "streetBudgetCompatibilityProvenance": "(6 * 0.2757) / (4 * 0.2757 + 2), preserving the v6.0 low-cost basket relationship; generated and grade D"
+    },
+    "drinks": {
+      "drink_coffee": "cappuccino_1",
+      "drinks_none": "2 * cappuccino_1",
+      "drinks_light": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+      "drinks_moderate": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+      "drinks_heavy": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+      "cocktailRelation": "cocktail_1 = 2.6 * cappuccino_1; grade C; interval +/-75%",
+      "winePolicy": "excluded"
+    },
+    "activities": {
+      "activities_free": "0",
+      "activities_budget": "2 * byt_activities_budget_per_person_day",
+      "activities_mid_range": "2 * byt_activities_mid_per_person_day",
+      "activities_high_end": "2 * byt_activities_high_per_person_day"
+    },
+    "fallback": "One tier-vector fallback per category: observed source tiers, then regional tier vector, then global tier vector. Grade D. No anchor-prior plus direct-tier-prior chain."
+  },
+  "evidenceReuse": {
+    "developmentCities": 25,
+    "predictionSpine": "data/reference/v6/experiments/006-development-prediction-spine/",
+    "budgetYourTripTierPanel": "data/reference/v6/experiments/003-budgetyourtrip-tier-panel/",
+    "accommodationGroundTruth": "data/reference/v6/ground-truth/development-ledger.json",
+    "holdoutPolicy": "All v6.0 holdout measures are spent and remain closed. No v6.1 holdout is collected, frozen or read.",
+    "newLlmCallsRequiredForDevelopment": 0
+  },
+  "releaseScope": {
+    "newCitiesOnly": true,
+    "featureFlag": "CITY_COST_METHODOLOGY_V6",
+    "shippingCsvMayChange": false,
+    "rollback": "Unset the feature flag to retain v1.",
+    "freshHoldoutProposal": "cancelled_for_v6_1"
+  },
+  "gates": {
+    "1_outputCoverage": {
+      "requirement": "All 19 product tiers are numeric for all 25 development fixtures and at least 95% of runtime in-scope cities.",
+      "developmentThreshold": "25/25",
+      "runtimeThreshold": 0.95
+    },
+    "2_schemaAndMissingness": {
+      "requirement": "Every v6.1 source response validates; non-observations remain not_found, blocked, stale or class_absent and are never silently substituted in collection."
+    },
+    "3_provenanceAndGrades": {
+      "requirement": "Every tier carries evidenceBasis, evidenceGrade, interval, sourceIds, modelVersions and imputedMeasures. Grade C/D is never renderable as observed."
+    },
+    "4_algebraicCoherence": {
+      "requirement": "All tier values are finite and non-negative. Food satisfies street <= budget <= mid <= high; drinks satisfy coffee <= none <= light <= moderate <= heavy; activities satisfy free <= budget <= mid <= high; accommodation follows the shipped ladder ordering.",
+      "threshold": "25/25 development fixtures"
+    },
+    "5_accommodationAccuracy": {
+      "requirement": "Carry forward the genuine development accommodation result without refit.",
+      "medianApeMaxPctPerTier": 35,
+      "acceptedResultsPct": {
+        "accom_3_star": 8.27,
+        "accom_4_star": 13.12,
+        "accom_hostel_private_room": 15.97,
+        "accom_2_star": 16.74,
+        "accom_1_star": 21.49,
+        "accom_shared_hostel_dorm": 25.46
+      }
+    },
+    "6_sourceDependenceDisclosure": {
+      "requirement": "Report direct-source and grade-D fallback rates per category and region. Food/activity are labelled BYT source-backed, drinks are labelled source-priced presets, and none is called independently validated."
+    },
+    "7_deterministicReplay": {
+      "requirement": "The same normalized v6.1 fixture bundle materializes byte-identical 19-tier values and provenance under --check."
+    },
+    "8_refreshEconomics": {
+      "requirement": "Exactly three primary calls, at most ten searches and zero direct page reads per city.",
+      "callsMax": 3,
+      "searchesMax": 10,
+      "directPageReadsMax": 0
+    },
+    "9_integrationAndRollback": {
+      "requirement": "The feature-flagged new-city path uses v6.1 end to end; flag-off remains v1; the 121-city CSV is byte-identical."
+    },
+    "10_verification": {
+      "requirement": "TypeScript, build, tests, docs memory check, generated coefficient/prior checks and v6.1 release report all pass."
+    }
+  },
+  "nonGates": {
+    "all19IndependentAccuracy": "Not required: behavioural presets do not have independent city-price ground truth.",
+    "cityRankingAgainstFullIndependentBasket": "Deferred until a separate category-total panel is approved; not a v6.1 release blocker.",
+    "noRegressionVsV1Across15Of19": "Informational A/B only because independent truth is unavailable for most behavioural tiers.",
+    "newHoldout": "Forbidden in v6.1."
+  }
+}

@@ -1,11 +1,13 @@
 # City Cost Methodology v6 — Ship the Ladder, Label the Confidence
 
-**Status:** **ACTIVE.** Adopted 9 August 2026. Supersedes `city-cost-methodology-v5.md`.
+> **SUPERSEDED FOR ACTIVE IMPLEMENTATION (10 August 2026).** This document preserves the v6.0 design,
+> v5 diagnosis and evidence history. The owner-approved reachable finish line is
+> `docs/dev/plans/city-cost-methodology-v6-1.md`. Do not resume the all-19 independent-validation scope here.
+
+**Status:** **HISTORICAL v6.0.** Adopted 9 August 2026; implementation scope superseded by v6.1.
 **Branch:** `feat/city-cost-methodology-v6`
-**Current milestone:** M0, M1 and M2 collection are complete; M3 has been reset to fit and validate all 19
-tiers end-to-end. The previous holdout is spent and all 18 measures are `revealed_once`; no new holdout may
-be drawn, frozen or read until Phase 6 proposes a coverage-qualified panel and the owner approves it. M4 is
-intentionally not started.
+**Final v6.0 state:** M0, M1 and M2 collection completed; the all-tier M3 evidence programme was stopped as
+structurally unreachable. Every previous holdout remains spent and closed. M4 was not started.
 
 **Cold start?** Read `docs/dev/handoffs/city-cost-v6.md` — it names the exact next action.
 **Running the loop?** Use `LOOP-PROMPT-V6.md`.

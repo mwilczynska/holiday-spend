@@ -1,7 +1,8 @@
 # City Cost v6 Data Dictionary
 
-**Status:** Frozen for v6. Amend only through a dated decision recorded in `PLAN.md` **and** in this file,
-**before** the locked holdout in `validation-manifest-v6.json` is used.
+**Status:** The 19 product fields and A/B/C/D semantics are current. The v6.1 production-source and
+derivation amendments are recorded in §6 and frozen in `validation-manifest-v6-1.json`. Every v6.0 holdout
+is spent and remains closed.
 
 **Read this first if you are:** deciding whether a collected value may be used, deciding what grade a
 value carries, or implementing the derivation path.
@@ -10,8 +11,9 @@ value carries, or implementing the derivation path.
 
 ## 0. What changed from v5, and what did not
 
-**The product estimands are UNCHANGED.** Every one of the 19 values means exactly what it meant in
-`data/reference/v5/data-dictionary-v5.md`. v6 does not redefine what a three-star room is.
+**The 19 user-facing fields are unchanged.** v6.1 preserves every planner choice while expressing food and
+activity tiers as daily-spend presets rather than baskets of independently priced items. Accommodation and
+drink units remain unchanged.
 
 **What changed is evidence admissibility.** v5 admitted an observation only when the source stated its
 occupancy basis, tax treatment, price statistic and reference period in the same evidence. Public
@@ -54,7 +56,8 @@ These are inherited from v5 verbatim except where marked **[v6]**.
 
 ## 2. Product fields
 
-Unchanged from v5. The `Derived how` column is new and states the v6 production path for each field.
+The `Derived how` column states the active v6.1 production target. Historical v6.0 derivations remain in
+`coefficients-v6.json`, `LOG.md` and the dated decisions below until the implementation is replaced.
 
 | Field | Frozen estimand | Derived how (v6) | Typical grade |
 | --- | --- | --- | --- |
@@ -64,10 +67,10 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 | `accom_2_star` | Standard room for two, two-star class, one night | `0.7500 × accom_3_star` | C |
 | `accom_3_star` | Standard room for two, three-star class, one night | **MEASURED** — Expedia class-trend snippet | B |
 | `accom_4_star` | Standard room for two, four-star class, one night | `1.3372 × accom_3_star` | C |
-| `food_street_food` | Six standard low-cost prepared meals for two over one day | `6 × street_food_meal_1p`; the measured n=6 relation is diagnostic only and production falls back to the generated global prior ratio `0.2757 × inexpensive_restaurant_meal_1p` | D |
-| `food_budget` | Four street meals + two inexpensive-restaurant meals for two, one day | basket | A/D |
-| `food_mid_range` | Two street + two inexpensive + one mid-range shared meal, one day | basket | A/D |
-| `food_high_end` | Two inexpensive + one mid-range + one premium shared meal, one day | basket; premium is a grade-D fallback below minimum n | A/D |
+| `food_street_food` | Lowest-cost daily food-spend preset for two people | `0.5331 × food_budget`; generated compatibility model | D |
+| `food_budget` | Daily food-and-meals spend for two budget travellers | `2 ×` BYT budget food tier per person/day | B/D |
+| `food_mid_range` | Daily food-and-meals spend for two mid-range travellers | `2 ×` BYT mid-range food tier per person/day | B/D |
+| `food_high_end` | Daily food-and-meals spend for two high-end travellers | `2 ×` BYT luxury food tier per person/day | B/D |
 | `drink_coffee` | One regular cappuccino | **MEASURED** — Numbeo | A |
 | `drinks_none` | Two cappuccinos, no alcohol | basket | A |
 | `drinks_light` | Two cappuccinos + two domestic draft beers | basket | A |
@@ -75,10 +78,10 @@ Unchanged from v5. The `Derived how` column is new and states the v6 production 
 | `drinks_heavy` | Two cappuccinos + six beers + four cocktails | basket; cocktail is fitted from independent menus against cappuccino; wine glass is excluded after rejected calibration | C |
 | `activities_free` | No paid activity spending | `0` | definitional |
 | `activities_budget` | Daily activity spend for two people at the budget tier | `2 ×` BudgetYourTrip budget activity-spend tier; no independent daily-spend truth | B |
-| `activities_mid_range` | Daily activity spend for two people at the mid tier | `2 ×` BudgetYourTrip mid activity-spend tier; no independent daily-spend truth | C |
-| `activities_high_end` | Daily activity spend for two people at the high tier | `2 ×` BudgetYourTrip luxury activity-spend tier; no independent daily-spend truth | C |
+| `activities_mid_range` | Daily activity spend for two people at the mid tier | `2 ×` BudgetYourTrip mid activity-spend tier; no independent daily-spend truth | B |
+| `activities_high_end` | Daily activity spend for two people at the high tier | `2 ×` BudgetYourTrip luxury activity-spend tier; no independent daily-spend truth | B |
 
-> **Current M3 override (10 August 2026):** the measured street-food R0 `k=0.3248` (n=6; ±336% LOO-p90)
+> **Historical v6.0 override (10 August 2026):** the measured street-food R0 `k=0.3248` (n=6; ±336% LOO-p90)
 > is diagnostic only under the uniform minimum fitted n=8 rule. Production uses the generated global prior
 > ratio `k=0.2757` at grade D with ±45%; the priors and shipped fallback agree. This supersedes the 0.5
 > constant. `premium_restaurant_meal_2p`
@@ -95,13 +98,9 @@ measure a different estimand and are not truth for these tiers. Experiments 037,
 and 089 found no independent daily-spend source. **Do not describe the retained ticket rows as activity-tier
 truth or the BYT production values as independently validated.**
 
-The food and drink anchor paths are explicit. `premium_restaurant_meal_2p` is generated as the grade-D
-1.5 × midrange fallback below the minimum relation n; `cocktail_1` is `2.6000 ×` measured cappuccino.
-Those coefficients are generated from independent official-menu development fits or documented fallbacks
-and their residual intervals are recorded in `coefficients-v6.json`; the displayed values are not asserted
-constants. `street_food_meal_1p` retains the measured weak paired relation as diagnostic evidence, while
-production uses the generated grade-D global prior fallback because n=6 is below the uniform fitted n=8
-threshold. McMeal remains a measured Numbeo anchor and diagnostic only.
+The v6.1 drink anchor paths are explicit: `cocktail_1` is `2.6000 ×` measured cappuccino and wine is not
+part of the composition. Numbeo meal fields, McMeal, `premium_restaurant_meal_2p` and item-level
+`street_food_meal_1p` are retained only for v6.0 evidence replay, not new v6.1 collection.
 
 ---
 
@@ -112,18 +111,17 @@ UI treatment. Grades are assigned by deterministic code, never by the LLM.
 
 | Grade | Meaning | Interval | Assigned when |
 | --- | --- | --- | --- |
-| **A** | **Observed.** Direct source observation this refresh, definition-compatible, basis stated by the source | ±10% | Numbeo food/drink rows with exact city, row label, value, currency and canonical URL |
-| **B** | **Source proxy.** Directly observed, but occupancy / tax / statistic partly unstated. Corrected by a fitted source offset (§4) | ±20% | Expedia 3-star trends, BudgetYourTrip activity tiers, Expatistan drink rows |
-| **C** | **Laddered.** Derived from a measured anchor in the same city via a validated ratio | ±25% (wider where the coefficient is weak — see `coefficients-v6.json`) | All non-3-star accommodation; food/drink measures filled by a v4 relation |
-| **D** | **Regional prior.** No anchor for this city; value is the regional and cost-band median | ±45% | Sparse cities — Don Det, Kyoto and Fukuoka class, where every source returns `not_found` |
+| **A** | **Observed.** Direct source observation this refresh, definition-compatible, basis stated by the source | ±10% | Numbeo cappuccino and domestic-beer rows |
+| **B** | **Source proxy.** A source-native level or daily tier that approximates the product estimand | source-specific; Expedia ±41%, BYT ±35% | Expedia 3-star and BudgetYourTrip daily food/activity tiers |
+| **C** | **Laddered.** Derived from a same-city source fact through a disclosed relationship | coefficient-specific | Non-3-star accommodation and cocktail-bearing drink tiers |
+| **D** | **Compatibility/fallback.** A disclosed product model or regional/global tier vector | ±45% | Street-food compatibility and categories with missing source tiers |
 | **definitional** | True by definition | n/a | `activities_free = 0` |
 
 **Grade D is what makes 100% coverage honest.** v5 had no grade D, so a sparse city blocked the whole
 methodology. v6 gives it a wide, clearly-labelled number.
 
-**Grade propagation through a basket:** a basket takes the **worst** grade among its inputs, and its
-interval is the quadrature sum of its input intervals weighted by each input's contribution to the total.
-A basket is never graded better than its weakest ingredient.
+**Grade propagation through a preset:** use the worst grade and widest interval among its contributing
+source facts and relations. Do not use quadrature to create pseudo-precision across behavioural quantities.
 
 **Grade is not confidence-from-the-model.** v4 established that a model's self-reported confidence is
 wrong in every run and always flatteringly (`overallConfidence`, `ladderStep` — both removed). Grade is
@@ -299,3 +297,30 @@ The minimum fitted relation sample size is n=8. The measured street-food relatio
 LOO-p90 interval, so it is retained as diagnostic evidence but not shipped. Production uses the generated
 global direct-evidence prior ratio k=0.2757 at grade D ±45%, matching `priors-v6.json`. Premium has n=3
 and remains the parallel grade-D 1.5 fallback. Neither weak relation is presented as a fitted coefficient.
+
+### 10 August 2026 — v6.1 keeps all tiers and replaces the unreachable all-tier evidence programme
+
+The owner stopped the attempt to treat all 19 planner tiers as independently observable city prices. Food,
+drink and activity tiers are behavioural spend presets; public sources do not publish 19 definition-matched
+independent counterparts. The resulting collection programme was no longer a simple or repeatable way to
+approximate city costs. The spent v6.0 evidence is retained, but no further holdout is collected for v6.1.
+
+All 19 user-facing fields remain. New-city collection becomes exactly three source-native calls: Expedia
+3-star accommodation, BudgetYourTrip's three food and three activity daily-spend tiers per person, and
+Numbeo cappuccino plus domestic draft beer. Deterministic code scales BYT tiers to two people, applies the
+banked accommodation ladder, and composes the existing drink presets. BYT food and activity values are
+grade-B source proxies, not independent truth. Drink baskets are source-priced consumption presets.
+
+`food_street_food` remains as a compatibility tier and is modelled directly from the BYT budget food tier.
+Its generated ratio is `(6 × 0.2757) / (4 × 0.2757 + 2) = 0.5331`, preserving the old low-cost basket
+relationship while changing the base from item prices to a daily tier. This does not contradict the prior
+`street_food_meal_1p / inexpensive_restaurant_meal_1p = 0.2757`: the two coefficients have different
+denominators. The compatibility result is grade D with ±45%, not an observed street-food price. Cocktail
+remains the disclosed `2.6 × cappuccino` grade-C model with ±75%; wine is removed from the v6.1 composition.
+
+Missing source data uses one fallback per category: direct tier vector, then regional tier vector, then
+global tier vector, at grade D. v6.1 does not impute ingredients, compose a basket and then overwrite it
+with another prior. The active source contract and reachable gates are frozen in
+`validation-manifest-v6-1.json`; the v6.0 all-19 accuracy, ranking and trip-total gates are historical
+non-gates. An explicit, correctly graded product assumption is now a valid completion state. A hidden or
+mislabelled assumption is not.

@@ -10,7 +10,7 @@ change history.
 | --- | --- |
 | What is planned next, milestone status, open decisions | **[PLAN.md](PLAN.md)** |
 | What was built, what methodologies were tried and what they produced, dataset inventory | **[LOG.md](LOG.md)** |
-| The active city cost methodology workstream | `docs/dev/plans/city-cost-methodology-v6.md` |
+| The active city cost methodology workstream | `docs/dev/plans/city-cost-methodology-v6-1.md` |
 | How to resume that workstream cold | `docs/dev/handoffs/city-cost-v6.md` |
 | Prior methodology evidence | `docs/product/methodology-v4.md`, `data/reference/v5/` |
 
@@ -72,7 +72,7 @@ Recharts · NextAuth · Vitest + Playwright
 | Path | Contents |
 | --- | --- |
 | repo root | App code |
-| `docs/dev/plans/city-cost-methodology-v6.md` | **The active methodology workstream** |
+| `docs/dev/plans/city-cost-methodology-v6-1.md` | **The active methodology workstream** |
 | `LOOP-PROMPT-V6.md` | The autonomous work prompt for v6, including its stopping rules |
 | `docs/product/methodology-v4.md` | Prior methodology evidence; not integrated |
 | `docs/dev/plans/`, `docs/dev/handoffs/` | **Only current** workstream documents |
@@ -119,16 +119,18 @@ validated.
 > The v6 replacement is integrated behind `CITY_COST_METHODOLOGY_V6=true`; the 121-city CSV remains on v1
 > until M4.
 
-### The design v6 executes (v4's principle)
+### The v6 design boundary
 
 Documented in full in `docs/product/methodology-v4.md`. v4 was never integrated, but its governing
 principle is the basis of the active v6 workstream:
 
-> **Measure what is cheap to measure. Model only the gaps. Never assert a constant.**
+> **Measure what is systematic. Model the remaining product presets. Never disguise a model or fallback
+> as observed evidence.**
 
-Three properties behave differently and must be treated differently — **level** drifts slowly and is
-measured cheaply; **structure** (ratios between tiers) is very stable and is modelled from data; **drift**
-is handled by re-measuring level and leaving structure alone.
+Three properties behave differently: **level** is measured from a current source; **structure** is modelled
+in deterministic code; **behavioural presets** express traveller choices rather than independently
+observable market prices. Fitted relationships are preferred where useful evidence exists. A documented,
+correctly graded product assumption is an acceptable completion state where it does not.
 
 The second architectural rule: **the LLM is a structured extractor, never an estimator.** It searches,
 reads, and reports numbers with their sources and an explicit basis. It does no arithmetic, no currency
@@ -138,7 +140,7 @@ conversion, and never emits a tier. All derivation is a pure server-side functio
 
 | Layer | Deterministic? | How |
 | --- | --- | --- |
-| Collection | No — bounded instead | Fixed versioned prompt, rigid schema, hard validation gates, multi-sample median |
+| Collection | No — bounded instead | Fixed versioned prompt, rigid schema, source/search ceiling and explicit missingness |
 | Derivation | **Fully** | Pure function from anchors to 19 tiers, server-side |
 | The dataset | **By persistence** | Anchors stored with provenance; a city never changes until a deliberate refresh |
 
@@ -155,39 +157,30 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 `docs/dev/plans/city-cost-methodology-v6.md` §1, and the trap it teaches is recorded in `PLAN.md`:
 *an unreachable gate is a defect in the gate, not a reason to collect more.*
 
-### v6 — the active workstream
+### v6.1 — the active workstream
 
-When enabled, v6 measures one level per category (Numbeo food/drink, Expedia 3-star, BudgetYourTrip
-activities), derives the rest from ratios fitted in `data/reference/v6/coefficients-v6.json`, and grades
-every value **A** observed / **B** source proxy / **C** laddered / **D** regional prior, each with an interval.
-Every field always produces a number; no number is ever presented as better-evidenced than it is. The v6
-collector records source currency, missingness, bounded retries and per-call telemetry. Contracts are frozen
-under `data/reference/v6/`; the loop is `LOOP-PROMPT-V6.md`; the cold-start document is
-`docs/dev/handoffs/city-cost-v6.md`.
-M3 was reopened by owner decision to fit and validate all 19 product tiers. The manifest-driven development
-ledger now has 25 cities x 18 measures with 280 found rows and zero pending slots. The original six-measure
-holdout and later 18-measure extension are spent; all 18 measures are `revealed_once` and must not be reopened.
-BYT tier evidence and an Expatistan drink cross-check are recorded for development, while independent activity
-truth is unavailable: the official rows are ticket observations and BYT is the production daily-spend source.
-A fresh 15-city proposal is page-verified and coverage-gated at 72/90 rows; it awaits owner approval. The
-121-city CSV remains on v1 until M4.
+The v6.1 contract is approved but not yet wired; until its implementation phases land, flag-on still runs
+the v6.0 collector/materializer. The cold-start handoff names the exact first code change.
 
-**Current M3 pairing result (10 August 2026).** Experiment 006 now supplies 75 delegated, schema-validated
-spine responses and 75 telemetry records for the 25-city development panel, reusing 15 Expedia responses
-byte-for-byte from experiment 001. The default generator runs those responses through the real
-`materializeCityCostV6` implementation and produces 25/25 full 19-tier bundles. The development score is
-explicitly IN-SAMPLE: 10 evaluable tiers, one definitional tier and 8 blocked tiers. Gates 3–6 are
-`not_evaluable` because the independent development truth is not a complete daily basket. The street-food
-coefficient is the measured paired `k=0.3248` with grade C and a ±336% LOO-p90 interval; the former 0.5
-reasoned constant is superseded. `priors-v6.json` records all 34 frozen-FX exclusions. The spent holdout and
-the proposed fresh holdout remain untouched; owner approval is required before any new holdout action.
+v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
+source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,
+and Numbeo for cappuccino and domestic draft beer. Deterministic code applies the banked accommodation
+ladder, doubles BYT's per-person/day values for the two-person product, composes the five drink presets, and
+models street food and cocktail with disclosed coefficients. New collection is capped at ten searches and
+zero direct page reads per city.
 
-**M3 correction (10 August 2026; supersedes the paragraph above).** The materializer now preserves
-post-derivation food baskets. The development score is 9 evaluable tiers (six accommodation and three food),
-one definitional tier, 8 blocked tiers and one not-evaluable activity tier. Food scores use observed Numbeo
-source anchors only: budget n=14, mid n=13 and high n=13. The measured street-food n=6 relation is diagnostic
-only; generated production fallback is prior ratio k=0.2757, grade D +/-45% under the uniform n>=8 rule.
-The former food and activities-budget scores are superseded as circular or estimand-mismatched comparisons.
+Every value carries **A** observed / **B** source proxy / **C** laddered / **D** fallback or compatibility
+evidence, an interval and provenance. Missing category data uses one direct → regional → global tier-vector
+fallback; it never reads or algebraically inverts the live CSV. Food and activities are BYT source-backed
+product estimates, drinks are source-priced consumption presets, and none is described as independently
+validated. The six accommodation tiers retain genuine development median APE from **8.27% to 25.46%**.
+
+The active implementation contract is `docs/dev/plans/city-cost-methodology-v6-1.md`; reachable gates are
+in `data/reference/v6/validation-manifest-v6-1.json`; the loop is `LOOP-PROMPT-V6.md`; the cold-start handoff
+is `docs/dev/handoffs/city-cost-v6.md`. Existing experiment 003 and 006 evidence supplies the 25-city
+development fixtures with no new model collection. All holdouts are spent and remain closed. The v6.1 path
+is for new cities behind `CITY_COST_METHODOLOGY_V6=true`; the 121-city CSV and flag-off v1 rollback remain
+unchanged.
 
 ### Transport is out of scope
 
@@ -299,9 +292,11 @@ login page shows provider-specific guidance instead.
 
 | Path | Purpose |
 | --- | --- |
-| `docs/dev/plans/city-cost-methodology-v6.md` | Active v6 methodology, the v5 diagnosis, milestones |
+| `docs/dev/plans/city-cost-methodology-v6-1.md` | Active v6.1 implementation plan and Definition of Done |
+| `docs/dev/plans/city-cost-methodology-v6.md` | Historical v6.0 methodology and v5 diagnosis |
 | `docs/dev/handoffs/city-cost-v6.md` | Cold-start handoff — names the exact next action |
-| `data/reference/v6/` | Frozen v6 contracts: data dictionary, validation manifest, coefficients |
+| `data/reference/v6/validation-manifest-v6-1.json` | Active three-call source contract and reachable release gates |
+| `data/reference/v6/` | v6 contracts, generated coefficients/priors and retained evidence |
 | `data/reference/v6/ground-truth/` | M3 development ledger, per-measure holdout extension, one-time score files and lock marker |
 | `scripts/validate-city-cost-v6-ground-truth.mjs` | Deterministic development-ledger audit; checks seal metadata but never reads holdout values |
 | `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder and Booking/Expedia calibration; `--check` verifies determinism |

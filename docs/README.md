@@ -15,11 +15,12 @@ The four root-level documents come first:
 
 ## Layout
 
-- `product/methodology-v4.md` — **the active city cost methodology**
+- `dev/plans/city-cost-methodology-v6-1.md` — **the active city cost methodology workstream**
+- `product/methodology-v4.md` — prior methodology evidence and design principles
 - `prompts/` - tracked LLM prompt templates. `llm_prompt_city_anchors_v4.md` is **generated** from
   `product/methodology-v4.md` §9.1 — never edit it directly
 - `ops/` - deployment and operational runbooks
-- `dev/plans/`, `dev/handoffs/` - **only current** workstream documents
+- `dev/plans/`, `dev/handoffs/` - current workstream documents; superseded plans carry a status banner
 - `*/archive/` - superseded material, retained for provenance. Every file carries a status banner
   naming what replaced it. Nothing here describes how the project currently works
 

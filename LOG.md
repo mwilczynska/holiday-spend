@@ -2673,3 +2673,31 @@ and all five production anchors **13/25 (52%)**. Regional all-five rates are Afr
 South Asia 1/3. The food score therefore runs on a Western/East-Asian-leaning subsample and may not
 generalise to cities with weak Numbeo coverage. The detailed diagnostic is
 `data/reference/v6/m3-food-basket-diagnostic.json`; the generated report incorporates it.
+
+## v6.1 — reachable finish line adopted (10 August 2026)
+
+The owner stopped the all-19 independent-validation programme because it had become the same kind of
+unreachable process v6 was intended to replace. The production architecture itself succeeded: 25/25
+development cities materialized through the real path, and the six accommodation tiers achieved genuine
+development median APE from **8.27% to 25.46%**. The failure was treating food, drink and activity planner
+presets as 13 additional independently observable city prices. The 450-slot item ledger found 280 rows, the
+spent fresh extension found only 12/180 rows, and complete gates remained structurally not evaluable.
+
+The superseding v6.1 contract keeps every one of the **19 user-facing tiers**. New-city collection is three
+source-native calls: Expedia 3-star accommodation; BudgetYourTrip food budget/mid/high and activity
+budget/mid/high per person/day; and Numbeo cappuccino plus domestic beer. Deterministic code applies the
+banked accommodation ladder, scales BYT values to two people, composes the existing drink presets, and
+models street food plus cocktail with explicit grades and intervals. Missing data uses one category tier
+vector fallback rather than the v6.0 anchor/relation/basket/direct-prior chain.
+
+The active design is `docs/dev/plans/city-cost-methodology-v6-1.md`; the reachable gates are frozen in
+`data/reference/v6/validation-manifest-v6-1.json`; the three verbatim source contracts are the
+`docs/prompts/llm_prompt_city_cost_v6_1_*.md` files. `LOOP-PROMPT-V6.md` and
+`docs/dev/handoffs/city-cost-v6.md` now give GPT-5.6 Luna Max the phased implementation sequence, exact
+commits, generated tooling, verification baseline, stop rules and Definition of Done.
+
+No implementation claim is made by this entry: v6.1 source schemas and materialization are the next work.
+Existing experiments 003 and 006 provide development fixtures with zero new model calls. Every old holdout
+remains spent and closed, the proposed fresh holdout is cancelled for v6.1, the accommodation coefficients
+are frozen, and `data/reference/city_costs_app_aud.csv` remains unchanged. v6.1 releases only for new-city
+generation behind the existing opt-in flag; migration of the 121 stored cities is a separate future decision.
