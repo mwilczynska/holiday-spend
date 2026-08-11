@@ -2,8 +2,8 @@
 
 **As at:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** v6.1 implementation — **Phase 4 complete**
-**Exact next phase:** final Phase 5 release-boundary documentation and verification baseline
+**Milestone:** v6.1 implementation — **complete for new-city generation**
+**Exact next action:** no further v6.1 implementation; keep M4/121-city migration as a separate decision
 
 This handoff is written for a cold GPT-5.6 Luna Max context. It supersedes the earlier M3 handoffs. The
 v6.0 evidence and commits remain valid history; do not reconstruct the workstream from old prompts.
@@ -146,13 +146,13 @@ against itself.
 
 ## 7. Exact next action
 
-Complete Phase 5 from `LOOP-PROMPT-V6.md`:
+The v6.1 finish line is complete:
 
-1. Keep the generated v6.1 report/result and release-validator commands in the verification baseline.
-2. Confirm the feature-flag regression test: flag-on uses v6.1 and an unset flag leaves v1 selected.
-3. Update the handoff, active plan, project memory, evidence inventory and LOG with the final release state.
-4. Run the complete baseline, including the v6.1 priors, materialization and release `--check` commands.
-5. Commit and push the release-boundary documentation and verification result.
+1. The generated report/result and release-validator commands are in the verification baseline.
+2. The feature-flag regression test confirms flag-on uses v6.1 and an unset flag leaves v1 selected.
+3. The handoff, active plan, project memory, evidence inventory, methodology page and LOG record the final state.
+4. The complete baseline passes, including v6.1 priors, materialization and release `--check` commands.
+5. The implementation and release-boundary documentation are committed and pushed.
 
 Do not begin by changing coefficients, priors or the materializer. The response contract comes first.
 
@@ -162,7 +162,7 @@ Do not begin by changing coefficients, priors or the materializer. The response 
 2. Simplified v6.1 materializer — **complete** in `src/lib/city-cost-methodology-v6-1.ts`.
 3. Generated category priors and 25-city fixtures — **complete** from existing experiments 003/006.
 4. Reachable release validator/report — **complete**.
-5. New-city feature-flag integration and rollback/release documentation — **in progress; final baseline next**.
+5. New-city feature-flag integration and rollback/release documentation — **complete**; M4 is separate.
 
 Commit and push after each phase. Rewrite §3 and §7 of this handoff with actual completed state and the
 next exact action.

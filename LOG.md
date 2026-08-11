@@ -2745,3 +2745,14 @@ accuracy claim is made for those categories. No new collection, holdout read, co
 CSV change occurred. The v1 rollback regression test now explicitly verifies that an unset
 `CITY_COST_METHODOLOGY_V6` flag leaves the v1 path selected. Phase 5 is final baseline and release-boundary
 documentation.
+
+## v6.1 — new-city release boundary complete (10 August 2026)
+
+Phase 5 is complete for new-city generation. The v6.1 feature flag, v1 rollback, three-call source
+contract, category fallback, 25-city × 19-tier replay, generated release report and all reachable gates
+are documented and verified. The full baseline passed: TypeScript, build, 35 test files / 163 tests, memory,
+legacy coefficient and warning checks, ground-truth ledger validation, v6.1 priors/materialization checks
+and release validation. The branch is pushed at `a5848a5` plus the final documentation closure commit.
+
+The 121-city CSV remains unchanged and no holdout was read or collected. v6.1 is ready for new-city
+generation only; migrating the existing CSV is M4 and remains a separate future decision.

@@ -161,8 +161,8 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
 reachable release validator/report and feature-flagged new-city path are implemented. The nine reachable
-release gates pass; final baseline and release-boundary documentation are the remaining handoff checks.
-Flag-on uses v6.1 and flag-off remains v1.
+release gates and full verification baseline pass; v6.1 is complete for new-city generation. Flag-on uses
+v6.1 and flag-off remains v1.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,

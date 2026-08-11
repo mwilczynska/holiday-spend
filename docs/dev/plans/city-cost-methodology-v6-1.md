@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Reachable Finish Line
 
-**Status:** Active implementation plan
+**Status:** Complete for new-city generation; M4 migration remains a separate future decision
 **Owner decision:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
@@ -201,12 +201,16 @@ must not block v6.1.
 The generated validator passes all nine reachable gates for the 25 × 19 replay. The report and JSON result
 are under `data/reference/v6/`; no holdout was read and the shipping CSV was not modified.
 
-### Phase 5 — release boundary — **in progress; final baseline and documentation**
+### Phase 5 — release boundary — **complete**
 
 - Keep the 121-city CSV unchanged.
 - Keep rollback to v1.
 - Make v6.1 ready for **new-city generation only** behind the existing feature flag.
 - Update the handoff, plan, log, methodology page and project memory.
+
+The full verification baseline passes. The branch is pushed with the release validator, generated report,
+rollback regression test and release-boundary documentation. M4 migration of the 121-city CSV remains out of
+scope and requires a separate decision.
 
 ## 8. Definition of Done
 

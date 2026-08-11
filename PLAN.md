@@ -205,7 +205,7 @@ price counterparts. The 450-slot development ledger resolved 280 found rows; the
 found only 12/180 rows. Requiring another holdout would repeat the same structural failure. No holdout may
 be reopened or replaced under v6.1.
 
-### M3.1 — simplify and finish v6.1 — **RELEASE CHECKS COMPLETE; final baseline next**
+### M3.1 — simplify and finish v6.1 — **COMPLETE for new-city generation**
 
 The implementation contract is
 [`docs/dev/plans/city-cost-methodology-v6-1.md`](docs/dev/plans/city-cost-methodology-v6-1.md). It keeps

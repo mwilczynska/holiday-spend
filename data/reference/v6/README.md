@@ -4,7 +4,7 @@
 cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact next action. This file
 tells you what lives here and what each file is for.
 
-**Status:** v6.1 is the active implementation target. On 10 August 2026 the owner stopped the v6.0 attempt
+**Status:** v6.1 is complete for new-city generation. On 10 August 2026 the owner stopped the v6.0 attempt
 to independently validate all 19 behavioural presets. v6.1 retains every product tier and all valid v6.0
 evidence, but uses a reachable three-call, source-native release contract. Read
 `docs/dev/plans/city-cost-methodology-v6-1.md` and `validation-manifest-v6-1.json`. Every old holdout is
