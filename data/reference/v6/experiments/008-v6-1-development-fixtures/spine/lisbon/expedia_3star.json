@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=4; v6.1 fixture budget=4.",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 156,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Lisbon-Hotels.s30-0-d2080.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Lisbon from $44 | Expedia",
+      "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Lisbon. September: $156.",
+      "query": "site:expedia.com Lisbon Portugal 3-star hotels 2 adults 1 night average price",
+      "taxStatus": "excluded"
+    }
+  }
+}

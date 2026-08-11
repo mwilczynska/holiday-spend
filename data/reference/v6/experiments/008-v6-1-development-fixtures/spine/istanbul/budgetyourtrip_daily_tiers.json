@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Food and activity values come from the existing labelled per-person/day panel; they are source-backed production values, not independent truth in v6.1. Original v6.0 searchesUsed=4; v6.1 fixture budget=4.",
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 24,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Istanbul page reports Food & Meal Budget budget at $24 USD per person per day.",
+      "query": "BudgetYourTrip Istanbul labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 59,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Istanbul page reports Food & Meal Budget mid_range at $59 USD per person per day.",
+      "query": "BudgetYourTrip Istanbul labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 133,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Istanbul page reports Food & Meal Budget luxury at $133 USD per person per day.",
+      "query": "BudgetYourTrip Istanbul labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 15,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Istanbul exact-city tier row from v5 experiment 080 reports Entertainment budget at $15 USD per person per day; reused without recalculation.",
+      "query": "BudgetYourTrip Istanbul labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 39,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Istanbul exact-city tier row from v5 experiment 080 reports Entertainment mid_range at $39 USD per person per day; reused without recalculation.",
+      "query": "BudgetYourTrip Istanbul labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 95,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Istanbul exact-city tier row from v5 experiment 080 reports Entertainment luxury at $95 USD per person per day; reused without recalculation.",
+      "query": "BudgetYourTrip Istanbul labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    }
+  }
+}

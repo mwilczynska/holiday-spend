@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "retrievalStatus": "complete",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 2.58,
+      "currency": "EUR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+      "sourceTitle": "Cost of Living in Lisbon. Jun 2026. Prices in Lisbon",
+      "evidenceText": "Cappuccino (Regular Size) | €2.58 | 1.20-4.00",
+      "query": "site:numbeo.com/cost-of-living/in/Lisbon Meal at an Inexpensive Restaurant Cappuccino",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 3,
+      "currency": "EUR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lisbon",
+      "sourceTitle": "Cost of Living in Lisbon. Jun 2026. Prices in Lisbon",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | €3.00 | 1.80-4.50",
+      "query": "site:numbeo.com/cost-of-living/in/Lisbon Meal at an Inexpensive Restaurant Cappuccino",
+      "taxStatus": "unknown"
+    }
+  }
+}

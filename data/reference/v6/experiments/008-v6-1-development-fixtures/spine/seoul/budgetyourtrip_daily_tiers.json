@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalStatus": "complete",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Food and activity values come from the existing labelled per-person/day panel; they are source-backed production values, not independent truth in v6.1. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 18,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Seoul page reports Food & Meal Budget budget at $18 USD per person per day.",
+      "query": "BudgetYourTrip Seoul labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 47,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Seoul page reports Food & Meal Budget mid_range at $47 USD per person per day.",
+      "query": "BudgetYourTrip Seoul labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 124,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Seoul page reports Food & Meal Budget luxury at $124 USD per person per day.",
+      "query": "BudgetYourTrip Seoul labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Seoul page reports Entertainment budget at $9 USD per person per day.",
+      "query": "BudgetYourTrip Seoul labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 24,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Seoul page reports Entertainment mid_range at $24 USD per person per day.",
+      "query": "BudgetYourTrip Seoul labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 72,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Seoul page reports Entertainment luxury at $72 USD per person per day.",
+      "query": "BudgetYourTrip Seoul labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    }
+  }
+}

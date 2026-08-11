@@ -2,8 +2,8 @@
 
 **As at:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** v6.1 implementation — **Phase 1 complete**
-**Exact next phase:** simplified deterministic materialization and tests
+**Milestone:** v6.1 implementation — **Phase 3 complete**
+**Exact next phase:** reachable release checks and the generated 19-tier report
 
 This handoff is written for a cold GPT-5.6 Luna Max context. It supersedes the earlier M3 handoffs. The
 v6.0 evidence and commits remain valid history; do not reconstruct the workstream from old prompts.
@@ -43,7 +43,7 @@ Food/activity source dependence and drink-preset assumptions are completed evide
 
 ## 3. Why v6.0 stopped
 
-The production skeleton worked, but the evidence programme became unreachable:
+The v6.0 production skeleton worked, but the evidence programme became unreachable:
 
 - 25/25 cities materialized through the real path;
 - accommodation genuinely scored 8.27%–25.46% median APE;
@@ -55,8 +55,11 @@ The production skeleton worked, but the evidence programme became unreachable:
 - a third holdout proposal would repeat the same failure and is cancelled for v6.1.
 
 The v6.0 runtime still has multiple fallback layers and routes BYT daily-spend values through ticket-shaped
-anchor names. The new v6.1 source boundary is now isolated in `src/lib/city-cost-v6-1-collection.ts`; the
-materializer and feature-flag switch still need to be implemented.
+anchor names, so it remains historical. v6.1 now has an isolated source boundary in
+`src/lib/city-cost-v6-1-collection.ts`, the deterministic materializer in
+`src/lib/city-cost-methodology-v6-1.ts`, generated priors in `data/reference/v6/priors-v6-1.json`, and a
+25-city replay under `data/reference/v6/experiments/008-v6-1-development-fixtures/`. The feature flag now
+uses this v6.1 path; the 121-city CSV and flag-off v1 path are unchanged.
 
 ## 4. What is banked
 
@@ -138,30 +141,27 @@ against itself.
 
 ## 7. Exact next action
 
-Start Phase 2 from `LOOP-PROMPT-V6.md`:
+Start Phase 4 from `LOOP-PROMPT-V6.md`:
 
-1. Inspect `src/lib/city-cost-methodology-v6.ts` and `src/lib/city-generation.ts`.
-2. Add a v6.1 materialization path consuming `V61AnchorInputs` from
-   `src/lib/city-cost-v6-1-collection.ts`.
-3. Preserve the accommodation ladder and source calibration unchanged.
-4. Implement the BYT food/activity daily mappings, drink presets, cocktail relation and street-food
-   compatibility coefficient from the active plan.
-5. Replace the v6.1 ingredient/prior overwrite chain with one direct → regional → global category-tier
-   fallback.
-6. Add formula, grade, fallback, monotonicity and provenance tests.
-7. Run the full baseline, then commit and push:
-   `feat: simplify v6.1 tier materialization`.
-8. Continue directly to Phase 3 unless a stop condition in the loop applies.
+1. Add `scripts/validate-city-cost-v6-1-release.mjs` for the active v6.1 manifest.
+2. Validate 25/25 materialized cities × 19 tiers, finite/non-negative values, monotonicity, complete
+   provenance and category fallback disclosure.
+3. Confirm the three-call/10-search/zero-direct-read economics from the normalized fixture replay.
+4. Carry forward the six banked accommodation APE results without refitting or reopening holdouts.
+5. Produce `data/reference/v6/v6-1-development-release-report.md`, including all 19 tiers, source/grade
+   policy, fallback rates, source dependence and the informational v1 comparison.
+6. Add release-validator and report commands to the verification baseline, run it, commit and push.
+7. Continue to Phase 5 integration/rollback documentation unless a stop condition applies.
 
 Do not begin by changing coefficients, priors or the materializer. The response contract comes first.
 
 ## 8. Implementation sequence
 
 1. Source schemas and prompt wiring — **complete** in `src/lib/city-cost-v6-1-collection.ts`.
-2. Simplified v6.1 materializer.
-3. Generated category priors and 25-city fixtures from existing data.
-4. Reachable release validator/report.
-5. New-city feature-flag integration and documentation finish.
+2. Simplified v6.1 materializer — **complete** in `src/lib/city-cost-methodology-v6-1.ts`.
+3. Generated category priors and 25-city fixtures — **complete** from existing experiments 003/006.
+4. Reachable release validator/report — **next**.
+5. New-city feature-flag integration — **complete**; rollback and release documentation remain.
 
 Commit and push after each phase. Rewrite §3 and §7 of this handoff with actual completed state and the
 next exact action.

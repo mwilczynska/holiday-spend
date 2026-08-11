@@ -1,12 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { generateCityCostEstimate } from './city-generation';
-import { collectCityCostV6Anchors } from './city-cost-v6-collection';
+import { collectCityCostV61Anchors } from './city-cost-v6-1-collection';
 
-vi.mock('@/lib/city-cost-v6-collection', () => ({
-  collectCityCostV6Anchors: vi.fn(),
+vi.mock('@/lib/city-cost-v6-1-collection', () => ({
+  collectCityCostV61Anchors: vi.fn(),
 }));
 
-const mockedCollect = vi.mocked(collectCityCostV6Anchors);
+const mockedCollect = vi.mocked(collectCityCostV61Anchors);
 
 afterEach(() => {
   delete process.env.CITY_COST_METHODOLOGY_V6;
@@ -25,25 +25,46 @@ describe('city generation v6 feature flag', () => {
           sourceIds: ['expedia:test'],
           modelVersions: ['test-model'],
         },
-        inexpensive_restaurant_meal_1p: {
+        byt_food_budget_per_person_day: {
           valueAud: 10,
           status: 'observed',
-          evidenceGrade: 'A',
-          sourceIds: ['numbeo:test'],
+          evidenceGrade: 'B',
+          sourceIds: ['byt:test'],
           modelVersions: ['test-model'],
         },
-        midrange_restaurant_meal_2p: {
+        byt_food_mid_per_person_day: {
+          valueAud: 20,
+          status: 'observed',
+          evidenceGrade: 'B',
+          sourceIds: ['byt:test'],
+          modelVersions: ['test-model'],
+        },
+        byt_food_high_per_person_day: {
           valueAud: 40,
           status: 'observed',
-          evidenceGrade: 'A',
-          sourceIds: ['numbeo:test'],
+          evidenceGrade: 'B',
+          sourceIds: ['byt:test'],
           modelVersions: ['test-model'],
         },
-        mcmeal_combo: {
-          valueAud: 8,
+        byt_activities_budget_per_person_day: {
+          valueAud: 5,
           status: 'observed',
-          evidenceGrade: 'A',
-          sourceIds: ['numbeo:test'],
+          evidenceGrade: 'B',
+          sourceIds: ['byt:test'],
+          modelVersions: ['test-model'],
+        },
+        byt_activities_mid_per_person_day: {
+          valueAud: 15,
+          status: 'observed',
+          evidenceGrade: 'B',
+          sourceIds: ['byt:test'],
+          modelVersions: ['test-model'],
+        },
+        byt_activities_high_per_person_day: {
+          valueAud: 30,
+          status: 'observed',
+          evidenceGrade: 'B',
+          sourceIds: ['byt:test'],
           modelVersions: ['test-model'],
         },
         cappuccino_1: {
@@ -60,32 +81,11 @@ describe('city generation v6 feature flag', () => {
           sourceIds: ['numbeo:test'],
           modelVersions: ['test-model'],
         },
-        paid_attraction_adult_1: {
-          valueAud: 15,
-          status: 'observed',
-          evidenceGrade: 'B',
-          sourceIds: ['byt:test'],
-          modelVersions: ['test-model'],
-        },
-        half_day_group_activity_adult_1: {
-          valueAud: 30,
-          status: 'observed',
-          evidenceGrade: 'B',
-          sourceIds: ['byt:test'],
-          modelVersions: ['test-model'],
-        },
-        full_day_premium_activity_adult_1: {
-          valueAud: 60,
-          status: 'observed',
-          evidenceGrade: 'B',
-          sourceIds: ['byt:test'],
-          modelVersions: ['test-model'],
-        },
       },
       facts: [],
       telemetry: [
         {
-          source: 'numbeo',
+          source: 'numbeo_drinks',
           promptVersion: 'test',
           provider: 'openai',
           model: 'test-model',
@@ -113,10 +113,10 @@ describe('city generation v6 feature flag', () => {
       apiKey: 'test',
     });
 
-    expect(result.methodologyVersion).toBe('v6.0');
-    expect(result.v6Materialization?.complete).toBe(true);
-    expect(Object.keys(result.v6Materialization?.tiersAud ?? {})).toHaveLength(19);
-    expect(Object.values(result.v6Materialization?.tiersAud ?? {}).every((tier) => tier.evidenceGrade)).toBe(true);
+    expect(result.methodologyVersion).toBe('v6.1');
+    expect(result.v61Materialization?.complete).toBe(true);
+    expect(Object.keys(result.v61Materialization?.tiersAud ?? {})).toHaveLength(19);
+    expect(Object.values(result.v61Materialization?.tiersAud ?? {}).every((tier) => tier.evidenceGrade)).toBe(true);
     expect(result.mappedEstimate.accom3star).toBe(100);
     expect(result.payload).toHaveProperty('evidence_grades');
   });

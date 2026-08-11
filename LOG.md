@@ -2714,3 +2714,18 @@ The three v6.1 prompts are now wired to the new collector. The legacy v6.0 colle
 unchanged so stored responses and historical experiment 006 can still be replayed. No LLM call, holdout,
 coefficient, prior or CSV was changed. Phase 2 — the simplified deterministic materializer and feature-flag
 handoff — is the next action.
+
+## v6.1 — source-native development replay and feature switch (10 August 2026)
+
+Phase 3 of the reachable v6.1 finish line is complete. No new LLM calls, holdout reads or shipping-CSV
+reads were made. The existing delegated experiment 006 responses and the 003 BudgetYourTrip daily-tier
+panel were deterministically normalized into 75 v6.1 source fixtures under
+`data/reference/v6/experiments/008-v6-1-development-fixtures/`, then validated through the new collector
+contract and the real `materializeCityCostV61` implementation.
+
+All 25 development cities produced all 19 tiers. Category fallback was explicit in 5 accommodation cities,
+1 food city, 12 drinks cities and 1 activity city. The generated `priors-v6-1.json` is decoupled from the
+historical `priors-v6.json` and from `data/reference/city_costs_app_aud.csv`; eight source rows were excluded
+because the frozen FX snapshot lacks SGD, TWD, ZAR or PEN, and those exclusions are listed in the generated
+file. The feature-flagged new-city path now uses v6.1; the historical v6.0 path remains available for replay,
+flag-off remains v1, and the 121-city CSV is unchanged.

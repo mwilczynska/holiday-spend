@@ -1,7 +1,8 @@
+import fs from 'fs';
+import path from 'path';
 import type { CityEstimateData } from '@/types';
 import {
   costBandForAmount,
-  loadV6Priors,
   loadV6ReferenceData,
   normalizeV6Region,
   type V6AnchorInput,
@@ -49,6 +50,25 @@ export interface V61Materialization {
   priorBasis: string;
   complete: true;
   mappedEstimate: Partial<CityEstimateData>;
+}
+
+let v61PriorsCache: V6Priors | null = null;
+
+function v61RepoFile(relativePath: string) {
+  const candidates = [
+    path.resolve(process.cwd(), relativePath),
+    path.resolve(process.cwd(), '..', relativePath),
+  ];
+  const found = candidates.find((candidate) => fs.existsSync(candidate));
+  if (!found) throw new Error(`Expected v6.1 reference file was not found: ${candidates.join(', ')}`);
+  return found;
+}
+
+export function loadV61Priors() {
+  if (!v61PriorsCache) {
+    v61PriorsCache = JSON.parse(fs.readFileSync(v61RepoFile('data/reference/v6/priors-v6-1.json'), 'utf8')) as V6Priors;
+  }
+  return v61PriorsCache;
 }
 
 const ACCOMMODATION_LADDER = [
@@ -241,7 +261,7 @@ export function materializeCityCostV61(input: {
   anchors: V61AnchorInputs;
   priors?: V6Priors;
 }): V61Materialization {
-  const priors = input.priors ?? loadV6Priors();
+  const priors = input.priors ?? loadV61Priors();
   const region = normalizeV6Region(input.region);
   const missingness: Partial<Record<string, string>> = {};
   const anchors: Record<string, V6AnchorInput> = Object.fromEntries(

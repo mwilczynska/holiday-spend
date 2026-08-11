@@ -1,0 +1,393 @@
+{
+  "schemaVersion": "city-cost-v6-1-development-materialization-v1",
+  "methodologyVersion": "v6.1",
+  "panel": "development",
+  "generatedAt": "2026-08-10",
+  "mode": "from-existing-fixtures",
+  "sourceFixtureDirectory": "data/reference/v6/experiments/008-v6-1-development-fixtures/spine",
+  "priors": "data/reference/v6/priors-v6-1.json",
+  "cities": 25,
+  "allCitiesComplete": true,
+  "categoryFallbackCounts": {
+    "accommodation": {
+      "direct": 20,
+      "fallback": 5
+    },
+    "food": {
+      "direct": 24,
+      "fallback": 1
+    },
+    "drinks": {
+      "direct": 13,
+      "fallback": 12
+    },
+    "activities": {
+      "direct": 24,
+      "fallback": 1
+    }
+  },
+  "holdoutRead": false,
+  "csvRead": false,
+  "rows": [
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 9,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 7,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 10,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 10,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 10,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "region": "East Asia",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 4,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Beijing",
+      "country": "China",
+      "region": "East Asia",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 8,
+      "missingSourceFacts": 1,
+      "searches": 5,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "accommodation"
+      ]
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 7,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 7,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "band": "low",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 8,
+      "missingSourceFacts": 1,
+      "searches": 7,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "accommodation"
+      ]
+    },
+    {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "region": "South Asia",
+      "band": "low",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 1,
+      "missingSourceFacts": 8,
+      "searches": 10,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "food",
+        "drinks",
+        "activities"
+      ]
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "region": "South Asia",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 7,
+      "missingSourceFacts": 2,
+      "searches": 9,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 7,
+      "missingSourceFacts": 2,
+      "searches": 9,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 7,
+      "missingSourceFacts": 2,
+      "searches": 9,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "region": "Africa",
+      "band": "low",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 6,
+      "missingSourceFacts": 3,
+      "searches": 9,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "accommodation",
+        "drinks"
+      ]
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "region": "Africa",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 10,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "region": "Africa",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 7,
+      "missingSourceFacts": 2,
+      "searches": 8,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 8,
+      "missingSourceFacts": 1,
+      "searches": 3,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 7,
+      "missingSourceFacts": 2,
+      "searches": 7,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 6,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 4,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 7,
+      "directPageReads": 0,
+      "fallbackCategories": []
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "region": "Latin America",
+      "band": "mid",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 9,
+      "missingSourceFacts": 0,
+      "searches": 8,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "drinks"
+      ]
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 8,
+      "missingSourceFacts": 1,
+      "searches": 5,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "accommodation"
+      ]
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": "high",
+      "tierCount": 19,
+      "sourceFacts": 9,
+      "observedSourceFacts": 8,
+      "missingSourceFacts": 1,
+      "searches": 5,
+      "directPageReads": 0,
+      "fallbackCategories": [
+        "accommodation"
+      ]
+    }
+  ]
+}

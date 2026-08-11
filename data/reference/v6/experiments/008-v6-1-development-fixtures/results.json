@@ -1,0 +1,737 @@
+{
+  "schemaVersion": "city-cost-v6-1-development-fixtures-v1",
+  "methodologyVersion": "v6.1",
+  "panel": "development",
+  "generatedAt": "2026-08-10",
+  "cities": 25,
+  "sourceResponses": 75,
+  "collectionCalls": 0,
+  "holdoutRead": false,
+  "rows": [
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 3,
+          "originalSearchesUsed": 3
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "region": "East Asia",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 5
+        }
+      }
+    },
+    {
+      "city": "Beijing",
+      "country": "China",
+      "region": "East Asia",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 1,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        }
+      }
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        }
+      }
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "band": "low",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 1,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 3,
+          "originalSearchesUsed": 3
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        }
+      }
+    },
+    {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "region": "South Asia",
+      "band": "low",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 6,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 2,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "region": "South Asia",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 2,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 2,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "region": "Middle East",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 2,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "region": "Africa",
+      "band": "low",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 1,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 2,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "region": "Africa",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "region": "Africa",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 3,
+          "originalSearchesUsed": 3
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 2,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "partial",
+          "observedMeasures": 1,
+          "missingMeasures": 1,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 3,
+          "originalSearchesUsed": 3
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 3,
+          "originalSearchesUsed": 3
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 2,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        }
+      }
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 4
+        }
+      }
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        }
+      }
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "region": "Latin America",
+      "band": "mid",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 1,
+          "missingMeasures": 0,
+          "searchesUsed": 4,
+          "originalSearchesUsed": 4
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        }
+      }
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 1,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        }
+      }
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": "high",
+      "sources": {
+        "expedia_3star": {
+          "retrievalStatus": "not_found",
+          "observedMeasures": 0,
+          "missingMeasures": 1,
+          "searchesUsed": 1,
+          "originalSearchesUsed": 1
+        },
+        "budgetyourtrip_daily_tiers": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 6,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        },
+        "numbeo_drinks": {
+          "retrievalStatus": "complete",
+          "observedMeasures": 2,
+          "missingMeasures": 0,
+          "searchesUsed": 2,
+          "originalSearchesUsed": 2
+        }
+      }
+    }
+  ]
+}

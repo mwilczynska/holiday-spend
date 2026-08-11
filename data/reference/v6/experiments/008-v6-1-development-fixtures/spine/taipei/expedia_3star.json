@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Taipei",
+  "country": "Taiwan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 69,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Taipei from $29 | Expedia",
+      "evidenceText": "September | $69. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Taipei.",
+      "query": "site:expedia.com/3Star-Taipei-Hotels \"Price trend information\" \"2 adults\"",
+      "taxStatus": "excluded"
+    }
+  }
+}

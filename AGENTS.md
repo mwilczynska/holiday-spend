@@ -159,9 +159,9 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
-The v6.1 source contract is wired, but the feature-flagged materializer is not yet switched over; until
-Phase 2 and Phase 5 land, flag-on still runs the v6.0 materializer. The cold-start handoff names the exact
-next code change.
+The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay and
+feature-flagged new-city path are now implemented. The remaining work is the reachable release validator,
+19-tier report, rollback verification and documentation finish; flag-on uses v6.1 and flag-off remains v1.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,
@@ -180,8 +180,8 @@ The active implementation contract is `docs/dev/plans/city-cost-methodology-v6-1
 in `data/reference/v6/validation-manifest-v6-1.json`; the loop is `LOOP-PROMPT-V6.md`; the cold-start handoff
 is `docs/dev/handoffs/city-cost-v6.md`. Existing experiment 003 and 006 evidence supplies the 25-city
 development fixtures with no new model collection. All holdouts are spent and remain closed. The v6.1 path
-is for new cities behind `CITY_COST_METHODOLOGY_V6=true`; the 121-city CSV and flag-off v1 rollback remain
-unchanged.
+is for new cities behind `CITY_COST_METHODOLOGY_V6=true`; generated fixtures and priors use no new
+collection, and the 121-city CSV and flag-off v1 rollback remain unchanged.
 
 ### Transport is out of scope
 

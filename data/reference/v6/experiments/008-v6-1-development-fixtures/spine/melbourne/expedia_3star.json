@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Melbourne",
+  "country": "Australia",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:expedia.com Melbourne Australia 3-star hotels price trend 2 adults September 17 2026",
+      "taxStatus": "unknown"
+    }
+  }
+}

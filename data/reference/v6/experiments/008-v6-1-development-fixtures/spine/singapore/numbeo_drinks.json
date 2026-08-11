@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Singapore",
+  "country": "Singapore",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=4; v6.1 fixture budget=2.",
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 6.36,
+      "currency": "SGD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Singapore",
+      "sourceTitle": "Cost of Living in Singapore. Jun 2026. Prices in Singapore",
+      "evidenceText": "Cappuccino (Regular Size) | S$6.36",
+      "query": "site:numbeo.com/cost-of-living/in Singapore Singapore Cappuccino (Regular Size)",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 10,
+      "currency": "SGD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Singapore",
+      "sourceTitle": "Cost of Living in Singapore. Jun 2026. Prices in Singapore",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | S$10.00",
+      "query": "site:numbeo.com/cost-of-living/in Singapore Singapore Domestic Draft Beer (1 Pint)",
+      "taxStatus": "unknown"
+    }
+  }
+}

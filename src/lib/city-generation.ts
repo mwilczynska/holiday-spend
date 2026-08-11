@@ -5,13 +5,15 @@ import type { CityEstimateData } from '@/types';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
 import { type CityGenerationProvider } from '@/lib/city-generation-config';
 import {
-  collectCityCostV6Anchors,
-  type V6CollectionResult,
-} from '@/lib/city-cost-v6-collection';
+  collectCityCostV61Anchors,
+  type V61CollectionResult,
+} from '@/lib/city-cost-v6-1-collection';
 import {
-  materializeCityCostV6,
-  type V6Materialization,
-} from '@/lib/city-cost-methodology-v6';
+  materializeCityCostV61,
+  type V61Materialization,
+} from '@/lib/city-cost-methodology-v6-1';
+import type { V6CollectionResult } from '@/lib/city-cost-v6-collection';
+import type { V6Materialization } from '@/lib/city-cost-methodology-v6';
 
 const generatedCitySchema = z.object({
   city: z.string().min(1),
@@ -85,9 +87,11 @@ export interface CityGenerationResult {
   payload: GeneratedCityPayload | V6GeneratedCityPayload;
   mappedEstimate: Partial<CityEstimateData>;
   inferredAudPerUsd: number | null;
-  methodologyVersion: 'v1' | 'v6.0';
+  methodologyVersion: 'v1' | 'v6.0' | 'v6.1';
   v6Collection?: V6CollectionResult;
   v6Materialization?: V6Materialization;
+  v61Collection?: V61CollectionResult;
+  v61Materialization?: V61Materialization;
 }
 
 export class CityGenerationError extends Error {
@@ -242,7 +246,7 @@ function inferAudPerUsd(payload: GeneratedCityPayload) {
 export async function generateCityCostEstimate(request: CityGenerationRequest): Promise<CityGenerationResult> {
   if (isCityCostV6Enabled()) {
     try {
-      const collection = await collectCityCostV6Anchors({
+      const collection = await collectCityCostV61Anchors({
         city: request.cityName,
         country: request.countryName,
         region: request.region,
@@ -251,7 +255,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
         apiKey: request.apiKey,
         model: request.model,
       });
-      const materialization = materializeCityCostV6({
+      const materialization = materializeCityCostV61({
         city: request.cityName,
         country: request.countryName,
         region: request.region,
@@ -280,7 +284,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
         country: request.countryName,
         region: materialization.region ?? request.region ?? 'unknown',
         confidence,
-        confidence_notes: `City cost v6.0: deterministic derivation from three bounded source extractors. Worst materialized evidence grade is ${worstGrade}; grades and intervals are persisted per tier.`,
+        confidence_notes: `City cost v6.1: deterministic derivation from three bounded source extractors and direct category-tier fallbacks. Worst materialized evidence grade is ${worstGrade}; grades, intervals and source dependence are persisted per tier.`,
         anchors_aud: anchorValues,
         tiers_aud: tierValues,
         evidence_grades: grades,
@@ -290,11 +294,11 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
       return {
         provider: primaryCall?.provider ?? request.provider ?? 'unknown',
         model: primaryCall?.model ?? request.model ?? 'unknown',
-        promptVersion: 'city-cost-v6-spine-v1',
+        promptVersion: 'city-cost-v6-1-spine-v1',
         inferredAudPerUsd: null,
-        methodologyVersion: 'v6.0',
-        v6Collection: collection,
-        v6Materialization: materialization,
+        methodologyVersion: 'v6.1',
+        v61Collection: collection,
+        v61Materialization: materialization,
         mappedEstimate: materialization.mappedEstimate,
         payload,
       };

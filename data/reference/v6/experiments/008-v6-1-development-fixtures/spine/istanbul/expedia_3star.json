@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=4; v6.1 fixture budget=4.",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 79,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels?c=d3d09373-a348-41a1-9de2-e0e9e0e9dd69a5",
+      "sourceTitle": "The Best 3 Star Hotels in Istanbul from $29 | Expedia",
+      "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Istanbul. September $79.",
+      "query": "site:expedia.com Istanbul Turkey 3-star hotels average nightly price two adults one night",
+      "taxStatus": "excluded"
+    }
+  }
+}

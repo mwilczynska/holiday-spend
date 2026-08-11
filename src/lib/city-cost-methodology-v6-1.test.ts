@@ -156,4 +156,18 @@ describe('materializeCityCostV61', () => {
     expect(result.mappedEstimate.drinkLocalBeer).toBe(5);
     expect(result.mappedEstimate.drinkCocktail).toBe(8.5);
   });
+
+  it('loads the generated v6.1 priors for a cold-start city', () => {
+    const result = materializeCityCostV61({
+      city: 'Cold Start City',
+      country: 'Testland',
+      region: 'Europe',
+      anchors: {},
+    });
+
+    expect(Object.keys(result.tiersAud)).toHaveLength(19);
+    expect(Object.values(result.tiersAud).every((tier) => Number.isFinite(tier.amountAud))).toBe(true);
+    expect(result.tiersAud.accom_3_star.evidenceGrade).toBe('D');
+    expect(result.priorBasis).toContain('regional then global category-tier fallback');
+  });
 });

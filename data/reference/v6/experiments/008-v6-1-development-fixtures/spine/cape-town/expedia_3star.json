@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=4; v6.1 fixture budget=4.",
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 92,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Cape Town from $29 | Expedia",
+      "evidenceText": "September | $92\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Cape Town. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+      "query": "site:expedia.com/3Star-Cape-Town-Hotels.s30 \"Price trends for properties with 3 Stars\" \"2 adults\"",
+      "taxStatus": "excluded"
+    }
+  }
+}

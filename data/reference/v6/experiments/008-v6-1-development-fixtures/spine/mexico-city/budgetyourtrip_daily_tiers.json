@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalStatus": "complete",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Food and activity values come from the existing labelled per-person/day panel; they are source-backed production values, not independent truth in v6.1. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 17,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Mexico City page reports Food & Meal Budget budget at $17 USD per person per day.",
+      "query": "BudgetYourTrip Mexico City labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 46,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Mexico City page reports Food & Meal Budget mid_range at $46 USD per person per day.",
+      "query": "BudgetYourTrip Mexico City labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 135,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Mexico City page reports Food & Meal Budget luxury at $135 USD per person per day.",
+      "query": "BudgetYourTrip Mexico City labelled daily food tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 6,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Mexico City page reports Entertainment budget at $6 USD per person per day.",
+      "query": "BudgetYourTrip Mexico City labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 15,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Mexico City page reports Entertainment mid_range at $15 USD per person per day.",
+      "query": "BudgetYourTrip Mexico City labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 34,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city",
+      "sourceTitle": "BudgetYourTrip city travel cost page",
+      "evidenceText": "BudgetYourTrip Mexico City page reports Entertainment luxury at $34 USD per person per day.",
+      "query": "BudgetYourTrip Mexico City labelled daily entertainment tier",
+      "taxStatus": "unknown"
+    }
+  }
+}

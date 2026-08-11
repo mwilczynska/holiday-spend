@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=2; v6.1 fixture budget=2.",
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 5433.33,
+      "currency": "KRW",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+      "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+      "evidenceText": "Cappuccino (Regular Size) | ₩5,433.33",
+      "query": "site:numbeo.com/cost-of-living/in/Seoul \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 5000,
+      "currency": "KRW",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+      "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₩5,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Seoul \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  }
+}

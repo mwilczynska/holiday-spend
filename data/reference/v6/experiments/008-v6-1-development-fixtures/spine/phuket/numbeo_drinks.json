@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Phuket",
+  "country": "Thailand",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=4; v6.1 fixture budget=2.",
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 96.62,
+      "currency": "THB",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Phuket",
+      "sourceTitle": "Cost of Living in Phuket. Jun 2026. Prices in Phuket",
+      "evidenceText": "Cappuccino (Regular Size) | ฿96.62",
+      "query": "site:numbeo.com/cost-of-living/in Phuket Thailand Cappuccino (Regular Size)",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 80,
+      "currency": "THB",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Phuket",
+      "sourceTitle": "Cost of Living in Phuket. Jun 2026. Prices in Phuket",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ฿80.00",
+      "query": "site:numbeo.com/cost-of-living/in Phuket Thailand Domestic Draft Beer (1 Pint)",
+      "taxStatus": "unknown"
+    }
+  }
+}

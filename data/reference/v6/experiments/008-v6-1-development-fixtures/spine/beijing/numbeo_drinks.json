@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Beijing",
+  "country": "China",
+  "retrievalStatus": "complete",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 21.86,
+      "currency": "CNY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Beijing",
+      "sourceTitle": "Cost of Living in Beijing. Jun 2026. Prices in Beijing",
+      "evidenceText": "Cappuccino (Regular Size) | ¥21.86",
+      "query": "site:numbeo.com/cost-of-living/in/Beijing \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 8,
+      "currency": "CNY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Beijing",
+      "sourceTitle": "Cost of Living in Beijing. Jun 2026. Prices in Beijing",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ¥8.00",
+      "query": "site:numbeo.com/cost-of-living/in/Beijing \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  }
+}
