@@ -189,7 +189,7 @@ must not block v6.1.
 - Materialize all 25 cities through the real v6.1 production path.
 - Report source observations, grade-D fallback rate by category and region, and all 19 outputs.
 
-### Phase 4 — reachable release checks
+### Phase 4 — reachable release checks — **complete**
 
 - Score `validation-manifest-v6-1.json`.
 - Confirm all 19 tiers, provenance, monotonicity, non-negative values and refresh economics.
@@ -198,7 +198,10 @@ must not block v6.1.
   independent accuracy.
 - Produce an informational v1 A/B diff for the 25 development cities only. It is not a ground-truth gate.
 
-### Phase 5 — release boundary
+The generated validator passes all nine reachable gates for the 25 × 19 replay. The report and JSON result
+are under `data/reference/v6/`; no holdout was read and the shipping CSV was not modified.
+
+### Phase 5 — release boundary — **in progress; final baseline and documentation**
 
 - Keep the 121-city CSV unchanged.
 - Keep rollback to v1.

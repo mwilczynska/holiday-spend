@@ -10,10 +10,34 @@ interface MethodologySection {
 
 const METHODOLOGY_SECTIONS: MethodologySection[] = [
   {
+    title: 'Active City Cost Methodology v6.1',
+    summary: 'A reachable, source-native approximation for new cities that preserves all 19 planner tiers.',
+    codeBlocks: [
+      [
+        'Expedia 3-star room + BudgetYourTrip daily tiers + Numbeo drinks',
+        '        -> deterministic AUD conversion and provenance',
+        '        -> six accommodation tiers + four food tiers',
+        '        -> five drink presets + four activity tiers',
+        '        -> graded two-person daily/nightly city costs',
+      ].join('\\n'),
+    ],
+    paragraphs: [
+      'v6.1 is the active feature-flagged path for new-city generation. It makes exactly three bounded search-snippet calls per city: Expedia supplies the 3-star accommodation level, BudgetYourTrip supplies per-person daily food and activity tiers, and Numbeo supplies cappuccino and domestic draft beer. Server-side deterministic code converts currencies and derives all 19 product fields; the language model never performs the arithmetic.',
+      'Food and activities are BudgetYourTrip source-backed daily-spend estimates, drinks are explicit consumption presets, and street food plus cocktails are modelled with disclosed grades and intervals. Every value carries evidence basis, grade, interval, source identifiers, and imputed measures. Missing category data uses one direct-to-regional-to-global tier-vector fallback. The six accommodation tiers retain genuine 25-city development accuracy evidence; other categories are not claimed as independently validated.',
+      'v6.1 is deliberately limited to new cities behind CITY_COST_METHODOLOGY_V6=true. The 121-city CSV remains unchanged, unsetting the flag retains the v1 path, and all v6.0 holdouts remain closed. The reachable release replay covers 25 development cities × 19 tiers; its v1 comparison is informational rather than ground-truth validation.',
+    ],
+    bullets: [
+      'Three source calls and at most ten searches per city; zero direct page reads',
+      'All values are AUD for two travellers per day or night, then scaled at runtime',
+      'Grades: A observed, B source proxy, C ladder/modelled, D fallback or compatibility estimate',
+      'No new collection, holdout read, coefficient refit, or existing-city migration is part of v6.1',
+    ],
+  },
+  {
     title: 'Methodology Purpose And Scope',
     summary: 'A transparent planning model with explicit estimands, transformations, and uncertainty.',
     paragraphs: [
-      'This page separates the active April 2026 baseline from the observed-first version 3 redesign. The baseline remains documented for reproducibility; the redesign is the methodology being collected and validated before it can replace planner values.',
+      'This page leads with the active v6.1 new-city path. The version 2 baseline and observed-first version 3 sections below remain historical documentation for the unchanged 121-city CSV and are retained for reproducibility.',
       'The model optimises for comparability across cities rather than false precision for any individual hotel, restaurant, or activity. A budget is therefore an estimate of a representative daily basket, not a quote, forecast, or statistical confidence interval.',
     ],
     bullets: [
@@ -22,7 +46,7 @@ const METHODOLOGY_SECTIONS: MethodologySection[] = [
       'Currency: version 3 preserves source and city-local currency through aggregation, then converts to AUD with a frozen attributed FX snapshot',
       'Included categories: accommodation, food, drinks, and activities',
       'Excluded from this city model: local transport estimates, intercity transport, and user-specific fixed costs',
-      'Current dataset: 121 cities across 58 countries, with the active city row used as the planner source',
+      'Existing stored dataset: 121 cities across 58 countries; v6.1 does not migrate these rows',
     ],
   },
   {

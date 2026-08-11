@@ -84,6 +84,9 @@ holdout, or provide independent drinks truth.
 | `validation-manifest-v6-1.json` | **Active v6.1 source contract and reachable release gates** | Implement and score this manifest for v6.1 |
 | `validation-manifest-v6.json` | Historical v6.0 acceptance gates and spent 40-city panel | Preserve unchanged; do not use it to block v6.1 |
 | `coefficients-v6.json` | **Generated.** Banked accommodation ladder plus retained v6.0 relationship evidence; v6.1 compatibility entries are also generated here | Never hand-edit. Regenerate with the script below |
+| `priors-v6-1.json` | **Generated.** v6.1 direct-source category priors and explicit FX exclusions | Regenerate with `scripts/build-city-cost-v6-1-priors.mjs --check` |
+| `v6-1-development-release-report.md` | Generated 25-city × 19-tier release report; no holdout claims | Regenerate through the release validator |
+| `v6-1-release-validation.json` | Generated reachable-gate result and replay metrics | Verify with `scripts/validate-city-cost-v6-1-release.mjs --check` |
 | `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 

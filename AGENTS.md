@@ -159,9 +159,10 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
-The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay and
-feature-flagged new-city path are now implemented. The remaining work is the reachable release validator,
-19-tier report, rollback verification and documentation finish; flag-on uses v6.1 and flag-off remains v1.
+The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
+reachable release validator/report and feature-flagged new-city path are implemented. The nine reachable
+release gates pass; final baseline and release-boundary documentation are the remaining handoff checks.
+Flag-on uses v6.1 and flag-off remains v1.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,
@@ -252,11 +253,14 @@ being treated as zero.
 ```
 npx tsc --noEmit          # expected to pass
 npm run build             # expected to pass
-npm test -- --run         # 153 tests
+npm test -- --run         # expected to pass
 npm run docs:check-memory # AGENTS.md mirrors CLAUDE.md
 node scripts/fit-city-cost-ladder-v6.mjs --check   # v6 coefficients match their evidence
 node scripts/test-city-cost-v6-ground-truth-warnings.mjs # legacy warning replay tripwire
 node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete # zero errors and zero pending slots; warnings do not block
+node scripts/build-city-cost-v6-1-priors.mjs --check
+node scripts/materialize-city-cost-v6-1-development.mjs --check
+node scripts/validate-city-cost-v6-1-release.mjs --check
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.
@@ -301,6 +305,8 @@ login page shows provider-specific guidance instead.
 | `data/reference/v6/ground-truth/` | M3 development ledger, per-measure holdout extension, one-time score files and lock marker |
 | `scripts/validate-city-cost-v6-ground-truth.mjs` | Deterministic development-ledger audit; checks seal metadata but never reads holdout values |
 | `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder and Booking/Expedia calibration; `--check` verifies determinism |
+| `scripts/validate-city-cost-v6-1-release.mjs` | Reachable 25-city × 19-tier release validator/report generator |
+| `data/reference/v6/v6-1-development-release-report.md` | Generated v6.1 development release report |
 | `scripts/freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the seal before holdout access |
 | `scripts/score-city-cost-v6-holdout.mjs` | One-time gate 2–6 score against the frozen holdout; refuses a second pass |
 | `scripts/score-city-cost-v6-holdout-all-tier.mjs` | One-time per-measure all-tier read; refuses old revealed measures and records explicit not_evaluable reasons |

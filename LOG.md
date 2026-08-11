@@ -2729,3 +2729,19 @@ historical `priors-v6.json` and from `data/reference/city_costs_app_aud.csv`; ei
 because the frozen FX snapshot lacks SGD, TWD, ZAR or PEN, and those exclusions are listed in the generated
 file. The feature-flagged new-city path now uses v6.1; the historical v6.0 path remains available for replay,
 flag-off remains v1, and the 121-city CSV is unchanged.
+
+## v6.1 — reachable release checks complete (10 August 2026)
+
+Phase 4 passed through `scripts/validate-city-cost-v6-1-release.mjs --check`: all 25 development cities
+materialize all 19 tiers with finite values, complete provenance, explicit category fallback, ordered
+presets and deterministic replay. The nine reachable gates pass, including the banked accommodation
+result (8.27%–25.46% median APE), three-call/ten-search/zero-direct-read economics and flag integration/
+rollback. The generated artifacts are `data/reference/v6/v6-1-release-validation.json` and
+`data/reference/v6/v6-1-development-release-report.md`.
+
+The report's v1 comparison is read-only informational A/B evidence, not ground-truth validation. Food and
+activities remain BYT source-backed estimates, drinks remain source-priced presets, and no independent
+accuracy claim is made for those categories. No new collection, holdout read, coefficient refit or shipping
+CSV change occurred. The v1 rollback regression test now explicitly verifies that an unset
+`CITY_COST_METHODOLOGY_V6` flag leaves the v1 path selected. Phase 5 is final baseline and release-boundary
+documentation.

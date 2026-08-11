@@ -205,7 +205,7 @@ price counterparts. The 450-slot development ledger resolved 280 found rows; the
 found only 12/180 rows. Requiring another holdout would repeat the same structural failure. No holdout may
 be reopened or replaced under v6.1.
 
-### M3.1 — simplify and finish v6.1 — **ACTIVE; source path and development replay complete**
+### M3.1 — simplify and finish v6.1 — **RELEASE CHECKS COMPLETE; final baseline next**
 
 The implementation contract is
 [`docs/dev/plans/city-cost-methodology-v6-1.md`](docs/dev/plans/city-cost-methodology-v6-1.md). It keeps
@@ -218,14 +218,22 @@ all 19 tiers while reducing the runtime spine to three calls and at most ten sea
 - [x] Add v6.1 response schemas while preserving v6.0 stored-response parsing
 - [x] Implement the simplified materializer and one category fallback layer
 - [x] Generate v6.1 priors and 25-city fixtures from experiments 003 and 006; make no new LLM calls
-- [ ] Produce the deterministic 19-tier release report
+- [x] Produce the deterministic 19-tier release report and reachable gate result
 - [x] Wire the new-city path behind `CITY_COST_METHODOLOGY_V6=true` and verify v1 rollback
+- [x] Verify the v6.1 release validator, generated priors/materialization and full provenance replay
 
 Phase 3 replay result: the v6.1 Stage-A fixture set contains 25 cities and 75 normalized source
 responses, with zero new collection calls. Stage B produces all 19 tiers for 25/25 cities through
 `materializeCityCostV61`. Category fallback was used for accommodation in 5 cities, food in 1, drinks
 in 12 and activities in 1. The new-city feature flag now uses v6.1; the historical v6.0
 collector/materializer remains available for stored replay and the v1 path remains the rollback.
+
+Phase 4 release checks are complete. `scripts/validate-city-cost-v6-1-release.mjs --check` passes all
+nine reachable gates on the 25 × 19 replay: coverage, schema/missingness, provenance/grades, coherence,
+banked accommodation accuracy, source-dependence disclosure, deterministic replay, refresh economics and
+integration/rollback. The generated report is
+[`data/reference/v6/v6-1-development-release-report.md`](data/reference/v6/v6-1-development-release-report.md);
+its v1 comparison is informational only. No holdout was read and the 121-city CSV is byte-unchanged.
 
 **Finish line:** 25/25 fixtures produce all 19 graded and provenance-bearing values; runtime collection is
 three calls / at most ten searches; accommodation's 8.27%–25.46% median APE result is preserved; food and

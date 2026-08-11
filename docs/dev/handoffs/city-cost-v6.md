@@ -2,8 +2,8 @@
 
 **As at:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
-**Milestone:** v6.1 implementation — **Phase 3 complete**
-**Exact next phase:** reachable release checks and the generated 19-tier report
+**Milestone:** v6.1 implementation — **Phase 4 complete**
+**Exact next phase:** final Phase 5 release-boundary documentation and verification baseline
 
 This handoff is written for a cold GPT-5.6 Luna Max context. It supersedes the earlier M3 handoffs. The
 v6.0 evidence and commits remain valid history; do not reconstruct the workstream from old prompts.
@@ -60,6 +60,11 @@ anchor names, so it remains historical. v6.1 now has an isolated source boundary
 `src/lib/city-cost-methodology-v6-1.ts`, generated priors in `data/reference/v6/priors-v6-1.json`, and a
 25-city replay under `data/reference/v6/experiments/008-v6-1-development-fixtures/`. The feature flag now
 uses this v6.1 path; the 121-city CSV and flag-off v1 path are unchanged.
+
+Phase 4 release validation is complete: the generated 25-city × 19-tier report and JSON result pass all nine
+reachable gates. The report carries the six banked accommodation accuracy figures, direct/fallback coverage,
+grade distribution, refresh economics and the read-only v1 A/B comparison. Food/activity source dependence and
+drink-preset assumptions are disclosed; no independent accuracy claim is made for them.
 
 ## 4. What is banked
 
@@ -141,17 +146,13 @@ against itself.
 
 ## 7. Exact next action
 
-Start Phase 4 from `LOOP-PROMPT-V6.md`:
+Complete Phase 5 from `LOOP-PROMPT-V6.md`:
 
-1. Add `scripts/validate-city-cost-v6-1-release.mjs` for the active v6.1 manifest.
-2. Validate 25/25 materialized cities × 19 tiers, finite/non-negative values, monotonicity, complete
-   provenance and category fallback disclosure.
-3. Confirm the three-call/10-search/zero-direct-read economics from the normalized fixture replay.
-4. Carry forward the six banked accommodation APE results without refitting or reopening holdouts.
-5. Produce `data/reference/v6/v6-1-development-release-report.md`, including all 19 tiers, source/grade
-   policy, fallback rates, source dependence and the informational v1 comparison.
-6. Add release-validator and report commands to the verification baseline, run it, commit and push.
-7. Continue to Phase 5 integration/rollback documentation unless a stop condition applies.
+1. Keep the generated v6.1 report/result and release-validator commands in the verification baseline.
+2. Confirm the feature-flag regression test: flag-on uses v6.1 and an unset flag leaves v1 selected.
+3. Update the handoff, active plan, project memory, evidence inventory and LOG with the final release state.
+4. Run the complete baseline, including the v6.1 priors, materialization and release `--check` commands.
+5. Commit and push the release-boundary documentation and verification result.
 
 Do not begin by changing coefficients, priors or the materializer. The response contract comes first.
 
@@ -160,8 +161,8 @@ Do not begin by changing coefficients, priors or the materializer. The response 
 1. Source schemas and prompt wiring — **complete** in `src/lib/city-cost-v6-1-collection.ts`.
 2. Simplified v6.1 materializer — **complete** in `src/lib/city-cost-methodology-v6-1.ts`.
 3. Generated category priors and 25-city fixtures — **complete** from existing experiments 003/006.
-4. Reachable release validator/report — **next**.
-5. New-city feature-flag integration — **complete**; rollback and release documentation remain.
+4. Reachable release validator/report — **complete**.
+5. New-city feature-flag integration and rollback/release documentation — **in progress; final baseline next**.
 
 Commit and push after each phase. Rewrite §3 and §7 of this handoff with actual completed state and the
 next exact action.
@@ -212,7 +213,7 @@ Final baseline also includes:
 ```
 node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
-node scripts/validate-city-cost-v6-1-release.mjs
+node scripts/validate-city-cost-v6-1-release.mjs --check
 ```
 
 The expected Next build notice for `/api/export` is not a failure. Rerun a failing test suite once
@@ -222,4 +223,5 @@ before investigation because OneDrive intermittently flakes in temporary directo
 
 v6.1 is done when all 19 tiers materialize for 25/25 fixtures with grades/provenance, the three-call
 new-city path passes, category fallback is explicit, all reachable release gates report cleanly, the v1
-rollback still works, the 121-city CSV is untouched, no holdout was read, and the branch is clean and pushed.
+rollback still works, the 121-city CSV is untouched, no holdout was read, the final baseline passes, and
+the branch is clean and pushed.

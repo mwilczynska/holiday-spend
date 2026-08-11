@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "city-cost-v6-1-release-validation-v1",
+  "methodologyVersion": "v6.1",
+  "generatedAt": "2026-08-10",
+  "cities": 25,
+  "tierCount": 19,
+  "totalSearches": 185,
+  "maxSearchesPerCity": 10,
+  "totalDirectPageReads": 0,
+  "fallbackCounts": {
+    "accommodation": 5,
+    "food": 1,
+    "drinks": 12,
+    "activities": 1
+  },
+  "fallbackByRegion": {
+    "SEA": {
+      "drinks": 1
+    },
+    "East Asia": {
+      "drinks": 1,
+      "accommodation": 1
+    },
+    "South Asia": {
+      "accommodation": 1,
+      "food": 1,
+      "drinks": 2,
+      "activities": 1
+    },
+    "Middle East": {
+      "drinks": 2
+    },
+    "Africa": {
+      "accommodation": 1,
+      "drinks": 3
+    },
+    "Europe": {
+      "drinks": 2
+    },
+    "Latin America": {
+      "drinks": 1
+    },
+    "North America": {
+      "accommodation": 1
+    },
+    "Oceania": {
+      "accommodation": 1
+    }
+  },
+  "gradeDistribution": {
+    "C": 126,
+    "B": 164,
+    "D": 121,
+    "A": 39,
+    "definitional": 25
+  },
+  "sourceRowsExcludedFromPriors": 8,
+  "holdoutRead": false,
+  "shippingCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "errors": [],
+  "gates": {
+    "1_outputCoverage": true,
+    "2_schemaAndMissingness": true,
+    "3_provenanceAndGrades": true,
+    "4_algebraicCoherence": true,
+    "5_accommodationAccuracy": true,
+    "6_sourceDependenceDisclosure": true,
+    "7_deterministicReplay": true,
+    "8_refreshEconomics": true,
+    "9_integrationAndRollback": true
+  },
+  "passed": true
+}

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { generateCityCostEstimate } from './city-generation';
+import { generateCityCostEstimate, isCityCostV6Enabled } from './city-generation';
 import { collectCityCostV61Anchors } from './city-cost-v6-1-collection';
 
 vi.mock('@/lib/city-cost-v6-1-collection', () => ({
@@ -14,6 +14,14 @@ afterEach(() => {
 });
 
 describe('city generation v6 feature flag', () => {
+  it('keeps the v1 path selected when the v6 flag is unset', () => {
+    expect(isCityCostV6Enabled()).toBe(false);
+    process.env.CITY_COST_METHODOLOGY_V6 = 'true';
+    expect(isCityCostV6Enabled()).toBe(true);
+    delete process.env.CITY_COST_METHODOLOGY_V6;
+    expect(isCityCostV6Enabled()).toBe(false);
+  });
+
   it('runs a new city through collection and deterministic materialization with all 19 graded tiers', async () => {
     process.env.CITY_COST_METHODOLOGY_V6 = 'true';
     mockedCollect.mockResolvedValue({
