@@ -6,6 +6,12 @@
 **Holdout:** no holdout read; all v6.0 holdout measures remain spent/closed  
 **Shipping CSV:** read-only informational comparison; SHA-256 0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8
 
+**Migration:** owner-approved staged migration of the 121-city library; live CSV remains unchanged pending
+the runtime canary, complete staged artifact and owner review.
+
+**Generated coefficient contract:** consistent —
+{"appliedTo":"cappuccino_1","k":2.4838,"grade":"C","intervalPct":64}
+
 ## Result
 
 All 19 existing product tiers materialize as finite, non-negative, provenance-bearing values for 25/25
@@ -94,4 +100,5 @@ holdout or new accommodation collection was used.
 Gate 10 is an external verification-baseline status, not something this data replay can observe. The
 validator records it explicitly rather than silently omitting it. Independent food, drink and activity
 accuracy is not claimed: BYT is the production source for food/activity, and no independent full-basket
-drink panel exists in v6.1. The 121-city CSV was not modified; M4 migration remains a separate future decision.
+drink panel exists in v6.1. The 121-city CSV was not modified. The rollout preview is operational impact
+evidence only; it does not replace the required live canary or owner-reviewed staged migration.

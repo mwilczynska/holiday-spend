@@ -2818,3 +2818,16 @@ The preview's 81/450 non-zero tier comparisons outside 0.5×–2× v1, including
 The approved finish line avoids an indefinite mixed-method library. Cutover and rollback each move the CSV
 and new-city default together. No holdout is reopened, no accommodation coefficient is refit, and the live
 121-city CSV remains unchanged at this planning decision.
+
+## v6.1 Phase 6 release-contract reconciliation — 12 August 2026
+
+Phase 6 completed and was committed/pushed after the owner-approved migration decision. The active
+`validation-manifest-v6-1.json` was bumped to schema v3 and reconciled with the generated
+`coefficients-v6.json`: `cocktail_1 = 2.4838 × cappuccino_1`, n=14, grade C, interval ±64%.
+
+The release validator now compares the manifest coefficient key, source anchor, value, grade, interval,
+authority and relation text against the generated artifact. A temporary negative regression restored the
+superseded `2.6`, ±75% declaration and confirmed that `--check` fails with explicit drift errors. Generated
+release validation, development report, rollout preview and experiment protocol were regenerated through
+their scripts. No provider call, city-price collection, holdout access, coefficient refit or live CSV change
+occurred. Phase 7—the pre-registered 20-city live-provider canary—is now the exact next action.

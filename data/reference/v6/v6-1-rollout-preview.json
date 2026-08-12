@@ -2,7 +2,7 @@
   "schemaVersion": "city-cost-v6-1-rollout-preview-v1",
   "methodologyVersion": "v6.1",
   "generatedAt": "2026-08-12",
-  "purpose": "Operational v1 versus v6.1 comparison before a new-city activation decision; not ground-truth validation.",
+  "purpose": "Operational v1 versus v6.1 comparison before staged 121-city migration and cutover review; not ground-truth validation.",
   "inputs": {
     "developmentFixtureDirectory": "data/reference/v6/experiments/008-v6-1-development-fixtures/materialized/",
     "shippingCsv": "data/reference/city_costs_app_aud.csv",
@@ -7618,8 +7618,8 @@
     }
   ],
   "recommendation": {
-    "decision": "recommend new-city-only activation after owner review",
-    "text": "The v6.1 path is operationally ready for NEW cities behind CITY_COST_METHODOLOGY_V6=true, subject to owner review of this impact preview. Keep the flag off for the existing 121-city CSV and retain v1 as the rollback.",
+    "decision": "recommend staged 121-city migration after runtime canary and owner review",
+    "text": "The owner has approved migration in principle. Use this preview as operational context, then require the live provider canary and a complete staged 121-city artifact before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.",
     "limitations": [
       "Runtime >=95% coverage is unmeasured.",
       "This is not ground-truth validation and should not be interpreted as accuracy.",

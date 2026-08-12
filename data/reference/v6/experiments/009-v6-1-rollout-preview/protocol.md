@@ -37,6 +37,6 @@ fixed so the comparison cannot be tuned to the observed differences.
 ## Interpretation boundary
 
 This preview describes operational level changes, not accuracy. It does not validate v6.1 against a new
-truth source, does not justify migrating the 121-city CSV, and does not turn source-backed proxies or
-modelled presets into independent observations. The recommendation is limited to new cities behind the
-existing feature flag and remains subject to owner review.
+truth source or turn source-backed proxies or modelled presets into independent observations. The owner has
+approved a staged 121-city migration, but this preview alone does not satisfy the live canary or owner-review
+requirements for cutover. Keep the live CSV unchanged until those steps are complete.

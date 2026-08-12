@@ -73,9 +73,8 @@ The 19-tier derivation remains the shipped library implementation:
 
 Generated coefficients are the authority for numeric fitted relations. As at 12 August 2026,
 `coefficients-v6.json` contains `cocktail_1 = 2.4838 × cappuccino_1`, n=14, grade C, interval ±64%.
-The active manifest and some narrative documents still declare the older `2.6`, ±75% contract. That is
-release-record drift, not permission to refit. Phase 6 must reconcile every declaration to the generated
-artifact and make the validator detect future drift.
+The v6.1 manifest now declares that same contract and the release validator fails closed if the declaration
+drifts from the generated artifact.
 
 ## 4. Evidence interpretation
 
@@ -108,17 +107,17 @@ decision. The implementation is banked; the library migration is not complete.
 
 ## 6. Active phases
 
-### Phase 6 — reconcile the release contract — **next**
+### Phase 6 — reconcile the release contract — **complete 12 August 2026**
 
-1. Reconcile `validation-manifest-v6-1.json`, this plan, `data-dictionary-v6.md`, the v6 README and
-   generated release reporting with the generated cocktail coefficient (`2.4838`, n=14, ±64%).
-2. Extend `scripts/validate-city-cost-v6-1-release.ts` so every duplicated manifest coefficient,
-   interval and grade is compared with the generated coefficient artifact. A literal or stale declaration
-   must fail `--check`.
-3. Supersede the generated report's “new-city-only ready” recommendation with the owner-approved sequence:
+1. Reconciled `validation-manifest-v6-1.json`, the generated reports and active documentation with the
+   generated cocktail coefficient (`2.4838`, n=14, ±64%).
+2. Extended `scripts/validate-city-cost-v6-1-release.ts` so the manifest coefficient key, source anchor,
+   value, grade, interval, authority and relation text are compared with generated coefficients. A stale
+   declaration now fails `--check`; the negative regression was confirmed with the old `2.6`, ±75% values.
+3. Superseded the generated report's “new-city-only ready” recommendation with the owner-approved sequence:
    controlled runtime canary → staged full-library migration → owner-reviewed cutover.
-4. Do not refit or hand-edit generated JSON. Regenerate affected reports through scripts.
-5. Run the full baseline, commit and push.
+4. Regenerated the release validation and rollout artifacts through scripts without network calls.
+5. The full baseline for this phase passed; the live CSV and holdouts were untouched.
 
 ### Phase 7 — measure the live provider path with a canary
 

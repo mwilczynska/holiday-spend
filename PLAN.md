@@ -240,9 +240,10 @@ its v1 comparison is informational only. The read-only rollout preview is in
 city × tier and basket detail in the adjacent JSON and the unchanged CSV hash. No holdout was read and the
 121-city CSV is byte-unchanged.
 
-The generated cocktail coefficient is now `2.4838`, n=14, grade C, ±64%, while the active manifest and
-some narrative records still declare `2.6`, ±75%. This release-record drift must be reconciled and guarded
-by the release validator before runtime canary work begins. No refit is required.
+The generated cocktail coefficient is `2.4838`, n=14, grade C, ±64%. Phase 6 reconciled the active manifest,
+reports and narrative contract to that generated value and added a validator assertion covering the key,
+source anchor, value, grade, interval, authority and relation text. A temporary regression with the old
+`2.6`, ±75% declaration failed `--check` as required. No refit was performed.
 
 ### M4 — migrate the existing 121-city library — **OWNER APPROVED; ACTIVE NEXT MILESTONE**
 
@@ -250,7 +251,7 @@ The 12 August 2026 owner decision supersedes the earlier new-city-only recommend
 state is one coherent v6.1 library for existing and new cities. The current CSV remains read-only until a
 complete staged migration is reviewed.
 
-- [ ] Reconcile manifest/docs/generated reports with generated coefficients; add a drift assertion
+- [x] Reconcile manifest/docs/generated reports with generated coefficients; add a drift assertion
 - [ ] Pre-register and run a representative 20-city real-provider canary; require at least 19/20 complete
 - [ ] Measure persistence/API provenance round-trip and the runtime call/search/direct-read contract
 - [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV

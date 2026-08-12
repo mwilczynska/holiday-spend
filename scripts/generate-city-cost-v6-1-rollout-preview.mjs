@@ -211,9 +211,9 @@ fixed so the comparison cannot be tuned to the observed differences.
 ## Interpretation boundary
 
 This preview describes operational level changes, not accuracy. It does not validate v6.1 against a new
-truth source, does not justify migrating the 121-city CSV, and does not turn source-backed proxies or
-modelled presets into independent observations. The recommendation is limited to new cities behind the
-existing feature flag and remains subject to owner review.
+truth source or turn source-backed proxies or modelled presets into independent observations. The owner has
+approved a staged 121-city migration, but this preview alone does not satisfy the live canary or owner-review
+requirements for cutover. Keep the live CSV unchanged until those steps are complete.
 `;
 }
 
@@ -274,7 +274,7 @@ function buildReport(result) {
       lines.push(`| ${flag.city} | ${flag.scope} | ${flag.name} | ${fmtAud(flag.v1Aud)} | ${fmtAud(flag.v61Aud)} | ${fmtRatio(flag.ratio)} | ${fmtPct(flag.differencePct)} |`);
     }
   }
-  lines.push('', '## Per-city detail', '', 'The JSON artifact contains every city × tier v1/v6.1 pair, all basket category subtotals, flags and provenance inputs:', '', 'data/reference/v6/v6-1-rollout-preview.json', '', '## Decision boundary', '', 'This artifact is an operational A/B preview. It is not a holdout score and it does not establish absolute accuracy. The existing v1 path remains the rollback when CITY_COST_METHODOLOGY_V6 is unset; global activation and 121-city migration remain out of scope.', '');
+  lines.push('', '## Per-city detail', '', 'The JSON artifact contains every city × tier v1/v6.1 pair, all basket category subtotals, flags and provenance inputs:', '', 'data/reference/v6/v6-1-rollout-preview.json', '', '## Decision boundary', '', 'This artifact is an operational A/B preview. It is not a holdout score and it does not establish absolute accuracy. A staged 121-city migration is approved in principle, but the live provider canary, complete staged artifact and owner review are still required. The existing v1 path remains the rollback when CITY_COST_METHODOLOGY_V6 is unset.', '');
   return `${lines.join('\n')}\n`;
 }
 
@@ -330,7 +330,7 @@ function build() {
     schemaVersion: 'city-cost-v6-1-rollout-preview-v1',
     methodologyVersion: 'v6.1',
     generatedAt: GENERATED_AT,
-    purpose: 'Operational v1 versus v6.1 comparison before a new-city activation decision; not ground-truth validation.',
+    purpose: 'Operational v1 versus v6.1 comparison before staged 121-city migration and cutover review; not ground-truth validation.',
     inputs: {
       developmentFixtureDirectory: 'data/reference/v6/experiments/008-v6-1-development-fixtures/materialized/',
       shippingCsv: 'data/reference/city_costs_app_aud.csv',
@@ -348,8 +348,8 @@ function build() {
     flags,
     cities,
     recommendation: {
-      decision: 'recommend new-city-only activation after owner review',
-      text: 'The v6.1 path is operationally ready for NEW cities behind CITY_COST_METHODOLOGY_V6=true, subject to owner review of this impact preview. Keep the flag off for the existing 121-city CSV and retain v1 as the rollback.',
+      decision: 'recommend staged 121-city migration after runtime canary and owner review',
+      text: 'The owner has approved migration in principle. Use this preview as operational context, then require the live provider canary and a complete staged 121-city artifact before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.',
       limitations: [
         'Runtime >=95% coverage is unmeasured.',
         'This is not ground-truth validation and should not be interpreted as accuracy.',

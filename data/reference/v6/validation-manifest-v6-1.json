@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "city-cost-v6-1-release-manifest-v2",
+  "schemaVersion": "city-cost-v6-1-release-manifest-v3",
   "methodologyVersion": "v6.1",
   "status": "scored_development_runtime_unmeasured",
   "decisionDate": "2026-08-12",
-  "objective": "Ship the existing 19 product tiers for new cities through a simple three-call, source-native and honestly graded approximation path.",
+  "objective": "Migrate the existing 121-city library and newly generated cities to a coherent v6.1 three-call, source-native and honestly graded approximation path.",
   "supersedes": {
     "manifest": "data/reference/v6/validation-manifest-v6.json",
     "scopeOnly": true,
@@ -85,7 +85,15 @@
       "drinks_light": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
       "drinks_moderate": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
       "drinks_heavy": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
-      "cocktailRelation": "cocktail_1 = 2.6 * cappuccino_1; grade C; interval +/-75%",
+      "cocktailRelation": "cocktail_1 = 2.4838 * cappuccino_1; grade C; interval +/-64%",
+      "cocktailCoefficient": {
+        "coefficientKey": "cocktail_1",
+        "appliedTo": "cappuccino_1",
+        "k": 2.4838,
+        "grade": "C",
+        "intervalPct": 64,
+        "authority": "data/reference/v6/coefficients-v6.json"
+      },
       "winePolicy": "excluded"
     },
     "activities": {
@@ -106,9 +114,12 @@
   },
   "releaseScope": {
     "newCitiesOnly": true,
+    "migrationApproved": true,
+    "migrationStatus": "staged_canary_then_owner_review",
     "featureFlag": "CITY_COST_METHODOLOGY_V6",
     "shippingCsvMayChange": false,
-    "rollback": "Unset the feature flag to retain v1.",
+    "cutover": "Requires a complete staged 121-city artifact and explicit owner approval.",
+    "rollback": "Restore the pre-migration CSV and unset the feature flag together to retain v1.",
     "freshHoldoutProposal": "cancelled_for_v6_1"
   },
   "gates": {

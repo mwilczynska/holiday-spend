@@ -1,8 +1,9 @@
 # City Cost v6 Data Dictionary
 
 **Status:** The 19 product fields and A/B/C/D semantics are current. The v6.1 production-source,
-derivation and staged 121-city migration decisions are recorded in §6. The active manifest still requires
-the cocktail declaration reconciliation identified there. Every v6.0 holdout is spent and remains closed.
+derivation and staged 121-city migration decisions are recorded in §6. The active manifest and generated
+release reports agree with `coefficients-v6.json`; the validator fails closed on future contract drift.
+Every v6.0 holdout is spent and remains closed.
 
 **Read this first if you are:** deciding whether a collected value may be used, deciding what grade a
 value carries, or implementing the derivation path.
@@ -244,8 +245,8 @@ M3 therefore validates the product layer: generate the exact production predicti
 BudgetYourTrip's labelled per-person/day food and activity tiers for development (independent for food,
 circular and explicitly unvalidated for activities), and collect Expatistan cocktail and neighbourhood-pub
 beer as independent cross-checks against Numbeo. Wine glass is not recollected after the rejected bottle
-calibration route. No new holdout may be drawn, frozen or read until Phase 6 proposes a coverage-qualified
-panel and the owner approves it.
+calibration route. No new holdout may be drawn, frozen or read under v6.1; the migration canary and staged
+refresh are operational collection only.
 
 ### 10 August 2026 — pair predictions before scoring; record explicit FX exclusions
 

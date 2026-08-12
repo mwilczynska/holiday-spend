@@ -95,6 +95,57 @@ function expectedText(value: unknown) {
   return `${JSON.stringify(value, null, 2)}\n`;
 }
 
+type GeneratedCoefficient = {
+  k?: unknown;
+  appliedTo?: unknown;
+  grade?: unknown;
+  intervalPct?: unknown;
+};
+
+type ManifestCoefficientContract = {
+  coefficientKey?: unknown;
+  appliedTo?: unknown;
+  k?: unknown;
+  grade?: unknown;
+  intervalPct?: unknown;
+  authority?: unknown;
+};
+
+function checkGeneratedCoefficientContract(
+  manifest: {
+    derivationContract?: {
+      drinks?: {
+        cocktailRelation?: unknown;
+        cocktailCoefficient?: ManifestCoefficientContract;
+      };
+    };
+  },
+  coefficients: { shippedCoefficients?: Record<string, GeneratedCoefficient> },
+) {
+  const errors: string[] = [];
+  const generated = coefficients.shippedCoefficients?.cocktail_1;
+  const declared = manifest.derivationContract?.drinks?.cocktailCoefficient;
+  if (!generated) {
+    errors.push('generated coefficients are missing shippedCoefficients.cocktail_1');
+    return { passed: false, errors, declared, generated };
+  }
+  if (!declared) {
+    errors.push('manifest is missing derivationContract.drinks.cocktailCoefficient');
+    return { passed: false, errors, declared, generated };
+  }
+  if (declared.coefficientKey !== 'cocktail_1') errors.push('manifest cocktail coefficient key is not cocktail_1');
+  if (declared.authority !== 'data/reference/v6/coefficients-v6.json') errors.push('manifest cocktail coefficient authority is incorrect');
+  if (declared.appliedTo !== generated.appliedTo) errors.push('manifest cocktail appliedTo differs from generated coefficient');
+  if (declared.k !== generated.k) errors.push(`manifest cocktail k ${String(declared.k)} differs from generated ${String(generated.k)}`);
+  if (declared.grade !== generated.grade) errors.push(`manifest cocktail grade ${String(declared.grade)} differs from generated ${String(generated.grade)}`);
+  if (declared.intervalPct !== generated.intervalPct) errors.push(`manifest cocktail interval ${String(declared.intervalPct)} differs from generated ${String(generated.intervalPct)}`);
+  const expectedRelation = `cocktail_1 = ${String(generated.k)} * ${String(generated.appliedTo)}; grade ${String(generated.grade)}; interval +/-${String(generated.intervalPct)}%`;
+  if (manifest.derivationContract?.drinks?.cocktailRelation !== expectedRelation) {
+    errors.push('manifest cocktailRelation text is stale or malformed');
+  }
+  return { passed: errors.length === 0, errors, declared, generated };
+}
+
 type Inputs = {
   cities: Array<{ city: string; country: string; region: string; band: string }>;
 };
@@ -418,6 +469,7 @@ function buildReport(input: {
     fallbackCounts: Record<string, unknown>;
     developmentCoverage: { foundCities: number; requiredCities: number; completeTierCities: number; threshold: string };
     runtimeCoverage: { status: string; threshold: number };
+    generatedCoefficientContract: { passed: boolean; coefficientKey: string; declared: Record<string, unknown> | null; generated: Record<string, unknown> | null };
     gates: Record<string, GateResult>;
   };
   const tierSection = markdownTable([
@@ -431,6 +483,12 @@ function buildReport(input: {
 **Panel:** ${validation.cities} development cities × ${validation.tierCount} product tiers  
 **Holdout:** no holdout read; all v6.0 holdout measures remain spent/closed  
 **Shipping CSV:** read-only informational comparison; SHA-256 ${input.shippingCsvSha256}
+
+**Migration:** owner-approved staged migration of the 121-city library; live CSV remains unchanged pending
+the runtime canary, complete staged artifact and owner review.
+
+**Generated coefficient contract:** ${validation.generatedCoefficientContract.passed ? 'consistent' : 'FAILED'} —
+${JSON.stringify(validation.generatedCoefficientContract.generated)}
 
 ## Result
 
@@ -490,7 +548,8 @@ ${Object.entries(validation.gates).map(([gate, result]) => `| ${gate} | ${gateRe
 Gate 10 is an external verification-baseline status, not something this data replay can observe. The
 validator records it explicitly rather than silently omitting it. Independent food, drink and activity
 accuracy is not claimed: BYT is the production source for food/activity, and no independent full-basket
-drink panel exists in v6.1. The 121-city CSV was not modified; M4 migration remains a separate future decision.
+drink panel exists in v6.1. The 121-city CSV was not modified. The rollout preview is operational impact
+evidence only; it does not replace the required live canary or owner-reviewed staged migration.
 `;
 }
 
@@ -499,12 +558,21 @@ function main() {
     schemaVersion: string;
     methodologyVersion: string;
     productTiers: string[];
+    derivationContract?: {
+      drinks?: {
+        cocktailRelation?: unknown;
+        cocktailCoefficient?: ManifestCoefficientContract;
+      };
+    };
     gates: Record<string, unknown>;
   }>(MANIFEST_PATH);
   const inputs = readJson<Inputs>(INPUTS_PATH);
   const priors = readJson<{ excludedRows?: unknown[] }>(PRIORS_PATH);
+  const coefficients = readJson<{ shippedCoefficients?: Record<string, GeneratedCoefficient> }>(path.join(ROOT, 'data/reference/v6/coefficients-v6.json'));
   const excludedRows = Array.isArray(priors.excludedRows) ? priors.excludedRows.length : 0;
   const errors: string[] = [];
+  const coefficientContract = checkGeneratedCoefficientContract(manifest, coefficients);
+  coefficientContract.errors.forEach((error) => errors.push(`manifest coefficient contract: ${error}`));
   if (manifest.methodologyVersion !== 'v6.1') errors.push('active manifest methodologyVersion is not v6.1');
   if (manifest.productTiers.join('|') !== V5_TIER_NAMES.join('|')) errors.push('active manifest product tier list differs from runtime tier list');
   if (inputs.cities.length !== 25) errors.push(`expected 25 development cities, found ${inputs.cities.length}`);
@@ -631,7 +699,7 @@ function main() {
   const measuredGates: Record<string, boolean> = {
     '1_developmentFixtureCoverage': developmentCoveragePassed,
     '2_schemaAndMissingness': errors.filter((error) => /contract|identity|search|direct page/i.test(error)).length === 0,
-    '3_provenanceAndGrades': errors.filter((error) => /provenance|grade|interval/i.test(error)).length === 0,
+    '3_provenanceAndGrades': coefficientContract.passed && errors.filter((error) => /provenance|grade|interval/i.test(error)).length === 0,
     '4_algebraicCoherence': errors.filter((error) => /invalid amount|accommodation:|food:|drinks:|activities:/i.test(error)).length === 0,
     '5_accommodationAccuracy': Object.values(BANKED_ACCOMMODATION_APE).every((ape) => ape <= accommodationApeMax),
     '6_sourceDependenceDisclosure': sourceDisclosure.complete,
@@ -667,6 +735,24 @@ function main() {
     developmentCoverage,
     runtimeCoverage,
     sourceDependenceDisclosure: sourceDisclosure,
+    generatedCoefficientContract: {
+      passed: coefficientContract.passed,
+      coefficientKey: 'cocktail_1',
+      declared: coefficientContract.declared ? {
+        coefficientKey: coefficientContract.declared.coefficientKey,
+        appliedTo: coefficientContract.declared.appliedTo,
+        k: coefficientContract.declared.k,
+        grade: coefficientContract.declared.grade,
+        intervalPct: coefficientContract.declared.intervalPct,
+        authority: coefficientContract.declared.authority,
+      } : null,
+      generated: coefficientContract.generated ? {
+        appliedTo: coefficientContract.generated.appliedTo,
+        k: coefficientContract.generated.k,
+        grade: coefficientContract.generated.grade,
+        intervalPct: coefficientContract.generated.intervalPct,
+      } : null,
+    },
     drinkCoverage,
     sourceRowsExcludedFromPriors: excludedRows,
     holdoutRead: false,
@@ -679,9 +765,9 @@ function main() {
   const report = buildReport({ validation: { ...validation, fallbackCounts }, tierRows, categorySummary: categoryCoverage, gradeDistribution, excludedRows, v1, v1Missing, shippingCsvSha256: csvSha256, drinkCoverage });
 
   if (CHECK) {
+    if (!validation.passed) throw new Error(`v6.1 release validation failed: ${validation.errors.join('; ')}`);
     if (!fs.existsSync(RESULTS_PATH) || fs.readFileSync(RESULTS_PATH, 'utf8') !== expectedText(validation)) throw new Error('v6.1 release validation JSON is stale.');
     if (!fs.existsSync(REPORT_PATH) || fs.readFileSync(REPORT_PATH, 'utf8') !== report) throw new Error('v6.1 release report is stale.');
-    if (!validation.passed) throw new Error(`v6.1 release validation failed: ${validation.errors.join('; ')}`);
     console.log(JSON.stringify({ passed: validation.passed, status: validation.status, cities: validation.cities, tiers: validation.tierCount, gates: gateResults }, null, 2));
     return;
   }

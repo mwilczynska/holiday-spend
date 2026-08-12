@@ -4,12 +4,12 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
-**Current commit before this planning update:** `5b579e6`
+**Last completed phase commit before this handoff update:** `a6c5096`
 
 **Milestone:** M4 coherent migration of the 121-city library — **owner approved, not started**
-**Exact next action:** complete Phase 6 in the active plan: repair release-contract drift and make the
-release validator compare manifest coefficient declarations with generated coefficients. Do not collect
-the runtime canary until Phase 6 is committed and pushed.
+**Exact next action:** pre-register and run the Phase 7 20-city live-provider canary. Phase 6 is complete
+and pushed; do not start bulk migration until the canary has measured the runtime clause and provenance
+round-trip.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -65,32 +65,34 @@ Banked and verified:
 - v1/v6.0/v6.1 persistence, API and dataset provenance handling;
 - computed release gates, with runtime ≥95% coverage honestly marked unmeasured and verification marked
   external;
+- Phase 6 release-contract reconciliation: the manifest now declares generated cocktail `k=2.4838`, grade C,
+  ±64%, and the release validator fails closed when that declaration drifts;
 - SGD/TWD/ZAR/PEN FX maintenance: prior exclusions fell 34 → 0 and drink direct coverage rose 52% → 68%;
 - read-only rollout preview against the unchanged v1 CSV;
-- the full verification baseline, clean branch and pushed commit at `5b579e6`.
+- the full verification baseline, clean branch and pushed Phase 6 commit.
 
 Current production state:
 
 - the live 121-city CSV is still v1 and must remain unchanged until Phase 11 approval;
 - the feature flag is opt-in and flag-off remains v1;
-- no runtime canary has measured the ≥95% clause;
+- no runtime canary has yet measured the ≥95% clause;
 - no bulk migration responses or staged CSV exist yet;
 - all holdouts are spent/closed and irrelevant to the operational migration.
 
-## 4. Known issue that must be fixed first
+## 4. Phase 6 result and remaining release issue
 
-The generated authority and release declarations drifted during FX regeneration:
+The generated authority and release declarations drifted during FX regeneration. Phase 6 resolved the drift:
 
 - `data/reference/v6/coefficients-v6.json`: cocktail/cappuccino `k=2.4838`, n=14, grade C, ±64%;
-- `data/reference/v6/validation-manifest-v6-1.json`: still declares `k=2.6`, ±75%;
-- some narrative docs and generated recommendation text still repeat the old values.
+- `data/reference/v6/validation-manifest-v6-1.json`: schema v3 now declares `k=2.4838`, grade C, ±64%;
+- the validator compares the manifest key, source anchor, value, grade, interval, authority and relation text
+  with the generated coefficient;
+- the negative regression with the old `2.6`, ±75% declaration failed as required;
+- generated release and rollout reports now describe the approved staged migration sequence.
 
-Accommodation coefficients and the Expedia/Booking offset did not change. Do not refit anything. Reconcile
-the contract to the generated coefficient and extend `scripts/validate-city-cost-v6-1-release.ts` so a
-future mismatch in duplicated coefficient, interval or grade declarations fails `--check`.
-
-Also correct the release recommendation to the approved sequence: **controlled canary, staged migration,
-owner-reviewed cutover**. Regenerate generated reports; never hand-edit them.
+Accommodation coefficients and the Expedia/Booking offset did not change. The remaining unmeasured release
+item is the live provider-path coverage clause. Phase 7 must measure it; fixture replay or delegated
+collection cannot establish it.
 
 ## 5. Why the migration is staged
 
@@ -106,8 +108,8 @@ fallback concentration, ordering and extreme values before owner approval.
 
 Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete phase:
 
-1. **Phase 6:** contract/document reconciliation and validator assertion.
-2. **Phase 7:** pre-registered 20-city real-provider canary; ≥19/20 complete plus provenance round-trip.
+1. **Phase 6:** contract/document reconciliation and validator assertion — **complete and pushed**.
+2. **Phase 7:** pre-register and run the 20-city real-provider canary; ≥19/20 complete plus provenance round-trip.
 3. **Phase 8:** resumable/idempotent migration tooling and canary dry run.
 4. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
 sidecar only.
@@ -178,6 +180,6 @@ investigating because the OneDrive checkout has a known transient temp-directory
 
 ## 10. Current stopping point
 
-Start with Phase 6. It requires no provider or browser calls and must be committed/pushed before canary
-design or migration collection. At the end of Phase 10, stop for owner approval. Touching the live CSV
-before that approval is outside authority even though the eventual migration itself is approved.
+Start with Phase 7. Freeze the city list, source window, FX snapshot, provider/model settings and success
+criteria before collection. At the end of Phase 10, stop for owner approval. Touching the live CSV before
+that approval is outside authority even though the eventual migration itself is approved.
