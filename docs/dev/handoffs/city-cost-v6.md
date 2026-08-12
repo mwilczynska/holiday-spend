@@ -4,7 +4,7 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
-**Last completed phase commit before this handoff update:** `a6c5096`
+**Phase 6 completed commit:** `07a1c0a`
 
 **Milestone:** M4 coherent migration of the 121-city library — **owner approved, not started**
 **Exact next action:** pre-register and run the Phase 7 20-city live-provider canary. Phase 6 is complete
