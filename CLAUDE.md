@@ -163,7 +163,7 @@ The v6.1 source contract, deterministic materializer, generated priors, 25-city 
 feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
 validator now computes the nine measured gates, records runtime >=95% coverage as unmeasured, and records
 the verification baseline as external evidence; the earlier claim that all nine gates alone completed the
-release is superseded. Phase 4 FX coverage and the rollout decision remain open. Flag-on uses v6.1 and
+release is superseded. Phase 4 FX coverage is complete; the rollout decision remains open. Flag-on uses v6.1 and
 flag-off remains v1.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded

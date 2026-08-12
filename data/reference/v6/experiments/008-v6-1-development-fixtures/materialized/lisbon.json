@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 49.88,
+        "amountAud": 48.9,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 12.47,
-          "upperAud": 87.29,
-          "widthPct": 75
+          "lowerAud": 17.6,
+          "upperAud": 80.2,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 81.56,
+        "amountAud": 79.6,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 20.39,
-          "upperAud": 142.73,
-          "widthPct": 75
+          "lowerAud": 28.66,
+          "upperAud": 130.54,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 10.95,
+        "valueAud": 10.46,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Lisbon",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 569.08,
       "drinkCoffee": 4.21,
       "drinkLocalBeer": 4.89,
-      "drinkCocktail": 10.95,
+      "drinkCocktail": 10.46,
       "drinksNone": 8.42,
       "drinksLight": 18.2,
-      "drinksModerate": 49.88,
-      "drinksHeavy": 81.56,
+      "drinksModerate": 48.9,
+      "drinksHeavy": 79.6,
       "activitiesFree": 0,
       "activitiesBudget": 31.46,
       "activitiesMid": 80.08,

@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 24.96,
+        "amountAud": 24.4,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 6.24,
-          "upperAud": 43.68,
-          "widthPct": 75
+          "lowerAud": 8.78,
+          "upperAud": 40.02,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 41.28,
+        "amountAud": 40.16,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 10.32,
-          "upperAud": 72.24,
-          "widthPct": 75
+          "lowerAud": 14.46,
+          "upperAud": 65.86,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 6.24,
+        "valueAud": 5.96,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Nang",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 183.02,
       "drinkCoffee": 2.4,
       "drinkLocalBeer": 1.92,
-      "drinkCocktail": 6.24,
+      "drinkCocktail": 5.96,
       "drinksNone": 4.8,
       "drinksLight": 8.64,
-      "drinksModerate": 24.96,
-      "drinksHeavy": 41.28,
+      "drinksModerate": 24.4,
+      "drinksHeavy": 40.16,
       "activitiesFree": 0,
       "activitiesBudget": 17.16,
       "activitiesMid": 37.18,

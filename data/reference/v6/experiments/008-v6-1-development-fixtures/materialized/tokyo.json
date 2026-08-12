@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 55.1,
+        "amountAud": 54,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 13.78,
-          "upperAud": 96.43,
-          "widthPct": 75
+          "lowerAud": 19.44,
+          "upperAud": 88.56,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 90.22,
+        "amountAud": 88.02,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 22.56,
-          "upperAud": 157.89,
-          "widthPct": 75
+          "lowerAud": 31.69,
+          "upperAud": 144.35,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 12.3,
+        "valueAud": 11.75,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Tokyo",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 489.02,
       "drinkCoffee": 4.73,
       "drinkLocalBeer": 5.26,
-      "drinkCocktail": 12.3,
+      "drinkCocktail": 11.75,
       "drinksNone": 9.46,
       "drinksLight": 19.98,
-      "drinksModerate": 55.1,
-      "drinksHeavy": 90.22,
+      "drinksModerate": 54,
+      "drinksHeavy": 88.02,
       "activitiesFree": 0,
       "activitiesBudget": 62.92,
       "activitiesMid": 185.88,

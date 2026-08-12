@@ -103,30 +103,30 @@
         ]
       },
       "cappuccino_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 3.51,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       },
       "domestic_draft_beer_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 4.34,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       }
     },
     "facts": [
@@ -595,133 +595,133 @@
         }
       },
       "drink_coffee": {
-        "amountAud": 4.44,
-        "formula": "v6.1 drink_coffee tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+        "amountAud": 3.51,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:Africa:high:drink_coffee"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 2.44,
-          "upperAud": 6.44,
-          "widthPct": 45
+          "lowerAud": 3.16,
+          "upperAud": 3.86,
+          "widthPct": 10
         }
       },
       "drinks_none": {
-        "amountAud": 8.89,
-        "formula": "v6.1 drinks_none tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+        "amountAud": 7.02,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:Africa:high:drinks_none"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 4.89,
-          "upperAud": 12.89,
-          "widthPct": 45
+          "lowerAud": 6.32,
+          "upperAud": 7.72,
+          "widthPct": 10
         }
       },
       "drinks_light": {
-        "amountAud": 18.2,
-        "formula": "v6.1 drinks_light tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 15.7,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
           "cappuccino_1",
           "domestic_draft_beer_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:Africa:high:drinks_light"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 10.01,
-          "upperAud": 26.39,
-          "widthPct": 45
+          "lowerAud": 14.13,
+          "upperAud": 17.27,
+          "widthPct": 10
         }
       },
       "drinks_moderate": {
-        "amountAud": 49.88,
-        "formula": "v6.1 drinks_moderate tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 41.82,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
           "cappuccino_1",
-          "domestic_draft_beer_1"
+          "domestic_draft_beer_1",
+          "cocktail_1"
         ],
-        "evidenceBasis": "imputed",
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
         "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+          "cocktail_1",
+          "cappuccino_1"
         ],
         "sourceIds": [
-          "v6.1-tier-prior:Africa:high:drinks_moderate"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town",
+          "v6-coefficient:cocktail_1"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 27.43,
-          "upperAud": 72.33,
-          "widthPct": 45
+          "lowerAud": 15.06,
+          "upperAud": 68.58,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 81.55,
-        "formula": "v6.1 drinks_heavy tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 67.94,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
           "cappuccino_1",
-          "domestic_draft_beer_1"
+          "domestic_draft_beer_1",
+          "cocktail_1"
         ],
-        "evidenceBasis": "imputed",
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
         "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+          "cocktail_1",
+          "cappuccino_1"
         ],
         "sourceIds": [
-          "v6.1-tier-prior:Africa:high:drinks_heavy"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town",
+          "v6-coefficient:cocktail_1"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 44.85,
-          "upperAud": 118.25,
-          "widthPct": 45
+          "lowerAud": 24.46,
+          "upperAud": 111.42,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -907,36 +907,52 @@
         ]
       },
       "cappuccino_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 3.51,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       },
       "domestic_draft_beer_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 4.34,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 8.72,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town",
+          "v6-coefficient:cocktail_1"
         ],
-        "missingness": "not_found"
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
       }
     },
-    "missingness": {
-      "cappuccino_1": "not_found",
-      "domestic_draft_beer_1": "not_found"
-    },
+    "missingness": {},
     "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
     "complete": true,
     "mappedEstimate": {
@@ -950,13 +966,13 @@
       "foodBudget": 180.16,
       "foodMid": 234.5,
       "foodHigh": 331.74,
-      "drinkCoffee": 4.44,
-      "drinkLocalBeer": 4.66,
-      "drinkCocktail": 11.18,
-      "drinksNone": 8.89,
-      "drinksLight": 18.2,
-      "drinksModerate": 49.88,
-      "drinksHeavy": 81.55,
+      "drinkCoffee": 3.51,
+      "drinkLocalBeer": 4.34,
+      "drinkCocktail": 8.72,
+      "drinksNone": 7.02,
+      "drinksLight": 15.7,
+      "drinksModerate": 41.82,
+      "drinksHeavy": 67.94,
       "activitiesFree": 0,
       "activitiesBudget": 25.74,
       "activitiesMid": 74.36,

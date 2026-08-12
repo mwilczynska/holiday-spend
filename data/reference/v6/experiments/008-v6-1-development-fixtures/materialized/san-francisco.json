@@ -657,7 +657,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 106.88,
+        "amountAud": 104.92,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -681,13 +681,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 26.72,
-          "upperAud": 187.04,
-          "widthPct": 75
+          "lowerAud": 37.77,
+          "upperAud": 172.07,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 173.9,
+        "amountAud": 169.98,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -711,9 +711,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 43.48,
-          "upperAud": 304.33,
-          "widthPct": 75
+          "lowerAud": 61.19,
+          "upperAud": 278.77,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -925,10 +925,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 22.07,
+        "valueAud": 21.09,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/San-Francisco",
           "v6-coefficient:cocktail_1"
@@ -962,11 +962,11 @@
       "foodHigh": 546.22,
       "drinkCoffee": 8.49,
       "drinkLocalBeer": 11.44,
-      "drinkCocktail": 22.07,
+      "drinkCocktail": 21.09,
       "drinksNone": 16.98,
       "drinksLight": 39.86,
-      "drinksModerate": 106.88,
-      "drinksHeavy": 173.9,
+      "drinksModerate": 104.92,
+      "drinksHeavy": 169.98,
       "activitiesFree": 0,
       "activitiesBudget": 37.18,
       "activitiesMid": 88.66,

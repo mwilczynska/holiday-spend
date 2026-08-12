@@ -35,6 +35,46 @@
       "derivation": "cross_rate",
       "derivationFormula": "1.6312 / 1.1408"
     },
+    "SGD": {
+      "currency": "SGD",
+      "audPerUnit": 1.10705192073508,
+      "sourceName": "Reserve Bank of Australia",
+      "sourceUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 AUD = 0.9033 SGD",
+      "derivation": "inverted_quote",
+      "derivationFormula": "1 / 0.9033"
+    },
+    "TWD": {
+      "currency": "TWD",
+      "audPerUnit": 0.0441696113074205,
+      "sourceName": "Reserve Bank of Australia",
+      "sourceUrl": "https://www.rba.gov.au/statistics/frequency/exchange-rates.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 AUD = 22.64 TWD",
+      "derivation": "inverted_quote",
+      "derivationFormula": "1 / 22.64"
+    },
+    "ZAR": {
+      "currency": "ZAR",
+      "audPerUnit": 0.0868754759989987,
+      "sourceName": "European Central Bank",
+      "sourceUrl": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-zar.en.html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 EUR = 1.6312 AUD and 1 EUR = 18.7763 ZAR",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.6312 / 18.7763"
+    },
+    "PEN": {
+      "currency": "PEN",
+      "audPerUnit": 0.420427454510739,
+      "sourceName": "Central Reserve Bank of Peru and European Central Bank",
+      "sourceUrl": "https://estadisticas.bcrp.gob.pe/estadisticas/series/diarias/resultados/pd04638pd/html",
+      "sourceDate": "2026-07-22",
+      "sourceQuote": "1 USD = 3.401 PEN (interbank sell) and 1 USD = 1.4298737727910238 AUD in the frozen 22 July cross-rate",
+      "derivation": "cross_rate",
+      "derivationFormula": "1.4298737727910238 / 3.401"
+    },
     "CZK": {
       "currency": "CZK",
       "audPerUnit": 0.06749979309774062,

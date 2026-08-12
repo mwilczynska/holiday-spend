@@ -657,7 +657,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 39.96,
+        "amountAud": 38.88,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -681,13 +681,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 9.99,
-          "upperAud": 69.93,
-          "widthPct": 75
+          "lowerAud": 14,
+          "upperAud": 63.76,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 67.32,
+        "amountAud": 65.16,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -711,9 +711,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 16.83,
-          "upperAud": 117.81,
-          "widthPct": 75
+          "lowerAud": 23.46,
+          "upperAud": 106.86,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -925,10 +925,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 11.99,
+        "valueAud": 11.45,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Beijing",
           "v6-coefficient:cocktail_1"
@@ -962,11 +962,11 @@
       "foodHigh": 257.38,
       "drinkCoffee": 4.61,
       "drinkLocalBeer": 1.69,
-      "drinkCocktail": 11.99,
+      "drinkCocktail": 11.45,
       "drinksNone": 9.22,
       "drinksLight": 12.6,
-      "drinksModerate": 39.96,
-      "drinksHeavy": 67.32,
+      "drinksModerate": 38.88,
+      "drinksHeavy": 65.16,
       "activitiesFree": 0,
       "activitiesBudget": 28.6,
       "activitiesMid": 74.36,

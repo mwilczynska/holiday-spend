@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 24.96,
+        "amountAud": 24.34,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 6.24,
-          "upperAud": 43.68,
-          "widthPct": 75
+          "lowerAud": 8.76,
+          "upperAud": 39.92,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 41.7,
+        "amountAud": 40.46,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 10.43,
-          "upperAud": 72.98,
-          "widthPct": 75
+          "lowerAud": 14.57,
+          "upperAud": 66.35,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 6.92,
+        "valueAud": 6.61,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Hanoi",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 165.86,
       "drinkCoffee": 2.66,
       "drinkLocalBeer": 1.45,
-      "drinkCocktail": 6.92,
+      "drinkCocktail": 6.61,
       "drinksNone": 5.32,
       "drinksLight": 8.22,
-      "drinksModerate": 24.96,
-      "drinksHeavy": 41.7,
+      "drinksModerate": 24.34,
+      "drinksHeavy": 40.46,
       "activitiesFree": 0,
       "activitiesBudget": 8.58,
       "activitiesMid": 22.88,

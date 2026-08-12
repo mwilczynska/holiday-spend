@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 56.82,
+        "amountAud": 55.84,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 14.2,
-          "upperAud": 99.43,
-          "widthPct": 75
+          "lowerAud": 20.1,
+          "upperAud": 91.58,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 92.06,
+        "amountAud": 90.1,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 23.02,
-          "upperAud": 161.11,
-          "widthPct": 75
+          "lowerAud": 32.44,
+          "upperAud": 147.76,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 11.1,
+        "valueAud": 10.61,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Barcelona",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 446.12,
       "drinkCoffee": 4.27,
       "drinkLocalBeer": 6.52,
-      "drinkCocktail": 11.1,
+      "drinkCocktail": 10.61,
       "drinksNone": 8.54,
       "drinksLight": 21.58,
-      "drinksModerate": 56.82,
-      "drinksHeavy": 92.06,
+      "drinksModerate": 55.84,
+      "drinksHeavy": 90.1,
       "activitiesFree": 0,
       "activitiesBudget": 42.9,
       "activitiesMid": 108.68,

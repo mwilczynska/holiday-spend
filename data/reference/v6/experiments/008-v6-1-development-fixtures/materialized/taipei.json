@@ -103,30 +103,30 @@
         ]
       },
       "cappuccino_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 4.8,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       },
       "domestic_draft_beer_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 3.98,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       }
     },
     "facts": [
@@ -595,133 +595,133 @@
         }
       },
       "drink_coffee": {
-        "amountAud": 4.61,
-        "formula": "v6.1 drink_coffee tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+        "amountAud": 4.8,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:East Asia:mid:drink_coffee"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 2.54,
-          "upperAud": 6.68,
-          "widthPct": 45
+          "lowerAud": 4.32,
+          "upperAud": 5.28,
+          "widthPct": 10
         }
       },
       "drinks_none": {
-        "amountAud": 9.23,
-        "formula": "v6.1 drinks_none tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+        "amountAud": 9.6,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:East Asia:mid:drinks_none"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 5.08,
-          "upperAud": 13.38,
-          "widthPct": 45
+          "lowerAud": 8.64,
+          "upperAud": 10.56,
+          "widthPct": 10
         }
       },
       "drinks_light": {
-        "amountAud": 12.61,
-        "formula": "v6.1 drinks_light tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 17.56,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
           "cappuccino_1",
           "domestic_draft_beer_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:East Asia:mid:drinks_light"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 6.94,
-          "upperAud": 18.28,
-          "widthPct": 45
+          "lowerAud": 15.8,
+          "upperAud": 19.32,
+          "widthPct": 10
         }
       },
       "drinks_moderate": {
-        "amountAud": 39.98,
-        "formula": "v6.1 drinks_moderate tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 49.36,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
           "cappuccino_1",
-          "domestic_draft_beer_1"
+          "domestic_draft_beer_1",
+          "cocktail_1"
         ],
-        "evidenceBasis": "imputed",
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
         "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+          "cocktail_1",
+          "cappuccino_1"
         ],
         "sourceIds": [
-          "v6.1-tier-prior:East Asia:mid:drinks_moderate"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/",
+          "v6-coefficient:cocktail_1"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 21.99,
-          "upperAud": 57.97,
-          "widthPct": 45
+          "lowerAud": 17.77,
+          "upperAud": 80.95,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 67.36,
-        "formula": "v6.1 drinks_heavy tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 81.16,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
           "cappuccino_1",
-          "domestic_draft_beer_1"
+          "domestic_draft_beer_1",
+          "cocktail_1"
         ],
-        "evidenceBasis": "imputed",
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
         "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+          "cocktail_1",
+          "cappuccino_1"
         ],
         "sourceIds": [
-          "v6.1-tier-prior:East Asia:mid:drinks_heavy"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/",
+          "v6-coefficient:cocktail_1"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 37.05,
-          "upperAud": 97.67,
-          "widthPct": 45
+          "lowerAud": 29.22,
+          "upperAud": 133.1,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -907,36 +907,52 @@
         ]
       },
       "cappuccino_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 4.8,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       },
       "domestic_draft_beer_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 3.98,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 11.92,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei/",
+          "v6-coefficient:cocktail_1"
         ],
-        "missingness": "not_found"
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
       }
     },
-    "missingness": {
-      "cappuccino_1": "not_found",
-      "domestic_draft_beer_1": "not_found"
-    },
+    "missingness": {},
     "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
     "complete": true,
     "mappedEstimate": {
@@ -950,13 +966,13 @@
       "foodBudget": 31.46,
       "foodMid": 80.08,
       "foodHigh": 214.48,
-      "drinkCoffee": 4.61,
-      "drinkLocalBeer": 1.69,
-      "drinkCocktail": 12,
-      "drinksNone": 9.23,
-      "drinksLight": 12.61,
-      "drinksModerate": 39.98,
-      "drinksHeavy": 67.36,
+      "drinkCoffee": 4.8,
+      "drinkLocalBeer": 3.98,
+      "drinkCocktail": 11.92,
+      "drinksNone": 9.6,
+      "drinksLight": 17.56,
+      "drinksModerate": 49.36,
+      "drinksHeavy": 81.16,
       "activitiesFree": 0,
       "activitiesBudget": 20.02,
       "activitiesMid": 51.48,

@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 59.24,
+        "amountAud": 57.96,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 14.81,
-          "upperAud": 103.67,
-          "widthPct": 75
+          "lowerAud": 20.87,
+          "upperAud": 95.05,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 97.72,
+        "amountAud": 95.16,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 24.43,
-          "upperAud": 171.01,
-          "widthPct": 75
+          "lowerAud": 34.26,
+          "upperAud": 156.06,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 14.4,
+        "valueAud": 13.76,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Mexico-City",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 386.06,
       "drinkCoffee": 5.54,
       "drinkLocalBeer": 4.84,
-      "drinkCocktail": 14.4,
+      "drinkCocktail": 13.76,
       "drinksNone": 11.08,
       "drinksLight": 20.76,
-      "drinksModerate": 59.24,
-      "drinksHeavy": 97.72,
+      "drinksModerate": 57.96,
+      "drinksHeavy": 95.16,
       "activitiesFree": 0,
       "activitiesBudget": 17.16,
       "activitiesMid": 42.9,

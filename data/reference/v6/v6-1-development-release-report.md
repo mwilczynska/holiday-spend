@@ -33,11 +33,11 @@ runtime clause is therefore not reported as passed.
 | `food_budget` | 2 * byt_food_budget_per_person_day | B / ±35% | 24 direct / 1 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 36.29% median APE |
 | `food_mid_range` | 2 * byt_food_mid_per_person_day | B / ±35% | 24 direct / 1 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 52.08% median APE |
 | `food_high_end` | 2 * byt_food_high_per_person_day | B / ±35% | 24 direct / 1 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 156.87% median APE |
-| `drink_coffee` | cappuccino_1 | A / ±10% | 13 direct / 12 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 37.6% median APE |
-| `drinks_none` | 2 * cappuccino_1 | A / ±10% | 13 direct / 12 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 37.6% median APE |
-| `drinks_light` | 2 * cappuccino_1 + 2 * domestic_draft_beer_1 | A / ±10% | 13 direct / 12 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 17.42% median APE |
-| `drinks_moderate` | 2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1 | C / ±75% | 13 direct / 12 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 14.92% median APE |
-| `drinks_heavy` | 2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 | C / ±75% | 13 direct / 12 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 25.57% median APE |
+| `drink_coffee` | cappuccino_1 | A / ±10% | 17 direct / 8 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 33.5% median APE |
+| `drinks_none` | 2 * cappuccino_1 | A / ±10% | 17 direct / 8 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 33.5% median APE |
+| `drinks_light` | 2 * cappuccino_1 + 2 * domestic_draft_beer_1 | A / ±10% | 17 direct / 8 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 16.02% median APE |
+| `drinks_moderate` | 2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1 | C / ±64% | 17 direct / 8 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 12.81% median APE |
+| `drinks_heavy` | 2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1 | C / ±64% | 17 direct / 8 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 26.39% median APE |
 | `activities_free` | 0 by definition | definitional / ±0% | 25 direct / 0 fallback | definitional zero | source-backed/preset; no independent fit | not evaluated; holdout closed | n/a |
 | `activities_budget` | 2 * byt_activities_budget_per_person_day | B / ±35% | 24 direct / 1 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 31.8% median APE |
 | `activities_mid_range` | 2 * byt_activities_mid_per_person_day | B / ±35% | 24 direct / 1 fallback | direct vector → regional → global | source-backed/preset; no independent fit | not evaluated; holdout closed | 35% median APE |
@@ -52,14 +52,21 @@ score. All 25 development city rows were present in the CSV.
 | --- | ---: | ---: | ---: | ---: |
 | accommodation | 20 | 5 | 80% | 20% |
 | food | 24 | 1 | 96% | 4% |
-| drinks | 13 | 12 | 52% | 48% |
+| drinks | 17 | 8 | 68% | 32% |
 | activities | 24 | 1 | 96% | 4% |
 
-Materialized grade distribution across all 25 × 19 tier cells: C=126, B=164, D=121, A=39, definitional=25.
+## Frozen FX coverage maintenance
+
+The 22 July frozen FX snapshot now includes SGD, TWD, ZAR, PEN with source-attributed
+rates. Direct Numbeo drink coverage increased from 13/25 cities to
+17/25; the remaining drink fallbacks are explicit and unchanged
+in kind. This is FX metadata maintenance, not new city-price collection.
+
+Materialized grade distribution across all 25 × 19 tier cells: C=134, B=164, D=101, A=51, definitional=25.
 
 Fallback is exactly one layer: direct category tier vector → regional tier vector → global tier vector.
 The generated v6.1 priors are in data/reference/v6/priors-v6-1.json; the historical v6.0 priors remain
-separate. 8 source rows were excluded from prior construction because the frozen FX
+separate. 0 source rows were excluded from prior construction because the frozen FX
 snapshot lacks SGD, TWD, ZAR or PEN; the exclusions are recorded in that generated file.
 
 ## Banked accommodation result

@@ -657,7 +657,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 93.2,
+        "amountAud": 91.9,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -681,13 +681,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 23.3,
-          "upperAud": 163.1,
-          "widthPct": 75
+          "lowerAud": 33.08,
+          "upperAud": 150.72,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 148.82,
+        "amountAud": 146.22,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -711,9 +711,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 37.21,
-          "upperAud": 260.44,
-          "widthPct": 75
+          "lowerAud": 52.64,
+          "upperAud": 239.8,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -925,10 +925,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 14.66,
+        "valueAud": 14.01,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Melbourne",
           "v6-coefficient:cocktail_1"
@@ -962,11 +962,11 @@
       "foodHigh": 366.04,
       "drinkCoffee": 5.64,
       "drinkLocalBeer": 13.15,
-      "drinkCocktail": 14.66,
+      "drinkCocktail": 14.01,
       "drinksNone": 11.28,
       "drinksLight": 37.58,
-      "drinksModerate": 93.2,
-      "drinksHeavy": 148.82,
+      "drinksModerate": 91.9,
+      "drinksHeavy": 146.22,
       "activitiesFree": 0,
       "activitiesBudget": 34.32,
       "activitiesMid": 85.8,

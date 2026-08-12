@@ -657,7 +657,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 39.56,
+        "amountAud": 38.76,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -681,13 +681,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 9.89,
-          "upperAud": 69.23,
-          "widthPct": 75
+          "lowerAud": 13.95,
+          "upperAud": 63.57,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 64.84,
+        "amountAud": 63.24,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -711,9 +711,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 16.21,
-          "upperAud": 113.47,
-          "widthPct": 75
+          "lowerAud": 22.77,
+          "upperAud": 103.71,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -925,10 +925,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 8.94,
+        "valueAud": 8.54,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Delhi",
           "v6-coefficient:cocktail_1"
@@ -962,11 +962,11 @@
       "foodHigh": 131.54,
       "drinkCoffee": 3.44,
       "drinkLocalBeer": 3.7,
-      "drinkCocktail": 8.94,
+      "drinkCocktail": 8.54,
       "drinksNone": 6.88,
       "drinksLight": 14.28,
-      "drinksModerate": 39.56,
-      "drinksHeavy": 64.84,
+      "drinksModerate": 38.76,
+      "drinksHeavy": 63.24,
       "activitiesFree": 0,
       "activitiesBudget": 17.16,
       "activitiesMid": 48.62,

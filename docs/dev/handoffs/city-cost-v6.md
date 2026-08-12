@@ -1,9 +1,9 @@
 # Handoff — City Cost Methodology v6.1
 
-**As at:** 10 August 2026
+**As at:** 12 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 **Milestone:** v6.1 implementation — **complete for new-city generation**
-**Exact next action:** complete Phase 4 frozen-FX maintenance, then generate the Phase 5 rollout preview and stop for owner review; keep M4/121-city migration separate
+**Exact next action:** generate the Phase 5 rollout preview from the existing fixtures and unchanged CSV, then stop for owner review; keep M4/121-city migration separate
 
 This handoff is written for a cold GPT-5.6 Luna Max context. It supersedes the earlier M3 handoffs. The
 v6.0 evidence and commits remain valid history; do not reconstruct the workstream from old prompts.
@@ -242,7 +242,20 @@ The release validator no longer treats source-dependence or integration as liter
 `scored_development_runtime_unmeasured`; its report is
 `data/reference/v6/v6-1-development-release-report.md`.
 
-The exact next action after this hardening phase is Phase 4: add source-attributed SGD, TWD, ZAR and PEN
+The exact next action after this hardening phase was Phase 4: add source-attributed SGD, TWD, ZAR and PEN
 rates to the frozen FX metadata, regenerate v6.1 priors/materializations/release artifacts, and report
-drink direct-coverage change. Then Phase 5 will generate the rollout preview and stop for owner review.
+drink direct-coverage change. That phase is complete; Phase 5 now generates the rollout preview and stops
+for owner review.
 Do not enable the flag globally, migrate the 121-city CSV, read any holdout, collect prices, or start M4.
+
+## 14. Phase 4 completion — 12 August 2026
+
+Phase 4 is now complete. The frozen 22 July FX metadata contains source-attributed SGD, TWD, ZAR and PEN
+rates; regenerated priors exclude 0 rows rather than the previous 34. Direct Numbeo drink coverage is now
+17/25 (68%), up from 13/25 (52%), with 8 explicit fallback cities instead of 12. The updated generated
+artifacts are checked by the release validator.
+
+The exact next action is Phase 5: generate the deterministic v1-versus-v6.1 rollout preview from the
+existing 25-city fixtures and unchanged shipping CSV, document the CSV hash and recommend new-city-only
+activation. Then stop for owner review. Do not enable the feature flag globally, migrate the CSV, read or
+collect a holdout, collect new city prices, or begin M4.

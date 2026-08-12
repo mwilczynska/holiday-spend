@@ -371,6 +371,16 @@ verification baseline as **external** rather than calling it passed. The v1 roll
 the 121-city CSV and all holdouts remain untouched. Phase 4 frozen-FX maintenance and Phase 5 rollout
 preview remain open before owner review.
 
+### v6.1 Phase 4 FX completion — 12 August 2026
+
+The frozen 22 July FX metadata maintenance is complete. SGD, TWD, ZAR and PEN now have source-attributed
+rates; generated priors exclude 0 rows rather than 34, and direct Numbeo drink coverage rises from 13/25
+(52%) to 17/25 (68%). The 25-city materializations, release validation and report were regenerated with
+no city-price collection, holdout access, accommodation refit or shipping-CSV change. The generated
+coefficient artifact was refreshed to restore its deterministic check after the earlier street-food
+gating change; the accommodation coefficients and source offset are unchanged. Phase 5—the rollout
+preview and owner review—is now the exact next action.
+
 ---
 
 ## Traps retained from earlier work

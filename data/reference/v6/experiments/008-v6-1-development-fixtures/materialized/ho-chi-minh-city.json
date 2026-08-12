@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 25.82,
+        "amountAud": 25.2,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 6.46,
-          "upperAud": 45.19,
-          "widthPct": 75
+          "lowerAud": 9.07,
+          "upperAud": 41.33,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 43,
+        "amountAud": 41.76,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 10.75,
-          "upperAud": 75.25,
-          "widthPct": 75
+          "lowerAud": 15.03,
+          "upperAud": 68.49,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 6.94,
+        "valueAud": 6.63,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 165.86,
       "drinkCoffee": 2.67,
       "drinkLocalBeer": 1.65,
-      "drinkCocktail": 6.94,
+      "drinkCocktail": 6.63,
       "drinksNone": 5.34,
       "drinksLight": 8.64,
-      "drinksModerate": 25.82,
-      "drinksHeavy": 43,
+      "drinksModerate": 25.2,
+      "drinksHeavy": 41.76,
       "activitiesFree": 0,
       "activitiesBudget": 20.02,
       "activitiesMid": 54.34,

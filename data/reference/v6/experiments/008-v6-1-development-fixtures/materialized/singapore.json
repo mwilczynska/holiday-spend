@@ -103,30 +103,30 @@
         ]
       },
       "cappuccino_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 7.04,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       },
       "domestic_draft_beer_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 11.07,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       }
     },
     "facts": [
@@ -595,133 +595,133 @@
         }
       },
       "drink_coffee": {
-        "amountAud": 2.66,
-        "formula": "v6.1 drink_coffee tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+        "amountAud": 7.04,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:SEA:high:drink_coffee"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 1.46,
-          "upperAud": 3.86,
-          "widthPct": 45
+          "lowerAud": 6.34,
+          "upperAud": 7.74,
+          "widthPct": 10
         }
       },
       "drinks_none": {
-        "amountAud": 5.32,
-        "formula": "v6.1 drinks_none tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+        "amountAud": 14.08,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:SEA:high:drinks_none"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 2.93,
-          "upperAud": 7.71,
-          "widthPct": 45
+          "lowerAud": 12.67,
+          "upperAud": 15.49,
+          "widthPct": 10
         }
       },
       "drinks_light": {
-        "amountAud": 8.64,
-        "formula": "v6.1 drinks_light tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 36.22,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
           "cappuccino_1",
           "domestic_draft_beer_1"
         ],
-        "evidenceBasis": "imputed",
-        "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
-        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
         "sourceIds": [
-          "v6.1-tier-prior:SEA:high:drinks_light"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "A",
         "interval": {
-          "lowerAud": 4.75,
-          "upperAud": 12.53,
-          "widthPct": 45
+          "lowerAud": 32.6,
+          "upperAud": 39.84,
+          "widthPct": 10
         }
       },
       "drinks_moderate": {
-        "amountAud": 25.38,
-        "formula": "v6.1 drinks_moderate tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 93.34,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
           "cappuccino_1",
-          "domestic_draft_beer_1"
+          "domestic_draft_beer_1",
+          "cocktail_1"
         ],
-        "evidenceBasis": "imputed",
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
         "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+          "cocktail_1",
+          "cappuccino_1"
         ],
         "sourceIds": [
-          "v6.1-tier-prior:SEA:high:drinks_moderate"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore",
+          "v6-coefficient:cocktail_1"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 13.96,
-          "upperAud": 36.8,
-          "widthPct": 45
+          "lowerAud": 33.6,
+          "upperAud": 153.08,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 42.29,
-        "formula": "v6.1 drinks_heavy tier prior",
-        "parentAnchors": [],
-        "missingAnchors": [
+        "amountAud": 150.46,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
           "cappuccino_1",
-          "domestic_draft_beer_1"
+          "domestic_draft_beer_1",
+          "cocktail_1"
         ],
-        "evidenceBasis": "imputed",
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
         "imputedMeasures": [
-          "cappuccino_1",
-          "domestic_draft_beer_1"
+          "cocktail_1",
+          "cappuccino_1"
         ],
         "sourceIds": [
-          "v6.1-tier-prior:SEA:high:drinks_heavy"
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore",
+          "v6-coefficient:cocktail_1"
         ],
         "modelVersions": [
-          "city-cost-v6-1-tier-prior-v1"
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
         ],
-        "evidenceGrade": "D",
+        "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 23.26,
-          "upperAud": 61.32,
-          "widthPct": 45
+          "lowerAud": 54.17,
+          "upperAud": 246.75,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -907,36 +907,52 @@
         ]
       },
       "cappuccino_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 7.04,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
-        ],
-        "missingness": "not_found"
+        ]
       },
       "domestic_draft_beer_1": {
-        "valueAud": null,
-        "status": "not_found",
-        "evidenceGrade": "D",
+        "valueAud": 11.07,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
         ],
         "modelVersions": [
           "gpt-5.6-luna",
           "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 17.49,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore",
+          "v6-coefficient:cocktail_1"
         ],
-        "missingness": "not_found"
+        "modelVersions": [
+          "gpt-5.6-luna",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
       }
     },
-    "missingness": {
-      "cappuccino_1": "not_found",
-      "domestic_draft_beer_1": "not_found"
-    },
+    "missingness": {},
     "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
     "complete": true,
     "mappedEstimate": {
@@ -950,13 +966,13 @@
       "foodBudget": 54.34,
       "foodMid": 134.4,
       "foodHigh": 340.3,
-      "drinkCoffee": 2.66,
-      "drinkLocalBeer": 1.66,
-      "drinkCocktail": 6.71,
-      "drinksNone": 5.32,
-      "drinksLight": 8.64,
-      "drinksModerate": 25.38,
-      "drinksHeavy": 42.29,
+      "drinkCoffee": 7.04,
+      "drinkLocalBeer": 11.07,
+      "drinkCocktail": 17.49,
+      "drinksNone": 14.08,
+      "drinksLight": 36.22,
+      "drinksModerate": 93.34,
+      "drinksHeavy": 150.46,
       "activitiesFree": 0,
       "activitiesBudget": 37.18,
       "activitiesMid": 97.24,

@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 42.96,
+        "amountAud": 42.02,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 10.74,
-          "upperAud": 75.18,
-          "widthPct": 75
+          "lowerAud": 15.13,
+          "upperAud": 68.91,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 70.98,
+        "amountAud": 69.1,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 17.75,
-          "upperAud": 124.22,
-          "widthPct": 75
+          "lowerAud": 24.88,
+          "upperAud": 113.32,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 10.63,
+        "valueAud": 10.16,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Phuket",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 308.86,
       "drinkCoffee": 4.09,
       "drinkLocalBeer": 3.38,
-      "drinkCocktail": 10.63,
+      "drinkCocktail": 10.16,
       "drinksNone": 8.18,
       "drinksLight": 14.94,
-      "drinksModerate": 42.96,
-      "drinksHeavy": 70.98,
+      "drinksModerate": 42.02,
+      "drinksHeavy": 69.1,
       "activitiesFree": 0,
       "activitiesBudget": 51.48,
       "activitiesMid": 134.4,

@@ -2771,3 +2771,17 @@ and Gate 10 verification is recorded as external evidence. The generated status 
 `scored_development_runtime_unmeasured`; this is a truthful development release score, not a claim that
 runtime coverage or the external baseline was observed by the validator. Phase 4 FX metadata maintenance
 and the Phase 5 rollout preview remain to be completed before owner review.
+
+## v6.1 frozen-FX coverage maintenance — 12 August 2026
+
+Phase 4 is complete with no model/provider collection. The frozen 22 July AUD snapshot now has
+source-attributed rates for SGD and TWD from the Reserve Bank of Australia, ZAR from the European Central
+Bank, and PEN from the Central Reserve Bank of Peru cross-referenced to the frozen USD/AUD rate. The
+derivations and source dates are stored in `data/reference/fx/city_cost_fx_aud_2026-07-22.json`.
+
+Regenerated priors and the 25-city v6.1 materializations removed all 34-currency exclusions: prior
+construction now excludes 0 rows instead of 34. Direct Numbeo drink coverage improved from 13/25 cities
+(52%) to 17/25 (68%); drink fallback declined from 12 to 8 cities. The generated coefficient artifact
+was also refreshed to restore its deterministic check after the earlier street-food gating change; the
+accommodation coefficients and source offset are byte-equivalent in substance, with no accommodation
+refit. No city-price collection, holdout, or shipping-CSV change occurred.

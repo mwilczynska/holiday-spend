@@ -12,15 +12,11 @@
   "fallbackCounts": {
     "accommodation": 5,
     "food": 1,
-    "drinks": 12,
+    "drinks": 8,
     "activities": 1
   },
   "fallbackByRegion": {
-    "SEA": {
-      "drinks": 1
-    },
     "East Asia": {
-      "drinks": 1,
       "accommodation": 1
     },
     "South Asia": {
@@ -34,13 +30,10 @@
     },
     "Africa": {
       "accommodation": 1,
-      "drinks": 3
+      "drinks": 2
     },
     "Europe": {
       "drinks": 2
-    },
-    "Latin America": {
-      "drinks": 1
     },
     "North America": {
       "accommodation": 1
@@ -50,10 +43,10 @@
     }
   },
   "gradeDistribution": {
-    "C": 126,
+    "C": 134,
     "B": 164,
-    "D": 121,
-    "A": 39,
+    "D": 101,
+    "A": 51,
     "definitional": 25
   },
   "developmentCoverage": {
@@ -96,10 +89,10 @@
       },
       "drinks": {
         "label": "Numbeo source-priced consumption preset",
-        "directCities": 13,
-        "fallbackCities": 12,
-        "directRatePct": 52,
-        "fallbackRatePct": 48,
+        "directCities": 17,
+        "fallbackCities": 8,
+        "directRatePct": 68,
+        "fallbackRatePct": 32,
         "fallbackCountMatches": true,
         "cityCountMatches": true
       },
@@ -114,15 +107,25 @@
       }
     },
     "gradeDistribution": {
-      "C": 126,
+      "C": 134,
       "B": 164,
-      "D": 121,
-      "A": 39,
+      "D": 101,
+      "A": 51,
       "definitional": 25
     },
     "complete": true
   },
-  "sourceRowsExcludedFromPriors": 8,
+  "drinkCoverage": {
+    "before": 13,
+    "after": 17,
+    "currencies": [
+      "SGD",
+      "TWD",
+      "ZAR",
+      "PEN"
+    ]
+  },
+  "sourceRowsExcludedFromPriors": 0,
   "holdoutRead": false,
   "shippingCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
   "errors": [],

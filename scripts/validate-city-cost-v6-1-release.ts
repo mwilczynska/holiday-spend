@@ -41,6 +41,9 @@ const SOURCE_DEPENDENCE_LABELS = {
   activities: 'BudgetYourTrip source-backed daily product estimate',
 } as const;
 
+const FX_MAINTENANCE_CURRENCIES = ['SGD', 'TWD', 'ZAR', 'PEN'] as const;
+const PREVIOUS_DIRECT_DRINK_CITIES = 13;
+
 type GateResult = boolean | {
   status: 'unmeasured' | 'external';
   requirement: string;
@@ -405,6 +408,7 @@ function buildReport(input: {
   v1: Record<string, unknown>;
   v1Missing: string[];
   shippingCsvSha256: string;
+  drinkCoverage: { before: number; after: number; currencies: readonly string[] };
 }) {
   const validation = input.validation as {
     generatedAt: string;
@@ -456,6 +460,13 @@ ${Object.entries(input.categorySummary).map(([category, value]) => {
     const summary = value as { directCities: number; fallbackCities: number; directRatePct: number; fallbackRatePct: number };
     return `| ${category} | ${summary.directCities} | ${summary.fallbackCities} | ${summary.directRatePct}% | ${summary.fallbackRatePct}% |`;
   }).join('\n')}
+
+## Frozen FX coverage maintenance
+
+The 22 July frozen FX snapshot now includes ${input.drinkCoverage.currencies.join(', ')} with source-attributed
+rates. Direct Numbeo drink coverage increased from ${input.drinkCoverage.before}/${validation.cities} cities to
+${input.drinkCoverage.after}/${validation.cities}; the remaining drink fallbacks are explicit and unchanged
+in kind. This is FX metadata maintenance, not new city-price collection.
 
 Materialized grade distribution across all 25 × 19 tier cells: ${Object.entries(input.gradeDistribution).map(([grade, count]) => `${grade}=${count}`).join(', ')}.
 
@@ -568,6 +579,12 @@ function main() {
 
   const csvSha256 = crypto.createHash('sha256').update(fs.readFileSync(SHIPPING_CSV)).digest('hex');
   const categoryCoverage = categorySummary(inputs.cities, bundles);
+  const directDrinkCities = (categoryCoverage.drinks as { directCities: number }).directCities;
+  const drinkCoverage = {
+    before: PREVIOUS_DIRECT_DRINK_CITIES,
+    after: directDrinkCities,
+    currencies: FX_MAINTENANCE_CURRENCIES,
+  };
   const sourceDisclosure = sourceDependenceDisclosure(inputs.cities, categoryCoverage, fallbackCounts, gradeDistribution);
   const runtimeGate = manifest.gates['1_runtimeCoverage'] as { runtimeThreshold?: unknown } | undefined;
   const runtimeThreshold = typeof runtimeGate?.runtimeThreshold === 'number' ? runtimeGate.runtimeThreshold : 0.95;
@@ -650,6 +667,7 @@ function main() {
     developmentCoverage,
     runtimeCoverage,
     sourceDependenceDisclosure: sourceDisclosure,
+    drinkCoverage,
     sourceRowsExcludedFromPriors: excludedRows,
     holdoutRead: false,
     shippingCsvSha256: csvSha256,
@@ -658,7 +676,7 @@ function main() {
     measuredGatesPassed,
     passed: errors.length === 0 && measuredGatesPassed,
   };
-  const report = buildReport({ validation: { ...validation, fallbackCounts }, tierRows, categorySummary: categoryCoverage, gradeDistribution, excludedRows, v1, v1Missing, shippingCsvSha256: csvSha256 });
+  const report = buildReport({ validation: { ...validation, fallbackCounts }, tierRows, categorySummary: categoryCoverage, gradeDistribution, excludedRows, v1, v1Missing, shippingCsvSha256: csvSha256, drinkCoverage });
 
   if (CHECK) {
     if (!fs.existsSync(RESULTS_PATH) || fs.readFileSync(RESULTS_PATH, 'utf8') !== expectedText(validation)) throw new Error('v6.1 release validation JSON is stale.');

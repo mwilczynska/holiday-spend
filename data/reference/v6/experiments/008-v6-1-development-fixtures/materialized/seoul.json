@@ -665,7 +665,7 @@
         }
       },
       "drinks_moderate": {
-        "amountAud": 57.12,
+        "amountAud": 55.9,
         "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -689,13 +689,13 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 14.28,
-          "upperAud": 99.96,
-          "widthPct": 75
+          "lowerAud": 20.12,
+          "upperAud": 91.68,
+          "widthPct": 64
         }
       },
       "drinks_heavy": {
-        "amountAud": 94.08,
+        "amountAud": 91.64,
         "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
         "parentAnchors": [
           "cappuccino_1",
@@ -719,9 +719,9 @@
         ],
         "evidenceGrade": "C",
         "interval": {
-          "lowerAud": 23.52,
-          "upperAud": 164.64,
-          "widthPct": 75
+          "lowerAud": 32.99,
+          "upperAud": 150.29,
+          "widthPct": 64
         }
       },
       "activities_free": {
@@ -933,10 +933,10 @@
         ]
       },
       "cocktail_1": {
-        "valueAud": 13.65,
+        "valueAud": 13.04,
         "status": "modelled",
         "evidenceGrade": "C",
-        "intervalPct": 75,
+        "intervalPct": 64,
         "sourceIds": [
           "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul",
           "v6-coefficient:cocktail_1"
@@ -968,11 +968,11 @@
       "foodHigh": 354.6,
       "drinkCoffee": 5.25,
       "drinkLocalBeer": 4.83,
-      "drinkCocktail": 13.65,
+      "drinkCocktail": 13.04,
       "drinksNone": 10.5,
       "drinksLight": 20.16,
-      "drinksModerate": 57.12,
-      "drinksHeavy": 94.08,
+      "drinksModerate": 55.9,
+      "drinksHeavy": 91.64,
       "activitiesFree": 0,
       "activitiesBudget": 25.74,
       "activitiesMid": 68.64,
