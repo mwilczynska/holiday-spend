@@ -5,7 +5,7 @@
 **Branch:** `feat/city-cost-methodology-v6`
 
 **Phase 6 completed commit:** `07a1c0a`
-**Phase 7A repair commit:** pending in this worktree
+**Phase 7A repair commit:** `0c52a23`
 **Phase 7 canary result commit:** `1bc352f` (experiment 010 preflight only)
 **Phase 7 first attempt:** credential preflight only; superseded as a canary result
 
