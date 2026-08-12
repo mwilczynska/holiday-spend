@@ -2,7 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
 import type { CityGenerationProvider } from './city-generation-config';
-import { runJsonPromptWithProvider } from './city-llm-client';
+import {
+  runJsonPromptWithWebSearch,
+  type ProviderSearchResponse,
+} from './transport-estimation';
 import {
   loadV6SourceCalibrationOffset,
   type V6AnchorInput,
@@ -190,6 +193,8 @@ export interface V61CollectionResult {
   facts: V61SpineFact[];
   /** Parsed schema objects exactly as returned by each provider call, retained for canary/migration audit. */
   rawResponses: Record<V61SpineSource, unknown>;
+  /** Unedited provider envelopes. Kept in the collection experiment/persistence layer, not fixture materializations. */
+  providerRawResponses?: Partial<Record<V61SpineSource, unknown>>;
   telemetry: V61CollectionCallTelemetry[];
   llmCalls: number;
   searches: number;
@@ -216,14 +221,20 @@ function repoFile(relativePath: string) {
   return found;
 }
 
-function renderPrompt(source: V61SpineSource, city: string, country: string, referenceDate: string) {
+export interface V61CollectionDates {
+  referenceDate: string;
+  arrivalDate: string;
+  departureDate: string;
+}
+
+export function renderV61Prompt(source: V61SpineSource, city: string, country: string, dates: V61CollectionDates) {
   const template = fs.readFileSync(repoFile(`docs/prompts/${V61_SOURCE_CONFIG[source].promptFile}`), 'utf8');
   const rendered = template
     .replaceAll('{{city}}', city)
     .replaceAll('{{country}}', country)
-    .replaceAll('{{arrivalDate}}', referenceDate)
-    .replaceAll('{{departureDate}}', referenceDate)
-    .replaceAll('{{referenceDate}}', referenceDate);
+    .replaceAll('{{arrivalDate}}', dates.arrivalDate)
+    .replaceAll('{{departureDate}}', dates.departureDate)
+    .replaceAll('{{referenceDate}}', dates.referenceDate);
   const unresolved = rendered.match(/{{[a-zA-Z_]+}}/g);
   if (unresolved) throw new V61CollectionError(`Unresolved v6.1 prompt variables: ${unresolved.join(', ')}`, 500);
   return rendered;
@@ -409,6 +420,7 @@ export function buildV61CollectionResultFromSpineResponses(input: {
     rawResponses: Object.fromEntries(
       V61_SPINE_SOURCES.map((source) => [source, input.responses[source]])
     ) as Record<V61SpineSource, unknown>,
+    providerRawResponses: {},
     telemetry: parsed.map((result) => result.telemetry),
     llmCalls: parsed.reduce((total, result) => total + result.telemetry.attempts, 0),
     searches,
@@ -416,16 +428,46 @@ export function buildV61CollectionResultFromSpineResponses(input: {
   };
 }
 
-function isBlockError(error: unknown) {
-  return /\b(429|503|blocked|rate limit|captcha|forbidden)\b/i.test(error instanceof Error ? error.message : String(error));
+function isIsoDate(value: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(`${value}T00:00:00Z`));
 }
 
-function blockedResult(source: V61SpineSource, provider: string, model: string, promptVersion: string, startedAt: string, startTime: number, error: string) {
+function addDays(value: string, days: number) {
+  const date = new Date(`${value}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function blockedResult(input: {
+  source: V61SpineSource;
+  city: string;
+  country: string;
+  provider: string;
+  model: string;
+  promptVersion: string;
+  startedAt: string;
+  startTime: number;
+  error: string;
+  attempts?: number;
+  retries?: number;
+  status?: 'blocked' | 'error';
+}) {
+  const {
+    source,
+    city,
+    country,
+    provider,
+    model,
+    promptVersion,
+    startedAt,
+    startTime,
+    error,
+  } = input;
   const response: V61SpineResponse = {
     schemaVersion: 'city-cost-v6-1-spine-response-v1',
     source,
-    city: '',
-    country: '',
+    city,
+    country,
     retrievalStatus: 'blocked',
     searchesUsed: 0,
     directPageReads: 0,
@@ -446,9 +488,9 @@ function blockedResult(source: V61SpineSource, provider: string, model: string, 
     promptVersion,
     provider,
     model,
-    attempts: 1,
-    retries: 0,
-    status: 'blocked',
+    attempts: input.attempts ?? 1,
+    retries: input.retries ?? 0,
+    status: input.status ?? 'blocked',
     searchesUsed: 0,
     directPageReads: 0,
     startedAt,
@@ -456,14 +498,14 @@ function blockedResult(source: V61SpineSource, provider: string, model: string, 
     durationMs: Date.now() - startTime,
     error,
   };
-  return { response, rawResponse: response, telemetry, ...factsAndAnchors(source, response, telemetry) };
+  return { response, rawResponse: response, providerRawResponse: null, telemetry, ...factsAndAnchors(source, response, telemetry) };
 }
 
 async function collectV61SpineCall(input: {
   source: V61SpineSource;
   city: string;
   country: string;
-  referenceDate: string;
+  dates: V61CollectionDates;
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
@@ -472,25 +514,61 @@ async function collectV61SpineCall(input: {
   const promptVersion = config.promptFile;
   const startedAt = new Date().toISOString();
   const startTime = Date.now();
-  const provider = input.provider ?? 'unresolved';
+  const provider = input.provider ?? (
+    process.env.ANTHROPIC_API_KEY ? 'anthropic' : process.env.OPENAI_API_KEY ? 'openai' : process.env.GEMINI_API_KEY ? 'gemini' : 'unresolved'
+  );
   const model = input.model ?? 'unresolved';
 
   try {
-    const response = await runJsonPromptWithProvider({
+    if (provider === 'unresolved') {
+      return blockedResult({
+        source: input.source,
+        city: input.city,
+        country: input.country,
+        provider,
+        model,
+        promptVersion,
+        startedAt,
+        startTime,
+        attempts: 0,
+        error: 'No provider key is configured for the v6.1 search-enabled source call.',
+      });
+    }
+
+    const response: ProviderSearchResponse | null = await runJsonPromptWithWebSearch({
+      provider,
       systemPrompt: 'You are a careful source extractor. Return valid JSON only; never estimate or calculate.',
-      userPrompt: renderPrompt(input.source, input.city, input.country, input.referenceDate),
-      provider: input.provider,
+      userPrompt: renderV61Prompt(input.source, input.city, input.country, input.dates),
       apiKey: input.apiKey,
       model: input.model,
       maxTokens: 2600,
     });
     if (!response) {
-      throw new V61CollectionError(
-        'No supported LLM provider is configured. Add an API key in the UI or configure a provider key on the server.',
-        400
-      );
+      return blockedResult({
+        source: input.source,
+        city: input.city,
+        country: input.country,
+        provider,
+        model,
+        promptVersion,
+        startedAt,
+        startTime,
+        attempts: 0,
+        error: `No ${provider} API key is configured for the v6.1 search-enabled source call.`,
+      });
     }
-    const parsed = parseV61SpineResponse(input.source, extractJsonObject(response.text));
+    const candidate = extractJsonObject(response.text);
+    if (!candidate || typeof candidate !== 'object') {
+      throw new V61CollectionError('The v6.1 spine response was not an object.', 502);
+    }
+    // Provider/tool telemetry is authoritative for search usage. The JSON
+    // field remains in the schema for audit readability but is normalized here
+    // before validation so model-written counts cannot bypass the ceiling.
+    const normalizedCandidate = {
+      ...(candidate as Record<string, unknown>),
+      searchesUsed: response.searchesUsed,
+    };
+    const parsed = parseV61SpineResponse(input.source, normalizedCandidate);
     if (parsed.city !== input.city || !countriesMatch(parsed.country, input.country)) {
       throw new V61CollectionError(`The ${input.source} response changed the requested city or country.`, 502);
     }
@@ -499,8 +577,8 @@ async function collectV61SpineCall(input: {
       promptVersion,
       provider: response.provider,
       model: response.model,
-      attempts: 1,
-      retries: 0,
+      attempts: response.attempts,
+      retries: response.retries,
       status: parsed.retrievalStatus,
       searchesUsed: parsed.searchesUsed,
       directPageReads: parsed.directPageReads,
@@ -509,12 +587,26 @@ async function collectV61SpineCall(input: {
       durationMs: Date.now() - startTime,
       error: null,
     };
-    return { ...factsAndAnchors(input.source, parsed, telemetry), rawResponse: parsed, telemetry };
+    return {
+      ...factsAndAnchors(input.source, parsed, telemetry),
+      rawResponse: parsed,
+      providerRawResponse: response.rawResponse ?? response.text,
+      telemetry,
+    };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    if (error instanceof V61CollectionError && error.status === 400) throw error;
-    if (isBlockError(error)) return blockedResult(input.source, provider, model, promptVersion, startedAt, startTime, message);
-    throw new V61CollectionError(message, error instanceof V61CollectionError ? error.status : 502);
+    return blockedResult({
+      source: input.source,
+      city: input.city,
+      country: input.country,
+      provider,
+      model,
+      promptVersion,
+      startedAt,
+      startTime,
+      status: 'error',
+      error: message,
+    });
   }
 }
 
@@ -523,18 +615,26 @@ export async function collectCityCostV61Anchors(input: {
   country: string;
   region?: string | null;
   referenceDate?: string;
+  arrivalDate?: string;
+  departureDate?: string;
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
 }): Promise<V61CollectionResult> {
-  const referenceDate = input.referenceDate?.slice(0, 10) || new Date().toISOString().slice(0, 10);
+  const referenceDate = input.referenceDate?.slice(0, 10) || input.arrivalDate?.slice(0, 10) || new Date().toISOString().slice(0, 10);
+  const arrivalDate = input.arrivalDate?.slice(0, 10) || referenceDate;
+  const departureDate = input.departureDate?.slice(0, 10) || addDays(arrivalDate, 1);
+  if (!isIsoDate(arrivalDate) || !isIsoDate(departureDate) || departureDate <= arrivalDate) {
+    throw new V61CollectionError(`Invalid v6.1 Expedia window: ${arrivalDate} to ${departureDate}.`, 400);
+  }
+  const dates = { referenceDate, arrivalDate, departureDate } satisfies V61CollectionDates;
   const results = [] as Awaited<ReturnType<typeof collectV61SpineCall>>[];
   for (const source of V61_SPINE_SOURCES) {
     results.push(await collectV61SpineCall({
       source,
       city: input.city,
       country: input.country,
-      referenceDate,
+      dates,
       provider: input.provider,
       apiKey: input.apiKey,
       model: input.model,
@@ -550,6 +650,9 @@ export async function collectCityCostV61Anchors(input: {
     rawResponses: Object.fromEntries(
       results.map((result) => [result.telemetry.source, result.rawResponse])
     ) as Record<V61SpineSource, unknown>,
+    providerRawResponses: Object.fromEntries(
+      results.map((result) => [result.telemetry.source, result.providerRawResponse]).filter(([, value]) => value !== null && value !== undefined)
+    ) as Partial<Record<V61SpineSource, unknown>>,
     telemetry: results.map((result) => result.telemetry),
     llmCalls: results.reduce((total, result) => total + result.telemetry.attempts, 0),
     searches,

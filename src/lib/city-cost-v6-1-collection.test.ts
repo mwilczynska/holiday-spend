@@ -1,18 +1,19 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { runJsonPromptWithProvider } from './city-llm-client';
+import { runJsonPromptWithWebSearch } from './transport-estimation';
 import {
   buildV61CollectionResultFromSpineResponses,
   collectCityCostV61Anchors,
   parseV61SpineResponse,
+  renderV61Prompt,
   V61_SEARCHES_PER_CITY_MAX,
   V61_SPINE_SOURCES,
 } from './city-cost-v6-1-collection';
 
-vi.mock('./city-llm-client', () => ({
-  runJsonPromptWithProvider: vi.fn(),
+vi.mock('./transport-estimation', () => ({
+  runJsonPromptWithWebSearch: vi.fn(),
 }));
 
-const mockedRun = vi.mocked(runJsonPromptWithProvider);
+const mockedRun = vi.mocked(runJsonPromptWithWebSearch);
 
 function observed(value: number) {
   return {
@@ -29,7 +30,7 @@ function observed(value: number) {
 
 function response(source: string, city: string, country: string, measures: Record<string, unknown>, searchesUsed = 1) {
   return {
-    provider: 'openai',
+    provider: 'openai' as const,
     model: 'test-model',
     text: JSON.stringify({
       schemaVersion: 'city-cost-v6-1-spine-response-v1',
@@ -42,6 +43,14 @@ function response(source: string, city: string, country: string, measures: Recor
       measures,
       notes: '',
     }),
+    usedWebSearch: true,
+    fallbackReason: null,
+    searchQueries: ['test query'],
+    citations: [{ url: 'https://example.com/source', title: 'Source result' }],
+    searchesUsed,
+    attempts: 1,
+    retries: 0,
+    rawResponse: { provider: 'openai', source },
   };
 }
 
@@ -138,6 +147,18 @@ describe('v6.1 source response contract', () => {
     expect(result.facts.find((fact) => fact.measure === 'byt_food_high_per_person_day')?.status).toBe('not_found');
     expect(result.rawResponses.expedia_3star).toEqual(rawResponse('expedia_3star', 'Test City', 'Testland', expediaMeasures));
   });
+
+  it('renders distinct Expedia arrival and departure dates', () => {
+    const prompt = renderV61Prompt('expedia_3star', 'Test City', 'Testland', {
+      referenceDate: '2026-09-17',
+      arrivalDate: '2026-09-17',
+      departureDate: '2026-09-18',
+    });
+    expect(prompt).toContain('2026-09-17');
+    expect(prompt).toContain('2026-09-18');
+    expect(prompt).not.toMatch(/arrival[^\n]*2026-09-18/i);
+    expect(prompt).not.toMatch(/departure[^\n]*2026-09-17/i);
+  });
 });
 
 describe('collectCityCostV61Anchors', () => {
@@ -170,5 +191,16 @@ describe('collectCityCostV61Anchors', () => {
     expect(mockedRun.mock.calls[2][0].userPrompt).toContain('domestic_draft_beer_1');
     expect(result.telemetry.every((call) => call.directPageReads === 0)).toBe(true);
     expect(Object.keys(result.rawResponses)).toEqual(V61_SPINE_SOURCES);
+    expect(Object.keys(result.providerRawResponses ?? {})).toEqual(V61_SPINE_SOURCES);
+  });
+
+  it('records three blocked source calls without converting provider absence to not_found', async () => {
+    mockedRun.mockResolvedValue(null);
+    const result = await collectCityCostV61Anchors({ city: 'Blocked City', country: 'Testland', provider: 'openai' });
+    expect(result.telemetry).toHaveLength(3);
+    expect(result.telemetry.every((call) => call.status === 'blocked')).toBe(true);
+    expect(result.facts.every((fact) => fact.status === 'blocked')).toBe(true);
+    expect(result.facts.every((fact) => fact.retrievalStatus === 'blocked')).toBe(true);
+    expect(result.rawResponses.expedia_3star).toMatchObject({ city: 'Blocked City', country: 'Testland' });
   });
 });

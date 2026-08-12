@@ -93,6 +93,10 @@ function main() {
       drinks: materialization.tiersAud.drinks_none.evidenceBasis === 'imputed',
       activities: materialization.tiersAud.activities_budget.evidenceBasis === 'imputed',
     };
+    // Raw provider envelopes belong to the collection experiment. Development
+    // materializations retain parsed facts and telemetry, but do not duplicate
+    // every unedited response into each deterministic fixture.
+    const { providerRawResponses: _providerRawResponses, rawResponses: _rawResponses, ...auditableCollection } = collection;
     for (const [category, fallback] of Object.entries(categoryFallback) as Array<[keyof typeof categoryCounts, boolean]>) {
       categoryCounts[category][fallback ? 'fallback' : 'direct'] += 1;
     }
@@ -105,7 +109,7 @@ function main() {
       band: city.band,
       mode: 'from-existing-fixtures',
       productionPath: 'v6.1 Stage-A response validation -> buildV61CollectionResultFromSpineResponses -> materializeCityCostV61',
-      collection,
+      collection: auditableCollection,
       materialization,
     };
     cityBundles.set(slug(city.city), bundle);

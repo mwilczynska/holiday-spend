@@ -16,6 +16,8 @@ const createSchema = z.object({
   apiKey: z.string().optional(),
   model: z.string().optional(),
   referenceDate: z.string().optional(),
+  arrivalDate: z.string().optional(),
+  departureDate: z.string().optional(),
   extraContext: z.string().optional(),
 });
 

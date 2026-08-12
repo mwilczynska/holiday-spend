@@ -61,6 +61,8 @@ export interface CityGenerationRequest {
   cityName: string;
   countryName: string;
   referenceDate?: string;
+  arrivalDate?: string;
+  departureDate?: string;
   extraContext?: string;
   provider?: CityGenerationProvider;
   apiKey?: string;
@@ -251,6 +253,8 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
         country: request.countryName,
         region: request.region,
         referenceDate: request.referenceDate,
+        arrivalDate: request.arrivalDate,
+        departureDate: request.departureDate,
         provider: request.provider,
         apiKey: request.apiKey,
         model: request.model,

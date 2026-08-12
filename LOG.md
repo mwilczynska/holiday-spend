@@ -2867,3 +2867,16 @@ operational canary, then Phase 8/9 staged migration. A small user-key provider/d
 pre-cutover requirement, while ≥95% complete-generation coverage becomes a monitored post-release SLO; a
 19/20 sample is not presented as statistical proof of that population rate. Experiment 010 is preserved and
 must not be rerun or mutated. No holdout or live CSV was touched by this correction.
+## v6.1 Phase 7A collection-boundary repair — 12 August 2026
+
+Phase 7A completed after the audit of experiment 010. The v6.1 production spine now routes through the
+existing provider-specific web-search adapters, requires provider-observed search activity, preserves raw
+provider envelopes and partial/error call telemetry, and enforces the three-call/search/direct-read contract.
+Expedia receives distinct arrival and departure dates, with a regression for the frozen 17–18 September
+2026 one-night window. A pure canary evaluator now checks schema and city identity, call cardinality,
+per-source and per-city search ceilings, retries, provenance equality through persistence/API parsing and
+the 30% all-prior artifact threshold. Anchors and input snapshots are exposed to the API provenance parser.
+Generated development materializations were regenerated without duplicating raw provider responses; the
+raw collection evidence remains in the experiment layer. No provider call, holdout access or live CSV write
+occurred. Phase 7B is now the exact next action: collect the fresh delegated 20-city canary in experiment
+011, leaving immutable experiment 010 untouched.

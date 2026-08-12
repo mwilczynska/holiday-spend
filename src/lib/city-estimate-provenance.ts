@@ -15,13 +15,28 @@ export interface V6Provenance {
   collectionTelemetry: Array<{ source?: string; status?: string; attempts?: number; searchesUsed?: number }>;
   missingness: Record<string, string>;
   priorBasis: string | null;
+  anchors: unknown;
+  inputSnapshot: unknown;
 }
 
 function isSupportedV6MethodologyVersion(value: unknown): value is SupportedV6MethodologyVersion {
   return value === 'v6.0' || value === 'v6.1';
 }
 
-export function readV6Provenance(metadataJson: string | null): V6Provenance | null {
+function parseOptionalJson(value: string | null | undefined) {
+  if (!value) return null;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
+export function readV6Provenance(
+  metadataJson: string | null,
+  anchorsJson?: string | null,
+  inputSnapshotJson?: string | null,
+): V6Provenance | null {
   if (!metadataJson) return null;
   try {
     const parsed = JSON.parse(metadataJson) as {
@@ -44,6 +59,8 @@ export function readV6Provenance(metadataJson: string | null): V6Provenance | nu
       collectionTelemetry: (parsed.v6CollectionTelemetry ?? []) as V6Provenance['collectionTelemetry'],
       missingness: (parsed.v6Missingness ?? {}) as Record<string, string>,
       priorBasis: typeof parsed.v6PriorBasis === 'string' ? parsed.v6PriorBasis : null,
+      anchors: parseOptionalJson(anchorsJson),
+      inputSnapshot: parseOptionalJson(inputSnapshotJson),
     };
   } catch {
     return null;

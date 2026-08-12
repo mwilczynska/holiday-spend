@@ -9,6 +9,8 @@ import { z } from 'zod';
 
 const requestSchema = z.object({
   referenceDate: z.string().optional(),
+  arrivalDate: z.string().optional(),
+  departureDate: z.string().optional(),
   extraContext: z.string().optional(),
   provider: z.enum(CITY_GENERATION_PROVIDERS).optional(),
   apiKey: z.string().optional(),
@@ -28,6 +30,8 @@ export async function POST(
     const generated = await generateAndPersistCityEstimate({
       cityId: city.id,
       referenceDate: data.referenceDate,
+      arrivalDate: data.arrivalDate,
+      departureDate: data.departureDate,
       extraContext: data.extraContext,
       provider: data.provider,
       apiKey: data.apiKey,

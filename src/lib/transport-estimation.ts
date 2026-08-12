@@ -75,7 +75,7 @@ export class TransportEstimationError extends Error {
   }
 }
 
-interface ProviderTransportResponse {
+export interface ProviderSearchResponse {
   provider: CityGenerationProvider;
   model: string;
   text: string;
@@ -83,7 +83,15 @@ interface ProviderTransportResponse {
   fallbackReason: string | null;
   searchQueries: string[];
   citations: TransportEstimateCitation[];
+  /** Provider-observed search count; never taken from model-written JSON. */
+  searchesUsed: number;
+  attempts: number;
+  retries: number;
+  /** Raw provider envelope retained for an auditable collection call. */
+  rawResponse?: unknown;
 }
+
+type ProviderTransportResponse = ProviderSearchResponse;
 
 const BROWSE_TRANSPORT_MAX_TOKENS = 900;
 const FALLBACK_TRANSPORT_MAX_TOKENS = 650;
@@ -469,6 +477,10 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
     fallbackReason: null,
     searchQueries,
     citations,
+    searchesUsed: Math.max(searchQueries.length, outputItems.filter((item) => item?.type === 'web_search_call').length),
+    attempts: 1,
+    retries: 0,
+    rawResponse: data,
   };
 }
 
@@ -501,8 +513,10 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
       };
     };
   } | null = null;
+  let attempts = 0;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
+    attempts = attempt + 1;
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -609,6 +623,14 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
     fallbackReason: null,
     searchQueries,
     citations,
+    searchesUsed: Math.max(
+      searchQueries.length,
+      Number(data.usage?.server_tool_use?.web_search_requests || 0),
+      contentBlocks.filter((block) => block?.type === 'server_tool_use' && block.name === 'web_search').length,
+    ),
+    attempts,
+    retries: Math.max(0, attempts - 1),
+    rawResponse: data,
   };
 }
 
@@ -641,8 +663,10 @@ async function runGeminiTransportPromptWithSearch(params: {
     }>;
     modelVersion?: string;
   } | null = null;
+  let attempts = 0;
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
+    attempts = attempt + 1;
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
       {
@@ -731,6 +755,10 @@ async function runGeminiTransportPromptWithSearch(params: {
     fallbackReason: null,
     searchQueries,
     citations,
+    searchesUsed: Math.max(searchQueries.length, citations.length > 0 ? 1 : 0),
+    attempts,
+    retries: Math.max(0, attempts - 1),
+    rawResponse: data,
   };
 }
 
@@ -761,7 +789,50 @@ async function runProviderFallbackPrompt(params: {
     fallbackReason: null,
     searchQueries: [],
     citations: [],
+    searchesUsed: 0,
+    attempts: 1,
+    retries: 0,
   };
+}
+
+/**
+ * Strict search-enabled route for source extraction.
+ *
+ * Transport estimation deliberately retains a non-search fallback for its own
+ * product behaviour. City-cost collection must not use that fallback: a
+ * successful JSON response without provider-observed search activity is not a
+ * source observation. Callers receive null when no key is configured and an
+ * error when the provider cannot execute search.
+ */
+export async function runJsonPromptWithWebSearch(params: {
+  provider: CityGenerationProvider;
+  systemPrompt: string;
+  userPrompt: string;
+  apiKey?: string;
+  model?: string;
+  maxTokens?: number;
+}): Promise<ProviderSearchResponse | null> {
+  const browseRunnerByProvider: Record<
+    CityGenerationProvider,
+    (runnerParams: {
+      systemPrompt: string;
+      userPrompt: string;
+      apiKey?: string;
+      model?: string;
+      maxTokens?: number;
+    }) => Promise<ProviderTransportResponse | null>
+  > = {
+    openai: runOpenAiTransportPromptWithWebSearch,
+    anthropic: runAnthropicTransportPromptWithWebSearch,
+    gemini: runGeminiTransportPromptWithSearch,
+  };
+
+  const response = await browseRunnerByProvider[params.provider](params);
+  if (!response) return null;
+  if (!response.usedWebSearch || response.searchesUsed < 1) {
+    throw new Error(`${params.provider} completed without provider-observed web search activity.`);
+  }
+  return response;
 }
 
 async function runTransportPromptForProvider(params: {

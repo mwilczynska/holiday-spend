@@ -50,6 +50,8 @@ export interface CityGenerationPersistence {
     collectionTelemetry: unknown[] | null;
     missingness: Record<string, string> | null;
     priorBasis: string | null;
+    anchors: unknown;
+    inputSnapshot: unknown;
   };
 }
 
@@ -173,6 +175,8 @@ export function buildCityEstimatePersistence(
         collectionTelemetry: null,
         missingness: null,
         priorBasis: null,
+        anchors: null,
+        inputSnapshot: null,
       },
     };
   }
@@ -215,6 +219,8 @@ export function buildCityEstimatePersistence(
       collectionTelemetry: telemetry,
       missingness,
       priorBasis,
+      anchors: collection?.facts ?? materialization?.anchors ?? payload.anchors_aud ?? {},
+      inputSnapshot: materialization?.anchors ?? payload.anchors_aud ?? {},
     },
   };
 }

@@ -122,7 +122,7 @@ decision. The implementation is banked; the library migration is not complete.
 
 ### Phase 7 — repair and test the collection boundary
 
-**Status after 12 August 2026 audit: INCOMPLETE — experiment 010 is superseded as a canary result.**
+**Phase 7A complete 12 August 2026; Phase 7B is next. Experiment 010 remains immutable history.**
 
 `data/reference/v6/experiments/010-v6-1-runtime-canary/` is retained unchanged as history. It made zero
 provider calls because no server-side key was configured. More importantly, the audit found that the
@@ -134,6 +134,22 @@ experiment a valid source canary.
 Phase 7 is split into three evidence boundaries:
 
 #### Phase 7A — fix the production collection contract
+
+- Completed 12 August 2026. The v6.1 spine now uses the strict provider-search route shared with the
+  instrumented transport adapters; it rejects a response without provider-observed search activity,
+  records provider envelopes separately from parsed responses, preserves partial/error calls, and keeps
+  per-source/provider telemetry. The ordinary JSON client remains available for v1 and transport's own
+  documented fallback behaviour.
+- The collection contract now carries distinct `arrivalDate`, `departureDate` and `referenceDate` values.
+  The Expedia regression proves `2026-09-17` → `2026-09-18` is a one-night window.
+- The pure canary evaluator and regression suite now enforce source-call cardinality, schema/city identity,
+  source and city search ceilings, zero direct reads, retry limits, 19-tier completion, provenance equality,
+  date integrity and the 30% all-prior artifact threshold.
+- Anchors and input snapshots are now exposed through the API provenance parser so persistence/API checks can
+  compare the complete record, not only grade/interval counts. Development materializations no longer embed
+  duplicate unedited provider envelopes; those remain in collection experiment artifacts.
+- Verification for this phase is recorded in the commit and includes the existing fixture regeneration. No
+  provider call, holdout access or live CSV write occurred.
 
 - Route all three v6.1 calls through a real search-enabled provider adapter, reusing the instrumented
   transport search adapters where practical rather than trusting model-reported searches.
@@ -152,6 +168,11 @@ Production users continue to supply their own provider key through the web app. 
 authentication is not application provider authentication and must never be copied into the app.
 
 #### Phase 7B — delegated 20-city operational canary
+
+The exact next action is to create the next-free experiment directory (011), copy only the registered
+20-city frame from experiment 010, preregister the corrected prompt/tooling hashes and run the three
+Stage-A calls per city through Codex subagents. Stage B must use the new pure evaluator and the real
+materializer; do not run or mutate experiment 010.
 
 Create a fresh experiment after the Phase 7A fixes; do not mutate experiment 010. Reuse its representative
 20-city frame, but freeze a valid one-night window and the corrected prompt/tooling hashes. Codex subagents

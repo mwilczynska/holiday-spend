@@ -10,7 +10,7 @@ import { buildCityEstimatePersistence } from '@/lib/city-generation-persistence'
 
 export interface GenerateAndPersistCityEstimateInput extends Pick<
   CityGenerationRequest,
-  'referenceDate' | 'extraContext' | 'provider' | 'apiKey' | 'model' | 'region'
+  'referenceDate' | 'arrivalDate' | 'departureDate' | 'extraContext' | 'provider' | 'apiKey' | 'model' | 'region'
 > {
   cityId: string;
 }
@@ -18,6 +18,8 @@ export interface GenerateAndPersistCityEstimateInput extends Pick<
 export async function generateAndPersistCityEstimate({
   cityId,
   referenceDate,
+  arrivalDate,
+  departureDate,
   extraContext,
   provider,
   apiKey,
@@ -33,6 +35,8 @@ export async function generateAndPersistCityEstimate({
     cityName: city.name,
     countryName: country.name,
     referenceDate,
+    arrivalDate,
+    departureDate,
     extraContext,
     provider,
     apiKey,

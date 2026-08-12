@@ -5,14 +5,15 @@
 **Branch:** `feat/city-cost-methodology-v6`
 
 **Phase 6 completed commit:** `07a1c0a`
-**Phase 7 canary result commit:** `1bc352f`
+**Phase 7A repair commit:** pending in this worktree
+**Phase 7 canary result commit:** `1bc352f` (experiment 010 preflight only)
 **Phase 7 first attempt:** credential preflight only; superseded as a canary result
 
 **Milestone:** M4 coherent migration of the 121-city library — **owner approved; Phase 7 repair active**
-**Exact next action:** implement Phase 7A in the active plan: route v6.1 collection through real
-search-enabled provider adapters, fix the Expedia arrival/departure contract, and replace the incomplete
-canary evaluator. Then create a fresh delegated 20-city operational canary; do not rerun or mutate
-experiment 010.
+**Exact next action:** create experiment 011 from the immutable experiment-010 city frame, preregister the
+corrected hashes/window and collect its three search-snippet-only Stage-A responses per city with Codex
+subagents. Then run Stage B through `materializeCityCostV61`, the persistence/API round-trip and the pure
+canary evaluator; do not rerun or mutate experiment 010.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -83,6 +84,8 @@ Banked and verified:
 - SGD/TWD/ZAR/PEN FX maintenance: prior exclusions fell 34 → 0 and drink direct coverage rose 52% → 68%;
 - read-only rollout preview against the unchanged v1 CSV;
 - the Phase 7 canary registration and credential-preflight record;
+- Phase 7A search-enabled collection repair, distinct Expedia date handling, strict call preservation,
+  pure canary evaluator and provenance round-trip fields;
 - the full verification baseline, clean branch and pushed Phase 7 result commit.
 
 Current production state:
@@ -91,10 +94,8 @@ Current production state:
 - the feature flag is opt-in and flag-off remains v1;
 - experiment 010 made zero provider calls because no `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or
   `GEMINI_API_KEY` was configured. It is not a measured 0/20 source result;
-- the v6.1 city-cost provider client currently makes ordinary JSON-completion requests without enabling
-  web search, despite prompts that require search snippets;
-- the current prompt renderer substitutes the same date for Expedia arrival and departure, so the
-  preregistered one-night window would become zero nights;
+- a fresh delegated operational canary has not yet been collected; experiment 010 remains immutable
+  preflight history;
 - no bulk migration responses or staged CSV exist yet;
 - all holdouts are spent/closed and irrelevant to the operational migration.
 
@@ -126,7 +127,7 @@ provider client does not enable web search, and Expedia receives the same arriva
 canary evaluator additionally omits registered gates and can count all-prior materializations as source
 coverage. Preserve experiment 010 unchanged as the failed preflight record; do not rerun it.
 
-Phase 7A now repairs those implementation defects. Phase 7B creates a new experiment using Codex subagents
+Phase 7A repaired those implementation defects. Phase 7B creates a new experiment using Codex subagents
 for the same representative city frame and the exact production prompt/schema/search contract, then feeds
 the responses through shipped Stage B. Phase 7C is a later 3–5-city user-key provider transport/database/API
 smoke. Only Phase 7A and 7B block Phase 8; Phase 7C blocks cutover, not migration tooling or staging.
@@ -146,8 +147,8 @@ fallback concentration, ordering and extreme values before owner approval.
 Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete phase:
 
 1. **Phase 6:** contract/document reconciliation and validator assertion — **complete and pushed**.
-2. **Phase 7A:** repair search-enabled production collection, date handling and canary evaluator — **next**.
-3. **Phase 7B:** fresh delegated 20-city operational canary; require at least 19/20 complete contracts.
+2. **Phase 7A:** repair search-enabled production collection, date handling and canary evaluator — **complete in current Phase 7A commit**.
+3. **Phase 7B:** fresh delegated 20-city operational canary; require at least 19/20 complete contracts — **next**.
 4. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
 5. **Phase 8:** resumable/idempotent migration tooling and canary dry run.
 6. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance

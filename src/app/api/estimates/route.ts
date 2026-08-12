@@ -55,6 +55,8 @@ export async function GET() {
         currentEstimateReasoning: cityEstimates.reasoning,
         currentEstimateAt: cityEstimates.estimatedAt,
         currentEstimateMetadataJson: cityEstimates.metadataJson,
+        currentEstimateAnchorsJson: cityEstimates.anchorsJson,
+        currentEstimateInputSnapshotJson: cityEstimates.inputSnapshotJson,
       })
       .from(cities)
       .leftJoin(countries, eq(cities.countryId, countries.id))
@@ -72,6 +74,8 @@ export async function GET() {
         confidence: cityEstimates.confidence,
         reasoning: cityEstimates.reasoning,
         metadataJson: cityEstimates.metadataJson,
+        anchorsJson: cityEstimates.anchorsJson,
+        inputSnapshotJson: cityEstimates.inputSnapshotJson,
         isActive: cityEstimates.isActive,
       })
       .from(cityEstimates)
@@ -79,10 +83,10 @@ export async function GET() {
       .innerJoin(countries, eq(cities.countryId, countries.id))
       .orderBy(desc(cityEstimates.estimatedAt));
 
-    const history = historyRows.map(({ metadataJson, ...row }) => ({
+    const history = historyRows.map(({ metadataJson, anchorsJson, inputSnapshotJson, ...row }) => ({
       ...row,
       inferredAudPerUsd: readInferredAudPerUsd(metadataJson),
-      v6Provenance: readV6Provenance(metadataJson),
+      v6Provenance: readV6Provenance(metadataJson, anchorsJson, inputSnapshotJson),
     }));
 
     const historyByCity = new Map<string, typeof history>();
@@ -93,9 +97,9 @@ export async function GET() {
     }
 
     const rows = cityRows
-      .map(({ currentEstimateMetadataJson, ...row }) => ({
+      .map(({ currentEstimateMetadataJson, currentEstimateAnchorsJson, currentEstimateInputSnapshotJson, ...row }) => ({
         ...row,
-        v6Provenance: readV6Provenance(currentEstimateMetadataJson),
+        v6Provenance: readV6Provenance(currentEstimateMetadataJson, currentEstimateAnchorsJson, currentEstimateInputSnapshotJson),
         currentEstimate: row.currentEstimateId
           ? {
               id: row.currentEstimateId,
