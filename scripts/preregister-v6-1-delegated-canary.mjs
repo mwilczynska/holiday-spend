@@ -4,7 +4,17 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 const SOURCE_REGISTRATION = path.join(ROOT, 'data/reference/v6/experiments/010-v6-1-runtime-canary/registration.json');
-const EXPERIMENT_DIR = path.join(ROOT, 'data/reference/v6/experiments/011-v6-1-delegated-operational-canary');
+
+function optionValue(name) {
+  const index = process.argv.indexOf(name);
+  return index >= 0 ? process.argv[index + 1] : undefined;
+}
+
+const experimentRelativeDir = optionValue('--experiment-dir')
+  ?? 'data/reference/v6/experiments/012-v6-1-corrected-delegated-canary';
+const experimentDir = path.resolve(ROOT, experimentRelativeDir);
+const experimentName = path.basename(experimentDir);
+const relativeExperimentDir = path.relative(ROOT, experimentDir).replaceAll('\\', '/');
 
 function sha256(relativePath) {
   return crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, relativePath))).digest('hex');
@@ -16,7 +26,16 @@ function writeJson(relativePath, value) {
   fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
 }
 
+if (fs.existsSync(experimentDir) && fs.readdirSync(experimentDir).length > 0) {
+  throw new Error(`Experiment directory ${relativeExperimentDir} already contains files; completed/preregistered experiments are immutable.`);
+}
+
 const source = JSON.parse(fs.readFileSync(SOURCE_REGISTRATION, 'utf8'));
+const promptFiles = {
+  expedia_3star: 'docs/prompts/llm_prompt_city_cost_v6_1_expedia_3star.md',
+  budgetyourtrip_daily_tiers: 'docs/prompts/llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md',
+  numbeo_drinks: 'docs/prompts/llm_prompt_city_cost_v6_1_numbeo_drinks.md',
+};
 const implementationFiles = [
   'src/lib/city-cost-v6-1-collection.ts',
   'src/lib/city-cost-methodology-v6-1.ts',
@@ -27,10 +46,10 @@ const implementationFiles = [
 
 const registration = {
   schemaVersion: 'city-cost-v6-1-delegated-canary-registration-v1',
-  experiment: '011-v6-1-delegated-operational-canary',
+  experiment: experimentName,
   registeredAt: '2026-08-12',
   status: 'preregistered',
-  purpose: 'Test the exact v6.1 Stage-A source contract and deterministic Stage-B production path without application provider credentials.',
+  purpose: 'Test the corrected v6.1 Stage-A source contract and deterministic Stage-B production path without application provider credentials.',
   collectionMode: 'delegated_codex_subagent',
   sourceRegistration: 'data/reference/v6/experiments/010-v6-1-runtime-canary/registration.json',
   inputCsv: source.inputCsv,
@@ -44,7 +63,7 @@ const registration = {
     budgetYourTripReferenceDate: '2026-09-17',
     numbeoReferenceDate: '2026-09-17',
   },
-  prompts: source.prompts,
+  prompts: Object.fromEntries(Object.entries(promptFiles).map(([sourceId, file]) => [sourceId, { file, sha256: sha256(file) }])),
   implementationFiles: Object.fromEntries(implementationFiles.map((file) => [file, sha256(file)])),
   limits: {
     cities: 20,
@@ -69,7 +88,28 @@ const registration = {
   liveCsvWritten: false,
 };
 
-fs.mkdirSync(EXPERIMENT_DIR, { recursive: true });
-writeJson('data/reference/v6/experiments/011-v6-1-delegated-operational-canary/registration.json', registration);
-fs.writeFileSync(path.join(EXPERIMENT_DIR, 'protocol.md'), `# Experiment 011 — delegated v6.1 operational canary\n\n**Status:** preregistered 12 August 2026; Stage A is delegated collection and Stage B is local deterministic replay.\n\n## Purpose\n\nExperiment 010 is immutable credential-preflight history and is not rerun. This experiment reuses its representative 20-city frame to test the corrected v6.1 source contract without copying Codex authentication into the application.\n\n## Frozen contract\n\n- Collection mode: \`delegated_codex_subagent\`.\n- Exactly three source calls per city, using the three registered v6.1 prompts verbatim.\n- Search-snippet evidence only; Expedia 4, BudgetYourTrip 4 and Numbeo 2 searches maximum per source; 10 per city; zero direct page reads.\n- One raw schema response and one telemetry record per city/source. Missingness is explicit and never substituted.\n- Frozen Expedia window: arrival 2026-09-17, departure 2026-09-18; reference date 2026-09-17 for BYT and Numbeo.\n- Stage B validates the responses, invokes \`materializeCityCostV61\`, then exercises persistence and API provenance parsing.\n- Pass requires at least 19/20 complete cities and artifact candidates no greater than 30% of the batch.\n\n## Integrity\n\nThe registration records the frozen CSV, FX, prompt and implementation hashes. The live CSV and every holdout remain untouched.\n`);
-console.log(JSON.stringify({ registered: true, experiment: '011-v6-1-delegated-operational-canary', cities: registration.cities.length, sourceCalls: registration.cities.length * registration.limits.sourceCallsPerCity, collectionMode: registration.collectionMode }, null, 2));
+fs.mkdirSync(experimentDir, { recursive: true });
+writeJson(`${relativeExperimentDir}/registration.json`, registration);
+fs.writeFileSync(path.join(experimentDir, 'protocol.md'), `# ${experimentName} - corrected delegated v6.1 operational canary
+
+**Status:** preregistered 12 August 2026; Stage A is delegated collection and Stage B is local deterministic replay.
+
+## Purpose
+
+Experiments 010 and 011 are immutable history. This experiment reuses the registered 20-city frame to test the corrected v6.1 source contract without copying Codex authentication into the application.
+
+## Frozen contract
+
+- Collection mode: \`delegated_codex_subagent\`.
+- Exactly three source calls per city, using the three registered v6.1 prompts verbatim.
+- Search-snippet evidence only; Expedia 4, BudgetYourTrip 4 and Numbeo 2 searches maximum per source; 10 per city; zero direct page reads.
+- One raw schema response and one telemetry record per city/source. Missingness is explicit and never substituted.
+- Frozen Expedia window: arrival 2026-09-17, departure 2026-09-18; reference date 2026-09-17 for BYT and Numbeo.
+- Stage B validates every response, invokes \`materializeCityCostV61\`, then exercises persistence and API provenance parsing.
+- Pass requires at least 19/20 complete cities and artifact candidates no greater than 30% of the batch. Repeated canonical-beer rejection above 30% is an artifact signature and fails the batch.
+
+## Integrity
+
+The registration records the frozen CSV, FX, prompt and implementation hashes. The live CSV and every holdout remain untouched. This experiment may not overwrite an existing experiment directory.
+`);
+console.log(JSON.stringify({ registered: true, experiment: experimentName, cities: registration.cities.length, sourceCalls: registration.cities.length * registration.limits.sourceCallsPerCity, collectionMode: registration.collectionMode }, null, 2));

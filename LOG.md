@@ -2903,3 +2903,20 @@ now blocks Phase 8 migration tooling and any rerun of the canary until this batc
 is authorized. The 3–5-city user-key smoke remains pending before cutover; it is not a substitute for the failed
 19/20 gate. No holdout was read, no live CSV was written, no accommodation was refit, and no Phase 8 migration
 artifact was retained.
+
+## v6.1 Phase 7D boundary correction — 12 August 2026
+
+Experiment 011 remains immutable failed history at 17/20 complete. The three failures are now recorded as
+regression fixtures rather than reasons to tune the methodology: Dubai's `UAE` versus `United Arab Emirates`
+identity was a comparator defect; Cape Town and Lima used null documentary fields for explicit missingness;
+and the from-disk loader discarded the two successful source calls beside an invalid one. The production and
+canary paths now share canonical country identity, normalize documentary nulls only for non-observed measures,
+and preserve every raw response, telemetry record and validation error independently.
+
+The domestic-beer contract is also corrected. Numbeo's canonical `Domestic Draft Beer (0.5 Liter)` row is now
+accepted alongside `Domestic Draft Beer (1 Pint)` with the displayed unit preserved and no conversion. The old
+1-pint-only contract is superseded because it rejected the canonical row in most 011 responses and forced all
+drink tiers to fallback. Bottled/imported beer remains excluded; this changes no coefficient or basket count.
+The release validator now reads the explicit hashed 011 result artifact and reports its failed status rather than
+pending. A fresh 012 delegated canary is authorized only after this phase's baseline passes; experiments 010/011,
+all holdouts and the live CSV remain untouched.

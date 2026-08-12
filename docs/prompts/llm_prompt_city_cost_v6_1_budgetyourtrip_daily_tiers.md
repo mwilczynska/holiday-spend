@@ -18,6 +18,11 @@ If a tier is absent use not_found. If BudgetYourTrip or the search service is bl
 turn a block into not_found. Use stale only when the result explicitly identifies an old reference period.
 Preserve the exact short snippet, URL, title, currency and query.
 
+An observed measure requires non-empty sourceTitle, evidenceText and query. For a non-observed measure,
+sourceTitle, evidenceText and query may be empty strings when no snippet exists; never invent documentary
+text. Use null only for a non-observed value, currency or sourceUrl. The parser retains the unedited raw
+response and may normalize null documentary fields to empty strings only for non-observed measures.
+
 Return exactly one JSON object with every measure key:
 
 {

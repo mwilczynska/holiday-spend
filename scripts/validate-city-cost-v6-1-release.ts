@@ -45,7 +45,7 @@ const FX_MAINTENANCE_CURRENCIES = ['SGD', 'TWD', 'ZAR', 'PEN'] as const;
 const PREVIOUS_DIRECT_DRINK_CITIES = 13;
 
 type GateResult = boolean | {
-  status: 'unmeasured' | 'external' | 'pending';
+  status: 'passed' | 'failed' | 'unmeasured' | 'external';
   requirement: string;
   threshold?: number | string;
   evidence?: string;
@@ -89,6 +89,85 @@ function apePct(prediction: number, baseline: number) {
 
 function compareJson(left: unknown, right: unknown) {
   return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function sha256File(file: string) {
+  return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+}
+
+function readDelegatedCanaryGate(manifestGate: unknown) {
+  const errors: string[] = [];
+  const gate = manifestGate && typeof manifestGate === 'object' ? manifestGate as {
+    requirement?: unknown;
+    threshold?: unknown;
+    evidenceArtifact?: { path?: unknown; sha256?: unknown };
+  } : {};
+  const artifactPath = gate.evidenceArtifact?.path;
+  const artifactHash = gate.evidenceArtifact?.sha256;
+  if (typeof artifactPath !== 'string' || typeof artifactHash !== 'string') {
+    return {
+      gateResult: {
+        status: 'failed' as const,
+        requirement: 'The delegated operational canary must be recorded by an explicit hashed result artifact.',
+        evidence: 'Manifest evidenceArtifact.path and evidenceArtifact.sha256 are missing.',
+        blocking: true,
+      } satisfies GateResult,
+      errors: ['delegated canary manifest evidence artifact is missing'],
+    };
+  }
+  const artifact = path.resolve(ROOT, artifactPath);
+  if (!fs.existsSync(artifact)) {
+    return {
+      gateResult: {
+        status: 'failed' as const,
+        requirement: 'The delegated operational canary must be recorded by an explicit hashed result artifact.',
+        evidence: `Registered artifact is missing: ${artifactPath}`,
+        blocking: true,
+      } satisfies GateResult,
+      errors: [`delegated canary artifact is missing: ${artifactPath}`],
+    };
+  }
+  const actualHash = sha256File(artifact);
+  if (actualHash !== artifactHash) errors.push(`delegated canary artifact hash mismatch for ${artifactPath}`);
+  let result: {
+    experiment?: unknown;
+    cities?: unknown;
+    completeCities?: unknown;
+    artifactCandidates?: unknown;
+    artifactFraction?: unknown;
+    pass?: unknown;
+  };
+  try {
+    result = readJson<typeof result>(artifact);
+  } catch (error) {
+    errors.push(`delegated canary artifact is not valid JSON: ${error instanceof Error ? error.message : String(error)}`);
+    result = {};
+  }
+  const cities = typeof result.cities === 'number' ? result.cities : 0;
+  const completeCities = typeof result.completeCities === 'number' ? result.completeCities : 0;
+  const artifactCandidates = typeof result.artifactCandidates === 'number' ? result.artifactCandidates : cities;
+  const artifactFraction = typeof result.artifactFraction === 'number'
+    ? result.artifactFraction
+    : cities === 0 ? 1 : artifactCandidates / cities;
+  const threshold = typeof gate.threshold === 'string' ? gate.threshold : '19/20';
+  const passed = errors.length === 0
+    && result.experiment === path.basename(path.dirname(artifact))
+    && cities === 20
+    && completeCities >= 19
+    && artifactFraction <= 0.3
+    && result.pass === true;
+  if (typeof result.experiment !== 'string') errors.push('delegated canary result experiment is missing');
+  if (cities !== 20) errors.push(`delegated canary result city count is ${cities}, expected 20`);
+  return {
+    gateResult: {
+      status: passed ? 'passed' as const : 'failed' as const,
+      requirement: typeof gate.requirement === 'string' ? gate.requirement : 'At least 19/20 delegated canary cities must complete.',
+      threshold,
+      evidence: `Artifact ${artifactPath} @ ${actualHash}; experiment ${String(result.experiment ?? 'unknown')}: ${completeCities}/${cities} complete, ${artifactCandidates} artifact candidates (${(artifactFraction * 100).toFixed(1)}%), result pass=${String(result.pass)}.`,
+      blocking: true,
+    } satisfies GateResult,
+    errors,
+  };
 }
 
 function expectedText(value: unknown) {
@@ -679,13 +758,9 @@ function main() {
     threshold: runtimeThreshold,
     blocking: false,
   };
-  const delegatedOperationalCanary: GateResult = {
-    status: 'pending',
-    requirement: 'A fresh delegated 20-city operational canary must reach at least 19/20 after Phase 7A collection-boundary repair.',
-    threshold: 0.95,
-    evidence: 'Experiment 010 made zero provider calls and is a credential preflight record, not this measurement.',
-    blocking: true,
-  };
+  const delegatedCanaryEvidence = readDelegatedCanaryGate(manifest.gates['1_delegatedOperationalCanary']);
+  delegatedCanaryEvidence.errors.forEach((error) => errors.push(error));
+  const delegatedOperationalCanary = delegatedCanaryEvidence.gateResult;
 
   const economicsGate = manifest.gates['8_refreshEconomics'] as {
     callsMax?: unknown;
@@ -729,11 +804,14 @@ function main() {
     },
   };
   const measuredGatesPassed = Object.values(measuredGates).every(Boolean);
+  const blockingObjectGateFailed = Object.values(gateResults).some((gate) =>
+    typeof gate !== 'boolean' && gate.blocking && gate.status !== 'passed'
+  );
   const validation = {
     schemaVersion: 'city-cost-v6-1-release-validation-v2',
     methodologyVersion: 'v6.1',
     generatedAt: '2026-08-12',
-    status: errors.length === 0 && measuredGatesPassed ? 'scored_development_runtime_unmeasured' : 'scored_development_failed',
+    status: errors.length === 0 && measuredGatesPassed && !blockingObjectGateFailed ? 'scored_development_runtime_unmeasured' : 'scored_development_failed',
     cities: inputs.cities.length,
     tierCount: V5_TIER_NAMES.length,
     totalSearches,
@@ -771,12 +849,13 @@ function main() {
     errors,
     gates: gateResults,
     measuredGatesPassed,
-    passed: errors.length === 0 && measuredGatesPassed,
+    passed: errors.length === 0 && measuredGatesPassed && !blockingObjectGateFailed,
   };
   const report = buildReport({ validation: { ...validation, fallbackCounts }, tierRows, categorySummary: categoryCoverage, gradeDistribution, excludedRows, v1, v1Missing, shippingCsvSha256: csvSha256, drinkCoverage });
 
   if (CHECK) {
-    if (!validation.passed) throw new Error(`v6.1 release validation failed: ${validation.errors.join('; ')}`);
+    const expectedCanaryFailure = delegatedOperationalCanary.status === 'failed' && errors.length === 0 && measuredGatesPassed;
+    if (!validation.passed && !expectedCanaryFailure) throw new Error(`v6.1 release validation failed: ${validation.errors.join('; ')}`);
     if (!fs.existsSync(RESULTS_PATH) || fs.readFileSync(RESULTS_PATH, 'utf8') !== expectedText(validation)) throw new Error('v6.1 release validation JSON is stale.');
     if (!fs.existsSync(REPORT_PATH) || fs.readFileSync(REPORT_PATH, 'utf8') !== report) throw new Error('v6.1 release report is stale.');
     console.log(JSON.stringify({ passed: validation.passed, status: validation.status, cities: validation.cities, tiers: validation.tierCount, gates: gateResults }, null, 2));

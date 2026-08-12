@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** New-city implementation banked; Phase 7B delegated canary failed 17/20 and migration is stopped pending owner review
+**Status:** Phase 7D boundary repair in progress; experiment 011 remains immutable failed history and experiment 012 is the single authorized corrected canary
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -176,8 +176,9 @@ identity drift in all three responses; Cape Town and Lima supplied schema-invali
 measures. The exact result is retained in
 `data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json` and `verdict.md`.
 
-Per the stop rule, do not start Phase 8, rerun the canary, tune coefficients, or stage migration until the owner
-reviews this failed batch and authorizes a corrected canary attempt.
+Experiment 011 is immutable failed history. The owner has authorized exactly one corrected delegated canary after
+the Phase 7D repairs below; do not mutate or rerun 010/011, tune coefficients, or start Phase 8 before that new
+experiment passes its registered gates.
 
 Create a fresh experiment after the Phase 7A fixes; do not mutate experiment 010. Reuse its representative
 20-city frame, but freeze a valid one-night window and the corrected prompt/tooling hashes. Codex subagents
@@ -195,6 +196,35 @@ and counts as an artifact candidate for the batch-proportion rule.
 This establishes search-contract feasibility and deterministic application behaviour. It is not labelled
 as provider-runtime reliability or holdout accuracy.
 
+#### Phase 7D — repair the delegated boundary exposed by experiment 011
+
+Before experiment 012, make the following contract corrections and regression-test them against 011's exact
+failure shapes:
+
+- share one canonical country/city identity comparator between production collection and the canary evaluator;
+- normalize null documentary fields only for non-observed measures, while retaining unedited raw responses;
+- preserve all three response and telemetry records when one source response is invalid;
+- accept Numbeo's exact canonical `Domestic Draft Beer (0.5 Liter)` or `Domestic Draft Beer (1 Pint)` row,
+  with no unit conversion and no bottled/imported substitute;
+- report attempted/valid/invalid calls, retries, source statuses, observed measures, grades, fallback categories,
+  all-prior cities, artifact signatures and persistence/API equality;
+- make completed experiment directories immutable and make the release validator consume an explicit hashed
+  canary result artifact. Before 012, the generated release record must say 011 **failed 17/20**, not pending.
+
+The repeated canonical-beer rejection in more than 30% of a batch is an artifact signature and fails the canary
+even if the materializer can produce finite fallback tiers. These repairs change no coefficient or accommodation
+fit and do not reopen a holdout.
+
+#### Phase 7E — one fresh corrected delegated canary
+
+Create experiment 012, using the registered 20-city frame, corrected prompt/implementation hashes, the 17–18
+September 2026 one-night window, exactly three calls, 4/4/2 source search ceilings, ten searches per city and
+zero direct page reads. Codex subagents may supply Stage A; Stage B must use the shipped schemas,
+`materializeCityCostV61`, persistence adapter, API provenance parser and pure evaluator. Retain one raw response
+and telemetry record per city/source. Pass requires at least 19/20 complete cities and no more than 30% artifact
+candidates. If either gate fails, commit the immutable result and stop; if it passes, update the manifest from its
+hashed result and proceed to Phase 8. Do not claim delegated success proves the post-release runtime SLO.
+
 #### Phase 7C — user-key provider transport smoke and runtime SLO
 
 After the search-enabled adapter exists, retain a small 3–5-city end-to-end smoke using a user-supplied key
@@ -203,7 +233,7 @@ external/manual until a key is supplied and does not block Phase 8 or Phase 9 st
 the Phase 11 cutover. Post-release complete-generation coverage is monitored against a ≥95% operational SLO;
 a 19/20 pre-release sample must not be described as statistically proving that population rate.
 
-### Phase 8 — build resumable migration tooling and a dry run — blocked by failed Phase 7B gate
+### Phase 8 — build resumable migration tooling and a dry run — blocked until Phase 7E passes
 
 Create a deterministic migration protocol under `data/reference/v6/migration-v6-1/` containing:
 

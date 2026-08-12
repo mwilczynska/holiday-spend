@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "city-cost-v6-1-release-manifest-v4",
+  "schemaVersion": "city-cost-v6-1-release-manifest-v5",
   "methodologyVersion": "v6.1",
-  "status": "scored_development_collection_boundary_repair_pending",
+  "status": "scored_development_canary_failed_boundary_repair_required",
   "decisionDate": "2026-08-12",
   "objective": "Migrate the existing 121-city library and newly generated cities to a coherent v6.1 three-call, source-native and honestly graded approximation path.",
   "supersedes": {
@@ -142,8 +142,12 @@
     "1_delegatedOperationalCanary": {
       "requirement": "At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch.",
       "threshold": "19/20",
-      "status": "pending_phase_7a_collection_boundary_repair",
-      "measurement": "A fresh experiment is required after production search/date/evaluator defects are fixed. Experiment 010 is not this measurement."
+      "status": "failed",
+      "measurement": "Experiment 011 is immutable failed evidence: 17/20 complete, 2 artifact candidates (10%), 60 attempted calls, 198 searches and zero direct reads. Its boundary failures are retained as regression fixtures; it is not presented as a pass or as pending.",
+      "evidenceArtifact": {
+        "path": "data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json",
+        "sha256": "5489e7ed981f8eef36a6e30bd6c066299ea2dcc62d43b31450599739ee40431a"
+      }
     },
     "2_schemaAndMissingness": {
       "requirement": "Every v6.1 source response validates; non-observations remain not_found, blocked, stale or class_absent and are never silently substituted in collection."

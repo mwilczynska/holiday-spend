@@ -1,6 +1,6 @@
 # v6.1 development release report
 
-**Status:** scored_development_runtime_unmeasured
+**Status:** scored_development_failed
 **Generated:** 2026-08-12
 **Panel:** 25 development cities × 19 product tiers  
 **Holdout:** no holdout read; all v6.0 holdout measures remain spent/closed  
@@ -97,7 +97,7 @@ holdout or new accommodation collection was used.
 | 8_refreshEconomics | PASS | Computed by the release validator. |
 | 9_integrationAndRollback | PASS | Computed by the release validator. |
 | 1_runtimeCoverage | UNMEASURED (not a pass) | Runtime complete-generation coverage >=95% is an unmeasured post-release operational SLO; development replay and a 19/20 canary do not establish it. |
-| 1_delegatedOperationalCanary | PENDING (not a pass) | A fresh delegated 20-city operational canary must reach at least 19/20 after Phase 7A collection-boundary repair. Experiment 010 made zero provider calls and is a credential preflight record, not this measurement. |
+| 1_delegatedOperationalCanary | FAILED (not a pass) | At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch. Artifact data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json @ 5489e7ed981f8eef36a6e30bd6c066299ea2dcc62d43b31450599739ee40431a; experiment 011-v6-1-delegated-operational-canary: 17/20 complete, 2 artifact candidates (10.0%), result pass=false. |
 | 10_verification | EXTERNAL (not a pass) | Verification baseline is executed outside this data replay. See the command log and CI/owner-run baseline; this validator does not claim it passed. |
 
 Gate 10 is an external verification-baseline status, not something this data replay can observe. The

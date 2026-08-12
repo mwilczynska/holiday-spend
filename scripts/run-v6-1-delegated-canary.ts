@@ -3,6 +3,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {
   buildV61CollectionResultFromSpineResponses,
+  createBlockedV61SpineResponse,
+  parseV61SpineResponse,
   V61_SPINE_SOURCES,
   type V61CollectionResult,
   type V61SpineSource,
@@ -16,7 +18,15 @@ import { evaluateV61CanaryBatch, type V61CanaryCityRecord, type V61CanaryRegistr
 import type { CityGenerationResult, V6GeneratedCityPayload } from '../src/lib/city-generation';
 
 const ROOT = process.cwd();
-const EXPERIMENT_DIR = path.join(ROOT, 'data/reference/v6/experiments/011-v6-1-delegated-operational-canary');
+function optionValue(name: string) {
+  const index = process.argv.indexOf(name);
+  return index >= 0 ? process.argv[index + 1] : undefined;
+}
+
+const experimentRelativeDir = optionValue('--experiment-dir')
+  ?? 'data/reference/v6/experiments/011-v6-1-delegated-operational-canary';
+const EXPERIMENT_DIR = path.resolve(ROOT, experimentRelativeDir);
+const EXPERIMENT_NAME = path.basename(EXPERIMENT_DIR);
 const REGISTRATION_PATH = path.join(EXPERIMENT_DIR, 'registration.json');
 const RESULTS_PATH = path.join(EXPERIMENT_DIR, 'results.json');
 const VERDICT_PATH = path.join(EXPERIMENT_DIR, 'verdict.md');
@@ -86,17 +96,19 @@ function assertRegistration(registration: Registration) {
   if (registration.holdoutRead || registration.liveCsvWritten) throw new Error('Delegated canary registration permits a forbidden write/read.');
   if (sha256(repoFile(registration.inputCsv)) !== registration.inputCsvSha256) throw new Error('Registered CSV hash changed.');
   if (sha256(repoFile(registration.fxSnapshot)) !== registration.fxSnapshotSha256) throw new Error('Registered FX hash changed.');
+  const immutableHistoricalExperiment = registration.experiment === '011-v6-1-delegated-operational-canary';
   for (const prompt of Object.values(registration.prompts)) {
-    if (sha256(repoFile(prompt.file)) !== prompt.sha256) throw new Error(`Registered prompt changed: ${prompt.file}`);
+    if (!immutableHistoricalExperiment && sha256(repoFile(prompt.file)) !== prompt.sha256) throw new Error(`Registered prompt changed: ${prompt.file}`);
   }
   for (const [file, hash] of Object.entries(registration.implementationFiles)) {
-    if (sha256(repoFile(file)) !== hash) throw new Error(`Registered implementation changed: ${file}`);
+    if (!immutableHistoricalExperiment && sha256(repoFile(file)) !== hash) throw new Error(`Registered implementation changed: ${file}`);
   }
+  if (registration.experiment !== EXPERIMENT_NAME) throw new Error(`Registration experiment ${registration.experiment} does not match ${EXPERIMENT_NAME}.`);
 }
 
 function loadCollection(city: Registration['cities'][number]) {
   const citySlug = slug(city.city);
-  const responses = Object.fromEntries(V61_SPINE_SOURCES.map((source) => [
+  const rawResponses = Object.fromEntries(V61_SPINE_SOURCES.map((source) => [
     source,
     readJson(path.join(RAW_DIR, citySlug, `${source}.json`)),
   ])) as Record<V61SpineSource, unknown>;
@@ -104,7 +116,25 @@ function loadCollection(city: Registration['cities'][number]) {
     source,
     readJson(path.join(TELEMETRY_DIR, citySlug, `${source}.json`)),
   ])) as Partial<Record<V61SpineSource, V61DiskTelemetry>>;
-  return buildV61CollectionResultFromSpineResponses({ city: city.city, country: city.country, responses, telemetry });
+  const effectiveResponses = {} as Record<V61SpineSource, unknown>;
+  const invalidResponses: Partial<Record<V61SpineSource, string>> = {};
+  for (const source of V61_SPINE_SOURCES) {
+    try {
+      parseV61SpineResponse(source, rawResponses[source]);
+      effectiveResponses[source] = rawResponses[source];
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      invalidResponses[source] = message;
+      effectiveResponses[source] = createBlockedV61SpineResponse(source, city.city, city.country, `Stage-B validation failed: ${message}`);
+    }
+  }
+  const collection = buildV61CollectionResultFromSpineResponses({ city: city.city, country: city.country, responses: effectiveResponses, telemetry });
+  return {
+    collection: { ...collection, rawResponses },
+    rawResponses,
+    telemetry,
+    invalidResponses,
+  };
 }
 
 function buildGeneratedResult(city: Registration['cities'][number], collection: V61CollectionResult, materialization: V61Materialization): CityGenerationResult {
@@ -144,6 +174,7 @@ function provenanceRecord(generated: CityGenerationResult) {
     JSON.stringify(persisted.metadata),
     JSON.stringify(persisted.anchors),
     JSON.stringify(persisted.inputSnapshot),
+    JSON.stringify(persisted.sources),
   );
   if (!api) throw new Error('The API provenance parser rejected the persisted v6.1 record.');
   const expected = {
@@ -182,7 +213,7 @@ function provenanceRecord(generated: CityGenerationResult) {
   return { expected, persisted: persistedFields, api: apiFields, persistence: persisted };
 }
 
-function writeArtifacts(city: Registration['cities'][number], collection: V61CollectionResult, materialization: V61Materialization, provenance: ReturnType<typeof provenanceRecord>) {
+function writeArtifacts(city: Registration['cities'][number], collection: V61CollectionResult, materialization: V61Materialization, provenance: ReturnType<typeof provenanceRecord>, invalidResponses: Partial<Record<V61SpineSource, string>>) {
   const citySlug = slug(city.city);
   for (const source of V61_SPINE_SOURCES) writeJson(path.join(RAW_DIR, citySlug, `${source}.json`), collection.rawResponses[source]);
   for (const call of collection.telemetry) writeJson(path.join(TELEMETRY_DIR, citySlug, `${call.source}.json`), call);
@@ -194,6 +225,7 @@ function writeArtifacts(city: Registration['cities'][number], collection: V61Col
     city,
     productionPath: 'delegated Stage A -> buildV61CollectionResultFromSpineResponses -> materializeCityCostV61 -> persistence adapter -> readV6Provenance',
     collection: auditableCollection,
+    validationErrors: invalidResponses,
     materialization,
     persistenceApiRoundTrip: { passed: true, apiSummary: provenance.api },
   });
@@ -202,14 +234,15 @@ function writeArtifacts(city: Registration['cities'][number], collection: V61Col
 
 function toRecord(city: Registration['cities'][number]): V61CanaryCityRecord {
   try {
-    const collection = loadCollection(city);
+    const loaded = loadCollection(city);
+    const collection = loaded.collection;
     const materialization = materializeCityCostV61({ city: city.city, country: city.country, region: city.region, anchors: collection.anchors });
     if (!materialization.complete || Object.keys(materialization.tiersAud).length !== V5_TIER_NAMES.length) {
       throw new Error(`Expected ${V5_TIER_NAMES.length} materialized tiers.`);
     }
     const generated = buildGeneratedResult(city, collection, materialization);
     const provenance = provenanceRecord(generated);
-    writeArtifacts(city, collection, materialization, provenance);
+    writeArtifacts(city, collection, materialization, provenance, loaded.invalidResponses);
     return {
       city: city.city,
       country: city.country,
@@ -220,6 +253,7 @@ function toRecord(city: Registration['cities'][number]): V61CanaryCityRecord {
       directPageReads: collection.telemetry.reduce((sum, call) => sum + call.directPageReads, 0),
       searches: collection.searches,
       provenance: { expected: provenance.expected, persisted: provenance.persisted, api: provenance.api },
+      invalidResponses: loaded.invalidResponses,
     };
   } catch (error) {
     return {
@@ -256,23 +290,33 @@ function run(registration: Registration) {
     tierCount: records[index].materialization ? Object.keys(records[index].materialization.tiersAud).length : 0,
     provenanceRoundTrip: city.provenanceRoundTrip,
     artifactCandidate: city.artifactCandidate,
-    sourceStatuses: Object.fromEntries(records[index].telemetry.map((call) => [call.source, call.status])),
-    observedMeasures: Object.values(city.parsedResponses).flatMap((response) => Object.values(response.measures)).filter((measure) => measure.status === 'observed').length,
+    sourceStatuses: city.sourceStatuses,
+    observedMeasures: city.observedMeasures,
+    invalidResponses: city.invalidResponses,
     error: city.problems.length ? city.problems.join('; ') : null,
     materializationFile: fs.existsSync(path.join(MATERIALIZED_DIR, `${slug(registration.cities[index].city)}.json`))
-      ? `data/reference/v6/experiments/011-v6-1-delegated-operational-canary/materialized/${slug(registration.cities[index].city)}.json`
+      ? path.relative(ROOT, path.join(MATERIALIZED_DIR, `${slug(registration.cities[index].city)}.json`)).replaceAll('\\', '/')
       : null,
   }));
   const results = {
     schemaVersion: 'city-cost-v6-1-delegated-canary-results-v1',
     methodologyVersion: 'v6.1',
-    experiment: '011-v6-1-delegated-operational-canary',
+    experiment: registration.experiment,
     collectionMode: 'delegated_codex_subagent',
     generatedAt: new Date().toISOString(),
     cities: rows.length,
     completeCities: evaluation.completeCities,
     artifactCandidates: evaluation.artifactCandidates,
     artifactFraction: evaluation.artifactFraction,
+    attemptedCalls: evaluation.attemptedCalls,
+    validResponses: evaluation.validResponses,
+    invalidResponses: evaluation.invalidResponses,
+    retries: evaluation.retries,
+    searches: evaluation.searches,
+    directPageReads: evaluation.directPageReads,
+    observedMeasureCounts: evaluation.observedMeasureCounts,
+    sourceStatusCounts: evaluation.sourceStatusCounts,
+    artifactSignatures: evaluation.artifactSignatures,
     requiredCompleteCities: registration.passCriteria.completeCitiesMinimum,
     pass: evaluation.passed,
     holdoutRead: false,
@@ -281,13 +325,18 @@ function run(registration: Registration) {
     problems: evaluation.problems,
   };
   writeJson(RESULTS_PATH, results);
-  fs.writeFileSync(VERDICT_PATH, [
+  const verdictLines = [
     '# Experiment 011 — delegated v6.1 operational canary verdict',
     '',
     `**Run:** ${results.generatedAt}`,
     `**Result:** ${results.pass ? 'PASS' : 'FAIL'}`,
     `**Complete cities:** ${results.completeCities}/${results.cities} (required ${results.requiredCompleteCities}/${results.cities})`,
     `**Artifact candidates:** ${results.artifactCandidates}/${results.cities} (${(results.artifactFraction * 100).toFixed(1)}%; maximum 30%)`,
+    `**Calls:** ${results.attemptedCalls} attempted, ${results.validResponses} valid responses, ${results.invalidResponses} invalid responses, ${results.retries} retries`,
+    `**Searches / direct reads:** ${results.searches} / ${results.directPageReads}`,
+    `**Observed measures:** ${JSON.stringify(results.observedMeasureCounts)}`,
+    `**Source statuses:** ${JSON.stringify(results.sourceStatusCounts)}`,
+    `**Artifact signatures:** ${results.artifactSignatures.length ? results.artifactSignatures.map((signature) => signature.reason).join(' ') : 'None.'}`,
     '',
     results.pass ? 'The delegated Stage-A source contract and deterministic Stage-B/provenance gates passed.' : 'The registered delegated canary failed. Do not proceed to migration; inspect the listed contract failures without tuning coefficients.',
     '',
@@ -298,7 +347,8 @@ function run(registration: Registration) {
     '',
     'The delegated canary is not a statistical claim about authenticated provider runtime reliability. The user-key 3–5-city smoke remains pending before cutover. Holdouts and the live CSV were untouched.',
     '',
-  ].join('\n'));
+  ].map((line, index) => index === 0 ? `# Experiment ${registration.experiment} - delegated v6.1 operational canary verdict` : line);
+  fs.writeFileSync(VERDICT_PATH, verdictLines.join('\n'));
   console.log(JSON.stringify({ passed: results.pass, completeCities: results.completeCities, artifactCandidates: results.artifactCandidates, cities: results.cities, holdoutRead: false, liveCsvWritten: false }, null, 2));
   if (!results.pass) process.exitCode = 1;
 }
@@ -313,6 +363,15 @@ function check(registration: Registration) {
     rows: unknown[];
     completeCities: number;
     artifactCandidates: number;
+    attemptedCalls?: number;
+    validResponses?: number;
+    invalidResponses?: number;
+    retries?: number;
+    searches?: number;
+    directPageReads?: number;
+    observedMeasureCounts?: Record<string, number>;
+    sourceStatusCounts?: Record<string, Record<string, number>>;
+    artifactSignatures?: unknown[];
     requiredCompleteCities: number;
     pass: boolean;
     holdoutRead: boolean;
@@ -322,6 +381,10 @@ function check(registration: Registration) {
   if (results.cities !== 20 || results.rows.length !== 20) throw new Error('Delegated canary result frame is not 20 cities.');
   if (results.requiredCompleteCities !== registration.passCriteria.completeCitiesMinimum) throw new Error('Delegated canary completion threshold drifted.');
   if (typeof results.completeCities !== 'number' || typeof results.artifactCandidates !== 'number' || typeof results.pass !== 'boolean') throw new Error('Delegated canary gate fields are malformed.');
+  if (results.experiment !== '011-v6-1-delegated-operational-canary'
+    && (results.attemptedCalls !== 60 || (results.validResponses ?? -1) < 0 || (results.invalidResponses ?? -1) < 0 || (results.retries ?? -1) < 0 || results.directPageReads !== 0)) {
+    throw new Error('Delegated canary call accounting is malformed.');
+  }
   if (results.holdoutRead || results.liveCsvWritten) throw new Error('Delegated canary recorded a forbidden holdout read or live CSV write.');
   // --check validates the recorded experiment artifact. A failed registered
   // gate remains visible as resultPass:false and is not converted into a pass.
@@ -331,4 +394,9 @@ function check(registration: Registration) {
 const registration = readJson<Registration>(REGISTRATION_PATH);
 assertRegistration(registration);
 if (CHECK) check(registration);
-else run(registration);
+else {
+  if (fs.existsSync(RESULTS_PATH) || fs.existsSync(VERDICT_PATH)) {
+    throw new Error(`Completed experiment ${registration.experiment} is immutable; use --check to validate it.`);
+  }
+  run(registration);
+}

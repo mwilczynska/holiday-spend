@@ -1,5 +1,6 @@
 import {
   parseV61SpineResponse,
+  sourceIdentityMatches,
   V61_SOURCE_CONFIG,
   V61_SPINE_SOURCES,
   type V61CollectionCallTelemetry,
@@ -22,6 +23,7 @@ export interface V61CanaryProvenanceFields {
   missingness: unknown;
   priorBasis: unknown;
   inputSnapshot: unknown;
+  sources: unknown;
 }
 
 export interface V61CanaryCityRecord {
@@ -41,6 +43,7 @@ export interface V61CanaryCityRecord {
     persisted: V61CanaryProvenanceFields;
     api: V61CanaryProvenanceFields;
   };
+  invalidResponses?: Partial<Record<V61SpineSource, string>>;
   collectionError?: string;
 }
 
@@ -70,6 +73,16 @@ export interface V61CanaryCityEvaluation {
   provenanceRoundTrip: boolean;
   problems: string[];
   parsedResponses: Partial<Record<V61SpineSource, V61SpineResponse>>;
+  invalidResponses: Partial<Record<V61SpineSource, string>>;
+  observedMeasures: number;
+  sourceStatuses: Partial<Record<V61SpineSource, V61SpineResponse['retrievalStatus'] | 'error' | 'invalid' | 'missing'>>;
+}
+
+export interface V61CanaryArtifactSignature {
+  id: string;
+  affectedCities: number;
+  fraction: number;
+  reason: string;
 }
 
 export interface V61CanaryEvaluation {
@@ -79,6 +92,15 @@ export interface V61CanaryEvaluation {
   artifactFraction: number;
   cities: V61CanaryCityEvaluation[];
   problems: string[];
+  attemptedCalls: number;
+  validResponses: number;
+  invalidResponses: number;
+  retries: number;
+  searches: number;
+  directPageReads: number;
+  observedMeasureCounts: Record<string, number>;
+  sourceStatusCounts: Record<string, Record<string, number>>;
+  artifactSignatures: V61CanaryArtifactSignature[];
 }
 
 function sameJson(left: unknown, right: unknown) {
@@ -105,6 +127,7 @@ function compareProvenance(provenance: V61CanaryCityRecord['provenance']) {
     'missingness',
     'priorBasis',
     'inputSnapshot',
+    'sources',
   ];
   for (const field of fields) {
     if (!sameJson(provenance.expected[field], provenance.persisted[field])) {
@@ -124,6 +147,20 @@ function isAllPrior(materialization: V61CanaryCityRecord['materialization']) {
     const value = tier as { evidenceBasis?: unknown; evidenceGrade?: unknown };
     return value.evidenceBasis === 'imputed' || value.evidenceGrade === 'D';
   });
+}
+
+function containsCanonicalDomesticBeerLabel(raw: unknown) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return false;
+  const measures = (raw as { measures?: unknown }).measures;
+  if (!measures || typeof measures !== 'object' || Array.isArray(measures)) return false;
+  const beer = (measures as Record<string, unknown>).domestic_draft_beer_1;
+  if (!beer || typeof beer !== 'object' || Array.isArray(beer)) return false;
+  const candidate = beer as Record<string, unknown>;
+  if (candidate.status === 'observed') return false;
+  const evidence = [candidate.sourceTitle, candidate.evidenceText, candidate.query]
+    .filter((value): value is string => typeof value === 'string')
+    .join('\n');
+  return /Domestic Draft Beer \((?:0\.5 Liter|1 Pint)\)/.test(evidence);
 }
 
 export function evaluateV61CanaryBatch(
@@ -157,13 +194,17 @@ export function evaluateV61CanaryBatch(
       if (raw === undefined) continue;
       try {
         const parsed = parseV61SpineResponse(source, raw);
-        if (parsed.city !== record.city || parsed.country !== record.country) {
+        if (!sourceIdentityMatches(parsed, record)) {
           problems.push(`${source} response city/country changed`);
         }
         parsedResponses[source] = parsed;
       } catch (error) {
         problems.push(`${source} response failed schema/limit validation: ${error instanceof Error ? error.message : String(error)}`);
       }
+    }
+    const invalidResponses = record.invalidResponses ?? {};
+    for (const [source, error] of Object.entries(invalidResponses)) {
+      problems.push(`${source} response failed schema/limit validation: ${error}`);
     }
     for (const source of responseSources) {
       if (!expectedSources.has(source as V61SpineSource)) problems.push(`unexpected source response ${source}`);
@@ -183,7 +224,8 @@ export function evaluateV61CanaryBatch(
 
     const provenanceProblems = compareProvenance(record.provenance);
     problems.push(...provenanceProblems);
-    const schemaValid = V61_SPINE_SOURCES.every((source) => parsedResponses[source] !== undefined);
+    const schemaValid = V61_SPINE_SOURCES.every((source) => parsedResponses[source] !== undefined)
+      && Object.keys(invalidResponses).length === 0;
     const materializationComplete = Boolean(record.materialization?.complete && Object.keys(record.materialization.tiersAud).length === 19);
     const provenanceRoundTrip = provenanceProblems.length === 0;
     const artifactCandidate = isAllPrior(record.materialization);
@@ -203,6 +245,13 @@ export function evaluateV61CanaryBatch(
       provenanceRoundTrip,
       problems,
       parsedResponses,
+      invalidResponses,
+      observedMeasures: Object.values(parsedResponses).flatMap((response) => Object.values(response.measures)).filter((measure) => measure.status === 'observed').length,
+      sourceStatuses: Object.fromEntries(V61_SPINE_SOURCES.map((source) => [
+        source,
+        parsedResponses[source]?.retrievalStatus
+          ?? (invalidResponses[source] ? 'invalid' : record.telemetry.find((call) => call.source === source)?.status ?? 'missing'),
+      ])),
     };
   });
 
@@ -210,6 +259,34 @@ export function evaluateV61CanaryBatch(
   const artifactCandidates = cities.filter((city) => city.artifactCandidate).length;
   const artifactFraction = records.length === 0 ? 1 : artifactCandidates / records.length;
   const problems = cities.flatMap((city) => city.problems.map((problem) => `${city.city}: ${problem}`));
+  const observedMeasureCounts: Record<string, number> = {};
+  for (const city of cities) {
+    for (const response of Object.values(city.parsedResponses)) {
+      for (const [measure, value] of Object.entries(response.measures)) {
+        if (value.status === 'observed') observedMeasureCounts[measure] = (observedMeasureCounts[measure] ?? 0) + 1;
+      }
+    }
+  }
+  const sourceStatusCounts: Record<string, Record<string, number>> = {};
+  for (const city of cities) {
+    for (const [source, status] of Object.entries(city.sourceStatuses)) {
+      const counts = sourceStatusCounts[source] ?? (sourceStatusCounts[source] = {});
+      counts[status] = (counts[status] ?? 0) + 1;
+    }
+  }
+  const canonicalBeerLabelRejections = records.filter((record) => containsCanonicalDomesticBeerLabel(record.responses.numbeo_drinks)).length;
+  const artifactSignatures: V61CanaryArtifactSignature[] = [];
+  if (records.length > 0 && canonicalBeerLabelRejections / records.length > registration.artifactBatchMaximumFraction) {
+    const fraction = canonicalBeerLabelRejections / records.length;
+    const signature = {
+      id: 'numbeo_domestic_draft_beer_canonical_label_rejected',
+      affectedCities: canonicalBeerLabelRejections,
+      fraction,
+      reason: `The canonical Domestic Draft Beer (0.5 Liter)/(1 Pint) label was present but was not observed in ${canonicalBeerLabelRejections}/${records.length} Numbeo responses.`,
+    } satisfies V61CanaryArtifactSignature;
+    artifactSignatures.push(signature);
+    problems.push(`artifact signature failed: ${signature.reason} This exceeds the ${(registration.artifactBatchMaximumFraction * 100).toFixed(0)}% batch limit.`);
+  }
   if (completeCities < registration.completeCitiesMinimum) {
     problems.push(`complete-city threshold failed: ${completeCities} < ${registration.completeCitiesMinimum}`);
   }
@@ -224,5 +301,14 @@ export function evaluateV61CanaryBatch(
     artifactFraction,
     cities,
     problems,
+    attemptedCalls: records.reduce((sum, record) => sum + record.telemetry.length, 0),
+    validResponses: cities.reduce((sum, city) => sum + Object.keys(city.parsedResponses).length, 0),
+    invalidResponses: cities.reduce((sum, city) => sum + Object.keys(city.invalidResponses).length, 0),
+    retries: records.reduce((sum, record) => sum + record.telemetry.reduce((calls, call) => calls + call.retries, 0), 0),
+    searches: records.reduce((sum, record) => sum + record.telemetry.reduce((calls, call) => calls + call.searchesUsed, 0), 0),
+    directPageReads: records.reduce((sum, record) => sum + record.telemetry.reduce((calls, call) => calls + call.directPageReads, 0), 0),
+    observedMeasureCounts,
+    sourceStatusCounts,
+    artifactSignatures,
   };
 }

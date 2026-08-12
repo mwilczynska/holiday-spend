@@ -11,6 +11,7 @@ import {
   type V6AnchorInput,
 } from './city-cost-methodology-v6';
 import type { V5AnchorStatus } from './city-cost-methodology-v5';
+import { findKnownCountryMetadata, slugifyId } from './country-metadata';
 
 /** The v6.1 source boundary. These names are intentionally not v6.0 ticket/item anchors. */
 export const V61_SPINE_SOURCES = ['expedia_3star', 'budgetyourtrip_daily_tiers', 'numbeo_drinks'] as const;
@@ -83,6 +84,9 @@ const v61MeasureSchema = z
       if (measure.value === null) context.addIssue({ code: 'custom', path: ['value'], message: 'Observed measures require a value' });
       if (!measure.currency) context.addIssue({ code: 'custom', path: ['currency'], message: 'Observed measures require a currency' });
       if (!measure.sourceUrl) context.addIssue({ code: 'custom', path: ['sourceUrl'], message: 'Observed measures require a source URL' });
+      if (!measure.sourceTitle.trim()) context.addIssue({ code: 'custom', path: ['sourceTitle'], message: 'Observed measures require a source title' });
+      if (!measure.evidenceText.trim()) context.addIssue({ code: 'custom', path: ['evidenceText'], message: 'Observed measures require evidence text' });
+      if (!measure.query.trim()) context.addIssue({ code: 'custom', path: ['query'], message: 'Observed measures require a query' });
     }
     if (measure.status !== 'observed' && measure.value !== null) {
       context.addIssue({ code: 'custom', path: ['value'], message: 'Non-observed measures must use null value' });
@@ -90,6 +94,23 @@ const v61MeasureSchema = z
   });
 
 type V61ParsedMeasure = z.infer<typeof v61MeasureSchema>;
+
+/**
+ * Numbeo displays the domestic draft-beer serving in either of these
+ * canonical units. Stage B preserves the displayed unit and does no
+ * conversion between them.
+ */
+export const V61_DOMESTIC_DRAFT_BEER_LABELS = [
+  'Domestic Draft Beer (0.5 Liter)',
+  'Domestic Draft Beer (1 Pint)',
+] as const;
+
+function hasCanonicalDomesticDraftBeerEvidence(measure: V61ParsedMeasure) {
+  const evidence = [measure.sourceTitle, measure.evidenceText, measure.query].join('\n');
+  const hasCanonicalLabel = V61_DOMESTIC_DRAFT_BEER_LABELS.some((label) => evidence.includes(label));
+  const isDisallowedVariant = /\b(?:bottled|imported)\b/i.test(evidence) && /\bbeer\b/i.test(evidence);
+  return hasCanonicalLabel && !isDisallowedVariant;
+}
 
 const baseResponseShape = {
   schemaVersion: z.literal('city-cost-v6-1-spine-response-v1'),
@@ -227,6 +248,26 @@ export interface V61CollectionDates {
   departureDate: string;
 }
 
+function normalizeNonObservedEvidenceFields(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return raw;
+  const candidate = { ...(raw as Record<string, unknown>) };
+  if (!candidate.measures || typeof candidate.measures !== 'object' || Array.isArray(candidate.measures)) return candidate;
+
+  candidate.measures = Object.fromEntries(
+    Object.entries(candidate.measures as Record<string, unknown>).map(([measure, value]) => {
+      if (!value || typeof value !== 'object' || Array.isArray(value)) return [measure, value];
+      const normalized = { ...(value as Record<string, unknown>) };
+      if (normalized.status !== 'observed') {
+        for (const field of ['sourceTitle', 'evidenceText', 'query']) {
+          if (normalized[field] === null) normalized[field] = '';
+        }
+      }
+      return [measure, normalized];
+    })
+  );
+  return candidate;
+}
+
 export function renderV61Prompt(source: V61SpineSource, city: string, country: string, dates: V61CollectionDates) {
   const template = fs.readFileSync(repoFile(`docs/prompts/${V61_SOURCE_CONFIG[source].promptFile}`), 'utf8');
   const rendered = template
@@ -255,7 +296,7 @@ function extractJsonObject(text: string) {
 }
 
 export function parseV61SpineResponse(source: V61SpineSource, raw: unknown): V61SpineResponse {
-  const parsed = v61ResponseSchemas[source].parse(raw) as V61SpineResponse;
+  const parsed = v61ResponseSchemas[source].parse(normalizeNonObservedEvidenceFields(raw)) as V61SpineResponse;
   if (parsed.source !== source) {
     throw new V61CollectionError(`Expected a ${source} v6.1 spine response, received ${parsed.source}.`, 502);
   }
@@ -266,25 +307,57 @@ export function parseV61SpineResponse(source: V61SpineSource, raw: unknown): V61
   if (parsed.directPageReads !== 0) {
     throw new V61CollectionError(`The ${source} response reported a direct page read; v6.1 is search-snippet only.`, 502);
   }
+  if (source === 'numbeo_drinks') {
+    const beer = parsed.measures.domestic_draft_beer_1;
+    if (!beer) throw new V61CollectionError('The numbeo_drinks response omitted domestic_draft_beer_1.', 502);
+    if (beer.status === 'observed' && !hasCanonicalDomesticDraftBeerEvidence(beer)) {
+      throw new V61CollectionError(
+        'Observed domestic_draft_beer_1 must preserve the canonical Numbeo row label Domestic Draft Beer (0.5 Liter) or Domestic Draft Beer (1 Pint); bottled/imported beer is not accepted.',
+        502,
+      );
+    }
+  }
   return parsed;
 }
 
-const COUNTRY_ALIASES: Record<string, string> = {
-  uae: 'united arab emirates',
-  usa: 'united states',
-  us: 'united states',
-  uk: 'united kingdom',
-  czechia: 'czech republic',
-  turkiye: 'turkey',
-};
-
-function countryIdentity(value: string) {
-  const normalized = value.trim().toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, ' ');
-  return COUNTRY_ALIASES[normalized] ?? normalized;
+export function sourceIdentityMatches(
+  left: { city: string; country: string },
+  right: { city: string; country: string },
+) {
+  const leftCountry = findKnownCountryMetadata(left.country);
+  const rightCountry = findKnownCountryMetadata(right.country);
+  const countriesMatch = leftCountry && rightCountry
+    ? leftCountry.id === rightCountry.id
+    : slugifyId(left.country) === slugifyId(right.country);
+  return slugifyId(left.city) === slugifyId(right.city) && countriesMatch;
 }
 
-function countriesMatch(left: string, right: string) {
-  return countryIdentity(left) === countryIdentity(right);
+export function createBlockedV61SpineResponse(
+  source: V61SpineSource,
+  city: string,
+  country: string,
+  reason: string,
+): V61SpineResponse {
+  return {
+    schemaVersion: 'city-cost-v6-1-spine-response-v1',
+    source,
+    city,
+    country,
+    retrievalStatus: 'blocked',
+    searchesUsed: 0,
+    directPageReads: 0,
+    notes: reason,
+    measures: Object.fromEntries(V61_SOURCE_CONFIG[source].measures.map((measure) => [measure, {
+      status: 'blocked' as const,
+      value: null,
+      currency: null,
+      sourceUrl: null,
+      sourceTitle: '',
+      evidenceText: '',
+      query: '',
+      taxStatus: 'unknown' as const,
+    }])),
+  };
 }
 
 function readFxRate(currency: string) {
@@ -402,7 +475,7 @@ export function buildV61CollectionResultFromSpineResponses(input: {
 }): V61CollectionResult {
   const parsed = V61_SPINE_SOURCES.map((source) => {
     const response = parseV61SpineResponse(source, input.responses[source]);
-    if (response.city !== input.city || !countriesMatch(response.country, input.country)) {
+    if (!sourceIdentityMatches({ city: response.city, country: response.country }, input)) {
       throw new V61CollectionError(`The ${source} response changed the requested city or country.`, 502);
     }
     const normalizedTelemetry = diskTelemetry(source, response, input.telemetry?.[source]);
@@ -569,7 +642,7 @@ async function collectV61SpineCall(input: {
       searchesUsed: response.searchesUsed,
     };
     const parsed = parseV61SpineResponse(input.source, normalizedCandidate);
-    if (parsed.city !== input.city || !countriesMatch(parsed.country, input.country)) {
+    if (!sourceIdentityMatches({ city: parsed.city, country: parsed.country }, input)) {
       throw new V61CollectionError(`The ${input.source} response changed the requested city or country.`, 502);
     }
     const telemetry: V61CollectionCallTelemetry = {

@@ -258,8 +258,11 @@ complete staged migration is reviewed.
 - [x] Reconcile manifest/docs/generated reports with generated coefficients; add a drift assertion
 - [x] Pre-register and attempt a representative 20-city provider canary; it made zero provider calls because
   no server-side provider credential was configured and is retained as a preflight record, not 0% coverage
-- [ ] Repair the production collection boundary: enable provider web search, pass distinct Expedia arrival
+- [x] Repair the initial production collection boundary: enable provider web search, pass distinct Expedia arrival
   and departure dates, preserve partial calls, and make the canary evaluator enforce every registered gate
+- [ ] Complete the corrected Phase 7D boundary repair: canonical country identity, safe non-observed missingness,
+  independent source-call preservation, canonical Numbeo beer labels, artifact-signature reporting and hashed
+  canary evidence in the release validator
 - [ ] Run a fresh delegated 20-city operational canary through exact production prompts and shipped Stage B;
   require at least 19/20 complete source contracts and report direct/partial/blocked/fallback separately
 - [ ] Prove field-by-field persistence/API provenance round-trip in deterministic tests and the delegated
@@ -441,6 +444,15 @@ The 25-city preview's 81/450 tier-level >2×/<0.5× differences make indefinite 
 poor endpoint, but they are not ground truth and must not be used to tune v6.1 toward v1. The migration
 therefore replaces the library coherently or rolls back coherently: CSV and new-city default move together.
 The live CSV remains unchanged until the staged artifact is complete and explicitly approved.
+
+### v6.1 Phase 7D canary-boundary correction — 12 August 2026
+
+Experiment 011 is immutable failed evidence at 17/20 complete, not pending and not passed. Its Dubai identity,
+Cape Town/Lima missingness serialization and partial-call preservation failures are now regression targets. The
+Numbeo drinks contract accepts either exact canonical domestic draft-beer label (`0.5 Liter` or `1 Pint`) without
+conversion; the previous 1-pint-only contract is superseded. The release validator reads a hashed canary artifact
+and reports the recorded 011 failure. The next exact action is to run the single authorized fresh experiment 012
+through Codex-delegated Stage A and shipped Stage B; stop if it misses 19/20 or exceeds 30% artifact candidates.
 
 ## Traps retained from earlier work
 

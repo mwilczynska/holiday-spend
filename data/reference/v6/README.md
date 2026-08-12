@@ -93,7 +93,8 @@ holdout, or provide independent drinks truth.
 | `v6-1-development-release-report.md` | Generated 25-city × 19-tier release report; no holdout claims | Regenerate through the release validator |
 | `v6-1-release-validation.json` | Generated reachable-gate result and replay metrics | Verify with `scripts/validate-city-cost-v6-1-release.mjs --check` |
 | `v6-1-rollout-preview.json` / `.md` | Generated read-only v1-versus-v6.1 operational impact preview | Verify with `scripts/generate-city-cost-v6-1-rollout-preview.mjs --check`; owner review only |
-| `experiments/010-v6-1-runtime-canary/` | Preregistered real-provider Phase 7 canary; current result 0/20 because no provider credential was configured | Do not replace with fixtures; rerun the frozen registration only after a real provider is configured |
+| `experiments/010-v6-1-runtime-canary/` | Immutable credential-preflight history; zero provider calls, not a 0/20 source-coverage result | Do not mutate or rerun |
+| `experiments/011-v6-1-delegated-operational-canary/` | Immutable delegated boundary finding; 17/20 complete, failed before the corrected identity/missingness/beer contract | Preserve as regression evidence; do not restate as passed |
 | `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 
@@ -150,6 +151,12 @@ Never present a source proxy, model or fallback as observed truth.
 
 The operative rule is now: *measure what is systematic, model the remaining presets explicitly, and disclose
 the difference.* A documented grade-D compatibility assumption is a valid completion state.
+
+For the v6.1 Numbeo drinks call, the domestic draft-beer anchor accepts the exact canonical row displayed
+by Numbeo as either `Domestic Draft Beer (0.5 Liter)` or `Domestic Draft Beer (1 Pint)`. The displayed unit
+is preserved and deterministic code counts one displayed serving without conversion; bottled or imported
+beer is not accepted. Experiment 011's resulting 0/20 beer observations is retained as failed contract
+evidence, not as a reason to replace Numbeo with a prior.
 
 ---
 

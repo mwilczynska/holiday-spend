@@ -43,7 +43,11 @@ function observed() {
 }
 
 function response(source: (typeof V61_SPINE_SOURCES)[number], city = 'Test City', country = 'Testland', status = 'complete') {
-  const measures = Object.fromEntries(V61_SOURCE_CONFIG[source].measures.map((measure) => [measure, observed()]));
+  const measures = Object.fromEntries(V61_SOURCE_CONFIG[source].measures.map((measure) => [measure,
+    measure === 'domestic_draft_beer_1'
+      ? { ...observed(), sourceTitle: 'Numbeo Domestic Draft Beer (0.5 Liter)', evidenceText: 'Domestic Draft Beer (0.5 Liter): USD 5.00' }
+      : observed(),
+  ]));
   return {
     schemaVersion: 'city-cost-v6-1-spine-response-v1',
     source,
@@ -85,6 +89,7 @@ function provenance() {
     missingness: {},
     priorBasis: 'direct-evidence',
     inputSnapshot: { hotel_3star_room_2p: { valueAud: 100 } },
+    sources: { expedia_3star: 'https://example.com/source' },
   };
   return { expected: value, persisted: structuredClone(value), api: structuredClone(value) };
 }
@@ -147,6 +152,44 @@ describe('v6.1 operational canary evaluator', () => {
     const result = evaluateV61CanaryBatch(registration, [mutated]);
     expect(result.passed).toBe(false);
     expect(result.problems.join('\n')).toContain('API parser changed intervals');
+  });
+
+  it('keeps the other source calls visible when one response is invalid', () => {
+    const invalidNumbeo = response('numbeo_drinks');
+    (invalidNumbeo.measures.cappuccino_1 as Record<string, unknown>).sourceTitle = null;
+    const result = evaluateV61CanaryBatch(registration, [record({
+      responses: { ...record().responses, numbeo_drinks: invalidNumbeo },
+      invalidResponses: { numbeo_drinks: 'Observed measures require a source title' },
+    })]);
+    expect(result.cities[0].sourceCallCount).toBe(3);
+    expect(result.cities[0].parsedResponses.expedia_3star).toBeDefined();
+    expect(result.cities[0].parsedResponses.budgetyourtrip_daily_tiers).toBeDefined();
+    expect(result.cities[0].invalidResponses.numbeo_drinks).toContain('source title');
+    expect(result.cities[0].sourceStatuses.numbeo_drinks).toBe('invalid');
+    expect(result.passed).toBe(false);
+  });
+
+  it('fails a batch when a canonical beer label is repeatedly rejected as non-observed', () => {
+    const rejected = response('numbeo_drinks') as { measures: Record<string, unknown> };
+    rejected.measures.domestic_draft_beer_1 = {
+      status: 'not_found',
+      value: null,
+      currency: null,
+      sourceUrl: null,
+      sourceTitle: 'Numbeo Domestic Draft Beer (0.5 Liter)',
+      evidenceText: 'Domestic Draft Beer (0.5 Liter): USD 5.00',
+      query: 'Numbeo Domestic Draft Beer (0.5 Liter)',
+      taxStatus: 'unknown',
+    };
+    const result = evaluateV61CanaryBatch(
+      { ...registration, completeCitiesMinimum: 0 },
+      [record({ responses: { ...record().responses, numbeo_drinks: rejected } }),
+        record({ city: 'Second City', responses: { ...record().responses, numbeo_drinks: rejected } }),
+        record({ city: 'Third City' })],
+    );
+    expect(result.artifactSignatures[0].id).toBe('numbeo_domestic_draft_beer_canonical_label_rejected');
+    expect(result.passed).toBe(false);
+    expect(result.problems.join('\n')).toContain('canonical Domestic Draft Beer');
   });
 
   it('fails the batch when artifact candidates exceed the registered fraction', () => {

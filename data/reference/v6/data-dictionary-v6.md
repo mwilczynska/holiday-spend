@@ -335,6 +335,17 @@ The historical exclusion record above remains correct for the earlier snapshot. 
 includes source-attributed SGD, TWD, ZAR and PEN rates. Current v6.1 prior generation excludes zero rows;
 the old 34-row count must not be presented as current coverage.
 
+### 12 August 2026 - correct the domestic draft-beer serving contract
+
+The v6.1 Numbeo drinks prompt previously required `Domestic Draft Beer (1 Pint)`, which rejected the
+canonical `Domestic Draft Beer (0.5 Liter)` row returned by Numbeo for most locales and forced the entire
+drink basket to grade-D fallback. The accepted canonical row is now either **Domestic Draft Beer (0.5
+Liter)** or **Domestic Draft Beer (1 Pint)**, exactly as displayed for the locale. Bottled beer, imported
+beer, noncanonical pages and other rows remain excluded. The LLM preserves the displayed label and unit;
+deterministic code counts one displayed serving and performs no conversion. A qualifying row remains a
+grade-A observation. This is a collection-contract correction, not a coefficient, basket-count or grade
+change. Experiment 011's 0/20 beer result is retained as a failed boundary finding and is not reclassified.
+
 ### 12 August 2026 — migrate the existing library through a staged v6.1 cutover
 
 The owner approved migration of all 121 existing cities, superseding the earlier new-city-only

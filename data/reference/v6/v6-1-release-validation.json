@@ -2,7 +2,7 @@
   "schemaVersion": "city-cost-v6-1-release-validation-v2",
   "methodologyVersion": "v6.1",
   "generatedAt": "2026-08-12",
-  "status": "scored_development_runtime_unmeasured",
+  "status": "scored_development_failed",
   "cities": 25,
   "tierCount": 19,
   "totalSearches": 185,
@@ -164,10 +164,10 @@
       "blocking": false
     },
     "1_delegatedOperationalCanary": {
-      "status": "pending",
-      "requirement": "A fresh delegated 20-city operational canary must reach at least 19/20 after Phase 7A collection-boundary repair.",
-      "threshold": 0.95,
-      "evidence": "Experiment 010 made zero provider calls and is a credential preflight record, not this measurement.",
+      "status": "failed",
+      "requirement": "At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch.",
+      "threshold": "19/20",
+      "evidence": "Artifact data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json @ 5489e7ed981f8eef36a6e30bd6c066299ea2dcc62d43b31450599739ee40431a; experiment 011-v6-1-delegated-operational-canary: 17/20 complete, 2 artifact candidates (10.0%), result pass=false.",
       "blocking": true
     },
     "10_verification": {
@@ -178,5 +178,5 @@
     }
   },
   "measuredGatesPassed": true,
-  "passed": true
+  "passed": false
 }

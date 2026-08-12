@@ -5,6 +5,7 @@ import {
   collectCityCostV61Anchors,
   parseV61SpineResponse,
   renderV61Prompt,
+  sourceIdentityMatches,
   V61_SEARCHES_PER_CITY_MAX,
   V61_SPINE_SOURCES,
 } from './city-cost-v6-1-collection';
@@ -25,6 +26,15 @@ function observed(value: number) {
     evidenceText: 'Exact source snippet',
     query: 'source query',
     taxStatus: 'unknown',
+  };
+}
+
+function domesticDraftBeer(value: number, label = 'Domestic Draft Beer (0.5 Liter)') {
+  return {
+    ...observed(value),
+    sourceTitle: `Numbeo ${label}`,
+    evidenceText: `${label}: USD ${value.toFixed(2)}`,
+    query: `Numbeo Domestic Draft Beer ${label}`,
   };
 }
 
@@ -79,7 +89,7 @@ const bytMeasures = {
 };
 const drinkMeasures = {
   cappuccino_1: observed(4),
-  domestic_draft_beer_1: observed(5),
+  domestic_draft_beer_1: domesticDraftBeer(5),
 };
 
 afterEach(() => {
@@ -92,6 +102,13 @@ describe('v6.1 source response contract', () => {
     expect(V61_SEARCHES_PER_CITY_MAX).toBe(10);
   });
 
+  it('uses canonical country identity aliases without weakening city/country matching', () => {
+    expect(sourceIdentityMatches({ city: 'Dubai', country: 'UAE' }, { city: 'Dubai', country: 'United Arab Emirates' })).toBe(true);
+    expect(sourceIdentityMatches({ city: 'Prague', country: 'Czechia' }, { city: 'Prague', country: 'Czech Republic' })).toBe(true);
+    expect(sourceIdentityMatches({ city: 'Dubai', country: 'UAE' }, { city: 'Dubai', country: 'Qatar' })).toBe(false);
+    expect(sourceIdentityMatches({ city: 'Dubai', country: 'UAE' }, { city: 'Abu Dhabi', country: 'UAE' })).toBe(false);
+  });
+
   it('rejects an unexpected source measure key instead of silently stripping it', () => {
     expect(() => parseV61SpineResponse('numbeo_drinks', rawResponse(
       'numbeo_drinks',
@@ -99,6 +116,72 @@ describe('v6.1 source response contract', () => {
       'Testland',
       { ...drinkMeasures, mcmeal_combo: observed(8) },
     ))).toThrow();
+  });
+
+  it('accepts both canonical Numbeo domestic draft-beer labels and preserves the displayed unit', () => {
+    for (const label of ['Domestic Draft Beer (0.5 Liter)', 'Domestic Draft Beer (1 Pint)']) {
+      const parsed = parseV61SpineResponse('numbeo_drinks', rawResponse(
+        'numbeo_drinks',
+        'Test City',
+        'Testland',
+        { cappuccino_1: observed(4), domestic_draft_beer_1: domesticDraftBeer(5, label) },
+      ));
+      expect(parsed.measures.domestic_draft_beer_1?.evidenceText).toContain(label);
+    }
+  });
+
+  it('rejects bottled, imported, and noncanonical beer rows', () => {
+    for (const evidenceText of [
+      'Domestic Bottled Beer: USD 5.00',
+      'Imported Draft Beer: USD 5.00',
+      'Domestic Draft Beer (0.33 Liter): USD 5.00',
+    ]) {
+      expect(() => parseV61SpineResponse('numbeo_drinks', rawResponse(
+        'numbeo_drinks',
+        'Test City',
+        'Testland',
+        {
+          cappuccino_1: observed(4),
+          domestic_draft_beer_1: {
+            ...observed(5),
+            sourceTitle: 'Numbeo beer result',
+            evidenceText,
+            query: 'Numbeo beer query',
+          },
+        },
+      ))).toThrow(/canonical Numbeo row label/);
+    }
+  });
+
+  it('normalizes null documentary fields only for explicit non-observed measures', () => {
+    const parsed = parseV61SpineResponse('numbeo_drinks', rawResponse(
+      'numbeo_drinks',
+      'Test City',
+      'Testland',
+      {
+        cappuccino_1: observed(4),
+        domestic_draft_beer_1: {
+          status: 'not_found',
+          value: null,
+          currency: null,
+          sourceUrl: null,
+          sourceTitle: null,
+          evidenceText: null,
+          query: null,
+          taxStatus: 'unknown',
+        },
+      },
+    ));
+    expect(parsed.measures.domestic_draft_beer_1).toMatchObject({ sourceTitle: '', evidenceText: '', query: '' });
+  });
+
+  it('rejects an observed measure with missing documentary evidence', () => {
+    expect(() => parseV61SpineResponse('expedia_3star', rawResponse(
+      'expedia_3star',
+      'Test City',
+      'Testland',
+      { hotel_3star_room_2p: { ...observed(100), evidenceText: '' } },
+    ))).toThrow(/evidence text/);
   });
 
   it('rejects a source response over its own search ceiling or with a direct read', () => {
