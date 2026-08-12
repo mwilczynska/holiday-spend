@@ -260,11 +260,14 @@ complete staged migration is reviewed.
   no server-side provider credential was configured and is retained as a preflight record, not 0% coverage
 - [x] Repair the initial production collection boundary: enable provider web search, pass distinct Expedia arrival
   and departure dates, preserve partial calls, and make the canary evaluator enforce every registered gate
-- [ ] Complete the corrected Phase 7D boundary repair: canonical country identity, safe non-observed missingness,
+- [x] Complete the corrected Phase 7D boundary repair: canonical country identity, safe non-observed missingness,
   independent source-call preservation, canonical Numbeo beer labels, artifact-signature reporting and hashed
   canary evidence in the release validator
-- [ ] Run a fresh delegated 20-city operational canary through exact production prompts and shipped Stage B;
-  require at least 19/20 complete source contracts and report direct/partial/blocked/fallback separately
+- [x] Run the one owner-authorized corrected delegated 20-city canary through exact production prompts and shipped
+  Stage B; it failed at 10/20 complete cities and 50% artifact candidates because Stage A did not complete the
+  registered 60-call frame. Preserve it as immutable operational delegation failure, not source-quality evidence.
+- [ ] Owner review and decision on the collection mechanism after failed experiment 012; do not start Phase 8 or
+  another canary without explicit authorization
 - [ ] Prove field-by-field persistence/API provenance round-trip in deterministic tests and the delegated
   canary; do not count all-prior materialization as source coverage
 - [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV

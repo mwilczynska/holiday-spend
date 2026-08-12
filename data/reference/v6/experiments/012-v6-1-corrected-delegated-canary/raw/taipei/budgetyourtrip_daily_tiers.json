@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Taipei",
+  "country": "Taiwan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 3,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+      "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+      "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 28,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+      "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+      "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 75,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+      "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+      "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 7,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+      "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+      "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 18,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+      "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+      "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 48,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+      "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+      "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

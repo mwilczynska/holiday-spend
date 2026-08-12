@@ -2920,3 +2920,17 @@ drink tiers to fallback. Bottled/imported beer remains excluded; this changes no
 The release validator now reads the explicit hashed 011 result artifact and reports its failed status rather than
 pending. A fresh 012 delegated canary is authorized only after this phase's baseline passes; experiments 010/011,
 all holdouts and the live CSV remain untouched.
+
+## v6.1 Phase 7E corrected delegated canary failed — 12 August 2026
+
+Experiment 012 (`012-v6-1-corrected-delegated-canary`) is immutable failed evidence. It used the corrected prompts,
+shared identity comparator, safe missingness parser and real Stage-B materializer/persistence/API path. Codex
+delegated Stage A supplied 30 of the registered 60 source-call records before the practical collection route
+timed out/exhausted. Stage B therefore completed 10/20 cities and marked the other 10 as incomplete artifact
+candidates: 50%, above the 30% limit. The observed totals were 30 attempted/valid responses, 72 searches, zero
+retries and zero direct page reads. The 10 complete cities produced all 19 tiers and passed provenance round-trip.
+
+This is a delegation-capacity/incomplete-frame failure, not evidence against v6.1 coefficients, source quality or
+the corrected domestic-beer contract. No raw response was invented, and missing records were not converted into
+source-level `not_found`. Experiments 010/011, all holdouts and the live CSV remain untouched. Phase 8 migration
+is blocked; no further canary is authorized without owner review and a decision on the collection mechanism.

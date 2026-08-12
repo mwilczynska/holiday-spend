@@ -10,17 +10,17 @@
 **Phase 7 first attempt:** credential preflight only; superseded as a canary result
 **Phase 7B delegated canary:** failed 17/20; experiment 011 retained for owner review
 **Phase 7B result commit:** `82586f5`
-**Phase 7D boundary repair:** in progress; experiment 011 remains immutable
+**Phase 7D boundary repair:** complete in `a7f00be`; experiment 011 remains immutable
+**Phase 7E corrected canary:** experiment 012 failed 10/20; immutable result recorded below
 
 **Milestone:** M4 coherent migration of the 121-city library — **owner approved; Phase 7B failed; migration stopped**
-**Exact next action:** finish the Phase 7D baseline and commit it, then run
-`node scripts/preregister-v6-1-delegated-canary.mjs` to create experiment 012. Use Codex subagents for its three
-Stage-A calls per city, run the shipped Stage B/evaluator, and stop if 012 misses 19/20 or exceeds the 30% artifact
-threshold. Do not mutate or rerun experiments 010/011.
+**Exact next action:** owner review of experiment 012. Do not start Phase 8, mutate/rerun experiments 010/011/012,
+or begin another canary without an explicit new owner decision. The live CSV and all holdouts remain untouched.
 
 **Current milestone correction:** the earlier “Phase 7B failed; migration stopped” wording above is superseded
-by the owner-authorized Phase 7D repair and one fresh corrected canary. Phase 8 remains blocked until experiment
-012 passes; this handoff is the current state of the world.
+by the owner-authorized Phase 7D repair and one fresh corrected canary. Experiment 012 failed because delegated
+Stage A supplied only 30/60 source-call records: 10/20 cities completed, 10/20 were artifact candidates (50%).
+Phase 8 remains blocked; this handoff is the current state of the world.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -109,7 +109,8 @@ Current production state:
 - the feature flag is opt-in and flag-off remains v1;
 - experiment 010 made zero provider calls because no `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or
   `GEMINI_API_KEY` was configured. It is not a measured 0/20 source result;
-- experiment 011 is the fresh delegated operational canary and failed at 17/20 against the required 19/20;
+- experiment 011 is immutable boundary-regression history at 17/20; experiment 012 is the one authorized corrected
+  delegated canary and failed at 10/20 with 50% artifact candidates because Stage A did not complete its 60-call frame;
   experiment 010 remains immutable preflight history;
 - no bulk migration responses or staged CSV exist yet;
 - all holdouts are spent/closed and irrelevant to the operational migration.
@@ -129,8 +130,8 @@ Accommodation coefficients and the Expedia/Booking offset did not change. The Ph
 corrected collection boundary: the shared country comparator accepts registered aliases, null documentary fields
 are normalized only for non-observed measures, invalid source calls no longer erase sibling calls, canonical
 Numbeo beer labels are accepted without conversion, and the hashed experiment result drives the release gate.
-The next exact action is experiment 012, not Phase 8. Phase 8 migration tooling is blocked until 012 passes; the
-user-key smoke remains external and required before Phase 11 cutover.
+The next exact action is owner review of failed experiment 012, not Phase 8. Phase 8 migration tooling is blocked;
+the user-key smoke remains external and required before Phase 11 cutover.
 
 ## 4a. Phase 7 experiment 010 — superseded as a canary result
 
@@ -148,18 +149,18 @@ coverage. Preserve experiment 010 unchanged as the failed preflight record; do n
 Phase 7A repaired those implementation defects. Phase 7B used Codex subagents for the same representative
 city frame and the exact production prompt/schema/search contract, then fed
 the responses through shipped Stage B. Phase 7C is a later 3–5-city user-key provider transport/database/API
-smoke. Phase 8 is blocked by the failed Phase 7B gate; do not treat delegated partial success as authorization to migrate.
+smoke. Phase 8 is blocked by the failed Phase 7B and 7E gates; do not treat delegated partial success as authorization to migrate.
 
-## 4b. Phase 7D and exact next action
+## 4b. Phase 7D/7E result and exact next action
 
 Experiment 011 is immutable failed history: 17/20 complete, two artifact candidates (10%), 60 attempted calls,
-198 searches and zero direct reads. Its failures were boundary defects, not coefficient evidence. The corrected
-implementation must be committed and verified before the fresh run. Experiment 012 must be newly preregistered
-with current prompt and implementation hashes, then filled by Codex-delegated Stage A and processed through the
-real Stage-B parser/materializer/persistence/API evaluator. It must preserve three raw responses and telemetry
-records for every city, report invalid calls rather than replacing them with not_found, accept the two canonical
-Numbeo beer labels, and pass 19/20 plus the <=30% artifact gate. If it fails, commit the immutable result and stop.
-If it passes, update the manifest to its result hash and begin Phase 8; do not read a holdout or touch the live CSV.
+198 searches and zero direct reads. Its failures were boundary defects, not coefficient evidence. Phase 7D repaired
+those boundaries in `a7f00be`. The one authorized corrected run, experiment 012, then produced only 30/60 source
+records before delegated Stage A timed out/exhausted its practical route. Stage B processed the available files:
+10/20 cities completed, 10/20 were artifact candidates (50%), 72 searches, zero retries and zero direct reads.
+The 10 complete cities passed schema/materialization/persistence/API round-trip; the incomplete cities failed
+closed. This is an incomplete delegated-collection failure, not source-quality or coefficient evidence. Experiment
+012 is immutable; Phase 8 is blocked and no further canary is authorized by this handoff.
 
 ## 5. Why the migration is staged
 
@@ -186,9 +187,9 @@ sidecar only.
 8. **Phase 11:** only after approval and Phase 7C, atomically replace the CSV, update the seed source label and switch
    the new-city default as one rollback unit.
 
-**Sequence correction:** the Phase 7B line above is immutable history, not the current stop. Phase 7D is the
-current repair phase and Phase 7E is the next corrected delegated experiment 012. Phase 8 remains blocked until
-012 passes 19/20 and the <=30% artifact gate. The user-key smoke remains Phase 7C's external pre-cutover check.
+**Sequence correction:** Phase 7B and 7E are immutable failed canary history. Phase 7D is complete in `a7f00be`.
+Phase 8 remains blocked after 012's 10/20 and 50% artifact result. The user-key smoke remains Phase 7C's
+external pre-cutover check; it is not authorization to bypass the failed delegated canary.
 
 Update this handoff after every phase with completed evidence and the exact next command/file. Commit and
 push each phase and each bulk collection batch.
@@ -254,7 +255,20 @@ investigating because the OneDrive checkout has a known transient temp-directory
 
 ## 10. Current stopping point
 
-The workstream is stopped after the failed Phase 7 canary. Configure a real server-side provider credential
-and rerun the exact registered command before starting Phase 8. At the end of Phase 10, stop for owner
-approval. Touching the live CSV before that approval is outside authority even though the eventual migration
-itself is approved.
+The workstream is stopped after failed experiment 012. Do not configure a key, rerun a canary, start Phase 8,
+stage migration, read a holdout or touch the live CSV under the current authorization. The owner must first decide
+whether to improve the delegated execution mechanism or provide a real user-key route; experiment 012 itself is
+immutable. At the eventual Phase 10 boundary, stop for owner approval before Phase 11 cutover.
+## 4c. Phase 7E result and stopping point
+
+Experiment 012 is recorded at `data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/`. Its hard
+result is **FAIL**: 10/20 complete versus 19/20 required, 10/20 artifact candidates (50% versus <=30%), 30/60
+attempted source records, 72 searches, zero retries and zero direct reads. Do not reinterpret the missing ten
+cities as source-level `not_found`; their files were not collected. The 10 complete cities passed the shipped
+Stage-B materializer and complete persistence/API provenance comparison. The result is an operational delegation
+capacity failure and is not a reason to refit coefficients or change the source contract.
+
+Exact next action: owner review. Do not run another canary, start Phase 8, stage the 121-city migration, read any
+holdout, or touch the live CSV without an explicit new authorization. If the owner authorizes continuation, first
+decide whether to improve the delegated execution mechanism or provide a real user key; preserve experiment 012
+as immutable history either way.

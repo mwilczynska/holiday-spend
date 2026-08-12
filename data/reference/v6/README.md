@@ -95,6 +95,7 @@ holdout, or provide independent drinks truth.
 | `v6-1-rollout-preview.json` / `.md` | Generated read-only v1-versus-v6.1 operational impact preview | Verify with `scripts/generate-city-cost-v6-1-rollout-preview.mjs --check`; owner review only |
 | `experiments/010-v6-1-runtime-canary/` | Immutable credential-preflight history; zero provider calls, not a 0/20 source-coverage result | Do not mutate or rerun |
 | `experiments/011-v6-1-delegated-operational-canary/` | Immutable delegated boundary finding; 17/20 complete, failed before the corrected identity/missingness/beer contract | Preserve as regression evidence; do not restate as passed |
+| `experiments/012-v6-1-corrected-delegated-canary/` | Immutable corrected delegated canary; 10/20 complete because Stage A supplied 30/60 calls, 50% artifact candidates | Failed incomplete-delegation result; owner review required before another canary or migration |
 | `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 

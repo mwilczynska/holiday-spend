@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7D boundary repair in progress; experiment 011 remains immutable failed history and experiment 012 is the single authorized corrected canary
+**Status:** Phase 7D complete; experiment 012 failed at 10/20 after incomplete delegated Stage A; migration stopped for owner review
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -215,7 +215,7 @@ The repeated canonical-beer rejection in more than 30% of a batch is an artifact
 even if the materializer can produce finite fallback tiers. These repairs change no coefficient or accommodation
 fit and do not reopen a holdout.
 
-#### Phase 7E — one fresh corrected delegated canary
+#### Phase 7E — one fresh corrected delegated canary — **failed 12 August 2026; immutable**
 
 Create experiment 012, using the registered 20-city frame, corrected prompt/implementation hashes, the 17–18
 September 2026 one-night window, exactly three calls, 4/4/2 source search ceilings, ten searches per city and
@@ -372,3 +372,13 @@ node scripts/run-v6-1-delegated-canary.mjs --check
 
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun
 it once before investigating because this OneDrive checkout has a known transient temp-file failure.
+
+## 10. Current stopping point — experiment 012 failed
+
+Experiment 012 is immutable failed evidence. Delegated Stage A supplied 30/60 source-call records before timing
+out/exhausting its practical collection route. Stage B processed the available files through the shipped schemas,
+`materializeCityCostV61`, persistence adapter, API provenance parser and evaluator: 10/20 cities completed, 10/20
+became artifact candidates (50%), with 72 searches, zero retries and zero direct page reads. The 10 complete cities
+passed the deterministic provenance round-trip. This is incomplete-delegation evidence, not source-quality or
+coefficient evidence. Do not update the manifest to 012, proceed to Phase 8, or run another canary without owner
+review and explicit authorization.

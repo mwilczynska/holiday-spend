@@ -382,7 +382,10 @@ function check(registration: Registration) {
   if (results.requiredCompleteCities !== registration.passCriteria.completeCitiesMinimum) throw new Error('Delegated canary completion threshold drifted.');
   if (typeof results.completeCities !== 'number' || typeof results.artifactCandidates !== 'number' || typeof results.pass !== 'boolean') throw new Error('Delegated canary gate fields are malformed.');
   if (results.experiment !== '011-v6-1-delegated-operational-canary'
-    && (results.attemptedCalls !== 60 || (results.validResponses ?? -1) < 0 || (results.invalidResponses ?? -1) < 0 || (results.retries ?? -1) < 0 || results.directPageReads !== 0)) {
+    && (typeof results.attemptedCalls !== 'number' || results.attemptedCalls < 0 || results.attemptedCalls > 60
+      || (results.validResponses ?? -1) < 0 || (results.invalidResponses ?? -1) < 0
+      || (results.validResponses ?? 0) + (results.invalidResponses ?? 0) > results.attemptedCalls
+      || (results.retries ?? -1) < 0 || results.directPageReads !== 0)) {
     throw new Error('Delegated canary call accounting is malformed.');
   }
   if (results.holdoutRead || results.liveCsvWritten) throw new Error('Delegated canary recorded a forbidden holdout read or live CSV write.');
