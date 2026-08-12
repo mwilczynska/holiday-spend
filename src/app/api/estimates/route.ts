@@ -2,37 +2,9 @@ import { db } from '@/db';
 import { cities, cityEstimates, countries } from '@/db/schema';
 import { desc, eq } from 'drizzle-orm';
 import { handleError, success } from '@/lib/api-helpers';
+import { readV6Provenance } from '@/lib/city-estimate-provenance';
 
 export const dynamic = 'force-dynamic';
-
-function readV6Provenance(metadataJson: string | null) {
-  if (!metadataJson) return null;
-  try {
-    const parsed = JSON.parse(metadataJson) as {
-      methodologyVersion?: unknown;
-      evidenceGrades?: unknown;
-      intervals?: unknown;
-      anchorEvidenceGrades?: unknown;
-      anchorIntervals?: unknown;
-      v6CollectionTelemetry?: unknown;
-      v6Missingness?: unknown;
-      v6PriorBasis?: unknown;
-    };
-    if (parsed.methodologyVersion !== 'v6.0') return null;
-    return {
-      methodologyVersion: 'v6.0' as const,
-      evidenceGrades: parsed.evidenceGrades ?? {},
-      intervals: parsed.intervals ?? {},
-      anchorEvidenceGrades: parsed.anchorEvidenceGrades ?? {},
-      anchorIntervals: parsed.anchorIntervals ?? {},
-      collectionTelemetry: parsed.v6CollectionTelemetry ?? [],
-      missingness: parsed.v6Missingness ?? {},
-      priorBasis: typeof parsed.v6PriorBasis === 'string' ? parsed.v6PriorBasis : null,
-    };
-  } catch {
-    return null;
-  }
-}
 
 function readInferredAudPerUsd(metadataJson: string | null) {
   if (!metadataJson) return null;

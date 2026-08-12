@@ -11,6 +11,7 @@ import { SearchableSelect } from '@/components/ui/searchable-select';
 import { COST_FIELD_KEYS, CostEditor } from '@/components/cities/CostEditor';
 import { CityGenerationPanel } from '@/components/cities/CityGenerationPanel';
 import { resolveCityDrinkInputs } from '@/lib/city-drink-inputs';
+import type { V6Provenance } from '@/lib/city-estimate-provenance';
 import {
   PlannerNewCityDialog,
   type NewCityCreatedPayload,
@@ -26,23 +27,6 @@ interface City {
   notes?: string | null;
   v6Provenance?: V6Provenance | null;
   [key: string]: unknown;
-}
-
-interface V6Interval {
-  lowerAud: number;
-  upperAud: number;
-  widthPct: number;
-}
-
-interface V6Provenance {
-  methodologyVersion: 'v6.0';
-  evidenceGrades: Record<string, string>;
-  intervals: Record<string, V6Interval>;
-  anchorEvidenceGrades: Record<string, string>;
-  anchorIntervals: Record<string, V6Interval | null>;
-  collectionTelemetry: Array<{ source?: string; status?: string; attempts?: number; searchesUsed?: number }>;
-  missingness: Record<string, string>;
-  priorBasis: string | null;
 }
 
 interface Country {
@@ -521,7 +505,7 @@ export default function DatasetPage() {
                     <div className="md:col-span-4 rounded-md border bg-muted/20 p-3">
                       <div className="flex flex-wrap items-center gap-2">
                         <div className="text-xs uppercase tracking-wide text-muted-foreground">v6 evidence</div>
-                        <Badge variant="outline">v6.0</Badge>
+                        <Badge variant="outline">{selectedCityV6.methodologyVersion}</Badge>
                         {Object.entries(
                           Object.values(selectedCityV6.evidenceGrades).reduce<Record<string, number>>((counts, grade) => {
                             counts[grade] = (counts[grade] ?? 0) + 1;
