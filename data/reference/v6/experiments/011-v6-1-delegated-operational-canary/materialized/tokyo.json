@@ -1,0 +1,1401 @@
+{
+  "schemaVersion": "city-cost-v6-1-delegated-canary-materialization-v1",
+  "methodologyVersion": "v6.1",
+  "city": {
+    "city": "Tokyo",
+    "country": "Japan",
+    "region": "East Asia",
+    "band": "high",
+    "fixtureSourceStrength": "strong",
+    "selectionReason": "East Asia high-cost non-USD strong-source representative"
+  },
+  "productionPath": "delegated Stage A -> buildV61CollectionResultFromSpineResponses -> materializeCityCostV61 -> persistence adapter -> readV6Provenance",
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 135.19,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 247.37,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 31.46,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 94.37,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 311.71,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.79,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Tokyo"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 101,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Tokyo from $47 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Tokyo. September | $101",
+        "query": "site:expedia.com/3Star-Tokyo-Hotels.s30 Tokyo three-star September 2026 2 adults one room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+        "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $23 | $62 | $173",
+        "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Food & Meals Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 62,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+        "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $23 | $62 | $173",
+        "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Food & Meals Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 173,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+        "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $23 | $62 | $173",
+        "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Food & Meals Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 22,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+        "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $22 | $66 | $218",
+        "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Entertainment Activities Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 66,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+        "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $22 | $66 | $218",
+        "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Entertainment Activities Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 218,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+        "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $22 | $66 | $218",
+        "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Entertainment Activities Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 546.51,
+        "currency": "JPY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Tokyo",
+        "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+        "evidenceText": "Cappuccino (Regular Size) | ¥546.51",
+        "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+        "evidenceText": "The canonical Tokyo result shows Domestic Draft Beer (0.5 Liter) | ¥600.00, not the prompt-required exact row label Domestic Draft Beer (1 Pint).",
+        "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T18:39:04.615Z",
+        "completedAt": "2026-08-12T18:39:04.615Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T18:39:04.615Z",
+        "completedAt": "2026-08-12T18:39:04.615Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T18:39:04.615Z",
+        "completedAt": "2026-08-12T18:39:04.615Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Tokyo",
+    "country": "Japan",
+    "region": "East Asia",
+    "costBand": "high",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 79.9,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 36.75,
+          "upperAud": 123.04,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 80.02,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 47.21,
+          "upperAud": 112.83,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 90.08,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 49.54,
+          "upperAud": 130.61,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 101.39,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 59.82,
+          "upperAud": 142.96,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 135.19,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 79.76,
+          "upperAud": 190.62,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 180.78,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 106.66,
+          "upperAud": 254.89,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 35.07,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 65.78,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 177.3,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 115.25,
+          "upperAud": 239.36,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 494.74,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 321.58,
+          "upperAud": 667.9,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.99,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:high:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.74,
+          "upperAud": 7.24,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.98,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:high:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.49,
+          "upperAud": 14.47,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 20.07,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:high:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 11.04,
+          "upperAud": 29.1,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 54.96,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:high:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 30.23,
+          "upperAud": 79.69,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 89.84,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:high:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 49.41,
+          "upperAud": 130.27,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 62.92,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 40.9,
+          "upperAud": 84.94,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 188.74,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 122.68,
+          "upperAud": 254.8,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 623.42,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 405.22,
+          "upperAud": 841.62,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 135.19,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 247.37,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 31.46,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 94.37,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 311.71,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.79,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Tokyo"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "missingness": {
+      "domestic_draft_beer_1": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 79.9,
+      "accomPrivateRoom": 80.02,
+      "accom1star": 90.08,
+      "accom2star": 101.39,
+      "accom3star": 135.19,
+      "accom4star": 180.78,
+      "foodStreet": 35.07,
+      "foodBudget": 65.78,
+      "foodMid": 177.3,
+      "foodHigh": 494.74,
+      "drinkCoffee": 4.99,
+      "drinkLocalBeer": 5.05,
+      "drinkCocktail": 12.39,
+      "drinksNone": 9.98,
+      "drinksLight": 20.07,
+      "drinksModerate": 54.96,
+      "drinksHeavy": 89.84,
+      "activitiesFree": 0,
+      "activitiesBudget": 62.92,
+      "activitiesMid": 188.74,
+      "activitiesHigh": 623.42
+    }
+  },
+  "persistenceApiRoundTrip": {
+    "passed": true,
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 36.75,
+          "upperAud": 123.04,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 47.21,
+          "upperAud": 112.83,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 49.54,
+          "upperAud": 130.61,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 59.82,
+          "upperAud": 142.96,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 79.76,
+          "upperAud": 190.62,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 106.66,
+          "upperAud": 254.89,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 115.25,
+          "upperAud": 239.36,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 321.58,
+          "upperAud": 667.9,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.74,
+          "upperAud": 7.24,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.49,
+          "upperAud": 14.47,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 11.04,
+          "upperAud": 29.1,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 30.23,
+          "upperAud": 79.69,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 49.41,
+          "upperAud": 130.27,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 40.9,
+          "upperAud": 84.94,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 122.68,
+          "upperAud": 254.8,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 405.22,
+          "upperAud": 841.62,
+          "widthPct": 35
+        }
+      },
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 101,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Tokyo from $47 | Expedia",
+          "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Tokyo. September | $101",
+          "query": "site:expedia.com/3Star-Tokyo-Hotels.s30 Tokyo three-star September 2026 2 adults one room",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 23,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+          "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $23 | $62 | $173",
+          "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Food & Meals Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 62,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+          "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $23 | $62 | $173",
+          "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Food & Meals Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 173,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+          "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $23 | $62 | $173",
+          "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Food & Meals Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 22,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+          "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $22 | $66 | $218",
+          "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Entertainment Activities Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 66,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+          "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $22 | $66 | $218",
+          "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Entertainment Activities Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 218,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147",
+          "sourceTitle": "How much does a trip to Tokyo Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $22 | $66 | $218",
+          "query": "site:budgetyourtrip.com/japan/tokyo Tokyo Entertainment Activities Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 546.51,
+          "currency": "JPY",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Tokyo",
+          "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+          "evidenceText": "Cappuccino (Regular Size) | ¥546.51",
+          "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+          "evidenceText": "The canonical Tokyo result shows Domestic Draft Beer (0.5 Liter) | ¥600.00, not the prompt-required exact row label Domestic Draft Beer (1 Pint).",
+          "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "telemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T18:39:04.615Z",
+          "completedAt": "2026-08-12T18:39:04.615Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T18:39:04.615Z",
+          "completedAt": "2026-08-12T18:39:04.615Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T18:39:04.615Z",
+          "completedAt": "2026-08-12T18:39:04.615Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "domestic_draft_beer_1": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 135.19,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Tokyo-Hotels.s30-0-d179900.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 32.89,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 88.65,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 247.37,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 31.46,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 94.37,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 311.71,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/tokyo/trip-cost-1850147"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 4.79,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Tokyo"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        }
+      },
+      "sources": {}
+    }
+  }
+}

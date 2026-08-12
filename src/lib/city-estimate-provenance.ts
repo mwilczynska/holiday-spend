@@ -17,6 +17,7 @@ export interface V6Provenance {
   priorBasis: string | null;
   anchors: unknown;
   inputSnapshot: unknown;
+  sources: Record<string, string>;
 }
 
 function isSupportedV6MethodologyVersion(value: unknown): value is SupportedV6MethodologyVersion {
@@ -36,6 +37,7 @@ export function readV6Provenance(
   metadataJson: string | null,
   anchorsJson?: string | null,
   inputSnapshotJson?: string | null,
+  sourcesJson?: string | null,
 ): V6Provenance | null {
   if (!metadataJson) return null;
   try {
@@ -61,6 +63,7 @@ export function readV6Provenance(
       priorBasis: typeof parsed.v6PriorBasis === 'string' ? parsed.v6PriorBasis : null,
       anchors: parseOptionalJson(anchorsJson),
       inputSnapshot: parseOptionalJson(inputSnapshotJson),
+      sources: (parseOptionalJson(sourcesJson) ?? {}) as Record<string, string>,
     };
   } catch {
     return null;

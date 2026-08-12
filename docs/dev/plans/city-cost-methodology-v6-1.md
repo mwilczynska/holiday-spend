@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** New-city implementation banked; release-record repair and M4 migration are active
+**Status:** New-city implementation banked; Phase 7B delegated canary failed 17/20 and migration is stopped pending owner review
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -122,7 +122,7 @@ decision. The implementation is banked; the library migration is not complete.
 
 ### Phase 7 — repair and test the collection boundary
 
-**Phase 7A complete 12 August 2026; Phase 7B is next. Experiment 010 remains immutable history.**
+**Phase 7A complete 12 August 2026; Phase 7B attempted 12 August 2026 and failed its 19/20 gate. Experiment 010 remains immutable history.**
 
 `data/reference/v6/experiments/010-v6-1-runtime-canary/` is retained unchanged as history. It made zero
 provider calls because no server-side key was configured. More importantly, the audit found that the
@@ -169,10 +169,15 @@ authentication is not application provider authentication and must never be copi
 
 #### Phase 7B — delegated 20-city operational canary
 
-The exact next action is to create the next-free experiment directory (011), copy only the registered
-20-city frame from experiment 010, preregister the corrected prompt/tooling hashes and run the three
-Stage-A calls per city through Codex subagents. Stage B must use the new pure evaluator and the real
-materializer; do not run or mutate experiment 010.
+Experiment 011 was created from the registered 20-city frame, preregistered with the corrected hashes/window,
+and run through delegated Stage A plus the real deterministic Stage B. It produced 17/20 complete cities, two
+artifact candidates (10%, below the 30% ceiling), and failed the hard 19/20 completion gate. Dubai had city/country
+identity drift in all three responses; Cape Town and Lima supplied schema-invalid null source metadata for blocked
+measures. The exact result is retained in
+`data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json` and `verdict.md`.
+
+Per the stop rule, do not start Phase 8, rerun the canary, tune coefficients, or stage migration until the owner
+reviews this failed batch and authorizes a corrected canary attempt.
 
 Create a fresh experiment after the Phase 7A fixes; do not mutate experiment 010. Reuse its representative
 20-city frame, but freeze a valid one-night window and the corrected prompt/tooling hashes. Codex subagents
@@ -198,7 +203,7 @@ external/manual until a key is supplied and does not block Phase 8 or Phase 9 st
 the Phase 11 cutover. Post-release complete-generation coverage is monitored against a ≥95% operational SLO;
 a 19/20 pre-release sample must not be described as statistically proving that population rate.
 
-### Phase 8 — build resumable migration tooling and a dry run
+### Phase 8 — build resumable migration tooling and a dry run — blocked by failed Phase 7B gate
 
 Create a deterministic migration protocol under `data/reference/v6/migration-v6-1/` containing:
 
@@ -332,7 +337,7 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
-node scripts/run-v6-1-runtime-canary.mjs --check
+node scripts/run-v6-1-delegated-canary.mjs --check
 ```
 
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun

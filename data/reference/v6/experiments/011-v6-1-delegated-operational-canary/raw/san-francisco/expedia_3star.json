@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:expedia.com/3Star-San-Francisco-Hotels.s30 San Francisco three-star September 2026 2 adults one room",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference window: 2026-09-17 arrival to 2026-09-18 departure. Four Expedia searches returned either a San Francisco all-class trend, a Downtown San Francisco three-star trend, or a starting price; none was a qualifying exact-city three-star numeric room price, so no value was used."
+}

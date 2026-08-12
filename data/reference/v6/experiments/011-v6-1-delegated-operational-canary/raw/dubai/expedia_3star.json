@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Dubai",
+  "country": "United Arab Emirates",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 49,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Dubai from $32 | Expedia",
+      "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Dubai. September | $49",
+      "query": "site:expedia.com/3Star-Dubai-Hotels.s30 Dubai three-star September 2026 2 adults one room",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "Reference window: 2026-09-17 arrival to 2026-09-18 departure. The qualifying result is a Dubai three-star September class trend for a nightly stay for 2 adults; it does not expose an exact dated total."
+}

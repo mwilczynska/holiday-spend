@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Lima",
+  "country": "Peru",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima",
+      "sourceTitle": "Lima Travel Cost - Average Price of a Vacation to Lima: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2} | $13 (S/.44) | $33 (S/.112) | $86 (S/.291)",
+      "query": "site:budgetyourtrip.com Peru Lima food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 33,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima",
+      "sourceTitle": "Lima Travel Cost - Average Price of a Vacation to Lima: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2} | $13 (S/.44) | $33 (S/.112) | $86 (S/.291)",
+      "query": "site:budgetyourtrip.com Peru Lima food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 86,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima",
+      "sourceTitle": "Lima Travel Cost - Average Price of a Vacation to Lima: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2} | $13 (S/.44) | $33 (S/.112) | $86 (S/.291)",
+      "query": "site:budgetyourtrip.com Peru Lima food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 3,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima",
+      "sourceTitle": "Lima Travel Cost - Average Price of a Vacation to Lima: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1} | $3 (S/.11) | $9 (S/.32) | $30 (S/.100)",
+      "query": "site:budgetyourtrip.com Peru Lima food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima",
+      "sourceTitle": "Lima Travel Cost - Average Price of a Vacation to Lima: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1} | $3 (S/.11) | $9 (S/.32) | $30 (S/.100)",
+      "query": "site:budgetyourtrip.com Peru Lima food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 30,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima",
+      "sourceTitle": "Lima Travel Cost - Average Price of a Vacation to Lima: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1} | $3 (S/.11) | $9 (S/.32) | $30 (S/.100)",
+      "query": "site:budgetyourtrip.com Peru Lima food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference date: 2026-09-17. The Lima table identifies Food and Entertainment values as budget, mid-range and luxury daily costs per person; USD values recorded are $13/$33/$86 for food and $3/$9/$30 for entertainment. These are reported traveller-spend source proxies, not independent ground truth."
+}

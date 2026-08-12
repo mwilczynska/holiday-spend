@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $9 (d234,724) | $23 (d598,188) | $58 (d1,536,145).",
+      "query": "site:budgetyourtrip.com/vietnam/hanoi \"Food\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 23,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $9 (d234,724) | $23 (d598,188) | $58 (d1,536,145).",
+      "query": "site:budgetyourtrip.com/vietnam/hanoi \"Food\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 58,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $9 (d234,724) | $23 (d598,188) | $58 (d1,536,145).",
+      "query": "site:budgetyourtrip.com/vietnam/hanoi \"Food\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 3,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $3 (d71,098) | $8 (d213,024) | $28 (d729,051).",
+      "query": "site:budgetyourtrip.com/vietnam/hanoi \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $3 (d71,098) | $8 (d213,024) | $28 (d729,051).",
+      "query": "site:budgetyourtrip.com/vietnam/hanoi \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 28,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+      "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $3 (d71,098) | $8 (d213,024) | $28 (d729,051).",
+      "query": "site:budgetyourtrip.com/vietnam/hanoi \"Entertainment\" \"Budget\" \"High-End\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only. The exact Hanoi page identifies the category values as per-person daily traveller-spend proxies and labels the columns Budget, Mid-Range and Luxury."
+}

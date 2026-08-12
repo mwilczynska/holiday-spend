@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Ho Chi Minh City",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 34,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Ho-Chi-Minh-City-Hotels.s30-0-d178262.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Ho Chi Minh City | Expedia",
+      "evidenceText": "September | $34. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Ho Chi Minh City.",
+      "query": "site:expedia.com \"Ho Chi Minh City\" \"3-star\" hotels \"2 adults\" \"price trend\"",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "Search-snippet evidence only; Expedia search result reports September at $34 for averaged 3-star properties in Ho Chi Minh City, based on 2 adults and excluding taxes and fees."
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Cairo",
+  "country": "Egypt",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Top 10 Hotels in Cairo (from $6) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "Price trends for hotels in Cairo indicate that August to September is slightly lower on average, but the result does not identify a three-star class numeric price; the displayed from-$6 result is class-ambiguous and was rejected.",
+      "query": "site:expedia.com Cairo three-star September price trend",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference window: 2026-09-17 arrival to 2026-09-18 departure. Four Expedia searches produced no qualifying exact-city three-star numeric room price with the required two-adult basis; no class-ambiguous or starting price was substituted."
+}

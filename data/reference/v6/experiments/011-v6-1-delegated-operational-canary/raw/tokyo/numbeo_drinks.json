@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 546.51,
+      "currency": "JPY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Tokyo",
+      "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+      "evidenceText": "Cappuccino (Regular Size) | ¥546.51",
+      "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+      "evidenceText": "The canonical Tokyo result shows Domestic Draft Beer (0.5 Liter) | ¥600.00, not the prompt-required exact row label Domestic Draft Beer (1 Pint).",
+      "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference date: 2026-09-17. The exact Tokyo Numbeo result exposed Cappuccino (Regular Size) but did not expose the requested Domestic Draft Beer (1 Pint) row; the available 0.5 Liter row was not substituted."
+}

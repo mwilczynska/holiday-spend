@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Mumbai",
+  "country": "India",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "class_absent",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Top 10 Hotels in Mumbai (from $6) 2026 - Competitive Prices | Expedia",
+      "evidenceText": "September | $57. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed hotels in Mumbai.",
+      "query": "site:expedia.com/3Star-Mumbai-Hotels \"Mumbai\" \"3 stars\" \"$\" hotel price trend September 2026",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "Search-snippet evidence only for the frozen 2026-09-17 arrival to 2026-09-18 departure window. The returned September price trend was for commonly viewed hotels in Mumbai, not an exact three-star class trend, so it was not used. No direct page reads and no estimate or substitute were used."
+}

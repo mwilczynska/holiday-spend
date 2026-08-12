@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Taipei",
+  "country": "Taiwan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 2297,
+      "currency": "TWD",
+      "sourceUrl": "https://www.expedia.com.tw/3-Taipei-Hotels.s30-0-d180030.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "台北 3 星級飯店: 人氣台北 3 星級飯店優惠| Expedia",
+      "evidenceText": "台北 3 星級住宿的價格趨勢 ... 9 月 | NT$2,297",
+      "query": "site:expedia.com Taipei Taiwan 3-star hotel September 17 2026 September 18 2026 2 adults 1 room price",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only. Expedia's Taipei 3-star price-trend result reported September NT$2,297; tax treatment and exact stay-window applicability were not stated in the snippet."
+}

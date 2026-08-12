@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Da Nang",
+  "country": "Vietnam",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Da Nang. Jun 2026. Prices in Da Nang",
+      "evidenceText": "Cappuccino (Regular Size) | ₫43,684.21; the result explicitly identifies the reference period as Jun 2026.",
+      "query": "site:numbeo.com/cost-of-living/in/Da-Nang \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Da Nang. Jun 2026. Prices in Da Nang",
+      "evidenceText": "The canonical Da Nang result shows Domestic Draft Beer (0.5 Liter) | ₫35,000.00, but no exact Domestic Draft Beer (1 Pint) row; the near match is rejected.",
+      "query": "site:numbeo.com/cost-of-living/in/Da-Nang \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Frozen Numbeo reference date: 2026-09-17; search snippets only. Exact 1 Pint beer row was not found; no 0.5-liter substitution."
+}

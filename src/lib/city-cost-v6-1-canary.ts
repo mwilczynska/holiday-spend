@@ -41,6 +41,7 @@ export interface V61CanaryCityRecord {
     persisted: V61CanaryProvenanceFields;
     api: V61CanaryProvenanceFields;
   };
+  collectionError?: string;
 }
 
 export interface V61CanaryLimits {
@@ -135,6 +136,7 @@ export function evaluateV61CanaryBatch(
     const expectedSources = new Set(V61_SPINE_SOURCES);
     const responseSources = Object.keys(record.responses);
     const telemetrySources = record.telemetry.map((call) => call.source);
+    if (record.collectionError) problems.push(`Stage B collection failed: ${record.collectionError}`);
 
     if (record.window.arrival !== registration.window.arrival
       || record.window.departure !== registration.window.departure
@@ -182,12 +184,13 @@ export function evaluateV61CanaryBatch(
     const provenanceProblems = compareProvenance(record.provenance);
     problems.push(...provenanceProblems);
     const schemaValid = V61_SPINE_SOURCES.every((source) => parsedResponses[source] !== undefined);
-    const sourceComplete = V61_SPINE_SOURCES.every((source) => parsedResponses[source]?.retrievalStatus === 'complete');
-    if (!sourceComplete) problems.push('one or more source responses are not complete');
     const materializationComplete = Boolean(record.materialization?.complete && Object.keys(record.materialization.tiersAud).length === 19);
     const provenanceRoundTrip = provenanceProblems.length === 0;
     const artifactCandidate = isAllPrior(record.materialization);
-    const complete = problems.length === 0 && schemaValid && sourceComplete && materializationComplete && provenanceRoundTrip;
+    // A schema-valid partial source response is an allowed operational result:
+    // the materializer may apply an explicit category fallback. Only an
+    // all-prior bundle is excluded as source coverage via artifactCandidate.
+    const complete = problems.length === 0 && schemaValid && materializationComplete && provenanceRoundTrip && !artifactCandidate;
 
     return {
       city: record.city,

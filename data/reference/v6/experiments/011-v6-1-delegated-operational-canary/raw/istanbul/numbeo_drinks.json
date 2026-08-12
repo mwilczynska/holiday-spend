@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 188.96,
+      "currency": "TRY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+      "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+      "evidenceText": "Cappuccino (Regular Size)  | ₺188.96  | 120.00-300.00",
+      "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+      "evidenceText": "The canonical Istanbul result shows Domestic Draft Beer (0.5 Liter) | ₺200.00, not the prompt-required exact row label Domestic Draft Beer (1 Pint).",
+      "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference date: 2026-09-17. The exact Istanbul Numbeo result exposed Cappuccino (Regular Size) but did not expose the requested Domestic Draft Beer (1 Pint) row; the available 0.5 Liter row was not substituted."
+}

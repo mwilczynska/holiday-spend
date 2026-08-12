@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Cairo",
+  "country": "Egypt",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 94.02,
+      "currency": "EGP",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cairo-Egypt",
+      "sourceTitle": "Cost of Living in Cairo. Jun 2026. Prices in Cairo",
+      "evidenceText": "Cappuccino (Regular Size)  | E£94.02 | 40.00-150.00",
+      "query": "site:numbeo.com/cost-of-living/in/Cairo \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Cairo. Jun 2026. Prices in Cairo",
+      "evidenceText": "No qualifying search snippet was returned for the exact row label Domestic Draft Beer (1 Pint); no other beer row or unit was substituted.",
+      "query": "site:numbeo.com/cost-of-living/in/Cairo \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference date: 2026-09-17. The exact Cairo Numbeo result exposed Cappuccino (Regular Size) but did not expose the requested Domestic Draft Beer (1 Pint) row; the missing beer measure remains explicit."
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 18,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/south-korea/seoul/trip-cost-1835848",
+      "sourceTitle": "How much does a trip to Seoul Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food² | $18 | $48 | $127; the table is explicitly per person daily.",
+      "query": "site:budgetyourtrip.com/south-korea/seoul Seoul travel cost food meals entertainment daily costs per person",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 48,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/south-korea/seoul/trip-cost-1835848",
+      "sourceTitle": "How much does a trip to Seoul Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food² | $18 | $48 | $127; the table is explicitly per person daily.",
+      "query": "site:budgetyourtrip.com/south-korea/seoul Seoul travel cost food meals entertainment daily costs per person",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 127,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/south-korea/seoul/trip-cost-1835848",
+      "sourceTitle": "How much does a trip to Seoul Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food² | $18 | $48 | $127; the table is explicitly per person daily.",
+      "query": "site:budgetyourtrip.com/south-korea/seoul Seoul travel cost food meals entertainment daily costs per person",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/south-korea/seoul/trip-cost-1835848",
+      "sourceTitle": "How much does a trip to Seoul Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Entertainment¹ | $9 | $24 | $74; the table is explicitly per person daily.",
+      "query": "site:budgetyourtrip.com/south-korea/seoul Seoul travel cost food meals entertainment daily costs per person",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 24,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/south-korea/seoul/trip-cost-1835848",
+      "sourceTitle": "How much does a trip to Seoul Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Entertainment¹ | $9 | $24 | $74; the table is explicitly per person daily.",
+      "query": "site:budgetyourtrip.com/south-korea/seoul Seoul travel cost food meals entertainment daily costs per person",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 74,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/south-korea/seoul/trip-cost-1835848",
+      "sourceTitle": "How much does a trip to Seoul Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Entertainment¹ | $9 | $24 | $74; the table is explicitly per person daily.",
+      "query": "site:budgetyourtrip.com/south-korea/seoul Seoul travel cost food meals entertainment daily costs per person",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only. Seoul's BudgetYourTrip table reports Food and Entertainment budget, mid-range and luxury values in USD per person per day; values are preserved as source proxies without multiplication or conversion."
+}

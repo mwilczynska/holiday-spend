@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Seoul",
+  "country": "South Korea",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "Seoul Expedia snippets showed a 3.0-star package priced per traveller for Sep 11-Sep 17 and a 3.0-star nightly result for a different date window; neither qualifies as an exact-city, exact-window, two-adult one-room price.",
+      "query": "site:expedia.com Seoul South Korea 3-star hotel September 17 2026 September 18 2026 2 adults 1 room price",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only. No qualifying exact-window Expedia city-level three-star room price was found; per-traveller package prices and different-date nightly prices were rejected."
+}

@@ -52,6 +52,7 @@ export interface CityGenerationPersistence {
     priorBasis: string | null;
     anchors: unknown;
     inputSnapshot: unknown;
+    sources: Record<string, string>;
   };
 }
 
@@ -177,6 +178,7 @@ export function buildCityEstimatePersistence(
         priorBasis: null,
         anchors: null,
         inputSnapshot: null,
+        sources: {},
       },
     };
   }
@@ -221,6 +223,7 @@ export function buildCityEstimatePersistence(
       priorBasis,
       anchors: collection?.facts ?? materialization?.anchors ?? payload.anchors_aud ?? {},
       inputSnapshot: materialization?.anchors ?? payload.anchors_aud ?? {},
+      sources: v6SourceMap(collection),
     },
   };
 }

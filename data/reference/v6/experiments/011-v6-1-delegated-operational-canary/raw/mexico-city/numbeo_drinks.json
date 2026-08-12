@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 68.25,
+      "currency": "MXN",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City/",
+      "sourceTitle": "Cost of Living in Mexico City. May 2026. Prices in Mexico City",
+      "evidenceText": "Cappuccino (Regular Size) | Mex$68.25 | 40.24-90.00",
+      "query": "site:numbeo.com/cost-of-living/in/Mexico-City \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Mexico City. May 2026. Prices in Mexico City",
+      "evidenceText": "The canonical Mexico City result shows Domestic Draft Beer (0.5 Liter) | Mex$60.00 | 37.00-110.00, not the prompt-required exact row label Domestic Draft Beer (1 Pint).",
+      "query": "site:numbeo.com/cost-of-living/in/Mexico-City \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference date: 2026-09-17. The exact Mexico City Numbeo result exposed Cappuccino (Regular Size) but did not expose the requested Domestic Draft Beer (1 Pint) row; the available 0.5 Liter row was not substituted."
+}

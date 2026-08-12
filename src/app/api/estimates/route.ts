@@ -57,6 +57,7 @@ export async function GET() {
         currentEstimateMetadataJson: cityEstimates.metadataJson,
         currentEstimateAnchorsJson: cityEstimates.anchorsJson,
         currentEstimateInputSnapshotJson: cityEstimates.inputSnapshotJson,
+        currentEstimateSourcesJson: cityEstimates.sourcesJson,
       })
       .from(cities)
       .leftJoin(countries, eq(cities.countryId, countries.id))
@@ -76,6 +77,7 @@ export async function GET() {
         metadataJson: cityEstimates.metadataJson,
         anchorsJson: cityEstimates.anchorsJson,
         inputSnapshotJson: cityEstimates.inputSnapshotJson,
+        sourcesJson: cityEstimates.sourcesJson,
         isActive: cityEstimates.isActive,
       })
       .from(cityEstimates)
@@ -83,10 +85,10 @@ export async function GET() {
       .innerJoin(countries, eq(cities.countryId, countries.id))
       .orderBy(desc(cityEstimates.estimatedAt));
 
-    const history = historyRows.map(({ metadataJson, anchorsJson, inputSnapshotJson, ...row }) => ({
+    const history = historyRows.map(({ metadataJson, anchorsJson, inputSnapshotJson, sourcesJson, ...row }) => ({
       ...row,
       inferredAudPerUsd: readInferredAudPerUsd(metadataJson),
-      v6Provenance: readV6Provenance(metadataJson, anchorsJson, inputSnapshotJson),
+      v6Provenance: readV6Provenance(metadataJson, anchorsJson, inputSnapshotJson, sourcesJson),
     }));
 
     const historyByCity = new Map<string, typeof history>();
@@ -97,9 +99,9 @@ export async function GET() {
     }
 
     const rows = cityRows
-      .map(({ currentEstimateMetadataJson, currentEstimateAnchorsJson, currentEstimateInputSnapshotJson, ...row }) => ({
+      .map(({ currentEstimateMetadataJson, currentEstimateAnchorsJson, currentEstimateInputSnapshotJson, currentEstimateSourcesJson, ...row }) => ({
         ...row,
-        v6Provenance: readV6Provenance(currentEstimateMetadataJson, currentEstimateAnchorsJson, currentEstimateInputSnapshotJson),
+        v6Provenance: readV6Provenance(currentEstimateMetadataJson, currentEstimateAnchorsJson, currentEstimateInputSnapshotJson, currentEstimateSourcesJson),
         currentEstimate: row.currentEstimateId
           ? {
               id: row.currentEstimateId,

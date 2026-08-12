@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 48345.07,
+      "currency": "VND",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hanoi",
+      "sourceTitle": "Cost of Living in Hanoi. Jun 2026. Prices in Hanoi",
+      "evidenceText": "Cappuccino (Regular Size) | ₫48,345.07 | 35,000.00-60,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Hanoi \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "The Hanoi canonical-page search returned \"Domestic Draft Beer (0.5 Liter)\", not the required exact label \"Domestic Draft Beer (1 Pint)\"; no qualifying exact-label result was found.",
+      "query": "site:numbeo.com/cost-of-living/in/Hanoi \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only. The available Hanoi beer row used a 0.5-liter label and was not substituted for the required exact 1-pint measure."
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Da Nang",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+      "sourceTitle": "Da Nang Travel Cost - Average Price of a Vacation to Da Nang: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $11 (d290,517) | $27 (d714,289) | $64 (d1,685,142); Budget; per person, per day.",
+      "query": "site:budgetyourtrip.com/vietnam/da-nang \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 27,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+      "sourceTitle": "Da Nang Travel Cost - Average Price of a Vacation to Da Nang: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $11 (d290,517) | $27 (d714,289) | $64 (d1,685,142); Mid-Range; per person, per day.",
+      "query": "site:budgetyourtrip.com/vietnam/da-nang \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 64,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+      "sourceTitle": "Da Nang Travel Cost - Average Price of a Vacation to Da Nang: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $11 (d290,517) | $27 (d714,289) | $64 (d1,685,142); Luxury; per person, per day.",
+      "query": "site:budgetyourtrip.com/vietnam/da-nang \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 6,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+      "sourceTitle": "Da Nang Travel Cost - Average Price of a Vacation to Da Nang: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $6 (d147,461) | $13 (d332,500) | $23 (d606,284); Budget; per person, per day.",
+      "query": "site:budgetyourtrip.com/vietnam/da-nang \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+      "sourceTitle": "Da Nang Travel Cost - Average Price of a Vacation to Da Nang: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $6 (d147,461) | $13 (d332,500) | $23 (d606,284); Mid-Range; per person, per day.",
+      "query": "site:budgetyourtrip.com/vietnam/da-nang \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 23,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+      "sourceTitle": "Da Nang Travel Cost - Average Price of a Vacation to Da Nang: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $6 (d147,461) | $13 (d332,500) | $23 (d606,284); Luxury; per person, per day.",
+      "query": "site:budgetyourtrip.com/vietnam/da-nang \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Frozen BudgetYourTrip reference date: 2026-09-17; search snippets only. Values are reported traveller-spend source proxies."
+}

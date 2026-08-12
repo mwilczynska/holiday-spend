@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Melbourne",
+  "country": "Australia",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "The Best 3 Star Hotels in Melbourne Central Business District from $48 | Expedia",
+      "evidenceText": "The Melbourne Central Business District result exposes a 3-star September price trend of $142, but it is district-level rather than the exact city-level Melbourne result required by the prompt; the exact-city results were class-ambiguous. No qualifying exact-city three-star measure was recorded.",
+      "query": "site:expedia.com/3Star-Melbourne-Hotels.s30 Melbourne three-star hotel September 2026 2 adults one room",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference window: 2026-09-17 arrival to 2026-09-18 departure. Four Expedia searches returned exact-city Melbourne hotel trends without a qualifying three-star class, plus a Melbourne Central Business District three-star trend that was rejected as district-level. No starting price, single-property offer, class-ambiguous result or district substitute was used."
+}

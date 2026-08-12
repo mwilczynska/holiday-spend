@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Lima",
+  "country": "Peru",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": null,
+      "evidenceText": null,
+      "query": "site:expedia.com/Hotel-Search Lima Peru 3-star hotel September 17 2026 September 18 2026 2 adults 1 room price; site:expedia.com/Hotel-Search Lima Peru Sep 17 Sep 18 3 stars hotel price; site:expedia.com Lima Peru hotels 3-star $ Sep 17 - Sep 18; site:expedia.com Lima Peru 3-star hotel 17 Sep 18 Sep price",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference window: 2026-09-17 arrival to 2026-09-18 departure. Four provider web searches returned Expedia results for other cities or class-ambiguous/non-city-specific results; no qualifying Lima city-level three-star numeric room price was found. No estimate or substitute was recorded."
+}

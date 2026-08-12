@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 32,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+      "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "San Francisco, California, United States of America. Average Daily Costs, Per Person, by Category: Food | $32 | $79 | $191. Food meals for one day; the average daily cost is $79 per person.",
+      "query": "site:budgetyourtrip.com/united-states-of-america/san-francisco.php \"Food & Meals\" \"San Francisco\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 79,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+      "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "San Francisco, California, United States of America. Average Daily Costs, Per Person, by Category: Food | $32 | $79 | $191. Food meals for one day; the average daily cost is $79 per person.",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Food & Meals\" budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 191,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+      "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "San Francisco, California, United States of America. Average Daily Costs, Per Person, by Category: Food | $32 | $79 | $191. Food meals for one day; the average daily cost is $79 per person.",
+      "query": "site:budgetyourtrip.com/united-states-of-america/san-francisco.php \"Food & Meals\" \"San Francisco\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+      "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "San Francisco, California, United States of America. Average Daily Costs, Per Person, by Category: Entertainment | $13 | $31 | $78. Sightseeing activities, entertainment, and entrance tickets average $31 per person, per day.",
+      "query": "site:budgetyourtrip.com/united-states-of-america/san-francisco.php \"Entertainment\" \"San Francisco\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 31,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+      "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "San Francisco, California, United States of America. Average Daily Costs, Per Person, by Category: Entertainment | $13 | $31 | $78. Sightseeing activities, entertainment, and entrance tickets average $31 per person, per day.",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Entertainment/Activities\" budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 78,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco",
+      "sourceTitle": "San Francisco Travel Cost - Average Price of a Vacation to San Francisco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "San Francisco, California, United States of America. Average Daily Costs, Per Person, by Category: Entertainment | $13 | $31 | $78. Sightseeing activities, entertainment, and entrance tickets average $31 per person, per day.",
+      "query": "site:budgetyourtrip.com/united-states-of-america/san-francisco.php \"Entertainment\" \"San Francisco\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference date: 2026-09-17. The San Francisco BudgetYourTrip result exposed Food and Entertainment budget, mid-range and luxury values in USD under an average-daily-costs table; the source describes the food and sightseeing/activities basis as per person per day."
+}

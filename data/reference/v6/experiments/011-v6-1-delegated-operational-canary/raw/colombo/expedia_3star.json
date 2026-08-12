@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Colombo",
+  "country": "Sri Lanka",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 44,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Colombo-Hotels.s30-0-d869.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Colombo from $19 | Expedia",
+      "evidenceText": "May | $44\nJune | $44\nJuly | $44\nAugust | $45\nSeptember | $44\nOctober | $43\nNovember | $53\nDecember | $50\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Colombo.",
+      "query": "site:expedia.com/3Star-Colombo-Hotels.s30 Colombo three-star September 2026 2 adults one room",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "Search-snippet evidence only. Reference window: 2026-09-17 arrival to 2026-09-18 departure. The qualifying result is a Colombo three-star September class trend for a nightly stay for 2 adults; it does not expose an exact dated total."
+}

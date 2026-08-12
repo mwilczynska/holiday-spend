@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Ho Chi Minh City",
+  "country": "Vietnam",
+  "retrievalStatus": "partial",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 7,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+      "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment | $7 | $19 | $53",
+      "query": "site:budgetyourtrip.com Vietnam Ho Chi Minh City food meals daily budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 19,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+      "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment | $7 | $19 | $53",
+      "query": "site:budgetyourtrip.com Vietnam Ho Chi Minh City food meals daily budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 53,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+      "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment | $7 | $19 | $53",
+      "query": "site:budgetyourtrip.com Vietnam Ho Chi Minh City food meals daily budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only; four targeted searches found the Entertainment tier row but no qualifying Food & Meals budget/mid/luxury tier snippet. No substitution used."
+}

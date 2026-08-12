@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Singapore",
+  "country": "Singapore",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 19,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+      "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $19 (SG$24) | $47 (SG$61) | $119 (SG$154)",
+      "query": "site:budgetyourtrip.com/singapore \"Food & Meals\" \"per person per day\" Singapore",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 47,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+      "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $19 (SG$24) | $47 (SG$61) | $119 (SG$154)",
+      "query": "site:budgetyourtrip.com/singapore \"Food & Meals\" \"per person per day\" Singapore",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 119,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+      "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $19 (SG$24) | $47 (SG$61) | $119 (SG$154)",
+      "query": "site:budgetyourtrip.com/singapore \"Food & Meals\" \"per person per day\" Singapore",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+      "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $13 (SG$17) | $34 (SG$44) | $88 (SG$113)",
+      "query": "site:budgetyourtrip.com/singapore \"Entertainment\" \"per person per day\" Singapore",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 34,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+      "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $13 (SG$17) | $34 (SG$44) | $88 (SG$113)",
+      "query": "site:budgetyourtrip.com/singapore \"Entertainment\" \"per person per day\" Singapore",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 88,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+      "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $13 (SG$17) | $34 (SG$44) | $88 (SG$113)",
+      "query": "site:budgetyourtrip.com/singapore \"Entertainment\" \"per person per day\" Singapore",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only for reference date 2026-09-17; values are BudgetYourTrip per-person/day source proxies and were not multiplied or otherwise transformed."
+}

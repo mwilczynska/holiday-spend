@@ -1,0 +1,1401 @@
+{
+  "schemaVersion": "city-cost-v6-1-delegated-canary-materialization-v1",
+  "methodologyVersion": "v6.1",
+  "city": {
+    "city": "Dubai",
+    "country": "UAE",
+    "region": "Middle East",
+    "band": "high",
+    "fixtureSourceStrength": "weak",
+    "selectionReason": "Middle East high-cost weak-source non-USD representative"
+  },
+  "productionPath": "delegated Stage A -> buildV61CollectionResultFromSpineResponses -> materializeCityCostV61 -> persistence adapter -> readV6Provenance",
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 65.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 137.27,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 336.02,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 110.1,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 8.7,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Dubai/"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 49,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Dubai from $32 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Dubai. September | $49",
+        "query": "site:expedia.com/3Star-Dubai-Hotels.s30 Dubai three-star September 2026 2 adults one room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 39,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+        "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food | $39 | $96 | $235",
+        "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Food Meals Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 96,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+        "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food | $39 | $96 | $235",
+        "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Food Meals Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 235,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+        "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food | $39 | $96 | $235",
+        "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Food Meals Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+        "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment | $6 | $19 | $77",
+        "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Entertainment Activities Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 19,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+        "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment | $6 | $19 | $77",
+        "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Entertainment Activities Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 77,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+        "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment | $6 | $19 | $77",
+        "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Entertainment Activities Budget Mid-Range Luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 22.38,
+        "currency": "AED",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Dubai/",
+        "sourceTitle": "Cost of Living in Dubai. May 2026. Prices in Dubai",
+        "evidenceText": "Cappuccino (Regular Size) | Dh22.38 | 10.00-38.00",
+        "query": "site:numbeo.com/cost-of-living/in/Dubai \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Dubai. May 2026. Prices in Dubai",
+        "evidenceText": "The canonical Dubai result shows Domestic Draft Beer (0.5 Liter) | Dh50.00, not the prompt-required exact row label Domestic Draft Beer (1 Pint).",
+        "query": "site:numbeo.com/cost-of-living/in/Dubai \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T18:50:11.013Z",
+        "completedAt": "2026-08-12T18:50:11.013Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T18:50:11.013Z",
+        "completedAt": "2026-08-12T18:50:11.013Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "gpt-5",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T18:50:11.013Z",
+        "completedAt": "2026-08-12T18:50:11.013Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Dubai",
+    "country": "UAE",
+    "region": "Middle East",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 38.76,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 17.83,
+          "upperAud": 59.7,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 38.82,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 22.91,
+          "upperAud": 54.74,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 43.7,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 24.04,
+          "upperAud": 63.37,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 49.19,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 29.02,
+          "upperAud": 69.36,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 65.59,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 38.7,
+          "upperAud": 92.48,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 87.71,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 51.75,
+          "upperAud": 123.67,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 59.47,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 32.71,
+          "upperAud": 86.22,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 111.54,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 72.5,
+          "upperAud": 150.58,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 274.54,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 178.45,
+          "upperAud": 370.63,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 672.04,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 436.83,
+          "upperAud": 907.25,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.55,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.5,
+          "upperAud": 6.6,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.11,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.01,
+          "upperAud": 13.21,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 17.55,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 9.65,
+          "upperAud": 25.45,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 48.9,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 26.9,
+          "upperAud": 70.91,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 79.59,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Middle East:mid:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 43.77,
+          "upperAud": 115.41,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 17.16,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 54.34,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 35.32,
+          "upperAud": 73.36,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 220.2,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 143.13,
+          "upperAud": 297.27,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 65.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 137.27,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 336.02,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 110.1,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 8.7,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Dubai/"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "gpt-5",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "missingness": {
+      "domestic_draft_beer_1": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 38.76,
+      "accomPrivateRoom": 38.82,
+      "accom1star": 43.7,
+      "accom2star": 49.19,
+      "accom3star": 65.59,
+      "accom4star": 87.71,
+      "foodStreet": 59.47,
+      "foodBudget": 111.54,
+      "foodMid": 274.54,
+      "foodHigh": 672.04,
+      "drinkCoffee": 4.55,
+      "drinkLocalBeer": 4.23,
+      "drinkCocktail": 11.44,
+      "drinksNone": 9.11,
+      "drinksLight": 17.55,
+      "drinksModerate": 48.9,
+      "drinksHeavy": 79.59,
+      "activitiesFree": 0,
+      "activitiesBudget": 17.16,
+      "activitiesMid": 54.34,
+      "activitiesHigh": 220.2
+    }
+  },
+  "persistenceApiRoundTrip": {
+    "passed": true,
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 17.83,
+          "upperAud": 59.7,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 22.91,
+          "upperAud": 54.74,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 24.04,
+          "upperAud": 63.37,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 29.02,
+          "upperAud": 69.36,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 38.7,
+          "upperAud": 92.48,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 51.75,
+          "upperAud": 123.67,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 32.71,
+          "upperAud": 86.22,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 72.5,
+          "upperAud": 150.58,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 178.45,
+          "upperAud": 370.63,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 436.83,
+          "upperAud": 907.25,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.5,
+          "upperAud": 6.6,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.01,
+          "upperAud": 13.21,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 9.65,
+          "upperAud": 25.45,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 26.9,
+          "upperAud": 70.91,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 43.77,
+          "upperAud": 115.41,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 35.32,
+          "upperAud": 73.36,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 143.13,
+          "upperAud": 297.27,
+          "widthPct": 35
+        }
+      },
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 49,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Dubai from $32 | Expedia",
+          "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Dubai. September | $49",
+          "query": "site:expedia.com/3Star-Dubai-Hotels.s30 Dubai three-star September 2026 2 adults one room",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 39,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+          "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food | $39 | $96 | $235",
+          "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Food Meals Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 96,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+          "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food | $39 | $96 | $235",
+          "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Food Meals Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 235,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+          "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food | $39 | $96 | $235",
+          "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Food Meals Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 6,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+          "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment | $6 | $19 | $77",
+          "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Entertainment Activities Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 19,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+          "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment | $6 | $19 | $77",
+          "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Entertainment Activities Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 77,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223",
+          "sourceTitle": "How much does a trip to Dubai Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment | $6 | $19 | $77",
+          "query": "site:budgetyourtrip.com/united-arab-emirates/dubai/trip-cost Dubai Entertainment Activities Budget Mid-Range Luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 22.38,
+          "currency": "AED",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Dubai/",
+          "sourceTitle": "Cost of Living in Dubai. May 2026. Prices in Dubai",
+          "evidenceText": "Cappuccino (Regular Size) | Dh22.38 | 10.00-38.00",
+          "query": "site:numbeo.com/cost-of-living/in/Dubai \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Dubai. May 2026. Prices in Dubai",
+          "evidenceText": "The canonical Dubai result shows Domestic Draft Beer (0.5 Liter) | Dh50.00, not the prompt-required exact row label Domestic Draft Beer (1 Pint).",
+          "query": "site:numbeo.com/cost-of-living/in/Dubai \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "telemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T18:50:11.013Z",
+          "completedAt": "2026-08-12T18:50:11.013Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T18:50:11.013Z",
+          "completedAt": "2026-08-12T18:50:11.013Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "gpt-5",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T18:50:11.013Z",
+          "completedAt": "2026-08-12T18:50:11.013Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "domestic_draft_beer_1": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 65.59,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Dubai-Hotels.s30-0-d553248635974547388.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 55.77,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 137.27,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 336.02,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 8.58,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 27.17,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 110.1,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-arab-emirates/dubai/trip-cost-292223"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 8.7,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Dubai/"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "gpt-5",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        }
+      },
+      "sources": {}
+    }
+  }
+}

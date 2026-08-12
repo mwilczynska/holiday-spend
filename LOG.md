@@ -2880,3 +2880,26 @@ Generated development materializations were regenerated without duplicating raw 
 raw collection evidence remains in the experiment layer. No provider call, holdout access or live CSV write
 occurred. Phase 7B is now the exact next action: collect the fresh delegated 20-city canary in experiment
 011, leaving immutable experiment 010 untouched.
+
+## v6.1 Phase 7B delegated operational canary failed — 12 August 2026
+
+Experiment 011 was preregistered from experiment 010's immutable 20-city frame with the corrected search-enabled
+collection boundary, distinct Expedia arrival/departure dates (`2026-09-17` to `2026-09-18`), three source calls per
+city, the 4/4/2 search ceilings, ten-search city ceiling and zero direct reads. Codex subagents supplied the raw
+Stage-A responses and telemetry; local Stage B used the shipped schema parser, `materializeCityCostV61`, persistence
+adapter, API provenance parser and pure canary evaluator. All 20 cities have three raw responses and three telemetry
+records in the experiment directory.
+
+The registered gate **failed at 17/20 complete cities**, below the required 19/20. The artifact threshold passed:
+two artifact candidates (Cape Town and Lima) are 10% of the batch, below the 30% maximum. The failures are explicit:
+Dubai's three responses changed the registered city/country identity; Cape Town's BYT response used schema-invalid
+null `sourceTitle`/`evidenceText` fields for blocked measures; Lima's Expedia response used the same schema-invalid
+missingness representation. The evaluator therefore rejected those two cities rather than converting them into
+source coverage. Seventeen successful cities proved the search ceilings, zero direct reads, three-call records,
+19-tier materialization and field-by-field persistence/API provenance equality.
+
+This is a failed operational contract gate, not evidence to tune coefficients or compare with v1. The owner stop rule
+now blocks Phase 8 migration tooling and any rerun of the canary until this batch is reviewed and a corrected attempt
+is authorized. The 3–5-city user-key smoke remains pending before cutover; it is not a substitute for the failed
+19/20 gate. No holdout was read, no live CSV was written, no accommodation was refit, and no Phase 8 migration
+artifact was retained.

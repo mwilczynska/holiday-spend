@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Delhi",
+  "country": "India",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 223.17,
+      "currency": "INR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Delhi/",
+      "sourceTitle": "Cost of Living in Delhi. May 2026. Prices in Delhi",
+      "evidenceText": "Cappuccino (Regular Size) | ₹223.17 | 100.00-400.00",
+      "query": "site:numbeo.com/cost-of-living/in/Delhi \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "The canonical Delhi page returned \"Domestic Draft Beer (0.5 Liter)\", not the required exact label \"Domestic Draft Beer (1 Pint)\"; no qualifying exact-label result was found.",
+      "query": "site:numbeo.com/cost-of-living/in/Delhi \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search-snippet evidence only. The canonical Delhi page's 0.5-liter beer row was not substituted for the required 1-pint measure."
+}

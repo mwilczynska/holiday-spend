@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Melbourne",
+  "country": "Australia",
+  "retrievalStatus": "partial",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 33,
+      "currency": "AUD",
+      "sourceUrl": "https://www.budgetyourtrip.com/australia/melbourne",
+      "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $24 (AU$33)  | $57 (AU$80)  | $128 (AU$180) ... ^{2} Categories averaged on a per-day basis.",
+      "query": "site:budgetyourtrip.com/australia/melbourne.php Melbourne \"Food & Meals\" budget mid-range high-end per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 80,
+      "currency": "AUD",
+      "sourceUrl": "https://www.budgetyourtrip.com/australia/melbourne",
+      "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $24 (AU$33)  | $57 (AU$80)  | $128 (AU$180) ... ^{2} Categories averaged on a per-day basis.",
+      "query": "site:budgetyourtrip.com/australia/melbourne.php Melbourne \"Food & Meals\" budget mid-range high-end per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 180,
+      "currency": "AUD",
+      "sourceUrl": "https://www.budgetyourtrip.com/australia/melbourne",
+      "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $24 (AU$33)  | $57 (AU$80)  | $128 (AU$180) ... ^{2} Categories averaged on a per-day basis.",
+      "query": "site:budgetyourtrip.com/australia/melbourne.php Melbourne \"Food & Meals\" budget mid-range high-end per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $12 (AU$17)  | $30 (AU$42)  | $70 (AU$99) ... ^{1} Categories averaged on a per-item basis; the result also reports an average activity cost per person per day, but not tier values on that basis.",
+      "query": "site:budgetyourtrip.com/australia/melbourne.php Melbourne entertainment activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $12 (AU$17)  | $30 (AU$42)  | $70 (AU$99) ... ^{1} Categories averaged on a per-item basis; the result also reports an average activity cost per person per day, but not tier values on that basis.",
+      "query": "site:budgetyourtrip.com/australia/melbourne.php Melbourne entertainment activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $12 (AU$17)  | $30 (AU$42)  | $70 (AU$99) ... ^{1} Categories averaged on a per-item basis; the result also reports an average activity cost per person per day, but not tier values on that basis.",
+      "query": "site:budgetyourtrip.com/australia/melbourne.php Melbourne entertainment activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Reference date: 2026-09-17. Four BudgetYourTrip searches exposed Melbourne food budget, mid-range and luxury values with the source's explicit per-day basis. The Entertainment tier row is explicitly per-item, so its values were not substituted for the required per-person-per-day activity tiers. The source's separate activity average was not used as a tier."
+}

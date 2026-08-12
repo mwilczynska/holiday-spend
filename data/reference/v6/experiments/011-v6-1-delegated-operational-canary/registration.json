@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "city-cost-v6-1-delegated-canary-registration-v1",
+  "experiment": "011-v6-1-delegated-operational-canary",
+  "registeredAt": "2026-08-12",
+  "status": "preregistered",
+  "purpose": "Test the exact v6.1 Stage-A source contract and deterministic Stage-B production path without application provider credentials.",
+  "collectionMode": "delegated_codex_subagent",
+  "sourceRegistration": "data/reference/v6/experiments/010-v6-1-runtime-canary/registration.json",
+  "inputCsv": "data/reference/city_costs_app_aud.csv",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json",
+  "fxSnapshotSha256": "419469a6982bea62f3ff454b0981a0be46066ebdafec566bdf389a473766b3dc",
+  "referenceWindow": {
+    "arrival": "2026-09-17",
+    "departure": "2026-09-18",
+    "referenceDate": "2026-09-17",
+    "budgetYourTripReferenceDate": "2026-09-17",
+    "numbeoReferenceDate": "2026-09-17"
+  },
+  "prompts": {
+    "expedia_3star": {
+      "file": "docs/prompts/llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "sha256": "899aaf7b61c3eac7707d7a443a3dcdd46257c34dbfa07d66585b8d05042e497b"
+    },
+    "budgetyourtrip_daily_tiers": {
+      "file": "docs/prompts/llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "sha256": "3f562d87b0054e457718ec3d34ef1e9867ce4e3d5375675bc886acd15cebed38"
+    },
+    "numbeo_drinks": {
+      "file": "docs/prompts/llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+      "sha256": "aab4a5253115d1f3bc2e81e68bd2d5bb7569aa7153a5e2c000179a9dbbb4f156"
+    }
+  },
+  "implementationFiles": {
+    "src/lib/city-cost-v6-1-collection.ts": "348d60e1e2d504910e73dff589b4da9bc8fdd8ded073a6cc3ebb569344c1e286",
+    "src/lib/city-cost-methodology-v6-1.ts": "9ec4a6f4a49d8fb2d86ba9514234792b3daaff21a17f40beddf666a2e005517c",
+    "src/lib/city-generation-persistence.ts": "e6e9eb35a300c2f953f1551a86e1b3cbf3dfa5eac004e14f88d308d56af30daf",
+    "src/lib/city-estimate-provenance.ts": "a847e2eb24e16241e6aeac55313c75132ad8b3adc27c6c69920b22b1210f9681",
+    "src/lib/city-cost-v6-1-canary.ts": "c88cb1e81eb27d8dfe6181283e9496360a58304f927e185a8901ec2e37b5c686"
+  },
+  "limits": {
+    "cities": 20,
+    "sourceCallsPerCity": 3,
+    "maxSearchesPerCity": 10,
+    "maxSearchesBySource": {
+      "expedia_3star": 4,
+      "budgetyourtrip_daily_tiers": 4,
+      "numbeo_drinks": 2
+    },
+    "directPageReadsPerCity": 0,
+    "maxRetriesPerCall": 1
+  },
+  "passCriteria": {
+    "completeCitiesMinimum": 19,
+    "completeCityDefinition": "All three source calls have schema-valid city-matched responses (partial source statuses remain explicit and may invoke the shipped category fallback); the shipped materializer produces all 19 tiers; persistence/API provenance is field-identical; and no contract limit is violated. An all-prior bundle is an artifact candidate, not source coverage.",
+    "provenanceRoundTrip": "Persisted and API-parsed methodology version, grades, intervals, anchors/facts, telemetry, missingness, prior basis and input snapshot are byte-equal to Stage-B values.",
+    "artifactBatchMaximumFraction": 0.3
+  },
+  "cities": [
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "SEA low-cost strong-source representative"
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "SEA low-cost strong-source major city"
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": "low",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "SEA low-cost strong-source secondary city"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "region": "SEA",
+      "band": "high",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "SEA high-cost strong-source representative"
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "region": "East Asia",
+      "band": "mid",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "East Asia mid-cost non-USD strong-source representative"
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": "high",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "East Asia high-cost non-USD strong-source representative"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "band": "high",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "East Asia high-cost non-USD strong-source representative"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "band": "low",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "South Asia low-cost weak-source representative"
+    },
+    {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "region": "South Asia",
+      "band": "low",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "South Asia low-cost weak-source non-USD edge case"
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "region": "South Asia",
+      "band": "mid",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "South Asia mid-cost weak-source major city"
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "band": "mid",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "Middle East mid-cost weak-source non-USD representative"
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "region": "Middle East",
+      "band": "high",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "Middle East high-cost weak-source non-USD representative"
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "region": "Africa",
+      "band": "mid",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "Africa mid-cost strong-source non-USD representative"
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "region": "Africa",
+      "band": "low",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "Africa low-cost weak-source representative"
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": "high",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "Europe high-cost strong-source representative"
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "band": "mid",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "Europe mid-cost weak-source non-USD representative"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": "mid",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "Latin America mid-cost strong-source non-USD representative"
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "region": "Latin America",
+      "band": "mid",
+      "fixtureSourceStrength": "strong",
+      "selectionReason": "Latin America mid-cost strong-source non-USD representative"
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "band": "high",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "North America high-cost weak-source USD contrast"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": "high",
+      "fixtureSourceStrength": "weak",
+      "selectionReason": "Oceania high-cost weak-source AUD contrast"
+    }
+  ],
+  "holdoutRead": false,
+  "liveCsvWritten": false
+}

@@ -8,12 +8,12 @@
 **Phase 7A repair commit:** `0c52a23`
 **Phase 7 canary result commit:** `1bc352f` (experiment 010 preflight only)
 **Phase 7 first attempt:** credential preflight only; superseded as a canary result
+**Phase 7B delegated canary:** failed 17/20; experiment 011 retained for owner review
 
-**Milestone:** M4 coherent migration of the 121-city library — **owner approved; Phase 7 repair active**
-**Exact next action:** create experiment 011 from the immutable experiment-010 city frame, preregister the
-corrected hashes/window and collect its three search-snippet-only Stage-A responses per city with Codex
-subagents. Then run Stage B through `materializeCityCostV61`, the persistence/API round-trip and the pure
-canary evaluator; do not rerun or mutate experiment 010.
+**Milestone:** M4 coherent migration of the 121-city library — **owner approved; Phase 7B failed; migration stopped**
+**Exact next action:** review `data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json` and
+`verdict.md` with the owner. Do not start Phase 8 or rerun experiment 011 until a corrected canary attempt is
+explicitly authorized; experiment 010 remains immutable.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -86,7 +86,11 @@ Banked and verified:
 - the Phase 7 canary registration and credential-preflight record;
 - Phase 7A search-enabled collection repair, distinct Expedia date handling, strict call preservation,
   pure canary evaluator and provenance round-trip fields;
-- the full verification baseline, clean branch and pushed Phase 7 result commit.
+- delegated experiment 011 raw responses and telemetry for all 20 cities, with 17 complete Stage-B bundles;
+- the recorded Phase 7B failure: Dubai identity drift, Cape Town schema-invalid BYT missingness, Lima
+  schema-invalid Expedia missingness, and two artifact candidates (10%);
+- the verification baseline after the failed canary, with the canary gate itself recorded as failed;
+- no bulk migration responses or staged CSV.
 
 Current production state:
 
@@ -94,8 +98,8 @@ Current production state:
 - the feature flag is opt-in and flag-off remains v1;
 - experiment 010 made zero provider calls because no `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or
   `GEMINI_API_KEY` was configured. It is not a measured 0/20 source result;
-- a fresh delegated operational canary has not yet been collected; experiment 010 remains immutable
-  preflight history;
+- experiment 011 is the fresh delegated operational canary and failed at 17/20 against the required 19/20;
+  experiment 010 remains immutable preflight history;
 - no bulk migration responses or staged CSV exist yet;
 - all holdouts are spent/closed and irrelevant to the operational migration.
 
@@ -127,10 +131,10 @@ provider client does not enable web search, and Expedia receives the same arriva
 canary evaluator additionally omits registered gates and can count all-prior materializations as source
 coverage. Preserve experiment 010 unchanged as the failed preflight record; do not rerun it.
 
-Phase 7A repaired those implementation defects. Phase 7B creates a new experiment using Codex subagents
-for the same representative city frame and the exact production prompt/schema/search contract, then feeds
+Phase 7A repaired those implementation defects. Phase 7B used Codex subagents for the same representative
+city frame and the exact production prompt/schema/search contract, then fed
 the responses through shipped Stage B. Phase 7C is a later 3–5-city user-key provider transport/database/API
-smoke. Only Phase 7A and 7B block Phase 8; Phase 7C blocks cutover, not migration tooling or staging.
+smoke. Phase 8 is blocked by the failed Phase 7B gate; do not treat delegated partial success as authorization to migrate.
 
 ## 5. Why the migration is staged
 
@@ -148,9 +152,9 @@ Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete 
 
 1. **Phase 6:** contract/document reconciliation and validator assertion — **complete and pushed**.
 2. **Phase 7A:** repair search-enabled production collection, date handling and canary evaluator — **complete in current Phase 7A commit**.
-3. **Phase 7B:** fresh delegated 20-city operational canary; require at least 19/20 complete contracts — **next**.
+3. **Phase 7B:** fresh delegated 20-city operational canary — **failed 17/20; stopped for owner review**.
 4. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
-5. **Phase 8:** resumable/idempotent migration tooling and canary dry run.
+5. **Phase 8:** resumable/idempotent migration tooling and canary dry run — **blocked until Phase 7B passes**.
 6. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
 sidecar only.
 7. **Phase 10:** complete operational-impact report; then stop for owner review.
@@ -213,7 +217,7 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
-node scripts/run-v6-1-runtime-canary.mjs --check
+node scripts/run-v6-1-delegated-canary.mjs --check
 ```
 
 Add migration-specific checks when Phase 8 creates them. Rerun a failed full test suite once before
