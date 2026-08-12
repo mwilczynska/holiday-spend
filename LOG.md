@@ -2769,8 +2769,8 @@ The release validator was also corrected: source-dependence and integration are 
 fixtures, development coverage is measured at 25/25, runtime >=95% coverage is recorded as unmeasured,
 and Gate 10 verification is recorded as external evidence. The generated status is
 `scored_development_runtime_unmeasured`; this is a truthful development release score, not a claim that
-runtime coverage or the external baseline was observed by the validator. Phase 4 FX metadata maintenance
-and the Phase 5 rollout preview remain to be completed before owner review.
+runtime coverage or the external baseline was observed by the validator. The dated Phase 4 and Phase 5
+records below supersede the earlier statement that those hardening phases remained open.
 
 ## v6.1 frozen-FX coverage maintenance — 12 August 2026
 
@@ -2785,3 +2785,16 @@ construction now excludes 0 rows instead of 34. Direct Numbeo drink coverage imp
 was also refreshed to restore its deterministic check after the earlier street-food gating change; the
 accommodation coefficients and source offset are byte-equivalent in substance, with no accommodation
 refit. No city-price collection, holdout, or shipping-CSV change occurred.
+
+## v6.1 Phase 5 rollout preview — 12 August 2026
+
+Phase 5 is complete without provider, web, city-price or holdout access. The deterministic preview compares
+the 25 existing v6.1 development fixtures × 19 tiers with the unchanged v1 CSV, and records every city ×
+tier pair, category subtotals, fixed representative budget/mid-range/high-end baskets, median and p10/p90
+tails, and explicit >2x/<0.5x flags. The protocol and generated artifacts are experiment 009,
+`data/reference/v6/v6-1-rollout-preview.json`, and `data/reference/v6/v6-1-rollout-preview.md`; the CSV
+SHA-256 is `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+This is an operational impact comparison, not ground-truth validation. It recommends NEW-city-only v6.1
+activation behind the existing feature flag after owner review. Runtime >=95% coverage remains unmeasured;
+global flag enablement, migration of the 121-city CSV, holdout work and M4 remain out of scope.

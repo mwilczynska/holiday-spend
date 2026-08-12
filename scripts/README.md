@@ -64,6 +64,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/score-v6-development-panel-in-sample.mjs` | `score-v6-development-panel-in-sample.mjs` | Scores only paired development prediction/truth rows and labels all blocked/circular results; never reads a holdout |
 | `node scripts/report-city-cost-v6-development-in-sample.mjs` | `report-city-cost-v6-development-in-sample.mjs` | Generates the 19-tier development-only M3 table and gate 2–6 status from the coefficients and in-sample score; never reads a holdout |
 | `node scripts/analyze-city-cost-v6-food-baskets.mjs` | `analyze-city-cost-v6-food-baskets.mjs` | Diagnoses beverage-boundary effects, screens food basket re-weightings by development LOO, and reports Numbeo observation coverage by region; never reads a holdout or changes coefficients |
+| `node scripts/generate-city-cost-v6-1-rollout-preview.mjs [--check]` | `generate-city-cost-v6-1-rollout-preview.mjs` | Generates the read-only 25-city v1-versus-v6.1 operational impact preview; records the shipping CSV hash, basket profiles, tails and >2x/<0.5x flags; never writes the CSV or reads a holdout |
 
 ## SUPERSEDED — methodology v5
 

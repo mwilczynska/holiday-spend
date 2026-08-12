@@ -3,7 +3,7 @@
 **As at:** 12 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 **Milestone:** v6.1 implementation — **complete for new-city generation**
-**Exact next action:** generate the Phase 5 rollout preview from the existing fixtures and unchanged CSV, then stop for owner review; keep M4/121-city migration separate
+**Exact next action:** owner review of the generated Phase 5 rollout preview; do not begin M4 or migrate the 121-city CSV
 
 This handoff is written for a cold GPT-5.6 Luna Max context. It supersedes the earlier M3 handoffs. The
 v6.0 evidence and commits remain valid history; do not reconstruct the workstream from old prompts.
@@ -148,11 +148,11 @@ against itself.
 
 ## 7. Exact next action
 
-Release hardening is in progress. Persistence and API/UI provenance are now fixed and pushed; the corrected
-release result is `scored_development_runtime_unmeasured`, not a claim of runtime coverage or observed Gate 10.
-The next action is Phase 4: add source-attributed SGD, TWD, ZAR and PEN rates to the frozen FX metadata,
-regenerate v6.1 priors/materializations/release artifacts, and report the direct drink-coverage change.
-Then generate the Phase 5 rollout preview and stop for owner review.
+Release hardening is complete through the read-only rollout preview. Persistence and API/UI provenance are
+fixed and pushed; the corrected release result is `scored_development_runtime_unmeasured`, not a claim of
+runtime coverage or observed Gate 10. Phase 4 added source-attributed SGD, TWD, ZAR and PEN rates; Phase 5
+generated the v1-versus-v6.1 operational comparison and recommends new-city-only activation after owner
+review.
 
 Do not change coefficients, collect prices, read any holdout, migrate the 121-city CSV, enable the flag
 globally, or begin M4.
@@ -163,7 +163,7 @@ globally, or begin M4.
 2. Simplified v6.1 materializer — **complete** in `src/lib/city-cost-methodology-v6-1.ts`.
 3. Generated category priors and 25-city fixtures — **complete** from existing experiments 003/006.
 4. Reachable release validator/report — **measured gates complete; runtime coverage and Gate 10 explicit**.
-5. New-city feature-flag integration and rollback — **complete**; rollout preview and M4 boundary remain open.
+5. New-city feature-flag integration and rollback — **complete**; rollout preview generated and owner review is open.
 
 Commit and push after each phase. Rewrite §3 and §7 of this handoff with actual completed state and the
 next exact action.
@@ -242,10 +242,9 @@ The release validator no longer treats source-dependence or integration as liter
 `scored_development_runtime_unmeasured`; its report is
 `data/reference/v6/v6-1-development-release-report.md`.
 
-The exact next action after this hardening phase was Phase 4: add source-attributed SGD, TWD, ZAR and PEN
-rates to the frozen FX metadata, regenerate v6.1 priors/materializations/release artifacts, and report
-drink direct-coverage change. That phase is complete; Phase 5 now generates the rollout preview and stops
-for owner review.
+The earlier next-action text in this historical correction is superseded by §15. Phase 4 added
+source-attributed SGD, TWD, ZAR and PEN rates, and Phase 5 generated the rollout preview. The current
+state is owner review only.
 Do not enable the flag globally, migrate the 121-city CSV, read any holdout, collect prices, or start M4.
 
 ## 14. Phase 4 completion — 12 August 2026
@@ -255,7 +254,21 @@ rates; regenerated priors exclude 0 rows rather than the previous 34. Direct Num
 17/25 (68%), up from 13/25 (52%), with 8 explicit fallback cities instead of 12. The updated generated
 artifacts are checked by the release validator.
 
-The exact next action is Phase 5: generate the deterministic v1-versus-v6.1 rollout preview from the
-existing 25-city fixtures and unchanged shipping CSV, document the CSV hash and recommend new-city-only
-activation. Then stop for owner review. Do not enable the feature flag globally, migrate the CSV, read or
-collect a holdout, collect new city prices, or begin M4.
+Phase 5 is complete; see §15 for the deterministic v1-versus-v6.1 rollout preview, CSV hash and
+new-city-only recommendation. Do not enable the feature flag globally, migrate the CSV, read or collect a
+holdout, collect new city prices, or begin M4.
+
+## 15. Phase 5 rollout preview — 12 August 2026
+
+Phase 5 is complete. `scripts/generate-city-cost-v6-1-rollout-preview.mjs` generated a read-only comparison
+of all 25 existing development fixtures × 19 tiers against the unchanged v1 CSV. The artifacts are
+`data/reference/v6/v6-1-rollout-preview.json`, `data/reference/v6/v6-1-rollout-preview.md`, and
+`data/reference/v6/experiments/009-v6-1-rollout-preview/protocol.md`. The preview includes per-city and
+per-tier values, category subtotals, fixed budget/mid-range/high-end basket profiles, median and p10/p90
+tails, explicit >2x/<0.5x flags, and CSV SHA-256
+`0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
+
+The recommendation is **new-city-only activation after owner review**. This is an operational impact
+comparison, not ground-truth validation. Runtime >=95% coverage remains unmeasured; the existing v1 path
+remains the rollback; global flag enablement, CSV migration, holdout work and M4 are out of scope. Stop here
+for owner review.

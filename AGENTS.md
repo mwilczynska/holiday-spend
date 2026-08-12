@@ -163,7 +163,8 @@ The v6.1 source contract, deterministic materializer, generated priors, 25-city 
 feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
 validator now computes the nine measured gates, records runtime >=95% coverage as unmeasured, and records
 the verification baseline as external evidence; the earlier claim that all nine gates alone completed the
-release is superseded. Phase 4 FX coverage is complete; the rollout decision remains open. Flag-on uses v6.1 and
+release is superseded. Phase 4 FX coverage is complete. The read-only rollout preview recommends new-city-only
+activation after owner review; runtime coverage remains unmeasured, so flag-on is not a global release and
 flag-off remains v1.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
@@ -263,6 +264,7 @@ node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete # zero er
 node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
+node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.

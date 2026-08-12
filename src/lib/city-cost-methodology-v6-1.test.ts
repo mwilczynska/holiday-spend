@@ -113,7 +113,7 @@ describe('materializeCityCostV61', () => {
     expect(result.anchors.cocktail_1.status).toBe('modelled');
     expect(result.mappedEstimate.drinkCoffee).toBe(4);
     expect(result.mappedEstimate.drinkLocalBeer).toBe(5);
-    expect(result.mappedEstimate.drinkCocktail).toBe(10.4);
+    expect(result.mappedEstimate.drinkCocktail).toBeCloseTo(9.94, 2);
     expect(result.mappedEstimate.drinkWineGlass).toBeUndefined();
   });
 

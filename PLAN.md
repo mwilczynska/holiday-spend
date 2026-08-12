@@ -234,7 +234,10 @@ computes the measured gates on the 25 x 19 replay, records development coverage 
 >=95% coverage as **unmeasured**, and records verification as **external** rather than silently omitting
 Gate 10. The generated report is
 [`data/reference/v6/v6-1-development-release-report.md`](data/reference/v6/v6-1-development-release-report.md);
-its v1 comparison is informational only. No holdout was read and the 121-city CSV is byte-unchanged.
+its v1 comparison is informational only. The read-only rollout preview is in
+[`data/reference/v6/v6-1-rollout-preview.md`](data/reference/v6/v6-1-rollout-preview.md), with complete
+city × tier and basket detail in the adjacent JSON and the unchanged CSV hash. No holdout was read and the
+121-city CSV is byte-unchanged.
 
 **Finish line:** 25/25 fixtures produce all 19 graded and provenance-bearing values; runtime collection is
 three calls / at most ten searches; accommodation's 8.27%–25.46% median APE result is preserved; food and
@@ -382,6 +385,17 @@ gating change; the accommodation coefficients and source offset are unchanged. P
 preview and owner review—is now the exact next action.
 
 ---
+
+### v6.1 Phase 5 rollout preview — 12 August 2026
+
+The deterministic, read-only comparison is generated at
+[`data/reference/v6/v6-1-rollout-preview.md`](data/reference/v6/v6-1-rollout-preview.md), with complete
+city × tier and basket detail in the adjacent JSON and the protocol in experiment 009. It compares all
+25 existing v6.1 fixtures against the unchanged 121-city v1 CSV, records the CSV SHA-256, category
+subtotals, representative budget/mid/high baskets, distribution tails and explicit >2x/<0.5x flags.
+It is an operational impact preview, not ground-truth validation. It recommends v6.1 for NEW cities only
+behind the existing flag after owner review; it does not recommend global activation or CSV migration.
+Phase 5 is complete and the workstream now stops for owner review.
 
 ## Traps retained from earlier work
 
