@@ -3,7 +3,7 @@
 **As at:** 10 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 **Milestone:** v6.1 implementation — **complete for new-city generation**
-**Exact next action:** no further v6.1 implementation; keep M4/121-city migration as a separate decision
+**Exact next action:** complete Phase 4 frozen-FX maintenance, then generate the Phase 5 rollout preview and stop for owner review; keep M4/121-city migration separate
 
 This handoff is written for a cold GPT-5.6 Luna Max context. It supersedes the earlier M3 handoffs. The
 v6.0 evidence and commits remain valid history; do not reconstruct the workstream from old prompts.
@@ -61,10 +61,12 @@ anchor names, so it remains historical. v6.1 now has an isolated source boundary
 25-city replay under `data/reference/v6/experiments/008-v6-1-development-fixtures/`. The feature flag now
 uses this v6.1 path; the 121-city CSV and flag-off v1 path are unchanged.
 
-Phase 4 release validation is complete: the generated 25-city × 19-tier report and JSON result pass all nine
-reachable gates. The report carries the six banked accommodation accuracy figures, direct/fallback coverage,
-grade distribution, refresh economics and the read-only v1 A/B comparison. Food/activity source dependence and
-drink-preset assumptions are disclosed; no independent accuracy claim is made for them.
+The earlier Phase 4 release-validation completion claim is superseded by the 12 August release-hardening
+correction. The generated 25-city × 19-tier replay now computes the measured gates, records development
+coverage as 25/25, records runtime >=95% coverage as unmeasured, and records verification as external. The
+report carries the six banked accommodation accuracy figures, direct/fallback coverage, grade distribution,
+refresh economics and the read-only v1 A/B comparison. Food/activity source dependence and drink-preset
+assumptions are disclosed; no independent accuracy claim is made for them.
 
 ## 4. What is banked
 
@@ -146,23 +148,22 @@ against itself.
 
 ## 7. Exact next action
 
-The v6.1 finish line is complete:
+Release hardening is in progress. Persistence and API/UI provenance are now fixed and pushed; the corrected
+release result is `scored_development_runtime_unmeasured`, not a claim of runtime coverage or observed Gate 10.
+The next action is Phase 4: add source-attributed SGD, TWD, ZAR and PEN rates to the frozen FX metadata,
+regenerate v6.1 priors/materializations/release artifacts, and report the direct drink-coverage change.
+Then generate the Phase 5 rollout preview and stop for owner review.
 
-1. The generated report/result and release-validator commands are in the verification baseline.
-2. The feature-flag regression test confirms flag-on uses v6.1 and an unset flag leaves v1 selected.
-3. The handoff, active plan, project memory, evidence inventory, methodology page and LOG record the final state.
-4. The complete baseline passes, including v6.1 priors, materialization and release `--check` commands.
-5. The implementation and release-boundary documentation are committed and pushed.
-
-Do not begin by changing coefficients, priors or the materializer. The response contract comes first.
+Do not change coefficients, collect prices, read any holdout, migrate the 121-city CSV, enable the flag
+globally, or begin M4.
 
 ## 8. Implementation sequence
 
 1. Source schemas and prompt wiring — **complete** in `src/lib/city-cost-v6-1-collection.ts`.
 2. Simplified v6.1 materializer — **complete** in `src/lib/city-cost-methodology-v6-1.ts`.
 3. Generated category priors and 25-city fixtures — **complete** from existing experiments 003/006.
-4. Reachable release validator/report — **complete**.
-5. New-city feature-flag integration and rollback/release documentation — **complete**; M4 is separate.
+4. Reachable release validator/report — **measured gates complete; runtime coverage and Gate 10 explicit**.
+5. New-city feature-flag integration and rollback — **complete**; rollout preview and M4 boundary remain open.
 
 Commit and push after each phase. Rewrite §3 and §7 of this handoff with actual completed state and the
 next exact action.
@@ -225,3 +226,23 @@ v6.1 is done when all 19 tiers materialize for 25/25 fixtures with grades/proven
 new-city path passes, category fallback is explicit, all reachable release gates report cleanly, the v1
 rollback still works, the 121-city CSV is untouched, no holdout was read, the final baseline passes, and
 the branch is clean and pushed.
+
+## 13. Dated release-hardening correction — 12 August 2026
+
+This correction supersedes the earlier completion language in §§3, 4 and 7. The v6.1 implementation and
+deterministic materializer are banked, but the production persistence boundary was v6.0-only until
+`a8e93ce`; v6.1 could otherwise be saved as v1 and lose its provenance. The pure adapter and estimates
+provenance parser now preserve methodology `v6.1`, the 19 grades/intervals, facts, telemetry, missingness,
+prior basis and input snapshot, while preserving v1 and historical v6.0 behavior.
+
+The release validator no longer treats source-dependence or integration as literal passes. It reports
+25/25 development fixture coverage, runtime >=95% coverage as **unmeasured**, and Gate 10 verification as
+**external** evidence. The corrected generated result is
+`data/reference/v6/v6-1-release-validation.json` with status
+`scored_development_runtime_unmeasured`; its report is
+`data/reference/v6/v6-1-development-release-report.md`.
+
+The exact next action after this hardening phase is Phase 4: add source-attributed SGD, TWD, ZAR and PEN
+rates to the frozen FX metadata, regenerate v6.1 priors/materializations/release artifacts, and report
+drink direct-coverage change. Then Phase 5 will generate the rollout preview and stop for owner review.
+Do not enable the flag globally, migrate the 121-city CSV, read any holdout, collect prices, or start M4.

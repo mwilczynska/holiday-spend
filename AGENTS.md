@@ -160,9 +160,11 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 ### v6.1 — the active workstream
 
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
-reachable release validator/report and feature-flagged new-city path are implemented. The nine reachable
-release gates and full verification baseline pass; v6.1 is complete for new-city generation. Flag-on uses
-v6.1 and flag-off remains v1.
+feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
+validator now computes the nine measured gates, records runtime >=95% coverage as unmeasured, and records
+the verification baseline as external evidence; the earlier claim that all nine gates alone completed the
+release is superseded. Phase 4 FX coverage and the rollout decision remain open. Flag-on uses v6.1 and
+flag-off remains v1.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,

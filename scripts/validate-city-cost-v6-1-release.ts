@@ -10,6 +10,9 @@ import {
 } from '../src/lib/city-cost-v6-1-collection';
 import { materializeCityCostV61 } from '../src/lib/city-cost-methodology-v6-1';
 import { V5_TIER_NAMES, type V5TierName } from '../src/lib/city-cost-methodology-v5';
+import { isCityCostV6Enabled, type CityGenerationResult, type V6GeneratedCityPayload } from '../src/lib/city-generation';
+import { buildCityEstimatePersistence } from '../src/lib/city-generation-persistence';
+import { readV6Provenance } from '../src/lib/city-estimate-provenance';
 
 const ROOT = process.cwd();
 const MANIFEST_PATH = path.join(ROOT, 'data/reference/v6/validation-manifest-v6-1.json');
@@ -29,6 +32,21 @@ const BANKED_ACCOMMODATION_APE: Record<string, number> = {
   accom_2_star: 16.74,
   accom_1_star: 21.49,
   accom_shared_hostel_dorm: 25.46,
+};
+
+const SOURCE_DEPENDENCE_LABELS = {
+  accommodation: 'Expedia 3-star source anchor plus banked Booking ladder',
+  food: 'BudgetYourTrip source-backed daily product estimate',
+  drinks: 'Numbeo source-priced consumption preset',
+  activities: 'BudgetYourTrip source-backed daily product estimate',
+} as const;
+
+type GateResult = boolean | {
+  status: 'unmeasured' | 'external';
+  requirement: string;
+  threshold?: number | string;
+  evidence?: string;
+  blocking: false;
 };
 
 const CATEGORY_TIERS = {
@@ -108,6 +126,117 @@ function loadCityBundle(city: Inputs['cities'][number]) {
   });
   const bundle = readJson<{ materialization: typeof materialization }>(path.join(CITY_DIR, `${citySlug}.json`));
   return { responses, collection, materialization, storedMaterialization: bundle.materialization };
+}
+
+function buildV61GenerationResult(bundle: ReturnType<typeof loadCityBundle>): CityGenerationResult {
+  const materialization = bundle.materialization;
+  const payload: V6GeneratedCityPayload = {
+    city: materialization.city,
+    country: materialization.country,
+    region: materialization.region ?? 'unknown',
+    confidence: 'high',
+    confidence_notes: 'Validator fixture for the v6.1 persistence boundary.',
+    anchors_aud: Object.fromEntries(
+      Object.entries(materialization.anchors).map(([anchor, value]) => [anchor, value.valueAud ?? 0])
+    ),
+    tiers_aud: Object.fromEntries(
+      Object.entries(materialization.tiersAud).map(([tier, value]) => [tier, value.amountAud ?? 0])
+    ),
+    evidence_grades: Object.fromEntries(
+      Object.entries(materialization.tiersAud).map(([tier, value]) => [tier, value.evidenceGrade])
+    ),
+    intervals: Object.fromEntries(
+      Object.entries(materialization.tiersAud).map(([tier, value]) => [tier, value.interval])
+    ),
+  };
+
+  return {
+    provider: bundle.collection.telemetry[0]?.provider ?? 'fixture',
+    model: bundle.collection.telemetry[0]?.model ?? 'fixture',
+    promptVersion: 'city-cost-v6-1-spine-v1',
+    payload,
+    mappedEstimate: materialization.mappedEstimate,
+    inferredAudPerUsd: null,
+    methodologyVersion: 'v6.1',
+    v61Collection: bundle.collection,
+    v61Materialization: materialization,
+  };
+}
+
+function buildV1RollbackResult(): CityGenerationResult {
+  const anchors = {
+    beer: 1,
+    coffee: 1,
+    inexp_meal_1p: 1,
+    midrange_meal_2p: 2,
+    cocktail: 3,
+    wine_glass: 2,
+    hostel_dorm_1p: 1,
+    hostel_private_2p: 2,
+    hotel_1star_2p: 3,
+    hotel_3star_2p: 5,
+  };
+  const tiers = Object.fromEntries(V5_TIER_NAMES.map((tier) => [tier, 10]));
+  return {
+    provider: 'fixture',
+    model: 'fixture',
+    promptVersion: 'v1-fixture',
+    payload: {
+      city: 'Rollback City',
+      country: 'Fixtureland',
+      region: 'Europe',
+      confidence: 'medium',
+      confidence_notes: 'Validator fixture for the v1 rollback boundary.',
+      anchors_usd: anchors,
+      tiers_aud: {
+        accom_shared_hostel_dorm: tiers.accom_shared_hostel_dorm,
+        accom_hostel_private_room: tiers.accom_hostel_private_room,
+        accom_1_star: tiers.accom_1_star,
+        accom_2_star: tiers.accom_2_star,
+        accom_3_star: tiers.accom_3_star,
+        accom_4_star: tiers.accom_4_star,
+        food_street_food: tiers.food_street_food,
+        food_budget: tiers.food_budget,
+        food_mid_range: tiers.food_mid_range,
+        food_high_end: tiers.food_high_end,
+        drinks_none: tiers.drinks_none,
+        drinks_light: tiers.drinks_light,
+        drinks_moderate: tiers.drinks_moderate,
+        drinks_heavy: tiers.drinks_heavy,
+        activities_free: tiers.activities_free,
+        activities_budget: tiers.activities_budget,
+        activities_mid_range: tiers.activities_mid_range,
+        activities_high_end: tiers.activities_high_end,
+      },
+    },
+    mappedEstimate: {},
+    inferredAudPerUsd: 1.5,
+    methodologyVersion: 'v1',
+  } as CityGenerationResult;
+}
+
+function checkIntegrationAndRollback(bundle: ReturnType<typeof loadCityBundle>) {
+  const problems: string[] = [];
+  const v61Persisted = buildCityEstimatePersistence(buildV61GenerationResult(bundle));
+  const parsedV61 = readV6Provenance(JSON.stringify(v61Persisted.metadata));
+  if (v61Persisted.estimateSource !== 'llm_city_generation_v6_1') problems.push('v6.1 estimate source was not distinct');
+  if (!parsedV61 || parsedV61.methodologyVersion !== 'v6.1') problems.push('v6.1 provenance parser did not preserve the version');
+  if (Object.keys(parsedV61?.evidenceGrades ?? {}).length !== V5_TIER_NAMES.length) problems.push('v6.1 persistence lost tier grades');
+  if (Object.keys(parsedV61?.intervals ?? {}).length !== V5_TIER_NAMES.length) problems.push('v6.1 persistence lost tier intervals');
+  if (!Array.isArray(parsedV61?.collectionTelemetry) || parsedV61.collectionTelemetry.length === 0) problems.push('v6.1 persistence lost collection telemetry');
+  if (!v61Persisted.inputSnapshot || !v61Persisted.metadata.v6PriorBasis) problems.push('v6.1 persistence lost anchors or prior basis');
+
+  const originalFlag = process.env.CITY_COST_METHODOLOGY_V6;
+  delete process.env.CITY_COST_METHODOLOGY_V6;
+  const flagOff = !isCityCostV6Enabled();
+  if (originalFlag === undefined) delete process.env.CITY_COST_METHODOLOGY_V6;
+  else process.env.CITY_COST_METHODOLOGY_V6 = originalFlag;
+
+  const v1Persisted = buildCityEstimatePersistence(buildV1RollbackResult());
+  if (!flagOff || v1Persisted.estimateSource !== 'llm_city_generation' || v1Persisted.metadata.evidenceGrades !== null) {
+    problems.push('v1 rollback boundary did not remain explicit');
+  }
+  return { passed: problems.length === 0, problems };
 }
 
 function checkSourceContracts(city: Inputs['cities'][number], responses: ReturnType<typeof loadCityBundle>['responses'], errors: string[]) {
@@ -220,8 +349,51 @@ function categorySummary(cityRows: Inputs['cities'], bundles: Map<string, Return
   return output;
 }
 
+function sourceDependenceDisclosure(
+  cityRows: Inputs['cities'],
+  categoryCoverage: Record<string, unknown>,
+  fallbackCounts: Record<string, number>,
+  gradeDistribution: Record<string, number>
+) {
+  const gradeCellCount = Object.values(gradeDistribution).reduce((sum, count) => sum + count, 0);
+  const byCategory = Object.fromEntries(
+    Object.entries(SOURCE_DEPENDENCE_LABELS).map(([category, label]) => {
+      const summary = categoryCoverage[category] as {
+        directCities?: number;
+        fallbackCities?: number;
+        directRatePct?: number;
+        fallbackRatePct?: number;
+      } | undefined;
+      const fallbackCountMatches = summary?.fallbackCities === fallbackCounts[category];
+      const cityCountMatches = (summary?.directCities ?? 0) + (summary?.fallbackCities ?? 0) === cityRows.length;
+      return [category, {
+        label,
+        directCities: summary?.directCities ?? 0,
+        fallbackCities: summary?.fallbackCities ?? 0,
+        directRatePct: summary?.directRatePct ?? null,
+        fallbackRatePct: summary?.fallbackRatePct ?? null,
+        fallbackCountMatches,
+        cityCountMatches,
+      }];
+    })
+  );
+  const complete = Object.values(byCategory).every((value) => value.fallbackCountMatches && value.cityCountMatches)
+    && gradeCellCount === cityRows.length * V5_TIER_NAMES.length;
+  return { labels: SOURCE_DEPENDENCE_LABELS, byCategory, gradeDistribution, complete };
+}
+
 function markdownTable(rows: Array<Array<string | number>>) {
   return rows.map((row, index) => `| ${row.join(' | ')} |${index === 0 ? `\n| ${row.map(() => '---').join(' | ')} |` : ''}`).join('\n');
+}
+
+function gateResultLabel(value: GateResult) {
+  if (typeof value === 'boolean') return value ? 'PASS' : 'FAIL';
+  return `${value.status.toUpperCase()} (not a pass)`;
+}
+
+function gateResultEvidence(value: GateResult) {
+  if (typeof value === 'boolean') return value ? 'Computed by the release validator.' : 'Computed failure; inspect validator errors.';
+  return `${value.requirement}${value.evidence ? ` ${value.evidence}` : ''}`;
 }
 
 function buildReport(input: {
@@ -234,15 +406,24 @@ function buildReport(input: {
   v1Missing: string[];
   shippingCsvSha256: string;
 }) {
-  const validation = input.validation as { generatedAt: string; cities: number; tierCount: number; fallbackCounts: Record<string, unknown> };
+  const validation = input.validation as {
+    generatedAt: string;
+    status: string;
+    cities: number;
+    tierCount: number;
+    fallbackCounts: Record<string, unknown>;
+    developmentCoverage: { foundCities: number; requiredCities: number; completeTierCities: number; threshold: string };
+    runtimeCoverage: { status: string; threshold: number };
+    gates: Record<string, GateResult>;
+  };
   const tierSection = markdownTable([
     ['Tier', 'v6.1 derivation', 'Grade / interval', 'Development coverage', 'Fallback path', 'Development fit', 'Holdout', 'v1 median APE'],
     ...input.tierRows,
   ]);
   return `# v6.1 development release report
 
-**Status:** reachable release replay; not holdout validation  
-**Generated:** ${validation.generatedAt}  
+**Status:** ${validation.status}
+**Generated:** ${validation.generatedAt}
 **Panel:** ${validation.cities} development cities × ${validation.tierCount} product tiers  
 **Holdout:** no holdout read; all v6.0 holdout measures remain spent/closed  
 **Shipping CSV:** read-only informational comparison; SHA-256 ${input.shippingCsvSha256}
@@ -254,6 +435,11 @@ development fixtures through the v6.1 collector contract and materializeCityCost
 development replay, not an accuracy claim against independent ground truth. Food and activities are
 BudgetYourTrip source-backed product estimates; drinks are source-priced consumption presets; only the
 accommodation ladder has the banked independent Booking development accuracy result.
+
+Development fixture coverage is measured at ${validation.developmentCoverage.foundCities}/${validation.developmentCoverage.requiredCities}
+cities with ${validation.developmentCoverage.completeTierCities} complete 19-tier bundles. Runtime coverage is
+**${validation.runtimeCoverage.status}**, not measured by this fixture replay; the manifest's ${validation.runtimeCoverage.threshold * 100}%
+runtime clause is therefore not reported as passed.
 
 ## Tier report
 
@@ -286,17 +472,24 @@ holdout or new accommodation collection was used.
 
 ## Release gate interpretation
 
-- Output coverage, schema/missingness, provenance/grades, algebraic coherence and deterministic replay pass.
-- Refresh economics pass: three source calls, at most ten searches, zero direct page reads.
-- Integration is new-city-only behind CITY_COST_METHODOLOGY_V6=true; unsetting the flag retains v1.
-- Independent food, drink and activity accuracy is not claimed. BYT is the production source for food/activity,
-  and no independent full-basket drink panel exists in v6.1.
-- The 121-city CSV was not modified. M4 migration remains a separate future decision.
+| Gate | Result | Evidence |
+| --- | --- | --- |
+${Object.entries(validation.gates).map(([gate, result]) => `| ${gate} | ${gateResultLabel(result)} | ${gateResultEvidence(result)} |`).join('\n')}
+
+Gate 10 is an external verification-baseline status, not something this data replay can observe. The
+validator records it explicitly rather than silently omitting it. Independent food, drink and activity
+accuracy is not claimed: BYT is the production source for food/activity, and no independent full-basket
+drink panel exists in v6.1. The 121-city CSV was not modified; M4 migration remains a separate future decision.
 `;
 }
 
 function main() {
-  const manifest = readJson<{ schemaVersion: string; methodologyVersion: string; productTiers: string[]; gates: Record<string, unknown> }>(MANIFEST_PATH);
+  const manifest = readJson<{
+    schemaVersion: string;
+    methodologyVersion: string;
+    productTiers: string[];
+    gates: Record<string, unknown>;
+  }>(MANIFEST_PATH);
   const inputs = readJson<Inputs>(INPUTS_PATH);
   const priors = readJson<{ excludedRows?: unknown[] }>(PRIORS_PATH);
   const excludedRows = Array.isArray(priors.excludedRows) ? priors.excludedRows.length : 0;
@@ -375,35 +568,95 @@ function main() {
 
   const csvSha256 = crypto.createHash('sha256').update(fs.readFileSync(SHIPPING_CSV)).digest('hex');
   const categoryCoverage = categorySummary(inputs.cities, bundles);
-  const gateResults = {
-    '1_outputCoverage': inputs.cities.length === 25 && bundles.size === 25 && Array.from(bundles.values()).every((bundle) => Object.keys(bundle.materialization.tiersAud).length === 19),
+  const sourceDisclosure = sourceDependenceDisclosure(inputs.cities, categoryCoverage, fallbackCounts, gradeDistribution);
+  const runtimeGate = manifest.gates['1_runtimeCoverage'] as { runtimeThreshold?: unknown } | undefined;
+  const runtimeThreshold = typeof runtimeGate?.runtimeThreshold === 'number' ? runtimeGate.runtimeThreshold : 0.95;
+  const developmentCompleteCities = Array.from(bundles.values()).filter((bundle) =>
+    V5_TIER_NAMES.every((tier) => {
+      const value = bundle.materialization.tiersAud[tier]?.amountAud;
+      return Number.isFinite(value) && value >= 0;
+    })
+  ).length;
+  const developmentCoverage = {
+    foundCities: bundles.size,
+    requiredCities: inputs.cities.length,
+    completeTierCities: developmentCompleteCities,
+    threshold: '25/25',
+  };
+  const developmentCoveragePassed = developmentCoverage.foundCities === developmentCoverage.requiredCities
+    && developmentCoverage.completeTierCities === developmentCoverage.requiredCities;
+  const runtimeCoverage: GateResult = {
+    status: 'unmeasured',
+    requirement: 'Runtime in-scope city coverage >=95% is not measured by the development fixture replay.',
+    threshold: runtimeThreshold,
+    blocking: false,
+  };
+
+  const economicsGate = manifest.gates['8_refreshEconomics'] as {
+    callsMax?: unknown;
+    searchesMax?: unknown;
+    directPageReadsMax?: unknown;
+  } | undefined;
+  const callsMax = typeof economicsGate?.callsMax === 'number' ? economicsGate.callsMax : 3;
+  const searchesMax = typeof economicsGate?.searchesMax === 'number' ? economicsGate.searchesMax : 10;
+  const directPageReadsMax = typeof economicsGate?.directPageReadsMax === 'number' ? economicsGate.directPageReadsMax : 0;
+  const maxCallsPerCity = Math.max(0, ...Array.from(bundles.values()).map((bundle) => bundle.collection.telemetry.length));
+  const maxSearchesPerCity = Math.max(0, ...Array.from(bundles.values()).map((bundle) => bundle.collection.searches));
+  const accommodationAccuracyGate = manifest.gates['5_accommodationAccuracy'] as {
+    medianApeMaxPct?: unknown;
+  } | undefined;
+  const accommodationApeMax = typeof accommodationAccuracyGate?.medianApeMaxPct === 'number'
+    ? accommodationAccuracyGate.medianApeMaxPct
+    : 35;
+  const integration = hanoi ? checkIntegrationAndRollback(hanoi) : { passed: false, problems: ['Hanoi bundle missing'] };
+  integration.problems.forEach((problem) => errors.push(`integration: ${problem}`));
+
+  const measuredGates: Record<string, boolean> = {
+    '1_developmentFixtureCoverage': developmentCoveragePassed,
     '2_schemaAndMissingness': errors.filter((error) => /contract|identity|search|direct page/i.test(error)).length === 0,
     '3_provenanceAndGrades': errors.filter((error) => /provenance|grade|interval/i.test(error)).length === 0,
     '4_algebraicCoherence': errors.filter((error) => /invalid amount|accommodation:|food:|drinks:|activities:/i.test(error)).length === 0,
-    '5_accommodationAccuracy': Object.values(BANKED_ACCOMMODATION_APE).every((ape) => ape <= 35),
-    '6_sourceDependenceDisclosure': true,
+    '5_accommodationAccuracy': Object.values(BANKED_ACCOMMODATION_APE).every((ape) => ape <= accommodationApeMax),
+    '6_sourceDependenceDisclosure': sourceDisclosure.complete,
     '7_deterministicReplay': errors.filter((error) => /deterministic replay/i.test(error)).length === 0,
-    '8_refreshEconomics': totalSearches <= inputs.cities.length * 10 && totalDirectReads === 0,
-    '9_integrationAndRollback': true,
+    '8_refreshEconomics': maxCallsPerCity <= callsMax && maxSearchesPerCity <= searchesMax && totalDirectReads <= directPageReadsMax,
+    '9_integrationAndRollback': integration.passed,
   };
+  const gateResults: Record<string, GateResult> = {
+    ...measuredGates,
+    '1_runtimeCoverage': runtimeCoverage,
+    '10_verification': {
+      status: 'external',
+      requirement: 'Verification baseline is executed outside this data replay.',
+      evidence: 'See the command log and CI/owner-run baseline; this validator does not claim it passed.',
+      blocking: false,
+    },
+  };
+  const measuredGatesPassed = Object.values(measuredGates).every(Boolean);
   const validation = {
-    schemaVersion: 'city-cost-v6-1-release-validation-v1',
+    schemaVersion: 'city-cost-v6-1-release-validation-v2',
     methodologyVersion: 'v6.1',
-    generatedAt: '2026-08-10',
+    generatedAt: '2026-08-12',
+    status: errors.length === 0 && measuredGatesPassed ? 'scored_development_runtime_unmeasured' : 'scored_development_failed',
     cities: inputs.cities.length,
     tierCount: V5_TIER_NAMES.length,
     totalSearches,
-    maxSearchesPerCity: 10,
+    maxCallsPerCity,
+    maxSearchesPerCity,
     totalDirectPageReads: totalDirectReads,
     fallbackCounts,
     fallbackByRegion,
     gradeDistribution,
+    developmentCoverage,
+    runtimeCoverage,
+    sourceDependenceDisclosure: sourceDisclosure,
     sourceRowsExcludedFromPriors: excludedRows,
     holdoutRead: false,
     shippingCsvSha256: csvSha256,
     errors,
     gates: gateResults,
-    passed: errors.length === 0 && Object.values(gateResults).every(Boolean),
+    measuredGatesPassed,
+    passed: errors.length === 0 && measuredGatesPassed,
   };
   const report = buildReport({ validation: { ...validation, fallbackCounts }, tierRows, categorySummary: categoryCoverage, gradeDistribution, excludedRows, v1, v1Missing, shippingCsvSha256: csvSha256 });
 
@@ -411,7 +664,7 @@ function main() {
     if (!fs.existsSync(RESULTS_PATH) || fs.readFileSync(RESULTS_PATH, 'utf8') !== expectedText(validation)) throw new Error('v6.1 release validation JSON is stale.');
     if (!fs.existsSync(REPORT_PATH) || fs.readFileSync(REPORT_PATH, 'utf8') !== report) throw new Error('v6.1 release report is stale.');
     if (!validation.passed) throw new Error(`v6.1 release validation failed: ${validation.errors.join('; ')}`);
-    console.log(JSON.stringify({ passed: true, cities: validation.cities, tiers: validation.tierCount, gates: gateResults }, null, 2));
+    console.log(JSON.stringify({ passed: validation.passed, status: validation.status, cities: validation.cities, tiers: validation.tierCount, gates: gateResults }, null, 2));
     return;
   }
 
@@ -422,7 +675,7 @@ function main() {
     process.exitCode = 1;
     return;
   }
-  console.log(JSON.stringify({ passed: true, cities: validation.cities, tiers: validation.tierCount, gates: gateResults }, null, 2));
+  console.log(JSON.stringify({ passed: validation.passed, status: validation.status, cities: validation.cities, tiers: validation.tierCount, gates: gateResults }, null, 2));
 }
 
 main();

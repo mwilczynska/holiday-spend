@@ -205,7 +205,7 @@ price counterparts. The 450-slot development ledger resolved 280 found rows; the
 found only 12/180 rows. Requiring another holdout would repeat the same structural failure. No holdout may
 be reopened or replaced under v6.1.
 
-### M3.1 — simplify and finish v6.1 — **COMPLETE for new-city generation**
+### M3.1 — simplify and finish v6.1 — **IMPLEMENTATION COMPLETE; RELEASE HARDENING IN PROGRESS**
 
 The implementation contract is
 [`docs/dev/plans/city-cost-methodology-v6-1.md`](docs/dev/plans/city-cost-methodology-v6-1.md). It keeps
@@ -228,10 +228,11 @@ responses, with zero new collection calls. Stage B produces all 19 tiers for 25/
 in 12 and activities in 1. The new-city feature flag now uses v6.1; the historical v6.0
 collector/materializer remains available for stored replay and the v1 path remains the rollback.
 
-Phase 4 release checks are complete. `scripts/validate-city-cost-v6-1-release.mjs --check` passes all
-nine reachable gates on the 25 × 19 replay: coverage, schema/missingness, provenance/grades, coherence,
-banked accommodation accuracy, source-dependence disclosure, deterministic replay, refresh economics and
-integration/rollback. The generated report is
+The earlier Phase 4 release-check claim that nine reachable gates had all passed is superseded by the
+12 August 2026 release-hardening correction. `scripts/validate-city-cost-v6-1-release.mjs --check` now
+computes the measured gates on the 25 x 19 replay, records development coverage as 25/25, records runtime
+>=95% coverage as **unmeasured**, and records verification as **external** rather than silently omitting
+Gate 10. The generated report is
 [`data/reference/v6/v6-1-development-release-report.md`](data/reference/v6/v6-1-development-release-report.md);
 its v1 comparison is informational only. No holdout was read and the 121-city CSV is byte-unchanged.
 
@@ -281,16 +282,17 @@ Each has a stated default so no work is blocked waiting for an answer. Active v6
 Frozen before implementation in
 [`data/reference/v6/validation-manifest-v6-1.json`](data/reference/v6/validation-manifest-v6-1.json):
 
-1. **Output coverage** — all 19 fields for 25/25 fixtures; ≥95% at runtime with explicit fallback
-2. **Schema and missingness** — source-specific validation; collection never invents a missing fact
-3. **Provenance and grades** — every tier names its basis, grade, interval, sources and imputations
-4. **Algebraic coherence** — finite, non-negative and ordered presets for all fixtures
-5. **Accommodation accuracy** — preserve the genuine six-tier result, each below 35% median APE
-6. **Source-dependence disclosure** — report direct-source and grade-D fallback rates by category/region
-7. **Deterministic replay** — fixture materialization is byte-identical under `--check`
-8. **Refresh economics** — exactly three calls, at most ten searches and zero direct page reads per city
-9. **Integration and rollback** — flag-on uses v6.1, flag-off uses v1, live CSV byte-identical
-10. **Verification** — build, tests, memory and generated-artifact checks pass
+1. **Development fixture coverage** — all 19 fields for 25/25 fixtures; measured by replay
+2. **Runtime coverage** — ≥95% in scope; **unmeasured**, not a pass from development fixtures
+3. **Schema and missingness** — source-specific validation; collection never invents a missing fact
+4. **Provenance and grades** — every tier names its basis, grade, interval, sources and imputations
+5. **Algebraic coherence** — finite, non-negative and ordered presets for all fixtures
+6. **Accommodation accuracy** — preserve the genuine six-tier result, each below 35% median APE
+7. **Source-dependence disclosure** — report direct-source and grade-D fallback rates by category/region
+8. **Deterministic replay** — fixture materialization is byte-identical under `--check`
+9. **Refresh economics** — exactly three calls, at most ten searches and zero direct page reads per city
+10. **Integration and rollback** — pure persistence/provenance round-trip, flag-off uses v1, live CSV byte-identical
+11. **Verification** — external baseline evidence is recorded; this validator does not claim to observe it
 
 The old all-19 accuracy, full independent ranking, trip-total and beat-v1 gates are historical non-gates
 for v6.1. They required independent observations for behavioural presets that public sources do not publish.
@@ -355,6 +357,19 @@ node scripts/validate-city-cost-v6-ground-truth.mjs --require-complete
 - [ ] Add provider/model capability validation for planner transport estimation.
 - [ ] Add automated coverage around bulk transport estimation and planner apply flows.
 - [ ] Consider transport-estimation caching — explicitly deprioritised.
+
+### v6.1 release-hardening correction — 12 August 2026
+
+The earlier statement that the nine reachable release gates had all passed and that v6.1 was fully
+complete is superseded. The implementation is banked, but the production persistence boundary was still
+v6.0-only until commit `a8e93ce`, and the release validator previously hardcoded source-dependence and
+integration gates while omitting manifest Gate 10.
+
+The corrected validator now computes the measured development gates from the 25 x 19 replay, records
+development fixture coverage as 25/25, records runtime >=95% coverage as **unmeasured**, and records the
+verification baseline as **external** rather than calling it passed. The v1 rollback remains intact and
+the 121-city CSV and all holdouts remain untouched. Phase 4 frozen-FX maintenance and Phase 5 rollout
+preview remain open before owner review.
 
 ---
 

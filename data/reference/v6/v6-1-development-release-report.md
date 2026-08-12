@@ -1,7 +1,7 @@
 # v6.1 development release report
 
-**Status:** reachable release replay; not holdout validation  
-**Generated:** 2026-08-10  
+**Status:** scored_development_runtime_unmeasured
+**Generated:** 2026-08-12
 **Panel:** 25 development cities × 19 product tiers  
 **Holdout:** no holdout read; all v6.0 holdout measures remain spent/closed  
 **Shipping CSV:** read-only informational comparison; SHA-256 0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8
@@ -13,6 +13,11 @@ development fixtures through the v6.1 collector contract and materializeCityCost
 development replay, not an accuracy claim against independent ground truth. Food and activities are
 BudgetYourTrip source-backed product estimates; drinks are source-priced consumption presets; only the
 accommodation ladder has the banked independent Booking development accuracy result.
+
+Development fixture coverage is measured at 25/25
+cities with 25 complete 19-tier bundles. Runtime coverage is
+**unmeasured**, not measured by this fixture replay; the manifest's 95%
+runtime clause is therefore not reported as passed.
 
 ## Tier report
 
@@ -65,9 +70,21 @@ holdout or new accommodation collection was used.
 
 ## Release gate interpretation
 
-- Output coverage, schema/missingness, provenance/grades, algebraic coherence and deterministic replay pass.
-- Refresh economics pass: three source calls, at most ten searches, zero direct page reads.
-- Integration is new-city-only behind CITY_COST_METHODOLOGY_V6=true; unsetting the flag retains v1.
-- Independent food, drink and activity accuracy is not claimed. BYT is the production source for food/activity,
-  and no independent full-basket drink panel exists in v6.1.
-- The 121-city CSV was not modified. M4 migration remains a separate future decision.
+| Gate | Result | Evidence |
+| --- | --- | --- |
+| 1_developmentFixtureCoverage | PASS | Computed by the release validator. |
+| 2_schemaAndMissingness | PASS | Computed by the release validator. |
+| 3_provenanceAndGrades | PASS | Computed by the release validator. |
+| 4_algebraicCoherence | PASS | Computed by the release validator. |
+| 5_accommodationAccuracy | PASS | Computed by the release validator. |
+| 6_sourceDependenceDisclosure | PASS | Computed by the release validator. |
+| 7_deterministicReplay | PASS | Computed by the release validator. |
+| 8_refreshEconomics | PASS | Computed by the release validator. |
+| 9_integrationAndRollback | PASS | Computed by the release validator. |
+| 1_runtimeCoverage | UNMEASURED (not a pass) | Runtime in-scope city coverage >=95% is not measured by the development fixture replay. |
+| 10_verification | EXTERNAL (not a pass) | Verification baseline is executed outside this data replay. See the command log and CI/owner-run baseline; this validator does not claim it passed. |
+
+Gate 10 is an external verification-baseline status, not something this data replay can observe. The
+validator records it explicitly rather than silently omitting it. Independent food, drink and activity
+accuracy is not claimed: BYT is the production source for food/activity, and no independent full-basket
+drink panel exists in v6.1. The 121-city CSV was not modified; M4 migration remains a separate future decision.

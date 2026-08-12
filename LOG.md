@@ -2756,3 +2756,18 @@ and release validation. The branch is pushed at `a5848a5` plus the final documen
 
 The 121-city CSV remains unchanged and no holdout was read or collected. v6.1 is ready for new-city
 generation only; migrating the existing CSV is M4 and remains a separate future decision.
+
+## v6.1 release-hardening correction — 12 August 2026
+
+The 10 August v6.1 completion record claiming that all nine reachable gates passed is superseded. The
+deterministic materializer and 25-city replay were sound, but the production persistence boundary only
+recognized `v6.0`, so a v6.1 result could be misclassified as v1 and lose its grades, intervals, telemetry,
+missingness, prior basis and input snapshot. Commits `a8e93ce` and `68c17c8` added explicit v1/v6.0/v6.1
+persistence and API/UI provenance coverage without changing the CSV or holdouts.
+
+The release validator was also corrected: source-dependence and integration are computed from actual
+fixtures, development coverage is measured at 25/25, runtime >=95% coverage is recorded as unmeasured,
+and Gate 10 verification is recorded as external evidence. The generated status is
+`scored_development_runtime_unmeasured`; this is a truthful development release score, not a claim that
+runtime coverage or the external baseline was observed by the validator. Phase 4 FX metadata maintenance
+and the Phase 5 rollout preview remain to be completed before owner review.

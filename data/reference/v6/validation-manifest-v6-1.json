@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "city-cost-v6-1-release-manifest-v1",
+  "schemaVersion": "city-cost-v6-1-release-manifest-v2",
   "methodologyVersion": "v6.1",
-  "status": "active_unscored",
-  "decisionDate": "2026-08-10",
+  "status": "scored_development_runtime_unmeasured",
+  "decisionDate": "2026-08-12",
   "objective": "Ship the existing 19 product tiers for new cities through a simple three-call, source-native and honestly graded approximation path.",
   "supersedes": {
     "manifest": "data/reference/v6/validation-manifest-v6.json",
@@ -112,10 +112,16 @@
     "freshHoldoutProposal": "cancelled_for_v6_1"
   },
   "gates": {
-    "1_outputCoverage": {
-      "requirement": "All 19 product tiers are numeric for all 25 development fixtures and at least 95% of runtime in-scope cities.",
-      "developmentThreshold": "25/25",
-      "runtimeThreshold": 0.95
+    "1_developmentFixtureCoverage": {
+      "requirement": "All 19 product tiers are numeric for all 25 development fixtures.",
+      "threshold": "25/25",
+      "measurement": "Computed by the deterministic fixture replay."
+    },
+    "1_runtimeCoverage": {
+      "requirement": "At least 95% of runtime in-scope cities produce a complete v6.1 result.",
+      "runtimeThreshold": 0.95,
+      "status": "unmeasured",
+      "measurement": "Not established by the development fixture replay; do not report as passed."
     },
     "2_schemaAndMissingness": {
       "requirement": "Every v6.1 source response validates; non-observations remain not_found, blocked, stale or class_absent and are never silently substituted in collection."
@@ -152,10 +158,12 @@
       "directPageReadsMax": 0
     },
     "9_integrationAndRollback": {
-      "requirement": "The feature-flagged new-city path uses v6.1 end to end; flag-off remains v1; the 121-city CSV is byte-identical."
+      "requirement": "The pure v6.1 persistence adapter and provenance parser round-trip a representative materialization; flag-off remains v1; the 121-city CSV is byte-identical."
     },
     "10_verification": {
-      "requirement": "TypeScript, build, tests, docs memory check, generated coefficient/prior checks and v6.1 release report all pass."
+      "requirement": "TypeScript, build, tests, docs memory check, generated coefficient/prior checks and v6.1 release report all pass.",
+      "status": "external",
+      "measurement": "The release validator records this as external evidence; it cannot observe a command log."
     }
   },
   "nonGates": {
