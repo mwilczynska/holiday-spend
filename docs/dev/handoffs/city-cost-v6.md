@@ -9,6 +9,7 @@
 **Phase 7 canary result commit:** `1bc352f` (experiment 010 preflight only)
 **Phase 7 first attempt:** credential preflight only; superseded as a canary result
 **Phase 7B delegated canary:** failed 17/20; experiment 011 retained for owner review
+**Phase 7B result commit:** `82586f5`
 
 **Milestone:** M4 coherent migration of the 121-city library — **owner approved; Phase 7B failed; migration stopped**
 **Exact next action:** review `data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json` and
