@@ -3,8 +3,8 @@
 The working document for the current workstream. Confirmed historical results and rejected methodologies
 live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 
-**Active workstream:** city cost methodology **v6.1 — reachable finish line**
-**Last reviewed:** 10 August 2026
+**Active workstream:** city cost methodology **v6.1 — coherent 121-city migration**
+**Last reviewed:** 12 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
 ---
@@ -23,8 +23,9 @@ of v6. Full diagnosis: [`docs/dev/plans/city-cost-methodology-v6.md`](docs/dev/p
 **v6 is integrated behind an opt-in feature flag, and v6.1 is the active implementation target.** On
 10 August 2026 the owner stopped the attempt to independently validate all 19 behavioural presets. v6.1
 keeps every existing tier, banks the genuine accommodation result, and replaces the unreachable evidence
-programme with a three-call, source-native, honestly graded path for new cities. No new holdout is planned.
-The 121-city CSV remains on v1.
+programme with a three-call, source-native, honestly graded path. No new holdout is planned. The owner has
+approved staged M4 migration of the existing 121-city library; the live CSV remains on v1 until the runtime
+canary, complete staged preview and owner-reviewed cutover are finished.
 
 ---
 
@@ -180,7 +181,7 @@ with a worst-case **375 searches** under the collector's 25-search-per-city ceil
 review needed to make the activity rows match the product estimand. This is enough to test the level anchor,
 food/drink composition and activity semantics; the spent holdout cannot do so and must not be reopened.
 
-Recommendation: complete the cheap 15-city paired-anchor experiment now, but do not collect the full basket
+**Superseded recommendation (recorded before the v6.1 simplification and 12 August M4 decision):** complete the cheap 15-city paired-anchor experiment now, but do not collect the full basket
 or migrate the 121-city CSV before a separate, explicitly scoped validation tranche is approved. If the anchor
 experiment is accepted, keep v6 flag-on for **new cities only** while the 121-city CSV remains on v1. The full
 food/drink/activity panel is worth collecting before CSV migration because Gates 4 and 5 otherwise remain
@@ -205,7 +206,7 @@ price counterparts. The 450-slot development ledger resolved 280 found rows; the
 found only 12/180 rows. Requiring another holdout would repeat the same structural failure. No holdout may
 be reopened or replaced under v6.1.
 
-### M3.1 — simplify and finish v6.1 — **IMPLEMENTATION COMPLETE; RELEASE HARDENING IN PROGRESS**
+### M3.1 — simplify and finish v6.1 — **IMPLEMENTATION BANKED; CONTRACT RECONCILIATION REQUIRED**
 
 The implementation contract is
 [`docs/dev/plans/city-cost-methodology-v6-1.md`](docs/dev/plans/city-cost-methodology-v6-1.md). It keeps
@@ -239,20 +240,37 @@ its v1 comparison is informational only. The read-only rollout preview is in
 city × tier and basket detail in the adjacent JSON and the unchanged CSV hash. No holdout was read and the
 121-city CSV is byte-unchanged.
 
-**Finish line:** 25/25 fixtures produce all 19 graded and provenance-bearing values; runtime collection is
-three calls / at most ten searches; accommodation's 8.27%–25.46% median APE result is preserved; food and
-activities are labelled BYT source-backed; drinks are labelled source-priced presets; street food is an
-explicit grade-D compatibility model; the 121-city CSV and every holdout remain untouched.
+The generated cocktail coefficient is now `2.4838`, n=14, grade C, ±64%, while the active manifest and
+some narrative records still declare `2.6`, ±75%. This release-record drift must be reconciled and guarded
+by the release validator before runtime canary work begins. No refit is required.
 
-### M4 — migrate the existing CSV — **separate future decision; not part of v6.1**
+### M4 — migrate the existing 121-city library — **OWNER APPROVED; ACTIVE NEXT MILESTONE**
 
-- [ ] Regenerate all 121 cities through v6 with grades
-- [ ] A/B diff report against the current CSV, per tier and per city
-- [ ] Rollback tested
-- [ ] Switch the flag
+The 12 August 2026 owner decision supersedes the earlier new-city-only recommendation. The desired final
+state is one coherent v6.1 library for existing and new cities. The current CSV remains read-only until a
+complete staged migration is reviewed.
 
-**Exit:** v6 is the shipping path for the existing 121 cities with a tested rollback. This is not required
-to finish or release v6.1 for new-city generation.
+- [ ] Reconcile manifest/docs/generated reports with generated coefficients; add a drift assertion
+- [ ] Pre-register and run a representative 20-city real-provider canary; require at least 19/20 complete
+- [ ] Measure persistence/API provenance round-trip and the runtime call/search/direct-read contract
+- [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV
+- [ ] Validate any reuse of the 25 fixture-city responses against the frozen migration window
+- [ ] Generate all 121 cities in batches into a staged CSV plus full provenance sidecar
+- [ ] Import/link the sidecar through `city_estimates` so seeded existing-city provenance is runtime-visible
+- [ ] Produce the complete operational impact report, including all >2×/<0.5× flags and regional fallback
+- [ ] Stop for owner review before replacing the live CSV or changing the generation default
+- [ ] After approval, atomically cut over the generated CSV and v6.1 new-city default
+- [ ] Test the coordinated rollback of both the old CSV and v1 generation path
+
+Collection bounds are 363 primary calls and 1,210 searches for a complete recollection, or 288 new calls
+if all 25 existing fixture cities qualify for documented reuse. Report actual calls, retries, searches and
+reuses. Provider mode must establish the canary's runtime claim; delegated schema-constrained Stage A may
+be used for bulk migration when credentials are unavailable, with the shipped materializer always used for
+Stage B.
+
+**Exit:** all 121 cities and newly generated cities use v6.1 with complete runtime-visible provenance, the live cutover was
+owner-reviewed, and one tested rollback restores both the v1 CSV and v1 generation default. No holdout was
+opened and no accommodation coefficient was refit.
 
 ### M5 — improve weak grades — ongoing
 
@@ -276,7 +294,7 @@ Each has a stated default so no work is blocked waiting for an answer. Active v6
 | 1 | Six accommodation tiers, or merge `accom_1_star` into a budget band? | Keep six; ship 1★ at grade C |
 | 2 | How prominently is the grade shown in the UI? | Per-city badge + per-value tooltip, reusing the dashboard info-popover pattern |
 | 3 | Refresh cadence | Re-measure levels quarterly; refit coefficients annually |
-| 4 | Regenerate all 121 cities, or only new ones? | **Settled for v6.1:** new cities only; existing-city migration is a separate future decision |
+| 4 | Regenerate all 121 cities, or only new ones? | **Settled 12 August 2026:** migrate all 121 through staged M4; review before cutover |
 
 ---
 
@@ -372,7 +390,7 @@ The corrected validator now computes the measured development gates from the 25 
 development fixture coverage as 25/25, records runtime >=95% coverage as **unmeasured**, and records the
 verification baseline as **external** rather than calling it passed. The v1 rollback remains intact and
 the 121-city CSV and all holdouts remain untouched. Phase 4 frozen-FX maintenance and Phase 5 rollout
-preview remain open before owner review.
+preview were still open at that point; both were subsequently completed below.
 
 ### v6.1 Phase 4 FX completion — 12 August 2026
 
@@ -396,6 +414,18 @@ subtotals, representative budget/mid/high baskets, distribution tails and explic
 It is an operational impact preview, not ground-truth validation. It recommends v6.1 for NEW cities only
 behind the existing flag after owner review; it does not recommend global activation or CSV migration.
 Phase 5 is complete and the workstream now stops for owner review.
+
+### v6.1 M4 migration decision — 12 August 2026
+
+The owner accepted the implementation review and approved migration of the existing 121-city library as
+part of v6.1. This supersedes, without deleting, the Phase 5 new-city-only recommendation. The sequence is
+release-contract reconciliation, a measured 20-city provider-path canary, resumable staged regeneration,
+a complete 121-city operational-impact report, and owner review before atomic cutover.
+
+The 25-city preview's 81/450 tier-level >2×/<0.5× differences make indefinite mixed-method operation a
+poor endpoint, but they are not ground truth and must not be used to tune v6.1 toward v1. The migration
+therefore replaces the library coherently or rolls back coherently: CSV and new-city default move together.
+The live CSV remains unchanged until the staged artifact is complete and explicitly approved.
 
 ## Traps retained from earlier work
 

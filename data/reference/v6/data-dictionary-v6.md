@@ -1,8 +1,8 @@
 # City Cost v6 Data Dictionary
 
-**Status:** The 19 product fields and A/B/C/D semantics are current. The v6.1 production-source and
-derivation amendments are recorded in §6 and frozen in `validation-manifest-v6-1.json`. Every v6.0 holdout
-is spent and remains closed.
+**Status:** The 19 product fields and A/B/C/D semantics are current. The v6.1 production-source,
+derivation and staged 121-city migration decisions are recorded in §6. The active manifest still requires
+the cocktail declaration reconciliation identified there. Every v6.0 holdout is spent and remains closed.
 
 **Read this first if you are:** deciding whether a collected value may be used, deciding what grade a
 value carries, or implementing the derivation path.
@@ -98,7 +98,8 @@ measure a different estimand and are not truth for these tiers. Experiments 037,
 and 089 found no independent daily-spend source. **Do not describe the retained ticket rows as activity-tier
 truth or the BYT production values as independently validated.**
 
-The v6.1 drink anchor paths are explicit: `cocktail_1` is `2.6000 ×` measured cappuccino and wine is not
+The v6.1 drink anchor paths are explicit: `cocktail_1` is the generated `2.4838 ×` measured cappuccino
+(n=14, grade C, interval ±64%) and wine is not
 part of the composition. Numbeo meal fields, McMeal, `premium_restaurant_meal_2p` and item-level
 `street_food_meal_1p` are retained only for v6.0 evidence replay, not new v6.1 collection.
 
@@ -316,7 +317,9 @@ Its generated ratio is `(6 × 0.2757) / (4 × 0.2757 + 2) = 0.5331`, preserving 
 relationship while changing the base from item prices to a daily tier. This does not contradict the prior
 `street_food_meal_1p / inexpensive_restaurant_meal_1p = 0.2757`: the two coefficients have different
 denominators. The compatibility result is grade D with ±45%, not an observed street-food price. Cocktail
-remains the disclosed `2.6 × cappuccino` grade-C model with ±75%; wine is removed from the v6.1 composition.
+remains the generated `2.4838 × cappuccino` grade-C model with ±64%; wine is removed from the v6.1
+composition. The older `2.6`, ±75% declaration is superseded by the larger generated panel and must not
+remain duplicated in the release manifest.
 
 Missing source data uses one fallback per category: direct tier vector, then regional tier vector, then
 global tier vector, at grade D. v6.1 does not impute ingredients, compose a basket and then overwrite it
@@ -324,3 +327,21 @@ with another prior. The active source contract and reachable gates are frozen in
 `validation-manifest-v6-1.json`; the v6.0 all-19 accuracy, ranking and trip-total gates are historical
 non-gates. An explicit, correctly graded product assumption is now a valid completion state. A hidden or
 mislabelled assumption is not.
+
+### 12 August 2026 — frozen-FX repair supersedes the 34-row v6.1 exclusion
+
+The historical exclusion record above remains correct for the earlier snapshot. The frozen FX metadata now
+includes source-attributed SGD, TWD, ZAR and PEN rates. Current v6.1 prior generation excludes zero rows;
+the old 34-row count must not be presented as current coverage.
+
+### 12 August 2026 — migrate the existing library through a staged v6.1 cutover
+
+The owner approved migration of all 121 existing cities, superseding the earlier new-city-only
+recommendation. The methodology contract does not change: three calls, at most ten searches, all 19 tiers,
+explicit grades and one category fallback. Migration is operational collection, not a new holdout or a
+coefficient-fitting panel.
+
+The live CSV remains unchanged until a representative live-provider canary passes, all 121 cities have a
+complete deterministic staged artifact and provenance sidecar, and the owner reviews the operational
+impact report. Cutover must coordinate the CSV and new-city default; rollback must restore both. v1
+differences are reported but never used as a fitting target.

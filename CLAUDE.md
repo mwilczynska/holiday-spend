@@ -110,8 +110,8 @@ The canonical dataset is **`data/reference/city_costs_app_aud.csv`** — 121 cit
 
 New cities use the **v1 path by default**: `docs/prompts/llm_prompt_new_cities_1.md` asks a model for ten
 anchor prices and asserted multipliers derive 19 tiers. Setting `CITY_COST_METHODOLOGY_V6=true` switches
-new-city generation to the v6 three-call extractor/materializer path; the flag is opt-in while M1 is being
-validated.
+new-city generation to the v6.1 three-call extractor/materializer path; the flag remains opt-in while the
+runtime canary and staged M4 library migration are completed.
 
 > **Known defect, deliberately still shipping by default.** v1 anchors come from model memory rather than a live
 > source, and its multipliers were never calibrated. `accom_4_star = hotel_3star × 1.80` has been
@@ -161,11 +161,11 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
 feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
-validator now computes the nine measured gates, records runtime >=95% coverage as unmeasured, and records
-the verification baseline as external evidence; the earlier claim that all nine gates alone completed the
-release is superseded. Phase 4 FX coverage is complete. The read-only rollout preview recommends new-city-only
-activation after owner review; runtime coverage remains unmeasured, so flag-on is not a global release and
-flag-off remains v1.
+validator computes the measured gates, records runtime >=95% coverage as unmeasured, and records the
+verification baseline as external evidence. Phase 4 FX coverage and the read-only rollout preview are
+complete. On 12 August 2026 the owner approved M4 migration of the existing 121-city library; this
+supersedes the preview's new-city-only recommendation. The active sequence is contract reconciliation,
+a 20-city live-provider canary, deterministic staged regeneration, owner review and coordinated cutover.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,
@@ -180,12 +180,15 @@ fallback; it never reads or algebraically inverts the live CSV. Food and activit
 product estimates, drinks are source-priced consumption presets, and none is described as independently
 validated. The six accommodation tiers retain genuine development median APE from **8.27% to 25.46%**.
 
-The active implementation contract is `docs/dev/plans/city-cost-methodology-v6-1.md`; reachable gates are
+The active implementation and migration contract is `docs/dev/plans/city-cost-methodology-v6-1.md`; reachable gates are
 in `data/reference/v6/validation-manifest-v6-1.json`; the loop is `LOOP-PROMPT-V6.md`; the cold-start handoff
 is `docs/dev/handoffs/city-cost-v6.md`. Existing experiment 003 and 006 evidence supplies the 25-city
-development fixtures with no new model collection. All holdouts are spent and remain closed. The v6.1 path
-is for new cities behind `CITY_COST_METHODOLOGY_V6=true`; generated fixtures and priors use no new
-collection, and the 121-city CSV and flag-off v1 rollback remain unchanged.
+development fixtures. All holdouts are spent and remain closed. The live CSV and default new-city path are
+still v1 until the staged M4 artifact is reviewed; migration collection is authorized only under the
+frozen three-call contract. The intended finish is one coherent v6.1 library, with CSV and generation
+default cut over or rolled back together. Because the CSV stores numbers only, the generated migration
+sidecar must also be imported into `city_estimates` and linked from `cities.estimation_id`; otherwise
+existing-city grades and intervals would not reach the API/UI.
 
 ### Transport is out of scope
 

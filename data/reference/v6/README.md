@@ -4,11 +4,11 @@
 cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact next action. This file
 tells you what lives here and what each file is for.
 
-**Status:** v6.1 is complete for new-city generation. On 10 August 2026 the owner stopped the v6.0 attempt
-to independently validate all 19 behavioural presets. v6.1 retains every product tier and all valid v6.0
-evidence, but uses a reachable three-call, source-native release contract. Read
-`docs/dev/plans/city-cost-methodology-v6-1.md` and `validation-manifest-v6-1.json`. Every old holdout is
-spent and closed; the proposed fresh holdout is cancelled for v6.1. M4 CSV migration is out of scope.
+**Status:** the v6.1 new-city implementation is banked and M4 migration of the existing 121-city library
+was approved on 12 August 2026. The live CSV is still unchanged: release-contract reconciliation, a
+20-city live provider canary and a complete staged migration/report must happen before owner-reviewed
+cutover. Read `docs/dev/plans/city-cost-methodology-v6-1.md` and
+`validation-manifest-v6-1.json`. Every old holdout is spent and closed; none is reopened for migration.
 
 ## Active v6.1 simplification
 
@@ -65,8 +65,8 @@ therefore `not_evaluable` on this partial panel; no number here is a holdout res
 
 The measured street-food R0 `k=0.3248`, n=6, with a ±336% LOO-p90 interval is diagnostic only under the
 uniform minimum fitted n=8 rule. Production uses the generated global direct-evidence prior ratio `k=0.2757`
-at grade D ±45%; the coefficient warning documents the fallback and the prior builder explicitly lists the
-34 frozen-FX exclusions rather than silently dropping them.
+at grade D ±45%. The prior builder historically listed 34 frozen-FX exclusions; the 12 August SGD/TWD/ZAR/PEN
+snapshot repair reduced current v6.1 prior exclusions to zero.
 
 `m3-food-basket-diagnostic.json` is an existing-data, in-sample diagnostic. It records the budget
 beverage category-boundary effect, the mid/high effective basket-weight re-fits with LOO residual
@@ -112,11 +112,11 @@ accom_4_star <- accom_3_star           n=26  k=1.3372  LOO medAPE 12.98%  p90 27
 hostel_dorm_bed_1p <- accom_3_star     n=25  k=0.2955  LOO medAPE 20.92% p90 53.16%  (Booking v2 development)
 hostel_private_room_2p <- accom_3_star n=25  diagnostic k=0.7955; shipped k=0.5919 v4 rollback (±35%)
 hotel_2star_room_2p <- hotel_3star_room_2p  n=25  diagnostic k=0.8182  LOO medAPE 17.85% p90 37.71%
-midrange <- inexpensive                  n=10  k=4.9062  LOO medAPE 21.53% p90 45.63%
+midrange <- inexpensive                  n=12  k=5.2256  LOO medAPE 20.64% p90 38.41%
 street food <- inexpensive               n=6   diagnostic k=0.3248; shipped fallback k=0.2757 (grade D ±45%)
-premium <- midrange                      n=3   reasoned k=1.5000 (minimum fitted n=8; grade D ±45%)
-cocktail <- cappuccino                    n=11  k=2.6000  LOO medAPE 17.47% p90 74.17%
-wine glass <- cappuccino                  n=5   diagnostic only; excluded from drinks_heavy after rejected bottle calibration
+premium <- midrange                      n=5   reasoned k=1.5000 (minimum fitted n=8; grade D ±45%)
+cocktail <- cappuccino                    n=14  k=2.4838  LOO medAPE 18.86% p90 63.24%
+wine glass <- cappuccino                  n=7   diagnostic only; excluded from drinks_heavy after rejected bottle calibration
 mcmeal/inexpensive                       n=0   not fitted; McMeal remains a measured production anchor
 half-day activity                         n=0   no independent compliant row; direct production anchor
 full-day activity                         n=1   below fit threshold; direct production anchor
@@ -126,8 +126,8 @@ cross-check 4-star: v6 1.3372 vs v4 1.2972 -> 3.08% apart
 
 The initial generator snapshot above predates the paired-prediction reset. Its n=6 street-food relation is
 retained as a diagnostic; the current generator does not ship it because it is below the minimum n=8 rule and
-uses the global prior ratio k=0.2757 at grade D, ±45%. The n=3 premium relation ships the documented v4 1.5x fallback at grade D, ±45%, rather than its
-false-confidence ±12% fit. Cocktail remains fitted at n=11. Wine glass remains a raw menu diagnostic only
+uses the global prior ratio k=0.2757 at grade D, ±45%. The n=5 premium relation ships the documented v4 1.5x fallback at grade D, ±45%, rather than its
+small-sample fit. Cocktail remains fitted at n=14 (`k=2.4838`, ±64%). Wine glass remains a raw menu diagnostic only
 and is excluded from the heavy-drinks basket after the rejected Expatistan bottle-to-glass calibration.
 McMeal, half-day and full-day routes remain diagnostics or direct-source fallbacks, never asserted fitted
 coefficients.
@@ -212,18 +212,19 @@ spent and remain closed; v6.1 neither freezes nor scores another holdout. Experi
 
 ---
 
-## M1 implementation
+## Runtime and migration boundary
 
-The current v6.0 opt-in runtime flag `CITY_COST_METHODOLOGY_V6=true` sends new-city generation through
-`src/lib/city-cost-v6-collection.ts` and `src/lib/city-cost-methodology-v6.ts`. The path makes three bounded
-search-snippet extractor calls (Numbeo, Expedia three-star, BudgetYourTrip), retries a reported block once,
-converts source-currency facts with the frozen FX snapshot, and falls back to regional/accommodation-band
-medians at grade D when an anchor is unavailable. Grades, intervals, missingness and per-call telemetry are
-stored in `city_estimates.metadata_json` and exposed by `/api/estimates` and `/dataset`.
+The opt-in runtime flag `CITY_COST_METHODOLOGY_V6=true` sends new-city generation through the v6.1
+three-call collector and `materializeCityCostV61`. The path makes bounded Expedia, BudgetYourTrip and
+Numbeo search-snippet calls, converts source-currency facts with the frozen FX snapshot, and uses explicit
+regional/global category priors at grade D when a source category is unavailable. Grades, intervals,
+missingness and per-call telemetry are stored in `city_estimates.metadata_json` and exposed by
+`/api/estimates` and `/dataset`.
 
-The v6.1 implementation keeps that flag and rollback boundary while replacing the source contract and
-materializer behind flag-on. The v1 generation path and `data/reference/city_costs_app_aud.csv` remain
-unchanged. No food/drink/activity holdout is open work under v6.1; source dependence is disclosed instead.
+The v1 generation path and `data/reference/city_costs_app_aud.csv` are still unchanged today. The owner has
+approved replacing that CSV through the staged M4 protocol in the active plan, but not before a live
+provider canary and complete owner-reviewed 121-city preview. No food/drink/activity holdout is open work;
+source dependence is disclosed instead.
 
 > **Do not move or rename anything under `data/reference/`** without updating its readers. Scripts and
 > six Vitest test files reference those paths as string literals.

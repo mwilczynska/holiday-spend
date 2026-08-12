@@ -2798,3 +2798,23 @@ SHA-256 is `0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8`.
 This is an operational impact comparison, not ground-truth validation. It recommends NEW-city-only v6.1
 activation behind the existing feature flag after owner review. Runtime >=95% coverage remains unmeasured;
 global flag enablement, migration of the 121-city CSV, holdout work and M4 remain out of scope.
+
+## v6.1 M4 coherent-library migration decision — 12 August 2026
+
+After reviewing the completed v6.1 implementation and Phase 5 rollout preview, the owner approved
+migration of the existing 121-city library as part of this workstream. This dated decision supersedes the
+new-city-only recommendation above; the generated preview remains valid as an operational comparison and
+is not rewritten as ground-truth evidence.
+
+The migration sequence is deliberately gated: first reconcile the stale release declarations with the
+generated cocktail coefficient (`2.4838`, n=14, grade C, ±64%) and make the release validator detect future
+contract drift; then run a representative 20-city live-provider canary to measure the currently unmeasured
+≥95% runtime clause; then generate the frozen 121-city frame in resumable batches into a staged CSV and
+full provenance sidecar. A complete v1-versus-v6.1 impact report must be reviewed before the live CSV or
+global generation default changes.
+
+The preview's 81/450 non-zero tier comparisons outside 0.5×–2× v1, including `food_high_end` above 2× in
+18/25 cities, require visibility and staged review but are not a fitting target: v1 is not ground truth.
+The approved finish line avoids an indefinite mixed-method library. Cutover and rollback each move the CSV
+and new-city default together. No holdout is reopened, no accommodation coefficient is refit, and the live
+121-city CSV remains unchanged at this planning decision.
