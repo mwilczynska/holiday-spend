@@ -45,11 +45,11 @@ const FX_MAINTENANCE_CURRENCIES = ['SGD', 'TWD', 'ZAR', 'PEN'] as const;
 const PREVIOUS_DIRECT_DRINK_CITIES = 13;
 
 type GateResult = boolean | {
-  status: 'unmeasured' | 'external';
+  status: 'unmeasured' | 'external' | 'pending';
   requirement: string;
   threshold?: number | string;
   evidence?: string;
-  blocking: false;
+  blocking: boolean;
 };
 
 const CATEGORY_TIERS = {
@@ -485,7 +485,8 @@ function buildReport(input: {
 **Shipping CSV:** read-only informational comparison; SHA-256 ${input.shippingCsvSha256}
 
 **Migration:** owner-approved staged migration of the 121-city library; live CSV remains unchanged pending
-the runtime canary, complete staged artifact and owner review.
+collection-boundary repair, the delegated operational canary, complete staged artifact, user-key transport
+smoke and owner review.
 
 **Generated coefficient contract:** ${validation.generatedCoefficientContract.passed ? 'consistent' : 'FAILED'} —
 ${JSON.stringify(validation.generatedCoefficientContract.generated)}
@@ -500,8 +501,9 @@ accommodation ladder has the banked independent Booking development accuracy res
 
 Development fixture coverage is measured at ${validation.developmentCoverage.foundCities}/${validation.developmentCoverage.requiredCities}
 cities with ${validation.developmentCoverage.completeTierCities} complete 19-tier bundles. Runtime coverage is
-**${validation.runtimeCoverage.status}**, not measured by this fixture replay; the manifest's ${validation.runtimeCoverage.threshold * 100}%
-runtime clause is therefore not reported as passed.
+**${validation.runtimeCoverage.status}**, not measured by this fixture replay. The manifest's
+${validation.runtimeCoverage.threshold * 100}% target is a post-release operational SLO and is not reported
+as passed from either fixture replay or a 19/20 sample.
 
 ## Tier report
 
@@ -549,7 +551,8 @@ Gate 10 is an external verification-baseline status, not something this data rep
 validator records it explicitly rather than silently omitting it. Independent food, drink and activity
 accuracy is not claimed: BYT is the production source for food/activity, and no independent full-basket
 drink panel exists in v6.1. The 121-city CSV was not modified. The rollout preview is operational impact
-evidence only; it does not replace the required live canary or owner-reviewed staged migration.
+evidence only; it does not replace collection-boundary repair, the delegated operational canary, the
+user-key provider smoke or owner-reviewed staged migration.
 `;
 }
 
@@ -672,9 +675,16 @@ function main() {
     && developmentCoverage.completeTierCities === developmentCoverage.requiredCities;
   const runtimeCoverage: GateResult = {
     status: 'unmeasured',
-    requirement: 'Runtime in-scope city coverage >=95% is not measured by the development fixture replay.',
+    requirement: 'Runtime complete-generation coverage >=95% is an unmeasured post-release operational SLO; development replay and a 19/20 canary do not establish it.',
     threshold: runtimeThreshold,
     blocking: false,
+  };
+  const delegatedOperationalCanary: GateResult = {
+    status: 'pending',
+    requirement: 'A fresh delegated 20-city operational canary must reach at least 19/20 after Phase 7A collection-boundary repair.',
+    threshold: 0.95,
+    evidence: 'Experiment 010 made zero provider calls and is a credential preflight record, not this measurement.',
+    blocking: true,
   };
 
   const economicsGate = manifest.gates['8_refreshEconomics'] as {
@@ -710,6 +720,7 @@ function main() {
   const gateResults: Record<string, GateResult> = {
     ...measuredGates,
     '1_runtimeCoverage': runtimeCoverage,
+    '1_delegatedOperationalCanary': delegatedOperationalCanary,
     '10_verification': {
       status: 'external',
       requirement: 'Verification baseline is executed outside this data replay.',

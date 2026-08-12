@@ -24,8 +24,11 @@ of v6. Full diagnosis: [`docs/dev/plans/city-cost-methodology-v6.md`](docs/dev/p
 10 August 2026 the owner stopped the attempt to independently validate all 19 behavioural presets. v6.1
 keeps every existing tier, banks the genuine accommodation result, and replaces the unreachable evidence
 programme with a three-call, source-native, honestly graded path. No new holdout is planned. The owner has
-approved staged M4 migration of the existing 121-city library; the live CSV remains on v1 until the runtime
-canary, complete staged preview and owner-reviewed cutover are finished.
+approved staged M4 migration of the existing 121-city library. The first 20-city provider attempt made zero
+provider calls and is now classified as a credential preflight, not a source-coverage result. Audit then
+found that city-cost provider calls do not enable web search and Expedia receives a zero-night window. The
+live CSV remains on v1 while Phase 7 repairs those defects, runs a delegated operational canary, and proceeds
+through the complete staged preview and owner-reviewed cutover.
 
 ---
 
@@ -206,7 +209,7 @@ price counterparts. The 450-slot development ledger resolved 280 found rows; the
 found only 12/180 rows. Requiring another holdout would repeat the same structural failure. No holdout may
 be reopened or replaced under v6.1.
 
-### M3.1 — simplify and finish v6.1 — **IMPLEMENTATION BANKED; CONTRACT RECONCILIATION REQUIRED**
+### M3.1 — simplify and finish v6.1 — **MATERIALIZER AND RELEASE CONTRACT BANKED**
 
 The implementation contract is
 [`docs/dev/plans/city-cost-methodology-v6-1.md`](docs/dev/plans/city-cost-methodology-v6-1.md). It keeps
@@ -222,6 +225,7 @@ all 19 tiers while reducing the runtime spine to three calls and at most ten sea
 - [x] Produce the deterministic 19-tier release report and reachable gate result
 - [x] Wire the new-city path behind `CITY_COST_METHODOLOGY_V6=true` and verify v1 rollback
 - [x] Verify the v6.1 release validator, generated priors/materialization and full provenance replay
+- [x] Reconcile the generated cocktail coefficient with the manifest and add a drift regression
 
 Phase 3 replay result: the v6.1 Stage-A fixture set contains 25 cities and 75 normalized source
 responses, with zero new collection calls. Stage B produces all 19 tiers for 25/25 cities through
@@ -245,33 +249,39 @@ reports and narrative contract to that generated value and added a validator ass
 source anchor, value, grade, interval, authority and relation text. A temporary regression with the old
 `2.6`, ±75% declaration failed `--check` as required. No refit was performed.
 
-### M4 — migrate the existing 121-city library — **OWNER APPROVED; ACTIVE NEXT MILESTONE**
+### M4 — migrate the existing 121-city library — **OWNER APPROVED; PHASE 7 REPAIR ACTIVE**
 
 The 12 August 2026 owner decision supersedes the earlier new-city-only recommendation. The desired final
 state is one coherent v6.1 library for existing and new cities. The current CSV remains read-only until a
 complete staged migration is reviewed.
 
 - [x] Reconcile manifest/docs/generated reports with generated coefficients; add a drift assertion
-- [x] Pre-register and attempt a representative 20-city real-provider canary; the first run failed 0/20
-  because no server-side provider credential was configured
-- [ ] Rerun the frozen canary with a real provider; require at least 19/20 complete
-- [ ] Measure persistence/API provenance round-trip and the runtime call/search/direct-read contract on
-  successful provider-path cities
+- [x] Pre-register and attempt a representative 20-city provider canary; it made zero provider calls because
+  no server-side provider credential was configured and is retained as a preflight record, not 0% coverage
+- [ ] Repair the production collection boundary: enable provider web search, pass distinct Expedia arrival
+  and departure dates, preserve partial calls, and make the canary evaluator enforce every registered gate
+- [ ] Run a fresh delegated 20-city operational canary through exact production prompts and shipped Stage B;
+  require at least 19/20 complete source contracts and report direct/partial/blocked/fallback separately
+- [ ] Prove field-by-field persistence/API provenance round-trip in deterministic tests and the delegated
+  canary; do not count all-prior materialization as source coverage
 - [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV
 - [ ] Validate any reuse of the 25 fixture-city responses against the frozen migration window
 - [ ] Generate all 121 cities in batches into a staged CSV plus full provenance sidecar
 - [ ] Import/link the sidecar through `city_estimates` so seeded existing-city provenance is runtime-visible
 - [ ] Produce the complete operational impact report, including all >2×/<0.5× flags and regional fallback
 - [ ] Stop for owner review before replacing the live CSV or changing the generation default
+- [ ] Before cutover, run a 3–5-city user-key smoke of provider authentication/search plus the real DB/API
+  boundary; this does not block migration tooling or staging
 - [ ] After approval, atomically cut over the generated CSV and v6.1 new-city default
 - [ ] Test the coordinated rollback of both the old CSV and v1 generation path
 
 Collection bounds are 363 primary calls and 1,210 searches for a complete recollection, or 288 new calls
 if all 25 existing fixture cities qualify for documented reuse. Report actual calls, retries, searches and
-reuses. Provider mode must establish the canary's runtime claim; delegated schema-constrained Stage A may
-be used for bulk migration when credentials are unavailable, with the shipped materializer always used for
-Stage B. The first live canary attempt is recorded as a failed gate and blocks Phase 8 until a real provider
-credential is configured; it is not evidence of runtime coverage.
+reuses. Codex subagents are the approved Stage-A route for the operational canary and bulk migration when
+app-provider credentials are unavailable, with the shipped parser/materializer/persistence path always used
+for Stage B. Production users still supply their own provider key. A later small key-backed smoke tests the
+transport boundary; ≥95% complete-generation coverage is a post-release operational SLO, not a claim proved
+by a 19/20 pre-release sample.
 
 **Exit:** all 121 cities and newly generated cities use v6.1 with complete runtime-visible provenance, the live cutover was
 owner-reviewed, and one tested rollback restores both the v1 CSV and v1 generation default. No holdout was

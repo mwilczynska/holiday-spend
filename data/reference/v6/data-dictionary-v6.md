@@ -342,7 +342,23 @@ recommendation. The methodology contract does not change: three calls, at most t
 explicit grades and one category fallback. Migration is operational collection, not a new holdout or a
 coefficient-fitting panel.
 
-The live CSV remains unchanged until a representative live-provider canary passes, all 121 cities have a
-complete deterministic staged artifact and provenance sidecar, and the owner reviews the operational
-impact report. Cutover must coordinate the CSV and new-city default; rollback must restore both. v1
-differences are reported but never used as a fitting target.
+At this decision point the live CSV was to remain unchanged until a representative live-provider canary
+passed, all 121 cities had a complete deterministic staged artifact and provenance sidecar, and the owner
+reviewed the operational impact report. The canary requirement is superseded by the dated decision below.
+The coordinated cutover/rollback and no-tuning-to-v1 requirements remain in force.
+
+### 12 August 2026 — supersede the key-gated 20-city runtime canary
+
+Experiment 010 made zero provider calls because its CLI process had no application provider credential. It
+is a credential preflight failure, not a measured 0/20 source result. The subsequent audit also found that
+the city-cost provider client sends ordinary JSON completions without enabling the web-search tools required
+by the prompts, and that the Expedia renderer substitutes the same reference date for arrival and departure.
+Supplying a key would not have made that frozen experiment a valid source canary.
+
+Production users continue to supply their own provider key through the web app. For development and staged
+migration, Codex subagents are an approved Stage-A collector under the exact prompt/schema/search contract;
+the shipped parser, `materializeCityCostV61`, persistence adapter and API parser are mandatory Stage B. A
+fresh delegated 20-city operational canary must establish at least 19/20 complete source contracts and report
+source coverage separately from all-prior availability. A later 3–5-city user-key smoke tests provider
+authentication/search and the real database/API boundary before cutover. Runtime ≥95% is a post-release SLO,
+not a statistical claim inferred from 19/20.

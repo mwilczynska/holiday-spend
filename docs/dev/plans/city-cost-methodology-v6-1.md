@@ -81,8 +81,9 @@ drifts from the generated artifact.
 - Accommodation has genuine development accuracy evidence and a spent conditional holdout result.
 - BYT food and activities are source-backed product estimates, not independent validation truth.
 - Drinks are source-priced behavioural presets without independent full-basket truth.
-- Runtime ≥95% coverage is **unmeasured**. The 25/25 fixture replay proves deterministic replay, not
-  live provider-path success.
+- Runtime ≥95% coverage is **unmeasured** and is now an operational SLO, not a claim that a 19/20 sample
+  can establish statistically. The 25/25 fixture replay proves deterministic replay. The first attempted
+  provider canary made zero provider calls and is a credential preflight failure, not 0% source coverage.
 - The 25-city rollout preview is operational impact evidence only. Across 450 non-zero comparable
   city/tier rows, 81 lie above 2× or below 0.5× v1; `food_high_end` is above 2× v1 in 18/25 cities.
   Representative basket median changes are +36.65% budget, +11.53% mid-range and +31.90% high-end.
@@ -119,37 +120,62 @@ decision. The implementation is banked; the library migration is not complete.
 4. Regenerated the release validation and rollout artifacts through scripts without network calls.
 5. The full baseline for this phase passed; the live CSV and holdouts were untouched.
 
-### Phase 7 — measure the live provider path with a canary
+### Phase 7 — repair and test the collection boundary
 
-**Status after 12 August 2026 attempt: STOPPED — failed 0/20; provider credential required before retry.**
+**Status after 12 August 2026 audit: INCOMPLETE — experiment 010 is superseded as a canary result.**
 
-The preregistered run is `data/reference/v6/experiments/010-v6-1-runtime-canary/`. It exercised the actual
-`generateCityCostEstimate` path with the v6.1 flag and failed closed for all 20 registered cities because
-the server had no `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`. No fixture, delegated response,
-v1 comparison, holdout read or CSV write substituted for the missing provider. Phase 8 must not start until
-the same registration is rerun with a real provider and reaches the 19/20 gate.
+`data/reference/v6/experiments/010-v6-1-runtime-canary/` is retained unchanged as history. It made zero
+provider calls because no server-side key was configured. More importantly, the audit found that the
+ordinary JSON provider client used by city-cost collection does not enable provider web-search tools even
+though all three prompts require search snippets. It also renders Expedia arrival and departure from the
+same `referenceDate`, producing a zero-night window. Supplying a key would therefore not make the frozen
+experiment a valid source canary.
 
-Pre-register a representative **20-city operational canary** drawn from the existing 121-city frame. It
-must span all regions, cost bands, source-strong and source-weak cities, and include non-USD currencies.
-Use the actual runtime provider path, not fixture replay, with exactly the production prompts and limits.
+Phase 7 is split into three evidence boundaries:
 
-The canary is operational collection for the approved migration, not a holdout and not a coefficient fit.
-Record raw schema responses, telemetry, explicit missingness, materialized output and persistence/API
-round-trip results. Never tune against v1 or any holdout.
+#### Phase 7A — fix the production collection contract
 
-The canary passes only when:
+- Route all three v6.1 calls through a real search-enabled provider adapter, reusing the instrumented
+  transport search adapters where practical rather than trusting model-reported searches.
+- Pass distinct arrival and departure dates to Expedia and retain the one-night frozen window.
+- Preserve every attempted call, raw provider response, provider-observed search telemetry, retry and error,
+  including partial city failures.
+- Make blocked/not-found source responses distinguishable from a source-complete city even though the
+  materializer may still produce 19 grade-D fallback tiers.
+- Extract and unit-test a pure canary evaluator. Enforce exactly three call records per city, per-source and
+  per-city search ceilings, zero direct reads, the 30% artifact threshold and field-by-field provenance
+  equality through persistence/API parsing.
+- Keep raw collection artifacts out of the generated development materialization bundles unless the
+  artifact explicitly needs them; avoid duplicating the same spine payload in every fixture.
 
-- at least 19/20 cities materialize all 19 tiers (the manifest's ≥95% runtime clause);
-- every attempted city has exactly three source-call records and at most ten searches;
-- direct page reads are zero;
-- missing facts remain explicit and reach the documented grade-D category fallback;
-- methodology `v6.1`, all 19 grades and intervals, anchors, source map, telemetry, missingness, prior basis
-  and input snapshot survive persistence and API parsing;
-- no batch-level artifact signature affects more than 30% of the canary.
+Production users continue to supply their own provider key through the web app. Codex/ChatGPT session
+authentication is not application provider authentication and must never be copied into the app.
 
-If it fails, stop and report the measured failure. Repair implementation/contract defects and rerun only
-when the failure did not expose or consume validation data; do not change coefficients to make the canary
-look like v1.
+#### Phase 7B — delegated 20-city operational canary
+
+Create a fresh experiment after the Phase 7A fixes; do not mutate experiment 010. Reuse its representative
+20-city frame, but freeze a valid one-night window and the corrected prompt/tooling hashes. Codex subagents
+may perform Stage A under the exact production prompts and limits: search snippets only, exactly three
+source calls, at most ten searches, zero direct page reads, unedited raw responses and explicit missingness.
+Stage B must validate those responses and run the shipped `materializeCityCostV61`, persistence adapter and
+API provenance parser.
+
+The delegated canary passes only when at least 19/20 cities have three schema-valid call records and a
+complete 19-tier deterministic bundle; all contract limits and provenance equality checks pass; and artifact
+candidates affect no more than 30% of the batch. Report source-found, partial, blocked and fallback rates
+separately. A city materialized entirely from priors is operationally available but is not source coverage
+and counts as an artifact candidate for the batch-proportion rule.
+
+This establishes search-contract feasibility and deterministic application behaviour. It is not labelled
+as provider-runtime reliability or holdout accuracy.
+
+#### Phase 7C — user-key provider transport smoke and runtime SLO
+
+After the search-enabled adapter exists, retain a small 3–5-city end-to-end smoke using a user-supplied key
+to test authentication, provider-specific search execution and the deployed database/API boundary. This is
+external/manual until a key is supplied and does not block Phase 8 or Phase 9 staging. It must pass before
+the Phase 11 cutover. Post-release complete-generation coverage is monitored against a ≥95% operational SLO;
+a 19/20 pre-release sample must not be described as statistically proving that population rate.
 
 ### Phase 8 — build resumable migration tooling and a dry run
 
@@ -191,10 +217,11 @@ The upper bound is 363 primary source calls and 1,210 searches. If all 25 existi
 for reuse, 288 new calls remain. These are planning bounds, not a promise; the protocol must report actual
 calls, retries, searches and reuses.
 
-Provider mode is preferred. If the environment lacks provider credentials, schema-constrained delegated
-collection may supply Stage A exactly as experiment 006 did, but every call must use the production prompt
-verbatim, retain an unedited raw response and telemetry, and record `collectionMode`. Stage B must always
-be the shipped deterministic materializer. No plausible substitute may be inserted by the collector.
+Delegated Codex subagents are the approved Stage-A route for development and migration when app-provider
+credentials are unavailable. Every call must use the production prompt verbatim, retain an unedited raw
+response and telemetry, and record `collectionMode`. Provider mode remains available for users supplying a
+key. Stage B must always be the shipped deterministic materializer. No plausible substitute may be inserted
+by the collector.
 
 ### Phase 10 — staged impact review and cutover decision
 
@@ -234,7 +261,8 @@ flag after migrating the CSV would recreate a mixed-method library and is not a 
 The workstream is complete only when:
 
 1. all contract declarations agree with generated coefficients and validator checks enforce that agreement;
-2. a 20-city live provider canary measures ≥95% runtime coverage and provenance round-trip;
+2. the corrected 20-city delegated operational canary reaches at least 19/20 complete source contracts and
+   proves the exact deterministic materialization/provenance round-trip;
 3. the migration protocol is frozen, resumable, deterministic and independent of the live CSV;
 4. all 121 existing cities have complete staged v6.1 values and provenance, or an explicit owner-approved
    exclusion that does not silently retain v1 values;
@@ -244,7 +272,9 @@ The workstream is complete only when:
 7. v6.1 is the consistent default for existing and new cities;
 8. the coordinated v1 rollback is tested and documented;
 9. no holdout was read or rescored and no accommodation coefficient was refit;
-10. the verification baseline passes, the tree is clean and the branch is pushed.
+10. a user-key 3–5-city transport/database/API smoke passes before cutover, while ≥95% complete-generation
+    coverage is explicitly monitored as a post-release operational SLO rather than claimed from 19/20;
+11. the verification baseline passes, the tree is clean and the branch is pushed.
 
 M5 improvements to weak individual tiers are not required for M4 unless the runtime canary reveals a
 batch-level implementation artifact. They remain later evidence improvements.
@@ -261,7 +291,7 @@ batch-level implementation artifact. They remain later evidence improvements.
   three-call contract.
 - Preserve explicit source missingness; category priors are applied only by the materializer.
 - Commit and push after each phase and each bulk batch.
-- Stop on a canary gate failure, a batch-level artifact signature affecting >30% of a batch, exhaustion of
+- Stop on a delegated canary gate failure, a batch-level artifact signature affecting >30% of a batch, exhaustion of
   the declared source route, or before the Phase 11 cutover. Do not stop for individual outliers.
 - Preserve historical v6.0 replay and all dated superseded conclusions.
 

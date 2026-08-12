@@ -7618,10 +7618,10 @@
     }
   ],
   "recommendation": {
-    "decision": "recommend staged 121-city migration after runtime canary and owner review",
-    "text": "The owner has approved migration in principle. Use this preview as operational context, then require the live provider canary and a complete staged 121-city artifact before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.",
+    "decision": "recommend staged 121-city migration after collection repair, delegated canary and owner review",
+    "text": "The owner has approved migration in principle. Use this preview as operational context, then require collection-boundary repair, the delegated operational canary, a complete staged 121-city artifact and a small user-key provider smoke before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.",
     "limitations": [
-      "Runtime >=95% coverage is unmeasured.",
+      "Runtime >=95% complete-generation coverage is an unmeasured post-release operational SLO.",
       "This is not ground-truth validation and should not be interpreted as accuracy.",
       "Food and activity values are BudgetYourTrip source-backed product estimates; drinks are Numbeo-backed consumption presets with modelled cocktail composition."
     ]

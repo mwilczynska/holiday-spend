@@ -6,12 +6,13 @@
 
 **Phase 6 completed commit:** `07a1c0a`
 **Phase 7 canary result commit:** `1bc352f`
-**Phase 7 canary result:** failed and recorded in `010-v6-1-runtime-canary`
+**Phase 7 first attempt:** credential preflight only; superseded as a canary result
 
-**Milestone:** M4 coherent migration of the 121-city library — **owner approved, not started**
-**Exact next action:** configure a real server-side provider credential, then rerun
-`node scripts/run-v6-1-runtime-canary.mjs` against the unchanged registration. Do not begin Phase 8 or
-bulk migration until the canary reaches at least 19/20 complete cities and verifies provenance round-trip.
+**Milestone:** M4 coherent migration of the 121-city library — **owner approved; Phase 7 repair active**
+**Exact next action:** implement Phase 7A in the active plan: route v6.1 collection through real
+search-enabled provider adapters, fix the Expedia arrival/departure contract, and replace the incomplete
+canary evaluator. Then create a fresh delegated 20-city operational canary; do not rerun or mutate
+experiment 010.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -57,6 +58,16 @@ Before editing, verify the branch, worktree and `npm run docs:check-memory`.
 This decision supersedes the generated Phase 5 recommendation of “new cities only.” That recommendation
 was reasonable before owner review and remains in dated artifacts as history; do not delete it.
 
+### 12 August — delegated development collection and user-key production boundary
+
+- Production users supply their own provider key through the web app for new-city generation.
+- Development and migration Stage A may use Codex subagents under the exact production prompts and limits;
+  the shipped parser, materializer, persistence adapter and API parser remain the deterministic Stage B.
+- A delegated canary proves source-contract feasibility, not provider authentication or population runtime
+  reliability. A small user-key provider smoke remains required before cutover; ≥95% is a monitored runtime
+  SLO rather than a claim inferred from 19/20.
+- Experiment 010 made no provider calls and is a credential preflight record, not measured source coverage.
+
 ## 3. State of the world
 
 Banked and verified:
@@ -71,20 +82,23 @@ Banked and verified:
   ±64%, and the release validator fails closed when that declaration drifts;
 - SGD/TWD/ZAR/PEN FX maintenance: prior exclusions fell 34 → 0 and drink direct coverage rose 52% → 68%;
 - read-only rollout preview against the unchanged v1 CSV;
-- the Phase 7 canary registration and real-provider attempt;
+- the Phase 7 canary registration and credential-preflight record;
 - the full verification baseline, clean branch and pushed Phase 7 result commit.
 
 Current production state:
 
 - the live 121-city CSV is still v1 and must remain unchanged until Phase 11 approval;
 - the feature flag is opt-in and flag-off remains v1;
-- the real-provider canary has measured 0/20 complete cities against the ≥95% clause because no
-  `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY` was configured; this is a failed gate, not a
-  fixture result;
+- experiment 010 made zero provider calls because no `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or
+  `GEMINI_API_KEY` was configured. It is not a measured 0/20 source result;
+- the v6.1 city-cost provider client currently makes ordinary JSON-completion requests without enabling
+  web search, despite prompts that require search snippets;
+- the current prompt renderer substitutes the same date for Expedia arrival and departure, so the
+  preregistered one-night window would become zero nights;
 - no bulk migration responses or staged CSV exist yet;
 - all holdouts are spent/closed and irrelevant to the operational migration.
 
-## 4. Phase 6 result and remaining release issue
+## 4. Phase 6 result and remaining release issues
 
 The generated authority and release declarations drifted during FX regeneration. Phase 6 resolved the drift:
 
@@ -95,11 +109,11 @@ The generated authority and release declarations drifted during FX regeneration.
 - the negative regression with the old `2.6`, ±75% declaration failed as required;
 - generated release and rollout reports now describe the approved staged migration sequence.
 
-Accommodation coefficients and the Expedia/Booking offset did not change. The remaining unmeasured release
-item is the live provider-path coverage clause. Phase 7 must measure it; fixture replay or delegated
-collection cannot establish it.
+Accommodation coefficients and the Expedia/Booking offset did not change. The remaining release work is
+operational: repair the search-capable collection boundary, run delegated source-contract coverage through
+the real deterministic Stage B, build the staged migration, and retain a small user-key smoke before cutover.
 
-## 4a. Phase 7 canary result — stopped
+## 4a. Phase 7 experiment 010 — superseded as a canary result
 
 `data/reference/v6/experiments/010-v6-1-runtime-canary/` is preregistered for 20 cities with the frozen
 CSV/FX/prompt hashes and ran `generateCityCostEstimate` with `CITY_COST_METHODOLOGY_V6=true`. The result is
@@ -107,9 +121,15 @@ CSV/FX/prompt hashes and ran `generateCityCostEstimate` with `CITY_COST_METHODOL
 has no configured provider credential. The result records the exact missing-key error for every city;
 there were no fixture, delegated or v1 substitutions, no holdout reads, and no CSV writes.
 
-This is the registered canary stop rule. Phase 8 is blocked until an owner supplies/configures a real
-provider credential and the same frozen canary is rerun. Do not weaken the threshold or reinterpret the
-failed run as runtime coverage.
+The audit established that no source call ran. It also found two defects that a key would not fix: the
+provider client does not enable web search, and Expedia receives the same arrival and departure date. The
+canary evaluator additionally omits registered gates and can count all-prior materializations as source
+coverage. Preserve experiment 010 unchanged as the failed preflight record; do not rerun it.
+
+Phase 7A now repairs those implementation defects. Phase 7B creates a new experiment using Codex subagents
+for the same representative city frame and the exact production prompt/schema/search contract, then feeds
+the responses through shipped Stage B. Phase 7C is a later 3–5-city user-key provider transport/database/API
+smoke. Only Phase 7A and 7B block Phase 8; Phase 7C blocks cutover, not migration tooling or staging.
 
 ## 5. Why the migration is staged
 
@@ -126,12 +146,14 @@ fallback concentration, ordering and extreme values before owner approval.
 Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete phase:
 
 1. **Phase 6:** contract/document reconciliation and validator assertion — **complete and pushed**.
-2. **Phase 7:** real-provider canary — **failed 0/20; stopped pending provider credential**.
-3. **Phase 8:** resumable/idempotent migration tooling and canary dry run.
-4. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
+2. **Phase 7A:** repair search-enabled production collection, date handling and canary evaluator — **next**.
+3. **Phase 7B:** fresh delegated 20-city operational canary; require at least 19/20 complete contracts.
+4. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
+5. **Phase 8:** resumable/idempotent migration tooling and canary dry run.
+6. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
 sidecar only.
-5. **Phase 10:** complete operational-impact report; then stop for owner review.
-6. **Phase 11:** only after approval, atomically replace the CSV, update the seed source label and switch
+7. **Phase 10:** complete operational-impact report; then stop for owner review.
+8. **Phase 11:** only after approval and Phase 7C, atomically replace the CSV, update the seed source label and switch
    the new-city default as one rollback unit.
 
 Update this handoff after every phase with completed evidence and the exact next command/file. Commit and

@@ -2845,3 +2845,25 @@ error per city. No fixture replay, delegated collection or v1 comparison was sub
 read and no CSV was written. This is a failed runtime-coverage gate, not evidence about source quality or
 materialization correctness. Phase 8 is stopped until a real server-side provider credential is configured,
 then the same frozen canary must be rerun without changing its threshold or city frame.
+
+## v6.1 Phase 7 canary audit and owner correction — 12 August 2026
+
+The Phase 7 interpretation above is superseded. Experiment 010 remains an accurate record of a CLI run
+without an application provider key, but no provider call occurred; `0/20` is therefore a credential
+preflight result, not measured runtime or source coverage. Production users still provide their own key in
+the web app. For development and migration, the owner approved Codex subagents for schema-constrained Stage
+A, followed by the shipped deterministic parser, `materializeCityCostV61`, persistence adapter and API
+parser as Stage B.
+
+The audit also found that a key would not have made experiment 010 valid. The city-cost client sends plain
+JSON-completion requests without enabling the provider web-search tools required by all three prompts, and
+the prompt renderer substitutes the same `referenceDate` for Expedia arrival and departure, turning the
+registered one-night stay into a zero-night window. The canary predicate omits registered call-count and
+artifact-fraction gates, can count all-prior fallback output as source coverage, discards partial failed-city
+calls and checks provenance mainly by field counts rather than equality.
+
+The replacement sequence is Phase 7A production collection repair, Phase 7B a fresh delegated 20-city
+operational canary, then Phase 8/9 staged migration. A small user-key provider/database/API smoke remains a
+pre-cutover requirement, while ≥95% complete-generation coverage becomes a monitored post-release SLO; a
+19/20 sample is not presented as statistical proof of that population rate. Experiment 010 is preserved and
+must not be rerun or mutated. No holdout or live CSV was touched by this correction.

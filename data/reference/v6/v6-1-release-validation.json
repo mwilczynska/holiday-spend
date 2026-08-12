@@ -57,7 +57,7 @@
   },
   "runtimeCoverage": {
     "status": "unmeasured",
-    "requirement": "Runtime in-scope city coverage >=95% is not measured by the development fixture replay.",
+    "requirement": "Runtime complete-generation coverage >=95% is an unmeasured post-release operational SLO; development replay and a 19/20 canary do not establish it.",
     "threshold": 0.95,
     "blocking": false
   },
@@ -159,9 +159,16 @@
     "9_integrationAndRollback": true,
     "1_runtimeCoverage": {
       "status": "unmeasured",
-      "requirement": "Runtime in-scope city coverage >=95% is not measured by the development fixture replay.",
+      "requirement": "Runtime complete-generation coverage >=95% is an unmeasured post-release operational SLO; development replay and a 19/20 canary do not establish it.",
       "threshold": 0.95,
       "blocking": false
+    },
+    "1_delegatedOperationalCanary": {
+      "status": "pending",
+      "requirement": "A fresh delegated 20-city operational canary must reach at least 19/20 after Phase 7A collection-boundary repair.",
+      "threshold": 0.95,
+      "evidence": "Experiment 010 made zero provider calls and is a credential preflight record, not this measurement.",
+      "blocking": true
     },
     "10_verification": {
       "status": "external",

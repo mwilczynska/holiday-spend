@@ -38,5 +38,6 @@ fixed so the comparison cannot be tuned to the observed differences.
 
 This preview describes operational level changes, not accuracy. It does not validate v6.1 against a new
 truth source or turn source-backed proxies or modelled presets into independent observations. The owner has
-approved a staged 121-city migration, but this preview alone does not satisfy the live canary or owner-review
-requirements for cutover. Keep the live CSV unchanged until those steps are complete.
+approved a staged 121-city migration, but this preview alone does not satisfy collection-boundary repair,
+the delegated operational canary, user-key provider smoke or owner-review requirements for cutover. Keep
+the live CSV unchanged until those steps are complete.

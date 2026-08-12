@@ -12,9 +12,10 @@ Copy everything below this line to GPT-5.6 Luna Max.
 
 Resume the city cost methodology v6.1 workstream on branch `feat/city-cost-methodology-v6`.
 
-The v6.1 implementation is banked. Your task is to reach a coherent library: repair the release contract,
-measure the real provider path, build a resumable migration, generate v6.1 results for the frozen 121-city
-frame, and stop for owner review before cutover. Keep all 19 tiers.
+The v6.1 materializer is banked. Your task is to reach a coherent library: repair the production collection
+boundary, prove the source contract with delegated agents plus the shipped deterministic path, build a
+resumable migration, generate v6.1 results for the frozen 121-city frame, and stop for owner review before
+cutover. Keep all 19 tiers.
 
 ## 0. Read before acting
 
@@ -65,9 +66,7 @@ v6.0 replay.
 
 Do not refit accommodation, rescore a holdout or tune v6.1 to v1.
 
-## 3. Phase 6 — reconcile the release contract
-
-This is the first incomplete phase.
+## 3. Phase 6 — reconcile the release contract — complete
 
 The generated authority says cocktail/cappuccino is `k=2.4838`, n=14, grade C, ±64%. The active manifest
 and some docs still say `2.6`, ±75%. This drift arose during deterministic regeneration; it is not a reason
@@ -84,28 +83,51 @@ to refit.
 
 Commit target: `fix: reconcile v6.1 release contract`
 
-## 4. Phase 7 — live provider-path canary
+## 4. Phase 7 — repair and test the collection boundary
 
-Pre-register 20 cities from the existing 121-city frame. Cover every region, multiple cost bands,
-source-strong/source-weak cities and non-USD currencies. Freeze the city list, source window, FX snapshot,
-provider/model settings, expected calls and gates before collecting.
+Experiment 010 is immutable history: it made zero provider calls because the CLI process had no app-provider
+key. It is a credential preflight failure, not measured 0/20 source coverage. Do not rerun or mutate it.
 
-Run the actual v6.1 runtime provider path. Fixture replay or delegated collection cannot establish runtime
-coverage. This is operational migration collection, not a holdout or accuracy fit.
+### Phase 7A — production collection repair
 
-Record one raw response and telemetry row per city/source call, explicit missingness, all materialized
-tiers and a persistence/API round trip. Pass only if:
+This is the first incomplete phase. Before collecting, fix the two confirmed production defects:
 
-- at least 19/20 cities materialize all 19 tiers;
-- each attempted city records three calls, no more than ten searches and zero direct page reads;
-- missing values fail closed and reach documented category fallback;
-- all v6.1 provenance fields survive persistence and API parsing;
-- artifact candidates affect no more than 30% of the batch.
+1. v6.1 currently uses ordinary JSON completions with no provider web-search tools, although the prompts
+   require search snippets. Route it through a genuinely search-enabled provider adapter with observed
+   search telemetry; reuse the transport-estimation adapters where practical.
+2. `renderPrompt` currently gives Expedia the same arrival and departure date. Accept and preserve distinct
+   dates for the frozen one-night window.
 
-If the canary fails, stop and report. Repair implementation defects only; do not alter coefficients to
-match v1. If it passes, regenerate the release result so runtime coverage is measured, then commit/push.
+Also preserve partial call records/errors, separate source coverage from all-prior materialization, remove
+raw-response duplication from development bundles, and extract a tested pure canary evaluator. It must
+enforce exactly three records per city, per-source/per-city search ceilings, zero direct reads, retries,
+the 30% artifact threshold and field-by-field provenance equality through persistence/API parsing.
 
-Commit target: `test: measure v6.1 runtime canary`
+Commit target: `fix: repair v6.1 search collection boundary`
+
+### Phase 7B — delegated operational canary
+
+Create a fresh experiment using the representative 20-city frame from experiment 010, a corrected frozen
+one-night window and current hashes. Use Codex subagents for Stage A under the production prompts verbatim:
+exactly three search-snippet calls, at most ten searches, zero direct page reads, one unedited raw response
+and telemetry record per source, explicit missingness and no invented fallback. Stage B validates every
+response and calls the shipped materializer, persistence adapter and API parser.
+
+Pass only if at least 19/20 cities have three schema-valid source records and complete 19-tier bundles; all
+call/search/read/provenance criteria pass; and artifact candidates affect no more than 30% of the batch.
+Report source-found/partial/blocked and category fallback separately. All-prior output is availability, not
+source coverage, and counts as an artifact candidate for the 30% batch rule. This is operational
+source-contract evidence, not holdout accuracy or provider-runtime
+reliability.
+
+Commit target: `test: run v6.1 delegated operational canary`
+
+### Phase 7C — provider transport smoke
+
+Production users supply their own key through the web app. Before Phase 11 cutover, run a 3–5-city user-key
+smoke of provider authentication, search execution and the real database/API boundary. It is external until
+a key is supplied and does not block Phase 8 or Phase 9. Treat ≥95% complete-generation coverage as a
+post-release operational SLO; never claim a 19/20 sample statistically establishes it.
 
 ## 5. Phase 8 — migration tooling and dry run
 
@@ -141,9 +163,9 @@ Process fixed batches of 10–20 cities. Commit and push after each batch. Each 
 5. report direct/fallback grades and all artifact candidates;
 6. pass the verification baseline.
 
-Provider mode is preferred. If provider credentials are unavailable, delegated Stage A is allowed under
-the exact production prompts and experiment-006 protocol. It does not satisfy the runtime gate—that was
-Phase 7—but it may populate migration source responses. Stage B is always the real materializer.
+Delegated Codex Stage A is approved for migration when app-provider credentials are unavailable. Use the
+exact production prompts and experiment-006 protocol, retain collection mode and raw evidence, and never
+label it provider-runtime evidence. Stage B is always the real materializer.
 
 The maximum is 363 primary calls and 1,210 searches; valid reuse of all 25 fixture cities reduces new
 primary calls to 288. Report actual counts. Fail closed; collectors never invent fallback values.
@@ -181,7 +203,7 @@ generation default.
 
 Stop and report only when:
 
-- the canary fails a pre-registered runtime gate;
+- the delegated operational canary fails a pre-registered contract gate;
 - artifact candidates exceed 30% of a batch;
 - the three-call source route is genuinely exhausted;
 - work would require a fourth call, direct page reads, a holdout, accommodation refit or tuning to v1;
@@ -231,5 +253,6 @@ handoff that says only “continue” has failed.
 Resume line:
 
 > Resume v6.1 on `feat/city-cost-methodology-v6`. Read `docs/dev/handoffs/city-cost-v6.md`, then follow
-> `LOOP-PROMPT-V6.md` from the first incomplete phase. Complete contract repair first, then the live canary
-> and staged 121-city migration. Stop for owner review before changing the live CSV or global default.
+> `LOOP-PROMPT-V6.md` from the first incomplete phase. Repair the search collection boundary first, run the
+> delegated operational canary, then build the staged 121-city migration. Stop for owner review before
+> changing the live CSV or global default.

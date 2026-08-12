@@ -5,9 +5,9 @@
 
 ## Recommendation
 
-**recommend staged 121-city migration after runtime canary and owner review** — The owner has approved migration in principle. Use this preview as operational context, then require the live provider canary and a complete staged 121-city artifact before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.
+**recommend staged 121-city migration after collection repair, delegated canary and owner review** — The owner has approved migration in principle. Use this preview as operational context, then require collection-boundary repair, the delegated operational canary, a complete staged 121-city artifact and a small user-key provider smoke before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.
 
-Runtime >=95% coverage remains unmeasured, and food/activity source dependence plus drink preset
+Runtime >=95% complete-generation coverage remains an unmeasured post-release SLO, and food/activity source dependence plus drink preset
 assumptions remain disclosed evidence limitations. This preview must not be used to tune v6.1 to
 the incumbent CSV or to justify migrating existing cities.
 
@@ -148,5 +148,5 @@ data/reference/v6/v6-1-rollout-preview.json
 
 ## Decision boundary
 
-This artifact is an operational A/B preview. It is not a holdout score and it does not establish absolute accuracy. A staged 121-city migration is approved in principle, but the live provider canary, complete staged artifact and owner review are still required. The existing v1 path remains the rollback when CITY_COST_METHODOLOGY_V6 is unset.
+This artifact is an operational A/B preview. It is not a holdout score and it does not establish absolute accuracy. A staged 121-city migration is approved in principle, but collection-boundary repair, the delegated operational canary, a complete staged artifact, a small user-key provider smoke and owner review are still required. The existing v1 path remains the rollback when CITY_COST_METHODOLOGY_V6 is unset.
 

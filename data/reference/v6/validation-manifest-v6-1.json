@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "city-cost-v6-1-release-manifest-v3",
+  "schemaVersion": "city-cost-v6-1-release-manifest-v4",
   "methodologyVersion": "v6.1",
-  "status": "scored_development_runtime_unmeasured",
+  "status": "scored_development_collection_boundary_repair_pending",
   "decisionDate": "2026-08-12",
   "objective": "Migrate the existing 121-city library and newly generated cities to a coherent v6.1 three-call, source-native and honestly graded approximation path.",
   "supersedes": {
@@ -113,11 +113,16 @@
     "newLlmCallsRequiredForDevelopment": 0
   },
   "releaseScope": {
-    "newCitiesOnly": true,
+    "currentRuntimeScope": "new_cities_opt_in_flag_only",
+    "targetRuntimeScope": "existing_121_and_new_cities_after_owner_approved_cutover",
     "migrationApproved": true,
-    "migrationStatus": "staged_canary_then_owner_review",
+    "migrationStatus": "phase_7_collection_boundary_repair_then_delegated_canary_then_staging",
     "featureFlag": "CITY_COST_METHODOLOGY_V6",
     "shippingCsvMayChange": false,
+    "shippingCsvChangeAuthorizedNow": false,
+    "experiment010Status": "credential_preflight_no_provider_calls_superseded_as_canary_result",
+    "delegatedStageAApproved": true,
+    "userKeyProviderSmokeRequiredBeforeCutover": true,
     "cutover": "Requires a complete staged 121-city artifact and explicit owner approval.",
     "rollback": "Restore the pre-migration CSV and unset the feature flag together to retain v1.",
     "freshHoldoutProposal": "cancelled_for_v6_1"
@@ -129,10 +134,16 @@
       "measurement": "Computed by the deterministic fixture replay."
     },
     "1_runtimeCoverage": {
-      "requirement": "At least 95% of runtime in-scope cities produce a complete v6.1 result.",
+      "requirement": "Monitor at least 95% complete v6.1 generation as a post-release operational SLO; do not infer population reliability from a 19/20 pre-release sample.",
       "runtimeThreshold": 0.95,
       "status": "unmeasured",
-      "measurement": "Not established by the development fixture replay; do not report as passed."
+      "measurement": "Not established by development replay or experiment 010, which made zero provider calls. The pre-release delegated canary measures source-contract feasibility and deterministic processing; a separate small user-key smoke tests provider transport before cutover."
+    },
+    "1_delegatedOperationalCanary": {
+      "requirement": "At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch.",
+      "threshold": "19/20",
+      "status": "pending_phase_7a_collection_boundary_repair",
+      "measurement": "A fresh experiment is required after production search/date/evaluator defects are fixed. Experiment 010 is not this measurement."
     },
     "2_schemaAndMissingness": {
       "requirement": "Every v6.1 source response validates; non-observations remain not_found, blocked, stale or class_absent and are never silently substituted in collection."

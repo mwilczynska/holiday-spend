@@ -5,12 +5,15 @@ cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact 
 tells you what lives here and what each file is for.
 
 **Status:** the v6.1 new-city implementation is banked and M4 migration of the existing 121-city library
-was approved on 12 August 2026. The live CSV is still unchanged. Phase 6 release reconciliation passed;
-the preregistered Phase 7 live-provider canary then failed 0/20 because this environment had no provider
-credential, so Phase 8 migration work is stopped pending a real-provider rerun. Read
+was approved on 12 August 2026. The live CSV is still unchanged. Phase 6 release reconciliation passed.
+Experiment 010 then made zero provider calls because this environment had no application provider key; it
+is retained as a credential preflight, not 0/20 source coverage. Audit also found that the city-cost provider
+client does not enable web search and gives Expedia the same arrival and departure date. Phase 7 now repairs
+that boundary and runs a fresh delegated operational canary before Phase 8. Read
 `docs/dev/plans/city-cost-methodology-v6-1.md` and
 `validation-manifest-v6-1.json`. Every old holdout is spent and closed; none is reopened for migration.
-The failed canary is `experiments/010-v6-1-runtime-canary/`; it is not runtime coverage evidence.
+The preflight record is `experiments/010-v6-1-runtime-canary/`; it is not runtime coverage evidence and must
+not be rerun or mutated.
 
 ## Active v6.1 simplification
 

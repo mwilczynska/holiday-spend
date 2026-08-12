@@ -212,8 +212,9 @@ fixed so the comparison cannot be tuned to the observed differences.
 
 This preview describes operational level changes, not accuracy. It does not validate v6.1 against a new
 truth source or turn source-backed proxies or modelled presets into independent observations. The owner has
-approved a staged 121-city migration, but this preview alone does not satisfy the live canary or owner-review
-requirements for cutover. Keep the live CSV unchanged until those steps are complete.
+approved a staged 121-city migration, but this preview alone does not satisfy collection-boundary repair,
+the delegated operational canary, user-key provider smoke or owner-review requirements for cutover. Keep
+the live CSV unchanged until those steps are complete.
 `;
 }
 
@@ -241,7 +242,7 @@ function buildReport(result) {
     '',
     `**${result.recommendation.decision}** — ${result.recommendation.text}`,
     '',
-    'Runtime >=95% coverage remains unmeasured, and food/activity source dependence plus drink preset',
+    'Runtime >=95% complete-generation coverage remains an unmeasured post-release SLO, and food/activity source dependence plus drink preset',
     'assumptions remain disclosed evidence limitations. This preview must not be used to tune v6.1 to',
     'the incumbent CSV or to justify migrating existing cities.',
     '',
@@ -274,7 +275,7 @@ function buildReport(result) {
       lines.push(`| ${flag.city} | ${flag.scope} | ${flag.name} | ${fmtAud(flag.v1Aud)} | ${fmtAud(flag.v61Aud)} | ${fmtRatio(flag.ratio)} | ${fmtPct(flag.differencePct)} |`);
     }
   }
-  lines.push('', '## Per-city detail', '', 'The JSON artifact contains every city × tier v1/v6.1 pair, all basket category subtotals, flags and provenance inputs:', '', 'data/reference/v6/v6-1-rollout-preview.json', '', '## Decision boundary', '', 'This artifact is an operational A/B preview. It is not a holdout score and it does not establish absolute accuracy. A staged 121-city migration is approved in principle, but the live provider canary, complete staged artifact and owner review are still required. The existing v1 path remains the rollback when CITY_COST_METHODOLOGY_V6 is unset.', '');
+  lines.push('', '## Per-city detail', '', 'The JSON artifact contains every city × tier v1/v6.1 pair, all basket category subtotals, flags and provenance inputs:', '', 'data/reference/v6/v6-1-rollout-preview.json', '', '## Decision boundary', '', 'This artifact is an operational A/B preview. It is not a holdout score and it does not establish absolute accuracy. A staged 121-city migration is approved in principle, but collection-boundary repair, the delegated operational canary, a complete staged artifact, a small user-key provider smoke and owner review are still required. The existing v1 path remains the rollback when CITY_COST_METHODOLOGY_V6 is unset.', '');
   return `${lines.join('\n')}\n`;
 }
 
@@ -348,10 +349,10 @@ function build() {
     flags,
     cities,
     recommendation: {
-      decision: 'recommend staged 121-city migration after runtime canary and owner review',
-      text: 'The owner has approved migration in principle. Use this preview as operational context, then require the live provider canary and a complete staged 121-city artifact before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.',
+      decision: 'recommend staged 121-city migration after collection repair, delegated canary and owner review',
+      text: 'The owner has approved migration in principle. Use this preview as operational context, then require collection-boundary repair, the delegated operational canary, a complete staged 121-city artifact and a small user-key provider smoke before cutover. Keep the live CSV on v1 until owner approval and retain the coordinated v1 rollback.',
       limitations: [
-        'Runtime >=95% coverage is unmeasured.',
+        'Runtime >=95% complete-generation coverage is an unmeasured post-release operational SLO.',
         'This is not ground-truth validation and should not be interpreted as accuracy.',
         'Food and activity values are BudgetYourTrip source-backed product estimates; drinks are Numbeo-backed consumption presets with modelled cocktail composition.',
       ],

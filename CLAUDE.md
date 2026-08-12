@@ -111,7 +111,7 @@ The canonical dataset is **`data/reference/city_costs_app_aud.csv`** — 121 cit
 New cities use the **v1 path by default**: `docs/prompts/llm_prompt_new_cities_1.md` asks a model for ten
 anchor prices and asserted multipliers derive 19 tiers. Setting `CITY_COST_METHODOLOGY_V6=true` switches
 new-city generation to the v6.1 three-call extractor/materializer path; the flag remains opt-in while the
-runtime canary and staged M4 library migration are completed.
+search-capable provider boundary, delegated operational canary and staged M4 library migration are completed.
 
 > **Known defect, deliberately still shipping by default.** v1 anchors come from model memory rather than a live
 > source, and its multipliers were never calibrated. `accom_4_star = hotel_3star × 1.80` has been
@@ -164,8 +164,12 @@ feature-flagged new-city path and persistence/API provenance boundary are implem
 validator computes the measured gates, records runtime >=95% coverage as unmeasured, and records the
 verification baseline as external evidence. Phase 4 FX coverage and the read-only rollout preview are
 complete. On 12 August 2026 the owner approved M4 migration of the existing 121-city library; this
-supersedes the preview's new-city-only recommendation. The active sequence is contract reconciliation,
-a 20-city live-provider canary, deterministic staged regeneration, owner review and coordinated cutover.
+supersedes the preview's new-city-only recommendation. Phase 6 contract reconciliation is complete. The
+first provider canary attempt made zero calls and is retained as a credential preflight; an audit then found
+that city-cost provider calls do not enable web search and render Expedia arrival and departure as the same
+date. The active sequence is production collection repair, a fresh delegated 20-city operational canary,
+deterministic staged regeneration, owner review and coordinated cutover. A small user-key provider smoke is
+required before cutover; ≥95% runtime coverage is monitored as an operational SLO.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,
@@ -205,7 +209,10 @@ Three providers: **OpenAI**, **Anthropic**, **Google Gemini**. Defaults are cent
 `src/lib/city-generation-config.ts` (currently `gpt-5.4-mini`, `claude-sonnet-4-6`, `gemini-2.5-flash`).
 
 **API keys entered in the UI are stored only in browser `localStorage`** — never in the repo or database.
-Model names are editable so a stale default cannot hard-block the UI.
+Production users supply that key for new-city collection. Development and migration may use Codex subagents
+for schema-constrained Stage A, then the shipped deterministic parser/materializer/persistence path for
+Stage B. Codex session authentication is separate from application provider authentication and is never
+forwarded into the web app. Model names are editable so a stale default cannot hard-block the UI.
 
 **Model discovery runs three tiers:** live provider API (browser key, else server env key) → no-key
 aggregator (OpenRouter, then models.dev) → generated curated snapshot at

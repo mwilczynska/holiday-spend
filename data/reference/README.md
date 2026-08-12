@@ -43,8 +43,9 @@ abandoned v3 programme, still referenced by tests or kept for provenance.
 ## CURRENT — v6 methodology contracts
 
 **v6.1 is the active workstream.** Its contracts live under `data/reference/v6/` — start at
-`v6/README.md`. The reachable finish line keeps all 19 tiers behind the existing opt-in flag and leaves the
-live v1 CSV unchanged.
+`v6/README.md`. The reachable finish line keeps all 19 tiers. The live v1 CSV is unchanged now; staged
+migration of all 121 cities is authorized, but cutover remains gated by collection-boundary repair, a
+delegated operational canary, the complete staged artifact, a small user-key smoke and owner review.
 
 | Path | Status | What it is | Read by |
 | --- | --- | --- | --- |
