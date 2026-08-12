@@ -2831,3 +2831,17 @@ superseded `2.6`, ±75% declaration and confirmed that `--check` fails with expl
 release validation, development report, rollout preview and experiment protocol were regenerated through
 their scripts. No provider call, city-price collection, holdout access, coefficient refit or live CSV change
 occurred. Phase 7—the pre-registered 20-city live-provider canary—is now the exact next action.
+
+## v6.1 Phase 7 runtime canary — 12 August 2026
+
+Phase 7 was preregistered and attempted against the actual `generateCityCostEstimate` production path with
+`CITY_COST_METHODOLOGY_V6=true`, using the frozen CSV/FX/prompt hashes and the 20-city frame in
+`data/reference/v6/experiments/010-v6-1-runtime-canary/`. The canary failed its registered coverage gate:
+0/20 cities completed all 19 tiers, versus the required 19/20.
+
+Every city failed closed before the first source call because this environment had no
+`OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`. The result records the exact missing-provider
+error per city. No fixture replay, delegated collection or v1 comparison was substituted; no holdout was
+read and no CSV was written. This is a failed runtime-coverage gate, not evidence about source quality or
+materialization correctness. Phase 8 is stopped until a real server-side provider credential is configured,
+then the same frozen canary must be rerun without changing its threshold or city frame.

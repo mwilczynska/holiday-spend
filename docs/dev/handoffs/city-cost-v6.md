@@ -5,11 +5,12 @@
 **Branch:** `feat/city-cost-methodology-v6`
 
 **Phase 6 completed commit:** `07a1c0a`
+**Phase 7 canary result:** failed and recorded in `010-v6-1-runtime-canary`
 
 **Milestone:** M4 coherent migration of the 121-city library — **owner approved, not started**
-**Exact next action:** pre-register and run the Phase 7 20-city live-provider canary. Phase 6 is complete
-and pushed; do not start bulk migration until the canary has measured the runtime clause and provenance
-round-trip.
+**Exact next action:** configure a real server-side provider credential, then rerun
+`node scripts/run-v6-1-runtime-canary.mjs` against the unchanged registration. Do not begin Phase 8 or
+bulk migration until the canary reaches at least 19/20 complete cities and verifies provenance round-trip.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -69,13 +70,16 @@ Banked and verified:
   ±64%, and the release validator fails closed when that declaration drifts;
 - SGD/TWD/ZAR/PEN FX maintenance: prior exclusions fell 34 → 0 and drink direct coverage rose 52% → 68%;
 - read-only rollout preview against the unchanged v1 CSV;
-- the full verification baseline, clean branch and pushed Phase 6 commit.
+- the Phase 7 canary registration and real-provider attempt;
+- the full verification baseline, clean branch and pushed Phase 7 result commit.
 
 Current production state:
 
 - the live 121-city CSV is still v1 and must remain unchanged until Phase 11 approval;
 - the feature flag is opt-in and flag-off remains v1;
-- no runtime canary has yet measured the ≥95% clause;
+- the real-provider canary has measured 0/20 complete cities against the ≥95% clause because no
+  `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY` was configured; this is a failed gate, not a
+  fixture result;
 - no bulk migration responses or staged CSV exist yet;
 - all holdouts are spent/closed and irrelevant to the operational migration.
 
@@ -94,6 +98,18 @@ Accommodation coefficients and the Expedia/Booking offset did not change. The re
 item is the live provider-path coverage clause. Phase 7 must measure it; fixture replay or delegated
 collection cannot establish it.
 
+## 4a. Phase 7 canary result — stopped
+
+`data/reference/v6/experiments/010-v6-1-runtime-canary/` is preregistered for 20 cities with the frozen
+CSV/FX/prompt hashes and ran `generateCityCostEstimate` with `CITY_COST_METHODOLOGY_V6=true`. The result is
+**0/20 complete**, required **19/20**. All cities failed closed before a source call because this checkout
+has no configured provider credential. The result records the exact missing-key error for every city;
+there were no fixture, delegated or v1 substitutions, no holdout reads, and no CSV writes.
+
+This is the registered canary stop rule. Phase 8 is blocked until an owner supplies/configures a real
+provider credential and the same frozen canary is rerun. Do not weaken the threshold or reinterpret the
+failed run as runtime coverage.
+
 ## 5. Why the migration is staged
 
 The 25-city preview found 81 of 450 non-zero city/tier comparisons above 2× or below 0.5× v1. In
@@ -109,7 +125,7 @@ fallback concentration, ordering and extreme values before owner approval.
 Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete phase:
 
 1. **Phase 6:** contract/document reconciliation and validator assertion — **complete and pushed**.
-2. **Phase 7:** pre-register and run the 20-city real-provider canary; ≥19/20 complete plus provenance round-trip.
+2. **Phase 7:** real-provider canary — **failed 0/20; stopped pending provider credential**.
 3. **Phase 8:** resumable/idempotent migration tooling and canary dry run.
 4. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
 sidecar only.
@@ -173,6 +189,7 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
+node scripts/run-v6-1-runtime-canary.mjs --check
 ```
 
 Add migration-specific checks when Phase 8 creates them. Rerun a failed full test suite once before
@@ -180,6 +197,7 @@ investigating because the OneDrive checkout has a known transient temp-directory
 
 ## 10. Current stopping point
 
-Start with Phase 7. Freeze the city list, source window, FX snapshot, provider/model settings and success
-criteria before collection. At the end of Phase 10, stop for owner approval. Touching the live CSV before
-that approval is outside authority even though the eventual migration itself is approved.
+The workstream is stopped after the failed Phase 7 canary. Configure a real server-side provider credential
+and rerun the exact registered command before starting Phase 8. At the end of Phase 10, stop for owner
+approval. Touching the live CSV before that approval is outside authority even though the eventual migration
+itself is approved.

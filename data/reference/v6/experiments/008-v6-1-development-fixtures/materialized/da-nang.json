@@ -275,6 +275,134 @@
         "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
       }
     ],
+    "rawResponses": {
+      "expedia_3star": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "expedia_3star",
+        "city": "Da Nang",
+        "country": "Vietnam",
+        "retrievalStatus": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=4; v6.1 fixture budget=4.",
+        "measures": {
+          "hotel_3star_room_2p": {
+            "status": "observed",
+            "value": 26,
+            "currency": "USD",
+            "sourceUrl": "https://www.expedia.com/3Star-Da-Nang-Hotels.s30-0-d974.Travel-Guide-Filter-Hotels",
+            "sourceTitle": "The Best 3 Star Hotels in Da Nang from $17 | Expedia",
+            "evidenceText": "September | $26. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Da Nang.",
+            "query": "site:expedia.com/3Star-Da-Nang-Hotels Da Nang 3-star September 2 adults",
+            "taxStatus": "excluded"
+          }
+        }
+      },
+      "budgetyourtrip_daily_tiers": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "budgetyourtrip_daily_tiers",
+        "city": "Da Nang",
+        "country": "Vietnam",
+        "retrievalStatus": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Food and activity values come from the existing labelled per-person/day panel; they are source-backed production values, not independent truth in v6.1. Original v6.0 searchesUsed=4; v6.1 fixture budget=4.",
+        "measures": {
+          "byt_food_budget_per_person_day": {
+            "status": "observed",
+            "value": 11,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Da Nang page reports Food & Meal Budget budget at $11 USD per person per day.",
+            "query": "BudgetYourTrip Da Nang labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_food_mid_per_person_day": {
+            "status": "observed",
+            "value": 27,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Da Nang page reports Food & Meal Budget mid_range at $27 USD per person per day.",
+            "query": "BudgetYourTrip Da Nang labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_food_high_per_person_day": {
+            "status": "observed",
+            "value": 64,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Da Nang page reports Food & Meal Budget luxury at $64 USD per person per day.",
+            "query": "BudgetYourTrip Da Nang labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_budget_per_person_day": {
+            "status": "observed",
+            "value": 6,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Da Nang page reports Entertainment budget at $6 USD per person per day.",
+            "query": "BudgetYourTrip Da Nang labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_mid_per_person_day": {
+            "status": "observed",
+            "value": 13,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Da Nang page reports Entertainment mid_range at $13 USD per person per day.",
+            "query": "BudgetYourTrip Da Nang labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_high_per_person_day": {
+            "status": "observed",
+            "value": 23,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/vietnam/da-nang",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Da Nang page reports Entertainment luxury at $23 USD per person per day.",
+            "query": "BudgetYourTrip Da Nang labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          }
+        }
+      },
+      "numbeo_drinks": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "numbeo_drinks",
+        "city": "Da Nang",
+        "country": "Vietnam",
+        "retrievalStatus": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=4; v6.1 fixture budget=2.",
+        "measures": {
+          "cappuccino_1": {
+            "status": "observed",
+            "value": 43684.21,
+            "currency": "VND",
+            "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Nang",
+            "sourceTitle": "Cost of Living in Da Nang. Jun 2026. Prices in Da Nang",
+            "evidenceText": "Cappuccino (Regular Size) | ₫43,684.21",
+            "query": "site:numbeo.com/cost-of-living/in Da Nang Vietnam Cappuccino (Regular Size)",
+            "taxStatus": "unknown"
+          },
+          "domestic_draft_beer_1": {
+            "status": "observed",
+            "value": 35000,
+            "currency": "VND",
+            "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Nang",
+            "sourceTitle": "Cost of Living in Da Nang. Jun 2026. Prices in Da Nang",
+            "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫35,000.00",
+            "query": "site:numbeo.com/cost-of-living/in Da Nang Vietnam Domestic Draft Beer (1 Pint)",
+            "taxStatus": "unknown"
+          }
+        }
+      }
+    },
     "telemetry": [
       {
         "source": "expedia_3star",

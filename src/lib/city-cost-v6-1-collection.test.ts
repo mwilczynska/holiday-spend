@@ -136,6 +136,7 @@ describe('v6.1 source response contract', () => {
       missingness: 'not_found',
     });
     expect(result.facts.find((fact) => fact.measure === 'byt_food_high_per_person_day')?.status).toBe('not_found');
+    expect(result.rawResponses.expedia_3star).toEqual(rawResponse('expedia_3star', 'Test City', 'Testland', expediaMeasures));
   });
 });
 
@@ -168,5 +169,6 @@ describe('collectCityCostV61Anchors', () => {
     expect(mockedRun.mock.calls[1][0].userPrompt).toContain('byt_food_budget_per_person_day');
     expect(mockedRun.mock.calls[2][0].userPrompt).toContain('domestic_draft_beer_1');
     expect(result.telemetry.every((call) => call.directPageReads === 0)).toBe(true);
+    expect(Object.keys(result.rawResponses)).toEqual(V61_SPINE_SOURCES);
   });
 });

@@ -91,6 +91,11 @@ describe('city generation v6 feature flag', () => {
         },
       },
       facts: [],
+      rawResponses: {
+        expedia_3star: {},
+        budgetyourtrip_daily_tiers: {},
+        numbeo_drinks: {},
+      },
       telemetry: [
         {
           source: 'numbeo_drinks',

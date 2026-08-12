@@ -252,8 +252,11 @@ state is one coherent v6.1 library for existing and new cities. The current CSV 
 complete staged migration is reviewed.
 
 - [x] Reconcile manifest/docs/generated reports with generated coefficients; add a drift assertion
-- [ ] Pre-register and run a representative 20-city real-provider canary; require at least 19/20 complete
-- [ ] Measure persistence/API provenance round-trip and the runtime call/search/direct-read contract
+- [x] Pre-register and attempt a representative 20-city real-provider canary; the first run failed 0/20
+  because no server-side provider credential was configured
+- [ ] Rerun the frozen canary with a real provider; require at least 19/20 complete
+- [ ] Measure persistence/API provenance round-trip and the runtime call/search/direct-read contract on
+  successful provider-path cities
 - [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV
 - [ ] Validate any reuse of the 25 fixture-city responses against the frozen migration window
 - [ ] Generate all 121 cities in batches into a staged CSV plus full provenance sidecar
@@ -267,7 +270,8 @@ Collection bounds are 363 primary calls and 1,210 searches for a complete recoll
 if all 25 existing fixture cities qualify for documented reuse. Report actual calls, retries, searches and
 reuses. Provider mode must establish the canary's runtime claim; delegated schema-constrained Stage A may
 be used for bulk migration when credentials are unavailable, with the shipped materializer always used for
-Stage B.
+Stage B. The first live canary attempt is recorded as a failed gate and blocks Phase 8 until a real provider
+credential is configured; it is not evidence of runtime coverage.
 
 **Exit:** all 121 cities and newly generated cities use v6.1 with complete runtime-visible provenance, the live cutover was
 owner-reviewed, and one tested rollback restores both the v1 CSV and v1 generation default. No holdout was

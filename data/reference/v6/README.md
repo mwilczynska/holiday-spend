@@ -5,10 +5,12 @@ cold, read `docs/dev/handoffs/city-cost-v6.md` first — it tells you the exact 
 tells you what lives here and what each file is for.
 
 **Status:** the v6.1 new-city implementation is banked and M4 migration of the existing 121-city library
-was approved on 12 August 2026. The live CSV is still unchanged: release-contract reconciliation, a
-20-city live provider canary and a complete staged migration/report must happen before owner-reviewed
-cutover. Read `docs/dev/plans/city-cost-methodology-v6-1.md` and
+was approved on 12 August 2026. The live CSV is still unchanged. Phase 6 release reconciliation passed;
+the preregistered Phase 7 live-provider canary then failed 0/20 because this environment had no provider
+credential, so Phase 8 migration work is stopped pending a real-provider rerun. Read
+`docs/dev/plans/city-cost-methodology-v6-1.md` and
 `validation-manifest-v6-1.json`. Every old holdout is spent and closed; none is reopened for migration.
+The failed canary is `experiments/010-v6-1-runtime-canary/`; it is not runtime coverage evidence.
 
 ## Active v6.1 simplification
 
@@ -88,6 +90,7 @@ holdout, or provide independent drinks truth.
 | `v6-1-development-release-report.md` | Generated 25-city × 19-tier release report; no holdout claims | Regenerate through the release validator |
 | `v6-1-release-validation.json` | Generated reachable-gate result and replay metrics | Verify with `scripts/validate-city-cost-v6-1-release.mjs --check` |
 | `v6-1-rollout-preview.json` / `.md` | Generated read-only v1-versus-v6.1 operational impact preview | Verify with `scripts/generate-city-cost-v6-1-rollout-preview.mjs --check`; owner review only |
+| `experiments/010-v6-1-runtime-canary/` | Preregistered real-provider Phase 7 canary; current result 0/20 because no provider credential was configured | Do not replace with fixtures; rerun the frozen registration only after a real provider is configured |
 | `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 

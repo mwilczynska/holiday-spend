@@ -188,6 +188,8 @@ export type V61AnchorInputs = Partial<Record<V61SourceMeasure, V6AnchorInput>>;
 export interface V61CollectionResult {
   anchors: V61AnchorInputs;
   facts: V61SpineFact[];
+  /** Parsed schema objects exactly as returned by each provider call, retained for canary/migration audit. */
+  rawResponses: Record<V61SpineSource, unknown>;
   telemetry: V61CollectionCallTelemetry[];
   llmCalls: number;
   searches: number;
@@ -404,6 +406,9 @@ export function buildV61CollectionResultFromSpineResponses(input: {
   return {
     anchors: Object.assign({}, ...parsed.map((result) => result.anchors)),
     facts: parsed.flatMap((result) => result.facts),
+    rawResponses: Object.fromEntries(
+      V61_SPINE_SOURCES.map((source) => [source, input.responses[source]])
+    ) as Record<V61SpineSource, unknown>,
     telemetry: parsed.map((result) => result.telemetry),
     llmCalls: parsed.reduce((total, result) => total + result.telemetry.attempts, 0),
     searches,
@@ -451,7 +456,7 @@ function blockedResult(source: V61SpineSource, provider: string, model: string, 
     durationMs: Date.now() - startTime,
     error,
   };
-  return { response, telemetry, ...factsAndAnchors(source, response, telemetry) };
+  return { response, rawResponse: response, telemetry, ...factsAndAnchors(source, response, telemetry) };
 }
 
 async function collectV61SpineCall(input: {
@@ -504,7 +509,7 @@ async function collectV61SpineCall(input: {
       durationMs: Date.now() - startTime,
       error: null,
     };
-    return { ...factsAndAnchors(input.source, parsed, telemetry), telemetry };
+    return { ...factsAndAnchors(input.source, parsed, telemetry), rawResponse: parsed, telemetry };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     if (error instanceof V61CollectionError && error.status === 400) throw error;
@@ -542,6 +547,9 @@ export async function collectCityCostV61Anchors(input: {
   return {
     anchors: Object.assign({}, ...results.map((result) => result.anchors)),
     facts: results.flatMap((result) => result.facts),
+    rawResponses: Object.fromEntries(
+      results.map((result) => [result.telemetry.source, result.rawResponse])
+    ) as Record<V61SpineSource, unknown>,
     telemetry: results.map((result) => result.telemetry),
     llmCalls: results.reduce((total, result) => total + result.telemetry.attempts, 0),
     searches,

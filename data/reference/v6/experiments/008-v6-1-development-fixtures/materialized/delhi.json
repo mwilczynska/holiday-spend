@@ -273,6 +273,134 @@
         "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
       }
     ],
+    "rawResponses": {
+      "expedia_3star": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "expedia_3star",
+        "city": "Delhi",
+        "country": "India",
+        "retrievalStatus": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=2; v6.1 fixture budget=2.",
+        "measures": {
+          "hotel_3star_room_2p": {
+            "status": "not_found",
+            "value": null,
+            "currency": null,
+            "sourceUrl": null,
+            "sourceTitle": "",
+            "evidenceText": "",
+            "query": "",
+            "taxStatus": "unknown"
+          }
+        }
+      },
+      "budgetyourtrip_daily_tiers": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "budgetyourtrip_daily_tiers",
+        "city": "Delhi",
+        "country": "India",
+        "retrievalStatus": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Food and activity values come from the existing labelled per-person/day panel; they are source-backed production values, not independent truth in v6.1. Original v6.0 searchesUsed=3; v6.1 fixture budget=3.",
+        "measures": {
+          "byt_food_budget_per_person_day": {
+            "status": "observed",
+            "value": 7,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/india/delhi",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Delhi page reports Food & Meal Budget budget at $7 USD per person per day.",
+            "query": "BudgetYourTrip Delhi labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_food_mid_per_person_day": {
+            "status": "observed",
+            "value": 18,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/india/delhi",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Delhi page reports Food & Meal Budget mid_range at $18 USD per person per day.",
+            "query": "BudgetYourTrip Delhi labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_food_high_per_person_day": {
+            "status": "observed",
+            "value": 46,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/india/delhi",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Delhi page reports Food & Meal Budget luxury at $46 USD per person per day.",
+            "query": "BudgetYourTrip Delhi labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_budget_per_person_day": {
+            "status": "observed",
+            "value": 6,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/india/delhi",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Delhi page reports Entertainment budget at $6 USD per person per day.",
+            "query": "BudgetYourTrip Delhi labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_mid_per_person_day": {
+            "status": "observed",
+            "value": 17,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/india/delhi",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Delhi page reports Entertainment mid_range at $17 USD per person per day.",
+            "query": "BudgetYourTrip Delhi labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_high_per_person_day": {
+            "status": "observed",
+            "value": 60,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/india/delhi",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Delhi page reports Entertainment luxury at $60 USD per person per day.",
+            "query": "BudgetYourTrip Delhi labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          }
+        }
+      },
+      "numbeo_drinks": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "numbeo_drinks",
+        "city": "Delhi",
+        "country": "India",
+        "retrievalStatus": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=2; v6.1 fixture budget=2.",
+        "measures": {
+          "cappuccino_1": {
+            "status": "observed",
+            "value": 232.5,
+            "currency": "INR",
+            "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Delhi",
+            "sourceTitle": "Cost of Living in Delhi. Jun 2026. Prices in Delhi",
+            "evidenceText": "Cappuccino (Regular Size) | ₹232.50",
+            "query": "site:numbeo.com/cost-of-living/in/Delhi \"Cappuccino (Regular Size)\"",
+            "taxStatus": "unknown"
+          },
+          "domestic_draft_beer_1": {
+            "status": "observed",
+            "value": 250,
+            "currency": "INR",
+            "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Delhi",
+            "sourceTitle": "Cost of Living in Delhi. Jun 2026. Prices in Delhi",
+            "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₹250.00",
+            "query": "site:numbeo.com/cost-of-living/in/Delhi \"Domestic Draft Beer (1 Pint)\"",
+            "taxStatus": "unknown"
+          }
+        }
+      }
+    },
     "telemetry": [
       {
         "source": "expedia_3star",

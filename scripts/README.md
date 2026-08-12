@@ -65,6 +65,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/report-city-cost-v6-development-in-sample.mjs` | `report-city-cost-v6-development-in-sample.mjs` | Generates the 19-tier development-only M3 table and gate 2–6 status from the coefficients and in-sample score; never reads a holdout |
 | `node scripts/analyze-city-cost-v6-food-baskets.mjs` | `analyze-city-cost-v6-food-baskets.mjs` | Diagnoses beverage-boundary effects, screens food basket re-weightings by development LOO, and reports Numbeo observation coverage by region; never reads a holdout or changes coefficients |
 | `node scripts/generate-city-cost-v6-1-rollout-preview.mjs [--check]` | `generate-city-cost-v6-1-rollout-preview.mjs` | Generates the read-only 25-city v1-versus-v6.1 operational impact preview; records the shipping CSV hash, basket profiles, tails and >2x/<0.5x flags; never writes the CSV or reads a holdout |
+| `node scripts/run-v6-1-runtime-canary.mjs [--check]` | `run-v6-1-runtime-canary.mjs` | Runs the preregistered 20-city real-provider v6.1 canary, archives raw responses/telemetry/materializations and checks the persistence/API provenance boundary; never uses fixtures as runtime evidence or writes the CSV |
 
 ## SUPERSEDED — methodology v5
 

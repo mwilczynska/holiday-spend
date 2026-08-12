@@ -275,6 +275,134 @@
         "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
       }
     ],
+    "rawResponses": {
+      "expedia_3star": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "expedia_3star",
+        "city": "Budapest",
+        "country": "Hungary",
+        "retrievalStatus": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Expedia 3-star remains the calibrated accommodation proxy; only the anchor name changed. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+        "measures": {
+          "hotel_3star_room_2p": {
+            "status": "observed",
+            "value": 129,
+            "currency": "USD",
+            "sourceUrl": "https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+            "sourceTitle": "The Best 3 Star Hotels in Budapest from $45 | Expedia",
+            "evidenceText": "September | $129. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Budapest.",
+            "query": "site:expedia.com Budapest Hungary average price 3-star hotel room 2 adults 1 night September 17 2026",
+            "taxStatus": "excluded"
+          }
+        }
+      },
+      "budgetyourtrip_daily_tiers": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "budgetyourtrip_daily_tiers",
+        "city": "Budapest",
+        "country": "Hungary",
+        "retrievalStatus": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Food and activity values come from the existing labelled per-person/day panel; they are source-backed production values, not independent truth in v6.1. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+        "measures": {
+          "byt_food_budget_per_person_day": {
+            "status": "observed",
+            "value": 18,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Budapest page reports Food & Meal Budget budget at $18 USD per person per day.",
+            "query": "BudgetYourTrip Budapest labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_food_mid_per_person_day": {
+            "status": "observed",
+            "value": 49,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Budapest page reports Food & Meal Budget mid_range at $49 USD per person per day.",
+            "query": "BudgetYourTrip Budapest labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_food_high_per_person_day": {
+            "status": "observed",
+            "value": 137,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Budapest page reports Food & Meal Budget luxury at $137 USD per person per day.",
+            "query": "BudgetYourTrip Budapest labelled daily food tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_budget_per_person_day": {
+            "status": "observed",
+            "value": 10,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Budapest page reports Entertainment budget at $10 USD per person per day.",
+            "query": "BudgetYourTrip Budapest labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_mid_per_person_day": {
+            "status": "observed",
+            "value": 27,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Budapest page reports Entertainment mid_range at $27 USD per person per day.",
+            "query": "BudgetYourTrip Budapest labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          },
+          "byt_activities_high_per_person_day": {
+            "status": "observed",
+            "value": 77,
+            "currency": "USD",
+            "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+            "sourceTitle": "BudgetYourTrip city travel cost page",
+            "evidenceText": "BudgetYourTrip Budapest page reports Entertainment luxury at $77 USD per person per day.",
+            "query": "BudgetYourTrip Budapest labelled daily entertainment tier",
+            "taxStatus": "unknown"
+          }
+        }
+      },
+      "numbeo_drinks": {
+        "schemaVersion": "city-cost-v6-1-spine-response-v1",
+        "source": "numbeo_drinks",
+        "city": "Budapest",
+        "country": "Hungary",
+        "retrievalStatus": "partial",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "notes": "Deterministically normalized from existing v6 development evidence; no new collection. Only cappuccino and domestic draft beer are retained; legacy food and McMeal fields are excluded from v6.1. Original v6.0 searchesUsed=1; v6.1 fixture budget=1.",
+        "measures": {
+          "cappuccino_1": {
+            "status": "observed",
+            "value": 1088.67,
+            "currency": "HUF",
+            "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+            "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+            "evidenceText": "Cappuccino (Regular Size) | 1,088.67 Ft | 650.00-1,500.00",
+            "query": "site:numbeo.com/cost-of-living/in/Budapest Meal at an Inexpensive Restaurant Cappuccino",
+            "taxStatus": "unknown"
+          },
+          "domestic_draft_beer_1": {
+            "status": "not_found",
+            "value": null,
+            "currency": null,
+            "sourceUrl": null,
+            "sourceTitle": "",
+            "evidenceText": "",
+            "query": "",
+            "taxStatus": "unknown"
+          }
+        }
+      }
+    },
     "telemetry": [
       {
         "source": "expedia_3star",

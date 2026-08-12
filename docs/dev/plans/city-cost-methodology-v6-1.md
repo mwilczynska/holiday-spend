@@ -121,6 +121,14 @@ decision. The implementation is banked; the library migration is not complete.
 
 ### Phase 7 — measure the live provider path with a canary
 
+**Status after 12 August 2026 attempt: STOPPED — failed 0/20; provider credential required before retry.**
+
+The preregistered run is `data/reference/v6/experiments/010-v6-1-runtime-canary/`. It exercised the actual
+`generateCityCostEstimate` path with the v6.1 flag and failed closed for all 20 registered cities because
+the server had no `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` or `GEMINI_API_KEY`. No fixture, delegated response,
+v1 comparison, holdout read or CSV write substituted for the missing provider. Phase 8 must not start until
+the same registration is rerun with a real provider and reaches the 19/20 gate.
+
 Pre-register a representative **20-city operational canary** drawn from the existing 121-city frame. It
 must span all regions, cost bands, source-strong and source-weak cities, and include non-USD currencies.
 Use the actual runtime provider path, not fixture replay, with exactly the production prompts and limits.
@@ -273,6 +281,7 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
+node scripts/run-v6-1-runtime-canary.mjs --check
 ```
 
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun
