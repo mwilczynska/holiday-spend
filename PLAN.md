@@ -266,8 +266,10 @@ complete staged migration is reviewed.
 - [x] Run the one owner-authorized corrected delegated 20-city canary through exact production prompts and shipped
   Stage B; it failed at 10/20 complete cities and 50% artifact candidates because Stage A did not complete the
   registered 60-call frame. Preserve it as immutable operational delegation failure, not source-quality evidence.
-- [ ] Owner review and decision on the collection mechanism after failed experiment 012; do not start Phase 8 or
-  another canary without explicit authorization
+- [x] Repair delegated collection lifecycle after experiment 012: independent slot inventory, partial-file
+  preservation, terminal-frame finalization guard, immutable-history compatibility and complete reporting
+- [ ] Owner review before creating experiment 013; on resume use validated 012 reuse plus delegated collection,
+  and do not finalize until all 60 registered call slots are terminal
 - [ ] Prove field-by-field persistence/API provenance round-trip in deterministic tests and the delegated
   canary; do not count all-prior materialization as source coverage
 - [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV
@@ -456,6 +458,14 @@ Numbeo drinks contract accepts either exact canonical domestic draft-beer label 
 conversion; the previous 1-pint-only contract is superseded. The release validator reads a hashed canary artifact
 and reports the recorded 011 failure. The next exact action is to run the single authorized fresh experiment 012
 through Codex-delegated Stage A and shipped Stage B; stop if it misses 19/20 or exceeds 30% artifact candidates.
+
+### v6.1 Phase 7F lifecycle correction — 12 August 2026
+
+Experiment 012 is immutable incomplete-orchestration evidence, not a clean canary: its original run reported 10/20,
+but its directory contains 35 raw files, 32 telemetry files and only 32 reusable pairs in a 60-slot frame. The new
+inventory reports 28 pending slots and preserves the Lisbon/Prague pairs and Colombo/Dubai raw-only evidence instead
+of dropping sibling calls. Finalization now refuses any new experiment with pending slots. Experiment 013 has not
+been created in this run; Phase 8 remains blocked until the next complete-frame canary passes.
 
 ## Traps retained from earlier work
 

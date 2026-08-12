@@ -159,6 +159,11 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
+Phase 7F lifecycle repair is complete. Experiment 012 remains immutable incomplete-frame history; independent
+inventory finds 32 reusable raw+telemetry pairs and 28 pending slots. Experiment 013 has not been created. On
+resume, run the new inventory first, then use validated 012 reuse plus delegated collection; finalization must refuse
+any pending slot. The live CSV and holdouts remain untouched.
+
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
 feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
 validator computes the measured gates, records runtime >=95% coverage as unmeasured, and records the
@@ -275,6 +280,7 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
+node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/012-v6-1-corrected-delegated-canary
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.
@@ -320,6 +326,7 @@ login page shows provider-specific guidance instead.
 | `scripts/validate-city-cost-v6-ground-truth.mjs` | Deterministic development-ledger audit; checks seal metadata but never reads holdout values |
 | `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder and Booking/Expedia calibration; `--check` verifies determinism |
 | `scripts/validate-city-cost-v6-1-release.mjs` | Reachable 25-city × 19-tier release validator/report generator |
+| `scripts/inventory-v6-1-delegated-canary.mjs` | Independent per-call inventory; finalization remains closed while slots are pending |
 | `data/reference/v6/v6-1-development-release-report.md` | Generated v6.1 development release report |
 | `scripts/freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the seal before holdout access |
 | `scripts/score-city-cost-v6-holdout.mjs` | One-time gate 2–6 score against the frozen holdout; refuses a second pass |

@@ -12,15 +12,20 @@
 **Phase 7B result commit:** `82586f5`
 **Phase 7D boundary repair:** complete in `a7f00be`; experiment 011 remains immutable
 **Phase 7E corrected canary:** experiment 012 failed 10/20; immutable result recorded below
+**Phase 7F lifecycle repair:** complete in the current worktree; experiments 010/011/012 remain byte-unchanged
 
-**Milestone:** M4 coherent migration of the 121-city library — **owner approved; Phase 7B failed; migration stopped**
-**Exact next action:** owner review of experiment 012. Do not start Phase 8, mutate/rerun experiments 010/011/012,
-or begin another canary without an explicit new owner decision. The live CSV and all holdouts remain untouched.
+**Milestone:** M4 coherent migration of the 121-city library — **Phase 7F complete; experiment 013 not started**
+**Exact next action:** owner review of the Phase 7F repair. If work resumes, create the preregistered experiment 013,
+then run its inventory until all 60 call slots are terminal before finalization. Do not mutate experiments 010/011/012,
+read any holdout, or touch the live CSV.
 
 **Current milestone correction:** the earlier “Phase 7B failed; migration stopped” wording above is superseded
 by the owner-authorized Phase 7D repair and one fresh corrected canary. Experiment 012 failed because delegated
 Stage A supplied only 30/60 source-call records: 10/20 cities completed, 10/20 were artifact candidates (50%).
-Phase 8 remains blocked; this handoff is the current state of the world.
+Phase 7F now exposes the underlying 32 reusable pairs and 28 pending slots without erasing sibling evidence, and
+refuses finalization while any registered slot is pending. Experiment 012 has no assignment ledger, so the inventory
+reports assignment attempts as unrecorded while still separating telemetry records from actual provider attempts.
+Phase 8 remains blocked; this handoff is the current state.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -130,8 +135,8 @@ Accommodation coefficients and the Expedia/Booking offset did not change. The Ph
 corrected collection boundary: the shared country comparator accepts registered aliases, null documentary fields
 are normalized only for non-observed measures, invalid source calls no longer erase sibling calls, canonical
 Numbeo beer labels are accepted without conversion, and the hashed experiment result drives the release gate.
-The next exact action is owner review of failed experiment 012, not Phase 8. Phase 8 migration tooling is blocked;
-the user-key smoke remains external and required before Phase 11 cutover.
+Phase 7F is now complete: the independent inventory and finalization guard are in place. Phase 8 migration tooling
+is blocked until experiment 013 passes; the user-key smoke remains external and required before Phase 11 cutover.
 
 ## 4a. Phase 7 experiment 010 — superseded as a canary result
 
@@ -160,7 +165,23 @@ records before delegated Stage A timed out/exhausted its practical route. Stage 
 10/20 cities completed, 10/20 were artifact candidates (50%), 72 searches, zero retries and zero direct reads.
 The 10 complete cities passed schema/materialization/persistence/API round-trip; the incomplete cities failed
 closed. This is an incomplete delegated-collection failure, not source-quality or coefficient evidence. Experiment
-012 is immutable; Phase 8 is blocked and no further canary is authorized by this handoff.
+012 is immutable; Phase 8 is blocked. The next authorized canary is 013, but it has not been created in this run.
+
+#### Phase 7F — resumable collection lifecycle — **complete 12 August 2026**
+
+- Added independent per-city/source inventory of raw responses, telemetry, schema/identity/limit validity,
+  reusable pairs, terminal errors, pending slots and orphan evidence.
+- Reworked finalization so a missing sibling file never erases successful source evidence. New experiments refuse
+  to write immutable results until all registered call slots are terminal; ordinary absence remains pending, while
+  an explicit provider error remains distinguishable from `not_found`.
+- Expanded canary reporting for registered/terminal/pending slots, raw/telemetry presence, actual calls versus
+  assignment attempts, orphans, source/category/grade distributions, all-prior cities and provenance equality.
+- Added regression fixtures for Lisbon/Prague partial pairs, Colombo/Dubai raw-only evidence, absent cities and
+  invalid responses surrounded by valid calls. Experiments 010, 011 and 012 remain unchanged and immutable.
+
+Experiment 013 has not been created or collected in this run. On resumption, run the inventory first, reuse only
+validated 012 raw+telemetry pairs, collect remaining calls with delegated subagents, and finalize only after the
+60-slot frame is terminal.
 
 ## 5. Why the migration is staged
 
@@ -178,9 +199,10 @@ Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete 
 
 1. **Phase 6:** contract/document reconciliation and validator assertion — **complete and pushed**.
 2. **Phase 7A:** repair search-enabled production collection, date handling and canary evaluator — **complete in current Phase 7A commit**.
-3. **Phase 7B:** fresh delegated 20-city operational canary — **failed 17/20; stopped for owner review**.
-4. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
-5. **Phase 8:** resumable/idempotent migration tooling and canary dry run — **blocked until Phase 7B passes**.
+3. **Phase 7B:** fresh delegated 20-city operational canary — **failed 17/20; immutable history**.
+4. **Phase 7F:** resumable collection lifecycle repair — **complete; experiment 013 not started**.
+5. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
+6. **Phase 8:** resumable/idempotent migration tooling and canary dry run — **blocked until Phase 7G passes**.
 6. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
 sidecar only.
 7. **Phase 10:** complete operational-impact report; then stop for owner review.
@@ -248,6 +270,7 @@ node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
 node scripts/run-v6-1-delegated-canary.mjs --check
+node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/012-v6-1-corrected-delegated-canary
 ```
 
 Add migration-specific checks when Phase 8 creates them. Rerun a failed full test suite once before
@@ -255,20 +278,7 @@ investigating because the OneDrive checkout has a known transient temp-directory
 
 ## 10. Current stopping point
 
-The workstream is stopped after failed experiment 012. Do not configure a key, rerun a canary, start Phase 8,
-stage migration, read a holdout or touch the live CSV under the current authorization. The owner must first decide
-whether to improve the delegated execution mechanism or provide a real user-key route; experiment 012 itself is
-immutable. At the eventual Phase 10 boundary, stop for owner approval before Phase 11 cutover.
-## 4c. Phase 7E result and stopping point
-
-Experiment 012 is recorded at `data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/`. Its hard
-result is **FAIL**: 10/20 complete versus 19/20 required, 10/20 artifact candidates (50% versus <=30%), 30/60
-attempted source records, 72 searches, zero retries and zero direct reads. Do not reinterpret the missing ten
-cities as source-level `not_found`; their files were not collected. The 10 complete cities passed the shipped
-Stage-B materializer and complete persistence/API provenance comparison. The result is an operational delegation
-capacity failure and is not a reason to refit coefficients or change the source contract.
-
-Exact next action: owner review. Do not run another canary, start Phase 8, stage the 121-city migration, read any
-holdout, or touch the live CSV without an explicit new authorization. If the owner authorizes continuation, first
-decide whether to improve the delegated execution mechanism or provide a real user key; preserve experiment 012
-as immutable history either way.
+Phase 7F is complete and the workstream is stopped before experiment 013. Do not create or collect 013, start Phase 8,
+stage migration, read a holdout or touch the live CSV unless the owner resumes the workstream. When resumed, the exact
+first command is the independent inventory for the new 013 frame; finalization remains closed until all 60 slots are
+terminal. At the eventual Phase 10 boundary, stop for owner approval before Phase 11 cutover.

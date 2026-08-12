@@ -10,6 +10,11 @@
 collection-boundary repair, the delegated operational canary, complete staged artifact, user-key transport
 smoke and owner review.
 
+**Delegated canary history:** Experiment 011 remains the last complete-frame attempt recorded by the active
+manifest and failed at 17/20. Experiment 012 is preserved as immutable incomplete-orchestration evidence:
+its directory contains only 32 reusable raw/telemetry pairs across a 60-slot frame, so its reported 10/20
+completion is not promoted to a release pass and must not be restated as source coverage.
+
 **Generated coefficient contract:** consistent —
 {"appliedTo":"cappuccino_1","k":2.4838,"grade":"C","intervalPct":64}
 

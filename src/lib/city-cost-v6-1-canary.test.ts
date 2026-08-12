@@ -146,6 +146,20 @@ describe('v6.1 operational canary evaluator', () => {
     expect(errors).toMatch(/retry limit/);
   });
 
+  it('does not classify an uncollected city as an all-prior artifact', () => {
+    const pending = record({
+      responses: { expedia_3star: response('expedia_3star') },
+      telemetry: telemetry().slice(0, 1),
+      materialization: undefined,
+      collectionTerminal: false,
+    });
+    const result = evaluateV61CanaryBatch({ ...registration, completeCitiesMinimum: 0 }, [pending]);
+    expect(result.pendingCallSlots).toBe(3);
+    expect(result.artifactCandidates).toBe(0);
+    expect(result.artifactFraction).toBe(0);
+    expect(result.cities[0].collectionTerminal).toBe(false);
+  });
+
   it('rejects provenance mutation field by field', () => {
     const mutated = record();
     mutated.provenance!.api.intervals = { tier: { lowerAud: 0, upperAud: 3, widthPct: 300 } };

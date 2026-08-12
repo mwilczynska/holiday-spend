@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7D complete; experiment 012 failed at 10/20 after incomplete delegated Stage A; migration stopped for owner review
+**Status:** Phase 7F lifecycle repair complete; experiment 012 remains immutable incomplete-frame history; experiment 013 not started
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -225,6 +225,27 @@ and telemetry record per city/source. Pass requires at least 19/20 complete citi
 candidates. If either gate fails, commit the immutable result and stop; if it passes, update the manifest from its
 hashed result and proceed to Phase 8. Do not claim delegated success proves the post-release runtime SLO.
 
+#### Phase 7F — resumable collection lifecycle — **complete 12 August 2026**
+
+Phase 7F corrected the orchestration defect exposed by experiment 012 without mutating that experiment:
+
+- every registered city/source slot is inspected independently, preserving raw-only, telemetry-only, invalid,
+  terminal-error and absent states;
+- inventory reports pending, terminal, reusable, invalid, orphan, actual-call, retry, search and direct-read counts;
+- finalization refuses to write an immutable result while any registered call slot is pending;
+- incomplete source evidence is never converted into source-level `not_found`, and missing slots are not artifact
+  candidates;
+- canary output now includes call-frame, source/category fallback, grade, all-prior and provenance round-trip
+  accounting;
+- regression fixtures cover Lisbon/Prague partial pairs, Colombo/Dubai raw-only evidence, an absent city and an
+  invalid response surrounded by valid siblings.
+
+Experiment 012 remains immutable incomplete-frame evidence. Its original 10/20 result is not promoted to a clean
+canary result; independent inventory finds 32 reusable raw+telemetry pairs and 28 pending slots. Experiment 013 is
+the next authorized action, but it was not created or collected in this phase. Experiment 012 has no assignment ledger;
+the inventory therefore reports assignment attempts as unrecorded while separating source-call records from provider
+attempts.
+
 #### Phase 7C — user-key provider transport smoke and runtime SLO
 
 After the search-enabled adapter exists, retain a small 3–5-city end-to-end smoke using a user-supplied key
@@ -233,7 +254,7 @@ external/manual until a key is supplied and does not block Phase 8 or Phase 9 st
 the Phase 11 cutover. Post-release complete-generation coverage is monitored against a ≥95% operational SLO;
 a 19/20 pre-release sample must not be described as statistically proving that population rate.
 
-### Phase 8 — build resumable migration tooling and a dry run — blocked until Phase 7E passes
+### Phase 8 — build resumable migration tooling and a dry run — blocked until Phase 7G passes
 
 Create a deterministic migration protocol under `data/reference/v6/migration-v6-1/` containing:
 
@@ -368,17 +389,17 @@ node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
 node scripts/run-v6-1-delegated-canary.mjs --check
+node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/012-v6-1-corrected-delegated-canary
 ```
 
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun
 it once before investigating because this OneDrive checkout has a known transient temp-file failure.
 
-## 10. Current stopping point — experiment 012 failed
+## 10. Current stopping point — Phase 7F complete
 
-Experiment 012 is immutable failed evidence. Delegated Stage A supplied 30/60 source-call records before timing
-out/exhausting its practical collection route. Stage B processed the available files through the shipped schemas,
-`materializeCityCostV61`, persistence adapter, API provenance parser and evaluator: 10/20 cities completed, 10/20
-became artifact candidates (50%), with 72 searches, zero retries and zero direct page reads. The 10 complete cities
-passed the deterministic provenance round-trip. This is incomplete-delegation evidence, not source-quality or
-coefficient evidence. Do not update the manifest to 012, proceed to Phase 8, or run another canary without owner
-review and explicit authorization.
+Phase 7F is complete. Experiment 012 is immutable incomplete-frame evidence: its original Stage-B report says
+10/20 complete, but independent inventory finds only 32 reusable raw+telemetry pairs in the 60-slot frame and
+28 pending slots. This is orchestration evidence, not source-quality or coefficient evidence. Do not update the
+manifest to 012, create experiment 013, proceed to Phase 8, read a holdout or touch the live CSV in this stopped run.
+If resumed, the exact next action is to preregister experiment 013 and use the inventory/finalization lifecycle before
+any Stage-B evaluation.

@@ -43,8 +43,26 @@ export interface V61CanaryCityRecord {
     persisted: V61CanaryProvenanceFields;
     api: V61CanaryProvenanceFields;
   };
+  /** Independent collection inventory for this city. Missing slots are not terminal. */
+  collectionTerminal?: boolean;
+  callSlots?: V61CanaryCallSlot[];
   invalidResponses?: Partial<Record<V61SpineSource, string>>;
   collectionError?: string;
+}
+
+export interface V61CanaryCallSlot {
+  source: V61SpineSource;
+  rawPresent: boolean;
+  telemetryPresent: boolean;
+  terminal: boolean;
+  reusable: boolean;
+  invalid: boolean;
+  orphan: 'none' | 'raw' | 'telemetry';
+  actualProviderCall: boolean;
+  searchesUsed: number;
+  retries: number;
+  directPageReads: number;
+  error?: string | null;
 }
 
 export interface V61CanaryLimits {
@@ -76,6 +94,7 @@ export interface V61CanaryCityEvaluation {
   invalidResponses: Partial<Record<V61SpineSource, string>>;
   observedMeasures: number;
   sourceStatuses: Partial<Record<V61SpineSource, V61SpineResponse['retrievalStatus'] | 'error' | 'invalid' | 'missing'>>;
+  collectionTerminal: boolean;
 }
 
 export interface V61CanaryArtifactSignature {
@@ -101,6 +120,18 @@ export interface V61CanaryEvaluation {
   observedMeasureCounts: Record<string, number>;
   sourceStatusCounts: Record<string, Record<string, number>>;
   artifactSignatures: V61CanaryArtifactSignature[];
+  registeredCallSlots: number;
+  terminalCallSlots: number;
+  pendingCallSlots: number;
+  rawResponsesPresent: number;
+  telemetryRecordsPresent: number;
+  orphanRawResponses: number;
+  orphanTelemetryRecords: number;
+  provenanceRoundTrips: number;
+  completeDeterministic19TierCities: number;
+  categoryCounts: Record<string, { direct: number; fallback: number }>;
+  gradeDistribution: Record<string, number>;
+  allPriorCities: number;
 }
 
 function sameJson(left: unknown, right: unknown) {
@@ -142,7 +173,9 @@ function compareProvenance(provenance: V61CanaryCityRecord['provenance']) {
 
 function isAllPrior(materialization: V61CanaryCityRecord['materialization']) {
   if (!materialization) return true;
-  const tiers = Object.values(materialization.tiersAud);
+  const tiers = Object.entries(materialization.tiersAud)
+    .filter(([tier]) => tier !== 'activities_free')
+    .map(([, value]) => value);
   return tiers.length === 0 || tiers.every((tier) => {
     const value = tier as { evidenceBasis?: unknown; evidenceGrade?: unknown };
     return value.evidenceBasis === 'imputed' || value.evidenceGrade === 'D';
@@ -173,7 +206,11 @@ export function evaluateV61CanaryBatch(
     const expectedSources = new Set(V61_SPINE_SOURCES);
     const responseSources = Object.keys(record.responses);
     const telemetrySources = record.telemetry.map((call) => call.source);
+    const collectionTerminal = record.collectionTerminal
+      ?? (responseSources.length === V61_SPINE_SOURCES.length
+        && record.telemetry.length === registration.limits.sourceCallsPerCity);
     if (record.collectionError) problems.push(`Stage B collection failed: ${record.collectionError}`);
+    if (!collectionTerminal) problems.push('collection frame is not terminal; pending call slots cannot be finalized');
 
     if (record.window.arrival !== registration.window.arrival
       || record.window.departure !== registration.window.departure
@@ -228,11 +265,11 @@ export function evaluateV61CanaryBatch(
       && Object.keys(invalidResponses).length === 0;
     const materializationComplete = Boolean(record.materialization?.complete && Object.keys(record.materialization.tiersAud).length === 19);
     const provenanceRoundTrip = provenanceProblems.length === 0;
-    const artifactCandidate = isAllPrior(record.materialization);
+    const artifactCandidate = collectionTerminal && isAllPrior(record.materialization);
     // A schema-valid partial source response is an allowed operational result:
     // the materializer may apply an explicit category fallback. Only an
     // all-prior bundle is excluded as source coverage via artifactCandidate.
-    const complete = problems.length === 0 && schemaValid && materializationComplete && provenanceRoundTrip && !artifactCandidate;
+    const complete = collectionTerminal && problems.length === 0 && schemaValid && materializationComplete && provenanceRoundTrip && !artifactCandidate;
 
     return {
       city: record.city,
@@ -252,12 +289,14 @@ export function evaluateV61CanaryBatch(
         parsedResponses[source]?.retrievalStatus
           ?? (invalidResponses[source] ? 'invalid' : record.telemetry.find((call) => call.source === source)?.status ?? 'missing'),
       ])),
+      collectionTerminal,
     };
   });
 
   const completeCities = cities.filter((city) => city.complete).length;
   const artifactCandidates = cities.filter((city) => city.artifactCandidate).length;
-  const artifactFraction = records.length === 0 ? 1 : artifactCandidates / records.length;
+  const terminalRecords = cities.filter((city) => city.collectionTerminal).length;
+  const artifactFraction = terminalRecords === 0 ? 0 : artifactCandidates / terminalRecords;
   const problems = cities.flatMap((city) => city.problems.map((problem) => `${city.city}: ${problem}`));
   const observedMeasureCounts: Record<string, number> = {};
   for (const city of cities) {
@@ -274,15 +313,17 @@ export function evaluateV61CanaryBatch(
       counts[status] = (counts[status] ?? 0) + 1;
     }
   }
-  const canonicalBeerLabelRejections = records.filter((record) => containsCanonicalDomesticBeerLabel(record.responses.numbeo_drinks)).length;
+  const canonicalBeerLabelRejections = records.filter((record) =>
+    (record.collectionTerminal ?? true) && containsCanonicalDomesticBeerLabel(record.responses.numbeo_drinks)
+  ).length;
   const artifactSignatures: V61CanaryArtifactSignature[] = [];
-  if (records.length > 0 && canonicalBeerLabelRejections / records.length > registration.artifactBatchMaximumFraction) {
-    const fraction = canonicalBeerLabelRejections / records.length;
+  if (terminalRecords > 0 && canonicalBeerLabelRejections / terminalRecords > registration.artifactBatchMaximumFraction) {
+    const fraction = canonicalBeerLabelRejections / terminalRecords;
     const signature = {
       id: 'numbeo_domestic_draft_beer_canonical_label_rejected',
       affectedCities: canonicalBeerLabelRejections,
       fraction,
-      reason: `The canonical Domestic Draft Beer (0.5 Liter)/(1 Pint) label was present but was not observed in ${canonicalBeerLabelRejections}/${records.length} Numbeo responses.`,
+      reason: `The canonical Domestic Draft Beer (0.5 Liter)/(1 Pint) label was present but was not observed in ${canonicalBeerLabelRejections}/${terminalRecords} Numbeo responses.`,
     } satisfies V61CanaryArtifactSignature;
     artifactSignatures.push(signature);
     problems.push(`artifact signature failed: ${signature.reason} This exceeds the ${(registration.artifactBatchMaximumFraction * 100).toFixed(0)}% batch limit.`);
@@ -290,9 +331,47 @@ export function evaluateV61CanaryBatch(
   if (completeCities < registration.completeCitiesMinimum) {
     problems.push(`complete-city threshold failed: ${completeCities} < ${registration.completeCitiesMinimum}`);
   }
-  if (artifactFraction > registration.artifactBatchMaximumFraction) {
-    problems.push(`artifact-candidate threshold failed: ${artifactCandidates}/${records.length} > ${registration.artifactBatchMaximumFraction}`);
+  if (terminalRecords === records.length && artifactFraction > registration.artifactBatchMaximumFraction) {
+    problems.push(`artifact-candidate threshold failed: ${artifactCandidates}/${terminalRecords} > ${registration.artifactBatchMaximumFraction}`);
   }
+
+  const categoryCounts: Record<string, { direct: number; fallback: number }> = {};
+  const gradeDistribution: Record<string, number> = {};
+  let allPriorCities = 0;
+  let provenanceRoundTrips = 0;
+  records.forEach((record, index) => {
+    if (cities[index].provenanceRoundTrip) provenanceRoundTrips += 1;
+    if (cities[index].artifactCandidate) allPriorCities += 1;
+    const categories: Record<string, string> = {
+      accommodation: 'accom_3_star',
+      food: 'food_budget',
+      drinks: 'drinks_none',
+      activities: 'activities_budget',
+    };
+    for (const [category, tierName] of Object.entries(categories)) {
+      const counts = categoryCounts[category] ?? (categoryCounts[category] = { direct: 0, fallback: 0 });
+      const tier = record.materialization?.tiersAud[tierName] as { evidenceBasis?: unknown } | undefined;
+      if (tier?.evidenceBasis === 'imputed') counts.fallback += 1;
+      else if (tier) counts.direct += 1;
+    }
+    for (const tier of Object.values(record.materialization?.tiersAud ?? {})) {
+      const grade = (tier as { evidenceGrade?: unknown }).evidenceGrade;
+      if (typeof grade === 'string') gradeDistribution[grade] = (gradeDistribution[grade] ?? 0) + 1;
+    }
+  });
+  const callSlots = records.flatMap((record) => record.callSlots ?? []);
+  const registeredCallSlots = records.length * registration.limits.sourceCallsPerCity;
+  const terminalCallSlots = callSlots.length
+    ? callSlots.filter((slot) => slot.terminal).length
+    : records.reduce((sum, record) => sum + (record.collectionTerminal ? registration.limits.sourceCallsPerCity : 0), 0);
+  const rawResponsesPresent = callSlots.length
+    ? callSlots.filter((slot) => slot.rawPresent).length
+    : records.reduce((sum, record) => sum + Object.keys(record.responses).length, 0);
+  const telemetryRecordsPresent = callSlots.length
+    ? callSlots.filter((slot) => slot.telemetryPresent).length
+    : records.reduce((sum, record) => sum + record.telemetry.length, 0);
+  const orphanRawResponses = callSlots.filter((slot) => slot.orphan === 'raw').length;
+  const orphanTelemetryRecords = callSlots.filter((slot) => slot.orphan === 'telemetry').length;
 
   return {
     passed: problems.length === 0,
@@ -310,5 +389,19 @@ export function evaluateV61CanaryBatch(
     observedMeasureCounts,
     sourceStatusCounts,
     artifactSignatures,
+    registeredCallSlots,
+    terminalCallSlots,
+    pendingCallSlots: Math.max(0, registeredCallSlots - terminalCallSlots),
+    rawResponsesPresent,
+    telemetryRecordsPresent,
+    orphanRawResponses,
+    orphanTelemetryRecords,
+    provenanceRoundTrips,
+    completeDeterministic19TierCities: records.filter((record) =>
+      Boolean(record.materialization?.complete && Object.keys(record.materialization.tiersAud).length === 19)
+    ).length,
+    categoryCounts,
+    gradeDistribution,
+    allPriorCities,
   };
 }

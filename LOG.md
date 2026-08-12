@@ -2934,3 +2934,18 @@ This is a delegation-capacity/incomplete-frame failure, not evidence against v6.
 the corrected domestic-beer contract. No raw response was invented, and missing records were not converted into
 source-level `not_found`. Experiments 010/011, all holdouts and the live CSV remain untouched. Phase 8 migration
 is blocked; no further canary is authorized without owner review and a decision on the collection mechanism.
+
+## v6.1 Phase 7F resumable collection lifecycle — 12 August 2026
+
+Phase 7F is complete and experiments 010, 011 and 012 remain byte-for-byte immutable. Experiment 012's original
+10/20 result is retained as incomplete-orchestration history, not promoted to a clean canary: independent inventory
+finds 35 raw files, 32 telemetry files, 32 reusable raw+telemetry pairs and 28 pending slots in its registered
+60-call frame. Lisbon and Prague's valid Expedia pairs and Colombo/Dubai raw-only evidence are now visible rather
+than erased by an all-or-nothing loader.
+
+The new lifecycle inspects every city/source call independently, distinguishes assignment attempts from actual
+provider-call telemetry, preserves invalid/error evidence, and refuses finalization while any new experiment slot is
+pending. Missing collection is not converted to source-level `not_found`, and pending/uncollected cities are not
+artifact candidates. The next authorized action is experiment 013 after owner review; it was not created or collected
+in this run. Experiment 012 contains no assignment ledger, so assignment attempts are reported as unrecorded rather
+than inferred. No holdout was read, no live CSV was written, and no coefficient or accommodation fit changed.

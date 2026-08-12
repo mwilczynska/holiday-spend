@@ -418,7 +418,7 @@ function sourceFactToAnchor(source: V61SpineSource, fact: V61ParsedMeasure & { m
   } satisfies V6AnchorInput;
 }
 
-function diskTelemetry(source: V61SpineSource, response: V61SpineResponse, input: V61DiskTelemetry | undefined): V61CollectionCallTelemetry {
+export function normalizeV61DiskTelemetry(source: V61SpineSource, response: V61SpineResponse, input: V61DiskTelemetry | undefined): V61CollectionCallTelemetry {
   const telemetry = input ?? {};
   if (telemetry.source && telemetry.source !== source) {
     throw new V61CollectionError(`Telemetry source does not match ${source}.`, 502);
@@ -478,7 +478,7 @@ export function buildV61CollectionResultFromSpineResponses(input: {
     if (!sourceIdentityMatches({ city: response.city, country: response.country }, input)) {
       throw new V61CollectionError(`The ${source} response changed the requested city or country.`, 502);
     }
-    const normalizedTelemetry = diskTelemetry(source, response, input.telemetry?.[source]);
+    const normalizedTelemetry = normalizeV61DiskTelemetry(source, response, input.telemetry?.[source]);
     const { facts, anchors } = factsAndAnchors(source, response, normalizedTelemetry);
     return { facts, anchors, telemetry: normalizedTelemetry };
   });
