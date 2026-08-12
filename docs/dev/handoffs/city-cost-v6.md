@@ -5,6 +5,7 @@
 **Branch:** `feat/city-cost-methodology-v6`
 
 **Phase 6 completed commit:** `07a1c0a`
+**Phase 7 canary result commit:** `1bc352f`
 **Phase 7 canary result:** failed and recorded in `010-v6-1-runtime-canary`
 
 **Milestone:** M4 coherent migration of the 121-city library — **owner approved, not started**
