@@ -163,8 +163,9 @@ Phase 7F lifecycle repair is complete. Experiment 013 is now immutable failed ev
 calls were reused, all 28 pending slots were collected, and the frame reached 60/60 terminal records with 19/20
 complete cities. A duplicate Prague assignment invalidated two calls; the result remains failed even though the
 numeric 19/20 and 30% thresholds were met. Phase 7H is complete: new experiments use write-once city/source slot
-claims and the evaluator separates tolerated per-city diagnostics from batch-fatal failures. Phase 8 remains blocked
-until a fresh canary passes. The live CSV and holdouts remain untouched.
+claims and the evaluator separates tolerated per-city diagnostics from batch-fatal failures. Experiment 014 then passed
+the fresh immutable canary at 20/20 complete cities, zero artifact candidates, 60/60 terminal/reusable calls and full
+persistence/API provenance equality. Phase 8 is now active; the live CSV and holdouts remain untouched.
 
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
 feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
@@ -175,9 +176,9 @@ supersedes the preview's new-city-only recommendation. Phase 6 contract reconcil
 first provider canary attempt made zero calls and is retained as a credential preflight; later attempts exposed
 and repaired search, date, identity, missingness and partial-file lifecycle defects. Experiment 013 reached a full
 frame but exposed an unguarded duplicate assignment and an aggregate evaluator predicate that is stricter than the
-registered one-city tolerance. Phase 7H repair and its full baseline are complete. The exact next action is one
-owner-gated fresh canary reusing 58 valid experiment-013 calls and recollecting only Prague BYT/Numbeo; no migration
-is authorized until that canary passes.
+registered one-city tolerance. Phase 7H repair and its full baseline are complete. The active manifest now points to
+the hashed experiment-014 pass. The exact next action is to build and dry-run the frozen resumable Phase 8 migration
+protocol using experiment 014 as fixture; no holdout or live CSV access is authorized.
 A small user-key provider smoke remains required before cutover; ≥95% runtime coverage is monitored as an operational
 SLO.
 

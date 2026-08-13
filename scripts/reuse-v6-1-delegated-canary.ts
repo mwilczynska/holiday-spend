@@ -50,8 +50,12 @@ function slug(value: string) {
 }
 
 function assertSameFrozenContract(source: Registration, target: Registration) {
-  if (target.collectionMode !== 'validated_experiment_012_reuse+delegated_codex_subagent') {
-    throw new Error(`Target collection mode does not permit experiment-012 reuse: ${target.collectionMode}`);
+  const sourceExperiment = source.experiment;
+  const sourceNumber = sourceExperiment.match(/^\d+/)?.[0];
+  if (!sourceNumber) throw new Error(`Source experiment has no numeric identifier: ${sourceExperiment}`);
+  const expectedMode = `validated_experiment_${sourceNumber}_reuse+delegated_codex_subagent`;
+  if (target.collectionMode !== expectedMode) {
+    throw new Error(`Target collection mode does not permit ${sourceExperiment} reuse: ${target.collectionMode}`);
   }
   if (source.inputCsvSha256 !== target.inputCsvSha256 || source.fxSnapshotSha256 !== target.fxSnapshotSha256) {
     throw new Error('Source and target CSV/FX hashes differ.');

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Taipei",
+  "country": "Taiwan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 113.05,
+      "currency": "TWD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+      "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+      "evidenceText": "Cappuccino (Regular Size) | NT$113.05",
+      "query": "site:numbeo.com/cost-of-living/in/ \"Taipei\" \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 90,
+      "currency": "TWD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+      "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | NT$90.00",
+      "query": "site:numbeo.com/cost-of-living/in/Taipei \"Domestic Draft Beer (0.5 Liter)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

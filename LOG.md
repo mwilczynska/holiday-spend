@@ -3024,3 +3024,19 @@ reuse/assignment/result checks and the new claim test. No new experiment was cre
 coefficient or accommodation fit changed, and the live CSV remained untouched. The exact next action is one owner-gated
 fresh immutable canary reusing the 58 valid experiment-013 calls and recollecting Prague BYT/Numbeo; Phase 8 remains
 blocked until it passes.
+
+### v6.1 Phase 7 fresh canary passed — 13 August 2026
+
+Experiment 014 (`014-v6-1-final-delegated-canary`) is the one owner-authorized fresh canary after the Phase 7H lifecycle
+repair. It reused 58 raw/telemetry pairs from immutable experiment 013 only after call-level schema, identity, prompt,
+window and limit validation, then collected the two corrected Prague calls with delegated Stage A. The complete 60-slot
+frame is terminal and reusable: 20/20 cities materialized all 19 tiers, all 20 passed field-by-field persistence/API
+provenance equality, zero cities were artifact candidates, 167 searches were recorded, retries were 0 and direct page
+reads were 0. Prague's canonical Numbeo `Domestic Draft Beer (0.5 Liter)` row was observed successfully.
+
+The result is immutable and passed. Its result hash is
+`d7de2557cc1b9cc27616e3c774d1ce829db11431af1eafe04b428ca719da6a69`; the active manifest and generated release report
+now point to that hash. Experiments 010–013 remain unchanged history. This establishes source-contract feasibility and
+the deterministic/provenance boundary, not the post-release >=95% runtime SLO. The exact next action is Phase 8:
+build and dry-run the frozen resumable migration protocol with experiment 014 as fixture; no holdout or live CSV was
+read or changed.

@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7H lifecycle/evaluator repair is complete; experiment 013 remains immutable failed evidence; the fresh canary is the next gated action and Phase 8 remains blocked
+**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; the active canary passed 20/20 and Phase 8 is in progress
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -263,9 +263,9 @@ numeric 19/20 and 30% thresholds were met, but the recorded experiment did not p
 or mutate it. Phase 7H is complete; the next canary and Phase 8 remain gated on the fresh immutable result.
 
 The implemented repair adds an exclusive write-once call-slot claim before spawning work and separates per-city
-diagnostics from batch-failing conditions in the evaluator. The next gated action is one new immutable experiment that
-may reuse the 58 valid experiment-013 calls and recollect only the two invalid Prague sources. Experiment 013 remains
-immutable and is not adjudicated or rescored.
+diagnostics from batch-failing conditions in the evaluator. Experiment 014 subsequently reused the 58 valid
+experiment-013 calls and recollected only the two invalid Prague sources. Experiment 013 remains immutable and is not
+adjudicated or rescored.
 
 #### Phase 7H — repair the canary lifecycle and batch decision — **complete 12 August 2026**
 
@@ -280,10 +280,9 @@ The post-013 audit separates two defects that must not be conflated:
 
 Phase 7H added an atomic write-once slot claim for new experiments and split tolerated per-city diagnostics from
 true batch-fatal violations. Historical experiments 010–013 remain byte-for-byte immutable and are validated under
-their recorded rules. The repair phase does not create experiment 014, recollect Prague, start migration, read a
-holdout or touch the live CSV. After the focused tests and full baseline pass, the exact next action is one fresh
-owner-authorized immutable canary reusing the 58 valid experiment-013 calls and collecting only the two invalid
-Prague sources. Phase 8 remains blocked until that fresh canary passes.
+their recorded rules. Experiment 014 is the new immutable canary created after this repair; its 60-slot frame is
+terminal/reusable, 20/20 cities are complete, zero artifact candidates were found and all persistence/API provenance
+round-trips are field-identical. Phase 8 is therefore active.
 
 #### Phase 7C — user-key provider transport smoke and runtime SLO
 
@@ -293,7 +292,7 @@ external/manual until a key is supplied and does not block Phase 8 or Phase 9 st
 the Phase 11 cutover. Post-release complete-generation coverage is monitored against a ≥95% operational SLO;
 a 19/20 pre-release sample must not be described as statistically proving that population rate.
 
-### Phase 8 — build resumable migration tooling and a dry run — blocked after failed Phase 7G
+### Phase 8 — build resumable migration tooling and a dry run — **active after experiment 014 pass**
 
 Create a deterministic migration protocol under `data/reference/v6/migration-v6-1/` containing:
 
@@ -437,13 +436,11 @@ node scripts/test-v6-1-canary-assignment.mjs
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun
 it once before investigating because this OneDrive checkout has a known transient temp-file failure.
 
-## 10. Current stopping point — Phase 7H complete; fresh canary next
+## 10. Current stopping point — Phase 8 active after experiment 014 pass
 
-Experiment 013 is finalized and immutable. It reached a complete 60-slot frame and 19/20 complete cities, but the
-recorded result is failed because two Prague calls were invalid after a duplicate assignment; its active manifest
-evidence remains failed. Phase 7H is now complete: new assignment claims are write-once per city/source slot,
-historical duplicate slots are preserved as compatibility evidence, the batch evaluator now permits one incomplete
-terminal city under the registered 19/20 rule, and global contract/artifact violations remain fatal. The exact next
-action is one fresh immutable canary reusing the 58 valid experiment-013 calls and recollecting only Prague BYT/Numbeo.
-Do not create it in this phase's verification, start Phase 8, read a holdout or touch the live CSV until the owner
-authorizes that gated canary and it passes.
+Experiment 013 is finalized and immutable failed history. Experiment 014 is the authorized fresh canary: all 60 slots
+are terminal/reusable, 20/20 cities completed, zero artifact candidates were found, 167 searches were recorded, and
+all 20 persistence/API provenance round-trips were field-identical. The active manifest and generated release report
+point to its hashed result. Phase 8 is now active. The exact next action is to create and dry-run the frozen,
+resumable migration protocol under `data/reference/v6/migration-v6-1/` using experiment 014 as its fixture. Do not
+read a holdout or touch the live CSV.

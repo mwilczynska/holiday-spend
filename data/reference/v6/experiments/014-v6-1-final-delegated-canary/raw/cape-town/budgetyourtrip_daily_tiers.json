@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 63,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $63  | $82  | $116",
+      "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 82,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $63  | $82  | $116",
+      "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 116,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $63  | $82  | $116",
+      "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $9  | $26  | $79",
+      "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 26,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $9  | $26  | $79",
+      "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 79,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+      "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $9  | $26  | $79",
+      "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

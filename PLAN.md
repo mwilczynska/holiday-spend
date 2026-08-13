@@ -276,9 +276,10 @@ complete staged migration is reviewed.
   claim and repair the evaluator's unreachable `problems.length === 0` aggregate predicate; the fresh canary remains
   a separate gated action
 - [x] Complete Phase 7H lifecycle/evaluator repair and focused regression tests, preserving experiments 010–013
-- [ ] Run one fresh immutable canary only after Phase 7H passes, reusing the 58 valid 013 calls and recollecting only
-  Prague BYT/Numbeo; stop again if its registered gate fails
-- [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV
+- [x] Run experiment 014 as the one fresh immutable canary, reusing 58 valid 013 calls and recollecting only Prague
+  BYT/Numbeo; it passed 20/20 with zero artifact candidates and full provenance equality
+- [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV, using experiment 014
+  as the dry run
 - [ ] Validate any reuse of the 25 fixture-city responses against the frozen migration window
 - [ ] Generate all 121 cities in batches into a staged CSV plus full provenance sidecar
 - [ ] Import/link the sidecar through `city_estimates` so seeded existing-city provenance is runtime-visible

@@ -1,20 +1,16 @@
 # v6.1 development release report
 
-**Status:** scored_development_failed
+**Status:** scored_development_runtime_unmeasured
 **Generated:** 2026-08-12
 **Panel:** 25 development cities × 19 product tiers  
 **Holdout:** no holdout read; all v6.0 holdout measures remain spent/closed  
 **Shipping CSV:** read-only informational comparison; SHA-256 0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8
 
 **Migration:** owner-approved staged migration of the 121-city library; live CSV remains unchanged pending
-owner resolution of the failed experiment-013 canary, a complete staged artifact, user-key transport smoke
-and owner review.
+a complete staged artifact, user-key transport smoke and owner review.
 
-**Delegated canary history:** Experiment 013 is the latest complete-frame attempt recorded by the active
-manifest and remains an immutable failure. Its 60 slots are terminal and 19/20 cities completed, but a
-duplicate Prague assignment invalidated two call records and exceeded the frozen call/search contract.
-Experiment 012 remains immutable incomplete-orchestration evidence, while 011 remains the earlier 17/20
-boundary failure. None is promoted to a release pass.
+**Delegated canary evidence:** Artifact data/reference/v6/experiments/014-v6-1-final-delegated-canary/results.json @ d7de2557cc1b9cc27616e3c774d1ce829db11431af1eafe04b428ca719da6a69; experiment 014-v6-1-final-delegated-canary: 20/20 complete, 0 artifact candidates (0.0%), result pass=true.
+Experiments 010–013 remain immutable historical records; they are not rewritten or deleted.
 
 **Generated coefficient contract:** consistent —
 {"appliedTo":"cappuccino_1","k":2.4838,"grade":"C","intervalPct":64}
@@ -103,7 +99,7 @@ holdout or new accommodation collection was used.
 | 8_refreshEconomics | PASS | Computed by the release validator. |
 | 9_integrationAndRollback | PASS | Computed by the release validator. |
 | 1_runtimeCoverage | UNMEASURED (not a pass) | Runtime complete-generation coverage >=95% is an unmeasured post-release operational SLO; development replay and a 19/20 canary do not establish it. |
-| 1_delegatedOperationalCanary | FAILED (not a pass) | At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch. Artifact data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/results.json @ 8fdfd5b577498f9ae27af79f7ad50653819e0ceff60ad3de26d1b057cb755c64; experiment 013-v6-1-resumable-delegated-canary: 19/20 complete, 0 artifact candidates (0.0%), result pass=false. Incident data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/collection-incidents.json @ f4e7dd31ef81bea54788d7fee015b8b081718407994650537d9c3f9588624a46. |
+| 1_delegatedOperationalCanary | PASSED (not a pass) | At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch. Artifact data/reference/v6/experiments/014-v6-1-final-delegated-canary/results.json @ d7de2557cc1b9cc27616e3c774d1ce829db11431af1eafe04b428ca719da6a69; experiment 014-v6-1-final-delegated-canary: 20/20 complete, 0 artifact candidates (0.0%), result pass=true. |
 | 10_verification | EXTERNAL (not a pass) | Verification baseline is executed outside this data replay. See the command log and CI/owner-run baseline; this validator does not claim it passed. |
 
 Gate 10 is an external verification-baseline status, not something this data replay can observe. The

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 539.55,
+      "currency": "JPY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Tokyo",
+      "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+      "evidenceText": "Cappuccino (Regular Size) | ¥539.55",
+      "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 600,
+      "currency": "JPY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Tokyo",
+      "sourceTitle": "Cost of Living in Tokyo. Jun 2026. Prices in Tokyo",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ¥600.00",
+      "query": "site:numbeo.com/cost-of-living/in/Tokyo \"Domestic Draft Beer (0.5 Liter)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

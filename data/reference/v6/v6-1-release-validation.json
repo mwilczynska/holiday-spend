@@ -2,7 +2,7 @@
   "schemaVersion": "city-cost-v6-1-release-validation-v2",
   "methodologyVersion": "v6.1",
   "generatedAt": "2026-08-12",
-  "status": "scored_development_failed",
+  "status": "scored_development_runtime_unmeasured",
   "cities": 25,
   "tierCount": 19,
   "totalSearches": 185,
@@ -164,10 +164,10 @@
       "blocking": false
     },
     "1_delegatedOperationalCanary": {
-      "status": "failed",
+      "status": "passed",
       "requirement": "At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch.",
       "threshold": "19/20",
-      "evidence": "Artifact data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/results.json @ 8fdfd5b577498f9ae27af79f7ad50653819e0ceff60ad3de26d1b057cb755c64; experiment 013-v6-1-resumable-delegated-canary: 19/20 complete, 0 artifact candidates (0.0%), result pass=false. Incident data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/collection-incidents.json @ f4e7dd31ef81bea54788d7fee015b8b081718407994650537d9c3f9588624a46.",
+      "evidence": "Artifact data/reference/v6/experiments/014-v6-1-final-delegated-canary/results.json @ d7de2557cc1b9cc27616e3c774d1ce829db11431af1eafe04b428ca719da6a69; experiment 014-v6-1-final-delegated-canary: 20/20 complete, 0 artifact candidates (0.0%), result pass=true.",
       "blocking": true
     },
     "10_verification": {
@@ -178,5 +178,5 @@
     }
   },
   "measuredGatesPassed": true,
-  "passed": false
+  "passed": true
 }

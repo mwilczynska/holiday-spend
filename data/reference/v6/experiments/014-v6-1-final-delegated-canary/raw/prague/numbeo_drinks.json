@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 81.28,
+      "currency": "CZK",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+      "sourceTitle": "Cost of Living in Prague. Jun 2026. Prices in Prague",
+      "evidenceText": "Cappuccino (Regular Size)  | 81.28 Kč  | 50.00-110.00",
+      "query": "site:numbeo.com/cost-of-living/in/Prague \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 65,
+      "currency": "CZK",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+      "sourceTitle": "Cost of Living in Prague. Jun 2026. Prices in Prague",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 65.00 Kč  | 55.00-75.00",
+      "query": "site:numbeo.com/cost-of-living/in/Prague \"Domestic Draft Beer (0.5 Liter)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Mumbai",
+  "country": "India",
+  "retrievalStatus": "complete",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/india/mumbai",
+      "sourceTitle": "Mumbai Travel Cost - Average Price of a Vacation to Mumbai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $13 (₨1,187)  | $39 (₨3,637)  | $136 (₨12,843)",
+      "query": "site:budgetyourtrip.com/india/mumbai \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 39,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/india/mumbai",
+      "sourceTitle": "Mumbai Travel Cost - Average Price of a Vacation to Mumbai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $13 (₨1,187)  | $39 (₨3,637)  | $136 (₨12,843)",
+      "query": "site:budgetyourtrip.com/india/mumbai \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 136,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/india/mumbai",
+      "sourceTitle": "Mumbai Travel Cost - Average Price of a Vacation to Mumbai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $13 (₨1,187)  | $39 (₨3,637)  | $136 (₨12,843)",
+      "query": "site:budgetyourtrip.com/india/mumbai \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 1,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/india/mumbai",
+      "sourceTitle": "Mumbai Travel Cost - Average Price of a Vacation to Mumbai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $1 (₨88)  | $2 (₨222)  | $6 (₨554)",
+      "query": "site:budgetyourtrip.com/india/mumbai \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 2,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/india/mumbai",
+      "sourceTitle": "Mumbai Travel Cost - Average Price of a Vacation to Mumbai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $1 (₨88)  | $2 (₨222)  | $6 (₨554)",
+      "query": "site:budgetyourtrip.com/india/mumbai \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 6,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/india/mumbai",
+      "sourceTitle": "Mumbai Travel Cost - Average Price of a Vacation to Mumbai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $1 (₨88)  | $2 (₨222)  | $6 (₨554)",
+      "query": "site:budgetyourtrip.com/india/mumbai \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

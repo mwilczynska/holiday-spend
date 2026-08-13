@@ -93,7 +93,7 @@ function repoFile(relativePath: string) {
 
 function assertRegistration(registration: Registration) {
   if (registration.schemaVersion !== 'city-cost-v6-1-delegated-canary-registration-v1') throw new Error('Unexpected delegated canary registration schema.');
-  if (!['delegated_codex_subagent', 'validated_experiment_012_reuse+delegated_codex_subagent'].includes(registration.collectionMode)) throw new Error('Delegated collection mode is not registered.');
+  if (!['delegated_codex_subagent', 'validated_experiment_012_reuse+delegated_codex_subagent', 'validated_experiment_013_reuse+delegated_codex_subagent'].includes(registration.collectionMode)) throw new Error('Delegated collection mode is not registered.');
   if (registration.cities.length !== 20 || registration.limits.sourceCallsPerCity !== 3) throw new Error('Delegated canary frame or call count drifted.');
   if (registration.passCriteria.completeCitiesMinimum !== 19) throw new Error('Delegated canary threshold drifted from 19/20.');
   if (registration.referenceWindow.arrival !== '2026-09-17' || registration.referenceWindow.departure !== '2026-09-18') throw new Error('Delegated canary window drifted.');

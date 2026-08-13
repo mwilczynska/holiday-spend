@@ -14,12 +14,13 @@
 **Phase 7E corrected canary:** experiment 012 failed 10/20; immutable result recorded below
 **Phase 7F lifecycle repair:** complete in `511837f`; experiments 010/011/012 remain byte-unchanged
 **Phase 7G resumable canary:** experiment 013 immutable failure at 19/20
-**Phase 7H lifecycle/evaluator repair:** complete in the current working tree; baseline passed
+**Phase 7H lifecycle/evaluator repair:** complete in `04be79b`; baseline passed
+**Phase 7 fresh corrected canary:** experiment 014 passed 20/20; immutable result recorded below
 
-**Milestone:** M4 coherent migration of the 121-city library — **Phase 7H complete; fresh canary next; Phase 8 blocked**
-**Exact next action:** owner-authorize and run one fresh immutable canary reusing the 58 valid experiment-013 calls and
-recollecting only Prague BYT/Numbeo. Do not mutate experiments 010–013, read any holdout, stage migration or touch the
-live CSV until that canary passes.
+**Milestone:** M4 coherent migration of the 121-city library — **Phase 7 canary complete; Phase 8 active**
+**Exact next action:** build and dry-run the frozen resumable migration protocol under
+`data/reference/v6/migration-v6-1/` using experiment 014 as the canary fixture. Do not mutate experiments 010–014,
+read any holdout or touch the live CSV.
 
 **Current milestone correction:** the earlier “Phase 7B failed; migration stopped” wording above is superseded
 by the owner-authorized Phase 7D repair and one fresh corrected canary. Experiment 012 failed because delegated
@@ -28,8 +29,8 @@ Phase 7F now exposes the underlying 32 reusable pairs and 28 pending slots witho
 refuses finalization while any registered slot is pending. Experiment 012 has no assignment ledger, so the inventory
 reports assignment attempts as unrecorded while still separating telemetry records from actual provider attempts.
 Experiment 013 then completed its 60-slot frame but remains an immutable failure at 19/20 because a duplicate Prague
-assignment invalidated two call records. Phase 7H has now repaired the lifecycle/evaluator boundary; Phase 8 remains
-blocked until the fresh canary passes.
+assignment invalidated two call records. Phase 7H repaired the lifecycle/evaluator boundary, and experiment 014 then
+passed the fresh canary at 20/20 with zero artifact candidates and full provenance equality. Phase 8 is now active.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until

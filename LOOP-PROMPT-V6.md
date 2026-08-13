@@ -1,8 +1,8 @@
 # LOOP-PROMPT-V6 — v6.1 coherent-library migration
 
-This is the active autonomous implementation prompt for city cost methodology v6.1. Phases 1–7G are now
-recorded. Experiment 013 is an immutable failed canary; Phase 7H lifecycle/evaluator repair is complete and the
-fresh canary is the next gated action. Phase 8 remains blocked. The owner-approved M4 migration has not started.
+This is the active autonomous implementation prompt for city cost methodology v6.1. Phases 1–7H and the fresh
+experiment-014 canary are now recorded. Experiment 013 remains immutable failed history; experiment 014 passed 20/20
+and Phase 8 migration tooling is active. The owner-approved M4 migration has not reached cutover.
 
 ## PROMPT
 
@@ -33,10 +33,9 @@ Read completely, in this order:
 Then inspect only the code and artifacts needed for the current phase. Do not bulk-read v5 experiments.
 Do not open any holdout ledger or holdout score values.
 
-**Current stop:** experiment 013 reached 19/20 complete cities and zero artifact candidates, but two duplicate
-Prague calls were invalid and the immutable result is `pass: false`. The owner has authorized implementation of the
-write-once assignment and evaluator repairs are complete. Do not run another canary or start Phase 8 until the owner
-authorizes the fresh canary and its registered gate passes.
+**Current stop:** experiment 013 remains immutable failed history. Experiment 014 is the one authorized fresh canary
+and passed 20/20 complete cities with zero artifact candidates and full persistence/API provenance equality. Build and
+dry-run Phase 8 now; do not read a holdout or touch the live CSV.
 
 Verify the branch, worktree and `npm run docs:check-memory`. Preserve unrelated changes.
 
@@ -124,9 +123,9 @@ The repair is complete. New experiments reserve every city/source slot with an e
 duplicate claims even when assignment IDs differ; immutable historical ledgers remain readable with their recorded
 duplicates. The pure evaluator now permits one incomplete terminal city under the registered 19/20 rule while window,
 call-count, search, retry, direct-read, provenance and artifact-signature violations remain batch-fatal. Regression
-tests cover both failure shapes. No experiment was created, no holdout was read, and the live CSV was untouched.
-The next gated action is one fresh immutable canary reusing 58 valid experiment-013 calls and recollecting only the
-two invalid Prague sources.
+tests cover both failure shapes. Experiment 014 then used the repaired lifecycle, reusing 58 validated experiment-013
+calls and collecting only Prague BYT/Numbeo. Its 60-slot frame is terminal/reusable, 20/20 cities complete, and the
+canary passed with zero artifact candidates and full provenance equality. The next action is Phase 8.
 
 Pass only if at least 19/20 cities have three schema-valid source records and complete 19-tier bundles; all
 call/search/read/provenance criteria pass; and artifact candidates affect no more than 30% of the batch.
@@ -144,7 +143,7 @@ smoke of provider authentication, search execution and the real database/API bou
 a key is supplied and does not block Phase 8 or Phase 9. Treat ≥95% complete-generation coverage as a
 post-release operational SLO; never claim a 19/20 sample statistically establishes it.
 
-## 5. Phase 8 — migration tooling and dry run — blocked pending Phase 7H and fresh canary
+## 5. Phase 8 — migration tooling and dry run — active after experiment 014 pass
 
 Create a frozen protocol at `data/reference/v6/migration-v6-1/`. Add deterministic scripts for:
 

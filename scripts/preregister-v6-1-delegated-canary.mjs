@@ -14,9 +14,12 @@ const experimentRelativeDir = optionValue('--experiment-dir')
   ?? 'data/reference/v6/experiments/013-v6-1-resumable-delegated-canary';
 const collectionMode = optionValue('--collection-mode')
   ?? 'validated_experiment_012_reuse+delegated_codex_subagent';
+const sourceExperiment = optionValue('--source-experiment')
+  ?? '012-v6-1-corrected-delegated-canary';
 const allowedCollectionModes = new Set([
   'delegated_codex_subagent',
   'validated_experiment_012_reuse+delegated_codex_subagent',
+  'validated_experiment_013_reuse+delegated_codex_subagent',
 ]);
 if (!allowedCollectionModes.has(collectionMode)) {
   throw new Error(`Unsupported collection mode: ${collectionMode}`);
@@ -39,7 +42,8 @@ if (fs.existsSync(experimentDir) && fs.readdirSync(experimentDir).length > 0) {
   throw new Error(`Experiment directory ${relativeExperimentDir} already contains files; completed/preregistered experiments are immutable.`);
 }
 
-const source = JSON.parse(fs.readFileSync(SOURCE_REGISTRATION, 'utf8'));
+const sourceRegistrationPath = path.join(ROOT, 'data/reference/v6/experiments', sourceExperiment, 'registration.json');
+const source = JSON.parse(fs.readFileSync(sourceRegistrationPath, 'utf8'));
 const promptFiles = {
   expedia_3star: 'docs/prompts/llm_prompt_city_cost_v6_1_expedia_3star.md',
   budgetyourtrip_daily_tiers: 'docs/prompts/llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md',
@@ -63,9 +67,9 @@ const registration = {
   experiment: experimentName,
   registeredAt: '2026-08-12',
   status: 'preregistered',
-  purpose: 'Test the resumable v6.1 Stage-A source contract and deterministic Stage-B production path using validated experiment-012 call reuse plus delegated collection, without application provider credentials.',
+  purpose: `Test the resumable v6.1 Stage-A source contract and deterministic Stage-B production path using validated ${sourceExperiment} call reuse plus delegated collection, without application provider credentials.`,
   collectionMode,
-  sourceRegistration: 'data/reference/v6/experiments/010-v6-1-runtime-canary/registration.json',
+  sourceRegistration: `data/reference/v6/experiments/${sourceExperiment}/registration.json`,
   inputCsv: source.inputCsv,
   inputCsvSha256: sha256(source.inputCsv),
   fxSnapshot: source.fxSnapshot,
@@ -106,11 +110,11 @@ fs.mkdirSync(experimentDir, { recursive: true });
 writeJson(`${relativeExperimentDir}/registration.json`, registration);
 fs.writeFileSync(path.join(experimentDir, 'protocol.md'), `# ${experimentName} - resumable delegated v6.1 operational canary
 
-**Status:** preregistered 12 August 2026; Stage A is validated call-level experiment-012 reuse plus delegated collection, and Stage B is local deterministic replay.
+**Status:** preregistered 12 August 2026; Stage A is validated call-level ${sourceExperiment} reuse plus delegated collection, and Stage B is local deterministic replay.
 
 ## Purpose
 
-Experiments 010, 011 and 012 are immutable history. This experiment reuses the registered 20-city frame and only those experiment-012 calls whose raw response and telemetry independently satisfy the frozen contract. Remaining calls are collected by delegated Codex subagents without copying Codex authentication into the application.
+Experiments 010, 011, 012 and 013 are immutable history. This experiment reuses the registered 20-city frame and only those ${sourceExperiment} calls whose raw response and telemetry independently satisfy the frozen contract. Remaining calls are collected by delegated Codex subagents without copying Codex authentication into the application.
 
 ## Frozen contract
 
@@ -118,11 +122,11 @@ Experiments 010, 011 and 012 are immutable history. This experiment reuses the r
 - Exactly three source calls per city, using the three registered v6.1 prompts verbatim.
 - Search-snippet evidence only; Expedia 4, BudgetYourTrip 4 and Numbeo 2 searches maximum per source; 10 per city; zero direct page reads.
 - One raw schema response and one telemetry record per city/source. Missingness is explicit and never substituted.
-- Reused calls retain their source raw/telemetry bytes and record source and target hashes in \`reuse-manifest.json\`.
+  - Reused calls retain their source raw/telemetry bytes and record source and target hashes in \`reuse-manifest.json\`.
 - Inventory is independent by call slot. Finalization refuses while any of the 60 registered slots remains pending.
 - Frozen Expedia window: arrival 2026-09-17, departure 2026-09-18; reference date 2026-09-17 for BYT and Numbeo.
 - Stage B validates every response, invokes \`materializeCityCostV61\`, then exercises persistence and API provenance parsing.
-- Pass requires at least 19/20 complete cities and artifact candidates no greater than 30% of the batch. Repeated canonical-beer rejection above 30% is an artifact signature and fails the batch.
+  - Pass requires at least 19/20 complete cities and artifact candidates no greater than 30% of the batch. Repeated canonical-beer rejection above 30% is an artifact signature and fails the batch.
 
 ## Integrity
 

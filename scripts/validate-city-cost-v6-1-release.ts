@@ -573,6 +573,10 @@ function buildReport(input: {
     ['Tier', 'v6.1 derivation', 'Grade / interval', 'Development coverage', 'Fallback path', 'Development fit', 'Holdout', 'v1 median APE'],
     ...input.tierRows,
   ]);
+  const delegatedCanaryGate = validation.gates['1_delegatedOperationalCanary'];
+  const delegatedCanaryEvidence = typeof delegatedCanaryGate === 'object' && delegatedCanaryGate !== null
+    ? delegatedCanaryGate.evidence ?? 'No delegated canary evidence recorded.'
+    : 'No delegated canary evidence recorded.';
   return `# v6.1 development release report
 
 **Status:** ${validation.status}
@@ -582,14 +586,10 @@ function buildReport(input: {
 **Shipping CSV:** read-only informational comparison; SHA-256 ${input.shippingCsvSha256}
 
 **Migration:** owner-approved staged migration of the 121-city library; live CSV remains unchanged pending
-owner resolution of the failed experiment-013 canary, a complete staged artifact, user-key transport smoke
-and owner review.
+a complete staged artifact, user-key transport smoke and owner review.
 
-**Delegated canary history:** Experiment 013 is the latest complete-frame attempt recorded by the active
-manifest and remains an immutable failure. Its 60 slots are terminal and 19/20 cities completed, but a
-duplicate Prague assignment invalidated two call records and exceeded the frozen call/search contract.
-Experiment 012 remains immutable incomplete-orchestration evidence, while 011 remains the earlier 17/20
-boundary failure. None is promoted to a release pass.
+**Delegated canary evidence:** ${delegatedCanaryEvidence}
+Experiments 010–013 remain immutable historical records; they are not rewritten or deleted.
 
 **Generated coefficient contract:** ${validation.generatedCoefficientContract.passed ? 'consistent' : 'FAILED'} —
 ${JSON.stringify(validation.generatedCoefficientContract.generated)}
