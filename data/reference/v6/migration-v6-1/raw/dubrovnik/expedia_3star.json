@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Dubrovnik",
+  "country": "Croatia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 138,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Dubrovnik-Hotels.s30-0-d553248635126030638.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Dubrovnik from $110 | Expedia",
+      "evidenceText": "September  | $138\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Dubrovnik.",
+      "query": "site:expedia.com/Hotel-Search Dubrovnik Croatia \"3-star\" \"Sep 17, 2026\" \"Sep 18, 2026\"",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": ""
+}

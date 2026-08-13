@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-batch-report-v1",
+  "batchId": "phase9-batch-007",
+  "generatedAt": "deterministic",
+  "protocolSha256": "fbd9ff5ac97eb0bc1a5bc1941751a25f267a5fa8192732109c08f3325d8a0c2e",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "cities": [
+    "Budapest",
+    "Krakow",
+    "Bucharest",
+    "Sofia",
+    "Belgrade",
+    "Tbilisi",
+    "Split",
+    "Dubrovnik",
+    "Porto",
+    "Barcelona"
+  ],
+  "cityCount": 10,
+  "completeMaterializations": 10,
+  "calls": 30,
+  "searches": 100,
+  "retries": 0,
+  "directPageReads": 0,
+  "collectionModes": {
+    "delegated_codex_subagent": 30
+  },
+  "observedMeasures": {
+    "hotel_3star_room_2p": 8,
+    "byt_food_budget_per_person_day": 7,
+    "byt_food_mid_per_person_day": 7,
+    "byt_food_high_per_person_day": 7,
+    "byt_activities_budget_per_person_day": 7,
+    "byt_activities_mid_per_person_day": 7,
+    "byt_activities_high_per_person_day": 7,
+    "cappuccino_1": 4,
+    "domestic_draft_beer_1": 4
+  },
+  "sourceStatuses": {
+    "expedia_3star:complete": 8,
+    "budgetyourtrip_daily_tiers:complete": 42,
+    "numbeo_drinks:complete": 8,
+    "numbeo_drinks:partial": 12,
+    "expedia_3star:not_found": 2,
+    "budgetyourtrip_daily_tiers:partial": 18
+  },
+  "categoryCounts": {
+    "accommodation": {
+      "direct": 8,
+      "fallback": 2
+    },
+    "food": {
+      "direct": 7,
+      "fallback": 3
+    },
+    "drinks": {
+      "direct": 4,
+      "fallback": 6
+    },
+    "activities": {
+      "direct": 7,
+      "fallback": 3
+    }
+  },
+  "gradeDistribution": {
+    "C": 48,
+    "B": 50,
+    "D": 70,
+    "A": 12,
+    "definitional": 10
+  },
+  "allPriorCities": 1,
+  "artifactCandidates": 1,
+  "artifactFraction": 0.1,
+  "artifactRows": [
+    {
+      "city": "Budapest",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Krakow",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Bucharest",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Sofia",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Belgrade",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Tbilisi",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Split",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Dubrovnik",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Porto",
+      "artifactCandidate": true,
+      "reason": "all non-definitional tiers are fallback/imputed or grade D"
+    },
+    {
+      "city": "Barcelona",
+      "artifactCandidate": false,
+      "reason": null
+    }
+  ]
+}

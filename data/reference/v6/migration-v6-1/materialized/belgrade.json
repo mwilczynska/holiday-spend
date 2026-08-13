@@ -1,0 +1,2290 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Belgrade",
+    "country": "Serbia",
+    "region": "Europe",
+    "band": null,
+    "cityId": "belgrade"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "region": "Europe",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 65.66,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 30.2,
+          "upperAud": 101.12,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 65.76,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 38.8,
+          "upperAud": 92.72,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 74.03,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 40.71,
+          "upperAud": 107.34,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 83.32,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 49.16,
+          "upperAud": 117.49,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 111.1,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 65.55,
+          "upperAud": 156.65,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 148.56,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 87.65,
+          "upperAud": 209.47,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 29.73,
+        "formula": "v6.1 food_street_food tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:food_street_food"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 16.35,
+          "upperAud": 43.11,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 55.77,
+        "formula": "v6.1 food_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 30.67,
+          "upperAud": 80.87,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 141.56,
+        "formula": "v6.1 food_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 77.86,
+          "upperAud": 205.26,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "amountAud": 354.61,
+        "formula": "v6.1 food_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 195.04,
+          "upperAud": 514.18,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.88,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.68,
+          "upperAud": 7.08,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.76,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.37,
+          "upperAud": 14.15,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 19.9,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 52.39,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 84.87,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 24.31,
+        "formula": "v6.1 activities_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:activities_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 64.34,
+        "formula": "v6.1 activities_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:activities_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 35.39,
+          "upperAud": 93.29,
+          "widthPct": 45
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 174.44,
+        "formula": "v6.1 activities_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:mid:activities_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 95.94,
+          "upperAud": 252.94,
+          "widthPct": 45
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 111.1,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "missingness": {
+      "byt_food_budget_per_person_day": "stale",
+      "byt_food_mid_per_person_day": "stale",
+      "byt_food_high_per_person_day": "stale",
+      "cappuccino_1": "stale",
+      "domestic_draft_beer_1": "stale",
+      "byt_activities_budget_per_person_day": "stale",
+      "byt_activities_mid_per_person_day": "stale",
+      "byt_activities_high_per_person_day": "stale"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 65.66,
+      "accomPrivateRoom": 65.76,
+      "accom1star": 74.03,
+      "accom2star": 83.32,
+      "accom3star": 111.1,
+      "accom4star": 148.56,
+      "foodStreet": 29.73,
+      "foodBudget": 55.77,
+      "foodMid": 141.56,
+      "foodHigh": 354.61,
+      "drinkCoffee": 4.88,
+      "drinkLocalBeer": 5.07,
+      "drinkCocktail": 11.18,
+      "drinksNone": 9.76,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 24.31,
+      "activitiesMid": 64.34,
+      "activitiesHigh": 174.44
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 65.66,
+      "accomPrivateRoom": 65.76,
+      "accom1star": 74.03,
+      "accom2star": 83.32,
+      "accom3star": 111.1,
+      "accom4star": 148.56,
+      "foodStreet": 29.73,
+      "foodBudget": 55.77,
+      "foodMid": 141.56,
+      "foodHigh": 354.61,
+      "drinkCoffee": 4.88,
+      "drinkLocalBeer": 5.07,
+      "drinkCocktail": 11.18,
+      "drinksNone": 9.76,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 24.31,
+      "activitiesMid": 64.34,
+      "activitiesHigh": 174.44
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 83,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Belgrade from $34 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Belgrade.\n\nMonth  | Price\n--- | ---\nSeptember  | $83",
+        "query": "site:expedia.com/Hotel-Search Belgrade Serbia 3 star hotels 2026-09-17 2026-09-18 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Belgrade. Jun 2026. Prices in Belgrade",
+        "evidenceText": "Cappuccino (Regular Size)  | 315.31 din  | 200.00-450.00",
+        "query": "site:numbeo.com/cost-of-living/in/Belgrade \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Belgrade. Jun 2026. Prices in Belgrade",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 350.00 din  | 250.00-500.00",
+        "query": "site:numbeo.com/cost-of-living/in/Belgrade \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.2,
+          "upperAud": 101.12,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 38.8,
+          "upperAud": 92.72,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 40.71,
+          "upperAud": 107.34,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 49.16,
+          "upperAud": 117.49,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 65.55,
+          "upperAud": 156.65,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 87.65,
+          "upperAud": 209.47,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 16.35,
+          "upperAud": 43.11,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 30.67,
+          "upperAud": 80.87,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 77.86,
+          "upperAud": 205.26,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 195.04,
+          "upperAud": 514.18,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.68,
+          "upperAud": 7.08,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.37,
+          "upperAud": 14.15,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 35.39,
+          "upperAud": 93.29,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 95.94,
+          "upperAud": 252.94,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 65.549,
+          "upperAud": 156.65099999999998,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "byt_food_budget_per_person_day": "stale",
+        "byt_food_mid_per_person_day": "stale",
+        "byt_food_high_per_person_day": "stale",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale",
+        "byt_activities_budget_per_person_day": "stale",
+        "byt_activities_mid_per_person_day": "stale",
+        "byt_activities_high_per_person_day": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 111.1,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:38:26.671Z",
+        "completedAt": "2026-08-13T17:38:26.671Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:38:26.671Z",
+        "completedAt": "2026-08-13T17:38:26.671Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:38:26.671Z",
+        "completedAt": "2026-08-13T17:38:26.671Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.2,
+          "upperAud": 101.12,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 38.8,
+          "upperAud": 92.72,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 40.71,
+          "upperAud": 107.34,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 49.16,
+          "upperAud": 117.49,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 65.55,
+          "upperAud": 156.65,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 87.65,
+          "upperAud": 209.47,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 16.35,
+          "upperAud": 43.11,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 30.67,
+          "upperAud": 80.87,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 77.86,
+          "upperAud": 205.26,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 195.04,
+          "upperAud": 514.18,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.68,
+          "upperAud": 7.08,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.37,
+          "upperAud": 14.15,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 35.39,
+          "upperAud": 93.29,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 95.94,
+          "upperAud": 252.94,
+          "widthPct": 45
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "byt_food_budget_per_person_day": "stale",
+        "byt_food_mid_per_person_day": "stale",
+        "byt_food_high_per_person_day": "stale",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale",
+        "byt_activities_budget_per_person_day": "stale",
+        "byt_activities_mid_per_person_day": "stale",
+        "byt_activities_high_per_person_day": "stale"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 83,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Belgrade from $34 | Expedia",
+          "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Belgrade.\n\nMonth  | Price\n--- | ---\nSeptember  | $83",
+          "query": "site:expedia.com/Hotel-Search Belgrade Serbia 3 star hotels 2026-09-17 2026-09-18 2 adults 1 room",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+          "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+          "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+          "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+          "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+          "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+          "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Belgrade. Jun 2026. Prices in Belgrade",
+          "evidenceText": "Cappuccino (Regular Size)  | 315.31 din  | 200.00-450.00",
+          "query": "site:numbeo.com/cost-of-living/in/Belgrade \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Belgrade. Jun 2026. Prices in Belgrade",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 350.00 din  | 250.00-500.00",
+          "query": "site:numbeo.com/cost-of-living/in/Belgrade \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 111.1,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "stale"
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "stale"
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "stale"
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "stale"
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "stale"
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "stale"
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "belgrade",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "region": "Europe",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "0a0bdbd332294bf9da835b869412b7bca6e2bf70aff103f17d47be04eb4abafb",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 65.66,
+      "accomPrivateRoom": 65.76,
+      "accom1star": 74.03,
+      "accom2star": 83.32,
+      "accom3star": 111.1,
+      "accom4star": 148.56,
+      "foodStreet": 29.73,
+      "foodBudget": 55.77,
+      "foodMid": 141.56,
+      "foodHigh": 354.61,
+      "drinkCoffee": 4.88,
+      "drinkLocalBeer": 5.07,
+      "drinkCocktail": 11.18,
+      "drinksNone": 9.76,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 24.31,
+      "activitiesMid": 64.34,
+      "activitiesHigh": 174.44
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 83,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Belgrade from $34 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Belgrade.\n\nMonth  | Price\n--- | ---\nSeptember  | $83",
+        "query": "site:expedia.com/Hotel-Search Belgrade Serbia 3 star hotels 2026-09-17 2026-09-18 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $7\n(RSD 712)  | $17\n(RSD 1,749)  | $40\n(RSD 4,112)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade Food Meals Entertainment Activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Belgrade Travel Cost - Average Price of a Vacation to Belgrade: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $2\n(RSD 223)  | $5\n(RSD 491)  | $8\n(RSD 825)",
+        "query": "site:budgetyourtrip.com/serbia/belgrade Belgrade activities budget mid-range luxury per person day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Belgrade. Jun 2026. Prices in Belgrade",
+        "evidenceText": "Cappuccino (Regular Size)  | 315.31 din  | 200.00-450.00",
+        "query": "site:numbeo.com/cost-of-living/in/Belgrade \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Belgrade. Jun 2026. Prices in Belgrade",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 350.00 din  | 250.00-500.00",
+        "query": "site:numbeo.com/cost-of-living/in/Belgrade \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.2,
+          "upperAud": 101.12,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 38.8,
+          "upperAud": 92.72,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 40.71,
+          "upperAud": 107.34,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 49.16,
+          "upperAud": 117.49,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 65.55,
+          "upperAud": 156.65,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 87.65,
+          "upperAud": 209.47,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 16.35,
+          "upperAud": 43.11,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 30.67,
+          "upperAud": 80.87,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 77.86,
+          "upperAud": 205.26,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 195.04,
+          "upperAud": 514.18,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.68,
+          "upperAud": 7.08,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.37,
+          "upperAud": 14.15,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 35.39,
+          "upperAud": 93.29,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 95.94,
+          "upperAud": 252.94,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 65.549,
+          "upperAud": 156.65099999999998,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:38:26.671Z",
+          "completedAt": "2026-08-13T17:38:26.671Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "byt_food_budget_per_person_day": "stale",
+        "byt_food_mid_per_person_day": "stale",
+        "byt_food_high_per_person_day": "stale",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale",
+        "byt_activities_budget_per_person_day": "stale",
+        "byt_activities_mid_per_person_day": "stale",
+        "byt_activities_high_per_person_day": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 111.1,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Belgrade-Hotels.s30-0-d6333.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "stale"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:38:26.671Z",
+        "completedAt": "2026-08-13T17:38:26.671Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:38:26.671Z",
+        "completedAt": "2026-08-13T17:38:26.671Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:38:26.671Z",
+        "completedAt": "2026-08-13T17:38:26.671Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "8c5733781760ed585c318dd87a9d1c4d4f3a84aaf6907e4adce00a782d065453",
+    "calls": [
+      {
+        "city": "Belgrade",
+        "country": "Serbia",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-007-05-belgrade",
+        "agentId": "delegated-phase9-batch-007-05-belgrade",
+        "rawSha256": "9ed355f7439dc4be3e7b4ed5f2d1d7f32fb9592297f05749c1a92632bfedb892",
+        "telemetrySha256": "095a5d6fda180ac91881ef951400f88ec55591d17d96e1eabc00b9aa953fbfe4"
+      },
+      {
+        "city": "Belgrade",
+        "country": "Serbia",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-007-05-belgrade",
+        "agentId": "delegated-phase9-batch-007-05-belgrade",
+        "rawSha256": "8f8b90e7f62dd6e611f01dac4ff20100d9e34956573079763a28810d026e1b13",
+        "telemetrySha256": "14ae1a7a756cb48c38675e559d35e1cdf4061f1c0ec81406cd25cbbce6541451"
+      },
+      {
+        "city": "Belgrade",
+        "country": "Serbia",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-007-05-belgrade",
+        "agentId": "delegated-phase9-batch-007-05-belgrade",
+        "rawSha256": "41b3da105071fdc7ecd5a32629fcd48a6284ce0e7e09d33b91dddd12829f4cb1",
+        "telemetrySha256": "ba52b56fdfc40b122217436f987541ec5a9e461ec47cfd03e4bebeca2acfd82a"
+      }
+    ]
+  }
+}

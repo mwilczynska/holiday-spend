@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 1088.67,
+      "currency": "HUF",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+      "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+      "evidenceText": "Cappuccino (Regular Size)  | 1,088.67\u00a0Ft  | 650.00-1,500.00",
+      "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 1200,
+      "currency": "HUF",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+      "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 1,200.00\u00a0Ft  | 700.00-1,800.00",
+      "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

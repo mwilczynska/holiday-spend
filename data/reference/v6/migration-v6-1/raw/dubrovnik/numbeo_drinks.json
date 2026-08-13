@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Dubrovnik",
+  "country": "Croatia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 3.7,
+      "currency": "EUR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Dubrovnik",
+      "sourceTitle": "Cost of Living in Dubrovnik. May 2026. Prices in Dubrovnik",
+      "evidenceText": "Cappuccino (Regular Size)  | €3.70  | 2.50-5.00",
+      "query": "site:numbeo.com/cost-of-living/in/Dubrovnik \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 5,
+      "currency": "EUR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Dubrovnik",
+      "sourceTitle": "Cost of Living in Dubrovnik. May 2026. Prices in Dubrovnik",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €5.00  | 3.00-9.00",
+      "query": "site:numbeo.com/cost-of-living/in/Dubrovnik \"Domestic Draft Beer\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

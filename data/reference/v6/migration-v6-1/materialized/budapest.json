@@ -1,0 +1,2375 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Budapest",
+    "country": "Hungary",
+    "region": "Europe",
+    "band": null,
+    "cityId": "budapest"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Budapest",
+    "country": "Hungary",
+    "region": "Europe",
+    "costBand": "high",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 102.05,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 46.94,
+          "upperAud": 157.15,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 102.2,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 60.3,
+          "upperAud": 144.11,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 115.05,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 63.28,
+          "upperAud": 166.82,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 129.5,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 76.41,
+          "upperAud": 182.6,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 172.67,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 101.88,
+          "upperAud": 243.46,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 230.89,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 136.23,
+          "upperAud": 325.56,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 27.45,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 51.48,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 137.26,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 383.2,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 249.08,
+          "upperAud": 517.32,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.88,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 4.39,
+          "upperAud": 5.37,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.76,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 8.78,
+          "upperAud": 10.74,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 20.52,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 18.47,
+          "upperAud": 22.57,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 55.52,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 19.99,
+          "upperAud": 91.05,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 90.52,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 32.59,
+          "upperAud": 148.45,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 28.6,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 18.59,
+          "upperAud": 38.61,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 74.36,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 214.48,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 172.67,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 191.6,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 14.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 107.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.88,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 5.38,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 12.12,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {},
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 102.05,
+      "accomPrivateRoom": 102.2,
+      "accom1star": 115.05,
+      "accom2star": 129.5,
+      "accom3star": 172.67,
+      "accom4star": 230.89,
+      "foodStreet": 27.45,
+      "foodBudget": 51.48,
+      "foodMid": 137.26,
+      "foodHigh": 383.2,
+      "drinkCoffee": 4.88,
+      "drinkLocalBeer": 5.38,
+      "drinkCocktail": 12.12,
+      "drinksNone": 9.76,
+      "drinksLight": 20.52,
+      "drinksModerate": 55.52,
+      "drinksHeavy": 90.52,
+      "activitiesFree": 0,
+      "activitiesBudget": 28.6,
+      "activitiesMid": 74.36,
+      "activitiesHigh": 214.48
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 102.05,
+      "accomPrivateRoom": 102.2,
+      "accom1star": 115.05,
+      "accom2star": 129.5,
+      "accom3star": 172.67,
+      "accom4star": 230.89,
+      "foodStreet": 27.45,
+      "foodBudget": 51.48,
+      "foodMid": 137.26,
+      "foodHigh": 383.2,
+      "drinkCoffee": 4.88,
+      "drinkLocalBeer": 5.38,
+      "drinkCocktail": 12.12,
+      "drinksNone": 9.76,
+      "drinksLight": 20.52,
+      "drinksModerate": 55.52,
+      "drinksHeavy": 90.52,
+      "activitiesFree": 0,
+      "activitiesBudget": 28.6,
+      "activitiesMid": 74.36,
+      "activitiesHigh": 214.48
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 129,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Budapest from $45 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Budapest\nSeptember  | $129\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Budapest.",
+        "query": "site:expedia.com/Hotel-Search Budapest Hungary 3-star hotel \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 48,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 134,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 10,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 75,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 1088.67,
+        "currency": "HUF",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+        "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+        "evidenceText": "Cappuccino (Regular Size)  | 1,088.67 Ft  | 650.00-1,500.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 1200,
+        "currency": "HUF",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+        "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 1,200.00 Ft  | 700.00-1,800.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 46.94,
+          "upperAud": 157.15,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 60.3,
+          "upperAud": 144.11,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 63.28,
+          "upperAud": 166.82,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 76.41,
+          "upperAud": 182.6,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 101.88,
+          "upperAud": 243.46,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 136.23,
+          "upperAud": 325.56,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 249.08,
+          "upperAud": 517.32,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.39,
+          "upperAud": 5.37,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 8.78,
+          "upperAud": 10.74,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 18.47,
+          "upperAud": 22.57,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 19.99,
+          "upperAud": 91.05,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 32.59,
+          "upperAud": 148.45,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 18.59,
+          "upperAud": 38.61,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 101.87530000000001,
+          "upperAud": 243.46469999999997,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 44.6095,
+          "upperAud": 92.6505,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 124.54,
+          "upperAud": 258.66,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 9.295,
+          "upperAud": 19.305000000000003,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 24.167,
+          "upperAud": 50.193000000000005,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 69.706,
+          "upperAud": 144.774,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 4.392,
+          "upperAud": 5.368,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 4.842,
+          "upperAud": 5.918,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 4.3632,
+          "upperAud": 19.8768,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 172.67,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 191.6,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 14.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 107.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.88,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 5.38,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 12.12,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:26:44.660Z",
+        "completedAt": "2026-08-13T17:26:44.660Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:26:44.660Z",
+        "completedAt": "2026-08-13T17:26:44.660Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:26:44.660Z",
+        "completedAt": "2026-08-13T17:26:44.660Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 46.94,
+          "upperAud": 157.15,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 60.3,
+          "upperAud": 144.11,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 63.28,
+          "upperAud": 166.82,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 76.41,
+          "upperAud": 182.6,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 101.88,
+          "upperAud": 243.46,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 136.23,
+          "upperAud": 325.56,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 249.08,
+          "upperAud": 517.32,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.39,
+          "upperAud": 5.37,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 8.78,
+          "upperAud": 10.74,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 18.47,
+          "upperAud": 22.57,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 19.99,
+          "upperAud": 91.05,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 32.59,
+          "upperAud": 148.45,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 18.59,
+          "upperAud": 38.61,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {},
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 129,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Budapest from $45 | Expedia",
+          "evidenceText": "Price trends for properties with 3 Stars in Budapest\nSeptember  | $129\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Budapest.",
+          "query": "site:expedia.com/Hotel-Search Budapest Hungary 3-star hotel \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 18,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+          "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+          "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 48,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+          "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+          "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 134,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+          "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+          "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 10,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+          "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+          "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 26,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+          "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+          "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 75,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+          "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+          "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 1088.67,
+          "currency": "HUF",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+          "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+          "evidenceText": "Cappuccino (Regular Size)  | 1,088.67 Ft  | 650.00-1,500.00",
+          "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 1200,
+          "currency": "HUF",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+          "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 1,200.00 Ft  | 700.00-1,800.00",
+          "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 172.67,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 25.74,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 68.63,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 191.6,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 14.3,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 37.18,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 107.24,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 4.88,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 5.38,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 12.12,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "budapest",
+    "city": "Budapest",
+    "country": "Hungary",
+    "region": "Europe",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "32619ac9ba91541191ec2798f922ec7e8620f1cc3aebbeb3316363fec7d43bb5",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 102.05,
+      "accomPrivateRoom": 102.2,
+      "accom1star": 115.05,
+      "accom2star": 129.5,
+      "accom3star": 172.67,
+      "accom4star": 230.89,
+      "foodStreet": 27.45,
+      "foodBudget": 51.48,
+      "foodMid": 137.26,
+      "foodHigh": 383.2,
+      "drinkCoffee": 4.88,
+      "drinkLocalBeer": 5.38,
+      "drinkCocktail": 12.12,
+      "drinksNone": 9.76,
+      "drinksLight": 20.52,
+      "drinksModerate": 55.52,
+      "drinksHeavy": 90.52,
+      "activitiesFree": 0,
+      "activitiesBudget": 28.6,
+      "activitiesMid": 74.36,
+      "activitiesHigh": 214.48
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 129,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Budapest from $45 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Budapest\nSeptember  | $129\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Budapest.",
+        "query": "site:expedia.com/Hotel-Search Budapest Hungary 3-star hotel \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 48,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 134,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 10,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 75,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+        "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+        "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 1088.67,
+        "currency": "HUF",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+        "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+        "evidenceText": "Cappuccino (Regular Size)  | 1,088.67 Ft  | 650.00-1,500.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 1200,
+        "currency": "HUF",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Budapest",
+        "sourceTitle": "Cost of Living in Budapest. Jun 2026. Prices in Budapest",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 1,200.00 Ft  | 700.00-1,800.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Budapest\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 46.94,
+          "upperAud": 157.15,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 60.3,
+          "upperAud": 144.11,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 63.28,
+          "upperAud": 166.82,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 76.41,
+          "upperAud": 182.6,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 101.88,
+          "upperAud": 243.46,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 136.23,
+          "upperAud": 325.56,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 249.08,
+          "upperAud": 517.32,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.39,
+          "upperAud": 5.37,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 8.78,
+          "upperAud": 10.74,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 18.47,
+          "upperAud": 22.57,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 19.99,
+          "upperAud": 91.05,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 32.59,
+          "upperAud": 148.45,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 18.59,
+          "upperAud": 38.61,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 101.87530000000001,
+          "upperAud": 243.46469999999997,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 44.6095,
+          "upperAud": 92.6505,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 124.54,
+          "upperAud": 258.66,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 9.295,
+          "upperAud": 19.305000000000003,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 24.167,
+          "upperAud": 50.193000000000005,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 69.706,
+          "upperAud": 144.774,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 4.392,
+          "upperAud": 5.368,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 4.842,
+          "upperAud": 5.918,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 4.3632,
+          "upperAud": 19.8768,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T17:26:44.660Z",
+          "completedAt": "2026-08-13T17:26:44.660Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 172.67,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Budapest-Hotels.s30-0-d179994.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 191.6,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 14.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 107.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/hungary/budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.88,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 5.38,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 12.12,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Budapest",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:26:44.660Z",
+        "completedAt": "2026-08-13T17:26:44.660Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:26:44.660Z",
+        "completedAt": "2026-08-13T17:26:44.660Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T17:26:44.660Z",
+        "completedAt": "2026-08-13T17:26:44.660Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "dc88dac5e5f45928e2758404848bee95d8d513fd5ff724f0427caeff9c6d6ab4",
+    "calls": [
+      {
+        "city": "Budapest",
+        "country": "Hungary",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-007-01-budapest",
+        "agentId": "delegated-phase9-batch-007-01-budapest",
+        "rawSha256": "3c570a8858ae7a336bab93f4d245f995fb87ca047234a09fcb163f33328dd2c0",
+        "telemetrySha256": "e1d0907a01bf96117e1fa101d18bfe04e4ec1268d546d23f711127904666b4e4"
+      },
+      {
+        "city": "Budapest",
+        "country": "Hungary",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-007-01-budapest",
+        "agentId": "delegated-phase9-batch-007-01-budapest",
+        "rawSha256": "1d4c619ad4ef6661479b0b39083beab1816d4c2315062e05b90b149b3a2538da",
+        "telemetrySha256": "6afb67b2e77c45981b2c66e0af1a8fff718200efeab3ed1c846040684e8705b2"
+      },
+      {
+        "city": "Budapest",
+        "country": "Hungary",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-007-01-budapest",
+        "agentId": "delegated-phase9-batch-007-01-budapest",
+        "rawSha256": "d64278ecef3e923a851691f434fd50b587f7183340ded3748f527bbd661de00c",
+        "telemetrySha256": "0e49fc2680d14637ab41f640e126cd063fa16401d4c97b6dc10940ec9b64b33d"
+      }
+    ]
+  }
+}

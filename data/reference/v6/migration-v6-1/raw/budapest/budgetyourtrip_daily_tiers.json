@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Budapest",
+  "country": "Hungary",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 18,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+      "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+      "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 48,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+      "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+      "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 134,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+      "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nFood^{2}  | $18 (Ft 5,544)  | $48 (Ft 14,708)  | $134 (Ft 41,088)",
+      "query": "site:budgetyourtrip.com/hungary/budapest \"Food\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 10,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+      "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+      "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 26,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+      "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+      "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 75,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/hungary/budapest",
+      "sourceTitle": "Budapest Travel Cost - Average Price of a Vacation to Budapest: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget  | Mid-Range  | Luxury\nEntertainment^{1}  | $10 (Ft 2,952)  | $26 (Ft 7,982)  | $75 (Ft 23,118)",
+      "query": "site:budgetyourtrip.com/hungary/budapest \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

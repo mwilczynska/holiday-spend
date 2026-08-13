@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Bucharest",
+  "country": "Romania",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 41,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/romania/bucharest/trip-cost-683506",
+      "sourceTitle": "How much does a trip to Bucharest Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $41  | $106  | $282",
+      "query": "site:budgetyourtrip.com/romania/bucharest/trip-cost Bucharest cost food entertainment",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 106,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/romania/bucharest/trip-cost-683506",
+      "sourceTitle": "How much does a trip to Bucharest Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $41  | $106  | $282",
+      "query": "site:budgetyourtrip.com/romania/bucharest/trip-cost Bucharest cost food entertainment",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 282,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/romania/bucharest/trip-cost-683506",
+      "sourceTitle": "How much does a trip to Bucharest Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $41  | $106  | $282",
+      "query": "site:budgetyourtrip.com/romania/bucharest/trip-cost Bucharest cost food entertainment",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 7,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/romania/bucharest/trip-cost-683506",
+      "sourceTitle": "How much does a trip to Bucharest Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $7  | $15  | $29",
+      "query": "site:budgetyourtrip.com/romania/bucharest/trip-cost Bucharest cost food entertainment",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 15,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/romania/bucharest/trip-cost-683506",
+      "sourceTitle": "How much does a trip to Bucharest Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $7  | $15  | $29",
+      "query": "site:budgetyourtrip.com/romania/bucharest/trip-cost Bucharest cost food entertainment",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 29,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/romania/bucharest/trip-cost-683506",
+      "sourceTitle": "How much does a trip to Bucharest Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $7  | $15  | $29",
+      "query": "site:budgetyourtrip.com/romania/bucharest/trip-cost Bucharest cost food entertainment",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

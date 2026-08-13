@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Dubrovnik",
+    "country": "Croatia",
+    "region": "Europe",
+    "band": null,
+    "cityId": "dubrovnik"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 184.71,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Dubrovnik-Hotels.s30-0-d553248635126030638.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 50.05,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 124.4,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 300.27,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 60.05,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 6.04,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Dubrovnik"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 8.16,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Dubrovnik"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 138,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Dubrovnik-Hotels.s30-0-d553248635126030638.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Dubrovnik from $110 | Expedia",
+        "evidenceText": "September  | $138\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Dubrovnik.",
+        "query": "site:expedia.com/Hotel-Search Dubrovnik Croatia \"3-star\" \"Sep 17, 2026\" \"Sep 18, 2026\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 35,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047",
+        "sourceTitle": "How much does a trip to Dubrovnik Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $35  | $87  | $210",
+        "query": "site:budgetyourtrip.com \"Dubrovnik\" \"Food & Meals\" budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 87,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047",
+        "sourceTitle": "How much does a trip to Dubrovnik Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $35  | $87  | $210",
+        "query": "site:budgetyourtrip.com \"Dubrovnik\" \"Food & Meals\" budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 210,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047",
+        "sourceTitle": "How much does a trip to Dubrovnik Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $35  | $87  | $210",
+        "query": "site:budgetyourtrip.com \"Dubrovnik\" \"Food & Meals\" budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047",
+        "sourceTitle": "How much does a trip to Dubrovnik Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $7  | $17  | $42",
+        "query": "site:budgetyourtrip.com \"Dubrovnik\" \"Entertainment\" activities budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047",
+        "sourceTitle": "How much does a trip to Dubrovnik Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $7  | $17  | $42",
+        "query": "site:budgetyourtrip.com \"Dubrovnik\" \"Entertainment\" activities budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 42,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/croatia/dubrovnik/trip-cost-3201047",
+        "sourceTitle": "How much does a trip to Dubrovnik Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $7  | $17  | $42",
+        "query": "site:budgetyourtrip.com \"Dubrovnik\" \"Entertainment\" activities budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 3.7,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Dubrovnik",
+        "sourceTitle": "Cost of Living in Dubrovnik. May 2026. Prices in Dubrovnik",
+        "evidenceText": "Cappuccino (Regular Size)  | €3.70  | 2.50-5.00",
+        "query": "site:numbeo.com/cost-of-living/in/Dubrovnik \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 5,
+        "currency": "EUR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Dubrovnik",
+        "sourceTitle": "Cost of Living in Dubrovnik. May 2026. Prices in Dubrovnik",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €5.00  | 3.00-9.00",
+        "query": "site:numbeo.com/cost-of-living/in/Dubrovnik \"Domestic Draft Beer\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T12:46:01.8828069-05:00",
+        "completedAt": "2026-08-13T12:46:01.8828069-05:00",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T12:46:01.8828069-05:00",
+        "completedAt": "2026-08-13T12:46:01.8828069-05:00",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T12:46:01.8828069-05:00",
+        "completedAt": "2026-08-13T12:46:01.8828069-05:00",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-007-08-dubrovnik",
+      "agentId": "delegated-phase9-batch-007-08-dubrovnik",
+      "rawSha256": "fa09e17cc0f40aada497df976d01564249229abcf9cd90c803fb1d38f994e80c",
+      "telemetrySha256": "8875e591114fe166f52e92421e23ebddf98db8ab42082b701441463496b192fc"
+    },
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-007-08-dubrovnik",
+      "agentId": "delegated-phase9-batch-007-08-dubrovnik",
+      "rawSha256": "ee028e92f034e8c8e6cc48e6e1e5c9e21f7eefbe5b57d19c2cd3778c889b5a1e",
+      "telemetrySha256": "e5ac4366a59f758f9c2ac74cf0f3255270cab564abeddfb83abb69a43b59022c"
+    },
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-007-08-dubrovnik",
+      "agentId": "delegated-phase9-batch-007-08-dubrovnik",
+      "rawSha256": "f1436a0a129add73bde73c22fe7b769632fbfc9a6a287934554af626195fd57a",
+      "telemetrySha256": "035439b99f35512b5aa3aac02fc930f007a1be39da62520093457f4192f74e1f"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Porto",
+  "country": "Portugal",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Porto. Jun 2026. Prices in Porto",
+      "evidenceText": "Cappuccino (Regular Size)  | €2.30  | 0.80-4.50",
+      "query": "site:numbeo.com/cost-of-living/in/Porto \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Porto. Jun 2026. Prices in Porto",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €3.00  | 2.00-4.50",
+      "query": "site:numbeo.com/cost-of-living/in/Porto \"Domestic Draft Beer (0.5 Liter)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Porto result is explicitly dated Jun 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

@@ -3129,3 +3129,19 @@ food 8/2, drinks 2/8 and activities 8/2. Hong Kong was the only all-prior artifa
 batch stop rule. Expedia was directly observed in 5/10 cities, BudgetYourTrip in 8/10 and Numbeo drinks in 2/10;
 all remaining source gaps stayed explicit and used the shipped prior cascade. The next action is fixed batch 007; the
 live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 007 complete — 13 August 2026
+
+The seventh fixed migration batch staged Budapest, Krakow, Bucharest, Sofia, Belgrade, Tbilisi, Split, Dubrovnik,
+Porto and Barcelona. Delegated Stage A produced 30 persisted raw/telemetry call pairs under the frozen three-call
+contract: 100 searches, zero retries and zero direct page reads. The shipped Stage B path materialized all ten cities,
+expanding the staged frame to 90/121 cities with 31 remaining. Direct/fallback counts were accommodation 8/2, food
+7/3, drinks 4/6 and activities 7/3. Porto was the only all-prior artifact candidate (10%), below the 30% stop rule.
+Expedia was directly observed in 8/10 cities, BudgetYourTrip in 7/10 and Numbeo drinks in 4/10; all other gaps stayed
+explicit and used the shipped prior cascade. No source failure was converted into a fabricated value.
+
+The collection exposed one orchestration incident: two delegated workers reported the Budapest slot. The write-once
+assignment ledger contains one claim and the final filesystem contains one raw/telemetry set with one call-provenance
+record, so the extra report is not counted as an additional provider call. It remains documented as a lifecycle finding;
+future batches must continue to accept only inventory-visible files and one assignment/call record. The next exact
+action is fixed delegated batch 008; the live CSV, holdouts and Phase 11 remain untouched.

@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 80/121 staged
+**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 90/121 staged
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -8,11 +8,23 @@
 > **13 August 2026 status correction:** Experiment 014 passed 20/20 and Phase 8 is now complete. The frozen
 > protocol and resumable migration tooling live under `data/reference/v6/migration-v6-1/`; its 20-city dry run
 > reused all 60 validated experiment-014 calls, produced deterministic normalized/materialized/staged outputs,
-> and verified the non-live provenance import path. Phase 9 is active at 80/121 staged, with 41 cities remaining
-> after batches 001–006. The exact next action is fixed delegated batch 007: collect its three source calls per city,
-> inventory, materialize, run the complete baseline, and commit/push the batch. This dated correction supersedes older
+> and verified the non-live provenance import path. Phase 9 is active at 90/121 staged, with 31 cities remaining
+> after batches 001–007. Batch 007 is now complete. The
+> exact next action is fixed delegated batch 008: collect its three source calls per city, inventory, materialize, run
+> the complete baseline, and commit/push the batch. This dated correction supersedes older
 > text in this plan that describes Phase 8 as blocked, pending or at an earlier staging count. The live CSV and
 > holdouts remain untouched.
+
+> **13 August 2026 Phase 9 batch 007:** Budapest, Krakow, Bucharest, Sofia, Belgrade, Tbilisi, Split, Dubrovnik,
+> Porto and Barcelona are now staged. The batch produced 30 delegated source calls, 100 searches, zero retries and
+> zero direct page reads; all ten cities materialized through the shipped v6.1 path. Direct/fallback counts were
+> accommodation 8/2, food 7/3, drinks 4/6 and activities 7/3. Porto was the only all-prior artifact candidate (10%),
+> below the 30% stop rule. Expedia was directly observed in 8/10 cities, BudgetYourTrip in 7/10 and Numbeo drinks in
+> 4/10; all other gaps remained explicit and used the shipped prior cascade. Two delegated workers reported the
+> Budapest slot, but the assignment ledger contains one claim and the final persisted evidence is one raw/telemetry
+> set; this is retained as a collection-orchestration incident, not counted as an extra source call. The staged frame
+> is now 90/121, with 31 cities remaining. The next exact action is fixed delegated batch 008; do not recollect
+> completed cities or touch the live CSV.
 
 > **13 August 2026 Phase 9 batch 001:** The first 10 remaining cities are now staged (30/363 migration calls,
 > 100 searches, zero retries/direct reads). Seven cities have direct Expedia accommodation, seven direct BYT
@@ -59,7 +71,7 @@
 - [x] Freeze the 121-city protocol, implementation/prompt/FX/input hashes and live-write prohibition.
 - [x] Validate experiment-014 call-level reuse and materialize its 20-city dry run through shipped v6.1 code.
 - [x] Generate deterministic staged CSV, provenance sidecar and import plan; add idempotence and safe-output checks.
-- [ ] Collect and materialize the remaining 41 cities in fixed, committed batches.
+- [ ] Collect and materialize the remaining 31 cities in fixed, committed batches.
 - [ ] Generate and review the complete Phase 10 operational-impact report.
 - [ ] Obtain the external user-key transport/database/API smoke before any Phase 11 cutover.
 
