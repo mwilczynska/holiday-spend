@@ -159,6 +159,14 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
+**13 August 2026 Phase 9/10 completion:** The final Cairns batch completed the frozen migration frame at 121/121
+cities. Phase 10 generated `data/reference/v6/migration-v6-1/impact-report.{json,md}`; it is an operational v1 versus
+v6.1 comparison, not ground-truth validation. Budget, mid-range and high-end representative baskets are +26.0%,
++7.9% and +14.4% versus v1; food high-end is +126.0% with 69/121 >2x flags, and basket rank correlations are
+0.8839/0.8960/0.8683. Two Cairns delegated assignments stalled and were closed without counting calls; a bounded
+Codex search fallback produced the three retained raw/telemetry pairs. The exact next action is owner review of the
+impact report before Phase 11. The live CSV, holdouts and global/default feature flag remain untouched.
+
 **13 August 2026 status correction:** Phase 9 batch 010 is complete: 120/121 cities are staged and one city,
 Cairns, remains for fixed delegated batch 011. Batch 010 materialized 10/10 cities with 30 calls, 100 searches,
 zero retries/direct reads, zero artifact candidates, and direct coverage accommodation 7/10, food 8/10, drinks 0/10

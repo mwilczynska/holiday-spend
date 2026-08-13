@@ -7,6 +7,14 @@ live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 **Last reviewed:** 12 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
+**13 August 2026 Phase 9/10 completion:** Batch 011 completed Cairns and the frozen frame is now 121/121 staged and
+materialized. Phase 10 generated the complete operational impact report at
+`data/reference/v6/migration-v6-1/impact-report.md` and `.json`. It reports representative basket changes of +26.0%
+(budget), +7.9% (mid-range) and +14.4% (high-end), with food high-end at +126.0% and 69/121 >2x flags; these are
+operational comparisons, not validation. Two delegated Cairns assignments stalled and were closed without counting
+calls; a bounded Codex search fallback retained auditable raw/telemetry evidence. Exact next action is owner review
+before Phase 11. The live CSV, holdouts and Phase 11 remain untouched.
+
 **13 August 2026 status correction:** Batch 010 is complete: 120/121 staged, 10/10 cities materialized, with
 accommodation 7/10, food 8/10, drinks 0/10 and activities 8/10 direct coverage, zero artifact candidates, 100
 searches, zero retries and zero direct page reads. The single remaining city is Cairns; batch 011 is next. This

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Cairns",
+  "country": "Australia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 134,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Cairns from $77 | Expedia",
+      "evidenceText": "September price trend $134; base rates for a nightly stay for 2 adults, averaged for commonly viewed 3-star properties in Cairns; excludes taxes and fees.",
+      "query": "site:expedia.com Cairns Australia 3-star hotel 2026-09-17 2026-09-18 two adults",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "The qualifying city-level Expedia September 3-star trend is used for the frozen one-night September window; no single-property or starting-price result was used."
+}

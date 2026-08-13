@@ -1,9 +1,19 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 120/121 staged
+**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phases 8–10 are complete and Phase 11 awaits owner review
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
+
+> **13 August 2026 Phase 9/10 completion:** Batch 011 staged Cairns and completed the 121/121 frozen frame. Its three
+> source records used 10 searches, zero retries and zero direct page reads; accommodation and food were observed, drinks
+> were stale, and activity evidence was explicit missingness because BYT's result was per-item rather than daily. Two
+> delegated assignments stalled and were closed without counting calls; the bounded Codex search fallback retained raw
+> responses and telemetry. Phase 10 generated the complete operational impact report under
+> `data/reference/v6/migration-v6-1/impact-report.{json,md}`. This is not ground-truth validation. Representative
+> basket medians versus v1 are budget +26.0%, mid-range +7.9% and high-end +14.4%; food high-end is +126.0% (69/121
+> above 2x) and ranking correlations are 0.8839/0.8960/0.8683. These are owner-review findings, not tuning targets.
+> Exact next action: owner review before Phase 11. The live CSV, holdouts and default flag remain untouched.
 
 > **13 August 2026 status correction:** Experiment 014 passed 20/20 and Phase 8 is now complete. The frozen
 > protocol and resumable migration tooling live under `data/reference/v6/migration-v6-1/`; its 20-city dry run
@@ -101,8 +111,8 @@
 - [x] Freeze the 121-city protocol, implementation/prompt/FX/input hashes and live-write prohibition.
 - [x] Validate experiment-014 call-level reuse and materialize its 20-city dry run through shipped v6.1 code.
 - [x] Generate deterministic staged CSV, provenance sidecar and import plan; add idempotence and safe-output checks.
-- [ ] Collect and materialize the remaining 1 city in fixed, committed batches.
-- [ ] Generate and review the complete Phase 10 operational-impact report.
+- [x] Collect and materialize the remaining 1 city in fixed, committed batches.
+- [x] Generate the complete Phase 10 operational-impact report; owner review remains outstanding.
 - [ ] Obtain the external user-key transport/database/API smoke before any Phase 11 cutover.
 
 This is the active implementation plan. It supersedes the unreachable all-19 independent-validation
@@ -545,3 +555,10 @@ all 20 persistence/API provenance round-trips were field-identical. The active m
 point to its hashed result. Phase 8 is now active. The exact next action is to create and dry-run the frozen,
 resumable migration protocol under `data/reference/v6/migration-v6-1/` using experiment 014 as its fixture. Do not
 read a holdout or touch the live CSV.
+
+## 10a. Current stopping point — Phase 10 complete, owner review required
+
+**13 August 2026 supersession:** Batch 011 completed the last Cairns row, bringing the staged and materialized
+frame to 121/121. The complete Phase 10 report is at `data/reference/v6/migration-v6-1/impact-report.md` and `.json`.
+It is an operational comparison, not validation. Phase 11 remains owner-gated: do not replace the live CSV, import
+the sidecar, change the default flag, access a holdout or begin any new collection until the owner reviews the report.

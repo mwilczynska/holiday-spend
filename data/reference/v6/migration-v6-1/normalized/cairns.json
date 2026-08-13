@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Cairns",
+    "country": "Australia",
+    "region": "Oceania",
+    "band": null,
+    "cityId": "cairns"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 179.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 75.78,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 155.86,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 134,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Cairns from $77 | Expedia",
+        "evidenceText": "September price trend $134; base rates for a nightly stay for 2 adults, averaged for commonly viewed 3-star properties in Cairns; excludes taxes and fees.",
+        "query": "site:expedia.com Cairns Australia 3-star hotel 2026-09-17 2026-09-18 two adults",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food budget $23 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 53,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food mid-range $53 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 109,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food luxury $109 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+        "evidenceText": "Cappuccino (Regular Size) A$6.25; last update 12 June 2026.",
+        "query": "site:numbeo.com/cost-of-living/in/Cairns Cappuccino Regular Size",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) A$10.00; last update 12 June 2026.",
+        "query": "site:numbeo.com/cost-of-living/in/Cairns Domestic Draft Beer 0.5 Liter OR Domestic Draft Beer 1 Pint",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Cairns",
+      "country": "Australia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-011-01-cairns",
+      "agentId": "phase9-batch-011-01-cairns",
+      "rawSha256": "eb907efc97b73e1d09e4a7964736ed997243bce1e09a10b8f9b04c878b2e004a",
+      "telemetrySha256": "2dd914fc8ce0367d7a563b6506d19e029288fdf309e2e4f222b284a919857b37"
+    },
+    {
+      "city": "Cairns",
+      "country": "Australia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-011-01-cairns",
+      "agentId": "phase9-batch-011-01-cairns",
+      "rawSha256": "c29eff6623c5fffe4376ec20308f2cf429fe2ec31442f7fed2872ea69c9271be",
+      "telemetrySha256": "0db0f708f5a6042317efaa2d23a8913ae2192769f179b6f01aea486d98f0f120"
+    },
+    {
+      "city": "Cairns",
+      "country": "Australia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-011-01-cairns",
+      "agentId": "phase9-batch-011-01-cairns",
+      "rawSha256": "6f24b0ae1aba1161073b18b618c00cff90bcc702cafa39d7e2b4a4598561c230",
+      "telemetrySha256": "45da4f350d1d443791da1183df1ef9ec9ec06c84abda8eebf597789f389fca69"
+    }
+  ]
+}

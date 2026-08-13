@@ -1,0 +1,2286 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Cairns",
+    "country": "Australia",
+    "region": "Oceania",
+    "band": null,
+    "cityId": "cairns"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Cairns",
+    "country": "Australia",
+    "region": "Oceania",
+    "costBand": "high",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 106,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 48.76,
+          "upperAud": 163.24,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 106.16,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 62.64,
+          "upperAud": 149.69,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 119.51,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 65.73,
+          "upperAud": 173.29,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 134.52,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 79.37,
+          "upperAud": 189.67,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 179.36,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 105.82,
+          "upperAud": 252.9,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 239.84,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 141.51,
+          "upperAud": 338.17,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 35.07,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 65.78,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 151.56,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 311.72,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 202.62,
+          "upperAud": 420.82,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 5.64,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 3.1,
+          "upperAud": 8.18,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 11.28,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 6.2,
+          "upperAud": 16.36,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 37.58,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 20.67,
+          "upperAud": 54.49,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 91.9,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 50.55,
+          "upperAud": 133.26,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 146.21,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 80.42,
+          "upperAud": 212,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 34.32,
+        "formula": "v6.1 activities_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:activities_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 85.79,
+        "formula": "v6.1 activities_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:activities_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 47.18,
+          "upperAud": 124.4,
+          "widthPct": 45
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 200.18,
+        "formula": "v6.1 activities_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Oceania:high:activities_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 110.1,
+          "upperAud": 290.26,
+          "widthPct": 45
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 179.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 75.78,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 155.86,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "missingness": {
+      "cappuccino_1": "stale",
+      "domestic_draft_beer_1": "stale",
+      "byt_activities_budget_per_person_day": "not_found",
+      "byt_activities_mid_per_person_day": "not_found",
+      "byt_activities_high_per_person_day": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 106,
+      "accomPrivateRoom": 106.16,
+      "accom1star": 119.51,
+      "accom2star": 134.52,
+      "accom3star": 179.36,
+      "accom4star": 239.84,
+      "foodStreet": 35.07,
+      "foodBudget": 65.78,
+      "foodMid": 151.56,
+      "foodHigh": 311.72,
+      "drinkCoffee": 5.64,
+      "drinkLocalBeer": 13.15,
+      "drinkCocktail": 14.01,
+      "drinksNone": 11.28,
+      "drinksLight": 37.58,
+      "drinksModerate": 91.9,
+      "drinksHeavy": 146.21,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 85.79,
+      "activitiesHigh": 200.18
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 106,
+      "accomPrivateRoom": 106.16,
+      "accom1star": 119.51,
+      "accom2star": 134.52,
+      "accom3star": 179.36,
+      "accom4star": 239.84,
+      "foodStreet": 35.07,
+      "foodBudget": 65.78,
+      "foodMid": 151.56,
+      "foodHigh": 311.72,
+      "drinkCoffee": 5.64,
+      "drinkLocalBeer": 13.15,
+      "drinkCocktail": 14.01,
+      "drinksNone": 11.28,
+      "drinksLight": 37.58,
+      "drinksModerate": 91.9,
+      "drinksHeavy": 146.21,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 85.79,
+      "activitiesHigh": 200.18
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 134,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Cairns from $77 | Expedia",
+        "evidenceText": "September price trend $134; base rates for a nightly stay for 2 adults, averaged for commonly viewed 3-star properties in Cairns; excludes taxes and fees.",
+        "query": "site:expedia.com Cairns Australia 3-star hotel 2026-09-17 2026-09-18 two adults",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food budget $23 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 53,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food mid-range $53 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 109,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food luxury $109 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+        "evidenceText": "Cappuccino (Regular Size) A$6.25; last update 12 June 2026.",
+        "query": "site:numbeo.com/cost-of-living/in/Cairns Cappuccino Regular Size",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) A$10.00; last update 12 June 2026.",
+        "query": "site:numbeo.com/cost-of-living/in/Cairns Domestic Draft Beer 0.5 Liter OR Domestic Draft Beer 1 Pint",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Oceania",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 48.76,
+          "upperAud": 163.24,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 62.64,
+          "upperAud": 149.69,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 65.73,
+          "upperAud": 173.29,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 79.37,
+          "upperAud": 189.67,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 105.82,
+          "upperAud": 252.9,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 141.51,
+          "upperAud": 338.17,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 202.62,
+          "upperAud": 420.82,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 3.1,
+          "upperAud": 8.18,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 6.2,
+          "upperAud": 16.36,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 20.67,
+          "upperAud": 54.49,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 50.55,
+          "upperAud": 133.26,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 80.42,
+          "upperAud": 212,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 47.18,
+          "upperAud": 124.4,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 110.1,
+          "upperAud": 290.26,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 105.82240000000002,
+          "upperAud": 252.8976,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 49.257000000000005,
+          "upperAud": 102.30300000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 101.30900000000001,
+          "upperAud": 210.41100000000003,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 179.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 75.78,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 155.86,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 48.76,
+          "upperAud": 163.24,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 62.64,
+          "upperAud": 149.69,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 65.73,
+          "upperAud": 173.29,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 79.37,
+          "upperAud": 189.67,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 105.82,
+          "upperAud": 252.9,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 141.51,
+          "upperAud": 338.17,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 202.62,
+          "upperAud": 420.82,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 3.1,
+          "upperAud": 8.18,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 6.2,
+          "upperAud": 16.36,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 20.67,
+          "upperAud": 54.49,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 50.55,
+          "upperAud": 133.26,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 80.42,
+          "upperAud": 212,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 47.18,
+          "upperAud": 124.4,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 110.1,
+          "upperAud": 290.26,
+          "widthPct": 45
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 134,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Cairns from $77 | Expedia",
+          "evidenceText": "September price trend $134; base rates for a nightly stay for 2 adults, averaged for commonly viewed 3-star properties in Cairns; excludes taxes and fees.",
+          "query": "site:expedia.com Cairns Australia 3-star hotel 2026-09-17 2026-09-18 two adults",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 23,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+          "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+          "evidenceText": "Food budget $23 per person per day; the page labels Food as a daily average.",
+          "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 53,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+          "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+          "evidenceText": "Food mid-range $53 per person per day; the page labels Food as a daily average.",
+          "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 109,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+          "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+          "evidenceText": "Food luxury $109 per person per day; the page labels Food as a daily average.",
+          "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+          "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+          "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+          "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+          "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+          "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+          "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+          "evidenceText": "Cappuccino (Regular Size) A$6.25; last update 12 June 2026.",
+          "query": "site:numbeo.com/cost-of-living/in/Cairns Cappuccino Regular Size",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter) A$10.00; last update 12 June 2026.",
+          "query": "site:numbeo.com/cost-of-living/in/Cairns Domestic Draft Beer 0.5 Liter OR Domestic Draft Beer 1 Pint",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 179.36,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 32.89,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 75.78,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 155.86,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "codex-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "cairns",
+    "city": "Cairns",
+    "country": "Australia",
+    "region": "Oceania",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "50978c8fdd5d334454ba21845a56d09473a45d522389c3bcced65217d23dbceb",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "codex_web_search",
+    "model": "codex-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 106,
+      "accomPrivateRoom": 106.16,
+      "accom1star": 119.51,
+      "accom2star": 134.52,
+      "accom3star": 179.36,
+      "accom4star": 239.84,
+      "foodStreet": 35.07,
+      "foodBudget": 65.78,
+      "foodMid": 151.56,
+      "foodHigh": 311.72,
+      "drinkCoffee": 5.64,
+      "drinkLocalBeer": 13.15,
+      "drinkCocktail": 14.01,
+      "drinksNone": 11.28,
+      "drinksLight": 37.58,
+      "drinksModerate": 91.9,
+      "drinksHeavy": 146.21,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 85.79,
+      "activitiesHigh": 200.18
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 134,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Cairns from $77 | Expedia",
+        "evidenceText": "September price trend $134; base rates for a nightly stay for 2 adults, averaged for commonly viewed 3-star properties in Cairns; excludes taxes and fees.",
+        "query": "site:expedia.com Cairns Australia 3-star hotel 2026-09-17 2026-09-18 two adults",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food budget $23 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 53,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food mid-range $53 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 109,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797",
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "Food luxury $109 per person per day; the page labels Food as a daily average.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Food Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "How much does a trip to Cairns Cost? | Budget Your Trip",
+        "evidenceText": "The exact-city result labels Entertainment as per individual purchase, not per person per day; no qualifying daily tier was accepted.",
+        "query": "site:budgetyourtrip.com/australia/cairns/trip-cost Entertainment budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+        "evidenceText": "Cappuccino (Regular Size) A$6.25; last update 12 June 2026.",
+        "query": "site:numbeo.com/cost-of-living/in/Cairns Cappuccino Regular Size",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) A$10.00; last update 12 June 2026.",
+        "query": "site:numbeo.com/cost-of-living/in/Cairns Domestic Draft Beer 0.5 Liter OR Domestic Draft Beer 1 Pint",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Oceania",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 48.76,
+          "upperAud": 163.24,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 62.64,
+          "upperAud": 149.69,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 65.73,
+          "upperAud": 173.29,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 79.37,
+          "upperAud": 189.67,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 105.82,
+          "upperAud": 252.9,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 141.51,
+          "upperAud": 338.17,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 202.62,
+          "upperAud": 420.82,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 3.1,
+          "upperAud": 8.18,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 6.2,
+          "upperAud": 16.36,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 20.67,
+          "upperAud": 54.49,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 50.55,
+          "upperAud": 133.26,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 80.42,
+          "upperAud": 212,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 18.88,
+          "upperAud": 49.76,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 47.18,
+          "upperAud": 124.4,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 110.1,
+          "upperAud": 290.26,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 105.82240000000002,
+          "upperAud": 252.8976,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 49.257000000000005,
+          "upperAud": 102.30300000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 101.30900000000001,
+          "upperAud": 210.41100000000003,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "codex_web_search",
+          "model": "codex-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T19:35:00.000Z",
+          "completedAt": "2026-08-13T19:35:00.000Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 179.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cairns-Hotels.s30-0-d553248635404168639.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 75.78,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 155.86,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/australia/cairns/trip-cost-2172797"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "codex_web_search",
+        "model": "codex-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:35:00.000Z",
+        "completedAt": "2026-08-13T19:35:00.000Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "b8566c8fc32b7f0041ee745508f4c1af391b0457cc2048d726536707d474ca14",
+    "calls": [
+      {
+        "city": "Cairns",
+        "country": "Australia",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-011-01-cairns",
+        "agentId": "phase9-batch-011-01-cairns",
+        "rawSha256": "eb907efc97b73e1d09e4a7964736ed997243bce1e09a10b8f9b04c878b2e004a",
+        "telemetrySha256": "2dd914fc8ce0367d7a563b6506d19e029288fdf309e2e4f222b284a919857b37"
+      },
+      {
+        "city": "Cairns",
+        "country": "Australia",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-011-01-cairns",
+        "agentId": "phase9-batch-011-01-cairns",
+        "rawSha256": "c29eff6623c5fffe4376ec20308f2cf429fe2ec31442f7fed2872ea69c9271be",
+        "telemetrySha256": "0db0f708f5a6042317efaa2d23a8913ae2192769f179b6f01aea486d98f0f120"
+      },
+      {
+        "city": "Cairns",
+        "country": "Australia",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-011-01-cairns",
+        "agentId": "phase9-batch-011-01-cairns",
+        "rawSha256": "6f24b0ae1aba1161073b18b618c00cff90bcc702cafa39d7e2b4a4598561c230",
+        "telemetrySha256": "45da4f350d1d443791da1183df1ef9ec9ec06c84abda8eebf597789f389fca69"
+      }
+    ]
+  }
+}

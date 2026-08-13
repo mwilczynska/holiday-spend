@@ -4,6 +4,11 @@ This is the active autonomous implementation prompt for city cost methodology v6
 experiment-014 canary are now recorded. Experiment 013 remains immutable failed history; experiment 014 passed 20/20
 and Phase 8 migration tooling is complete. The owner-approved M4 migration has not reached cutover.
 
+**13 August 2026 current status:** Phase 9 is complete at 121/121 staged/materialized cities after batch 011 for
+Cairns. Phase 10 generated `data/reference/v6/migration-v6-1/impact-report.{json,md}`; it is an operational comparison,
+not validation. The exact next action is owner review before Phase 11. Do not read a holdout, write the live CSV or
+change the default flag.
+
 Phase 8 is complete as of 13 August 2026: the frozen protocol and resumable tooling were dry-run on all 20
 experiment-014 canary cities, producing deterministic staged/provenance/import-plan artifacts with live writes
 forbidden. Phase 9 is active for the remaining 11 cities. The next action is fixed delegated migration batch 010;
@@ -294,12 +299,10 @@ handoff that says only “continue” has failed.
 
 Resume line:
 
-**Current status correction (13 August 2026):** Batch 010 is complete: 120/121 cities are staged and Cairns is the
-only remaining city. Batch 010 had zero artifact candidates and direct coverage accommodation 7/10, food 8/10,
-drinks 0/10 and activities 8/10. Run fixed delegated batch 011 for Cairns next, then the full baseline and Phase 10
-report. Do not read a holdout, write the live CSV or execute Phase 11.
+**Current status correction (13 August 2026):** Batch 011 completed Cairns and Phase 9 is complete at 121/121 staged
+and materialized cities. Phase 10 generated the complete operational impact report. Review it before Phase 11; do not
+read a holdout, write the live CSV, change the default flag or execute Phase 11 without owner approval.
 
 > Resume v6.1 on `feat/city-cost-methodology-v6`. Read `docs/dev/handoffs/city-cost-v6.md`, then follow
-> `LOOP-PROMPT-V6.md` from the first incomplete phase. Experiment 014 has passed, Phase 8 is complete and Phase 9
-> is active at 110/121 staged. Assign and process fixed batch 010 next. Never change the live CSV or global default
-> before Phase 10 review.
+> `LOOP-PROMPT-V6.md` from the first incomplete phase. Experiment 014 has passed, Phases 8–10 are complete and the
+> next action is owner review of the Phase 10 report. Never change the live CSV or global default before approval.

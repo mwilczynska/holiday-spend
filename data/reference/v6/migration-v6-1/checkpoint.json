@@ -1685,11 +1685,15 @@
     {
       "city": "Cairns",
       "cityId": "cairns",
-      "status": "pending",
-      "sourceCalls": 0,
-      "rawResponses": 0,
-      "telemetryRecords": 0,
-      "collectionModes": [],
+      "status": "materialized",
+      "sourceCalls": 3,
+      "rawResponses": 3,
+      "telemetryRecords": 3,
+      "collectionModes": [
+        "delegated_codex_subagent",
+        "delegated_codex_subagent",
+        "delegated_codex_subagent"
+      ],
       "error": null
     }
   ]

@@ -4,6 +4,16 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **13 August 2026 Phase 9/10 completion:** Batch 011 staged Cairns and completed the frozen 121-city frame:
+> 121/121 cities materialized, with three terminal source records for Cairns, 10 searches, zero retries and zero
+> direct page reads. Cairns had direct accommodation and food, stale Numbeo drinks, and explicit activity missingness
+> because BudgetYourTrip's entertainment evidence was per-item rather than the required daily estimand; no artifact
+> candidate was recorded. Two delegated Cairns assignments stalled and were closed without counting calls; a bounded
+> Codex search fallback then produced the three auditable raw/telemetry pairs, with `provider: codex_web_search` retained
+> in telemetry. Phase 10 is complete: `migration-v6-1/impact-report.md` and `.json` were generated from the staged frame.
+> The exact next action is owner review of the impact report; do not execute Phase 11, write the live CSV, change the
+> default flag, or access a holdout. This dated entry supersedes the earlier 120/121 and batch-011-next wording below.
+
 > **13 August 2026 supersession:** Phase 8 is complete. The frozen protocol, checkpoint, call-level reuse ledger,
 > normalized/materialized artifacts, staged CSV, provenance sidecar, import plan and non-live import path were
 > generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is active at

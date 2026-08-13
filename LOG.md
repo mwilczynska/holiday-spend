@@ -3183,3 +3183,29 @@ so the batch remained below the 30% stop rule. Expedia was directly observed in 
 and Numbeo drinks in 0/10; all remaining gaps stayed explicit and used the shipped prior cascade. The recurring
 drink coverage gap is retained as a Phase 10 operational finding, not treated as a coefficient-refit trigger. The
 next exact action is fixed delegated batch 011 for Cairns; the live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 011 and Phase 10 complete — 13 August 2026
+
+Batch 011 completed the last frozen-frame city, Cairns. Two delegated assignment attempts stalled without writing
+files; they were closed and were not counted as source calls. A bounded Codex web-search fallback then produced the
+three terminal raw/telemetry pairs under the frozen three-call contract. The telemetry records `provider:
+codex_web_search`, ten searches, zero retries and zero direct page reads; this is retained as an operational
+collection-path note rather than presented as a normal successful delegated worker run. The shipped Stage B path
+materialized Cairns and completed the frame at 121/121 cities. Expedia accommodation and BudgetYourTrip food were
+observed. Numbeo drink evidence was stale for the frozen date and remained missing; BudgetYourTrip entertainment
+evidence was per-item rather than the required daily activity estimand and remained explicit missingness. No artifact
+candidate was recorded.
+
+Phase 10 generated `data/reference/v6/migration-v6-1/impact-report.json` and `.md` from the complete staged frame.
+The report is an operational v1-versus-v6.1 comparison, not ground-truth validation. Representative budget,
+mid-range and high-end basket medians are respectively +26.0%, +7.9% and +14.4% versus v1. The largest operational
+signal is food_high_end at +126.0% median, with 69/121 cities above 2x v1; drinks have the weakest direct coverage
+and the basket rank correlations are 0.8839, 0.8960 and 0.8683. Ten all-prior candidates were retained across the
+fixed migration batches; no batch exceeded the 30% artifact stop rule. These findings are for owner review, not
+permission to tune v6.1 toward v1. Staged CSV SHA-256 is
+`f118264ed1527756cfb2433ba2884dcdbaa8ab1447277920c15867dc486167e5`; provenance sidecar SHA-256 is
+`ca9c3a19b9f86cfae2a737cfc32e2886e3e576e83bd65a2fbeafa415a85bb4b2`; import plan SHA-256 is
+`145b2029fcab9d6e30d533d09f2055c50600988759b3d4beaa70858ccf33c44c`.
+
+Phase 9 and Phase 10 are complete. The exact next action is owner review of the impact report before Phase 11.
+The live CSV, holdouts, coefficients and default feature flag remain untouched.

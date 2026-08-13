@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Cairns",
+  "country": "Australia",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+      "evidenceText": "Cappuccino (Regular Size) A$6.25; last update 12 June 2026.",
+      "query": "site:numbeo.com/cost-of-living/in/Cairns Cappuccino Regular Size",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Cairns. Jun 2026. Prices in Cairns",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) A$10.00; last update 12 June 2026.",
+      "query": "site:numbeo.com/cost-of-living/in/Cairns Domestic Draft Beer 0.5 Liter OR Domestic Draft Beer 1 Pint",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo result is explicitly dated June 2026 and is stale relative to the frozen 2026-09-17 reference date; both displayed canonical rows remain missing rather than being promoted to current observations."
+}
