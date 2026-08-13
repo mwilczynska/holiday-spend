@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Fukuoka",
+  "country": "Japan",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:expedia.com Fukuoka Japan 3-star hotel September 17 2026 September 18 2026 2 adults 1 room price",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Four Expedia search snippets were inspected. None identified a qualifying exact-window, city-level three-star numeric room price for Fukuoka; starting/from/lowest and single-property results were not promoted."
+}

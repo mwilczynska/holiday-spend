@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Busan",
+  "country": "South Korea",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 4840,
+      "currency": "KRW",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Busan",
+      "sourceTitle": "Cost of Living in Busan. May 2026. Prices in Busan",
+      "evidenceText": "Cappuccino (Regular Size)  | ₩4,840.00  | 3,500.00-6,500.00",
+      "query": "site:numbeo.com/cost-of-living/in/Busan-South-Korea \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 5250,
+      "currency": "KRW",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Busan",
+      "sourceTitle": "Cost of Living in Busan. May 2026. Prices in Busan",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₩5,250.00  | 2,500.00-6,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Busan-South-Korea \"Domestic Draft Beer (0.5 Liter)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Busan Numbeo page uses the exact domestic-draft label Domestic Draft Beer (0.5 Liter); the displayed KRW serving is preserved without conversion or unit standardization."
+}

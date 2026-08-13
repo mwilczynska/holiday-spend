@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-batch-report-v1",
+  "batchId": "phase9-batch-005",
+  "generatedAt": "deterministic",
+  "protocolSha256": "fbd9ff5ac97eb0bc1a5bc1941751a25f267a5fa8192732109c08f3325d8a0c2e",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "cities": [
+    "Busan",
+    "Osaka",
+    "Kyoto",
+    "Kanazawa",
+    "Aomori",
+    "Nikko",
+    "Sendai",
+    "Hiroshima",
+    "Fukuoka",
+    "Nara"
+  ],
+  "cityCount": 10,
+  "completeMaterializations": 10,
+  "calls": 30,
+  "searches": 100,
+  "retries": 0,
+  "directPageReads": 0,
+  "collectionModes": {
+    "delegated_codex_subagent": 30
+  },
+  "observedMeasures": {
+    "hotel_3star_room_2p": 3,
+    "cappuccino_1": 4,
+    "domestic_draft_beer_1": 4,
+    "byt_food_budget_per_person_day": 6,
+    "byt_food_mid_per_person_day": 6,
+    "byt_food_high_per_person_day": 6,
+    "byt_activities_budget_per_person_day": 6,
+    "byt_activities_mid_per_person_day": 6,
+    "byt_activities_high_per_person_day": 6
+  },
+  "sourceStatuses": {
+    "expedia_3star:complete": 3,
+    "budgetyourtrip_daily_tiers:not_found": 24,
+    "numbeo_drinks:complete": 8,
+    "numbeo_drinks:not_found": 10,
+    "budgetyourtrip_daily_tiers:complete": 36,
+    "expedia_3star:not_found": 7,
+    "numbeo_drinks:partial": 2
+  },
+  "categoryCounts": {
+    "accommodation": {
+      "direct": 3,
+      "fallback": 7
+    },
+    "food": {
+      "direct": 6,
+      "fallback": 4
+    },
+    "drinks": {
+      "direct": 4,
+      "fallback": 6
+    },
+    "activities": {
+      "direct": 6,
+      "fallback": 4
+    }
+  },
+  "gradeDistribution": {
+    "C": 23,
+    "B": 39,
+    "D": 106,
+    "A": 12,
+    "definitional": 10
+  },
+  "allPriorCities": 1,
+  "artifactCandidates": 1,
+  "artifactFraction": 0.1,
+  "artifactRows": [
+    {
+      "city": "Busan",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Osaka",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Kyoto",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Kanazawa",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Aomori",
+      "artifactCandidate": true,
+      "reason": "all non-definitional tiers are fallback/imputed or grade D"
+    },
+    {
+      "city": "Nikko",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Sendai",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Hiroshima",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Fukuoka",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Nara",
+      "artifactCandidate": false,
+      "reason": null
+    }
+  ]
+}

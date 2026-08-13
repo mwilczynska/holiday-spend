@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Busan",
+  "country": "South Korea",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Four targeted BudgetYourTrip search snippets returned no qualifying exact-city, category, tier, numeric value, currency and per-person-per-day basis for Busan; country-level and non-BudgetYourTrip results were rejected by the prompt contract."
+}

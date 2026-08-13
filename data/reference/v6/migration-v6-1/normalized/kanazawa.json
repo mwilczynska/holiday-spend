@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Kanazawa",
+    "country": "Japan",
+    "region": "East Asia",
+    "band": null,
+    "cityId": "kanazawa"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 77.21,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 145.85,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:expedia.com Kanazawa Japan \"Price trends\" \"3 Stars\" \"September\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 54,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 102,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 4,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+        "evidenceText": "Cappuccino (Regular Size)  | ¥475.70  | 300.00-700.00 ... Last update: 17 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ¥400.00  | 290.00-600.00 ... Last update: 17 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Kanazawa",
+      "country": "Japan",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-005-04-kanazawa",
+      "agentId": "delegated-phase9-batch-005-04-kanazawa",
+      "rawSha256": "b3221e7446d8c4277012e37072c9c030c2496a0eade9acaf73c70d8bcf0c07a4",
+      "telemetrySha256": "bab33771ad80c4cb572589cf442b1d3bac18b08c9137b0342b9df32ec14bcde3"
+    },
+    {
+      "city": "Kanazawa",
+      "country": "Japan",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-005-04-kanazawa",
+      "agentId": "delegated-phase9-batch-005-04-kanazawa",
+      "rawSha256": "00ab62fef1681cff2b7c93fdcef9549de094fb2014d98370bc5186aeab5d6894",
+      "telemetrySha256": "6f49d07c843a68d043549e19168d2b2198a9c8f7c08e9a30986b55305c044bd7"
+    },
+    {
+      "city": "Kanazawa",
+      "country": "Japan",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-005-04-kanazawa",
+      "agentId": "delegated-phase9-batch-005-04-kanazawa",
+      "rawSha256": "0233e1c0624811bc11c74171a63d2fc810384a479768e6f7ce56edc450c37795",
+      "telemetrySha256": "147faf44d6772c77db33edb2f7382f54155fb068afc4ea0c4a074662b8fe3674"
+    }
+  ]
+}

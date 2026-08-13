@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Fukuoka",
+  "country": "Japan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 537.5,
+      "currency": "JPY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Fukuoka",
+      "sourceTitle": "Cost of Living in Fukuoka. May 2026. Prices in Fukuoka",
+      "evidenceText": "Cappuccino (Regular Size) | ¥537.50 | 150.00-700.00",
+      "query": "site:numbeo.com/cost-of-living/in/Fukuoka \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 420,
+      "currency": "JPY",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Fukuoka",
+      "sourceTitle": "Cost of Living in Fukuoka. May 2026. Prices in Fukuoka",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ¥420.00 | 240.00-600.00",
+      "query": "site:numbeo.com/cost-of-living/in/Fukuoka \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

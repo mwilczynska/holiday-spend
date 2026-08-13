@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Nikko",
+  "country": "Japan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 22,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/nikko",
+      "sourceTitle": "Nikko Travel Cost - Average Price of a Vacation to Nikko: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs Per person, per day\nFood^{2} | $22 (¥3,541) | $51 (¥8,094) | $97 (¥15,467)",
+      "query": "site:budgetyourtrip.com/japan/nikko \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 51,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/nikko",
+      "sourceTitle": "Nikko Travel Cost - Average Price of a Vacation to Nikko: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs Per person, per day\nFood^{2} | $22 (¥3,541) | $51 (¥8,094) | $97 (¥15,467)",
+      "query": "site:budgetyourtrip.com/japan/nikko \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 97,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/nikko",
+      "sourceTitle": "Nikko Travel Cost - Average Price of a Vacation to Nikko: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs Per person, per day\nFood^{2} | $22 (¥3,541) | $51 (¥8,094) | $97 (¥15,467)",
+      "query": "site:budgetyourtrip.com/japan/nikko \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/nikko",
+      "sourceTitle": "Nikko Travel Cost - Average Price of a Vacation to Nikko: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs Per person, per day\nEntertainment^{1} | $9 (¥1,438) | $21 (¥3,286) | $39 (¥6,279)",
+      "query": "site:budgetyourtrip.com/japan/nikko \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 21,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/nikko",
+      "sourceTitle": "Nikko Travel Cost - Average Price of a Vacation to Nikko: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs Per person, per day\nEntertainment^{1} | $9 (¥1,438) | $21 (¥3,286) | $39 (¥6,279)",
+      "query": "site:budgetyourtrip.com/japan/nikko \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 39,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/nikko",
+      "sourceTitle": "Nikko Travel Cost - Average Price of a Vacation to Nikko: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs Per person, per day\nEntertainment^{1} | $9 (¥1,438) | $21 (¥3,286) | $39 (¥6,279)",
+      "query": "site:budgetyourtrip.com/japan/nikko \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search snippets identify Nikko and report food and entertainment daily spending by budget, mid-range and luxury tier in USD per person per day. No multiplication, conversion or other derivation was applied."
+}

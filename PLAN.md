@@ -30,6 +30,11 @@ found that city-cost provider calls do not enable web search and Expedia receive
 live CSV remains on v1 while Phase 7 repairs those defects, runs a delegated operational canary, and proceeds
 through the complete staged preview and owner-reviewed cutover.
 
+**13 August 2026 current v6.1 state:** Experiment 014 passed the delegated operational canary, Phase 8 migration
+tooling is complete, and Phase 9 has staged 70/121 cities in batches 001–005. Batch 005 remained below the artifact
+stop rule (Aomori was the only all-prior candidate, 10%); 51 cities remain. The exact next action is fixed delegated
+batch 006, followed by the complete verification baseline. The live CSV, holdouts and Phase 11 remain untouched.
+
 ---
 
 ## The v6.1 methodology in one paragraph
@@ -555,6 +560,16 @@ drinks 0/10 and activities 6/4. No city was an artifact candidate, so the batch 
 The 0/10 direct drink category is recorded as an operational coverage finding for Phase 10, not a coefficient or
 collection artifact decision. The staged migration now has 60/121 complete cities; 61 remain. The next exact action
 is fixed batch 005; the live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 005 - 13 August 2026
+
+The fifth fixed migration batch is complete and staged: Busan, Osaka, Kyoto, Kanazawa, Aomori, Nikko, Sendai,
+Hiroshima, Fukuoka and Nara. It added 30 delegated source calls and 100 searches, with zero retries and zero direct
+page reads. Direct/fallback category counts were accommodation 3/7, food 6/4, drinks 4/6 and activities 6/4. Aomori
+was the only all-prior artifact candidate (10%), below the 30% batch stop rule. Expedia was directly observed in 3/10
+cities, BudgetYourTrip in 6/10 and Numbeo drinks in 4/10; all remaining source gaps stayed explicit and used the
+shipped prior cascade. The staged migration now has 70/121 complete cities; 51 remain. The next exact action is fixed
+batch 006; the live CSV, holdouts and Phase 11 remain untouched.
 
 ## Traps retained from earlier work
 

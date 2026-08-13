@@ -1,0 +1,2281 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Kanazawa",
+    "country": "Japan",
+    "region": "East Asia",
+    "band": null,
+    "cityId": "kanazawa"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Kanazawa",
+    "country": "Japan",
+    "region": "East Asia",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 66.45,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 66.55,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 74.91,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 84.32,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 112.43,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 150.34,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "amountAud": 35.07,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 65.78,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 154.42,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 100.37,
+          "upperAud": 208.47,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 291.7,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 189.61,
+          "upperAud": 393.8,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.71,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.42,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 15.08,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 44.13,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 73.18,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 11.44,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 7.44,
+          "upperAud": 15.44,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 25.74,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 51.48,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 77.21,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 145.85,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "missingness": {
+      "hotel_3star_room_2p": "not_found",
+      "cappuccino_1": "stale",
+      "domestic_draft_beer_1": "stale"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 35.07,
+      "foodBudget": 65.78,
+      "foodMid": 154.42,
+      "foodHigh": 291.7,
+      "drinkCoffee": 4.71,
+      "drinkLocalBeer": 2.83,
+      "drinkCocktail": 11.7,
+      "drinksNone": 9.42,
+      "drinksLight": 15.08,
+      "drinksModerate": 44.13,
+      "drinksHeavy": 73.18,
+      "activitiesFree": 0,
+      "activitiesBudget": 11.44,
+      "activitiesMid": 25.74,
+      "activitiesHigh": 51.48
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 35.07,
+      "foodBudget": 65.78,
+      "foodMid": 154.42,
+      "foodHigh": 291.7,
+      "drinkCoffee": 4.71,
+      "drinkLocalBeer": 2.83,
+      "drinkCocktail": 11.7,
+      "drinksNone": 9.42,
+      "drinksLight": 15.08,
+      "drinksModerate": 44.13,
+      "drinksHeavy": 73.18,
+      "activitiesFree": 0,
+      "activitiesBudget": 11.44,
+      "activitiesMid": 25.74,
+      "activitiesHigh": 51.48
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:expedia.com Kanazawa Japan \"Price trends\" \"3 Stars\" \"September\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 54,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 102,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 4,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+        "evidenceText": "Cappuccino (Regular Size)  | ¥475.70  | 300.00-700.00 ... Last update: 17 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ¥400.00  | 290.00-600.00 ... Last update: 17 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 100.37,
+          "upperAud": 208.47,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 189.61,
+          "upperAud": 393.8,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 7.44,
+          "upperAud": 15.44,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 61.83650000000001,
+          "upperAud": 163.0235,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 50.186499999999995,
+          "upperAud": 104.23349999999999,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 94.8025,
+          "upperAud": 196.8975,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 3.718,
+          "upperAud": 7.722,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 77.21,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 145.85,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 100.37,
+          "upperAud": 208.47,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 189.61,
+          "upperAud": 393.8,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 7.44,
+          "upperAud": 15.44,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:expedia.com Kanazawa Japan \"Price trends\" \"3 Stars\" \"September\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 23,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+          "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+          "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 54,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+          "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+          "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 102,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+          "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+          "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 4,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+          "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+          "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 9,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+          "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+          "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 18,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+          "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+          "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+          "evidenceText": "Cappuccino (Regular Size)  | ¥475.70  | 300.00-700.00 ... Last update: 17 December 2024",
+          "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ¥400.00  | 290.00-600.00 ... Last update: 17 December 2024",
+          "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 112.43,
+          "status": "imputed",
+          "evidenceGrade": "D",
+          "intervalPct": 45,
+          "sourceIds": [
+            "v6.1-tier-prior:East Asia:all:accom_3_star"
+          ],
+          "modelVersions": [
+            "city-cost-v6-1-tier-prior-v1"
+          ],
+          "imputedMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 32.89,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 77.21,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 145.85,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 5.72,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 12.87,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 25.74,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "kanazawa",
+    "city": "Kanazawa",
+    "country": "Japan",
+    "region": "East Asia",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "7a38c273b85760001ebd8784e7de1a9b3090bbb2a940d7777822592595790f9d",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 35.07,
+      "foodBudget": 65.78,
+      "foodMid": 154.42,
+      "foodHigh": 291.7,
+      "drinkCoffee": 4.71,
+      "drinkLocalBeer": 2.83,
+      "drinkCocktail": 11.7,
+      "drinksNone": 9.42,
+      "drinksLight": 15.08,
+      "drinksModerate": 44.13,
+      "drinksHeavy": 73.18,
+      "activitiesFree": 0,
+      "activitiesBudget": 11.44,
+      "activitiesMid": 25.74,
+      "activitiesHigh": 51.48
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:expedia.com Kanazawa Japan \"Price trends\" \"3 Stars\" \"September\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 54,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 102,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 4,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/japan/kanazawa",
+        "sourceTitle": "Kanazawa Travel Cost - Average Price of a Vacation to Kanazawa: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\nFood^{2}  | $23\n(¥3,730)  | $54\n(¥8,527)  | $102\n(¥16,293)\nEntertainment^{1}  | $4\n(¥656)  | $9\n(¥1,493)  | $18\n(¥2,816)",
+        "query": "site:budgetyourtrip.com/japan/kanazawa Kanazawa \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+        "evidenceText": "Cappuccino (Regular Size)  | ¥475.70  | 300.00-700.00 ... Last update: 17 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kanazawa. Unknown 2025. Prices in Kanazawa",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ¥400.00  | 290.00-600.00 ... Last update: 17 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Kanazawa \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 19.29,
+          "upperAud": 50.85,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 100.37,
+          "upperAud": 208.47,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 189.61,
+          "upperAud": 393.8,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 7.44,
+          "upperAud": 15.44,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 61.83650000000001,
+          "upperAud": 163.0235,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 50.186499999999995,
+          "upperAud": 104.23349999999999,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 94.8025,
+          "upperAud": 196.8975,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 3.718,
+          "upperAud": 7.722,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:33.650Z",
+          "completedAt": "2026-08-13T16:02:33.650Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found",
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 77.21,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 145.85,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/japan/kanazawa"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:33.650Z",
+        "completedAt": "2026-08-13T16:02:33.650Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "c665d762864c19ad6056be7fb3be87527ba08334f980a6a5f4b1b7bdb99981c8",
+    "calls": [
+      {
+        "city": "Kanazawa",
+        "country": "Japan",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-005-04-kanazawa",
+        "agentId": "delegated-phase9-batch-005-04-kanazawa",
+        "rawSha256": "b3221e7446d8c4277012e37072c9c030c2496a0eade9acaf73c70d8bcf0c07a4",
+        "telemetrySha256": "bab33771ad80c4cb572589cf442b1d3bac18b08c9137b0342b9df32ec14bcde3"
+      },
+      {
+        "city": "Kanazawa",
+        "country": "Japan",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-005-04-kanazawa",
+        "agentId": "delegated-phase9-batch-005-04-kanazawa",
+        "rawSha256": "00ab62fef1681cff2b7c93fdcef9549de094fb2014d98370bc5186aeab5d6894",
+        "telemetrySha256": "6f49d07c843a68d043549e19168d2b2198a9c8f7c08e9a30986b55305c044bd7"
+      },
+      {
+        "city": "Kanazawa",
+        "country": "Japan",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-005-04-kanazawa",
+        "agentId": "delegated-phase9-batch-005-04-kanazawa",
+        "rawSha256": "0233e1c0624811bc11c74171a63d2fc810384a479768e6f7ce56edc450c37795",
+        "telemetrySha256": "147faf44d6772c77db33edb2f7382f54155fb068afc4ea0c4a074662b8fe3674"
+      }
+    ]
+  }
+}

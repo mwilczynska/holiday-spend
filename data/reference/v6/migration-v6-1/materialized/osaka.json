@@ -1,0 +1,2290 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Osaka",
+    "country": "Japan",
+    "region": "East Asia",
+    "band": null,
+    "cityId": "osaka"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Osaka",
+    "country": "Japan",
+    "region": "East Asia",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 57.75,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 26.56,
+          "upperAud": 88.93,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 57.83,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 34.12,
+          "upperAud": 81.55,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 65.1,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 35.81,
+          "upperAud": 94.4,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 73.28,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 43.24,
+          "upperAud": 103.33,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 97.71,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 57.65,
+          "upperAud": 137.77,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 130.66,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 77.09,
+          "upperAud": 184.23,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 19.06,
+        "formula": "v6.1 food_street_food tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:food_street_food"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 10.48,
+          "upperAud": 27.64,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 35.75,
+        "formula": "v6.1 food_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 19.66,
+          "upperAud": 51.84,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 91.51,
+        "formula": "v6.1 food_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 50.33,
+          "upperAud": 132.69,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "amountAud": 235.93,
+        "formula": "v6.1 food_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 129.76,
+          "upperAud": 342.1,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.71,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.42,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 15.08,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 44.13,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 73.18,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 24.31,
+        "formula": "v6.1 activities_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:activities_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 62.91,
+        "formula": "v6.1 activities_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:activities_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 34.6,
+          "upperAud": 91.22,
+          "widthPct": 45
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 161.58,
+        "formula": "v6.1 activities_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:mid:activities_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 88.87,
+          "upperAud": 234.29,
+          "widthPct": 45
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 97.71,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "missingness": {
+      "byt_food_budget_per_person_day": "not_found",
+      "byt_food_mid_per_person_day": "not_found",
+      "byt_food_high_per_person_day": "not_found",
+      "cappuccino_1": "not_found",
+      "domestic_draft_beer_1": "not_found",
+      "byt_activities_budget_per_person_day": "not_found",
+      "byt_activities_mid_per_person_day": "not_found",
+      "byt_activities_high_per_person_day": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 57.75,
+      "accomPrivateRoom": 57.83,
+      "accom1star": 65.1,
+      "accom2star": 73.28,
+      "accom3star": 97.71,
+      "accom4star": 130.66,
+      "foodStreet": 19.06,
+      "foodBudget": 35.75,
+      "foodMid": 91.51,
+      "foodHigh": 235.93,
+      "drinkCoffee": 4.71,
+      "drinkLocalBeer": 2.83,
+      "drinkCocktail": 11.7,
+      "drinksNone": 9.42,
+      "drinksLight": 15.08,
+      "drinksModerate": 44.13,
+      "drinksHeavy": 73.18,
+      "activitiesFree": 0,
+      "activitiesBudget": 24.31,
+      "activitiesMid": 62.91,
+      "activitiesHigh": 161.58
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 57.75,
+      "accomPrivateRoom": 57.83,
+      "accom1star": 65.1,
+      "accom2star": 73.28,
+      "accom3star": 97.71,
+      "accom4star": 130.66,
+      "foodStreet": 19.06,
+      "foodBudget": 35.75,
+      "foodMid": 91.51,
+      "foodHigh": 235.93,
+      "drinkCoffee": 4.71,
+      "drinkLocalBeer": 2.83,
+      "drinkCocktail": 11.7,
+      "drinksNone": 9.42,
+      "drinksLight": 15.08,
+      "drinksModerate": 44.13,
+      "drinksHeavy": 73.18,
+      "activitiesFree": 0,
+      "activitiesBudget": 24.31,
+      "activitiesMid": 62.91,
+      "activitiesHigh": 161.58
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 73,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Osaka from $22 | Expedia",
+        "evidenceText": "September | $73. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Osaka. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Osaka-Hotels.s30 \"Price trends for properties with 3 Stars in Osaka\" \"September\" \"2 adults\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 26.56,
+          "upperAud": 88.93,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 34.12,
+          "upperAud": 81.55,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 35.81,
+          "upperAud": 94.4,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 43.24,
+          "upperAud": 103.33,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 57.65,
+          "upperAud": 137.77,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 77.09,
+          "upperAud": 184.23,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 10.48,
+          "upperAud": 27.64,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 19.66,
+          "upperAud": 51.84,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 50.33,
+          "upperAud": 132.69,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 129.76,
+          "upperAud": 342.1,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 34.6,
+          "upperAud": 91.22,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 88.87,
+          "upperAud": 234.29,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 57.648900000000005,
+          "upperAud": 137.7711,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 97.71,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:55.081Z",
+        "completedAt": "2026-08-13T16:02:55.081Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:55.081Z",
+        "completedAt": "2026-08-13T16:02:55.081Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:55.081Z",
+        "completedAt": "2026-08-13T16:02:55.081Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 26.56,
+          "upperAud": 88.93,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 34.12,
+          "upperAud": 81.55,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 35.81,
+          "upperAud": 94.4,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 43.24,
+          "upperAud": 103.33,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 57.65,
+          "upperAud": 137.77,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 77.09,
+          "upperAud": 184.23,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 10.48,
+          "upperAud": 27.64,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 19.66,
+          "upperAud": 51.84,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 50.33,
+          "upperAud": 132.69,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 129.76,
+          "upperAud": 342.1,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 34.6,
+          "upperAud": 91.22,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 88.87,
+          "upperAud": 234.29,
+          "widthPct": 45
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 73,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Osaka from $22 | Expedia",
+          "evidenceText": "September | $73. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Osaka. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+          "query": "site:expedia.com/3Star-Osaka-Hotels.s30 \"Price trends for properties with 3 Stars in Osaka\" \"September\" \"2 adults\"",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 97.71,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "osaka",
+    "city": "Osaka",
+    "country": "Japan",
+    "region": "East Asia",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "3f62cc4b3d042dfcca198deac69ca3bd13d646406acc4891c7f2be23d3286ece",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 57.75,
+      "accomPrivateRoom": 57.83,
+      "accom1star": 65.1,
+      "accom2star": 73.28,
+      "accom3star": 97.71,
+      "accom4star": 130.66,
+      "foodStreet": 19.06,
+      "foodBudget": 35.75,
+      "foodMid": 91.51,
+      "foodHigh": 235.93,
+      "drinkCoffee": 4.71,
+      "drinkLocalBeer": 2.83,
+      "drinkCocktail": 11.7,
+      "drinksNone": 9.42,
+      "drinksLight": 15.08,
+      "drinksModerate": 44.13,
+      "drinksHeavy": 73.18,
+      "activitiesFree": 0,
+      "activitiesBudget": 24.31,
+      "activitiesMid": 62.91,
+      "activitiesHigh": 161.58
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 73,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Osaka from $22 | Expedia",
+        "evidenceText": "September | $73. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Osaka. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Osaka-Hotels.s30 \"Price trends for properties with 3 Stars in Osaka\" \"September\" \"2 adults\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 26.56,
+          "upperAud": 88.93,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 34.12,
+          "upperAud": 81.55,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 35.81,
+          "upperAud": 94.4,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 43.24,
+          "upperAud": 103.33,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 57.65,
+          "upperAud": 137.77,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 77.09,
+          "upperAud": 184.23,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 10.48,
+          "upperAud": 27.64,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 19.66,
+          "upperAud": 51.84,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 50.33,
+          "upperAud": 132.69,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 129.76,
+          "upperAud": 342.1,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.59,
+          "upperAud": 6.83,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.18,
+          "upperAud": 13.66,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.29,
+          "upperAud": 21.87,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 24.27,
+          "upperAud": 63.99,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 40.25,
+          "upperAud": 106.11,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.37,
+          "upperAud": 35.25,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 34.6,
+          "upperAud": 91.22,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 88.87,
+          "upperAud": 234.29,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 57.648900000000005,
+          "upperAud": 137.7711,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T16:02:55.081Z",
+          "completedAt": "2026-08-13T16:02:55.081Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 97.71,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Osaka-Hotels.s30-0-d179897.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:55.081Z",
+        "completedAt": "2026-08-13T16:02:55.081Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:55.081Z",
+        "completedAt": "2026-08-13T16:02:55.081Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T16:02:55.081Z",
+        "completedAt": "2026-08-13T16:02:55.081Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "8669d6a850f2932bd07e87e74c7defe7ddd3e5b7bad6b952f96325a07ea7677f",
+    "calls": [
+      {
+        "city": "Osaka",
+        "country": "Japan",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-005-02-osaka",
+        "agentId": "delegated-phase9-batch-005-02-osaka",
+        "rawSha256": "5fcaa9e2e1cd57048b43b22342af11b6a5cef6d22d3a8a353f7d93c34f354b68",
+        "telemetrySha256": "d5eface2286c3cf6ed1a8e6c1fadbf4f8707b3a98d61b544df4367dd59c07f0f"
+      },
+      {
+        "city": "Osaka",
+        "country": "Japan",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-005-02-osaka",
+        "agentId": "delegated-phase9-batch-005-02-osaka",
+        "rawSha256": "4970a670bc9f71e501a27fe988211151d11c99d67c75c1fb647b13d49a63ff5b",
+        "telemetrySha256": "b4ea889b8f2a410133d9c3451ae60f011818f77780ee51f0744666bcf2c8e0ff"
+      },
+      {
+        "city": "Osaka",
+        "country": "Japan",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-005-02-osaka",
+        "agentId": "delegated-phase9-batch-005-02-osaka",
+        "rawSha256": "01a21d3f646f4dacc0b088daacbd1e9443679be6c6624d55c85bd657e59b7459",
+        "telemetrySha256": "ad1c1a834aa7e1b613a1c0f3ac74b0379a2ac90985b090f38e76f4a06fe69b90"
+      }
+    ]
+  }
+}

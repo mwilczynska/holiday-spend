@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Sendai",
+  "country": "Japan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 23,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/sendai/trip-cost-2111149",
+      "sourceTitle": "How much does a trip to Sendai Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $23 | $53 | $102 | Entertainment^{1} | $8 | $17 | $33",
+      "query": "site:budgetyourtrip.com/japan/sendai \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 53,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/sendai/trip-cost-2111149",
+      "sourceTitle": "How much does a trip to Sendai Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $23 | $53 | $102 | Entertainment^{1} | $8 | $17 | $33",
+      "query": "site:budgetyourtrip.com/japan/sendai \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 102,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/sendai/trip-cost-2111149",
+      "sourceTitle": "How much does a trip to Sendai Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $23 | $53 | $102 | Entertainment^{1} | $8 | $17 | $33",
+      "query": "site:budgetyourtrip.com/japan/sendai \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/sendai/trip-cost-2111149",
+      "sourceTitle": "How much does a trip to Sendai Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $23 | $53 | $102 | Entertainment^{1} | $8 | $17 | $33",
+      "query": "site:budgetyourtrip.com/japan/sendai \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 17,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/sendai/trip-cost-2111149",
+      "sourceTitle": "How much does a trip to Sendai Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $23 | $53 | $102 | Entertainment^{1} | $8 | $17 | $33",
+      "query": "site:budgetyourtrip.com/japan/sendai \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 33,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/sendai/trip-cost-2111149",
+      "sourceTitle": "How much does a trip to Sendai Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $23 | $53 | $102 | Entertainment^{1} | $8 | $17 | $33",
+      "query": "site:budgetyourtrip.com/japan/sendai \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The exact Sendai BudgetYourTrip result reported Food and Entertainment daily tiers per person. Values were preserved without multiplication or currency conversion."
+}
