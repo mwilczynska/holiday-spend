@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 21,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+      "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $21\n(Kč 439)  | $50\n(Kč 1,055)  | $111\n(Kč 2,347)",
+      "query": "site:budgetyourtrip.com/czech-republic/prague \"Food Budget in Prague\" \"Budget\" \"Mid-range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 50,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+      "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $21\n(Kč 439)  | $50\n(Kč 1,055)  | $111\n(Kč 2,347)",
+      "query": "site:budgetyourtrip.com/czech-republic/prague \"Food Budget in Prague\" \"Budget\" \"Mid-range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 111,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+      "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $21\n(Kč 439)  | $50\n(Kč 1,055)  | $111\n(Kč 2,347)",
+      "query": "site:budgetyourtrip.com/czech-republic/prague \"Food Budget in Prague\" \"Budget\" \"Mid-range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 7,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+      "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $7\n(Kč 152)  | $18\n(Kč 381)  | $45\n(Kč 940)",
+      "query": "site:budgetyourtrip.com/czech-republic/prague \"Sightseeing and Entertainment\" \"Budget\" \"Mid-range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 18,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+      "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $7\n(Kč 152)  | $18\n(Kč 381)  | $45\n(Kč 940)",
+      "query": "site:budgetyourtrip.com/czech-republic/prague \"Sightseeing and Entertainment\" \"Budget\" \"Mid-range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 45,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+      "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $7\n(Kč 152)  | $18\n(Kč 381)  | $45\n(Kč 940)",
+      "query": "site:budgetyourtrip.com/czech-republic/prague \"Sightseeing and Entertainment\" \"Budget\" \"Mid-range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

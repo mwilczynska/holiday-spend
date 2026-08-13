@@ -1,7 +1,7 @@
 {
   "schemaVersion": "city-cost-v6-1-release-manifest-v5",
   "methodologyVersion": "v6.1",
-  "status": "scored_development_canary_failed_boundary_repair_required",
+  "status": "scored_development_canary_failed_experiment_013_owner_review_required",
   "decisionDate": "2026-08-12",
   "objective": "Migrate the existing 121-city library and newly generated cities to a coherent v6.1 three-call, source-native and honestly graded approximation path.",
   "supersedes": {
@@ -116,11 +116,12 @@
     "currentRuntimeScope": "new_cities_opt_in_flag_only",
     "targetRuntimeScope": "existing_121_and_new_cities_after_owner_approved_cutover",
     "migrationApproved": true,
-    "migrationStatus": "phase_7_collection_boundary_repair_then_delegated_canary_then_staging",
+    "migrationStatus": "phase_7g_experiment_013_failed_owner_review_required_before_staging",
     "featureFlag": "CITY_COST_METHODOLOGY_V6",
     "shippingCsvMayChange": false,
     "shippingCsvChangeAuthorizedNow": false,
     "experiment010Status": "credential_preflight_no_provider_calls_superseded_as_canary_result",
+    "experiment013Status": "immutable_failed_19_of_20_after_duplicate_assignment_invalidated_two_prague_calls",
     "delegatedStageAApproved": true,
     "userKeyProviderSmokeRequiredBeforeCutover": true,
     "cutover": "Requires a complete staged 121-city artifact and explicit owner approval.",
@@ -143,10 +144,14 @@
       "requirement": "At least 19/20 registered cities have three schema-valid delegated source records and complete shipped Stage-B materializations; every call/search/read/provenance gate passes and artifact candidates, including all-prior cities, affect no more than 30% of the batch.",
       "threshold": "19/20",
       "status": "failed",
-      "measurement": "Experiment 011 is immutable failed evidence: 17/20 complete, 2 artifact candidates (10%), 60 attempted calls, 198 searches and zero direct reads. Its boundary failures are retained as regression fixtures; it is not presented as a pass or as pending.",
+      "measurement": "Experiment 013 is immutable failed evidence: its full 60-slot frame reached 19/20 complete cities and zero artifact candidates, but an unintended duplicate Prague assignment caused two call-contract failures, 62 actual provider calls and 171 actual searches. The standard evaluator records 167 searches from the surviving call records; collection-incidents.json records the four discarded-attempt searches. The result remains failed and does not authorize migration.",
       "evidenceArtifact": {
-        "path": "data/reference/v6/experiments/011-v6-1-delegated-operational-canary/results.json",
-        "sha256": "5489e7ed981f8eef36a6e30bd6c066299ea2dcc62d43b31450599739ee40431a"
+        "path": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/results.json",
+        "sha256": "8fdfd5b577498f9ae27af79f7ad50653819e0ceff60ad3de26d1b057cb755c64"
+      },
+      "incidentArtifact": {
+        "path": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/collection-incidents.json",
+        "sha256": "f4e7dd31ef81bea54788d7fee015b8b081718407994650537d9c3f9588624a46"
       }
     },
     "2_schemaAndMissingness": {

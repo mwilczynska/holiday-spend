@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7F lifecycle repair complete; experiment 012 remains immutable incomplete-frame history; experiment 013 not started
+**Status:** Phase 7G experiment 013 is immutable failed evidence; Phase 8 is blocked for owner review
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -85,7 +85,7 @@ drifts from the generated artifact.
   can establish statistically. The 25/25 fixture replay proves deterministic replay. The first attempted
   provider canary made zero provider calls and is a credential preflight failure, not 0% source coverage.
 - The 25-city rollout preview is operational impact evidence only. Across 450 non-zero comparable
-  city/tier rows, 81 lie above 2× or below 0.5× v1; `food_high_end` is above 2× v1 in 18/25 cities.
+  city/tier rows, 82 lie above 2× or below 0.5× v1; `food_high_end` is above 2× v1 in 18/25 cities.
   Representative basket median changes are +36.65% budget, +11.53% mid-range and +31.90% high-end.
   These differences do not establish that v6.1 is wrong because v1 is not ground truth, but they make a
   staged migration and explicit review mandatory.
@@ -246,6 +246,27 @@ the next authorized action, but it was not created or collected in this phase. E
 the inventory therefore reports assignment attempts as unrecorded while separating source-call records from provider
 attempts.
 
+#### Phase 7G — resumable delegated canary — **failed 12 August 2026; immutable**
+
+Experiment 013 reused 32 independently validated experiment-012 raw/telemetry pairs and collected the remaining
+28 registered slots. All 60 slots reached a terminal auditable state; 58 were reusable and two Prague slots were
+invalidated after an unintended duplicate subagent assignment. The frozen result records 19/20 complete source
+contracts, 20/20 deterministic 19-tier materializations and persistence/API round-trips, zero artifact candidates,
+62 actual provider calls, 11 assignment attempts, two retries and zero direct page reads. The standard evaluator
+reports 167 searches; `collection-incidents.json` records four searches from the overwritten first Prague attempt,
+making the actual total 171.
+
+The immutable result remains `pass: false`. Prague's BYT and Numbeo calls exceeded the call/search lifecycle
+contract, and the evaluator also exposes an unreachable aggregate predicate: it requires
+`problems.length === 0` even though the registered batch gate explicitly permits one incomplete city. Thus the
+numeric 19/20 and 30% thresholds were met, but the recorded experiment did not pass. Do not restate it as a pass,
+mutate it, run another canary or start Phase 8 without an owner decision.
+
+Recommended next correction, if authorized: add an exclusive write-once call-slot claim before spawning work,
+separate per-city diagnostics from batch-failing conditions in the evaluator, and run a new immutable experiment
+that may reuse the 58 valid experiment-013 calls and recollect only the two invalid Prague sources. A reporting-only
+adjudication of 013 is an owner decision, not an agent assumption.
+
 #### Phase 7C — user-key provider transport smoke and runtime SLO
 
 After the search-enabled adapter exists, retain a small 3–5-city end-to-end smoke using a user-supplied key
@@ -254,7 +275,7 @@ external/manual until a key is supplied and does not block Phase 8 or Phase 9 st
 the Phase 11 cutover. Post-release complete-generation coverage is monitored against a ≥95% operational SLO;
 a 19/20 pre-release sample must not be described as statistically proving that population rate.
 
-### Phase 8 — build resumable migration tooling and a dry run — blocked until Phase 7G passes
+### Phase 8 — build resumable migration tooling and a dry run — blocked after failed Phase 7G
 
 Create a deterministic migration protocol under `data/reference/v6/migration-v6-1/` containing:
 
@@ -388,18 +409,19 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
-node scripts/run-v6-1-delegated-canary.mjs --check
-node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/012-v6-1-corrected-delegated-canary
+node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
+node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/record-v6-1-canary-assignment.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 ```
 
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun
 it once before investigating because this OneDrive checkout has a known transient temp-file failure.
 
-## 10. Current stopping point — Phase 7F complete
+## 10. Current stopping point — Phase 7G failed
 
-Phase 7F is complete. Experiment 012 is immutable incomplete-frame evidence: its original Stage-B report says
-10/20 complete, but independent inventory finds only 32 reusable raw+telemetry pairs in the 60-slot frame and
-28 pending slots. This is orchestration evidence, not source-quality or coefficient evidence. Do not update the
-manifest to 012, create experiment 013, proceed to Phase 8, read a holdout or touch the live CSV in this stopped run.
-If resumed, the exact next action is to preregister experiment 013 and use the inventory/finalization lifecycle before
-any Stage-B evaluation.
+Experiment 013 is finalized and immutable. It reached a complete 60-slot frame and 19/20 complete cities, but the
+recorded result is failed because two Prague calls were invalid after a duplicate assignment. The active manifest
+points to the hashed failed result. Phase 8 is not authorized. The exact next action is owner review of whether to
+accept a non-mutating adjudication or authorize the recommended evaluator/write-once repair and a new canary reusing
+the 58 valid calls. Do not run another canary, stage migration, read a holdout or touch the live CSV meanwhile.

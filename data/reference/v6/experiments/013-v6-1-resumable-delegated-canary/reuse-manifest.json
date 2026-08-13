@@ -1,0 +1,650 @@
+{
+  "schemaVersion": "city-cost-v6-1-canary-reuse-manifest-v1",
+  "experiment": "013-v6-1-resumable-delegated-canary",
+  "sourceExperiment": "012-v6-1-corrected-delegated-canary",
+  "collectionMode": "validated_experiment_012_reuse+delegated_codex_subagent",
+  "reusableCalls": 32,
+  "pendingCallsAfterReuse": 28,
+  "entries": [
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/hanoi/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/hanoi/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/hanoi/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/hanoi/expedia_3star.json",
+      "rawSha256": "158c4cfd776bfd4a18f70bd8d1ea9bd16acb61a6b3a4846412de58b6d14eaa20",
+      "telemetrySha256": "ceca34852581daf01fa8c83c1971af71a2d82dea1119fb62116e537b21e9f55e",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/hanoi/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/hanoi/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/hanoi/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/hanoi/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "9cf0a5977e0e7225a49ecb851110e1e420128c4398eddb58bfdb91317f0775d5",
+      "telemetrySha256": "7fc430ca15e40e90850117fa6c9b6f839e94e68b5a7b51d623bedc5f3a9e26f6",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/hanoi/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/hanoi/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/hanoi/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/hanoi/numbeo_drinks.json",
+      "rawSha256": "48efe40f253baa1e0795a169f1ab1ef76d49a40a2dab839f50fa899bc8dab5b8",
+      "telemetrySha256": "329b98787f352a15f069af480de4c02f87ef581d974ea0efa4c27d2e1c172816",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/ho-chi-minh-city/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/ho-chi-minh-city/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/ho-chi-minh-city/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/ho-chi-minh-city/expedia_3star.json",
+      "rawSha256": "bd19271a31a17f77a99347ad664dc1e748e4c74a029ca2ee5c68bea04a5cab0f",
+      "telemetrySha256": "85f1059e039879e76c56b7f0c1ff4cf5e3d7e4809096292a119971d941fad919",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/ho-chi-minh-city/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/ho-chi-minh-city/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/ho-chi-minh-city/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/ho-chi-minh-city/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "b29b034b26c1acb92578ff14bc5bc81dfb167900a44486ff422bb3f8d3c140ce",
+      "telemetrySha256": "c69b06f79087575a8a232658b99b7040b549e8130974e46624d04e7202f87751",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/ho-chi-minh-city/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/ho-chi-minh-city/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/ho-chi-minh-city/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/ho-chi-minh-city/numbeo_drinks.json",
+      "rawSha256": "3cc42b7292a3130254c24d0823c43301319649cf4dd4e532d5d10980fc88e71b",
+      "telemetrySha256": "1961f408d7548539c95892862b50753a7171c75b8c17a812ab131efa0b4d79d7",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/da-nang/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/da-nang/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/da-nang/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/da-nang/expedia_3star.json",
+      "rawSha256": "ed7241ccc53e0335137d85233576e8e5fbf723c01c29ede3da318257cc4e6438",
+      "telemetrySha256": "85f1059e039879e76c56b7f0c1ff4cf5e3d7e4809096292a119971d941fad919",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/da-nang/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/da-nang/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/da-nang/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/da-nang/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "af37394d67ea4b493a483626bb7d5b5c6acb0d6779ccbd68ceb9d2b153375536",
+      "telemetrySha256": "c69b06f79087575a8a232658b99b7040b549e8130974e46624d04e7202f87751",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/da-nang/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/da-nang/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/da-nang/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/da-nang/numbeo_drinks.json",
+      "rawSha256": "6812cf2396bb3630f8e0f8e8807be853104e4d6b83c78037627e14ea0e00b4f2",
+      "telemetrySha256": "1961f408d7548539c95892862b50753a7171c75b8c17a812ab131efa0b4d79d7",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/singapore/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/singapore/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/singapore/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/singapore/expedia_3star.json",
+      "rawSha256": "af8dbb2507ca604d6283d1d4693b0493096f1fb07131ac232f33e88b2ad5a8f2",
+      "telemetrySha256": "85f1059e039879e76c56b7f0c1ff4cf5e3d7e4809096292a119971d941fad919",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/singapore/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/singapore/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/singapore/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/singapore/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "6e0e570af50e66579a5c248bda7d413698c530203f4766cd9214248980380a3c",
+      "telemetrySha256": "7fc430ca15e40e90850117fa6c9b6f839e94e68b5a7b51d623bedc5f3a9e26f6",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/singapore/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/singapore/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/singapore/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/singapore/numbeo_drinks.json",
+      "rawSha256": "43ee217567d9b85033a4198190dfbae571d5210b4a333a74ce99fd619bf66271",
+      "telemetrySha256": "1961f408d7548539c95892862b50753a7171c75b8c17a812ab131efa0b4d79d7",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/taipei/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/taipei/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/taipei/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/taipei/expedia_3star.json",
+      "rawSha256": "9557392e5eedf22c4c69523e5eba54d9ab95d6379f0d67505a38516927ebb4a7",
+      "telemetrySha256": "71f6440d7809ef8e7fa702cf428a8130b1ef1dc0bdcdbea64c21ba2651c7c363",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/taipei/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/taipei/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/taipei/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/taipei/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "ac20ea1cd5ff7f86fa6ce3fb92f9c824599f55b0b24258a48c619aa2289669a4",
+      "telemetrySha256": "19deb3561207cbcfae180708687de04f6621b3ee69879b3cad0f3afb59d3c050",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/taipei/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/taipei/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/taipei/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/taipei/numbeo_drinks.json",
+      "rawSha256": "9e43cf055cf28f078454f4f071ba8563bb15a2e52bf5ed6ecb6ba8ff0af426be",
+      "telemetrySha256": "1961f408d7548539c95892862b50753a7171c75b8c17a812ab131efa0b4d79d7",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/tokyo/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/tokyo/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/tokyo/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/tokyo/expedia_3star.json",
+      "rawSha256": "4b05b189e8e555bccc4bbda44bf8190450f4c5158f2adc89304d2bebe3a38ff1",
+      "telemetrySha256": "9320421386503ab2f23d02938cbe96dc07ccbbd0c85915afe60599cf971077ea",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/tokyo/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/tokyo/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/tokyo/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/tokyo/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "9c4aeff0f2375046eb5135bf427dc1cc9f49ec589c916ea2e71831e96a6b90aa",
+      "telemetrySha256": "c69b06f79087575a8a232658b99b7040b549e8130974e46624d04e7202f87751",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/tokyo/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/tokyo/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/tokyo/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/tokyo/numbeo_drinks.json",
+      "rawSha256": "6dfcaf83d0329fd4223864761aaff01c083da825ae87cafa9a1721f93d2e51de",
+      "telemetrySha256": "8ba26729a7b757a88105bd1f77971fbcec2d91d8ad1dce7c765b7fe2489cdce2",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/seoul/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/seoul/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/seoul/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/seoul/expedia_3star.json",
+      "rawSha256": "2afa78110f892966bde391954decda34acd40babcc8a4409888aa965adedb0f1",
+      "telemetrySha256": "6f3bc59899b19d247e6efa80e7a921cec73cfa630268738279cf0341d402c2da",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/seoul/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/seoul/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/seoul/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/seoul/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "a5622ff7f63a21708177765f61d1da81f6609ede289db402d84c475a751c7853",
+      "telemetrySha256": "c69b06f79087575a8a232658b99b7040b549e8130974e46624d04e7202f87751",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/seoul/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/seoul/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/seoul/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/seoul/numbeo_drinks.json",
+      "rawSha256": "c2bd6d72ddb754a694a05e9ff63f073b7242616ada9f6985eeeab6ef9cfdb7d2",
+      "telemetrySha256": "8ba26729a7b757a88105bd1f77971fbcec2d91d8ad1dce7c765b7fe2489cdce2",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/delhi/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/delhi/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/delhi/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/delhi/expedia_3star.json",
+      "rawSha256": "b1def52a8d2af9538534edf65ce2ca7098edd646ddef52be648923fb10a71a64",
+      "telemetrySha256": "18f72823c1ec8cc7fb5891da4f547bc500e08d73d8ea9a3371f6faa2a0f4d472",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/delhi/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/delhi/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/delhi/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/delhi/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "ac57350bf91708763a274f8967784b6821bc3033d5a2c8cfdee3aee372a119db",
+      "telemetrySha256": "abc00f8374322186374f35b0fff842cc600309a4851baf6945c5f1d04edce2e7",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/delhi/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/delhi/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/delhi/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/delhi/numbeo_drinks.json",
+      "rawSha256": "f1a90cfc83b14499a74b938e405c79c3e3aab092d9ea8aceb508cb0b03dfdb75",
+      "telemetrySha256": "7d79af055ea6c36d7992da73537fdaac29ee1d32f9598c213bcb1e8447ca1c07",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/mumbai/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/mumbai/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/mumbai/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/mumbai/expedia_3star.json",
+      "rawSha256": "71cf5d2471ad44f3aff87711a329d6ce01b7090416a16a32d4af9d2884bd6ef8",
+      "telemetrySha256": "38c228a00a6f48d89b2b6dadc448df33005319e76ff92713f826f1925aed52d8",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/mumbai/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/mumbai/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/mumbai/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/mumbai/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "fa8970b103bc93904496ac444392b418650c638db9c1860a2715ba2689139cf2",
+      "telemetrySha256": "cafc5c80744e18bd5596f2df3eee908b2107c463ed77c51c625bd71b47c86904",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/mumbai/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/mumbai/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/mumbai/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/mumbai/numbeo_drinks.json",
+      "rawSha256": "3fd7d70622d65fed1d4c75fc562dcd88e72c213c3fe3a7573d33c2b7470df698",
+      "telemetrySha256": "47be590a2d8d55766aa416ec8420e0e0fd7e8b81aeee596c7e8fca4c462b7731",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/istanbul/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/istanbul/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/istanbul/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/istanbul/expedia_3star.json",
+      "rawSha256": "145fcf721fc4bc2079a68fce255ecc0fbe4d7e30bfbf58b2e2264f6be549948a",
+      "telemetrySha256": "c17c5b147af2ad248b03e088e69eb86cdf7e477f19dd9b652b039cc6c2bca688",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/istanbul/budgetyourtrip_daily_tiers.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/istanbul/budgetyourtrip_daily_tiers.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/istanbul/budgetyourtrip_daily_tiers.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/istanbul/budgetyourtrip_daily_tiers.json",
+      "rawSha256": "1f010f4a77f7088aff4d658c7cb42b5cd34f113f173c8db56442009db7dc6c82",
+      "telemetrySha256": "c863f45574e32d4faceef5471bb46d9a835b01c0dbde725925c262264d5de157",
+      "promptSha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/istanbul/numbeo_drinks.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/istanbul/numbeo_drinks.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/istanbul/numbeo_drinks.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/istanbul/numbeo_drinks.json",
+      "rawSha256": "7a9fc8ea4032975d819c53df30704dd3f10739b50d52f12e4096353b5aa9966c",
+      "telemetrySha256": "c5a8ab55610e3a40cf877710ae849cacecaad149d80957316efc9a3ba2eac68a",
+      "promptSha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/lisbon/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/lisbon/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/lisbon/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/lisbon/expedia_3star.json",
+      "rawSha256": "ebee434c7213a1d1dca10a76bc7d37afc983601ef700a08e329e60a9545a74ad",
+      "telemetrySha256": "818eb7bf7a9c54f9828013950dd5740913a4d60deafabb6a9809619b00d2cfc6",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_012_reuse",
+      "sourceRaw": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/raw/prague/expedia_3star.json",
+      "sourceTelemetry": "data/reference/v6/experiments/012-v6-1-corrected-delegated-canary/telemetry/prague/expedia_3star.json",
+      "targetRaw": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/raw/prague/expedia_3star.json",
+      "targetTelemetry": "data/reference/v6/experiments/013-v6-1-resumable-delegated-canary/telemetry/prague/expedia_3star.json",
+      "rawSha256": "f95bb94a0ba22b7393c1f98a0f9ee6fcb81812d0e1c1a60ef6e56d3ca38b5d2e",
+      "telemetrySha256": "c3d7e31a7fa5ae51336eb974a46119e9194c4cbc76eee905e4f6439c87c19445",
+      "promptSha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2",
+      "referenceWindow": {
+        "arrival": "2026-09-17",
+        "departure": "2026-09-18",
+        "referenceDate": "2026-09-17",
+        "budgetYourTripReferenceDate": "2026-09-17",
+        "numbeoReferenceDate": "2026-09-17"
+      }
+    }
+  ]
+}

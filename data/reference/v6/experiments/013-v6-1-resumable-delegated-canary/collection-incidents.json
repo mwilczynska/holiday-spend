@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "city-cost-v6-1-canary-collection-incidents-v1",
+  "experiment": "013-v6-1-resumable-delegated-canary",
+  "incidents": [
+    {
+      "incidentId": "prague-duplicate-assignment",
+      "city": "Prague",
+      "sources": [
+        "budgetyourtrip_daily_tiers",
+        "numbeo_drinks"
+      ],
+      "detectedAt": "2026-08-12",
+      "cause": "A parallel spawn command returned a thread-limit error after one subagent had already started. A later explicitly recorded assignment repeated the two calls.",
+      "assignments": [
+        {
+          "assignmentId": "prague-untracked-attempt-0",
+          "agentId": "019ff928-88fb-7332-ae09-87c307beaa21",
+          "reportedSearches": {
+            "budgetyourtrip_daily_tiers": 2,
+            "numbeo_drinks": 2
+          }
+        },
+        {
+          "assignmentId": "prague-attempt-1",
+          "agentId": "019ff929-9dde-78e2-b9b8-c94e29e59d3b",
+          "reportedSearches": {
+            "budgetyourtrip_daily_tiers": 4,
+            "numbeo_drinks": 2
+          }
+        }
+      ],
+      "evidenceHandling": "The second assignment overwrote the first raw/telemetry pair before the duplicate was detected. The surviving raw responses remain unedited. Standard telemetry fields describe the surviving attempt; attempts/retries and explicit aggregateSearchesUsed/discardedAttemptSearchesUsed fields preserve both attempts. Actual experiment searches are 171, four above the standard evaluator total of 167.",
+      "decision": "Do not collect Prague again and do not count either affected source slot as reusable. Prague must remain incomplete in the frozen canary result; this one-city orchestration incident is inside the preregistered 1/20 tolerance."
+    }
+  ]
+}

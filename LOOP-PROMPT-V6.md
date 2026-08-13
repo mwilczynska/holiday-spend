@@ -1,8 +1,8 @@
 # LOOP-PROMPT-V6 — v6.1 coherent-library migration
 
-This is the active autonomous implementation prompt for city cost methodology v6.1. Phases 1–5 built and
-hardened the new-city path. The owner has now approved M4: migrate the existing 121-city library after a
-live operational canary and a staged owner-reviewed preview.
+This is the active autonomous implementation prompt for city cost methodology v6.1. Phases 1–7G are now
+recorded. Experiment 013 is an immutable failed canary and Phase 8 is blocked for owner review; the owner-approved
+M4 migration has not started.
 
 ## PROMPT
 
@@ -32,6 +32,10 @@ Read completely, in this order:
 
 Then inspect only the code and artifacts needed for the current phase. Do not bulk-read v5 experiments.
 Do not open any holdout ledger or holdout score values.
+
+**Current stop:** experiment 013 reached 19/20 complete cities and zero artifact candidates, but two duplicate
+Prague calls were invalid and the immutable result is `pass: false`. Do not run another canary or start Phase 8
+without a new owner instruction. The handoff records the recommended write-once assignment and evaluator repair.
 
 Verify the branch, worktree and `npm run docs:check-memory`. Preserve unrelated changes.
 
@@ -88,9 +92,9 @@ Commit target: `fix: reconcile v6.1 release contract`
 Experiment 010 is immutable history: it made zero provider calls because the CLI process had no app-provider
 key. It is a credential preflight failure, not measured 0/20 source coverage. Do not rerun or mutate it.
 
-### Phase 7A — production collection repair
+### Phase 7A — production collection repair — complete
 
-This is the first incomplete phase. Before collecting, fix the two confirmed production defects:
+The following repairs are banked:
 
 1. v6.1 currently uses ordinary JSON completions with no provider web-search tools, although the prompts
    require search snippets. Route it through a genuinely search-enabled provider adapter with observed
@@ -105,13 +109,12 @@ the 30% artifact threshold and field-by-field provenance equality through persis
 
 Commit target: `fix: repair v6.1 search collection boundary`
 
-### Phase 7B — delegated operational canary
+### Phase 7B/7D/7E/7F/7G — delegated canary history — stopped
 
-Create a fresh experiment using the representative 20-city frame from experiment 010, a corrected frozen
-one-night window and current hashes. Use Codex subagents for Stage A under the production prompts verbatim:
-exactly three search-snippet calls, at most ten searches, zero direct page reads, one unedited raw response
-and telemetry record per source, explicit missingness and no invented fallback. Stage B validates every
-response and calls the shipped materializer, persistence adapter and API parser.
+Experiments 011, 012 and 013 are immutable failed history. Experiment 013 reused 32 valid experiment-012 calls,
+completed all 60 registered slots and achieved 19/20 complete cities, but a duplicate Prague assignment invalidated
+two calls. It also exposed that `evaluateV61CanaryBatch` requires zero per-city problems despite the registered
+one-city tolerance. Preserve every experiment unchanged and follow the handoff; no new canary is currently authorized.
 
 Pass only if at least 19/20 cities have three schema-valid source records and complete 19-tier bundles; all
 call/search/read/provenance criteria pass; and artifact candidates affect no more than 30% of the batch.
@@ -129,7 +132,7 @@ smoke of provider authentication, search execution and the real database/API bou
 a key is supplied and does not block Phase 8 or Phase 9. Treat ≥95% complete-generation coverage as a
 post-release operational SLO; never claim a 19/20 sample statistically establishes it.
 
-## 5. Phase 8 — migration tooling and dry run
+## 5. Phase 8 — migration tooling and dry run — blocked pending owner review
 
 Create a frozen protocol at `data/reference/v6/migration-v6-1/`. Add deterministic scripts for:
 
@@ -240,6 +243,10 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
+node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
+node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/record-v6-1-canary-assignment.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 ```
 
 Add migration `--check` commands in Phase 8. Rerun a failed full suite once before investigating because
@@ -253,6 +260,5 @@ handoff that says only “continue” has failed.
 Resume line:
 
 > Resume v6.1 on `feat/city-cost-methodology-v6`. Read `docs/dev/handoffs/city-cost-v6.md`, then follow
-> `LOOP-PROMPT-V6.md` from the first incomplete phase. Repair the search collection boundary first, run the
-> delegated operational canary, then build the staged 121-city migration. Stop for owner review before
-> changing the live CSV or global default.
+> `LOOP-PROMPT-V6.md` only after the owner resolves the experiment-013 stop. Do not run another canary or start
+> Phase 8 without that explicit decision. Never change the live CSV or global default before Phase 10 review.

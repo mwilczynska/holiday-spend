@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Tokyo",
+  "country": "Japan",
+  "retrievalStatus": "complete",
+  "searchesUsed": 1,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 23,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo",
+      "sourceTitle": "Tokyo Travel Cost - Average Price of a Vacation to Tokyo: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $23 (¥3,720)  | $61 (¥9,877)  | $171 (¥27,636)",
+      "query": "site:budgetyourtrip.com/japan/tokyo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 61,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo",
+      "sourceTitle": "Tokyo Travel Cost - Average Price of a Vacation to Tokyo: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $23 (¥3,720)  | $61 (¥9,877)  | $171 (¥27,636)",
+      "query": "site:budgetyourtrip.com/japan/tokyo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 171,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo",
+      "sourceTitle": "Tokyo Travel Cost - Average Price of a Vacation to Tokyo: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $23 (¥3,720)  | $61 (¥9,877)  | $171 (¥27,636)",
+      "query": "site:budgetyourtrip.com/japan/tokyo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 22,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo",
+      "sourceTitle": "Tokyo Travel Cost - Average Price of a Vacation to Tokyo: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $22 (¥3,582)  | $65 (¥10,487)  | $215 (¥34,698)",
+      "query": "site:budgetyourtrip.com/japan/tokyo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 65,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo",
+      "sourceTitle": "Tokyo Travel Cost - Average Price of a Vacation to Tokyo: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $22 (¥3,582)  | $65 (¥10,487)  | $215 (¥34,698)",
+      "query": "site:budgetyourtrip.com/japan/tokyo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 215,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/japan/tokyo",
+      "sourceTitle": "Tokyo Travel Cost - Average Price of a Vacation to Tokyo: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $22 (¥3,582)  | $65 (¥10,487)  | $215 (¥34,698)",
+      "query": "site:budgetyourtrip.com/japan/tokyo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

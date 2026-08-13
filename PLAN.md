@@ -249,7 +249,7 @@ reports and narrative contract to that generated value and added a validator ass
 source anchor, value, grade, interval, authority and relation text. A temporary regression with the old
 `2.6`, ±75% declaration failed `--check` as required. No refit was performed.
 
-### M4 — migrate the existing 121-city library — **OWNER APPROVED; PHASE 7 REPAIR ACTIVE**
+### M4 — migrate the existing 121-city library — **OWNER APPROVED; PHASE 7G FAILED, OWNER REVIEW REQUIRED**
 
 The 12 August 2026 owner decision supersedes the earlier new-city-only recommendation. The desired final
 state is one coherent v6.1 library for existing and new cities. The current CSV remains read-only until a
@@ -268,10 +268,13 @@ complete staged migration is reviewed.
   registered 60-call frame. Preserve it as immutable operational delegation failure, not source-quality evidence.
 - [x] Repair delegated collection lifecycle after experiment 012: independent slot inventory, partial-file
   preservation, terminal-frame finalization guard, immutable-history compatibility and complete reporting
-- [ ] Owner review before creating experiment 013; on resume use validated 012 reuse plus delegated collection,
-  and do not finalize until all 60 registered call slots are terminal
-- [ ] Prove field-by-field persistence/API provenance round-trip in deterministic tests and the delegated
-  canary; do not count all-prior materialization as source coverage
+- [x] Run experiment 013 with 32 validated 012 reuses plus collection of 28 pending slots; preserve its immutable
+  failed 19/20 result and duplicate-Prague incident without promoting it to a pass
+- [x] Prove field-by-field persistence/API provenance round-trip in deterministic tests and all 20 experiment-013
+  materializations; do not count all-prior materialization as source coverage
+- [ ] Owner decision on the experiment-013 stopping point. Recommended: add an exclusive write-once slot claim,
+  repair the evaluator's unreachable `problems.length === 0` aggregate predicate, then authorize one new canary
+  reusing the 58 valid 013 calls and recollecting only Prague BYT/Numbeo
 - [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV
 - [ ] Validate any reuse of the 25 fixture-city responses against the frozen migration window
 - [ ] Generate all 121 cities in batches into a staged CSV plus full provenance sidecar
@@ -445,7 +448,7 @@ part of v6.1. This supersedes, without deleting, the Phase 5 new-city-only recom
 release-contract reconciliation, a measured 20-city provider-path canary, resumable staged regeneration,
 a complete 121-city operational-impact report, and owner review before atomic cutover.
 
-The 25-city preview's 81/450 tier-level >2×/<0.5× differences make indefinite mixed-method operation a
+The 25-city preview's 82/450 tier-level >2×/<0.5× differences make indefinite mixed-method operation a
 poor endpoint, but they are not ground truth and must not be used to tune v6.1 toward v1. The migration
 therefore replaces the library coherently or rolls back coherently: CSV and new-city default move together.
 The live CSV remains unchanged until the staged artifact is complete and explicitly approved.
@@ -464,8 +467,26 @@ through Codex-delegated Stage A and shipped Stage B; stop if it misses 19/20 or 
 Experiment 012 is immutable incomplete-orchestration evidence, not a clean canary: its original run reported 10/20,
 but its directory contains 35 raw files, 32 telemetry files and only 32 reusable pairs in a 60-slot frame. The new
 inventory reports 28 pending slots and preserves the Lisbon/Prague pairs and Colombo/Dubai raw-only evidence instead
-of dropping sibling calls. Finalization now refuses any new experiment with pending slots. Experiment 013 has not
-been created in this run; Phase 8 remains blocked until the next complete-frame canary passes.
+of dropping sibling calls. Finalization now refuses any new experiment with pending slots. At the Phase 7F boundary,
+experiment 013 had not yet been created; Phase 7G below records what followed.
+
+### v6.1 Phase 7G resumable canary — 12 August 2026
+
+Experiment 013 is complete and immutable. It reused 32 valid experiment-012 calls, collected the remaining 28
+registered slots, and reached 60/60 terminal records. Nineteen cities passed the complete source contract; all 20
+materialized 19 tiers and passed persistence/API provenance equality. The corrected Numbeo contract observed both
+cappuccino and domestic beer in 19/20 cities. Category direct/fallback counts were accommodation 10/10, food 18/2,
+drinks 17/3 and activities 18/2; no city was all-prior.
+
+The recorded result is nevertheless failed. A parallel spawn command started an unreturned Prague worker before
+reporting its thread-limit error, and a later assignment repeated Prague BYT and Numbeo. Those two slots were
+invalidated rather than hidden. The experiment records 62 actual provider calls, 11 assignment attempts, two retries,
+zero direct reads and 167 standard searches; its incident record adds four overwritten-attempt searches, so 171 were
+actually made. No further collection is authorized.
+
+The run exposed a second contract defect: `evaluateV61CanaryBatch` requires `problems.length === 0`, so any diagnostic
+from the one city explicitly tolerated by the 19/20 gate still forces overall failure. The numeric 19/20 and 30%
+thresholds were met, but experiment 013 is not restated as a pass. Phase 8 is blocked pending an owner decision.
 
 ## Traps retained from earlier work
 

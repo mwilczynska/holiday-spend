@@ -159,10 +159,11 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
-Phase 7F lifecycle repair is complete. Experiment 012 remains immutable incomplete-frame history; independent
-inventory finds 32 reusable raw+telemetry pairs and 28 pending slots. Experiment 013 has not been created. On
-resume, run the new inventory first, then use validated 012 reuse plus delegated collection; finalization must refuse
-any pending slot. The live CSV and holdouts remain untouched.
+Phase 7F lifecycle repair is complete. Experiment 013 is now immutable failed evidence: 32 validated experiment-012
+calls were reused, all 28 pending slots were collected, and the frame reached 60/60 terminal records with 19/20
+complete cities. A duplicate Prague assignment invalidated two calls; the result remains failed even though the
+numeric 19/20 and 30% thresholds were met. Phase 8 is blocked for owner review. The live CSV and holdouts remain
+untouched.
 
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
 feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
@@ -170,11 +171,12 @@ validator computes the measured gates, records runtime >=95% coverage as unmeasu
 verification baseline as external evidence. Phase 4 FX coverage and the read-only rollout preview are
 complete. On 12 August 2026 the owner approved M4 migration of the existing 121-city library; this
 supersedes the preview's new-city-only recommendation. Phase 6 contract reconciliation is complete. The
-first provider canary attempt made zero calls and is retained as a credential preflight; an audit then found
-that city-cost provider calls do not enable web search and render Expedia arrival and departure as the same
-date. The active sequence is production collection repair, a fresh delegated 20-city operational canary,
-deterministic staged regeneration, owner review and coordinated cutover. A small user-key provider smoke is
-required before cutover; ≥95% runtime coverage is monitored as an operational SLO.
+first provider canary attempt made zero calls and is retained as a credential preflight; later attempts exposed
+and repaired search, date, identity, missingness and partial-file lifecycle defects. Experiment 013 reached a full
+frame but exposed an unguarded duplicate assignment and an aggregate evaluator predicate that is stricter than the
+registered one-city tolerance. The exact next action is owner review; no additional canary or migration is authorized.
+A small user-key provider smoke remains required before cutover; ≥95% runtime coverage is monitored as an operational
+SLO.
 
 v6.1 keeps all **19 existing planner tiers** and simplifies new-city generation to exactly three bounded
 source calls: Expedia for a 3-star room, BudgetYourTrip for three food and three activity daily-spend tiers,
@@ -280,7 +282,10 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
-node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/012-v6-1-corrected-delegated-canary
+node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
+node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/record-v6-1-canary-assignment.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 ```
 
 `/api/export` is dynamic because it reads request headers — this build note is expected.

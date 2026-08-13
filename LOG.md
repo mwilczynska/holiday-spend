@@ -2949,3 +2949,36 @@ pending. Missing collection is not converted to source-level `not_found`, and pe
 artifact candidates. The next authorized action is experiment 013 after owner review; it was not created or collected
 in this run. Experiment 012 contains no assignment ledger, so assignment attempts are reported as unrecorded rather
 than inferred. No holdout was read, no live CSV was written, and no coefficient or accommodation fit changed.
+
+## v6.1 Phase 7G resumable delegated canary failed — 12 August 2026
+
+The Phase 7F next action above is superseded. Experiment 013 was preregistered against the same 20-city frame,
+17–18 September 2026 Expedia window, current prompts/implementation/FX/CSV hashes and mixed
+`validated_experiment_012_reuse+delegated_codex_subagent` collection mode. A deterministic reuse manifest copied
+32 experiment-012 raw/telemetry pairs byte-for-byte after schema, identity, prompt, window and limit validation.
+Delegated Stage A then filled all 28 remaining registered slots. Final inventory reached 60/60 terminal slots,
+58 reusable calls, two invalid calls, no missing files and no raw/telemetry orphans.
+
+The immutable result is **FAIL**, with 19/20 complete source-contract cities and zero artifact candidates. All 20
+cities still produced deterministic 19-tier bundles and passed field-by-field persistence/API provenance equality;
+none was all-prior. Direct/fallback category counts were accommodation 10/10, food 18/2, drinks 17/3 and activities
+18/2. Cappuccino and domestic draft beer were each observed in 19/20 cities, confirming that the corrected canonical
+Numbeo serving contract works in the completed frame.
+
+The failed city was Prague. A parallel subagent spawn returned a thread-limit error after one worker had already
+started; a later explicit assignment repeated its BYT and Numbeo calls. The second writes overwrote the first pair
+before detection. Rather than hide the duplicate, the assignment ledger records both workers, the surviving raw
+responses remain intact, the two slots are deliberately invalid, and `collection-incidents.json` records the evidence
+loss. Actual work was 62 provider calls, 11 assignment attempts, two retries, 171 searches and zero direct page reads.
+The standard result reports 167 searches from surviving telemetry; the incident accounts for the four overwritten
+first-attempt searches.
+
+The result also exposed an unreachable aggregate predicate. The frozen batch thresholds were at least 19/20 complete
+cities and no more than 30% artifact candidates, both of which were numerically met. However,
+`evaluateV61CanaryBatch` initializes batch `problems` with every per-city diagnostic and sets
+`passed = problems.length === 0`, so the declared one-city tolerance cannot ever absorb an invalid city. The recorded
+experiment remains failed and is not rescored or restated as a pass. Phase 8 is blocked for owner review. Recommended
+follow-up, if authorized, is an exclusive write-once slot claim plus a regression-correct batch predicate, followed by
+one new immutable canary reusing the 58 valid experiment-013 calls and recollecting only Prague BYT/Numbeo.
+
+No holdout was read, no coefficient or accommodation fit changed, and the live 121-city CSV remained untouched.

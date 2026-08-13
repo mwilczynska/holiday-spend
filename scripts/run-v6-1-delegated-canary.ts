@@ -101,7 +101,8 @@ function assertRegistration(registration: Registration) {
   if (sha256(repoFile(registration.inputCsv)) !== registration.inputCsvSha256) throw new Error('Registered CSV hash changed.');
   if (sha256(repoFile(registration.fxSnapshot)) !== registration.fxSnapshotSha256) throw new Error('Registered FX hash changed.');
   const immutableHistoricalExperiment = registration.experiment === '011-v6-1-delegated-operational-canary'
-    || registration.experiment === '012-v6-1-corrected-delegated-canary';
+    || registration.experiment === '012-v6-1-corrected-delegated-canary'
+    || registration.experiment === '013-v6-1-resumable-delegated-canary';
   for (const prompt of Object.values(registration.prompts)) {
     if (!immutableHistoricalExperiment && sha256(repoFile(prompt.file)) !== prompt.sha256) throw new Error(`Registered prompt changed: ${prompt.file}`);
   }
@@ -471,6 +472,18 @@ function check(registration: Registration) {
     observedMeasureCounts?: Record<string, number>;
     sourceStatusCounts?: Record<string, Record<string, number>>;
     artifactSignatures?: unknown[];
+    registeredCallSlots?: number;
+    pendingCallSlots?: number;
+    terminalCallSlots?: number;
+    rawResponsesPresent?: number;
+    telemetryRecordsPresent?: number;
+    sourceCallRecords?: number;
+    assignmentAttemptsRecorded?: boolean;
+    categoryCounts?: unknown;
+    gradeDistribution?: unknown;
+    allPriorCities?: number;
+    persistenceProvenanceEqualCities?: number;
+    completeDeterministic19TierCities?: number;
     requiredCompleteCities: number;
     pass: boolean;
     holdoutRead: boolean;
@@ -483,9 +496,27 @@ function check(registration: Registration) {
   if (results.experiment !== '011-v6-1-delegated-operational-canary'
     && (typeof results.attemptedCalls !== 'number' || results.attemptedCalls < 0 || results.attemptedCalls > 60
       || (results.validResponses ?? -1) < 0 || (results.invalidResponses ?? -1) < 0
-      || (results.validResponses ?? 0) + (results.invalidResponses ?? 0) > results.attemptedCalls
+      || (results.validResponses ?? 0) > 60 || (results.invalidResponses ?? 0) > 60
       || (results.retries ?? -1) < 0 || results.directPageReads !== 0)) {
     throw new Error('Delegated canary call accounting is malformed.');
+  }
+  const historicalExperiment = results.experiment === '011-v6-1-delegated-operational-canary'
+    || results.experiment === '012-v6-1-corrected-delegated-canary';
+  if (!historicalExperiment) {
+    if (results.registeredCallSlots !== 60 || results.terminalCallSlots !== 60 || results.pendingCallSlots !== 0) {
+      throw new Error('Finalized delegated canary does not have a terminal 60-slot collection frame.');
+    }
+    if (typeof results.rawResponsesPresent !== 'number' || typeof results.telemetryRecordsPresent !== 'number'
+      || results.sourceCallRecords !== 60 || !results.assignmentAttemptsRecorded) {
+      throw new Error('Finalized delegated canary call inventory is incomplete.');
+    }
+    if (!results.categoryCounts || !results.gradeDistribution || typeof results.allPriorCities !== 'number') {
+      throw new Error('Finalized delegated canary category or grade reporting is missing.');
+    }
+    if (typeof results.persistenceProvenanceEqualCities !== 'number'
+      || typeof results.completeDeterministic19TierCities !== 'number') {
+      throw new Error('Finalized delegated canary deterministic/provenance reporting is missing.');
+    }
   }
   if (results.holdoutRead || results.liveCsvWritten) throw new Error('Delegated canary recorded a forbidden holdout read or live CSV write.');
   // --check validates the recorded experiment artifact. A failed registered

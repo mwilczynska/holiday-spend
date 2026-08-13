@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 24,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+      "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 59,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+      "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 133,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+      "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 15,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+      "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 39,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+      "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 95,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+      "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+      "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

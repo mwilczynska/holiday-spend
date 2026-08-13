@@ -101,6 +101,7 @@ function readDelegatedCanaryGate(manifestGate: unknown) {
     requirement?: unknown;
     threshold?: unknown;
     evidenceArtifact?: { path?: unknown; sha256?: unknown };
+    incidentArtifact?: { path?: unknown; sha256?: unknown };
   } : {};
   const artifactPath = gate.evidenceArtifact?.path;
   const artifactHash = gate.evidenceArtifact?.sha256;
@@ -129,6 +130,23 @@ function readDelegatedCanaryGate(manifestGate: unknown) {
   }
   const actualHash = sha256File(artifact);
   if (actualHash !== artifactHash) errors.push(`delegated canary artifact hash mismatch for ${artifactPath}`);
+  const incidentPath = gate.incidentArtifact?.path;
+  const incidentHash = gate.incidentArtifact?.sha256;
+  let incidentEvidence = '';
+  if (incidentPath !== undefined || incidentHash !== undefined) {
+    if (typeof incidentPath !== 'string' || typeof incidentHash !== 'string') {
+      errors.push('delegated canary incident artifact path/hash is incomplete');
+    } else {
+      const incidentArtifact = path.resolve(ROOT, incidentPath);
+      if (!fs.existsSync(incidentArtifact)) {
+        errors.push(`delegated canary incident artifact is missing: ${incidentPath}`);
+      } else {
+        const actualIncidentHash = sha256File(incidentArtifact);
+        if (actualIncidentHash !== incidentHash) errors.push(`delegated canary incident artifact hash mismatch for ${incidentPath}`);
+        incidentEvidence = ` Incident ${incidentPath} @ ${actualIncidentHash}.`;
+      }
+    }
+  }
   let result: {
     experiment?: unknown;
     cities?: unknown;
@@ -163,7 +181,7 @@ function readDelegatedCanaryGate(manifestGate: unknown) {
       status: passed ? 'passed' as const : 'failed' as const,
       requirement: typeof gate.requirement === 'string' ? gate.requirement : 'At least 19/20 delegated canary cities must complete.',
       threshold,
-      evidence: `Artifact ${artifactPath} @ ${actualHash}; experiment ${String(result.experiment ?? 'unknown')}: ${completeCities}/${cities} complete, ${artifactCandidates} artifact candidates (${(artifactFraction * 100).toFixed(1)}%), result pass=${String(result.pass)}.`,
+      evidence: `Artifact ${artifactPath} @ ${actualHash}; experiment ${String(result.experiment ?? 'unknown')}: ${completeCities}/${cities} complete, ${artifactCandidates} artifact candidates (${(artifactFraction * 100).toFixed(1)}%), result pass=${String(result.pass)}.${incidentEvidence}`,
       blocking: true,
     } satisfies GateResult,
     errors,
@@ -564,13 +582,14 @@ function buildReport(input: {
 **Shipping CSV:** read-only informational comparison; SHA-256 ${input.shippingCsvSha256}
 
 **Migration:** owner-approved staged migration of the 121-city library; live CSV remains unchanged pending
-collection-boundary repair, the delegated operational canary, complete staged artifact, user-key transport
-smoke and owner review.
+owner resolution of the failed experiment-013 canary, a complete staged artifact, user-key transport smoke
+and owner review.
 
-**Delegated canary history:** Experiment 011 remains the last complete-frame attempt recorded by the active
-manifest and failed at 17/20. Experiment 012 is preserved as immutable incomplete-orchestration evidence:
-its directory contains only 32 reusable raw/telemetry pairs across a 60-slot frame, so its reported 10/20
-completion is not promoted to a release pass and must not be restated as source coverage.
+**Delegated canary history:** Experiment 013 is the latest complete-frame attempt recorded by the active
+manifest and remains an immutable failure. Its 60 slots are terminal and 19/20 cities completed, but a
+duplicate Prague assignment invalidated two call records and exceeded the frozen call/search contract.
+Experiment 012 remains immutable incomplete-orchestration evidence, while 011 remains the earlier 17/20
+boundary failure. None is promoted to a release pass.
 
 **Generated coefficient contract:** ${validation.generatedCoefficientContract.passed ? 'consistent' : 'FAILED'} —
 ${JSON.stringify(validation.generatedCoefficientContract.generated)}

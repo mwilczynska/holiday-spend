@@ -1,0 +1,17 @@
+{
+  "source": "budgetyourtrip_daily_tiers",
+  "promptVersion": "invalidated_duplicate_assignment:llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+  "provider": "delegated_codex_subagent_web_search",
+  "model": "codex-subagent",
+  "attempts": 2,
+  "retries": 1,
+  "status": "complete",
+  "searchesUsed": 4,
+  "discardedAttemptSearchesUsed": 2,
+  "aggregateSearchesUsed": 6,
+  "directPageReads": 0,
+  "startedAt": "2026-08-13T03:28:48.025Z",
+  "completedAt": "2026-08-13T03:29:22.545Z",
+  "durationMs": 34520,
+  "error": "An unintended duplicate subagent assignment made a second collection attempt; the first raw/telemetry pair was overwritten before audit. Aggregate searches are recorded in explicit audit fields and this promptVersion sentinel makes the slot intentionally ineligible."
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Delhi",
+  "country": "India",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 232.5,
+      "currency": "INR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Delhi",
+      "sourceTitle": "Cost of Living in Delhi. Jun 2026. Prices in Delhi",
+      "evidenceText": "Cappuccino (Regular Size) | ₹232.50 | 100.00-400.00",
+      "query": "site:numbeo.com/cost-of-living/in/Delhi \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 250,
+      "currency": "INR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Delhi",
+      "sourceTitle": "Cost of Living in Delhi. Jun 2026. Prices in Delhi",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₹250.00 | 120.00-500.00",
+      "query": "site:numbeo.com/cost-of-living/in/Delhi \"Domestic Draft Beer (0.5 Liter)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}
