@@ -253,7 +253,14 @@ describe('collectCityCostV61Anchors', () => {
       .mockResolvedValueOnce(response('budgetyourtrip_daily_tiers', city, country, bytMeasures))
       .mockResolvedValueOnce(response('numbeo_drinks', city, country, drinkMeasures));
 
-    const result = await collectCityCostV61Anchors({ city, country, provider: 'openai', apiKey: 'test' });
+    const result = await collectCityCostV61Anchors({
+      city,
+      country,
+      provider: 'openai',
+      apiKey: 'test',
+      model: 'gpt-5.6-luna',
+      reasoningEffort: 'high',
+    });
 
     expect(result.llmCalls).toBe(3);
     expect(result.searches).toBe(3);
@@ -272,6 +279,7 @@ describe('collectCityCostV61Anchors', () => {
     expect(mockedRun.mock.calls[0][0].userPrompt).toContain('city-cost-v6-1-spine-response-v1');
     expect(mockedRun.mock.calls[1][0].userPrompt).toContain('byt_food_budget_per_person_day');
     expect(mockedRun.mock.calls[2][0].userPrompt).toContain('domestic_draft_beer_1');
+    expect(mockedRun.mock.calls.every(([call]) => call.reasoningEffort === 'high')).toBe(true);
     expect(result.telemetry.every((call) => call.directPageReads === 0)).toBe(true);
     expect(Object.keys(result.rawResponses)).toEqual(V61_SPINE_SOURCES);
     expect(Object.keys(result.providerRawResponses ?? {})).toEqual(V61_SPINE_SOURCES);

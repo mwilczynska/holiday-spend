@@ -21,6 +21,7 @@ export interface CityEstimateMetadata {
   region: string;
   confidenceNotes: string;
   inferredAudPerUsd: number | null;
+  reasoningEffort: string | null;
   methodologyVersion: PersistedMethodologyVersion;
   evidenceGrades: Record<string, string> | null;
   intervals: Record<string, PersistedV6Interval> | null;
@@ -45,6 +46,7 @@ export interface CityGenerationPersistence {
   fallbackLog: unknown[];
   apiSummary: {
     methodologyVersion: PersistedMethodologyVersion;
+    reasoningEffort: string | null;
     evidenceGrades: Record<string, string> | null;
     intervals: Record<string, PersistedV6Interval> | null;
     collectionTelemetry: unknown[] | null;
@@ -147,6 +149,7 @@ export function buildCityEstimatePersistence(
       region: payload.region,
       confidenceNotes: payload.confidence_notes,
       inferredAudPerUsd: generated.inferredAudPerUsd,
+      reasoningEffort: generated.reasoningEffort ?? null,
       methodologyVersion,
       evidenceGrades: null,
       intervals: null,
@@ -171,6 +174,7 @@ export function buildCityEstimatePersistence(
       fallbackLog: [],
       apiSummary: {
         methodologyVersion,
+        reasoningEffort: generated.reasoningEffort ?? null,
         evidenceGrades: null,
         intervals: null,
         collectionTelemetry: null,
@@ -195,6 +199,7 @@ export function buildCityEstimatePersistence(
     region: payload.region,
     confidenceNotes: payload.confidence_notes,
     inferredAudPerUsd: generated.inferredAudPerUsd,
+    reasoningEffort: generated.reasoningEffort ?? null,
     methodologyVersion,
     ...derivedMetadata,
     v6CollectionTelemetry: telemetry,
@@ -216,6 +221,7 @@ export function buildCityEstimatePersistence(
     fallbackLog: telemetry ?? [],
     apiSummary: {
       methodologyVersion,
+      reasoningEffort: generated.reasoningEffort ?? null,
       evidenceGrades: derivedMetadata.evidenceGrades,
       intervals: derivedMetadata.intervals,
       collectionTelemetry: telemetry,

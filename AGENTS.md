@@ -159,6 +159,24 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
+**13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
+`gpt-5.6-sol` and `gpt-5.6-terra` were Codex/delegated runtime names rather than confirmed application models. That
+conclusion is superseded. A keyed provider refresh now treats the provider's live `/models` response as authoritative;
+the generated no-key snapshot includes the currently advertised GPT-5.6 variants. City-generation, new-city planner,
+snapshot-import and transport selectors render the refreshed effective list rather than stale static buttons. City
+generation also offers provider/model-specific thinking effort, passes it to each supported provider transport, and
+persists it in generation/API provenance. The previous three all-prior rows remain diagnostic, not a passing provider
+search smoke. Restart the local app, refresh with the browser key, choose a listed model and effort, then generate fresh
+smoke cities. Holdouts, the live CSV and the global/default flag remain untouched.
+
+**13 August 2026 user-key smoke correction:** Three fresh cities were sent through the opt-in v6.1 path with the
+browser-supplied OpenAI key and default `gpt-5.4-mini`. Their v6.1 records persisted, but all three search calls
+failed before searching because OpenAI rejects `web_search_preview` together with JSON mode; the materializer then
+used explicit all-prior grade-D fallbacks. This is diagnostic persistence evidence, not a passing provider/search
+smoke. The search transport fix must be verified with three new cities. `gpt-5.6-luna`, `gpt-5.6-sol` and
+`gpt-5.6-terra` are Codex/delegated runtime names not confirmed as public application API model IDs, so they are not
+added to the app catalog. Holdouts, the live CSV and the global/default flag remain untouched.
+
 **13 August 2026 Phase 10.5 release hardening:** Phase 10 has completed the 121-city staged migration and impact
 report; the artifact remains review-only. The non-live provenance importer now canonicalizes country aliases, prefers
 the frozen city ID, rejects ambiguous identities and duplicate migration imports, and reuses matching rows on replay.

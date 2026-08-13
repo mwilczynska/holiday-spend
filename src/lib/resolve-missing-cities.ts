@@ -99,6 +99,7 @@ export async function resolveMissingCities(params: {
         provider: generationConfig?.provider,
         apiKey: generationConfig?.apiKey,
         model: generationConfig?.model,
+        reasoningEffort: generationConfig?.reasoningEffort,
         referenceDate: generationConfig?.referenceDate,
         extraContext: generationConfig?.extraContext,
       });

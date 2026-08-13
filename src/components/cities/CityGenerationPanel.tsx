@@ -11,10 +11,13 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
+  CITY_GENERATION_REASONING_EFFORT_LABELS,
+  getSupportedCityGenerationReasoningEfforts,
   getDefaultCityGenerationModels,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
   type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 
@@ -31,6 +34,7 @@ interface GenerationResult {
   promptVersion: string;
   inferredAudPerUsd: number | null;
   methodologyVersion?: string;
+  reasoningEffort?: CityGenerationReasoningEffort;
   payload: {
     confidence: string;
     confidence_notes: string;
@@ -61,6 +65,7 @@ export function CityGenerationPanel({
     gemini: '',
   });
   const [models, setModels] = useState<Record<ProviderOption, string>>(getDefaultCityGenerationModels());
+  const [reasoningEffort, setReasoningEffort] = useState<CityGenerationReasoningEffort>('none');
   const [showApiKey, setShowApiKey] = useState(false);
   const [referenceDate, setReferenceDate] = useState('');
   const [extraContext, setExtraContext] = useState('');
@@ -72,6 +77,7 @@ export function CityGenerationPanel({
     const storedProvider = window.localStorage.getItem(`${STORAGE_PREFIX}.provider`) as ProviderOption | null;
     const storedKeys = window.localStorage.getItem(`${STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${STORAGE_PREFIX}.models`);
+    const storedReasoningEffort = window.localStorage.getItem(`${STORAGE_PREFIX}.reasoningEffort`);
 
     if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setProvider(storedProvider);
@@ -101,6 +107,10 @@ export function CityGenerationPanel({
         // Ignore malformed browser storage and keep the default state.
       }
     }
+
+    if (storedReasoningEffort && CITY_GENERATION_REASONING_EFFORT_LABELS[storedReasoningEffort as CityGenerationReasoningEffort]) {
+      setReasoningEffort(storedReasoningEffort as CityGenerationReasoningEffort);
+    }
   }, []);
 
   const selectedProvider =
@@ -108,13 +118,16 @@ export function CityGenerationPanel({
   const activeApiKey = apiKeys[provider] || '';
   const hasAnySavedApiKey = Object.values(apiKeys).some((value) => value.trim().length > 0);
   const activeModel = models[provider] || selectedProvider.defaultModel;
-  const modelValidation = validateCityGenerationModel(provider, activeModel);
   const modelListId = `${STORAGE_PREFIX}.${provider}.models`;
   const modelDiscovery = useProviderModelDiscovery({
     provider,
     apiKey: activeApiKey,
     enabled: true,
   });
+  const modelValidation = validateCityGenerationModel(provider, activeModel, modelDiscovery.result.effectiveModels);
+  const supportedReasoningEfforts = getSupportedCityGenerationReasoningEfforts(provider, activeModel);
+  const effectiveReasoningEffort = supportedReasoningEfforts.includes(reasoningEffort) ? reasoningEffort : 'none';
+  const visibleModelOptions = modelDiscovery.result.effectiveModels.slice(0, 16);
 
   function updateProvider(nextProvider: ProviderOption) {
     setProvider(nextProvider);
@@ -158,6 +171,11 @@ export function CityGenerationPanel({
     window.localStorage.setItem(`${STORAGE_PREFIX}.models`, JSON.stringify(nextModels));
   }
 
+  function updateReasoningEffort(value: CityGenerationReasoningEffort) {
+    setReasoningEffort(value);
+    window.localStorage.setItem(`${STORAGE_PREFIX}.reasoningEffort`, value);
+  }
+
   async function handleGenerate() {
     setLoading(true);
     setError(null);
@@ -170,6 +188,7 @@ export function CityGenerationPanel({
           provider,
           apiKey: activeApiKey || undefined,
           model: modelValidation.effectiveModel || undefined,
+          reasoningEffort: effectiveReasoningEffort,
           referenceDate: referenceDate || undefined,
           extraContext: extraContext || undefined,
         }),
@@ -271,7 +290,7 @@ export function CityGenerationPanel({
             </p>
           ) : null}
           <div className="flex flex-wrap gap-2">
-            {selectedProvider.knownModels.map((model) => (
+            {visibleModelOptions.map((model) => (
               <Button
                 key={model}
                 type="button"
@@ -294,6 +313,30 @@ export function CityGenerationPanel({
           ) : null}
           <p className={`text-xs ${modelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
             {modelValidation.message}
+          </p>
+        </div>
+        <div className="space-y-1">
+          <Label className="text-xs">Thinking / reasoning effort</Label>
+          <Select
+            value={effectiveReasoningEffort}
+            onValueChange={(value) => updateReasoningEffort(value as CityGenerationReasoningEffort)}
+            disabled={supportedReasoningEfforts.length <= 1}
+          >
+            <SelectTrigger className="h-9 text-sm">
+              <SelectValue placeholder="Select effort" />
+            </SelectTrigger>
+            <SelectContent>
+              {supportedReasoningEfforts.map((effort) => (
+                <SelectItem key={effort} value={effort}>
+                  {CITY_GENERATION_REASONING_EFFORT_LABELS[effort]}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground">
+            {supportedReasoningEfforts.length > 1
+              ? 'Passed to the selected provider when supported. Higher effort can increase latency and cost.'
+              : 'The selected model does not expose a configurable thinking setting through this adapter.'}
           </p>
         </div>
         <div className="space-y-1">
@@ -341,6 +384,7 @@ export function CityGenerationPanel({
             <Badge variant="outline">{result.model}</Badge>
             <Badge variant="outline">{result.promptVersion}</Badge>
             {result.methodologyVersion ? <Badge variant="outline">Method {result.methodologyVersion}</Badge> : null}
+            {result.reasoningEffort ? <Badge variant="outline">Thinking {result.reasoningEffort}</Badge> : null}
             {typeof result.inferredAudPerUsd === 'number' ? (
               <Badge variant="outline">1 USD = {fmtMoney(result.inferredAudPerUsd)} AUD</Badge>
             ) : null}

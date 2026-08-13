@@ -56,7 +56,7 @@ export function formatProviderModelDiscoveryStatus(params: {
   if (result.source === 'live') {
     const discoveredCount = result.liveModels.length;
     return discoveredCount > 0
-      ? `Live models loaded from the provider API${cachedSuffix}. ${pluralizeModels(discoveredCount)} discovered.`
+      ? `Live models loaded from the provider API${cachedSuffix}. ${pluralizeModels(discoveredCount)} available to this provider account.`
       : 'Live model discovery returned no usable generation models. Showing curated snapshot suggestions first.';
   }
 

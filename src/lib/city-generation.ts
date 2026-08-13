@@ -3,7 +3,10 @@ import path from 'path';
 import { z } from 'zod';
 import type { CityEstimateData } from '@/types';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
-import { type CityGenerationProvider } from '@/lib/city-generation-config';
+import {
+  type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
+} from '@/lib/city-generation-config';
 import {
   collectCityCostV61Anchors,
   type V61CollectionResult,
@@ -67,6 +70,7 @@ export interface CityGenerationRequest {
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
+  reasoningEffort?: CityGenerationReasoningEffort;
   region?: string | null;
 }
 
@@ -90,6 +94,7 @@ export interface CityGenerationResult {
   mappedEstimate: Partial<CityEstimateData>;
   inferredAudPerUsd: number | null;
   methodologyVersion: 'v1' | 'v6.0' | 'v6.1';
+  reasoningEffort?: CityGenerationReasoningEffort;
   v6Collection?: V6CollectionResult;
   v6Materialization?: V6Materialization;
   v61Collection?: V61CollectionResult;
@@ -258,6 +263,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
         provider: request.provider,
         apiKey: request.apiKey,
         model: request.model,
+        reasoningEffort: request.reasoningEffort,
       });
       const materialization = materializeCityCostV61({
         city: request.cityName,
@@ -299,6 +305,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
         provider: primaryCall?.provider ?? request.provider ?? 'unknown',
         model: primaryCall?.model ?? request.model ?? 'unknown',
         promptVersion: 'city-cost-v6-1-spine-v1',
+        reasoningEffort: request.reasoningEffort ?? 'none',
         inferredAudPerUsd: null,
         methodologyVersion: 'v6.1',
         v61Collection: collection,
@@ -323,6 +330,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
       provider: request.provider,
       apiKey: request.apiKey,
       model: request.model,
+      reasoningEffort: request.reasoningEffort,
       maxTokens: 3000,
     });
   } catch (err) {
@@ -358,6 +366,7 @@ export async function generateCityCostEstimate(request: CityGenerationRequest): 
     provider: providerResponse.provider,
     model: providerResponse.model,
     promptVersion,
+    reasoningEffort: request.reasoningEffort ?? 'none',
     inferredAudPerUsd,
     methodologyVersion: 'v1',
     mappedEstimate: mapTiersToEstimateData(parsedPayload),

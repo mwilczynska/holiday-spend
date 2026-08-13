@@ -26,6 +26,27 @@ describe('provider-model-discovery', () => {
     expect(merged.indexOf('gpt-4.1')).toBeLessThan(merged.indexOf('gpt-4.1-mini'));
   });
 
+  it('uses a keyed live provider list as the visible authoritative model list', async () => {
+    const originalFetch = global.fetch;
+    global.fetch = (async () => new Response(
+      JSON.stringify({ data: [{ id: 'gpt-5.6-luna' }, { id: 'gpt-5.6-sol' }] }),
+      { status: 200, headers: { 'content-type': 'application/json' } },
+    )) as typeof fetch;
+
+    try {
+      const result = await discoverProviderModels({
+        provider: 'openai',
+        browserApiKey: 'live-key',
+        forceRefresh: true,
+      });
+      expect(result.source).toBe('live');
+      expect(result.effectiveModels).toEqual(['gpt-5.6-luna', 'gpt-5.6-sol']);
+      expect(result.effectiveModels).not.toContain('gpt-5.4-mini');
+    } finally {
+      global.fetch = originalFetch;
+    }
+  });
+
   it('filters OpenAI models down to likely text-generation ids', () => {
     const result = normalizeOpenAiModelIds({
       data: [

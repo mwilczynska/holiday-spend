@@ -10,7 +10,7 @@ import { buildCityEstimatePersistence } from '@/lib/city-generation-persistence'
 
 export interface GenerateAndPersistCityEstimateInput extends Pick<
   CityGenerationRequest,
-  'referenceDate' | 'arrivalDate' | 'departureDate' | 'extraContext' | 'provider' | 'apiKey' | 'model' | 'region'
+  'referenceDate' | 'arrivalDate' | 'departureDate' | 'extraContext' | 'provider' | 'apiKey' | 'model' | 'reasoningEffort' | 'region'
 > {
   cityId: string;
 }
@@ -24,6 +24,7 @@ export async function generateAndPersistCityEstimate({
   provider,
   apiKey,
   model,
+  reasoningEffort,
 }: GenerateAndPersistCityEstimateInput) {
   const city = await db.select().from(cities).where(eq(cities.id, cityId)).get();
   if (!city) throw new CityGenerationError('City not found', 404);
@@ -41,6 +42,7 @@ export async function generateAndPersistCityEstimate({
     provider,
     apiKey,
     model,
+    reasoningEffort,
     region: country.region,
   });
 

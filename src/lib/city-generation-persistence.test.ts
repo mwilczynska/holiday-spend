@@ -108,6 +108,7 @@ function v6Result(version: 'v6.0' | 'v6.1'): CityGenerationResult {
     mappedEstimate: { accom3star: 100 },
     inferredAudPerUsd: null,
     methodologyVersion: version,
+    reasoningEffort: 'high',
     ...(version === 'v6.1'
       ? { v61Collection: collection as V61CollectionResult, v61Materialization: materialization as V61Materialization }
       : { v6Collection: collection as V6CollectionResult, v6Materialization: materialization as V6Materialization }),
@@ -164,5 +165,7 @@ describe('city generation persistence adapter', () => {
     expect(persisted.anchors).toEqual([{ measure: 'hotel_3star_room_2p', status: 'observed', value: 100 }]);
     expect(persisted.inputSnapshot).toMatchObject({ hotel_3star_room_2p: { valueAud: 100 } });
     expect(persisted.apiSummary.methodologyVersion).toBe('v6.1');
+    expect(persisted.metadata.reasoningEffort).toBe('high');
+    expect(persisted.apiSummary.reasoningEffort).toBe('high');
   });
 });

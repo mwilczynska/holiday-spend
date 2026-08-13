@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import {
+  CITY_GENERATION_DEFAULT_MODELS,
   CITY_GENERATION_PROVIDERS,
   type CityGenerationProvider,
   type CuratedModelsSnapshot,
@@ -22,7 +23,12 @@ async function buildProviderSnapshot(provider: CityGenerationProvider) {
   return {
     provider,
     aggregatorSource: aggregated.aggregatorSource,
-    modelIds: aggregated.modelIds.slice(0, SUGGESTIONS_PER_PROVIDER),
+    // Keep the shipped default available even if an aggregator temporarily
+    // omits it, then fill the remaining slots with current upstream IDs.
+    modelIds: Array.from(new Set([
+      CITY_GENERATION_DEFAULT_MODELS[provider],
+      ...aggregated.modelIds,
+    ])).slice(0, SUGGESTIONS_PER_PROVIDER),
   };
 }
 

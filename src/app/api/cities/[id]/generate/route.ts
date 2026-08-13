@@ -1,7 +1,10 @@
 import { db } from '@/db';
 import { cities } from '@/db/schema';
 import { CityGenerationError } from '@/lib/city-generation';
-import { CITY_GENERATION_PROVIDERS } from '@/lib/city-generation-config';
+import {
+  CITY_GENERATION_PROVIDERS,
+  CITY_GENERATION_REASONING_EFFORTS,
+} from '@/lib/city-generation-config';
 import { generateAndPersistCityEstimate } from '@/lib/city-generation-service';
 import { error, handleError, success } from '@/lib/api-helpers';
 import { eq } from 'drizzle-orm';
@@ -15,6 +18,7 @@ const requestSchema = z.object({
   provider: z.enum(CITY_GENERATION_PROVIDERS).optional(),
   apiKey: z.string().optional(),
   model: z.string().optional(),
+  reasoningEffort: z.enum(CITY_GENERATION_REASONING_EFFORTS).optional(),
 });
 
 export async function POST(
@@ -36,12 +40,14 @@ export async function POST(
       provider: data.provider,
       apiKey: data.apiKey,
       model: data.model,
+      reasoningEffort: data.reasoningEffort,
     });
 
     return success({
       provider: generated.provider,
       model: generated.model,
       promptVersion: generated.promptVersion,
+      reasoningEffort: generated.reasoningEffort,
       inferredAudPerUsd: generated.inferredAudPerUsd,
       methodologyVersion: generated.methodologyVersion,
       payload: generated.payload,

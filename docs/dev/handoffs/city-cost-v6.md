@@ -4,6 +4,28 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
+> `gpt-5.6-sol` and `gpt-5.6-terra` were Codex/delegated-only names. That is superseded. A keyed provider model
+> refresh now makes the provider's live `/models` response authoritative, and the generated fallback snapshot includes
+> the currently advertised GPT-5.6 variants. The city-generation, new-city planner and snapshot-import selectors now
+> render the refreshed effective list instead of the stale static list. They also expose provider/model-specific
+> thinking effort and persist the selected setting through generation and API provenance. The prior three all-prior
+> rows remain diagnostic, not a passing search smoke. Exact next action: restart the local app, refresh OpenAI models
+> with the browser key, choose a listed model/effort, generate fresh smoke cities, and verify observed search telemetry
+> plus DB/API provenance. Never send or store the key through Codex. Live CSV, holdouts and Phase 11 remain untouched.
+
+> **13 August 2026 user-key smoke correction:** The owner generated three fresh cities with the local
+> `CITY_COST_METHODOLOGY_V6=true` process and the browser-supplied OpenAI key. The persisted rows are correctly
+> tagged `source=llm_city_generation_v6_1`, `methodologyVersion=v6.1`, model `gpt-5.4-mini`, and retain the v6.1
+> provenance shape. However, all three source calls failed before searching: OpenAI rejects the combination of
+> `web_search_preview` and `text.format.type=json_object` used by the search transport. The materializer correctly
+> failed closed to all-prior grade-D values, so these rows are not a passing provider/search smoke and must not be
+> counted as one. The failed rows remain as diagnostic history. The refreshed model list did not include
+> `gpt-5.6-luna`, `gpt-5.6-sol` or `gpt-5.6-terra`; those are Codex/delegated runtime names, not confirmed public
+> OpenAI API model IDs, and must not be added to the application catalog without provider support. Exact next action:
+> verify the search-transport fix, restart/reload the local app, generate three new cities with the same browser key,
+> and confirm observed source telemetry plus the database/API provenance round-trip. Do not count the prior three.
+
 > **13 August 2026 Phase 10.5 hardening:** Phase 10 remains complete and the 121-city staged migration is still
 > review-only. The current pass fixes the non-live provenance import boundary: country aliases are resolved through
 > canonical metadata, exact frozen city IDs win over ambiguous name matches, duplicate migration imports are rejected,

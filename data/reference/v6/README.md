@@ -21,7 +21,24 @@ Read
 The preflight record is `experiments/010-v6-1-runtime-canary/`; it is not runtime coverage evidence and must
 not be rerun or mutated.
 
+**13 August 2026 user-key smoke correction:** Three fresh UI generations used the browser-supplied OpenAI key and
+the default `gpt-5.4-mini`, and their persisted records have the v6.1 provenance shape. All three search-enabled
+source calls nevertheless failed with OpenAI's incompatibility error for `web_search_preview` plus JSON mode, so the
+materializer used all-prior grade-D fallbacks. They are diagnostic v6.1 persistence records, not a passing provider
+or search smoke. The search transport fix must be verified with three new cities. `gpt-5.6-luna`, `gpt-5.6-sol` and
+`gpt-5.6-terra` are not present in the returned application provider catalog; they are not assumed to be public API
+model IDs. The live CSV, holdouts and default flag remain untouched.
+
 ## Current release-hardening status - 13 August 2026
+
+**Provider-model UI correction — 13 August 2026:** The earlier smoke note that treated `gpt-5.6-luna`,
+`gpt-5.6-sol` and `gpt-5.6-terra` as unconfirmed Codex-only names is superseded. With a browser or server provider
+key, `/api/llm/models` now exposes the provider's live model list as the authoritative effective list; without a key,
+the generated curated snapshot supplies fallback suggestions and includes the currently advertised GPT-5.6 variants.
+All city-generation model selectors render the effective list, and city generation exposes provider/model-specific
+thinking effort options. The selected effort is persisted with the generation provenance. This is a UI/transport change,
+not a passing provider smoke: the three prior all-prior rows remain diagnostic. Restart the app and run fresh keyed
+smoke generations before counting observed search telemetry. The live CSV, holdouts and default flag remain untouched.
 
 Phase 10 is complete and the staged 121-city artifact is awaiting owner review. Phase 10.5 is a non-live
 integration hardening pass: the provenance importer canonicalizes country aliases, resolves the frozen city ID before

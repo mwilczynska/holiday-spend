@@ -23,7 +23,7 @@ type CityRow = typeof cities.$inferSelect;
 
 export interface ResolveOrCreatePlannerCityInput extends Pick<
   GenerateAndPersistCityEstimateInput,
-  'provider' | 'apiKey' | 'model' | 'referenceDate' | 'extraContext'
+  'provider' | 'apiKey' | 'model' | 'reasoningEffort' | 'referenceDate' | 'extraContext'
 > {
   cityName: string;
   countryName: string;
@@ -136,6 +136,7 @@ Rules:
       provider: input.provider,
       apiKey: input.apiKey,
       model: input.model,
+      reasoningEffort: input.reasoningEffort,
       maxTokens: 600,
     });
   } catch (err) {
@@ -285,6 +286,7 @@ export async function resolveOrCreatePlannerCity(input: ResolveOrCreatePlannerCi
       provider: input.provider,
       apiKey: input.apiKey,
       model: input.model,
+      reasoningEffort: input.reasoningEffort,
       referenceDate: input.referenceDate,
       extraContext: input.extraContext,
     });

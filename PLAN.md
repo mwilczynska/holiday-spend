@@ -4,8 +4,38 @@ The working document for the current workstream. Confirmed historical results an
 live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 
 **Active workstream:** city cost methodology **v6.1 — coherent 121-city migration**
-**Last reviewed:** 12 August 2026
+**Last reviewed:** 13 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
+
+**13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
+`gpt-5.6-sol` and `gpt-5.6-terra` were Codex-only names. That conclusion is superseded: the provider refresh now
+treats a keyed provider `/models` response as authoritative, and the generated no-key snapshot includes the currently
+advertised GPT-5.6 variants. City-generation and planner/import selectors render that effective list after refresh
+instead of stale static buttons. A provider/model-specific thinking-effort selector is persisted in browser storage and
+passed through metadata resolution, v1/v6.1 generation, search transport and persistence/API provenance. The prior
+three all-prior rows remain diagnostic, not a passing search smoke. Exact next action: restart the local app, refresh
+OpenAI models with the browser key, choose a listed GPT-5.6 model and effort, then generate fresh smoke cities to
+verify observed search telemetry and DB/API provenance. Live CSV, holdouts and Phase 11 remain untouched.
+
+**13 August 2026 provider-model UI correction:** The older smoke note below said that `gpt-5.6-luna`,
+`gpt-5.6-sol` and `gpt-5.6-terra` were Codex-only names. That conclusion is superseded: the provider refresh now
+treats a keyed provider `/models` response as authoritative, and the generated no-key snapshot includes the currently
+advertised GPT-5.6 variants. City-generation and planner/import selectors render that effective list after refresh
+instead of stale static buttons. A provider/model-specific thinking-effort selector is persisted in browser storage and
+passed through metadata resolution, v1/v6.1 generation, search transport and persistence/API provenance. The prior
+three all-prior rows remain diagnostic, not a passing search smoke. Exact next action: restart the local app, refresh
+OpenAI models with the browser key, choose a listed GPT-5.6 model and effort, then generate fresh smoke cities to
+verify observed search telemetry and DB/API provenance. Live CSV, holdouts and Phase 11 remain untouched.
+
+**13 August 2026 user-key smoke correction:** Three fresh cities were generated through the opt-in v6.1 path with
+the browser-supplied OpenAI key and default `gpt-5.4-mini`. Their v6.1 records persisted, but all three source calls
+failed before search because the OpenAI Responses request combined `web_search_preview` with incompatible JSON mode;
+the materializer therefore used explicit all-prior grade-D fallbacks. This is not a passing provider/search smoke.
+The search transport is being corrected and the three rows are retained as diagnostic history, not counted. The
+Codex-only names `gpt-5.6-luna`, `gpt-5.6-sol` and `gpt-5.6-terra` were absent from the provider model catalog; they
+must not be presented as application API models unless the provider advertises them. Exact next action is to rerun
+three fresh cities after the transport fix and verify observed source telemetry and DB/API provenance. The live CSV,
+holdouts and Phase 11 remain untouched.
 
 **13 August 2026 Phase 10.5 release hardening:** The 121-city staged artifact and impact report are complete but
 remain non-live. The current pass hardens the provenance import path: canonical country aliases are accepted, frozen

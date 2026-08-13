@@ -3241,3 +3241,32 @@ BudgetYourTrip's high/luxury daily food tier, not the historical mid-range x1.50
 difference versus v1 is therefore an operational impact finding, not a tuning target. The next action is the full
 verification baseline, then the external 3-5-city user-key provider/database/API smoke and owner approval. No
 holdout, live CSV, coefficient or global/default flag was changed.
+
+### v6.1 provider refresh and thinking-effort correction — 13 August 2026
+
+The preceding model-catalog conclusion is superseded. The provider refresh path now uses a keyed provider `/models`
+response as the authoritative model list, so refreshed models are available both in the datalist and quick-select
+buttons; the generated no-key snapshot was refreshed and includes the currently advertised GPT-5.6 Luna, Terra and Sol
+variants. City-generation, new-city planner and snapshot-import flows now expose model-family-specific thinking/
+reasoning effort options, pass the selected value through metadata resolution and v1/v6.1 generation, and persist it
+in the estimate metadata/API summary. Transport model selectors also use the refreshed effective list. The prior three
+all-prior cities remain diagnostic because their calls predated the OpenAI JSON-mode fix; they are not counted as a
+provider/search smoke. No key was read, copied, logged or stored. Exact next action: restart the local app, refresh
+OpenAI models with the browser key, choose a listed GPT-5.6 model and effort, generate fresh smoke cities, and inspect
+source telemetry plus the DB/API provenance round-trip. Live CSV, holdouts and production default remain untouched.
+
+### v6.1 user-key smoke: search transport failure - 13 August 2026
+
+The owner generated three fresh cities through the local opt-in v6.1 webapp path using a browser-supplied OpenAI
+key. The persisted estimates were tagged `llm_city_generation_v6_1` / `v6.1` and retained 19 grades and intervals,
+but each of the three source calls failed before search with the same provider error: OpenAI rejects
+`web_search_preview` when the Responses request also uses `text.format.type=json_object`. The deterministic
+materializer correctly retained explicit missingness and produced all-prior grade-D fallbacks. These rows are not
+counted as the required provider/search smoke and were not deleted.
+
+The application default was `gpt-5.4-mini`. Refreshing the application model list did not return
+`gpt-5.6-luna`, `gpt-5.6-sol` or `gpt-5.6-terra`; those names are used by Codex/delegated runtime telemetry and are
+not treated as public OpenAI API model IDs. The search transport was corrected to omit the incompatible JSON-mode
+field while retaining prompt-level JSON and deterministic schema validation. The next action is to generate three
+new cities after that fix and verify actual provider search telemetry plus the DB/API provenance round-trip. No key
+was copied, logged or stored; the live CSV, holdouts and production default remain untouched.

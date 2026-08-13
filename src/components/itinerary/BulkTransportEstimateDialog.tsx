@@ -594,7 +594,7 @@ export function BulkTransportEstimateDialog({
                     </p>
                   ) : null}
                   <div className="flex flex-wrap gap-2">
-                    {selectedProvider.knownModels.map((model) => (
+                    {modelDiscovery.result.effectiveModels.slice(0, 16).map((model) => (
                       <Button
                         key={model}
                         type="button"

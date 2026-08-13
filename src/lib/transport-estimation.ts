@@ -4,7 +4,10 @@ import { z } from 'zod';
 import { runJsonPromptWithProvider } from '@/lib/city-llm-client';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  getCityGenerationThinkingBudget,
+  getSupportedCityGenerationReasoningEfforts,
   type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 import type {
   TransportEstimateCitation,
@@ -92,6 +95,16 @@ export interface ProviderSearchResponse {
 }
 
 type ProviderTransportResponse = ProviderSearchResponse;
+
+function providerSupportsReasoning(
+  provider: CityGenerationProvider,
+  model: string,
+  effort?: CityGenerationReasoningEffort,
+) {
+  if (!effort) return false;
+  const supported = getSupportedCityGenerationReasoningEfforts(provider, model);
+  return supported.length > 1 && supported.includes(effort);
+}
 
 const BROWSE_TRANSPORT_MAX_TOKENS = 900;
 const FALLBACK_TRANSPORT_MAX_TOKENS = 650;
@@ -388,6 +401,7 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
@@ -405,17 +419,19 @@ async function runOpenAiTransportPromptWithWebSearch(params: {
       input: params.userPrompt,
       max_output_tokens: params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS,
       store: false,
-      text: {
-        format: {
-          type: 'json_object',
-        },
-      },
+      // OpenAI rejects JSON mode when web_search_preview is enabled. The
+      // caller still extracts and validates the JSON object against its own
+      // schema, so the prompt remains JSON-only without sending the
+      // incompatible response-format option.
       tools: [
         {
           type: 'web_search_preview',
           search_context_size: 'medium',
         },
       ],
+      ...(providerSupportsReasoning('openai', model, params.reasoningEffort)
+        ? { reasoning: { effort: params.reasoningEffort } }
+        : {}),
     }),
   });
 
@@ -490,6 +506,7 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
@@ -517,6 +534,25 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
 
   for (let attempt = 0; attempt < 2; attempt += 1) {
     attempts = attempt + 1;
+    const thinkingBudget = providerSupportsReasoning('anthropic', model, params.reasoningEffort)
+      ? getCityGenerationThinkingBudget(params.reasoningEffort)
+      : 0;
+    const requestBody: Record<string, unknown> = {
+      model,
+      max_tokens: Math.max(params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS, thinkingBudget + 1500),
+      system: params.systemPrompt,
+      tools: [
+        {
+          type: 'web_search_20250305',
+          name: 'web_search',
+          max_uses: 2,
+        },
+      ],
+      messages: [{ role: 'user', content: params.userPrompt }],
+    };
+    if (thinkingBudget > 0) {
+      requestBody.thinking = { type: 'enabled', budget_tokens: thinkingBudget };
+    }
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -524,19 +560,7 @@ async function runAnthropicTransportPromptWithWebSearch(params: {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify({
-        model,
-        max_tokens: params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS,
-        system: params.systemPrompt,
-        tools: [
-          {
-            type: 'web_search_20250305',
-            name: 'web_search',
-            max_uses: 2,
-          },
-        ],
-        messages: [{ role: 'user', content: params.userPrompt }],
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (response.ok) {
@@ -640,6 +664,7 @@ async function runGeminiTransportPromptWithSearch(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderTransportResponse | null> {
   const apiKey = normalizeApiKey(params.apiKey) ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
@@ -689,7 +714,9 @@ async function runGeminiTransportPromptWithSearch(params: {
             responseMimeType: 'application/json',
             maxOutputTokens: params.maxTokens ?? BROWSE_TRANSPORT_MAX_TOKENS,
             thinkingConfig: {
-              thinkingBudget: 0,
+              thinkingBudget: providerSupportsReasoning('gemini', model, params.reasoningEffort)
+                ? getCityGenerationThinkingBudget(params.reasoningEffort)
+                : 0,
             },
           },
         }),
@@ -811,6 +838,7 @@ export async function runJsonPromptWithWebSearch(params: {
   apiKey?: string;
   model?: string;
   maxTokens?: number;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<ProviderSearchResponse | null> {
   const browseRunnerByProvider: Record<
     CityGenerationProvider,
@@ -820,6 +848,7 @@ export async function runJsonPromptWithWebSearch(params: {
       apiKey?: string;
       model?: string;
       maxTokens?: number;
+      reasoningEffort?: CityGenerationReasoningEffort;
     }) => Promise<ProviderTransportResponse | null>
   > = {
     openai: runOpenAiTransportPromptWithWebSearch,

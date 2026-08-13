@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   CITY_GENERATION_DEFAULT_MODELS,
+  getSupportedCityGenerationReasoningEfforts,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
 } from '@/lib/city-generation-config';
@@ -45,5 +46,15 @@ describe('city-generation-config', () => {
     expect(validation.isKnownModel).toBe(false);
     expect(validation.effectiveModel).toBe('gemini-experimental-foo');
     expect(validation.tone).toBe('warning');
+  });
+
+  it('exposes model-family reasoning effort capabilities', () => {
+    expect(getSupportedCityGenerationReasoningEfforts('openai', 'gpt-5.6-luna')).toEqual([
+      'none', 'low', 'medium', 'high', 'xhigh', 'max',
+    ]);
+    expect(getSupportedCityGenerationReasoningEfforts('openai', 'gpt-5.4-mini')).toEqual([
+      'none', 'low', 'medium', 'high', 'xhigh',
+    ]);
+    expect(getSupportedCityGenerationReasoningEfforts('openai', 'gpt-4.1')).toEqual(['none']);
   });
 });

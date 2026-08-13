@@ -1,7 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
-import type { CityGenerationProvider } from './city-generation-config';
+import type {
+  CityGenerationProvider,
+  CityGenerationReasoningEffort,
+} from './city-generation-config';
 import {
   runJsonPromptWithWebSearch,
   type ProviderSearchResponse,
@@ -180,6 +183,7 @@ export type V61DiskTelemetry = {
   durationMs?: number;
   latencyMs?: number | null;
   error?: string | null;
+  reasoningEffort?: CityGenerationReasoningEffort;
 };
 
 export interface V61SpineFact extends V61ParsedMeasure {
@@ -205,6 +209,7 @@ export interface V61CollectionCallTelemetry {
   completedAt: string;
   durationMs: number;
   error: string | null;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }
 
 export type V61AnchorInputs = Partial<Record<V61SourceMeasure, V6AnchorInput>>;
@@ -448,6 +453,7 @@ export function normalizeV61DiskTelemetry(source: V61SpineSource, response: V61S
     completedAt,
     durationMs: telemetry.durationMs ?? telemetry.latencyMs ?? 0,
     error: telemetry.error ?? null,
+    reasoningEffort: telemetry.reasoningEffort ?? 'none',
   };
 }
 
@@ -524,6 +530,7 @@ function blockedResult(input: {
   attempts?: number;
   retries?: number;
   status?: 'blocked' | 'error';
+  reasoningEffort?: CityGenerationReasoningEffort;
 }) {
   const {
     source,
@@ -570,6 +577,7 @@ function blockedResult(input: {
     completedAt: new Date().toISOString(),
     durationMs: Date.now() - startTime,
     error,
+    reasoningEffort: input.reasoningEffort ?? 'none',
   };
   return { response, rawResponse: response, providerRawResponse: null, telemetry, ...factsAndAnchors(source, response, telemetry) };
 }
@@ -582,6 +590,7 @@ async function collectV61SpineCall(input: {
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }) {
   const config = V61_SOURCE_CONFIG[input.source];
   const promptVersion = config.promptFile;
@@ -614,6 +623,7 @@ async function collectV61SpineCall(input: {
       userPrompt: renderV61Prompt(input.source, input.city, input.country, input.dates),
       apiKey: input.apiKey,
       model: input.model,
+      reasoningEffort: input.reasoningEffort,
       maxTokens: 2600,
     });
     if (!response) {
@@ -659,6 +669,7 @@ async function collectV61SpineCall(input: {
       completedAt: new Date().toISOString(),
       durationMs: Date.now() - startTime,
       error: null,
+      reasoningEffort: input.reasoningEffort ?? 'none',
     };
     return {
       ...factsAndAnchors(input.source, parsed, telemetry),
@@ -693,6 +704,7 @@ export async function collectCityCostV61Anchors(input: {
   provider?: CityGenerationProvider;
   apiKey?: string;
   model?: string;
+  reasoningEffort?: CityGenerationReasoningEffort;
 }): Promise<V61CollectionResult> {
   const referenceDate = input.referenceDate?.slice(0, 10) || input.arrivalDate?.slice(0, 10) || new Date().toISOString().slice(0, 10);
   const arrivalDate = input.arrivalDate?.slice(0, 10) || referenceDate;
@@ -711,6 +723,7 @@ export async function collectCityCostV61Anchors(input: {
       provider: input.provider,
       apiKey: input.apiKey,
       model: input.model,
+      reasoningEffort: input.reasoningEffort,
     }));
   }
   const searches = results.reduce((total, result) => total + result.telemetry.searchesUsed, 0);

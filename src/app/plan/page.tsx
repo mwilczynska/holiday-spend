@@ -21,10 +21,13 @@ import type { IntercityTransportItem } from '@/types';
 import type { PlanSnapshot } from '@/lib/plan-snapshot';
 import {
   CITY_GENERATION_PROVIDER_OPTIONS,
+  CITY_GENERATION_REASONING_EFFORT_LABELS,
+  getSupportedCityGenerationReasoningEfforts,
   getDefaultCityGenerationModels,
   migrateStoredCityGenerationModels,
   validateCityGenerationModel,
   type CityGenerationProvider,
+  type CityGenerationReasoningEffort,
 } from '@/lib/city-generation-config';
 import { useProviderModelDiscovery } from '@/lib/use-provider-model-discovery';
 import { KNOWN_COUNTRIES, findKnownCountryMetadata, slugifyId } from '@/lib/country-metadata';
@@ -229,6 +232,7 @@ export default function PlanPage() {
     gemini: '',
   });
   const [importModels, setImportModels] = useState<Record<ProviderOption, string>>(getDefaultCityGenerationModels());
+  const [importReasoningEffort, setImportReasoningEffort] = useState<CityGenerationReasoningEffort>('none');
   const [showImportApiKey, setShowImportApiKey] = useState(false);
   const [importReferenceDate, setImportReferenceDate] = useState('');
   const [importExtraContext, setImportExtraContext] = useState('');
@@ -334,6 +338,7 @@ export default function PlanPage() {
     const storedProvider = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.provider`) as ProviderOption | null;
     const storedKeys = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.apiKeys`);
     const storedModels = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.models`);
+    const storedReasoningEffort = window.localStorage.getItem(`${CITY_GENERATION_STORAGE_PREFIX}.reasoningEffort`);
 
     if (storedProvider && CITY_GENERATION_PROVIDER_OPTIONS.some((option) => option.value === storedProvider)) {
       setImportProvider(storedProvider);
@@ -361,6 +366,10 @@ export default function PlanPage() {
       } catch {
         // Ignore malformed browser storage and keep defaults.
       }
+    }
+
+    if (storedReasoningEffort && storedReasoningEffort in CITY_GENERATION_REASONING_EFFORT_LABELS) {
+      setImportReasoningEffort(storedReasoningEffort as CityGenerationReasoningEffort);
     }
   }, [countries]);
 
@@ -555,6 +564,13 @@ export default function PlanPage() {
     }
   };
 
+  const updateImportReasoningEffort = (value: CityGenerationReasoningEffort) => {
+    setImportReasoningEffort(value);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(`${CITY_GENERATION_STORAGE_PREFIX}.reasoningEffort`, value);
+    }
+  };
+
   const resetPendingImportState = useCallback(() => {
     setImportResolutionOpen(false);
     setPendingImportSnapshot(null);
@@ -574,6 +590,10 @@ export default function PlanPage() {
     }
   ) => {
     const effectiveImportModel = validateCityGenerationModel(importProvider, importModels[importProvider]).effectiveModel;
+    const importModelReasoningEfforts = getSupportedCityGenerationReasoningEfforts(importProvider, effectiveImportModel);
+    const effectiveImportReasoningEffort = importModelReasoningEfforts.includes(importReasoningEffort)
+      ? importReasoningEffort
+      : 'none';
     const body = options?.missingCityResolutions
       ? {
           snapshot,
@@ -595,6 +615,7 @@ export default function PlanPage() {
                   provider: importProvider,
                   apiKey: importApiKeys[importProvider] || undefined,
                   model: effectiveImportModel || undefined,
+                  reasoningEffort: effectiveImportReasoningEffort,
                   referenceDate: importReferenceDate || undefined,
                   extraContext: importExtraContext || undefined,
                 }
@@ -642,6 +663,7 @@ export default function PlanPage() {
     importExtraContext,
     importModels,
     importProvider,
+    importReasoningEffort,
     importReferenceDate,
   ]);
 
@@ -864,13 +886,22 @@ export default function PlanPage() {
   const activeImportApiKey = importApiKeys[importProvider] || '';
   const hasAnySavedImportApiKey = Object.values(importApiKeys).some((value) => value.trim().length > 0);
   const activeImportModel = importModels[importProvider] || selectedImportProvider.defaultModel;
-  const importModelValidation = validateCityGenerationModel(importProvider, activeImportModel);
   const importModelListId = `${CITY_GENERATION_STORAGE_PREFIX}.${importProvider}.models`;
   const importModelDiscovery = useProviderModelDiscovery({
     provider: importProvider,
     apiKey: activeImportApiKey,
     enabled: importResolutionOpen && missingCityStrategy === 'generate',
   });
+  const importModelValidation = validateCityGenerationModel(
+    importProvider,
+    activeImportModel,
+    importModelDiscovery.result.effectiveModels,
+  );
+  const visibleImportModelOptions = importModelDiscovery.result.effectiveModels.slice(0, 16);
+  const supportedImportReasoningEfforts = getSupportedCityGenerationReasoningEfforts(importProvider, activeImportModel);
+  const effectiveImportReasoningEffort = supportedImportReasoningEfforts.includes(importReasoningEffort)
+    ? importReasoningEffort
+    : 'none';
   const canonicalCountryOptions = KNOWN_COUNTRIES.map((country) => {
     const preview = getSelectedCountryPreview(country.id, countries);
     return {
@@ -1160,7 +1191,7 @@ export default function PlanPage() {
                       </p>
                     ) : null}
                     <div className="flex flex-wrap gap-2">
-                      {selectedImportProvider.knownModels.map((model) => (
+                      {visibleImportModelOptions.map((model) => (
                         <Button
                           key={model}
                           type="button"
@@ -1183,6 +1214,30 @@ export default function PlanPage() {
                     ) : null}
                     <p className={`text-xs ${importModelValidation.tone === 'warning' ? 'text-amber-600' : 'text-muted-foreground'}`}>
                       {importModelValidation.message}
+                    </p>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Thinking / reasoning effort</Label>
+                    <Select
+                      value={effectiveImportReasoningEffort}
+                      onValueChange={(value) => updateImportReasoningEffort(value as CityGenerationReasoningEffort)}
+                      disabled={supportedImportReasoningEfforts.length <= 1}
+                    >
+                      <SelectTrigger className="h-9 text-sm">
+                        <SelectValue placeholder="Select effort" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {supportedImportReasoningEfforts.map((effort) => (
+                          <SelectItem key={effort} value={effort}>
+                            {CITY_GENERATION_REASONING_EFFORT_LABELS[effort]}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <p className="text-xs text-muted-foreground">
+                      {supportedImportReasoningEfforts.length > 1
+                        ? 'Passed to the selected model when supported. Higher effort can increase latency and cost.'
+                        : 'The selected model does not expose a configurable thinking setting through this adapter.'}
                     </p>
                   </div>
                   <div className="space-y-1">

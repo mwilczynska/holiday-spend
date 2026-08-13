@@ -4,6 +4,62 @@ export const CITY_GENERATION_PROVIDERS = ['anthropic', 'openai', 'gemini'] as co
 
 export type CityGenerationProvider = (typeof CITY_GENERATION_PROVIDERS)[number];
 
+export const CITY_GENERATION_REASONING_EFFORTS = ['none', 'low', 'medium', 'high', 'xhigh', 'max'] as const;
+
+export type CityGenerationReasoningEffort = (typeof CITY_GENERATION_REASONING_EFFORTS)[number];
+
+/**
+ * Return the effort values the selected provider/model family is known to
+ * accept. Provider model-list APIs expose IDs, not a uniform capability
+ * schema, so this is deliberately conservative for unknown custom IDs.
+ */
+export function getSupportedCityGenerationReasoningEfforts(
+  provider: CityGenerationProvider,
+  model?: string,
+): CityGenerationReasoningEffort[] {
+  const normalized = model?.trim().toLowerCase() ?? '';
+
+  if (provider === 'openai') {
+    if (/^gpt-5\.6(?:-|$)/.test(normalized)) {
+      return [...CITY_GENERATION_REASONING_EFFORTS];
+    }
+    if (/^(?:gpt-5(?:\.|-)|o1(?:-|$)|o3(?:-|$)|o4(?:-|$))/.test(normalized)) {
+      return CITY_GENERATION_REASONING_EFFORTS.filter((effort) => effort !== 'max');
+    }
+    return ['none'];
+  }
+
+  if (provider === 'anthropic') {
+    return /^claude-(?:3-7-|(?:opus|sonnet|haiku)-4)/.test(normalized)
+      ? ['none', 'low', 'medium', 'high']
+      : ['none'];
+  }
+
+  return /^(?:gemini-2\.5|gemini-3)(?:-|$)/.test(normalized)
+    ? ['none', 'low', 'medium', 'high']
+    : ['none'];
+}
+
+export const CITY_GENERATION_REASONING_EFFORT_LABELS: Record<CityGenerationReasoningEffort, string> = {
+  none: 'None (fastest)',
+  low: 'Low',
+  medium: 'Medium',
+  high: 'High',
+  xhigh: 'Extra high',
+  max: 'Maximum',
+};
+
+export function getCityGenerationThinkingBudget(effort?: CityGenerationReasoningEffort) {
+  if (!effort || effort === 'none') return 0;
+  return {
+    low: 1024,
+    medium: 4096,
+    high: 8192,
+    xhigh: 16384,
+    max: 32768,
+  }[effort];
+}
+
 export const CITY_GENERATION_DEFAULT_MODELS: Record<CityGenerationProvider, string> = {
   anthropic: 'claude-sonnet-4-6',
   openai: 'gpt-5.4-mini',
@@ -88,10 +144,14 @@ export function migrateStoredCityGenerationModels(
   };
 }
 
-export function validateCityGenerationModel(provider: CityGenerationProvider, model?: string) {
+export function validateCityGenerationModel(
+  provider: CityGenerationProvider,
+  model?: string,
+  availableModels = CITY_GENERATION_KNOWN_MODELS[provider],
+) {
   const inputModel = model?.trim() || '';
   const defaultModel = CITY_GENERATION_DEFAULT_MODELS[provider];
-  const knownModels = CITY_GENERATION_KNOWN_MODELS[provider];
+  const knownModels = availableModels;
   const canonicalKnownModel = knownModels.find(
     (knownModel) => knownModel.toLowerCase() === inputModel.toLowerCase()
   );
