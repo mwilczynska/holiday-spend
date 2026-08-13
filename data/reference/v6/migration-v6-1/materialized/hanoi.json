@@ -1,0 +1,2280 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "region": "SEA",
+    "band": null,
+    "cityId": "hanoi"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "region": "SEA",
+    "costBand": "low",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 26.9,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 26.94,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 15.89,
+          "upperAud": 37.98,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 30.32,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 34.13,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 20.14,
+          "upperAud": 48.13,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 45.51,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 26.85,
+          "upperAud": 64.17,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 60.86,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 35.91,
+          "upperAud": 85.81,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 13.72,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 25.74,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 65.78,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 165.86,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 2.66,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:low:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 1.46,
+          "upperAud": 3.86,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 5.31,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:low:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.92,
+          "upperAud": 7.7,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 8.63,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:low:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 4.75,
+          "upperAud": 12.51,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 24.41,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:low:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 13.43,
+          "upperAud": 35.39,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 40.37,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:low:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 22.2,
+          "upperAud": 58.54,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 8.58,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 22.88,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 80.08,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "missingness": {
+      "cappuccino_1": "not_found",
+      "domestic_draft_beer_1": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 13.72,
+      "foodBudget": 25.74,
+      "foodMid": 65.78,
+      "foodHigh": 165.86,
+      "drinkCoffee": 2.66,
+      "drinkLocalBeer": 1.66,
+      "drinkCocktail": 6.23,
+      "drinksNone": 5.31,
+      "drinksLight": 8.63,
+      "drinksModerate": 24.41,
+      "drinksHeavy": 40.37,
+      "activitiesFree": 0,
+      "activitiesBudget": 8.58,
+      "activitiesMid": 22.88,
+      "activitiesHigh": 80.08
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 13.72,
+      "foodBudget": 25.74,
+      "foodMid": 65.78,
+      "foodHigh": 165.86,
+      "drinkCoffee": 2.66,
+      "drinkLocalBeer": 1.66,
+      "drinkCocktail": 6.23,
+      "drinksNone": 5.31,
+      "drinksLight": 8.63,
+      "drinksModerate": 24.41,
+      "drinksHeavy": 40.37,
+      "activitiesFree": 0,
+      "activitiesBudget": 8.58,
+      "activitiesMid": 22.88,
+      "activitiesHigh": 80.08
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 34,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Hanoi from $8 | Expedia",
+        "evidenceText": "September | $34. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Hanoi. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Hanoi-Hotels Expedia price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 58,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 15.89,
+          "upperAud": 37.98,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 20.14,
+          "upperAud": 48.13,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 26.85,
+          "upperAud": 64.17,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 35.91,
+          "upperAud": 85.81,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 1.46,
+          "upperAud": 3.86,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 2.92,
+          "upperAud": 7.7,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 4.75,
+          "upperAud": 12.51,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 13.43,
+          "upperAud": 35.39,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 22.2,
+          "upperAud": 58.54,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 26.850900000000003,
+          "upperAud": 64.1691,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 53.904500000000006,
+          "upperAud": 111.95550000000001,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 2.7885,
+          "upperAud": 5.7915,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 7.436,
+          "upperAud": 15.444,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 15.89,
+          "upperAud": 37.98,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 20.14,
+          "upperAud": 48.13,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 26.85,
+          "upperAud": 64.17,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 35.91,
+          "upperAud": 85.81,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 1.46,
+          "upperAud": 3.86,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 2.92,
+          "upperAud": 7.7,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 4.75,
+          "upperAud": 12.51,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 13.43,
+          "upperAud": 35.39,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 22.2,
+          "upperAud": 58.54,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 34,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Hanoi from $8 | Expedia",
+          "evidenceText": "September | $34. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Hanoi. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+          "query": "site:expedia.com/3Star-Hanoi-Hotels Expedia price",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 9,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+          "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+          "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 23,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+          "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+          "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 58,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+          "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+          "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 3,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+          "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+          "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 8,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+          "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+          "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 28,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+          "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+          "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 45.51,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 12.87,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 32.89,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 82.93,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 4.29,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 11.44,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 40.04,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "hanoi",
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "region": "SEA",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "8c210f716404b375c42e9831bced66884f0ab73d3954ff6d32d6f59b70dd8931",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 13.72,
+      "foodBudget": 25.74,
+      "foodMid": 65.78,
+      "foodHigh": 165.86,
+      "drinkCoffee": 2.66,
+      "drinkLocalBeer": 1.66,
+      "drinkCocktail": 6.23,
+      "drinksNone": 5.31,
+      "drinksLight": 8.63,
+      "drinksModerate": 24.41,
+      "drinksHeavy": 40.37,
+      "activitiesFree": 0,
+      "activitiesBudget": 8.58,
+      "activitiesMid": 22.88,
+      "activitiesHigh": 80.08
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 34,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Hanoi from $8 | Expedia",
+        "evidenceText": "September | $34. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Hanoi. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Hanoi-Hotels Expedia price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 58,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 15.89,
+          "upperAud": 37.98,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 20.14,
+          "upperAud": 48.13,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 26.85,
+          "upperAud": 64.17,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 35.91,
+          "upperAud": 85.81,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 1.46,
+          "upperAud": 3.86,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 2.92,
+          "upperAud": 7.7,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 4.75,
+          "upperAud": 12.51,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 13.43,
+          "upperAud": 35.39,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 22.2,
+          "upperAud": 58.54,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 26.850900000000003,
+          "upperAud": 64.1691,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 53.904500000000006,
+          "upperAud": 111.95550000000001,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 2.7885,
+          "upperAud": 5.7915,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 7.436,
+          "upperAud": 15.444,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "8fc356956fea8d50b29321fbfe93861294878cb2c55cdec00329077d6296d9ba",
+    "calls": [
+      {
+        "city": "Hanoi",
+        "country": "Vietnam",
+        "source": "expedia_3star",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "158c4cfd776bfd4a18f70bd8d1ea9bd16acb61a6b3a4846412de58b6d14eaa20",
+        "telemetrySha256": "ceca34852581daf01fa8c83c1971af71a2d82dea1119fb62116e537b21e9f55e"
+      },
+      {
+        "city": "Hanoi",
+        "country": "Vietnam",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "9cf0a5977e0e7225a49ecb851110e1e420128c4398eddb58bfdb91317f0775d5",
+        "telemetrySha256": "7fc430ca15e40e90850117fa6c9b6f839e94e68b5a7b51d623bedc5f3a9e26f6"
+      },
+      {
+        "city": "Hanoi",
+        "country": "Vietnam",
+        "source": "numbeo_drinks",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "48efe40f253baa1e0795a169f1ab1ef76d49a40a2dab839f50fa899bc8dab5b8",
+        "telemetrySha256": "329b98787f352a15f069af480de4c02f87ef581d974ea0efa4c27d2e1c172816"
+      }
+    ]
+  }
+}

@@ -72,6 +72,8 @@ re-derive is a claim you cannot audit.
 | `node scripts/record-v6-1-canary-assignment.mjs --experiment-dir <path> ... [--check]` | `record-v6-1-canary-assignment.mjs` | Records delegated assignment attempts separately from provider-call/retry telemetry and validates the assignment ledger |
 | `node scripts/test-v6-1-canary-assignment.mjs` | `test-v6-1-canary-assignment.mjs` | Regression-tests exclusive write-once city/source claims and rejects duplicate assignments with different IDs |
 | `node scripts/run-v6-1-delegated-canary.mjs --experiment-dir <path> [--check]` | `run-v6-1-delegated-canary.ts` | Finalizes only a terminal 60-slot delegated frame through shipped schemas/materializer/persistence/API parsing; completed pass or fail results are immutable |
+| `node scripts/migrate-city-cost-v6-1.mjs init|status|assign|reuse|materialize|check` | `migrate-city-cost-v6-1.ts` | Frozen, resumable Phase 8/9 migration: validates three per-city calls, reuses only matching experiment evidence, materializes through shipped v6.1 code, writes staging only, and refuses live CSV output |
+| `node scripts/import-city-cost-v6-1-provenance.mjs --check` | `import-city-cost-v6-1-provenance.ts` | Validates the staged provenance sidecar/import plan; actual import requires an explicit non-live test database and rejects partial sidecars/live DB |
 
 ## SUPERSEDED — methodology v5
 

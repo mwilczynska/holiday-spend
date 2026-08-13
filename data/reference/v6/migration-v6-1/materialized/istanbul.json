@@ -1,0 +1,2372 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "region": "Middle East",
+    "band": null,
+    "cityId": "istanbul"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "region": "Middle East",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 62.49,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 28.75,
+          "upperAud": 96.24,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 62.59,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 36.93,
+          "upperAud": 88.25,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 70.45,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 38.75,
+          "upperAud": 102.16,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 79.3,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 46.79,
+          "upperAud": 111.82,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 105.74,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 62.39,
+          "upperAud": 149.09,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 141.4,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 83.42,
+          "upperAud": 199.37,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 36.59,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 20.13,
+          "upperAud": 53.06,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 68.64,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 168.72,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 380.34,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 247.22,
+          "upperAud": 513.46,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 5.72,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 5.15,
+          "upperAud": 6.29,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 11.44,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 10.3,
+          "upperAud": 12.58,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 23.56,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 21.2,
+          "upperAud": 25.92,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 64.1,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 23.08,
+          "upperAud": 105.12,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 104.64,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 37.67,
+          "upperAud": 171.61,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 42.9,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 111.54,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 72.5,
+          "upperAud": 150.58,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 271.68,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 176.59,
+          "upperAud": 366.77,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 105.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 190.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 135.84,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 6.06,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 14.21,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {},
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 62.49,
+      "accomPrivateRoom": 62.59,
+      "accom1star": 70.45,
+      "accom2star": 79.3,
+      "accom3star": 105.74,
+      "accom4star": 141.4,
+      "foodStreet": 36.59,
+      "foodBudget": 68.64,
+      "foodMid": 168.72,
+      "foodHigh": 380.34,
+      "drinkCoffee": 5.72,
+      "drinkLocalBeer": 6.06,
+      "drinkCocktail": 14.21,
+      "drinksNone": 11.44,
+      "drinksLight": 23.56,
+      "drinksModerate": 64.1,
+      "drinksHeavy": 104.64,
+      "activitiesFree": 0,
+      "activitiesBudget": 42.9,
+      "activitiesMid": 111.54,
+      "activitiesHigh": 271.68
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 62.49,
+      "accomPrivateRoom": 62.59,
+      "accom1star": 70.45,
+      "accom2star": 79.3,
+      "accom3star": 105.74,
+      "accom4star": 141.4,
+      "foodStreet": 36.59,
+      "foodBudget": 68.64,
+      "foodMid": 168.72,
+      "foodHigh": 380.34,
+      "drinkCoffee": 5.72,
+      "drinkLocalBeer": 6.06,
+      "drinkCocktail": 14.21,
+      "drinksNone": 11.44,
+      "drinksLight": 23.56,
+      "drinksModerate": 64.1,
+      "drinksHeavy": 104.64,
+      "activitiesFree": 0,
+      "activitiesBudget": 42.9,
+      "activitiesMid": 111.54,
+      "activitiesHigh": 271.68
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 79,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Istanbul from $29 | Expedia",
+        "evidenceText": "September | $79 ... Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Istanbul. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Istanbul-Hotels Expedia price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 59,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 133,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 39,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 95,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 188.96,
+        "currency": "TRY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+        "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+        "evidenceText": "Cappuccino (Regular Size) | ₺188.96",
+        "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 200,
+        "currency": "TRY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+        "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₺200.00",
+        "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Middle East",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 28.75,
+          "upperAud": 96.24,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.93,
+          "upperAud": 88.25,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 38.75,
+          "upperAud": 102.16,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.79,
+          "upperAud": 111.82,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 62.39,
+          "upperAud": 149.09,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 83.42,
+          "upperAud": 199.37,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 20.13,
+          "upperAud": 53.06,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 247.22,
+          "upperAud": 513.46,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 5.15,
+          "upperAud": 6.29,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 10.3,
+          "upperAud": 12.58,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 21.2,
+          "upperAud": 25.92,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 23.08,
+          "upperAud": 105.12,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 37.67,
+          "upperAud": 171.61,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 72.5,
+          "upperAud": 150.58,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 176.59,
+          "upperAud": 366.77,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 62.38660000000001,
+          "upperAud": 149.09339999999997,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 22.308,
+          "upperAud": 46.332,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 54.834,
+          "upperAud": 113.88600000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 123.6105,
+          "upperAud": 256.7295,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 13.9425,
+          "upperAud": 28.9575,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 36.2505,
+          "upperAud": 75.2895,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 88.296,
+          "upperAud": 183.38400000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 5.148,
+          "upperAud": 6.292,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 5.454,
+          "upperAud": 6.666,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 5.1156,
+          "upperAud": 23.304400000000005,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 105.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 190.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 135.84,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 6.06,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 14.21,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 28.75,
+          "upperAud": 96.24,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.93,
+          "upperAud": 88.25,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 38.75,
+          "upperAud": 102.16,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.79,
+          "upperAud": 111.82,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 62.39,
+          "upperAud": 149.09,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 83.42,
+          "upperAud": 199.37,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 20.13,
+          "upperAud": 53.06,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 247.22,
+          "upperAud": 513.46,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 5.15,
+          "upperAud": 6.29,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 10.3,
+          "upperAud": 12.58,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 21.2,
+          "upperAud": 25.92,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 23.08,
+          "upperAud": 105.12,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 37.67,
+          "upperAud": 171.61,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 72.5,
+          "upperAud": 150.58,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 176.59,
+          "upperAud": 366.77,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {},
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 79,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Istanbul from $29 | Expedia",
+          "evidenceText": "September | $79 ... Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Istanbul. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+          "query": "site:expedia.com/3Star-Istanbul-Hotels Expedia price",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 24,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+          "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+          "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 59,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+          "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+          "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 133,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+          "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+          "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 15,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+          "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+          "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 39,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+          "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+          "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 95,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+          "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+          "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 188.96,
+          "currency": "TRY",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+          "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+          "evidenceText": "Cappuccino (Regular Size) | ₺188.96",
+          "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 200,
+          "currency": "TRY",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+          "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₺200.00",
+          "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 105.74,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 34.32,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 84.36,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 190.17,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 21.45,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 55.77,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 135.84,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 5.72,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 6.06,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 14.21,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "region": "Middle East",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "6bfa9de14d95ed1df1d47134cdbf105aa8657cbddefc5b55c749e879ca4c32bb",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 62.49,
+      "accomPrivateRoom": 62.59,
+      "accom1star": 70.45,
+      "accom2star": 79.3,
+      "accom3star": 105.74,
+      "accom4star": 141.4,
+      "foodStreet": 36.59,
+      "foodBudget": 68.64,
+      "foodMid": 168.72,
+      "foodHigh": 380.34,
+      "drinkCoffee": 5.72,
+      "drinkLocalBeer": 6.06,
+      "drinkCocktail": 14.21,
+      "drinksNone": 11.44,
+      "drinksLight": 23.56,
+      "drinksModerate": 64.1,
+      "drinksHeavy": 104.64,
+      "activitiesFree": 0,
+      "activitiesBudget": 42.9,
+      "activitiesMid": 111.54,
+      "activitiesHigh": 271.68
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 79,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Istanbul from $29 | Expedia",
+        "evidenceText": "September | $79 ... Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Istanbul. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Istanbul-Hotels Expedia price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 59,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 133,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 39,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 95,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 188.96,
+        "currency": "TRY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+        "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+        "evidenceText": "Cappuccino (Regular Size) | ₺188.96",
+        "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 200,
+        "currency": "TRY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+        "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₺200.00",
+        "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Middle East",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 28.75,
+          "upperAud": 96.24,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.93,
+          "upperAud": 88.25,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 38.75,
+          "upperAud": 102.16,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.79,
+          "upperAud": 111.82,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 62.39,
+          "upperAud": 149.09,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 83.42,
+          "upperAud": 199.37,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 20.13,
+          "upperAud": 53.06,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 247.22,
+          "upperAud": 513.46,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 5.15,
+          "upperAud": 6.29,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 10.3,
+          "upperAud": 12.58,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 21.2,
+          "upperAud": 25.92,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 23.08,
+          "upperAud": 105.12,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 37.67,
+          "upperAud": 171.61,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 72.5,
+          "upperAud": 150.58,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 176.59,
+          "upperAud": 366.77,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 62.38660000000001,
+          "upperAud": 149.09339999999997,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 22.308,
+          "upperAud": 46.332,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 54.834,
+          "upperAud": 113.88600000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 123.6105,
+          "upperAud": 256.7295,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 13.9425,
+          "upperAud": 28.9575,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 36.2505,
+          "upperAud": 75.2895,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 88.296,
+          "upperAud": 183.38400000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 5.148,
+          "upperAud": 6.292,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 5.454,
+          "upperAud": 6.666,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 5.1156,
+          "upperAud": 23.304400000000005,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:39:38.959Z",
+          "completedAt": "2026-08-12T21:39:38.959Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 105.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 190.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 135.84,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 6.06,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 14.21,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "c3b8f7db6d8df7a1fece3eb22ca019dc064141a9af811e3d4987ea902099c348",
+    "calls": [
+      {
+        "city": "Istanbul",
+        "country": "Turkey",
+        "source": "expedia_3star",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "145fcf721fc4bc2079a68fce255ecc0fbe4d7e30bfbf58b2e2264f6be549948a",
+        "telemetrySha256": "c17c5b147af2ad248b03e088e69eb86cdf7e477f19dd9b652b039cc6c2bca688"
+      },
+      {
+        "city": "Istanbul",
+        "country": "Turkey",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "1f010f4a77f7088aff4d658c7cb42b5cd34f113f173c8db56442009db7dc6c82",
+        "telemetrySha256": "c863f45574e32d4faceef5471bb46d9a835b01c0dbde725925c262264d5de157"
+      },
+      {
+        "city": "Istanbul",
+        "country": "Turkey",
+        "source": "numbeo_drinks",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "7a9fc8ea4032975d819c53df30704dd3f10739b50d52f12e4096353b5aa9966c",
+        "telemetrySha256": "c5a8ab55610e3a40cf877710ae849cacecaad149d80957316efc9a3ba2eac68a"
+      }
+    ]
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Melbourne",
+    "country": "Australia",
+    "region": "Oceania",
+    "band": null,
+    "cityId": "melbourne"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 80.07,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 180.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 98.66,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/australia/melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.64,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 13.15,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Melbourne"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nCategory  | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $23\n(AU$33)  | $56\n(AU$80)  | $126\n(AU$180)",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 56,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nCategory  | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $23\n(AU$33)  | $56\n(AU$80)  | $126\n(AU$180)",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 126,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nCategory  | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $23\n(AU$33)  | $56\n(AU$80)  | $126\n(AU$180)",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nCategory  | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12\n(AU$17)  | $29\n(AU$42)  | $69\n(AU$99)",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nCategory  | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12\n(AU$17)  | $29\n(AU$42)  | $69\n(AU$99)",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 69,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/australia/melbourne",
+        "sourceTitle": "Melbourne Travel Cost - Average Price of a Vacation to Melbourne: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\n\nCategory  | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nEntertainment^{1}  | $12\n(AU$17)  | $29\n(AU$42)  | $69\n(AU$99)",
+        "query": "site:budgetyourtrip.com/australia/melbourne \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 5.64,
+        "currency": "AUD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+        "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+        "evidenceText": "Cappuccino (Regular Size)  | A$5.64  | 4.00-8.00",
+        "query": "site:numbeo.com/cost-of-living/in/Melbourne \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 13.15,
+        "currency": "AUD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+        "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | A$13.15  | 8.00-15.00",
+        "query": "site:numbeo.com/cost-of-living/in/Melbourne (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:33:05.078Z",
+        "completedAt": "2026-08-13T03:33:13.925Z",
+        "durationMs": 8847,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:33:23.016Z",
+        "completedAt": "2026-08-13T03:33:31.987Z",
+        "durationMs": 8971,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:33:41.905Z",
+        "completedAt": "2026-08-13T03:33:47.808Z",
+        "durationMs": 5903,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "8f6461d160956e7a47d0b579cec28289d7de6c94b7e7c482068d92a4157dd76c",
+      "telemetrySha256": "d8d9f8c8803eb7a601074160074d0ba2409e23804e2688be4e19b6f7c4d0835c"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "f1150a1a9ace4311b1721dc361dff52f1a206b610a9c7880644fd1126413c065",
+      "telemetrySha256": "2330e0983f04ea17b0ab4295794e1772cbff359a7d17912a1909d44d989a0e47"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "6e62c2bc8901e3a45e022553d8dbb864b5912ad932e2fb8ce407e0888818fafa",
+      "telemetrySha256": "8fadf22392dcb69c4a5bff73d88d33c930db11de14d7f0c8c2fe1122c79cf848"
+    }
+  ]
+}

@@ -4,6 +4,11 @@ This is the active autonomous implementation prompt for city cost methodology v6
 experiment-014 canary are now recorded. Experiment 013 remains immutable failed history; experiment 014 passed 20/20
 and Phase 8 migration tooling is active. The owner-approved M4 migration has not reached cutover.
 
+Phase 8 is complete as of 13 August 2026: the frozen protocol and resumable tooling were dry-run on all 20
+experiment-014 canary cities, producing deterministic staged/provenance/import-plan artifacts with live writes
+forbidden. Phase 9 is active for the remaining 101 cities. The next action is the first fixed delegated migration
+batch; do not read a holdout, write the live CSV or execute Phase 11.
+
 ## PROMPT
 
 Copy everything below this line to GPT-5.6 Luna Max.
@@ -263,6 +268,14 @@ node scripts/record-v6-1-canary-assignment.mjs --experiment-dir data/reference/v
 Add migration `--check` commands in Phase 8. Rerun a failed full suite once before investigating because
 this OneDrive checkout has a known transient temp-file failure.
 
+Phase 8 migration checks are now:
+
+```text
+node scripts/migrate-city-cost-v6-1.mjs check
+node scripts/import-city-cost-v6-1-provenance.mjs --check
+npx vitest run src/lib/city-cost-v6-1-migration.test.ts
+```
+
 At the end of every phase, rewrite the handoff with actual completed state and one exact next action. A
 handoff that says only “continue” has failed.
 
@@ -271,5 +284,6 @@ handoff that says only “continue” has failed.
 Resume line:
 
 > Resume v6.1 on `feat/city-cost-methodology-v6`. Read `docs/dev/handoffs/city-cost-v6.md`, then follow
-> `LOOP-PROMPT-V6.md` only after the owner resolves the experiment-013 stop. Do not run another canary or start
-> Phase 8 without that explicit decision. Never change the live CSV or global default before Phase 10 review.
+> `LOOP-PROMPT-V6.md` from the first incomplete phase. Experiment 014 has passed, Phase 8 is complete and Phase 9
+> is active. Assign and process the first fixed migration batch next. Never change the live CSV or global default
+> before Phase 10 review.

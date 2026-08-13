@@ -503,6 +503,20 @@ immutable, the 58 valid experiment-013 calls remain reusable, and no new canary,
 write occurs during this repair phase. The repair completed with write-once slot-claim and 19/20 predicate tests,
 the full verification baseline, and no new canary or migration collection.
 
+### v6.1 Phase 8 completion and Phase 9 start — 13 August 2026
+
+Experiment 014 subsequently passed the one authorized fresh canary at 20/20 complete cities, so the migration
+gate is open. Phase 8 is now complete: the frozen 121-city protocol under
+`data/reference/v6/migration-v6-1/` records the unchanged input CSV/FX/prompt/implementation hashes and forbids
+live-CSV writes; the 60 validated experiment-014 calls were reused for a 20-city dry run; the shipped materializer
+produced 20 complete v6.1 bundles; and the staged CSV, provenance sidecar, import plan, checkpoint and call-level
+reuse records pass deterministic checks. The non-live importer rejects partial sidecars and the live database.
+
+Phase 9 is active for the remaining 101 cities. The exact next action is to assign and collect the first fixed
+batch through the frozen three-call route, materialize it, run the complete baseline and commit/push the batch.
+The live CSV, all holdouts and Phase 11 remain untouched. This supersedes the earlier statement that Phase 8 was
+blocked after experiment 013; experiments 010–013 remain immutable historical evidence.
+
 ## Traps retained from earlier work
 
 Hard-won across v3, v4 and v5. All still true.

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "San Francisco",
+  "country": "United States",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 32,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+      "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $32  | $79  | $191",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 79,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+      "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $32  | $79  | $191",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 191,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+      "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $32  | $79  | $191",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+      "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $13  | $31  | $78",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 31,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+      "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $13  | $31  | $78",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 78,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+      "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $13  | $31  | $78",
+      "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Cairo",
+    "country": "Egypt",
+    "region": "Africa",
+    "band": null,
+    "cityId": "cairo"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 47.19,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cairo-Egypt"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cairo-Egypt"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630",
+        "sourceTitle": "How much does a trip to Cairo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nAccommodation^{1}  | $5  | $11  | $21\nLocal Transportation^{1}  | $2  | $4  | $7\nFood^{2}  | $7  | $17  | $33\nEntertainment^{1}  | $4  | $9  | $17\nAlcohol^{2}  | $1  | $1  | $3",
+        "query": "site:budgetyourtrip.com/egypt/cairo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630",
+        "sourceTitle": "How much does a trip to Cairo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nAccommodation^{1}  | $5  | $11  | $21\nLocal Transportation^{1}  | $2  | $4  | $7\nFood^{2}  | $7  | $17  | $33\nEntertainment^{1}  | $4  | $9  | $17\nAlcohol^{2}  | $1  | $1  | $3",
+        "query": "site:budgetyourtrip.com/egypt/cairo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 33,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630",
+        "sourceTitle": "How much does a trip to Cairo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nAccommodation^{1}  | $5  | $11  | $21\nLocal Transportation^{1}  | $2  | $4  | $7\nFood^{2}  | $7  | $17  | $33\nEntertainment^{1}  | $4  | $9  | $17\nAlcohol^{2}  | $1  | $1  | $3",
+        "query": "site:budgetyourtrip.com/egypt/cairo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 4,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630",
+        "sourceTitle": "How much does a trip to Cairo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nAccommodation^{1}  | $5  | $11  | $21\nLocal Transportation^{1}  | $2  | $4  | $7\nFood^{2}  | $7  | $17  | $33\nEntertainment^{1}  | $4  | $9  | $17\nAlcohol^{2}  | $1  | $1  | $3",
+        "query": "site:budgetyourtrip.com/egypt/cairo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630",
+        "sourceTitle": "How much does a trip to Cairo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nAccommodation^{1}  | $5  | $11  | $21\nLocal Transportation^{1}  | $2  | $4  | $7\nFood^{2}  | $7  | $17  | $33\nEntertainment^{1}  | $4  | $9  | $17\nAlcohol^{2}  | $1  | $1  | $3",
+        "query": "site:budgetyourtrip.com/egypt/cairo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/egypt/cairo/trip-cost-360630",
+        "sourceTitle": "How much does a trip to Cairo Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nAccommodation^{1}  | $5  | $11  | $21\nLocal Transportation^{1}  | $2  | $4  | $7\nFood^{2}  | $7  | $17  | $33\nEntertainment^{1}  | $4  | $9  | $17\nAlcohol^{2}  | $1  | $1  | $3",
+        "query": "site:budgetyourtrip.com/egypt/cairo \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 94.02,
+        "currency": "EGP",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cairo-Egypt",
+        "sourceTitle": "Cost of Living in Cairo. Jun 2026. Prices in Cairo",
+        "evidenceText": "Cappuccino (Regular Size)  | E£94.02  | 40.00-150.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cairo \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 85,
+        "currency": "EGP",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cairo-Egypt",
+        "sourceTitle": "Cost of Living in Cairo. Jun 2026. Prices in Cairo",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | E£85.00  | 55.00-200.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cairo (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:25:33.909Z",
+        "completedAt": "2026-08-13T03:26:08.053Z",
+        "durationMs": 34144,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:26:16.558Z",
+        "completedAt": "2026-08-13T03:26:18.494Z",
+        "durationMs": 1936,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:26:39.648Z",
+        "completedAt": "2026-08-13T03:26:42.136Z",
+        "durationMs": 2488,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 7,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "a24668f5ffc46cd3e7c65afa940f6593399786207c0210e68a5a120e70a18da9",
+      "telemetrySha256": "3d69aca8cf14cacffecc51d5d72ecc191dc242f34d7222e70c7273de25c2985a"
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "4713c3f8fd28738357e0b6a89de753e4a60ff98ba31cbff31cdc7e52be40f1ab",
+      "telemetrySha256": "6fd6a6c4111e1715ae0e187c694b6dd36ebf93643f4e642ed696afc385694e1f"
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "c83c6144abda0f9e2aa806c7f422cb4c2c9e050dd924a1adffc7fde475c605a3",
+      "telemetrySha256": "54d905b0e5d3c7a1bcd00c409a8e40aa4e9343f6465bc7089b798c38fc763129"
+    }
+  ]
+}

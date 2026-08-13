@@ -3040,3 +3040,20 @@ now point to that hash. Experiments 010–013 remain unchanged history. This est
 the deterministic/provenance boundary, not the post-release >=95% runtime SLO. The exact next action is Phase 8:
 build and dry-run the frozen resumable migration protocol with experiment 014 as fixture; no holdout or live CSV was
 read or changed.
+
+### v6.1 Phase 8 migration tooling complete; Phase 9 active — 13 August 2026
+
+The Phase 8 migration pipeline is now implemented and dry-run. A frozen protocol under
+`data/reference/v6/migration-v6-1/` records the unchanged 121-city input frame, CSV/FX/prompt/implementation
+hashes, the 2026-09-17 to 2026-09-18 source window, exact three-call/search limits and a hard prohibition on
+writing `data/reference/city_costs_app_aud.csv`. Experiment 014 was reused through call-level validation for
+all 20 canary cities: 60 raw/telemetry pairs were accepted, 20 complete v6.1 materializations were generated,
+and the staged CSV, provenance sidecar and deterministic import plan were regenerated and checked.
+
+The pipeline preserves raw evidence outside materializations, records collection mode and hashes per call, refuses
+materialization while any source slot is pending, checks implementation hashes against the frozen protocol, and
+rejects both partial sidecars and the live database in the importer. The current staged artifact is intentionally
+only 20/121 cities and has not been imported or cut over. Phase 9 now collects the remaining 101 cities in fixed
+batches through delegated Stage A and the shipped Stage B path. No holdout was read and the live CSV remains
+untouched. This supersedes the prior Phase 7H entry's statement that Phase 8 remained blocked after experiment 013;
+experiments 010–014 remain immutable history.

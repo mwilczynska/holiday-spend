@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "region": "SEA",
+    "band": null,
+    "cityId": "hanoi"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/hanoi"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 34,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Hanoi-Hotels.s30-0-d1428.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Hanoi from $8 | Expedia",
+        "evidenceText": "September | $34. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Hanoi. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Hanoi-Hotels Expedia price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 58,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $9 (d 234,724)  | $23 (d 598,188)  | $58 (d 1,536,145)",
+        "query": "site:budgetyourtrip.com Hanoi Food & Meals budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hanoi",
+        "sourceTitle": "Hanoi Travel Cost - Average Price of a Vacation to Hanoi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $3 (d 71,098)  | $8 (d 213,024)  | $28 (d 729,051)",
+        "query": "site:budgetyourtrip.com Hanoi Entertainment Activities budget mid-range luxury per person per day Budget Your Trip",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 8,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "158c4cfd776bfd4a18f70bd8d1ea9bd16acb61a6b3a4846412de58b6d14eaa20",
+      "telemetrySha256": "ceca34852581daf01fa8c83c1971af71a2d82dea1119fb62116e537b21e9f55e"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "9cf0a5977e0e7225a49ecb851110e1e420128c4398eddb58bfdb91317f0775d5",
+      "telemetrySha256": "7fc430ca15e40e90850117fa6c9b6f839e94e68b5a7b51d623bedc5f3a9e26f6"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "48efe40f253baa1e0795a169f1ab1ef76d49a40a2dab839f50fa899bc8dab5b8",
+      "telemetrySha256": "329b98787f352a15f069af480de4c02f87ef581d974ea0efa4c27d2e1c172816"
+    }
+  ]
+}

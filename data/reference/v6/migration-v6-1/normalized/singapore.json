@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Singapore",
+    "country": "Singapore",
+    "region": "SEA",
+    "band": null,
+    "cityId": "singapore"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 67.2,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 170.15,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 48.62,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 125.83,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 7.04,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 11.07,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Singapore"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 19,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+        "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $19 (SG$24)  | $47 (SG$61)  | $119 (SG$154)",
+        "query": "site:budgetyourtrip.com/singapore \"Singapore on a Budget\" \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 47,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+        "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $19 (SG$24)  | $47 (SG$61)  | $119 (SG$154)",
+        "query": "site:budgetyourtrip.com/singapore \"Singapore on a Budget\" \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 119,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+        "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $19 (SG$24)  | $47 (SG$61)  | $119 (SG$154)",
+        "query": "site:budgetyourtrip.com/singapore \"Singapore on a Budget\" \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+        "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $13 (SG$17)  | $34 (SG$44)  | $88 (SG$113)",
+        "query": "site:budgetyourtrip.com/singapore \"Singapore on a Budget\" \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 34,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+        "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $13 (SG$17)  | $34 (SG$44)  | $88 (SG$113)",
+        "query": "site:budgetyourtrip.com/singapore \"Singapore on a Budget\" \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 88,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/singapore",
+        "sourceTitle": "Singapore Travel Cost - Average Price of a Vacation to Singapore: Food & Meal Budget, Daily & Weekly Expenses | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $13 (SG$17)  | $34 (SG$44)  | $88 (SG$113)",
+        "query": "site:budgetyourtrip.com/singapore \"Singapore on a Budget\" \"Food\" \"Entertainment\" \"Average Daily Costs\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 6.36,
+        "currency": "SGD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Singapore",
+        "sourceTitle": "Cost of Living in Singapore. Jun 2026. Prices in Singapore",
+        "evidenceText": "Cappuccino (Regular Size) | S$6.36",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Singapore\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 10,
+        "currency": "SGD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Singapore",
+        "sourceTitle": "Cost of Living in Singapore. Prices in Singapore. Updated Jun 2026",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | S$10.00",
+        "query": "site:numbeo.com/cost-of-living/in/Singapore \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 8,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "af8dbb2507ca604d6283d1d4693b0493096f1fb07131ac232f33e88b2ad5a8f2",
+      "telemetrySha256": "85f1059e039879e76c56b7f0c1ff4cf5e3d7e4809096292a119971d941fad919"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "6e0e570af50e66579a5c248bda7d413698c530203f4766cd9214248980380a3c",
+      "telemetrySha256": "7fc430ca15e40e90850117fa6c9b6f839e94e68b5a7b51d623bedc5f3a9e26f6"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "43ee217567d9b85033a4198190dfbae571d5210b4a333a74ce99fd619bf66271",
+      "telemetrySha256": "1961f408d7548539c95892862b50753a7171c75b8c17a812ab131efa0b4d79d7"
+    }
+  ]
+}

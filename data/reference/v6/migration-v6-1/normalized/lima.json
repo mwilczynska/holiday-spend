@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Lima",
+    "country": "Peru",
+    "region": "Latin America",
+    "band": null,
+    "cityId": "lima"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/es/3Estrellas-Lima-Hoteles.s30-0-d178277.Guia-Viajes-Filter-Hoteles",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 47.19,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 122.97,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.49,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Lima"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.2,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Lima"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 65,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/es/3Estrellas-Lima-Hoteles.s30-0-d178277.Guia-Viajes-Filter-Hoteles",
+        "sourceTitle": "The Best 3 Star Hotels in Lima from $25 | Expedia",
+        "evidenceText": "September  | $65 ... Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Lima.",
+        "query": "site:expedia.com/3Star-Lima-Hotels.s30 Lima \"September\" \"2 adults\" \"2026\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+        "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $13  | $33  | $86",
+        "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Food\" \"$13\" \"$33\" \"$86\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 33,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+        "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $13  | $33  | $86",
+        "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Food\" \"$13\" \"$33\" \"$86\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 86,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+        "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $13  | $33  | $86",
+        "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Food\" \"$13\" \"$33\" \"$86\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+        "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $3  | $9  | $29",
+        "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Entertainment\" \"$3\" \"$9\" \"$30\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+        "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $3  | $9  | $29",
+        "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Entertainment\" \"$3\" \"$9\" \"$30\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+        "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $3  | $9  | $29",
+        "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Entertainment\" \"$3\" \"$9\" \"$30\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 10.69,
+        "currency": "PEN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lima",
+        "sourceTitle": "Cost of Living in Lima. Jun 2026. Prices in Lima",
+        "evidenceText": "Cappuccino (Regular Size)  | S/.10.69  | 8.00-15.00",
+        "query": "site:numbeo.com/cost-of-living/in/Lima \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 10,
+        "currency": "PEN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Lima",
+        "sourceTitle": "Cost of Living in Lima. Jun 2026. Prices in Lima",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | S/.10.00  | 6.00-20.00",
+        "query": "site:numbeo.com/cost-of-living/in/Lima (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:31:21.214Z",
+        "completedAt": "2026-08-13T03:31:41.203Z",
+        "durationMs": 19989,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:31:47.255Z",
+        "completedAt": "2026-08-13T03:32:39.507Z",
+        "durationMs": 52252,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:32:51.667Z",
+        "completedAt": "2026-08-13T03:33:06.060Z",
+        "durationMs": 14393,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "84cc8c93182ac943d5ad9289218d7ff54690a56a2bb169ae23c3ddc19f7ad370",
+      "telemetrySha256": "6c0e0918dfa12cc56a9152642d175d73622d1396c2b3108a3860aa65aad52d5a"
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "14a9e5d9947ee66ea0785a5f355a9bef5cdcb91b116897e0e5905baf008b93e1",
+      "telemetrySha256": "6672698917ef1d060b3d0532f8fbcfd59351a9c31b75c705069b27192d0f2821"
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "ee58f7c015eb10b43ee735f2b6dea67ce10a50392ee71f15a0fd226924b69720",
+      "telemetrySha256": "590c154b5faf546ba931a14511dc9ecc0bf652d0b22ca19b1ec7a5f53ec2b441"
+    }
+  ]
+}

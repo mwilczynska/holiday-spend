@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Cape Town",
+    "country": "South Africa",
+    "region": "Africa",
+    "band": null,
+    "cityId": "cape-town"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 123.14,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 90.08,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 117.25,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 165.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 112.96,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 3.51,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.34,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cape-Town"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 92,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Cape-Town-Hotels.s30-0-d6046820.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Cape Town from $29 | Expedia",
+        "evidenceText": "September  | $92 ... Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Cape Town.",
+        "query": "site:expedia.com/3Star-Cape-Town-Hotels.s30 \"Price trends for properties with 3 Stars in Cape Town\" \"September\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 63,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+        "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $63  | $82  | $116",
+        "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 82,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+        "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $63  | $82  | $116",
+        "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 116,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+        "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $63  | $82  | $116",
+        "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+        "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $9  | $26  | $79",
+        "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+        "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $9  | $26  | $79",
+        "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 79,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-africa/cape-town/trip-cost-3369157",
+        "sourceTitle": "How much does a trip to Cape Town Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $9  | $26  | $79",
+        "query": "site:budgetyourtrip.com/south-africa/cape-town \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 40.39,
+        "currency": "ZAR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cape-Town",
+        "sourceTitle": "Cost of Living in Cape Town. Jun 2026. Prices in Cape Town",
+        "evidenceText": "Cappuccino (Regular Size)  | R40.39  | 30.00-60.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cape-Town \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 50,
+        "currency": "ZAR",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cape-Town",
+        "sourceTitle": "Cost of Living in Cape Town. Jun 2026. Prices in Cape Town",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | R50.00  | 40.00-70.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cape-Town (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:26:18.035Z",
+        "completedAt": "2026-08-13T03:26:20.308Z",
+        "durationMs": 2273,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:26:37.420Z",
+        "completedAt": "2026-08-13T03:26:39.410Z",
+        "durationMs": 1990,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:27:15.935Z",
+        "completedAt": "2026-08-13T03:27:17.854Z",
+        "durationMs": 1919,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "ea7fd2802915c7fea6aa62ce09185fa84274bed7f321e0f764ef6a6eaff33da6",
+      "telemetrySha256": "5007fefd0b84e593923cb225584372fb0523cb9a3aff5c5b18caa805d202d594"
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "8164e750115b816ac87bbf7256ba0f6d41a9110e9345a62a192b0b27933ea976",
+      "telemetrySha256": "3e2d4a70a454b71bd318a9189be9daa3a253f4c67b733f2f70e7933b506eaf69"
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "ca2fde2626d7a9612dbd913312ac8a8fdc1cf864f5d799890149f3448d267435",
+      "telemetrySha256": "9bfe55c66615b7b8618db6b45855e76adb5b97e94a39846c3c71b24fa7c842fc"
+    }
+  ]
+}

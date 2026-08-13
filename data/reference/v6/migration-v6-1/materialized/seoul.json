@@ -1,0 +1,2372 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Seoul",
+    "country": "South Korea",
+    "region": "East Asia",
+    "band": null,
+    "cityId": "seoul"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Seoul",
+    "country": "South Korea",
+    "region": "East Asia",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 66.45,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 66.55,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 39.26,
+          "upperAud": 93.83,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 74.91,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 84.32,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 49.75,
+          "upperAud": 118.89,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 112.43,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 66.33,
+          "upperAud": 158.53,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 150.34,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 88.7,
+          "upperAud": 211.98,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 27.45,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 51.48,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 134.4,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 87.36,
+          "upperAud": 181.44,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 354.6,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 5.25,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 4.73,
+          "upperAud": 5.78,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 10.5,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 9.45,
+          "upperAud": 11.55,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 20.16,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 18.14,
+          "upperAud": 22.18,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 55.9,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 20.12,
+          "upperAud": 91.68,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 91.64,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 32.99,
+          "upperAud": 150.29,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 25.74,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 68.64,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 205.9,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 133.84,
+          "upperAud": 277.97,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 67.2,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 177.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 102.95,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.25,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.83,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 13.04,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {},
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 27.45,
+      "foodBudget": 51.48,
+      "foodMid": 134.4,
+      "foodHigh": 354.6,
+      "drinkCoffee": 5.25,
+      "drinkLocalBeer": 4.83,
+      "drinkCocktail": 13.04,
+      "drinksNone": 10.5,
+      "drinksLight": 20.16,
+      "drinksModerate": 55.9,
+      "drinksHeavy": 91.64,
+      "activitiesFree": 0,
+      "activitiesBudget": 25.74,
+      "activitiesMid": 68.64,
+      "activitiesHigh": 205.9
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 27.45,
+      "foodBudget": 51.48,
+      "foodMid": 134.4,
+      "foodHigh": 354.6,
+      "drinkCoffee": 5.25,
+      "drinkLocalBeer": 4.83,
+      "drinkCocktail": 13.04,
+      "drinksNone": 10.5,
+      "drinksLight": 20.16,
+      "drinksModerate": 55.9,
+      "drinksHeavy": 91.64,
+      "activitiesFree": 0,
+      "activitiesBudget": 25.74,
+      "activitiesMid": 68.64,
+      "activitiesHigh": 205.9
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 84,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Seoul from $62 | Expedia",
+        "evidenceText": "September | $84. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Seoul. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Seoul-Hotels Seoul \"price trend information\" \"3 stars\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 47,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 124,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 72,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 5433.33,
+        "currency": "KRW",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+        "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+        "evidenceText": "Cappuccino (Regular Size) | ₩5,433.33",
+        "query": "site:numbeo.com/cost-of-living/in/Seoul \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 5000,
+        "currency": "KRW",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+        "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₩5,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Seoul \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 39.26,
+          "upperAud": 93.83,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 49.75,
+          "upperAud": 118.89,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 66.33,
+          "upperAud": 158.53,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 88.7,
+          "upperAud": 211.98,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 87.36,
+          "upperAud": 181.44,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.73,
+          "upperAud": 5.78,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 9.45,
+          "upperAud": 11.55,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 18.14,
+          "upperAud": 22.18,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 20.12,
+          "upperAud": 91.68,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 32.99,
+          "upperAud": 150.29,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 133.84,
+          "upperAud": 277.97,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 66.33370000000001,
+          "upperAud": 158.5263,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 43.68000000000001,
+          "upperAud": 90.72000000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 115.245,
+          "upperAud": 239.35500000000002,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 22.308,
+          "upperAud": 46.332,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 66.9175,
+          "upperAud": 138.98250000000002,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 4.7250000000000005,
+          "upperAud": 5.775,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 4.347,
+          "upperAud": 5.313000000000001,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 4.6944,
+          "upperAud": 21.3856,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 67.2,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 177.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 102.95,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.25,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.83,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 13.04,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 39.26,
+          "upperAud": 93.83,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 49.75,
+          "upperAud": 118.89,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 66.33,
+          "upperAud": 158.53,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 88.7,
+          "upperAud": 211.98,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 87.36,
+          "upperAud": 181.44,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.73,
+          "upperAud": 5.78,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 9.45,
+          "upperAud": 11.55,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 18.14,
+          "upperAud": 22.18,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 20.12,
+          "upperAud": 91.68,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 32.99,
+          "upperAud": 150.29,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 133.84,
+          "upperAud": 277.97,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {},
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 84,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Seoul from $62 | Expedia",
+          "evidenceText": "September | $84. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Seoul. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+          "query": "site:expedia.com/3Star-Seoul-Hotels Seoul \"price trend information\" \"3 stars\"",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 18,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+          "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+          "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 47,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+          "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+          "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 124,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+          "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+          "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 9,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+          "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+          "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 24,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+          "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+          "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 72,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+          "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+          "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 5433.33,
+          "currency": "KRW",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+          "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+          "evidenceText": "Cappuccino (Regular Size) | ₩5,433.33",
+          "query": "site:numbeo.com/cost-of-living/in/Seoul \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 5000,
+          "currency": "KRW",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+          "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₩5,000.00",
+          "query": "site:numbeo.com/cost-of-living/in/Seoul \"Domestic Draft Beer (0.5 Liter)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 112.43,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 25.74,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 67.2,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 177.3,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 12.87,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 34.32,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 102.95,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 5.25,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 4.83,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 13.04,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "seoul",
+    "city": "Seoul",
+    "country": "South Korea",
+    "region": "East Asia",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "2cf187e47541fabbf87a1fe6856ab366ebfac8f9b48c4dd4a0d9b56dcd9c2282",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 27.45,
+      "foodBudget": 51.48,
+      "foodMid": 134.4,
+      "foodHigh": 354.6,
+      "drinkCoffee": 5.25,
+      "drinkLocalBeer": 4.83,
+      "drinkCocktail": 13.04,
+      "drinksNone": 10.5,
+      "drinksLight": 20.16,
+      "drinksModerate": 55.9,
+      "drinksHeavy": 91.64,
+      "activitiesFree": 0,
+      "activitiesBudget": 25.74,
+      "activitiesMid": 68.64,
+      "activitiesHigh": 205.9
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 84,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Seoul from $62 | Expedia",
+        "evidenceText": "September | $84. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Seoul. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Seoul-Hotels Seoul \"price trend information\" \"3 stars\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 47,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 124,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $18 (₩27,572)  | $47 (₩71,388)  | $124 (₩189,730)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 72,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/south-korea/seoul",
+        "sourceTitle": "Seoul Travel Cost - Average Price of a Vacation to Seoul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $9 (₩13,128)  | $24 (₩36,419)  | $72 (₩110,466)",
+        "query": "site:budgetyourtrip.com/south-korea/seoul \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 5433.33,
+        "currency": "KRW",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+        "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+        "evidenceText": "Cappuccino (Regular Size) | ₩5,433.33",
+        "query": "site:numbeo.com/cost-of-living/in/Seoul \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 5000,
+        "currency": "KRW",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Seoul",
+        "sourceTitle": "Cost of Living in Seoul. Jun 2026. Prices in Seoul",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₩5,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Seoul \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 39.26,
+          "upperAud": 93.83,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 49.75,
+          "upperAud": 118.89,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 66.33,
+          "upperAud": 158.53,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 88.7,
+          "upperAud": 211.98,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 15.1,
+          "upperAud": 39.8,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 87.36,
+          "upperAud": 181.44,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 230.49,
+          "upperAud": 478.71,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.73,
+          "upperAud": 5.78,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 9.45,
+          "upperAud": 11.55,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 18.14,
+          "upperAud": 22.18,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 20.12,
+          "upperAud": 91.68,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 32.99,
+          "upperAud": 150.29,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 133.84,
+          "upperAud": 277.97,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 66.33370000000001,
+          "upperAud": 158.5263,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 43.68000000000001,
+          "upperAud": 90.72000000000001,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 115.245,
+          "upperAud": 239.35500000000002,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 22.308,
+          "upperAud": 46.332,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 66.9175,
+          "upperAud": 138.98250000000002,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 4.7250000000000005,
+          "upperAud": 5.775,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 4.347,
+          "upperAud": 5.313000000000001,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 4.6944,
+          "upperAud": 21.3856,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Seoul-Hotels.s30-0-d178308.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 67.2,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 177.3,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 102.95,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/south-korea/seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.25,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.83,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 13.04,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Seoul",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "40c0e952d81f839fa8260d1ff7f4cff590d5bcc1d9ff23ed8a963fa39588e33f",
+    "calls": [
+      {
+        "city": "Seoul",
+        "country": "South Korea",
+        "source": "expedia_3star",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "2afa78110f892966bde391954decda34acd40babcc8a4409888aa965adedb0f1",
+        "telemetrySha256": "6f3bc59899b19d247e6efa80e7a921cec73cfa630268738279cf0341d402c2da"
+      },
+      {
+        "city": "Seoul",
+        "country": "South Korea",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "a5622ff7f63a21708177765f61d1da81f6609ede289db402d84c475a751c7853",
+        "telemetrySha256": "c69b06f79087575a8a232658b99b7040b549e8130974e46624d04e7202f87751"
+      },
+      {
+        "city": "Seoul",
+        "country": "South Korea",
+        "source": "numbeo_drinks",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "c2bd6d72ddb754a694a05e9ff63f073b7242616ada9f6985eeeab6ef9cfdb7d2",
+        "telemetrySha256": "8ba26729a7b757a88105bd1f77971fbcec2d91d8ad1dce7c765b7fe2489cdce2"
+      }
+    ]
+  }
+}

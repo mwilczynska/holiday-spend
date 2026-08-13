@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Cairo",
+  "country": "Egypt",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 94.02,
+      "currency": "EGP",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cairo-Egypt",
+      "sourceTitle": "Cost of Living in Cairo. Jun 2026. Prices in Cairo",
+      "evidenceText": "Cappuccino (Regular Size)  | E£94.02  | 40.00-150.00",
+      "query": "site:numbeo.com/cost-of-living/in/Cairo \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 85,
+      "currency": "EGP",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cairo-Egypt",
+      "sourceTitle": "Cost of Living in Cairo. Jun 2026. Prices in Cairo",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | E£85.00  | 55.00-200.00",
+      "query": "site:numbeo.com/cost-of-living/in/Cairo (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

@@ -34,6 +34,7 @@ async function postJson(
 }
 
 describe.sequential('country metadata routes', () => {
+  // OneDrive-backed temp directories can take longer than Vitest's default while importing the DB module.
   beforeAll(async () => {
     tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'holiday-spend-country-routes-'));
     process.chdir(tempDir);
@@ -85,7 +86,7 @@ describe.sequential('country metadata routes', () => {
     `);
     countriesRouteModule = await import('@/app/api/countries/route');
     citiesRouteModule = await import('@/app/api/cities/route');
-  });
+  }, 30_000);
 
   afterAll(() => {
     dbModule?.sqlite.close();

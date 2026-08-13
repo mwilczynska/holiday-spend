@@ -1,0 +1,904 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-v1",
+  "status": "frozen",
+  "registeredAt": "2026-08-13",
+  "methodologyVersion": "v6.1",
+  "inputCsv": "data/reference/city_costs_app_aud.csv",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "fxSnapshot": "data/reference/fx/city_cost_fx_aud_2026-07-22.json",
+  "fxSnapshotSha256": "419469a6982bea62f3ff454b0981a0be46066ebdafec566bdf389a473766b3dc",
+  "collectionWindow": {
+    "arrival": "2026-09-17",
+    "departure": "2026-09-18",
+    "referenceDate": "2026-09-17"
+  },
+  "limits": {
+    "sourceCallsPerCity": 3,
+    "maxSearchesPerCity": 10,
+    "maxSearchesBySource": {
+      "expedia_3star": 4,
+      "budgetyourtrip_daily_tiers": 4,
+      "numbeo_drinks": 2
+    },
+    "directPageReadsPerCity": 0,
+    "maxRetriesPerCall": 1
+  },
+  "prompts": {
+    "expedia_3star": {
+      "file": "docs/prompts/llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "sha256": "10f58ffd577730c9e2cf6454b273a5393c584637512fabe68c3dbae861be41e2"
+    },
+    "budgetyourtrip_daily_tiers": {
+      "file": "docs/prompts/llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "sha256": "f3ff07c88bdeb23a142ae3a5008950a17f3721398a2049a59ce50e41cae8cf68"
+    },
+    "numbeo_drinks": {
+      "file": "docs/prompts/llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+      "sha256": "661cd7353c0779e88774848f649a37f0b99a411ebe3a9b5f62f8b0ec67a2a145"
+    }
+  },
+  "implementationFiles": {
+    "src/lib/city-cost-v6-1-collection.ts": "7f4c9336c49119a59ba66c05d72cc52a4dd1208341891e513c9baacc794dc074",
+    "src/lib/city-cost-methodology-v6-1.ts": "9ec4a6f4a49d8fb2d86ba9514234792b3daaff21a17f40beddf666a2e005517c",
+    "src/lib/city-generation-persistence.ts": "e6e9eb35a300c2f953f1551a86e1b3cbf3dfa5eac004e14f88d308d56af30daf",
+    "src/lib/city-estimate-provenance.ts": "a847e2eb24e16241e6aeac55313c75132ad8b3adc27c6c69920b22b1210f9681",
+    "src/lib/city-cost-v6-1-migration.ts": "bdee5b0769e043b6faf2b9e0f1b466d81f5346c1c22d138bab1b17cb48a64393",
+    "scripts/migrate-city-cost-v6-1.ts": "42e71861953404dd8bdb091f1cf4510acbb763b9f9e2663b26caf23477df4959"
+  },
+  "frame": [
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "ho-chi-minh-city"
+    },
+    {
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "hanoi"
+    },
+    {
+      "city": "Can Tho",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "can-tho"
+    },
+    {
+      "city": "Mui Ne",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "mui-ne"
+    },
+    {
+      "city": "Cat Ba",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "cat-ba"
+    },
+    {
+      "city": "Ninh Binh",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "ninh-binh"
+    },
+    {
+      "city": "Pu Luong",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "pu-luong"
+    },
+    {
+      "city": "Da Nang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "da-nang"
+    },
+    {
+      "city": "Hoi An",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "hoi-an"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "da-lat"
+    },
+    {
+      "city": "Nha Trang",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "nha-trang"
+    },
+    {
+      "city": "Phu Quoc",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "phu-quoc"
+    },
+    {
+      "city": "Sa Pa",
+      "country": "Vietnam",
+      "region": "SEA",
+      "band": null,
+      "cityId": "sa-pa"
+    },
+    {
+      "city": "Luang Prabang",
+      "country": "Laos",
+      "region": "SEA",
+      "band": null,
+      "cityId": "luang-prabang"
+    },
+    {
+      "city": "Vientiane",
+      "country": "Laos",
+      "region": "SEA",
+      "band": null,
+      "cityId": "vientiane"
+    },
+    {
+      "city": "Don Det",
+      "country": "Laos",
+      "region": "SEA",
+      "band": null,
+      "cityId": "don-det"
+    },
+    {
+      "city": "Vang Vieng",
+      "country": "Laos",
+      "region": "SEA",
+      "band": null,
+      "cityId": "vang-vieng"
+    },
+    {
+      "city": "Siem Reap",
+      "country": "Cambodia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "siem-reap"
+    },
+    {
+      "city": "Phnom Penh",
+      "country": "Cambodia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "phnom-penh"
+    },
+    {
+      "city": "Kampot",
+      "country": "Cambodia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "kampot"
+    },
+    {
+      "city": "Yangon",
+      "country": "Myanmar",
+      "region": "SEA",
+      "band": null,
+      "cityId": "yangon"
+    },
+    {
+      "city": "Bagan",
+      "country": "Myanmar",
+      "region": "SEA",
+      "band": null,
+      "cityId": "bagan"
+    },
+    {
+      "city": "Cebu",
+      "country": "Philippines",
+      "region": "SEA",
+      "band": null,
+      "cityId": "cebu"
+    },
+    {
+      "city": "Santa Fe (Bantayan)",
+      "country": "Philippines",
+      "region": "SEA",
+      "band": null,
+      "cityId": "santa-fe-bantayan"
+    },
+    {
+      "city": "Manila",
+      "country": "Philippines",
+      "region": "SEA",
+      "band": null,
+      "cityId": "manila"
+    },
+    {
+      "city": "Palawan (El Nido)",
+      "country": "Philippines",
+      "region": "SEA",
+      "band": null,
+      "cityId": "palawan-el-nido"
+    },
+    {
+      "city": "Siargao",
+      "country": "Philippines",
+      "region": "SEA",
+      "band": null,
+      "cityId": "siargao"
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": null,
+      "cityId": "bangkok"
+    },
+    {
+      "city": "Chiang Mai",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": null,
+      "cityId": "chiang-mai"
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": null,
+      "cityId": "phuket"
+    },
+    {
+      "city": "Koh Samui",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": null,
+      "cityId": "koh-samui"
+    },
+    {
+      "city": "Pai",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": null,
+      "cityId": "pai"
+    },
+    {
+      "city": "Krabi",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": null,
+      "cityId": "krabi"
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "region": "SEA",
+      "band": null,
+      "cityId": "chiang-rai"
+    },
+    {
+      "city": "Bali (Kuta)",
+      "country": "Indonesia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "bali-kuta"
+    },
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "bali-ubud"
+    },
+    {
+      "city": "Bali (Canggu)",
+      "country": "Indonesia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "bali-canggu"
+    },
+    {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "jakarta"
+    },
+    {
+      "city": "Yogyakarta",
+      "country": "Indonesia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "yogyakarta"
+    },
+    {
+      "city": "Lombok",
+      "country": "Indonesia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "lombok"
+    },
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "kuala-lumpur"
+    },
+    {
+      "city": "Penang",
+      "country": "Malaysia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "penang"
+    },
+    {
+      "city": "Langkawi",
+      "country": "Malaysia",
+      "region": "SEA",
+      "band": null,
+      "cityId": "langkawi"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "region": "SEA",
+      "band": null,
+      "cityId": "singapore"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "seoul"
+    },
+    {
+      "city": "Busan",
+      "country": "South Korea",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "busan"
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "tokyo"
+    },
+    {
+      "city": "Osaka",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "osaka"
+    },
+    {
+      "city": "Kyoto",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "kyoto"
+    },
+    {
+      "city": "Kanazawa",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "kanazawa"
+    },
+    {
+      "city": "Aomori",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "aomori"
+    },
+    {
+      "city": "Nikko",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "nikko"
+    },
+    {
+      "city": "Sendai",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "sendai"
+    },
+    {
+      "city": "Hiroshima",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "hiroshima"
+    },
+    {
+      "city": "Fukuoka",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "fukuoka"
+    },
+    {
+      "city": "Nara",
+      "country": "Japan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "nara"
+    },
+    {
+      "city": "Beijing",
+      "country": "China",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "beijing"
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "shanghai"
+    },
+    {
+      "city": "Hong Kong",
+      "country": "Hong Kong",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "hong-kong"
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "region": "East Asia",
+      "band": null,
+      "cityId": "taipei"
+    },
+    {
+      "city": "Delhi",
+      "country": "India",
+      "region": "South Asia",
+      "band": null,
+      "cityId": "delhi"
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "region": "South Asia",
+      "band": null,
+      "cityId": "mumbai"
+    },
+    {
+      "city": "Goa",
+      "country": "India",
+      "region": "South Asia",
+      "band": null,
+      "cityId": "goa"
+    },
+    {
+      "city": "Colombo",
+      "country": "Sri Lanka",
+      "region": "South Asia",
+      "band": null,
+      "cityId": "colombo"
+    },
+    {
+      "city": "Kathmandu",
+      "country": "Nepal",
+      "region": "South Asia",
+      "band": null,
+      "cityId": "kathmandu"
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "region": "Middle East",
+      "band": null,
+      "cityId": "istanbul"
+    },
+    {
+      "city": "Amman",
+      "country": "Jordan",
+      "region": "Middle East",
+      "band": null,
+      "cityId": "amman"
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "region": "Middle East",
+      "band": null,
+      "cityId": "dubai"
+    },
+    {
+      "city": "Tel Aviv",
+      "country": "Israel",
+      "region": "Middle East",
+      "band": null,
+      "cityId": "tel-aviv"
+    },
+    {
+      "city": "Marrakech",
+      "country": "Morocco",
+      "region": "Africa",
+      "band": null,
+      "cityId": "marrakech"
+    },
+    {
+      "city": "Cape Town",
+      "country": "South Africa",
+      "region": "Africa",
+      "band": null,
+      "cityId": "cape-town"
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "region": "Africa",
+      "band": null,
+      "cityId": "nairobi"
+    },
+    {
+      "city": "Cairo",
+      "country": "Egypt",
+      "region": "Africa",
+      "band": null,
+      "cityId": "cairo"
+    },
+    {
+      "city": "Zanzibar",
+      "country": "Tanzania",
+      "region": "Africa",
+      "band": null,
+      "cityId": "zanzibar"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "region": "Europe",
+      "band": null,
+      "cityId": "budapest"
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "band": null,
+      "cityId": "prague"
+    },
+    {
+      "city": "Krakow",
+      "country": "Poland",
+      "region": "Europe",
+      "band": null,
+      "cityId": "krakow"
+    },
+    {
+      "city": "Bucharest",
+      "country": "Romania",
+      "region": "Europe",
+      "band": null,
+      "cityId": "bucharest"
+    },
+    {
+      "city": "Sofia",
+      "country": "Bulgaria",
+      "region": "Europe",
+      "band": null,
+      "cityId": "sofia"
+    },
+    {
+      "city": "Belgrade",
+      "country": "Serbia",
+      "region": "Europe",
+      "band": null,
+      "cityId": "belgrade"
+    },
+    {
+      "city": "Tbilisi",
+      "country": "Georgia",
+      "region": "Europe",
+      "band": null,
+      "cityId": "tbilisi"
+    },
+    {
+      "city": "Split",
+      "country": "Croatia",
+      "region": "Europe",
+      "band": null,
+      "cityId": "split"
+    },
+    {
+      "city": "Dubrovnik",
+      "country": "Croatia",
+      "region": "Europe",
+      "band": null,
+      "cityId": "dubrovnik"
+    },
+    {
+      "city": "Lisbon",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": null,
+      "cityId": "lisbon"
+    },
+    {
+      "city": "Porto",
+      "country": "Portugal",
+      "region": "Europe",
+      "band": null,
+      "cityId": "porto"
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "region": "Europe",
+      "band": null,
+      "cityId": "barcelona"
+    },
+    {
+      "city": "Madrid",
+      "country": "Spain",
+      "region": "Europe",
+      "band": null,
+      "cityId": "madrid"
+    },
+    {
+      "city": "Rome",
+      "country": "Italy",
+      "region": "Europe",
+      "band": null,
+      "cityId": "rome"
+    },
+    {
+      "city": "Florence",
+      "country": "Italy",
+      "region": "Europe",
+      "band": null,
+      "cityId": "florence"
+    },
+    {
+      "city": "Athens",
+      "country": "Greece",
+      "region": "Europe",
+      "band": null,
+      "cityId": "athens"
+    },
+    {
+      "city": "Berlin",
+      "country": "Germany",
+      "region": "Europe",
+      "band": null,
+      "cityId": "berlin"
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "region": "Europe",
+      "band": null,
+      "cityId": "munich"
+    },
+    {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "region": "Europe",
+      "band": null,
+      "cityId": "amsterdam"
+    },
+    {
+      "city": "Vienna",
+      "country": "Austria",
+      "region": "Europe",
+      "band": null,
+      "cityId": "vienna"
+    },
+    {
+      "city": "Paris",
+      "country": "France",
+      "region": "Europe",
+      "band": null,
+      "cityId": "paris"
+    },
+    {
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "Europe",
+      "band": null,
+      "cityId": "london"
+    },
+    {
+      "city": "Edinburgh",
+      "country": "United Kingdom",
+      "region": "Europe",
+      "band": null,
+      "cityId": "edinburgh"
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "region": "Europe",
+      "band": null,
+      "cityId": "copenhagen"
+    },
+    {
+      "city": "Stockholm",
+      "country": "Sweden",
+      "region": "Europe",
+      "band": null,
+      "cityId": "stockholm"
+    },
+    {
+      "city": "Helsinki",
+      "country": "Finland",
+      "region": "Europe",
+      "band": null,
+      "cityId": "helsinki"
+    },
+    {
+      "city": "Reykjavik",
+      "country": "Iceland",
+      "region": "Europe",
+      "band": null,
+      "cityId": "reykjavik"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "mexico-city"
+    },
+    {
+      "city": "Medellin",
+      "country": "Colombia",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "medellin"
+    },
+    {
+      "city": "Bogota",
+      "country": "Colombia",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "bogota"
+    },
+    {
+      "city": "Cartagena",
+      "country": "Colombia",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "cartagena"
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "lima"
+    },
+    {
+      "city": "Cusco",
+      "country": "Peru",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "cusco"
+    },
+    {
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "buenos-aires"
+    },
+    {
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "rio-de-janeiro"
+    },
+    {
+      "city": "Santiago",
+      "country": "Chile",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "santiago"
+    },
+    {
+      "city": "Havana",
+      "country": "Cuba",
+      "region": "Latin America",
+      "band": null,
+      "cityId": "havana"
+    },
+    {
+      "city": "New York City",
+      "country": "United States",
+      "region": "North America",
+      "band": null,
+      "cityId": "new-york-city"
+    },
+    {
+      "city": "Los Angeles",
+      "country": "United States",
+      "region": "North America",
+      "band": null,
+      "cityId": "los-angeles"
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "region": "North America",
+      "band": null,
+      "cityId": "san-francisco"
+    },
+    {
+      "city": "Montreal",
+      "country": "Canada",
+      "region": "North America",
+      "band": null,
+      "cityId": "montreal"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "region": "North America",
+      "band": null,
+      "cityId": "vancouver"
+    },
+    {
+      "city": "Sydney",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": null,
+      "cityId": "sydney"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": null,
+      "cityId": "melbourne"
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "band": null,
+      "cityId": "auckland"
+    },
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "region": "Oceania",
+      "band": null,
+      "cityId": "queenstown"
+    },
+    {
+      "city": "Cairns",
+      "country": "Australia",
+      "region": "Oceania",
+      "band": null,
+      "cityId": "cairns"
+    }
+  ],
+  "sourcePolicy": {
+    "stageA": "delegated_codex_subagent",
+    "stageB": "shipped_materializeCityCostV61",
+    "noDirectPageReads": true,
+    "noPriorsFromCsv": true
+  },
+  "liveCsvWrite": "forbidden"
+}

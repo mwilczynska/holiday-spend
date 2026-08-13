@@ -4,6 +4,14 @@
 
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **13 August 2026 supersession:** Phase 8 is complete. The frozen protocol, checkpoint, call-level reuse ledger,
+> normalized/materialized artifacts, staged CSV, provenance sidecar, import plan and non-live import path were
+> generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is now
+> active. The next exact action is to assign the first fixed batch of remaining cities, collect three bounded
+> source calls per city with delegated Stage A, materialize through `materializeCityCostV61`, run the full baseline,
+> and commit/push that batch. Do not read a holdout or write the live CSV. This dated entry supersedes older handoff
+> paragraphs that describe Phase 8 as blocked or merely pending.
+
 **Phase 6 completed commit:** `07a1c0a`
 **Phase 7A repair commit:** `0c52a23`
 **Phase 7 canary result commit:** `1bc352f` (experiment 010 preflight only)
@@ -312,3 +320,18 @@ Experiment 013 is complete, failed and immutable. Phase 7H has passed its focuse
 The exact next action is owner-authorize and run one fresh immutable canary reusing 58 valid experiment-013 calls and
 recollecting only Prague BYT/Numbeo. Do not rerun or mutate 013, read a holdout, stage migration or touch the live CSV.
 At the eventual Phase 10 boundary, stop again for owner approval before Phase 11 cutover.
+
+## 10a. Current state after Phase 8 — 13 August 2026
+
+Phase 8 is complete and pushed in the active worktree. The frozen migration protocol covers the unchanged
+121-city frame, current input CSV/FX/prompt/implementation hashes, the 2026-09-17 to 2026-09-18 window, three
+source calls per city, search ceilings and a forbidden live-CSV write. Experiment 014 was reused only after
+call-level validation: 60 raw/telemetry pairs, 20 complete materializations, a deterministic staged CSV and
+provenance sidecar/import plan were produced. The importer is read-only by default, rejects partial sidecars,
+and rejects the live database; a non-live database is required for an explicit test import.
+
+Phase 9 is active. The remaining frame is 101 cities; the 20 experiment-014 cities are complete and must not be
+recollected. The next exact action is to assign one fixed 10-city batch through the migration assignment ledger,
+have delegated agents write the three exact raw/telemetry pairs per city, inventory the batch, materialize it,
+run the complete verification baseline, update the checkpoint and commit/push. If a batch has more than 30%
+genuine artifact candidates, stop and report; explicit source missingness alone is not an artifact.

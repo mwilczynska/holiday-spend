@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Lima",
+  "country": "Peru",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+      "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $13  | $33  | $86",
+      "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Food\" \"$13\" \"$33\" \"$86\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 33,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+      "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $13  | $33  | $86",
+      "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Food\" \"$13\" \"$33\" \"$86\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 86,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+      "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $13  | $33  | $86",
+      "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Food\" \"$13\" \"$33\" \"$86\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 3,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+      "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $3  | $9  | $29",
+      "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Entertainment\" \"$3\" \"$9\" \"$30\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+      "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $3  | $9  | $29",
+      "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Entertainment\" \"$3\" \"$9\" \"$30\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 29,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/lima/trip-cost-3936456",
+      "sourceTitle": "How much does a trip to Lima Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $3  | $9  | $29",
+      "query": "site:www.budgetyourtrip.com/peru/lima/trip-cost-3936456 \"Entertainment\" \"$3\" \"$9\" \"$30\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

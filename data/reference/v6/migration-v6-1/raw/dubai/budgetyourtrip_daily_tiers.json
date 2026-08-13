@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Dubai",
+  "country": "UAE",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 39,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai",
+      "sourceTitle": "Dubai Travel Cost - Average Price of a Vacation to Dubai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2} | $39 (AED 142) | $96 (AED 354) | $235 (AED 863)",
+      "query": "site:budgetyourtrip.com/united-arab-emirates/dubai \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 96,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai",
+      "sourceTitle": "Dubai Travel Cost - Average Price of a Vacation to Dubai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2} | $39 (AED 142) | $96 (AED 354) | $235 (AED 863)",
+      "query": "site:budgetyourtrip.com/united-arab-emirates/dubai \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 235,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai",
+      "sourceTitle": "Dubai Travel Cost - Average Price of a Vacation to Dubai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2} | $39 (AED 142) | $96 (AED 354) | $235 (AED 863)",
+      "query": "site:budgetyourtrip.com/united-arab-emirates/dubai \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 6,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai",
+      "sourceTitle": "Dubai Travel Cost - Average Price of a Vacation to Dubai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1} | $6 (AED 21) | $19 (AED 70) | $77 (AED 281)",
+      "query": "site:budgetyourtrip.com/united-arab-emirates/dubai \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 19,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai",
+      "sourceTitle": "Dubai Travel Cost - Average Price of a Vacation to Dubai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1} | $6 (AED 21) | $19 (AED 70) | $77 (AED 281)",
+      "query": "site:budgetyourtrip.com/united-arab-emirates/dubai \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 77,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/united-arab-emirates/dubai",
+      "sourceTitle": "Dubai Travel Cost - Average Price of a Vacation to Dubai: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1} | $6 (AED 21) | $19 (AED 70) | $77 (AED 281)",
+      "query": "site:budgetyourtrip.com/united-arab-emirates/dubai \"Food\" \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

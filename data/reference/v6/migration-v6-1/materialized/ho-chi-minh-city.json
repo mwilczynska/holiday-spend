@@ -1,0 +1,2374 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "region": "SEA",
+    "band": null,
+    "cityId": "ho-chi-minh-city"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "region": "SEA",
+    "costBand": "low",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 26.9,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 26.94,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 30.32,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 34.13,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 45.51,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 60.86,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "amountAud": 13.72,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 25.74,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 65.78,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 165.86,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 2.67,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 2.4,
+          "upperAud": 2.94,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 5.34,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 4.81,
+          "upperAud": 5.87,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 8.64,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 7.78,
+          "upperAud": 9.5,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 25.2,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 9.07,
+          "upperAud": 41.33,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 41.76,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 15.03,
+          "upperAud": 68.49,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 20.02,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 54.34,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 35.32,
+          "upperAud": 73.36,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 151.56,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 75.78,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.67,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.65,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 6.63,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {
+      "hotel_3star_room_2p": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 13.72,
+      "foodBudget": 25.74,
+      "foodMid": 65.78,
+      "foodHigh": 165.86,
+      "drinkCoffee": 2.67,
+      "drinkLocalBeer": 1.65,
+      "drinkCocktail": 6.63,
+      "drinksNone": 5.34,
+      "drinksLight": 8.64,
+      "drinksModerate": 25.2,
+      "drinksHeavy": 41.76,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 54.34,
+      "activitiesHigh": 151.56
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 13.72,
+      "foodBudget": 25.74,
+      "foodMid": 65.78,
+      "foodHigh": 165.86,
+      "drinkCoffee": 2.67,
+      "drinkLocalBeer": 1.65,
+      "drinkCocktail": 6.63,
+      "drinksNone": 5.34,
+      "drinksLight": 8.64,
+      "drinksModerate": 25.2,
+      "drinksHeavy": 41.76,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 54.34,
+      "activitiesHigh": 151.56
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 58,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 19,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 53,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 48571.43,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+        "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+        "evidenceText": "Cappuccino (Regular Size) | ₫48,571.43",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Ho Chi Minh City\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 30000,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+        "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫30,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Ho-Chi-Minh-City \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.4,
+          "upperAud": 2.94,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 4.81,
+          "upperAud": 5.87,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 7.78,
+          "upperAud": 9.5,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 9.07,
+          "upperAud": 41.33,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 15.03,
+          "upperAud": 68.49,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 35.32,
+          "upperAud": 73.36,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 25.0305,
+          "upperAud": 65.98949999999999,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 53.904500000000006,
+          "upperAud": 111.95550000000001,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 6.5065,
+          "upperAud": 13.5135,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 17.660500000000003,
+          "upperAud": 36.679500000000004,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 49.257000000000005,
+          "upperAud": 102.30300000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 2.403,
+          "upperAud": 2.9370000000000003,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.4849999999999999,
+          "upperAud": 1.815,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 2.3868,
+          "upperAud": 10.8732,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 75.78,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.67,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.65,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 6.63,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.4,
+          "upperAud": 2.94,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 4.81,
+          "upperAud": 5.87,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 7.78,
+          "upperAud": 9.5,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 9.07,
+          "upperAud": 41.33,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 15.03,
+          "upperAud": 68.49,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 35.32,
+          "upperAud": 73.36,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 9,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+          "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+          "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 23,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+          "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+          "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 58,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+          "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+          "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 7,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+          "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+          "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 19,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+          "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+          "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 53,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+          "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+          "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 48571.43,
+          "currency": "VND",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+          "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+          "evidenceText": "Cappuccino (Regular Size) | ₫48,571.43",
+          "query": "site:numbeo.com/cost-of-living/in/ \"Ho Chi Minh City\" \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 30000,
+          "currency": "VND",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+          "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫30,000.00",
+          "query": "site:numbeo.com/cost-of-living/in/Ho-Chi-Minh-City \"Domestic Draft Beer (0.5 Liter)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 45.51,
+          "status": "imputed",
+          "evidenceGrade": "D",
+          "intervalPct": 45,
+          "sourceIds": [
+            "v6.1-tier-prior:SEA:all:accom_3_star"
+          ],
+          "modelVersions": [
+            "city-cost-v6-1-tier-prior-v1"
+          ],
+          "imputedMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 12.87,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 32.89,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 82.93,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 10.01,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 27.17,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 75.78,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 2.67,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 1.65,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 6.63,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "ho-chi-minh-city",
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "region": "SEA",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "5b3df6439650bb5586b56309dfbac1af1b2b43edc57d10d620baf9c322eacd2f",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 13.72,
+      "foodBudget": 25.74,
+      "foodMid": 65.78,
+      "foodHigh": 165.86,
+      "drinkCoffee": 2.67,
+      "drinkLocalBeer": 1.65,
+      "drinkCocktail": 6.63,
+      "drinksNone": 5.34,
+      "drinksLight": 8.64,
+      "drinksModerate": 25.2,
+      "drinksHeavy": 41.76,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 54.34,
+      "activitiesHigh": 151.56
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 23,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 58,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $9  | $23  | $58",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 19,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 53,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083",
+        "sourceTitle": "How much does a trip to Ho Chi Minh City Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $19  | $53",
+        "query": "site:budgetyourtrip.com/vietnam/ho-chi-minh-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 48571.43,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+        "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+        "evidenceText": "Cappuccino (Regular Size) | ₫48,571.43",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Ho Chi Minh City\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 30000,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+        "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫30,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Ho-Chi-Minh-City \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 7.55,
+          "upperAud": 19.9,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 16.73,
+          "upperAud": 34.75,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 42.76,
+          "upperAud": 88.8,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 107.81,
+          "upperAud": 223.91,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.4,
+          "upperAud": 2.94,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 4.81,
+          "upperAud": 5.87,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 7.78,
+          "upperAud": 9.5,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 9.07,
+          "upperAud": 41.33,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 15.03,
+          "upperAud": 68.49,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 35.32,
+          "upperAud": 73.36,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 98.51,
+          "upperAud": 204.61,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 25.0305,
+          "upperAud": 65.98949999999999,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 8.365499999999999,
+          "upperAud": 17.3745,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 21.378500000000003,
+          "upperAud": 44.401500000000006,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 53.904500000000006,
+          "upperAud": 111.95550000000001,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 6.5065,
+          "upperAud": 13.5135,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 17.660500000000003,
+          "upperAud": 36.679500000000004,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 49.257000000000005,
+          "upperAud": 102.30300000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 2.403,
+          "upperAud": 2.9370000000000003,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.4849999999999999,
+          "upperAud": 1.815,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 2.3868,
+          "upperAud": 10.8732,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 32.89,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 82.93,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 75.78,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/ho-chi-minh-city/trip-cost-1566083"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.67,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.65,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 6.63,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "384b096fb71d0130ef31a08dbd023b38c03a19599c1f2c55af9cc2ddea765a60",
+    "calls": [
+      {
+        "city": "Ho Chi Minh City",
+        "country": "Vietnam",
+        "source": "expedia_3star",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "bd19271a31a17f77a99347ad664dc1e748e4c74a029ca2ee5c68bea04a5cab0f",
+        "telemetrySha256": "85f1059e039879e76c56b7f0c1ff4cf5e3d7e4809096292a119971d941fad919"
+      },
+      {
+        "city": "Ho Chi Minh City",
+        "country": "Vietnam",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "b29b034b26c1acb92578ff14bc5bc81dfb167900a44486ff422bb3f8d3c140ce",
+        "telemetrySha256": "c69b06f79087575a8a232658b99b7040b549e8130974e46624d04e7202f87751"
+      },
+      {
+        "city": "Ho Chi Minh City",
+        "country": "Vietnam",
+        "source": "numbeo_drinks",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "3cc42b7292a3130254c24d0823c43301319649cf4dd4e532d5d10980fc88e71b",
+        "telemetrySha256": "1961f408d7548539c95892862b50753a7171c75b8c17a812ab131efa0b4d79d7"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2374 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Taipei",
+    "country": "Taiwan",
+    "region": "East Asia",
+    "band": null,
+    "cityId": "taipei"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Taipei",
+    "country": "Taiwan",
+    "region": "East Asia",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 66.45,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 66.55,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 74.91,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 84.32,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 112.43,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 150.34,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "amountAud": 16.77,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 31.46,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 80.08,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 214.48,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.99,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 4.49,
+          "upperAud": 5.49,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 9.98,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 8.98,
+          "upperAud": 10.98,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 17.94,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 16.15,
+          "upperAud": 19.73,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 50.68,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 18.24,
+          "upperAud": 83.12,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 83.42,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 30.03,
+          "upperAud": 136.81,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 20.02,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 51.48,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 137.26,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 107.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.99,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 3.98,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 12.39,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {
+      "hotel_3star_room_2p": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 16.77,
+      "foodBudget": 31.46,
+      "foodMid": 80.08,
+      "foodHigh": 214.48,
+      "drinkCoffee": 4.99,
+      "drinkLocalBeer": 3.98,
+      "drinkCocktail": 12.39,
+      "drinksNone": 9.98,
+      "drinksLight": 17.94,
+      "drinksModerate": 50.68,
+      "drinksHeavy": 83.42,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 51.48,
+      "activitiesHigh": 137.26
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 16.77,
+      "foodBudget": 31.46,
+      "foodMid": 80.08,
+      "foodHigh": 214.48,
+      "drinkCoffee": 4.99,
+      "drinkLocalBeer": 3.98,
+      "drinkCocktail": 12.39,
+      "drinksNone": 9.98,
+      "drinksLight": 17.94,
+      "drinksModerate": 50.68,
+      "drinksHeavy": 83.42,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 51.48,
+      "activitiesHigh": 137.26
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 75,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 48,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 113.05,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+        "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+        "evidenceText": "Cappuccino (Regular Size) | NT$113.05",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Taipei\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 90,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+        "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | NT$90.00",
+        "query": "site:numbeo.com/cost-of-living/in/Taipei \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.49,
+          "upperAud": 5.49,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 8.98,
+          "upperAud": 10.98,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 16.15,
+          "upperAud": 19.73,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 18.24,
+          "upperAud": 83.12,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 30.03,
+          "upperAud": 136.81,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 61.83650000000001,
+          "upperAud": 163.0235,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 10.2245,
+          "upperAud": 21.235500000000002,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 69.706,
+          "upperAud": 144.774,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 6.5065,
+          "upperAud": 13.5135,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 44.6095,
+          "upperAud": 92.6505,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 4.4910000000000005,
+          "upperAud": 5.489000000000001,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 3.582,
+          "upperAud": 4.378,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 4.4604,
+          "upperAud": 20.3196,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 107.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.99,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 3.98,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 12.39,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.49,
+          "upperAud": 5.49,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 8.98,
+          "upperAud": 10.98,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 16.15,
+          "upperAud": 19.73,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 18.24,
+          "upperAud": 83.12,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 30.03,
+          "upperAud": 136.81,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 11,
+          "currency": "USD",
+          "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+          "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+          "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 28,
+          "currency": "USD",
+          "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+          "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+          "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 75,
+          "currency": "USD",
+          "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+          "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+          "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 7,
+          "currency": "USD",
+          "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+          "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+          "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 18,
+          "currency": "USD",
+          "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+          "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+          "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 48,
+          "currency": "USD",
+          "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+          "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+          "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 113.05,
+          "currency": "TWD",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+          "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+          "evidenceText": "Cappuccino (Regular Size) | NT$113.05",
+          "query": "site:numbeo.com/cost-of-living/in/ \"Taipei\" \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 90,
+          "currency": "TWD",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+          "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter) | NT$90.00",
+          "query": "site:numbeo.com/cost-of-living/in/Taipei \"Domestic Draft Beer (0.5 Liter)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 112.43,
+          "status": "imputed",
+          "evidenceGrade": "D",
+          "intervalPct": 45,
+          "sourceIds": [
+            "v6.1-tier-prior:East Asia:all:accom_3_star"
+          ],
+          "modelVersions": [
+            "city-cost-v6-1-tier-prior-v1"
+          ],
+          "imputedMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 15.73,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 40.04,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 107.24,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 10.01,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 25.74,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 68.63,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 4.99,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 3.98,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 12.39,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "taipei",
+    "city": "Taipei",
+    "country": "Taiwan",
+    "region": "East Asia",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "aa991848735d370eceb03149015548dbbf552815ee532fd577296918581f812e",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 66.45,
+      "accomPrivateRoom": 66.55,
+      "accom1star": 74.91,
+      "accom2star": 84.32,
+      "accom3star": 112.43,
+      "accom4star": 150.34,
+      "foodStreet": 16.77,
+      "foodBudget": 31.46,
+      "foodMid": 80.08,
+      "foodHigh": 214.48,
+      "drinkCoffee": 4.99,
+      "drinkLocalBeer": 3.98,
+      "drinkCocktail": 12.39,
+      "drinksNone": 9.98,
+      "drinksLight": 17.94,
+      "drinksModerate": 50.68,
+      "drinksHeavy": 83.42,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 51.48,
+      "activitiesHigh": 137.26
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 75,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nFood^{2}  | $11  | $28  | $75",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 48,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341",
+        "sourceTitle": "How much does a trip to Taipei Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\nEntertainment^{1}  | $7  | $18  | $48",
+        "query": "site:budgetyourtrip.com/taiwan/taipei/trip-cost-1668341 \"Food\" \"Entertainment\" \"Average Daily Costs, Per Person, by Category\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 113.05,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+        "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+        "evidenceText": "Cappuccino (Regular Size) | NT$113.05",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Taipei\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 90,
+        "currency": "TWD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Taipei",
+        "sourceTitle": "Cost of Living in Taipei. Jun 2026. Prices in Taipei",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | NT$90.00",
+        "query": "site:numbeo.com/cost-of-living/in/Taipei \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "East Asia",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 30.57,
+          "upperAud": 102.33,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 36.6,
+          "upperAud": 96.49,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 41.2,
+          "upperAud": 108.62,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 46.38,
+          "upperAud": 122.27,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 61.84,
+          "upperAud": 163.02,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 82.69,
+          "upperAud": 218,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 139.41,
+          "upperAud": 289.55,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 4.49,
+          "upperAud": 5.49,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 8.98,
+          "upperAud": 10.98,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 16.15,
+          "upperAud": 19.73,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 18.24,
+          "upperAud": 83.12,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 30.03,
+          "upperAud": 136.81,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 33.46,
+          "upperAud": 69.5,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 89.22,
+          "upperAud": 185.3,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 61.83650000000001,
+          "upperAud": 163.0235,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 10.2245,
+          "upperAud": 21.235500000000002,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 69.706,
+          "upperAud": 144.774,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 6.5065,
+          "upperAud": 13.5135,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 16.730999999999998,
+          "upperAud": 34.749,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 44.6095,
+          "upperAud": 92.6505,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 4.4910000000000005,
+          "upperAud": 5.489000000000001,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 3.582,
+          "upperAud": 4.378,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 4.4604,
+          "upperAud": 20.3196,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:04:25.293Z",
+          "completedAt": "2026-08-12T21:04:25.293Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:17:58.648Z",
+          "completedAt": "2026-08-12T21:17:58.648Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-12T21:05:38.526Z",
+          "completedAt": "2026-08-12T21:05:38.526Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 112.43,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:East Asia:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 107.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/taiwan/taipei/trip-cost-1668341"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.99,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 3.98,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 12.39,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Taipei",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:04:25.293Z",
+        "completedAt": "2026-08-12T21:04:25.293Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:17:58.648Z",
+        "completedAt": "2026-08-12T21:17:58.648Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:05:38.526Z",
+        "completedAt": "2026-08-12T21:05:38.526Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "acfcc37753cde8e21a79a956fa9b4a5eb904911ee73b26180be2c959ff0a906e",
+    "calls": [
+      {
+        "city": "Taipei",
+        "country": "Taiwan",
+        "source": "expedia_3star",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "9557392e5eedf22c4c69523e5eba54d9ab95d6379f0d67505a38516927ebb4a7",
+        "telemetrySha256": "71f6440d7809ef8e7fa702cf428a8130b1ef1dc0bdcdbea64c21ba2651c7c363"
+      },
+      {
+        "city": "Taipei",
+        "country": "Taiwan",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "ac20ea1cd5ff7f86fa6ce3fb92f9c824599f55b0b24258a48c619aa2289669a4",
+        "telemetrySha256": "19deb3561207cbcfae180708687de04f6621b3ee69879b3cad0f3afb59d3c050"
+      },
+      {
+        "city": "Taipei",
+        "country": "Taiwan",
+        "source": "numbeo_drinks",
+        "collectionMode": "validated_experiment_014_reuse",
+        "sourceExperiment": "014-v6-1-final-delegated-canary",
+        "rawSha256": "9e43cf055cf28f078454f4f071ba8563bb15a2e52bf5ed6ecb6ba8ff0af426be",
+        "telemetrySha256": "1961f408d7548539c95892862b50753a7171c75b8c17a812ab131efa0b4d79d7"
+      }
+    ]
+  }
+}

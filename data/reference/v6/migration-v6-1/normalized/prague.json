@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Prague",
+    "country": "Czech Republic",
+    "region": "Europe",
+    "band": null,
+    "cityId": "prague"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 30.03,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/czech-republic/prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 71.49,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/czech-republic/prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 158.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/czech-republic/prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/czech-republic/prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/czech-republic/prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 64.34,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/czech-republic/prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.49,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.39,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Prague"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 21,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+        "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $21 (Kč 439) | $50 (Kč 1,055) | $111 (Kč 2,347)",
+        "query": "site:budgetyourtrip.com/czech-republic/prague \"Prague Travel Cost\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 50,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+        "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $21 (Kč 439) | $50 (Kč 1,055) | $111 (Kč 2,347)",
+        "query": "site:budgetyourtrip.com/czech-republic/prague \"Prague Travel Cost\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 111,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+        "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $21 (Kč 439) | $50 (Kč 1,055) | $111 (Kč 2,347)",
+        "query": "site:budgetyourtrip.com/czech-republic/prague \"Prague Travel Cost\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+        "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $7 (Kč 152) | $18 (Kč 381) | $45 (Kč 940)",
+        "query": "site:budgetyourtrip.com/czech-republic/prague \"Prague Travel Cost\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+        "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $7 (Kč 152) | $18 (Kč 381) | $45 (Kč 940)",
+        "query": "site:budgetyourtrip.com/czech-republic/prague \"Prague Travel Cost\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 45,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/czech-republic/prague",
+        "sourceTitle": "Prague Travel Cost - Average Price of a Vacation to Prague: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $7 (Kč 152) | $18 (Kč 381) | $45 (Kč 940)",
+        "query": "site:budgetyourtrip.com/czech-republic/prague \"Prague Travel Cost\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 81.28,
+        "currency": "CZK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+        "sourceTitle": "Cost of Living in Prague. Jun 2026. Prices in Prague",
+        "evidenceText": "Cappuccino (Regular Size)  | 81.28 Kč  | 50.00-110.00",
+        "query": "site:numbeo.com/cost-of-living/in/Prague \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 65,
+        "currency": "CZK",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Prague",
+        "sourceTitle": "Cost of Living in Prague. Jun 2026. Prices in Prague",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 65.00 Kč  | 55.00-75.00",
+        "query": "site:numbeo.com/cost-of-living/in/Prague \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:20:20.297Z",
+        "completedAt": "2026-08-12T21:20:20.297Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T04:56:14.906Z",
+        "completedAt": "2026-08-13T04:56:14.906Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T04:55:45.800Z",
+        "completedAt": "2026-08-13T04:55:47.800Z",
+        "durationMs": 2000,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "f95bb94a0ba22b7393c1f98a0f9ee6fcb81812d0e1c1a60ef6e56d3ca38b5d2e",
+      "telemetrySha256": "c3d7e31a7fa5ae51336eb974a46119e9194c4cbc76eee905e4f6439c87c19445"
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "c398caeed6b2f89351bd9868188eeda78d112e9531347743d6cb13d46a2e1f8a",
+      "telemetrySha256": "a1d147115844ce5dad2552917ed05158b5d8d346ac772580d13efa1540b74647"
+    },
+    {
+      "city": "Prague",
+      "country": "Czech Republic",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "9cc663a927bc93325d8c3b682dc3a940c5ac7d54c47ce4afb8de5b61411deaa6",
+      "telemetrySha256": "b1fb7de1bfc7c4c8d55025608743f3b039c14d15f4c1a866f1406b9e08cf4d62"
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "San Francisco",
+    "country": "United States",
+    "region": "North America",
+    "band": null,
+    "cityId": "san-francisco"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 45.76,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 112.96,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 273.11,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 44.33,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 111.53,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 8.49,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/San-Francisco"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 32,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+        "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $32  | $79  | $191",
+        "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 79,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+        "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $32  | $79  | $191",
+        "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 191,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+        "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $32  | $79  | $191",
+        "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+        "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $13  | $31  | $78",
+        "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 31,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+        "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $13  | $31  | $78",
+        "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 78,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-states-of-america/san-francisco/trip-cost-5391959",
+        "sourceTitle": "How much does a trip to San Francisco Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $13  | $31  | $78",
+        "query": "site:budgetyourtrip.com \"San Francisco\" \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\" \"per person\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 5.94,
+        "currency": "USD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/San-Francisco",
+        "sourceTitle": "Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco",
+        "evidenceText": "Cappuccino (Regular Size)  | $5.94  | 3.72-7.50",
+        "query": "site:numbeo.com/cost-of-living/in/San-Francisco \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/San-Francisco",
+        "sourceTitle": "Cost of Living in San Francisco, California. Jun 2026. Prices in San Francisco",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | $8.00  | 6.00-12.00",
+        "query": "site:numbeo.com/cost-of-living/in/San-Francisco (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:31:32.810Z",
+        "completedAt": "2026-08-13T03:31:35.057Z",
+        "durationMs": 2247,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:31:47.557Z",
+        "completedAt": "2026-08-13T03:31:49.466Z",
+        "durationMs": 1909,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:32:11.974Z",
+        "completedAt": "2026-08-13T03:32:13.756Z",
+        "durationMs": 1782,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "96ea48616841709aacc540f2cf615e132b8cf7ae95edcbdd3411225987411c69",
+      "telemetrySha256": "9b437ecbbb5c5a08a8fd00d89234c2a7f6260d3269555b8b6df053d9215d6a63"
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "5749125a31f989d6185f69324f2fdf8e606bbfce3d4f16046839e1c98a44e570",
+      "telemetrySha256": "c30686dc98112f1c7e515341ec4102072f1cb7cd6dccf420f195a3b129555998"
+    },
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "5b5b51fa0ac2f3bb978a85c705b56b96a4c87be353d7ca30e897613e418f1650",
+      "telemetrySha256": "6f878ecf0860aa9b53150405921eb7f287443b80f17cc02e0996d93bfd68bc20"
+    }
+  ]
+}

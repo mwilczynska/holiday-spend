@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Lima",
+  "country": "Peru",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 65,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/es/3Estrellas-Lima-Hoteles.s30-0-d178277.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "The Best 3 Star Hotels in Lima from $25 | Expedia",
+      "evidenceText": "September  | $65 ... Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Lima.",
+      "query": "site:expedia.com/3Star-Lima-Hotels.s30 Lima \"September\" \"2 adults\" \"2026\"",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": ""
+}

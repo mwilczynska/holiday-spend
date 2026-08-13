@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Melbourne",
+  "country": "Australia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 5.64,
+      "currency": "AUD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+      "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+      "evidenceText": "Cappuccino (Regular Size)  | A$5.64  | 4.00-8.00",
+      "query": "site:numbeo.com/cost-of-living/in/Melbourne \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 13.15,
+      "currency": "AUD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Melbourne",
+      "sourceTitle": "Cost of Living in Melbourne. Jun 2026. Prices in Melbourne",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | A$13.15  | 8.00-15.00",
+      "query": "site:numbeo.com/cost-of-living/in/Melbourne (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

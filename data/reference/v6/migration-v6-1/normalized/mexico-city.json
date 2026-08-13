@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Mexico City",
+    "country": "Mexico",
+    "region": "Latin America",
+    "band": null,
+    "cityId": "mexico-city"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 107.08,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/es/3Estrellas-Ciudad-De-Mexico-Hoteles.s30-0-d178285.Guia-Viajes-Filter-Hoteles",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 65.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 193.03,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 48.62,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.54,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Mexico-City"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.84,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Mexico-City"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 80,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/es/3Estrellas-Ciudad-De-Mexico-Hoteles.s30-0-d178285.Guia-Viajes-Filter-Hoteles",
+        "sourceTitle": "The Best 3 Star Hotels in Mexico City from $27 | Expedia",
+        "evidenceText": "September | $80. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Mexico City. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com \"The Best 3 Star Hotels in Mexico City\" \"September\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597",
+        "sourceTitle": "How much does a trip to Mexico City Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $17  | $46  | $135",
+        "query": "site:budgetyourtrip.com/mexico/mexico-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 46,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597",
+        "sourceTitle": "How much does a trip to Mexico City Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $17  | $46  | $135",
+        "query": "site:budgetyourtrip.com/mexico/mexico-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 135,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597",
+        "sourceTitle": "How much does a trip to Mexico City Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $17  | $46  | $135",
+        "query": "site:budgetyourtrip.com/mexico/mexico-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597",
+        "sourceTitle": "How much does a trip to Mexico City Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $6  | $15  | $34",
+        "query": "site:budgetyourtrip.com/mexico/mexico-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597",
+        "sourceTitle": "How much does a trip to Mexico City Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $6  | $15  | $34",
+        "query": "site:budgetyourtrip.com/mexico/mexico-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 34,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/mexico/mexico-city/trip-cost-3530597",
+        "sourceTitle": "How much does a trip to Mexico City Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $6  | $15  | $34",
+        "query": "site:budgetyourtrip.com/mexico/mexico-city \"Food\" \"Entertainment\" \"per person\" \"per day\" Budget Mid-Range Luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 67.51,
+        "currency": "MXN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City",
+        "sourceTitle": "Cost of Living in Mexico City. Jun 2026. Prices in Mexico City",
+        "evidenceText": "Cappuccino (Regular Size)  | Mex$67.51  | 40.00-85.00",
+        "query": "site:numbeo.com/cost-of-living/in/Mexico-City \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 59,
+        "currency": "MXN",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Mexico-City",
+        "sourceTitle": "Cost of Living in Mexico City. Jun 2026. Prices in Mexico City",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | Mex$59.00  | 35.00-110.00",
+        "query": "site:numbeo.com/cost-of-living/in/Mexico-City (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:30:16.412Z",
+        "completedAt": "2026-08-13T03:30:18.717Z",
+        "durationMs": 2305,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:30:33.617Z",
+        "completedAt": "2026-08-13T03:30:35.914Z",
+        "durationMs": 2297,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T03:30:48.365Z",
+        "completedAt": "2026-08-13T03:30:50.590Z",
+        "durationMs": 2225,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "2c12cfa8ca30705f96cd6c305df9ad83f3a06194d60ee40daf98fc3b53837d13",
+      "telemetrySha256": "24c0169b36e678166e78be4dfa5dc1785e2c86c52c3be7696adc88e29743256c"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "4ac658a5504b52dc8316ce3865b06a7cd5bfb2882525536bdc23ffac1da59415",
+      "telemetrySha256": "69546b7505e22a2541f43f729ab0122219ff03543125372d724e018e8899a57b"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "699798ea51ce22a554508b8bd51c10eb78ce8145aa05804df3f8e2f526a50100",
+      "telemetrySha256": "a5992eade734b185e88a2e0d9b39529e4ce0a9eb5d18f4f45c539d0f081b1f4b"
+    }
+  ]
+}

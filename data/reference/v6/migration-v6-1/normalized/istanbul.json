@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Istanbul",
+    "country": "Turkey",
+    "region": "Middle East",
+    "band": null,
+    "cityId": "istanbul"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 105.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 190.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 55.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 135.84,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/turkey/istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 6.06,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Istanbul"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 79,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Istanbul-Hotels.s30-0-d178267.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Istanbul from $29 | Expedia",
+        "evidenceText": "September | $79 ... Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Istanbul. Select dates and complete search for nightly totals inclusive of taxes and fees.",
+        "query": "site:expedia.com/3Star-Istanbul-Hotels Expedia price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 59,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 133,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Food^{2} | $24 | $59 | $133",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Food Meals daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 39,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 95,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/turkey/istanbul",
+        "sourceTitle": "Istanbul Travel Cost - Average Price of a Vacation to Istanbul: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Entertainment^{1} | $15 | $39 | $95",
+        "query": "site:budgetyourtrip.com Istanbul Turkey Entertainment Activities daily budget mid-range luxury",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 188.96,
+        "currency": "TRY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+        "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+        "evidenceText": "Cappuccino (Regular Size) | ₺188.96",
+        "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 200,
+        "currency": "TRY",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Istanbul",
+        "sourceTitle": "Cost of Living in Istanbul. Jun 2026. Prices in Istanbul",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₺200.00",
+        "query": "site:numbeo.com/cost-of-living/in/Istanbul \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-12T21:39:38.959Z",
+        "completedAt": "2026-08-12T21:39:38.959Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 9,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "source": "expedia_3star",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "145fcf721fc4bc2079a68fce255ecc0fbe4d7e30bfbf58b2e2264f6be549948a",
+      "telemetrySha256": "c17c5b147af2ad248b03e088e69eb86cdf7e477f19dd9b652b039cc6c2bca688"
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "1f010f4a77f7088aff4d658c7cb42b5cd34f113f173c8db56442009db7dc6c82",
+      "telemetrySha256": "c863f45574e32d4faceef5471bb46d9a835b01c0dbde725925c262264d5de157"
+    },
+    {
+      "city": "Istanbul",
+      "country": "Turkey",
+      "source": "numbeo_drinks",
+      "collectionMode": "validated_experiment_014_reuse",
+      "sourceExperiment": "014-v6-1-final-delegated-canary",
+      "rawSha256": "7a9fc8ea4032975d819c53df30704dd3f10739b50d52f12e4096353b5aa9966c",
+      "telemetrySha256": "c5a8ab55610e3a40cf877710ae849cacecaad149d80957316efc9a3ba2eac68a"
+    }
+  ]
+}

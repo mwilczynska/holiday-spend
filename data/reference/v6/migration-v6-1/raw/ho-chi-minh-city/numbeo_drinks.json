@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Ho Chi Minh City",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 48571.43,
+      "currency": "VND",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+      "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+      "evidenceText": "Cappuccino (Regular Size) | ₫48,571.43",
+      "query": "site:numbeo.com/cost-of-living/in/ \"Ho Chi Minh City\" \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 30000,
+      "currency": "VND",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Ho-Chi-Minh-City",
+      "sourceTitle": "Cost of Living in Ho Chi Minh City. May 2026. Prices in Ho Chi Minh City",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫30,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Ho-Chi-Minh-City \"Domestic Draft Beer (0.5 Liter)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

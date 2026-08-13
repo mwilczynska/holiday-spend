@@ -5,6 +5,24 @@
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
 
+> **13 August 2026 status correction:** Experiment 014 passed 20/20 and Phase 8 is now complete. The frozen
+> protocol and resumable migration tooling live under `data/reference/v6/migration-v6-1/`; its 20-city dry run
+> reused all 60 validated experiment-014 calls, produced deterministic normalized/materialized/staged outputs,
+> and verified the non-live provenance import path. Phase 9 is active for the remaining 101 cities. The exact
+> next action is to assign the first fixed batch, collect its three source calls per city through delegated
+> subagents, materialize it, run the complete baseline, and commit the batch. This dated correction supersedes
+> older text in this plan that describes Phase 8 as blocked or merely pending. The live CSV and holdouts remain
+> untouched.
+
+### Current migration checklist
+
+- [x] Freeze the 121-city protocol, implementation/prompt/FX/input hashes and live-write prohibition.
+- [x] Validate experiment-014 call-level reuse and materialize its 20-city dry run through shipped v6.1 code.
+- [x] Generate deterministic staged CSV, provenance sidecar and import plan; add idempotence and safe-output checks.
+- [ ] Collect and materialize the remaining 101 cities in fixed, committed batches.
+- [ ] Generate and review the complete Phase 10 operational-impact report.
+- [ ] Obtain the external user-key transport/database/API smoke before any Phase 11 cutover.
+
 This is the active implementation plan. It supersedes the unreachable all-19 independent-validation
 objective in `docs/dev/plans/city-cost-methodology-v6.md` and the earlier recommendation to leave the
 existing CSV indefinitely on v1. Historical v6.0 evidence and dated conclusions remain valid records and
