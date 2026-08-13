@@ -3145,3 +3145,16 @@ assignment ledger contains one claim and the final filesystem contains one raw/t
 record, so the extra report is not counted as an additional provider call. It remains documented as a lifecycle finding;
 future batches must continue to accept only inventory-visible files and one assignment/call record. The next exact
 action is fixed delegated batch 008; the live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 008 complete — 13 August 2026
+
+The eighth fixed migration batch staged Madrid, Rome, Florence, Athens, Berlin, Munich, Amsterdam, Vienna, Paris and
+London. Delegated Stage A produced 30 persisted raw/telemetry call pairs under the frozen three-call contract: 99
+searches, zero retries and zero direct page reads. The shipped Stage B path materialized all ten cities, expanding the
+staged frame to 100/121 cities with 21 remaining. Direct/fallback counts were accommodation 8/2, food 7/3, drinks 1/9
+and activities 7/3. Berlin and Vienna were all-prior artifact candidates (20%), below the 30% stop rule. Expedia was
+directly observed in 8/10 cities, BudgetYourTrip in 7/10 and Numbeo drinks in 1/10; all other gaps stayed explicit
+and used the shipped prior cascade. The low direct-drink rate is retained as an operational Phase 10 finding, not a
+coefficient-refit trigger. The next exact action is fixed delegated batch 009, beginning with Edinburgh, Copenhagen,
+Stockholm, Helsinki, Reykjavik, Medellin, Bogota, Cartagena, Cusco and Buenos Aires; the live CSV, holdouts and
+Phase 11 remain untouched.

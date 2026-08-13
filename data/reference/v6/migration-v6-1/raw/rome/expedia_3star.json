@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Rome",
+  "country": "Italy",
+  "retrievalStatus": "complete",
+  "searchesUsed": 3,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 187,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Rome-Hotels.s30-0-d179899.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Rome from $75 | Expedia",
+      "evidenceText": "Price trends for properties with 3 Stars in Rome\n\nMonth  | Price\n--- | ---\nSeptember  | $187\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Rome.",
+      "query": "site:expedia.com/Hotel-Search Rome Italy 3 star hotels 2026-09-17 2026-09-18 2 adults 1 room",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": ""
+}

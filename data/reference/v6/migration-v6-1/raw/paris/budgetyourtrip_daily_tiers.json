@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Paris",
+  "country": "France",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 33,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/france/paris/trip-cost-2988507",
+      "sourceTitle": "How much does a trip to Paris Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\nFood^{2}  | $33  | $84  | $219",
+      "query": "site:budgetyourtrip.com/france/paris/trip-cost-paris \"Food & Meals\" Paris",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 84,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/france/paris/trip-cost-2988507",
+      "sourceTitle": "How much does a trip to Paris Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\nFood^{2}  | $33  | $84  | $219",
+      "query": "site:budgetyourtrip.com/france/paris/trip-cost-paris \"Food & Meals\" Paris",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 219,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/france/paris/trip-cost-2988507",
+      "sourceTitle": "How much does a trip to Paris Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\nFood^{2}  | $33  | $84  | $219",
+      "query": "site:budgetyourtrip.com/france/paris/trip-cost-paris \"Food & Meals\" Paris",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 31,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/france/paris/trip-cost-2988507",
+      "sourceTitle": "How much does a trip to Paris Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\nEntertainment^{1}  | $31  | $88  | $281",
+      "query": "site:budgetyourtrip.com/france/paris/trip-cost-paris \"Entertainment\" Paris",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 88,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/france/paris/trip-cost-2988507",
+      "sourceTitle": "How much does a trip to Paris Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\nEntertainment^{1}  | $31  | $88  | $281",
+      "query": "site:budgetyourtrip.com/france/paris/trip-cost-paris \"Entertainment\" Paris",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 281,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/france/paris/trip-cost-2988507",
+      "sourceTitle": "How much does a trip to Paris Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\nEntertainment^{1}  | $31  | $88  | $281",
+      "query": "site:budgetyourtrip.com/france/paris/trip-cost-paris \"Entertainment\" Paris",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

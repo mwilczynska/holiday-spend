@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Munich",
+  "country": "Germany",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 191,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Munich-Hotels.s30-0-d179896.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Munich from $72 | Expedia",
+      "evidenceText": "Price trends for properties with 3 Stars in Munich\n\nMonth | Price\n--- | ---\nSeptember | $191\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Munich.",
+      "query": "site:expedia.com Munich 3 star hotel September 17 2026 September 18 2026 2 adults 1 room price",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": ""
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Madrid",
+  "country": "Spain",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+      "evidenceText": "Cappuccino (Regular Size)  | €2.81  | 1.50-4.00",
+      "query": "site:numbeo.com/cost-of-living/in/Madrid \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €3.50  | 3.00-5.00",
+      "query": "site:numbeo.com/cost-of-living/in/Madrid \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Madrid result is explicitly dated Jun 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

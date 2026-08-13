@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Athens",
+  "country": "Greece",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 29,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/greece/athens/trip-cost-264371",
+      "sourceTitle": "How much does a trip to Athens Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $29  | $74  | $181",
+      "query": "site:budgetyourtrip.com/greece/athens/trip-cost-athens \"Budget\" \"Mid-Range\" \"Luxury\" \"Food\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 74,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/greece/athens/trip-cost-264371",
+      "sourceTitle": "How much does a trip to Athens Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $29  | $74  | $181",
+      "query": "site:budgetyourtrip.com/greece/athens/trip-cost-athens \"Budget\" \"Mid-Range\" \"Luxury\" \"Food\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 181,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/greece/athens/trip-cost-264371",
+      "sourceTitle": "How much does a trip to Athens Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $29  | $74  | $181",
+      "query": "site:budgetyourtrip.com/greece/athens/trip-cost-athens \"Budget\" \"Mid-Range\" \"Luxury\" \"Food\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 16,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/greece/athens/trip-cost-264371",
+      "sourceTitle": "How much does a trip to Athens Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $16  | $41  | $99",
+      "query": "site:budgetyourtrip.com/greece/athens/trip-cost-athens \"Entertainment\" Athens",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 41,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/greece/athens/trip-cost-264371",
+      "sourceTitle": "How much does a trip to Athens Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $16  | $41  | $99",
+      "query": "site:budgetyourtrip.com/greece/athens/trip-cost-athens \"Entertainment\" Athens",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 99,
+      "currency": "USD",
+      "sourceUrl": "https://testing.budgetyourtrip.com/greece/athens/trip-cost-264371",
+      "sourceTitle": "How much does a trip to Athens Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $16  | $41  | $99",
+      "query": "site:budgetyourtrip.com/greece/athens/trip-cost-athens \"Entertainment\" Athens",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

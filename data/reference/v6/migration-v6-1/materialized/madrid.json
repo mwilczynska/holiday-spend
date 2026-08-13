@@ -1,0 +1,2283 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Madrid",
+    "country": "Spain",
+    "region": "Europe",
+    "band": null,
+    "cityId": "madrid"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Madrid",
+    "country": "Spain",
+    "region": "Europe",
+    "costBand": "high",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 145.55,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 66.95,
+          "upperAud": 224.15,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 145.77,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 86.01,
+          "upperAud": 205.54,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 164.1,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 90.25,
+          "upperAud": 237.94,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 184.71,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 108.98,
+          "upperAud": 260.44,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 246.28,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 145.31,
+          "upperAud": 347.25,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 329.33,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 194.3,
+          "upperAud": 464.35,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 39.64,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 21.8,
+          "upperAud": 57.48,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 74.36,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 194.46,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 126.4,
+          "upperAud": 262.52,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 520.48,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 338.31,
+          "upperAud": 702.65,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.24,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 8.48,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 19.9,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 52.39,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 84.87,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 42.9,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 108.68,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 70.64,
+          "upperAud": 146.72,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 265.96,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 246.28,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 97.23,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 260.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 54.34,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 132.98,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "missingness": {
+      "cappuccino_1": "stale",
+      "domestic_draft_beer_1": "stale"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 145.55,
+      "accomPrivateRoom": 145.77,
+      "accom1star": 164.1,
+      "accom2star": 184.71,
+      "accom3star": 246.28,
+      "accom4star": 329.33,
+      "foodStreet": 39.64,
+      "foodBudget": 74.36,
+      "foodMid": 194.46,
+      "foodHigh": 520.48,
+      "drinkCoffee": 4.24,
+      "drinkLocalBeer": 5.71,
+      "drinkCocktail": 10.53,
+      "drinksNone": 8.48,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 42.9,
+      "activitiesMid": 108.68,
+      "activitiesHigh": 265.96
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 145.55,
+      "accomPrivateRoom": 145.77,
+      "accom1star": 164.1,
+      "accom2star": 184.71,
+      "accom3star": 246.28,
+      "accom4star": 329.33,
+      "foodStreet": 39.64,
+      "foodBudget": 74.36,
+      "foodMid": 194.46,
+      "foodHigh": 520.48,
+      "drinkCoffee": 4.24,
+      "drinkLocalBeer": 5.71,
+      "drinkCocktail": 10.53,
+      "drinksNone": 8.48,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 42.9,
+      "activitiesMid": 108.68,
+      "activitiesHigh": 265.96
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 184,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Madrid from $49 | Expedia",
+        "evidenceText": "September | $184",
+        "query": "site:expedia.com Madrid Spain 3-star hotels Expedia September 17 2026 September 18 2026 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $26  | $68  | $182",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 68,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $26  | $68  | $182",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 182,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $26  | $68  | $182",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 38,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 93,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+        "evidenceText": "Cappuccino (Regular Size)  | €2.81  | 1.50-4.00",
+        "query": "site:numbeo.com/cost-of-living/in/Madrid \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €3.50  | 3.00-5.00",
+        "query": "site:numbeo.com/cost-of-living/in/Madrid \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 66.95,
+          "upperAud": 224.15,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 86.01,
+          "upperAud": 205.54,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 90.25,
+          "upperAud": 237.94,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 108.98,
+          "upperAud": 260.44,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 145.31,
+          "upperAud": 347.25,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 194.3,
+          "upperAud": 464.35,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 21.8,
+          "upperAud": 57.48,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 126.4,
+          "upperAud": 262.52,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 338.31,
+          "upperAud": 702.65,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 70.64,
+          "upperAud": 146.72,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 145.3052,
+          "upperAud": 347.2548,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 24.167,
+          "upperAud": 50.193000000000005,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 63.19950000000001,
+          "upperAud": 131.2605,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 169.156,
+          "upperAud": 351.324,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 13.9425,
+          "upperAud": 28.9575,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 35.321000000000005,
+          "upperAud": 73.35900000000001,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 86.437,
+          "upperAud": 179.523,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 246.28,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 97.23,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 260.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 54.34,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 132.98,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:07:31.491Z",
+        "completedAt": "2026-08-13T18:07:31.491Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:07:31.491Z",
+        "completedAt": "2026-08-13T18:07:31.491Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:07:31.491Z",
+        "completedAt": "2026-08-13T18:07:31.491Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 66.95,
+          "upperAud": 224.15,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 86.01,
+          "upperAud": 205.54,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 90.25,
+          "upperAud": 237.94,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 108.98,
+          "upperAud": 260.44,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 145.31,
+          "upperAud": 347.25,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 194.3,
+          "upperAud": 464.35,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 21.8,
+          "upperAud": 57.48,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 126.4,
+          "upperAud": 262.52,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 338.31,
+          "upperAud": 702.65,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 70.64,
+          "upperAud": 146.72,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 184,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Madrid from $49 | Expedia",
+          "evidenceText": "September | $184",
+          "query": "site:expedia.com Madrid Spain 3-star hotels Expedia September 17 2026 September 18 2026 2 adults 1 room",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 26,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+          "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+          "evidenceText": "Food^{2}  | $26  | $68  | $182",
+          "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 68,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+          "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+          "evidenceText": "Food^{2}  | $26  | $68  | $182",
+          "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 182,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+          "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+          "evidenceText": "Food^{2}  | $26  | $68  | $182",
+          "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 15,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+          "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+          "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+          "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 38,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+          "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+          "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+          "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 93,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+          "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+          "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+          "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+          "evidenceText": "Cappuccino (Regular Size)  | €2.81  | 1.50-4.00",
+          "query": "site:numbeo.com/cost-of-living/in/Madrid \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €3.50  | 3.00-5.00",
+          "query": "site:numbeo.com/cost-of-living/in/Madrid \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 246.28,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 37.18,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 97.23,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 260.24,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 21.45,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 54.34,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 132.98,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "madrid",
+    "city": "Madrid",
+    "country": "Spain",
+    "region": "Europe",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "87124f4197eff959dfe00f9678708a8b81fdbd74c00fd41669218070760e93df",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 145.55,
+      "accomPrivateRoom": 145.77,
+      "accom1star": 164.1,
+      "accom2star": 184.71,
+      "accom3star": 246.28,
+      "accom4star": 329.33,
+      "foodStreet": 39.64,
+      "foodBudget": 74.36,
+      "foodMid": 194.46,
+      "foodHigh": 520.48,
+      "drinkCoffee": 4.24,
+      "drinkLocalBeer": 5.71,
+      "drinkCocktail": 10.53,
+      "drinksNone": 8.48,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 42.9,
+      "activitiesMid": 108.68,
+      "activitiesHigh": 265.96
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 184,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Madrid from $49 | Expedia",
+        "evidenceText": "September | $184",
+        "query": "site:expedia.com Madrid Spain 3-star hotels Expedia September 17 2026 September 18 2026 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $26  | $68  | $182",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 68,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $26  | $68  | $182",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 182,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $26  | $68  | $182",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 38,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 93,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735",
+        "sourceTitle": "How much does a trip to Madrid Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $15  | $38  | $93",
+        "query": "site:budgetyourtrip.com/spain/madrid/trip-cost \"Average Daily Costs\" \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+        "evidenceText": "Cappuccino (Regular Size)  | €2.81  | 1.50-4.00",
+        "query": "site:numbeo.com/cost-of-living/in/Madrid \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Madrid. Jun 2026. Prices in Madrid",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €3.50  | 3.00-5.00",
+        "query": "site:numbeo.com/cost-of-living/in/Madrid \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 66.95,
+          "upperAud": 224.15,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 86.01,
+          "upperAud": 205.54,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 90.25,
+          "upperAud": 237.94,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 108.98,
+          "upperAud": 260.44,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 145.31,
+          "upperAud": 347.25,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 194.3,
+          "upperAud": 464.35,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 21.8,
+          "upperAud": 57.48,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 48.33,
+          "upperAud": 100.39,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 126.4,
+          "upperAud": 262.52,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 338.31,
+          "upperAud": 702.65,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 70.64,
+          "upperAud": 146.72,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 145.3052,
+          "upperAud": 347.2548,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 24.167,
+          "upperAud": 50.193000000000005,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 63.19950000000001,
+          "upperAud": 131.2605,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 169.156,
+          "upperAud": 351.324,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 13.9425,
+          "upperAud": 28.9575,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 35.321000000000005,
+          "upperAud": 73.35900000000001,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 86.437,
+          "upperAud": 179.523,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:07:31.491Z",
+          "completedAt": "2026-08-13T18:07:31.491Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 246.28,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Madrid-Hotels.s30-0-d178281.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 97.23,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 260.24,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 54.34,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 132.98,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/spain/madrid/trip-cost-3117735"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:07:31.491Z",
+        "completedAt": "2026-08-13T18:07:31.491Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:07:31.491Z",
+        "completedAt": "2026-08-13T18:07:31.491Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:07:31.491Z",
+        "completedAt": "2026-08-13T18:07:31.491Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "f90de4e05f466f0993b4998768bb23582efb8f846190c35a3ca6f3a7c0c420d2",
+    "calls": [
+      {
+        "city": "Madrid",
+        "country": "Spain",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-008-01-madrid",
+        "agentId": "delegated-phase9-batch-008-01-madrid",
+        "rawSha256": "cb15271bec8cef47700f1f5ce0883df0bb92fa8cab2193cc669bf6643aa70cf8",
+        "telemetrySha256": "3f4e011840d9d47d2ddcdf19a4e74fb39895083fe7b0cd739d2122852660b7b5"
+      },
+      {
+        "city": "Madrid",
+        "country": "Spain",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-008-01-madrid",
+        "agentId": "delegated-phase9-batch-008-01-madrid",
+        "rawSha256": "01c8db767f1ca67eef6f1b5abdf903930fffd7e5c82a00e6472913bcfd172834",
+        "telemetrySha256": "6bd3ce9496de3298686c520ff47fe0bd967ac401bcb72c1ae98f7782b75725de"
+      },
+      {
+        "city": "Madrid",
+        "country": "Spain",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-008-01-madrid",
+        "agentId": "delegated-phase9-batch-008-01-madrid",
+        "rawSha256": "2c670ba73ca90d0742f852542e07dad491d797c1dfc70fba4caf50cb304c8d7d",
+        "telemetrySha256": "a260ca0212f7e17874becf66b053b5164a693e9e7312c8781f2d6c52bf7734ad"
+      }
+    ]
+  }
+}

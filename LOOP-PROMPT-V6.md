@@ -6,10 +6,10 @@ and Phase 8 migration tooling is complete. The owner-approved M4 migration has n
 
 Phase 8 is complete as of 13 August 2026: the frozen protocol and resumable tooling were dry-run on all 20
 experiment-014 canary cities, producing deterministic staged/provenance/import-plan artifacts with live writes
-forbidden. Phase 9 is active for the remaining 31 cities. The next action is fixed delegated migration batch 008;
-do not read a holdout, write the live CSV or execute Phase 11. Batches 001-007 are complete: 90/121 cities are
-staged. Their all-prior artifact rates are 10%, 10%, 20%, 0%, 10%, 10% and 10%, all below the 30% stop rule. Batch 004 had 0/10
-direct drink categories; batch 007 had 4/10. Carry that operational coverage finding into Phase 10 without treating
+forbidden. Phase 9 is active for the remaining 21 cities. The next action is fixed delegated migration batch 009;
+do not read a holdout, write the live CSV or execute Phase 11. Batches 001-008 are complete: 100/121 cities are
+staged. Their all-prior artifact rates are 10%, 10%, 20%, 0%, 10%, 10%, 10% and 20%, all below the 30% stop rule. Batch 004 had 0/10
+direct drink categories; batch 007 had 4/10 and batch 008 had 1/10. Carry that operational coverage finding into Phase 10 without treating
 it as a coefficient failure. Batch 007 also produced a duplicate worker report for Budapest without a duplicate
 assignment claim or final persisted call record; retain that as an orchestration incident and trust the inventory.
 
@@ -296,5 +296,5 @@ Resume line:
 
 > Resume v6.1 on `feat/city-cost-methodology-v6`. Read `docs/dev/handoffs/city-cost-v6.md`, then follow
 > `LOOP-PROMPT-V6.md` from the first incomplete phase. Experiment 014 has passed, Phase 8 is complete and Phase 9
-> is active at 90/121 staged. Assign and process fixed batch 008 next. Never change the live CSV or global default
+> is active at 100/121 staged. Assign and process fixed batch 009 next. Never change the live CSV or global default
 > before Phase 10 review.

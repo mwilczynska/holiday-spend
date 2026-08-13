@@ -31,9 +31,9 @@ live CSV remains on v1 while Phase 7 repairs those defects, runs a delegated ope
 through the complete staged preview and owner-reviewed cutover.
 
 **13 August 2026 current v6.1 state:** Experiment 014 passed the delegated operational canary, Phase 8 migration
-tooling is complete, and Phase 9 has staged 90/121 cities in batches 001–007. Batch 007 remained below the artifact
-stop rule (Porto was the only all-prior candidate, 10%); 31 cities remain. The exact next action is fixed delegated
-batch 008, followed by the complete verification baseline. The live CSV, holdouts and Phase 11 remain untouched.
+tooling is complete, and Phase 9 has staged 100/121 cities in batches 001–008. Batch 008 remained below the artifact
+stop rule (Berlin and Vienna were the only all-prior candidates, 20%); 21 cities remain. The exact next action is fixed
+delegated batch 009, followed by the complete verification baseline. The live CSV, holdouts and Phase 11 remain untouched.
 
 ---
 
