@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; the active canary passed 20/20 and Phase 8 is in progress
+**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 40/121 staged
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -19,6 +19,12 @@
 > food/activity, and four direct Numbeo drinks; Pu Luong is one all-prior artifact candidate (10%), below the
 > 30% batch stop rule. The staged frame is 30/121 complete. The next exact action is fixed batch 002; do not
 > recollect these 10 cities.
+
+> **13 August 2026 Phase 9 batch 002:** The next 10 cities are staged, bringing the frame to 40/121 complete and
+> leaving 81 cities. Batch 002 recorded 30 delegated calls, 100 searches, zero retries and zero direct page reads.
+> Direct/fallback counts were accommodation 6/4, food 7/3, drinks 4/6 and activities 6/4. Don Det was one all-prior
+> artifact candidate (10%), below the 30% stop rule. The next exact action is fixed batch 003; do not recollect
+> completed cities or touch the live CSV.
 
 ### Current migration checklist
 

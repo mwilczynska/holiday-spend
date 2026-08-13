@@ -3068,3 +3068,14 @@ accommodation 3/10, food 7/10, drinks 4/10 and activities 7/10. Pu Luong had no 
 so it is recorded as one all-prior artifact candidate (10%); the batch rule allows continuation below 30%.
 Missingness remains explicit and no fallback was written by Stage A. The next action is batch 002; the live CSV,
 holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 002 complete - 13 August 2026
+
+The second fixed migration batch staged Luang Prabang, Vientiane, Don Det, Vang Vieng, Siem Reap, Phnom Penh,
+Kampot, Yangon, Bagan and Cebu. Delegated Stage A produced 30 valid raw/telemetry call pairs under the frozen
+three-call contract, with 100 searches, zero retries and zero direct page reads. The shipped Stage B path
+materialized all ten cities and expanded the staged frame to 40/121 cities. Direct/fallback category counts were
+accommodation 6/4, food 7/3, drinks 4/6 and activities 6/4. Don Det had no qualifying direct observations and is
+recorded as one all-prior artifact candidate (10%); this is below the 30% batch stop rule. Missingness remains
+explicit and no fallback was written by Stage A. The next action is fixed batch 003; the live CSV, holdouts and
+Phase 11 remain untouched.

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Luang Prabang",
+  "country": "Laos",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Luang Prabang. Nov 2025. Prices in Luang Prabang",
+      "evidenceText": "The canonical Luang Prabang Numbeo result is explicitly dated Nov 2025; Cappuccino (Regular Size) is shown as 34,250.00 kip. Last update: 23 November 2025.",
+      "query": "site:numbeo.com/cost-of-living/in/Luang-Prabang \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Luang Prabang. Nov 2025. Prices in Luang Prabang",
+      "evidenceText": "The canonical Luang Prabang Numbeo result is explicitly dated Nov 2025; Domestic Draft Beer (0.5 Liter) is shown as 28,889.80 kip. Last update: 23 November 2025.",
+      "query": "site:numbeo.com/cost-of-living/in/Luang-Prabang \"Domestic Draft Beer\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical city page is explicitly a November 2025 result, stale relative to the frozen 2026-09-17 reference date. Its displayed values were not promoted to current observations."
+}

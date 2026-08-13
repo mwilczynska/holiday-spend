@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Cebu",
+    "country": "Philippines",
+    "region": "SEA",
+    "band": null,
+    "cityId": "cebu"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 36.14,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/es/3Estrellas-Cebu-Hoteles.s30-0-d800.Guia-Viajes-Filter-Hoteles",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 48.62,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 95.8,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 22.88,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 45.76,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cebu/"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cebu/"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/es/3Estrellas-Cebu-Hoteles.s30-0-d800.Guia-Viajes-Filter-Hoteles",
+        "sourceTitle": "Hoteles de 3 estrellas en Cebú, Visayas Central | Expedia",
+        "evidenceText": "Septiembre | $27 ... Los datos de tendencias de precios no incluyen impuestos ni cargos, y están basados en el promedio de las tarifas base por noche para 2 adultos encontradas en los últimos 7 días en nuestro sitio para las propiedades 3 estrellas comúnmente vistos en Cebú.",
+        "query": "site:expedia.com Cebu Philippines 3-star hotel Sep 17 2026 Sep 18 2026 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512",
+        "sourceTitle": "How much does a trip to Cebu Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category; Food^{2} | $15 | $34 | $67",
+        "query": "site:budgetyourtrip.com/philippines/cebu/trip-cost \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 34,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512",
+        "sourceTitle": "How much does a trip to Cebu Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category; Food^{2} | $15 | $34 | $67",
+        "query": "site:budgetyourtrip.com/philippines/cebu/trip-cost \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 67,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512",
+        "sourceTitle": "How much does a trip to Cebu Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category; Food^{2} | $15 | $34 | $67",
+        "query": "site:budgetyourtrip.com/philippines/cebu/trip-cost \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512",
+        "sourceTitle": "How much does a trip to Cebu Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category; Entertainment^{1} | $7 | $16 | $32",
+        "query": "site:budgetyourtrip.com/philippines/cebu/trip-cost \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 16,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512",
+        "sourceTitle": "How much does a trip to Cebu Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category; Entertainment^{1} | $7 | $16 | $32",
+        "query": "site:budgetyourtrip.com/philippines/cebu/trip-cost \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 32,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/philippines/cebu/trip-cost-1717512",
+        "sourceTitle": "How much does a trip to Cebu Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category; Entertainment^{1} | $7 | $16 | $32",
+        "query": "site:budgetyourtrip.com/philippines/cebu/trip-cost \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 160.11,
+        "currency": "PHP",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cebu/",
+        "sourceTitle": "Cost of Living in Cebu. May 2026. Prices in Cebu",
+        "evidenceText": "Cappuccino (Regular Size)  | ₱160.11  | 100.00-250.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cebu-Philippines \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 100,
+        "currency": "PHP",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cebu/",
+        "sourceTitle": "Cost of Living in Cebu. May 2026. Prices in Cebu",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₱100.00  | 80.00-165.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cebu-Philippines \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:00:00.000Z",
+        "completedAt": "2026-08-13T06:00:02.000Z",
+        "durationMs": 2000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:00:03.000Z",
+        "completedAt": "2026-08-13T06:00:06.000Z",
+        "durationMs": 3000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:00:07.000Z",
+        "completedAt": "2026-08-13T06:00:09.000Z",
+        "durationMs": 2000,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Cebu",
+      "country": "Philippines",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-002-10-cebu",
+      "agentId": "delegated-phase9-batch-002-10-cebu",
+      "rawSha256": "f8b1efc88f450133904b9bc23d27691bc9df8a7d4e57b74bcc38d8d6622e13d6",
+      "telemetrySha256": "acace25847a6025136bbf295a0e906cd0b515ede86aa3d77c298995ec67f7230"
+    },
+    {
+      "city": "Cebu",
+      "country": "Philippines",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-002-10-cebu",
+      "agentId": "delegated-phase9-batch-002-10-cebu",
+      "rawSha256": "35e171bbdc449e69a94a42201e3c10a29f6da93153f81c3499cc36af30b750c3",
+      "telemetrySha256": "224bed9316713865df27589af08caf86732af527b0dab44da559ce005c59d659"
+    },
+    {
+      "city": "Cebu",
+      "country": "Philippines",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-002-10-cebu",
+      "agentId": "delegated-phase9-batch-002-10-cebu",
+      "rawSha256": "ba78f5e27542c8199e028d1dfc1a0bcf954b71a2a9262237097d1c673f58c4ef",
+      "telemetrySha256": "07ccb9a294b2caa35ec7b40a8e13f1be9558399cae62337ba110ab96cd4a4ae2"
+    }
+  ]
+}

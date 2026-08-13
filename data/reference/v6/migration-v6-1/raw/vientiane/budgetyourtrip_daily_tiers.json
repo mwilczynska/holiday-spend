@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Vientiane",
+  "country": "Laos",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 5,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vientiane",
+      "sourceTitle": "Vientiane Travel Cost - Average Price of a Vacation to Vientiane: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $5 (₭109,667) | $12 (₭261,574) | $26 (₭569,316).",
+      "query": "site:budgetyourtrip.com/laos/vientiane \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 12,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vientiane",
+      "sourceTitle": "Vientiane Travel Cost - Average Price of a Vacation to Vientiane: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $5 (₭109,667) | $12 (₭261,574) | $26 (₭569,316).",
+      "query": "site:budgetyourtrip.com/laos/vientiane \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 26,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vientiane",
+      "sourceTitle": "Vientiane Travel Cost - Average Price of a Vacation to Vientiane: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food | $5 (₭109,667) | $12 (₭261,574) | $26 (₭569,316).",
+      "query": "site:budgetyourtrip.com/laos/vientiane \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 1,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vientiane",
+      "sourceTitle": "Vientiane Travel Cost - Average Price of a Vacation to Vientiane: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $1 (₭31,500) | $4 (₭82,485) | $10 (₭224,444).",
+      "query": "site:budgetyourtrip.com/laos/vientiane \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 4,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vientiane",
+      "sourceTitle": "Vientiane Travel Cost - Average Price of a Vacation to Vientiane: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $1 (₭31,500) | $4 (₭82,485) | $10 (₭224,444).",
+      "query": "site:budgetyourtrip.com/laos/vientiane \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 10,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vientiane",
+      "sourceTitle": "Vientiane Travel Cost - Average Price of a Vacation to Vientiane: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment | $1 (₭31,500) | $4 (₭82,485) | $10 (₭224,444).",
+      "query": "site:budgetyourtrip.com/laos/vientiane \"Food & Meals\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "BudgetYourTrip reports the displayed Food and Entertainment daily tiers per person; deterministic Stage B applies the two-person product scaling."
+}

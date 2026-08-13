@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Cebu",
+  "country": "Philippines",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 27,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/es/3Estrellas-Cebu-Hoteles.s30-0-d800.Guia-Viajes-Filter-Hoteles",
+      "sourceTitle": "Hoteles de 3 estrellas en Cebú, Visayas Central | Expedia",
+      "evidenceText": "Septiembre | $27 ... Los datos de tendencias de precios no incluyen impuestos ni cargos, y están basados en el promedio de las tarifas base por noche para 2 adultos encontradas en los últimos 7 días en nuestro sitio para las propiedades 3 estrellas comúnmente vistos en Cebú.",
+      "query": "site:expedia.com Cebu Philippines 3-star hotel Sep 17 2026 Sep 18 2026 2 adults 1 room",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "Expedia reports a September three-star nightly base-rate trend averaged for 2 adults; taxes and fees are explicitly excluded."
+}

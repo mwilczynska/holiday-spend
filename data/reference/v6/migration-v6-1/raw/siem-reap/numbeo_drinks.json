@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Siem Reap",
+  "country": "Cambodia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 1.67,
+      "currency": "USD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Siem-Reap",
+      "sourceTitle": "Cost of Living in Siem Reap. Jun 2026. Prices in Siem Reap",
+      "evidenceText": "Cappuccino (Regular Size) | $1.67 | 1.00-4.00",
+      "query": "site:numbeo.com/cost-of-living/in/Siem-Reap \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 1,
+      "currency": "USD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Siem-Reap",
+      "sourceTitle": "Cost of Living in Siem Reap. Jun 2026. Prices in Siem Reap",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | $1.00 | 0.75-1.25",
+      "query": "site:numbeo.com/cost-of-living/in/Siem-Reap \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Both canonical Numbeo rows were observed in the Siem Reap city-page search snippets. The exact displayed beer label Domestic Draft Beer (0.5 Liter) was preserved; no unit conversion was applied."
+}

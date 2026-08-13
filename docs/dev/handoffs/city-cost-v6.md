@@ -12,6 +12,14 @@
 > and commit/push that batch. Do not read a holdout or write the live CSV. This dated entry supersedes older handoff
 > paragraphs that describe Phase 8 as blocked or merely pending.
 
+> **13 August 2026 Phase 9 batch 002:** Batch 002 is complete and staged. Luang Prabang, Vientiane, Don Det,
+> Vang Vieng, Siem Reap, Phnom Penh, Kampot, Yangon, Bagan and Cebu supplied 30 valid delegated source calls;
+> all ten cities materialized through the shipped v6.1 path. The batch recorded 100 searches, zero retries and zero
+> direct page reads. Direct/fallback counts were accommodation 6/4, food 7/3, drinks 4/6 and activities 6/4.
+> Don Det is one all-prior artifact candidate (10%), below the 30% batch stop rule. The staged frame is now 40/121;
+> 81 cities remain. This supersedes the batch-001 next-action wording below. The next exact action is fixed batch
+> 003; do not recollect completed cities, read a holdout or write the live CSV.
+
 **Phase 6 completed commit:** `07a1c0a`
 **Phase 7A repair commit:** `0c52a23`
 **Phase 7 canary result commit:** `1bc352f` (experiment 010 preflight only)
@@ -337,3 +345,16 @@ one all-prior candidate (Pu Luong, 10% of the batch). This is below the 30% arti
 rows remain explicit and were not substituted. The next exact action is to assign fixed batch 002 through the
 migration ledger, collect its three source calls per city, inventory/materialize it, run the complete baseline,
 update the checkpoint and commit/push. If a batch has more than 30% genuine artifact candidates, stop and report.
+
+## 10b. Current state after Phase 9 batch 002 - 13 August 2026
+
+Batch 002 completed the next ten migration cities: Luang Prabang, Vientiane, Don Det, Vang Vieng, Siem Reap,
+Phnom Penh, Kampot, Yangon, Bagan and Cebu. The inventory found all 30 raw/telemetry pairs and the shipped Stage B
+path materialized all ten cities. The batch recorded 30 delegated calls, 100 searches, zero retries and zero direct
+page reads. Direct/fallback category counts were accommodation 6/4, food 7/3, drinks 4/6 and activities 6/4.
+Don Det is the sole all-prior artifact candidate (10%); this is below the 30% stop rule, so work continues.
+The staged frame is 40/121 complete and 81 cities remain. No holdout or live CSV was touched.
+
+**Exact next action:** assign the fixed batch-003 cities from the frozen protocol, collect only their three source
+calls per city through delegated Stage A, run inventory before materialization, then materialize/report/verify and
+commit/push. Never recollect the 40 completed cities.

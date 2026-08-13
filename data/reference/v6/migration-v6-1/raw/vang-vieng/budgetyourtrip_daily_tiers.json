@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Vang Vieng",
+  "country": "Laos",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 4,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vang-vieng/trip-cost-1655087",
+      "sourceTitle": "How much does a trip to Vang Vieng Cost? | Budget Your Trip",
+      "evidenceText": "Food | $4 | $11 | $25",
+      "query": "site:budgetyourtrip.com/laos/vang-vieng/trip-cost Vang Vieng Food Meals Entertainment budget mid range luxury per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vang-vieng/trip-cost-1655087",
+      "sourceTitle": "How much does a trip to Vang Vieng Cost? | Budget Your Trip",
+      "evidenceText": "Food | $4 | $11 | $25",
+      "query": "site:budgetyourtrip.com/laos/vang-vieng/trip-cost Vang Vieng Food Meals Entertainment budget mid range luxury per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 25,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vang-vieng/trip-cost-1655087",
+      "sourceTitle": "How much does a trip to Vang Vieng Cost? | Budget Your Trip",
+      "evidenceText": "Food | $4 | $11 | $25",
+      "query": "site:budgetyourtrip.com/laos/vang-vieng/trip-cost Vang Vieng Food Meals Entertainment budget mid range luxury per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 2,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vang-vieng/trip-cost-1655087",
+      "sourceTitle": "How much does a trip to Vang Vieng Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment | $2 | $5 | $13",
+      "query": "site:budgetyourtrip.com/laos/vang-vieng/trip-cost Vang Vieng Food Meals Entertainment budget mid range luxury per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 5,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vang-vieng/trip-cost-1655087",
+      "sourceTitle": "How much does a trip to Vang Vieng Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment | $2 | $5 | $13",
+      "query": "site:budgetyourtrip.com/laos/vang-vieng/trip-cost Vang Vieng Food Meals Entertainment budget mid range luxury per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/laos/vang-vieng/trip-cost-1655087",
+      "sourceTitle": "How much does a trip to Vang Vieng Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment | $2 | $5 | $13",
+      "query": "site:budgetyourtrip.com/laos/vang-vieng/trip-cost Vang Vieng Food Meals Entertainment budget mid range luxury per day",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search snippets exposed the exact Vang Vieng per-person-per-day Food and Entertainment budget, mid-range and luxury rows. Values are retained in source currency; deterministic code performs the product conversion. No direct page read was used."
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Vang Vieng",
+  "country": "Laos",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:numbeo.com/cost-of-living/in/Vang-Vieng \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:numbeo.com/cost-of-living/in/Vang-Vieng \"Domestic Draft Beer\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Two canonical Vang Vieng Numbeo searches returned only other-city, aggregate or non-city results; no qualifying exact-city cappuccino or domestic draft-beer row was found. No direct page read was used, so both measures remain explicit not_found."
+}

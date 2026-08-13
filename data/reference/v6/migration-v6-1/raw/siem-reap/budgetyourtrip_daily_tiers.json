@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Siem Reap",
+  "country": "Cambodia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/cambodia/siem-reap/trip-cost-1822214",
+      "sourceTitle": "How much does a trip to Siem Reap Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Food — Budget $11; Mid-Range $28; Luxury $64.",
+      "query": "site:budgetyourtrip.com/cambodia/siem-reap \"Food\" \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 28,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/cambodia/siem-reap/trip-cost-1822214",
+      "sourceTitle": "How much does a trip to Siem Reap Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Food — Budget $11; Mid-Range $28; Luxury $64.",
+      "query": "site:budgetyourtrip.com/cambodia/siem-reap \"Food\" \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 64,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/cambodia/siem-reap/trip-cost-1822214",
+      "sourceTitle": "How much does a trip to Siem Reap Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Food — Budget $11; Mid-Range $28; Luxury $64.",
+      "query": "site:budgetyourtrip.com/cambodia/siem-reap \"Food\" \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 12,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/cambodia/siem-reap/trip-cost-1822214",
+      "sourceTitle": "How much does a trip to Siem Reap Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment — Budget $12; Mid-Range $30; Luxury $79.",
+      "query": "site:budgetyourtrip.com/cambodia/siem-reap \"Food\" \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 30,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/cambodia/siem-reap/trip-cost-1822214",
+      "sourceTitle": "How much does a trip to Siem Reap Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment — Budget $12; Mid-Range $30; Luxury $79.",
+      "query": "site:budgetyourtrip.com/cambodia/siem-reap \"Food\" \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 79,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/cambodia/siem-reap/trip-cost-1822214",
+      "sourceTitle": "How much does a trip to Siem Reap Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment — Budget $12; Mid-Range $30; Luxury $79.",
+      "query": "site:budgetyourtrip.com/cambodia/siem-reap \"Food\" \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search snippets identify Siem Reap and report food and entertainment daily spending by budget, mid-range and luxury tier in USD per person per day. No multiplication, conversion or other derivation was applied."
+}

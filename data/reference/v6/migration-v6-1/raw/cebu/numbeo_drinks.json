@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Cebu",
+  "country": "Philippines",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 160.11,
+      "currency": "PHP",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cebu/",
+      "sourceTitle": "Cost of Living in Cebu. May 2026. Prices in Cebu",
+      "evidenceText": "Cappuccino (Regular Size)  | ₱160.11  | 100.00-250.00",
+      "query": "site:numbeo.com/cost-of-living/in/Cebu-Philippines \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 100,
+      "currency": "PHP",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cebu/",
+      "sourceTitle": "Cost of Living in Cebu. May 2026. Prices in Cebu",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₱100.00  | 80.00-165.00",
+      "query": "site:numbeo.com/cost-of-living/in/Cebu-Philippines \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The beer evidence uses the exact canonical Numbeo label Domestic Draft Beer (0.5 Liter); the displayed PHP serving is preserved without conversion or unit standardization."
+}

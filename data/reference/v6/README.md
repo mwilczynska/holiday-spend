@@ -36,9 +36,9 @@ Phase 8 is complete and Phase 9 is active. `migration-v6-1/` contains the frozen
 checkpoint, per-call raw/telemetry evidence, call-level reuse ledger, normalized/materialized artifacts and
 staged CSV/provenance/import-plan outputs. Experiment 014 supplied 60 validated calls for a 20-city dry run;
 the remaining 101 cities are to be collected in fixed batches through the same three-call contract. The staged
-artifact is not the live CSV, and no database import or cutover has occurred. Phase 9 batch 001 adds ten
-delegated cities (30/121 staged in total) and records one all-prior candidate, Pu Luong, at 10% of the batch;
-batch 002 is next.
+artifact is not the live CSV, and no database import or cutover has occurred. Phase 9 batches 001 and 002 add
+20 delegated cities (40/121 staged in total) and each records one all-prior candidate at 10% of its batch (Pu Luong
+and Don Det); both are below the 30% stop rule. Batch 003 is next, with 81 cities remaining.
 
 ## Historical v6.0 M3 evidence
 

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Yangon",
+  "country": "Myanmar",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Yangon. Apr 2026. Prices in Yangon",
+      "evidenceText": "Cost of Living in Yangon. Apr 2026. Prices in Yangon ... Cappuccino (Regular Size) | $1.68 | 1.00-2.50 ... Last update: 17 April 2026",
+      "query": "site:numbeo.com/cost-of-living/in/Yangon \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Yangon. Apr 2026. Prices in Yangon",
+      "evidenceText": "Cost of Living in Yangon. Apr 2026. Prices in Yangon ... Domestic Draft Beer (0.5 Liter) | $1.00 | 0.50-2.00 ... Last update: 17 April 2026",
+      "query": "site:numbeo.com/cost-of-living/in/Yangon \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Yangon Numbeo result is explicitly dated April 2026, stale relative to the frozen 2026-09-17 reference date. Its displayed Cappuccino (Regular Size) and Domestic Draft Beer (0.5 Liter) values were not promoted to current observations."
+}

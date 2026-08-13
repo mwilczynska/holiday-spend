@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Yangon",
+  "country": "Myanmar",
+  "retrievalStatus": "partial",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/myanmar/yangon",
+      "sourceTitle": "Yangon Travel Cost - Average Price of a Vacation to Yangon: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $8 | $17 | $26",
+      "query": "site:budgetyourtrip.com/myanmar/yangon \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 17,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/myanmar/yangon",
+      "sourceTitle": "Yangon Travel Cost - Average Price of a Vacation to Yangon: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $8 | $17 | $26",
+      "query": "site:budgetyourtrip.com/myanmar/yangon \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 26,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/myanmar/yangon",
+      "sourceTitle": "Yangon Travel Cost - Average Price of a Vacation to Yangon: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $8 | $17 | $26",
+      "query": "site:budgetyourtrip.com/myanmar/yangon \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:budgetyourtrip.com/myanmar/yangon \"Food & Meals\" \"Entertainment/Activities\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:budgetyourtrip.com/myanmar/yangon \"Food & Meals\" \"Entertainment/Activities\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:budgetyourtrip.com/myanmar/yangon \"Food & Meals\" \"Entertainment/Activities\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The exact Yangon BudgetYourTrip result provided the food budget, mid-range and luxury per-person daily tiers. No qualifying exact-city Entertainment/Activities tier vector appeared in the returned snippets; no country-level, province-level or nearby-city values were substituted."
+}

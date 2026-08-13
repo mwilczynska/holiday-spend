@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Phnom Penh",
+  "country": "Cambodia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 2.89,
+      "currency": "USD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Phnom-Penh",
+      "sourceTitle": "Cost of Living in Phnom Penh. Jun 2026. Prices in Phnom Penh",
+      "evidenceText": "Cappuccino (Regular Size)  | $2.89  | 2.00-3.50",
+      "query": "site:numbeo.com/cost-of-living/in/Phnom-Penh \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 1.5,
+      "currency": "USD",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Phnom-Penh",
+      "sourceTitle": "Cost of Living in Phnom Penh. Jun 2026. Prices in Phnom Penh",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | $1.50  | 0.75-4.40",
+      "query": "site:numbeo.com/cost-of-living/in/Phnom-Penh \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The exact Phnom Penh Numbeo city-page snippets show both canonical rows in USD; the displayed Domestic Draft Beer (0.5 Liter) unit was preserved without conversion."
+}

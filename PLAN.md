@@ -527,6 +527,15 @@ candidate rate is below the 30% stop rule, so work continues. The staged migrati
 91 remain. The next exact action is to assign and collect fixed batch 002, then materialize and verify it before
 committing.
 
+### v6.1 Phase 9 batch 002 - 13 August 2026
+
+The second fixed 10-city migration batch is complete and staged: Luang Prabang, Vientiane, Don Det, Vang Vieng,
+Siem Reap, Phnom Penh, Kampot, Yangon, Bagan and Cebu. It added 30 delegated source calls and 100 searches, with
+zero retries and zero direct page reads. Direct/fallback category counts were accommodation 6/4, food 7/3, drinks
+4/6 and activities 6/4. Don Det was all-prior and is recorded as one artifact candidate (10%), below the 30% batch
+stop rule. The staged migration now has 40/121 complete cities; 81 remain. The next exact action is to assign and
+collect fixed batch 003, then inventory, materialize, verify and commit it. The live CSV and holdouts remain untouched.
+
 ## Traps retained from earlier work
 
 Hard-won across v3, v4 and v5. All still true.
