@@ -3158,3 +3158,16 @@ and used the shipped prior cascade. The low direct-drink rate is retained as an 
 coefficient-refit trigger. The next exact action is fixed delegated batch 009, beginning with Edinburgh, Copenhagen,
 Stockholm, Helsinki, Reykjavik, Medellin, Bogota, Cartagena, Cusco and Buenos Aires; the live CSV, holdouts and
 Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 009 complete — 13 August 2026
+
+The ninth fixed migration batch staged Edinburgh, Copenhagen, Stockholm, Helsinki, Reykjavik, Medellin, Bogota,
+Cartagena, Cusco and Buenos Aires. Delegated Stage A produced 30 persisted raw/telemetry call pairs under the frozen
+three-call contract: 96 searches, zero retries and zero direct page reads. The shipped Stage B path materialized all
+ten cities, expanding the staged frame to 110/121 cities with 11 remaining. Direct/fallback counts were accommodation
+8/2, food 7/3, drinks 1/9 and activities 7/3. Reykjavik was the only all-prior artifact candidate (10%), below the
+30% stop rule. Expedia was directly observed in 8/10 cities, BudgetYourTrip in 7/10 and Numbeo drinks in 1/10; all
+other gaps stayed explicit and used the shipped prior cascade. The low direct-drink rate remains an operational
+Phase 10 finding, not a coefficient-refit trigger. The next exact action is fixed delegated batch 010, beginning with
+Rio de Janeiro, Santiago, Havana, New York City, Los Angeles, Montreal, Vancouver, Sydney, Auckland and Queenstown;
+the live CSV, holdouts and Phase 11 remain untouched.

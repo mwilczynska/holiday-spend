@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Edinburgh",
+    "country": "United Kingdom",
+    "region": "Europe",
+    "band": null,
+    "cityId": "edinburgh"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 306.52,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Edinburgh-Hotels.s30-0-d6069845.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 48.62,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 130.12,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 361.76,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 229,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Edinburgh-Hotels.s30-0-d6069845.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Edinburgh from $100 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Edinburgh\n\nMonth  | Price\n--- | ---\nJanuary  | $112\nFebruary  | $134\nMarch  | $163\nApril  | $181\nMay  | $257\nJune  | $230\nJuly  | $232\nAugust  | $299\nSeptember  | $229\nOctober  | $195\nNovember  | $157\nDecember  | $169\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Edinburgh.",
+        "query": "site:expedia.com/3Star-Edinburgh-Hotels Edinburgh 3 star hotel price trends",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 34,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225",
+        "sourceTitle": "How much does a trip to Edinburgh Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $34  | $91  | $253",
+        "query": "site:budgetyourtrip.com/united-kingdom/edinburgh \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 91,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225",
+        "sourceTitle": "How much does a trip to Edinburgh Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $34  | $91  | $253",
+        "query": "site:budgetyourtrip.com/united-kingdom/edinburgh \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 253,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225",
+        "sourceTitle": "How much does a trip to Edinburgh Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $34  | $91  | $253",
+        "query": "site:budgetyourtrip.com/united-kingdom/edinburgh \"Food\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225",
+        "sourceTitle": "How much does a trip to Edinburgh Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $11  | $27  | $62",
+        "query": "site:budgetyourtrip.com/united-kingdom/edinburgh \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225",
+        "sourceTitle": "How much does a trip to Edinburgh Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $11  | $27  | $62",
+        "query": "site:budgetyourtrip.com/united-kingdom/edinburgh \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 62,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/united-kingdom/edinburgh/trip-cost-2650225",
+        "sourceTitle": "How much does a trip to Edinburgh Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $11  | $27  | $62",
+        "query": "site:budgetyourtrip.com/united-kingdom/edinburgh \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Edinburgh. May 2026. Prices in Edinburgh",
+        "evidenceText": "Cappuccino (Regular Size)  | £3.89  | 2.50-5.00",
+        "query": "site:numbeo.com/cost-of-living/in/Edinburgh \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Edinburgh. Jun 2026. Prices in Edinburgh",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | £6.00  | 4.30-7.00",
+        "query": "site:numbeo.com/cost-of-living/in/Edinburgh \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:34:25.947Z",
+        "completedAt": "2026-08-13T18:34:25.947Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:34:25.947Z",
+        "completedAt": "2026-08-13T18:34:25.947Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:34:25.947Z",
+        "completedAt": "2026-08-13T18:34:25.947Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Edinburgh",
+      "country": "United Kingdom",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-009-01-edinburgh",
+      "agentId": "delegated-phase9-batch-009-01-edinburgh",
+      "rawSha256": "c6e24372c06133b87bf1e93aabe155260946c07b083f92b36665613f7fedfc58",
+      "telemetrySha256": "5f71dc0035675a9ad68d589fc91ffa51a4ca85e4b3ea5e7fbd748b40b46dd87b"
+    },
+    {
+      "city": "Edinburgh",
+      "country": "United Kingdom",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-009-01-edinburgh",
+      "agentId": "delegated-phase9-batch-009-01-edinburgh",
+      "rawSha256": "1107326a6b194ca8ff2a563cbd8a2c4f557d28bb8beba227a15d1557e080ba03",
+      "telemetrySha256": "78e6b1b2707e73709f8445ab1460b87751ce847a298af861874651b74ad0ad0d"
+    },
+    {
+      "city": "Edinburgh",
+      "country": "United Kingdom",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-009-01-edinburgh",
+      "agentId": "delegated-phase9-batch-009-01-edinburgh",
+      "rawSha256": "f4acf51db286176d7374fb32be1f7157858630cedd859a5514b7e888d48717e8",
+      "telemetrySha256": "a4a92567dddf48c541b978624fc499cbceabd7523a8a29f1c23e21615b7caeca"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Cartagena",
+  "country": "Colombia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 6500,
+      "currency": "COP",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cartagena",
+      "sourceTitle": "Cost of Living in Cartagena. May 2026. Prices in Cartagena",
+      "evidenceText": "Cappuccino (Regular Size) | Col$6,500.00 | 2,000.00-12,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Cartagena \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 3500,
+      "currency": "COP",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cartagena",
+      "sourceTitle": "Cost of Living in Cartagena. May 2026. Prices in Cartagena",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | Col$3,500.00 | 2,500.00-10,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Cartagena \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

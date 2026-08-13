@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Helsinki",
+  "country": "Finland",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Helsinki. Jun 2026. Prices in Helsinki",
+      "evidenceText": "Cappuccino (Regular Size)  | €4.71  | 3.00-5.50",
+      "query": "site:numbeo.com/cost-of-living/in/Helsinki \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Helsinki. Jun 2026. Prices in Helsinki",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | €8.00  | 4.00-10.00",
+      "query": "site:numbeo.com/cost-of-living/in/Helsinki \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Helsinki result is explicitly dated Jun 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

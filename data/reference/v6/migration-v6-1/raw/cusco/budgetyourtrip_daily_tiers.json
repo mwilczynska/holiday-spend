@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Cusco",
+  "country": "Peru",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 10,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/cusco",
+      "sourceTitle": "Cusco Travel Cost - Average Price of a Vacation to Cusco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $10\n(S/.34)  | $25\n(S/.83)  | $58\n(S/.195)",
+      "query": "site:budgetyourtrip.com/peru/cusco \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 25,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/cusco",
+      "sourceTitle": "Cusco Travel Cost - Average Price of a Vacation to Cusco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $10\n(S/.34)  | $25\n(S/.83)  | $58\n(S/.195)",
+      "query": "site:budgetyourtrip.com/peru/cusco \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 58,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/cusco",
+      "sourceTitle": "Cusco Travel Cost - Average Price of a Vacation to Cusco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $10\n(S/.34)  | $25\n(S/.83)  | $58\n(S/.195)",
+      "query": "site:budgetyourtrip.com/peru/cusco \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 13,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/cusco",
+      "sourceTitle": "Cusco Travel Cost - Average Price of a Vacation to Cusco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $13\n(S/.44)  | $32\n(S/.108)  | $75\n(S/.252)",
+      "query": "site:budgetyourtrip.com/peru/cusco \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 32,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/cusco",
+      "sourceTitle": "Cusco Travel Cost - Average Price of a Vacation to Cusco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $13\n(S/.44)  | $32\n(S/.108)  | $75\n(S/.252)",
+      "query": "site:budgetyourtrip.com/peru/cusco \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 75,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/peru/cusco",
+      "sourceTitle": "Cusco Travel Cost - Average Price of a Vacation to Cusco: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Category  | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $13\n(S/.44)  | $32\n(S/.108)  | $75\n(S/.252)",
+      "query": "site:budgetyourtrip.com/peru/cusco \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

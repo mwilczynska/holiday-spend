@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Cartagena",
+  "country": "Colombia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+      "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $8 | $19 | $45",
+      "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 19,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+      "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $8 | $19 | $45",
+      "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 45,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+      "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $8 | $19 | $45",
+      "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+      "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nEntertainment^{1} | $9 | $24 | $64",
+      "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 24,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+      "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nEntertainment^{1} | $9 | $24 | $64",
+      "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 64,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+      "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nEntertainment^{1} | $9 | $24 | $64",
+      "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

@@ -7,11 +7,21 @@
 > **13 August 2026 supersession:** Phase 8 is complete. The frozen protocol, checkpoint, call-level reuse ledger,
 > normalized/materialized artifacts, staged CSV, provenance sidecar, import plan and non-live import path were
 > generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is active at
-> 100/121 staged, with 21 cities remaining after batches 001–008. The next exact action is fixed delegated batch 009:
+> 110/121 staged, with 11 cities remaining after batches 001–009. The next exact action is fixed delegated batch 010:
 > collect three bounded source calls per city, run inventory before materialization, materialize through
 > `materializeCityCostV61`, run the full baseline, and commit/push that batch. Do not read a holdout or write the live
 > CSV. This dated entry supersedes older handoff paragraphs that describe Phase 8 as blocked, pending or at an earlier
 > staging count.
+
+> **13 August 2026 Phase 9 batch 009:** Batch 009 is complete and staged. Edinburgh, Copenhagen, Stockholm, Helsinki,
+> Reykjavik, Medellin, Bogota, Cartagena, Cusco and Buenos Aires supplied 30 delegated source calls; all ten cities
+> materialized through the shipped v6.1 path. The batch recorded 96 searches, zero retries and zero direct page reads.
+> Direct/fallback counts were accommodation 8/2, food 7/3, drinks 1/9 and activities 7/3. Reykjavik was the only
+> all-prior artifact candidate (10%), below the 30% stop rule. Expedia was directly observed in 8/10 cities,
+> BudgetYourTrip in 7/10 and Numbeo drinks in 1/10; remaining gaps stayed explicit and used the shipped prior cascade.
+> The staged frame is now 110/121; 11 cities remain. The next exact action is fixed batch 010, beginning with Rio de
+> Janeiro, Santiago, Havana, New York City, Los Angeles, Montreal, Vancouver, Sydney, Auckland and Queenstown; do not
+> recollect completed cities, read a holdout or write the live CSV.
 
 > **13 August 2026 Phase 9 batch 007:** Batch 007 is complete and staged. Budapest, Krakow, Bucharest, Sofia,
 > Belgrade, Tbilisi, Split, Dubrovnik, Porto and Barcelona supplied 30 delegated source calls; all ten cities
@@ -89,8 +99,8 @@
 **Phase 7H lifecycle/evaluator repair:** complete in `04be79b`; baseline passed
 **Phase 7 fresh corrected canary:** experiment 014 passed 20/20; immutable result recorded below
 
-**Milestone:** M4 coherent migration of the 121-city library — **Phase 8 complete; Phase 9 active at 100/121**
-**Exact next action:** assign and collect fixed delegated batch 009, inventory all 30 source slots, materialize through
+**Milestone:** M4 coherent migration of the 121-city library — **Phase 8 complete; Phase 9 active at 110/121**
+**Exact next action:** assign and collect fixed delegated batch 010, inventory all 30 source slots, materialize through
 `materializeCityCostV61`, generate the batch report, run the complete baseline, and commit/push. Do not mutate
 experiments 010–014, read any holdout or touch the live CSV.
 
@@ -103,7 +113,7 @@ reports assignment attempts as unrecorded while still separating telemetry recor
 Experiment 013 then completed its 60-slot frame but remains an immutable failure at 19/20 because a duplicate Prague
 assignment invalidated two call records. Phase 7H repaired the lifecycle/evaluator boundary, and experiment 014 then
 passed the fresh canary at 20/20 with zero artifact candidates and full provenance equality. Phase 8 is complete and
-Phase 9 is active at 100/121 staged; batches 007 and 008 are complete and batch 009 is next. The duplicate Budapest worker report
+Phase 9 is active at 110/121 staged; batches 007–009 are complete and batch 010 is next. The duplicate Budapest worker report
 did not create a second assignment claim or a second persisted call record; it is retained as an orchestration
 incident for future batch handling. This paragraph is retained as historical orientation; the dated batch-007
 supersession above is authoritative.
@@ -313,7 +323,7 @@ sidecar only.
    the new-city default as one rollback unit.
 
 **Sequence correction:** Phases 7B, 7E and 7G are immutable failed canary history. Phase 7H is complete and experiment
-014 passed the fresh canary, so Phase 8 is complete. Phase 9 is active at 100/121 staged and batch 009 is next. The
+014 passed the fresh canary, so Phase 8 is complete. Phase 9 is active at 110/121 staged and batch 010 is next. The
 user-key smoke remains Phase 7C's external pre-cutover check; it is not required for staging and does not authorize
 cutover by itself.
 

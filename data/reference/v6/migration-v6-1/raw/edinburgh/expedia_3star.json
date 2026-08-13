@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Edinburgh",
+  "country": "United Kingdom",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 229,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Edinburgh-Hotels.s30-0-d6069845.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Edinburgh from $100 | Expedia",
+      "evidenceText": "Price trends for properties with 3 Stars in Edinburgh\n\nMonth  | Price\n--- | ---\nJanuary  | $112\nFebruary  | $134\nMarch  | $163\nApril  | $181\nMay  | $257\nJune  | $230\nJuly  | $232\nAugust  | $299\nSeptember  | $229\nOctober  | $195\nNovember  | $157\nDecember  | $169\n\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Edinburgh.",
+      "query": "site:expedia.com/3Star-Edinburgh-Hotels Edinburgh 3 star hotel price trends",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": ""
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Stockholm",
+  "country": "Sweden",
+  "retrievalStatus": "complete",
+  "searchesUsed": 3,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 127,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Stockholm from $66 | Expedia",
+      "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Stockholm.\n\nMonth | Price\n--- | ---\nJanuary | $103\nFebruary | $104\nMarch | $103\nApril | $113\nMay | $114\nJune | $146\nJuly | $117\nAugust | $131\nSeptember | $127\nOctober | $116\nNovember | $117\nDecember | $110",
+      "query": "site:expedia.com/3Star-Stockholm-Hotels Stockholm 3-star hotels price trend September 2026",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": ""
+}

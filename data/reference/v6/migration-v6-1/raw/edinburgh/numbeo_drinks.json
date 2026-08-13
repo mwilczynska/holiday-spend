@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Edinburgh",
+  "country": "United Kingdom",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Edinburgh. May 2026. Prices in Edinburgh",
+      "evidenceText": "Cappuccino (Regular Size)  | £3.89  | 2.50-5.00",
+      "query": "site:numbeo.com/cost-of-living/in/Edinburgh \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Edinburgh. Jun 2026. Prices in Edinburgh",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | £6.00  | 4.30-7.00",
+      "query": "site:numbeo.com/cost-of-living/in/Edinburgh \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Edinburgh results are explicitly dated May 2026 and Jun 2026, stale relative to the frozen 2026-09-17 reference date; their displayed rows were retained as stale evidence and not promoted to current observations."
+}

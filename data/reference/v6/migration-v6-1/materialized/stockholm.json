@@ -1,0 +1,2283 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Stockholm",
+    "country": "Sweden",
+    "region": "Europe",
+    "band": null,
+    "cityId": "stockholm"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "region": "Europe",
+    "costBand": "high",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 100.46,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 46.21,
+          "upperAud": 154.71,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 100.62,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 59.36,
+          "upperAud": 141.87,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 113.26,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 62.3,
+          "upperAud": 164.23,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 127.49,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 75.22,
+          "upperAud": 179.76,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 169.99,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 100.29,
+          "upperAud": 239.69,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 227.31,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 134.11,
+          "upperAud": 320.51,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 44.22,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 24.32,
+          "upperAud": 64.12,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 82.94,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 200.18,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 130.12,
+          "upperAud": 270.24,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 443.26,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 288.12,
+          "upperAud": 598.4,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.24,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 8.48,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 19.9,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 52.39,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 84.87,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Europe:high:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 34.32,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 80.08,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 168.72,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 169.99,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 100.09,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 221.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "missingness": {
+      "cappuccino_1": "stale",
+      "domestic_draft_beer_1": "stale"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 100.46,
+      "accomPrivateRoom": 100.62,
+      "accom1star": 113.26,
+      "accom2star": 127.49,
+      "accom3star": 169.99,
+      "accom4star": 227.31,
+      "foodStreet": 44.22,
+      "foodBudget": 82.94,
+      "foodMid": 200.18,
+      "foodHigh": 443.26,
+      "drinkCoffee": 4.24,
+      "drinkLocalBeer": 5.71,
+      "drinkCocktail": 10.53,
+      "drinksNone": 8.48,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 80.08,
+      "activitiesHigh": 168.72
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 100.46,
+      "accomPrivateRoom": 100.62,
+      "accom1star": 113.26,
+      "accom2star": 127.49,
+      "accom3star": 169.99,
+      "accom4star": 227.31,
+      "foodStreet": 44.22,
+      "foodBudget": 82.94,
+      "foodMid": 200.18,
+      "foodHigh": 443.26,
+      "drinkCoffee": 4.24,
+      "drinkLocalBeer": 5.71,
+      "drinkCocktail": 10.53,
+      "drinksNone": 8.48,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 80.08,
+      "activitiesHigh": 168.72
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 127,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Stockholm from $66 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Stockholm.\n\nMonth | Price\n--- | ---\nJanuary | $103\nFebruary | $104\nMarch | $103\nApril | $113\nMay | $114\nJune | $146\nJuly | $117\nAugust | $131\nSeptember | $127\nOctober | $116\nNovember | $117\nDecember | $110",
+        "query": "site:expedia.com/3Star-Stockholm-Hotels Stockholm 3-star hotels price trend September 2026",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 70,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 155,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 59,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Stockholm. Jun 2026. Prices in Stockholm",
+        "evidenceText": "Cappuccino (Regular Size) | 50.56 kr | 39.00-69.00",
+        "query": "site:numbeo.com/cost-of-living/in/Stockholm \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Stockholm. Jun 2026. Prices in Stockholm",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | 75.00 kr | 50.00-90.00",
+        "query": "site:numbeo.com/cost-of-living/in/Stockholm \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 46.21,
+          "upperAud": 154.71,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 59.36,
+          "upperAud": 141.87,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 62.3,
+          "upperAud": 164.23,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 75.22,
+          "upperAud": 179.76,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 100.29,
+          "upperAud": 239.69,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 134.11,
+          "upperAud": 320.51,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 24.32,
+          "upperAud": 64.12,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 130.12,
+          "upperAud": 270.24,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 288.12,
+          "upperAud": 598.4,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 100.29410000000001,
+          "upperAud": 239.6859,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 26.9555,
+          "upperAud": 55.984500000000004,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 65.05850000000001,
+          "upperAud": 135.12150000000003,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 144.0595,
+          "upperAud": 299.20050000000003,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 11.154,
+          "upperAud": 23.166,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 54.834,
+          "upperAud": 113.88600000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 169.99,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 100.09,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 221.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:33:03.3120068Z",
+        "completedAt": "2026-08-13T18:33:03.3120068Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:33:03.3120068Z",
+        "completedAt": "2026-08-13T18:33:03.3120068Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:33:03.3120068Z",
+        "completedAt": "2026-08-13T18:33:03.3120068Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 46.21,
+          "upperAud": 154.71,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 59.36,
+          "upperAud": 141.87,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 62.3,
+          "upperAud": 164.23,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 75.22,
+          "upperAud": 179.76,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 100.29,
+          "upperAud": 239.69,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 134.11,
+          "upperAud": 320.51,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 24.32,
+          "upperAud": 64.12,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 130.12,
+          "upperAud": 270.24,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 288.12,
+          "upperAud": 598.4,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 127,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Stockholm from $66 | Expedia",
+          "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Stockholm.\n\nMonth | Price\n--- | ---\nJanuary | $103\nFebruary | $104\nMarch | $103\nApril | $113\nMay | $114\nJune | $146\nJuly | $117\nAugust | $131\nSeptember | $127\nOctober | $116\nNovember | $117\nDecember | $110",
+          "query": "site:expedia.com/3Star-Stockholm-Hotels Stockholm 3-star hotels price trend September 2026",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 29,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+          "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+          "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 70,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+          "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+          "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 155,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+          "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+          "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 12,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+          "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+          "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 28,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+          "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+          "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 59,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+          "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+          "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Stockholm. Jun 2026. Prices in Stockholm",
+          "evidenceText": "Cappuccino (Regular Size) | 50.56 kr | 39.00-69.00",
+          "query": "site:numbeo.com/cost-of-living/in/Stockholm \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Stockholm. Jun 2026. Prices in Stockholm",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter) | 75.00 kr | 50.00-90.00",
+          "query": "site:numbeo.com/cost-of-living/in/Stockholm \"Domestic Draft Beer (0.5 Liter)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 169.99,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 41.47,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 100.09,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 221.63,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 17.16,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 40.04,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 84.36,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "stockholm",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "region": "Europe",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "27229116027c6162705517c12d87ed617a7cc03616e6611a3741cca8729219ad",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 100.46,
+      "accomPrivateRoom": 100.62,
+      "accom1star": 113.26,
+      "accom2star": 127.49,
+      "accom3star": 169.99,
+      "accom4star": 227.31,
+      "foodStreet": 44.22,
+      "foodBudget": 82.94,
+      "foodMid": 200.18,
+      "foodHigh": 443.26,
+      "drinkCoffee": 4.24,
+      "drinkLocalBeer": 5.71,
+      "drinkCocktail": 10.53,
+      "drinksNone": 8.48,
+      "drinksLight": 19.9,
+      "drinksModerate": 52.39,
+      "drinksHeavy": 84.87,
+      "activitiesFree": 0,
+      "activitiesBudget": 34.32,
+      "activitiesMid": 80.08,
+      "activitiesHigh": 168.72
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 127,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Stockholm from $66 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Stockholm.\n\nMonth | Price\n--- | ---\nJanuary | $103\nFebruary | $104\nMarch | $103\nApril | $113\nMay | $114\nJune | $146\nJuly | $117\nAugust | $131\nSeptember | $127\nOctober | $116\nNovember | $117\nDecember | $110",
+        "query": "site:expedia.com/3Star-Stockholm-Hotels Stockholm 3-star hotels price trend September 2026",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 70,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 155,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nFood^{2} | $29 (kr 280) | $70 (kr 671) | $155 (kr 1,483)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 12,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 59,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/sweden/stockholm",
+        "sourceTitle": "Stockholm Travel Cost - Average Price of a Vacation to Stockholm: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nCategory | Budget | Mid-Range | Luxury\nEntertainment^{1} | $12 (kr 116) | $28 (kr 272) | $59 (kr 568)",
+        "query": "site:budgetyourtrip.com/sweden/stockholm/trip-cost Stockholm Food Meals Entertainment per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Stockholm. Jun 2026. Prices in Stockholm",
+        "evidenceText": "Cappuccino (Regular Size) | 50.56 kr | 39.00-69.00",
+        "query": "site:numbeo.com/cost-of-living/in/Stockholm \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Stockholm. Jun 2026. Prices in Stockholm",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | 75.00 kr | 50.00-90.00",
+        "query": "site:numbeo.com/cost-of-living/in/Stockholm \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Europe",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 46.21,
+          "upperAud": 154.71,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 59.36,
+          "upperAud": 141.87,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 62.3,
+          "upperAud": 164.23,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 75.22,
+          "upperAud": 179.76,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 100.29,
+          "upperAud": 239.69,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 134.11,
+          "upperAud": 320.51,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 24.32,
+          "upperAud": 64.12,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 130.12,
+          "upperAud": 270.24,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 288.12,
+          "upperAud": 598.4,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.33,
+          "upperAud": 6.15,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.66,
+          "upperAud": 12.3,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.95,
+          "upperAud": 28.85,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 28.81,
+          "upperAud": 75.97,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 46.68,
+          "upperAud": 123.06,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 22.31,
+          "upperAud": 46.33,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 100.29410000000001,
+          "upperAud": 239.6859,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 26.9555,
+          "upperAud": 55.984500000000004,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 65.05850000000001,
+          "upperAud": 135.12150000000003,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 144.0595,
+          "upperAud": 299.20050000000003,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 11.154,
+          "upperAud": 23.166,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 54.834,
+          "upperAud": 113.88600000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 3,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 1,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:33:03.3120068Z",
+          "completedAt": "2026-08-13T18:33:03.3120068Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 169.99,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Stockholm-Hotels.s30-0-d178311.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 100.09,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 221.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 17.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/sweden/stockholm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 3,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:33:03.3120068Z",
+        "completedAt": "2026-08-13T18:33:03.3120068Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 1,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:33:03.3120068Z",
+        "completedAt": "2026-08-13T18:33:03.3120068Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:33:03.3120068Z",
+        "completedAt": "2026-08-13T18:33:03.3120068Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "1b831a8be4d4e657ac2270a124842a00e894739e7236d0c99df0e897ff3eed57",
+    "calls": [
+      {
+        "city": "Stockholm",
+        "country": "Sweden",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-009-03-stockholm",
+        "agentId": "delegated-phase9-batch-009-03-stockholm",
+        "rawSha256": "60f19f783c2a219343f440a649c5cf13058dce1a991b61d0d5736b422703afab",
+        "telemetrySha256": "2b04f6861456113a785dc9666646d98662dc568f63d4c8af4f82c8ca29c4d10f"
+      },
+      {
+        "city": "Stockholm",
+        "country": "Sweden",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-009-03-stockholm",
+        "agentId": "delegated-phase9-batch-009-03-stockholm",
+        "rawSha256": "4c0b062d07c15d8513c80b5db8b183c0e8ec45ac96c04d1c812f2495d9976735",
+        "telemetrySha256": "f01b3a15853b9c3310f12c5524e373dc6df8a64d5e1af5942753e5d8c3755773"
+      },
+      {
+        "city": "Stockholm",
+        "country": "Sweden",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-009-03-stockholm",
+        "agentId": "delegated-phase9-batch-009-03-stockholm",
+        "rawSha256": "bac584bd4a144ed06ee87d5a076001b8fe00d8af8bda7025d238de029978f8e7",
+        "telemetrySha256": "1b1b0312b0bca5e263c87cb0cdd44fed93288bc892379099e1d0823d2ceb18ba"
+      }
+    ]
+  }
+}

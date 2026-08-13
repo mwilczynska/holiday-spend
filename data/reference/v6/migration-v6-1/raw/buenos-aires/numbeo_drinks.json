@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+      "evidenceText": "Cappuccino (Regular Size)  | $4.12  | 2.46-6.00\nLast update: 10 June 2026",
+      "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | $4.00  | 2.00-6.00\nLast update: 10 June 2026",
+      "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Buenos Aires result is explicitly dated Jun 2026 and last updated 10 June 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

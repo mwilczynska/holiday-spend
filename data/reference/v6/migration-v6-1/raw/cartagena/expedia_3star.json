@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Cartagena",
+  "country": "Colombia",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "No qualifying exact-city, three-star, city-level room-price snippet was found in the four Expedia searches for 2026-09-17 to 2026-09-18; general Cartagena price-trend and Cartagena Walled City results were rejected as class-ambiguous or non-canonical."
+}

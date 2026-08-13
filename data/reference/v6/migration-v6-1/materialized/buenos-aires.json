@@ -1,0 +1,2283 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "region": "Latin America",
+    "band": null,
+    "cityId": "buenos-aires"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "region": "Latin America",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 59.33,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 27.29,
+          "upperAud": 91.37,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 59.42,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 35.06,
+          "upperAud": 83.78,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 66.89,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 36.79,
+          "upperAud": 96.99,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 75.29,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 44.42,
+          "upperAud": 106.16,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 100.39,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 59.23,
+          "upperAud": 141.55,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 134.24,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 79.2,
+          "upperAud": 189.28,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 4.57,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.52,
+          "upperAud": 6.63,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 8.58,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 22.88,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 42.9,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 5.02,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Latin America:mid:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.76,
+          "upperAud": 7.28,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 10.03,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Latin America:mid:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.52,
+          "upperAud": 14.54,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 19.08,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Latin America:mid:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 10.49,
+          "upperAud": 27.67,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 53.05,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Latin America:mid:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 29.18,
+          "upperAud": 76.92,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 87.02,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:Latin America:mid:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 47.86,
+          "upperAud": 126.18,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 37.18,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 88.66,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 57.63,
+          "upperAud": 119.69,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 168.72,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 100.39,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 44.33,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "missingness": {
+      "cappuccino_1": "stale",
+      "domestic_draft_beer_1": "stale"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 59.33,
+      "accomPrivateRoom": 59.42,
+      "accom1star": 66.89,
+      "accom2star": 75.29,
+      "accom3star": 100.39,
+      "accom4star": 134.24,
+      "foodStreet": 4.57,
+      "foodBudget": 8.58,
+      "foodMid": 22.88,
+      "foodHigh": 42.9,
+      "drinkCoffee": 5.02,
+      "drinkLocalBeer": 4.52,
+      "drinkCocktail": 12.47,
+      "drinksNone": 10.03,
+      "drinksLight": 19.08,
+      "drinksModerate": 53.05,
+      "drinksHeavy": 87.02,
+      "activitiesFree": 0,
+      "activitiesBudget": 37.18,
+      "activitiesMid": 88.66,
+      "activitiesHigh": 168.72
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 59.33,
+      "accomPrivateRoom": 59.42,
+      "accom1star": 66.89,
+      "accom2star": 75.29,
+      "accom3star": 100.39,
+      "accom4star": 134.24,
+      "foodStreet": 4.57,
+      "foodBudget": 8.58,
+      "foodMid": 22.88,
+      "foodHigh": 42.9,
+      "drinkCoffee": 5.02,
+      "drinkLocalBeer": 4.52,
+      "drinkCocktail": 12.47,
+      "drinksNone": 10.03,
+      "drinksLight": 19.08,
+      "drinksModerate": 53.05,
+      "drinksHeavy": 87.02,
+      "activitiesFree": 0,
+      "activitiesBudget": 37.18,
+      "activitiesMid": 88.66,
+      "activitiesHigh": 168.72
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 75,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Buenos Aires from $29 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Buenos Aires\nSeptember  | $75\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Buenos Aires.",
+        "query": "site:expedia.com/Hotel-Search \"Buenos Aires\" \"3-star\" \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 31,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 59,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+        "evidenceText": "Cappuccino (Regular Size)  | $4.12  | 2.46-6.00\nLast update: 10 June 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | $4.00  | 2.00-6.00\nLast update: 10 June 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Latin America",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 27.29,
+          "upperAud": 91.37,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 35.06,
+          "upperAud": 83.78,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 36.79,
+          "upperAud": 96.99,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 44.42,
+          "upperAud": 106.16,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 59.23,
+          "upperAud": 141.55,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 79.2,
+          "upperAud": 189.28,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 2.52,
+          "upperAud": 6.63,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.76,
+          "upperAud": 7.28,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.52,
+          "upperAud": 14.54,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.49,
+          "upperAud": 27.67,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 29.18,
+          "upperAud": 76.92,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 47.86,
+          "upperAud": 126.18,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 57.63,
+          "upperAud": 119.69,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 59.23010000000001,
+          "upperAud": 141.54989999999998,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 2.7885,
+          "upperAud": 5.7915,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 7.436,
+          "upperAud": 15.444,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 13.9425,
+          "upperAud": 28.9575,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 12.0835,
+          "upperAud": 25.096500000000002,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 28.8145,
+          "upperAud": 59.8455,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 54.834,
+          "upperAud": 113.88600000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 100.39,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 44.33,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:45:37.2463360Z",
+        "completedAt": "2026-08-13T18:45:37.2463360Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:45:37.2463360Z",
+        "completedAt": "2026-08-13T18:45:37.2463360Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:45:37.2463360Z",
+        "completedAt": "2026-08-13T18:45:37.2463360Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 27.29,
+          "upperAud": 91.37,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 35.06,
+          "upperAud": 83.78,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 36.79,
+          "upperAud": 96.99,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 44.42,
+          "upperAud": 106.16,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 59.23,
+          "upperAud": 141.55,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 79.2,
+          "upperAud": 189.28,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 2.52,
+          "upperAud": 6.63,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.76,
+          "upperAud": 7.28,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.52,
+          "upperAud": 14.54,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.49,
+          "upperAud": 27.67,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 29.18,
+          "upperAud": 76.92,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 47.86,
+          "upperAud": 126.18,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 57.63,
+          "upperAud": 119.69,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 75,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Buenos Aires from $29 | Expedia",
+          "evidenceText": "Price trends for properties with 3 Stars in Buenos Aires\nSeptember  | $75\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Buenos Aires.",
+          "query": "site:expedia.com/Hotel-Search \"Buenos Aires\" \"3-star\" \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 3,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+          "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+          "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 8,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+          "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+          "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 15,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+          "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+          "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 13,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+          "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+          "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 31,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+          "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+          "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 59,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+          "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+          "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+          "evidenceText": "Cappuccino (Regular Size)  | $4.12  | 2.46-6.00\nLast update: 10 June 2026",
+          "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "stale",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | $4.00  | 2.00-6.00\nLast update: 10 June 2026",
+          "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "partial",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 100.39,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 4.29,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 11.44,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 21.45,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 18.59,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 44.33,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 84.36,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "stale",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "stale"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "buenos-aires",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "region": "Latin America",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "eb15a327b5c5d8cb50553ccc76608145a91ef2b3b11736d1a4386938809dfb9b",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 59.33,
+      "accomPrivateRoom": 59.42,
+      "accom1star": 66.89,
+      "accom2star": 75.29,
+      "accom3star": 100.39,
+      "accom4star": 134.24,
+      "foodStreet": 4.57,
+      "foodBudget": 8.58,
+      "foodMid": 22.88,
+      "foodHigh": 42.9,
+      "drinkCoffee": 5.02,
+      "drinkLocalBeer": 4.52,
+      "drinkCocktail": 12.47,
+      "drinksNone": 10.03,
+      "drinksLight": 19.08,
+      "drinksModerate": 53.05,
+      "drinksHeavy": 87.02,
+      "activitiesFree": 0,
+      "activitiesBudget": 37.18,
+      "activitiesMid": 88.66,
+      "activitiesHigh": 168.72
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 75,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Buenos Aires from $29 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Buenos Aires\nSeptember  | $75\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Buenos Aires.",
+        "query": "site:expedia.com/Hotel-Search \"Buenos Aires\" \"3-star\" \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $3\n(AR$4,910)  | $8\n(AR$11,223)  | $15\n(AR$21,446)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Food & Meals\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 31,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 59,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/argentina/buenos-aires-argentina",
+        "sourceTitle": "Buenos Aires, Argentina Travel Cost - Average Price of a Vacation to Buenos Aires, Argentina: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $13\n(AR$19,665)  | $31\n(AR$44,949)  | $59\n(AR$85,892)",
+        "query": "site:budgetyourtrip.com/argentina/buenos-aires \"Entertainment\" \"Budget\" \"Mid-Range\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+        "evidenceText": "Cappuccino (Regular Size)  | $4.12  | 2.46-6.00\nLast update: 10 June 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Buenos Aires. Jun 2026. Prices in Buenos Aires",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | $4.00  | 2.00-6.00\nLast update: 10 June 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Buenos-Aires \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "Latin America",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 27.29,
+          "upperAud": 91.37,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 35.06,
+          "upperAud": 83.78,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 36.79,
+          "upperAud": 96.99,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 44.42,
+          "upperAud": 106.16,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 59.23,
+          "upperAud": 141.55,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 79.2,
+          "upperAud": 189.28,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 2.52,
+          "upperAud": 6.63,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 27.89,
+          "upperAud": 57.92,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.76,
+          "upperAud": 7.28,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 5.52,
+          "upperAud": 14.54,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 10.49,
+          "upperAud": 27.67,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 29.18,
+          "upperAud": 76.92,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 47.86,
+          "upperAud": 126.18,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 57.63,
+          "upperAud": 119.69,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 109.67,
+          "upperAud": 227.77,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 59.23010000000001,
+          "upperAud": 141.54989999999998,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 2.7885,
+          "upperAud": 5.7915,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 7.436,
+          "upperAud": 15.444,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 13.9425,
+          "upperAud": 28.9575,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 12.0835,
+          "upperAud": 25.096500000000002,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 28.8145,
+          "upperAud": 59.8455,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 54.834,
+          "upperAud": 113.88600000000001,
+          "widthPct": 35
+        },
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "partial",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T18:45:37.2463360Z",
+          "completedAt": "2026-08-13T18:45:37.2463360Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "cappuccino_1": "stale",
+        "domestic_draft_beer_1": "stale"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 100.39,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Buenos-Aires-Hotels.s30-0-d178242.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 44.33,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 84.36,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/argentina/buenos-aires-argentina"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:45:37.2463360Z",
+        "completedAt": "2026-08-13T18:45:37.2463360Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:45:37.2463360Z",
+        "completedAt": "2026-08-13T18:45:37.2463360Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:45:37.2463360Z",
+        "completedAt": "2026-08-13T18:45:37.2463360Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "733a22290523eaf907ee5472c58e7374d1de25b5cacea154d6296202ce09f829",
+    "calls": [
+      {
+        "city": "Buenos Aires",
+        "country": "Argentina",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-009-10-buenos-aires",
+        "agentId": "delegated-phase9-batch-009-10-buenos-aires",
+        "rawSha256": "2080e4118b8adcbee2751766e565943066d1ddcd8ec65d82683db06f29c77e54",
+        "telemetrySha256": "2c45156d679c5fc7661e662e11377f46b2b105699ccfb28654b7355dc5e2b3c7"
+      },
+      {
+        "city": "Buenos Aires",
+        "country": "Argentina",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-009-10-buenos-aires",
+        "agentId": "delegated-phase9-batch-009-10-buenos-aires",
+        "rawSha256": "27db6ded7fefc850d6558218916a6621a2dc3e8b7df382cbfaa68c8f2727e530",
+        "telemetrySha256": "6dc2efeadd3c7400acc4b881c9187dedec1e9057fa7b1d289e3ffd0e211ad80a"
+      },
+      {
+        "city": "Buenos Aires",
+        "country": "Argentina",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-009-10-buenos-aires",
+        "agentId": "delegated-phase9-batch-009-10-buenos-aires",
+        "rawSha256": "99576f2eed1f095d3c375432a3ceed1780a7d04191d33ccceb1787a09d57a5df",
+        "telemetrySha256": "eec74bc3f1aaa4cb9f69bc6cd65194bc6b35a55c4510033ae5d88e0bc5cbc1bd"
+      }
+    ]
+  }
+}

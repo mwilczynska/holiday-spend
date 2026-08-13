@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Bogota",
+  "country": "Colombia",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Bogota. Jun 2026. Prices in Bogota",
+      "evidenceText": "Cappuccino (Regular Size)  | Col$8,287.25  | 4,500.00-14,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Bogota \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Bogota. Jun 2026. Prices in Bogota",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | Col$6,000.00  | 3,500.00-12,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Bogota \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Bogota result is explicitly dated Jun 2026, stale relative to the frozen reference date 2026-09-17; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

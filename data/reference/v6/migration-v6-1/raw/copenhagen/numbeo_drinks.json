@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Copenhagen. Jun 2026. Prices in Copenhagen",
+      "evidenceText": "Cappuccino (Regular Size)  | 45.10 kr  | 30.00-60.00",
+      "query": "site:numbeo.com/cost-of-living/in/Copenhagen \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Copenhagen. Jun 2026. Prices in Copenhagen",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 60.00 kr  | 40.00-75.00",
+      "query": "site:numbeo.com/cost-of-living/in/Copenhagen \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Copenhagen result is explicitly dated Jun 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

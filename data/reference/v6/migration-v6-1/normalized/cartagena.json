@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Cartagena",
+    "country": "Colombia",
+    "region": "Latin America",
+    "band": null,
+    "cityId": "cartagena"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/colombia/cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/colombia/cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 64.34,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/colombia/cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/colombia/cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/colombia/cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 91.51,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/colombia/cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.85,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.53,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Cartagena"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+        "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $8 | $19 | $45",
+        "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 19,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+        "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $8 | $19 | $45",
+        "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 45,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+        "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nFood^{2} | $8 | $19 | $45",
+        "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+        "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nEntertainment^{1} | $9 | $24 | $64",
+        "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+        "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nEntertainment^{1} | $9 | $24 | $64",
+        "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 64,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/colombia/cartagena",
+        "sourceTitle": "Cartagena Travel Cost - Average Price of a Vacation to Cartagena: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget | Mid-Range | Luxury\n--- | --- | ---\nEntertainment^{1} | $9 | $24 | $64",
+        "query": "site:budgetyourtrip.com/colombia/cartagena Cartagena daily budget Food & Meals Entertainment Activities per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 6500,
+        "currency": "COP",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cartagena",
+        "sourceTitle": "Cost of Living in Cartagena. May 2026. Prices in Cartagena",
+        "evidenceText": "Cappuccino (Regular Size) | Col$6,500.00 | 2,000.00-12,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cartagena \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 3500,
+        "currency": "COP",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Cartagena",
+        "sourceTitle": "Cost of Living in Cartagena. May 2026. Prices in Cartagena",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | Col$3,500.00 | 2,500.00-10,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Cartagena \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:46:09.905Z",
+        "completedAt": "2026-08-13T18:46:09.905Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:46:09.905Z",
+        "completedAt": "2026-08-13T18:46:09.905Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T18:46:09.905Z",
+        "completedAt": "2026-08-13T18:46:09.905Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Cartagena",
+      "country": "Colombia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-009-08-cartagena",
+      "agentId": "delegated-phase9-batch-009-08-cartagena",
+      "rawSha256": "eb82d2dc7a111298c5e539c22ad1fccbb3b1f8691dfe309474f11ee46ee27fe4",
+      "telemetrySha256": "67d6efae00313af1f9ba46b662b24946a7dff77a8cd57c15b8b716a34783207f"
+    },
+    {
+      "city": "Cartagena",
+      "country": "Colombia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-009-08-cartagena",
+      "agentId": "delegated-phase9-batch-009-08-cartagena",
+      "rawSha256": "091294b99b40592e01f9bf1cc7f2ef7ccc1f186f54ba4445c3c62c6194d71705",
+      "telemetrySha256": "3f1d5e626ac90d5531ea272e33c36f403b88a5bbf9b72c269ed4c5e0baa6d8f5"
+    },
+    {
+      "city": "Cartagena",
+      "country": "Colombia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-009-08-cartagena",
+      "agentId": "delegated-phase9-batch-009-08-cartagena",
+      "rawSha256": "3596050ec35dc16ff2cf4187e1150dc1ca7f4e6ee58259acb68c54adc82335c7",
+      "telemetrySha256": "71472f20f0d3c1714ddb5d6e79c0cee03210f54f66d5b0444172c702f64ac40a"
+    }
+  ]
+}
