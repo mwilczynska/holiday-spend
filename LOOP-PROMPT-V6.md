@@ -1,8 +1,8 @@
 # LOOP-PROMPT-V6 — v6.1 coherent-library migration
 
 This is the active autonomous implementation prompt for city cost methodology v6.1. Phases 1–7G are now
-recorded. Experiment 013 is an immutable failed canary and Phase 8 is blocked for owner review; the owner-approved
-M4 migration has not started.
+recorded. Experiment 013 is an immutable failed canary; Phase 7H lifecycle/evaluator repair is complete and the
+fresh canary is the next gated action. Phase 8 remains blocked. The owner-approved M4 migration has not started.
 
 ## PROMPT
 
@@ -34,8 +34,9 @@ Then inspect only the code and artifacts needed for the current phase. Do not bu
 Do not open any holdout ledger or holdout score values.
 
 **Current stop:** experiment 013 reached 19/20 complete cities and zero artifact candidates, but two duplicate
-Prague calls were invalid and the immutable result is `pass: false`. Do not run another canary or start Phase 8
-without a new owner instruction. The handoff records the recommended write-once assignment and evaluator repair.
+Prague calls were invalid and the immutable result is `pass: false`. The owner has authorized implementation of the
+write-once assignment and evaluator repairs are complete. Do not run another canary or start Phase 8 until the owner
+authorizes the fresh canary and its registered gate passes.
 
 Verify the branch, worktree and `npm run docs:check-memory`. Preserve unrelated changes.
 
@@ -114,7 +115,18 @@ Commit target: `fix: repair v6.1 search collection boundary`
 Experiments 011, 012 and 013 are immutable failed history. Experiment 013 reused 32 valid experiment-012 calls,
 completed all 60 registered slots and achieved 19/20 complete cities, but a duplicate Prague assignment invalidated
 two calls. It also exposed that `evaluateV61CanaryBatch` requires zero per-city problems despite the registered
-one-city tolerance. Preserve every experiment unchanged and follow the handoff; no new canary is currently authorized.
+one-city tolerance. Preserve every experiment unchanged. Phase 7H repaired the assignment and evaluator boundaries;
+do not create the next canary until the owner authorizes it.
+
+### Phase 7H — repair the delegated lifecycle and evaluator — complete
+
+The repair is complete. New experiments reserve every city/source slot with an exclusive write-once claim and reject
+duplicate claims even when assignment IDs differ; immutable historical ledgers remain readable with their recorded
+duplicates. The pure evaluator now permits one incomplete terminal city under the registered 19/20 rule while window,
+call-count, search, retry, direct-read, provenance and artifact-signature violations remain batch-fatal. Regression
+tests cover both failure shapes. No experiment was created, no holdout was read, and the live CSV was untouched.
+The next gated action is one fresh immutable canary reusing 58 valid experiment-013 calls and recollecting only the
+two invalid Prague sources.
 
 Pass only if at least 19/20 cities have three schema-valid source records and complete 19-tier bundles; all
 call/search/read/provenance criteria pass; and artifact candidates affect no more than 30% of the batch.
@@ -132,7 +144,7 @@ smoke of provider authentication, search execution and the real database/API bou
 a key is supplied and does not block Phase 8 or Phase 9. Treat ≥95% complete-generation coverage as a
 post-release operational SLO; never claim a 19/20 sample statistically establishes it.
 
-## 5. Phase 8 — migration tooling and dry run — blocked pending owner review
+## 5. Phase 8 — migration tooling and dry run — blocked pending Phase 7H and fresh canary
 
 Create a frozen protocol at `data/reference/v6/migration-v6-1/`. Add deterministic scripts for:
 

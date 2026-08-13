@@ -249,7 +249,7 @@ reports and narrative contract to that generated value and added a validator ass
 source anchor, value, grade, interval, authority and relation text. A temporary regression with the old
 `2.6`, ±75% declaration failed `--check` as required. No refit was performed.
 
-### M4 — migrate the existing 121-city library — **OWNER APPROVED; PHASE 7G FAILED, OWNER REVIEW REQUIRED**
+### M4 — migrate the existing 121-city library — **OWNER APPROVED; PHASE 7H COMPLETE, FRESH CANARY NEXT**
 
 The 12 August 2026 owner decision supersedes the earlier new-city-only recommendation. The desired final
 state is one coherent v6.1 library for existing and new cities. The current CSV remains read-only until a
@@ -272,9 +272,12 @@ complete staged migration is reviewed.
   failed 19/20 result and duplicate-Prague incident without promoting it to a pass
 - [x] Prove field-by-field persistence/API provenance round-trip in deterministic tests and all 20 experiment-013
   materializations; do not count all-prior materialization as source coverage
-- [ ] Owner decision on the experiment-013 stopping point. Recommended: add an exclusive write-once slot claim,
-  repair the evaluator's unreachable `problems.length === 0` aggregate predicate, then authorize one new canary
-  reusing the 58 valid 013 calls and recollecting only Prague BYT/Numbeo
+- [x] Owner authorized the Phase 7H repair after re-auditing experiment 013: implement an exclusive write-once slot
+  claim and repair the evaluator's unreachable `problems.length === 0` aggregate predicate; the fresh canary remains
+  a separate gated action
+- [x] Complete Phase 7H lifecycle/evaluator repair and focused regression tests, preserving experiments 010–013
+- [ ] Run one fresh immutable canary only after Phase 7H passes, reusing the 58 valid 013 calls and recollecting only
+  Prague BYT/Numbeo; stop again if its registered gate fails
 - [ ] Build a frozen, resumable and deterministic migration pipeline independent of the live CSV
 - [ ] Validate any reuse of the 25 fixture-city responses against the frozen migration window
 - [ ] Generate all 121 cities in batches into a staged CSV plus full provenance sidecar
@@ -487,6 +490,17 @@ actually made. No further collection is authorized.
 The run exposed a second contract defect: `evaluateV61CanaryBatch` requires `problems.length === 0`, so any diagnostic
 from the one city explicitly tolerated by the 19/20 gate still forces overall failure. The numeric 19/20 and 30%
 thresholds were met, but experiment 013 is not restated as a pass. Phase 8 is blocked pending an owner decision.
+
+### v6.1 Phase 7H repair decision — 12 August 2026
+
+The post-run audit found two independent lifecycle defects. First, assignment recording enforced unique assignment IDs
+but did not atomically reserve city/source slots before delegated work began; a thread-limit report arrived after a
+Prague worker had started, and a later assignment duplicated those two slots. Second, the evaluator conflated
+per-city diagnostics with batch-fatal violations, so its `problems.length === 0` predicate contradicted the registered
+19/20 tolerance. The owner authorized implementing both repairs before another canary. Experiments 010–013 remain
+immutable, the 58 valid experiment-013 calls remain reusable, and no new canary, migration, holdout access or live CSV
+write occurs during this repair phase. The repair completed with write-once slot-claim and 19/20 predicate tests,
+the full verification baseline, and no new canary or migration collection.
 
 ## Traps retained from earlier work
 

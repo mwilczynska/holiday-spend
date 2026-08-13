@@ -1,8 +1,8 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7G experiment 013 is immutable failed evidence; Phase 8 is blocked for owner review
+**Status:** Phase 7H lifecycle/evaluator repair is complete; experiment 013 remains immutable failed evidence; the fresh canary is the next gated action and Phase 8 remains blocked
 
-**Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library)
+**Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
 
 This is the active implementation plan. It supersedes the unreachable all-19 independent-validation
@@ -259,13 +259,32 @@ making the actual total 171.
 The immutable result remains `pass: false`. Prague's BYT and Numbeo calls exceeded the call/search lifecycle
 contract, and the evaluator also exposes an unreachable aggregate predicate: it requires
 `problems.length === 0` even though the registered batch gate explicitly permits one incomplete city. Thus the
-numeric 19/20 and 30% thresholds were met, but the recorded experiment did not pass. Do not restate it as a pass,
-mutate it, run another canary or start Phase 8 without an owner decision.
+numeric 19/20 and 30% thresholds were met, but the recorded experiment did not pass. Do not restate it as a pass
+or mutate it. The owner has authorized implementation of the Phase 7H repairs below; the next canary and Phase 8
+remain gated on those repairs and a fresh immutable result.
 
-Recommended next correction, if authorized: add an exclusive write-once call-slot claim before spawning work,
-separate per-city diagnostics from batch-failing conditions in the evaluator, and run a new immutable experiment
-that may reuse the 58 valid experiment-013 calls and recollect only the two invalid Prague sources. A reporting-only
-adjudication of 013 is an owner decision, not an agent assumption.
+The implemented repair adds an exclusive write-once call-slot claim before spawning work and separates per-city
+diagnostics from batch-failing conditions in the evaluator. The next gated action is one new immutable experiment that
+may reuse the 58 valid experiment-013 calls and recollect only the two invalid Prague sources. Experiment 013 remains
+immutable and is not adjudicated or rescored.
+
+#### Phase 7H — repair the canary lifecycle and batch decision — **complete 12 August 2026**
+
+The post-013 audit separates two defects that must not be conflated:
+
+1. The duplicate Prague assignment was a collection lifecycle defect. The assignment ledger only enforced unique
+   assignment IDs; it did not reserve city/source slots before a delegated worker started. A thread-limit report could
+   therefore arrive after a worker had already begun, and a later assignment could overwrite the same raw files.
+2. `evaluateV61CanaryBatch` treated every per-city diagnostic as a batch-fatal problem through
+   `problems.length === 0`. That contradicts the registered 19/20 rule: one terminal city may be incomplete while the
+   batch still passes, provided global call/search/read/provenance gates and the 30% artifact threshold pass.
+
+Phase 7H added an atomic write-once slot claim for new experiments and split tolerated per-city diagnostics from
+true batch-fatal violations. Historical experiments 010–013 remain byte-for-byte immutable and are validated under
+their recorded rules. The repair phase does not create experiment 014, recollect Prague, start migration, read a
+holdout or touch the live CSV. After the focused tests and full baseline pass, the exact next action is one fresh
+owner-authorized immutable canary reusing the 58 valid experiment-013 calls and collecting only the two invalid
+Prague sources. Phase 8 remains blocked until that fresh canary passes.
 
 #### Phase 7C — user-key provider transport smoke and runtime SLO
 
@@ -413,15 +432,19 @@ node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/ex
 node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
 node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 node scripts/record-v6-1-canary-assignment.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/test-v6-1-canary-assignment.mjs
 ```
 
 Add migration-specific `--check` commands when Phase 8 creates them. If the full test suite fails, rerun
 it once before investigating because this OneDrive checkout has a known transient temp-file failure.
 
-## 10. Current stopping point — Phase 7G failed
+## 10. Current stopping point — Phase 7H complete; fresh canary next
 
 Experiment 013 is finalized and immutable. It reached a complete 60-slot frame and 19/20 complete cities, but the
-recorded result is failed because two Prague calls were invalid after a duplicate assignment. The active manifest
-points to the hashed failed result. Phase 8 is not authorized. The exact next action is owner review of whether to
-accept a non-mutating adjudication or authorize the recommended evaluator/write-once repair and a new canary reusing
-the 58 valid calls. Do not run another canary, stage migration, read a holdout or touch the live CSV meanwhile.
+recorded result is failed because two Prague calls were invalid after a duplicate assignment; its active manifest
+evidence remains failed. Phase 7H is now complete: new assignment claims are write-once per city/source slot,
+historical duplicate slots are preserved as compatibility evidence, the batch evaluator now permits one incomplete
+terminal city under the registered 19/20 rule, and global contract/artifact violations remain fatal. The exact next
+action is one fresh immutable canary reusing the 58 valid experiment-013 calls and recollecting only Prague BYT/Numbeo.
+Do not create it in this phase's verification, start Phase 8, read a holdout or touch the live CSV until the owner
+authorizes that gated canary and it passes.

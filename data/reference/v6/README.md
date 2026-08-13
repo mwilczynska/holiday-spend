@@ -8,7 +8,8 @@ tells you what lives here and what each file is for.
 was approved on 12 August 2026. The live CSV is still unchanged. Phase 6 release reconciliation and Phase 7F
 collection-lifecycle repair are complete. Experiment 010 is a credential preflight, 011 is failed boundary history,
 012 is immutable incomplete-frame evidence, and 013 is the latest immutable failed canary: 60/60 terminal slots,
-19/20 complete cities, two invalid Prague calls after a duplicate assignment and no authorization to begin Phase 8.
+19/20 complete cities, two invalid Prague calls after a duplicate assignment. Phase 7H lifecycle/evaluator repair is
+complete and its baseline is green; Phase 8 remains blocked until the next fresh canary passes.
 Its result reports 167 searches while `collection-incidents.json` records four additional discarded-attempt searches.
 Read
 `docs/dev/plans/city-cost-methodology-v6-1.md` and
@@ -97,7 +98,7 @@ holdout, or provide independent drinks truth.
 | `experiments/010-v6-1-runtime-canary/` | Immutable credential-preflight history; zero provider calls, not a 0/20 source-coverage result | Do not mutate or rerun |
 | `experiments/011-v6-1-delegated-operational-canary/` | Immutable delegated boundary finding; 17/20 complete, failed before the corrected identity/missingness/beer contract | Preserve as regression evidence; do not restate as passed |
 | `experiments/012-v6-1-corrected-delegated-canary/` | Immutable incomplete-frame history; original report says 10/20, independent inventory finds 32 reusable pairs and 28 pending slots | Preserve unchanged; do not promote to a clean canary or finalize a new experiment with pending slots |
-| `experiments/013-v6-1-resumable-delegated-canary/` | Immutable full-frame failed canary; 19/20 complete, two invalid Prague calls after duplicate assignment, 20/20 deterministic/provenance replay | Preserve unchanged; owner review is required before another canary or Phase 8 |
+| `experiments/013-v6-1-resumable-delegated-canary/` | Immutable full-frame failed canary; 19/20 complete, two invalid Prague calls after duplicate assignment, 20/20 deterministic/provenance replay | Preserve unchanged; Phase 7H repair must pass before the next canary or Phase 8 |
 | `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 

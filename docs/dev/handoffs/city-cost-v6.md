@@ -13,12 +13,13 @@
 **Phase 7D boundary repair:** complete in `a7f00be`; experiment 011 remains immutable
 **Phase 7E corrected canary:** experiment 012 failed 10/20; immutable result recorded below
 **Phase 7F lifecycle repair:** complete in `511837f`; experiments 010/011/012 remain byte-unchanged
-**Phase 7G resumable canary:** experiment 013 immutable failure at 19/20; owner review required
+**Phase 7G resumable canary:** experiment 013 immutable failure at 19/20
+**Phase 7H lifecycle/evaluator repair:** complete in the current working tree; baseline passed
 
-**Milestone:** M4 coherent migration of the 121-city library — **Phase 7G failed; Phase 8 blocked**
-**Exact next action:** owner review of experiment 013. Do not run another canary or start Phase 8 unless the owner
-either accepts a non-mutating adjudication or authorizes the recommended evaluator/write-once repair and a new
-experiment reusing the 58 valid calls. Do not mutate experiments 010–013, read any holdout, or touch the live CSV.
+**Milestone:** M4 coherent migration of the 121-city library — **Phase 7H complete; fresh canary next; Phase 8 blocked**
+**Exact next action:** owner-authorize and run one fresh immutable canary reusing the 58 valid experiment-013 calls and
+recollecting only Prague BYT/Numbeo. Do not mutate experiments 010–013, read any holdout, stage migration or touch the
+live CSV until that canary passes.
 
 **Current milestone correction:** the earlier “Phase 7B failed; migration stopped” wording above is superseded
 by the owner-authorized Phase 7D repair and one fresh corrected canary. Experiment 012 failed because delegated
@@ -27,7 +28,8 @@ Phase 7F now exposes the underlying 32 reusable pairs and 28 pending slots witho
 refuses finalization while any registered slot is pending. Experiment 012 has no assignment ledger, so the inventory
 reports assignment attempts as unrecorded while still separating telemetry records from actual provider attempts.
 Experiment 013 then completed its 60-slot frame but remains an immutable failure at 19/20 because a duplicate Prague
-assignment invalidated two call records. Phase 8 remains blocked; this handoff is the current state.
+assignment invalidated two call records. Phase 7H has now repaired the lifecycle/evaluator boundary; Phase 8 remains
+blocked until the fresh canary passes.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -137,8 +139,9 @@ Accommodation coefficients and the Expedia/Booking offset did not change. The Ph
 corrected collection boundary: the shared country comparator accepts registered aliases, null documentary fields
 are normalized only for non-observed measures, invalid source calls no longer erase sibling calls, canonical
 Numbeo beer labels are accepted without conversion, and the hashed experiment result drives the release gate.
-Phase 7F is now complete: the independent inventory and finalization guard are in place. Phase 8 migration tooling
-is blocked until experiment 013 passes; the user-key smoke remains external and required before Phase 11 cutover.
+Phase 7F is now complete: the independent inventory and finalization guard are in place. Phase 7H has now completed the
+write-once assignment claims and evaluator batch predicate repair; Phase 8 migration tooling remains blocked until a
+fresh canary passes. The user-key smoke remains external and required before Phase 11 cutover.
 
 ## 4a. Phase 7 experiment 010 — superseded as a canary result
 
@@ -199,9 +202,10 @@ The result is not restated as a pass.
 
 The run also exposed that `evaluateV61CanaryBatch` sets batch pass to `problems.length === 0`. That is stricter than
 the registered 19/20 gate and makes its one-city tolerance unreachable whenever the incomplete city has a diagnostic.
-Do not silently change or rescore 013. Recommended owner-authorized next work is an exclusive write-once slot claim,
-a regression for the batch predicate, and one new immutable canary reusing 58 valid 013 calls plus two fresh Prague
-calls. Phase 8 remains blocked.
+Do not silently change or rescore 013. Phase 7H is complete: new experiments reserve city/source slots with an
+exclusive write-once claim, the evaluator separates per-city diagnostics from batch-fatal contract violations, and
+regressions cover duplicate assignment and the 19/20 tolerance. The next gated action is one new immutable canary
+reusing 58 valid 013 calls plus two fresh Prague calls. Phase 8 remains blocked.
 
 ## 5. Why the migration is staged
 
@@ -221,18 +225,19 @@ Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete 
 2. **Phase 7A:** repair search-enabled production collection, date handling and canary evaluator — **complete in current Phase 7A commit**.
 3. **Phase 7B:** fresh delegated 20-city operational canary — **failed 17/20; immutable history**.
 4. **Phase 7F:** resumable collection lifecycle repair — **complete in `511837f`**.
-5. **Phase 7G:** resumable experiment 013 — **immutable failed result at 19/20; owner review required**.
-6. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
-7. **Phase 8:** resumable/idempotent migration tooling and canary dry run — **blocked after Phase 7G failure**.
-8. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
+5. **Phase 7G:** resumable experiment 013 — **immutable failed result at 19/20**.
+6. **Phase 7H:** write-once assignment/evaluator repair — **complete; focused tests and full baseline passed**.
+7. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
+8. **Phase 8:** resumable/idempotent migration tooling and canary dry run — **blocked after Phase 7G; requires fresh canary**.
+9. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
 sidecar only.
-9. **Phase 10:** complete operational-impact report; then stop for owner review.
-10. **Phase 11:** only after approval and Phase 7C, atomically replace the CSV, update the seed source label and switch
+10. **Phase 10:** complete operational-impact report; then stop for owner review.
+11. **Phase 11:** only after approval and Phase 7C, atomically replace the CSV, update the seed source label and switch
    the new-city default as one rollback unit.
 
-**Sequence correction:** Phases 7B, 7E and 7G are immutable failed canary history. Phase 8 remains blocked after
-013's recorded failure. The user-key smoke remains Phase 7C's external pre-cutover check; it is not authorization
-to bypass the failed delegated canary.
+**Sequence correction:** Phases 7B, 7E and 7G are immutable failed canary history. Phase 7H is complete; Phase 8
+remains blocked after 013's recorded failure until a fresh canary passes. The user-key smoke remains Phase 7C's
+external pre-cutover check; it is not authorization to bypass the failed delegated canary.
 
 Update this handoff after every phase with completed evidence and the exact next command/file. Commit and
 push each phase and each bulk collection batch.
@@ -294,14 +299,15 @@ node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/ex
 node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
 node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 node scripts/record-v6-1-canary-assignment.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
+node scripts/test-v6-1-canary-assignment.mjs
 ```
 
 Add migration-specific checks when Phase 8 creates them. Rerun a failed full test suite once before
 investigating because the OneDrive checkout has a known transient temp-directory failure.
 
-## 10. Current stopping point
+## 10. Current stopping point — Phase 7H complete; fresh canary next
 
-Experiment 013 is complete, failed and immutable. Do not mutate or rerun it, create another canary, start Phase 8,
-stage migration, read a holdout or touch the live CSV without a new owner decision. The exact next action is owner
-review of the unreachable aggregate predicate and the duplicate-assignment incident. At the eventual Phase 10
-boundary, stop again for owner approval before Phase 11 cutover.
+Experiment 013 is complete, failed and immutable. Phase 7H has passed its focused and full verification baselines.
+The exact next action is owner-authorize and run one fresh immutable canary reusing 58 valid experiment-013 calls and
+recollecting only Prague BYT/Numbeo. Do not rerun or mutate 013, read a holdout, stage migration or touch the live CSV.
+At the eventual Phase 10 boundary, stop again for owner approval before Phase 11 cutover.

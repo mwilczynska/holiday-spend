@@ -70,6 +70,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir <path> [--summary] [--write\|--check]` | `inventory-v6-1-delegated-canary.ts` | Inspects every registered city/source slot independently and reports terminal, reusable, invalid, missing and orphan raw/telemetry evidence without materializing |
 | `node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir <path> [--check]` | `reuse-v6-1-delegated-canary.ts` | Copies only contract-valid experiment-012 call pairs byte-for-byte and records source/target hashes in a deterministic reuse manifest |
 | `node scripts/record-v6-1-canary-assignment.mjs --experiment-dir <path> ... [--check]` | `record-v6-1-canary-assignment.mjs` | Records delegated assignment attempts separately from provider-call/retry telemetry and validates the assignment ledger |
+| `node scripts/test-v6-1-canary-assignment.mjs` | `test-v6-1-canary-assignment.mjs` | Regression-tests exclusive write-once city/source claims and rejects duplicate assignments with different IDs |
 | `node scripts/run-v6-1-delegated-canary.mjs --experiment-dir <path> [--check]` | `run-v6-1-delegated-canary.ts` | Finalizes only a terminal 60-slot delegated frame through shipped schemas/materializer/persistence/API parsing; completed pass or fail results are immutable |
 
 ## SUPERSEDED — methodology v5

@@ -339,6 +339,9 @@ function toRecord(city: Registration['cities'][number], inventorySlots: V61CallS
 }
 
 function run(registration: Registration) {
+  if (fs.existsSync(RESULTS_PATH) || fs.existsSync(VERDICT_PATH)) {
+    throw new Error('A finalized delegated canary is immutable; use --check to validate its recorded result.');
+  }
   const inventory = inspectV61Experiment(registration, EXPERIMENT_DIR);
   if (inventory.pendingCallSlots > 0) {
     throw new Error(`Cannot finalize ${registration.experiment}: ${inventory.pendingCallSlots} of ${inventory.registeredCallSlots} call slots are still pending. Run inventory/status and collect the missing slots first.`);
@@ -418,6 +421,8 @@ function run(registration: Registration) {
     liveCsvWritten: false,
     rows,
     problems: evaluation.problems,
+    diagnostics: evaluation.diagnostics,
+    fatalProblems: evaluation.fatalProblems,
   };
   writeJson(RESULTS_PATH, results);
   const verdictLines = [
@@ -442,8 +447,15 @@ function run(registration: Registration) {
     '',
     '## Gate details',
     '',
-    ...evaluation.problems.map((problem) => `- ${problem}`),
-    ...(evaluation.problems.length ? [] : ['- None.']),
+    '## Fatal gate failures',
+    '',
+    ...evaluation.fatalProblems.map((problem) => '- ' + problem),
+    ...(evaluation.fatalProblems.length ? [] : ['- None.']),
+    '',
+    '## Per-city diagnostics',
+    '',
+    ...evaluation.diagnostics.map((problem) => '- ' + problem),
+    ...(evaluation.diagnostics.length ? [] : ['- None.']),
     '',
     'The delegated canary is not a statistical claim about authenticated provider runtime reliability. The user-key 3–5-city smoke remains pending before cutover. Holdouts and the live CSV were untouched.',
     '',
@@ -482,6 +494,8 @@ function check(registration: Registration) {
     categoryCounts?: unknown;
     gradeDistribution?: unknown;
     allPriorCities?: number;
+    diagnostics?: unknown[];
+    fatalProblems?: unknown[];
     persistenceProvenanceEqualCities?: number;
     completeDeterministic19TierCities?: number;
     requiredCompleteCities: number;
@@ -512,6 +526,12 @@ function check(registration: Registration) {
     }
     if (!results.categoryCounts || !results.gradeDistribution || typeof results.allPriorCities !== 'number') {
       throw new Error('Finalized delegated canary category or grade reporting is missing.');
+    }
+    const historicalResult = results.experiment === '011-v6-1-delegated-operational-canary'
+      || results.experiment === '012-v6-1-corrected-delegated-canary'
+      || results.experiment === '013-v6-1-resumable-delegated-canary';
+    if (!historicalResult && (!Array.isArray(results.diagnostics) || !Array.isArray(results.fatalProblems))) {
+      throw new Error('Finalized delegated canary diagnostic/fatal reporting is missing.');
     }
     if (typeof results.persistenceProvenanceEqualCities !== 'number'
       || typeof results.completeDeterministic19TierCities !== 'number') {

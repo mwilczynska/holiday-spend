@@ -95,6 +95,7 @@ export interface V61CanaryCityEvaluation {
   observedMeasures: number;
   sourceStatuses: Partial<Record<V61SpineSource, V61SpineResponse['retrievalStatus'] | 'error' | 'invalid' | 'missing'>>;
   collectionTerminal: boolean;
+  fatalProblems: string[];
 }
 
 export interface V61CanaryArtifactSignature {
@@ -111,6 +112,8 @@ export interface V61CanaryEvaluation {
   artifactFraction: number;
   cities: V61CanaryCityEvaluation[];
   problems: string[];
+  diagnostics: string[];
+  fatalProblems: string[];
   attemptedCalls: number;
   validResponses: number;
   invalidResponses: number;
@@ -202,6 +205,7 @@ export function evaluateV61CanaryBatch(
 ): V61CanaryEvaluation {
   const cities = records.map((record) => {
     const problems: string[] = [];
+    const fatalProblems: string[] = [];
     const parsedResponses: Partial<Record<V61SpineSource, V61SpineResponse>> = {};
     const expectedSources = new Set(V61_SPINE_SOURCES);
     const responseSources = Object.keys(record.responses);
@@ -216,7 +220,9 @@ export function evaluateV61CanaryBatch(
       || record.window.departure !== registration.window.departure
       || record.window.referenceDate !== registration.window.referenceDate
       || !isOneNightWindow(record.window)) {
-      problems.push('reference window drifted from the registered one-night window');
+      const problem = 'reference window drifted from the registered one-night window';
+      problems.push(problem);
+      fatalProblems.push(problem);
     }
 
     if (record.telemetry.length !== registration.limits.sourceCallsPerCity) {
@@ -252,12 +258,32 @@ export function evaluateV61CanaryBatch(
     for (const call of record.telemetry) {
       const maxSearches = V61_SOURCE_CONFIG[call.source]?.maxSearches ?? 0;
       const registeredMax = registration.limits.maxSearchesBySource[call.source] ?? maxSearches;
-      if (call.searchesUsed > registeredMax) problems.push(`${call.source} exceeded its search ceiling`);
-      if (call.directPageReads !== 0) problems.push(`${call.source} recorded a direct page read`);
-      if (call.retries > registration.limits.maxRetriesPerCall) problems.push(`${call.source} exceeded retry limit`);
+      if (call.searchesUsed > registeredMax) {
+        const problem = call.source + ' exceeded its search ceiling';
+        problems.push(problem);
+        fatalProblems.push(problem);
+      }
+      if (call.directPageReads !== 0) {
+        const problem = call.source + ' recorded a direct page read';
+        problems.push(problem);
+        fatalProblems.push(problem);
+      }
+      if (call.retries > registration.limits.maxRetriesPerCall) {
+        const problem = call.source + ' exceeded retry limit';
+        problems.push(problem);
+        fatalProblems.push(problem);
+      }
     }
-    if (searches > registration.limits.maxSearchesPerCity) problems.push('city exceeded total search ceiling');
-    if (directPageReads > registration.limits.directPageReadsPerCity) problems.push('city exceeded direct-page-read ceiling');
+    if (searches > registration.limits.maxSearchesPerCity) {
+      const problem = 'city exceeded total search ceiling';
+      problems.push(problem);
+      fatalProblems.push(problem);
+    }
+    if (directPageReads > registration.limits.directPageReadsPerCity) {
+      const problem = 'city exceeded direct-page-read ceiling';
+      problems.push(problem);
+      fatalProblems.push(problem);
+    }
 
     const provenanceProblems = compareProvenance(record.provenance);
     problems.push(...provenanceProblems);
@@ -290,6 +316,7 @@ export function evaluateV61CanaryBatch(
           ?? (invalidResponses[source] ? 'invalid' : record.telemetry.find((call) => call.source === source)?.status ?? 'missing'),
       ])),
       collectionTerminal,
+      fatalProblems,
     };
   });
 
@@ -297,7 +324,11 @@ export function evaluateV61CanaryBatch(
   const artifactCandidates = cities.filter((city) => city.artifactCandidate).length;
   const terminalRecords = cities.filter((city) => city.collectionTerminal).length;
   const artifactFraction = terminalRecords === 0 ? 0 : artifactCandidates / terminalRecords;
-  const problems = cities.flatMap((city) => city.problems.map((problem) => `${city.city}: ${problem}`));
+  const diagnostics = cities.flatMap((city) => city.problems
+    .filter((problem) => !city.fatalProblems.includes(problem))
+    .map((problem) => city.city + ': ' + problem));
+  const fatalProblems = cities.flatMap((city) => city.fatalProblems
+    .map((problem) => city.city + ': ' + problem));
   const observedMeasureCounts: Record<string, number> = {};
   for (const city of cities) {
     for (const response of Object.values(city.parsedResponses)) {
@@ -326,13 +357,17 @@ export function evaluateV61CanaryBatch(
       reason: `The canonical Domestic Draft Beer (0.5 Liter)/(1 Pint) label was present but was not observed in ${canonicalBeerLabelRejections}/${terminalRecords} Numbeo responses.`,
     } satisfies V61CanaryArtifactSignature;
     artifactSignatures.push(signature);
-    problems.push(`artifact signature failed: ${signature.reason} This exceeds the ${(registration.artifactBatchMaximumFraction * 100).toFixed(0)}% batch limit.`);
+    fatalProblems.push('artifact signature failed: ' + signature.reason + ' This exceeds the '
+      + (registration.artifactBatchMaximumFraction * 100).toFixed(0) + '% batch limit.');
   }
   if (completeCities < registration.completeCitiesMinimum) {
-    problems.push(`complete-city threshold failed: ${completeCities} < ${registration.completeCitiesMinimum}`);
+    fatalProblems.push('complete-city threshold failed: ' + completeCities + ' < ' + registration.completeCitiesMinimum);
   }
   if (terminalRecords === records.length && artifactFraction > registration.artifactBatchMaximumFraction) {
-    problems.push(`artifact-candidate threshold failed: ${artifactCandidates}/${terminalRecords} > ${registration.artifactBatchMaximumFraction}`);
+    fatalProblems.push('artifact-candidate threshold failed: ' + artifactCandidates + '/' + terminalRecords + ' > ' + registration.artifactBatchMaximumFraction);
+  }
+  if (terminalRecords !== records.length) {
+    fatalProblems.push('collection frame is not terminal: ' + (records.length - terminalRecords) + ' city frame(s) remain pending');
   }
 
   const categoryCounts: Record<string, { direct: number; fallback: number }> = {};
@@ -374,12 +409,14 @@ export function evaluateV61CanaryBatch(
   const orphanTelemetryRecords = callSlots.filter((slot) => slot.orphan === 'telemetry').length;
 
   return {
-    passed: problems.length === 0,
+    passed: fatalProblems.length === 0,
     completeCities,
     artifactCandidates,
     artifactFraction,
     cities,
-    problems,
+    problems: [...diagnostics, ...fatalProblems],
+    diagnostics,
+    fatalProblems,
     attemptedCalls: records.reduce((sum, record) => sum + record.telemetry.length, 0),
     validResponses: cities.reduce((sum, city) => sum + Object.keys(city.parsedResponses).length, 0),
     invalidResponses: cities.reduce((sum, city) => sum + Object.keys(city.invalidResponses).length, 0),

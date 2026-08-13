@@ -2982,3 +2982,45 @@ follow-up, if authorized, is an exclusive write-once slot claim plus a regressio
 one new immutable canary reusing the 58 valid experiment-013 calls and recollecting only Prague BYT/Numbeo.
 
 No holdout was read, no coefficient or accommodation fit changed, and the live 121-city CSV remained untouched.
+
+### v6.1 Phase 7H post-013 audit and repair start — 12 August 2026
+
+The experiment-013 review separates two orchestration defects from the v6.1 method itself. The full 60-slot frame was
+terminal, 58 city/source pairs were reusable, 19/20 cities completed the source contract, all 20 produced deterministic
+19-tier bundles, all 20 passed persistence/API provenance equality, and zero cities were all-prior artifacts. The
+recorded failure came from two invalid Prague calls after a duplicate delegated assignment, not from a source-price,
+coefficient or materializer finding. The surviving collection facts were 62 actual provider calls, 11 assignment
+attempts, two retries, 167 surviving-record searches plus four discarded-attempt searches, and zero direct page reads.
+
+The first defect is lifecycle: `record-v6-1-canary-assignment.mjs` enforced unique assignment IDs but did not reserve
+city/source slots before work began. A thread-limit report could arrive after a worker had started, allowing a later
+assignment to duplicate and overwrite the same Prague BYT and Numbeo files. The second defect is evaluation: the pure
+batch evaluator sets `passed` from `problems.length === 0`, so a diagnostic on the one incomplete city makes the
+registered 19/20 tolerance unreachable. These are independent: fixing the evaluator must not excuse duplicate source
+calls, and fixing claims must not silently alter the historical result.
+
+The owner authorized Phase 7H implementation: add atomic write-once city/source slot claims for new experiments, split
+tolerated per-city diagnostics from true batch-fatal violations, and add regression coverage. Experiments 010–013 remain
+immutable; no new canary, migration, holdout access or live CSV write occurs during this repair. After the focused and
+full verification baselines pass, the next gated action is one fresh immutable canary reusing the 58 valid experiment-
+013 calls and collecting only the two invalid Prague sources. Phase 8 remains blocked until that fresh canary passes.
+013 calls and collecting only the two invalid Prague sources. Phase 8 remains blocked until that fresh canary passes.
+
+### v6.1 Phase 7H repair complete — 12 August 2026
+
+Implemented and tested the authorized lifecycle repair. New experiments now use an atomic write-once city/source slot
+claim backed by an exclusive claim file and a guarded assignment ledger; a duplicate assignment ID is no longer the
+only protection. A stale lock is recoverable only when its owner process is no longer alive, and a live lock fails closed.
+Immutable historical assignment ledgers remain readable, including experiment 013's two recorded duplicate slots.
+
+The pure evaluator now separates per-city diagnostics from batch-fatal conditions. One terminal incomplete city is
+allowed by the registered 19/20 threshold; window drift, search/retry/direct-read limits, artifact signatures, pending
+frames and an insufficient complete-city count remain fatal. Regression tests cover 19/20 pass, 18/20 failure and
+duplicate city/source assignment rejection.
+
+The full baseline passed: TypeScript, Next build, 39 Vitest files/190 tests, memory synchronization, coefficient and
+ground-truth checks, generated priors/materialization, release validation, rollout replay, experiment-013 inventory/
+reuse/assignment/result checks and the new claim test. No new experiment was created, no holdout was read, no
+coefficient or accommodation fit changed, and the live CSV remained untouched. The exact next action is one owner-gated
+fresh immutable canary reusing the 58 valid experiment-013 calls and recollecting Prague BYT/Numbeo; Phase 8 remains
+blocked until it passes.

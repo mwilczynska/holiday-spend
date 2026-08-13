@@ -215,4 +215,31 @@ describe('v6.1 operational canary evaluator', () => {
     expect(result.passed).toBe(false);
     expect(result.problems.join('\n')).toContain('artifact-candidate threshold failed');
   });
+
+  it('allows one terminal incomplete city under the registered 19-of-20 tolerance', () => {
+    const incomplete = record({
+      invalidResponses: { numbeo_drinks: 'duplicate source call invalidated' },
+    });
+    const result = evaluateV61CanaryBatch(
+      { ...registration, completeCitiesMinimum: 19 },
+      [...Array.from({ length: 19 }, () => record()), incomplete],
+    );
+    expect(result.completeCities).toBe(19);
+    expect(result.diagnostics.join('\n')).toContain('duplicate source call invalidated');
+    expect(result.fatalProblems).toEqual([]);
+    expect(result.passed).toBe(true);
+  });
+
+  it('fails when incomplete terminal cities exceed the registered tolerance', () => {
+    const incomplete = {
+      invalidResponses: { numbeo_drinks: 'duplicate source call invalidated' },
+    };
+    const result = evaluateV61CanaryBatch(
+      { ...registration, completeCitiesMinimum: 19 },
+      [...Array.from({ length: 18 }, () => record()), record(incomplete), record(incomplete)],
+    );
+    expect(result.completeCities).toBe(18);
+    expect(result.passed).toBe(false);
+    expect(result.fatalProblems.join('\n')).toContain('complete-city threshold failed');
+  });
 });
