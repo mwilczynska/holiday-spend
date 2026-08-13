@@ -10,7 +10,8 @@ collection-lifecycle repair are complete. Experiment 010 is a credential preflig
 012 is immutable incomplete-frame evidence, 013 is immutable failed canary history, and 014 is the active immutable
 passed canary: 60/60 terminal/reusable slots, 20/20 complete cities and zero artifact candidates. Phase 7H lifecycle/
 evaluator repair and the fresh canary baseline are complete; Phase 8 migration tooling is complete and Phase 9
-staging is active at 50/121 cities, with batch 004 next.
+staging is active at 60/121 cities, with batch 005 next. Batch 004 had zero all-prior artifact candidates but
+0/10 direct drink categories; that operational coverage finding is retained for the Phase 10 report.
 Its result reports 167 searches while `collection-incidents.json` records four additional discarded-attempt searches.
 Read
 `docs/dev/plans/city-cost-methodology-v6-1.md` and
@@ -36,11 +37,12 @@ are the three `llm_prompt_city_cost_v6_1_*.md` files listed in `docs/prompts/REA
 Phase 8 is complete and Phase 9 is active. `migration-v6-1/` contains the frozen 121-city protocol,
 checkpoint, per-call raw/telemetry evidence, call-level reuse ledger, normalized/materialized artifacts and
 staged CSV/provenance/import-plan outputs. Experiment 014 supplied 60 validated calls for a 20-city dry run;
-the remaining 71 cities are to be collected in fixed batches through the same three-call contract. The staged
-artifact is not the live CSV, and no database import or cutover has occurred. Phase 9 batches 001-003 add
-30 delegated cities (50/121 staged in total). Batches 001 and 002 each record one all-prior candidate at 10%;
-batch 003 records two (Santa Fe (Bantayan) and Siargao, 20%). All are below the 30% stop rule. Batch 004 is next,
-with 71 cities remaining.
+the remaining 61 cities are to be collected in fixed batches through the same three-call contract. The staged
+artifact is not the live CSV, and no database import or cutover has occurred. Phase 9 batches 001-004 add
+40 delegated cities (60/121 staged in total). Batches 001 and 002 each record one all-prior candidate at 10%;
+batch 003 records two (Santa Fe (Bantayan) and Siargao, 20%); batch 004 records none. All are below the 30% stop
+rule. Batch 004 had 0/10 direct drink categories, which is retained for Phase 10 review. Batch 005 is next, with
+61 cities remaining.
 
 ## Historical v6.0 M3 evidence
 

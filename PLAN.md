@@ -546,6 +546,16 @@ the 30% stop rule. The staged migration now has 50/121 complete cities; 71 remai
 assign and collect fixed batch 004, then inventory, materialize, verify and commit it. The live CSV and holdouts
 remain untouched.
 
+### v6.1 Phase 9 batch 004 - 13 August 2026
+
+The fourth fixed migration batch is complete and staged: Chiang Rai, Bali (Kuta), Bali (Ubud), Bali (Canggu),
+Jakarta, Yogyakarta, Lombok, Kuala Lumpur, Penang and Langkawi. It added 30 delegated source calls and 100 searches,
+with zero retries and zero direct page reads. Direct/fallback category counts were accommodation 5/5, food 6/4,
+drinks 0/10 and activities 6/4. No city was an artifact candidate, so the batch remains below the 30% stop rule.
+The 0/10 direct drink category is recorded as an operational coverage finding for Phase 10, not a coefficient or
+collection artifact decision. The staged migration now has 60/121 complete cities; 61 remain. The next exact action
+is fixed batch 005; the live CSV, holdouts and Phase 11 remain untouched.
+
 ## Traps retained from earlier work
 
 Hard-won across v3, v4 and v5. All still true.

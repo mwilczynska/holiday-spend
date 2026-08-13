@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Lombok",
+  "country": "Indonesia",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Lombok. Prices in Lombok",
+      "evidenceText": "Cappuccino (Regular Size) | ? ... This city had 0 entries in the past 12 months by 0 different contributors. Last update: 13 December 2024",
+      "query": "site:numbeo.com/cost-of-living/in/Lombok \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Lombok. Prices in Lombok",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ? ... This city had 0 entries in the past 12 months by 0 different contributors. Last update: 13 December 2024",
+      "query": "site:numbeo.com/cost-of-living/in/Lombok (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Lombok page showed '?' for both required rows and reported 0 entries in the past 12 months; no numeric value was available."
+}

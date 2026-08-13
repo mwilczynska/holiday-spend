@@ -7,11 +7,19 @@
 > **13 August 2026 supersession:** Phase 8 is complete. The frozen protocol, checkpoint, call-level reuse ledger,
 > normalized/materialized artifacts, staged CSV, provenance sidecar, import plan and non-live import path were
 > generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is active at
-> 50/121 staged, with 71 cities remaining after batches 001–003. The next exact action is fixed delegated batch 004:
+> 60/121 staged, with 61 cities remaining after batches 001–004. The next exact action is fixed delegated batch 005:
 > collect three bounded source calls per city, run inventory before materialization, materialize through
 > `materializeCityCostV61`, run the full baseline, and commit/push that batch. Do not read a holdout or write the live
 > CSV. This dated entry supersedes older handoff paragraphs that describe Phase 8 as blocked, pending or at an earlier
 > staging count.
+
+> **13 August 2026 Phase 9 batch 004:** Batch 004 is complete and staged. Chiang Rai, Bali (Kuta), Bali (Ubud),
+> Bali (Canggu), Jakarta, Yogyakarta, Lombok, Kuala Lumpur, Penang and Langkawi supplied 30 valid delegated source
+> calls; all ten cities materialized through the shipped v6.1 path. The batch recorded 100 searches, zero retries and
+> zero direct page reads. Direct/fallback counts were accommodation 5/5, food 6/4, drinks 0/10 and activities 6/4.
+> No city was an artifact candidate. The 0/10 direct drink category is recorded as an operational coverage finding
+> for Phase 10, not a batch stop or coefficient issue. The staged frame is now 60/121; 61 cities remain. The next
+> exact action is fixed batch 005; do not recollect completed cities, read a holdout or write the live CSV.
 
 > **13 August 2026 Phase 9 batch 003:** Batch 003 is complete and staged. Santa Fe (Bantayan), Manila, Palawan
 > (El Nido), Siargao, Bangkok, Chiang Mai, Phuket, Koh Samui, Pai and Krabi supplied 30 valid delegated source
@@ -56,7 +64,7 @@ reports assignment attempts as unrecorded while still separating telemetry recor
 Experiment 013 then completed its 60-slot frame but remains an immutable failure at 19/20 because a duplicate Prague
 assignment invalidated two call records. Phase 7H repaired the lifecycle/evaluator boundary, and experiment 014 then
 passed the fresh canary at 20/20 with zero artifact candidates and full provenance equality. Phase 8 is complete and
-Phase 9 is active at 50/121 staged; batch 004 is next.
+Phase 9 is active at 60/121 staged; batch 005 is next.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -371,7 +379,7 @@ The staged frame is 40/121 complete and 81 cities remain. No holdout or live CSV
 calls per city through delegated Stage A, run inventory before materialization, then materialize/report/verify and
 commit/push. Never recollect the 40 completed cities.
 
-## 10c. Current state after Phase 9 batch 003 - 13 August 2026
+## 10c. Historical state after Phase 9 batch 003 - superseded by batch 004
 
 Batch 003 completed Santa Fe (Bantayan), Manila, Palawan (El Nido), Siargao, Bangkok, Chiang Mai, Phuket, Koh
 Samui, Pai and Krabi. All 30 raw/telemetry pairs were present and validated; Stage B materialized all ten cities.
@@ -383,3 +391,17 @@ complete and 71 cities remain. No holdout or live CSV was touched.
 **Exact next action:** assign the fixed batch-004 cities from the frozen protocol, collect only their three source
 calls per city through delegated Stage A, run inventory before materialization, then materialize/report/verify and
 commit/push. Never recollect the 50 completed cities.
+
+## 10d. Current state after Phase 9 batch 004 - 13 August 2026
+
+Batch 004 completed Chiang Rai, Bali (Kuta), Bali (Ubud), Bali (Canggu), Jakarta, Yogyakarta, Lombok, Kuala Lumpur,
+Penang and Langkawi. All 30 raw/telemetry pairs were present and validated; Stage B materialized all ten cities.
+The batch recorded 30 delegated calls, 100 searches, zero retries and zero direct page reads. Direct/fallback counts
+were accommodation 5/5, food 6/4, drinks 0/10 and activities 6/4. No artifact candidates were found, so the 0%
+batch rate is below the 30% stop rule. All drink tiers used fallback in this batch; this is an operational coverage
+finding to carry into Phase 10, not an artifact candidate. The staged frame is now 60/121 complete and 61 cities
+remain. No holdout or live CSV was touched.
+
+**Exact next action:** assign the fixed batch-005 cities from the frozen protocol, collect only their three source
+calls per city through delegated Stage A, run inventory before materialization, then materialize/report/verify and
+commit/push. Never recollect the 60 completed cities.

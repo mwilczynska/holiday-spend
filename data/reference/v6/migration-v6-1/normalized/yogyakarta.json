@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Yogyakarta",
+    "country": "Indonesia",
+    "region": "SEA",
+    "band": null,
+    "cityId": "yogyakarta"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 65.77,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 7.15,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 21.45,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 70.06,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177",
+        "sourceTitle": "How much does a trip to Yogyakarta Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $7 | $18 | $46 | Entertainment^{1} | $5 | $15 | $49",
+        "query": "site:budgetyourtrip.com/indonesia/yogyakarta/trip-cost Yogyakarta food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177",
+        "sourceTitle": "How much does a trip to Yogyakarta Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $7 | $18 | $46 | Entertainment^{1} | $5 | $15 | $49",
+        "query": "site:budgetyourtrip.com/indonesia/yogyakarta/trip-cost Yogyakarta food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 46,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177",
+        "sourceTitle": "How much does a trip to Yogyakarta Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $7 | $18 | $46 | Entertainment^{1} | $5 | $15 | $49",
+        "query": "site:budgetyourtrip.com/indonesia/yogyakarta/trip-cost Yogyakarta food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 5,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177",
+        "sourceTitle": "How much does a trip to Yogyakarta Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $7 | $18 | $46 | Entertainment^{1} | $5 | $15 | $49",
+        "query": "site:budgetyourtrip.com/indonesia/yogyakarta/trip-cost Yogyakarta food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 15,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177",
+        "sourceTitle": "How much does a trip to Yogyakarta Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $7 | $18 | $46 | Entertainment^{1} | $5 | $15 | $49",
+        "query": "site:budgetyourtrip.com/indonesia/yogyakarta/trip-cost Yogyakarta food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 49,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/yogyakarta/trip-cost-1621177",
+        "sourceTitle": "How much does a trip to Yogyakarta Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food^{2} | $7 | $18 | $46 | Entertainment^{1} | $5 | $15 | $49",
+        "query": "site:budgetyourtrip.com/indonesia/yogyakarta/trip-cost Yogyakarta food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Yogyakarta. May 2026. Prices in Yogyakarta",
+        "evidenceText": "Cappuccino (Regular Size)  | Rp21,750.00  | 11,000.00-35,000.00 ... Last update: 18 May 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Yogyakarta \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Yogyakarta. May 2026. Prices in Yogyakarta",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | Rp60,000.00  | 26,000.00-70,000.00 ... Last update: 18 May 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Yogyakarta (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:24:07.022Z",
+        "completedAt": "2026-08-13T15:24:07.022Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:24:07.022Z",
+        "completedAt": "2026-08-13T15:24:07.022Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:24:07.022Z",
+        "completedAt": "2026-08-13T15:24:07.022Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Yogyakarta",
+      "country": "Indonesia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-06-yogyakarta",
+      "agentId": "delegated-phase9-batch-004-06-yogyakarta",
+      "rawSha256": "148b082eba3f1079af29cbcba77e6d2b7dc38f433c333262a29318b8aa41eaeb",
+      "telemetrySha256": "848fc84a71acd190556a681b122bbab2e9b0ded5f815e7dc5afb34993780f785"
+    },
+    {
+      "city": "Yogyakarta",
+      "country": "Indonesia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-06-yogyakarta",
+      "agentId": "delegated-phase9-batch-004-06-yogyakarta",
+      "rawSha256": "f0def671293c21cc642c4fec94b403d8647b0e9dc7d05b8620c933e6394fe9d7",
+      "telemetrySha256": "04d0ecf8203c6a10ee9019137093b59527c9c4b80fab03b00fb559c48c39b185"
+    },
+    {
+      "city": "Yogyakarta",
+      "country": "Indonesia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-06-yogyakarta",
+      "agentId": "delegated-phase9-batch-004-06-yogyakarta",
+      "rawSha256": "93b3f672358c01f0e56b65ae585b7cf6b985e527c73bd29f30355893d13b8339",
+      "telemetrySha256": "fa82fc46803d8affe38b40ff7946d4b085f48b1af0b3c149bedfafd91f51d458"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Bali (Kuta)",
+  "country": "Indonesia",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 31500,
+      "currency": "IDR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Kuta-Indonesia",
+      "sourceTitle": "Cost of Living in Kuta. Prices in Kuta",
+      "evidenceText": "Cappuccino (Regular Size)  | Rp31,500.00  | 15,000.00-60,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Kuta \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 35000,
+      "currency": "IDR",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Kuta-Indonesia",
+      "sourceTitle": "Cost of Living in Kuta. Prices in Kuta",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | Rp35,000.00  | 30,000.00-45,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Kuta \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

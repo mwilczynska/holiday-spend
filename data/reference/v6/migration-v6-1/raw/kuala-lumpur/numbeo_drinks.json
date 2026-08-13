@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Kuala Lumpur",
+  "country": "Malaysia",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Kuala Lumpur. Jun 2026. Prices in Kuala Lumpur",
+      "evidenceText": "Cappuccino (Regular Size)  | RM13.04  | 8.00-16.00",
+      "query": "site:numbeo.com/cost-of-living/in/ \"Kuala Lumpur\" \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Kuala Lumpur. Jun 2026. Prices in Kuala Lumpur",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | RM18.00  | 12.00-28.00",
+      "query": "site:numbeo.com/cost-of-living/in/ \"Kuala Lumpur\" (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Kuala Lumpur result is explicitly dated Jun 2026, stale relative to the frozen reference date 2026-09-17; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

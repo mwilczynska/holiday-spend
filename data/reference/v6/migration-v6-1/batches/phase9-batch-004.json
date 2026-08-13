@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-batch-report-v1",
+  "batchId": "phase9-batch-004",
+  "generatedAt": "deterministic",
+  "protocolSha256": "fbd9ff5ac97eb0bc1a5bc1941751a25f267a5fa8192732109c08f3325d8a0c2e",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "cities": [
+    "Chiang Rai",
+    "Bali (Kuta)",
+    "Bali (Ubud)",
+    "Bali (Canggu)",
+    "Jakarta",
+    "Yogyakarta",
+    "Lombok",
+    "Kuala Lumpur",
+    "Penang",
+    "Langkawi"
+  ],
+  "cityCount": 10,
+  "completeMaterializations": 10,
+  "calls": 30,
+  "searches": 100,
+  "retries": 0,
+  "directPageReads": 0,
+  "collectionModes": {
+    "delegated_codex_subagent": 30
+  },
+  "observedMeasures": {
+    "hotel_3star_room_2p": 5,
+    "cappuccino_1": 1,
+    "domestic_draft_beer_1": 1,
+    "byt_food_budget_per_person_day": 6,
+    "byt_food_mid_per_person_day": 6,
+    "byt_food_high_per_person_day": 6,
+    "byt_activities_budget_per_person_day": 6,
+    "byt_activities_mid_per_person_day": 6,
+    "byt_activities_high_per_person_day": 6
+  },
+  "sourceStatuses": {
+    "expedia_3star:complete": 5,
+    "budgetyourtrip_daily_tiers:partial": 6,
+    "numbeo_drinks:partial": 12,
+    "budgetyourtrip_daily_tiers:not_found": 18,
+    "numbeo_drinks:complete": 2,
+    "expedia_3star:not_found": 5,
+    "budgetyourtrip_daily_tiers:complete": 36,
+    "numbeo_drinks:not_found": 6
+  },
+  "categoryCounts": {
+    "accommodation": {
+      "direct": 5,
+      "fallback": 5
+    },
+    "food": {
+      "direct": 6,
+      "fallback": 4
+    },
+    "drinks": {
+      "direct": 0,
+      "fallback": 10
+    },
+    "activities": {
+      "direct": 6,
+      "fallback": 4
+    }
+  },
+  "gradeDistribution": {
+    "C": 25,
+    "B": 41,
+    "D": 114,
+    "definitional": 10
+  },
+  "allPriorCities": 0,
+  "artifactCandidates": 0,
+  "artifactFraction": 0,
+  "artifactRows": [
+    {
+      "city": "Chiang Rai",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Bali (Kuta)",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Bali (Ubud)",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Bali (Canggu)",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Jakarta",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Yogyakarta",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Lombok",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Kuala Lumpur",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Penang",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Langkawi",
+      "artifactCandidate": false,
+      "reason": null
+    }
+  ]
+}

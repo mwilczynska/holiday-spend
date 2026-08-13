@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Kuala Lumpur",
+    "country": "Malaysia",
+    "region": "SEA",
+    "band": null,
+    "cityId": "kuala-lumpur"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 42.9,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 125.83,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 22.88,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 61.48,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "codex-subagent",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161",
+        "sourceTitle": "How much does a trip to Kuala Lumpur Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $11  | $30  | $88\nEntertainment^{1}  | $6  | $16  | $43",
+        "query": "site:budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost \"Food\" \"Entertainment\" \"Budget\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 30,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161",
+        "sourceTitle": "How much does a trip to Kuala Lumpur Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $11  | $30  | $88\nEntertainment^{1}  | $6  | $16  | $43",
+        "query": "site:budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost \"Food\" \"Entertainment\" \"Budget\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 88,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161",
+        "sourceTitle": "How much does a trip to Kuala Lumpur Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $11  | $30  | $88\nEntertainment^{1}  | $6  | $16  | $43",
+        "query": "site:budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost \"Food\" \"Entertainment\" \"Budget\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161",
+        "sourceTitle": "How much does a trip to Kuala Lumpur Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $11  | $30  | $88\nEntertainment^{1}  | $6  | $16  | $43",
+        "query": "site:budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost \"Food\" \"Entertainment\" \"Budget\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 16,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161",
+        "sourceTitle": "How much does a trip to Kuala Lumpur Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $11  | $30  | $88\nEntertainment^{1}  | $6  | $16  | $43",
+        "query": "site:budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost \"Food\" \"Entertainment\" \"Budget\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 43,
+        "currency": "USD",
+        "sourceUrl": "https://testing.budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost-1735161",
+        "sourceTitle": "How much does a trip to Kuala Lumpur Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | --- | ---\nFood^{2}  | $11  | $30  | $88\nEntertainment^{1}  | $6  | $16  | $43",
+        "query": "site:budgetyourtrip.com/malaysia/kuala-lumpur/trip-cost \"Food\" \"Entertainment\" \"Budget\" \"Luxury\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kuala Lumpur. Jun 2026. Prices in Kuala Lumpur",
+        "evidenceText": "Cappuccino (Regular Size)  | RM13.04  | 8.00-16.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Kuala Lumpur\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Kuala Lumpur. Jun 2026. Prices in Kuala Lumpur",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | RM18.00  | 12.00-28.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Kuala Lumpur\" (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:31:12.373Z",
+        "completedAt": "2026-08-13T15:31:12.373Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:31:12.373Z",
+        "completedAt": "2026-08-13T15:31:12.373Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "codex-subagent",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:31:12.373Z",
+        "completedAt": "2026-08-13T15:31:12.373Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-08-kuala-lumpur",
+      "agentId": "delegated-phase9-batch-004-08-kuala-lumpur",
+      "rawSha256": "5113c4adb07abb3d1f8fa260c1fb269aa132c7c7ce7cef5fde973974aad68d6e",
+      "telemetrySha256": "3425be5a32c5a0c680393ec07ff16185b2bdc7ce3e1a6d475ef7b2aceab17cd9"
+    },
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-08-kuala-lumpur",
+      "agentId": "delegated-phase9-batch-004-08-kuala-lumpur",
+      "rawSha256": "0c57845c2e9d3adfa991fa3d0493514340db76afb18678623b8582196716dbce",
+      "telemetrySha256": "1e9054325c77862e91be1261b6d9a942de3e0c6f133f08e124f7480c29779752"
+    },
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-08-kuala-lumpur",
+      "agentId": "delegated-phase9-batch-004-08-kuala-lumpur",
+      "rawSha256": "05630e88bbe69ddea1851ea16e32fd5aaa6f80325d11b710daa75495439d5b8f",
+      "telemetrySha256": "8d0128c2fd51d3913c408a3c6a56dc52158ba0aff57c4b4fbc0f7f889ce52bec"
+    }
+  ]
+}

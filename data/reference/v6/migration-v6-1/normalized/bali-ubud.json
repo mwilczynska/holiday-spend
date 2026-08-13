@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Bali (Ubud)",
+    "country": "Indonesia",
+    "region": "SEA",
+    "band": null,
+    "cityId": "bali-ubud"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/ubud"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/ubud"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 61.48,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/ubud"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/ubud"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/ubud"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 31.46,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/ubud"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/ubud",
+        "sourceTitle": "Ubud Travel Cost - Average Price of a Vacation to Ubud: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nFood^{2}  | $7\n(Rp 133,574)  | $18\n(Rp 328,630)  | $43\n(Rp 776,572)",
+        "query": "site:budgetyourtrip.com/indonesia/ubud Ubud Indonesia Food & Meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/ubud",
+        "sourceTitle": "Ubud Travel Cost - Average Price of a Vacation to Ubud: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nFood^{2}  | $7\n(Rp 133,574)  | $18\n(Rp 328,630)  | $43\n(Rp 776,572)",
+        "query": "site:budgetyourtrip.com/indonesia/ubud Ubud Indonesia Food & Meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 43,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/ubud",
+        "sourceTitle": "Ubud Travel Cost - Average Price of a Vacation to Ubud: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nFood^{2}  | $7\n(Rp 133,574)  | $18\n(Rp 328,630)  | $43\n(Rp 776,572)",
+        "query": "site:budgetyourtrip.com/indonesia/ubud Ubud Indonesia Food & Meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 4,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/ubud",
+        "sourceTitle": "Ubud Travel Cost - Average Price of a Vacation to Ubud: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nEntertainment^{1}  | $4\n(Rp 67,059)  | $9\n(Rp 165,050)  | $22\n(Rp 390,409)",
+        "query": "site:budgetyourtrip.com/indonesia/ubud Ubud Indonesia Food & Meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/ubud",
+        "sourceTitle": "Ubud Travel Cost - Average Price of a Vacation to Ubud: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nEntertainment^{1}  | $4\n(Rp 67,059)  | $9\n(Rp 165,050)  | $22\n(Rp 390,409)",
+        "query": "site:budgetyourtrip.com/indonesia/ubud Ubud Indonesia Food & Meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 22,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/ubud",
+        "sourceTitle": "Ubud Travel Cost - Average Price of a Vacation to Ubud: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day\nEntertainment^{1}  | $4\n(Rp 67,059)  | $9\n(Rp 165,050)  | $22\n(Rp 390,409)",
+        "query": "site:budgetyourtrip.com/indonesia/ubud Ubud Indonesia Food & Meals budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:20:31.441Z",
+        "completedAt": "2026-08-13T15:20:31.441Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:20:31.441Z",
+        "completedAt": "2026-08-13T15:20:31.441Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:20:31.441Z",
+        "completedAt": "2026-08-13T15:20:31.441Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-03-bali-ubud",
+      "agentId": "delegated-phase9-batch-004-03-bali-ubud",
+      "rawSha256": "fb6b7eebafc7745e2d679e067228dc2a9980ec95a86c22836f98510ffd7658a7",
+      "telemetrySha256": "cffddcebaebbdfad5163d18181ecd07f7295b71500bc231ee121c0d139393040"
+    },
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-03-bali-ubud",
+      "agentId": "delegated-phase9-batch-004-03-bali-ubud",
+      "rawSha256": "df73801c92f46cafbc6424b421dd1a626de75c07c58e5b7c29bf23103f8e69b6",
+      "telemetrySha256": "370cf26dc15458576d1a31e3503173e614908548c9883d6982f5d4c2e02fe025"
+    },
+    {
+      "city": "Bali (Ubud)",
+      "country": "Indonesia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-03-bali-ubud",
+      "agentId": "delegated-phase9-batch-004-03-bali-ubud",
+      "rawSha256": "1b85e159f6b67eeb1a77be85e71bc74c45d7cf46f31c499acdfa73a6748a279b",
+      "telemetrySha256": "9e3ba5c3c7d373cee83548570cb372937d2e24c81bafc6e162710b8014e680c6"
+    }
+  ]
+}

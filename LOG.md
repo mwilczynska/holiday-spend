@@ -3096,3 +3096,14 @@ The batch-003 completion is now the authoritative workstream state: Phase 8 is c
 50/121 cities are staged and 71 remain. Older current-status paragraphs that still described Phase 8 as active or
 batch 002/40-city staging as the next action are superseded but retained as history. The next exact action is fixed
 delegated batch 004; no holdout read, live-CSV write or Phase 11 action is authorized.
+
+### v6.1 Phase 9 batch 004 complete - 13 August 2026
+
+The fourth fixed migration batch staged Chiang Rai, Bali (Kuta), Bali (Ubud), Bali (Canggu), Jakarta, Yogyakarta,
+Lombok, Kuala Lumpur, Penang and Langkawi. Delegated Stage A produced 30 valid raw/telemetry call pairs under the
+frozen three-call contract, with 100 searches, zero retries and zero direct page reads. The shipped Stage B path
+materialized all ten cities and expanded the staged frame to 60/121 cities. Direct/fallback category counts were
+accommodation 5/5, food 6/4, drinks 0/10 and activities 6/4. No city was an artifact candidate, so the batch
+decision rule permits continuation. All drink tiers used fallback in this batch; this is recorded as operational
+coverage evidence for Phase 10, not a model refit trigger. Missingness remains explicit and no fallback was written
+by Stage A. The next action is fixed batch 005; the live CSV, holdouts and Phase 11 remain untouched.

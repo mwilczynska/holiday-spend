@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Jakarta",
+    "country": "Indonesia",
+    "region": "SEA",
+    "band": null,
+    "cityId": "jakarta"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "expedia_3star:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/jakarta"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/jakarta"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 68.63,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/jakarta"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 7.15,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/jakarta"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/jakarta"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 30.03,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/jakarta"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/jakarta",
+        "sourceTitle": "Jakarta Travel Cost - Average Price of a Vacation to Jakarta: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day ... Jakarta on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (Rp204,627) | $26 (Rp464,729) | $48 (Rp868,912) ... Entertainment^{1} | $5 (Rp90,469) | $11 (Rp205,464) | $21 (Rp384,160)",
+        "query": "site:budgetyourtrip.com/indonesia/jakarta \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/jakarta",
+        "sourceTitle": "Jakarta Travel Cost - Average Price of a Vacation to Jakarta: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day ... Jakarta on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (Rp204,627) | $26 (Rp464,729) | $48 (Rp868,912) ... Entertainment^{1} | $5 (Rp90,469) | $11 (Rp205,464) | $21 (Rp384,160)",
+        "query": "site:budgetyourtrip.com/indonesia/jakarta \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 48,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/jakarta",
+        "sourceTitle": "Jakarta Travel Cost - Average Price of a Vacation to Jakarta: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day ... Jakarta on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (Rp204,627) | $26 (Rp464,729) | $48 (Rp868,912) ... Entertainment^{1} | $5 (Rp90,469) | $11 (Rp205,464) | $21 (Rp384,160)",
+        "query": "site:budgetyourtrip.com/indonesia/jakarta \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 5,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/jakarta",
+        "sourceTitle": "Jakarta Travel Cost - Average Price of a Vacation to Jakarta: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day ... Jakarta on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (Rp204,627) | $26 (Rp464,729) | $48 (Rp868,912) ... Entertainment^{1} | $5 (Rp90,469) | $11 (Rp205,464) | $21 (Rp384,160)",
+        "query": "site:budgetyourtrip.com/indonesia/jakarta \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/jakarta",
+        "sourceTitle": "Jakarta Travel Cost - Average Price of a Vacation to Jakarta: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day ... Jakarta on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (Rp204,627) | $26 (Rp464,729) | $48 (Rp868,912) ... Entertainment^{1} | $5 (Rp90,469) | $11 (Rp205,464) | $21 (Rp384,160)",
+        "query": "site:budgetyourtrip.com/indonesia/jakarta \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 21,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/jakarta",
+        "sourceTitle": "Jakarta Travel Cost - Average Price of a Vacation to Jakarta: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Average Daily Cost Per person, per day ... Jakarta on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (Rp204,627) | $26 (Rp464,729) | $48 (Rp868,912) ... Entertainment^{1} | $5 (Rp90,469) | $11 (Rp205,464) | $21 (Rp384,160)",
+        "query": "site:budgetyourtrip.com/indonesia/jakarta \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Jakarta. Jun 2026. Prices in Jakarta",
+        "evidenceText": "Cost of Living in Jakarta. Jun 2026. Prices in Jakarta ... Cappuccino (Regular Size)  | Rp35,833.33  | 18,000.00-54,000.00 ... Last update: 4 June 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Jakarta \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Jakarta. Jun 2026. Prices in Jakarta",
+        "evidenceText": "Cost of Living in Jakarta. Jun 2026. Prices in Jakarta ... Domestic Draft Beer (0.5 Liter)  | Rp47,500.00  | 30,000.00-100,000.00 ... Last update: 4 June 2026",
+        "query": "site:numbeo.com/cost-of-living/in/Jakarta (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:20:11.037Z",
+        "completedAt": "2026-08-13T15:20:11.037Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:20:11.037Z",
+        "completedAt": "2026-08-13T15:20:11.037Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:20:11.037Z",
+        "completedAt": "2026-08-13T15:20:11.037Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-05-jakarta",
+      "agentId": "delegated-phase9-batch-004-05-jakarta",
+      "rawSha256": "d87a49a8642e7fb0e774ab47cc2faaef8fcd1f9f23e0224d396c6709acde6d30",
+      "telemetrySha256": "8b829f59fc9966501ff514bf848a7a8e682b4f7e56be877e1045276b1e2fcf9d"
+    },
+    {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-05-jakarta",
+      "agentId": "delegated-phase9-batch-004-05-jakarta",
+      "rawSha256": "4db3a287820a306b733bd07fd9f6670685dad8f831c133469fb88ab30f66e56a",
+      "telemetrySha256": "4b778887d69dc88c4a407dd1bb00f2cd749b19102b280ef97c1a3fb35a8aa7f3"
+    },
+    {
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-05-jakarta",
+      "agentId": "delegated-phase9-batch-004-05-jakarta",
+      "rawSha256": "28bd61d06fcec10133a25221e29540cff4fd6ad6dc356023867aec8ab98557e3",
+      "telemetrySha256": "2e3e0892b893a5d95aecfdb8a7914a68ea227860c1248daeb2ec418a8221fe0a"
+    }
+  ]
+}

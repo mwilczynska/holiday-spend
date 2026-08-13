@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Lombok",
+    "country": "Indonesia",
+    "region": "SEA",
+    "band": null,
+    "cityId": "lombok"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 89.68,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Lombok-Hotels.s30-0-d11999.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 27.17,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 50.05,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 5.72,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 67,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Lombok-Hotels.s30-0-d11999.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Lombok from $11 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Lombok. Month | Price | September | $67",
+        "query": "site:expedia.com Lombok Indonesia 3-star hotels September 17 2026 September 18 2026 2 adults 1 room",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371",
+        "sourceTitle": "How much does a trip to Lombok Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food | $8 | $19 | $35 | Entertainment | $4 | $9 | $17",
+        "query": "site:budgetyourtrip.com/indonesia/lombok/trip-cost Lombok food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 19,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371",
+        "sourceTitle": "How much does a trip to Lombok Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food | $8 | $19 | $35 | Entertainment | $4 | $9 | $17",
+        "query": "site:budgetyourtrip.com/indonesia/lombok/trip-cost Lombok food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 35,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371",
+        "sourceTitle": "How much does a trip to Lombok Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food | $8 | $19 | $35 | Entertainment | $4 | $9 | $17",
+        "query": "site:budgetyourtrip.com/indonesia/lombok/trip-cost Lombok food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 4,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371",
+        "sourceTitle": "How much does a trip to Lombok Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food | $8 | $19 | $35 | Entertainment | $4 | $9 | $17",
+        "query": "site:budgetyourtrip.com/indonesia/lombok/trip-cost Lombok food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371",
+        "sourceTitle": "How much does a trip to Lombok Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food | $8 | $19 | $35 | Entertainment | $4 | $9 | $17",
+        "query": "site:budgetyourtrip.com/indonesia/lombok/trip-cost Lombok food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/indonesia/lombok/trip-cost-1637371",
+        "sourceTitle": "How much does a trip to Lombok Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category | Budget | Mid-Range | Luxury | Food | $8 | $19 | $35 | Entertainment | $4 | $9 | $17",
+        "query": "site:budgetyourtrip.com/indonesia/lombok/trip-cost Lombok food entertainment",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Lombok. Prices in Lombok",
+        "evidenceText": "Cappuccino (Regular Size) | ? ... This city had 0 entries in the past 12 months by 0 different contributors. Last update: 13 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Lombok \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Lombok. Prices in Lombok",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ? ... This city had 0 entries in the past 12 months by 0 different contributors. Last update: 13 December 2024",
+        "query": "site:numbeo.com/cost-of-living/in/Lombok (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:29:24.5053384Z",
+        "completedAt": "2026-08-13T15:29:24.5053384Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:29:24.5053384Z",
+        "completedAt": "2026-08-13T15:29:24.5053384Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:29:24.5053384Z",
+        "completedAt": "2026-08-13T15:29:24.5053384Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Lombok",
+      "country": "Indonesia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-07-lombok",
+      "agentId": "delegated-phase9-batch-004-07-lombok",
+      "rawSha256": "52373e3b6b0e02a864c40b713fd979cff53ab42d069236985f53eea999bf9a2c",
+      "telemetrySha256": "383f45dedb2235d36af4b8f726a7db99ddc237b2ac02318c3fc34844259fe50e"
+    },
+    {
+      "city": "Lombok",
+      "country": "Indonesia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-07-lombok",
+      "agentId": "delegated-phase9-batch-004-07-lombok",
+      "rawSha256": "d843c6baa7f555f64b5a013f083cfce2492004f4bae9878d6553e3faccc8df9e",
+      "telemetrySha256": "0416ab93d41ad351b99c48fd84327c341a947807f6a81030ed26ccca3a7c7c7e"
+    },
+    {
+      "city": "Lombok",
+      "country": "Indonesia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-07-lombok",
+      "agentId": "delegated-phase9-batch-004-07-lombok",
+      "rawSha256": "373782da315c2015d6683e37fc07fa095cc04d532cee4a54ba6638a9813946b3",
+      "telemetrySha256": "975a4909e72d94ef88b71be4674d6b968cfd7a04a0a903048c5dd18223d63038"
+    }
+  ]
+}

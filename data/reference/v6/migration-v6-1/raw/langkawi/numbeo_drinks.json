@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Langkawi",
+  "country": "Malaysia",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "site:numbeo.com/cost-of-living/in/Langkawi \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Langkawi. Oct 2025. Prices in Langkawi",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | RM7.00 |",
+      "query": "site:numbeo.com/cost-of-living/in/Langkawi (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The exact Langkawi canonical Numbeo beer result is explicitly dated October 2025 and is retained as stale; no value was substituted for the absent cappuccino row."
+}

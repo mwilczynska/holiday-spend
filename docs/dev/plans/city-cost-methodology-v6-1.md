@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 50/121 staged
+**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 60/121 staged
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -8,8 +8,8 @@
 > **13 August 2026 status correction:** Experiment 014 passed 20/20 and Phase 8 is now complete. The frozen
 > protocol and resumable migration tooling live under `data/reference/v6/migration-v6-1/`; its 20-city dry run
 > reused all 60 validated experiment-014 calls, produced deterministic normalized/materialized/staged outputs,
-> and verified the non-live provenance import path. Phase 9 is active at 50/121 staged, with 71 cities remaining
-> after batches 001–003. The exact next action is fixed delegated batch 004: collect its three source calls per city,
+> and verified the non-live provenance import path. Phase 9 is active at 60/121 staged, with 61 cities remaining
+> after batches 001–004. The exact next action is fixed delegated batch 005: collect its three source calls per city,
 > inventory, materialize, run the complete baseline, and commit/push the batch. This dated correction supersedes older
 > text in this plan that describes Phase 8 as blocked, pending or at an earlier staging count. The live CSV and
 > holdouts remain untouched.
@@ -31,6 +31,13 @@
 > Direct/fallback counts were accommodation 6/4, food 6/4, drinks 4/6 and activities 6/4. Santa Fe (Bantayan) and
 > Siargao were all-prior artifact candidates (20%), below the 30% stop rule. The next exact action is fixed batch
 > 004; do not recollect completed cities or touch the live CSV.
+
+> **13 August 2026 Phase 9 batch 004:** Ten more cities are staged, bringing the frame to 60/121 complete and
+> leaving 61 cities. Batch 004 recorded 30 delegated calls, 100 searches, zero retries and zero direct page reads.
+> Direct/fallback counts were accommodation 5/5, food 6/4, drinks 0/10 and activities 6/4. No city was an artifact
+> candidate (0%). The complete drink fallback is recorded as an operational coverage finding for Phase 10, not a
+> batch stop or coefficient issue. The next exact action is fixed batch 005; do not recollect completed cities or
+> touch the live CSV.
 
 ### Current migration checklist
 

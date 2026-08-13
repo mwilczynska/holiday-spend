@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Langkawi",
+    "country": "Malaysia",
+    "region": "SEA",
+    "band": null,
+    "cityId": "langkawi"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 56.22,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Langkawi-Hotels.s30-0-d6126505.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 42,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Langkawi-Hotels.s30-0-d6126505.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Langkawi from $20 | Expedia",
+        "evidenceText": "September | $42. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Langkawi.",
+        "query": "site:expedia.com Langkawi Malaysia 3-star hotel September 17 2026 September 18 2026 2 adults 1 room price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/malaysia/langkawi/trip-cost Langkawi \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/malaysia/langkawi/trip-cost Langkawi \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/malaysia/langkawi/trip-cost Langkawi \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/malaysia/langkawi/trip-cost Langkawi \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/malaysia/langkawi/trip-cost Langkawi \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/malaysia/langkawi/trip-cost Langkawi \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:numbeo.com/cost-of-living/in/Langkawi \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Langkawi. Oct 2025. Prices in Langkawi",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | RM7.00 |",
+        "query": "site:numbeo.com/cost-of-living/in/Langkawi (\"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\")",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:35:30.8683059Z",
+        "completedAt": "2026-08-13T15:35:30.8683059Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:35:30.8683059Z",
+        "completedAt": "2026-08-13T15:35:30.8683059Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:35:30.8683059Z",
+        "completedAt": "2026-08-13T15:35:30.8683059Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Langkawi",
+      "country": "Malaysia",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-10-langkawi",
+      "agentId": "delegated-phase9-batch-004-10-langkawi",
+      "rawSha256": "e932682af990159cb009a98db6bb87636928e77f1db6c1ae56e68be4aece4f0d",
+      "telemetrySha256": "17361b13f093cd11e7024bc38626851e62fe756d9007f88c2fb0071ae9919efb"
+    },
+    {
+      "city": "Langkawi",
+      "country": "Malaysia",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-10-langkawi",
+      "agentId": "delegated-phase9-batch-004-10-langkawi",
+      "rawSha256": "1bb89f32420cf05f6da1e0586478cf9eded45f66b871f1bf7a80348e59f459fa",
+      "telemetrySha256": "d1eed7c7ca666e2242d37e302e2e2a72ee7b6ec45a1868d2cf9f07fa20888ef8"
+    },
+    {
+      "city": "Langkawi",
+      "country": "Malaysia",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-004-10-langkawi",
+      "agentId": "delegated-phase9-batch-004-10-langkawi",
+      "rawSha256": "b4761768587a1e9c6aeedfa4d7eee9a05305477f172b0f2ccc95be885a62588b",
+      "telemetrySha256": "7ebd2eda328dd5c8dd65d5437429bf9e4799d45f83f5fea2d71683380bb101d8"
+    }
+  ]
+}

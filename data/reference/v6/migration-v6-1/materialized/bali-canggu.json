@@ -1,0 +1,2290 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Bali (Canggu)",
+    "country": "Indonesia",
+    "region": "SEA",
+    "band": null,
+    "cityId": "bali-canggu"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Bali (Canggu)",
+    "country": "Indonesia",
+    "region": "SEA",
+    "costBand": "mid",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 37.18,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 17.1,
+          "upperAud": 57.26,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 37.24,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 21.97,
+          "upperAud": 52.5,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 41.92,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 23.05,
+          "upperAud": 60.78,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 47.18,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 27.84,
+          "upperAud": 66.53,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 62.91,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 37.12,
+          "upperAud": 88.7,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 84.12,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 49.63,
+          "upperAud": 118.61,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 24.39,
+        "formula": "v6.1 food_street_food tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:food_street_food"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 13.41,
+          "upperAud": 35.37,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 45.76,
+        "formula": "v6.1 food_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:food_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 25.17,
+          "upperAud": 66.35,
+          "widthPct": 45
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 117.25,
+        "formula": "v6.1 food_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:food_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 64.49,
+          "upperAud": 170.01,
+          "widthPct": 45
+        }
+      },
+      "food_high_end": {
+        "amountAud": 308.85,
+        "formula": "v6.1 food_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_food_budget_per_person_day",
+          "byt_food_mid_per_person_day",
+          "byt_food_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:food_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 169.87,
+          "upperAud": 447.83,
+          "widthPct": 45
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.09,
+        "formula": "v6.1 drink_coffee tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:drink_coffee"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 2.25,
+          "upperAud": 5.93,
+          "widthPct": 45
+        }
+      },
+      "drinks_none": {
+        "amountAud": 8.17,
+        "formula": "v6.1 drinks_none tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:drinks_none"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 4.49,
+          "upperAud": 11.85,
+          "widthPct": 45
+        }
+      },
+      "drinks_light": {
+        "amountAud": 14.94,
+        "formula": "v6.1 drinks_light tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:drinks_light"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 8.22,
+          "upperAud": 21.66,
+          "widthPct": 45
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 42,
+        "formula": "v6.1 drinks_moderate tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:drinks_moderate"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 23.1,
+          "upperAud": 60.9,
+          "widthPct": 45
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 69.07,
+        "formula": "v6.1 drinks_heavy tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:drinks_heavy"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 37.99,
+          "upperAud": 100.15,
+          "widthPct": 45
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 51.48,
+        "formula": "v6.1 activities_budget tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:activities_budget"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 28.31,
+          "upperAud": 74.65,
+          "widthPct": 45
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 134.41,
+        "formula": "v6.1 activities_mid_range tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:activities_mid_range"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 73.93,
+          "upperAud": 194.89,
+          "widthPct": 45
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 357.47,
+        "formula": "v6.1 activities_high_end tier prior",
+        "parentAnchors": [],
+        "missingAnchors": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "byt_activities_budget_per_person_day",
+          "byt_activities_mid_per_person_day",
+          "byt_activities_high_per_person_day"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:mid:activities_high_end"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 196.61,
+          "upperAud": 518.33,
+          "widthPct": 45
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 62.91,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "missingness": {
+      "byt_food_budget_per_person_day": "not_found",
+      "byt_food_mid_per_person_day": "not_found",
+      "byt_food_high_per_person_day": "not_found",
+      "cappuccino_1": "not_found",
+      "domestic_draft_beer_1": "not_found",
+      "byt_activities_budget_per_person_day": "not_found",
+      "byt_activities_mid_per_person_day": "not_found",
+      "byt_activities_high_per_person_day": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 37.18,
+      "accomPrivateRoom": 37.24,
+      "accom1star": 41.92,
+      "accom2star": 47.18,
+      "accom3star": 62.91,
+      "accom4star": 84.12,
+      "foodStreet": 24.39,
+      "foodBudget": 45.76,
+      "foodMid": 117.25,
+      "foodHigh": 308.85,
+      "drinkCoffee": 4.09,
+      "drinkLocalBeer": 3.38,
+      "drinkCocktail": 10.15,
+      "drinksNone": 8.17,
+      "drinksLight": 14.94,
+      "drinksModerate": 42,
+      "drinksHeavy": 69.07,
+      "activitiesFree": 0,
+      "activitiesBudget": 51.48,
+      "activitiesMid": 134.41,
+      "activitiesHigh": 357.47
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 37.18,
+      "accomPrivateRoom": 37.24,
+      "accom1star": 41.92,
+      "accom2star": 47.18,
+      "accom3star": 62.91,
+      "accom4star": 84.12,
+      "foodStreet": 24.39,
+      "foodBudget": 45.76,
+      "foodMid": 117.25,
+      "foodHigh": 308.85,
+      "drinkCoffee": 4.09,
+      "drinkLocalBeer": 3.38,
+      "drinkCocktail": 10.15,
+      "drinksNone": 8.17,
+      "drinksLight": 14.94,
+      "drinksModerate": 42,
+      "drinksHeavy": 69.07,
+      "activitiesFree": 0,
+      "activitiesBudget": 51.48,
+      "activitiesMid": 134.41,
+      "activitiesHigh": 357.47
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 47,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Canggu from $16 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Canggu\nSeptember  | $47\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Canggu.",
+        "query": "site:expedia.com Canggu Bali Indonesia 3 star hotels \"September\" \"Price trends\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:numbeo.com/cost-of-living/in/Canggu \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:numbeo.com/cost-of-living/in/Canggu \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 17.1,
+          "upperAud": 57.26,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 21.97,
+          "upperAud": 52.5,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 23.05,
+          "upperAud": 60.78,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 27.84,
+          "upperAud": 66.53,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 37.12,
+          "upperAud": 88.7,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 49.63,
+          "upperAud": 118.61,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 13.41,
+          "upperAud": 35.37,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 25.17,
+          "upperAud": 66.35,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 64.49,
+          "upperAud": 170.01,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 169.87,
+          "upperAud": 447.83,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.25,
+          "upperAud": 5.93,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.49,
+          "upperAud": 11.85,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.22,
+          "upperAud": 21.66,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 23.1,
+          "upperAud": 60.9,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 37.99,
+          "upperAud": 100.15,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 28.31,
+          "upperAud": 74.65,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 73.93,
+          "upperAud": 194.89,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 196.61,
+          "upperAud": 518.33,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 37.1169,
+          "upperAud": 88.70309999999999,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 62.91,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:21:54.103Z",
+        "completedAt": "2026-08-13T15:21:54.103Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:21:54.103Z",
+        "completedAt": "2026-08-13T15:21:54.103Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:21:54.103Z",
+        "completedAt": "2026-08-13T15:21:54.103Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 17.1,
+          "upperAud": 57.26,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 21.97,
+          "upperAud": 52.5,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 23.05,
+          "upperAud": 60.78,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 27.84,
+          "upperAud": 66.53,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 37.12,
+          "upperAud": 88.7,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 49.63,
+          "upperAud": 118.61,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 13.41,
+          "upperAud": 35.37,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 25.17,
+          "upperAud": 66.35,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 64.49,
+          "upperAud": 170.01,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 169.87,
+          "upperAud": 447.83,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.25,
+          "upperAud": 5.93,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.49,
+          "upperAud": 11.85,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.22,
+          "upperAud": 21.66,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 23.1,
+          "upperAud": 60.9,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 37.99,
+          "upperAud": 100.15,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 28.31,
+          "upperAud": 74.65,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 73.93,
+          "upperAud": 194.89,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 196.61,
+          "upperAud": 518.33,
+          "widthPct": 45
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 47,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Canggu from $16 | Expedia",
+          "evidenceText": "Price trends for properties with 3 Stars in Canggu\nSeptember  | $47\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Canggu.",
+          "query": "site:expedia.com Canggu Bali Indonesia 3 star hotels \"September\" \"Price trends\"",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:numbeo.com/cost-of-living/in/Canggu \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "site:numbeo.com/cost-of-living/in/Canggu \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 62.91,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ],
+          "missingness": "not_found"
+        },
+        "cappuccino_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": null,
+          "status": "not_found",
+          "evidenceGrade": "D",
+          "sourceIds": [
+            "numbeo_drinks:no-result"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ],
+          "missingness": "not_found"
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "bali-canggu",
+    "city": "Bali (Canggu)",
+    "country": "Indonesia",
+    "region": "SEA",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "d79f983a3b09c876219eaa267815e924ef25513c4173cf27854d0a203473741c",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 37.18,
+      "accomPrivateRoom": 37.24,
+      "accom1star": 41.92,
+      "accom2star": 47.18,
+      "accom3star": 62.91,
+      "accom4star": 84.12,
+      "foodStreet": 24.39,
+      "foodBudget": 45.76,
+      "foodMid": 117.25,
+      "foodHigh": 308.85,
+      "drinkCoffee": 4.09,
+      "drinkLocalBeer": 3.38,
+      "drinkCocktail": 10.15,
+      "drinksNone": 8.17,
+      "drinksLight": 14.94,
+      "drinksModerate": 42,
+      "drinksHeavy": 69.07,
+      "activitiesFree": 0,
+      "activitiesBudget": 51.48,
+      "activitiesMid": 134.41,
+      "activitiesHigh": 357.47
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 47,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Canggu from $16 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Canggu\nSeptember  | $47\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Canggu.",
+        "query": "site:expedia.com Canggu Bali Indonesia 3 star hotels \"September\" \"Price trends\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com \"Canggu\" \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:budgetyourtrip.com/indonesia/canggu \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:numbeo.com/cost-of-living/in/Canggu \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "site:numbeo.com/cost-of-living/in/Canggu \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "D",
+        "food_mid_range": "D",
+        "food_high_end": "D",
+        "drink_coffee": "D",
+        "drinks_none": "D",
+        "drinks_light": "D",
+        "drinks_moderate": "D",
+        "drinks_heavy": "D",
+        "activities_free": "definitional",
+        "activities_budget": "D",
+        "activities_mid_range": "D",
+        "activities_high_end": "D"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 17.1,
+          "upperAud": 57.26,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 21.97,
+          "upperAud": 52.5,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 23.05,
+          "upperAud": 60.78,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 27.84,
+          "upperAud": 66.53,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 37.12,
+          "upperAud": 88.7,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 49.63,
+          "upperAud": 118.61,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 13.41,
+          "upperAud": 35.37,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 25.17,
+          "upperAud": 66.35,
+          "widthPct": 45
+        },
+        "food_mid_range": {
+          "lowerAud": 64.49,
+          "upperAud": 170.01,
+          "widthPct": 45
+        },
+        "food_high_end": {
+          "lowerAud": 169.87,
+          "upperAud": 447.83,
+          "widthPct": 45
+        },
+        "drink_coffee": {
+          "lowerAud": 2.25,
+          "upperAud": 5.93,
+          "widthPct": 45
+        },
+        "drinks_none": {
+          "lowerAud": 4.49,
+          "upperAud": 11.85,
+          "widthPct": 45
+        },
+        "drinks_light": {
+          "lowerAud": 8.22,
+          "upperAud": 21.66,
+          "widthPct": 45
+        },
+        "drinks_moderate": {
+          "lowerAud": 23.1,
+          "upperAud": 60.9,
+          "widthPct": 45
+        },
+        "drinks_heavy": {
+          "lowerAud": 37.99,
+          "upperAud": 100.15,
+          "widthPct": 45
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 28.31,
+          "upperAud": 74.65,
+          "widthPct": 45
+        },
+        "activities_mid_range": {
+          "lowerAud": 73.93,
+          "upperAud": 194.89,
+          "widthPct": 45
+        },
+        "activities_high_end": {
+          "lowerAud": 196.61,
+          "upperAud": 518.33,
+          "widthPct": 45
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "D",
+        "byt_food_mid_per_person_day": "D",
+        "byt_food_high_per_person_day": "D",
+        "byt_activities_budget_per_person_day": "D",
+        "byt_activities_mid_per_person_day": "D",
+        "byt_activities_high_per_person_day": "D",
+        "cappuccino_1": "D",
+        "domestic_draft_beer_1": "D"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 37.1169,
+          "upperAud": 88.70309999999999,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": null,
+        "byt_food_mid_per_person_day": null,
+        "byt_food_high_per_person_day": null,
+        "byt_activities_budget_per_person_day": null,
+        "byt_activities_mid_per_person_day": null,
+        "byt_activities_high_per_person_day": null,
+        "cappuccino_1": null,
+        "domestic_draft_beer_1": null
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T15:21:54.103Z",
+          "completedAt": "2026-08-13T15:21:54.103Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "byt_food_budget_per_person_day": "not_found",
+        "byt_food_mid_per_person_day": "not_found",
+        "byt_food_high_per_person_day": "not_found",
+        "cappuccino_1": "not_found",
+        "domestic_draft_beer_1": "not_found",
+        "byt_activities_budget_per_person_day": "not_found",
+        "byt_activities_mid_per_person_day": "not_found",
+        "byt_activities_high_per_person_day": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 62.91,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Canggu-Hotels.s30-0-d6049351.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "missingness": "not_found"
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "not_found",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "not_found"
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:21:54.103Z",
+        "completedAt": "2026-08-13T15:21:54.103Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:21:54.103Z",
+        "completedAt": "2026-08-13T15:21:54.103Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T15:21:54.103Z",
+        "completedAt": "2026-08-13T15:21:54.103Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "7af4d7ffd743422d1d14763ba30c4099bbbfed172e67158f4e6bfc444fafa013",
+    "calls": [
+      {
+        "city": "Bali (Canggu)",
+        "country": "Indonesia",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-004-04-bali-canggu",
+        "agentId": "delegated-phase9-batch-004-04-bali-canggu",
+        "rawSha256": "97e5956c56fc7679fd8ac0dc759d9193371ff3afaf231891a2ee33140818df7b",
+        "telemetrySha256": "f48dd67c501443d8471884c76c5d7ad24c21aef1d8e859cd37277c5a37190dc2"
+      },
+      {
+        "city": "Bali (Canggu)",
+        "country": "Indonesia",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-004-04-bali-canggu",
+        "agentId": "delegated-phase9-batch-004-04-bali-canggu",
+        "rawSha256": "aa8d8e03d90d7eaca5d66dea853f7cb070dbfb655366f101e0b3c93f38034838",
+        "telemetrySha256": "b77fa87d3461b568bcb90c2d9ee710219dc64bb65d9975d84571d735710db557"
+      },
+      {
+        "city": "Bali (Canggu)",
+        "country": "Indonesia",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-004-04-bali-canggu",
+        "agentId": "delegated-phase9-batch-004-04-bali-canggu",
+        "rawSha256": "e708f8a1bea4fd1bf9193795daa86adaedd75245df8c2d1baaecf951a5031cb8",
+        "telemetrySha256": "516f2ad6d7b9800f332cc28be745c3b440fdeb4433bbedb9fe6feb28ed41a064"
+      }
+    ]
+  }
+}
