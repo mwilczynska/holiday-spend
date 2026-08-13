@@ -10,7 +10,7 @@ collection-lifecycle repair are complete. Experiment 010 is a credential preflig
 012 is immutable incomplete-frame evidence, 013 is immutable failed canary history, and 014 is the active immutable
 passed canary: 60/60 terminal/reusable slots, 20/20 complete cities and zero artifact candidates. Phase 7H lifecycle/
 evaluator repair and the fresh canary baseline are complete; Phase 8 migration tooling is complete and Phase 9
-staging is active at 110/121 cities, with batch 010 next. Batch 004 had zero all-prior artifact candidates but
+staging is active at 120/121 cities, with batch 011 next. Batch 004 had zero all-prior artifact candidates but
 0/10 direct drink categories; that operational coverage finding is retained for the Phase 10 report.
 Its result reports 167 searches while `collection-incidents.json` records four additional discarded-attempt searches.
 Read
@@ -37,9 +37,9 @@ are the three `llm_prompt_city_cost_v6_1_*.md` files listed in `docs/prompts/REA
 Phase 8 is complete and Phase 9 is active. `migration-v6-1/` contains the frozen 121-city protocol,
 checkpoint, per-call raw/telemetry evidence, call-level reuse ledger, normalized/materialized artifacts and
 staged CSV/provenance/import-plan outputs. Experiment 014 supplied 60 validated calls for a 20-city dry run;
-the remaining 11 cities are to be collected in fixed batches through the same three-call contract. The staged
-artifact is not the live CSV, and no database import or cutover has occurred. Phase 9 batches 001-009 add
-90 delegated cities (110/121 staged in total). Batches 001 and 002 each record one all-prior candidate at 10%;
+the remaining one city is to be collected through the same three-call contract. The staged
+artifact is not the live CSV, and no database import or cutover has occurred. Phase 9 batches 001-010 add
+100 delegated cities (120/121 staged in total). Batches 001 and 002 each record one all-prior candidate at 10%;
 batch 003 records two (Santa Fe (Bantayan) and Siargao, 20%); batch 004 records none; batch 005 records one
 (Aomori, 10%); batch 006 records one (Hong Kong, 10%). All are below the 30% stop rule. Batch 004 had 0/10 direct
 drink categories, which is retained for Phase 10 review; batch 005 had 4/10, batch 006 had 2/10 and batch 007 had
@@ -47,8 +47,9 @@ drink categories, which is retained for Phase 10 review; batch 005 had 4/10, bat
 slot, but the ledger and final persisted evidence contain one assignment/call record; this is an orchestration
 incident, not an additional provider call. Batch 008 recorded two all-prior candidates (Berlin and Vienna, 20%) and
 only 1/10 direct drink categories; this remains an operational coverage finding, not a coefficient failure. Batch 009
-recorded one all-prior candidate (Reykjavik, 10%) and 1/10 direct drink categories. Batch 010 is next, with 11 cities
-remaining.
+recorded one all-prior candidate (Reykjavik, 10%) and 1/10 direct drink categories. Batch 010 recorded no artifact
+candidates, with direct/fallback counts accommodation 7/3, food 8/2, drinks 0/10 and activities 8/2. Batch 011 is
+next for Cairns, with one city remaining.
 
 ## Historical v6.0 M3 evidence
 

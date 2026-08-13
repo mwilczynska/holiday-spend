@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Santiago",
+  "country": "Chile",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/chile/santiago",
+      "sourceTitle": "Santiago Travel Cost - Average Price of a Vacation to Santiago: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $9  | $24  | $74\n\nWhile restaurant and meal prices in Santiago can vary significantly, the average cost of food in Santiago is $24 (CL$21,556) per day, per person, based on the spending habits of previous travelers.",
+      "query": "site:budgetyourtrip.com/chile/santiago/trip-cost-santiago \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 24,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/chile/santiago",
+      "sourceTitle": "Santiago Travel Cost - Average Price of a Vacation to Santiago: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $9  | $24  | $74\n\nWhile restaurant and meal prices in Santiago can vary significantly, the average cost of food in Santiago is $24 (CL$21,556) per day, per person, based on the spending habits of previous travelers.",
+      "query": "site:budgetyourtrip.com/chile/santiago/trip-cost-santiago \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 74,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/chile/santiago",
+      "sourceTitle": "Santiago Travel Cost - Average Price of a Vacation to Santiago: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $9  | $24  | $74\n\nWhile restaurant and meal prices in Santiago can vary significantly, the average cost of food in Santiago is $24 (CL$21,556) per day, per person, based on the spending habits of previous travelers.",
+      "query": "site:budgetyourtrip.com/chile/santiago/trip-cost-santiago \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 22,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/chile/santiago",
+      "sourceTitle": "Santiago Travel Cost - Average Price of a Vacation to Santiago: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $22  | $50  | $91\n\nSightseeing activities, entertainment, and entrance tickets in Santiago typically cost an average of $50 (CL$45,160) per person, per day based on the spending habits of previous travelers.",
+      "query": "site:budgetyourtrip.com/chile/santiago/trip-cost-santiago \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 50,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/chile/santiago",
+      "sourceTitle": "Santiago Travel Cost - Average Price of a Vacation to Santiago: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $22  | $50  | $91\n\nSightseeing activities, entertainment, and entrance tickets in Santiago typically cost an average of $50 (CL$45,160) per person, per day based on the spending habits of previous travelers.",
+      "query": "site:budgetyourtrip.com/chile/santiago/trip-cost-santiago \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 91,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/chile/santiago",
+      "sourceTitle": "Santiago Travel Cost - Average Price of a Vacation to Santiago: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $22  | $50  | $91\n\nSightseeing activities, entertainment, and entrance tickets in Santiago typically cost an average of $50 (CL$45,160) per person, per day based on the spending habits of previous travelers.",
+      "query": "site:budgetyourtrip.com/chile/santiago/trip-cost-santiago \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Santiago BudgetYourTrip page returned all six category tiers; values are retained as displayed in USD with per-person/day source-proxy context. Tax treatment was not stated."
+}

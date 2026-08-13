@@ -3171,3 +3171,15 @@ other gaps stayed explicit and used the shipped prior cascade. The low direct-dr
 Phase 10 finding, not a coefficient-refit trigger. The next exact action is fixed delegated batch 010, beginning with
 Rio de Janeiro, Santiago, Havana, New York City, Los Angeles, Montreal, Vancouver, Sydney, Auckland and Queenstown;
 the live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 010 complete — 13 August 2026
+
+The tenth fixed migration batch staged Rio de Janeiro, Santiago, Havana, New York City, Los Angeles, Montreal,
+Vancouver, Sydney, Auckland and Queenstown. Delegated Stage A produced 30 persisted raw/telemetry call pairs under
+the frozen three-call contract: 100 searches, zero retries and zero direct page reads. The shipped Stage B path
+materialized all ten cities, expanding the staged frame to 120/121 cities with Cairns remaining. Direct/fallback
+counts were accommodation 7/3, food 8/2, drinks 0/10 and activities 8/2. No city was an all-prior artifact candidate,
+so the batch remained below the 30% stop rule. Expedia was directly observed in 7/10 cities, BudgetYourTrip in 8/10
+and Numbeo drinks in 0/10; all remaining gaps stayed explicit and used the shipped prior cascade. The recurring
+drink coverage gap is retained as a Phase 10 operational finding, not treated as a coefficient-refit trigger. The
+next exact action is fixed delegated batch 011 for Cairns; the live CSV, holdouts and Phase 11 remain untouched.

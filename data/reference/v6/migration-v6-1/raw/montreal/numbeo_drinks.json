@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Montreal",
+  "country": "Canada",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Montreal. Jun 2026. Prices in Montreal",
+      "evidenceText": "Cappuccino (Regular Size)  | C$5.54  | 4.00-7.00",
+      "query": "site:numbeo.com/cost-of-living/in/Montreal \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Montreal. Jun 2026. Prices in Montreal",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | C$9.00  | 6.00-12.00",
+      "query": "site:numbeo.com/cost-of-living/in/Montreal \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Montreal result is explicitly dated Jun 2026 and reports Last update: 14 June 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

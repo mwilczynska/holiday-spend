@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "region": "Oceania",
+    "band": null,
+    "cityId": "queenstown"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 235.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Queenstown-Hotels.s30-0-d180018.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 37.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 88.65,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 200.18,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 12.87,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 30.03,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 61.48,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": null,
+        "status": "stale",
+        "evidenceGrade": "D",
+        "sourceIds": [
+          "numbeo_drinks:no-result"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "missingness": "stale"
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 176,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Queenstown-Hotels.s30-0-d180018.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Queenstown from $67 | Expedia",
+        "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Queenstown. September | $176",
+        "query": "site:expedia.com OR site:expedia.co.nz Queenstown New Zealand 3-star hotel 2026-09-17 2026-09-18 price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 26,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+        "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nFood^{2}  | $26  | $62  | $140",
+        "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 62,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+        "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nFood^{2}  | $26  | $62  | $140",
+        "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 140,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+        "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nFood^{2}  | $26  | $62  | $140",
+        "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 9,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+        "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nEntertainment^{1}  | $9  | $21  | $43",
+        "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 21,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+        "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nEntertainment^{1}  | $9  | $21  | $43",
+        "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 43,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+        "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nEntertainment^{1}  | $9  | $21  | $43",
+        "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Queenstown. Mar 2026. Prices in Queenstown",
+        "evidenceText": "Cappuccino (Regular Size)  | 5.71 NZ$  | 5.00-7.50",
+        "query": "site:numbeo.com/cost-of-living/in/Queenstown \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "stale",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "Cost of Living in Queenstown. Mar 2026. Prices in Queenstown",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | 12.00 NZ$  | 10.00-14.00",
+        "query": "site:numbeo.com/cost-of-living/in/Queenstown \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "partial",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:07:38.2665536Z",
+        "completedAt": "2026-08-13T19:07:38.2665536Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:07:38.2665536Z",
+        "completedAt": "2026-08-13T19:07:38.2665536Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "partial",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T19:07:38.2665536Z",
+        "completedAt": "2026-08-13T19:07:38.2665536Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-010-10-queenstown",
+      "agentId": "phase9-batch-010-10-queenstown",
+      "rawSha256": "e4a8ecd991c7a4666f9f3bb5745a51a7790a0b127498fe184ca1209780c4d214",
+      "telemetrySha256": "1bb268f60250e94e3862ad95fa51ddb304916dd1a33e83147e993495b37de8d9"
+    },
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-010-10-queenstown",
+      "agentId": "phase9-batch-010-10-queenstown",
+      "rawSha256": "101a4973bdc9c3435712dc9614341b7dd89f3ecb4e2060309e1c1d40ba583e4a",
+      "telemetrySha256": "f3102e73307959cdc87a24ecdff49afb05422971b769718f2fcb0a5cfe4de1ee"
+    },
+    {
+      "city": "Queenstown",
+      "country": "New Zealand",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-010-10-queenstown",
+      "agentId": "phase9-batch-010-10-queenstown",
+      "rawSha256": "84352f2b21add93afad91bd054efd7b94f6507221aa67aaf5ed1e25621624f03",
+      "telemetrySha256": "e414a0e8feff93dc9b62c3ae3a32f790c15f79ddf93511958092bbd6d1f8ba40"
+    }
+  ]
+}

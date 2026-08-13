@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 14,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/brazil/rio-de-janeiro/trip-cost-3451190",
+      "sourceTitle": "How much does a trip to Rio de Janeiro Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $14  | $35  | $91",
+      "query": "site:budgetyourtrip.com/brazil/rio-de-janeiro \"Food & Meals\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 35,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/brazil/rio-de-janeiro/trip-cost-3451190",
+      "sourceTitle": "How much does a trip to Rio de Janeiro Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $14  | $35  | $91",
+      "query": "site:budgetyourtrip.com/brazil/rio-de-janeiro \"Food & Meals\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 91,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/brazil/rio-de-janeiro/trip-cost-3451190",
+      "sourceTitle": "How much does a trip to Rio de Janeiro Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nFood^{2}  | $14  | $35  | $91",
+      "query": "site:budgetyourtrip.com/brazil/rio-de-janeiro \"Food & Meals\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/brazil/rio-de-janeiro/trip-cost-3451190",
+      "sourceTitle": "How much does a trip to Rio de Janeiro Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $8  | $22  | $62",
+      "query": "site:budgetyourtrip.com/brazil/rio-de-janeiro \"Food & Meals\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 22,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/brazil/rio-de-janeiro/trip-cost-3451190",
+      "sourceTitle": "How much does a trip to Rio de Janeiro Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $8  | $22  | $62",
+      "query": "site:budgetyourtrip.com/brazil/rio-de-janeiro \"Food & Meals\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 62,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/brazil/rio-de-janeiro/trip-cost-3451190",
+      "sourceTitle": "How much does a trip to Rio de Janeiro Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n\n | Budget  | Mid-Range  | Luxury\n--- | --- | ---\nEntertainment^{1}  | $8  | $22  | $62",
+      "query": "site:budgetyourtrip.com/brazil/rio-de-janeiro \"Food & Meals\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

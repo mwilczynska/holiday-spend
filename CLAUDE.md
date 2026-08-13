@@ -159,6 +159,12 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 ### v6.1 — the active workstream
 
+**13 August 2026 status correction:** Phase 9 batch 010 is complete: 120/121 cities are staged and one city,
+Cairns, remains for fixed delegated batch 011. Batch 010 materialized 10/10 cities with 30 calls, 100 searches,
+zero retries/direct reads, zero artifact candidates, and direct coverage accommodation 7/10, food 8/10, drinks 0/10
+and activities 8/10. This supersedes older 110/121 and batch-010-next wording below. The live CSV, holdouts and
+Phase 11 remain untouched.
+
 13 August 2026 status: experiment 014 passed 20/20, Phase 8 migration tooling is complete, and Phase 9 is
 active. The frozen protocol and dry run are under `data/reference/v6/migration-v6-1/`; migration batches 001 through
 007, 008 and 009 added 90 cities, so 110/121 are staged and 11 remain. Batches 001 and 002 each had one

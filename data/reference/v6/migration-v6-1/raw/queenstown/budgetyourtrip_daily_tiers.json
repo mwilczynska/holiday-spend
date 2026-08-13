@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Queenstown",
+  "country": "New Zealand",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 26,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+      "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nFood^{2}  | $26  | $62  | $140",
+      "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 62,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+      "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nFood^{2}  | $26  | $62  | $140",
+      "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 140,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+      "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nFood^{2}  | $26  | $62  | $140",
+      "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 9,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+      "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nEntertainment^{1}  | $9  | $21  | $43",
+      "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 21,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+      "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nEntertainment^{1}  | $9  | $21  | $43",
+      "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 43,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/new-zealand/queenstown/trip-cost-6204696",
+      "sourceTitle": "How much does a trip to Queenstown Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category\n | Budget | Mid-Range | Luxury\nEntertainment^{1}  | $9  | $21  | $43",
+      "query": "site:budgetyourtrip.com/new-zealand/queenstown/trip-cost-queenstown \"Food\" \"Entertainment\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The exact-city BudgetYourTrip result published daily Food and Entertainment tiers with a per-person daily basis: Food $26/$62/$140 and Entertainment $9/$21/$43 for budget/mid-range/luxury."
+}

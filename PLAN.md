@@ -7,6 +7,11 @@ live in [LOG.md](LOG.md). Project memory is in [CLAUDE.md](CLAUDE.md).
 **Last reviewed:** 12 August 2026
 **Branch:** `feat/city-cost-methodology-v6`
 
+**13 August 2026 status correction:** Batch 010 is complete: 120/121 staged, 10/10 cities materialized, with
+accommodation 7/10, food 8/10, drinks 0/10 and activities 8/10 direct coverage, zero artifact candidates, 100
+searches, zero retries and zero direct page reads. The single remaining city is Cairns; batch 011 is next. This
+supersedes the older 110/121 and batch-010-next wording below. The live CSV, holdouts and Phase 11 remain untouched.
+
 ---
 
 ## Where things stand

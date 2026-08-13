@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 110/121 staged
+**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 120/121 staged
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -8,12 +8,22 @@
 > **13 August 2026 status correction:** Experiment 014 passed 20/20 and Phase 8 is now complete. The frozen
 > protocol and resumable migration tooling live under `data/reference/v6/migration-v6-1/`; its 20-city dry run
 > reused all 60 validated experiment-014 calls, produced deterministic normalized/materialized/staged outputs,
-> and verified the non-live provenance import path. Phase 9 is active at 110/121 staged, with 11 cities remaining
+> and verified the non-live provenance import path. Phase 9 is active at 120/121 staged, with one city remaining
 > after batches 001–009. Batch 009 is now complete. The
-> exact next action is fixed delegated batch 010: collect its three source calls per city, inventory, materialize, run
+> exact next action is fixed delegated batch 011: collect the three source calls for Cairns, inventory, materialize, run
 > the complete baseline, and commit/push the batch. This dated correction supersedes older
 > text in this plan that describes Phase 8 as blocked, pending or at an earlier staging count. The live CSV and
 > holdouts remain untouched.
+
+> **13 August 2026 Phase 9 batch 010:** Rio de Janeiro, Santiago, Havana, New York City, Los Angeles, Montreal,
+> Vancouver, Sydney, Auckland and Queenstown are now staged. The batch produced 30 delegated source calls, 100
+> searches, zero retries and zero direct page reads; all ten cities materialized through the shipped v6.1 path.
+> Direct/fallback counts were accommodation 7/3, food 8/2, drinks 0/10 and activities 8/2. No city was an artifact
+> candidate (0%), below the 30% stop rule. Expedia was directly observed in 7/10 cities, BudgetYourTrip in 8/10
+> and Numbeo drinks in 0/10; all other gaps stayed explicit and used the shipped prior cascade. The recurring low
+> drink coverage is an operational Phase 10 finding, not a coefficient-refit trigger. The staged frame is now
+> 120/121, with Cairns remaining. The next exact action is fixed delegated batch 011; do not recollect completed
+> cities or touch the live CSV.
 
 > **13 August 2026 Phase 9 batch 007:** Budapest, Krakow, Bucharest, Sofia, Belgrade, Tbilisi, Split, Dubrovnik,
 > Porto and Barcelona are now staged. The batch produced 30 delegated source calls, 100 searches, zero retries and
@@ -91,7 +101,7 @@
 - [x] Freeze the 121-city protocol, implementation/prompt/FX/input hashes and live-write prohibition.
 - [x] Validate experiment-014 call-level reuse and materialize its 20-city dry run through shipped v6.1 code.
 - [x] Generate deterministic staged CSV, provenance sidecar and import plan; add idempotence and safe-output checks.
-- [ ] Collect and materialize the remaining 11 cities in fixed, committed batches.
+- [ ] Collect and materialize the remaining 1 city in fixed, committed batches.
 - [ ] Generate and review the complete Phase 10 operational-impact report.
 - [ ] Obtain the external user-key transport/database/API smoke before any Phase 11 cutover.
 

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "retrievalStatus": "partial",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Auckland. Jun 2026. Prices in Auckland",
+      "evidenceText": "Cappuccino (Regular Size)  | NZ$6.09  | 5.08-8.00",
+      "query": "site:numbeo.com/cost-of-living/in/Auckland \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "stale",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "Cost of Living in Auckland. Jun 2026. Prices in Auckland",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter)  | NZ$12.00  | 10.00-15.00",
+      "query": "site:numbeo.com/cost-of-living/in/Auckland \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The canonical Numbeo Auckland result is explicitly dated Jun 2026 and reports last update 12 June 2026, stale relative to the frozen 2026-09-17 reference date; its displayed rows were retained as stale evidence and not promoted to current observations."
+}

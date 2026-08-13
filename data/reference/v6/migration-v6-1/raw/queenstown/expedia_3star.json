@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Queenstown",
+  "country": "New Zealand",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 176,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Queenstown-Hotels.s30-0-d180018.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Queenstown from $67 | Expedia",
+      "evidenceText": "Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Queenstown. September | $176",
+      "query": "site:expedia.com OR site:expedia.co.nz Queenstown New Zealand 3-star hotel 2026-09-17 2026-09-18 price",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "A qualifying city-level September three-star price trend was found: $176 per night, based on a nightly stay for 2 adults and averaged for commonly viewed three-star properties in Queenstown. Starting/from/lowest and single-property results were not used."
+}

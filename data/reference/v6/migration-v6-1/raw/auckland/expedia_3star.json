@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "observed",
+      "value": 83,
+      "currency": "USD",
+      "sourceUrl": "https://www.expedia.com/3Star-Auckland-Hotels.s30-0-d178233.Travel-Guide-Filter-Hotels",
+      "sourceTitle": "The Best 3 Star Hotels in Auckland from $37 | Expedia",
+      "evidenceText": "Price trends for properties with 3 Stars in Auckland\nSeptember | $83\nPrice trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults.",
+      "query": "site:expedia.com Auckland 3-star hotel September 17 2026 September 18 2026 2 adults",
+      "taxStatus": "excluded"
+    }
+  },
+  "notes": "Accepted the city-level September 3-star class trend ($83) for a nightly stay for 2 adults; taxes and fees are excluded."
+}

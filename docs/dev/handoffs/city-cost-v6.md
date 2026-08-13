@@ -7,11 +7,20 @@
 > **13 August 2026 supersession:** Phase 8 is complete. The frozen protocol, checkpoint, call-level reuse ledger,
 > normalized/materialized artifacts, staged CSV, provenance sidecar, import plan and non-live import path were
 > generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is active at
-> 110/121 staged, with 11 cities remaining after batches 001–009. The next exact action is fixed delegated batch 010:
-> collect three bounded source calls per city, run inventory before materialization, materialize through
+> 120/121 staged, with one city remaining after batches 001–010. The next exact action is fixed delegated batch 011:
+> collect three bounded source calls for Cairns, run inventory before materialization, materialize through
 > `materializeCityCostV61`, run the full baseline, and commit/push that batch. Do not read a holdout or write the live
 > CSV. This dated entry supersedes older handoff paragraphs that describe Phase 8 as blocked, pending or at an earlier
 > staging count.
+
+> **13 August 2026 Phase 9 batch 010:** Rio de Janeiro, Santiago, Havana, New York City, Los Angeles, Montreal,
+> Vancouver, Sydney, Auckland and Queenstown supplied 30 delegated source calls; all ten cities materialized through
+> the shipped v6.1 path. The batch recorded 100 searches, zero retries and zero direct page reads. Direct/fallback
+> counts were accommodation 7/3, food 8/2, drinks 0/10 and activities 8/2. No city was an artifact candidate.
+> Expedia was directly observed in 7/10 cities, BudgetYourTrip in 8/10 and Numbeo drinks in 0/10; remaining gaps
+> stayed explicit and used the shipped prior cascade. The recurring drink gap is retained for Phase 10, not treated
+> as a coefficient failure. The staged frame is now 120/121; Cairns remains. The next exact action is fixed delegated
+> batch 011; do not recollect completed cities, read a holdout or write the live CSV.
 
 > **13 August 2026 Phase 9 batch 009:** Batch 009 is complete and staged. Edinburgh, Copenhagen, Stockholm, Helsinki,
 > Reykjavik, Medellin, Bogota, Cartagena, Cusco and Buenos Aires supplied 30 delegated source calls; all ten cities
@@ -99,8 +108,8 @@
 **Phase 7H lifecycle/evaluator repair:** complete in `04be79b`; baseline passed
 **Phase 7 fresh corrected canary:** experiment 014 passed 20/20; immutable result recorded below
 
-**Milestone:** M4 coherent migration of the 121-city library — **Phase 8 complete; Phase 9 active at 110/121**
-**Exact next action:** assign and collect fixed delegated batch 010, inventory all 30 source slots, materialize through
+**Milestone:** M4 coherent migration of the 121-city library — **Phase 8 complete; Phase 9 active at 120/121**
+**Exact next action:** assign and collect fixed delegated batch 011 for Cairns, inventory all 3 source slots, materialize through
 `materializeCityCostV61`, generate the batch report, run the complete baseline, and commit/push. Do not mutate
 experiments 010–014, read any holdout or touch the live CSV.
 

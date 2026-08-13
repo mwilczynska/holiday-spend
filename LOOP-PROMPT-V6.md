@@ -294,6 +294,11 @@ handoff that says only “continue” has failed.
 
 Resume line:
 
+**Current status correction (13 August 2026):** Batch 010 is complete: 120/121 cities are staged and Cairns is the
+only remaining city. Batch 010 had zero artifact candidates and direct coverage accommodation 7/10, food 8/10,
+drinks 0/10 and activities 8/10. Run fixed delegated batch 011 for Cairns next, then the full baseline and Phase 10
+report. Do not read a holdout, write the live CSV or execute Phase 11.
+
 > Resume v6.1 on `feat/city-cost-methodology-v6`. Read `docs/dev/handoffs/city-cost-v6.md`, then follow
 > `LOOP-PROMPT-V6.md` from the first incomplete phase. Experiment 014 has passed, Phase 8 is complete and Phase 9
 > is active at 110/121 staged. Assign and process fixed batch 010 next. Never change the live CSV or global default
