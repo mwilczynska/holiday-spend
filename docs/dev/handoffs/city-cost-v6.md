@@ -1,16 +1,25 @@
 # Handoff — City Cost Methodology v6.1
 
-**As at:** 12 August 2026
+**As at:** 13 August 2026
 
 **Branch:** `feat/city-cost-methodology-v6`
 
 > **13 August 2026 supersession:** Phase 8 is complete. The frozen protocol, checkpoint, call-level reuse ledger,
 > normalized/materialized artifacts, staged CSV, provenance sidecar, import plan and non-live import path were
-> generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is now
-> active. The next exact action is to assign the first fixed batch of remaining cities, collect three bounded
-> source calls per city with delegated Stage A, materialize through `materializeCityCostV61`, run the full baseline,
-> and commit/push that batch. Do not read a holdout or write the live CSV. This dated entry supersedes older handoff
-> paragraphs that describe Phase 8 as blocked or merely pending.
+> generated and checked; experiment 014 supplied 60/60 validated calls for a 20-city dry run. Phase 9 is active at
+> 50/121 staged, with 71 cities remaining after batches 001–003. The next exact action is fixed delegated batch 004:
+> collect three bounded source calls per city, run inventory before materialization, materialize through
+> `materializeCityCostV61`, run the full baseline, and commit/push that batch. Do not read a holdout or write the live
+> CSV. This dated entry supersedes older handoff paragraphs that describe Phase 8 as blocked, pending or at an earlier
+> staging count.
+
+> **13 August 2026 Phase 9 batch 003:** Batch 003 is complete and staged. Santa Fe (Bantayan), Manila, Palawan
+> (El Nido), Siargao, Bangkok, Chiang Mai, Phuket, Koh Samui, Pai and Krabi supplied 30 valid delegated source
+> calls; all ten cities materialized through the shipped v6.1 path. The batch recorded 100 searches, one retry and
+> zero direct page reads. Direct/fallback counts were accommodation 6/4, food 6/4, drinks 4/6 and activities 6/4.
+> Santa Fe (Bantayan) and Siargao are all-prior artifact candidates (20%), below the 30% batch stop rule. The staged
+> frame is now 50/121; 71 cities remain. This supersedes the older batch-002 next-action wording below. The next
+> exact action is fixed batch 004; do not recollect completed cities, read a holdout or write the live CSV.
 
 > **13 August 2026 Phase 9 batch 002:** Batch 002 is complete and staged. Luang Prabang, Vientiane, Don Det,
 > Vang Vieng, Siem Reap, Phnom Penh, Kampot, Yangon, Bagan and Cebu supplied 30 valid delegated source calls;
@@ -46,7 +55,8 @@ refuses finalization while any registered slot is pending. Experiment 012 has no
 reports assignment attempts as unrecorded while still separating telemetry records from actual provider attempts.
 Experiment 013 then completed its 60-slot frame but remains an immutable failure at 19/20 because a duplicate Prague
 assignment invalidated two call records. Phase 7H repaired the lifecycle/evaluator boundary, and experiment 014 then
-passed the fresh canary at 20/20 with zero artifact candidates and full provenance equality. Phase 8 is now active.
+passed the fresh canary at 20/20 with zero artifact candidates and full provenance equality. Phase 8 is complete and
+Phase 9 is active at 50/121 staged; batch 004 is next.
 
 This is the cold-start document for GPT-5.6 Luna Max. It supersedes the earlier recommendation to stop
 after new-city-only activation. The implementation is banked, but the workstream is not complete until
@@ -245,16 +255,17 @@ Follow `docs/dev/plans/city-cost-methodology-v6-1.md` from the first incomplete 
 5. **Phase 7G:** resumable experiment 013 — **immutable failed result at 19/20**.
 6. **Phase 7H:** write-once assignment/evaluator repair — **complete; focused tests and full baseline passed**.
 7. **Phase 7C:** small user-key provider transport/database/API smoke — before cutover, not before staging.
-8. **Phase 8:** resumable/idempotent migration tooling and canary dry run — **blocked after Phase 7G; requires fresh canary**.
+8. **Phase 8:** resumable/idempotent migration tooling and canary dry run — **complete after experiment 014**.
 9. **Phase 9:** fixed batches across the frozen 121-city frame, producing a staged CSV and provenance
 sidecar only.
 10. **Phase 10:** complete operational-impact report; then stop for owner review.
 11. **Phase 11:** only after approval and Phase 7C, atomically replace the CSV, update the seed source label and switch
    the new-city default as one rollback unit.
 
-**Sequence correction:** Phases 7B, 7E and 7G are immutable failed canary history. Phase 7H is complete; Phase 8
-remains blocked after 013's recorded failure until a fresh canary passes. The user-key smoke remains Phase 7C's
-external pre-cutover check; it is not authorization to bypass the failed delegated canary.
+**Sequence correction:** Phases 7B, 7E and 7G are immutable failed canary history. Phase 7H is complete and experiment
+014 passed the fresh canary, so Phase 8 is complete. Phase 9 is active at 50/121 staged and batch 004 is next. The
+user-key smoke remains Phase 7C's external pre-cutover check; it is not required for staging and does not authorize
+cutover by itself.
 
 Update this handoff after every phase with completed evidence and the exact next command/file. Commit and
 push each phase and each bulk collection batch.
@@ -323,14 +334,14 @@ node scripts/test-v6-1-canary-assignment.mjs
 Add migration-specific checks when Phase 8 creates them. Rerun a failed full test suite once before
 investigating because the OneDrive checkout has a known transient temp-directory failure.
 
-## 10. Current stopping point — Phase 7H complete; fresh canary next
+## 10. Historical stopping point — Phase 7H complete; superseded 13 August 2026
 
 Experiment 013 is complete, failed and immutable. Phase 7H has passed its focused and full verification baselines.
 The exact next action is owner-authorize and run one fresh immutable canary reusing 58 valid experiment-013 calls and
 recollecting only Prague BYT/Numbeo. Do not rerun or mutate 013, read a holdout, stage migration or touch the live CSV.
 At the eventual Phase 10 boundary, stop again for owner approval before Phase 11 cutover.
 
-## 10a. Current state after Phase 8 — 13 August 2026
+## 10a. Historical state after Phase 8 — superseded by later Phase 9 batches
 
 Phase 8 is complete and pushed in the active worktree. The frozen migration protocol covers the unchanged
 121-city frame, current input CSV/FX/prompt/implementation hashes, the 2026-09-17 to 2026-09-18 window, three
@@ -347,7 +358,7 @@ rows remain explicit and were not substituted. The next exact action is to assig
 migration ledger, collect its three source calls per city, inventory/materialize it, run the complete baseline,
 update the checkpoint and commit/push. If a batch has more than 30% genuine artifact candidates, stop and report.
 
-## 10b. Current state after Phase 9 batch 002 - 13 August 2026
+## 10b. Historical state after Phase 9 batch 002 - superseded by batch 003
 
 Batch 002 completed the next ten migration cities: Luang Prabang, Vientiane, Don Det, Vang Vieng, Siem Reap,
 Phnom Penh, Kampot, Yangon, Bagan and Cebu. The inventory found all 30 raw/telemetry pairs and the shipped Stage B

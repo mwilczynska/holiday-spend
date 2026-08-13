@@ -3089,3 +3089,10 @@ all ten cities and expanded the staged frame to 50/121 cities. Direct/fallback c
 6/4, food 6/4, drinks 4/6 and activities 6/4. Santa Fe (Bantayan) and Siargao were all-prior artifact candidates
 (20%); this is below the 30% batch stop rule. Missingness remains explicit and no fallback was written by Stage A.
 The next action is fixed batch 004; the live CSV, holdouts and Phase 11 remain untouched.
+
+### v6.1 current-status reconciliation - 13 August 2026
+
+The batch-003 completion is now the authoritative workstream state: Phase 8 is complete, Phase 9 is active,
+50/121 cities are staged and 71 remain. Older current-status paragraphs that still described Phase 8 as active or
+batch 002/40-city staging as the next action are superseded but retained as history. The next exact action is fixed
+delegated batch 004; no holdout read, live-CSV write or Phase 11 action is authorized.

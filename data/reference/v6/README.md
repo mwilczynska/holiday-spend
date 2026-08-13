@@ -9,7 +9,8 @@ was approved on 12 August 2026. The live CSV is still unchanged. Phase 6 release
 collection-lifecycle repair are complete. Experiment 010 is a credential preflight, 011 is failed boundary history,
 012 is immutable incomplete-frame evidence, 013 is immutable failed canary history, and 014 is the active immutable
 passed canary: 60/60 terminal/reusable slots, 20/20 complete cities and zero artifact candidates. Phase 7H lifecycle/
-evaluator repair and the fresh canary baseline are complete; Phase 8 migration tooling is active.
+evaluator repair and the fresh canary baseline are complete; Phase 8 migration tooling is complete and Phase 9
+staging is active at 50/121 cities, with batch 004 next.
 Its result reports 167 searches while `collection-incidents.json` records four additional discarded-attempt searches.
 Read
 `docs/dev/plans/city-cost-methodology-v6-1.md` and

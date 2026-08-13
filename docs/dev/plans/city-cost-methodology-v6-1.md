@@ -1,6 +1,6 @@
 # City Cost Methodology v6.1 — Coherent Library Migration
 
-**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 40/121 staged
+**Status:** Phase 7H lifecycle/evaluator repair and experiment 014 are complete; Phase 8 is complete and Phase 9 is active at 50/121 staged
 
 **Owner decisions:** 10 August 2026 (reachable v6.1 design); 12 August 2026 (migrate the existing 121-city library; repair the failed canary before another run)
 **Branch:** `feat/city-cost-methodology-v6`
@@ -8,11 +8,11 @@
 > **13 August 2026 status correction:** Experiment 014 passed 20/20 and Phase 8 is now complete. The frozen
 > protocol and resumable migration tooling live under `data/reference/v6/migration-v6-1/`; its 20-city dry run
 > reused all 60 validated experiment-014 calls, produced deterministic normalized/materialized/staged outputs,
-> and verified the non-live provenance import path. Phase 9 is active for the remaining 101 cities. The exact
-> next action is to assign the first fixed batch, collect its three source calls per city through delegated
-> subagents, materialize it, run the complete baseline, and commit the batch. This dated correction supersedes
-> older text in this plan that describes Phase 8 as blocked or merely pending. The live CSV and holdouts remain
-> untouched.
+> and verified the non-live provenance import path. Phase 9 is active at 50/121 staged, with 71 cities remaining
+> after batches 001–003. The exact next action is fixed delegated batch 004: collect its three source calls per city,
+> inventory, materialize, run the complete baseline, and commit/push the batch. This dated correction supersedes older
+> text in this plan that describes Phase 8 as blocked, pending or at an earlier staging count. The live CSV and
+> holdouts remain untouched.
 
 > **13 August 2026 Phase 9 batch 001:** The first 10 remaining cities are now staged (30/363 migration calls,
 > 100 searches, zero retries/direct reads). Seven cities have direct Expedia accommodation, seven direct BYT

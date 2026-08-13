@@ -172,7 +172,8 @@ complete cities. A duplicate Prague assignment invalidated two calls; the result
 numeric 19/20 and 30% thresholds were met. Phase 7H is complete: new experiments use write-once city/source slot
 claims and the evaluator separates tolerated per-city diagnostics from batch-fatal failures. Experiment 014 then passed
 the fresh immutable canary at 20/20 complete cities, zero artifact candidates, 60/60 terminal/reusable calls and full
-persistence/API provenance equality. Phase 8 is now active; the live CSV and holdouts remain untouched.
+persistence/API provenance equality. Phase 8 is complete and Phase 9 is active at 50/121 staged; batch 004 is next.
+The live CSV and holdouts remain untouched.
 
 The v6.1 source contract, deterministic materializer, generated priors, 25-city fixture replay,
 feature-flagged new-city path and persistence/API provenance boundary are implemented. The release
@@ -184,8 +185,8 @@ first provider canary attempt made zero calls and is retained as a credential pr
 and repaired search, date, identity, missingness and partial-file lifecycle defects. Experiment 013 reached a full
 frame but exposed an unguarded duplicate assignment and an aggregate evaluator predicate that is stricter than the
 registered one-city tolerance. Phase 7H repair and its full baseline are complete. The active manifest now points to
-the hashed experiment-014 pass. The exact next action is to build and dry-run the frozen resumable Phase 8 migration
-protocol using experiment 014 as fixture; no holdout or live CSV access is authorized.
+the hashed experiment-014 pass. The exact next action is fixed delegated migration batch 004 through the completed
+Phase 8 protocol; no holdout or live CSV access is authorized.
 A small user-key provider smoke remains required before cutover; ≥95% runtime coverage is monitored as an operational
 SLO.
 

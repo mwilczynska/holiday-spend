@@ -293,5 +293,5 @@ Resume line:
 
 > Resume v6.1 on `feat/city-cost-methodology-v6`. Read `docs/dev/handoffs/city-cost-v6.md`, then follow
 > `LOOP-PROMPT-V6.md` from the first incomplete phase. Experiment 014 has passed, Phase 8 is complete and Phase 9
-> is active. Assign and process the first fixed migration batch next. Never change the live CSV or global default
+> is active at 50/121 staged. Assign and process fixed batch 004 next. Never change the live CSV or global default
 > before Phase 10 review.
