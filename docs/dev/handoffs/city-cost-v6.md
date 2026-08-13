@@ -12,12 +12,13 @@
 > and an unchanged live CSV. The active `food_high_end` meaning is BYT high/luxury daily food spend x2, not the old
 > mid-range multiplier; its large staged shift is an operational semantics finding, not a tuning target.
 > The hardening baseline passed and this state is committed/pushed as `2331355`. No application provider key is
-> configured in the process environment. The owner has entered a key in the webapp, but the Chrome bridge currently
-> cannot communicate because its native-host registration is missing; no Generate action has been run. Exact next
-> action: reinstall/reconnect the ChatGPT Browser plugin, then run the external 3-5-city provider/database/API smoke
-> from the open webapp. Never send the key through Codex or store it in the repository. Do not execute Phase 11,
-> write the live CSV, access a holdout or change the global/default flag until that smoke and explicit cutover
-> approval are complete.
+> configured in the process environment. The owner manually generated Wollongong with a browser key, but the local
+> feature flag was unset: the persisted row is `source=llm_city_generation`, `methodologyVersion=v1`, with no v6.1
+> provenance. This is a failed v6.1 smoke attempt, not v6.1 evidence; the city row is retained. Exact next action:
+> restart the local app with the opt-in `CITY_COST_METHODOLOGY_V6=true`, generate 3-5 fresh smoke cities, and verify
+> each persisted/API result is v6.1 with full provenance. Never send the key through Codex or store it in the repo.
+> Do not execute Phase 11, write the live CSV, access a holdout or change the production/global default until the
+> valid smoke and explicit cutover approval are complete.
 
 > **13 August 2026 Phase 9/10 completion:** Batch 011 staged Cairns and completed the frozen 121-city frame:
 > 121/121 cities materialized, with three terminal source records for Cairns, 10 searches, zero retries and zero

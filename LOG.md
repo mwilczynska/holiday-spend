@@ -3210,6 +3210,16 @@ permission to tune v6.1 toward v1. Staged CSV SHA-256 is
 Phase 9 and Phase 10 are complete. The exact next action is owner review of the impact report before Phase 11.
 The live CSV, holdouts, coefficients and default feature flag remain untouched.
 
+### v6.1 user-key smoke preflight - 13 August 2026
+
+The owner manually generated Wollongong through the webapp with an application provider key. The persisted record
+was inspected without reading the key: `source=llm_city_generation`, `methodologyVersion=v1`, provider `openai`, and
+prompt `llm_prompt_new_cities_1.md`. The local `CITY_COST_METHODOLOGY_V6` opt-in flag was unset, so this was a
+successful v1 generation but not a v6.1 smoke result. The row is retained as user data and is not counted toward the
+v6.1 3-5-city smoke. The next action is to restart the local app with `CITY_COST_METHODOLOGY_V6=true` for the local
+test process only, generate fresh smoke cities, and verify v6.1 persistence/API provenance. No key was copied,
+logged or stored by this workstream; the live CSV, holdouts and production default remain untouched.
+
 ### v6.1 Phase 10.5 release hardening - 13 August 2026
 
 The non-live provenance import rehearsal exposed and fixed three integration defects before any production write.
