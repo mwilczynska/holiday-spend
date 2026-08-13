@@ -2,13 +2,13 @@
 
 This is the active autonomous implementation prompt for city cost methodology v6.1. Phases 1–7H and the fresh
 experiment-014 canary are now recorded. Experiment 013 remains immutable failed history; experiment 014 passed 20/20
-and Phase 8 migration tooling is active. The owner-approved M4 migration has not reached cutover.
+and Phase 8 migration tooling is complete. The owner-approved M4 migration has not reached cutover.
 
 Phase 8 is complete as of 13 August 2026: the frozen protocol and resumable tooling were dry-run on all 20
 experiment-014 canary cities, producing deterministic staged/provenance/import-plan artifacts with live writes
-forbidden. Phase 9 is active for the remaining 81 cities. The next action is fixed delegated migration batch 003;
-do not read a holdout, write the live CSV or execute Phase 11. Batches 001 and 002 are complete: 40/121 cities are
-staged. Each batch has one all-prior artifact candidate (10%), below the 30% stop rule.
+forbidden. Phase 9 is active for the remaining 71 cities. The next action is fixed delegated migration batch 004;
+do not read a holdout, write the live CSV or execute Phase 11. Batches 001-003 are complete: 50/121 cities are
+staged. Their all-prior artifact rates are 10%, 10% and 20%, all below the 30% stop rule.
 
 ## PROMPT
 

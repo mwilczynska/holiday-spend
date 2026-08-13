@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Krabi",
+  "country": "Thailand",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 10,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/krabi",
+      "sourceTitle": "Krabi Travel Cost - Average Price of a Vacation to Krabi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $10 (฿325)  | $24 (฿793)  | $56 (฿1,830)",
+      "query": "site:budgetyourtrip.com/thailand/krabi \"Food & Meals\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 24,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/krabi",
+      "sourceTitle": "Krabi Travel Cost - Average Price of a Vacation to Krabi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $10 (฿325)  | $24 (฿793)  | $56 (฿1,830)",
+      "query": "site:budgetyourtrip.com/thailand/krabi \"Food & Meals\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 56,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/krabi",
+      "sourceTitle": "Krabi Travel Cost - Average Price of a Vacation to Krabi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $10 (฿325)  | $24 (฿793)  | $56 (฿1,830)",
+      "query": "site:budgetyourtrip.com/thailand/krabi \"Food & Meals\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 4,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/krabi",
+      "sourceTitle": "Krabi Travel Cost - Average Price of a Vacation to Krabi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $4 (฿128)  | $11 (฿373)  | $37 (฿1,225)",
+      "query": "site:budgetyourtrip.com/thailand/krabi \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/krabi",
+      "sourceTitle": "Krabi Travel Cost - Average Price of a Vacation to Krabi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $4 (฿128)  | $11 (฿373)  | $37 (฿1,225)",
+      "query": "site:budgetyourtrip.com/thailand/krabi \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 37,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/krabi",
+      "sourceTitle": "Krabi Travel Cost - Average Price of a Vacation to Krabi: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $4 (฿128)  | $11 (฿373)  | $37 (฿1,225)",
+      "query": "site:budgetyourtrip.com/thailand/krabi \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

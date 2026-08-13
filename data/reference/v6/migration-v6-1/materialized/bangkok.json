@@ -1,0 +1,2375 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Bangkok",
+    "country": "Thailand",
+    "region": "SEA",
+    "band": null,
+    "cityId": "bangkok"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "region": "SEA",
+    "costBand": "low",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 25.31,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 11.64,
+          "upperAud": 38.98,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 25.35,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 14.96,
+          "upperAud": 35.75,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 28.54,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 15.7,
+          "upperAud": 41.38,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 32.12,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 18.95,
+          "upperAud": 45.29,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 42.83,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 25.27,
+          "upperAud": 60.39,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 57.27,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 33.79,
+          "upperAud": 80.75,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 21.35,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 11.74,
+          "upperAud": 30.95,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 40.04,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 26.03,
+          "upperAud": 54.05,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 100.1,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 65.07,
+          "upperAud": 135.14,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 265.96,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 4.07,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 3.66,
+          "upperAud": 4.48,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 8.14,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 7.33,
+          "upperAud": 8.95,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 16.6,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 14.94,
+          "upperAud": 18.26,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 45.28,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 16.3,
+          "upperAud": 74.26,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 73.96,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 26.63,
+          "upperAud": 121.29,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 17.16,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 48.62,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 31.6,
+          "upperAud": 65.64,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 142.98,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 92.94,
+          "upperAud": 193.02,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 42.83,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 20.02,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 50.05,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 132.98,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 71.49,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.07,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.23,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 10.11,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {},
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 25.31,
+      "accomPrivateRoom": 25.35,
+      "accom1star": 28.54,
+      "accom2star": 32.12,
+      "accom3star": 42.83,
+      "accom4star": 57.27,
+      "foodStreet": 21.35,
+      "foodBudget": 40.04,
+      "foodMid": 100.1,
+      "foodHigh": 265.96,
+      "drinkCoffee": 4.07,
+      "drinkLocalBeer": 4.23,
+      "drinkCocktail": 10.11,
+      "drinksNone": 8.14,
+      "drinksLight": 16.6,
+      "drinksModerate": 45.28,
+      "drinksHeavy": 73.96,
+      "activitiesFree": 0,
+      "activitiesBudget": 17.16,
+      "activitiesMid": 48.62,
+      "activitiesHigh": 142.98
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 25.31,
+      "accomPrivateRoom": 25.35,
+      "accom1star": 28.54,
+      "accom2star": 32.12,
+      "accom3star": 42.83,
+      "accom4star": 57.27,
+      "foodStreet": 21.35,
+      "foodBudget": 40.04,
+      "foodMid": 100.1,
+      "foodHigh": 265.96,
+      "drinkCoffee": 4.07,
+      "drinkLocalBeer": 4.23,
+      "drinkCocktail": 10.11,
+      "drinksNone": 8.14,
+      "drinksLight": 16.6,
+      "drinksModerate": 45.28,
+      "drinksHeavy": 73.96,
+      "activitiesFree": 0,
+      "activitiesBudget": 17.16,
+      "activitiesMid": 48.62,
+      "activitiesHigh": 142.98
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 32,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+        "sourceTitle": "The Best 3 Star Hotels in Bangkok from $17 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Bangkok\nSeptember  | $32",
+        "query": "site:expedia.com/Hotel-Search Bangkok Thailand 3-star hotel \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 14,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 35,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 93,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 50,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 96.3,
+        "currency": "THB",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Bangkok",
+        "sourceTitle": "Cost of Living in Bangkok. Jun 2026. Prices in Bangkok",
+        "evidenceText": "Cappuccino (Regular Size)  | ฿96.30",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Bangkok\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 100,
+        "currency": "THB",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Bangkok",
+        "sourceTitle": "Cost of Living in Bangkok. Jun 2026. Prices in Bangkok",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ฿100.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Bangkok\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 11.64,
+          "upperAud": 38.98,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.96,
+          "upperAud": 35.75,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 15.7,
+          "upperAud": 41.38,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.95,
+          "upperAud": 45.29,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 25.27,
+          "upperAud": 60.39,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 33.79,
+          "upperAud": 80.75,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 11.74,
+          "upperAud": 30.95,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 26.03,
+          "upperAud": 54.05,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 65.07,
+          "upperAud": 135.14,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 3.66,
+          "upperAud": 4.48,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 7.33,
+          "upperAud": 8.95,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 14.94,
+          "upperAud": 18.26,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 16.3,
+          "upperAud": 74.26,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 26.63,
+          "upperAud": 121.29,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 31.6,
+          "upperAud": 65.64,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 92.94,
+          "upperAud": 193.02,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 25.269700000000004,
+          "upperAud": 60.390299999999996,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 13.013,
+          "upperAud": 27.027,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 32.5325,
+          "upperAud": 67.5675,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 86.437,
+          "upperAud": 179.523,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 5.577,
+          "upperAud": 11.583,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 15.801499999999999,
+          "upperAud": 32.8185,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 46.4685,
+          "upperAud": 96.5115,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 3.6630000000000003,
+          "upperAud": 4.477,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 3.8070000000000004,
+          "upperAud": 4.6530000000000005,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 3.6395999999999997,
+          "upperAud": 16.5804,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 42.83,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 20.02,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 50.05,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 132.98,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 71.49,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.07,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.23,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 10.11,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:18:38.486Z",
+        "completedAt": "2026-08-13T06:18:38.486Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:18:38.486Z",
+        "completedAt": "2026-08-13T06:18:38.486Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:18:38.486Z",
+        "completedAt": "2026-08-13T06:18:38.486Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 11.64,
+          "upperAud": 38.98,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.96,
+          "upperAud": 35.75,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 15.7,
+          "upperAud": 41.38,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.95,
+          "upperAud": 45.29,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 25.27,
+          "upperAud": 60.39,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 33.79,
+          "upperAud": 80.75,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 11.74,
+          "upperAud": 30.95,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 26.03,
+          "upperAud": 54.05,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 65.07,
+          "upperAud": 135.14,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 3.66,
+          "upperAud": 4.48,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 7.33,
+          "upperAud": 8.95,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 14.94,
+          "upperAud": 18.26,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 16.3,
+          "upperAud": 74.26,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 26.63,
+          "upperAud": 121.29,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 31.6,
+          "upperAud": 65.64,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 92.94,
+          "upperAud": 193.02,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {},
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 32,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "sourceTitle": "The Best 3 Star Hotels in Bangkok from $17 | Expedia",
+          "evidenceText": "Price trends for properties with 3 Stars in Bangkok\nSeptember  | $32",
+          "query": "site:expedia.com/Hotel-Search Bangkok Thailand 3-star hotel \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 14,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+          "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+          "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 35,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+          "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+          "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 93,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+          "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+          "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 6,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+          "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+          "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 17,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+          "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+          "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 50,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+          "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+          "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+          "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 96.3,
+          "currency": "THB",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Bangkok",
+          "sourceTitle": "Cost of Living in Bangkok. Jun 2026. Prices in Bangkok",
+          "evidenceText": "Cappuccino (Regular Size)  | ฿96.30",
+          "query": "site:numbeo.com/cost-of-living/in/ \"Bangkok\" \"Cappuccino (Regular Size)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 100,
+          "currency": "THB",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Bangkok",
+          "sourceTitle": "Cost of Living in Bangkok. Jun 2026. Prices in Bangkok",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ฿100.00",
+          "query": "site:numbeo.com/cost-of-living/in/ \"Bangkok\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 42.83,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 20.02,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 50.05,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 132.98,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 8.58,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 24.31,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 71.49,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 4.07,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 4.23,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 10.11,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "bangkok",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "region": "SEA",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "43607382501b13bdad126af3b1e89167e9c180efb41b6dd8be2030b1fb958c4f",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 25.31,
+      "accomPrivateRoom": 25.35,
+      "accom1star": 28.54,
+      "accom2star": 32.12,
+      "accom3star": 42.83,
+      "accom4star": 57.27,
+      "foodStreet": 21.35,
+      "foodBudget": 40.04,
+      "foodMid": 100.1,
+      "foodHigh": 265.96,
+      "drinkCoffee": 4.07,
+      "drinkLocalBeer": 4.23,
+      "drinkCocktail": 10.11,
+      "drinksNone": 8.14,
+      "drinksLight": 16.6,
+      "drinksModerate": 45.28,
+      "drinksHeavy": 73.96,
+      "activitiesFree": 0,
+      "activitiesBudget": 17.16,
+      "activitiesMid": 48.62,
+      "activitiesHigh": 142.98
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 32,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+        "sourceTitle": "The Best 3 Star Hotels in Bangkok from $17 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Bangkok\nSeptember  | $32",
+        "query": "site:expedia.com/Hotel-Search Bangkok Thailand 3-star hotel \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 14,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 35,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 93,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 17,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 50,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+        "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+        "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+        "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 96.3,
+        "currency": "THB",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Bangkok",
+        "sourceTitle": "Cost of Living in Bangkok. Jun 2026. Prices in Bangkok",
+        "evidenceText": "Cappuccino (Regular Size)  | ฿96.30",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Bangkok\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 100,
+        "currency": "THB",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Bangkok",
+        "sourceTitle": "Cost of Living in Bangkok. Jun 2026. Prices in Bangkok",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ฿100.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Bangkok\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 11.64,
+          "upperAud": 38.98,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.96,
+          "upperAud": 35.75,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 15.7,
+          "upperAud": 41.38,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.95,
+          "upperAud": 45.29,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 25.27,
+          "upperAud": 60.39,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 33.79,
+          "upperAud": 80.75,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 11.74,
+          "upperAud": 30.95,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 26.03,
+          "upperAud": 54.05,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 65.07,
+          "upperAud": 135.14,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 172.87,
+          "upperAud": 359.05,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 3.66,
+          "upperAud": 4.48,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 7.33,
+          "upperAud": 8.95,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 14.94,
+          "upperAud": 18.26,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 16.3,
+          "upperAud": 74.26,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 26.63,
+          "upperAud": 121.29,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 31.6,
+          "upperAud": 65.64,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 92.94,
+          "upperAud": 193.02,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 25.269700000000004,
+          "upperAud": 60.390299999999996,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 13.013,
+          "upperAud": 27.027,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 32.5325,
+          "upperAud": 67.5675,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 86.437,
+          "upperAud": 179.523,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 5.577,
+          "upperAud": 11.583,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 15.801499999999999,
+          "upperAud": 32.8185,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 46.4685,
+          "upperAud": 96.5115,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 3.6630000000000003,
+          "upperAud": 4.477,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 3.8070000000000004,
+          "upperAud": 4.6530000000000005,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 3.6395999999999997,
+          "upperAud": 16.5804,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T06:18:38.486Z",
+          "completedAt": "2026-08-13T06:18:38.486Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 42.83,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Bangkok-Hotels.s30-0-d178236.Travel-Guide-Filter-Hotels?c=d5d18fe2-62cd-4870-88c6-ec627fd2cd57",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 20.02,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 50.05,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 132.98,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 24.31,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 71.49,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.07,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 4.23,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 10.11,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Bangkok",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:18:38.486Z",
+        "completedAt": "2026-08-13T06:18:38.486Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:18:38.486Z",
+        "completedAt": "2026-08-13T06:18:38.486Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:18:38.486Z",
+        "completedAt": "2026-08-13T06:18:38.486Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "9a24a3c7e6382c74a432d509204bc225c106a5e7186ac80f29391b1513bfa85b",
+    "calls": [
+      {
+        "city": "Bangkok",
+        "country": "Thailand",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-003-05-bangkok",
+        "agentId": "delegated-phase9-batch-003-05-bangkok",
+        "rawSha256": "063e5ec0a50fc03783c91acc1c8f5a97476f77a879ae79630ca2240d65d17317",
+        "telemetrySha256": "98baf8a954886aafc1bf4909c26483216708176fc9522eab95c25441506d6a87"
+      },
+      {
+        "city": "Bangkok",
+        "country": "Thailand",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-003-05-bangkok",
+        "agentId": "delegated-phase9-batch-003-05-bangkok",
+        "rawSha256": "246dba4296b0c2babd916422d514743f25f5439d337258d2a3db98e458cdc39f",
+        "telemetrySha256": "6bcdaa238075fe34b8e70ed63a94bf204af9a2dfa1179e3bd0636c8412bb9a40"
+      },
+      {
+        "city": "Bangkok",
+        "country": "Thailand",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-003-05-bangkok",
+        "agentId": "delegated-phase9-batch-003-05-bangkok",
+        "rawSha256": "db81f85307b0c01b8d546804fc50bdc30ead49fffe850a9167719651d69c2b35",
+        "telemetrySha256": "c59a5ff4581a9fa42d8eca67a7f35af537bdf25200d9ccc829ceb304eb8a1f7e"
+      }
+    ]
+  }
+}

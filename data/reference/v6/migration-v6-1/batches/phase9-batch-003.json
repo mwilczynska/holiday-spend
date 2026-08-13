@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-batch-report-v1",
+  "batchId": "phase9-batch-003",
+  "generatedAt": "deterministic",
+  "protocolSha256": "fbd9ff5ac97eb0bc1a5bc1941751a25f267a5fa8192732109c08f3325d8a0c2e",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "cities": [
+    "Santa Fe (Bantayan)",
+    "Manila",
+    "Palawan (El Nido)",
+    "Siargao",
+    "Bangkok",
+    "Chiang Mai",
+    "Phuket",
+    "Koh Samui",
+    "Pai",
+    "Krabi"
+  ],
+  "cityCount": 10,
+  "completeMaterializations": 10,
+  "calls": 30,
+  "searches": 100,
+  "retries": 1,
+  "directPageReads": 0,
+  "collectionModes": {
+    "delegated_codex_subagent": 30
+  },
+  "observedMeasures": {
+    "hotel_3star_room_2p": 6,
+    "byt_food_budget_per_person_day": 6,
+    "byt_food_mid_per_person_day": 6,
+    "byt_food_high_per_person_day": 6,
+    "byt_activities_budget_per_person_day": 6,
+    "byt_activities_mid_per_person_day": 6,
+    "byt_activities_high_per_person_day": 6,
+    "cappuccino_1": 4,
+    "domestic_draft_beer_1": 4
+  },
+  "sourceStatuses": {
+    "expedia_3star:not_found": 4,
+    "budgetyourtrip_daily_tiers:not_found": 24,
+    "numbeo_drinks:not_found": 6,
+    "expedia_3star:complete": 6,
+    "budgetyourtrip_daily_tiers:complete": 36,
+    "numbeo_drinks:partial": 6,
+    "numbeo_drinks:complete": 8
+  },
+  "categoryCounts": {
+    "accommodation": {
+      "direct": 6,
+      "fallback": 4
+    },
+    "food": {
+      "direct": 6,
+      "fallback": 4
+    },
+    "drinks": {
+      "direct": 4,
+      "fallback": 6
+    },
+    "activities": {
+      "direct": 6,
+      "fallback": 4
+    }
+  },
+  "gradeDistribution": {
+    "D": 88,
+    "definitional": 10,
+    "C": 38,
+    "B": 42,
+    "A": 12
+  },
+  "allPriorCities": 2,
+  "artifactCandidates": 2,
+  "artifactFraction": 0.2,
+  "artifactRows": [
+    {
+      "city": "Santa Fe (Bantayan)",
+      "artifactCandidate": true,
+      "reason": "all non-definitional tiers are fallback/imputed or grade D"
+    },
+    {
+      "city": "Manila",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Palawan (El Nido)",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Siargao",
+      "artifactCandidate": true,
+      "reason": "all non-definitional tiers are fallback/imputed or grade D"
+    },
+    {
+      "city": "Bangkok",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Chiang Mai",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Phuket",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Koh Samui",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Pai",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Krabi",
+      "artifactCandidate": false,
+      "reason": null
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Manila",
+  "country": "Philippines",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/manila",
+      "sourceTitle": "Manila Travel Cost - Average Price of a Vacation to Manila: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per person, per day ... Manila on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (₱701) | $29 (₱1,756) | $71 (₱4,337) ... Entertainment^{1} | $8 (₱475) | $18 (₱1,110) | $37 (₱2,275)",
+      "query": "site:budgetyourtrip.com/philippines/manila \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 29,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/manila",
+      "sourceTitle": "Manila Travel Cost - Average Price of a Vacation to Manila: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per person, per day ... Manila on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (₱701) | $29 (₱1,756) | $71 (₱4,337) ... Entertainment^{1} | $8 (₱475) | $18 (₱1,110) | $37 (₱2,275)",
+      "query": "site:budgetyourtrip.com/philippines/manila \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 71,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/manila",
+      "sourceTitle": "Manila Travel Cost - Average Price of a Vacation to Manila: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per person, per day ... Manila on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (₱701) | $29 (₱1,756) | $71 (₱4,337) ... Entertainment^{1} | $8 (₱475) | $18 (₱1,110) | $37 (₱2,275)",
+      "query": "site:budgetyourtrip.com/philippines/manila \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/manila",
+      "sourceTitle": "Manila Travel Cost - Average Price of a Vacation to Manila: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per person, per day ... Manila on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (₱701) | $29 (₱1,756) | $71 (₱4,337) ... Entertainment^{1} | $8 (₱475) | $18 (₱1,110) | $37 (₱2,275)",
+      "query": "site:budgetyourtrip.com/philippines/manila \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 18,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/manila",
+      "sourceTitle": "Manila Travel Cost - Average Price of a Vacation to Manila: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per person, per day ... Manila on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (₱701) | $29 (₱1,756) | $71 (₱4,337) ... Entertainment^{1} | $8 (₱475) | $18 (₱1,110) | $37 (₱2,275)",
+      "query": "site:budgetyourtrip.com/philippines/manila \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 37,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/manila",
+      "sourceTitle": "Manila Travel Cost - Average Price of a Vacation to Manila: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Average Daily Cost Per person, per day ... Manila on a Budget ... Category | Budget | Mid-Range | Luxury ... Food^{2} | $11 (₱701) | $29 (₱1,756) | $71 (₱4,337) ... Entertainment^{1} | $8 (₱475) | $18 (₱1,110) | $37 (₱2,275)",
+      "query": "site:budgetyourtrip.com/philippines/manila \"Food\" \"Entertainment\" \"per person\" \"per day\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "BudgetYourTrip reports these source-proxy tiers per person per day; no two-person scaling or currency conversion was performed."
+}

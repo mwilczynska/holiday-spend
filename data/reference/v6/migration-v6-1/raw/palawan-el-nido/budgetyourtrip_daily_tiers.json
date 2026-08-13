@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Palawan (El Nido)",
+  "country": "Philippines",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/el-nido/trip-cost-1713917",
+      "sourceTitle": "How much does a trip to El Nido Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $8  | $19  | $38",
+      "query": "site:budgetyourtrip.com \"El Nido\" \"Food and Meals\" \"Activities\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 19,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/el-nido/trip-cost-1713917",
+      "sourceTitle": "How much does a trip to El Nido Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $8  | $19  | $38",
+      "query": "site:budgetyourtrip.com \"El Nido\" \"Food and Meals\" \"Activities\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 38,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/el-nido/trip-cost-1713917",
+      "sourceTitle": "How much does a trip to El Nido Cost? | Budget Your Trip",
+      "evidenceText": "Food^{2}  | $8  | $19  | $38",
+      "query": "site:budgetyourtrip.com \"El Nido\" \"Food and Meals\" \"Activities\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 2,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/el-nido/trip-cost-1713917",
+      "sourceTitle": "How much does a trip to El Nido Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $2  | $5  | $11",
+      "query": "site:budgetyourtrip.com \"El Nido\" \"Food and Meals\" \"Activities\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 5,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/el-nido/trip-cost-1713917",
+      "sourceTitle": "How much does a trip to El Nido Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $2  | $5  | $11",
+      "query": "site:budgetyourtrip.com \"El Nido\" \"Food and Meals\" \"Activities\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/philippines/el-nido/trip-cost-1713917",
+      "sourceTitle": "How much does a trip to El Nido Cost? | Budget Your Trip",
+      "evidenceText": "Entertainment^{1}  | $2  | $5  | $11",
+      "query": "site:budgetyourtrip.com \"El Nido\" \"Food and Meals\" \"Activities\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

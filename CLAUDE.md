@@ -161,8 +161,9 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 
 13 August 2026 status: experiment 014 passed 20/20, Phase 8 migration tooling is complete, and Phase 9 is
 active. The frozen protocol and dry run are under `data/reference/v6/migration-v6-1/`; migration batches 001 and
-002 added 20 cities, so 40/121 are staged and 81 remain. Each batch has one all-prior candidate (Pu Luong and Don
-Det, 10%), below the batch stop rule. The next exact action is fixed delegated batch 003. The live CSV and
+002 and 003 added 30 cities, so 50/121 are staged and 71 remain. Batches 001 and 002 each had one all-prior
+candidate at 10%; batch 003 had two (Santa Fe (Bantayan) and Siargao, 20%), all below the batch stop rule. The
+next exact action is fixed delegated batch 004. The live CSV and
 holdouts remain untouched.
 
 Phase 7F lifecycle repair is complete. Experiment 013 is now immutable failed evidence: 32 validated experiment-012
@@ -292,6 +293,7 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
+node scripts/generate-v6-1-migration-impact-report.mjs --check (only after all 121 staged rows exist)
 node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
 node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
@@ -342,6 +344,7 @@ login page shows provider-specific guidance instead.
 | `scripts/validate-city-cost-v6-ground-truth.mjs` | Deterministic development-ledger audit; checks seal metadata but never reads holdout values |
 | `scripts/fit-city-cost-ladder-v6.mjs` | Fits the v6 accommodation ladder and Booking/Expedia calibration; `--check` verifies determinism |
 | `scripts/validate-city-cost-v6-1-release.mjs` | Reachable 25-city × 19-tier release validator/report generator |
+| `scripts/generate-v6-1-migration-impact-report.mjs` | Complete staged 121-city v1-versus-v6.1 operational impact report; refuses incomplete staging |
 | `scripts/inventory-v6-1-delegated-canary.mjs` | Independent per-call inventory; finalization remains closed while slots are pending |
 | `data/reference/v6/v6-1-development-release-report.md` | Generated v6.1 development release report |
 | `scripts/freeze-city-cost-v6-candidate.mjs` | Hashes the coefficients/offset/grade/interval candidate into the seal before holdout access |

@@ -312,6 +312,7 @@ node scripts/build-city-cost-v6-1-priors.mjs --check
 node scripts/materialize-city-cost-v6-1-development.mjs --check
 node scripts/validate-city-cost-v6-1-release.mjs --check
 node scripts/generate-city-cost-v6-1-rollout-preview.mjs --check
+node scripts/generate-v6-1-migration-impact-report.mjs --check (only after all 121 staged rows exist)
 node scripts/run-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
 node scripts/inventory-v6-1-delegated-canary.mjs --experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check --summary
 node scripts/reuse-v6-1-delegated-canary.mjs --target-experiment-dir data/reference/v6/experiments/013-v6-1-resumable-delegated-canary --check
@@ -358,3 +359,16 @@ The staged frame is 40/121 complete and 81 cities remain. No holdout or live CSV
 **Exact next action:** assign the fixed batch-003 cities from the frozen protocol, collect only their three source
 calls per city through delegated Stage A, run inventory before materialization, then materialize/report/verify and
 commit/push. Never recollect the 40 completed cities.
+
+## 10c. Current state after Phase 9 batch 003 - 13 August 2026
+
+Batch 003 completed Santa Fe (Bantayan), Manila, Palawan (El Nido), Siargao, Bangkok, Chiang Mai, Phuket, Koh
+Samui, Pai and Krabi. All 30 raw/telemetry pairs were present and validated; Stage B materialized all ten cities.
+The batch recorded 30 delegated calls, 100 searches, one retry (Phuket Expedia), and zero direct page reads.
+Direct/fallback category counts were accommodation 6/4, food 6/4, drinks 4/6 and activities 6/4. Santa Fe and
+Siargao are all-prior artifact candidates (2/10, 20%), below the 30% stop rule. The staged frame is now 50/121
+complete and 71 cities remain. No holdout or live CSV was touched.
+
+**Exact next action:** assign the fixed batch-004 cities from the frozen protocol, collect only their three source
+calls per city through delegated Stage A, run inventory before materialization, then materialize/report/verify and
+commit/push. Never recollect the 50 completed cities.

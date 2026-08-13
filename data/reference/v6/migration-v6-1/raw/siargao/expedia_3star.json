@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Siargao",
+  "country": "Philippines",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "No qualifying city-level three-star room price was found in the four Expedia searches; returned prices were starting/from or individual-property offers, which the prompt rejects."
+}

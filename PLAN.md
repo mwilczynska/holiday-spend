@@ -536,6 +536,16 @@ zero retries and zero direct page reads. Direct/fallback category counts were ac
 stop rule. The staged migration now has 40/121 complete cities; 81 remain. The next exact action is to assign and
 collect fixed batch 003, then inventory, materialize, verify and commit it. The live CSV and holdouts remain untouched.
 
+### v6.1 Phase 9 batch 003 - 13 August 2026
+
+The third fixed 10-city migration batch is complete and staged: Santa Fe (Bantayan), Manila, Palawan (El Nido),
+Siargao, Bangkok, Chiang Mai, Phuket, Koh Samui, Pai and Krabi. It added 30 delegated source calls and 100 searches,
+with one retry and zero direct page reads. Direct/fallback category counts were accommodation 6/4, food 6/4, drinks
+4/6 and activities 6/4. Santa Fe (Bantayan) and Siargao were all-prior artifact candidates, 20% of the batch, below
+the 30% stop rule. The staged migration now has 50/121 complete cities; 71 remain. The next exact action is to
+assign and collect fixed batch 004, then inventory, materialize, verify and commit it. The live CSV and holdouts
+remain untouched.
+
 ## Traps retained from earlier work
 
 Hard-won across v3, v4 and v5. All still true.

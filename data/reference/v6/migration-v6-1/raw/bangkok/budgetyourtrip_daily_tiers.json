@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 14,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+      "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+      "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 35,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+      "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+      "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 93,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+      "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Food^{2}  | $14 (฿449)  | $35 (฿1,158)  | $93 (฿3,055)",
+      "query": "site:budgetyourtrip.com/thailand/bangkok \"Food and Meals\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 6,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+      "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+      "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 17,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+      "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+      "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 50,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/thailand/bangkok",
+      "sourceTitle": "Bangkok Travel Cost - Average Price of a Vacation to Bangkok: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Entertainment^{1}  | $6 (฿213)  | $17 (฿572)  | $50 (฿1,642)",
+      "query": "site:budgetyourtrip.com/thailand/bangkok \"Entertainment\" \"per person per day\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": ""
+}

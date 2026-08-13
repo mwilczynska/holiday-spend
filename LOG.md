@@ -3079,3 +3079,13 @@ accommodation 6/4, food 7/3, drinks 4/6 and activities 6/4. Don Det had no quali
 recorded as one all-prior artifact candidate (10%); this is below the 30% batch stop rule. Missingness remains
 explicit and no fallback was written by Stage A. The next action is fixed batch 003; the live CSV, holdouts and
 Phase 11 remain untouched.
+
+### v6.1 Phase 9 batch 003 complete - 13 August 2026
+
+The third fixed migration batch staged Santa Fe (Bantayan), Manila, Palawan (El Nido), Siargao, Bangkok, Chiang
+Mai, Phuket, Koh Samui, Pai and Krabi. Delegated Stage A produced 30 valid raw/telemetry call pairs under the frozen
+three-call contract, with 100 searches, one retry and zero direct page reads. The shipped Stage B path materialized
+all ten cities and expanded the staged frame to 50/121 cities. Direct/fallback category counts were accommodation
+6/4, food 6/4, drinks 4/6 and activities 6/4. Santa Fe (Bantayan) and Siargao were all-prior artifact candidates
+(20%); this is below the 30% batch stop rule. Missingness remains explicit and no fallback was written by Stage A.
+The next action is fixed batch 004; the live CSV, holdouts and Phase 11 remain untouched.

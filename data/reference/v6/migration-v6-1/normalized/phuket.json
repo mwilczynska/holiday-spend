@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Phuket",
+    "country": "Thailand",
+    "region": "SEA",
+    "band": null,
+    "cityId": "phuket"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 40.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Phuket-Hotels.s30-0-d6046393.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 22.88,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 60.05,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 155.86,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 25.74,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 67.2,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 180.16,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 4.09,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Phuket"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 3.38,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Phuket"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 30,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Phuket-Hotels.s30-0-d6046393.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Phuket from $10 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Phuket ... September  | $30",
+        "query": "site:expedia.com/Hotel-Search Phuket Thailand 3-star hotel \"Sep 17, 2026\" \"Sep 18, 2026\" price",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 16,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254",
+        "sourceTitle": "How much does a trip to Phuket Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $16  | $42  | $109",
+        "query": "site:budgetyourtrip.com/thailand/phuket \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 42,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254",
+        "sourceTitle": "How much does a trip to Phuket Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $16  | $42  | $109",
+        "query": "site:budgetyourtrip.com/thailand/phuket \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 109,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254",
+        "sourceTitle": "How much does a trip to Phuket Cost? | Budget Your Trip",
+        "evidenceText": "Food^{2}  | $16  | $42  | $109",
+        "query": "site:budgetyourtrip.com/thailand/phuket \"Food\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 18,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254",
+        "sourceTitle": "How much does a trip to Phuket Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $18  | $47  | $126",
+        "query": "site:budgetyourtrip.com/thailand/phuket \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 47,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254",
+        "sourceTitle": "How much does a trip to Phuket Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $18  | $47  | $126",
+        "query": "site:budgetyourtrip.com/thailand/phuket \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 126,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/thailand/phuket/trip-cost-1151254",
+        "sourceTitle": "How much does a trip to Phuket Cost? | Budget Your Trip",
+        "evidenceText": "Entertainment^{1}  | $18  | $47  | $126",
+        "query": "site:budgetyourtrip.com/thailand/phuket \"Entertainment\" \"per person per day\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 96.62,
+        "currency": "THB",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Phuket",
+        "sourceTitle": "Cost of Living in Phuket. Jun 2026. Prices in Phuket",
+        "evidenceText": "Cappuccino (Regular Size)  | ฿96.62  | 60.00-146.83",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Phuket\" \"Cappuccino (Regular Size)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 80,
+        "currency": "THB",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Phuket",
+        "sourceTitle": "Cost of Living in Phuket. Jun 2026. Prices in Phuket",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ฿80.00  | 55.00-120.00",
+        "query": "site:numbeo.com/cost-of-living/in/ \"Phuket\" \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 2,
+        "retries": 1,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:28:49.264Z",
+        "completedAt": "2026-08-13T06:28:49.264Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:28:49.264Z",
+        "completedAt": "2026-08-13T06:28:49.264Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T06:28:49.264Z",
+        "completedAt": "2026-08-13T06:28:49.264Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 4,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-003-07-phuket",
+      "agentId": "delegated-phase9-batch-003-07-phuket",
+      "rawSha256": "ccf0d7f766f739ed1542a1a691baeba6e4d310a520af9d62144561c2f92f8d89",
+      "telemetrySha256": "41bd02cc9dac0361871e0b3b44129ed56b6d13e29ab3600ec54ea77ee9ae92d9"
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-003-07-phuket",
+      "agentId": "delegated-phase9-batch-003-07-phuket",
+      "rawSha256": "029d68d3452c6fc4122c038f4ca2ab52dbe5eb0e6aad8664186ad3f0eda2d79f",
+      "telemetrySha256": "b8946f5c1cb4eac5f6eaea29088bfd995d0249e255828d85426fac3889a920ef"
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-003-07-phuket",
+      "agentId": "delegated-phase9-batch-003-07-phuket",
+      "rawSha256": "7b623dbce45936e816e329cef8135d8254ccc5f13ccf82b512a6e2bdfb88470e",
+      "telemetrySha256": "84005514ff5bb42cf1e6c91e5048e089ee8f68d4b3931c2750aeaff57913a900"
+    }
+  ]
+}
