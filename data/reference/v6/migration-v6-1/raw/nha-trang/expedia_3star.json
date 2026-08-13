@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "expedia_3star",
+  "city": "Nha Trang",
+  "country": "Vietnam",
+  "retrievalStatus": "not_found",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "hotel_3star_room_2p": {
+      "status": "not_found",
+      "value": null,
+      "currency": null,
+      "sourceUrl": null,
+      "sourceTitle": "",
+      "evidenceText": "",
+      "query": "",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Search snippets identified Nha Trang three-star listings and prices for other dates, but no qualifying three-star room price for the frozen 2026-09-17 to 2026-09-18 window. No direct page read was used, so the measure remains explicit not_found."
+}

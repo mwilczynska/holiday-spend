@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Hoi An",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 43684.21,
+      "currency": "VND",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hoi-An-Vietnam",
+      "sourceTitle": "Cost of Living in Hoi An. May 2026. Prices in Hoi An",
+      "evidenceText": "Cappuccino (Regular Size) | ₫43,684.21 | 25,000.00-72,330.35",
+      "query": "site:numbeo.com/cost-of-living/in/Hoi-An \"Cappuccino (Regular Size)\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 30000,
+      "currency": "VND",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Hoi-An-Vietnam",
+      "sourceTitle": "Cost of Living in Hoi An. May 2026. Prices in Hoi An",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫30,000.00 | 20,000.00-60,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Hoi-An \"Domestic Draft Beer\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Both canonical Numbeo rows were observed in search snippets. The beer label is exactly Domestic Draft Beer (0.5 Liter); the displayed VND serving was preserved without conversion."
+}

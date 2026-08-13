@@ -517,6 +517,16 @@ batch through the frozen three-call route, materialize it, run the complete base
 The live CSV, all holdouts and Phase 11 remain untouched. This supersedes the earlier statement that Phase 8 was
 blocked after experiment 013; experiments 010–013 remain immutable historical evidence.
 
+### v6.1 Phase 9 batch 001 — 13 August 2026
+
+The first fixed 10-city migration batch is complete and staged: Can Tho, Mui Ne, Cat Ba, Ninh Binh, Pu Luong,
+Hoi An, Da Lat, Nha Trang, Phu Quoc and Sa Pa. It added 30 delegated source calls and 100 searches, with zero
+retries and zero direct page reads. Direct category counts were accommodation 3/10, food 7/10, drinks 4/10 and
+activities 7/10; one city (Pu Luong) was all-prior and therefore an artifact candidate, 10% of the batch. The
+candidate rate is below the 30% stop rule, so work continues. The staged migration now has 30/121 complete cities;
+91 remain. The next exact action is to assign and collect fixed batch 002, then materialize and verify it before
+committing.
+
 ## Traps retained from earlier work
 
 Hard-won across v3, v4 and v5. All still true.

@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-normalized-city-v1",
+  "city": {
+    "city": "Da Lat",
+    "country": "Vietnam",
+    "region": "SEA",
+    "band": null,
+    "cityId": "da-lat"
+  },
+  "collection": {
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 28.11,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.3,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      }
+    },
+    "facts": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 21,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Da Lat from $8 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Da Lat: September $21. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Da Lat.",
+        "query": "site:expedia.com \"3 Star Hotels\" \"Da Lat\" \"Price trend\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 42108.73,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+        "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+        "evidenceText": "Cappuccino (Regular Size) | ₫42,108.73 | 15,000.00-60,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Da-Lat \"Cappuccino (Regular Size)\" \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 23693.56,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+        "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫23,693.56 | 13,000.00-60,000.00",
+        "query": "site:numbeo.com/cost-of-living/in Da Lat Vietnam Cappuccino Regular Size Domestic Draft Beer 0.5 Liter",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "telemetry": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "llmCalls": 3,
+    "searches": 10,
+    "promptVersions": [
+      "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    ]
+  },
+  "calls": [
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "source": "expedia_3star",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-001-07-da-lat",
+      "agentId": "delegated-phase9-batch-001-07-da-lat",
+      "rawSha256": "82d215ec65c72487d6cddc6f1902195d9ec7b88d53facefadc5e2a260fa776a8",
+      "telemetrySha256": "0751616931702a2363413605f09a9066465721e9f7bc7e8385c7f5d6fccff79b"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "source": "budgetyourtrip_daily_tiers",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-001-07-da-lat",
+      "agentId": "delegated-phase9-batch-001-07-da-lat",
+      "rawSha256": "b0195cbd37c45b4fc95ed825d7120d24d10ffc3f282a65e105ada78863a4dc18",
+      "telemetrySha256": "19b590bc327077ded25bac4cc9784a646eeddebceb132ea5afd67122ea5f96f6"
+    },
+    {
+      "city": "Da Lat",
+      "country": "Vietnam",
+      "source": "numbeo_drinks",
+      "collectionMode": "delegated_codex_subagent",
+      "assignmentId": "phase9-batch-001-07-da-lat",
+      "agentId": "delegated-phase9-batch-001-07-da-lat",
+      "rawSha256": "03c27f5e6ba1584c08cc534faecd774fef197034535ed182675611dd7c197aff",
+      "telemetrySha256": "a8c23072115fdbacbb2c06d7bdc926c2238a61a91de558cc3e5924836bd51587"
+    }
+  ]
+}

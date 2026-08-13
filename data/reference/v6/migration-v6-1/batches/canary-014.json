@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-batch-report-v1",
+  "batchId": "canary-014",
+  "generatedAt": "deterministic",
+  "protocolSha256": "fbd9ff5ac97eb0bc1a5bc1941751a25f267a5fa8192732109c08f3325d8a0c2e",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "cities": [
+    "Ho Chi Minh City",
+    "Hanoi",
+    "Da Nang",
+    "Singapore",
+    "Seoul",
+    "Tokyo",
+    "Taipei",
+    "Delhi",
+    "Mumbai",
+    "Colombo",
+    "Istanbul",
+    "Dubai",
+    "Cape Town",
+    "Cairo",
+    "Prague",
+    "Lisbon",
+    "Mexico City",
+    "Lima",
+    "San Francisco",
+    "Melbourne"
+  ],
+  "cityCount": 20,
+  "completeMaterializations": 20,
+  "calls": 60,
+  "searches": 167,
+  "retries": 0,
+  "directPageReads": 0,
+  "collectionModes": {
+    "validated_experiment_014_reuse": 60
+  },
+  "observedMeasures": {
+    "byt_food_budget_per_person_day": 18,
+    "byt_food_mid_per_person_day": 18,
+    "byt_food_high_per_person_day": 18,
+    "byt_activities_budget_per_person_day": 18,
+    "byt_activities_mid_per_person_day": 18,
+    "byt_activities_high_per_person_day": 18,
+    "cappuccino_1": 19,
+    "domestic_draft_beer_1": 19,
+    "hotel_3star_room_2p": 10
+  },
+  "sourceStatuses": {
+    "expedia_3star:not_found": 10,
+    "budgetyourtrip_daily_tiers:complete": 108,
+    "numbeo_drinks:complete": 38,
+    "expedia_3star:complete": 10,
+    "numbeo_drinks:not_found": 2,
+    "budgetyourtrip_daily_tiers:not_found": 12
+  },
+  "categoryCounts": {
+    "accommodation": {
+      "direct": 10,
+      "fallback": 10
+    },
+    "food": {
+      "direct": 18,
+      "fallback": 2
+    },
+    "drinks": {
+      "direct": 17,
+      "fallback": 3
+    },
+    "activities": {
+      "direct": 18,
+      "fallback": 2
+    }
+  },
+  "gradeDistribution": {
+    "D": 107,
+    "B": 118,
+    "A": 51,
+    "C": 84,
+    "definitional": 20
+  },
+  "allPriorCities": 0,
+  "artifactCandidates": 0,
+  "artifactFraction": 0,
+  "artifactRows": [
+    {
+      "city": "Ho Chi Minh City",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Hanoi",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Da Nang",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Singapore",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Seoul",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Tokyo",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Taipei",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Delhi",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Mumbai",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Colombo",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Istanbul",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Dubai",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Cape Town",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Cairo",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Prague",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Lisbon",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Mexico City",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Lima",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "San Francisco",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Melbourne",
+      "artifactCandidate": false,
+      "reason": null
+    }
+  ]
+}

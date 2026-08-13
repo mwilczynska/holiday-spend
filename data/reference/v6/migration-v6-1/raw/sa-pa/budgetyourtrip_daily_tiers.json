@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Sa Pa",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 11,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/sapa/trip-cost-1568043",
+      "sourceTitle": "How much does a trip to Sapa Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Food — Budget $11 per person per day.",
+      "query": "BudgetYourTrip Sapa Vietnam food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 27,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/sapa/trip-cost-1568043",
+      "sourceTitle": "How much does a trip to Sapa Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Food — Mid-Range $27 per person per day.",
+      "query": "BudgetYourTrip Sapa Vietnam food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 68,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/sapa/trip-cost-1568043",
+      "sourceTitle": "How much does a trip to Sapa Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Food — Luxury $68 per person per day.",
+      "query": "BudgetYourTrip Sapa Vietnam food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 2,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/sapa/trip-cost-1568043",
+      "sourceTitle": "How much does a trip to Sapa Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment — Budget $2 per person per day.",
+      "query": "BudgetYourTrip Sapa Vietnam food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 6,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/sapa/trip-cost-1568043",
+      "sourceTitle": "How much does a trip to Sapa Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment — Mid-Range $6 per person per day.",
+      "query": "BudgetYourTrip Sapa Vietnam food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 14,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/sapa/trip-cost-1568043",
+      "sourceTitle": "How much does a trip to Sapa Cost? | Budget Your Trip",
+      "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment — Luxury $14 per person per day.",
+      "query": "BudgetYourTrip Sapa Vietnam food meals budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "BudgetYourTrip reports the six category values as per-person, per-day traveller-spend source proxies. No multiplication, conversion or substitution was performed."
+}

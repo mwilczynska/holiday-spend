@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-batch-report-v1",
+  "batchId": "phase9-batch-001",
+  "generatedAt": "deterministic",
+  "protocolSha256": "fbd9ff5ac97eb0bc1a5bc1941751a25f267a5fa8192732109c08f3325d8a0c2e",
+  "inputCsvSha256": "0e273cef4b80c1ce39d467316888e4d40159fc4ff0d389f9e9203adb9fa0aee8",
+  "cities": [
+    "Can Tho",
+    "Mui Ne",
+    "Cat Ba",
+    "Ninh Binh",
+    "Pu Luong",
+    "Hoi An",
+    "Da Lat",
+    "Nha Trang",
+    "Phu Quoc",
+    "Sa Pa"
+  ],
+  "cityCount": 10,
+  "completeMaterializations": 10,
+  "calls": 30,
+  "searches": 100,
+  "retries": 0,
+  "directPageReads": 0,
+  "collectionModes": {
+    "delegated_codex_subagent": 30
+  },
+  "observedMeasures": {
+    "byt_food_budget_per_person_day": 7,
+    "byt_food_mid_per_person_day": 7,
+    "byt_food_high_per_person_day": 7,
+    "byt_activities_budget_per_person_day": 7,
+    "byt_activities_mid_per_person_day": 7,
+    "byt_activities_high_per_person_day": 7,
+    "cappuccino_1": 4,
+    "domestic_draft_beer_1": 4,
+    "hotel_3star_room_2p": 3
+  },
+  "sourceStatuses": {
+    "expedia_3star:not_found": 7,
+    "budgetyourtrip_daily_tiers:complete": 42,
+    "numbeo_drinks:complete": 8,
+    "numbeo_drinks:not_found": 12,
+    "expedia_3star:complete": 3,
+    "budgetyourtrip_daily_tiers:not_found": 18
+  },
+  "categoryCounts": {
+    "accommodation": {
+      "direct": 3,
+      "fallback": 7
+    },
+    "food": {
+      "direct": 7,
+      "fallback": 3
+    },
+    "drinks": {
+      "direct": 4,
+      "fallback": 6
+    },
+    "activities": {
+      "direct": 7,
+      "fallback": 3
+    }
+  },
+  "gradeDistribution": {
+    "D": 100,
+    "B": 45,
+    "A": 12,
+    "C": 23,
+    "definitional": 10
+  },
+  "allPriorCities": 1,
+  "artifactCandidates": 1,
+  "artifactFraction": 0.1,
+  "artifactRows": [
+    {
+      "city": "Can Tho",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Mui Ne",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Cat Ba",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Ninh Binh",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Pu Luong",
+      "artifactCandidate": true,
+      "reason": "all non-definitional tiers are fallback/imputed or grade D"
+    },
+    {
+      "city": "Hoi An",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Da Lat",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Nha Trang",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Phu Quoc",
+      "artifactCandidate": false,
+      "reason": null
+    },
+    {
+      "city": "Sa Pa",
+      "artifactCandidate": false,
+      "reason": null
+    }
+  ]
+}

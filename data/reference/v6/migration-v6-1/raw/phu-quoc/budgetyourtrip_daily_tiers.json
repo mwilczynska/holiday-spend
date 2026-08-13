@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Phu Quoc",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 7,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/phu-quoc",
+      "sourceTitle": "Phu Quoc Travel Cost - Average Price of a Vacation to Phu Quoc: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Phu Quoc on a Budget: Food $7 (d173,000) per person per day; Mid-Range $15 (d395,439); Luxury $29 (d755,636).",
+      "query": "site:budgetyourtrip.com/vietnam/phu-quoc Phu Quoc cost of travel food meals entertainment activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 15,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/phu-quoc",
+      "sourceTitle": "Phu Quoc Travel Cost - Average Price of a Vacation to Phu Quoc: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Phu Quoc on a Budget: Food $7 (d173,000) per person per day; Mid-Range $15 (d395,439); Luxury $29 (d755,636).",
+      "query": "site:budgetyourtrip.com/vietnam/phu-quoc Phu Quoc cost of travel food meals entertainment activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 29,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/phu-quoc",
+      "sourceTitle": "Phu Quoc Travel Cost - Average Price of a Vacation to Phu Quoc: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Phu Quoc on a Budget: Food $7 (d173,000) per person per day; Mid-Range $15 (d395,439); Luxury $29 (d755,636).",
+      "query": "site:budgetyourtrip.com/vietnam/phu-quoc Phu Quoc cost of travel food meals entertainment activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 3,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/phu-quoc",
+      "sourceTitle": "Phu Quoc Travel Cost - Average Price of a Vacation to Phu Quoc: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Phu Quoc on a Budget: Entertainment $3 (d85,944) per person per day; Mid-Range $7 (d196,448); Luxury $14 (d375,389).",
+      "query": "site:budgetyourtrip.com/vietnam/phu-quoc Phu Quoc Food & Meals daily budget activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 7,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/phu-quoc",
+      "sourceTitle": "Phu Quoc Travel Cost - Average Price of a Vacation to Phu Quoc: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Phu Quoc on a Budget: Entertainment $3 (d85,944) per person per day; Mid-Range $7 (d196,448); Luxury $14 (d375,389).",
+      "query": "site:budgetyourtrip.com/vietnam/phu-quoc Phu Quoc Food & Meals daily budget activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 14,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/phu-quoc",
+      "sourceTitle": "Phu Quoc Travel Cost - Average Price of a Vacation to Phu Quoc: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Phu Quoc on a Budget: Entertainment $3 (d85,944) per person per day; Mid-Range $7 (d196,448); Luxury $14 (d375,389).",
+      "query": "site:budgetyourtrip.com/vietnam/phu-quoc Phu Quoc Food & Meals daily budget activities budget mid-range luxury per person per day",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The Phu Quoc BudgetYourTrip search snippets identify food and entertainment tiers as displayed USD per-person-per-day amounts. No multiplication, currency conversion or other derivation was applied."
+}

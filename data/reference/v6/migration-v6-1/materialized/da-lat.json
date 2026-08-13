@@ -1,0 +1,2375 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Da Lat",
+    "country": "Vietnam",
+    "region": "SEA",
+    "band": null,
+    "cityId": "da-lat"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Da Lat",
+    "country": "Vietnam",
+    "region": "SEA",
+    "costBand": "low",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 16.61,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 7.64,
+          "upperAud": 25.58,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 16.64,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 9.82,
+          "upperAud": 23.46,
+          "widthPct": 41
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 18.73,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 10.3,
+          "upperAud": 27.16,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 21.08,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 12.44,
+          "upperAud": 29.73,
+          "widthPct": 41
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 28.11,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 16.58,
+          "upperAud": 39.64,
+          "widthPct": 41
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 37.59,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 22.18,
+          "upperAud": 53,
+          "widthPct": 41
+        }
+      },
+      "food_street_food": {
+        "amountAud": 9.15,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 5.03,
+          "upperAud": 13.27,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 17.16,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 37.18,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 77.22,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 2.31,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 2.08,
+          "upperAud": 2.54,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 4.62,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 4.16,
+          "upperAud": 5.08,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 7.22,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 6.5,
+          "upperAud": 7.94,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 21.3,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 7.67,
+          "upperAud": 34.93,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 35.38,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 12.74,
+          "upperAud": 58.02,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 8.58,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 22.88,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 68.64,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 28.11,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.3,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 5.74,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {},
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 16.61,
+      "accomPrivateRoom": 16.64,
+      "accom1star": 18.73,
+      "accom2star": 21.08,
+      "accom3star": 28.11,
+      "accom4star": 37.59,
+      "foodStreet": 9.15,
+      "foodBudget": 17.16,
+      "foodMid": 37.18,
+      "foodHigh": 77.22,
+      "drinkCoffee": 2.31,
+      "drinkLocalBeer": 1.3,
+      "drinkCocktail": 5.74,
+      "drinksNone": 4.62,
+      "drinksLight": 7.22,
+      "drinksModerate": 21.3,
+      "drinksHeavy": 35.38,
+      "activitiesFree": 0,
+      "activitiesBudget": 8.58,
+      "activitiesMid": 22.88,
+      "activitiesHigh": 68.64
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 16.61,
+      "accomPrivateRoom": 16.64,
+      "accom1star": 18.73,
+      "accom2star": 21.08,
+      "accom3star": 28.11,
+      "accom4star": 37.59,
+      "foodStreet": 9.15,
+      "foodBudget": 17.16,
+      "foodMid": 37.18,
+      "foodHigh": 77.22,
+      "drinkCoffee": 2.31,
+      "drinkLocalBeer": 1.3,
+      "drinkCocktail": 5.74,
+      "drinksNone": 4.62,
+      "drinksLight": 7.22,
+      "drinksModerate": 21.3,
+      "drinksHeavy": 35.38,
+      "activitiesFree": 0,
+      "activitiesBudget": 8.58,
+      "activitiesMid": 22.88,
+      "activitiesHigh": 68.64
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 21,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Da Lat from $8 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Da Lat: September $21. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Da Lat.",
+        "query": "site:expedia.com \"3 Star Hotels\" \"Da Lat\" \"Price trend\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 42108.73,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+        "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+        "evidenceText": "Cappuccino (Regular Size) | ₫42,108.73 | 15,000.00-60,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Da-Lat \"Cappuccino (Regular Size)\" \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 23693.56,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+        "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫23,693.56 | 13,000.00-60,000.00",
+        "query": "site:numbeo.com/cost-of-living/in Da Lat Vietnam Cappuccino Regular Size Domestic Draft Beer 0.5 Liter",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 7.64,
+          "upperAud": 25.58,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 9.82,
+          "upperAud": 23.46,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 10.3,
+          "upperAud": 27.16,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 12.44,
+          "upperAud": 29.73,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 16.58,
+          "upperAud": 39.64,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 22.18,
+          "upperAud": 53,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 5.03,
+          "upperAud": 13.27,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.08,
+          "upperAud": 2.54,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 4.16,
+          "upperAud": 5.08,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.5,
+          "upperAud": 7.94,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 7.67,
+          "upperAud": 34.93,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 12.74,
+          "upperAud": 58.02,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 16.5849,
+          "upperAud": 39.635099999999994,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 5.577,
+          "upperAud": 11.583,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 12.0835,
+          "upperAud": 25.096500000000002,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 25.0965,
+          "upperAud": 52.1235,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 2.7885,
+          "upperAud": 5.7915,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 7.436,
+          "upperAud": 15.444,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 22.308,
+          "upperAud": 46.332,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 2.079,
+          "upperAud": 2.5410000000000004,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.1700000000000002,
+          "upperAud": 1.4300000000000002,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 2.0664,
+          "upperAud": 9.4136,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 28.11,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.3,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 5.74,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 7.64,
+          "upperAud": 25.58,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 9.82,
+          "upperAud": 23.46,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 10.3,
+          "upperAud": 27.16,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 12.44,
+          "upperAud": 29.73,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 16.58,
+          "upperAud": 39.64,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 22.18,
+          "upperAud": 53,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 5.03,
+          "upperAud": 13.27,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.08,
+          "upperAud": 2.54,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 4.16,
+          "upperAud": 5.08,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.5,
+          "upperAud": 7.94,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 7.67,
+          "upperAud": 34.93,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 12.74,
+          "upperAud": 58.02,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "missingness": {},
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "observed",
+          "value": 21,
+          "currency": "USD",
+          "sourceUrl": "https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "sourceTitle": "The Best 3 Star Hotels in Da Lat from $8 | Expedia",
+          "evidenceText": "Price trends for properties with 3 Stars in Da Lat: September $21. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Da Lat.",
+          "query": "site:expedia.com \"3 Star Hotels\" \"Da Lat\" \"Price trend\"",
+          "taxStatus": "excluded",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 6,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+          "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+          "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 13,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+          "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+          "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 27,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+          "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+          "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 3,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+          "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+          "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 8,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+          "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+          "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 24,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+          "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+          "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 42108.73,
+          "currency": "VND",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+          "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+          "evidenceText": "Cappuccino (Regular Size) | ₫42,108.73 | 15,000.00-60,000.00",
+          "query": "site:numbeo.com/cost-of-living/in/Da-Lat \"Cappuccino (Regular Size)\" \"Domestic Draft Beer (0.5 Liter)\"",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 23693.56,
+          "currency": "VND",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+          "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫23,693.56 | 13,000.00-60,000.00",
+          "query": "site:numbeo.com/cost-of-living/in Da Lat Vietnam Cappuccino Regular Size Domestic Draft Beer 0.5 Liter",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 28.11,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 41,
+          "sourceIds": [
+            "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+            "v6-source-offset:fitted_booking_ground_truth_v2_development"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_expedia_3star.md",
+            "city-cost-v6-source-offset-v1"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 8.58,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 18.59,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 38.61,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 4.29,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 11.44,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 34.32,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 2.31,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 1.3,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 5.74,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "da-lat",
+    "city": "Da Lat",
+    "country": "Vietnam",
+    "region": "SEA",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "73729249e56adc453e8543f6a58e7fdfcc72d4f8e02e8146916cec22bcba36c6",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 16.61,
+      "accomPrivateRoom": 16.64,
+      "accom1star": 18.73,
+      "accom2star": 21.08,
+      "accom3star": 28.11,
+      "accom4star": 37.59,
+      "foodStreet": 9.15,
+      "foodBudget": 17.16,
+      "foodMid": 37.18,
+      "foodHigh": 77.22,
+      "drinkCoffee": 2.31,
+      "drinkLocalBeer": 1.3,
+      "drinkCocktail": 5.74,
+      "drinksNone": 4.62,
+      "drinksLight": 7.22,
+      "drinksModerate": 21.3,
+      "drinksHeavy": 35.38,
+      "activitiesFree": 0,
+      "activitiesBudget": 8.58,
+      "activitiesMid": 22.88,
+      "activitiesHigh": 68.64
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "observed",
+        "value": 21,
+        "currency": "USD",
+        "sourceUrl": "https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+        "sourceTitle": "The Best 3 Star Hotels in Da Lat from $8 | Expedia",
+        "evidenceText": "Price trends for properties with 3 Stars in Da Lat: September $21. Price trend information excludes taxes and fees and is based on base rates for a nightly stay for 2 adults found in the last 7 days on our site and averaged for commonly viewed properties with 3 stars in Da Lat.",
+        "query": "site:expedia.com \"3 Star Hotels\" \"Da Lat\" \"Price trend\"",
+        "taxStatus": "excluded",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 6,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 13,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 27,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Food | Budget $6 | Mid-Range $13 | Luxury $27.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 3,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 8,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 24,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071",
+        "sourceTitle": "How much does a trip to Dalat Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category: Entertainment | Budget $3 | Mid-Range $8 | Luxury $24.",
+        "query": "site:budgetyourtrip.com Da Lat Vietnam daily food meals entertainment activities budget mid-range luxury per person per day",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 42108.73,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+        "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+        "evidenceText": "Cappuccino (Regular Size) | ₫42,108.73 | 15,000.00-60,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Da-Lat \"Cappuccino (Regular Size)\" \"Domestic Draft Beer (0.5 Liter)\"",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 23693.56,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Da-Lat",
+        "sourceTitle": "Cost of Living in Da Lat. May 2026. Prices in Da Lat",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫23,693.56 | 13,000.00-60,000.00",
+        "query": "site:numbeo.com/cost-of-living/in Da Lat Vietnam Cappuccino Regular Size Domestic Draft Beer 0.5 Liter",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "C",
+        "accom_hostel_private_room": "C",
+        "accom_1_star": "C",
+        "accom_2_star": "C",
+        "accom_3_star": "B",
+        "accom_4_star": "C",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 7.64,
+          "upperAud": 25.58,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 9.82,
+          "upperAud": 23.46,
+          "widthPct": 41
+        },
+        "accom_1_star": {
+          "lowerAud": 10.3,
+          "upperAud": 27.16,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 12.44,
+          "upperAud": 29.73,
+          "widthPct": 41
+        },
+        "accom_3_star": {
+          "lowerAud": 16.58,
+          "upperAud": 39.64,
+          "widthPct": 41
+        },
+        "accom_4_star": {
+          "lowerAud": 22.18,
+          "upperAud": 53,
+          "widthPct": 41
+        },
+        "food_street_food": {
+          "lowerAud": 5.03,
+          "upperAud": 13.27,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 11.15,
+          "upperAud": 23.17,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 24.17,
+          "upperAud": 50.19,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 50.19,
+          "upperAud": 104.25,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 2.08,
+          "upperAud": 2.54,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 4.16,
+          "upperAud": 5.08,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.5,
+          "upperAud": 7.94,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 7.67,
+          "upperAud": 34.93,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 12.74,
+          "upperAud": 58.02,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 5.58,
+          "upperAud": 11.58,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 14.87,
+          "upperAud": 30.89,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 44.62,
+          "upperAud": 92.66,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "B",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 16.5849,
+          "upperAud": 39.635099999999994,
+          "widthPct": 41
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 5.577,
+          "upperAud": 11.583,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 12.0835,
+          "upperAud": 25.096500000000002,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 25.0965,
+          "upperAud": 52.1235,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 2.7885,
+          "upperAud": 5.7915,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 7.436,
+          "upperAud": 15.444,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 22.308,
+          "upperAud": 46.332,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 2.079,
+          "upperAud": 2.5410000000000004,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.1700000000000002,
+          "upperAud": 1.4300000000000002,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 2.0664,
+          "upperAud": 9.4136,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:45:04.9200428Z",
+          "completedAt": "2026-08-13T05:45:04.9200428Z",
+          "durationMs": 0,
+          "error": null
+        }
+      ],
+      "v6Missingness": {},
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 28.11,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 41,
+        "sourceIds": [
+          "expedia_3star:https://www.expedia.com/3Star-Da-Lat-Hotels.s30-0-d1030.Travel-Guide-Filter-Hotels",
+          "v6-source-offset:fitted_booking_ground_truth_v2_development"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "city-cost-v6-source-offset-v1"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 8.58,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 18.59,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 38.61,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 4.29,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 11.44,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 34.32,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/dalat/trip-cost-1584071"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 2.31,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.3,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 5.74,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Da-Lat",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:45:04.9200428Z",
+        "completedAt": "2026-08-13T05:45:04.9200428Z",
+        "durationMs": 0,
+        "error": null
+      }
+    ],
+    "materializationHash": "eec8bb8ffb7c1a86c9e6921c0e55c101f66e34f2cb5020c0ab7f3df692c89e78",
+    "calls": [
+      {
+        "city": "Da Lat",
+        "country": "Vietnam",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-001-07-da-lat",
+        "agentId": "delegated-phase9-batch-001-07-da-lat",
+        "rawSha256": "82d215ec65c72487d6cddc6f1902195d9ec7b88d53facefadc5e2a260fa776a8",
+        "telemetrySha256": "0751616931702a2363413605f09a9066465721e9f7bc7e8385c7f5d6fccff79b"
+      },
+      {
+        "city": "Da Lat",
+        "country": "Vietnam",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-001-07-da-lat",
+        "agentId": "delegated-phase9-batch-001-07-da-lat",
+        "rawSha256": "b0195cbd37c45b4fc95ed825d7120d24d10ffc3f282a65e105ada78863a4dc18",
+        "telemetrySha256": "19b590bc327077ded25bac4cc9784a646eeddebceb132ea5afd67122ea5f96f6"
+      },
+      {
+        "city": "Da Lat",
+        "country": "Vietnam",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-001-07-da-lat",
+        "agentId": "delegated-phase9-batch-001-07-da-lat",
+        "rawSha256": "03c27f5e6ba1584c08cc534faecd774fef197034535ed182675611dd7c197aff",
+        "telemetrySha256": "a8c23072115fdbacbb2c06d7bdc926c2238a61a91de558cc3e5924836bd51587"
+      }
+    ]
+  }
+}

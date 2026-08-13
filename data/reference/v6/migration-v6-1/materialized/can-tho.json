@@ -1,0 +1,2377 @@
+{
+  "schemaVersion": "city-cost-v6-1-migration-materialized-city-v1",
+  "city": {
+    "city": "Can Tho",
+    "country": "Vietnam",
+    "region": "SEA",
+    "band": null,
+    "cityId": "can-tho"
+  },
+  "methodologyVersion": "v6.1",
+  "materialization": {
+    "schemaVersion": "city-cost-materialization-v6.1",
+    "methodologyVersion": "v6.1",
+    "city": "Can Tho",
+    "country": "Vietnam",
+    "region": "SEA",
+    "costBand": "low",
+    "tiersAud": {
+      "accom_shared_hostel_dorm": {
+        "amountAud": 26.9,
+        "formula": "2 * 0.2955 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_shared_hostel_dorm"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_booking_ground_truth_v2_development"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        }
+      },
+      "accom_hostel_private_room": {
+        "amountAud": 26.94,
+        "formula": "0.5919 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_hostel_private_room"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-v4_booking_blended_hostel_ratio"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        }
+      },
+      "accom_1_star": {
+        "amountAud": 30.32,
+        "formula": "0.6663 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_1_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-interpolated_geometric_mean_of_hostel_and_two_star"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        }
+      },
+      "accom_2_star": {
+        "amountAud": 34.13,
+        "formula": "0.75 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_2_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        }
+      },
+      "accom_3_star": {
+        "amountAud": 45.51,
+        "formula": "hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        }
+      },
+      "accom_4_star": {
+        "amountAud": 60.86,
+        "formula": "1.3372 * hotel_3star_room_2p",
+        "parentAnchors": [
+          "hotel_3star_room_2p"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "imputed",
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ],
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star",
+          "v6-coefficient:accom_4_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1",
+          "city-cost-v6-fitted_expedia_r0"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        }
+      },
+      "food_street_food": {
+        "amountAud": 16.77,
+        "formula": "(6 * 0.2757) / (4 * 0.2757 + 2) * food_budget",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "modelled",
+        "imputedMeasures": [
+          "food_street_food"
+        ],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+          "v6.1-compatibility:street-food-budget"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "city-cost-v6-1-street-budget-compatibility-v1"
+        ],
+        "evidenceGrade": "D",
+        "interval": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        }
+      },
+      "food_budget": {
+        "amountAud": 31.46,
+        "formula": "2 * byt_food_budget_per_person_day",
+        "parentAnchors": [
+          "byt_food_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        }
+      },
+      "food_mid_range": {
+        "amountAud": 80.08,
+        "formula": "2 * byt_food_mid_per_person_day",
+        "parentAnchors": [
+          "byt_food_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        }
+      },
+      "food_high_end": {
+        "amountAud": 191.6,
+        "formula": "2 * byt_food_high_per_person_day",
+        "parentAnchors": [
+          "byt_food_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 124.54,
+          "upperAud": 258.66,
+          "widthPct": 35
+        }
+      },
+      "drink_coffee": {
+        "amountAud": 1.74,
+        "formula": "cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 1.57,
+          "upperAud": 1.91,
+          "widthPct": 10
+        }
+      },
+      "drinks_none": {
+        "amountAud": 3.48,
+        "formula": "2 * cappuccino_1",
+        "parentAnchors": [
+          "cappuccino_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 3.13,
+          "upperAud": 3.83,
+          "widthPct": 10
+        }
+      },
+      "drinks_light": {
+        "amountAud": 6.78,
+        "formula": "2 * cappuccino_1 + 2 * domestic_draft_beer_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ],
+        "evidenceGrade": "A",
+        "interval": {
+          "lowerAud": 6.1,
+          "upperAud": 7.46,
+          "widthPct": 10
+        }
+      },
+      "drinks_moderate": {
+        "amountAud": 18.72,
+        "formula": "2 * cappuccino_1 + 4 * domestic_draft_beer_1 + 2 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 6.74,
+          "upperAud": 30.7,
+          "widthPct": 64
+        }
+      },
+      "drinks_heavy": {
+        "amountAud": 30.66,
+        "formula": "2 * cappuccino_1 + 6 * domestic_draft_beer_1 + 4 * cocktail_1",
+        "parentAnchors": [
+          "cappuccino_1",
+          "domestic_draft_beer_1",
+          "cocktail_1"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "derived",
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ],
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "evidenceGrade": "C",
+        "interval": {
+          "lowerAud": 11.04,
+          "upperAud": 50.28,
+          "widthPct": 64
+        }
+      },
+      "activities_free": {
+        "amountAud": 0,
+        "formula": "0 by definition",
+        "parentAnchors": [],
+        "missingAnchors": [],
+        "evidenceBasis": "definitional",
+        "imputedMeasures": [],
+        "sourceIds": [],
+        "modelVersions": [
+          "city-cost-v6-1-definition-v1"
+        ],
+        "evidenceGrade": "definitional",
+        "interval": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        }
+      },
+      "activities_budget": {
+        "amountAud": 20.02,
+        "formula": "2 * byt_activities_budget_per_person_day",
+        "parentAnchors": [
+          "byt_activities_budget_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        }
+      },
+      "activities_mid_range": {
+        "amountAud": 45.76,
+        "formula": "2 * byt_activities_mid_per_person_day",
+        "parentAnchors": [
+          "byt_activities_mid_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 29.74,
+          "upperAud": 61.78,
+          "widthPct": 35
+        }
+      },
+      "activities_high_end": {
+        "amountAud": 82.94,
+        "formula": "2 * byt_activities_high_per_person_day",
+        "parentAnchors": [
+          "byt_activities_high_per_person_day"
+        ],
+        "missingAnchors": [],
+        "evidenceBasis": "observed",
+        "imputedMeasures": [],
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ],
+        "evidenceGrade": "B",
+        "interval": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        }
+      }
+    },
+    "anchors": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 95.8,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 22.88,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 1.74,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.65,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 4.32,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "missingness": {
+      "hotel_3star_room_2p": "not_found"
+    },
+    "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+    "complete": true,
+    "mappedEstimate": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 16.77,
+      "foodBudget": 31.46,
+      "foodMid": 80.08,
+      "foodHigh": 191.6,
+      "drinkCoffee": 1.74,
+      "drinkLocalBeer": 1.65,
+      "drinkCocktail": 4.32,
+      "drinksNone": 3.48,
+      "drinksLight": 6.78,
+      "drinksModerate": 18.72,
+      "drinksHeavy": 30.66,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 45.76,
+      "activitiesHigh": 82.94
+    }
+  },
+  "persistence": {
+    "estimateSource": "llm_city_generation_v6_1",
+    "data": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 16.77,
+      "foodBudget": 31.46,
+      "foodMid": 80.08,
+      "foodHigh": 191.6,
+      "drinkCoffee": 1.74,
+      "drinkLocalBeer": 1.65,
+      "drinkCocktail": 4.32,
+      "drinksNone": 3.48,
+      "drinksLight": 6.78,
+      "drinksModerate": 18.72,
+      "drinksHeavy": 30.66,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 45.76,
+      "activitiesHigh": 82.94
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 67,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 16,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 31666.67,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+        "sourceTitle": "Cost of Living in Can Tho. Feb 2026. Prices in Can Tho",
+        "evidenceText": "Cappuccino (Regular Size)  | ₫31,666.67  | 15,000.00-70,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Can-Tho Cappuccino Domestic Draft Beer Can Tho",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 30000,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+        "sourceTitle": "Cost of Living in Can Tho. Feb 2026. Prices in Can Tho",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₫30,000.00  | 20,000.00-50,000.00",
+        "query": "site:numbeo.com/cost-of-living/city_result.jsp Can Tho Vietnam Cappuccino Domestic Draft Beer",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 124.54,
+          "upperAud": 258.66,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 1.57,
+          "upperAud": 1.91,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 3.13,
+          "upperAud": 3.83,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.1,
+          "upperAud": 7.46,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 6.74,
+          "upperAud": 30.7,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 11.04,
+          "upperAud": 50.28,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 29.74,
+          "upperAud": 61.78,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 25.0305,
+          "upperAud": 65.98949999999999,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 10.2245,
+          "upperAud": 21.235500000000002,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 62.27,
+          "upperAud": 129.33,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 6.5065,
+          "upperAud": 13.5135,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 14.872,
+          "upperAud": 30.888,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 26.9555,
+          "upperAud": 55.984500000000004,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 1.566,
+          "upperAud": 1.9140000000000001,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.4849999999999999,
+          "upperAud": 1.815,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 1.5552000000000001,
+          "upperAud": 7.084800000000001,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:36:10.000Z",
+          "completedAt": "2026-08-13T05:36:45.000Z",
+          "durationMs": 35000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:37:00.000Z",
+          "completedAt": "2026-08-13T05:37:35.000Z",
+          "durationMs": 35000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:37:50.000Z",
+          "completedAt": "2026-08-13T05:38:10.000Z",
+          "durationMs": 20000,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "confidence": "medium",
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 95.8,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 22.88,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 1.74,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.65,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 4.32,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:36:10.000Z",
+        "completedAt": "2026-08-13T05:36:45.000Z",
+        "durationMs": 35000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:37:00.000Z",
+        "completedAt": "2026-08-13T05:37:35.000Z",
+        "durationMs": 35000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:37:50.000Z",
+        "completedAt": "2026-08-13T05:38:10.000Z",
+        "durationMs": 20000,
+        "error": null
+      }
+    ],
+    "apiSummary": {
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 124.54,
+          "upperAud": 258.66,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 1.57,
+          "upperAud": 1.91,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 3.13,
+          "upperAud": 3.83,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.1,
+          "upperAud": 7.46,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 6.74,
+          "upperAud": 30.7,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 11.04,
+          "upperAud": 50.28,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 29.74,
+          "upperAud": 61.78,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        }
+      },
+      "collectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:36:10.000Z",
+          "completedAt": "2026-08-13T05:36:45.000Z",
+          "durationMs": 35000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:37:00.000Z",
+          "completedAt": "2026-08-13T05:37:35.000Z",
+          "durationMs": 35000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:37:50.000Z",
+          "completedAt": "2026-08-13T05:38:10.000Z",
+          "durationMs": 20000,
+          "error": null
+        }
+      ],
+      "missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "priorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "anchors": [
+        {
+          "measure": "hotel_3star_room_2p",
+          "source": "expedia_3star",
+          "status": "not_found",
+          "value": null,
+          "currency": null,
+          "sourceUrl": null,
+          "sourceTitle": "",
+          "evidenceText": "",
+          "query": "",
+          "taxStatus": "unknown",
+          "retrievalStatus": "not_found",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+        },
+        {
+          "measure": "byt_food_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 11,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+          "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+          "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 28,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+          "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+          "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_food_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 67,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+          "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+          "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_budget_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 7,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+          "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+          "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_mid_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 16,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+          "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+          "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "byt_activities_high_per_person_day",
+          "source": "budgetyourtrip_daily_tiers",
+          "status": "observed",
+          "value": 29,
+          "currency": "USD",
+          "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+          "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+          "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+          "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        },
+        {
+          "measure": "cappuccino_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 31666.67,
+          "currency": "VND",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+          "sourceTitle": "Cost of Living in Can Tho. Feb 2026. Prices in Can Tho",
+          "evidenceText": "Cappuccino (Regular Size)  | ₫31,666.67  | 15,000.00-70,000.00",
+          "query": "site:numbeo.com/cost-of-living/in/Can-Tho Cappuccino Domestic Draft Beer Can Tho",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        },
+        {
+          "measure": "domestic_draft_beer_1",
+          "source": "numbeo_drinks",
+          "status": "observed",
+          "value": 30000,
+          "currency": "VND",
+          "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+          "sourceTitle": "Cost of Living in Can Tho. Feb 2026. Prices in Can Tho",
+          "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₫30,000.00  | 20,000.00-50,000.00",
+          "query": "site:numbeo.com/cost-of-living/city_result.jsp Can Tho Vietnam Cappuccino Domestic Draft Beer",
+          "taxStatus": "unknown",
+          "retrievalStatus": "complete",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        }
+      ],
+      "inputSnapshot": {
+        "hotel_3star_room_2p": {
+          "valueAud": 45.51,
+          "status": "imputed",
+          "evidenceGrade": "D",
+          "intervalPct": 45,
+          "sourceIds": [
+            "v6.1-tier-prior:SEA:all:accom_3_star"
+          ],
+          "modelVersions": [
+            "city-cost-v6-1-tier-prior-v1"
+          ],
+          "imputedMeasures": [
+            "hotel_3star_room_2p"
+          ]
+        },
+        "byt_food_budget_per_person_day": {
+          "valueAud": 15.73,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_mid_per_person_day": {
+          "valueAud": 40.04,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_food_high_per_person_day": {
+          "valueAud": 95.8,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_budget_per_person_day": {
+          "valueAud": 10.01,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_mid_per_person_day": {
+          "valueAud": 22.88,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "byt_activities_high_per_person_day": {
+          "valueAud": 41.47,
+          "status": "observed",
+          "evidenceGrade": "B",
+          "intervalPct": 35,
+          "sourceIds": [
+            "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+          ]
+        },
+        "cappuccino_1": {
+          "valueAud": 1.74,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "domestic_draft_beer_1": {
+          "valueAud": 1.65,
+          "status": "observed",
+          "evidenceGrade": "A",
+          "intervalPct": 10,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+          ]
+        },
+        "cocktail_1": {
+          "valueAud": 4.32,
+          "status": "modelled",
+          "evidenceGrade": "C",
+          "intervalPct": 64,
+          "sourceIds": [
+            "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+            "v6-coefficient:cocktail_1"
+          ],
+          "modelVersions": [
+            "delegated-web-search",
+            "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+            "city-cost-v6-fitted_independent_official_menu_panel_r0"
+          ],
+          "imputedMeasures": [
+            "cocktail_1",
+            "cappuccino_1"
+          ]
+        }
+      },
+      "sources": {
+        "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    }
+  },
+  "provenance": {
+    "schemaVersion": "city-cost-v6-1-migration-provenance-row-v1",
+    "cityId": "can-tho",
+    "city": "Can Tho",
+    "country": "Vietnam",
+    "region": "SEA",
+    "methodologyVersion": "v6.1",
+    "estimationImportKey": "632ec7e1ba80608e7da3de90c87872a9e0c83a18ec2281b5e1c5a7b1fa55f3a8",
+    "estimateSource": "llm_city_generation_v6_1",
+    "estimatedAt": "2026-08-13T00:00:00.000Z",
+    "provider": "delegated_codex_subagent_web_search",
+    "model": "delegated-web-search",
+    "promptVersion": "city-cost-v6-1-spine-v1",
+    "confidence": "medium",
+    "reasoning": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+    "data": {
+      "accomHostel": 26.9,
+      "accomPrivateRoom": 26.94,
+      "accom1star": 30.32,
+      "accom2star": 34.13,
+      "accom3star": 45.51,
+      "accom4star": 60.86,
+      "foodStreet": 16.77,
+      "foodBudget": 31.46,
+      "foodMid": 80.08,
+      "foodHigh": 191.6,
+      "drinkCoffee": 1.74,
+      "drinkLocalBeer": 1.65,
+      "drinkCocktail": 4.32,
+      "drinksNone": 3.48,
+      "drinksLight": 6.78,
+      "drinksModerate": 18.72,
+      "drinksHeavy": 30.66,
+      "activitiesFree": 0,
+      "activitiesBudget": 20.02,
+      "activitiesMid": 45.76,
+      "activitiesHigh": 82.94
+    },
+    "anchors": [
+      {
+        "measure": "hotel_3star_room_2p",
+        "source": "expedia_3star",
+        "status": "not_found",
+        "value": null,
+        "currency": null,
+        "sourceUrl": null,
+        "sourceTitle": "",
+        "evidenceText": "",
+        "query": "",
+        "taxStatus": "unknown",
+        "retrievalStatus": "not_found",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md"
+      },
+      {
+        "measure": "byt_food_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 11,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 28,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_food_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 67,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Food^{2} | $11 | $28 | $67",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_budget_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 7,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_mid_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 16,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "byt_activities_high_per_person_day",
+        "source": "budgetyourtrip_daily_tiers",
+        "status": "observed",
+        "value": 29,
+        "currency": "USD",
+        "sourceUrl": "https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203",
+        "sourceTitle": "How much does a trip to Can Tho Cost? | Budget Your Trip",
+        "evidenceText": "Average Daily Costs, Per Person, by Category — Budget | Mid-Range | Luxury; Entertainment^{1} | $7 | $16 | $29",
+        "query": "Budget Your Trip Can Tho Vietnam food meals daily budget activities daily",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+      },
+      {
+        "measure": "cappuccino_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 31666.67,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+        "sourceTitle": "Cost of Living in Can Tho. Feb 2026. Prices in Can Tho",
+        "evidenceText": "Cappuccino (Regular Size)  | ₫31,666.67  | 15,000.00-70,000.00",
+        "query": "site:numbeo.com/cost-of-living/in/Can-Tho Cappuccino Domestic Draft Beer Can Tho",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      },
+      {
+        "measure": "domestic_draft_beer_1",
+        "source": "numbeo_drinks",
+        "status": "observed",
+        "value": 30000,
+        "currency": "VND",
+        "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+        "sourceTitle": "Cost of Living in Can Tho. Feb 2026. Prices in Can Tho",
+        "evidenceText": "Domestic Draft Beer (0.5 Liter)  | ₫30,000.00  | 20,000.00-50,000.00",
+        "query": "site:numbeo.com/cost-of-living/city_result.jsp Can Tho Vietnam Cappuccino Domestic Draft Beer",
+        "taxStatus": "unknown",
+        "retrievalStatus": "complete",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+      }
+    ],
+    "metadata": {
+      "region": "SEA",
+      "confidenceNotes": "City cost v6.1 deterministic migration materialization. Grades, intervals, source facts and fallback basis are persisted in the provenance sidecar.",
+      "inferredAudPerUsd": null,
+      "methodologyVersion": "v6.1",
+      "evidenceGrades": {
+        "accom_shared_hostel_dorm": "D",
+        "accom_hostel_private_room": "D",
+        "accom_1_star": "D",
+        "accom_2_star": "D",
+        "accom_3_star": "D",
+        "accom_4_star": "D",
+        "food_street_food": "D",
+        "food_budget": "B",
+        "food_mid_range": "B",
+        "food_high_end": "B",
+        "drink_coffee": "A",
+        "drinks_none": "A",
+        "drinks_light": "A",
+        "drinks_moderate": "C",
+        "drinks_heavy": "C",
+        "activities_free": "definitional",
+        "activities_budget": "B",
+        "activities_mid_range": "B",
+        "activities_high_end": "B"
+      },
+      "intervals": {
+        "accom_shared_hostel_dorm": {
+          "lowerAud": 12.37,
+          "upperAud": 41.42,
+          "widthPct": 54
+        },
+        "accom_hostel_private_room": {
+          "lowerAud": 14.82,
+          "upperAud": 39.06,
+          "widthPct": 45
+        },
+        "accom_1_star": {
+          "lowerAud": 16.68,
+          "upperAud": 43.97,
+          "widthPct": 45
+        },
+        "accom_2_star": {
+          "lowerAud": 18.77,
+          "upperAud": 49.49,
+          "widthPct": 45
+        },
+        "accom_3_star": {
+          "lowerAud": 25.03,
+          "upperAud": 65.99,
+          "widthPct": 45
+        },
+        "accom_4_star": {
+          "lowerAud": 33.47,
+          "upperAud": 88.24,
+          "widthPct": 45
+        },
+        "food_street_food": {
+          "lowerAud": 9.22,
+          "upperAud": 24.32,
+          "widthPct": 45
+        },
+        "food_budget": {
+          "lowerAud": 20.45,
+          "upperAud": 42.47,
+          "widthPct": 35
+        },
+        "food_mid_range": {
+          "lowerAud": 52.05,
+          "upperAud": 108.11,
+          "widthPct": 35
+        },
+        "food_high_end": {
+          "lowerAud": 124.54,
+          "upperAud": 258.66,
+          "widthPct": 35
+        },
+        "drink_coffee": {
+          "lowerAud": 1.57,
+          "upperAud": 1.91,
+          "widthPct": 10
+        },
+        "drinks_none": {
+          "lowerAud": 3.13,
+          "upperAud": 3.83,
+          "widthPct": 10
+        },
+        "drinks_light": {
+          "lowerAud": 6.1,
+          "upperAud": 7.46,
+          "widthPct": 10
+        },
+        "drinks_moderate": {
+          "lowerAud": 6.74,
+          "upperAud": 30.7,
+          "widthPct": 64
+        },
+        "drinks_heavy": {
+          "lowerAud": 11.04,
+          "upperAud": 50.28,
+          "widthPct": 64
+        },
+        "activities_free": {
+          "lowerAud": 0,
+          "upperAud": 0,
+          "widthPct": 0
+        },
+        "activities_budget": {
+          "lowerAud": 13.01,
+          "upperAud": 27.03,
+          "widthPct": 35
+        },
+        "activities_mid_range": {
+          "lowerAud": 29.74,
+          "upperAud": 61.78,
+          "widthPct": 35
+        },
+        "activities_high_end": {
+          "lowerAud": 53.91,
+          "upperAud": 111.97,
+          "widthPct": 35
+        }
+      },
+      "anchorEvidenceGrades": {
+        "hotel_3star_room_2p": "D",
+        "byt_food_budget_per_person_day": "B",
+        "byt_food_mid_per_person_day": "B",
+        "byt_food_high_per_person_day": "B",
+        "byt_activities_budget_per_person_day": "B",
+        "byt_activities_mid_per_person_day": "B",
+        "byt_activities_high_per_person_day": "B",
+        "cappuccino_1": "A",
+        "domestic_draft_beer_1": "A",
+        "cocktail_1": "C"
+      },
+      "anchorIntervals": {
+        "hotel_3star_room_2p": {
+          "lowerAud": 25.0305,
+          "upperAud": 65.98949999999999,
+          "widthPct": 45
+        },
+        "byt_food_budget_per_person_day": {
+          "lowerAud": 10.2245,
+          "upperAud": 21.235500000000002,
+          "widthPct": 35
+        },
+        "byt_food_mid_per_person_day": {
+          "lowerAud": 26.026,
+          "upperAud": 54.054,
+          "widthPct": 35
+        },
+        "byt_food_high_per_person_day": {
+          "lowerAud": 62.27,
+          "upperAud": 129.33,
+          "widthPct": 35
+        },
+        "byt_activities_budget_per_person_day": {
+          "lowerAud": 6.5065,
+          "upperAud": 13.5135,
+          "widthPct": 35
+        },
+        "byt_activities_mid_per_person_day": {
+          "lowerAud": 14.872,
+          "upperAud": 30.888,
+          "widthPct": 35
+        },
+        "byt_activities_high_per_person_day": {
+          "lowerAud": 26.9555,
+          "upperAud": 55.984500000000004,
+          "widthPct": 35
+        },
+        "cappuccino_1": {
+          "lowerAud": 1.566,
+          "upperAud": 1.9140000000000001,
+          "widthPct": 10
+        },
+        "domestic_draft_beer_1": {
+          "lowerAud": 1.4849999999999999,
+          "upperAud": 1.815,
+          "widthPct": 10
+        },
+        "cocktail_1": {
+          "lowerAud": 1.5552000000000001,
+          "upperAud": 7.084800000000001,
+          "widthPct": 64
+        }
+      },
+      "v6CollectionTelemetry": [
+        {
+          "source": "expedia_3star",
+          "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "not_found",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:36:10.000Z",
+          "completedAt": "2026-08-13T05:36:45.000Z",
+          "durationMs": 35000,
+          "error": null
+        },
+        {
+          "source": "budgetyourtrip_daily_tiers",
+          "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 4,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:37:00.000Z",
+          "completedAt": "2026-08-13T05:37:35.000Z",
+          "durationMs": 35000,
+          "error": null
+        },
+        {
+          "source": "numbeo_drinks",
+          "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "provider": "delegated_codex_subagent_web_search",
+          "model": "delegated-web-search",
+          "attempts": 1,
+          "retries": 0,
+          "status": "complete",
+          "searchesUsed": 2,
+          "directPageReads": 0,
+          "startedAt": "2026-08-13T05:37:50.000Z",
+          "completedAt": "2026-08-13T05:38:10.000Z",
+          "durationMs": 20000,
+          "error": null
+        }
+      ],
+      "v6Missingness": {
+        "hotel_3star_room_2p": "not_found"
+      },
+      "v6PriorBasis": "v6.1 direct source tier vectors with regional then global category-tier fallback; no shipping CSV inversion",
+      "referenceDate": "2026-09-17",
+      "extraContext": "v6.1 frozen migration; staged only; live CSV is read-only."
+    },
+    "sources": {
+      "expedia_3star": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+      "budgetyourtrip_daily_tiers": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+      "numbeo_drinks": "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+    },
+    "inputSnapshot": {
+      "hotel_3star_room_2p": {
+        "valueAud": 45.51,
+        "status": "imputed",
+        "evidenceGrade": "D",
+        "intervalPct": 45,
+        "sourceIds": [
+          "v6.1-tier-prior:SEA:all:accom_3_star"
+        ],
+        "modelVersions": [
+          "city-cost-v6-1-tier-prior-v1"
+        ],
+        "imputedMeasures": [
+          "hotel_3star_room_2p"
+        ]
+      },
+      "byt_food_budget_per_person_day": {
+        "valueAud": 15.73,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_mid_per_person_day": {
+        "valueAud": 40.04,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_food_high_per_person_day": {
+        "valueAud": 95.8,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_budget_per_person_day": {
+        "valueAud": 10.01,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_mid_per_person_day": {
+        "valueAud": 22.88,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "byt_activities_high_per_person_day": {
+        "valueAud": 41.47,
+        "status": "observed",
+        "evidenceGrade": "B",
+        "intervalPct": 35,
+        "sourceIds": [
+          "budgetyourtrip_daily_tiers:https://www.budgetyourtrip.com/vietnam/can-tho/trip-cost-1586203"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md"
+        ]
+      },
+      "cappuccino_1": {
+        "valueAud": 1.74,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "domestic_draft_beer_1": {
+        "valueAud": 1.65,
+        "status": "observed",
+        "evidenceGrade": "A",
+        "intervalPct": 10,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md"
+        ]
+      },
+      "cocktail_1": {
+        "valueAud": 4.32,
+        "status": "modelled",
+        "evidenceGrade": "C",
+        "intervalPct": 64,
+        "sourceIds": [
+          "numbeo_drinks:https://www.numbeo.com/cost-of-living/in/Can-Tho-Vietnam",
+          "v6-coefficient:cocktail_1"
+        ],
+        "modelVersions": [
+          "delegated-web-search",
+          "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+          "city-cost-v6-fitted_independent_official_menu_panel_r0"
+        ],
+        "imputedMeasures": [
+          "cocktail_1",
+          "cappuccino_1"
+        ]
+      }
+    },
+    "fallbackLog": [
+      {
+        "source": "expedia_3star",
+        "promptVersion": "llm_prompt_city_cost_v6_1_expedia_3star.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "not_found",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:36:10.000Z",
+        "completedAt": "2026-08-13T05:36:45.000Z",
+        "durationMs": 35000,
+        "error": null
+      },
+      {
+        "source": "budgetyourtrip_daily_tiers",
+        "promptVersion": "llm_prompt_city_cost_v6_1_budgetyourtrip_daily_tiers.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 4,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:37:00.000Z",
+        "completedAt": "2026-08-13T05:37:35.000Z",
+        "durationMs": 35000,
+        "error": null
+      },
+      {
+        "source": "numbeo_drinks",
+        "promptVersion": "llm_prompt_city_cost_v6_1_numbeo_drinks.md",
+        "provider": "delegated_codex_subagent_web_search",
+        "model": "delegated-web-search",
+        "attempts": 1,
+        "retries": 0,
+        "status": "complete",
+        "searchesUsed": 2,
+        "directPageReads": 0,
+        "startedAt": "2026-08-13T05:37:50.000Z",
+        "completedAt": "2026-08-13T05:38:10.000Z",
+        "durationMs": 20000,
+        "error": null
+      }
+    ],
+    "materializationHash": "956b34c22aa2587f4d154c1fc47cc8796f94636691d06de9c900f46a5da06cf4",
+    "calls": [
+      {
+        "city": "Can Tho",
+        "country": "Vietnam",
+        "source": "expedia_3star",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-001-01-can-tho",
+        "agentId": "delegated-phase9-batch-001-01-can-tho",
+        "rawSha256": "0d17126f22d118298143c39eaa7dbe47ac02327d5a8ecec028fcdf8b2596dd31",
+        "telemetrySha256": "928fe130545d72811574e8a402dd622d2230136340a944f2e688c4ac9fa9c8a5"
+      },
+      {
+        "city": "Can Tho",
+        "country": "Vietnam",
+        "source": "budgetyourtrip_daily_tiers",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-001-01-can-tho",
+        "agentId": "delegated-phase9-batch-001-01-can-tho",
+        "rawSha256": "94ac7de126d4b29c711a690da48699f38b8094bb0160e5d4d56ead390d249f72",
+        "telemetrySha256": "1130f831810dbae29a2a7ec9ef880ad4882e253310bb563d9b3e4d781a2076c8"
+      },
+      {
+        "city": "Can Tho",
+        "country": "Vietnam",
+        "source": "numbeo_drinks",
+        "collectionMode": "delegated_codex_subagent",
+        "assignmentId": "phase9-batch-001-01-can-tho",
+        "agentId": "delegated-phase9-batch-001-01-can-tho",
+        "rawSha256": "854763f5aa1a2e1c0bc8b5aa6c164e280784c41b36e0eaa39b5931c554b3424e",
+        "telemetrySha256": "6b8e41ebf14ed53b297bbd2f1e908c2ba7e4993a6e14642d09c3dd6bc7ba91df"
+      }
+    ]
+  }
+}

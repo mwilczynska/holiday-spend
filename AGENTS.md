@@ -160,8 +160,9 @@ rule is superseded. **Do not re-run its experiments or reinstate its gates.** Th
 ### v6.1 — the active workstream
 
 13 August 2026 status: experiment 014 passed 20/20, Phase 8 migration tooling is complete, and Phase 9 is
-active. The frozen protocol and 20-city dry run are under `data/reference/v6/migration-v6-1/`; the next exact
-action is the first fixed delegated batch for the remaining 101 cities. The live CSV and holdouts remain untouched.
+active. The frozen protocol and 20-city dry run are under `data/reference/v6/migration-v6-1/`; batch 001 added
+ten cities, so 30/121 are staged and 91 remain. Its one all-prior candidate (Pu Luong, 10%) is below the batch
+stop rule. The next exact action is fixed delegated batch 002. The live CSV and holdouts remain untouched.
 
 Phase 7F lifecycle repair is complete. Experiment 013 is now immutable failed evidence: 32 validated experiment-012
 calls were reused, all 28 pending slots were collected, and the frame reached 60/60 terminal records with 19/20

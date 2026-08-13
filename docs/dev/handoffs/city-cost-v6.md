@@ -330,8 +330,10 @@ call-level validation: 60 raw/telemetry pairs, 20 complete materializations, a d
 provenance sidecar/import plan were produced. The importer is read-only by default, rejects partial sidecars,
 and rejects the live database; a non-live database is required for an explicit test import.
 
-Phase 9 is active. The remaining frame is 101 cities; the 20 experiment-014 cities are complete and must not be
-recollected. The next exact action is to assign one fixed 10-city batch through the migration assignment ledger,
-have delegated agents write the three exact raw/telemetry pairs per city, inventory the batch, materialize it,
-run the complete verification baseline, update the checkpoint and commit/push. If a batch has more than 30%
-genuine artifact candidates, stop and report; explicit source missingness alone is not an artifact.
+Phase 9 is active. The remaining frame is 91 cities; the 20 experiment-014 cities and the first 10-city migration
+batch are complete and must not be recollected. Batch 001 produced 30 delegated calls, 100 searches, zero retries
+or direct reads, seven direct accommodation cities, seven direct food/activity cities, four direct drink cities and
+one all-prior candidate (Pu Luong, 10% of the batch). This is below the 30% artifact stop rule; the missing source
+rows remain explicit and were not substituted. The next exact action is to assign fixed batch 002 through the
+migration ledger, collect its three source calls per city, inventory/materialize it, run the complete baseline,
+update the checkpoint and commit/push. If a batch has more than 30% genuine artifact candidates, stop and report.

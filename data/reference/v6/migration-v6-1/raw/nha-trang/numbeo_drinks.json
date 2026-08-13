@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "numbeo_drinks",
+  "city": "Nha Trang",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 2,
+  "directPageReads": 0,
+  "measures": {
+    "cappuccino_1": {
+      "status": "observed",
+      "value": 45000,
+      "currency": "VND",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Nha-Trang",
+      "sourceTitle": "Cost of Living in Nha Trang. May 2026. Prices in Nha Trang",
+      "evidenceText": "Cappuccino (Regular Size) | ₫45,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Nha-Trang \"Cappuccino (Regular Size)\" \"Domestic Draft Beer\"",
+      "taxStatus": "unknown"
+    },
+    "domestic_draft_beer_1": {
+      "status": "observed",
+      "value": 16000,
+      "currency": "VND",
+      "sourceUrl": "https://www.numbeo.com/cost-of-living/in/Nha-Trang",
+      "sourceTitle": "Cost of Living in Nha Trang. May 2026. Prices in Nha Trang",
+      "evidenceText": "Domestic Draft Beer (0.5 Liter) | ₫16,000.00",
+      "query": "site:numbeo.com/cost-of-living/in/Nha-Trang \"Domestic Draft Beer (0.5 Liter)\" OR \"Domestic Draft Beer (1 Pint)\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "Both exact canonical Numbeo rows were present in search snippets for Nha Trang. The displayed domestic beer serving is Domestic Draft Beer (0.5 Liter); no unit conversion was applied."
+}

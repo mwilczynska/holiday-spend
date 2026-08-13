@@ -7,7 +7,8 @@ and Phase 8 migration tooling is active. The owner-approved M4 migration has not
 Phase 8 is complete as of 13 August 2026: the frozen protocol and resumable tooling were dry-run on all 20
 experiment-014 canary cities, producing deterministic staged/provenance/import-plan artifacts with live writes
 forbidden. Phase 9 is active for the remaining 101 cities. The next action is the first fixed delegated migration
-batch; do not read a holdout, write the live CSV or execute Phase 11.
+batch; do not read a holdout, write the live CSV or execute Phase 11. Batch 001 is complete: 30/121 cities are
+staged, one of its ten cities is an all-prior artifact candidate (10%), and batch 002 is the next action.
 
 ## PROMPT
 
@@ -267,6 +268,13 @@ node scripts/record-v6-1-canary-assignment.mjs --experiment-dir data/reference/v
 
 Add migration `--check` commands in Phase 8. Rerun a failed full suite once before investigating because
 this OneDrive checkout has a known transient temp-file failure.
+
+The Phase 9 batch report command is:
+
+```text
+node scripts/report-v6-1-migration-batch.mjs --batch-id=<batch> --cities="City A,City B,..."
+node scripts/report-v6-1-migration-batch.mjs --batch-id=<batch> --cities="City A,City B,..." --check
+```
 
 Phase 8 migration checks are now:
 

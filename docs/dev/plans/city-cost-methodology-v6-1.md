@@ -14,6 +14,12 @@
 > older text in this plan that describes Phase 8 as blocked or merely pending. The live CSV and holdouts remain
 > untouched.
 
+> **13 August 2026 Phase 9 batch 001:** The first 10 remaining cities are now staged (30/363 migration calls,
+> 100 searches, zero retries/direct reads). Seven cities have direct Expedia accommodation, seven direct BYT
+> food/activity, and four direct Numbeo drinks; Pu Luong is one all-prior artifact candidate (10%), below the
+> 30% batch stop rule. The staged frame is 30/121 complete. The next exact action is fixed batch 002; do not
+> recollect these 10 cities.
+
 ### Current migration checklist
 
 - [x] Freeze the 121-city protocol, implementation/prompt/FX/input hashes and live-write prohibition.

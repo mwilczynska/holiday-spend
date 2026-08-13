@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Hoi An",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 7,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hoi-an",
+      "sourceTitle": "Hoi An Travel Cost - Average Price of a Vacation to Hoi An: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Hoi An on a Budget: Food $7 per person per day; Mid-Range $16; Luxury $37.",
+      "query": "site:budgetyourtrip.com/vietnam/hoi-an Hoi An daily food meals entertainment budget mid range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 16,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hoi-an",
+      "sourceTitle": "Hoi An Travel Cost - Average Price of a Vacation to Hoi An: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Hoi An on a Budget: Food $7 per person per day; Mid-Range $16; Luxury $37.",
+      "query": "site:budgetyourtrip.com/vietnam/hoi-an Hoi An daily food meals entertainment budget mid range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 37,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hoi-an",
+      "sourceTitle": "Hoi An Travel Cost - Average Price of a Vacation to Hoi An: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Hoi An on a Budget: Food $7 per person per day; Mid-Range $16; Luxury $37.",
+      "query": "site:budgetyourtrip.com/vietnam/hoi-an Hoi An daily food meals entertainment budget mid range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 5,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hoi-an",
+      "sourceTitle": "Hoi An Travel Cost - Average Price of a Vacation to Hoi An: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Hoi An on a Budget: Entertainment $5 per person per day; Mid-Range $12; Luxury $29.",
+      "query": "site:budgetyourtrip.com/vietnam/hoi-an Hoi An daily food meals entertainment budget mid range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 12,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hoi-an",
+      "sourceTitle": "Hoi An Travel Cost - Average Price of a Vacation to Hoi An: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Hoi An on a Budget: Entertainment $5 per person per day; Mid-Range $12; Luxury $29.",
+      "query": "site:budgetyourtrip.com/vietnam/hoi-an Hoi An daily food meals entertainment budget mid range luxury",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 29,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/hoi-an",
+      "sourceTitle": "Hoi An Travel Cost - Average Price of a Vacation to Hoi An: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Hoi An on a Budget: Entertainment $5 per person per day; Mid-Range $12; Luxury $29.",
+      "query": "site:budgetyourtrip.com/vietnam/hoi-an Hoi An daily food meals entertainment budget mid range luxury",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The BudgetYourTrip search snippets identify Hoi An and display food and entertainment tiers as per-person daily amounts. No multiplication, conversion or other derivation was applied."
+}

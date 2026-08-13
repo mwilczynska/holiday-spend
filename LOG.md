@@ -3057,3 +3057,14 @@ only 20/121 cities and has not been imported or cut over. Phase 9 now collects t
 batches through delegated Stage A and the shipped Stage B path. No holdout was read and the live CSV remains
 untouched. This supersedes the prior Phase 7H entry's statement that Phase 8 remained blocked after experiment 013;
 experiments 010–014 remain immutable history.
+
+### v6.1 Phase 9 batch 001 complete — 13 August 2026
+
+The first fixed migration batch staged ten remaining cities: Can Tho, Mui Ne, Cat Ba, Ninh Binh, Pu Luong, Hoi An,
+Da Lat, Nha Trang, Phu Quoc and Sa Pa. Delegated Stage A produced 30 valid raw/telemetry call pairs under the
+frozen prompts and window, with 100 searches, zero retries and zero direct page reads. The shipped Stage B path
+materialized all ten cities and expanded the staged frame to 30/121 cities. Direct category counts were
+accommodation 3/10, food 7/10, drinks 4/10 and activities 7/10. Pu Luong had no qualifying source observations,
+so it is recorded as one all-prior artifact candidate (10%); the batch rule allows continuation below 30%.
+Missingness remains explicit and no fallback was written by Stage A. The next action is batch 002; the live CSV,
+holdouts and Phase 11 remain untouched.

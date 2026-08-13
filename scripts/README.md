@@ -74,6 +74,7 @@ re-derive is a claim you cannot audit.
 | `node scripts/run-v6-1-delegated-canary.mjs --experiment-dir <path> [--check]` | `run-v6-1-delegated-canary.ts` | Finalizes only a terminal 60-slot delegated frame through shipped schemas/materializer/persistence/API parsing; completed pass or fail results are immutable |
 | `node scripts/migrate-city-cost-v6-1.mjs init|status|assign|reuse|materialize|check` | `migrate-city-cost-v6-1.ts` | Frozen, resumable Phase 8/9 migration: validates three per-city calls, reuses only matching experiment evidence, materializes through shipped v6.1 code, writes staging only, and refuses live CSV output |
 | `node scripts/import-city-cost-v6-1-provenance.mjs --check` | `import-city-cost-v6-1-provenance.ts` | Validates the staged provenance sidecar/import plan; actual import requires an explicit non-live test database and rejects partial sidecars/live DB |
+| `node scripts/report-v6-1-migration-batch.mjs --batch-id=<id> --cities="..." [--check]` | `report-v6-1-migration-batch.mjs` | Deterministically reports a completed Phase 9 batch's calls, searches, direct/fallback categories, grades, observed measures and all-prior artifact candidates |
 
 ## SUPERSEDED — methodology v5
 

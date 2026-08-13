@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "city-cost-v6-1-spine-response-v1",
+  "source": "budgetyourtrip_daily_tiers",
+  "city": "Cat Ba",
+  "country": "Vietnam",
+  "retrievalStatus": "complete",
+  "searchesUsed": 4,
+  "directPageReads": 0,
+  "measures": {
+    "byt_food_budget_per_person_day": {
+      "status": "observed",
+      "value": 6,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/cat-ba",
+      "sourceTitle": "Cat Ba Travel Cost - Average Price of a Vacation to Cat Ba: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Cat Ba on a Budget: Food $6 per person per day; Mid-Range $15; Luxury $28.",
+      "query": "site:budgetyourtrip.com/vietnam/cat-ba \"Food and Meals\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_mid_per_person_day": {
+      "status": "observed",
+      "value": 15,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/cat-ba",
+      "sourceTitle": "Cat Ba Travel Cost - Average Price of a Vacation to Cat Ba: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Cat Ba on a Budget: Food $6 per person per day; Mid-Range $15; Luxury $28.",
+      "query": "site:budgetyourtrip.com/vietnam/cat-ba \"Food and Meals\"",
+      "taxStatus": "unknown"
+    },
+    "byt_food_high_per_person_day": {
+      "status": "observed",
+      "value": 28,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/cat-ba",
+      "sourceTitle": "Cat Ba Travel Cost - Average Price of a Vacation to Cat Ba: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Cat Ba on a Budget: Food $6 per person per day; Mid-Range $15; Luxury $28.",
+      "query": "site:budgetyourtrip.com/vietnam/cat-ba \"Food and Meals\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_budget_per_person_day": {
+      "status": "observed",
+      "value": 3,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/cat-ba",
+      "sourceTitle": "Cat Ba Travel Cost - Average Price of a Vacation to Cat Ba: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Cat Ba on a Budget: Entertainment $3 per person per day; Mid-Range $8; Luxury $15.",
+      "query": "site:budgetyourtrip.com/vietnam/cat-ba \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_mid_per_person_day": {
+      "status": "observed",
+      "value": 8,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/cat-ba",
+      "sourceTitle": "Cat Ba Travel Cost - Average Price of a Vacation to Cat Ba: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Cat Ba on a Budget: Entertainment $3 per person per day; Mid-Range $8; Luxury $15.",
+      "query": "site:budgetyourtrip.com/vietnam/cat-ba \"Entertainment\"",
+      "taxStatus": "unknown"
+    },
+    "byt_activities_high_per_person_day": {
+      "status": "observed",
+      "value": 15,
+      "currency": "USD",
+      "sourceUrl": "https://www.budgetyourtrip.com/vietnam/cat-ba",
+      "sourceTitle": "Cat Ba Travel Cost - Average Price of a Vacation to Cat Ba: Food & Meal Budget, Daily & Weekly Expenses | BudgetYourTrip.com",
+      "evidenceText": "Cat Ba on a Budget: Entertainment $3 per person per day; Mid-Range $8; Luxury $15.",
+      "query": "site:budgetyourtrip.com/vietnam/cat-ba \"Entertainment\"",
+      "taxStatus": "unknown"
+    }
+  },
+  "notes": "The BudgetYourTrip snippets identify Cat Ba and display food and entertainment tiers as per-person daily amounts. No multiplication, conversion or other derivation was applied."
+}
