@@ -260,8 +260,7 @@ The immutable result remains `pass: false`. Prague's BYT and Numbeo calls exceed
 contract, and the evaluator also exposes an unreachable aggregate predicate: it requires
 `problems.length === 0` even though the registered batch gate explicitly permits one incomplete city. Thus the
 numeric 19/20 and 30% thresholds were met, but the recorded experiment did not pass. Do not restate it as a pass
-or mutate it. The owner has authorized implementation of the Phase 7H repairs below; the next canary and Phase 8
-remain gated on those repairs and a fresh immutable result.
+or mutate it. Phase 7H is complete; the next canary and Phase 8 remain gated on the fresh immutable result.
 
 The implemented repair adds an exclusive write-once call-slot claim before spawning work and separates per-city
 diagnostics from batch-failing conditions in the evaluator. The next gated action is one new immutable experiment that

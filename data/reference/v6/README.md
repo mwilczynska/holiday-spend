@@ -98,7 +98,7 @@ holdout, or provide independent drinks truth.
 | `experiments/010-v6-1-runtime-canary/` | Immutable credential-preflight history; zero provider calls, not a 0/20 source-coverage result | Do not mutate or rerun |
 | `experiments/011-v6-1-delegated-operational-canary/` | Immutable delegated boundary finding; 17/20 complete, failed before the corrected identity/missingness/beer contract | Preserve as regression evidence; do not restate as passed |
 | `experiments/012-v6-1-corrected-delegated-canary/` | Immutable incomplete-frame history; original report says 10/20, independent inventory finds 32 reusable pairs and 28 pending slots | Preserve unchanged; do not promote to a clean canary or finalize a new experiment with pending slots |
-| `experiments/013-v6-1-resumable-delegated-canary/` | Immutable full-frame failed canary; 19/20 complete, two invalid Prague calls after duplicate assignment, 20/20 deterministic/provenance replay | Preserve unchanged; Phase 7H repair must pass before the next canary or Phase 8 |
+| `experiments/013-v6-1-resumable-delegated-canary/` | Immutable full-frame failed canary; 19/20 complete, two invalid Prague calls after duplicate assignment, 20/20 deterministic/provenance replay | Preserve unchanged; Phase 7H is complete, and the fresh canary must pass before Phase 8 |
 | `ground-truth/` | Frozen-window development ledger, raw holdout ledger, one-time score report and lock marker | Validate the development ledger; the raw holdout was scored once and must not be reopened or rescored |
 | `experiments/` | v6 experiment directories, one per material candidate (created from M2 onward) | One directory per experiment, same protocol as v5 |
 
